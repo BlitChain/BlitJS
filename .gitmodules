@@ -1,0 +1,3 @@
+[submodule "blit"]
+	path = blit
+	url = ../blit

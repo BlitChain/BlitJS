@@ -1,0 +1,53 @@
+//@ts-nocheck
+import * as fm from "../../../grpc-gateway";
+import { ParamsRequest, ParamsResponse, ArithmeticTwapRequest, ArithmeticTwapResponse, ArithmeticTwapToNowRequest, ArithmeticTwapToNowResponse } from "./query";
+export class Query {
+  static Params(request: ParamsRequest, initRequest?: fm.InitReq): Promise<ParamsResponse> {
+    return fm.fetchReq(`/osmosis/twap/v1beta1/Params?${fm.renderURLSearchParams({
+      ...request
+    }, [])}`, {
+      ...initRequest,
+      method: "GET"
+    });
+  }
+  static ArithmeticTwap(request: ArithmeticTwapRequest, initRequest?: fm.InitReq): Promise<ArithmeticTwapResponse> {
+    return fm.fetchReq(`/osmosis/twap/v1beta1/ArithmeticTwap?${fm.renderURLSearchParams({
+      ...request
+    }, [])}`, {
+      ...initRequest,
+      method: "GET"
+    });
+  }
+  static ArithmeticTwapToNow(request: ArithmeticTwapToNowRequest, initRequest?: fm.InitReq): Promise<ArithmeticTwapToNowResponse> {
+    return fm.fetchReq(`/osmosis/twap/v1beta1/ArithmeticTwapToNow?${fm.renderURLSearchParams({
+      ...request
+    }, [])}`, {
+      ...initRequest,
+      method: "GET"
+    });
+  }
+}
+export class QueryClientImpl {
+  private readonly url: string;
+  constructor(url: string) {
+    this.url = url;
+  }
+  async Params(req: ParamsRequest, headers?: HeadersInit): Promise<ParamsResponse> {
+    return Query.Params(req, {
+      headers,
+      pathPrefix: this.url
+    });
+  }
+  async ArithmeticTwap(req: ArithmeticTwapRequest, headers?: HeadersInit): Promise<ArithmeticTwapResponse> {
+    return Query.ArithmeticTwap(req, {
+      headers,
+      pathPrefix: this.url
+    });
+  }
+  async ArithmeticTwapToNow(req: ArithmeticTwapToNowRequest, headers?: HeadersInit): Promise<ArithmeticTwapToNowResponse> {
+    return Query.ArithmeticTwapToNow(req, {
+      headers,
+      pathPrefix: this.url
+    });
+  }
+}
