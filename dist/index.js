@@ -15,4 +15,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./codegen"), exports);
+const foo = 'this is a test';
+exports.default = foo;
 //# sourceMappingURL=index.js.map
