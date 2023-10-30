@@ -6,7 +6,7 @@ export const createLCDClient = async ({ restEndpoint }) => {
     });
     return {
         blit: {
-            blit: new (await import("./blit/query.lcd")).LCDQueryClient({
+            blit: new (await import("./query.lcd")).LCDQueryClient({
                 requestClient
             }),
             script: new (await import("./script/query.lcd")).LCDQueryClient({

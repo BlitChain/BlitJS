@@ -55,9 +55,9 @@ class Query {
     }
     /** Runs the function and returns the result. */
     static Eval(request, initRequest) {
-        return fm.fetchReq(`blit.script.Eval?${fm.renderURLSearchParams({
+        return fm.fetchReq(`/blit/script/eval/${request["script_address"]}?${fm.renderURLSearchParams({
             ...request
-        }, [])}`, {
+        }, ["script_address"])}`, {
             ...initRequest,
             method: "GET"
         });

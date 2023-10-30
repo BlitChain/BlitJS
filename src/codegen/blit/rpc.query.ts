@@ -7,7 +7,7 @@ export const createGrpcGateWayClient = async ({
   endpoint = endpoint.replace(/\/*$/g, "");
   return {
     blit: {
-      blit: new (await import("./blit/query.rpc.Query")).QueryClientImpl(endpoint),
+      blit: new (await import("./query.rpc.Query")).QueryClientImpl(endpoint),
       script: new (await import("./script/query.rpc.Query")).QueryClientImpl(endpoint),
       storage: new (await import("./storage/query.rpc.Query")).QueryClientImpl(endpoint)
     },

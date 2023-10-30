@@ -1,7 +1,6 @@
 //@ts-nocheck
 import * as fm from "../../grpc-gateway";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetScriptRequest, QueryGetScriptResponse, QueryAllScriptRequest, QueryAllScriptResponse, QueryWebRequest, QueryWebResponse } from "./query";
-import { MsgRun, MsgRunResponse } from "./msgrun";
+import { QueryParamsRequest, QueryParamsResponse, QueryGetScriptRequest, QueryGetScriptResponse, QueryAllScriptRequest, QueryAllScriptResponse, QueryEval, QueryEvalResponse, QueryWebRequest, QueryWebResponse } from "./query";
 export class Query {
   /** Parameters queries the parameters of the module. */
   static Params(request: QueryParamsRequest, initRequest?: fm.InitReq): Promise<QueryParamsResponse> {
@@ -30,10 +29,10 @@ export class Query {
     });
   }
   /** Runs the function and returns the result. */
-  static Eval(request: MsgRun, initRequest?: fm.InitReq): Promise<MsgRunResponse> {
-    return fm.fetchReq(`blit.script.Eval?${fm.renderURLSearchParams({
+  static Eval(request: QueryEval, initRequest?: fm.InitReq): Promise<QueryEvalResponse> {
+    return fm.fetchReq(`/blit/script/eval/${request["script_address"]}?${fm.renderURLSearchParams({
       ...request
-    }, [])}`, {
+    }, ["script_address"])}`, {
       ...initRequest,
       method: "GET"
     });
@@ -74,7 +73,7 @@ export class QueryClientImpl {
     });
   }
   /** Runs the function and returns the result. */
-  async Eval(req: MsgRun, headers?: HeadersInit): Promise<MsgRunResponse> {
+  async Eval(req: QueryEval, headers?: HeadersInit): Promise<QueryEvalResponse> {
     return Query.Eval(req, {
       headers,
       pathPrefix: this.url

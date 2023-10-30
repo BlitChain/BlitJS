@@ -32,7 +32,7 @@ const createLCDClient = async ({ restEndpoint }) => {
     });
     return {
         blit: {
-            blit: new (await Promise.resolve().then(() => __importStar(require("./blit/query.lcd")))).LCDQueryClient({
+            blit: new (await Promise.resolve().then(() => __importStar(require("./query.lcd")))).LCDQueryClient({
                 requestClient
             }),
             script: new (await Promise.resolve().then(() => __importStar(require("./script/query.lcd")))).LCDQueryClient({

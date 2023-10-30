@@ -1,17 +1,17 @@
 //@ts-nocheck
-import * as _81 from "./protobuf/any";
-import * as _82 from "./protobuf/descriptor";
-import * as _83 from "./protobuf/duration";
-import * as _84 from "./protobuf/empty";
-import * as _85 from "./protobuf/timestamp";
+import * as _85 from "./protobuf/any";
+import * as _86 from "./protobuf/descriptor";
+import * as _87 from "./protobuf/duration";
+import * as _88 from "./protobuf/empty";
+import * as _89 from "./protobuf/timestamp";
 export var google;
 (function (google) {
     google.protobuf = {
-        ..._81,
-        ..._82,
-        ..._83,
-        ..._84,
-        ..._85
+        ..._85,
+        ..._86,
+        ..._87,
+        ..._88,
+        ..._89
     };
 })(google || (google = {}));
 //# sourceMappingURL=bundle.js.map

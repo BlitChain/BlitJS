@@ -4,15 +4,18 @@ import { defaultRegistryTypes, AminoTypes, SigningStargateClient } from "@cosmjs
 import * as blitBlitTxRegistry from "./blit/tx.registry";
 import * as blitScriptTxRegistry from "./script/tx.registry";
 import * as blitStorageTxRegistry from "./storage/tx.registry";
+import * as blitTxRegistry from "./tx.registry";
 import * as blitBlitTxAmino from "./blit/tx.amino";
 import * as blitScriptTxAmino from "./script/tx.amino";
 import * as blitStorageTxAmino from "./storage/tx.amino";
+import * as blitTxAmino from "./tx.amino";
 export const blitAminoConverters = {
     ...blitBlitTxAmino.AminoConverter,
     ...blitScriptTxAmino.AminoConverter,
-    ...blitStorageTxAmino.AminoConverter
+    ...blitStorageTxAmino.AminoConverter,
+    ...blitTxAmino.AminoConverter
 };
-export const blitProtoRegistry = [...blitBlitTxRegistry.registry, ...blitScriptTxRegistry.registry, ...blitStorageTxRegistry.registry];
+export const blitProtoRegistry = [...blitBlitTxRegistry.registry, ...blitScriptTxRegistry.registry, ...blitStorageTxRegistry.registry, ...blitTxRegistry.registry];
 export const getSigningBlitClientOptions = ({ defaultTypes = defaultRegistryTypes } = {}) => {
     const registry = new Registry([...defaultTypes, ...blitProtoRegistry]);
     const aminoTypes = new AminoTypes({

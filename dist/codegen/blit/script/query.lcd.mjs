@@ -7,6 +7,7 @@ export class LCDQueryClient {
         this.params = this.params.bind(this);
         this.script = this.script.bind(this);
         this.scriptAll = this.scriptAll.bind(this);
+        this.eval = this.eval.bind(this);
         this.web = this.web.bind(this);
     }
     /* Parameters queries the parameters of the module. */
@@ -30,6 +31,29 @@ export class LCDQueryClient {
             setPaginationParams(options, params.pagination);
         }
         const endpoint = `blit/script/script`;
+        return await this.req.get(endpoint, options);
+    }
+    /* Runs the function and returns the result. */
+    async eval(params) {
+        const options = {
+            params: {}
+        };
+        if (typeof params?.caller_address !== "undefined") {
+            options.params.caller_address = params.caller_address;
+        }
+        if (typeof params?.extra_code !== "undefined") {
+            options.params.extra_code = params.extra_code;
+        }
+        if (typeof params?.function_name !== "undefined") {
+            options.params.function_name = params.function_name;
+        }
+        if (typeof params?.kwargs !== "undefined") {
+            options.params.kwargs = params.kwargs;
+        }
+        if (typeof params?.grantee !== "undefined") {
+            options.params.grantee = params.grantee;
+        }
+        const endpoint = `blit/script/eval/${params.script_address}`;
         return await this.req.get(endpoint, options);
     }
     /* Queries the WSGI web application function of a script. */

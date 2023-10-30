@@ -25,44 +25,44 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tendermint = void 0;
 //@ts-nocheck
-const _150 = __importStar(require("./abci/types"));
-const _151 = __importStar(require("./crypto/keys"));
-const _152 = __importStar(require("./crypto/proof"));
-const _153 = __importStar(require("./libs/bits/types"));
-const _154 = __importStar(require("./p2p/types"));
-const _155 = __importStar(require("./types/block"));
-const _156 = __importStar(require("./types/evidence"));
-const _157 = __importStar(require("./types/params"));
-const _158 = __importStar(require("./types/types"));
-const _159 = __importStar(require("./types/validator"));
-const _160 = __importStar(require("./version/types"));
+const _154 = __importStar(require("./abci/types"));
+const _155 = __importStar(require("./crypto/keys"));
+const _156 = __importStar(require("./crypto/proof"));
+const _157 = __importStar(require("./libs/bits/types"));
+const _158 = __importStar(require("./p2p/types"));
+const _159 = __importStar(require("./types/block"));
+const _160 = __importStar(require("./types/evidence"));
+const _161 = __importStar(require("./types/params"));
+const _162 = __importStar(require("./types/types"));
+const _163 = __importStar(require("./types/validator"));
+const _164 = __importStar(require("./version/types"));
 var tendermint;
 (function (tendermint) {
     tendermint.abci = {
-        ..._150
+        ..._154
     };
     tendermint.crypto = {
-        ..._151,
-        ..._152
+        ..._155,
+        ..._156
     };
     let libs;
     (function (libs) {
         libs.bits = {
-            ..._153
+            ..._157
         };
     })(libs = tendermint.libs || (tendermint.libs = {}));
     tendermint.p2p = {
-        ..._154
+        ..._158
     };
     tendermint.types = {
-        ..._155,
-        ..._156,
-        ..._157,
-        ..._158,
-        ..._159
+        ..._159,
+        ..._160,
+        ..._161,
+        ..._162,
+        ..._163
     };
     tendermint.version = {
-        ..._160
+        ..._164
     };
 })(tendermint || (exports.tendermint = tendermint = {}));
 //# sourceMappingURL=bundle.js.map
