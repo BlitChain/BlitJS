@@ -1,0 +1,226 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.GenesisDenom = exports.GenesisState = void 0;
+//@ts-nocheck
+const params_1 = require("./params");
+const authorityMetadata_1 = require("./authorityMetadata");
+const binary_1 = require("../../../binary");
+const helpers_1 = require("../../../helpers");
+function createBaseGenesisState() {
+    return {
+        params: params_1.Params.fromPartial({}),
+        factory_denoms: []
+    };
+}
+exports.GenesisState = {
+    typeUrl: "/osmosis.tokenfactory.v1beta1.GenesisState",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.params !== undefined) {
+            params_1.Params.encode(message.params, writer.uint32(10).fork()).ldelim();
+        }
+        for (const v of message.factory_denoms) {
+            exports.GenesisDenom.encode(v, writer.uint32(18).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseGenesisState();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.params = params_1.Params.decode(reader, reader.uint32());
+                    break;
+                case 2:
+                    message.factory_denoms.push(exports.GenesisDenom.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            params: (0, helpers_1.isSet)(object.params) ? params_1.Params.fromJSON(object.params) : undefined,
+            factory_denoms: Array.isArray(object?.factory_denoms) ? object.factory_denoms.map((e) => exports.GenesisDenom.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.params !== undefined && (obj.params = message.params ? params_1.Params.toJSON(message.params) : undefined);
+        if (message.factory_denoms) {
+            obj.factory_denoms = message.factory_denoms.map(e => e ? exports.GenesisDenom.toJSON(e) : undefined);
+        }
+        else {
+            obj.factory_denoms = [];
+        }
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseGenesisState();
+        message.params = object.params !== undefined && object.params !== null ? params_1.Params.fromPartial(object.params) : undefined;
+        message.factory_denoms = object.factory_denoms?.map(e => exports.GenesisDenom.fromPartial(e)) || [];
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            params: object.params ? params_1.Params.fromSDK(object.params) : undefined,
+            factory_denoms: Array.isArray(object?.factory_denoms) ? object.factory_denoms.map((e) => exports.GenesisDenom.fromSDK(e)) : []
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        message.params !== undefined && (obj.params = message.params ? params_1.Params.toSDK(message.params) : undefined);
+        if (message.factory_denoms) {
+            obj.factory_denoms = message.factory_denoms.map(e => e ? exports.GenesisDenom.toSDK(e) : undefined);
+        }
+        else {
+            obj.factory_denoms = [];
+        }
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            params: object?.params ? params_1.Params.fromAmino(object.params) : undefined,
+            factory_denoms: Array.isArray(object?.factory_denoms) ? object.factory_denoms.map((e) => exports.GenesisDenom.fromAmino(e)) : []
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.params = message.params ? params_1.Params.toAmino(message.params) : undefined;
+        if (message.factory_denoms) {
+            obj.factory_denoms = message.factory_denoms.map(e => e ? exports.GenesisDenom.toAmino(e) : undefined);
+        }
+        else {
+            obj.factory_denoms = [];
+        }
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.GenesisState.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "osmosis/tokenfactory/genesis-state",
+            value: exports.GenesisState.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.GenesisState.decode(message.value);
+    },
+    toProto(message) {
+        return exports.GenesisState.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/osmosis.tokenfactory.v1beta1.GenesisState",
+            value: exports.GenesisState.encode(message).finish()
+        };
+    }
+};
+function createBaseGenesisDenom() {
+    return {
+        denom: "",
+        authority_metadata: authorityMetadata_1.DenomAuthorityMetadata.fromPartial({})
+    };
+}
+exports.GenesisDenom = {
+    typeUrl: "/osmosis.tokenfactory.v1beta1.GenesisDenom",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.denom !== "") {
+            writer.uint32(10).string(message.denom);
+        }
+        if (message.authority_metadata !== undefined) {
+            authorityMetadata_1.DenomAuthorityMetadata.encode(message.authority_metadata, writer.uint32(18).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseGenesisDenom();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.denom = reader.string();
+                    break;
+                case 2:
+                    message.authority_metadata = authorityMetadata_1.DenomAuthorityMetadata.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            denom: (0, helpers_1.isSet)(object.denom) ? String(object.denom) : "",
+            authority_metadata: (0, helpers_1.isSet)(object.authority_metadata) ? authorityMetadata_1.DenomAuthorityMetadata.fromJSON(object.authority_metadata) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.denom !== undefined && (obj.denom = message.denom);
+        message.authority_metadata !== undefined && (obj.authority_metadata = message.authority_metadata ? authorityMetadata_1.DenomAuthorityMetadata.toJSON(message.authority_metadata) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseGenesisDenom();
+        message.denom = object.denom ?? "";
+        message.authority_metadata = object.authority_metadata !== undefined && object.authority_metadata !== null ? authorityMetadata_1.DenomAuthorityMetadata.fromPartial(object.authority_metadata) : undefined;
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            denom: object?.denom,
+            authority_metadata: object.authority_metadata ? authorityMetadata_1.DenomAuthorityMetadata.fromSDK(object.authority_metadata) : undefined
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        obj.denom = message.denom;
+        message.authority_metadata !== undefined && (obj.authority_metadata = message.authority_metadata ? authorityMetadata_1.DenomAuthorityMetadata.toSDK(message.authority_metadata) : undefined);
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            denom: object.denom,
+            authority_metadata: object?.authority_metadata ? authorityMetadata_1.DenomAuthorityMetadata.fromAmino(object.authority_metadata) : undefined
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.denom = message.denom;
+        obj.authority_metadata = message.authority_metadata ? authorityMetadata_1.DenomAuthorityMetadata.toAmino(message.authority_metadata) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.GenesisDenom.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "osmosis/tokenfactory/genesis-denom",
+            value: exports.GenesisDenom.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.GenesisDenom.decode(message.value);
+    },
+    toProto(message) {
+        return exports.GenesisDenom.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/osmosis.tokenfactory.v1beta1.GenesisDenom",
+            value: exports.GenesisDenom.encode(message).finish()
+        };
+    }
+};
+//# sourceMappingURL=genesis.js.map
