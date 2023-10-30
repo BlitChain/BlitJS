@@ -23,6 +23,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const blitjs = __importStar(require("./codegen"));
+const blitjs = __importStar(require("./codegen/index.js"));
 exports.default = blitjs;
 //# sourceMappingURL=index.js.map

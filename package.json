@@ -5,6 +5,7 @@
   "author": "Sybil Singleton <sybil.singleton@protonmail.com>",
   "homepage": "https://github.com/blitchain/blitjs#readme",
   "license": "SEE LICENSE IN LICENSE",
+  "browser": "dist/index.js",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
