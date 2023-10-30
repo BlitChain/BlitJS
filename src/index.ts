@@ -1,5 +1,3 @@
-export * from './codegen';
+import * as blitjs from './codegen';
 
-const foo = 'this is a test';
-
-export default foo;
+export default blitjs;

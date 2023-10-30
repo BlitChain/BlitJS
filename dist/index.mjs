@@ -1,4 +1,3 @@
-export * from './codegen';
-const foo = 'this is a test';
-export default foo;
+import * as blitjs from './codegen';
+export default blitjs;
 //# sourceMappingURL=index.js.map
