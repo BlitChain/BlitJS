@@ -1,261 +1,983 @@
-# blitjs
+Blitjs 
+=====================
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/545047/188804067-28e67e5e-0214-4449-ab04-2e0c564a6885.svg" width="80"><br />
-    Blit javascript client
-</p>
+Blitjs is a library designed to facilitate interactions with the Blit using JavaScript. This a guide on how to set up and use the Blitjs library in your project.
 
+Installation
+------------
 
-## install
+### Script Tag:
 
-```sh
-npm install blitjs
-```
-## Table of contents
+Include Blitjs in your project by adding the following script tag in your HTML file:
 
-- [blitjs](#blitjs)
-  - [Install](#install)
-  - [Table of contents](#table-of-contents)
-- [Usage](#usage)
-    - [RPC Clients](#rpc-clients)
-    - [Composing Messages](#composing-messages)
-        - Cosmos, CosmWasm, and IBC
-            - [CosmWasm](#cosmwasm-messages)
-            - [IBC](#ibc-messages)
-            - [Cosmos](#cosmos-messages)
-- [Wallets and Signers](#connecting-with-wallets-and-signing-messages)
-    - [Stargate Client](#initializing-the-stargate-client)
-    - [Creating Signers](#creating-signers)
-    - [Broadcasting Messages](#broadcasting-messages)
-- [Advanced Usage](#advanced-usage)
-- [Developing](#developing)
-- [Credits](#credits)
+```html
+<script type="module">
+import blitjs from "https://cdn.jsdelivr.net/npm/@blitchain/blitjs/+esm";
 
-## Usage
-### RPC Clients
-
-```js
-import { blit } from 'blitjs';
-
-const { createRPCQueryClient } = blit.ClientFactory; 
-const client = await createRPCQueryClient({ rpcEndpoint: RPC_ENDPOINT });
-
-// now you can query the cosmos modules
-const balance = await client.cosmos.bank.v1beta1
-    .allBalances({ address: 'blit1addresshere' });
-
-// you can also query the blit modules
-const balances = await client.blit.exchange.v1beta1
-    .exchangeBalances()
+// example usage below
+</script>
 ```
 
-### Composing Messages
+### NPM:
 
-Import the `blit` object from `blitjs`. 
+Install via npm:
 
-```js
-import { blit } from 'blitjs';
-
-const {
-    createSpotLimitOrder,
-    createSpotMarketOrder,
-    deposit
-} = blit.exchange.v1beta1.MessageComposer.withTypeUrl;
+```bash
+npm install @blitchain/blitjs
 ```
 
-#### IBC Messages
+### Creating the Clients:
+
+1.  Setup Client with Keplr:
 
 ```js
-import { ibc } from 'blitjs';
+let rpcEndpoint = "http://localhost:26657";
+let restEndpoint = "http://localhost:1317";
+let chainId = "blit-dev";
 
-const {
-    transfer
-} = ibc.applications.transfer.v1.MessageComposer.withTypeUrl
+let msgClient = await makeKeplrClient({ rpcEndpoint, restEndpoint, chainId });
+let queryClient = await makeQueryClient({ restEndpoint });
 ```
 
-#### Cosmos Messages
+### Getting the Address:
 
 ```js
-import { cosmos } from 'blitjs';
-
-const {
-    fundCommunityPool,
-    setWithdrawAddress,
-    withdrawDelegatorReward,
-    withdrawValidatorCommission
-} = cosmos.distribution.v1beta1.MessageComposer.fromPartial;
-
-const {
-    multiSend,
-    send
-} = cosmos.bank.v1beta1.MessageComposer.fromPartial;
-
-const {
-    beginRedelegate,
-    createValidator,
-    delegate,
-    editValidator,
-    undelegate
-} = cosmos.staking.v1beta1.MessageComposer.fromPartial;
-
-const {
-    deposit,
-    submitProposal,
-    vote,
-    voteWeighted
-} = cosmos.gov.v1beta1.MessageComposer.fromPartial;
+let address = (await msgClient.signer.getAccounts())[0].address;
 ```
 
-## Connecting with Wallets and Signing Messages
+### Querying the chain:
 
-⚡️ For web interfaces, we recommend using [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit). Continue below to see how to manually construct signers and clients.
+Here is how to query the balance of an address.
+```js
+let balanceResponse = await queryClient.cosmos.bank.v1beta1.allBalances({ address, pagination: { limit: "1", offset: 0, countTotal: true } });
+console.log(balanceResponse);
+```
 
-Here are the docs on [creating signers](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#signing-clients) in cosmos-kit that can be used with Keplr and other wallets.
-
-### Initializing the Stargate Client
-
-Use `getSigningblitClient` to get your `SigningStargateClient`, with the proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
+Here is how to query the details of the Blit node the client is connected to.
 
 ```js
-import { getSigningblitClient } from 'blitjs';
+let nodeInfo = await queryClient.cosmos.base.tendermint.v1beta1.getNodeInfo()
+console.log(nodeInfo);
+```
 
-const stargateClient = await getSigningblitClient({
-  rpcEndpoint,
-  signer // OfflineSigner
+Helper Functions Definitions
+----------------------------
+
+The following helper functions are an easy way to interact with the Blit Scripts using Blitjs.
+Note: These are only a suggestion, feel free to update and modify them to the requirements of you project.
+
+### `sendMsg` Function:
+
+The `sendMsg` function signs and broadcasts a message to the blockchain. 
+Note: It has hardcoded no gas fee, but you may want to do something more complex. 
+
+```
+const sendMsg = async ({ msgClient, address, message }) => {
+  let fee = {
+    amount: [{ amount: "0", denom: "blit" }],
+    gas: "100000",
+  };
+  let response = await msgClient.signAndBroadcast(address, [message], fee);
+  return response;
+};
+```
+
+#### Example usage
+
+This is how you can update a script's code using the `sendMsg` above.
+
+Note: pay attention to indentation for the code.
+
+```js
+let code = `
+def greet(name):
+    print(f"Hello {name}!")
+    return {"name": name}
+`;
+
+// Make the message with the blitjs ecoder
+let message = blitjs.blit.script.MessageComposer.fromPartial.updateScript({ address, code: code })
+
+// == or make the message direction ==
+let message = {
+  "typeUrl": "/blit.script.MsgUpdateScript",
+  "value": {
+    "address": address",
+    "code": code,
+    "grantee": ""
+  }
+}
+*/
+
+await sendMsg({
+  client: msgClient,
+  address,
+  message
 });
 ```
-### Creating Signers
 
-To broadcast messages, you can create signers with a variety of options:
 
-* [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#signing-clients) (recommended)
-* [keplr](https://docs.keplr.app/api/cosmjs.html)
-* [cosmjs](https://gist.github.com/webmaster128/8444d42a7eceeda2544c8a59fbd7e1d9)
-### Amino Signer
+### Querying a Script object to Verify the Update Script Works:
 
-Likely you'll want to use the Amino, so unless you need proto, you should use this one:
+This will allow us to verify that the previous command worked and that the code is as expected.
 
 ```js
-import { getOfflineSignerAmino as getOfflineSigner } from 'cosmjs-utils';
-```
-### Proto Signer
-
-```js
-import { getOfflineSignerProto as getOfflineSigner } from 'cosmjs-utils';
+let scriptResponse = await queryClient.blit.script.script({ address });
+console.log(scriptResponse);
 ```
 
-WARNING: NOT RECOMMENDED TO USE PLAIN-TEXT MNEMONICS. Please take care of your security and use best practices such as AES encryption and/or methods from 12factor applications.
+### Helper functions for interacting with a script
+
+The `runScriptFunction` function defined here executes a script function on the blockchain, using `sendMsg` defined above and returns the result or an error, if any.
 
 ```js
-import { chains } from 'chain-registry';
-
-const mnemonic =
-  'unfold client turtle either pilot stock floor glow toward bullet car science';
-  const chain = chains.find(({ chain_name }) => chain_name === 'blit');
-  const signer = await getOfflineSigner({
-    mnemonic,
-    chain
+const runScriptFunction = async ({ msgClient, caller_address, script_address, function_name, kwargs }) => {
+  let msg = blitjs.blit.script.MessageComposer.withTypeUrl.run({
+    caller_address,
+    script_address,
+    function_name,
+    kwargs: JSON.stringify(kwargs),
   });
+  let resp = await sendMsg(msgClient, caller_address, msg);
+  if (resp.code !== 0) {
+    // So we split into lines and get the last line which is the error
+    let lastLine = resp.rawLog.split("\n").slice(-1)[0];
+    // strip ": Exception in Script" only from lastLine (technically this will remove it anywhere in the result, but that's fine)
+    let result = lastLine.replace(": Exception in Script", "");
+    return JSON.parse(result);
+  }
+  let msgResponse = resp.msgResponses[0];
+  // Parse the response
+  return JSON.parse(
+    blitjs.blit.script.MsgRunResponse.fromProtoMsg(msgResponse).response
+  );
+};
 ```
-### Broadcasting Messages
 
-Now that you have your `stargateClient`, you can broadcast messages:
+#### Example 
+
+Now it is trivial to call `greet(name="Bob")` in a transaction.
 
 ```js
-const { send } = cosmos.bank.v1beta1.MessageComposer.withTypeUrl;
-
-const msg = send({
-    amount: [
-    {
-        denom: 'coin',
-        amount: '1000'
-    }
-    ],
-    toAddress: address,
-    fromAddress: address
+let runResp = await runScriptFunction({
+  msgClient,
+  caller_address: address,
+  script_address: address,
+  function_name: "greet",
+  kwargs: { name: "Bob" }
 });
 
-const fee: StdFee = {
-    amount: [
-    {
-        denom: 'coin',
-        amount: '864'
-    }
-    ],
-    gas: '86364'
-};
-const response = await stargateClient.signAndBroadcast(address, [msg], fee);
+console.log(runResp);  // Outputs the result of the function execution
 ```
 
-## Advanced Usage
+The `queryScriptFunction` function defined below executes a script function as a query and returns the result or an error, if any.
+It is a read-only operation that does not create a transaction or persist state. This is useful when you want to see the output of a function 
+without a transaction, especially when debugging.
 
+```
+const queryScriptFunction = async ({ queryClient, script_address, called_address, function_name, kwargs }) => {
+  try {
+    const response = await queryClient.blit.script.eval({
+      script_address,
+      called_address,
+      function_name,
+      kwargs: JSON.stringify(kwargs)
+    });
+    return JSON.parse(response.response);
+  } catch (error) {
+    console.error('Error evaluating script:', error);
+    throw error;
+  }
+};
+```
 
-If you want to manually construct a stargate client
+#### Example
+This is a read-only eval of the function `greet(name="Bob")`.
 
 ```js
-import { OfflineSigner, GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
+let queryResp = await queryScriptFunction({
+  queryClient,
+  caller_address: address,
+  script_address: address,
+  function_name: "greet",
+  kwargs: { name: "Bob" }
+});
+console.log(queryResp);  
+```
 
-import { 
-    cosmosAminoConverters,
-    cosmosProtoRegistry,
-    cosmwasmAminoConverters,
-    cosmwasmProtoRegistry,
-    ibcProtoRegistry,
-    ibcAminoConverters,
-    blitAminoConverters,
-    blitProtoRegistry
-} from 'blitjs';
+### Querying Storage:
 
-const signer: OfflineSigner = /* create your signer (see above)  */
-const rpcEndpint = 'https://rpc.cosmos.directory/blit'; // or another URL
+This will list all Storage for a specific address
 
-const protoRegistry: ReadonlyArray<[string, GeneratedType]> = [
-    ...cosmosProtoRegistry,
-    ...cosmwasmProtoRegistry,
-    ...ibcProtoRegistry,
-    ...blitProtoRegistry
-];
+```js
+let storageResponse = await queryClient.blit.storage.storageAll({ filter_address: address });
+console.log(storageResponse);
+```
 
-const aminoConverters = {
-    ...cosmosAminoConverters,
-    ...cosmwasmAminoConverters,
-    ...ibcAminoConverters,
-    ...blitAminoConverters
-};
+### Create then Update Storage:
 
-const registry = new Registry(protoRegistry);
-const aminoTypes = new AminoTypes(aminoConverters);
+```js
+let message1 = blitjs.blit.storage.MessageComposer.fromPartial.createStorage({
+    address,
+    index: "foo123",
+    data: "some data"
+})
+await sendMsg({
+  client: msgClient,
+  address,
+  message: message1
+});
 
-const stargateClient = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
-    registry,
-    aminoTypes
+let message2 = blitjs.blit.storage.MessageComposer.fromPartial.updateStorage({
+    address,
+    index: "foo123",
+    data: "some NEW data",
+  })
+await sendMsg({
+  client: msgClient,
+  address,
+  message: message2
 });
 ```
 
-## Developing
+These steps illustrate how you can interact with the Blit Development Chain using the Blitjs library, covering a range of operations from setting up clients to querying and updating the blockchain.
 
-When first cloning the repo:
+# Available Msg Types
 
-```
-yarn
-yarn build
-```
 
-### Codegen
+### /blit.blit.MsgUpdateParams
 
-Proto schema are in `./proto`. Look inside of `scripts/codegen.js` and configure the settings for bundling your SDK and contracts into `blitjs`:
+```js
+{
+  "typeUrl": "/blit.blit.MsgUpdateParams",
+  "value": {
+    "authority": ""
+  }
+}
+```        
 
-```
-yarn codegen
-```
+### /blit.script.MsgCreateScript
 
-### Publishing
+```js
+{
+  "typeUrl": "/blit.script.MsgCreateScript",
+  "value": {
+    "creator": "",
+    "code": "",
+    "msg_type_permissions": [],
+    "grantee": ""
+  }
+}
+```        
 
-Build the types and then publish:
+### /blit.script.MsgRun
 
-```
-yarn build
-yarn publish
-```
+```js
+{
+  "typeUrl": "/blit.script.MsgRun",
+  "value": {
+    "caller_address": "",
+    "script_address": "",
+    "extra_code": "",
+    "function_name": "",
+    "kwargs": "",
+    "grantee": ""
+  }
+}
+```        
 
+### /blit.script.MsgUpdateParams
+
+```js
+{
+  "typeUrl": "/blit.script.MsgUpdateParams",
+  "value": {
+    "authority": ""
+  }
+}
+```        
+
+### /blit.script.MsgUpdateScript
+
+```js
+{
+  "typeUrl": "/blit.script.MsgUpdateScript",
+  "value": {
+    "address": "",
+    "code": "",
+    "grantee": ""
+  }
+}
+```        
+
+### /blit.storage.MsgCreateStorage
+
+```js
+{
+  "typeUrl": "/blit.storage.MsgCreateStorage",
+  "value": {
+    "address": "",
+    "index": "",
+    "data": "",
+    "grantee": ""
+  }
+}
+```        
+
+### /blit.storage.MsgDeleteStorage
+
+```js
+{
+  "typeUrl": "/blit.storage.MsgDeleteStorage",
+  "value": {
+    "address": "",
+    "index": "",
+    "grantee": ""
+  }
+}
+```        
+
+### /blit.storage.MsgUpdateParams
+
+```js
+{
+  "typeUrl": "/blit.storage.MsgUpdateParams",
+  "value": {
+    "authority": ""
+  }
+}
+```        
+
+### /blit.storage.MsgUpdateStorage
+
+```js
+{
+  "typeUrl": "/blit.storage.MsgUpdateStorage",
+  "value": {
+    "address": "",
+    "index": "",
+    "data": "",
+    "grantee": ""
+  }
+}
+```        
+
+### /cosmos.authz.v1beta1.MsgExec
+
+```js
+{
+  "typeUrl": "/cosmos.authz.v1beta1.MsgExec",
+  "value": {
+    "grantee": "",
+    "msgs": []
+  }
+}
+```        
+
+### /cosmos.authz.v1beta1.MsgGrant
+
+```js
+{
+  "typeUrl": "/cosmos.authz.v1beta1.MsgGrant",
+  "value": {
+    "granter": "",
+    "grantee": ""
+  }
+}
+```        
+
+### /cosmos.authz.v1beta1.MsgRevoke
+
+```js
+{
+  "typeUrl": "/cosmos.authz.v1beta1.MsgRevoke",
+  "value": {
+    "granter": "",
+    "grantee": "",
+    "msgTypeUrl": ""
+  }
+}
+```        
+
+### /cosmos.bank.v1beta1.MsgMultiSend
+
+```js
+{
+  "typeUrl": "/cosmos.bank.v1beta1.MsgMultiSend",
+  "value": {
+    "inputs": [],
+    "outputs": []
+  }
+}
+```        
+
+### /cosmos.bank.v1beta1.MsgSend
+
+```js
+{
+  "typeUrl": "/cosmos.bank.v1beta1.MsgSend",
+  "value": {
+    "fromAddress": "",
+    "toAddress": "",
+    "amount": []
+  }
+}
+```        
+
+### /cosmos.distribution.v1beta1.MsgFundCommunityPool
+
+```js
+{
+  "typeUrl": "/cosmos.distribution.v1beta1.MsgFundCommunityPool",
+  "value": {
+    "amount": [],
+    "depositor": ""
+  }
+}
+```        
+
+### /cosmos.distribution.v1beta1.MsgSetWithdrawAddress
+
+```js
+{
+  "typeUrl": "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress",
+  "value": {
+    "delegatorAddress": "",
+    "withdrawAddress": ""
+  }
+}
+```        
+
+### /cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward
+
+```js
+{
+  "typeUrl": "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward",
+  "value": {
+    "delegatorAddress": "",
+    "validatorAddress": ""
+  }
+}
+```        
+
+### /cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission
+
+```js
+{
+  "typeUrl": "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission",
+  "value": {
+    "validatorAddress": ""
+  }
+}
+```        
+
+### /cosmos.feegrant.v1beta1.MsgGrantAllowance
+
+```js
+{
+  "typeUrl": "/cosmos.feegrant.v1beta1.MsgGrantAllowance",
+  "value": {
+    "granter": "",
+    "grantee": ""
+  }
+}
+```        
+
+### /cosmos.feegrant.v1beta1.MsgRevokeAllowance
+
+```js
+{
+  "typeUrl": "/cosmos.feegrant.v1beta1.MsgRevokeAllowance",
+  "value": {
+    "granter": "",
+    "grantee": ""
+  }
+}
+```        
+
+### /cosmos.gov.v1.MsgDeposit
+
+```js
+{
+  "typeUrl": "/cosmos.gov.v1.MsgDeposit",
+  "value": {
+    "proposalId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "depositor": "",
+    "amount": []
+  }
+}
+```        
+
+### /cosmos.gov.v1.MsgSubmitProposal
+
+```js
+{
+  "typeUrl": "/cosmos.gov.v1.MsgSubmitProposal",
+  "value": {
+    "messages": [],
+    "initialDeposit": [],
+    "proposer": "",
+    "metadata": "",
+    "title": "",
+    "summary": ""
+  }
+}
+```        
+
+### /cosmos.gov.v1.MsgUpdateParams
+
+```js
+{
+  "typeUrl": "/cosmos.gov.v1.MsgUpdateParams",
+  "value": {
+    "authority": ""
+  }
+}
+```        
+
+### /cosmos.gov.v1.MsgVote
+
+```js
+{
+  "typeUrl": "/cosmos.gov.v1.MsgVote",
+  "value": {
+    "proposalId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "voter": "",
+    "option": 0,
+    "metadata": ""
+  }
+}
+```        
+
+### /cosmos.gov.v1.MsgVoteWeighted
+
+```js
+{
+  "typeUrl": "/cosmos.gov.v1.MsgVoteWeighted",
+  "value": {
+    "proposalId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "voter": "",
+    "options": [],
+    "metadata": ""
+  }
+}
+```        
+
+### /cosmos.gov.v1beta1.MsgDeposit
+
+```js
+{
+  "typeUrl": "/cosmos.gov.v1beta1.MsgDeposit",
+  "value": {
+    "proposalId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "depositor": "",
+    "amount": []
+  }
+}
+```        
+
+### /cosmos.gov.v1beta1.MsgSubmitProposal
+
+```js
+{
+  "typeUrl": "/cosmos.gov.v1beta1.MsgSubmitProposal",
+  "value": {
+    "initialDeposit": [],
+    "proposer": ""
+  }
+}
+```        
+
+### /cosmos.gov.v1beta1.MsgVote
+
+```js
+{
+  "typeUrl": "/cosmos.gov.v1beta1.MsgVote",
+  "value": {
+    "proposalId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "voter": "",
+    "option": 0
+  }
+}
+```        
+
+### /cosmos.gov.v1beta1.MsgVoteWeighted
+
+```js
+{
+  "typeUrl": "/cosmos.gov.v1beta1.MsgVoteWeighted",
+  "value": {
+    "proposalId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "voter": "",
+    "options": []
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgCreateGroup
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgCreateGroup",
+  "value": {
+    "admin": "",
+    "members": [],
+    "metadata": ""
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgCreateGroupPolicy
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgCreateGroupPolicy",
+  "value": {
+    "admin": "",
+    "groupId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "metadata": ""
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgCreateGroupWithPolicy
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgCreateGroupWithPolicy",
+  "value": {
+    "admin": "",
+    "members": [],
+    "groupMetadata": "",
+    "groupPolicyMetadata": "",
+    "groupPolicyAsAdmin": false
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgExec
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgExec",
+  "value": {
+    "proposalId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "executor": ""
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgLeaveGroup
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgLeaveGroup",
+  "value": {
+    "address": "",
+    "groupId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    }
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgSubmitProposal
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgSubmitProposal",
+  "value": {
+    "groupPolicyAddress": "",
+    "proposers": [],
+    "metadata": "",
+    "messages": [],
+    "exec": 0,
+    "title": "",
+    "summary": ""
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgUpdateGroupAdmin
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgUpdateGroupAdmin",
+  "value": {
+    "admin": "",
+    "groupId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "newAdmin": ""
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgUpdateGroupMembers
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgUpdateGroupMembers",
+  "value": {
+    "admin": "",
+    "groupId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "memberUpdates": []
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgUpdateGroupMetadata
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgUpdateGroupMetadata",
+  "value": {
+    "admin": "",
+    "groupId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "metadata": ""
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgUpdateGroupPolicyAdmin
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgUpdateGroupPolicyAdmin",
+  "value": {
+    "admin": "",
+    "groupPolicyAddress": "",
+    "newAdmin": ""
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy",
+  "value": {
+    "admin": "",
+    "groupPolicyAddress": ""
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgUpdateGroupPolicyMetadata
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgUpdateGroupPolicyMetadata",
+  "value": {
+    "admin": "",
+    "groupPolicyAddress": "",
+    "metadata": ""
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgVote
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgVote",
+  "value": {
+    "proposalId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "voter": "",
+    "option": 0,
+    "metadata": "",
+    "exec": 0
+  }
+}
+```        
+
+### /cosmos.group.v1.MsgWithdrawProposal
+
+```js
+{
+  "typeUrl": "/cosmos.group.v1.MsgWithdrawProposal",
+  "value": {
+    "proposalId": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "address": ""
+  }
+}
+```        
+
+### /cosmos.staking.v1beta1.MsgBeginRedelegate
+
+```js
+{
+  "typeUrl": "/cosmos.staking.v1beta1.MsgBeginRedelegate",
+  "value": {
+    "delegatorAddress": "",
+    "validatorSrcAddress": "",
+    "validatorDstAddress": ""
+  }
+}
+```        
+
+### /cosmos.staking.v1beta1.MsgCreateValidator
+
+```js
+{
+  "typeUrl": "/cosmos.staking.v1beta1.MsgCreateValidator",
+  "value": {
+    "minSelfDelegation": "",
+    "delegatorAddress": "",
+    "validatorAddress": ""
+  }
+}
+```        
+
+### /cosmos.staking.v1beta1.MsgDelegate
+
+```js
+{
+  "typeUrl": "/cosmos.staking.v1beta1.MsgDelegate",
+  "value": {
+    "delegatorAddress": "",
+    "validatorAddress": ""
+  }
+}
+```        
+
+### /cosmos.staking.v1beta1.MsgEditValidator
+
+```js
+{
+  "typeUrl": "/cosmos.staking.v1beta1.MsgEditValidator",
+  "value": {
+    "validatorAddress": "",
+    "commissionRate": "",
+    "minSelfDelegation": ""
+  }
+}
+```        
+
+### /cosmos.staking.v1beta1.MsgUndelegate
+
+```js
+{
+  "typeUrl": "/cosmos.staking.v1beta1.MsgUndelegate",
+  "value": {
+    "delegatorAddress": "",
+    "validatorAddress": ""
+  }
+}
+```        
+
+### /cosmos.vesting.v1beta1.MsgCreateVestingAccount
+
+```js
+{
+  "typeUrl": "/cosmos.vesting.v1beta1.MsgCreateVestingAccount",
+  "value": {
+    "fromAddress": "",
+    "toAddress": "",
+    "amount": [],
+    "endTime": {
+      "low": 0,
+      "high": 0,
+      "unsigned": false
+    },
+    "delayed": false
+  }
+}
+```        
+
+### /ibc.applications.transfer.v1.MsgTransfer
+
+```js
+{
+  "typeUrl": "/ibc.applications.transfer.v1.MsgTransfer",
+  "value": {
+    "sourcePort": "",
+    "sourceChannel": "",
+    "sender": "",
+    "receiver": "",
+    "timeoutTimestamp": {
+      "low": 0,
+      "high": 0,
+      "unsigned": true
+    },
+    "memo": ""
+  }
+}
+```        
+
+The list was created with this snippet
+
+```js
+let items = [...msgClient.registry.types.entries()].sort()
+let out = ''
+items.map(([k, v]) => { 
+    if (k.includes('Msg') && !k.includes('ibc.core')) {
+        out += `
+### ${k}
+
+\`\`\`js
+${JSON.stringify({typeUrl:k, value: v.fromPartial({})}, null, 2)}
+\`\`\`        
+`} })
+console.log(out)
+ 
+``` 
+
+
+License
+-------
+
+This project is licensed under the MIT License.
