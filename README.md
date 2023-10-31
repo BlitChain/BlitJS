@@ -1,14 +1,14 @@
-Blitjs 
+BlitJS
 =====================
 
-Blitjs is a library designed to facilitate interactions with the Blit using JavaScript. This a guide on how to set up and use the Blitjs library in your project.
+BlitJS is a library designed to facilitate interactions with Blit using JavaScript. This a guide on how to set up and use the BlitJS library in your project.
 
 Installation
 ------------
 
 #### Script Tag:
 
-Include Blitjs in your project by adding the following script tag in your HTML file:
+Include BlitJS in your project by adding the following script tag in your HTML file:
 
 ```html
 <script type="module">
@@ -149,7 +149,7 @@ console.log(nodeInfo);
 Helper Functions Definitions
 ----------------------------
 
-The following helper functions are an easy way to interact with the Blit Scripts using Blitjs.
+The following helper functions are an easy way to interact with the functions defined in Blit scripts using BlitJS.
 Note: These are only a suggestion, feel free to update and modify them to the requirements of you project.
 
 ### `sendMsg` Function:
