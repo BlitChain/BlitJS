@@ -1,6 +1,6 @@
 {
   "name": "@blitchain/blitjs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Blit javascript client",
   "author": "Sybil Singleton <sybil.singleton@protonmail.com>",
   "homepage": "https://github.com/blitchain/blitjs#readme",
@@ -54,14 +54,18 @@
     "prettier": "^2.8.7",
     "publish-scripts": "0.1.0",
     "rimraf": "^5.0.0",
+    "terser-webpack-plugin": "^5.3.9",
     "ts-jest": "^29.1.0",
-    "typescript": "^5.0.4"
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.0.4",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "@cosmjs/amino": "0.29.4",
-    "@cosmjs/proto-signing": "0.29.4",
-    "@cosmjs/stargate": "0.29.4",
-    "@cosmjs/tendermint-rpc": "^0.29.4",
+    "@cosmjs/amino": "0.31.3",
+    "@cosmjs/proto-signing": "^0.31.3",
+    "@cosmjs/stargate": "^0.31.3",
+    "@cosmjs/tendermint-rpc": "^0.31.3",
     "@cosmology/lcd": "^0.13.0"
   }
 }
