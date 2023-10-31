@@ -89,6 +89,7 @@ const makeKeplrClient = ({rpcEndpoint, restEndpoint, chainId}) => {
           rpcEndpoint,
           signer: offlineSigner
         });
+        client.gasPrice = "0.000001blit"
         resolve(client);
       } catch (error) {
         reject(error);
@@ -113,6 +114,7 @@ let queryClient = await makeQueryClient({ restEndpoint });
 
 ```js
 let address = (await msgClient.signer.getAccounts())[0].address;
+console.log(address)
 // Output blit123someaddress
 ```
 
@@ -146,31 +148,9 @@ console.log(nodeInfo);
 // Output {default_node_info: {…}, application_version: {…}}
 ```
 
-Helper Functions Definitions
-----------------------------
+### Update the code of your script
 
-The following helper functions are an easy way to interact with the functions defined in Blit scripts using BlitJS.
-Note: These are only a suggestion, feel free to update and modify them to the requirements of you project.
-
-### `sendMsg` Function:
-
-The `sendMsg` function signs and broadcasts a message to the blockchain. 
-Note: It has hardcoded no gas fee, but you may want to do something more complex. 
-
-```
-const sendMsg = async ({ msgClient, address, message }) => {
-  let fee = {
-    amount: [{ amount: "0", denom: "blit" }],
-    gas: "100000",
-  };
-  let response = await msgClient.signAndBroadcast(address, [message], fee);
-  return response;
-};
-```
-
-#### Example usage
-
-This is how you can update a script's code using the `sendMsg` above.
+This is how you can update a script's code using `msgClient.signAndBroadcast(address, [message], "auto")`
 
 Note: pay attention to indentation for the code.
 
@@ -185,6 +165,7 @@ def greet(name):
 let message = blitjs.blit.script.MessageComposer.fromPartial.updateScript({ address, code: code })
 
 // == or make the message object directly ==
+/*
 let message = {
   "typeUrl": "/blit.script.MsgUpdateScript",
   "value": {
@@ -194,12 +175,7 @@ let message = {
   }
 }
 */
-
-await sendMsg({
-  msgClient,
-  address,
-  message
-});
+await msgClient.signAndBroadcast(address, [message], "auto")
 // Output: {code: 0, height: 1086258, txIndex: 0, events: Array(8), rawLog: '[{"msg_index":0,"events":[{"type":"message","attri…2m02jkt2"},{"key":"module","value":"script"}]}]}]', …}
 ```
 
@@ -222,31 +198,46 @@ Output: {
 */
 ```
 
-### Helper functions for interacting with a script
+### Helper functions for interacting with function in a script
 
 The `runScriptFunction` function defined here executes a script function on the blockchain, using `sendMsg` defined above and returns the result or an error, if any.
 
 ```js
 const runScriptFunction = async ({ msgClient, caller_address, script_address, function_name, kwargs }) => {
-  let msg = blitjs.blit.script.MessageComposer.withTypeUrl.run({
+  let message = blitjs.blit.script.MessageComposer.withTypeUrl.run({
     caller_address,
     script_address,
     function_name,
     kwargs: JSON.stringify(kwargs),
   });
-  let resp = await sendMsg({msgClient, caller_address, msg});
+  let gasMultiple = 1.5  
+  let resp = await msgClient.signAndBroadcast(caller_address, [message], gasMultiple)
   if (resp.code !== 0) {
     // So we split into lines and get the last line which is the error
     let lastLine = resp.rawLog.split("\n").slice(-1)[0];
     // strip ": Exception in Script" only from lastLine (technically this will remove it anywhere in the result, but that's fine)
     let result = lastLine.replace(": Exception in Script", "");
-    return JSON.parse(result);
+    try {
+      return JSON.parse(result);
+    } catch (e) {
+      if (e instanceof SyntaxError) {
+        throw new Error(resp.rawLog);
+      }
+      throw e;  // re-throw the error if it's not a SyntaxError
+    }
   }
   let msgResponse = resp.msgResponses[0];
-  // Parse the response
-  return JSON.parse(
-    blitjs.blit.script.MsgRunResponse.fromProtoMsg(msgResponse).response
-  );
+  try {
+    // Parse the response
+    return JSON.parse(
+      blitjs.blit.script.MsgRunResponse.fromProtoMsg(msgResponse).response
+    );
+  } catch (e) {
+    if (e instanceof SyntaxError) {
+      throw new Error(resp.rawLog);
+    }
+    throw e;  // re-throw the error if it's not a SyntaxError
+  }
 };
 
 ```
@@ -284,7 +275,7 @@ The `queryScriptFunction` function defined below executes a script function as a
 It is a read-only operation that does not create a transaction or persist state. This is useful when you want to see the output of a function 
 without a transaction, especially when debugging.
 
-```
+```js
 const queryScriptFunction = async ({ queryClient, script_address, called_address, function_name, kwargs }) => {
   try {
     const response = await queryClient.blit.script.eval({
@@ -353,11 +344,7 @@ let message1 = blitjs.blit.storage.MessageComposer.fromPartial.createStorage({
     index: "foo123",
     data: "some data"
 })
-await sendMsg({
-  msgClient,
-  address,
-  message: message1
-});
+await msgClient.signAndBroadcast(address, [message1], "auto")
 // Output: {code: 0, height: 1090067, txIndex: 0, events: Array(8), rawLog: '[{"msg_index":0,"events":[{"type":"message","attri…m02jkt2"},{"key":"module","value":"storage"}]}]}]', …}
 
 let message2 = blitjs.blit.storage.MessageComposer.fromPartial.updateStorage({
@@ -365,13 +352,15 @@ let message2 = blitjs.blit.storage.MessageComposer.fromPartial.updateStorage({
     index: "foo123",
     data: "some NEW data",
   })
-await sendMsg({
-  msgClient,
-  address,
-  message: message2
-});
+
+await msgClient.signAndBroadcast(address, [message2], "auto")
 // Output: {code: 0, height: 1090191, txIndex: 0, events: Array(8), rawLog: '[{"msg_index":0,"events":[{"type":"message","attri…m02jkt2"},{"key":"module","value":"storage"}]}]}]', …}
 ```
+## Hints
+
+### Out of gas
+Q: I'm getting an error like `out of gas in location: WritePerByte; gasWanted: 47347, gasUsed: 48728: out of gas`
+A: Try replacing `"auto"`, which defaults to a gasMultiple of 1.3, to 1.5.
 
 # Available Msg Types
 
