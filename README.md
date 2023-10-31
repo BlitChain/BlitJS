@@ -98,7 +98,7 @@ def greet(name):
 // Make the message with the blitjs ecoder
 let message = blitjs.blit.script.MessageComposer.fromPartial.updateScript({ address, code: code })
 
-// == or make the message direction ==
+// == or make the message object directly ==
 let message = {
   "typeUrl": "/blit.script.MsgUpdateScript",
   "value": {
@@ -239,8 +239,6 @@ await sendMsg({
   message: message2
 });
 ```
-
-These steps illustrate how you can interact with the Blit Development Chain using the Blitjs library, covering a range of operations from setting up clients to querying and updating the blockchain.
 
 # Available Msg Types
 
