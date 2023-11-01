@@ -200,7 +200,7 @@ Output: {
 
 ### Helpers for interacting with functions defined in a script
 
-The `runScriptFunction` function defined here executes a script function on the blockchain, using `sendMsg` defined above and returns the result or an error, if any.
+The `runScriptFunction` function defined here executes a script function on the blockchain, and returns the result or an error, if any.
 
 ```js
 const runScriptFunction = async ({ msgClient, caller_address, script_address, function_name, kwargs }) => {
