@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.distribution.v1beta1";
 /**
  * MsgSetWithdrawAddress sets the withdraw address for
  * a delegator (or validator self-delegation).

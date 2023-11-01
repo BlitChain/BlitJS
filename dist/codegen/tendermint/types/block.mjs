@@ -3,6 +3,7 @@ import { Header, Data, Commit } from "./types";
 import { EvidenceList } from "./evidence";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "tendermint.types";
 function createBaseBlock() {
     return {
         header: Header.fromPartial({}),

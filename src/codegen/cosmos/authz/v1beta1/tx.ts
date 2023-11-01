@@ -5,6 +5,7 @@ import { SendAuthorization } from "../../bank/v1beta1/authz";
 import { StakeAuthorization } from "../../staking/v1beta1/authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+export const protobufPackage = "cosmos.authz.v1beta1";
 /**
  * MsgGrant is a request type for Grant method. It declares authorization to the grantee
  * on behalf of the granter with the provided expiration time.

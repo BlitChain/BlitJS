@@ -4,6 +4,7 @@ import { Duration } from "../../../google/protobuf/duration";
 import { Any } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
+export const protobufPackage = "cosmos.group.v1";
 /** VoteOption enumerates the valid vote options for a given proposal. */
 export var VoteOption;
 (function (VoteOption) {

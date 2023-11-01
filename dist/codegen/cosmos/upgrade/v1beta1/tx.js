@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MsgCancelUpgradeResponse = exports.MsgCancelUpgrade = exports.MsgSoftwareUpgradeResponse = exports.MsgSoftwareUpgrade = void 0;
+exports.MsgCancelUpgradeResponse = exports.MsgCancelUpgrade = exports.MsgSoftwareUpgradeResponse = exports.MsgSoftwareUpgrade = exports.protobufPackage = void 0;
 //@ts-nocheck
 const upgrade_1 = require("./upgrade");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.upgrade.v1beta1";
 function createBaseMsgSoftwareUpgrade() {
     return {
         authority: "",

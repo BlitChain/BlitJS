@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "google.protobuf";
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
  * empty messages in your APIs. A typical example is to use it as the request

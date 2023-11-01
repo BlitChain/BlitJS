@@ -25,19 +25,19 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.google = void 0;
 //@ts-nocheck
-const _85 = __importStar(require("./protobuf/any"));
-const _86 = __importStar(require("./protobuf/descriptor"));
-const _87 = __importStar(require("./protobuf/duration"));
-const _88 = __importStar(require("./protobuf/empty"));
-const _89 = __importStar(require("./protobuf/timestamp"));
+const _86 = __importStar(require("./protobuf/any"));
+const _87 = __importStar(require("./protobuf/descriptor"));
+const _88 = __importStar(require("./protobuf/duration"));
+const _89 = __importStar(require("./protobuf/empty"));
+const _90 = __importStar(require("./protobuf/timestamp"));
 var google;
 (function (google) {
     google.protobuf = {
-        ..._85,
         ..._86,
         ..._87,
         ..._88,
-        ..._89
+        ..._89,
+        ..._90
     };
 })(google || (exports.google = google = {}));
 //# sourceMappingURL=bundle.js.map

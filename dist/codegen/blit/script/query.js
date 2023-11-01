@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QueryEvalResponse = exports.QueryEval = exports.QueryWebResponse = exports.QueryWebRequest = exports.QueryAllScriptResponse = exports.QueryAllScriptRequest = exports.QueryGetScriptResponse = exports.QueryGetScriptRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = void 0;
+exports.QueryEvalResponse = exports.QueryEvalRequest = exports.QueryWebResponse = exports.QueryWebRequest = exports.QueryAllScriptResponse = exports.QueryAllScriptRequest = exports.QueryGetScriptResponse = exports.QueryGetScriptRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.protobufPackage = void 0;
 //@ts-nocheck
 const pagination_1 = require("../../cosmos/base/query/v1beta1/pagination");
 const params_1 = require("./params");
 const script_1 = require("./script");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+exports.protobufPackage = "blit.script";
 function createBaseQueryParamsRequest() {
     return {};
 }
@@ -680,7 +681,7 @@ exports.QueryWebResponse = {
         };
     }
 };
-function createBaseQueryEval() {
+function createBaseQueryEvalRequest() {
     return {
         caller_address: "",
         script_address: "",
@@ -690,8 +691,8 @@ function createBaseQueryEval() {
         grantee: ""
     };
 }
-exports.QueryEval = {
-    typeUrl: "/blit.script.QueryEval",
+exports.QueryEvalRequest = {
+    typeUrl: "/blit.script.QueryEvalRequest",
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.caller_address !== "") {
             writer.uint32(18).string(message.caller_address);
@@ -716,7 +717,7 @@ exports.QueryEval = {
     decode(input, length) {
         const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseQueryEval();
+        const message = createBaseQueryEvalRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -766,7 +767,7 @@ exports.QueryEval = {
         return obj;
     },
     fromPartial(object) {
-        const message = createBaseQueryEval();
+        const message = createBaseQueryEvalRequest();
         message.caller_address = object.caller_address ?? "";
         message.script_address = object.script_address ?? "";
         message.extra_code = object.extra_code ?? "";
@@ -816,18 +817,18 @@ exports.QueryEval = {
         return obj;
     },
     fromAminoMsg(object) {
-        return exports.QueryEval.fromAmino(object.value);
+        return exports.QueryEvalRequest.fromAmino(object.value);
     },
     fromProtoMsg(message) {
-        return exports.QueryEval.decode(message.value);
+        return exports.QueryEvalRequest.decode(message.value);
     },
     toProto(message) {
-        return exports.QueryEval.encode(message).finish();
+        return exports.QueryEvalRequest.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/blit.script.QueryEval",
-            value: exports.QueryEval.encode(message).finish()
+            typeUrl: "/blit.script.QueryEvalRequest",
+            value: exports.QueryEvalRequest.encode(message).finish()
         };
     }
 };

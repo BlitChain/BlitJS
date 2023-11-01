@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ModuleVersion = exports.CancelSoftwareUpgradeProposal = exports.SoftwareUpgradeProposal = exports.Plan = void 0;
+exports.ModuleVersion = exports.CancelSoftwareUpgradeProposal = exports.SoftwareUpgradeProposal = exports.Plan = exports.protobufPackage = void 0;
 //@ts-nocheck
 const timestamp_1 = require("../../../google/protobuf/timestamp");
 const any_1 = require("../../../google/protobuf/any");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.upgrade.v1beta1";
 function createBasePlan() {
     return {
         name: "",

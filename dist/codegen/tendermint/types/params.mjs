@@ -2,6 +2,7 @@
 import { Duration } from "../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "tendermint.types";
 function createBaseConsensusParams() {
     return {
         block: BlockParams.fromPartial({}),

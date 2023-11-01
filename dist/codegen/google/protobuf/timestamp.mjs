@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, fromJsonTimestamp, fromTimestamp } from "../../helpers";
+export const protobufPackage = "google.protobuf";
 function createBaseTimestamp() {
     return {
         seconds: BigInt(0),

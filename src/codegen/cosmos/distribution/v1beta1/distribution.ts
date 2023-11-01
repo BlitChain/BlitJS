@@ -3,6 +3,7 @@ import { DecCoin, DecCoinAmino, DecCoinSDKType, Coin, CoinAmino, CoinSDKType } f
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.distribution.v1beta1";
 /** Params defines the set of params for the distribution module. */
 export interface Params {
   community_tax: string;

@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CustomHttpPattern = exports.HttpRule = exports.Http = void 0;
+exports.CustomHttpPattern = exports.HttpRule = exports.Http = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+exports.protobufPackage = "google.api";
 function createBaseHttp() {
     return {
         rules: [],

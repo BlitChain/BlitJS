@@ -3,6 +3,7 @@ import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf
 import { SendAuthorization } from "../../bank/v1beta1/authz";
 import { StakeAuthorization } from "../../staking/v1beta1/authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.authz.v1beta1";
 /**
  * MsgGrant is a request type for Grant method. It declares authorization to the grantee
  * on behalf of the granter with the provided expiration time.

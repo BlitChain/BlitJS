@@ -5,6 +5,7 @@ import { SendAuthorization, SendAuthorizationProtoMsg, SendAuthorizationSDKType 
 import { StakeAuthorization, StakeAuthorizationProtoMsg, StakeAuthorizationSDKType } from "../../staking/v1beta1/authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
+export const protobufPackage = "cosmos.authz.v1beta1";
 /**
  * GenericAuthorization gives the grantee unrestricted permissions to execute
  * the provided method on behalf of the granter's account.

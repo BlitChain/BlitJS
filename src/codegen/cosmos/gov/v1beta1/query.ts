@@ -3,6 +3,7 @@ import { ProposalStatus, Proposal, ProposalAmino, ProposalSDKType, Vote, VoteAmi
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.gov.v1beta1";
 /** QueryProposalRequest is the request type for the Query/Proposal RPC method. */
 export interface QueryProposalRequest {
   /** proposal_id defines the unique id of the proposal. */

@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cosmos_authModuleAccountI_ToAmino = exports.Cosmos_authModuleAccountI_FromAmino = exports.Cosmos_authModuleAccountI_InterfaceDecoder = exports.Cosmos_authAccountI_ToAmino = exports.Cosmos_authAccountI_FromAmino = exports.Cosmos_authAccountI_InterfaceDecoder = exports.AddressStringToBytesResponse = exports.AddressStringToBytesRequest = exports.AddressBytesToStringResponse = exports.AddressBytesToStringRequest = exports.Bech32PrefixResponse = exports.Bech32PrefixRequest = exports.QueryModuleAccountsResponse = exports.QueryParamsRequest = exports.QueryAccountResponse = exports.QueryParamsResponse = exports.QueryModuleAccountsRequest = exports.QueryAccountRequest = exports.QueryAccountsResponse = exports.QueryAccountsRequest = void 0;
+exports.Cosmos_authModuleAccountI_ToAmino = exports.Cosmos_authModuleAccountI_FromAmino = exports.Cosmos_authModuleAccountI_InterfaceDecoder = exports.Cosmos_authAccountI_ToAmino = exports.Cosmos_authAccountI_FromAmino = exports.Cosmos_authAccountI_InterfaceDecoder = exports.AddressStringToBytesResponse = exports.AddressStringToBytesRequest = exports.AddressBytesToStringResponse = exports.AddressBytesToStringRequest = exports.Bech32PrefixResponse = exports.Bech32PrefixRequest = exports.QueryModuleAccountsResponse = exports.QueryParamsRequest = exports.QueryAccountResponse = exports.QueryParamsResponse = exports.QueryModuleAccountsRequest = exports.QueryAccountRequest = exports.QueryAccountsResponse = exports.QueryAccountsRequest = exports.protobufPackage = void 0;
 //@ts-nocheck
 const pagination_1 = require("../../base/query/v1beta1/pagination");
 const any_1 = require("../../../google/protobuf/any");
 const auth_1 = require("./auth");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.auth.v1beta1";
 function createBaseQueryAccountsRequest() {
     return {
         pagination: undefined

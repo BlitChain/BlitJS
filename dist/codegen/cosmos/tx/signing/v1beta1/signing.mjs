@@ -3,6 +3,7 @@ import { CompactBitArray } from "../../../crypto/multisig/v1beta1/multisig";
 import { Any } from "../../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+export const protobufPackage = "cosmos.tx.signing.v1beta1";
 /**
  * SignMode represents a signing mode with its own security guarantees.
  *

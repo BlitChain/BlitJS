@@ -2,6 +2,7 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Params, ParamsAmino, ParamsSDKType, BaseAccount, BaseAccountProtoMsg, BaseAccountSDKType, ModuleAccount, ModuleAccountProtoMsg, ModuleAccountSDKType } from "./auth";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.auth.v1beta1";
 /**
  * QueryAccountsRequest is the request type for the Query/Accounts RPC method.
  *

@@ -4,6 +4,7 @@ import { Timestamp } from "../../google/protobuf/timestamp";
 import { Validator } from "./validator";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
+export const protobufPackage = "tendermint.types";
 function createBaseEvidence() {
     return {
         duplicate_vote_evidence: undefined,

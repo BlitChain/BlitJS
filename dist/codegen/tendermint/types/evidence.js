@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EvidenceList = exports.LightClientAttackEvidence = exports.DuplicateVoteEvidence = exports.Evidence = void 0;
+exports.EvidenceList = exports.LightClientAttackEvidence = exports.DuplicateVoteEvidence = exports.Evidence = exports.protobufPackage = void 0;
 //@ts-nocheck
 const types_1 = require("./types");
 const timestamp_1 = require("../../google/protobuf/timestamp");
 const validator_1 = require("./validator");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+exports.protobufPackage = "tendermint.types";
 function createBaseEvidence() {
     return {
         duplicate_vote_evidence: undefined,

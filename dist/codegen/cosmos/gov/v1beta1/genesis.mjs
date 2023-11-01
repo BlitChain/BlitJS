@@ -2,6 +2,7 @@
 import { Deposit, Vote, Proposal, DepositParams, VotingParams, TallyParams } from "./gov";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.gov.v1beta1";
 function createBaseGenesisState() {
     return {
         starting_proposal_id: BigInt(0),

@@ -2,6 +2,7 @@
 import { ParamChange, ParamChangeAmino, ParamChangeSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.params.v1beta1";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
   /** subspace defines the module to query the parameter for. */

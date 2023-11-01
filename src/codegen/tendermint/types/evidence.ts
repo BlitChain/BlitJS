@@ -4,6 +4,7 @@ import { Timestamp } from "../../google/protobuf/timestamp";
 import { Validator, ValidatorAmino, ValidatorSDKType } from "./validator";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
+export const protobufPackage = "tendermint.types";
 export interface Evidence {
   duplicate_vote_evidence?: DuplicateVoteEvidence;
   light_client_attack_evidence?: LightClientAttackEvidence;

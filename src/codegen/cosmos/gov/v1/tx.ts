@@ -6,12 +6,9 @@ import { CommunityPoolSpendProposal, CommunityPoolSpendProposalProtoMsg, Communi
 import { TextProposal, TextProposalProtoMsg, TextProposalSDKType } from "../v1beta1/gov";
 import { ParameterChangeProposal, ParameterChangeProposalProtoMsg, ParameterChangeProposalSDKType } from "../../params/v1beta1/params";
 import { SoftwareUpgradeProposal, SoftwareUpgradeProposalProtoMsg, SoftwareUpgradeProposalSDKType, CancelSoftwareUpgradeProposal, CancelSoftwareUpgradeProposalProtoMsg, CancelSoftwareUpgradeProposalSDKType } from "../../upgrade/v1beta1/upgrade";
-import { ReplacePoolIncentivesProposal, ReplacePoolIncentivesProposalProtoMsg, ReplacePoolIncentivesProposalSDKType, UpdatePoolIncentivesProposal, UpdatePoolIncentivesProposalProtoMsg, UpdatePoolIncentivesProposalSDKType } from "../../../osmosis/pool-incentives/v1beta1/gov";
-import { SetProtoRevEnabledProposal, SetProtoRevEnabledProposalProtoMsg, SetProtoRevEnabledProposalSDKType, SetProtoRevAdminAccountProposal, SetProtoRevAdminAccountProposalProtoMsg, SetProtoRevAdminAccountProposalSDKType } from "../../../osmosis/protorev/v1beta1/gov";
-import { SetSuperfluidAssetsProposal, SetSuperfluidAssetsProposalProtoMsg, SetSuperfluidAssetsProposalSDKType, RemoveSuperfluidAssetsProposal, RemoveSuperfluidAssetsProposalProtoMsg, RemoveSuperfluidAssetsProposalSDKType, UpdateUnpoolWhiteListProposal, UpdateUnpoolWhiteListProposalProtoMsg, UpdateUnpoolWhiteListProposalSDKType } from "../../../osmosis/superfluid/v1beta1/gov";
-import { UpdateFeeTokenProposal, UpdateFeeTokenProposalProtoMsg, UpdateFeeTokenProposalSDKType } from "../../../osmosis/txfees/v1beta1/gov";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.gov.v1";
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
  * proposal Content.
@@ -86,7 +83,7 @@ export interface MsgSubmitProposalResponseSDKType {
  */
 export interface MsgExecLegacyContent {
   /** content is the proposal's content. */
-  content?: (CommunityPoolSpendProposal & CommunityPoolSpendProposalWithDeposit & TextProposal & ParameterChangeProposal & SoftwareUpgradeProposal & CancelSoftwareUpgradeProposal & ReplacePoolIncentivesProposal & UpdatePoolIncentivesProposal & SetProtoRevEnabledProposal & SetProtoRevAdminAccountProposal & SetSuperfluidAssetsProposal & RemoveSuperfluidAssetsProposal & UpdateUnpoolWhiteListProposal & UpdateFeeTokenProposal & Any) | undefined;
+  content?: (CommunityPoolSpendProposal & CommunityPoolSpendProposalWithDeposit & TextProposal & ParameterChangeProposal & SoftwareUpgradeProposal & CancelSoftwareUpgradeProposal & Any) | undefined;
   /** authority must be the gov module address. */
   authority: string;
 }
@@ -99,7 +96,7 @@ export interface MsgExecLegacyContentProtoMsg {
   value: Uint8Array;
 }
 export type MsgExecLegacyContentEncoded = Omit<MsgExecLegacyContent, "content"> & {
-  /** content is the proposal's content. */content?: CommunityPoolSpendProposalProtoMsg | CommunityPoolSpendProposalWithDepositProtoMsg | TextProposalProtoMsg | ParameterChangeProposalProtoMsg | SoftwareUpgradeProposalProtoMsg | CancelSoftwareUpgradeProposalProtoMsg | ReplacePoolIncentivesProposalProtoMsg | UpdatePoolIncentivesProposalProtoMsg | SetProtoRevEnabledProposalProtoMsg | SetProtoRevAdminAccountProposalProtoMsg | SetSuperfluidAssetsProposalProtoMsg | RemoveSuperfluidAssetsProposalProtoMsg | UpdateUnpoolWhiteListProposalProtoMsg | UpdateFeeTokenProposalProtoMsg | AnyProtoMsg | undefined;
+  /** content is the proposal's content. */content?: CommunityPoolSpendProposalProtoMsg | CommunityPoolSpendProposalWithDepositProtoMsg | TextProposalProtoMsg | ParameterChangeProposalProtoMsg | SoftwareUpgradeProposalProtoMsg | CancelSoftwareUpgradeProposalProtoMsg | AnyProtoMsg | undefined;
 };
 /**
  * MsgExecLegacyContent is used to wrap the legacy content field into a message.
@@ -120,7 +117,7 @@ export interface MsgExecLegacyContentAminoMsg {
  * This ensures backwards compatibility with v1beta1.MsgSubmitProposal.
  */
 export interface MsgExecLegacyContentSDKType {
-  content?: CommunityPoolSpendProposalSDKType | CommunityPoolSpendProposalWithDepositSDKType | TextProposalSDKType | ParameterChangeProposalSDKType | SoftwareUpgradeProposalSDKType | CancelSoftwareUpgradeProposalSDKType | ReplacePoolIncentivesProposalSDKType | UpdatePoolIncentivesProposalSDKType | SetProtoRevEnabledProposalSDKType | SetProtoRevAdminAccountProposalSDKType | SetSuperfluidAssetsProposalSDKType | RemoveSuperfluidAssetsProposalSDKType | UpdateUnpoolWhiteListProposalSDKType | UpdateFeeTokenProposalSDKType | AnySDKType | undefined;
+  content?: CommunityPoolSpendProposalSDKType | CommunityPoolSpendProposalWithDepositSDKType | TextProposalSDKType | ParameterChangeProposalSDKType | SoftwareUpgradeProposalSDKType | CancelSoftwareUpgradeProposalSDKType | AnySDKType | undefined;
   authority: string;
 }
 /** MsgExecLegacyContentResponse defines the Msg/ExecLegacyContent response type. */
@@ -1305,7 +1302,7 @@ export const MsgDepositResponse = {
     };
   }
 };
-export const Cosmos_govv1beta1Content_InterfaceDecoder = (input: BinaryReader | Uint8Array): CommunityPoolSpendProposal | CommunityPoolSpendProposalWithDeposit | TextProposal | ParameterChangeProposal | SoftwareUpgradeProposal | CancelSoftwareUpgradeProposal | ReplacePoolIncentivesProposal | UpdatePoolIncentivesProposal | SetProtoRevEnabledProposal | SetProtoRevAdminAccountProposal | SetSuperfluidAssetsProposal | RemoveSuperfluidAssetsProposal | UpdateUnpoolWhiteListProposal | UpdateFeeTokenProposal | Any => {
+export const Cosmos_govv1beta1Content_InterfaceDecoder = (input: BinaryReader | Uint8Array): CommunityPoolSpendProposal | CommunityPoolSpendProposalWithDeposit | TextProposal | ParameterChangeProposal | SoftwareUpgradeProposal | CancelSoftwareUpgradeProposal | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
@@ -1321,22 +1318,6 @@ export const Cosmos_govv1beta1Content_InterfaceDecoder = (input: BinaryReader | 
       return SoftwareUpgradeProposal.decode(data.value);
     case "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal":
       return CancelSoftwareUpgradeProposal.decode(data.value);
-    case "/osmosis.poolincentives.v1beta1.ReplacePoolIncentivesProposal":
-      return ReplacePoolIncentivesProposal.decode(data.value);
-    case "/osmosis.poolincentives.v1beta1.UpdatePoolIncentivesProposal":
-      return UpdatePoolIncentivesProposal.decode(data.value);
-    case "/osmosis.protorev.v1beta1.SetProtoRevEnabledProposal":
-      return SetProtoRevEnabledProposal.decode(data.value);
-    case "/osmosis.protorev.v1beta1.SetProtoRevAdminAccountProposal":
-      return SetProtoRevAdminAccountProposal.decode(data.value);
-    case "/osmosis.superfluid.v1beta1.SetSuperfluidAssetsProposal":
-      return SetSuperfluidAssetsProposal.decode(data.value);
-    case "/osmosis.superfluid.v1beta1.RemoveSuperfluidAssetsProposal":
-      return RemoveSuperfluidAssetsProposal.decode(data.value);
-    case "/osmosis.superfluid.v1beta1.UpdateUnpoolWhiteListProposal":
-      return UpdateUnpoolWhiteListProposal.decode(data.value);
-    case "/osmosis.txfees.v1beta1.UpdateFeeTokenProposal":
-      return UpdateFeeTokenProposal.decode(data.value);
     default:
       return data;
   }
@@ -1373,46 +1354,6 @@ export const Cosmos_govv1beta1Content_FromAmino = (content: AnyAmino) => {
         typeUrl: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal",
         value: CancelSoftwareUpgradeProposal.encode(CancelSoftwareUpgradeProposal.fromPartial(CancelSoftwareUpgradeProposal.fromAmino(content.value))).finish()
       });
-    case "osmosis/poolincentives/replace-pool-incentives-proposal":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.poolincentives.v1beta1.ReplacePoolIncentivesProposal",
-        value: ReplacePoolIncentivesProposal.encode(ReplacePoolIncentivesProposal.fromPartial(ReplacePoolIncentivesProposal.fromAmino(content.value))).finish()
-      });
-    case "osmosis/UpdatePoolIncentivesProposal":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.poolincentives.v1beta1.UpdatePoolIncentivesProposal",
-        value: UpdatePoolIncentivesProposal.encode(UpdatePoolIncentivesProposal.fromPartial(UpdatePoolIncentivesProposal.fromAmino(content.value))).finish()
-      });
-    case "osmosis/protorev/set-proto-rev-enabled-proposal":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevEnabledProposal",
-        value: SetProtoRevEnabledProposal.encode(SetProtoRevEnabledProposal.fromPartial(SetProtoRevEnabledProposal.fromAmino(content.value))).finish()
-      });
-    case "osmosis/protorev/set-proto-rev-admin-account-proposal":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevAdminAccountProposal",
-        value: SetProtoRevAdminAccountProposal.encode(SetProtoRevAdminAccountProposal.fromPartial(SetProtoRevAdminAccountProposal.fromAmino(content.value))).finish()
-      });
-    case "osmosis/set-superfluid-assets-proposal":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.superfluid.v1beta1.SetSuperfluidAssetsProposal",
-        value: SetSuperfluidAssetsProposal.encode(SetSuperfluidAssetsProposal.fromPartial(SetSuperfluidAssetsProposal.fromAmino(content.value))).finish()
-      });
-    case "osmosis/del-superfluid-assets-proposal":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.superfluid.v1beta1.RemoveSuperfluidAssetsProposal",
-        value: RemoveSuperfluidAssetsProposal.encode(RemoveSuperfluidAssetsProposal.fromPartial(RemoveSuperfluidAssetsProposal.fromAmino(content.value))).finish()
-      });
-    case "osmosis/update-unpool-whitelist":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.superfluid.v1beta1.UpdateUnpoolWhiteListProposal",
-        value: UpdateUnpoolWhiteListProposal.encode(UpdateUnpoolWhiteListProposal.fromPartial(UpdateUnpoolWhiteListProposal.fromAmino(content.value))).finish()
-      });
-    case "osmosis/UpdateFeeTokenProposal":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.txfees.v1beta1.UpdateFeeTokenProposal",
-        value: UpdateFeeTokenProposal.encode(UpdateFeeTokenProposal.fromPartial(UpdateFeeTokenProposal.fromAmino(content.value))).finish()
-      });
     default:
       return Any.fromAmino(content);
   }
@@ -1448,46 +1389,6 @@ export const Cosmos_govv1beta1Content_ToAmino = (content: Any) => {
       return {
         type: "cosmos-sdk/v1/CancelSoftwareUpgradeProposal",
         value: CancelSoftwareUpgradeProposal.toAmino(CancelSoftwareUpgradeProposal.decode(content.value))
-      };
-    case "/osmosis.poolincentives.v1beta1.ReplacePoolIncentivesProposal":
-      return {
-        type: "osmosis/poolincentives/replace-pool-incentives-proposal",
-        value: ReplacePoolIncentivesProposal.toAmino(ReplacePoolIncentivesProposal.decode(content.value))
-      };
-    case "/osmosis.poolincentives.v1beta1.UpdatePoolIncentivesProposal":
-      return {
-        type: "osmosis/UpdatePoolIncentivesProposal",
-        value: UpdatePoolIncentivesProposal.toAmino(UpdatePoolIncentivesProposal.decode(content.value))
-      };
-    case "/osmosis.protorev.v1beta1.SetProtoRevEnabledProposal":
-      return {
-        type: "osmosis/protorev/set-proto-rev-enabled-proposal",
-        value: SetProtoRevEnabledProposal.toAmino(SetProtoRevEnabledProposal.decode(content.value))
-      };
-    case "/osmosis.protorev.v1beta1.SetProtoRevAdminAccountProposal":
-      return {
-        type: "osmosis/protorev/set-proto-rev-admin-account-proposal",
-        value: SetProtoRevAdminAccountProposal.toAmino(SetProtoRevAdminAccountProposal.decode(content.value))
-      };
-    case "/osmosis.superfluid.v1beta1.SetSuperfluidAssetsProposal":
-      return {
-        type: "osmosis/set-superfluid-assets-proposal",
-        value: SetSuperfluidAssetsProposal.toAmino(SetSuperfluidAssetsProposal.decode(content.value))
-      };
-    case "/osmosis.superfluid.v1beta1.RemoveSuperfluidAssetsProposal":
-      return {
-        type: "osmosis/del-superfluid-assets-proposal",
-        value: RemoveSuperfluidAssetsProposal.toAmino(RemoveSuperfluidAssetsProposal.decode(content.value))
-      };
-    case "/osmosis.superfluid.v1beta1.UpdateUnpoolWhiteListProposal":
-      return {
-        type: "osmosis/update-unpool-whitelist",
-        value: UpdateUnpoolWhiteListProposal.toAmino(UpdateUnpoolWhiteListProposal.decode(content.value))
-      };
-    case "/osmosis.txfees.v1beta1.UpdateFeeTokenProposal":
-      return {
-        type: "osmosis/UpdateFeeTokenProposal",
-        value: UpdateFeeTokenProposal.toAmino(UpdateFeeTokenProposal.decode(content.value))
       };
     default:
       return Any.toAmino(content);

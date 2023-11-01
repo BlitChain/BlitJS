@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Record_Offline = exports.Record_Multi = exports.Record_Ledger = exports.Record_Local = exports.Record = void 0;
+exports.Record_Offline = exports.Record_Multi = exports.Record_Ledger = exports.Record_Local = exports.Record = exports.protobufPackage = void 0;
 //@ts-nocheck
 const any_1 = require("../../../../google/protobuf/any");
 const hd_1 = require("../../hd/v1/hd");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+exports.protobufPackage = "cosmos.crypto.keyring.v1";
 function createBaseRecord() {
     return {
         name: "",

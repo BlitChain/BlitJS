@@ -6,6 +6,7 @@ import { BlockID, BlockIDAmino, BlockIDSDKType } from "../../../tendermint/types
 import { Block, BlockAmino, BlockSDKType } from "../../../tendermint/types/block";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+export const protobufPackage = "cosmos.tx.v1beta1";
 /** OrderBy defines the sorting order */
 export enum OrderBy {
   /** ORDER_BY_UNSPECIFIED - ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults to ASC in this case. */

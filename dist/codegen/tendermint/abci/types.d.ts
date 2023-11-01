@@ -3,6 +3,7 @@ import { ProofOps, ProofOpsAmino, ProofOpsSDKType } from "../crypto/proof";
 import { EvidenceParams, EvidenceParamsAmino, EvidenceParamsSDKType, ValidatorParams, ValidatorParamsAmino, ValidatorParamsSDKType, VersionParams, VersionParamsAmino, VersionParamsSDKType } from "../types/params";
 import { PublicKey, PublicKeyAmino, PublicKeySDKType } from "../crypto/keys";
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "tendermint.abci";
 export declare enum CheckTxType {
     NEW = 0,
     RECHECK = 1,

@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ScalarDescriptor = exports.InterfaceDescriptor = exports.scalarTypeToJSON = exports.scalarTypeFromJSON = exports.ScalarTypeAmino = exports.ScalarTypeSDKType = exports.ScalarType = void 0;
+exports.ScalarDescriptor = exports.InterfaceDescriptor = exports.scalarTypeToJSON = exports.scalarTypeFromJSON = exports.ScalarTypeAmino = exports.ScalarTypeSDKType = exports.ScalarType = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../binary");
 const helpers_1 = require("../helpers");
+exports.protobufPackage = "cosmos_proto";
 var ScalarType;
 (function (ScalarType) {
     ScalarType[ScalarType["SCALAR_TYPE_UNSPECIFIED"] = 0] = "SCALAR_TYPE_UNSPECIFIED";

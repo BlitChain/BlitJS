@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { setPaginationParams } from "../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, QueryGetScriptRequest, QueryGetScriptResponseSDKType, QueryAllScriptRequest, QueryAllScriptResponseSDKType, QueryEval, QueryEvalResponseSDKType, QueryWebRequest, QueryWebResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryGetScriptRequest, QueryGetScriptResponseSDKType, QueryAllScriptRequest, QueryAllScriptResponseSDKType, QueryEvalRequest, QueryEvalResponseSDKType, QueryWebRequest, QueryWebResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -40,7 +40,7 @@ export class LCDQueryClient {
     return await this.req.get<QueryAllScriptResponseSDKType>(endpoint, options);
   }
   /* Runs the function and returns the result. */
-  async eval(params: QueryEval): Promise<QueryEvalResponseSDKType> {
+  async eval(params: QueryEvalRequest): Promise<QueryEvalResponseSDKType> {
     const options: any = {
       params: {}
     };

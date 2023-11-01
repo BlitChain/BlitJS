@@ -1,5 +1,6 @@
 import { Minter, MinterAmino, MinterSDKType, Params, ParamsAmino, ParamsSDKType } from "./mint";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.mint.v1beta1";
 /** GenesisState defines the mint module's genesis state. */
 export interface GenesisState {
     /** minter is a space for holding current inflation information. */

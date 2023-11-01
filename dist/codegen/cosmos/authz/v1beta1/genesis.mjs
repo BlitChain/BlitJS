@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { GrantAuthorization } from "./authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export const protobufPackage = "cosmos.authz.v1beta1";
 function createBaseGenesisState() {
     return {
         authorization: []

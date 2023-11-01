@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "google.protobuf";
 /**
  * A Duration represents a signed, fixed-length span of time represented
  * as a count of seconds and fractions of seconds at nanosecond

@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+export declare const protobufPackage = "cosmos.base.reflection.v2alpha1";
 /** AppDescriptor describes a cosmos-sdk based application */
 export interface AppDescriptor {
     /**

@@ -5,6 +5,7 @@ import { Duration } from "../../../google/protobuf/duration";
 import { Any } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
+export const protobufPackage = "cosmos.feegrant.v1beta1";
 function createBaseBasicAllowance() {
     return {
         $typeUrl: "/cosmos.feegrant.v1beta1.BasicAllowance",

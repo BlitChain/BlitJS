@@ -10,7 +10,7 @@ export const createLCDClient = async ({
   });
   return {
     blit: {
-      blit: new (await import("./query.lcd")).LCDQueryClient({
+      blit: new (await import("./blit/query.lcd")).LCDQueryClient({
         requestClient
       }),
       script: new (await import("./script/query.lcd")).LCDQueryClient({
@@ -68,6 +68,11 @@ export const createLCDClient = async ({
       },
       mint: {
         v1beta1: new (await import("../cosmos/mint/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      nft: {
+        v1beta1: new (await import("../cosmos/nft/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },

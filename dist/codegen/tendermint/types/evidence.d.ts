@@ -1,6 +1,7 @@
 import { Vote, VoteAmino, VoteSDKType, LightBlock, LightBlockAmino, LightBlockSDKType } from "./types";
 import { Validator, ValidatorAmino, ValidatorSDKType } from "./validator";
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "tendermint.types";
 export interface Evidence {
     duplicate_vote_evidence?: DuplicateVoteEvidence;
     light_client_attack_evidence?: LightClientAttackEvidence;

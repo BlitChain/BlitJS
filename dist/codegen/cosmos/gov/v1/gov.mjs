@@ -5,6 +5,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration } from "../../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
+export const protobufPackage = "cosmos.gov.v1";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 export var VoteOption;
 (function (VoteOption) {

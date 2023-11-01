@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.app.v1alpha1";
 /** ModuleDescriptor describes an app module. */
 export interface ModuleDescriptor {
   /**

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cosmos_govv1beta1Content_ToAmino = exports.Cosmos_govv1beta1Content_FromAmino = exports.Cosmos_govv1beta1Content_InterfaceDecoder = exports.TallyParams = exports.VotingParams = exports.DepositParams = exports.Vote = exports.TallyResult = exports.Proposal = exports.Deposit = exports.TextProposal = exports.WeightedVoteOption = exports.proposalStatusToJSON = exports.proposalStatusFromJSON = exports.ProposalStatusAmino = exports.ProposalStatusSDKType = exports.ProposalStatus = exports.voteOptionToJSON = exports.voteOptionFromJSON = exports.VoteOptionAmino = exports.VoteOptionSDKType = exports.VoteOption = void 0;
+exports.Cosmos_govv1beta1Content_ToAmino = exports.Cosmos_govv1beta1Content_FromAmino = exports.Cosmos_govv1beta1Content_InterfaceDecoder = exports.TallyParams = exports.VotingParams = exports.DepositParams = exports.Vote = exports.TallyResult = exports.Proposal = exports.Deposit = exports.TextProposal = exports.WeightedVoteOption = exports.proposalStatusToJSON = exports.proposalStatusFromJSON = exports.ProposalStatusAmino = exports.ProposalStatusSDKType = exports.ProposalStatus = exports.voteOptionToJSON = exports.voteOptionFromJSON = exports.VoteOptionAmino = exports.VoteOptionSDKType = exports.VoteOption = exports.protobufPackage = void 0;
 //@ts-nocheck
 const coin_1 = require("../../base/v1beta1/coin");
 const any_1 = require("../../../google/protobuf/any");
@@ -9,13 +9,10 @@ const duration_1 = require("../../../google/protobuf/duration");
 const distribution_1 = require("../../distribution/v1beta1/distribution");
 const params_1 = require("../../params/v1beta1/params");
 const upgrade_1 = require("../../upgrade/v1beta1/upgrade");
-const gov_1 = require("../../../osmosis/pool-incentives/v1beta1/gov");
-const gov_2 = require("../../../osmosis/protorev/v1beta1/gov");
-const gov_3 = require("../../../osmosis/superfluid/v1beta1/gov");
-const gov_4 = require("../../../osmosis/txfees/v1beta1/gov");
 const binary_1 = require("../../../binary");
 const math_1 = require("@cosmjs/math");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.gov.v1beta1";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 var VoteOption;
 (function (VoteOption) {
@@ -1310,22 +1307,6 @@ const Cosmos_govv1beta1Content_InterfaceDecoder = (input) => {
             return upgrade_1.SoftwareUpgradeProposal.decode(data.value);
         case "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal":
             return upgrade_1.CancelSoftwareUpgradeProposal.decode(data.value);
-        case "/osmosis.poolincentives.v1beta1.ReplacePoolIncentivesProposal":
-            return gov_1.ReplacePoolIncentivesProposal.decode(data.value);
-        case "/osmosis.poolincentives.v1beta1.UpdatePoolIncentivesProposal":
-            return gov_1.UpdatePoolIncentivesProposal.decode(data.value);
-        case "/osmosis.protorev.v1beta1.SetProtoRevEnabledProposal":
-            return gov_2.SetProtoRevEnabledProposal.decode(data.value);
-        case "/osmosis.protorev.v1beta1.SetProtoRevAdminAccountProposal":
-            return gov_2.SetProtoRevAdminAccountProposal.decode(data.value);
-        case "/osmosis.superfluid.v1beta1.SetSuperfluidAssetsProposal":
-            return gov_3.SetSuperfluidAssetsProposal.decode(data.value);
-        case "/osmosis.superfluid.v1beta1.RemoveSuperfluidAssetsProposal":
-            return gov_3.RemoveSuperfluidAssetsProposal.decode(data.value);
-        case "/osmosis.superfluid.v1beta1.UpdateUnpoolWhiteListProposal":
-            return gov_3.UpdateUnpoolWhiteListProposal.decode(data.value);
-        case "/osmosis.txfees.v1beta1.UpdateFeeTokenProposal":
-            return gov_4.UpdateFeeTokenProposal.decode(data.value);
         default:
             return data;
     }
@@ -1363,46 +1344,6 @@ const Cosmos_govv1beta1Content_FromAmino = (content) => {
                 typeUrl: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal",
                 value: upgrade_1.CancelSoftwareUpgradeProposal.encode(upgrade_1.CancelSoftwareUpgradeProposal.fromPartial(upgrade_1.CancelSoftwareUpgradeProposal.fromAmino(content.value))).finish()
             });
-        case "osmosis/poolincentives/replace-pool-incentives-proposal":
-            return any_1.Any.fromPartial({
-                typeUrl: "/osmosis.poolincentives.v1beta1.ReplacePoolIncentivesProposal",
-                value: gov_1.ReplacePoolIncentivesProposal.encode(gov_1.ReplacePoolIncentivesProposal.fromPartial(gov_1.ReplacePoolIncentivesProposal.fromAmino(content.value))).finish()
-            });
-        case "osmosis/UpdatePoolIncentivesProposal":
-            return any_1.Any.fromPartial({
-                typeUrl: "/osmosis.poolincentives.v1beta1.UpdatePoolIncentivesProposal",
-                value: gov_1.UpdatePoolIncentivesProposal.encode(gov_1.UpdatePoolIncentivesProposal.fromPartial(gov_1.UpdatePoolIncentivesProposal.fromAmino(content.value))).finish()
-            });
-        case "osmosis/protorev/set-proto-rev-enabled-proposal":
-            return any_1.Any.fromPartial({
-                typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevEnabledProposal",
-                value: gov_2.SetProtoRevEnabledProposal.encode(gov_2.SetProtoRevEnabledProposal.fromPartial(gov_2.SetProtoRevEnabledProposal.fromAmino(content.value))).finish()
-            });
-        case "osmosis/protorev/set-proto-rev-admin-account-proposal":
-            return any_1.Any.fromPartial({
-                typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevAdminAccountProposal",
-                value: gov_2.SetProtoRevAdminAccountProposal.encode(gov_2.SetProtoRevAdminAccountProposal.fromPartial(gov_2.SetProtoRevAdminAccountProposal.fromAmino(content.value))).finish()
-            });
-        case "osmosis/set-superfluid-assets-proposal":
-            return any_1.Any.fromPartial({
-                typeUrl: "/osmosis.superfluid.v1beta1.SetSuperfluidAssetsProposal",
-                value: gov_3.SetSuperfluidAssetsProposal.encode(gov_3.SetSuperfluidAssetsProposal.fromPartial(gov_3.SetSuperfluidAssetsProposal.fromAmino(content.value))).finish()
-            });
-        case "osmosis/del-superfluid-assets-proposal":
-            return any_1.Any.fromPartial({
-                typeUrl: "/osmosis.superfluid.v1beta1.RemoveSuperfluidAssetsProposal",
-                value: gov_3.RemoveSuperfluidAssetsProposal.encode(gov_3.RemoveSuperfluidAssetsProposal.fromPartial(gov_3.RemoveSuperfluidAssetsProposal.fromAmino(content.value))).finish()
-            });
-        case "osmosis/update-unpool-whitelist":
-            return any_1.Any.fromPartial({
-                typeUrl: "/osmosis.superfluid.v1beta1.UpdateUnpoolWhiteListProposal",
-                value: gov_3.UpdateUnpoolWhiteListProposal.encode(gov_3.UpdateUnpoolWhiteListProposal.fromPartial(gov_3.UpdateUnpoolWhiteListProposal.fromAmino(content.value))).finish()
-            });
-        case "osmosis/UpdateFeeTokenProposal":
-            return any_1.Any.fromPartial({
-                typeUrl: "/osmosis.txfees.v1beta1.UpdateFeeTokenProposal",
-                value: gov_4.UpdateFeeTokenProposal.encode(gov_4.UpdateFeeTokenProposal.fromPartial(gov_4.UpdateFeeTokenProposal.fromAmino(content.value))).finish()
-            });
         default:
             return any_1.Any.fromAmino(content);
     }
@@ -1439,46 +1380,6 @@ const Cosmos_govv1beta1Content_ToAmino = (content) => {
             return {
                 type: "cosmos-sdk/CancelSoftwareUpgradeProposal",
                 value: upgrade_1.CancelSoftwareUpgradeProposal.toAmino(upgrade_1.CancelSoftwareUpgradeProposal.decode(content.value))
-            };
-        case "/osmosis.poolincentives.v1beta1.ReplacePoolIncentivesProposal":
-            return {
-                type: "osmosis/poolincentives/replace-pool-incentives-proposal",
-                value: gov_1.ReplacePoolIncentivesProposal.toAmino(gov_1.ReplacePoolIncentivesProposal.decode(content.value))
-            };
-        case "/osmosis.poolincentives.v1beta1.UpdatePoolIncentivesProposal":
-            return {
-                type: "osmosis/UpdatePoolIncentivesProposal",
-                value: gov_1.UpdatePoolIncentivesProposal.toAmino(gov_1.UpdatePoolIncentivesProposal.decode(content.value))
-            };
-        case "/osmosis.protorev.v1beta1.SetProtoRevEnabledProposal":
-            return {
-                type: "osmosis/protorev/set-proto-rev-enabled-proposal",
-                value: gov_2.SetProtoRevEnabledProposal.toAmino(gov_2.SetProtoRevEnabledProposal.decode(content.value))
-            };
-        case "/osmosis.protorev.v1beta1.SetProtoRevAdminAccountProposal":
-            return {
-                type: "osmosis/protorev/set-proto-rev-admin-account-proposal",
-                value: gov_2.SetProtoRevAdminAccountProposal.toAmino(gov_2.SetProtoRevAdminAccountProposal.decode(content.value))
-            };
-        case "/osmosis.superfluid.v1beta1.SetSuperfluidAssetsProposal":
-            return {
-                type: "osmosis/set-superfluid-assets-proposal",
-                value: gov_3.SetSuperfluidAssetsProposal.toAmino(gov_3.SetSuperfluidAssetsProposal.decode(content.value))
-            };
-        case "/osmosis.superfluid.v1beta1.RemoveSuperfluidAssetsProposal":
-            return {
-                type: "osmosis/del-superfluid-assets-proposal",
-                value: gov_3.RemoveSuperfluidAssetsProposal.toAmino(gov_3.RemoveSuperfluidAssetsProposal.decode(content.value))
-            };
-        case "/osmosis.superfluid.v1beta1.UpdateUnpoolWhiteListProposal":
-            return {
-                type: "osmosis/update-unpool-whitelist",
-                value: gov_3.UpdateUnpoolWhiteListProposal.toAmino(gov_3.UpdateUnpoolWhiteListProposal.decode(content.value))
-            };
-        case "/osmosis.txfees.v1beta1.UpdateFeeTokenProposal":
-            return {
-                type: "osmosis/UpdateFeeTokenProposal",
-                value: gov_4.UpdateFeeTokenProposal.toAmino(gov_4.UpdateFeeTokenProposal.decode(content.value))
             };
         default:
             return any_1.Any.toAmino(content);

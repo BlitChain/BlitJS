@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BIP44Params = void 0;
+exports.BIP44Params = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+exports.protobufPackage = "cosmos.crypto.hd.v1";
 function createBaseBIP44Params() {
     return {
         purpose: 0,

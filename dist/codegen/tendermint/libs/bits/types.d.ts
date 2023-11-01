@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "tendermint.libs.bits";
 export interface BitArray {
     bits: bigint;
     elems: bigint[];

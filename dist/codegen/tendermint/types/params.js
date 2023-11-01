@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.HashedParams = exports.VersionParams = exports.ValidatorParams = exports.EvidenceParams = exports.BlockParams = exports.ConsensusParams = void 0;
+exports.HashedParams = exports.VersionParams = exports.ValidatorParams = exports.EvidenceParams = exports.BlockParams = exports.ConsensusParams = exports.protobufPackage = void 0;
 //@ts-nocheck
 const duration_1 = require("../../google/protobuf/duration");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+exports.protobufPackage = "tendermint.types";
 function createBaseConsensusParams() {
     return {
         block: exports.BlockParams.fromPartial({}),

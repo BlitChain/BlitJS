@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LastValidatorPower = exports.GenesisState = void 0;
+exports.LastValidatorPower = exports.GenesisState = exports.protobufPackage = void 0;
 //@ts-nocheck
 const staking_1 = require("./staking");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.staking.v1beta1";
 function createBaseGenesisState() {
     return {
         params: staking_1.Params.fromPartial({}),

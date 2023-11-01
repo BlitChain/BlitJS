@@ -82,6 +82,11 @@ const createLCDClient = async ({ restEndpoint }) => {
                     requestClient
                 })
             },
+            nft: {
+                v1beta1: new (await Promise.resolve().then(() => __importStar(require("./nft/v1beta1/query.lcd")))).LCDQueryClient({
+                    requestClient
+                })
+            },
             params: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("./params/v1beta1/query.lcd")))).LCDQueryClient({
                     requestClient

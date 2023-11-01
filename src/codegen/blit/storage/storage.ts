@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "blit.storage";
 export interface Storage {
   address: string;
   index: string;

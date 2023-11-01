@@ -30,18 +30,15 @@ const stargate_1 = require("@cosmjs/stargate");
 const blitBlitTxRegistry = __importStar(require("./blit/tx.registry"));
 const blitScriptTxRegistry = __importStar(require("./script/tx.registry"));
 const blitStorageTxRegistry = __importStar(require("./storage/tx.registry"));
-const blitTxRegistry = __importStar(require("./tx.registry"));
 const blitBlitTxAmino = __importStar(require("./blit/tx.amino"));
 const blitScriptTxAmino = __importStar(require("./script/tx.amino"));
 const blitStorageTxAmino = __importStar(require("./storage/tx.amino"));
-const blitTxAmino = __importStar(require("./tx.amino"));
 exports.blitAminoConverters = {
     ...blitBlitTxAmino.AminoConverter,
     ...blitScriptTxAmino.AminoConverter,
-    ...blitStorageTxAmino.AminoConverter,
-    ...blitTxAmino.AminoConverter
+    ...blitStorageTxAmino.AminoConverter
 };
-exports.blitProtoRegistry = [...blitBlitTxRegistry.registry, ...blitScriptTxRegistry.registry, ...blitStorageTxRegistry.registry, ...blitTxRegistry.registry];
+exports.blitProtoRegistry = [...blitBlitTxRegistry.registry, ...blitScriptTxRegistry.registry, ...blitStorageTxRegistry.registry];
 const getSigningBlitClientOptions = ({ defaultTypes = stargate_1.defaultRegistryTypes } = {}) => {
     const registry = new proto_signing_1.Registry([...defaultTypes, ...exports.blitProtoRegistry]);
     const aminoTypes = new stargate_1.AminoTypes({

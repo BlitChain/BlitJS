@@ -4,6 +4,7 @@ import { Duration, DurationAmino, DurationSDKType } from "../../../google/protob
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
+export const protobufPackage = "cosmos.group.v1";
 /** VoteOption enumerates the valid vote options for a given proposal. */
 export enum VoteOption {
   /** VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines a no-op vote option. */

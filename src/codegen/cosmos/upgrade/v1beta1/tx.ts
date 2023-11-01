@@ -2,6 +2,7 @@
 import { Plan, PlanAmino, PlanSDKType } from "./upgrade";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.upgrade.v1beta1";
 /**
  * MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
  * 

@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "blit.script";
 /** MsgRun runs a script at a specific address */
 export interface MsgRun {
     caller_address: string;

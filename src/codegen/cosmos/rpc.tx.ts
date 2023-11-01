@@ -25,6 +25,9 @@ export const createRPCMsgClient = async ({
     group: {
       v1: new (await import("./group/v1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
+    nft: {
+      v1beta1: new (await import("./nft/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
     staking: {
       v1beta1: new (await import("./staking/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },

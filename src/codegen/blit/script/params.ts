@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
+export const protobufPackage = "blit.script";
 /** Params defines the parameters for the module. */
 export interface Params {}
 export interface ParamsProtoMsg {

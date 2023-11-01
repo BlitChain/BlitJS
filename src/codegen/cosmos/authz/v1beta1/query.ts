@@ -3,6 +3,7 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Grant, GrantAmino, GrantSDKType, GrantAuthorization, GrantAuthorizationAmino, GrantAuthorizationSDKType } from "./authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.authz.v1beta1";
 /** QueryGrantsRequest is the request type for the Query/Grants RPC method. */
 export interface QueryGrantsRequest {
   granter: string;

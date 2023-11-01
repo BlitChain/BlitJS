@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "blit.storage";
 /** Params defines the parameters for the module. */
 export interface Params {
     gasPerChar: string;

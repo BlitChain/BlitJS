@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Block = void 0;
+exports.Block = exports.protobufPackage = void 0;
 //@ts-nocheck
 const types_1 = require("./types");
 const evidence_1 = require("./evidence");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+exports.protobufPackage = "tendermint.types";
 function createBaseBlock() {
     return {
         header: types_1.Header.fromPartial({}),

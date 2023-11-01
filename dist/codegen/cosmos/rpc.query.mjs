@@ -33,6 +33,9 @@ export const createGrpcGateWayClient = async ({ endpoint }) => {
             mint: {
                 v1beta1: new (await import("./mint/v1beta1/query.rpc.Query")).QueryClientImpl(endpoint)
             },
+            nft: {
+                v1beta1: new (await import("./nft/v1beta1/query.rpc.Query")).QueryClientImpl(endpoint)
+            },
             params: {
                 v1beta1: new (await import("./params/v1beta1/query.rpc.Query")).QueryClientImpl(endpoint)
             },

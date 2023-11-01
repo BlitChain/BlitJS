@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Balance = exports.GenesisState = void 0;
+exports.Balance = exports.GenesisState = exports.protobufPackage = void 0;
 //@ts-nocheck
 const bank_1 = require("./bank");
 const coin_1 = require("../../base/v1beta1/coin");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.bank.v1beta1";
 function createBaseGenesisState() {
     return {
         params: bank_1.Params.fromPartial({}),

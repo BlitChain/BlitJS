@@ -3,6 +3,7 @@ import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Storage, StorageAmino, StorageSDKType } from "./storage";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "blit.storage";
 /** GenesisState defines the storage module's genesis state. */
 export interface GenesisState {
   /** params defines all the parameters of the module. */

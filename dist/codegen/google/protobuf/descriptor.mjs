@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../helpers";
+export const protobufPackage = "google.protobuf";
 export var FieldDescriptorProto_Type;
 (function (FieldDescriptorProto_Type) {
     /**

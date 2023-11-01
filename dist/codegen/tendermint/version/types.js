@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Consensus = exports.App = void 0;
+exports.Consensus = exports.App = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+exports.protobufPackage = "tendermint.version";
 function createBaseApp() {
     return {
         protocol: BigInt(0),

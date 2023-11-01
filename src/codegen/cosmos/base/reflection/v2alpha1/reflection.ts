@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+export const protobufPackage = "cosmos.base.reflection.v2alpha1";
 /** AppDescriptor describes a cosmos-sdk based application */
 export interface AppDescriptor {
   /**

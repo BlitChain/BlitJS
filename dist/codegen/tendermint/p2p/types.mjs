@@ -2,6 +2,7 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, bytesFromBase64, base64FromBytes, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
+export const protobufPackage = "tendermint.p2p";
 function createBaseProtocolVersion() {
     return {
         p2p: BigInt(0),

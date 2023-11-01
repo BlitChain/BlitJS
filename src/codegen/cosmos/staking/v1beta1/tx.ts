@@ -7,6 +7,7 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
 import { encodePubkey, decodePubkey } from "@cosmjs/proto-signing";
 import { Decimal } from "@cosmjs/math";
+export const protobufPackage = "cosmos.staking.v1beta1";
 /** MsgCreateValidator defines a SDK message for creating a new validator. */
 export interface MsgCreateValidator {
   description: Description;

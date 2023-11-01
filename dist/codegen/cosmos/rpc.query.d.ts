@@ -32,6 +32,9 @@ export declare const createGrpcGateWayClient: ({ endpoint }: {
         mint: {
             v1beta1: import("./mint/v1beta1/query.rpc.Query").QueryClientImpl;
         };
+        nft: {
+            v1beta1: import("./nft/v1beta1/query.rpc.Query").QueryClientImpl;
+        };
         params: {
             v1beta1: import("./params/v1beta1/query.rpc.Query").QueryClientImpl;
         };

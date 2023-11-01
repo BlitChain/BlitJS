@@ -4,6 +4,7 @@ import { TxResponse, TxResponseAmino, TxResponseSDKType, GasInfo, GasInfoAmino, 
 import { BlockID, BlockIDAmino, BlockIDSDKType } from "../../../tendermint/types/types";
 import { Block, BlockAmino, BlockSDKType } from "../../../tendermint/types/block";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.tx.v1beta1";
 /** OrderBy defines the sorting order */
 export declare enum OrderBy {
     /** ORDER_BY_UNSPECIFIED - ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults to ASC in this case. */

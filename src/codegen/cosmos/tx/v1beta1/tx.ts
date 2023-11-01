@@ -5,6 +5,7 @@ import { CompactBitArray, CompactBitArrayAmino, CompactBitArraySDKType } from ".
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+export const protobufPackage = "cosmos.tx.v1beta1";
 /** Tx is the standard type used for broadcasting transactions. */
 export interface Tx {
   /** body is the processable content of the transaction */

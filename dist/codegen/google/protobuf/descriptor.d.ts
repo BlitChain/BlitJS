@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "google.protobuf";
 export declare enum FieldDescriptorProto_Type {
     /**
      * TYPE_DOUBLE - 0 is reserved for errors.

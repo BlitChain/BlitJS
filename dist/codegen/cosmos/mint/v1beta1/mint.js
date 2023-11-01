@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Params = exports.Minter = void 0;
+exports.Params = exports.Minter = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../binary");
 const math_1 = require("@cosmjs/math");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.mint.v1beta1";
 function createBaseMinter() {
     return {
         inflation: "",

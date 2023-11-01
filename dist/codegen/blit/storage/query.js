@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QueryAllStorageResponse = exports.QueryAllStorageRequest = exports.QueryGetStorageResponse = exports.QueryGetStorageRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = void 0;
+exports.QueryAllStorageResponse = exports.QueryAllStorageRequest = exports.QueryGetStorageResponse = exports.QueryGetStorageRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.protobufPackage = void 0;
 //@ts-nocheck
 const pagination_1 = require("../../cosmos/base/query/v1beta1/pagination");
 const params_1 = require("./params");
 const storage_1 = require("./storage");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+exports.protobufPackage = "blit.storage";
 function createBaseQueryParamsRequest() {
     return {};
 }

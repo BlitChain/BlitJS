@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "google.api";
 function createBaseHttp() {
     return {
         rules: [],

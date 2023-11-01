@@ -1,5 +1,6 @@
 import { PublicKey, PublicKeyAmino, PublicKeySDKType } from "../crypto/keys";
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "tendermint.types";
 export interface ValidatorSet {
     validators: Validator[];
     proposer?: Validator;

@@ -3,6 +3,7 @@ import { Params } from "./params";
 import { Script } from "./script";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "blit.script";
 function createBaseGenesisState() {
     return {
         params: Params.fromPartial({}),

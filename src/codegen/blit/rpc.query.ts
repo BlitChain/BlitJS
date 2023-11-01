@@ -7,7 +7,7 @@ export const createGrpcGateWayClient = async ({
   endpoint = endpoint.replace(/\/*$/g, "");
   return {
     blit: {
-      blit: new (await import("./query.rpc.Query")).QueryClientImpl(endpoint),
+      blit: new (await import("./blit/query.rpc.Query")).QueryClientImpl(endpoint),
       script: new (await import("./script/query.rpc.Query")).QueryClientImpl(endpoint),
       storage: new (await import("./storage/query.rpc.Query")).QueryClientImpl(endpoint)
     },
@@ -41,6 +41,9 @@ export const createGrpcGateWayClient = async ({
       },
       mint: {
         v1beta1: new (await import("../cosmos/mint/v1beta1/query.rpc.Query")).QueryClientImpl(endpoint)
+      },
+      nft: {
+        v1beta1: new (await import("../cosmos/nft/v1beta1/query.rpc.Query")).QueryClientImpl(endpoint)
       },
       params: {
         v1beta1: new (await import("../cosmos/params/v1beta1/query.rpc.Query")).QueryClientImpl(endpoint)

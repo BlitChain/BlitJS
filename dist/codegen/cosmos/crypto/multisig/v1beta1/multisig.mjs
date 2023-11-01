@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { bytesFromBase64, base64FromBytes, isSet } from "../../../../helpers";
+export const protobufPackage = "cosmos.crypto.multisig.v1beta1";
 function createBaseMultiSignature() {
     return {
         signatures: []

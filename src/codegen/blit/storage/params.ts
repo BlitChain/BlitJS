@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "blit.storage";
 /** Params defines the parameters for the module. */
 export interface Params {
   gasPerChar: string;

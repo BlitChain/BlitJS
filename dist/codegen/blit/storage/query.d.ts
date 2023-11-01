@@ -2,6 +2,7 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Storage, StorageAmino, StorageSDKType } from "./storage";
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "blit.storage";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
 }

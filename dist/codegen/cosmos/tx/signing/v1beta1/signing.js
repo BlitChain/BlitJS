@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SignatureDescriptor_Data_Multi = exports.SignatureDescriptor_Data_Single = exports.SignatureDescriptor_Data = exports.SignatureDescriptor = exports.SignatureDescriptors = exports.signModeToJSON = exports.signModeFromJSON = exports.SignModeAmino = exports.SignModeSDKType = exports.SignMode = void 0;
+exports.SignatureDescriptor_Data_Multi = exports.SignatureDescriptor_Data_Single = exports.SignatureDescriptor_Data = exports.SignatureDescriptor = exports.SignatureDescriptors = exports.signModeToJSON = exports.signModeFromJSON = exports.SignModeAmino = exports.SignModeSDKType = exports.SignMode = exports.protobufPackage = void 0;
 //@ts-nocheck
 const multisig_1 = require("../../../crypto/multisig/v1beta1/multisig");
 const any_1 = require("../../../../google/protobuf/any");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+exports.protobufPackage = "cosmos.tx.signing.v1beta1";
 /**
  * SignMode represents a signing mode with its own security guarantees.
  *

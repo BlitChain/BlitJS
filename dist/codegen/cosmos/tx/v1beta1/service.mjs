@@ -6,6 +6,7 @@ import { BlockID } from "../../../tendermint/types/types";
 import { Block } from "../../../tendermint/types/block";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+export const protobufPackage = "cosmos.tx.v1beta1";
 /** OrderBy defines the sorting order */
 export var OrderBy;
 (function (OrderBy) {

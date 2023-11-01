@@ -8,6 +8,7 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
 import { Decimal } from "@cosmjs/math";
 import { encodePubkey, decodePubkey } from "@cosmjs/proto-signing";
+export const protobufPackage = "cosmos.staking.v1beta1";
 /** BondStatus is the status of a validator. */
 export enum BondStatus {
   /** BOND_STATUS_UNSPECIFIED - UNSPECIFIED defines an invalid validator status. */

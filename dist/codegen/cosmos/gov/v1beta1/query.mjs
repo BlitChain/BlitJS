@@ -3,6 +3,7 @@ import { Proposal, Vote, VotingParams, DepositParams, TallyParams, Deposit, Tall
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.gov.v1beta1";
 function createBaseQueryProposalRequest() {
     return {
         proposal_id: BigInt(0)

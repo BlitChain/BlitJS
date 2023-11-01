@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PublicKey = void 0;
+exports.PublicKey = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+exports.protobufPackage = "tendermint.crypto";
 function createBasePublicKey() {
     return {
         ed25519: undefined,

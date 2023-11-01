@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "tendermint.crypto";
 export interface Proof {
     total: bigint;
     index: bigint;

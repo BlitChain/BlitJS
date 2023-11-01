@@ -2,6 +2,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "blit.script";
 /**
  * MsgUpdateParams is the Msg/UpdateParams request type.
  * 

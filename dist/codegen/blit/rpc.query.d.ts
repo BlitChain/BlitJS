@@ -2,7 +2,7 @@ export declare const createGrpcGateWayClient: ({ endpoint }: {
     endpoint: string;
 }) => Promise<{
     blit: {
-        blit: import("./query.rpc.Query").QueryClientImpl;
+        blit: import("./blit/query.rpc.Query").QueryClientImpl;
         script: import("./script/query.rpc.Query").QueryClientImpl;
         storage: import("./storage/query.rpc.Query").QueryClientImpl;
     };
@@ -36,6 +36,9 @@ export declare const createGrpcGateWayClient: ({ endpoint }: {
         };
         mint: {
             v1beta1: import("../cosmos/mint/v1beta1/query.rpc.Query").QueryClientImpl;
+        };
+        nft: {
+            v1beta1: import("../cosmos/nft/v1beta1/query.rpc.Query").QueryClientImpl;
         };
         params: {
             v1beta1: import("../cosmos/params/v1beta1/query.rpc.Query").QueryClientImpl;

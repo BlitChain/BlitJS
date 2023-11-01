@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cosmos_feegrantFeeAllowanceI_ToAmino = exports.Cosmos_feegrantFeeAllowanceI_FromAmino = exports.Cosmos_feegrantFeeAllowanceI_InterfaceDecoder = exports.MsgRevokeAllowanceResponse = exports.MsgRevokeAllowance = exports.MsgGrantAllowanceResponse = exports.MsgGrantAllowance = void 0;
+exports.Cosmos_feegrantFeeAllowanceI_ToAmino = exports.Cosmos_feegrantFeeAllowanceI_FromAmino = exports.Cosmos_feegrantFeeAllowanceI_InterfaceDecoder = exports.MsgRevokeAllowanceResponse = exports.MsgRevokeAllowance = exports.MsgGrantAllowanceResponse = exports.MsgGrantAllowance = exports.protobufPackage = void 0;
 //@ts-nocheck
 const any_1 = require("../../../google/protobuf/any");
 const feegrant_1 = require("./feegrant");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.feegrant.v1beta1";
 function createBaseMsgGrantAllowance() {
     return {
         granter: "",

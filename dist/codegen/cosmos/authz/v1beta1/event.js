@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EventRevoke = exports.EventGrant = void 0;
+exports.EventRevoke = exports.EventGrant = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.authz.v1beta1";
 function createBaseEventGrant() {
     return {
         msg_type_url: "",

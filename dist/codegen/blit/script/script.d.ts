@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "blit.script";
 export interface Script {
     address: string;
     code: string;

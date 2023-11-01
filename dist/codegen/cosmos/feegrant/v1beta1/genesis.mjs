@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { Grant } from "./feegrant";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export const protobufPackage = "cosmos.feegrant.v1beta1";
 function createBaseGenesisState() {
     return {
         allowances: []

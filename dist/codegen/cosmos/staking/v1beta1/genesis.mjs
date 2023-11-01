@@ -2,6 +2,7 @@
 import { Params, Validator, Delegation, UnbondingDelegation, Redelegation } from "./staking";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+export const protobufPackage = "cosmos.staking.v1beta1";
 function createBaseGenesisState() {
     return {
         params: Params.fromPartial({}),

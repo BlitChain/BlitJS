@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GenesisState = void 0;
+exports.GenesisState = exports.protobufPackage = void 0;
 //@ts-nocheck
 const types_1 = require("./types");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.group.v1";
 function createBaseGenesisState() {
     return {
         group_seq: BigInt(0),

@@ -6,6 +6,7 @@ import { Block, BlockAmino, BlockSDKType } from "../../../../tendermint/types/bl
 import { NodeInfo, NodeInfoAmino, NodeInfoSDKType } from "../../../../tendermint/p2p/types";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+export const protobufPackage = "cosmos.base.tendermint.v1beta1";
 /** GetValidatorSetByHeightRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetValidatorSetByHeightRequest {
   height: bigint;

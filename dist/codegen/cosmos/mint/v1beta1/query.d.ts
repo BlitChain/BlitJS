@@ -1,5 +1,6 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./mint";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.mint.v1beta1";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
 }

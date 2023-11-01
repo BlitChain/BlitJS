@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GenesisState = void 0;
+exports.GenesisState = exports.protobufPackage = void 0;
 //@ts-nocheck
 const params_1 = require("./params");
 const storage_1 = require("./storage");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+exports.protobufPackage = "blit.storage";
 function createBaseGenesisState() {
     return {
         params: params_1.Params.fromPartial({}),

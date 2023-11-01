@@ -4,6 +4,7 @@ import { Params } from "./params";
 import { Storage } from "./storage";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "blit.storage";
 function createBaseQueryParamsRequest() {
     return {};
 }

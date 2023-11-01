@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../binary";
+export declare const protobufPackage = "cosmos_proto";
 export declare enum ScalarType {
     SCALAR_TYPE_UNSPECIFIED = 0,
     SCALAR_TYPE_STRING = 1,

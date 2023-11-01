@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.crypto.ed25519";
 /**
  * PubKey is an ed25519 public key for handling Tendermint keys in SDK.
  * It's needed for Any serialization and SDK compatibility.

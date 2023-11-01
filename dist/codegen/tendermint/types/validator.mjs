@@ -2,6 +2,7 @@
 import { PublicKey } from "../crypto/keys";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../helpers";
+export const protobufPackage = "tendermint.types";
 function createBaseValidatorSet() {
     return {
         validators: [],

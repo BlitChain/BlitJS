@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { bytesFromBase64, base64FromBytes, isSet } from "../../../../helpers";
+export const protobufPackage = "cosmos.crypto.multisig.v1beta1";
 /**
  * MultiSignature wraps the signatures from a multisig.LegacyAminoPubKey.
  * See cosmos.tx.v1betata1.ModeInfo.Multi for how to specify which signers

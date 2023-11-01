@@ -3,6 +3,7 @@ import { Coin } from "../../base/v1beta1/coin";
 import { Input, Output } from "./bank";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.bank.v1beta1";
 function createBaseMsgSend() {
     return {
         from_address: "",

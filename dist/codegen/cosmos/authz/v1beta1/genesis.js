@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GenesisState = void 0;
+exports.GenesisState = exports.protobufPackage = void 0;
 //@ts-nocheck
 const authz_1 = require("./authz");
 const binary_1 = require("../../../binary");
+exports.protobufPackage = "cosmos.authz.v1beta1";
 function createBaseGenesisState() {
     return {
         authorization: []

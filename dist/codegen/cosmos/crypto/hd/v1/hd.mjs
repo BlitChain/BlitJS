@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+export const protobufPackage = "cosmos.crypto.hd.v1";
 function createBaseBIP44Params() {
     return {
         purpose: 0,

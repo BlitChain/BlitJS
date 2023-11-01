@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "tendermint.p2p";
 export interface ProtocolVersion {
     p2p: bigint;
     block: bigint;

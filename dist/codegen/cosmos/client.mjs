@@ -8,6 +8,7 @@ import * as cosmosFeegrantV1beta1TxRegistry from "./feegrant/v1beta1/tx.registry
 import * as cosmosGovV1TxRegistry from "./gov/v1/tx.registry";
 import * as cosmosGovV1beta1TxRegistry from "./gov/v1beta1/tx.registry";
 import * as cosmosGroupV1TxRegistry from "./group/v1/tx.registry";
+import * as cosmosNftV1beta1TxRegistry from "./nft/v1beta1/tx.registry";
 import * as cosmosStakingV1beta1TxRegistry from "./staking/v1beta1/tx.registry";
 import * as cosmosUpgradeV1beta1TxRegistry from "./upgrade/v1beta1/tx.registry";
 import * as cosmosVestingV1beta1TxRegistry from "./vesting/v1beta1/tx.registry";
@@ -18,6 +19,7 @@ import * as cosmosFeegrantV1beta1TxAmino from "./feegrant/v1beta1/tx.amino";
 import * as cosmosGovV1TxAmino from "./gov/v1/tx.amino";
 import * as cosmosGovV1beta1TxAmino from "./gov/v1beta1/tx.amino";
 import * as cosmosGroupV1TxAmino from "./group/v1/tx.amino";
+import * as cosmosNftV1beta1TxAmino from "./nft/v1beta1/tx.amino";
 import * as cosmosStakingV1beta1TxAmino from "./staking/v1beta1/tx.amino";
 import * as cosmosUpgradeV1beta1TxAmino from "./upgrade/v1beta1/tx.amino";
 import * as cosmosVestingV1beta1TxAmino from "./vesting/v1beta1/tx.amino";
@@ -29,11 +31,12 @@ export const cosmosAminoConverters = {
     ...cosmosGovV1TxAmino.AminoConverter,
     ...cosmosGovV1beta1TxAmino.AminoConverter,
     ...cosmosGroupV1TxAmino.AminoConverter,
+    ...cosmosNftV1beta1TxAmino.AminoConverter,
     ...cosmosStakingV1beta1TxAmino.AminoConverter,
     ...cosmosUpgradeV1beta1TxAmino.AminoConverter,
     ...cosmosVestingV1beta1TxAmino.AminoConverter
 };
-export const cosmosProtoRegistry = [...cosmosAuthzV1beta1TxRegistry.registry, ...cosmosBankV1beta1TxRegistry.registry, ...cosmosDistributionV1beta1TxRegistry.registry, ...cosmosFeegrantV1beta1TxRegistry.registry, ...cosmosGovV1TxRegistry.registry, ...cosmosGovV1beta1TxRegistry.registry, ...cosmosGroupV1TxRegistry.registry, ...cosmosStakingV1beta1TxRegistry.registry, ...cosmosUpgradeV1beta1TxRegistry.registry, ...cosmosVestingV1beta1TxRegistry.registry];
+export const cosmosProtoRegistry = [...cosmosAuthzV1beta1TxRegistry.registry, ...cosmosBankV1beta1TxRegistry.registry, ...cosmosDistributionV1beta1TxRegistry.registry, ...cosmosFeegrantV1beta1TxRegistry.registry, ...cosmosGovV1TxRegistry.registry, ...cosmosGovV1beta1TxRegistry.registry, ...cosmosGroupV1TxRegistry.registry, ...cosmosNftV1beta1TxRegistry.registry, ...cosmosStakingV1beta1TxRegistry.registry, ...cosmosUpgradeV1beta1TxRegistry.registry, ...cosmosVestingV1beta1TxRegistry.registry];
 export const getSigningCosmosClientOptions = () => {
     const registry = new Registry([...cosmosProtoRegistry]);
     const aminoTypes = new AminoTypes({

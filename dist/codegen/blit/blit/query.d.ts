@@ -1,5 +1,6 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "blit.blit";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
 }

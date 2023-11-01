@@ -6,6 +6,7 @@ import { Block } from "../../../../tendermint/types/block";
 import { NodeInfo } from "../../../../tendermint/p2p/types";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+export const protobufPackage = "cosmos.base.tendermint.v1beta1";
 function createBaseGetValidatorSetByHeightRequest() {
     return {
         height: BigInt(0),

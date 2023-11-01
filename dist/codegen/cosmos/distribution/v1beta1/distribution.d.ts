@@ -1,5 +1,6 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType, Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.distribution.v1beta1";
 /** Params defines the set of params for the distribution module. */
 export interface Params {
     community_tax: string;

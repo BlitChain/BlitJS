@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cosmos_authzAuthorization_ToAmino = exports.Cosmos_authzAuthorization_FromAmino = exports.Cosmos_authzAuthorization_InterfaceDecoder = exports.GrantQueueItem = exports.GrantAuthorization = exports.Grant = exports.GenericAuthorization = void 0;
+exports.Cosmos_authzAuthorization_ToAmino = exports.Cosmos_authzAuthorization_FromAmino = exports.Cosmos_authzAuthorization_InterfaceDecoder = exports.GrantQueueItem = exports.GrantAuthorization = exports.Grant = exports.GenericAuthorization = exports.protobufPackage = void 0;
 //@ts-nocheck
 const any_1 = require("../../../google/protobuf/any");
 const timestamp_1 = require("../../../google/protobuf/timestamp");
@@ -8,6 +8,7 @@ const authz_1 = require("../../bank/v1beta1/authz");
 const authz_2 = require("../../staking/v1beta1/authz");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.authz.v1beta1";
 function createBaseGenericAuthorization() {
     return {
         $typeUrl: "/cosmos.authz.v1beta1.GenericAuthorization",

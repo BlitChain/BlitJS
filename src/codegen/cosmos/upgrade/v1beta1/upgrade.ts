@@ -3,6 +3,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
+export const protobufPackage = "cosmos.upgrade.v1beta1";
 /** Plan specifies information about a planned upgrade and when it should occur. */
 export interface Plan {
   /**

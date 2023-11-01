@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "google.protobuf";
 function createBaseDuration() {
     return {
         seconds: BigInt(0),

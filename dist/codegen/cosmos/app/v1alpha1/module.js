@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MigrateFromInfo = exports.PackageReference = exports.ModuleDescriptor = void 0;
+exports.MigrateFromInfo = exports.PackageReference = exports.ModuleDescriptor = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.app.v1alpha1";
 function createBaseModuleDescriptor() {
     return {
         go_import: "",

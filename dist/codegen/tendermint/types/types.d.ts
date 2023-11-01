@@ -2,6 +2,7 @@ import { Proof, ProofAmino, ProofSDKType } from "../crypto/proof";
 import { Consensus, ConsensusAmino, ConsensusSDKType } from "../version/types";
 import { ValidatorSet, ValidatorSetAmino, ValidatorSetSDKType } from "./validator";
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "tendermint.types";
 /** BlockIdFlag indicates which BlcokID the signature is for */
 export declare enum BlockIDFlag {
     BLOCK_ID_FLAG_UNKNOWN = 0,

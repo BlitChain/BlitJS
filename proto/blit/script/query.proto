@@ -32,7 +32,7 @@ service Query {
   }
   
   // Runs the function and returns the result.
-  rpc Eval (QueryEval) returns (QueryEvalResponse) {
+  rpc Eval (QueryEvalRequest) returns (QueryEvalResponse) {
     option (google.api.http).get = "/blit/script/eval/{script_address}";
   
   }
@@ -79,7 +79,7 @@ message QueryWebResponse {
   string httpresponse = 1;
 }
 
-message QueryEval {
+message QueryEvalRequest {
   string caller_address = 2;
   string script_address = 3;
   string extra_code     = 4;

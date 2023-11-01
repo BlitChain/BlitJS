@@ -3,6 +3,7 @@ import { Any } from "../../../../google/protobuf/any";
 import { Event } from "../../../../tendermint/abci/types";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+export const protobufPackage = "cosmos.base.abci.v1beta1";
 function createBaseTxResponse() {
     return {
         height: BigInt(0),

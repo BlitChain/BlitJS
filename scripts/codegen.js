@@ -11,12 +11,12 @@ telescope({
   protoDirs,
   outPath,
   options: {
-    includeExternalHelpers: true,
+    includeExternalHelpers: false,
     tsDisable: {
       disableAll: true
     },
     prototypes: {
-      includePackageVar: false,
+      includePackageVar: true,
       removeUnusedImports: true,
       experimentalGlobalProtoNamespace: true,
       interfaces: {
@@ -40,7 +40,6 @@ telescope({
           'cosmos.autocli.v1',
 
           'cosmos.msg.v1',
-          'cosmos.nft.v1beta1',
           'cosmos.capability.v1beta1',
           'cosmos.orm.v1alpha1',
           'cosmos.orm.v1',

@@ -3,6 +3,7 @@ import { DecCoin } from "../../base/v1beta1/coin";
 import { ValidatorAccumulatedCommission, ValidatorHistoricalRewards, ValidatorCurrentRewards, DelegatorStartingInfo, ValidatorSlashEvent, Params, FeePool } from "./distribution";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.distribution.v1beta1";
 function createBaseDelegatorWithdrawInfo() {
     return {
         delegator_address: "",

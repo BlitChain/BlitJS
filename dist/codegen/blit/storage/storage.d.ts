@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "blit.storage";
 export interface Storage {
     address: string;
     index: string;

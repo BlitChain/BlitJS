@@ -1,5 +1,6 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "blit.blit";
 /**
  * MsgUpdateParams is the Msg/UpdateParams request type.
  *

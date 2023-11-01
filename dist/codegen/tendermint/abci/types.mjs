@@ -6,6 +6,7 @@ import { EvidenceParams, ValidatorParams, VersionParams } from "../types/params"
 import { PublicKey } from "../crypto/keys";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp, bytesFromBase64, base64FromBytes } from "../../helpers";
+export const protobufPackage = "tendermint.abci";
 export var CheckTxType;
 (function (CheckTxType) {
     CheckTxType[CheckTxType["NEW"] = 0] = "NEW";

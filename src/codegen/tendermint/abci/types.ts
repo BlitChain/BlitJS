@@ -6,6 +6,7 @@ import { EvidenceParams, EvidenceParamsAmino, EvidenceParamsSDKType, ValidatorPa
 import { PublicKey, PublicKeyAmino, PublicKeySDKType } from "../crypto/keys";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp, bytesFromBase64, base64FromBytes } from "../../helpers";
+export const protobufPackage = "tendermint.abci";
 export enum CheckTxType {
   NEW = 0,
   RECHECK = 1,

@@ -2,6 +2,7 @@
 import { Params } from "./params";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "blit.script";
 function createBaseMsgUpdateParams() {
     return {
         authority: "",

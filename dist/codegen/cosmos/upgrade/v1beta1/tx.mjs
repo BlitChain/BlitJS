@@ -2,6 +2,7 @@
 import { Plan } from "./upgrade";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.upgrade.v1beta1";
 function createBaseMsgSoftwareUpgrade() {
     return {
         authority: "",

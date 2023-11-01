@@ -3,6 +3,7 @@ import { Params, ParamsAmino, ParamsSDKType } from "./auth";
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.auth.v1beta1";
 /** GenesisState defines the auth module's genesis state. */
 export interface GenesisState {
   /** params defines all the paramaters of the module. */

@@ -3,6 +3,7 @@ import { Any } from "../../../../google/protobuf/any";
 import { BIP44Params } from "../../hd/v1/hd";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+export const protobufPackage = "cosmos.crypto.keyring.v1";
 function createBaseRecord() {
     return {
         name: "",

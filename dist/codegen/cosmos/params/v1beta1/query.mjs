@@ -2,6 +2,7 @@
 import { ParamChange } from "./params";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.params.v1beta1";
 function createBaseQueryParamsRequest() {
     return {
         subspace: "",

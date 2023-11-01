@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Params = void 0;
+exports.Params = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
+exports.protobufPackage = "blit.blit";
 function createBaseParams() {
     return {};
 }

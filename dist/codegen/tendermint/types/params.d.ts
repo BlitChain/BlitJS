@@ -1,5 +1,6 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "tendermint.types";
 /**
  * ConsensusParams contains consensus critical parameters that determine the
  * validity of blocks.

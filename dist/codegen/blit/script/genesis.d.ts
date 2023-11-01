@@ -1,6 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Script, ScriptAmino, ScriptSDKType } from "./script";
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "blit.script";
 /** GenesisState defines the script module's genesis state. */
 export interface GenesisState {
     /** params defines all the parameters of the module. */

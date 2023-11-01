@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MsgRunResponse = exports.MsgRun = void 0;
+exports.MsgRunResponse = exports.MsgRun = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+exports.protobufPackage = "blit.script";
 function createBaseMsgRun() {
     return {
         caller_address: "",

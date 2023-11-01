@@ -1,6 +1,7 @@
 import { Header, HeaderAmino, HeaderSDKType, Data, DataAmino, DataSDKType, Commit, CommitAmino, CommitSDKType } from "./types";
 import { EvidenceList, EvidenceListAmino, EvidenceListSDKType } from "./evidence";
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "tendermint.types";
 export interface Block {
     header: Header;
     data: Data;

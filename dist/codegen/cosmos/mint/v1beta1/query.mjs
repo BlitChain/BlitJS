@@ -2,6 +2,7 @@
 import { Params } from "./mint";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+export const protobufPackage = "cosmos.mint.v1beta1";
 function createBaseQueryParamsRequest() {
     return {};
 }

@@ -3,6 +3,7 @@ import { DecCoin, Coin } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.distribution.v1beta1";
 function createBaseParams() {
     return {
         community_tax: "",

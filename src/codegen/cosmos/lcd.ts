@@ -60,6 +60,11 @@ export const createLCDClient = async ({
           requestClient
         })
       },
+      nft: {
+        v1beta1: new (await import("./nft/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
       params: {
         v1beta1: new (await import("./params/v1beta1/query.lcd")).LCDQueryClient({
           requestClient

@@ -3,6 +3,7 @@ import { Params, ParamsAmino, ParamsSDKType, Metadata, MetadataAmino, MetadataSD
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.bank.v1beta1";
 /** GenesisState defines the bank module's genesis state. */
 export interface GenesisState {
   /** params defines all the paramaters of the module. */

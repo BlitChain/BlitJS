@@ -5,6 +5,7 @@ import { Duration, DurationAmino, DurationSDKType } from "../../../google/protob
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
+export const protobufPackage = "cosmos.feegrant.v1beta1";
 /**
  * BasicAllowance implements Allowance with a one-time grant of tokens
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.

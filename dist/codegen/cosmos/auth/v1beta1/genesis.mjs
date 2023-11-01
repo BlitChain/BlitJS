@@ -3,6 +3,7 @@ import { Params } from "./auth";
 import { Any } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.auth.v1beta1";
 function createBaseGenesisState() {
     return {
         params: Params.fromPartial({}),

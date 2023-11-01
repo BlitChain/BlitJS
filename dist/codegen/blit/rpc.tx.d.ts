@@ -27,6 +27,9 @@ export declare const createRPCMsgClient: ({ rpc }: {
         group: {
             v1: any;
         };
+        nft: {
+            v1beta1: any;
+        };
         staking: {
             v1beta1: any;
         };

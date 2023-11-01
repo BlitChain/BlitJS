@@ -4,6 +4,7 @@ import { Params } from "./params";
 import { Script } from "./script";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "blit.script";
 function createBaseQueryParamsRequest() {
     return {};
 }
@@ -677,7 +678,7 @@ export const QueryWebResponse = {
         };
     }
 };
-function createBaseQueryEval() {
+function createBaseQueryEvalRequest() {
     return {
         caller_address: "",
         script_address: "",
@@ -687,8 +688,8 @@ function createBaseQueryEval() {
         grantee: ""
     };
 }
-export const QueryEval = {
-    typeUrl: "/blit.script.QueryEval",
+export const QueryEvalRequest = {
+    typeUrl: "/blit.script.QueryEvalRequest",
     encode(message, writer = BinaryWriter.create()) {
         if (message.caller_address !== "") {
             writer.uint32(18).string(message.caller_address);
@@ -713,7 +714,7 @@ export const QueryEval = {
     decode(input, length) {
         const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseQueryEval();
+        const message = createBaseQueryEvalRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -763,7 +764,7 @@ export const QueryEval = {
         return obj;
     },
     fromPartial(object) {
-        const message = createBaseQueryEval();
+        const message = createBaseQueryEvalRequest();
         message.caller_address = object.caller_address ?? "";
         message.script_address = object.script_address ?? "";
         message.extra_code = object.extra_code ?? "";
@@ -813,18 +814,18 @@ export const QueryEval = {
         return obj;
     },
     fromAminoMsg(object) {
-        return QueryEval.fromAmino(object.value);
+        return QueryEvalRequest.fromAmino(object.value);
     },
     fromProtoMsg(message) {
-        return QueryEval.decode(message.value);
+        return QueryEvalRequest.decode(message.value);
     },
     toProto(message) {
-        return QueryEval.encode(message).finish();
+        return QueryEvalRequest.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/blit.script.QueryEval",
-            value: QueryEval.encode(message).finish()
+            typeUrl: "/blit.script.QueryEvalRequest",
+            value: QueryEvalRequest.encode(message).finish()
         };
     }
 };

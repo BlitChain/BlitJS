@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GenesisState = void 0;
+exports.GenesisState = exports.protobufPackage = void 0;
 //@ts-nocheck
 const auth_1 = require("./auth");
 const any_1 = require("../../../google/protobuf/any");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.auth.v1beta1";
 function createBaseGenesisState() {
     return {
         params: auth_1.Params.fromPartial({}),

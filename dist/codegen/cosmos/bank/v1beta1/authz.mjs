@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { Coin } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export const protobufPackage = "cosmos.bank.v1beta1";
 function createBaseSendAuthorization() {
     return {
         $typeUrl: "/cosmos.bank.v1beta1.SendAuthorization",

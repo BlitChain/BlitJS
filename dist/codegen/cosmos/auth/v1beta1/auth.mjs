@@ -2,6 +2,7 @@
 import { Any } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.auth.v1beta1";
 function createBaseBaseAccount() {
     return {
         $typeUrl: "/cosmos.auth.v1beta1.BaseAccount",

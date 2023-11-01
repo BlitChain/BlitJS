@@ -2,6 +2,7 @@
 import { Minter, Params } from "./mint";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.mint.v1beta1";
 function createBaseGenesisState() {
     return {
         minter: Minter.fromPartial({}),

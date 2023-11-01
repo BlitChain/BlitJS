@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ParamChange = exports.ParameterChangeProposal = void 0;
+exports.ParamChange = exports.ParameterChangeProposal = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.params.v1beta1";
 function createBaseParameterChangeProposal() {
     return {
         $typeUrl: "/cosmos.params.v1beta1.ParameterChangeProposal",

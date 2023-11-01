@@ -59,6 +59,9 @@ const createGrpcGateWayClient = async ({ endpoint }) => {
             mint: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("./mint/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)
             },
+            nft: {
+                v1beta1: new (await Promise.resolve().then(() => __importStar(require("./nft/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)
+            },
             params: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("./params/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)
             },

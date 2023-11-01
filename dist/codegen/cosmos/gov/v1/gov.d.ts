@@ -2,6 +2,7 @@ import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.gov.v1";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 export declare enum VoteOption {
     /** VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines a no-op vote option. */

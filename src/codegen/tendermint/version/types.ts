@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "tendermint.version";
 /**
  * App includes the protocol and software version for the application.
  * This information is included in ResponseInfo. The App.Protocol can be

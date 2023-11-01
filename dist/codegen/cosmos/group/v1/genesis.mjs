@@ -2,6 +2,7 @@
 import { GroupInfo, GroupMember, GroupPolicyInfo, Proposal, Vote } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.group.v1";
 function createBaseGenesisState() {
     return {
         group_seq: BigInt(0),

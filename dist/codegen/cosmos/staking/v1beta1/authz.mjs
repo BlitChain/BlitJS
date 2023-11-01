@@ -2,6 +2,7 @@
 import { Coin } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.staking.v1beta1";
 /**
  * AuthorizationType defines the type of staking module authorization type
  *

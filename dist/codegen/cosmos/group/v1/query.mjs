@@ -3,6 +3,7 @@ import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { GroupInfo, GroupPolicyInfo, GroupMember, Proposal, Vote, TallyResult } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.group.v1";
 function createBaseQueryGroupInfoRequest() {
     return {
         group_id: BigInt(0)

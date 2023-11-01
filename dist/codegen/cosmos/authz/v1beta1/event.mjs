@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.authz.v1beta1";
 function createBaseEventGrant() {
     return {
         msg_type_url: "",

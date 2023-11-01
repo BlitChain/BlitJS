@@ -2,11 +2,6 @@ import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
 import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 export declare const blitAminoConverters: {
-    "/blit.blit.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: (message: import("./tx").MsgUpdateParams) => import("./tx").MsgUpdateParamsAmino;
-        fromAmino: (object: import("./tx").MsgUpdateParamsAmino) => import("./tx").MsgUpdateParams;
-    };
     "/blit.storage.MsgUpdateParams": {
         aminoType: string;
         toAmino: (message: import("./storage/tx").MsgUpdateParams) => import("./storage/tx").MsgUpdateParamsAmino;
@@ -46,6 +41,11 @@ export declare const blitAminoConverters: {
         aminoType: string;
         toAmino: (message: import("./script/msgrun").MsgRun) => import("./script/msgrun").MsgRunAmino;
         fromAmino: (object: import("./script/msgrun").MsgRunAmino) => import("./script/msgrun").MsgRun;
+    };
+    "/blit.blit.MsgUpdateParams": {
+        aminoType: string;
+        toAmino: (message: import("./blit/tx").MsgUpdateParams) => import("./blit/tx").MsgUpdateParamsAmino;
+        fromAmino: (object: import("./blit/tx").MsgUpdateParamsAmino) => import("./blit/tx").MsgUpdateParams;
     };
 };
 export declare const blitProtoRegistry: ReadonlyArray<[string, GeneratedType]>;

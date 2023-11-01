@@ -45,6 +45,9 @@ const createRPCMsgClient = async ({ rpc }) => ({
         group: {
             v1: new (await Promise.resolve().then(() => __importStar(require("./group/v1/tx.rpc.msg")))).MsgClientImpl(rpc)
         },
+        nft: {
+            v1beta1: new (await Promise.resolve().then(() => __importStar(require("./nft/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)
+        },
         staking: {
             v1beta1: new (await Promise.resolve().then(() => __importStar(require("./staking/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)
         },

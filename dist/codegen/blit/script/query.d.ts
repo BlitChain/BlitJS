@@ -2,6 +2,7 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Script, ScriptAmino, ScriptSDKType } from "./script";
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "blit.script";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
 }
@@ -181,7 +182,7 @@ export interface QueryWebResponseAminoMsg {
 export interface QueryWebResponseSDKType {
     httpresponse: string;
 }
-export interface QueryEval {
+export interface QueryEvalRequest {
     caller_address: string;
     script_address: string;
     extra_code: string;
@@ -189,15 +190,15 @@ export interface QueryEval {
     kwargs: string;
     grantee: string;
 }
-export interface QueryEvalProtoMsg {
-    type_url: "/blit.script.QueryEval";
+export interface QueryEvalRequestProtoMsg {
+    type_url: "/blit.script.QueryEvalRequest";
     value: Uint8Array;
 }
-export interface QueryEvalProtoMsg {
-    type_url: "/blit.script.QueryEval";
+export interface QueryEvalRequestProtoMsg {
+    type_url: "/blit.script.QueryEvalRequest";
     value: Uint8Array;
 }
-export interface QueryEvalAmino {
+export interface QueryEvalRequestAmino {
     caller_address: string;
     script_address: string;
     extra_code: string;
@@ -205,11 +206,11 @@ export interface QueryEvalAmino {
     kwargs: string;
     grantee: string;
 }
-export interface QueryEvalAminoMsg {
-    type: "/blit.script.QueryEval";
-    value: QueryEvalAmino;
+export interface QueryEvalRequestAminoMsg {
+    type: "/blit.script.QueryEvalRequest";
+    value: QueryEvalRequestAmino;
 }
-export interface QueryEvalSDKType {
+export interface QueryEvalRequestSDKType {
     caller_address: string;
     script_address: string;
     extra_code: string;
@@ -366,21 +367,21 @@ export declare const QueryWebResponse: {
     toProto(message: QueryWebResponse): Uint8Array;
     toProtoMsg(message: QueryWebResponse): QueryWebResponseProtoMsg;
 };
-export declare const QueryEval: {
+export declare const QueryEvalRequest: {
     typeUrl: string;
-    encode(message: QueryEval, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryEval;
-    fromJSON(object: any): QueryEval;
-    toJSON(message: QueryEval): unknown;
-    fromPartial(object: Partial<QueryEval>): QueryEval;
-    fromSDK(object: QueryEvalSDKType): QueryEval;
-    toSDK(message: QueryEval): QueryEvalSDKType;
-    fromAmino(object: QueryEvalAmino): QueryEval;
-    toAmino(message: QueryEval): QueryEvalAmino;
-    fromAminoMsg(object: QueryEvalAminoMsg): QueryEval;
-    fromProtoMsg(message: QueryEvalProtoMsg): QueryEval;
-    toProto(message: QueryEval): Uint8Array;
-    toProtoMsg(message: QueryEval): QueryEvalProtoMsg;
+    encode(message: QueryEvalRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryEvalRequest;
+    fromJSON(object: any): QueryEvalRequest;
+    toJSON(message: QueryEvalRequest): unknown;
+    fromPartial(object: Partial<QueryEvalRequest>): QueryEvalRequest;
+    fromSDK(object: QueryEvalRequestSDKType): QueryEvalRequest;
+    toSDK(message: QueryEvalRequest): QueryEvalRequestSDKType;
+    fromAmino(object: QueryEvalRequestAmino): QueryEvalRequest;
+    toAmino(message: QueryEvalRequest): QueryEvalRequestAmino;
+    fromAminoMsg(object: QueryEvalRequestAminoMsg): QueryEvalRequest;
+    fromProtoMsg(message: QueryEvalRequestProtoMsg): QueryEvalRequest;
+    toProto(message: QueryEvalRequest): Uint8Array;
+    toProtoMsg(message: QueryEvalRequest): QueryEvalRequestProtoMsg;
 };
 export declare const QueryEvalResponse: {
     typeUrl: string;

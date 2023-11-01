@@ -4,6 +4,7 @@ import { Any } from "../../../google/protobuf/any";
 import { Params, BaseAccount, ModuleAccount } from "./auth";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+export const protobufPackage = "cosmos.auth.v1beta1";
 function createBaseQueryAccountsRequest() {
     return {
         pagination: undefined

@@ -4,6 +4,7 @@ import { Coin } from "../../base/v1beta1/coin";
 import { Params, Metadata } from "./bank";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.bank.v1beta1";
 function createBaseQueryBalanceRequest() {
     return {
         address: "",

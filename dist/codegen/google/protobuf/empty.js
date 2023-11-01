@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Empty = void 0;
+exports.Empty = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
+exports.protobufPackage = "google.protobuf";
 function createBaseEmpty() {
     return {};
 }

@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.crypto.secp256r1";
 /** PubKey defines a secp256r1 ECDSA public key. */
 export interface PubKey {
     /**

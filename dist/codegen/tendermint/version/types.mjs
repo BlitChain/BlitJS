@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "tendermint.version";
 function createBaseApp() {
     return {
         protocol: BigInt(0),

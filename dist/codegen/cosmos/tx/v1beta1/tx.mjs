@@ -5,6 +5,7 @@ import { CompactBitArray } from "../../crypto/multisig/v1beta1/multisig";
 import { Coin } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+export const protobufPackage = "cosmos.tx.v1beta1";
 function createBaseTx() {
     return {
         body: undefined,

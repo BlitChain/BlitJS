@@ -3,6 +3,7 @@ import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { Grant, GrantAuthorization } from "./authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.authz.v1beta1";
 function createBaseQueryGrantsRequest() {
     return {
         granter: "",

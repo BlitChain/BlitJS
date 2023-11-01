@@ -2,6 +2,7 @@
 import { Any } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.crypto.multisig";
 function createBaseLegacyAminoPubKey() {
     return {
         threshold: 0,

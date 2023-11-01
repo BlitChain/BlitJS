@@ -3,6 +3,7 @@ import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Event, EventAmino, EventSDKType } from "../../../../tendermint/abci/types";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+export const protobufPackage = "cosmos.base.abci.v1beta1";
 /**
  * TxResponse defines a structure containing relevant tx data and metadata. The
  * tags are stringified and the log is JSON decoded.

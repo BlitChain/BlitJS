@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+export declare const protobufPackage = "google.protobuf";
 /**
  * `Any` contains an arbitrary serialized protocol buffer message along with a
  * URL that describes the type of the serialized message.

@@ -4,6 +4,7 @@ import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { Params, ParamsAmino, ParamsSDKType, Metadata, MetadataAmino, MetadataSDKType } from "./bank";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.bank.v1beta1";
 /** QueryBalanceRequest is the request type for the Query/Balance RPC method. */
 export interface QueryBalanceRequest {
   /** address is the address to query balances for. */

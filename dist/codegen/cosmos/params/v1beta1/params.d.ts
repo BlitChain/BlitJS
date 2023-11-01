@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.params.v1beta1";
 /** ParameterChangeProposal defines a proposal to change one or more parameters. */
 export interface ParameterChangeProposal {
     $typeUrl?: "/cosmos.params.v1beta1.ParameterChangeProposal";

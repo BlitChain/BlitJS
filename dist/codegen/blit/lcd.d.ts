@@ -2,7 +2,7 @@ export declare const createLCDClient: ({ restEndpoint }: {
     restEndpoint: string;
 }) => Promise<{
     blit: {
-        blit: import("./query.lcd").LCDQueryClient;
+        blit: import("./blit/query.lcd").LCDQueryClient;
         script: import("./script/query.lcd").LCDQueryClient;
         storage: import("./storage/query.lcd").LCDQueryClient;
     };
@@ -36,6 +36,9 @@ export declare const createLCDClient: ({ restEndpoint }: {
         };
         mint: {
             v1beta1: import("../cosmos/mint/v1beta1/query.lcd").LCDQueryClient;
+        };
+        nft: {
+            v1beta1: import("../cosmos/nft/v1beta1/query.lcd").LCDQueryClient;
         };
         params: {
             v1beta1: import("../cosmos/params/v1beta1/query.lcd").LCDQueryClient;

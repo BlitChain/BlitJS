@@ -2,6 +2,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "blit.blit";
 /** GenesisState defines the blit module's genesis state. */
 export interface GenesisState {
   /** params defines all the parameters of the module. */

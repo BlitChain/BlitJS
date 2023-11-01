@@ -3,6 +3,7 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Grant, GrantAmino, GrantSDKType } from "./feegrant";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.feegrant.v1beta1";
 /** QueryAllowanceRequest is the request type for the Query/Allowance RPC method. */
 export interface QueryAllowanceRequest {
   /** granter is the address of the user granting an allowance of their funds. */

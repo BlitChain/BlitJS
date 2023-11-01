@@ -52,6 +52,11 @@ export declare const cosmosAminoConverters: {
         toAmino: (message: import("./staking/v1beta1/tx").MsgUndelegate) => import("./staking/v1beta1/tx").MsgUndelegateAmino;
         fromAmino: (object: import("./staking/v1beta1/tx").MsgUndelegateAmino) => import("./staking/v1beta1/tx").MsgUndelegate;
     };
+    "/cosmos.nft.v1beta1.MsgSend": {
+        aminoType: string;
+        toAmino: (message: import("./nft/v1beta1/tx").MsgSend) => import("./nft/v1beta1/tx").MsgSendAmino;
+        fromAmino: (object: import("./nft/v1beta1/tx").MsgSendAmino) => import("./nft/v1beta1/tx").MsgSend;
+    };
     "/cosmos.group.v1.MsgCreateGroup": {
         aminoType: string;
         toAmino: (message: import("./group/v1/tx").MsgCreateGroup) => import("./group/v1/tx").MsgCreateGroupAmino;

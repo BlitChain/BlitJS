@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SendAuthorization = void 0;
+exports.SendAuthorization = exports.protobufPackage = void 0;
 //@ts-nocheck
 const coin_1 = require("../../base/v1beta1/coin");
 const binary_1 = require("../../../binary");
+exports.protobufPackage = "cosmos.bank.v1beta1";
 function createBaseSendAuthorization() {
     return {
         $typeUrl: "/cosmos.bank.v1beta1.SendAuthorization",

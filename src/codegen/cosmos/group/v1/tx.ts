@@ -3,6 +3,7 @@ import { Member, MemberAmino, MemberSDKType, VoteOption, ThresholdDecisionPolicy
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.group.v1";
 /** Exec defines modes of execution of a proposal on creation or on new vote. */
 export enum Exec {
   /**

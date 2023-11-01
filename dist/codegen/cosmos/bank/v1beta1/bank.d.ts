@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.bank.v1beta1";
 /** Params defines the parameters for the bank module. */
 export interface Params {
     send_enabled: SendEnabled[];

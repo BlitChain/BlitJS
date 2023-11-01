@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+export const protobufPackage = "cosmos.base.query.v1beta1";
 /**
  * PageRequest is to be embedded in gRPC request messages for efficient
  * pagination. Ex:

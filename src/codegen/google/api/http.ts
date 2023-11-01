@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "google.api";
 /**
  * Defines the HTTP configuration for an API service. It contains a list of
  * [HttpRule][google.api.HttpRule], each specifying the mapping of an RPC method

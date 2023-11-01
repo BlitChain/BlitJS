@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.params.v1beta1";
 /** ParameterChangeProposal defines a proposal to change one or more parameters. */
 export interface ParameterChangeProposal {
   $typeUrl?: "/cosmos.params.v1beta1.ParameterChangeProposal";

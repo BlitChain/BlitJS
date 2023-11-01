@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
+export const protobufPackage = "blit.script";
 function createBaseParams() {
     return {};
 }

@@ -3,6 +3,7 @@ import { Coin } from "../../base/v1beta1/coin";
 import { Period } from "./vesting";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.vesting.v1beta1";
 function createBaseMsgCreateVestingAccount() {
     return {
         from_address: "",

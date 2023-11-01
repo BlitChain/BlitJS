@@ -3,6 +3,7 @@ import { Any } from "../../../google/protobuf/any";
 import { BasicAllowance, PeriodicAllowance, AllowedMsgAllowance } from "./feegrant";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.feegrant.v1beta1";
 function createBaseMsgGrantAllowance() {
     return {
         granter: "",

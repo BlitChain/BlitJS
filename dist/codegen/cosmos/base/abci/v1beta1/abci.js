@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SearchTxsResult = exports.TxMsgData = exports.MsgData = exports.SimulationResponse = exports.Result = exports.GasInfo = exports.Attribute = exports.StringEvent = exports.ABCIMessageLog = exports.TxResponse = void 0;
+exports.SearchTxsResult = exports.TxMsgData = exports.MsgData = exports.SimulationResponse = exports.Result = exports.GasInfo = exports.Attribute = exports.StringEvent = exports.ABCIMessageLog = exports.TxResponse = exports.protobufPackage = void 0;
 //@ts-nocheck
 const any_1 = require("../../../../google/protobuf/any");
 const types_1 = require("../../../../tendermint/abci/types");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+exports.protobufPackage = "cosmos.base.abci.v1beta1";
 function createBaseTxResponse() {
     return {
         height: BigInt(0),

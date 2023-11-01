@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../binary";
 import { isSet } from "../helpers";
+export const protobufPackage = "cosmos_proto";
 export var ScalarType;
 (function (ScalarType) {
     ScalarType[ScalarType["SCALAR_TYPE_UNSPECIFIED"] = 0] = "SCALAR_TYPE_UNSPECIFIED";

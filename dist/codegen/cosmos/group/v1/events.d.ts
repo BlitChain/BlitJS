@@ -1,5 +1,6 @@
 import { ProposalExecutorResult } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.group.v1";
 /** EventCreateGroup is an event emitted when a group is created. */
 export interface EventCreateGroup {
     /** group_id is the unique ID of the group. */

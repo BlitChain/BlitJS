@@ -2,6 +2,7 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.mint.v1beta1";
 /** Minter represents the minting state. */
 export interface Minter {
   /** current annual inflation rate */

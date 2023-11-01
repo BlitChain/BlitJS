@@ -3,6 +3,7 @@ import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { Period, PeriodAmino, PeriodSDKType } from "./vesting";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.vesting.v1beta1";
 /**
  * MsgCreateVestingAccount defines a message that enables creating a vesting
  * account.

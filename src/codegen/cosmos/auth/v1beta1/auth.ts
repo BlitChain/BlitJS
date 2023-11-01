@@ -2,6 +2,7 @@
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.auth.v1beta1";
 /**
  * BaseAccount defines a base account type. It contains all the necessary fields
  * for basic account functionality. Any custom account type should extend this

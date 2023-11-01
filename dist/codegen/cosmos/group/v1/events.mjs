@@ -2,6 +2,7 @@
 import { proposalExecutorResultFromJSON, proposalExecutorResultToJSON } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.group.v1";
 function createBaseEventCreateGroup() {
     return {
         group_id: BigInt(0)

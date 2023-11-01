@@ -3,6 +3,7 @@ import { SignMode } from "../signing/v1beta1/signing";
 import { CompactBitArray, CompactBitArrayAmino, CompactBitArraySDKType } from "../../crypto/multisig/v1beta1/multisig";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.tx.v1beta1";
 /** Tx is the standard type used for broadcasting transactions. */
 export interface Tx {
     /** body is the processable content of the transaction */

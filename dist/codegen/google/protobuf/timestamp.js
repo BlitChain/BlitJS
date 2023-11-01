@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Timestamp = void 0;
+exports.Timestamp = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+exports.protobufPackage = "google.protobuf";
 function createBaseTimestamp() {
     return {
         seconds: BigInt(0),

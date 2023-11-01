@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.mint.v1beta1";
 /** Minter represents the minting state. */
 export interface Minter {
     /** current annual inflation rate */

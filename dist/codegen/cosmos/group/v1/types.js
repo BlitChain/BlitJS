@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cosmos_groupDecisionPolicy_ToAmino = exports.Cosmos_groupDecisionPolicy_FromAmino = exports.Cosmos_groupDecisionPolicy_InterfaceDecoder = exports.Vote = exports.TallyResult = exports.Proposal = exports.GroupPolicyInfo = exports.GroupMember = exports.GroupInfo = exports.DecisionPolicyWindows = exports.PercentageDecisionPolicy = exports.ThresholdDecisionPolicy = exports.Members = exports.Member = exports.proposalExecutorResultToJSON = exports.proposalExecutorResultFromJSON = exports.ProposalExecutorResultAmino = exports.ProposalExecutorResultSDKType = exports.ProposalExecutorResult = exports.proposalResultToJSON = exports.proposalResultFromJSON = exports.ProposalResultAmino = exports.ProposalResultSDKType = exports.ProposalResult = exports.proposalStatusToJSON = exports.proposalStatusFromJSON = exports.ProposalStatusAmino = exports.ProposalStatusSDKType = exports.ProposalStatus = exports.voteOptionToJSON = exports.voteOptionFromJSON = exports.VoteOptionAmino = exports.VoteOptionSDKType = exports.VoteOption = void 0;
+exports.Cosmos_groupDecisionPolicy_ToAmino = exports.Cosmos_groupDecisionPolicy_FromAmino = exports.Cosmos_groupDecisionPolicy_InterfaceDecoder = exports.Vote = exports.TallyResult = exports.Proposal = exports.GroupPolicyInfo = exports.GroupMember = exports.GroupInfo = exports.DecisionPolicyWindows = exports.PercentageDecisionPolicy = exports.ThresholdDecisionPolicy = exports.Members = exports.Member = exports.proposalExecutorResultToJSON = exports.proposalExecutorResultFromJSON = exports.ProposalExecutorResultAmino = exports.ProposalExecutorResultSDKType = exports.ProposalExecutorResult = exports.proposalResultToJSON = exports.proposalResultFromJSON = exports.ProposalResultAmino = exports.ProposalResultSDKType = exports.ProposalResult = exports.proposalStatusToJSON = exports.proposalStatusFromJSON = exports.ProposalStatusAmino = exports.ProposalStatusSDKType = exports.ProposalStatus = exports.voteOptionToJSON = exports.voteOptionFromJSON = exports.VoteOptionAmino = exports.VoteOptionSDKType = exports.VoteOption = exports.protobufPackage = void 0;
 //@ts-nocheck
 const timestamp_1 = require("../../../google/protobuf/timestamp");
 const duration_1 = require("../../../google/protobuf/duration");
 const any_1 = require("../../../google/protobuf/any");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.group.v1";
 /** VoteOption enumerates the valid vote options for a given proposal. */
 var VoteOption;
 (function (VoteOption) {

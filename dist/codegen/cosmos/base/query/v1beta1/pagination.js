@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PageResponse = exports.PageRequest = void 0;
+exports.PageResponse = exports.PageRequest = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+exports.protobufPackage = "cosmos.base.query.v1beta1";
 function createBasePageRequest() {
     return {
         key: new Uint8Array(),

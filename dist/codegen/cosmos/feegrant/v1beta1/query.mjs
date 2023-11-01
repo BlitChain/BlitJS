@@ -3,6 +3,7 @@ import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { Grant } from "./feegrant";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+export const protobufPackage = "cosmos.feegrant.v1beta1";
 function createBaseQueryAllowanceRequest() {
     return {
         granter: "",

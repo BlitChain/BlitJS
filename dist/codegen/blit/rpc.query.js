@@ -29,7 +29,7 @@ const createGrpcGateWayClient = async ({ endpoint }) => {
     endpoint = endpoint.replace(/\/*$/g, "");
     return {
         blit: {
-            blit: new (await Promise.resolve().then(() => __importStar(require("./query.rpc.Query")))).QueryClientImpl(endpoint),
+            blit: new (await Promise.resolve().then(() => __importStar(require("./blit/query.rpc.Query")))).QueryClientImpl(endpoint),
             script: new (await Promise.resolve().then(() => __importStar(require("./script/query.rpc.Query")))).QueryClientImpl(endpoint),
             storage: new (await Promise.resolve().then(() => __importStar(require("./storage/query.rpc.Query")))).QueryClientImpl(endpoint)
         },
@@ -63,6 +63,9 @@ const createGrpcGateWayClient = async ({ endpoint }) => {
             },
             mint: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/mint/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)
+            },
+            nft: {
+                v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/nft/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)
             },
             params: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/params/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)

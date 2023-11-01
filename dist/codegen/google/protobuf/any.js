@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Any = void 0;
+exports.Any = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+exports.protobufPackage = "google.protobuf";
 function createBaseAny() {
     return {
         $typeUrl: "/google.protobuf.Any",

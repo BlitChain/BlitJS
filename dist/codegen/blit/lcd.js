@@ -32,7 +32,7 @@ const createLCDClient = async ({ restEndpoint }) => {
     });
     return {
         blit: {
-            blit: new (await Promise.resolve().then(() => __importStar(require("./query.lcd")))).LCDQueryClient({
+            blit: new (await Promise.resolve().then(() => __importStar(require("./blit/query.lcd")))).LCDQueryClient({
                 requestClient
             }),
             script: new (await Promise.resolve().then(() => __importStar(require("./script/query.lcd")))).LCDQueryClient({
@@ -90,6 +90,11 @@ const createLCDClient = async ({ restEndpoint }) => {
             },
             mint: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/mint/v1beta1/query.lcd")))).LCDQueryClient({
+                    requestClient
+                })
+            },
+            nft: {
+                v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/nft/v1beta1/query.lcd")))).LCDQueryClient({
                     requestClient
                 })
             },

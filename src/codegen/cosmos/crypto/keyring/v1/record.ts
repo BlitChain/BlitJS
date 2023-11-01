@@ -3,6 +3,7 @@ import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { BIP44Params, BIP44ParamsAmino, BIP44ParamsSDKType } from "../../hd/v1/hd";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+export const protobufPackage = "cosmos.crypto.keyring.v1";
 /** Record is used for representing a key in the keyring. */
 export interface Record {
   /** name represents a name of Record */

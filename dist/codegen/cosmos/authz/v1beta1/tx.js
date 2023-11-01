@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cosmos_authzAuthorization_ToAmino = exports.Cosmos_authzAuthorization_FromAmino = exports.Cosmos_authzAuthorization_InterfaceDecoder = exports.Sdk_Msg_ToAmino = exports.Sdk_Msg_FromAmino = exports.Sdk_Msg_InterfaceDecoder = exports.MsgRevokeResponse = exports.MsgRevoke = exports.MsgGrantResponse = exports.MsgExec = exports.MsgExecResponse = exports.MsgGrant = void 0;
+exports.Cosmos_authzAuthorization_ToAmino = exports.Cosmos_authzAuthorization_FromAmino = exports.Cosmos_authzAuthorization_InterfaceDecoder = exports.Sdk_Msg_ToAmino = exports.Sdk_Msg_FromAmino = exports.Sdk_Msg_InterfaceDecoder = exports.MsgRevokeResponse = exports.MsgRevoke = exports.MsgGrantResponse = exports.MsgExec = exports.MsgExecResponse = exports.MsgGrant = exports.protobufPackage = void 0;
 //@ts-nocheck
 const authz_1 = require("./authz");
 const any_1 = require("../../../google/protobuf/any");
@@ -8,6 +8,7 @@ const authz_2 = require("../../bank/v1beta1/authz");
 const authz_3 = require("../../staking/v1beta1/authz");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.authz.v1beta1";
 function createBaseMsgGrant() {
     return {
         granter: "",

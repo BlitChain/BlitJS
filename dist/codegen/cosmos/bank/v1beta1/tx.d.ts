@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { Input, InputAmino, InputSDKType, Output, OutputAmino, OutputSDKType } from "./bank";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.bank.v1beta1";
 /** MsgSend represents a message to send coins from one account to another. */
 export interface MsgSend {
     from_address: string;

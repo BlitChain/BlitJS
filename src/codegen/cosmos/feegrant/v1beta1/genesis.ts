@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { Grant, GrantAmino, GrantSDKType } from "./feegrant";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export const protobufPackage = "cosmos.feegrant.v1beta1";
 /** GenesisState contains a set of fee allowances, persisted from the store */
 export interface GenesisState {
   allowances: Grant[];

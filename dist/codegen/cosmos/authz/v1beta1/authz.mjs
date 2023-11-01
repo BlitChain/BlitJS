@@ -5,6 +5,7 @@ import { SendAuthorization } from "../../bank/v1beta1/authz";
 import { StakeAuthorization } from "../../staking/v1beta1/authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
+export const protobufPackage = "cosmos.authz.v1beta1";
 function createBaseGenericAuthorization() {
     return {
         $typeUrl: "/cosmos.authz.v1beta1.GenericAuthorization",

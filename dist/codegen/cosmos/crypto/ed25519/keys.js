@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PrivKey = exports.PubKey = void 0;
+exports.PrivKey = exports.PubKey = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.crypto.ed25519";
 function createBasePubKey() {
     return {
         key: new Uint8Array()

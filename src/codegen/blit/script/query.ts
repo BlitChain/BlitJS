@@ -4,6 +4,7 @@ import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Script, ScriptAmino, ScriptSDKType } from "./script";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+export const protobufPackage = "blit.script";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
@@ -180,7 +181,7 @@ export interface QueryWebResponseAminoMsg {
 export interface QueryWebResponseSDKType {
   httpresponse: string;
 }
-export interface QueryEval {
+export interface QueryEvalRequest {
   caller_address: string;
   script_address: string;
   extra_code: string;
@@ -188,15 +189,15 @@ export interface QueryEval {
   kwargs: string;
   grantee: string;
 }
-export interface QueryEvalProtoMsg {
-  type_url: "/blit.script.QueryEval";
+export interface QueryEvalRequestProtoMsg {
+  type_url: "/blit.script.QueryEvalRequest";
   value: Uint8Array;
 }
-export interface QueryEvalProtoMsg {
-  type_url: "/blit.script.QueryEval";
+export interface QueryEvalRequestProtoMsg {
+  type_url: "/blit.script.QueryEvalRequest";
   value: Uint8Array;
 }
-export interface QueryEvalAmino {
+export interface QueryEvalRequestAmino {
   caller_address: string;
   script_address: string;
   extra_code: string;
@@ -204,11 +205,11 @@ export interface QueryEvalAmino {
   kwargs: string;
   grantee: string;
 }
-export interface QueryEvalAminoMsg {
-  type: "/blit.script.QueryEval";
-  value: QueryEvalAmino;
+export interface QueryEvalRequestAminoMsg {
+  type: "/blit.script.QueryEvalRequest";
+  value: QueryEvalRequestAmino;
 }
-export interface QueryEvalSDKType {
+export interface QueryEvalRequestSDKType {
   caller_address: string;
   script_address: string;
   extra_code: string;
@@ -907,7 +908,7 @@ export const QueryWebResponse = {
     };
   }
 };
-function createBaseQueryEval(): QueryEval {
+function createBaseQueryEvalRequest(): QueryEvalRequest {
   return {
     caller_address: "",
     script_address: "",
@@ -917,9 +918,9 @@ function createBaseQueryEval(): QueryEval {
     grantee: ""
   };
 }
-export const QueryEval = {
-  typeUrl: "/blit.script.QueryEval",
-  encode(message: QueryEval, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const QueryEvalRequest = {
+  typeUrl: "/blit.script.QueryEvalRequest",
+  encode(message: QueryEvalRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.caller_address !== "") {
       writer.uint32(18).string(message.caller_address);
     }
@@ -940,10 +941,10 @@ export const QueryEval = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryEval {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryEvalRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryEval();
+    const message = createBaseQueryEvalRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -972,7 +973,7 @@ export const QueryEval = {
     }
     return message;
   },
-  fromJSON(object: any): QueryEval {
+  fromJSON(object: any): QueryEvalRequest {
     return {
       caller_address: isSet(object.caller_address) ? String(object.caller_address) : "",
       script_address: isSet(object.script_address) ? String(object.script_address) : "",
@@ -982,7 +983,7 @@ export const QueryEval = {
       grantee: isSet(object.grantee) ? String(object.grantee) : ""
     };
   },
-  toJSON(message: QueryEval): unknown {
+  toJSON(message: QueryEvalRequest): unknown {
     const obj: any = {};
     message.caller_address !== undefined && (obj.caller_address = message.caller_address);
     message.script_address !== undefined && (obj.script_address = message.script_address);
@@ -992,8 +993,8 @@ export const QueryEval = {
     message.grantee !== undefined && (obj.grantee = message.grantee);
     return obj;
   },
-  fromPartial(object: Partial<QueryEval>): QueryEval {
-    const message = createBaseQueryEval();
+  fromPartial(object: Partial<QueryEvalRequest>): QueryEvalRequest {
+    const message = createBaseQueryEvalRequest();
     message.caller_address = object.caller_address ?? "";
     message.script_address = object.script_address ?? "";
     message.extra_code = object.extra_code ?? "";
@@ -1002,7 +1003,7 @@ export const QueryEval = {
     message.grantee = object.grantee ?? "";
     return message;
   },
-  fromSDK(object: QueryEvalSDKType): QueryEval {
+  fromSDK(object: QueryEvalRequestSDKType): QueryEvalRequest {
     return {
       caller_address: object?.caller_address,
       script_address: object?.script_address,
@@ -1012,7 +1013,7 @@ export const QueryEval = {
       grantee: object?.grantee
     };
   },
-  toSDK(message: QueryEval): QueryEvalSDKType {
+  toSDK(message: QueryEvalRequest): QueryEvalRequestSDKType {
     const obj: any = {};
     obj.caller_address = message.caller_address;
     obj.script_address = message.script_address;
@@ -1022,7 +1023,7 @@ export const QueryEval = {
     obj.grantee = message.grantee;
     return obj;
   },
-  fromAmino(object: QueryEvalAmino): QueryEval {
+  fromAmino(object: QueryEvalRequestAmino): QueryEvalRequest {
     return {
       caller_address: object.caller_address,
       script_address: object.script_address,
@@ -1032,7 +1033,7 @@ export const QueryEval = {
       grantee: object.grantee
     };
   },
-  toAmino(message: QueryEval): QueryEvalAmino {
+  toAmino(message: QueryEvalRequest): QueryEvalRequestAmino {
     const obj: any = {};
     obj.caller_address = message.caller_address;
     obj.script_address = message.script_address;
@@ -1042,19 +1043,19 @@ export const QueryEval = {
     obj.grantee = message.grantee;
     return obj;
   },
-  fromAminoMsg(object: QueryEvalAminoMsg): QueryEval {
-    return QueryEval.fromAmino(object.value);
+  fromAminoMsg(object: QueryEvalRequestAminoMsg): QueryEvalRequest {
+    return QueryEvalRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryEvalProtoMsg): QueryEval {
-    return QueryEval.decode(message.value);
+  fromProtoMsg(message: QueryEvalRequestProtoMsg): QueryEvalRequest {
+    return QueryEvalRequest.decode(message.value);
   },
-  toProto(message: QueryEval): Uint8Array {
-    return QueryEval.encode(message).finish();
+  toProto(message: QueryEvalRequest): Uint8Array {
+    return QueryEvalRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryEval): QueryEvalProtoMsg {
+  toProtoMsg(message: QueryEvalRequest): QueryEvalRequestProtoMsg {
     return {
-      typeUrl: "/blit.script.QueryEval",
-      value: QueryEval.encode(message).finish()
+      typeUrl: "/blit.script.QueryEvalRequest",
+      value: QueryEvalRequest.encode(message).finish()
     };
   }
 };

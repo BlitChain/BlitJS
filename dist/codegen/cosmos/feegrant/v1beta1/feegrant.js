@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cosmos_feegrantFeeAllowanceI_ToAmino = exports.Cosmos_feegrantFeeAllowanceI_FromAmino = exports.Cosmos_feegrantFeeAllowanceI_InterfaceDecoder = exports.Grant = exports.AllowedMsgAllowance = exports.PeriodicAllowance = exports.BasicAllowance = void 0;
+exports.Cosmos_feegrantFeeAllowanceI_ToAmino = exports.Cosmos_feegrantFeeAllowanceI_FromAmino = exports.Cosmos_feegrantFeeAllowanceI_InterfaceDecoder = exports.Grant = exports.AllowedMsgAllowance = exports.PeriodicAllowance = exports.BasicAllowance = exports.protobufPackage = void 0;
 //@ts-nocheck
 const coin_1 = require("../../base/v1beta1/coin");
 const timestamp_1 = require("../../../google/protobuf/timestamp");
@@ -8,6 +8,7 @@ const duration_1 = require("../../../google/protobuf/duration");
 const any_1 = require("../../../google/protobuf/any");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+exports.protobufPackage = "cosmos.feegrant.v1beta1";
 function createBaseBasicAllowance() {
     return {
         $typeUrl: "/cosmos.feegrant.v1beta1.BasicAllowance",

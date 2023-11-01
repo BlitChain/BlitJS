@@ -1,6 +1,7 @@
 import { BaseAccount, BaseAccountAmino, BaseAccountSDKType } from "../../auth/v1beta1/auth";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+export declare const protobufPackage = "cosmos.vesting.v1beta1";
 /**
  * BaseVestingAccount implements the VestingAccount interface. It contains all
  * the necessary fields needed for any vesting account implementation.
