@@ -1,2 +1,2 @@
-import * as blitjs from './codegen/index.js';
+import * as blitjs from './codegen';
 export default blitjs;
