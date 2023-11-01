@@ -50,90 +50,90 @@ export interface QueryParamsResponseAminoMsg {
 export interface QueryParamsResponseSDKType {
     params: ParamsSDKType;
 }
-export interface QueryGetScriptRequest {
+export interface QueryScriptRequest {
     address: string;
 }
-export interface QueryGetScriptRequestProtoMsg {
-    type_url: "/blit.script.QueryGetScriptRequest";
+export interface QueryScriptRequestProtoMsg {
+    type_url: "/blit.script.QueryScriptRequest";
     value: Uint8Array;
 }
-export interface QueryGetScriptRequestProtoMsg {
-    type_url: "/blit.script.QueryGetScriptRequest";
+export interface QueryScriptRequestProtoMsg {
+    type_url: "/blit.script.QueryScriptRequest";
     value: Uint8Array;
 }
-export interface QueryGetScriptRequestAmino {
+export interface QueryScriptRequestAmino {
     address: string;
 }
-export interface QueryGetScriptRequestAminoMsg {
-    type: "/blit.script.QueryGetScriptRequest";
-    value: QueryGetScriptRequestAmino;
+export interface QueryScriptRequestAminoMsg {
+    type: "/blit.script.QueryScriptRequest";
+    value: QueryScriptRequestAmino;
 }
-export interface QueryGetScriptRequestSDKType {
+export interface QueryScriptRequestSDKType {
     address: string;
 }
-export interface QueryGetScriptResponse {
+export interface QueryScriptResponse {
     script: Script;
 }
-export interface QueryGetScriptResponseProtoMsg {
-    type_url: "/blit.script.QueryGetScriptResponse";
+export interface QueryScriptResponseProtoMsg {
+    type_url: "/blit.script.QueryScriptResponse";
     value: Uint8Array;
 }
-export interface QueryGetScriptResponseProtoMsg {
-    type_url: "/blit.script.QueryGetScriptResponse";
+export interface QueryScriptResponseProtoMsg {
+    type_url: "/blit.script.QueryScriptResponse";
     value: Uint8Array;
 }
-export interface QueryGetScriptResponseAmino {
+export interface QueryScriptResponseAmino {
     script?: ScriptAmino;
 }
-export interface QueryGetScriptResponseAminoMsg {
-    type: "/blit.script.QueryGetScriptResponse";
-    value: QueryGetScriptResponseAmino;
+export interface QueryScriptResponseAminoMsg {
+    type: "/blit.script.QueryScriptResponse";
+    value: QueryScriptResponseAmino;
 }
-export interface QueryGetScriptResponseSDKType {
+export interface QueryScriptResponseSDKType {
     script: ScriptSDKType;
 }
-export interface QueryAllScriptRequest {
+export interface QueryScriptsRequest {
     pagination?: PageRequest;
 }
-export interface QueryAllScriptRequestProtoMsg {
-    type_url: "/blit.script.QueryAllScriptRequest";
+export interface QueryScriptsRequestProtoMsg {
+    type_url: "/blit.script.QueryScriptsRequest";
     value: Uint8Array;
 }
-export interface QueryAllScriptRequestProtoMsg {
-    type_url: "/blit.script.QueryAllScriptRequest";
+export interface QueryScriptsRequestProtoMsg {
+    type_url: "/blit.script.QueryScriptsRequest";
     value: Uint8Array;
 }
-export interface QueryAllScriptRequestAmino {
+export interface QueryScriptsRequestAmino {
     pagination?: PageRequestAmino;
 }
-export interface QueryAllScriptRequestAminoMsg {
-    type: "/blit.script.QueryAllScriptRequest";
-    value: QueryAllScriptRequestAmino;
+export interface QueryScriptsRequestAminoMsg {
+    type: "/blit.script.QueryScriptsRequest";
+    value: QueryScriptsRequestAmino;
 }
-export interface QueryAllScriptRequestSDKType {
+export interface QueryScriptsRequestSDKType {
     pagination?: PageRequestSDKType;
 }
-export interface QueryAllScriptResponse {
+export interface QueryScriptsResponse {
     script: Script[];
     pagination?: PageResponse;
 }
-export interface QueryAllScriptResponseProtoMsg {
-    type_url: "/blit.script.QueryAllScriptResponse";
+export interface QueryScriptsResponseProtoMsg {
+    type_url: "/blit.script.QueryScriptsResponse";
     value: Uint8Array;
 }
-export interface QueryAllScriptResponseProtoMsg {
-    type_url: "/blit.script.QueryAllScriptResponse";
+export interface QueryScriptsResponseProtoMsg {
+    type_url: "/blit.script.QueryScriptsResponse";
     value: Uint8Array;
 }
-export interface QueryAllScriptResponseAmino {
+export interface QueryScriptsResponseAmino {
     script: ScriptAmino[];
     pagination?: PageResponseAmino;
 }
-export interface QueryAllScriptResponseAminoMsg {
-    type: "/blit.script.QueryAllScriptResponse";
-    value: QueryAllScriptResponseAmino;
+export interface QueryScriptsResponseAminoMsg {
+    type: "/blit.script.QueryScriptsResponse";
+    value: QueryScriptsResponseAmino;
 }
-export interface QueryAllScriptResponseSDKType {
+export interface QueryScriptsResponseSDKType {
     script: ScriptSDKType[];
     pagination?: PageResponseSDKType;
 }
@@ -271,69 +271,69 @@ export declare const QueryParamsResponse: {
     toProto(message: QueryParamsResponse): Uint8Array;
     toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg;
 };
-export declare const QueryGetScriptRequest: {
+export declare const QueryScriptRequest: {
     typeUrl: string;
-    encode(message: QueryGetScriptRequest, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetScriptRequest;
-    fromJSON(object: any): QueryGetScriptRequest;
-    toJSON(message: QueryGetScriptRequest): unknown;
-    fromPartial(object: Partial<QueryGetScriptRequest>): QueryGetScriptRequest;
-    fromSDK(object: QueryGetScriptRequestSDKType): QueryGetScriptRequest;
-    toSDK(message: QueryGetScriptRequest): QueryGetScriptRequestSDKType;
-    fromAmino(object: QueryGetScriptRequestAmino): QueryGetScriptRequest;
-    toAmino(message: QueryGetScriptRequest): QueryGetScriptRequestAmino;
-    fromAminoMsg(object: QueryGetScriptRequestAminoMsg): QueryGetScriptRequest;
-    fromProtoMsg(message: QueryGetScriptRequestProtoMsg): QueryGetScriptRequest;
-    toProto(message: QueryGetScriptRequest): Uint8Array;
-    toProtoMsg(message: QueryGetScriptRequest): QueryGetScriptRequestProtoMsg;
+    encode(message: QueryScriptRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryScriptRequest;
+    fromJSON(object: any): QueryScriptRequest;
+    toJSON(message: QueryScriptRequest): unknown;
+    fromPartial(object: Partial<QueryScriptRequest>): QueryScriptRequest;
+    fromSDK(object: QueryScriptRequestSDKType): QueryScriptRequest;
+    toSDK(message: QueryScriptRequest): QueryScriptRequestSDKType;
+    fromAmino(object: QueryScriptRequestAmino): QueryScriptRequest;
+    toAmino(message: QueryScriptRequest): QueryScriptRequestAmino;
+    fromAminoMsg(object: QueryScriptRequestAminoMsg): QueryScriptRequest;
+    fromProtoMsg(message: QueryScriptRequestProtoMsg): QueryScriptRequest;
+    toProto(message: QueryScriptRequest): Uint8Array;
+    toProtoMsg(message: QueryScriptRequest): QueryScriptRequestProtoMsg;
 };
-export declare const QueryGetScriptResponse: {
+export declare const QueryScriptResponse: {
     typeUrl: string;
-    encode(message: QueryGetScriptResponse, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetScriptResponse;
-    fromJSON(object: any): QueryGetScriptResponse;
-    toJSON(message: QueryGetScriptResponse): unknown;
-    fromPartial(object: Partial<QueryGetScriptResponse>): QueryGetScriptResponse;
-    fromSDK(object: QueryGetScriptResponseSDKType): QueryGetScriptResponse;
-    toSDK(message: QueryGetScriptResponse): QueryGetScriptResponseSDKType;
-    fromAmino(object: QueryGetScriptResponseAmino): QueryGetScriptResponse;
-    toAmino(message: QueryGetScriptResponse): QueryGetScriptResponseAmino;
-    fromAminoMsg(object: QueryGetScriptResponseAminoMsg): QueryGetScriptResponse;
-    fromProtoMsg(message: QueryGetScriptResponseProtoMsg): QueryGetScriptResponse;
-    toProto(message: QueryGetScriptResponse): Uint8Array;
-    toProtoMsg(message: QueryGetScriptResponse): QueryGetScriptResponseProtoMsg;
+    encode(message: QueryScriptResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryScriptResponse;
+    fromJSON(object: any): QueryScriptResponse;
+    toJSON(message: QueryScriptResponse): unknown;
+    fromPartial(object: Partial<QueryScriptResponse>): QueryScriptResponse;
+    fromSDK(object: QueryScriptResponseSDKType): QueryScriptResponse;
+    toSDK(message: QueryScriptResponse): QueryScriptResponseSDKType;
+    fromAmino(object: QueryScriptResponseAmino): QueryScriptResponse;
+    toAmino(message: QueryScriptResponse): QueryScriptResponseAmino;
+    fromAminoMsg(object: QueryScriptResponseAminoMsg): QueryScriptResponse;
+    fromProtoMsg(message: QueryScriptResponseProtoMsg): QueryScriptResponse;
+    toProto(message: QueryScriptResponse): Uint8Array;
+    toProtoMsg(message: QueryScriptResponse): QueryScriptResponseProtoMsg;
 };
-export declare const QueryAllScriptRequest: {
+export declare const QueryScriptsRequest: {
     typeUrl: string;
-    encode(message: QueryAllScriptRequest, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryAllScriptRequest;
-    fromJSON(object: any): QueryAllScriptRequest;
-    toJSON(message: QueryAllScriptRequest): unknown;
-    fromPartial(object: Partial<QueryAllScriptRequest>): QueryAllScriptRequest;
-    fromSDK(object: QueryAllScriptRequestSDKType): QueryAllScriptRequest;
-    toSDK(message: QueryAllScriptRequest): QueryAllScriptRequestSDKType;
-    fromAmino(object: QueryAllScriptRequestAmino): QueryAllScriptRequest;
-    toAmino(message: QueryAllScriptRequest): QueryAllScriptRequestAmino;
-    fromAminoMsg(object: QueryAllScriptRequestAminoMsg): QueryAllScriptRequest;
-    fromProtoMsg(message: QueryAllScriptRequestProtoMsg): QueryAllScriptRequest;
-    toProto(message: QueryAllScriptRequest): Uint8Array;
-    toProtoMsg(message: QueryAllScriptRequest): QueryAllScriptRequestProtoMsg;
+    encode(message: QueryScriptsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryScriptsRequest;
+    fromJSON(object: any): QueryScriptsRequest;
+    toJSON(message: QueryScriptsRequest): unknown;
+    fromPartial(object: Partial<QueryScriptsRequest>): QueryScriptsRequest;
+    fromSDK(object: QueryScriptsRequestSDKType): QueryScriptsRequest;
+    toSDK(message: QueryScriptsRequest): QueryScriptsRequestSDKType;
+    fromAmino(object: QueryScriptsRequestAmino): QueryScriptsRequest;
+    toAmino(message: QueryScriptsRequest): QueryScriptsRequestAmino;
+    fromAminoMsg(object: QueryScriptsRequestAminoMsg): QueryScriptsRequest;
+    fromProtoMsg(message: QueryScriptsRequestProtoMsg): QueryScriptsRequest;
+    toProto(message: QueryScriptsRequest): Uint8Array;
+    toProtoMsg(message: QueryScriptsRequest): QueryScriptsRequestProtoMsg;
 };
-export declare const QueryAllScriptResponse: {
+export declare const QueryScriptsResponse: {
     typeUrl: string;
-    encode(message: QueryAllScriptResponse, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryAllScriptResponse;
-    fromJSON(object: any): QueryAllScriptResponse;
-    toJSON(message: QueryAllScriptResponse): unknown;
-    fromPartial(object: Partial<QueryAllScriptResponse>): QueryAllScriptResponse;
-    fromSDK(object: QueryAllScriptResponseSDKType): QueryAllScriptResponse;
-    toSDK(message: QueryAllScriptResponse): QueryAllScriptResponseSDKType;
-    fromAmino(object: QueryAllScriptResponseAmino): QueryAllScriptResponse;
-    toAmino(message: QueryAllScriptResponse): QueryAllScriptResponseAmino;
-    fromAminoMsg(object: QueryAllScriptResponseAminoMsg): QueryAllScriptResponse;
-    fromProtoMsg(message: QueryAllScriptResponseProtoMsg): QueryAllScriptResponse;
-    toProto(message: QueryAllScriptResponse): Uint8Array;
-    toProtoMsg(message: QueryAllScriptResponse): QueryAllScriptResponseProtoMsg;
+    encode(message: QueryScriptsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryScriptsResponse;
+    fromJSON(object: any): QueryScriptsResponse;
+    toJSON(message: QueryScriptsResponse): unknown;
+    fromPartial(object: Partial<QueryScriptsResponse>): QueryScriptsResponse;
+    fromSDK(object: QueryScriptsResponseSDKType): QueryScriptsResponse;
+    toSDK(message: QueryScriptsResponse): QueryScriptsResponseSDKType;
+    fromAmino(object: QueryScriptsResponseAmino): QueryScriptsResponse;
+    toAmino(message: QueryScriptsResponse): QueryScriptsResponseAmino;
+    fromAminoMsg(object: QueryScriptsResponseAminoMsg): QueryScriptsResponse;
+    fromProtoMsg(message: QueryScriptsResponseProtoMsg): QueryScriptsResponse;
+    toProto(message: QueryScriptsResponse): Uint8Array;
+    toProtoMsg(message: QueryScriptsResponse): QueryScriptsResponseProtoMsg;
 };
 export declare const QueryWebRequest: {
     typeUrl: string;

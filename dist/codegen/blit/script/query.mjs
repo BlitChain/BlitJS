@@ -149,13 +149,13 @@ export const QueryParamsResponse = {
         };
     }
 };
-function createBaseQueryGetScriptRequest() {
+function createBaseQueryScriptRequest() {
     return {
         address: ""
     };
 }
-export const QueryGetScriptRequest = {
-    typeUrl: "/blit.script.QueryGetScriptRequest",
+export const QueryScriptRequest = {
+    typeUrl: "/blit.script.QueryScriptRequest",
     encode(message, writer = BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -165,7 +165,7 @@ export const QueryGetScriptRequest = {
     decode(input, length) {
         const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseQueryGetScriptRequest();
+        const message = createBaseQueryScriptRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -190,7 +190,7 @@ export const QueryGetScriptRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = createBaseQueryGetScriptRequest();
+        const message = createBaseQueryScriptRequest();
         message.address = object.address ?? "";
         return message;
     },
@@ -215,28 +215,28 @@ export const QueryGetScriptRequest = {
         return obj;
     },
     fromAminoMsg(object) {
-        return QueryGetScriptRequest.fromAmino(object.value);
+        return QueryScriptRequest.fromAmino(object.value);
     },
     fromProtoMsg(message) {
-        return QueryGetScriptRequest.decode(message.value);
+        return QueryScriptRequest.decode(message.value);
     },
     toProto(message) {
-        return QueryGetScriptRequest.encode(message).finish();
+        return QueryScriptRequest.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/blit.script.QueryGetScriptRequest",
-            value: QueryGetScriptRequest.encode(message).finish()
+            typeUrl: "/blit.script.QueryScriptRequest",
+            value: QueryScriptRequest.encode(message).finish()
         };
     }
 };
-function createBaseQueryGetScriptResponse() {
+function createBaseQueryScriptResponse() {
     return {
         script: Script.fromPartial({})
     };
 }
-export const QueryGetScriptResponse = {
-    typeUrl: "/blit.script.QueryGetScriptResponse",
+export const QueryScriptResponse = {
+    typeUrl: "/blit.script.QueryScriptResponse",
     encode(message, writer = BinaryWriter.create()) {
         if (message.script !== undefined) {
             Script.encode(message.script, writer.uint32(10).fork()).ldelim();
@@ -246,7 +246,7 @@ export const QueryGetScriptResponse = {
     decode(input, length) {
         const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseQueryGetScriptResponse();
+        const message = createBaseQueryScriptResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -271,7 +271,7 @@ export const QueryGetScriptResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = createBaseQueryGetScriptResponse();
+        const message = createBaseQueryScriptResponse();
         message.script = object.script !== undefined && object.script !== null ? Script.fromPartial(object.script) : undefined;
         return message;
     },
@@ -296,28 +296,28 @@ export const QueryGetScriptResponse = {
         return obj;
     },
     fromAminoMsg(object) {
-        return QueryGetScriptResponse.fromAmino(object.value);
+        return QueryScriptResponse.fromAmino(object.value);
     },
     fromProtoMsg(message) {
-        return QueryGetScriptResponse.decode(message.value);
+        return QueryScriptResponse.decode(message.value);
     },
     toProto(message) {
-        return QueryGetScriptResponse.encode(message).finish();
+        return QueryScriptResponse.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/blit.script.QueryGetScriptResponse",
-            value: QueryGetScriptResponse.encode(message).finish()
+            typeUrl: "/blit.script.QueryScriptResponse",
+            value: QueryScriptResponse.encode(message).finish()
         };
     }
 };
-function createBaseQueryAllScriptRequest() {
+function createBaseQueryScriptsRequest() {
     return {
         pagination: undefined
     };
 }
-export const QueryAllScriptRequest = {
-    typeUrl: "/blit.script.QueryAllScriptRequest",
+export const QueryScriptsRequest = {
+    typeUrl: "/blit.script.QueryScriptsRequest",
     encode(message, writer = BinaryWriter.create()) {
         if (message.pagination !== undefined) {
             PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -327,7 +327,7 @@ export const QueryAllScriptRequest = {
     decode(input, length) {
         const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseQueryAllScriptRequest();
+        const message = createBaseQueryScriptsRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -352,7 +352,7 @@ export const QueryAllScriptRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = createBaseQueryAllScriptRequest();
+        const message = createBaseQueryScriptsRequest();
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
     },
@@ -377,29 +377,29 @@ export const QueryAllScriptRequest = {
         return obj;
     },
     fromAminoMsg(object) {
-        return QueryAllScriptRequest.fromAmino(object.value);
+        return QueryScriptsRequest.fromAmino(object.value);
     },
     fromProtoMsg(message) {
-        return QueryAllScriptRequest.decode(message.value);
+        return QueryScriptsRequest.decode(message.value);
     },
     toProto(message) {
-        return QueryAllScriptRequest.encode(message).finish();
+        return QueryScriptsRequest.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/blit.script.QueryAllScriptRequest",
-            value: QueryAllScriptRequest.encode(message).finish()
+            typeUrl: "/blit.script.QueryScriptsRequest",
+            value: QueryScriptsRequest.encode(message).finish()
         };
     }
 };
-function createBaseQueryAllScriptResponse() {
+function createBaseQueryScriptsResponse() {
     return {
         script: [],
         pagination: undefined
     };
 }
-export const QueryAllScriptResponse = {
-    typeUrl: "/blit.script.QueryAllScriptResponse",
+export const QueryScriptsResponse = {
+    typeUrl: "/blit.script.QueryScriptsResponse",
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.script) {
             Script.encode(v, writer.uint32(10).fork()).ldelim();
@@ -412,7 +412,7 @@ export const QueryAllScriptResponse = {
     decode(input, length) {
         const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseQueryAllScriptResponse();
+        const message = createBaseQueryScriptsResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -447,7 +447,7 @@ export const QueryAllScriptResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = createBaseQueryAllScriptResponse();
+        const message = createBaseQueryScriptsResponse();
         message.script = object.script?.map(e => Script.fromPartial(e)) || [];
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
@@ -487,18 +487,18 @@ export const QueryAllScriptResponse = {
         return obj;
     },
     fromAminoMsg(object) {
-        return QueryAllScriptResponse.fromAmino(object.value);
+        return QueryScriptsResponse.fromAmino(object.value);
     },
     fromProtoMsg(message) {
-        return QueryAllScriptResponse.decode(message.value);
+        return QueryScriptsResponse.decode(message.value);
     },
     toProto(message) {
-        return QueryAllScriptResponse.encode(message).finish();
+        return QueryScriptsResponse.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/blit.script.QueryAllScriptResponse",
-            value: QueryAllScriptResponse.encode(message).finish()
+            typeUrl: "/blit.script.QueryScriptsResponse",
+            value: QueryScriptsResponse.encode(message).finish()
         };
     }
 };

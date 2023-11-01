@@ -49,90 +49,90 @@ export interface QueryParamsResponseAminoMsg {
 export interface QueryParamsResponseSDKType {
   params: ParamsSDKType;
 }
-export interface QueryGetScriptRequest {
+export interface QueryScriptRequest {
   address: string;
 }
-export interface QueryGetScriptRequestProtoMsg {
-  type_url: "/blit.script.QueryGetScriptRequest";
+export interface QueryScriptRequestProtoMsg {
+  type_url: "/blit.script.QueryScriptRequest";
   value: Uint8Array;
 }
-export interface QueryGetScriptRequestProtoMsg {
-  type_url: "/blit.script.QueryGetScriptRequest";
+export interface QueryScriptRequestProtoMsg {
+  type_url: "/blit.script.QueryScriptRequest";
   value: Uint8Array;
 }
-export interface QueryGetScriptRequestAmino {
+export interface QueryScriptRequestAmino {
   address: string;
 }
-export interface QueryGetScriptRequestAminoMsg {
-  type: "/blit.script.QueryGetScriptRequest";
-  value: QueryGetScriptRequestAmino;
+export interface QueryScriptRequestAminoMsg {
+  type: "/blit.script.QueryScriptRequest";
+  value: QueryScriptRequestAmino;
 }
-export interface QueryGetScriptRequestSDKType {
+export interface QueryScriptRequestSDKType {
   address: string;
 }
-export interface QueryGetScriptResponse {
+export interface QueryScriptResponse {
   script: Script;
 }
-export interface QueryGetScriptResponseProtoMsg {
-  type_url: "/blit.script.QueryGetScriptResponse";
+export interface QueryScriptResponseProtoMsg {
+  type_url: "/blit.script.QueryScriptResponse";
   value: Uint8Array;
 }
-export interface QueryGetScriptResponseProtoMsg {
-  type_url: "/blit.script.QueryGetScriptResponse";
+export interface QueryScriptResponseProtoMsg {
+  type_url: "/blit.script.QueryScriptResponse";
   value: Uint8Array;
 }
-export interface QueryGetScriptResponseAmino {
+export interface QueryScriptResponseAmino {
   script?: ScriptAmino;
 }
-export interface QueryGetScriptResponseAminoMsg {
-  type: "/blit.script.QueryGetScriptResponse";
-  value: QueryGetScriptResponseAmino;
+export interface QueryScriptResponseAminoMsg {
+  type: "/blit.script.QueryScriptResponse";
+  value: QueryScriptResponseAmino;
 }
-export interface QueryGetScriptResponseSDKType {
+export interface QueryScriptResponseSDKType {
   script: ScriptSDKType;
 }
-export interface QueryAllScriptRequest {
+export interface QueryScriptsRequest {
   pagination?: PageRequest;
 }
-export interface QueryAllScriptRequestProtoMsg {
-  type_url: "/blit.script.QueryAllScriptRequest";
+export interface QueryScriptsRequestProtoMsg {
+  type_url: "/blit.script.QueryScriptsRequest";
   value: Uint8Array;
 }
-export interface QueryAllScriptRequestProtoMsg {
-  type_url: "/blit.script.QueryAllScriptRequest";
+export interface QueryScriptsRequestProtoMsg {
+  type_url: "/blit.script.QueryScriptsRequest";
   value: Uint8Array;
 }
-export interface QueryAllScriptRequestAmino {
+export interface QueryScriptsRequestAmino {
   pagination?: PageRequestAmino;
 }
-export interface QueryAllScriptRequestAminoMsg {
-  type: "/blit.script.QueryAllScriptRequest";
-  value: QueryAllScriptRequestAmino;
+export interface QueryScriptsRequestAminoMsg {
+  type: "/blit.script.QueryScriptsRequest";
+  value: QueryScriptsRequestAmino;
 }
-export interface QueryAllScriptRequestSDKType {
+export interface QueryScriptsRequestSDKType {
   pagination?: PageRequestSDKType;
 }
-export interface QueryAllScriptResponse {
+export interface QueryScriptsResponse {
   script: Script[];
   pagination?: PageResponse;
 }
-export interface QueryAllScriptResponseProtoMsg {
-  type_url: "/blit.script.QueryAllScriptResponse";
+export interface QueryScriptsResponseProtoMsg {
+  type_url: "/blit.script.QueryScriptsResponse";
   value: Uint8Array;
 }
-export interface QueryAllScriptResponseProtoMsg {
-  type_url: "/blit.script.QueryAllScriptResponse";
+export interface QueryScriptsResponseProtoMsg {
+  type_url: "/blit.script.QueryScriptsResponse";
   value: Uint8Array;
 }
-export interface QueryAllScriptResponseAmino {
+export interface QueryScriptsResponseAmino {
   script: ScriptAmino[];
   pagination?: PageResponseAmino;
 }
-export interface QueryAllScriptResponseAminoMsg {
-  type: "/blit.script.QueryAllScriptResponse";
-  value: QueryAllScriptResponseAmino;
+export interface QueryScriptsResponseAminoMsg {
+  type: "/blit.script.QueryScriptsResponse";
+  value: QueryScriptsResponseAmino;
 }
-export interface QueryAllScriptResponseSDKType {
+export interface QueryScriptsResponseSDKType {
   script: ScriptSDKType[];
   pagination?: PageResponseSDKType;
 }
@@ -382,23 +382,23 @@ export const QueryParamsResponse = {
     };
   }
 };
-function createBaseQueryGetScriptRequest(): QueryGetScriptRequest {
+function createBaseQueryScriptRequest(): QueryScriptRequest {
   return {
     address: ""
   };
 }
-export const QueryGetScriptRequest = {
-  typeUrl: "/blit.script.QueryGetScriptRequest",
-  encode(message: QueryGetScriptRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const QueryScriptRequest = {
+  typeUrl: "/blit.script.QueryScriptRequest",
+  encode(message: QueryScriptRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetScriptRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryScriptRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryGetScriptRequest();
+    const message = createBaseQueryScriptRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -412,74 +412,74 @@ export const QueryGetScriptRequest = {
     }
     return message;
   },
-  fromJSON(object: any): QueryGetScriptRequest {
+  fromJSON(object: any): QueryScriptRequest {
     return {
       address: isSet(object.address) ? String(object.address) : ""
     };
   },
-  toJSON(message: QueryGetScriptRequest): unknown {
+  toJSON(message: QueryScriptRequest): unknown {
     const obj: any = {};
     message.address !== undefined && (obj.address = message.address);
     return obj;
   },
-  fromPartial(object: Partial<QueryGetScriptRequest>): QueryGetScriptRequest {
-    const message = createBaseQueryGetScriptRequest();
+  fromPartial(object: Partial<QueryScriptRequest>): QueryScriptRequest {
+    const message = createBaseQueryScriptRequest();
     message.address = object.address ?? "";
     return message;
   },
-  fromSDK(object: QueryGetScriptRequestSDKType): QueryGetScriptRequest {
+  fromSDK(object: QueryScriptRequestSDKType): QueryScriptRequest {
     return {
       address: object?.address
     };
   },
-  toSDK(message: QueryGetScriptRequest): QueryGetScriptRequestSDKType {
+  toSDK(message: QueryScriptRequest): QueryScriptRequestSDKType {
     const obj: any = {};
     obj.address = message.address;
     return obj;
   },
-  fromAmino(object: QueryGetScriptRequestAmino): QueryGetScriptRequest {
+  fromAmino(object: QueryScriptRequestAmino): QueryScriptRequest {
     return {
       address: object.address
     };
   },
-  toAmino(message: QueryGetScriptRequest): QueryGetScriptRequestAmino {
+  toAmino(message: QueryScriptRequest): QueryScriptRequestAmino {
     const obj: any = {};
     obj.address = message.address;
     return obj;
   },
-  fromAminoMsg(object: QueryGetScriptRequestAminoMsg): QueryGetScriptRequest {
-    return QueryGetScriptRequest.fromAmino(object.value);
+  fromAminoMsg(object: QueryScriptRequestAminoMsg): QueryScriptRequest {
+    return QueryScriptRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryGetScriptRequestProtoMsg): QueryGetScriptRequest {
-    return QueryGetScriptRequest.decode(message.value);
+  fromProtoMsg(message: QueryScriptRequestProtoMsg): QueryScriptRequest {
+    return QueryScriptRequest.decode(message.value);
   },
-  toProto(message: QueryGetScriptRequest): Uint8Array {
-    return QueryGetScriptRequest.encode(message).finish();
+  toProto(message: QueryScriptRequest): Uint8Array {
+    return QueryScriptRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryGetScriptRequest): QueryGetScriptRequestProtoMsg {
+  toProtoMsg(message: QueryScriptRequest): QueryScriptRequestProtoMsg {
     return {
-      typeUrl: "/blit.script.QueryGetScriptRequest",
-      value: QueryGetScriptRequest.encode(message).finish()
+      typeUrl: "/blit.script.QueryScriptRequest",
+      value: QueryScriptRequest.encode(message).finish()
     };
   }
 };
-function createBaseQueryGetScriptResponse(): QueryGetScriptResponse {
+function createBaseQueryScriptResponse(): QueryScriptResponse {
   return {
     script: Script.fromPartial({})
   };
 }
-export const QueryGetScriptResponse = {
-  typeUrl: "/blit.script.QueryGetScriptResponse",
-  encode(message: QueryGetScriptResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const QueryScriptResponse = {
+  typeUrl: "/blit.script.QueryScriptResponse",
+  encode(message: QueryScriptResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.script !== undefined) {
       Script.encode(message.script, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryGetScriptResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryScriptResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryGetScriptResponse();
+    const message = createBaseQueryScriptResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -493,74 +493,74 @@ export const QueryGetScriptResponse = {
     }
     return message;
   },
-  fromJSON(object: any): QueryGetScriptResponse {
+  fromJSON(object: any): QueryScriptResponse {
     return {
       script: isSet(object.script) ? Script.fromJSON(object.script) : undefined
     };
   },
-  toJSON(message: QueryGetScriptResponse): unknown {
+  toJSON(message: QueryScriptResponse): unknown {
     const obj: any = {};
     message.script !== undefined && (obj.script = message.script ? Script.toJSON(message.script) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<QueryGetScriptResponse>): QueryGetScriptResponse {
-    const message = createBaseQueryGetScriptResponse();
+  fromPartial(object: Partial<QueryScriptResponse>): QueryScriptResponse {
+    const message = createBaseQueryScriptResponse();
     message.script = object.script !== undefined && object.script !== null ? Script.fromPartial(object.script) : undefined;
     return message;
   },
-  fromSDK(object: QueryGetScriptResponseSDKType): QueryGetScriptResponse {
+  fromSDK(object: QueryScriptResponseSDKType): QueryScriptResponse {
     return {
       script: object.script ? Script.fromSDK(object.script) : undefined
     };
   },
-  toSDK(message: QueryGetScriptResponse): QueryGetScriptResponseSDKType {
+  toSDK(message: QueryScriptResponse): QueryScriptResponseSDKType {
     const obj: any = {};
     message.script !== undefined && (obj.script = message.script ? Script.toSDK(message.script) : undefined);
     return obj;
   },
-  fromAmino(object: QueryGetScriptResponseAmino): QueryGetScriptResponse {
+  fromAmino(object: QueryScriptResponseAmino): QueryScriptResponse {
     return {
       script: object?.script ? Script.fromAmino(object.script) : undefined
     };
   },
-  toAmino(message: QueryGetScriptResponse): QueryGetScriptResponseAmino {
+  toAmino(message: QueryScriptResponse): QueryScriptResponseAmino {
     const obj: any = {};
     obj.script = message.script ? Script.toAmino(message.script) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryGetScriptResponseAminoMsg): QueryGetScriptResponse {
-    return QueryGetScriptResponse.fromAmino(object.value);
+  fromAminoMsg(object: QueryScriptResponseAminoMsg): QueryScriptResponse {
+    return QueryScriptResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryGetScriptResponseProtoMsg): QueryGetScriptResponse {
-    return QueryGetScriptResponse.decode(message.value);
+  fromProtoMsg(message: QueryScriptResponseProtoMsg): QueryScriptResponse {
+    return QueryScriptResponse.decode(message.value);
   },
-  toProto(message: QueryGetScriptResponse): Uint8Array {
-    return QueryGetScriptResponse.encode(message).finish();
+  toProto(message: QueryScriptResponse): Uint8Array {
+    return QueryScriptResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryGetScriptResponse): QueryGetScriptResponseProtoMsg {
+  toProtoMsg(message: QueryScriptResponse): QueryScriptResponseProtoMsg {
     return {
-      typeUrl: "/blit.script.QueryGetScriptResponse",
-      value: QueryGetScriptResponse.encode(message).finish()
+      typeUrl: "/blit.script.QueryScriptResponse",
+      value: QueryScriptResponse.encode(message).finish()
     };
   }
 };
-function createBaseQueryAllScriptRequest(): QueryAllScriptRequest {
+function createBaseQueryScriptsRequest(): QueryScriptsRequest {
   return {
     pagination: undefined
   };
 }
-export const QueryAllScriptRequest = {
-  typeUrl: "/blit.script.QueryAllScriptRequest",
-  encode(message: QueryAllScriptRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const QueryScriptsRequest = {
+  typeUrl: "/blit.script.QueryScriptsRequest",
+  encode(message: QueryScriptsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryAllScriptRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryScriptsRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryAllScriptRequest();
+    const message = createBaseQueryScriptsRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -574,66 +574,66 @@ export const QueryAllScriptRequest = {
     }
     return message;
   },
-  fromJSON(object: any): QueryAllScriptRequest {
+  fromJSON(object: any): QueryScriptsRequest {
     return {
       pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryAllScriptRequest): unknown {
+  toJSON(message: QueryScriptsRequest): unknown {
     const obj: any = {};
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<QueryAllScriptRequest>): QueryAllScriptRequest {
-    const message = createBaseQueryAllScriptRequest();
+  fromPartial(object: Partial<QueryScriptsRequest>): QueryScriptsRequest {
+    const message = createBaseQueryScriptsRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromSDK(object: QueryAllScriptRequestSDKType): QueryAllScriptRequest {
+  fromSDK(object: QueryScriptsRequestSDKType): QueryScriptsRequest {
     return {
       pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
     };
   },
-  toSDK(message: QueryAllScriptRequest): QueryAllScriptRequestSDKType {
+  toSDK(message: QueryScriptsRequest): QueryScriptsRequestSDKType {
     const obj: any = {};
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
     return obj;
   },
-  fromAmino(object: QueryAllScriptRequestAmino): QueryAllScriptRequest {
+  fromAmino(object: QueryScriptsRequestAmino): QueryScriptsRequest {
     return {
       pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
     };
   },
-  toAmino(message: QueryAllScriptRequest): QueryAllScriptRequestAmino {
+  toAmino(message: QueryScriptsRequest): QueryScriptsRequestAmino {
     const obj: any = {};
     obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryAllScriptRequestAminoMsg): QueryAllScriptRequest {
-    return QueryAllScriptRequest.fromAmino(object.value);
+  fromAminoMsg(object: QueryScriptsRequestAminoMsg): QueryScriptsRequest {
+    return QueryScriptsRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryAllScriptRequestProtoMsg): QueryAllScriptRequest {
-    return QueryAllScriptRequest.decode(message.value);
+  fromProtoMsg(message: QueryScriptsRequestProtoMsg): QueryScriptsRequest {
+    return QueryScriptsRequest.decode(message.value);
   },
-  toProto(message: QueryAllScriptRequest): Uint8Array {
-    return QueryAllScriptRequest.encode(message).finish();
+  toProto(message: QueryScriptsRequest): Uint8Array {
+    return QueryScriptsRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllScriptRequest): QueryAllScriptRequestProtoMsg {
+  toProtoMsg(message: QueryScriptsRequest): QueryScriptsRequestProtoMsg {
     return {
-      typeUrl: "/blit.script.QueryAllScriptRequest",
-      value: QueryAllScriptRequest.encode(message).finish()
+      typeUrl: "/blit.script.QueryScriptsRequest",
+      value: QueryScriptsRequest.encode(message).finish()
     };
   }
 };
-function createBaseQueryAllScriptResponse(): QueryAllScriptResponse {
+function createBaseQueryScriptsResponse(): QueryScriptsResponse {
   return {
     script: [],
     pagination: undefined
   };
 }
-export const QueryAllScriptResponse = {
-  typeUrl: "/blit.script.QueryAllScriptResponse",
-  encode(message: QueryAllScriptResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const QueryScriptsResponse = {
+  typeUrl: "/blit.script.QueryScriptsResponse",
+  encode(message: QueryScriptsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.script) {
       Script.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -642,10 +642,10 @@ export const QueryAllScriptResponse = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryAllScriptResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryScriptsResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryAllScriptResponse();
+    const message = createBaseQueryScriptsResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -662,13 +662,13 @@ export const QueryAllScriptResponse = {
     }
     return message;
   },
-  fromJSON(object: any): QueryAllScriptResponse {
+  fromJSON(object: any): QueryScriptsResponse {
     return {
       script: Array.isArray(object?.script) ? object.script.map((e: any) => Script.fromJSON(e)) : [],
       pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
     };
   },
-  toJSON(message: QueryAllScriptResponse): unknown {
+  toJSON(message: QueryScriptsResponse): unknown {
     const obj: any = {};
     if (message.script) {
       obj.script = message.script.map(e => e ? Script.toJSON(e) : undefined);
@@ -678,19 +678,19 @@ export const QueryAllScriptResponse = {
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
     return obj;
   },
-  fromPartial(object: Partial<QueryAllScriptResponse>): QueryAllScriptResponse {
-    const message = createBaseQueryAllScriptResponse();
+  fromPartial(object: Partial<QueryScriptsResponse>): QueryScriptsResponse {
+    const message = createBaseQueryScriptsResponse();
     message.script = object.script?.map(e => Script.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromSDK(object: QueryAllScriptResponseSDKType): QueryAllScriptResponse {
+  fromSDK(object: QueryScriptsResponseSDKType): QueryScriptsResponse {
     return {
       script: Array.isArray(object?.script) ? object.script.map((e: any) => Script.fromSDK(e)) : [],
       pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
     };
   },
-  toSDK(message: QueryAllScriptResponse): QueryAllScriptResponseSDKType {
+  toSDK(message: QueryScriptsResponse): QueryScriptsResponseSDKType {
     const obj: any = {};
     if (message.script) {
       obj.script = message.script.map(e => e ? Script.toSDK(e) : undefined);
@@ -700,13 +700,13 @@ export const QueryAllScriptResponse = {
     message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
     return obj;
   },
-  fromAmino(object: QueryAllScriptResponseAmino): QueryAllScriptResponse {
+  fromAmino(object: QueryScriptsResponseAmino): QueryScriptsResponse {
     return {
       script: Array.isArray(object?.script) ? object.script.map((e: any) => Script.fromAmino(e)) : [],
       pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
     };
   },
-  toAmino(message: QueryAllScriptResponse): QueryAllScriptResponseAmino {
+  toAmino(message: QueryScriptsResponse): QueryScriptsResponseAmino {
     const obj: any = {};
     if (message.script) {
       obj.script = message.script.map(e => e ? Script.toAmino(e) : undefined);
@@ -716,19 +716,19 @@ export const QueryAllScriptResponse = {
     obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryAllScriptResponseAminoMsg): QueryAllScriptResponse {
-    return QueryAllScriptResponse.fromAmino(object.value);
+  fromAminoMsg(object: QueryScriptsResponseAminoMsg): QueryScriptsResponse {
+    return QueryScriptsResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryAllScriptResponseProtoMsg): QueryAllScriptResponse {
-    return QueryAllScriptResponse.decode(message.value);
+  fromProtoMsg(message: QueryScriptsResponseProtoMsg): QueryScriptsResponse {
+    return QueryScriptsResponse.decode(message.value);
   },
-  toProto(message: QueryAllScriptResponse): Uint8Array {
-    return QueryAllScriptResponse.encode(message).finish();
+  toProto(message: QueryScriptsResponse): Uint8Array {
+    return QueryScriptsResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllScriptResponse): QueryAllScriptResponseProtoMsg {
+  toProtoMsg(message: QueryScriptsResponse): QueryScriptsResponseProtoMsg {
     return {
-      typeUrl: "/blit.script.QueryAllScriptResponse",
-      value: QueryAllScriptResponse.encode(message).finish()
+      typeUrl: "/blit.script.QueryScriptsResponse",
+      value: QueryScriptsResponse.encode(message).finish()
     };
   }
 };

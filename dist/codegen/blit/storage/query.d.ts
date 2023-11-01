@@ -50,99 +50,99 @@ export interface QueryParamsResponseAminoMsg {
 export interface QueryParamsResponseSDKType {
     params: ParamsSDKType;
 }
-export interface QueryGetStorageRequest {
+export interface QueryStorageDetailRequest {
     address: string;
     index: string;
 }
-export interface QueryGetStorageRequestProtoMsg {
-    type_url: "/blit.storage.QueryGetStorageRequest";
+export interface QueryStorageDetailRequestProtoMsg {
+    type_url: "/blit.storage.QueryStorageDetailRequest";
     value: Uint8Array;
 }
-export interface QueryGetStorageRequestProtoMsg {
-    type_url: "/blit.storage.QueryGetStorageRequest";
+export interface QueryStorageDetailRequestProtoMsg {
+    type_url: "/blit.storage.QueryStorageDetailRequest";
     value: Uint8Array;
 }
-export interface QueryGetStorageRequestAmino {
+export interface QueryStorageDetailRequestAmino {
     address: string;
     index: string;
 }
-export interface QueryGetStorageRequestAminoMsg {
-    type: "/blit.storage.QueryGetStorageRequest";
-    value: QueryGetStorageRequestAmino;
+export interface QueryStorageDetailRequestAminoMsg {
+    type: "/blit.storage.QueryStorageDetailRequest";
+    value: QueryStorageDetailRequestAmino;
 }
-export interface QueryGetStorageRequestSDKType {
+export interface QueryStorageDetailRequestSDKType {
     address: string;
     index: string;
 }
-export interface QueryGetStorageResponse {
+export interface QueryStorageDetailResponse {
     storage: Storage;
 }
-export interface QueryGetStorageResponseProtoMsg {
-    type_url: "/blit.storage.QueryGetStorageResponse";
+export interface QueryStorageDetailResponseProtoMsg {
+    type_url: "/blit.storage.QueryStorageDetailResponse";
     value: Uint8Array;
 }
-export interface QueryGetStorageResponseProtoMsg {
-    type_url: "/blit.storage.QueryGetStorageResponse";
+export interface QueryStorageDetailResponseProtoMsg {
+    type_url: "/blit.storage.QueryStorageDetailResponse";
     value: Uint8Array;
 }
-export interface QueryGetStorageResponseAmino {
+export interface QueryStorageDetailResponseAmino {
     storage?: StorageAmino;
 }
-export interface QueryGetStorageResponseAminoMsg {
-    type: "/blit.storage.QueryGetStorageResponse";
-    value: QueryGetStorageResponseAmino;
+export interface QueryStorageDetailResponseAminoMsg {
+    type: "/blit.storage.QueryStorageDetailResponse";
+    value: QueryStorageDetailResponseAmino;
 }
-export interface QueryGetStorageResponseSDKType {
+export interface QueryStorageDetailResponseSDKType {
     storage: StorageSDKType;
 }
-export interface QueryAllStorageRequest {
+export interface QueryFilterStorageRequest {
     filter_address: string;
     filter_index_prefix: string;
     pagination?: PageRequest;
 }
-export interface QueryAllStorageRequestProtoMsg {
-    type_url: "/blit.storage.QueryAllStorageRequest";
+export interface QueryFilterStorageRequestProtoMsg {
+    type_url: "/blit.storage.QueryFilterStorageRequest";
     value: Uint8Array;
 }
-export interface QueryAllStorageRequestProtoMsg {
-    type_url: "/blit.storage.QueryAllStorageRequest";
+export interface QueryFilterStorageRequestProtoMsg {
+    type_url: "/blit.storage.QueryFilterStorageRequest";
     value: Uint8Array;
 }
-export interface QueryAllStorageRequestAmino {
+export interface QueryFilterStorageRequestAmino {
     filter_address: string;
     filter_index_prefix: string;
     pagination?: PageRequestAmino;
 }
-export interface QueryAllStorageRequestAminoMsg {
-    type: "/blit.storage.QueryAllStorageRequest";
-    value: QueryAllStorageRequestAmino;
+export interface QueryFilterStorageRequestAminoMsg {
+    type: "/blit.storage.QueryFilterStorageRequest";
+    value: QueryFilterStorageRequestAmino;
 }
-export interface QueryAllStorageRequestSDKType {
+export interface QueryFilterStorageRequestSDKType {
     filter_address: string;
     filter_index_prefix: string;
     pagination?: PageRequestSDKType;
 }
-export interface QueryAllStorageResponse {
+export interface QueryFilterStorageResponse {
     storage: Storage[];
     pagination?: PageResponse;
 }
-export interface QueryAllStorageResponseProtoMsg {
-    type_url: "/blit.storage.QueryAllStorageResponse";
+export interface QueryFilterStorageResponseProtoMsg {
+    type_url: "/blit.storage.QueryFilterStorageResponse";
     value: Uint8Array;
 }
-export interface QueryAllStorageResponseProtoMsg {
-    type_url: "/blit.storage.QueryAllStorageResponse";
+export interface QueryFilterStorageResponseProtoMsg {
+    type_url: "/blit.storage.QueryFilterStorageResponse";
     value: Uint8Array;
 }
-export interface QueryAllStorageResponseAmino {
+export interface QueryFilterStorageResponseAmino {
     storage: StorageAmino[];
     pagination?: PageResponseAmino;
 }
-export interface QueryAllStorageResponseAminoMsg {
-    type: "/blit.storage.QueryAllStorageResponse";
-    value: QueryAllStorageResponseAmino;
+export interface QueryFilterStorageResponseAminoMsg {
+    type: "/blit.storage.QueryFilterStorageResponse";
+    value: QueryFilterStorageResponseAmino;
 }
-export interface QueryAllStorageResponseSDKType {
+export interface QueryFilterStorageResponseSDKType {
     storage: StorageSDKType[];
     pagination?: PageResponseSDKType;
 }
@@ -178,67 +178,67 @@ export declare const QueryParamsResponse: {
     toProto(message: QueryParamsResponse): Uint8Array;
     toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg;
 };
-export declare const QueryGetStorageRequest: {
+export declare const QueryStorageDetailRequest: {
     typeUrl: string;
-    encode(message: QueryGetStorageRequest, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetStorageRequest;
-    fromJSON(object: any): QueryGetStorageRequest;
-    toJSON(message: QueryGetStorageRequest): unknown;
-    fromPartial(object: Partial<QueryGetStorageRequest>): QueryGetStorageRequest;
-    fromSDK(object: QueryGetStorageRequestSDKType): QueryGetStorageRequest;
-    toSDK(message: QueryGetStorageRequest): QueryGetStorageRequestSDKType;
-    fromAmino(object: QueryGetStorageRequestAmino): QueryGetStorageRequest;
-    toAmino(message: QueryGetStorageRequest): QueryGetStorageRequestAmino;
-    fromAminoMsg(object: QueryGetStorageRequestAminoMsg): QueryGetStorageRequest;
-    fromProtoMsg(message: QueryGetStorageRequestProtoMsg): QueryGetStorageRequest;
-    toProto(message: QueryGetStorageRequest): Uint8Array;
-    toProtoMsg(message: QueryGetStorageRequest): QueryGetStorageRequestProtoMsg;
+    encode(message: QueryStorageDetailRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryStorageDetailRequest;
+    fromJSON(object: any): QueryStorageDetailRequest;
+    toJSON(message: QueryStorageDetailRequest): unknown;
+    fromPartial(object: Partial<QueryStorageDetailRequest>): QueryStorageDetailRequest;
+    fromSDK(object: QueryStorageDetailRequestSDKType): QueryStorageDetailRequest;
+    toSDK(message: QueryStorageDetailRequest): QueryStorageDetailRequestSDKType;
+    fromAmino(object: QueryStorageDetailRequestAmino): QueryStorageDetailRequest;
+    toAmino(message: QueryStorageDetailRequest): QueryStorageDetailRequestAmino;
+    fromAminoMsg(object: QueryStorageDetailRequestAminoMsg): QueryStorageDetailRequest;
+    fromProtoMsg(message: QueryStorageDetailRequestProtoMsg): QueryStorageDetailRequest;
+    toProto(message: QueryStorageDetailRequest): Uint8Array;
+    toProtoMsg(message: QueryStorageDetailRequest): QueryStorageDetailRequestProtoMsg;
 };
-export declare const QueryGetStorageResponse: {
+export declare const QueryStorageDetailResponse: {
     typeUrl: string;
-    encode(message: QueryGetStorageResponse, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryGetStorageResponse;
-    fromJSON(object: any): QueryGetStorageResponse;
-    toJSON(message: QueryGetStorageResponse): unknown;
-    fromPartial(object: Partial<QueryGetStorageResponse>): QueryGetStorageResponse;
-    fromSDK(object: QueryGetStorageResponseSDKType): QueryGetStorageResponse;
-    toSDK(message: QueryGetStorageResponse): QueryGetStorageResponseSDKType;
-    fromAmino(object: QueryGetStorageResponseAmino): QueryGetStorageResponse;
-    toAmino(message: QueryGetStorageResponse): QueryGetStorageResponseAmino;
-    fromAminoMsg(object: QueryGetStorageResponseAminoMsg): QueryGetStorageResponse;
-    fromProtoMsg(message: QueryGetStorageResponseProtoMsg): QueryGetStorageResponse;
-    toProto(message: QueryGetStorageResponse): Uint8Array;
-    toProtoMsg(message: QueryGetStorageResponse): QueryGetStorageResponseProtoMsg;
+    encode(message: QueryStorageDetailResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryStorageDetailResponse;
+    fromJSON(object: any): QueryStorageDetailResponse;
+    toJSON(message: QueryStorageDetailResponse): unknown;
+    fromPartial(object: Partial<QueryStorageDetailResponse>): QueryStorageDetailResponse;
+    fromSDK(object: QueryStorageDetailResponseSDKType): QueryStorageDetailResponse;
+    toSDK(message: QueryStorageDetailResponse): QueryStorageDetailResponseSDKType;
+    fromAmino(object: QueryStorageDetailResponseAmino): QueryStorageDetailResponse;
+    toAmino(message: QueryStorageDetailResponse): QueryStorageDetailResponseAmino;
+    fromAminoMsg(object: QueryStorageDetailResponseAminoMsg): QueryStorageDetailResponse;
+    fromProtoMsg(message: QueryStorageDetailResponseProtoMsg): QueryStorageDetailResponse;
+    toProto(message: QueryStorageDetailResponse): Uint8Array;
+    toProtoMsg(message: QueryStorageDetailResponse): QueryStorageDetailResponseProtoMsg;
 };
-export declare const QueryAllStorageRequest: {
+export declare const QueryFilterStorageRequest: {
     typeUrl: string;
-    encode(message: QueryAllStorageRequest, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryAllStorageRequest;
-    fromJSON(object: any): QueryAllStorageRequest;
-    toJSON(message: QueryAllStorageRequest): unknown;
-    fromPartial(object: Partial<QueryAllStorageRequest>): QueryAllStorageRequest;
-    fromSDK(object: QueryAllStorageRequestSDKType): QueryAllStorageRequest;
-    toSDK(message: QueryAllStorageRequest): QueryAllStorageRequestSDKType;
-    fromAmino(object: QueryAllStorageRequestAmino): QueryAllStorageRequest;
-    toAmino(message: QueryAllStorageRequest): QueryAllStorageRequestAmino;
-    fromAminoMsg(object: QueryAllStorageRequestAminoMsg): QueryAllStorageRequest;
-    fromProtoMsg(message: QueryAllStorageRequestProtoMsg): QueryAllStorageRequest;
-    toProto(message: QueryAllStorageRequest): Uint8Array;
-    toProtoMsg(message: QueryAllStorageRequest): QueryAllStorageRequestProtoMsg;
+    encode(message: QueryFilterStorageRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryFilterStorageRequest;
+    fromJSON(object: any): QueryFilterStorageRequest;
+    toJSON(message: QueryFilterStorageRequest): unknown;
+    fromPartial(object: Partial<QueryFilterStorageRequest>): QueryFilterStorageRequest;
+    fromSDK(object: QueryFilterStorageRequestSDKType): QueryFilterStorageRequest;
+    toSDK(message: QueryFilterStorageRequest): QueryFilterStorageRequestSDKType;
+    fromAmino(object: QueryFilterStorageRequestAmino): QueryFilterStorageRequest;
+    toAmino(message: QueryFilterStorageRequest): QueryFilterStorageRequestAmino;
+    fromAminoMsg(object: QueryFilterStorageRequestAminoMsg): QueryFilterStorageRequest;
+    fromProtoMsg(message: QueryFilterStorageRequestProtoMsg): QueryFilterStorageRequest;
+    toProto(message: QueryFilterStorageRequest): Uint8Array;
+    toProtoMsg(message: QueryFilterStorageRequest): QueryFilterStorageRequestProtoMsg;
 };
-export declare const QueryAllStorageResponse: {
+export declare const QueryFilterStorageResponse: {
     typeUrl: string;
-    encode(message: QueryAllStorageResponse, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryAllStorageResponse;
-    fromJSON(object: any): QueryAllStorageResponse;
-    toJSON(message: QueryAllStorageResponse): unknown;
-    fromPartial(object: Partial<QueryAllStorageResponse>): QueryAllStorageResponse;
-    fromSDK(object: QueryAllStorageResponseSDKType): QueryAllStorageResponse;
-    toSDK(message: QueryAllStorageResponse): QueryAllStorageResponseSDKType;
-    fromAmino(object: QueryAllStorageResponseAmino): QueryAllStorageResponse;
-    toAmino(message: QueryAllStorageResponse): QueryAllStorageResponseAmino;
-    fromAminoMsg(object: QueryAllStorageResponseAminoMsg): QueryAllStorageResponse;
-    fromProtoMsg(message: QueryAllStorageResponseProtoMsg): QueryAllStorageResponse;
-    toProto(message: QueryAllStorageResponse): Uint8Array;
-    toProtoMsg(message: QueryAllStorageResponse): QueryAllStorageResponseProtoMsg;
+    encode(message: QueryFilterStorageResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryFilterStorageResponse;
+    fromJSON(object: any): QueryFilterStorageResponse;
+    toJSON(message: QueryFilterStorageResponse): unknown;
+    fromPartial(object: Partial<QueryFilterStorageResponse>): QueryFilterStorageResponse;
+    fromSDK(object: QueryFilterStorageResponseSDKType): QueryFilterStorageResponse;
+    toSDK(message: QueryFilterStorageResponse): QueryFilterStorageResponseSDKType;
+    fromAmino(object: QueryFilterStorageResponseAmino): QueryFilterStorageResponse;
+    toAmino(message: QueryFilterStorageResponse): QueryFilterStorageResponseAmino;
+    fromAminoMsg(object: QueryFilterStorageResponseAminoMsg): QueryFilterStorageResponse;
+    fromProtoMsg(message: QueryFilterStorageResponseProtoMsg): QueryFilterStorageResponse;
+    toProto(message: QueryFilterStorageResponse): Uint8Array;
+    toProtoMsg(message: QueryFilterStorageResponse): QueryFilterStorageResponseProtoMsg;
 };

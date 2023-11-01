@@ -45,8 +45,8 @@ class Query {
             method: "GET"
         });
     }
-    static ScriptAll(request, initRequest) {
-        return fm.fetchReq(`/blit/script/script?${fm.renderURLSearchParams({
+    static Scripts(request, initRequest) {
+        return fm.fetchReq(`/blit/script/scripts?${fm.renderURLSearchParams({
             ...request
         }, [])}`, {
             ...initRequest,
@@ -92,8 +92,8 @@ class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    async ScriptAll(req, headers) {
-        return Query.ScriptAll(req, {
+    async Scripts(req, headers) {
+        return Query.Scripts(req, {
             headers,
             pathPrefix: this.url
         });

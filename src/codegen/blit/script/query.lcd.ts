@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { setPaginationParams } from "../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, QueryGetScriptRequest, QueryGetScriptResponseSDKType, QueryAllScriptRequest, QueryAllScriptResponseSDKType, QueryEvalRequest, QueryEvalResponseSDKType, QueryWebRequest, QueryWebResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryScriptRequest, QueryScriptResponseSDKType, QueryScriptsRequest, QueryScriptsResponseSDKType, QueryEvalRequest, QueryEvalResponseSDKType, QueryWebRequest, QueryWebResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -12,7 +12,7 @@ export class LCDQueryClient {
     this.req = requestClient;
     this.params = this.params.bind(this);
     this.script = this.script.bind(this);
-    this.scriptAll = this.scriptAll.bind(this);
+    this.scripts = this.scripts.bind(this);
     this.eval = this.eval.bind(this);
     this.web = this.web.bind(this);
   }
@@ -22,22 +22,22 @@ export class LCDQueryClient {
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
   }
   /* Queries a list of Script items. */
-  async script(params: QueryGetScriptRequest): Promise<QueryGetScriptResponseSDKType> {
+  async script(params: QueryScriptRequest): Promise<QueryScriptResponseSDKType> {
     const endpoint = `blit/script/script/${params.address}`;
-    return await this.req.get<QueryGetScriptResponseSDKType>(endpoint);
+    return await this.req.get<QueryScriptResponseSDKType>(endpoint);
   }
-  /* ScriptAll */
-  async scriptAll(params: QueryAllScriptRequest = {
+  /* Scripts */
+  async scripts(params: QueryScriptsRequest = {
     pagination: undefined
-  }): Promise<QueryAllScriptResponseSDKType> {
+  }): Promise<QueryScriptsResponseSDKType> {
     const options: any = {
       params: {}
     };
     if (typeof params?.pagination !== "undefined") {
       setPaginationParams(options, params.pagination);
     }
-    const endpoint = `blit/script/script`;
-    return await this.req.get<QueryAllScriptResponseSDKType>(endpoint, options);
+    const endpoint = `blit/script/scripts`;
+    return await this.req.get<QueryScriptsResponseSDKType>(endpoint, options);
   }
   /* Runs the function and returns the result. */
   async eval(params: QueryEvalRequest): Promise<QueryEvalResponseSDKType> {

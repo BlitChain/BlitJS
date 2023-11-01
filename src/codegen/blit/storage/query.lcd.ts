@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { setPaginationParams } from "../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, QueryGetStorageRequest, QueryGetStorageResponseSDKType, QueryAllStorageRequest, QueryAllStorageResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryStorageDetailRequest, QueryStorageDetailResponseSDKType, QueryFilterStorageRequest, QueryFilterStorageResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -11,21 +11,21 @@ export class LCDQueryClient {
   }) {
     this.req = requestClient;
     this.params = this.params.bind(this);
-    this.storage = this.storage.bind(this);
-    this.storageAll = this.storageAll.bind(this);
+    this.storageDetail = this.storageDetail.bind(this);
+    this.filterStorage = this.filterStorage.bind(this);
   }
   /* Parameters queries the parameters of the module. */
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
     const endpoint = `blit/storage/params`;
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
   }
-  /* Queries a list of Storage items. */
-  async storage(params: QueryGetStorageRequest): Promise<QueryGetStorageResponseSDKType> {
+  /* StorageDetail */
+  async storageDetail(params: QueryStorageDetailRequest): Promise<QueryStorageDetailResponseSDKType> {
     const endpoint = `blit/storage/storage/${params.address}/${params.index}`;
-    return await this.req.get<QueryGetStorageResponseSDKType>(endpoint);
+    return await this.req.get<QueryStorageDetailResponseSDKType>(endpoint);
   }
-  /* StorageAll */
-  async storageAll(params: QueryAllStorageRequest): Promise<QueryAllStorageResponseSDKType> {
+  /* Queries a list of Storage items. */
+  async filterStorage(params: QueryFilterStorageRequest): Promise<QueryFilterStorageResponseSDKType> {
     const options: any = {
       params: {}
     };
@@ -39,6 +39,6 @@ export class LCDQueryClient {
       setPaginationParams(options, params.pagination);
     }
     const endpoint = `blit/storage/storage`;
-    return await this.req.get<QueryAllStorageResponseSDKType>(endpoint, options);
+    return await this.req.get<QueryFilterStorageResponseSDKType>(endpoint, options);
   }
 }

@@ -1,11 +1,11 @@
 import * as fm from "../../grpc-gateway";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetScriptRequest, QueryGetScriptResponse, QueryAllScriptRequest, QueryAllScriptResponse, QueryEvalRequest, QueryEvalResponse, QueryWebRequest, QueryWebResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryScriptRequest, QueryScriptResponse, QueryScriptsRequest, QueryScriptsResponse, QueryEvalRequest, QueryEvalResponse, QueryWebRequest, QueryWebResponse } from "./query";
 export declare class Query {
     /** Parameters queries the parameters of the module. */
     static Params(request: QueryParamsRequest, initRequest?: fm.InitReq): Promise<QueryParamsResponse>;
     /** Queries a list of Script items. */
-    static Script(request: QueryGetScriptRequest, initRequest?: fm.InitReq): Promise<QueryGetScriptResponse>;
-    static ScriptAll(request: QueryAllScriptRequest, initRequest?: fm.InitReq): Promise<QueryAllScriptResponse>;
+    static Script(request: QueryScriptRequest, initRequest?: fm.InitReq): Promise<QueryScriptResponse>;
+    static Scripts(request: QueryScriptsRequest, initRequest?: fm.InitReq): Promise<QueryScriptsResponse>;
     /** Runs the function and returns the result. */
     static Eval(request: QueryEvalRequest, initRequest?: fm.InitReq): Promise<QueryEvalResponse>;
     /** Queries the WSGI web application function of a script. */
@@ -17,8 +17,8 @@ export declare class QueryClientImpl {
     /** Parameters queries the parameters of the module. */
     Params(req: QueryParamsRequest, headers?: HeadersInit): Promise<QueryParamsResponse>;
     /** Queries a list of Script items. */
-    Script(req: QueryGetScriptRequest, headers?: HeadersInit): Promise<QueryGetScriptResponse>;
-    ScriptAll(req: QueryAllScriptRequest, headers?: HeadersInit): Promise<QueryAllScriptResponse>;
+    Script(req: QueryScriptRequest, headers?: HeadersInit): Promise<QueryScriptResponse>;
+    Scripts(req: QueryScriptsRequest, headers?: HeadersInit): Promise<QueryScriptsResponse>;
     /** Runs the function and returns the result. */
     Eval(req: QueryEvalRequest, headers?: HeadersInit): Promise<QueryEvalResponse>;
     /** Queries the WSGI web application function of a script. */

@@ -1,6 +1,6 @@
 //@ts-nocheck
 import * as fm from "../../grpc-gateway";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetStorageRequest, QueryGetStorageResponse, QueryAllStorageRequest, QueryAllStorageResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryStorageDetailRequest, QueryStorageDetailResponse, QueryFilterStorageRequest, QueryFilterStorageResponse } from "./query";
 export class Query {
   /** Parameters queries the parameters of the module. */
   static Params(request: QueryParamsRequest, initRequest?: fm.InitReq): Promise<QueryParamsResponse> {
@@ -11,8 +11,7 @@ export class Query {
       method: "GET"
     });
   }
-  /** Queries a list of Storage items. */
-  static Storage(request: QueryGetStorageRequest, initRequest?: fm.InitReq): Promise<QueryGetStorageResponse> {
+  static StorageDetail(request: QueryStorageDetailRequest, initRequest?: fm.InitReq): Promise<QueryStorageDetailResponse> {
     return fm.fetchReq(`/blit/storage/storage/${request["address"]}/${request["index"]}?${fm.renderURLSearchParams({
       ...request
     }, ["address", "index"])}`, {
@@ -20,7 +19,8 @@ export class Query {
       method: "GET"
     });
   }
-  static StorageAll(request: QueryAllStorageRequest, initRequest?: fm.InitReq): Promise<QueryAllStorageResponse> {
+  /** Queries a list of Storage items. */
+  static FilterStorage(request: QueryFilterStorageRequest, initRequest?: fm.InitReq): Promise<QueryFilterStorageResponse> {
     return fm.fetchReq(`/blit/storage/storage?${fm.renderURLSearchParams({
       ...request
     }, [])}`, {
@@ -41,15 +41,15 @@ export class QueryClientImpl {
       pathPrefix: this.url
     });
   }
-  /** Queries a list of Storage items. */
-  async Storage(req: QueryGetStorageRequest, headers?: HeadersInit): Promise<QueryGetStorageResponse> {
-    return Query.Storage(req, {
+  async StorageDetail(req: QueryStorageDetailRequest, headers?: HeadersInit): Promise<QueryStorageDetailResponse> {
+    return Query.StorageDetail(req, {
       headers,
       pathPrefix: this.url
     });
   }
-  async StorageAll(req: QueryAllStorageRequest, headers?: HeadersInit): Promise<QueryAllStorageResponse> {
-    return Query.StorageAll(req, {
+  /** Queries a list of Storage items. */
+  async FilterStorage(req: QueryFilterStorageRequest, headers?: HeadersInit): Promise<QueryFilterStorageResponse> {
+    return Query.FilterStorage(req, {
       headers,
       pathPrefix: this.url
     });

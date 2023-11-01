@@ -10,8 +10,7 @@ export class Query {
             method: "GET"
         });
     }
-    /** Queries a list of Storage items. */
-    static Storage(request, initRequest) {
+    static StorageDetail(request, initRequest) {
         return fm.fetchReq(`/blit/storage/storage/${request["address"]}/${request["index"]}?${fm.renderURLSearchParams({
             ...request
         }, ["address", "index"])}`, {
@@ -19,7 +18,8 @@ export class Query {
             method: "GET"
         });
     }
-    static StorageAll(request, initRequest) {
+    /** Queries a list of Storage items. */
+    static FilterStorage(request, initRequest) {
         return fm.fetchReq(`/blit/storage/storage?${fm.renderURLSearchParams({
             ...request
         }, [])}`, {
@@ -40,15 +40,15 @@ export class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /** Queries a list of Storage items. */
-    async Storage(req, headers) {
-        return Query.Storage(req, {
+    async StorageDetail(req, headers) {
+        return Query.StorageDetail(req, {
             headers,
             pathPrefix: this.url
         });
     }
-    async StorageAll(req, headers) {
-        return Query.StorageAll(req, {
+    /** Queries a list of Storage items. */
+    async FilterStorage(req, headers) {
+        return Query.FilterStorage(req, {
             headers,
             pathPrefix: this.url
         });

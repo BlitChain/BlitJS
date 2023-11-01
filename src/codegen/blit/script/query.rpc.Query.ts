@@ -1,6 +1,6 @@
 //@ts-nocheck
 import * as fm from "../../grpc-gateway";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetScriptRequest, QueryGetScriptResponse, QueryAllScriptRequest, QueryAllScriptResponse, QueryEvalRequest, QueryEvalResponse, QueryWebRequest, QueryWebResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryScriptRequest, QueryScriptResponse, QueryScriptsRequest, QueryScriptsResponse, QueryEvalRequest, QueryEvalResponse, QueryWebRequest, QueryWebResponse } from "./query";
 export class Query {
   /** Parameters queries the parameters of the module. */
   static Params(request: QueryParamsRequest, initRequest?: fm.InitReq): Promise<QueryParamsResponse> {
@@ -12,7 +12,7 @@ export class Query {
     });
   }
   /** Queries a list of Script items. */
-  static Script(request: QueryGetScriptRequest, initRequest?: fm.InitReq): Promise<QueryGetScriptResponse> {
+  static Script(request: QueryScriptRequest, initRequest?: fm.InitReq): Promise<QueryScriptResponse> {
     return fm.fetchReq(`/blit/script/script/${request["address"]}?${fm.renderURLSearchParams({
       ...request
     }, ["address"])}`, {
@@ -20,8 +20,8 @@ export class Query {
       method: "GET"
     });
   }
-  static ScriptAll(request: QueryAllScriptRequest, initRequest?: fm.InitReq): Promise<QueryAllScriptResponse> {
-    return fm.fetchReq(`/blit/script/script?${fm.renderURLSearchParams({
+  static Scripts(request: QueryScriptsRequest, initRequest?: fm.InitReq): Promise<QueryScriptsResponse> {
+    return fm.fetchReq(`/blit/script/scripts?${fm.renderURLSearchParams({
       ...request
     }, [])}`, {
       ...initRequest,
@@ -60,14 +60,14 @@ export class QueryClientImpl {
     });
   }
   /** Queries a list of Script items. */
-  async Script(req: QueryGetScriptRequest, headers?: HeadersInit): Promise<QueryGetScriptResponse> {
+  async Script(req: QueryScriptRequest, headers?: HeadersInit): Promise<QueryScriptResponse> {
     return Query.Script(req, {
       headers,
       pathPrefix: this.url
     });
   }
-  async ScriptAll(req: QueryAllScriptRequest, headers?: HeadersInit): Promise<QueryAllScriptResponse> {
-    return Query.ScriptAll(req, {
+  async Scripts(req: QueryScriptsRequest, headers?: HeadersInit): Promise<QueryScriptsResponse> {
+    return Query.Scripts(req, {
       headers,
       pathPrefix: this.url
     });

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QueryAllStorageResponse = exports.QueryAllStorageRequest = exports.QueryGetStorageResponse = exports.QueryGetStorageRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.protobufPackage = void 0;
+exports.QueryFilterStorageResponse = exports.QueryFilterStorageRequest = exports.QueryStorageDetailResponse = exports.QueryStorageDetailRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.protobufPackage = void 0;
 //@ts-nocheck
 const pagination_1 = require("../../cosmos/base/query/v1beta1/pagination");
 const params_1 = require("./params");
@@ -152,14 +152,14 @@ exports.QueryParamsResponse = {
         };
     }
 };
-function createBaseQueryGetStorageRequest() {
+function createBaseQueryStorageDetailRequest() {
     return {
         address: "",
         index: ""
     };
 }
-exports.QueryGetStorageRequest = {
-    typeUrl: "/blit.storage.QueryGetStorageRequest",
+exports.QueryStorageDetailRequest = {
+    typeUrl: "/blit.storage.QueryStorageDetailRequest",
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -172,7 +172,7 @@ exports.QueryGetStorageRequest = {
     decode(input, length) {
         const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseQueryGetStorageRequest();
+        const message = createBaseQueryStorageDetailRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -202,7 +202,7 @@ exports.QueryGetStorageRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = createBaseQueryGetStorageRequest();
+        const message = createBaseQueryStorageDetailRequest();
         message.address = object.address ?? "";
         message.index = object.index ?? "";
         return message;
@@ -232,28 +232,28 @@ exports.QueryGetStorageRequest = {
         return obj;
     },
     fromAminoMsg(object) {
-        return exports.QueryGetStorageRequest.fromAmino(object.value);
+        return exports.QueryStorageDetailRequest.fromAmino(object.value);
     },
     fromProtoMsg(message) {
-        return exports.QueryGetStorageRequest.decode(message.value);
+        return exports.QueryStorageDetailRequest.decode(message.value);
     },
     toProto(message) {
-        return exports.QueryGetStorageRequest.encode(message).finish();
+        return exports.QueryStorageDetailRequest.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/blit.storage.QueryGetStorageRequest",
-            value: exports.QueryGetStorageRequest.encode(message).finish()
+            typeUrl: "/blit.storage.QueryStorageDetailRequest",
+            value: exports.QueryStorageDetailRequest.encode(message).finish()
         };
     }
 };
-function createBaseQueryGetStorageResponse() {
+function createBaseQueryStorageDetailResponse() {
     return {
         storage: storage_1.Storage.fromPartial({})
     };
 }
-exports.QueryGetStorageResponse = {
-    typeUrl: "/blit.storage.QueryGetStorageResponse",
+exports.QueryStorageDetailResponse = {
+    typeUrl: "/blit.storage.QueryStorageDetailResponse",
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.storage !== undefined) {
             storage_1.Storage.encode(message.storage, writer.uint32(10).fork()).ldelim();
@@ -263,7 +263,7 @@ exports.QueryGetStorageResponse = {
     decode(input, length) {
         const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseQueryGetStorageResponse();
+        const message = createBaseQueryStorageDetailResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -288,7 +288,7 @@ exports.QueryGetStorageResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = createBaseQueryGetStorageResponse();
+        const message = createBaseQueryStorageDetailResponse();
         message.storage = object.storage !== undefined && object.storage !== null ? storage_1.Storage.fromPartial(object.storage) : undefined;
         return message;
     },
@@ -313,30 +313,30 @@ exports.QueryGetStorageResponse = {
         return obj;
     },
     fromAminoMsg(object) {
-        return exports.QueryGetStorageResponse.fromAmino(object.value);
+        return exports.QueryStorageDetailResponse.fromAmino(object.value);
     },
     fromProtoMsg(message) {
-        return exports.QueryGetStorageResponse.decode(message.value);
+        return exports.QueryStorageDetailResponse.decode(message.value);
     },
     toProto(message) {
-        return exports.QueryGetStorageResponse.encode(message).finish();
+        return exports.QueryStorageDetailResponse.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/blit.storage.QueryGetStorageResponse",
-            value: exports.QueryGetStorageResponse.encode(message).finish()
+            typeUrl: "/blit.storage.QueryStorageDetailResponse",
+            value: exports.QueryStorageDetailResponse.encode(message).finish()
         };
     }
 };
-function createBaseQueryAllStorageRequest() {
+function createBaseQueryFilterStorageRequest() {
     return {
         filter_address: "",
         filter_index_prefix: "",
         pagination: undefined
     };
 }
-exports.QueryAllStorageRequest = {
-    typeUrl: "/blit.storage.QueryAllStorageRequest",
+exports.QueryFilterStorageRequest = {
+    typeUrl: "/blit.storage.QueryFilterStorageRequest",
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.filter_address !== "") {
             writer.uint32(10).string(message.filter_address);
@@ -352,7 +352,7 @@ exports.QueryAllStorageRequest = {
     decode(input, length) {
         const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseQueryAllStorageRequest();
+        const message = createBaseQueryFilterStorageRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -387,7 +387,7 @@ exports.QueryAllStorageRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = createBaseQueryAllStorageRequest();
+        const message = createBaseQueryFilterStorageRequest();
         message.filter_address = object.filter_address ?? "";
         message.filter_index_prefix = object.filter_index_prefix ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
@@ -422,29 +422,29 @@ exports.QueryAllStorageRequest = {
         return obj;
     },
     fromAminoMsg(object) {
-        return exports.QueryAllStorageRequest.fromAmino(object.value);
+        return exports.QueryFilterStorageRequest.fromAmino(object.value);
     },
     fromProtoMsg(message) {
-        return exports.QueryAllStorageRequest.decode(message.value);
+        return exports.QueryFilterStorageRequest.decode(message.value);
     },
     toProto(message) {
-        return exports.QueryAllStorageRequest.encode(message).finish();
+        return exports.QueryFilterStorageRequest.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/blit.storage.QueryAllStorageRequest",
-            value: exports.QueryAllStorageRequest.encode(message).finish()
+            typeUrl: "/blit.storage.QueryFilterStorageRequest",
+            value: exports.QueryFilterStorageRequest.encode(message).finish()
         };
     }
 };
-function createBaseQueryAllStorageResponse() {
+function createBaseQueryFilterStorageResponse() {
     return {
         storage: [],
         pagination: undefined
     };
 }
-exports.QueryAllStorageResponse = {
-    typeUrl: "/blit.storage.QueryAllStorageResponse",
+exports.QueryFilterStorageResponse = {
+    typeUrl: "/blit.storage.QueryFilterStorageResponse",
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.storage) {
             storage_1.Storage.encode(v, writer.uint32(10).fork()).ldelim();
@@ -457,7 +457,7 @@ exports.QueryAllStorageResponse = {
     decode(input, length) {
         const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseQueryAllStorageResponse();
+        const message = createBaseQueryFilterStorageResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -492,7 +492,7 @@ exports.QueryAllStorageResponse = {
         return obj;
     },
     fromPartial(object) {
-        const message = createBaseQueryAllStorageResponse();
+        const message = createBaseQueryFilterStorageResponse();
         message.storage = object.storage?.map(e => storage_1.Storage.fromPartial(e)) || [];
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
@@ -532,18 +532,18 @@ exports.QueryAllStorageResponse = {
         return obj;
     },
     fromAminoMsg(object) {
-        return exports.QueryAllStorageResponse.fromAmino(object.value);
+        return exports.QueryFilterStorageResponse.fromAmino(object.value);
     },
     fromProtoMsg(message) {
-        return exports.QueryAllStorageResponse.decode(message.value);
+        return exports.QueryFilterStorageResponse.decode(message.value);
     },
     toProto(message) {
-        return exports.QueryAllStorageResponse.encode(message).finish();
+        return exports.QueryFilterStorageResponse.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/blit.storage.QueryAllStorageResponse",
-            value: exports.QueryAllStorageResponse.encode(message).finish()
+            typeUrl: "/blit.storage.QueryFilterStorageResponse",
+            value: exports.QueryFilterStorageResponse.encode(message).finish()
         };
     }
 };

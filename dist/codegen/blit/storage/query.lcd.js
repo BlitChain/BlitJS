@@ -8,21 +8,21 @@ class LCDQueryClient {
     constructor({ requestClient }) {
         this.req = requestClient;
         this.params = this.params.bind(this);
-        this.storage = this.storage.bind(this);
-        this.storageAll = this.storageAll.bind(this);
+        this.storageDetail = this.storageDetail.bind(this);
+        this.filterStorage = this.filterStorage.bind(this);
     }
     /* Parameters queries the parameters of the module. */
     async params(_params = {}) {
         const endpoint = `blit/storage/params`;
         return await this.req.get(endpoint);
     }
-    /* Queries a list of Storage items. */
-    async storage(params) {
+    /* StorageDetail */
+    async storageDetail(params) {
         const endpoint = `blit/storage/storage/${params.address}/${params.index}`;
         return await this.req.get(endpoint);
     }
-    /* StorageAll */
-    async storageAll(params) {
+    /* Queries a list of Storage items. */
+    async filterStorage(params) {
         const options = {
             params: {}
         };

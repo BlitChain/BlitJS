@@ -9,7 +9,7 @@ class LCDQueryClient {
         this.req = requestClient;
         this.params = this.params.bind(this);
         this.script = this.script.bind(this);
-        this.scriptAll = this.scriptAll.bind(this);
+        this.scripts = this.scripts.bind(this);
         this.eval = this.eval.bind(this);
         this.web = this.web.bind(this);
     }
@@ -23,8 +23,8 @@ class LCDQueryClient {
         const endpoint = `blit/script/script/${params.address}`;
         return await this.req.get(endpoint);
     }
-    /* ScriptAll */
-    async scriptAll(params = {
+    /* Scripts */
+    async scripts(params = {
         pagination: undefined
     }) {
         const options = {
@@ -33,7 +33,7 @@ class LCDQueryClient {
         if (typeof params?.pagination !== "undefined") {
             (0, helpers_1.setPaginationParams)(options, params.pagination);
         }
-        const endpoint = `blit/script/script`;
+        const endpoint = `blit/script/scripts`;
         return await this.req.get(endpoint, options);
     }
     /* Runs the function and returns the result. */
