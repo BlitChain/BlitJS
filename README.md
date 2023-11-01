@@ -285,18 +285,19 @@ It is a read-only operation that does not create a transaction or persist state.
 without a transaction, especially when debugging.
 
 ```js
-const queryScriptFunction = async ({ queryClient, script_address, called_address, function_name, kwargs }) => {
-  try {
+const queryScriptFunction = async ({ queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }) => {
     const response = await queryClient.blit.script.eval({
       script_address,
-      called_address,
+      caller_address,
       function_name,
-      kwargs: JSON.stringify(kwargs)
+      kwargs: JSON.stringify(kwargs),
+      extra_code, 
+      grantee,  
     });
+  try {
     return JSON.parse(response.response);
-  } catch (error) {
-    console.error('Error evaluating script:', error);
-    throw error;
+  } catch (SyntaxError) {
+    return response;
   }
 };
 ```
