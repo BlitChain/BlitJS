@@ -180,9 +180,9 @@ await msgClient.signAndBroadcast(address, [message], "auto")
 ```
 
 
-### Querying a Script object to Verify the Update Script Works:
+### Querying a Script object to verify the Update Script worked
 
-This will allow us to verify that the previous command worked and that the code is as expected.
+This will allow us to verify that the previous command worked and that the code was stored.
 
 ```js
 let scriptResponse = await queryClient.blit.script.script({ address });
@@ -198,7 +198,7 @@ Output: {
 */
 ```
 
-### Helper functions for interacting with function in a script
+### Helpers for interacting with functions defined in a script
 
 The `runScriptFunction` function defined here executes a script function on the blockchain, using `sendMsg` defined above and returns the result or an error, if any.
 
@@ -242,9 +242,9 @@ const runScriptFunction = async ({ msgClient, caller_address, script_address, fu
 
 ```
 
-#### Example 
+#### How to call a function in a transaction 
 
-Now it is trivial to call `greet(name="Bob")` in a transaction.
+Now it is trivial to call `greet(name="Bob")` in a transaction. Keplr will prompt to sign the transaction before broadcasting it.
 
 ```js
 let runResp = await runScriptFunction({
@@ -292,7 +292,7 @@ const queryScriptFunction = async ({ queryClient, script_address, called_address
 };
 ```
 
-#### Example of `queryScriptFunction`
+#### How to call a function in a script using `queryScriptFunction`
 This is a read-only eval of the function `greet(name="Bob")`.
 
 ```js
@@ -318,7 +318,7 @@ console.log(queryResp);
 */
 ```
 
-### Querying Storage:
+### How to query Storage:
 
 This will list all Storage for a specific address
 
@@ -336,7 +336,7 @@ console.log(storageResponse);
 */
 ```
 
-### Create then Update Storage:
+### How to create then update some storage at an index
 
 ```js
 let message1 = blitjs.blit.storage.MessageComposer.fromPartial.createStorage({
@@ -359,8 +359,20 @@ await msgClient.signAndBroadcast(address, [message2], "auto")
 ## Hints
 
 ### Out of gas
+
 Q: I'm getting an error like `out of gas in location: WritePerByte; gasWanted: 47347, gasUsed: 48728: out of gas`
-A: Try replacing `"auto"`, which defaults to a gasMultiple of 1.3, to 1.5.
+
+A: Try replacing `"auto"` with 1.5 like this:
+
+```
+await msgClient.signAndBroadcast(address, [message], "auto")
+```
+
+```
+await msgClient.signAndBroadcast(address, [message], 1.5)
+```
+
+
 
 # Available Msg Types
 
