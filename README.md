@@ -6,7 +6,9 @@ BlitJS is a library designed to facilitate interactions with Blit using JavaScri
 Installation
 ------------
 
-#### Script Tag:
+Choose one of the options below
+
+#### Script Tag
 
 Include BlitJS in your project by adding the following script tag in your HTML file:
 
@@ -18,12 +20,19 @@ import blitjs from "https://cdn.jsdelivr.net/npm/@blitchain/blitjs/+esm";
 </script>
 ```
 
-#### NPM:
+#### NPM
 
 Install via npm:
 
 ```bash
 npm install @blitchain/blitjs
+```
+
+
+#### Brower Console
+
+```js
+blitjs = (await import("https://cdn.jsdelivr.net/npm/@blitchain/blitjs/+esm")).default;
 ```
 
 ### Creating the Clients:
