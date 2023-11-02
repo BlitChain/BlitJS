@@ -342,15 +342,15 @@ export declare namespace blit {
         };
         MsgCreateScriptResponse: {
             typeUrl: string;
-            encode(_: _10.MsgCreateScriptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            encode(message: _10.MsgCreateScriptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgCreateScriptResponse;
-            fromJSON(_: any): _10.MsgCreateScriptResponse;
-            toJSON(_: _10.MsgCreateScriptResponse): unknown;
-            fromPartial(_: Partial<_10.MsgCreateScriptResponse>): _10.MsgCreateScriptResponse;
-            fromSDK(_: _10.MsgCreateScriptResponseSDKType): _10.MsgCreateScriptResponse;
-            toSDK(_: _10.MsgCreateScriptResponse): _10.MsgCreateScriptResponseSDKType;
-            fromAmino(_: _10.MsgCreateScriptResponseAmino): _10.MsgCreateScriptResponse;
-            toAmino(_: _10.MsgCreateScriptResponse): _10.MsgCreateScriptResponseAmino;
+            fromJSON(object: any): _10.MsgCreateScriptResponse;
+            toJSON(message: _10.MsgCreateScriptResponse): unknown;
+            fromPartial(object: Partial<_10.MsgCreateScriptResponse>): _10.MsgCreateScriptResponse;
+            fromSDK(object: _10.MsgCreateScriptResponseSDKType): _10.MsgCreateScriptResponse;
+            toSDK(message: _10.MsgCreateScriptResponse): _10.MsgCreateScriptResponseSDKType;
+            fromAmino(object: _10.MsgCreateScriptResponseAmino): _10.MsgCreateScriptResponse;
+            toAmino(message: _10.MsgCreateScriptResponse): _10.MsgCreateScriptResponseAmino;
             fromAminoMsg(object: _10.MsgCreateScriptResponseAminoMsg): _10.MsgCreateScriptResponse;
             fromProtoMsg(message: _10.MsgCreateScriptResponseProtoMsg): _10.MsgCreateScriptResponse;
             toProto(message: _10.MsgCreateScriptResponse): Uint8Array;
@@ -374,15 +374,15 @@ export declare namespace blit {
         };
         MsgUpdateScriptResponse: {
             typeUrl: string;
-            encode(_: _10.MsgUpdateScriptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            encode(message: _10.MsgUpdateScriptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgUpdateScriptResponse;
-            fromJSON(_: any): _10.MsgUpdateScriptResponse;
-            toJSON(_: _10.MsgUpdateScriptResponse): unknown;
-            fromPartial(_: Partial<_10.MsgUpdateScriptResponse>): _10.MsgUpdateScriptResponse;
-            fromSDK(_: _10.MsgUpdateScriptResponseSDKType): _10.MsgUpdateScriptResponse;
-            toSDK(_: _10.MsgUpdateScriptResponse): _10.MsgUpdateScriptResponseSDKType;
-            fromAmino(_: _10.MsgUpdateScriptResponseAmino): _10.MsgUpdateScriptResponse;
-            toAmino(_: _10.MsgUpdateScriptResponse): _10.MsgUpdateScriptResponseAmino;
+            fromJSON(object: any): _10.MsgUpdateScriptResponse;
+            toJSON(message: _10.MsgUpdateScriptResponse): unknown;
+            fromPartial(object: Partial<_10.MsgUpdateScriptResponse>): _10.MsgUpdateScriptResponse;
+            fromSDK(object: _10.MsgUpdateScriptResponseSDKType): _10.MsgUpdateScriptResponse;
+            toSDK(message: _10.MsgUpdateScriptResponse): _10.MsgUpdateScriptResponseSDKType;
+            fromAmino(object: _10.MsgUpdateScriptResponseAmino): _10.MsgUpdateScriptResponse;
+            toAmino(message: _10.MsgUpdateScriptResponse): _10.MsgUpdateScriptResponseAmino;
             fromAminoMsg(object: _10.MsgUpdateScriptResponseAminoMsg): _10.MsgUpdateScriptResponse;
             fromProtoMsg(message: _10.MsgUpdateScriptResponseProtoMsg): _10.MsgUpdateScriptResponse;
             toProto(message: _10.MsgUpdateScriptResponse): Uint8Array;

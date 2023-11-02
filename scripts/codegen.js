@@ -67,10 +67,10 @@ telescope({
       }
     },
     typingsFormat: {
-      duration: 'duration',
+      duration: 'string',
       timestamp: 'date',
       useExact: false,
-      useDeepPartial: false,
+      useDeepPartial: true,
       num64: 'bigint',
       customTypes: {
         useCosmosSDKDec: true

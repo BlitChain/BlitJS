@@ -113,6 +113,7 @@ export interface MsgCreateScriptSDKType {
     grantee: string;
 }
 export interface MsgCreateScriptResponse {
+    address: string;
 }
 export interface MsgCreateScriptResponseProtoMsg {
     type_url: "/blit.script.MsgCreateScriptResponse";
@@ -123,12 +124,14 @@ export interface MsgCreateScriptResponseProtoMsg {
     value: Uint8Array;
 }
 export interface MsgCreateScriptResponseAmino {
+    address: string;
 }
 export interface MsgCreateScriptResponseAminoMsg {
     type: "/blit.script.MsgCreateScriptResponse";
     value: MsgCreateScriptResponseAmino;
 }
 export interface MsgCreateScriptResponseSDKType {
+    address: string;
 }
 export interface MsgUpdateScript {
     address: string;
@@ -158,6 +161,7 @@ export interface MsgUpdateScriptSDKType {
     grantee: string;
 }
 export interface MsgUpdateScriptResponse {
+    version: bigint;
 }
 export interface MsgUpdateScriptResponseProtoMsg {
     type_url: "/blit.script.MsgUpdateScriptResponse";
@@ -168,12 +172,14 @@ export interface MsgUpdateScriptResponseProtoMsg {
     value: Uint8Array;
 }
 export interface MsgUpdateScriptResponseAmino {
+    version: string;
 }
 export interface MsgUpdateScriptResponseAminoMsg {
     type: "/blit.script.MsgUpdateScriptResponse";
     value: MsgUpdateScriptResponseAmino;
 }
 export interface MsgUpdateScriptResponseSDKType {
+    version: bigint;
 }
 export declare const MsgUpdateParams: {
     typeUrl: string;
@@ -226,15 +232,15 @@ export declare const MsgCreateScript: {
 };
 export declare const MsgCreateScriptResponse: {
     typeUrl: string;
-    encode(_: MsgCreateScriptResponse, writer?: BinaryWriter): BinaryWriter;
+    encode(message: MsgCreateScriptResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateScriptResponse;
-    fromJSON(_: any): MsgCreateScriptResponse;
-    toJSON(_: MsgCreateScriptResponse): unknown;
-    fromPartial(_: Partial<MsgCreateScriptResponse>): MsgCreateScriptResponse;
-    fromSDK(_: MsgCreateScriptResponseSDKType): MsgCreateScriptResponse;
-    toSDK(_: MsgCreateScriptResponse): MsgCreateScriptResponseSDKType;
-    fromAmino(_: MsgCreateScriptResponseAmino): MsgCreateScriptResponse;
-    toAmino(_: MsgCreateScriptResponse): MsgCreateScriptResponseAmino;
+    fromJSON(object: any): MsgCreateScriptResponse;
+    toJSON(message: MsgCreateScriptResponse): unknown;
+    fromPartial(object: Partial<MsgCreateScriptResponse>): MsgCreateScriptResponse;
+    fromSDK(object: MsgCreateScriptResponseSDKType): MsgCreateScriptResponse;
+    toSDK(message: MsgCreateScriptResponse): MsgCreateScriptResponseSDKType;
+    fromAmino(object: MsgCreateScriptResponseAmino): MsgCreateScriptResponse;
+    toAmino(message: MsgCreateScriptResponse): MsgCreateScriptResponseAmino;
     fromAminoMsg(object: MsgCreateScriptResponseAminoMsg): MsgCreateScriptResponse;
     fromProtoMsg(message: MsgCreateScriptResponseProtoMsg): MsgCreateScriptResponse;
     toProto(message: MsgCreateScriptResponse): Uint8Array;
@@ -258,15 +264,15 @@ export declare const MsgUpdateScript: {
 };
 export declare const MsgUpdateScriptResponse: {
     typeUrl: string;
-    encode(_: MsgUpdateScriptResponse, writer?: BinaryWriter): BinaryWriter;
+    encode(message: MsgUpdateScriptResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateScriptResponse;
-    fromJSON(_: any): MsgUpdateScriptResponse;
-    toJSON(_: MsgUpdateScriptResponse): unknown;
-    fromPartial(_: Partial<MsgUpdateScriptResponse>): MsgUpdateScriptResponse;
-    fromSDK(_: MsgUpdateScriptResponseSDKType): MsgUpdateScriptResponse;
-    toSDK(_: MsgUpdateScriptResponse): MsgUpdateScriptResponseSDKType;
-    fromAmino(_: MsgUpdateScriptResponseAmino): MsgUpdateScriptResponse;
-    toAmino(_: MsgUpdateScriptResponse): MsgUpdateScriptResponseAmino;
+    fromJSON(object: any): MsgUpdateScriptResponse;
+    toJSON(message: MsgUpdateScriptResponse): unknown;
+    fromPartial(object: Partial<MsgUpdateScriptResponse>): MsgUpdateScriptResponse;
+    fromSDK(object: MsgUpdateScriptResponseSDKType): MsgUpdateScriptResponse;
+    toSDK(message: MsgUpdateScriptResponse): MsgUpdateScriptResponseSDKType;
+    fromAmino(object: MsgUpdateScriptResponseAmino): MsgUpdateScriptResponse;
+    toAmino(message: MsgUpdateScriptResponse): MsgUpdateScriptResponseAmino;
     fromAminoMsg(object: MsgUpdateScriptResponseAminoMsg): MsgUpdateScriptResponse;
     fromProtoMsg(message: MsgUpdateScriptResponseProtoMsg): MsgUpdateScriptResponse;
     toProto(message: MsgUpdateScriptResponse): Uint8Array;

@@ -111,21 +111,27 @@ export interface MsgCreateScriptSDKType {
   msg_type_permissions: string[];
   grantee: string;
 }
-export interface MsgCreateScriptResponse {}
-export interface MsgCreateScriptResponseProtoMsg {
-  type_url: "/blit.script.MsgCreateScriptResponse";
-  value: Uint8Array;
+export interface MsgCreateScriptResponse {
+  address: string;
 }
 export interface MsgCreateScriptResponseProtoMsg {
   type_url: "/blit.script.MsgCreateScriptResponse";
   value: Uint8Array;
 }
-export interface MsgCreateScriptResponseAmino {}
+export interface MsgCreateScriptResponseProtoMsg {
+  type_url: "/blit.script.MsgCreateScriptResponse";
+  value: Uint8Array;
+}
+export interface MsgCreateScriptResponseAmino {
+  address: string;
+}
 export interface MsgCreateScriptResponseAminoMsg {
   type: "/blit.script.MsgCreateScriptResponse";
   value: MsgCreateScriptResponseAmino;
 }
-export interface MsgCreateScriptResponseSDKType {}
+export interface MsgCreateScriptResponseSDKType {
+  address: string;
+}
 export interface MsgUpdateScript {
   address: string;
   code: string;
@@ -153,21 +159,27 @@ export interface MsgUpdateScriptSDKType {
   code: string;
   grantee: string;
 }
-export interface MsgUpdateScriptResponse {}
-export interface MsgUpdateScriptResponseProtoMsg {
-  type_url: "/blit.script.MsgUpdateScriptResponse";
-  value: Uint8Array;
+export interface MsgUpdateScriptResponse {
+  version: bigint;
 }
 export interface MsgUpdateScriptResponseProtoMsg {
   type_url: "/blit.script.MsgUpdateScriptResponse";
   value: Uint8Array;
 }
-export interface MsgUpdateScriptResponseAmino {}
+export interface MsgUpdateScriptResponseProtoMsg {
+  type_url: "/blit.script.MsgUpdateScriptResponse";
+  value: Uint8Array;
+}
+export interface MsgUpdateScriptResponseAmino {
+  version: string;
+}
 export interface MsgUpdateScriptResponseAminoMsg {
   type: "/blit.script.MsgUpdateScriptResponse";
   value: MsgUpdateScriptResponseAmino;
 }
-export interface MsgUpdateScriptResponseSDKType {}
+export interface MsgUpdateScriptResponseSDKType {
+  version: bigint;
+}
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
     authority: "",
@@ -468,11 +480,16 @@ export const MsgCreateScript = {
   }
 };
 function createBaseMsgCreateScriptResponse(): MsgCreateScriptResponse {
-  return {};
+  return {
+    address: ""
+  };
 }
 export const MsgCreateScriptResponse = {
   typeUrl: "/blit.script.MsgCreateScriptResponse",
-  encode(_: MsgCreateScriptResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: MsgCreateScriptResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.address !== "") {
+      writer.uint32(10).string(message.address);
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateScriptResponse {
@@ -482,6 +499,9 @@ export const MsgCreateScriptResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
+        case 1:
+          message.address = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -489,29 +509,39 @@ export const MsgCreateScriptResponse = {
     }
     return message;
   },
-  fromJSON(_: any): MsgCreateScriptResponse {
-    return {};
+  fromJSON(object: any): MsgCreateScriptResponse {
+    return {
+      address: isSet(object.address) ? String(object.address) : ""
+    };
   },
-  toJSON(_: MsgCreateScriptResponse): unknown {
+  toJSON(message: MsgCreateScriptResponse): unknown {
     const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
     return obj;
   },
-  fromPartial(_: Partial<MsgCreateScriptResponse>): MsgCreateScriptResponse {
+  fromPartial(object: Partial<MsgCreateScriptResponse>): MsgCreateScriptResponse {
     const message = createBaseMsgCreateScriptResponse();
+    message.address = object.address ?? "";
     return message;
   },
-  fromSDK(_: MsgCreateScriptResponseSDKType): MsgCreateScriptResponse {
-    return {};
+  fromSDK(object: MsgCreateScriptResponseSDKType): MsgCreateScriptResponse {
+    return {
+      address: object?.address
+    };
   },
-  toSDK(_: MsgCreateScriptResponse): MsgCreateScriptResponseSDKType {
+  toSDK(message: MsgCreateScriptResponse): MsgCreateScriptResponseSDKType {
     const obj: any = {};
+    obj.address = message.address;
     return obj;
   },
-  fromAmino(_: MsgCreateScriptResponseAmino): MsgCreateScriptResponse {
-    return {};
+  fromAmino(object: MsgCreateScriptResponseAmino): MsgCreateScriptResponse {
+    return {
+      address: object.address
+    };
   },
-  toAmino(_: MsgCreateScriptResponse): MsgCreateScriptResponseAmino {
+  toAmino(message: MsgCreateScriptResponse): MsgCreateScriptResponseAmino {
     const obj: any = {};
+    obj.address = message.address;
     return obj;
   },
   fromAminoMsg(object: MsgCreateScriptResponseAminoMsg): MsgCreateScriptResponse {
@@ -640,11 +670,16 @@ export const MsgUpdateScript = {
   }
 };
 function createBaseMsgUpdateScriptResponse(): MsgUpdateScriptResponse {
-  return {};
+  return {
+    version: BigInt(0)
+  };
 }
 export const MsgUpdateScriptResponse = {
   typeUrl: "/blit.script.MsgUpdateScriptResponse",
-  encode(_: MsgUpdateScriptResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  encode(message: MsgUpdateScriptResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.version !== BigInt(0)) {
+      writer.uint32(8).int64(message.version);
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateScriptResponse {
@@ -654,6 +689,9 @@ export const MsgUpdateScriptResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
+        case 1:
+          message.version = reader.int64();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -661,29 +699,39 @@ export const MsgUpdateScriptResponse = {
     }
     return message;
   },
-  fromJSON(_: any): MsgUpdateScriptResponse {
-    return {};
+  fromJSON(object: any): MsgUpdateScriptResponse {
+    return {
+      version: isSet(object.version) ? BigInt(object.version.toString()) : BigInt(0)
+    };
   },
-  toJSON(_: MsgUpdateScriptResponse): unknown {
+  toJSON(message: MsgUpdateScriptResponse): unknown {
     const obj: any = {};
+    message.version !== undefined && (obj.version = (message.version || BigInt(0)).toString());
     return obj;
   },
-  fromPartial(_: Partial<MsgUpdateScriptResponse>): MsgUpdateScriptResponse {
+  fromPartial(object: Partial<MsgUpdateScriptResponse>): MsgUpdateScriptResponse {
     const message = createBaseMsgUpdateScriptResponse();
+    message.version = object.version !== undefined && object.version !== null ? BigInt(object.version.toString()) : BigInt(0);
     return message;
   },
-  fromSDK(_: MsgUpdateScriptResponseSDKType): MsgUpdateScriptResponse {
-    return {};
+  fromSDK(object: MsgUpdateScriptResponseSDKType): MsgUpdateScriptResponse {
+    return {
+      version: object?.version
+    };
   },
-  toSDK(_: MsgUpdateScriptResponse): MsgUpdateScriptResponseSDKType {
+  toSDK(message: MsgUpdateScriptResponse): MsgUpdateScriptResponseSDKType {
     const obj: any = {};
+    obj.version = message.version;
     return obj;
   },
-  fromAmino(_: MsgUpdateScriptResponseAmino): MsgUpdateScriptResponse {
-    return {};
+  fromAmino(object: MsgUpdateScriptResponseAmino): MsgUpdateScriptResponse {
+    return {
+      version: BigInt(object.version)
+    };
   },
-  toAmino(_: MsgUpdateScriptResponse): MsgUpdateScriptResponseAmino {
+  toAmino(message: MsgUpdateScriptResponse): MsgUpdateScriptResponseAmino {
     const obj: any = {};
+    obj.version = message.version ? message.version.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgUpdateScriptResponseAminoMsg): MsgUpdateScriptResponse {

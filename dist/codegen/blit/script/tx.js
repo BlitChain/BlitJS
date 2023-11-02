@@ -309,11 +309,16 @@ exports.MsgCreateScript = {
     }
 };
 function createBaseMsgCreateScriptResponse() {
-    return {};
+    return {
+        address: ""
+    };
 }
 exports.MsgCreateScriptResponse = {
     typeUrl: "/blit.script.MsgCreateScriptResponse",
-    encode(_, writer = binary_1.BinaryWriter.create()) {
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.address !== "") {
+            writer.uint32(10).string(message.address);
+        }
         return writer;
     },
     decode(input, length) {
@@ -323,6 +328,9 @@ exports.MsgCreateScriptResponse = {
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
+                case 1:
+                    message.address = reader.string();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -330,29 +338,39 @@ exports.MsgCreateScriptResponse = {
         }
         return message;
     },
-    fromJSON(_) {
-        return {};
+    fromJSON(object) {
+        return {
+            address: (0, helpers_1.isSet)(object.address) ? String(object.address) : ""
+        };
     },
-    toJSON(_) {
+    toJSON(message) {
         const obj = {};
+        message.address !== undefined && (obj.address = message.address);
         return obj;
     },
-    fromPartial(_) {
+    fromPartial(object) {
         const message = createBaseMsgCreateScriptResponse();
+        message.address = object.address ?? "";
         return message;
     },
-    fromSDK(_) {
-        return {};
+    fromSDK(object) {
+        return {
+            address: object?.address
+        };
     },
-    toSDK(_) {
+    toSDK(message) {
         const obj = {};
+        obj.address = message.address;
         return obj;
     },
-    fromAmino(_) {
-        return {};
+    fromAmino(object) {
+        return {
+            address: object.address
+        };
     },
-    toAmino(_) {
+    toAmino(message) {
         const obj = {};
+        obj.address = message.address;
         return obj;
     },
     fromAminoMsg(object) {
@@ -481,11 +499,16 @@ exports.MsgUpdateScript = {
     }
 };
 function createBaseMsgUpdateScriptResponse() {
-    return {};
+    return {
+        version: BigInt(0)
+    };
 }
 exports.MsgUpdateScriptResponse = {
     typeUrl: "/blit.script.MsgUpdateScriptResponse",
-    encode(_, writer = binary_1.BinaryWriter.create()) {
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.version !== BigInt(0)) {
+            writer.uint32(8).int64(message.version);
+        }
         return writer;
     },
     decode(input, length) {
@@ -495,6 +518,9 @@ exports.MsgUpdateScriptResponse = {
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
+                case 1:
+                    message.version = reader.int64();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -502,29 +528,39 @@ exports.MsgUpdateScriptResponse = {
         }
         return message;
     },
-    fromJSON(_) {
-        return {};
+    fromJSON(object) {
+        return {
+            version: (0, helpers_1.isSet)(object.version) ? BigInt(object.version.toString()) : BigInt(0)
+        };
     },
-    toJSON(_) {
+    toJSON(message) {
         const obj = {};
+        message.version !== undefined && (obj.version = (message.version || BigInt(0)).toString());
         return obj;
     },
-    fromPartial(_) {
+    fromPartial(object) {
         const message = createBaseMsgUpdateScriptResponse();
+        message.version = object.version !== undefined && object.version !== null ? BigInt(object.version.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(_) {
-        return {};
+    fromSDK(object) {
+        return {
+            version: object?.version
+        };
     },
-    toSDK(_) {
+    toSDK(message) {
         const obj = {};
+        obj.version = message.version;
         return obj;
     },
-    fromAmino(_) {
-        return {};
+    fromAmino(object) {
+        return {
+            version: BigInt(object.version)
+        };
     },
-    toAmino(_) {
+    toAmino(message) {
         const obj = {};
+        obj.version = message.version ? message.version.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
