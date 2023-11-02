@@ -188,6 +188,59 @@ await msgClient.signAndBroadcast(address, [message], "auto")
 // Output: {code: 0, height: 1086258, txIndex: 0, events: Array(8), rawLog: '[{"msg_index":0,"events":[{"type":"message","attri…2m02jkt2"},{"key":"module","value":"script"}]}]}]', …}
 ```
 
+### Update the code of a different script that has given you Authz permission
+
+#### Using the `grantee` field
+As a convenience, `UpdateScriptMsg` has a `grantee` field that will automatically create and execute the Authz Exec message if you have the corrisponding `/blit.script.MsgUpdateScript` permission.
+
+```js
+let newCode = `
+def greet(name):
+    print(f"Hola, {name}!")
+    return {"name": name}
+`;
+
+// Make the message with the blitjs encoder
+let message = blitjs.blit.script.MessageComposer.fromPartial.updateScript({ address, code: code, grantee: myAddress })
+
+// == or make the message object directly ==
+/*
+let message = {
+  "typeUrl": "/blit.script.MsgUpdateScript",
+  "value": {
+    "address": otherAddress,
+    "code": newCode,
+    "grantee": myAddress
+  }
+}
+*/
+await msgClient.signAndBroadcast(address, [message], "auto")
+// Output: {code: 0, height: 1086258, txIndex: 0, events: Array(8), rawLog: '[{"msg_index":0,"events":[{"type":"message","attri…2m02jkt2"},{"key":"module","value":"script"}]}]}]', …}
+```
+
+#### Manually creating the Authz MsgExe
+Alternativly you can manually create and run the `MsgExec` with the encoded `MsgUpdateScript` message.
+
+```js
+let msg1 = blitjs.blit.script.MsgUpdateScript.toProtoMsg({address, code: "# eazy peezy", grantee:"" })
+
+let execMsg = {
+  "typeUrl": "/cosmos.authz.v1beta1.MsgExec",
+  "value": {
+    "grantee": address,
+    "msgs": [msg1]
+  }
+}
+let tx = (await msgClient.signAndBroadcast(address, [execMsg], 1.5));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.authz.v1beta1.MsgExecResponse.fromProtoMsg(tx.msgResponses[0]);
+
+
+// decode the exec responses
+blitjs.blit.script.MsgUpdateScriptResponse.decode(decodedResponse.results[0])
+
+// Output: {version: 4n}
+```
 
 ### Querying a Script object to verify the Update Script worked
 
@@ -205,6 +258,42 @@ Output: {
     }
 }
 */
+```
+
+### How to add a Threshold Decision Policy to a group
+
+Nested messages must be encoded as a proto message like this
+
+```js
+let tdpMsg = blitjs.cosmos.group.v1.ThresholdDecisionPolicy.toProtoMsg(
+    "threshold": "1",
+    "windows": {
+        "voting_period": {"seconds": "100"},
+        "min_execution_period": {"seconds": "0"}
+    }
+})
+```
+
+Then it can be embedded like this:
+
+```js
+let msg = {
+  "typeUrl": "/cosmos.group.v1.MsgCreateGroupPolicy",
+  "value": {
+    "admin": address,
+    "groupId": "1",
+    "metadata": "some meta data",
+    "decisionPolicy": tdpMsg
+  }
+}
+
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+
+
+let decodedResponse = blitjs.cosmos.group.v1.MsgCreateGroupPolicyResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+// Output: {address: 'blit1c799jddmlz7segvg6jrw6w2k6svwafganjdznard3tc74n7td7rqx9h5jn'}
 ```
 
 ### Helpers for interacting with functions defined in a script
@@ -386,22 +475,26 @@ await msgClient.signAndBroadcast(address, [message], 1.5)
 
 ## Msg Reference
 
-
-### /blit.blit.MsgUpdateParams
+### /blit.blit.MsgUpdateParams 
 
 ```js
-{
+let msg = {
   "typeUrl": "/blit.blit.MsgUpdateParams",
   "value": {
-    "authority": ""
+    "authority": "",
+    "params": null
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.blit.blit.MsgUpdateParamsResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /blit.script.MsgCreateScript
+### /blit.script.MsgCreateScript 
 
 ```js
-{
+let msg = {
   "typeUrl": "/blit.script.MsgCreateScript",
   "value": {
     "creator": "",
@@ -410,12 +503,16 @@ await msgClient.signAndBroadcast(address, [message], 1.5)
     "grantee": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.blit.script.MsgCreateScriptResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /blit.script.MsgRun
+### /blit.script.MsgRun 
 
 ```js
-{
+let msg = {
   "typeUrl": "/blit.script.MsgRun",
   "value": {
     "caller_address": "",
@@ -426,23 +523,32 @@ await msgClient.signAndBroadcast(address, [message], 1.5)
     "grantee": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.blit.script.MsgRunResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /blit.script.MsgUpdateParams
+### /blit.script.MsgUpdateParams 
 
 ```js
-{
+let msg = {
   "typeUrl": "/blit.script.MsgUpdateParams",
   "value": {
-    "authority": ""
+    "authority": "",
+    "params": null
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.blit.script.MsgUpdateParamsResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /blit.script.MsgUpdateScript
+### /blit.script.MsgUpdateScript 
 
 ```js
-{
+let msg = {
   "typeUrl": "/blit.script.MsgUpdateScript",
   "value": {
     "address": "",
@@ -450,12 +556,16 @@ await msgClient.signAndBroadcast(address, [message], 1.5)
     "grantee": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.blit.script.MsgUpdateScriptResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /blit.storage.MsgCreateStorage
+### /blit.storage.MsgCreateStorage 
 
 ```js
-{
+let msg = {
   "typeUrl": "/blit.storage.MsgCreateStorage",
   "value": {
     "address": "",
@@ -464,12 +574,16 @@ await msgClient.signAndBroadcast(address, [message], 1.5)
     "grantee": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.blit.storage.MsgCreateStorageResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /blit.storage.MsgDeleteStorage
+### /blit.storage.MsgDeleteStorage 
 
 ```js
-{
+let msg = {
   "typeUrl": "/blit.storage.MsgDeleteStorage",
   "value": {
     "address": "",
@@ -477,23 +591,32 @@ await msgClient.signAndBroadcast(address, [message], 1.5)
     "grantee": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.blit.storage.MsgDeleteStorageResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /blit.storage.MsgUpdateParams
+### /blit.storage.MsgUpdateParams 
 
 ```js
-{
+let msg = {
   "typeUrl": "/blit.storage.MsgUpdateParams",
   "value": {
-    "authority": ""
+    "authority": "",
+    "params": null
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.blit.storage.MsgUpdateParamsResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /blit.storage.MsgUpdateStorage
+### /blit.storage.MsgUpdateStorage 
 
 ```js
-{
+let msg = {
   "typeUrl": "/blit.storage.MsgUpdateStorage",
   "value": {
     "address": "",
@@ -502,288 +625,334 @@ await msgClient.signAndBroadcast(address, [message], 1.5)
     "grantee": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.blit.storage.MsgUpdateStorageResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.authz.v1beta1.MsgExec
+### /cosmos.authz.v1beta1.MsgExec 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.authz.v1beta1.MsgExec",
   "value": {
     "grantee": "",
     "msgs": []
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.authz.v1beta1.MsgExecResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.authz.v1beta1.MsgGrant
+### /cosmos.authz.v1beta1.MsgGrant 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.authz.v1beta1.MsgGrant",
   "value": {
     "granter": "",
-    "grantee": ""
+    "grantee": "",
+    "grant": null
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.authz.v1beta1.MsgGrantResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.authz.v1beta1.MsgRevoke
+### /cosmos.authz.v1beta1.MsgRevoke 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.authz.v1beta1.MsgRevoke",
   "value": {
     "granter": "",
     "grantee": "",
-    "msgTypeUrl": ""
+    "msg_type_url": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.authz.v1beta1.MsgRevokeResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.bank.v1beta1.MsgMultiSend
+### /cosmos.bank.v1beta1.MsgMultiSend 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.bank.v1beta1.MsgMultiSend",
   "value": {
     "inputs": [],
     "outputs": []
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.bank.v1beta1.MsgMultiSendResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.bank.v1beta1.MsgSend
+### /cosmos.bank.v1beta1.MsgSend 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.bank.v1beta1.MsgSend",
   "value": {
-    "fromAddress": "",
-    "toAddress": "",
+    "from_address": "",
+    "to_address": "",
     "amount": []
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.bank.v1beta1.MsgSendResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.distribution.v1beta1.MsgFundCommunityPool
+### /cosmos.distribution.v1beta1.MsgFundCommunityPool 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.distribution.v1beta1.MsgFundCommunityPool",
   "value": {
     "amount": [],
     "depositor": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.distribution.v1beta1.MsgFundCommunityPoolResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.distribution.v1beta1.MsgSetWithdrawAddress
+### /cosmos.distribution.v1beta1.MsgSetWithdrawAddress 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress",
   "value": {
-    "delegatorAddress": "",
-    "withdrawAddress": ""
+    "delegator_address": "",
+    "withdraw_address": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.distribution.v1beta1.MsgSetWithdrawAddressResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward
+### /cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward",
   "value": {
-    "delegatorAddress": "",
-    "validatorAddress": ""
+    "delegator_address": "",
+    "validator_address": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.distribution.v1beta1.MsgWithdrawDelegatorRewardResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission
+### /cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission",
   "value": {
-    "validatorAddress": ""
+    "validator_address": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.distribution.v1beta1.MsgWithdrawValidatorCommissionResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.feegrant.v1beta1.MsgGrantAllowance
+### /cosmos.feegrant.v1beta1.MsgGrantAllowance 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.feegrant.v1beta1.MsgGrantAllowance",
   "value": {
     "granter": "",
-    "grantee": ""
+    "grantee": "",
+    "allowance": null
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.feegrant.v1beta1.MsgGrantAllowanceResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.feegrant.v1beta1.MsgRevokeAllowance
+### /cosmos.feegrant.v1beta1.MsgRevokeAllowance 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.feegrant.v1beta1.MsgRevokeAllowance",
   "value": {
     "granter": "",
     "grantee": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.feegrant.v1beta1.MsgRevokeAllowanceResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.gov.v1.MsgDeposit
+### /cosmos.gov.v1.MsgDeposit 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.gov.v1.MsgDeposit",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "depositor": "",
     "amount": []
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.gov.v1.MsgDepositResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.gov.v1.MsgSubmitProposal
+### /cosmos.gov.v1.MsgSubmitProposal 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.gov.v1.MsgSubmitProposal",
   "value": {
     "messages": [],
-    "initialDeposit": [],
+    "initial_deposit": [],
     "proposer": "",
-    "metadata": "",
-    "title": "",
-    "summary": ""
+    "metadata": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.gov.v1.MsgSubmitProposalResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.gov.v1.MsgUpdateParams
-
-```js
-{
-  "typeUrl": "/cosmos.gov.v1.MsgUpdateParams",
-  "value": {
-    "authority": ""
-  }
-}
-```        
-
-### /cosmos.gov.v1.MsgVote
+### /cosmos.gov.v1.MsgVote 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.gov.v1.MsgVote",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "voter": "",
     "option": 0,
     "metadata": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.gov.v1.MsgVoteResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.gov.v1.MsgVoteWeighted
+### /cosmos.gov.v1.MsgVoteWeighted 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.gov.v1.MsgVoteWeighted",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "voter": "",
     "options": [],
     "metadata": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.gov.v1.MsgVoteWeightedResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.gov.v1beta1.MsgDeposit
+### /cosmos.gov.v1beta1.MsgDeposit 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.gov.v1beta1.MsgDeposit",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "depositor": "",
     "amount": []
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.gov.v1beta1.MsgDepositResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.gov.v1beta1.MsgSubmitProposal
+### /cosmos.gov.v1beta1.MsgSubmitProposal 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.gov.v1beta1.MsgSubmitProposal",
   "value": {
-    "initialDeposit": [],
+    "content": null,
+    "initial_deposit": [],
     "proposer": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.gov.v1beta1.MsgSubmitProposalResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.gov.v1beta1.MsgVote
+### /cosmos.gov.v1beta1.MsgVote 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.gov.v1beta1.MsgVote",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "voter": "",
     "option": 0
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.gov.v1beta1.MsgVoteResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.gov.v1beta1.MsgVoteWeighted
+### /cosmos.gov.v1beta1.MsgVoteWeighted 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.gov.v1beta1.MsgVoteWeighted",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "voter": "",
     "options": []
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.gov.v1beta1.MsgVoteWeightedResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgCreateGroup
+### /cosmos.group.v1.MsgCreateGroup 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgCreateGroup",
   "value": {
     "admin": "",
@@ -791,379 +960,424 @@ await msgClient.signAndBroadcast(address, [message], 1.5)
     "metadata": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgCreateGroupResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgCreateGroupPolicy
+### /cosmos.group.v1.MsgCreateGroupPolicy 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgCreateGroupPolicy",
   "value": {
     "admin": "",
-    "groupId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
-    "metadata": ""
+    "group_id": "0",
+    "metadata": "",
+    "decision_policy": null
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgCreateGroupPolicyResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgCreateGroupWithPolicy
+### /cosmos.group.v1.MsgCreateGroupWithPolicy 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgCreateGroupWithPolicy",
   "value": {
     "admin": "",
     "members": [],
-    "groupMetadata": "",
-    "groupPolicyMetadata": "",
-    "groupPolicyAsAdmin": false
+    "group_metadata": "",
+    "group_policy_metadata": "",
+    "group_policy_as_admin": false,
+    "decision_policy": null
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgExec
+### /cosmos.group.v1.MsgExec 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgExec",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
-    "executor": ""
+    "proposal_id": "0",
+    "signer": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgExecResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgLeaveGroup
+### /cosmos.group.v1.MsgLeaveGroup 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgLeaveGroup",
   "value": {
     "address": "",
-    "groupId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    }
+    "group_id": "0"
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgLeaveGroupResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgSubmitProposal
+### /cosmos.group.v1.MsgSubmitProposal 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgSubmitProposal",
   "value": {
-    "groupPolicyAddress": "",
+    "address": "",
     "proposers": [],
     "metadata": "",
     "messages": [],
-    "exec": 0,
-    "title": "",
-    "summary": ""
+    "exec": 0
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgSubmitProposalResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgUpdateGroupAdmin
+### /cosmos.group.v1.MsgUpdateGroupAdmin 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgUpdateGroupAdmin",
   "value": {
     "admin": "",
-    "groupId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
-    "newAdmin": ""
+    "group_id": "0",
+    "new_admin": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgUpdateGroupAdminResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgUpdateGroupMembers
+### /cosmos.group.v1.MsgUpdateGroupMembers 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgUpdateGroupMembers",
   "value": {
     "admin": "",
-    "groupId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
-    "memberUpdates": []
+    "group_id": "0",
+    "member_updates": []
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgUpdateGroupMembersResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgUpdateGroupMetadata
+### /cosmos.group.v1.MsgUpdateGroupMetadata 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgUpdateGroupMetadata",
   "value": {
     "admin": "",
-    "groupId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "group_id": "0",
     "metadata": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgUpdateGroupMetadataResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgUpdateGroupPolicyAdmin
+### /cosmos.group.v1.MsgUpdateGroupPolicyAdmin 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgUpdateGroupPolicyAdmin",
   "value": {
     "admin": "",
-    "groupPolicyAddress": "",
-    "newAdmin": ""
+    "address": "",
+    "new_admin": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy
+### /cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy",
   "value": {
     "admin": "",
-    "groupPolicyAddress": ""
+    "address": "",
+    "decision_policy": null
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgUpdateGroupPolicyMetadata
+### /cosmos.group.v1.MsgUpdateGroupPolicyMetadata 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgUpdateGroupPolicyMetadata",
   "value": {
     "admin": "",
-    "groupPolicyAddress": "",
+    "address": "",
     "metadata": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgVote
+### /cosmos.group.v1.MsgVote 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgVote",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "voter": "",
     "option": 0,
     "metadata": "",
     "exec": 0
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgVoteResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.group.v1.MsgWithdrawProposal
+### /cosmos.group.v1.MsgWithdrawProposal 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.group.v1.MsgWithdrawProposal",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "address": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.group.v1.MsgWithdrawProposalResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.staking.v1beta1.MsgBeginRedelegate
+### /cosmos.staking.v1beta1.MsgBeginRedelegate 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.staking.v1beta1.MsgBeginRedelegate",
   "value": {
-    "delegatorAddress": "",
-    "validatorSrcAddress": "",
-    "validatorDstAddress": ""
+    "delegator_address": "",
+    "validator_src_address": "",
+    "validator_dst_address": "",
+    "amount": null
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgBeginRedelegateResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.staking.v1beta1.MsgCreateValidator
+### /cosmos.staking.v1beta1.MsgCreateValidator 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.staking.v1beta1.MsgCreateValidator",
   "value": {
-    "minSelfDelegation": "",
-    "delegatorAddress": "",
-    "validatorAddress": ""
+    "description": null,
+    "commission": null,
+    "min_self_delegation": "",
+    "delegator_address": "",
+    "validator_address": "",
+    "pubkey": null,
+    "value": null
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgCreateValidatorResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.staking.v1beta1.MsgDelegate
+### /cosmos.staking.v1beta1.MsgDelegate 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.staking.v1beta1.MsgDelegate",
   "value": {
-    "delegatorAddress": "",
-    "validatorAddress": ""
+    "delegator_address": "",
+    "validator_address": "",
+    "amount": null
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgDelegateResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.staking.v1beta1.MsgEditValidator
+### /cosmos.staking.v1beta1.MsgEditValidator 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.staking.v1beta1.MsgEditValidator",
   "value": {
-    "validatorAddress": "",
-    "commissionRate": "",
-    "minSelfDelegation": ""
+    "description": null,
+    "validator_address": "",
+    "commission_rate": "",
+    "min_self_delegation": ""
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgEditValidatorResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.staking.v1beta1.MsgUndelegate
+### /cosmos.staking.v1beta1.MsgUndelegate 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.staking.v1beta1.MsgUndelegate",
   "value": {
-    "delegatorAddress": "",
-    "validatorAddress": ""
+    "delegator_address": "",
+    "validator_address": "",
+    "amount": null
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgUndelegateResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /cosmos.vesting.v1beta1.MsgCreateVestingAccount
+### /cosmos.vesting.v1beta1.MsgCreateVestingAccount 
 
 ```js
-{
+let msg = {
   "typeUrl": "/cosmos.vesting.v1beta1.MsgCreateVestingAccount",
   "value": {
-    "fromAddress": "",
-    "toAddress": "",
+    "from_address": "",
+    "to_address": "",
     "amount": [],
-    "endTime": {
-      "low": 0,
-      "high": 0,
-      "unsigned": false
-    },
+    "end_time": "0",
     "delayed": false
   }
 }
-```        
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.vesting.v1beta1.MsgCreateVestingAccountResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
 
-### /ibc.applications.transfer.v1.MsgTransfer
 
-```js
-{
-  "typeUrl": "/ibc.applications.transfer.v1.MsgTransfer",
-  "value": {
-    "sourcePort": "",
-    "sourceChannel": "",
-    "sender": "",
-    "receiver": "",
-    "timeoutTimestamp": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
-    "memo": ""
-  }
-}
-```        
-
-The list was created with this snippet
+#### Documentation helper
+<details>
+<summary>
+  Source for generating the Msg examples
+</summary>
 
 ```js
-let items = [...msgClient.registry.types.entries()].sort()
-let out = ''
-items.map(([k, v]) => { 
+let items = [...msgClient.registry.types.entries()].sort();
+let out = '';
+items.map(([k, v]) => {
     if (k.includes('Msg') && !k.includes('ibc.core')) {
-        out += `
-### ${k}
+        let value = (blitjs.cosmosProtoRegistry.find( ((x ) => {return x[0] == k})) || blitjs.blitProtoRegistry.find(((x ) => {return x[0] == k})))
+        if (value !== undefined) out += `
+### ${k} 
 
 \`\`\`js
-${JSON.stringify({typeUrl:k, value: v.fromPartial({})}, null, 2)}
-\`\`\`        
-`} })
-console.log(out)
- 
-``` 
+let msg = ${ JSON.stringify({typeUrl:k, value: value[1].fromPartial({})},   function(k, v) { return v === undefined ? null : v}, 2) }
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs${k.replace('/', '.') + "Response"}.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+\`\`\`
+`;
+    }
+});
+console.log(out);
+```
+</details>
 
 ### Query Reference
 
 
 ###  blit.blit.QueryParamsRequest
 ```js
-let paramsQueryData = {}
-await queryClient.blit.blit.params(paramsQueryData)
+let params = {}
+await queryClient.blit.blit.params(params)
 
 ```
 
 ###  blit.script.QueryParamsRequest
 ```js
-let paramsQueryData = {}
-await queryClient.blit.script.params(paramsQueryData)
+let params = {}
+await queryClient.blit.script.params(params)
 
 ```
 
 ###  blit.script.QueryScriptRequest
 ```js
-let scriptQueryData = {
+let params = {
   "address": ""
 }
-await queryClient.blit.script.script(scriptQueryData)
+await queryClient.blit.script.script(params)
 
 ```
 
 ###  blit.script.QueryScriptsRequest
 ```js
-let scriptsQueryData = {}
-await queryClient.blit.script.scripts(scriptsQueryData)
+let params = {}
+await queryClient.blit.script.scripts(params)
 
 ```
 
 ###  blit.script.QueryWebRequest
 ```js
-let webQueryData = {
+let params = {
   "address": "",
   "httprequest": ""
 }
-await queryClient.blit.script.web(webQueryData)
+await queryClient.blit.script.web(params)
 
 ```
 
 ###  blit.script.QueryEvalRequest
 ```js
-let evalQueryData = {
+let params = {
   "caller_address": "",
   "script_address": "",
   "extra_code": "",
@@ -1171,828 +1385,911 @@ let evalQueryData = {
   "kwargs": "",
   "grantee": ""
 }
-await queryClient.blit.script.eval(evalQueryData)
+await queryClient.blit.script.eval(params)
 
 ```
 
 ###  blit.storage.QueryParamsRequest
 ```js
-let paramsQueryData = {}
-await queryClient.blit.storage.params(paramsQueryData)
+let params = {}
+await queryClient.blit.storage.params(params)
 
 ```
 
 ###  blit.storage.QueryStorageDetailRequest
 ```js
-let storageDetailQueryData = {
+let params = {
   "address": "",
   "index": ""
 }
-await queryClient.blit.storage.storageDetail(storageDetailQueryData)
+await queryClient.blit.storage.storageDetail(params)
 
 ```
 
 ###  blit.storage.QueryFilterStorageRequest
 ```js
-let filterStorageQueryData = {
+let params = {
   "filter_address": "",
   "filter_index_prefix": ""
 }
-await queryClient.blit.storage.filterStorage(filterStorageQueryData)
+await queryClient.blit.storage.filterStorage(params)
 
 ```
 
 ###  cosmos.auth.v1beta1.QueryAccountsRequest
 ```js
-let accountsQueryData = {}
-await queryClient.cosmos.auth.v1beta1.accounts(accountsQueryData)
+let params = {}
+await queryClient.cosmos.auth.v1beta1.accounts(params)
 
 ```
 
 ###  cosmos.auth.v1beta1.QueryAccountRequest
 ```js
-let accountQueryData = {
+let params = {
   "address": ""
 }
-await queryClient.cosmos.auth.v1beta1.account(accountQueryData)
+await queryClient.cosmos.auth.v1beta1.account(params)
 
 ```
 
 ###  cosmos.auth.v1beta1.QueryModuleAccountsRequest
 ```js
-let moduleAccountsQueryData = {}
-await queryClient.cosmos.auth.v1beta1.moduleAccounts(moduleAccountsQueryData)
+let params = {}
+await queryClient.cosmos.auth.v1beta1.moduleAccounts(params)
 
 ```
 
 ###  cosmos.auth.v1beta1.QueryParamsRequest
 ```js
-let paramsQueryData = {}
-await queryClient.cosmos.auth.v1beta1.params(paramsQueryData)
+let params = {}
+await queryClient.cosmos.auth.v1beta1.params(params)
 
 ```
 
 ###  cosmos.authz.v1beta1.QueryGrantsRequest
 ```js
-let grantsQueryData = {
+let params = {
   "granter": "",
   "grantee": "",
   "msg_type_url": ""
 }
-await queryClient.cosmos.authz.v1beta1.grants(grantsQueryData)
+await queryClient.cosmos.authz.v1beta1.grants(params)
 
 ```
 
 ###  cosmos.authz.v1beta1.QueryGranterGrantsRequest
 ```js
-let granterGrantsQueryData = {
+let params = {
   "granter": ""
 }
-await queryClient.cosmos.authz.v1beta1.granterGrants(granterGrantsQueryData)
+await queryClient.cosmos.authz.v1beta1.granterGrants(params)
 
 ```
 
 ###  cosmos.authz.v1beta1.QueryGranteeGrantsRequest
 ```js
-let granteeGrantsQueryData = {
+let params = {
   "grantee": ""
 }
-await queryClient.cosmos.authz.v1beta1.granteeGrants(granteeGrantsQueryData)
+await queryClient.cosmos.authz.v1beta1.granteeGrants(params)
 
 ```
 
 ###  cosmos.bank.v1beta1.QueryBalanceRequest
 ```js
-let balanceQueryData = {
+let params = {
   "address": "",
   "denom": ""
 }
-await queryClient.cosmos.bank.v1beta1.balance(balanceQueryData)
+await queryClient.cosmos.bank.v1beta1.balance(params)
 
 ```
 
 ###  cosmos.bank.v1beta1.QueryAllBalancesRequest
 ```js
-let allBalancesQueryData = {
+let params = {
   "address": ""
 }
-await queryClient.cosmos.bank.v1beta1.allBalances(allBalancesQueryData)
+await queryClient.cosmos.bank.v1beta1.allBalances(params)
 
 ```
 
 ###  cosmos.bank.v1beta1.QuerySpendableBalancesRequest
 ```js
-let spendableBalancesQueryData = {
+let params = {
   "address": ""
 }
-await queryClient.cosmos.bank.v1beta1.spendableBalances(spendableBalancesQueryData)
+await queryClient.cosmos.bank.v1beta1.spendableBalances(params)
 
 ```
 
 ###  cosmos.bank.v1beta1.QueryTotalSupplyRequest
 ```js
-let totalSupplyQueryData = {}
-await queryClient.cosmos.bank.v1beta1.totalSupply(totalSupplyQueryData)
+let params = {}
+await queryClient.cosmos.bank.v1beta1.totalSupply(params)
 
 ```
 
 ###  cosmos.bank.v1beta1.QuerySupplyOfRequest
 ```js
-let supplyOfQueryData = {
+let params = {
   "denom": ""
 }
-await queryClient.cosmos.bank.v1beta1.supplyOf(supplyOfQueryData)
+await queryClient.cosmos.bank.v1beta1.supplyOf(params)
 
 ```
 
 ###  cosmos.bank.v1beta1.QueryParamsRequest
 ```js
-let paramsQueryData = {}
-await queryClient.cosmos.bank.v1beta1.params(paramsQueryData)
+let params = {}
+await queryClient.cosmos.bank.v1beta1.params(params)
 
 ```
 
 ###  cosmos.bank.v1beta1.QueryDenomsMetadataRequest
 ```js
-let denomsMetadataQueryData = {}
-await queryClient.cosmos.bank.v1beta1.denomsMetadata(denomsMetadataQueryData)
+let params = {}
+await queryClient.cosmos.bank.v1beta1.denomsMetadata(params)
 
 ```
 
 ###  cosmos.bank.v1beta1.QueryDenomMetadataRequest
 ```js
-let denomMetadataQueryData = {
+let params = {
   "denom": ""
 }
-await queryClient.cosmos.bank.v1beta1.denomMetadata(denomMetadataQueryData)
+await queryClient.cosmos.bank.v1beta1.denomMetadata(params)
 
 ```
 
 ###  cosmos.bank.v1beta1.QueryDenomOwnersRequest
 ```js
-let denomOwnersQueryData = {
+let params = {
   "denom": ""
 }
-await queryClient.cosmos.bank.v1beta1.denomOwners(denomOwnersQueryData)
+await queryClient.cosmos.bank.v1beta1.denomOwners(params)
 
 ```
 
 ###  cosmos.base.reflection.v2alpha1.GetQueryServicesDescriptorRequest
 ```js
-let getServicesDescriptorQueryData = {}
-await queryClient.cosmos.base.reflection.v2alpha1.getServicesDescriptor(getServicesDescriptorQueryData)
+let params = {}
+await queryClient.cosmos.base.reflection.v2alpha1.getServicesDescriptor(params)
 
 ```
 
 ###  cosmos.distribution.v1beta1.QueryParamsRequest
 ```js
-let paramsQueryData = {}
-await queryClient.cosmos.distribution.v1beta1.params(paramsQueryData)
+let params = {}
+await queryClient.cosmos.distribution.v1beta1.params(params)
 
 ```
 
 ###  cosmos.distribution.v1beta1.QueryValidatorOutstandingRewardsRequest
 ```js
-let validatorOutstandingRewardsQueryData = {
+let params = {
   "validator_address": ""
 }
-await queryClient.cosmos.distribution.v1beta1.validatorOutstandingRewards(validatorOutstandingRewardsQueryData)
+await queryClient.cosmos.distribution.v1beta1.validatorOutstandingRewards(params)
 
 ```
 
 ###  cosmos.distribution.v1beta1.QueryValidatorCommissionRequest
 ```js
-let validatorCommissionQueryData = {
+let params = {
   "validator_address": ""
 }
-await queryClient.cosmos.distribution.v1beta1.validatorCommission(validatorCommissionQueryData)
+await queryClient.cosmos.distribution.v1beta1.validatorCommission(params)
 
 ```
 
 ###  cosmos.distribution.v1beta1.QueryValidatorSlashesRequest
 ```js
-let validatorSlashesQueryData = {
+let params = {
   "validator_address": "",
   "starting_height": "0",
   "ending_height": "0"
 }
-await queryClient.cosmos.distribution.v1beta1.validatorSlashes(validatorSlashesQueryData)
+await queryClient.cosmos.distribution.v1beta1.validatorSlashes(params)
 
 ```
 
 ###  cosmos.distribution.v1beta1.QueryDelegationRewardsRequest
 ```js
-let delegationRewardsQueryData = {
+let params = {
   "delegator_address": "",
   "validator_address": ""
 }
-await queryClient.cosmos.distribution.v1beta1.delegationRewards(delegationRewardsQueryData)
+await queryClient.cosmos.distribution.v1beta1.delegationRewards(params)
 
 ```
 
 ###  cosmos.distribution.v1beta1.QueryDelegationTotalRewardsRequest
 ```js
-let delegationTotalRewardsQueryData = {
+let params = {
   "delegator_address": ""
 }
-await queryClient.cosmos.distribution.v1beta1.delegationTotalRewards(delegationTotalRewardsQueryData)
+await queryClient.cosmos.distribution.v1beta1.delegationTotalRewards(params)
 
 ```
 
 ###  cosmos.distribution.v1beta1.QueryDelegatorValidatorsRequest
 ```js
-let delegatorValidatorsQueryData = {
+let params = {
   "delegator_address": ""
 }
-await queryClient.cosmos.distribution.v1beta1.delegatorValidators(delegatorValidatorsQueryData)
+await queryClient.cosmos.distribution.v1beta1.delegatorValidators(params)
 
 ```
 
 ###  cosmos.distribution.v1beta1.QueryDelegatorWithdrawAddressRequest
 ```js
-let delegatorWithdrawAddressQueryData = {
+let params = {
   "delegator_address": ""
 }
-await queryClient.cosmos.distribution.v1beta1.delegatorWithdrawAddress(delegatorWithdrawAddressQueryData)
+await queryClient.cosmos.distribution.v1beta1.delegatorWithdrawAddress(params)
 
 ```
 
 ###  cosmos.distribution.v1beta1.QueryCommunityPoolRequest
 ```js
-let communityPoolQueryData = {}
-await queryClient.cosmos.distribution.v1beta1.communityPool(communityPoolQueryData)
+let params = {}
+await queryClient.cosmos.distribution.v1beta1.communityPool(params)
 
 ```
 
 ###  cosmos.feegrant.v1beta1.QueryAllowanceRequest
 ```js
-let allowanceQueryData = {
+let params = {
   "granter": "",
   "grantee": ""
 }
-await queryClient.cosmos.feegrant.v1beta1.allowance(allowanceQueryData)
+await queryClient.cosmos.feegrant.v1beta1.allowance(params)
 
 ```
 
 ###  cosmos.feegrant.v1beta1.QueryAllowancesRequest
 ```js
-let allowancesQueryData = {
+let params = {
   "grantee": ""
 }
-await queryClient.cosmos.feegrant.v1beta1.allowances(allowancesQueryData)
+await queryClient.cosmos.feegrant.v1beta1.allowances(params)
 
 ```
 
 ###  cosmos.feegrant.v1beta1.QueryAllowancesByGranterRequest
 ```js
-let allowancesByGranterQueryData = {
+let params = {
   "granter": ""
 }
-await queryClient.cosmos.feegrant.v1beta1.allowancesByGranter(allowancesByGranterQueryData)
+await queryClient.cosmos.feegrant.v1beta1.allowancesByGranter(params)
 
 ```
 
 ###  cosmos.gov.v1.QueryProposalRequest
 ```js
-let proposalQueryData = {
+let params = {
   "proposal_id": "0"
 }
-await queryClient.cosmos.gov.v1.proposal(proposalQueryData)
+await queryClient.cosmos.gov.v1.proposal(params)
 
 ```
 
 ###  cosmos.gov.v1.QueryProposalsRequest
 ```js
-let proposalsQueryData = {
+let params = {
   "proposal_status": 0,
   "voter": "",
   "depositor": ""
 }
-await queryClient.cosmos.gov.v1.proposals(proposalsQueryData)
+await queryClient.cosmos.gov.v1.proposals(params)
 
 ```
 
 ###  cosmos.gov.v1.QueryVoteRequest
 ```js
-let voteQueryData = {
+let params = {
   "proposal_id": "0",
   "voter": ""
 }
-await queryClient.cosmos.gov.v1.vote(voteQueryData)
+await queryClient.cosmos.gov.v1.vote(params)
 
 ```
 
 ###  cosmos.gov.v1.QueryVotesRequest
 ```js
-let votesQueryData = {
+let params = {
   "proposal_id": "0"
 }
-await queryClient.cosmos.gov.v1.votes(votesQueryData)
+await queryClient.cosmos.gov.v1.votes(params)
 
 ```
 
 ###  cosmos.gov.v1.QueryParamsRequest
 ```js
-let paramsQueryData = {
+let params = {
   "params_type": ""
 }
-await queryClient.cosmos.gov.v1.params(paramsQueryData)
+await queryClient.cosmos.gov.v1.params(params)
 
 ```
 
 ###  cosmos.gov.v1.QueryDepositRequest
 ```js
-let depositQueryData = {
+let params = {
   "proposal_id": "0",
   "depositor": ""
 }
-await queryClient.cosmos.gov.v1.deposit(depositQueryData)
+await queryClient.cosmos.gov.v1.deposit(params)
 
 ```
 
 ###  cosmos.gov.v1.QueryDepositsRequest
 ```js
-let depositsQueryData = {
+let params = {
   "proposal_id": "0"
 }
-await queryClient.cosmos.gov.v1.deposits(depositsQueryData)
+await queryClient.cosmos.gov.v1.deposits(params)
 
 ```
 
 ###  cosmos.gov.v1.QueryTallyResultRequest
 ```js
-let tallyResultQueryData = {
+let params = {
   "proposal_id": "0"
 }
-await queryClient.cosmos.gov.v1.tallyResult(tallyResultQueryData)
+await queryClient.cosmos.gov.v1.tallyResult(params)
 
 ```
 
 ###  cosmos.gov.v1beta1.QueryProposalRequest
 ```js
-let proposalQueryData = {
+let params = {
   "proposal_id": "0"
 }
-await queryClient.cosmos.gov.v1beta1.proposal(proposalQueryData)
+await queryClient.cosmos.gov.v1beta1.proposal(params)
 
 ```
 
 ###  cosmos.gov.v1beta1.QueryProposalsRequest
 ```js
-let proposalsQueryData = {
+let params = {
   "proposal_status": 0,
   "voter": "",
   "depositor": ""
 }
-await queryClient.cosmos.gov.v1beta1.proposals(proposalsQueryData)
+await queryClient.cosmos.gov.v1beta1.proposals(params)
 
 ```
 
 ###  cosmos.gov.v1beta1.QueryVoteRequest
 ```js
-let voteQueryData = {
+let params = {
   "proposal_id": "0",
   "voter": ""
 }
-await queryClient.cosmos.gov.v1beta1.vote(voteQueryData)
+await queryClient.cosmos.gov.v1beta1.vote(params)
 
 ```
 
 ###  cosmos.gov.v1beta1.QueryVotesRequest
 ```js
-let votesQueryData = {
+let params = {
   "proposal_id": "0"
 }
-await queryClient.cosmos.gov.v1beta1.votes(votesQueryData)
+await queryClient.cosmos.gov.v1beta1.votes(params)
 
 ```
 
 ###  cosmos.gov.v1beta1.QueryParamsRequest
 ```js
-let paramsQueryData = {
+let params = {
   "params_type": ""
 }
-await queryClient.cosmos.gov.v1beta1.params(paramsQueryData)
+await queryClient.cosmos.gov.v1beta1.params(params)
 
 ```
 
 ###  cosmos.gov.v1beta1.QueryDepositRequest
 ```js
-let depositQueryData = {
+let params = {
   "proposal_id": "0",
   "depositor": ""
 }
-await queryClient.cosmos.gov.v1beta1.deposit(depositQueryData)
+await queryClient.cosmos.gov.v1beta1.deposit(params)
 
 ```
 
 ###  cosmos.gov.v1beta1.QueryDepositsRequest
 ```js
-let depositsQueryData = {
+let params = {
   "proposal_id": "0"
 }
-await queryClient.cosmos.gov.v1beta1.deposits(depositsQueryData)
+await queryClient.cosmos.gov.v1beta1.deposits(params)
 
 ```
 
 ###  cosmos.gov.v1beta1.QueryTallyResultRequest
 ```js
-let tallyResultQueryData = {
+let params = {
   "proposal_id": "0"
 }
-await queryClient.cosmos.gov.v1beta1.tallyResult(tallyResultQueryData)
+await queryClient.cosmos.gov.v1beta1.tallyResult(params)
 
 ```
 
 ###  cosmos.group.v1.QueryGroupInfoRequest
 ```js
-let groupInfoQueryData = {
+let params = {
   "group_id": "0"
 }
-await queryClient.cosmos.group.v1.groupInfo(groupInfoQueryData)
+await queryClient.cosmos.group.v1.groupInfo(params)
 
 ```
 
 ###  cosmos.group.v1.QueryGroupPolicyInfoRequest
 ```js
-let groupPolicyInfoQueryData = {
+let params = {
   "address": ""
 }
-await queryClient.cosmos.group.v1.groupPolicyInfo(groupPolicyInfoQueryData)
+await queryClient.cosmos.group.v1.groupPolicyInfo(params)
 
 ```
 
 ###  cosmos.group.v1.QueryGroupMembersRequest
 ```js
-let groupMembersQueryData = {
+let params = {
   "group_id": "0"
 }
-await queryClient.cosmos.group.v1.groupMembers(groupMembersQueryData)
+await queryClient.cosmos.group.v1.groupMembers(params)
 
 ```
 
 ###  cosmos.group.v1.QueryGroupsByAdminRequest
 ```js
-let groupsByAdminQueryData = {
+let params = {
   "admin": ""
 }
-await queryClient.cosmos.group.v1.groupsByAdmin(groupsByAdminQueryData)
+await queryClient.cosmos.group.v1.groupsByAdmin(params)
 
 ```
 
 ###  cosmos.group.v1.QueryGroupPoliciesByGroupRequest
 ```js
-let groupPoliciesByGroupQueryData = {
+let params = {
   "group_id": "0"
 }
-await queryClient.cosmos.group.v1.groupPoliciesByGroup(groupPoliciesByGroupQueryData)
+await queryClient.cosmos.group.v1.groupPoliciesByGroup(params)
 
 ```
 
 ###  cosmos.group.v1.QueryGroupPoliciesByAdminRequest
 ```js
-let groupPoliciesByAdminQueryData = {
+let params = {
   "admin": ""
 }
-await queryClient.cosmos.group.v1.groupPoliciesByAdmin(groupPoliciesByAdminQueryData)
+await queryClient.cosmos.group.v1.groupPoliciesByAdmin(params)
 
 ```
 
 ###  cosmos.group.v1.QueryProposalRequest
 ```js
-let proposalQueryData = {
+let params = {
   "proposal_id": "0"
 }
-await queryClient.cosmos.group.v1.proposal(proposalQueryData)
+await queryClient.cosmos.group.v1.proposal(params)
 
 ```
 
 ###  cosmos.group.v1.QueryProposalsByGroupPolicyRequest
 ```js
-let proposalsByGroupPolicyQueryData = {
+let params = {
   "address": ""
 }
-await queryClient.cosmos.group.v1.proposalsByGroupPolicy(proposalsByGroupPolicyQueryData)
+await queryClient.cosmos.group.v1.proposalsByGroupPolicy(params)
 
 ```
 
 ###  cosmos.group.v1.QueryVoteByProposalVoterRequest
 ```js
-let voteByProposalVoterQueryData = {
+let params = {
   "proposal_id": "0",
   "voter": ""
 }
-await queryClient.cosmos.group.v1.voteByProposalVoter(voteByProposalVoterQueryData)
+await queryClient.cosmos.group.v1.voteByProposalVoter(params)
 
 ```
 
 ###  cosmos.group.v1.QueryVotesByProposalRequest
 ```js
-let votesByProposalQueryData = {
+let params = {
   "proposal_id": "0"
 }
-await queryClient.cosmos.group.v1.votesByProposal(votesByProposalQueryData)
+await queryClient.cosmos.group.v1.votesByProposal(params)
 
 ```
 
 ###  cosmos.group.v1.QueryVotesByVoterRequest
 ```js
-let votesByVoterQueryData = {
+let params = {
   "voter": ""
 }
-await queryClient.cosmos.group.v1.votesByVoter(votesByVoterQueryData)
+await queryClient.cosmos.group.v1.votesByVoter(params)
 
 ```
 
 ###  cosmos.group.v1.QueryGroupsByMemberRequest
 ```js
-let groupsByMemberQueryData = {
+let params = {
   "address": ""
 }
-await queryClient.cosmos.group.v1.groupsByMember(groupsByMemberQueryData)
+await queryClient.cosmos.group.v1.groupsByMember(params)
 
 ```
 
 ###  cosmos.group.v1.QueryTallyResultRequest
 ```js
-let tallyResultQueryData = {
+let params = {
   "proposal_id": "0"
 }
-await queryClient.cosmos.group.v1.tallyResult(tallyResultQueryData)
+await queryClient.cosmos.group.v1.tallyResult(params)
 
 ```
 
 ###  cosmos.mint.v1beta1.QueryParamsRequest
 ```js
-let paramsQueryData = {}
-await queryClient.cosmos.mint.v1beta1.params(paramsQueryData)
+let params = {}
+await queryClient.cosmos.mint.v1beta1.params(params)
 
 ```
 
 ###  cosmos.mint.v1beta1.QueryInflationRequest
 ```js
-let inflationQueryData = {}
-await queryClient.cosmos.mint.v1beta1.inflation(inflationQueryData)
+let params = {}
+await queryClient.cosmos.mint.v1beta1.inflation(params)
 
 ```
 
 ###  cosmos.mint.v1beta1.QueryAnnualProvisionsRequest
 ```js
-let annualProvisionsQueryData = {}
-await queryClient.cosmos.mint.v1beta1.annualProvisions(annualProvisionsQueryData)
+let params = {}
+await queryClient.cosmos.mint.v1beta1.annualProvisions(params)
 
 ```
 
 ###  cosmos.nft.v1beta1.QueryBalanceRequest
 ```js
-let balanceQueryData = {
+let params = {
   "class_id": "",
   "owner": ""
 }
-await queryClient.cosmos.nft.v1beta1.balance(balanceQueryData)
+await queryClient.cosmos.nft.v1beta1.balance(params)
 
 ```
 
 ###  cosmos.nft.v1beta1.QueryOwnerRequest
 ```js
-let ownerQueryData = {
+let params = {
   "class_id": "",
   "id": ""
 }
-await queryClient.cosmos.nft.v1beta1.owner(ownerQueryData)
+await queryClient.cosmos.nft.v1beta1.owner(params)
 
 ```
 
 ###  cosmos.nft.v1beta1.QuerySupplyRequest
 ```js
-let supplyQueryData = {
+let params = {
   "class_id": ""
 }
-await queryClient.cosmos.nft.v1beta1.supply(supplyQueryData)
+await queryClient.cosmos.nft.v1beta1.supply(params)
 
 ```
 
 ###  cosmos.nft.v1beta1.QueryNFTsRequest
 ```js
-let nFTsQueryData = {
+let params = {
   "class_id": "",
   "owner": ""
 }
-await queryClient.cosmos.nft.v1beta1.nFTs(nFTsQueryData)
+await queryClient.cosmos.nft.v1beta1.nFTs(params)
 
 ```
 
 ###  cosmos.nft.v1beta1.QueryNFTRequest
 ```js
-let nFTQueryData = {
+let params = {
   "class_id": "",
   "id": ""
 }
-await queryClient.cosmos.nft.v1beta1.nFT(nFTQueryData)
+await queryClient.cosmos.nft.v1beta1.nFT(params)
 
 ```
 
 ###  cosmos.nft.v1beta1.QueryClassRequest
 ```js
-let classQueryData = {
+let params = {
   "class_id": ""
 }
-await queryClient.cosmos.nft.v1beta1.class(classQueryData)
+await queryClient.cosmos.nft.v1beta1.class(params)
 
 ```
 
 ###  cosmos.nft.v1beta1.QueryClassesRequest
 ```js
-let classesQueryData = {}
-await queryClient.cosmos.nft.v1beta1.classes(classesQueryData)
+let params = {}
+await queryClient.cosmos.nft.v1beta1.classes(params)
 
 ```
 
 ###  cosmos.params.v1beta1.QueryParamsRequest
 ```js
-let paramsQueryData = {
+let params = {
   "subspace": "",
   "key": ""
 }
-await queryClient.cosmos.params.v1beta1.params(paramsQueryData)
+await queryClient.cosmos.params.v1beta1.params(params)
 
 ```
 
 ###  cosmos.params.v1beta1.QuerySubspacesRequest
 ```js
-let subspacesQueryData = {}
-await queryClient.cosmos.params.v1beta1.subspaces(subspacesQueryData)
+let params = {}
+await queryClient.cosmos.params.v1beta1.subspaces(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryValidatorsRequest
 ```js
-let validatorsQueryData = {
+let params = {
   "status": ""
 }
-await queryClient.cosmos.staking.v1beta1.validators(validatorsQueryData)
+await queryClient.cosmos.staking.v1beta1.validators(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryValidatorRequest
 ```js
-let validatorQueryData = {
+let params = {
   "validator_addr": ""
 }
-await queryClient.cosmos.staking.v1beta1.validator(validatorQueryData)
+await queryClient.cosmos.staking.v1beta1.validator(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryValidatorDelegationsRequest
 ```js
-let validatorDelegationsQueryData = {
+let params = {
   "validator_addr": ""
 }
-await queryClient.cosmos.staking.v1beta1.validatorDelegations(validatorDelegationsQueryData)
+await queryClient.cosmos.staking.v1beta1.validatorDelegations(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryValidatorUnbondingDelegationsRequest
 ```js
-let validatorUnbondingDelegationsQueryData = {
+let params = {
   "validator_addr": ""
 }
-await queryClient.cosmos.staking.v1beta1.validatorUnbondingDelegations(validatorUnbondingDelegationsQueryData)
+await queryClient.cosmos.staking.v1beta1.validatorUnbondingDelegations(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryDelegationRequest
 ```js
-let delegationQueryData = {
+let params = {
   "delegator_addr": "",
   "validator_addr": ""
 }
-await queryClient.cosmos.staking.v1beta1.delegation(delegationQueryData)
+await queryClient.cosmos.staking.v1beta1.delegation(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryUnbondingDelegationRequest
 ```js
-let unbondingDelegationQueryData = {
+let params = {
   "delegator_addr": "",
   "validator_addr": ""
 }
-await queryClient.cosmos.staking.v1beta1.unbondingDelegation(unbondingDelegationQueryData)
+await queryClient.cosmos.staking.v1beta1.unbondingDelegation(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryDelegatorDelegationsRequest
 ```js
-let delegatorDelegationsQueryData = {
+let params = {
   "delegator_addr": ""
 }
-await queryClient.cosmos.staking.v1beta1.delegatorDelegations(delegatorDelegationsQueryData)
+await queryClient.cosmos.staking.v1beta1.delegatorDelegations(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryDelegatorUnbondingDelegationsRequest
 ```js
-let delegatorUnbondingDelegationsQueryData = {
+let params = {
   "delegator_addr": ""
 }
-await queryClient.cosmos.staking.v1beta1.delegatorUnbondingDelegations(delegatorUnbondingDelegationsQueryData)
+await queryClient.cosmos.staking.v1beta1.delegatorUnbondingDelegations(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryRedelegationsRequest
 ```js
-let redelegationsQueryData = {
+let params = {
   "delegator_addr": "",
   "src_validator_addr": "",
   "dst_validator_addr": ""
 }
-await queryClient.cosmos.staking.v1beta1.redelegations(redelegationsQueryData)
+await queryClient.cosmos.staking.v1beta1.redelegations(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryDelegatorValidatorsRequest
 ```js
-let delegatorValidatorsQueryData = {
+let params = {
   "delegator_addr": ""
 }
-await queryClient.cosmos.staking.v1beta1.delegatorValidators(delegatorValidatorsQueryData)
+await queryClient.cosmos.staking.v1beta1.delegatorValidators(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryDelegatorValidatorRequest
 ```js
-let delegatorValidatorQueryData = {
+let params = {
   "delegator_addr": "",
   "validator_addr": ""
 }
-await queryClient.cosmos.staking.v1beta1.delegatorValidator(delegatorValidatorQueryData)
+await queryClient.cosmos.staking.v1beta1.delegatorValidator(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryHistoricalInfoRequest
 ```js
-let historicalInfoQueryData = {
+let params = {
   "height": "0"
 }
-await queryClient.cosmos.staking.v1beta1.historicalInfo(historicalInfoQueryData)
+await queryClient.cosmos.staking.v1beta1.historicalInfo(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryPoolRequest
 ```js
-let poolQueryData = {}
-await queryClient.cosmos.staking.v1beta1.pool(poolQueryData)
+let params = {}
+await queryClient.cosmos.staking.v1beta1.pool(params)
 
 ```
 
 ###  cosmos.staking.v1beta1.QueryParamsRequest
 ```js
-let paramsQueryData = {}
-await queryClient.cosmos.staking.v1beta1.params(paramsQueryData)
+let params = {}
+await queryClient.cosmos.staking.v1beta1.params(params)
 
 ```
 
 ###  cosmos.upgrade.v1beta1.QueryCurrentPlanRequest
 ```js
-let currentPlanQueryData = {}
-await queryClient.cosmos.upgrade.v1beta1.currentPlan(currentPlanQueryData)
+let params = {}
+await queryClient.cosmos.upgrade.v1beta1.currentPlan(params)
 
 ```
 
 ###  cosmos.upgrade.v1beta1.QueryAppliedPlanRequest
 ```js
-let appliedPlanQueryData = {
+let params = {
   "name": ""
 }
-await queryClient.cosmos.upgrade.v1beta1.appliedPlan(appliedPlanQueryData)
+await queryClient.cosmos.upgrade.v1beta1.appliedPlan(params)
 
 ```
 
 ###  cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateRequest
 ```js
-let upgradedConsensusStateQueryData = {
+let params = {
   "last_height": "0"
 }
-await queryClient.cosmos.upgrade.v1beta1.upgradedConsensusState(upgradedConsensusStateQueryData)
+await queryClient.cosmos.upgrade.v1beta1.upgradedConsensusState(params)
 
 ```
 
 ###  cosmos.upgrade.v1beta1.QueryModuleVersionsRequest
 ```js
-let moduleVersionsQueryData = {
+let params = {
   "module_name": ""
 }
-await queryClient.cosmos.upgrade.v1beta1.moduleVersions(moduleVersionsQueryData)
+await queryClient.cosmos.upgrade.v1beta1.moduleVersions(params)
 
 ```
 
 ###  cosmos.upgrade.v1beta1.QueryAuthorityRequest
 ```js
-let authorityQueryData = {}
-await queryClient.cosmos.upgrade.v1beta1.authority(authorityQueryData)
+let params = {}
+await queryClient.cosmos.upgrade.v1beta1.authority(params)
 
 ```
 
+<details>
+<summary>
+  Source for generating the query examples
+</summary>
+
+```
+
+BigInt.prototype.toJSON = function() { return this.toString() }
+
+var flatten = (function (isArray, wrapped) {
+    return function (table) {
+        return reduce("", [], table);
+    };
+
+    function reduce(path, accumulator, table) {
+        if (isArray(table)) {
+        } else {
+            var empty = true;
+
+            if (path) {
+                for (var property in table) {
+                    var item = table[property], property = path + "." + property, empty = false;
+                    if (wrapped(item) !== item) {} // accumulator[property] = item;
+                    else reduce(property, accumulator, item);
+                }
+            } else {
+                for (var property in table) {
+                    var item = table[property], empty = false;
+                    if (wrapped(item) !== item) {} //accumulator[property] = item;
+                    else reduce(property, accumulator, item);
+                }
+            }
+
+            if (empty && path.endsWith("Request") && path.includes("Query")) accumulator.push(path);
+
+            
+        }
+
+        return accumulator;
+    }
+}(Array.isArray, Object));
+
+
+requestStrings = flatten(JSON.parse(JSON.stringify(blitjs)))
+
+function generateQueryCode(queryRequestStrings) {
+    let outputString = '';
+
+    for (let i = 0; i < queryRequestStrings.length; i++) {
+        let requestString = queryRequestStrings[i];
+        let parts = requestString.split('.');
+        let namespace = parts.slice(0, -1).join('.');
+        let requestClass = parts.slice(-1)[0];
+        let methodName = requestClass.replace('Query', '').replace('Request', '')
+	methodName = methodName[0].toLowerCase() + methodName.slice(1)
+        
+        // Ensure the methodName resulted in a non-empty string to avoid erroneous method calls
+        if (!methodName) {
+            console.error(`Unable to derive method name from request string: ${requestString}`);
+            continue;  // Skip to next iteration
+        }
+
+        let queryData = eval(`JSON.stringify(blitjs.${requestString}.fromPartial({}), null, 2)`);
+        let methodCallStatement = `await queryClient.${namespace}.${methodName}(params)\n`;
+
+
+        outputString += `
+###  ${requestString}
+\`\`\`js
+let params = ${queryData}
+${methodCallStatement}
+\`\`\`
+`;
+    }
+
+    return outputString;
+}
+
+
+resultString = generateQueryCode(requestStrings);
+console.log(resultString);
+```
+</details>
 
 License
 -------
