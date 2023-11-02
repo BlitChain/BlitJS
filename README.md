@@ -188,6 +188,59 @@ await msgClient.signAndBroadcast(address, [message], "auto")
 // Output: {code: 0, height: 1086258, txIndex: 0, events: Array(8), rawLog: '[{"msg_index":0,"events":[{"type":"message","attri…2m02jkt2"},{"key":"module","value":"script"}]}]}]', …}
 ```
 
+### Update the code of a different script that has given you Authz permission
+
+#### Using the `grantee` field
+As a convenience, `UpdateScriptMsg` has a `grantee` field that will automatically create and execute the Authz Exec message if you have the corrisponding `/blit.script.MsgUpdateScript` permission.
+
+```js
+let newCode = `
+def greet(name):
+    print(f"Hola, {name}!")
+    return {"name": name}
+`;
+
+// Make the message with the blitjs encoder
+let message = blitjs.blit.script.MessageComposer.fromPartial.updateScript({ address, code: code, grantee: myAddress })
+
+// == or make the message object directly ==
+/*
+let message = {
+  "typeUrl": "/blit.script.MsgUpdateScript",
+  "value": {
+    "address": otherAddress,
+    "code": newCode,
+    "grantee": myAddress
+  }
+}
+*/
+await msgClient.signAndBroadcast(address, [message], "auto")
+// Output: {code: 0, height: 1086258, txIndex: 0, events: Array(8), rawLog: '[{"msg_index":0,"events":[{"type":"message","attri…2m02jkt2"},{"key":"module","value":"script"}]}]}]', …}
+```
+
+#### Manually creating the Authz MsgExe
+Alternativly you can manually create and run the `MsgExec` with the encoded `MsgUpdateScript` message.
+
+```js
+let msg1 = blitjs.blit.script.MsgUpdateScript.toProtoMsg({address, code: "# eazy peezy", grantee:"" })
+
+let execMsg = {
+  "typeUrl": "/cosmos.authz.v1beta1.MsgExec",
+  "value": {
+    "grantee": address,
+    "msgs": [msg1]
+  }
+}
+let tx = (await msgClient.signAndBroadcast(address, [execMsg], 1.5));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.cosmos.authz.v1beta1.MsgExecResponse.fromProtoMsg(tx.msgResponses[0]);
+
+
+// decode the exec responses
+blitjs.blit.script.MsgUpdateScriptResponse.decode(decodedResponse.results[0])
+
+// Output: {version: 4n}
+```
 
 ### Querying a Script object to verify the Update Script worked
 
@@ -205,6 +258,42 @@ Output: {
     }
 }
 */
+```
+
+### How to add a Threshold Decision Policy to a group
+
+Nested messages must be encoded as a proto message like this
+
+```js
+let tdpMsg = blitjs.cosmos.group.v1.ThresholdDecisionPolicy.toProtoMsg(
+    "threshold": "1",
+    "windows": {
+        "voting_period": {"seconds": "100"},
+        "min_execution_period": {"seconds": "0"}
+    }
+})
+```
+
+Then it can be embedded like this:
+
+```js
+let msg = {
+  "typeUrl": "/cosmos.group.v1.MsgCreateGroupPolicy",
+  "value": {
+    "admin": address,
+    "groupId": "1",
+    "metadata": "some meta data",
+    "decisionPolicy": tdpMsg
+  }
+}
+
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+
+
+let decodedResponse = blitjs.cosmos.group.v1.MsgCreateGroupPolicyResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+// Output: {address: 'blit1c799jddmlz7segvg6jrw6w2k6svwafganjdznard3tc74n7td7rqx9h5jn'}
 ```
 
 ### Helpers for interacting with functions defined in a script
@@ -386,23 +475,23 @@ await msgClient.signAndBroadcast(address, [message], 1.5)
 
 ## Msg Reference
 
-
-### /blit.blit.MsgUpdateParams
+### /blit.blit.MsgUpdateParams 
 
 ```js
 let msg = {
   "typeUrl": "/blit.blit.MsgUpdateParams",
   "value": {
-    "authority": ""
+    "authority": "",
+    "params": null
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.blit.blit.MsgResponseUpdateParams.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.blit.blit.MsgUpdateParamsResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /blit.script.MsgCreateScript
+### /blit.script.MsgCreateScript 
 
 ```js
 let msg = {
@@ -416,11 +505,11 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.blit.script.MsgResponseCreateScript.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.blit.script.MsgCreateScriptResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /blit.script.MsgRun
+### /blit.script.MsgRun 
 
 ```js
 let msg = {
@@ -436,26 +525,27 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.blit.script.MsgResponseRun.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.blit.script.MsgRunResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /blit.script.MsgUpdateParams
+### /blit.script.MsgUpdateParams 
 
 ```js
 let msg = {
   "typeUrl": "/blit.script.MsgUpdateParams",
   "value": {
-    "authority": ""
+    "authority": "",
+    "params": null
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.blit.script.MsgResponseUpdateParams.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.blit.script.MsgUpdateParamsResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /blit.script.MsgUpdateScript
+### /blit.script.MsgUpdateScript 
 
 ```js
 let msg = {
@@ -468,11 +558,11 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.blit.script.MsgResponseUpdateScript.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.blit.script.MsgUpdateScriptResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /blit.storage.MsgCreateStorage
+### /blit.storage.MsgCreateStorage 
 
 ```js
 let msg = {
@@ -486,11 +576,11 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.blit.storage.MsgResponseCreateStorage.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.blit.storage.MsgCreateStorageResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /blit.storage.MsgDeleteStorage
+### /blit.storage.MsgDeleteStorage 
 
 ```js
 let msg = {
@@ -503,26 +593,27 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.blit.storage.MsgResponseDeleteStorage.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.blit.storage.MsgDeleteStorageResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /blit.storage.MsgUpdateParams
+### /blit.storage.MsgUpdateParams 
 
 ```js
 let msg = {
   "typeUrl": "/blit.storage.MsgUpdateParams",
   "value": {
-    "authority": ""
+    "authority": "",
+    "params": null
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.blit.storage.MsgResponseUpdateParams.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.blit.storage.MsgUpdateParamsResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /blit.storage.MsgUpdateStorage
+### /blit.storage.MsgUpdateStorage 
 
 ```js
 let msg = {
@@ -536,11 +627,11 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.blit.storage.MsgResponseUpdateStorage.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.blit.storage.MsgUpdateStorageResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.authz.v1beta1.MsgExec
+### /cosmos.authz.v1beta1.MsgExec 
 
 ```js
 let msg = {
@@ -552,27 +643,28 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.authz.v1beta1.MsgResponseExec.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.authz.v1beta1.MsgExecResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.authz.v1beta1.MsgGrant
+### /cosmos.authz.v1beta1.MsgGrant 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.authz.v1beta1.MsgGrant",
   "value": {
     "granter": "",
-    "grantee": ""
+    "grantee": "",
+    "grant": null
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.authz.v1beta1.MsgResponseGrant.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.authz.v1beta1.MsgGrantResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.authz.v1beta1.MsgRevoke
+### /cosmos.authz.v1beta1.MsgRevoke 
 
 ```js
 let msg = {
@@ -580,16 +672,16 @@ let msg = {
   "value": {
     "granter": "",
     "grantee": "",
-    "msgTypeUrl": ""
+    "msg_type_url": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.authz.v1beta1.MsgResponseRevoke.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.authz.v1beta1.MsgRevokeResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.bank.v1beta1.MsgMultiSend
+### /cosmos.bank.v1beta1.MsgMultiSend 
 
 ```js
 let msg = {
@@ -601,28 +693,28 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.bank.v1beta1.MsgResponseMultiSend.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.bank.v1beta1.MsgMultiSendResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.bank.v1beta1.MsgSend
+### /cosmos.bank.v1beta1.MsgSend 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.bank.v1beta1.MsgSend",
   "value": {
-    "fromAddress": "",
-    "toAddress": "",
+    "from_address": "",
+    "to_address": "",
     "amount": []
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.bank.v1beta1.MsgResponseSend.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.bank.v1beta1.MsgSendResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.distribution.v1beta1.MsgFundCommunityPool
+### /cosmos.distribution.v1beta1.MsgFundCommunityPool 
 
 ```js
 let msg = {
@@ -634,74 +726,75 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.distribution.v1beta1.MsgResponseFundCommunityPool.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.distribution.v1beta1.MsgFundCommunityPoolResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.distribution.v1beta1.MsgSetWithdrawAddress
+### /cosmos.distribution.v1beta1.MsgSetWithdrawAddress 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress",
   "value": {
-    "delegatorAddress": "",
-    "withdrawAddress": ""
+    "delegator_address": "",
+    "withdraw_address": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.distribution.v1beta1.MsgResponseSetWithdrawAddress.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.distribution.v1beta1.MsgSetWithdrawAddressResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward
+### /cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward",
   "value": {
-    "delegatorAddress": "",
-    "validatorAddress": ""
+    "delegator_address": "",
+    "validator_address": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.distribution.v1beta1.MsgResponseWithdrawDelegatorReward.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.distribution.v1beta1.MsgWithdrawDelegatorRewardResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission
+### /cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission",
   "value": {
-    "validatorAddress": ""
+    "validator_address": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.distribution.v1beta1.MsgResponseWithdrawValidatorCommission.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.distribution.v1beta1.MsgWithdrawValidatorCommissionResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.feegrant.v1beta1.MsgGrantAllowance
+### /cosmos.feegrant.v1beta1.MsgGrantAllowance 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.feegrant.v1beta1.MsgGrantAllowance",
   "value": {
     "granter": "",
-    "grantee": ""
+    "grantee": "",
+    "allowance": null
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.feegrant.v1beta1.MsgResponseGrantAllowance.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.feegrant.v1beta1.MsgGrantAllowanceResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.feegrant.v1beta1.MsgRevokeAllowance
+### /cosmos.feegrant.v1beta1.MsgRevokeAllowance 
 
 ```js
 let msg = {
@@ -713,77 +806,52 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.feegrant.v1beta1.MsgResponseRevokeAllowance.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.feegrant.v1beta1.MsgRevokeAllowanceResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.gov.v1.MsgDeposit
+### /cosmos.gov.v1.MsgDeposit 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.gov.v1.MsgDeposit",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "depositor": "",
     "amount": []
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.gov.v1.MsgResponseDeposit.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.gov.v1.MsgDepositResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.gov.v1.MsgSubmitProposal
+### /cosmos.gov.v1.MsgSubmitProposal 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.gov.v1.MsgSubmitProposal",
   "value": {
     "messages": [],
-    "initialDeposit": [],
+    "initial_deposit": [],
     "proposer": "",
-    "metadata": "",
-    "title": "",
-    "summary": ""
+    "metadata": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.gov.v1.MsgResponseSubmitProposal.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.gov.v1.MsgSubmitProposalResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.gov.v1.MsgUpdateParams
-
-```js
-let msg = {
-  "typeUrl": "/cosmos.gov.v1.MsgUpdateParams",
-  "value": {
-    "authority": ""
-  }
-}
-let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
-if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.gov.v1.MsgResponseUpdateParams.fromProtoMsg(tx.msgResponses[0]);
-console.log(decodedResponse);
-```
-
-### /cosmos.gov.v1.MsgVote
+### /cosmos.gov.v1.MsgVote 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.gov.v1.MsgVote",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "voter": "",
     "option": 0,
     "metadata": ""
@@ -791,21 +859,17 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.gov.v1.MsgResponseVote.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.gov.v1.MsgVoteResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.gov.v1.MsgVoteWeighted
+### /cosmos.gov.v1.MsgVoteWeighted 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.gov.v1.MsgVoteWeighted",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "voter": "",
     "options": [],
     "metadata": ""
@@ -813,90 +877,79 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.gov.v1.MsgResponseVoteWeighted.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.gov.v1.MsgVoteWeightedResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.gov.v1beta1.MsgDeposit
+### /cosmos.gov.v1beta1.MsgDeposit 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.gov.v1beta1.MsgDeposit",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "depositor": "",
     "amount": []
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.gov.v1beta1.MsgResponseDeposit.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.gov.v1beta1.MsgDepositResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.gov.v1beta1.MsgSubmitProposal
+### /cosmos.gov.v1beta1.MsgSubmitProposal 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.gov.v1beta1.MsgSubmitProposal",
   "value": {
-    "initialDeposit": [],
+    "content": null,
+    "initial_deposit": [],
     "proposer": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.gov.v1beta1.MsgResponseSubmitProposal.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.gov.v1beta1.MsgSubmitProposalResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.gov.v1beta1.MsgVote
+### /cosmos.gov.v1beta1.MsgVote 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.gov.v1beta1.MsgVote",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "voter": "",
     "option": 0
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.gov.v1beta1.MsgResponseVote.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.gov.v1beta1.MsgVoteResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.gov.v1beta1.MsgVoteWeighted
+### /cosmos.gov.v1beta1.MsgVoteWeighted 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.gov.v1beta1.MsgVoteWeighted",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "voter": "",
     "options": []
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.gov.v1beta1.MsgResponseVoteWeighted.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.gov.v1beta1.MsgVoteWeightedResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgCreateGroup
+### /cosmos.group.v1.MsgCreateGroup 
 
 ```js
 let msg = {
@@ -909,32 +962,29 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseCreateGroup.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgCreateGroupResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgCreateGroupPolicy
+### /cosmos.group.v1.MsgCreateGroupPolicy 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.group.v1.MsgCreateGroupPolicy",
   "value": {
     "admin": "",
-    "groupId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
-    "metadata": ""
+    "group_id": "0",
+    "metadata": "",
+    "decision_policy": null
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseCreateGroupPolicy.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgCreateGroupPolicyResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgCreateGroupWithPolicy
+### /cosmos.group.v1.MsgCreateGroupWithPolicy 
 
 ```js
 let msg = {
@@ -942,202 +992,178 @@ let msg = {
   "value": {
     "admin": "",
     "members": [],
-    "groupMetadata": "",
-    "groupPolicyMetadata": "",
-    "groupPolicyAsAdmin": false
+    "group_metadata": "",
+    "group_policy_metadata": "",
+    "group_policy_as_admin": false,
+    "decision_policy": null
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseCreateGroupWithPolicy.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgExec
+### /cosmos.group.v1.MsgExec 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.group.v1.MsgExec",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
-    "executor": ""
+    "proposal_id": "0",
+    "signer": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseExec.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgExecResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgLeaveGroup
+### /cosmos.group.v1.MsgLeaveGroup 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.group.v1.MsgLeaveGroup",
   "value": {
     "address": "",
-    "groupId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    }
+    "group_id": "0"
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseLeaveGroup.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgLeaveGroupResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgSubmitProposal
+### /cosmos.group.v1.MsgSubmitProposal 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.group.v1.MsgSubmitProposal",
   "value": {
-    "groupPolicyAddress": "",
+    "address": "",
     "proposers": [],
     "metadata": "",
     "messages": [],
-    "exec": 0,
-    "title": "",
-    "summary": ""
+    "exec": 0
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseSubmitProposal.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgSubmitProposalResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgUpdateGroupAdmin
+### /cosmos.group.v1.MsgUpdateGroupAdmin 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.group.v1.MsgUpdateGroupAdmin",
   "value": {
     "admin": "",
-    "groupId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
-    "newAdmin": ""
+    "group_id": "0",
+    "new_admin": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseUpdateGroupAdmin.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgUpdateGroupAdminResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgUpdateGroupMembers
+### /cosmos.group.v1.MsgUpdateGroupMembers 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.group.v1.MsgUpdateGroupMembers",
   "value": {
     "admin": "",
-    "groupId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
-    "memberUpdates": []
+    "group_id": "0",
+    "member_updates": []
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseUpdateGroupMembers.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgUpdateGroupMembersResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgUpdateGroupMetadata
+### /cosmos.group.v1.MsgUpdateGroupMetadata 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.group.v1.MsgUpdateGroupMetadata",
   "value": {
     "admin": "",
-    "groupId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "group_id": "0",
     "metadata": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseUpdateGroupMetadata.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgUpdateGroupMetadataResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgUpdateGroupPolicyAdmin
+### /cosmos.group.v1.MsgUpdateGroupPolicyAdmin 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.group.v1.MsgUpdateGroupPolicyAdmin",
   "value": {
     "admin": "",
-    "groupPolicyAddress": "",
-    "newAdmin": ""
+    "address": "",
+    "new_admin": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseUpdateGroupPolicyAdmin.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy
+### /cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy",
   "value": {
     "admin": "",
-    "groupPolicyAddress": ""
+    "address": "",
+    "decision_policy": null
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseUpdateGroupPolicyDecisionPolicy.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgUpdateGroupPolicyMetadata
+### /cosmos.group.v1.MsgUpdateGroupPolicyMetadata 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.group.v1.MsgUpdateGroupPolicyMetadata",
   "value": {
     "admin": "",
-    "groupPolicyAddress": "",
+    "address": "",
     "metadata": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseUpdateGroupPolicyMetadata.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgVote
+### /cosmos.group.v1.MsgVote 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.group.v1.MsgVote",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "voter": "",
     "option": 0,
     "metadata": "",
@@ -1146,180 +1172,157 @@ let msg = {
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseVote.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgVoteResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.group.v1.MsgWithdrawProposal
+### /cosmos.group.v1.MsgWithdrawProposal 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.group.v1.MsgWithdrawProposal",
   "value": {
-    "proposalId": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
+    "proposal_id": "0",
     "address": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.group.v1.MsgResponseWithdrawProposal.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.group.v1.MsgWithdrawProposalResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.staking.v1beta1.MsgBeginRedelegate
+### /cosmos.staking.v1beta1.MsgBeginRedelegate 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.staking.v1beta1.MsgBeginRedelegate",
   "value": {
-    "delegatorAddress": "",
-    "validatorSrcAddress": "",
-    "validatorDstAddress": ""
+    "delegator_address": "",
+    "validator_src_address": "",
+    "validator_dst_address": "",
+    "amount": null
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgResponseBeginRedelegate.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgBeginRedelegateResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.staking.v1beta1.MsgCreateValidator
+### /cosmos.staking.v1beta1.MsgCreateValidator 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.staking.v1beta1.MsgCreateValidator",
   "value": {
-    "minSelfDelegation": "",
-    "delegatorAddress": "",
-    "validatorAddress": ""
+    "description": null,
+    "commission": null,
+    "min_self_delegation": "",
+    "delegator_address": "",
+    "validator_address": "",
+    "pubkey": null,
+    "value": null
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgResponseCreateValidator.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgCreateValidatorResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.staking.v1beta1.MsgDelegate
+### /cosmos.staking.v1beta1.MsgDelegate 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.staking.v1beta1.MsgDelegate",
   "value": {
-    "delegatorAddress": "",
-    "validatorAddress": ""
+    "delegator_address": "",
+    "validator_address": "",
+    "amount": null
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgResponseDelegate.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgDelegateResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.staking.v1beta1.MsgEditValidator
+### /cosmos.staking.v1beta1.MsgEditValidator 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.staking.v1beta1.MsgEditValidator",
   "value": {
-    "validatorAddress": "",
-    "commissionRate": "",
-    "minSelfDelegation": ""
+    "description": null,
+    "validator_address": "",
+    "commission_rate": "",
+    "min_self_delegation": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgResponseEditValidator.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgEditValidatorResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.staking.v1beta1.MsgUndelegate
+### /cosmos.staking.v1beta1.MsgUndelegate 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.staking.v1beta1.MsgUndelegate",
   "value": {
-    "delegatorAddress": "",
-    "validatorAddress": ""
+    "delegator_address": "",
+    "validator_address": "",
+    "amount": null
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgResponseUndelegate.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.staking.v1beta1.MsgUndelegateResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
-### /cosmos.vesting.v1beta1.MsgCreateVestingAccount
+### /cosmos.vesting.v1beta1.MsgCreateVestingAccount 
 
 ```js
 let msg = {
   "typeUrl": "/cosmos.vesting.v1beta1.MsgCreateVestingAccount",
   "value": {
-    "fromAddress": "",
-    "toAddress": "",
+    "from_address": "",
+    "to_address": "",
     "amount": [],
-    "endTime": {
-      "low": 0,
-      "high": 0,
-      "unsigned": false
-    },
+    "end_time": "0",
     "delayed": false
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.cosmos.vesting.v1beta1.MsgResponseCreateVestingAccount.fromProtoMsg(tx.msgResponses[0]);
-console.log(decodedResponse);
-```
-
-### /ibc.applications.transfer.v1.MsgTransfer
-
-```js
-let msg = {
-  "typeUrl": "/ibc.applications.transfer.v1.MsgTransfer",
-  "value": {
-    "sourcePort": "",
-    "sourceChannel": "",
-    "sender": "",
-    "receiver": "",
-    "timeoutTimestamp": {
-      "low": 0,
-      "high": 0,
-      "unsigned": true
-    },
-    "memo": ""
-  }
-}
-let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
-if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs.ibc.applications.transfer.v1.MsgResponseTransfer.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs.cosmos.vesting.v1beta1.MsgCreateVestingAccountResponse.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 ```
 
 
+#### Documentation helper
 <details>
 <summary>
   Source for generating the Msg examples
 </summary>
-
 
 ```js
 let items = [...msgClient.registry.types.entries()].sort();
 let out = '';
 items.map(([k, v]) => {
     if (k.includes('Msg') && !k.includes('ibc.core')) {
-        out += `
-### ${k}
+        let value = (blitjs.cosmosProtoRegistry.find( ((x ) => {return x[0] == k})) || blitjs.blitProtoRegistry.find(((x ) => {return x[0] == k})))
+        if (value !== undefined) out += `
+### ${k} 
 
 \`\`\`js
-let msg = ${JSON.stringify({typeUrl:k, value: v.fromPartial({})}, null, 2)}
+let msg = ${ JSON.stringify({typeUrl:k, value: value[1].fromPartial({})},   function(k, v) { return v === undefined ? null : v}, 2) }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
 if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
-let decodedResponse = blitjs${k.replace('/', '.').replace('Msg', 'MsgResponse')}.fromProtoMsg(tx.msgResponses[0]);
+let decodedResponse = blitjs${k.replace('/', '.') + "Response"}.fromProtoMsg(tx.msgResponses[0]);
 console.log(decodedResponse);
 \`\`\`
 `;
