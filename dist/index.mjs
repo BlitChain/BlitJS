@@ -1,13 +1,13 @@
 import * as blitjs from './codegen';
 export default blitjs;
 // Query client setup
-export const makeQueryClient = async ({ restEndpoint }) => {
+const makeQueryClient = async ({ restEndpoint }) => {
     return await blitjs.blit.ClientFactory.createLCDClient({
         restEndpoint
     });
 };
 // Client setup for Keplr
-export const makeKeplrClient = ({ rpcEndpoint, restEndpoint, chainId }) => {
+const makeKeplrClient = ({ rpcEndpoint, restEndpoint, chainId }) => {
     return new Promise((resolve, reject) => {
         if (!window.keplr) {
             reject(new Error('Please install keplr extension'));
@@ -74,7 +74,7 @@ export const makeKeplrClient = ({ rpcEndpoint, restEndpoint, chainId }) => {
         }
     });
 };
-export const runFunction = async ({ msgClient, caller_address, script_address, function_name, kwargs, extra_code, grantee }) => {
+const runFunction = async ({ msgClient, caller_address, script_address, function_name, kwargs, extra_code, grantee }) => {
     const message = blitjs.blit.script.MessageComposer.withTypeUrl.run({
         caller_address,
         script_address,
@@ -112,7 +112,7 @@ export const runFunction = async ({ msgClient, caller_address, script_address, f
         throw e; // re-throw the error if it's not a SyntaxError
     }
 };
-export const queryFunction = async ({ queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }) => {
+const queryFunction = async ({ queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }) => {
     const response = await queryClient.blit.script.eval({
         script_address,
         caller_address,
@@ -127,5 +127,11 @@ export const queryFunction = async ({ queryClient, script_address, caller_addres
     catch (SyntaxError) {
         return response;
     }
+};
+export const experimentalHelpers = {
+    makeQueryClient,
+    makeKeplrClient,
+    runFunction,
+    queryFunction
 };
 //# sourceMappingURL=index.js.map

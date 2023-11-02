@@ -3,14 +3,14 @@ import * as blitjs from './codegen';
 export default blitjs;
 
 // Query client setup
-export const makeQueryClient = async ({ restEndpoint }) => {
+const makeQueryClient = async ({ restEndpoint }) => {
   return await blitjs.blit.ClientFactory.createLCDClient({
     restEndpoint
   });
 };
 
 // Client setup for Keplr
-export const makeKeplrClient = ({ rpcEndpoint, restEndpoint, chainId }) => {
+const makeKeplrClient = ({ rpcEndpoint, restEndpoint, chainId }) => {
   return new Promise((resolve, reject) => {
     if (!window.keplr) {
       reject(new Error('Please install keplr extension'));
@@ -76,7 +76,7 @@ export const makeKeplrClient = ({ rpcEndpoint, restEndpoint, chainId }) => {
   });
 };
 
-export const runFunction = async ({
+const runFunction = async ({
   msgClient,
   caller_address,
   script_address,
@@ -127,7 +127,7 @@ export const runFunction = async ({
   }
 };
 
-export const queryFunction = async ({
+const queryFunction = async ({
   queryClient,
   script_address,
   caller_address,
@@ -149,4 +149,11 @@ export const queryFunction = async ({
   } catch (SyntaxError) {
     return response;
   }
+};
+
+export const experimentalHelpers = {
+  makeQueryClient,
+  makeKeplrClient,
+  runFunction,
+  queryFunction
 };

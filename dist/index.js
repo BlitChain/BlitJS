@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.queryFunction = exports.runFunction = exports.makeKeplrClient = exports.makeQueryClient = void 0;
+exports.experimentalHelpers = void 0;
 const blitjs = __importStar(require("./codegen"));
 exports.default = blitjs;
 // Query client setup
@@ -32,7 +32,6 @@ const makeQueryClient = async ({ restEndpoint }) => {
         restEndpoint
     });
 };
-exports.makeQueryClient = makeQueryClient;
 // Client setup for Keplr
 const makeKeplrClient = ({ rpcEndpoint, restEndpoint, chainId }) => {
     return new Promise((resolve, reject) => {
@@ -101,7 +100,6 @@ const makeKeplrClient = ({ rpcEndpoint, restEndpoint, chainId }) => {
         }
     });
 };
-exports.makeKeplrClient = makeKeplrClient;
 const runFunction = async ({ msgClient, caller_address, script_address, function_name, kwargs, extra_code, grantee }) => {
     const message = blitjs.blit.script.MessageComposer.withTypeUrl.run({
         caller_address,
@@ -140,7 +138,6 @@ const runFunction = async ({ msgClient, caller_address, script_address, function
         throw e; // re-throw the error if it's not a SyntaxError
     }
 };
-exports.runFunction = runFunction;
 const queryFunction = async ({ queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }) => {
     const response = await queryClient.blit.script.eval({
         script_address,
@@ -157,5 +154,10 @@ const queryFunction = async ({ queryClient, script_address, caller_address, func
         return response;
     }
 };
-exports.queryFunction = queryFunction;
+exports.experimentalHelpers = {
+    makeQueryClient,
+    makeKeplrClient,
+    runFunction,
+    queryFunction
+};
 //# sourceMappingURL=index.js.map
