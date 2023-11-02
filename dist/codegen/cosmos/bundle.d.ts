@@ -117,7 +117,7 @@ export declare namespace cosmos {
             QueryAccountsRequest: {
                 typeUrl: string;
                 encode(message: _19.QueryAccountsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.QueryAccountsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.QueryAccountsRequest;
                 fromJSON(object: any): _19.QueryAccountsRequest;
                 toJSON(message: _19.QueryAccountsRequest): unknown;
                 fromPartial(object: Partial<_19.QueryAccountsRequest>): _19.QueryAccountsRequest;
@@ -134,7 +134,7 @@ export declare namespace cosmos {
             QueryAccountsResponse: {
                 typeUrl: string;
                 encode(message: _19.QueryAccountsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.QueryAccountsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.QueryAccountsResponse;
                 fromJSON(object: any): _19.QueryAccountsResponse;
                 toJSON(message: _19.QueryAccountsResponse): unknown;
                 fromPartial(object: Partial<_19.QueryAccountsResponse>): _19.QueryAccountsResponse;
@@ -151,7 +151,7 @@ export declare namespace cosmos {
             QueryAccountRequest: {
                 typeUrl: string;
                 encode(message: _19.QueryAccountRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.QueryAccountRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.QueryAccountRequest;
                 fromJSON(object: any): _19.QueryAccountRequest;
                 toJSON(message: _19.QueryAccountRequest): unknown;
                 fromPartial(object: Partial<_19.QueryAccountRequest>): _19.QueryAccountRequest;
@@ -168,7 +168,7 @@ export declare namespace cosmos {
             QueryModuleAccountsRequest: {
                 typeUrl: string;
                 encode(_: _19.QueryModuleAccountsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.QueryModuleAccountsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.QueryModuleAccountsRequest;
                 fromJSON(_: any): _19.QueryModuleAccountsRequest;
                 toJSON(_: _19.QueryModuleAccountsRequest): unknown;
                 fromPartial(_: Partial<_19.QueryModuleAccountsRequest>): _19.QueryModuleAccountsRequest;
@@ -185,7 +185,7 @@ export declare namespace cosmos {
             QueryParamsResponse: {
                 typeUrl: string;
                 encode(message: _19.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.QueryParamsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.QueryParamsResponse;
                 fromJSON(object: any): _19.QueryParamsResponse;
                 toJSON(message: _19.QueryParamsResponse): unknown;
                 fromPartial(object: Partial<_19.QueryParamsResponse>): _19.QueryParamsResponse;
@@ -202,7 +202,7 @@ export declare namespace cosmos {
             QueryAccountResponse: {
                 typeUrl: string;
                 encode(message: _19.QueryAccountResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.QueryAccountResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.QueryAccountResponse;
                 fromJSON(object: any): _19.QueryAccountResponse;
                 toJSON(message: _19.QueryAccountResponse): unknown;
                 fromPartial(object: Partial<_19.QueryAccountResponse>): _19.QueryAccountResponse;
@@ -219,7 +219,7 @@ export declare namespace cosmos {
             QueryParamsRequest: {
                 typeUrl: string;
                 encode(_: _19.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.QueryParamsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.QueryParamsRequest;
                 fromJSON(_: any): _19.QueryParamsRequest;
                 toJSON(_: _19.QueryParamsRequest): unknown;
                 fromPartial(_: Partial<_19.QueryParamsRequest>): _19.QueryParamsRequest;
@@ -236,7 +236,7 @@ export declare namespace cosmos {
             QueryModuleAccountsResponse: {
                 typeUrl: string;
                 encode(message: _19.QueryModuleAccountsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.QueryModuleAccountsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.QueryModuleAccountsResponse;
                 fromJSON(object: any): _19.QueryModuleAccountsResponse;
                 toJSON(message: _19.QueryModuleAccountsResponse): unknown;
                 fromPartial(object: Partial<_19.QueryModuleAccountsResponse>): _19.QueryModuleAccountsResponse;
@@ -253,7 +253,7 @@ export declare namespace cosmos {
             Bech32PrefixRequest: {
                 typeUrl: string;
                 encode(_: _19.Bech32PrefixRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.Bech32PrefixRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.Bech32PrefixRequest;
                 fromJSON(_: any): _19.Bech32PrefixRequest;
                 toJSON(_: _19.Bech32PrefixRequest): unknown;
                 fromPartial(_: Partial<_19.Bech32PrefixRequest>): _19.Bech32PrefixRequest;
@@ -270,7 +270,7 @@ export declare namespace cosmos {
             Bech32PrefixResponse: {
                 typeUrl: string;
                 encode(message: _19.Bech32PrefixResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.Bech32PrefixResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.Bech32PrefixResponse;
                 fromJSON(object: any): _19.Bech32PrefixResponse;
                 toJSON(message: _19.Bech32PrefixResponse): unknown;
                 fromPartial(object: Partial<_19.Bech32PrefixResponse>): _19.Bech32PrefixResponse;
@@ -287,7 +287,7 @@ export declare namespace cosmos {
             AddressBytesToStringRequest: {
                 typeUrl: string;
                 encode(message: _19.AddressBytesToStringRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.AddressBytesToStringRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.AddressBytesToStringRequest;
                 fromJSON(object: any): _19.AddressBytesToStringRequest;
                 toJSON(message: _19.AddressBytesToStringRequest): unknown;
                 fromPartial(object: Partial<_19.AddressBytesToStringRequest>): _19.AddressBytesToStringRequest;
@@ -304,7 +304,7 @@ export declare namespace cosmos {
             AddressBytesToStringResponse: {
                 typeUrl: string;
                 encode(message: _19.AddressBytesToStringResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.AddressBytesToStringResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.AddressBytesToStringResponse;
                 fromJSON(object: any): _19.AddressBytesToStringResponse;
                 toJSON(message: _19.AddressBytesToStringResponse): unknown;
                 fromPartial(object: Partial<_19.AddressBytesToStringResponse>): _19.AddressBytesToStringResponse;
@@ -321,7 +321,7 @@ export declare namespace cosmos {
             AddressStringToBytesRequest: {
                 typeUrl: string;
                 encode(message: _19.AddressStringToBytesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.AddressStringToBytesRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.AddressStringToBytesRequest;
                 fromJSON(object: any): _19.AddressStringToBytesRequest;
                 toJSON(message: _19.AddressStringToBytesRequest): unknown;
                 fromPartial(object: Partial<_19.AddressStringToBytesRequest>): _19.AddressStringToBytesRequest;
@@ -338,7 +338,7 @@ export declare namespace cosmos {
             AddressStringToBytesResponse: {
                 typeUrl: string;
                 encode(message: _19.AddressStringToBytesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _19.AddressStringToBytesResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _19.AddressStringToBytesResponse;
                 fromJSON(object: any): _19.AddressStringToBytesResponse;
                 toJSON(message: _19.AddressStringToBytesResponse): unknown;
                 fromPartial(object: Partial<_19.AddressStringToBytesResponse>): _19.AddressStringToBytesResponse;
@@ -352,16 +352,16 @@ export declare namespace cosmos {
                 toProto(message: _19.AddressStringToBytesResponse): Uint8Array;
                 toProtoMsg(message: _19.AddressStringToBytesResponse): _19.AddressStringToBytesResponseProtoMsg;
             };
-            Cosmos_authAccountI_InterfaceDecoder: (input: Uint8Array | import("..").BinaryReader) => import("../google/protobuf/any").Any | _17.BaseAccount;
+            Cosmos_authAccountI_InterfaceDecoder: (input: import("..").BinaryReader | Uint8Array) => import("../google/protobuf/any").Any | _17.BaseAccount;
             Cosmos_authAccountI_FromAmino: (content: import("../google/protobuf/any").AnyAmino) => import("../google/protobuf/any").Any;
             Cosmos_authAccountI_ToAmino: (content: import("../google/protobuf/any").Any) => import("../google/protobuf/any").AnyAmino;
-            Cosmos_authModuleAccountI_InterfaceDecoder: (input: Uint8Array | import("..").BinaryReader) => import("../google/protobuf/any").Any | _17.ModuleAccount;
+            Cosmos_authModuleAccountI_InterfaceDecoder: (input: import("..").BinaryReader | Uint8Array) => import("../google/protobuf/any").Any | _17.ModuleAccount;
             Cosmos_authModuleAccountI_FromAmino: (content: import("../google/protobuf/any").AnyAmino) => import("../google/protobuf/any").Any;
             Cosmos_authModuleAccountI_ToAmino: (content: import("../google/protobuf/any").Any) => import("../google/protobuf/any").AnyAmino;
             GenesisState: {
                 typeUrl: string;
                 encode(message: _18.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.GenesisState;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.GenesisState;
                 fromJSON(object: any): _18.GenesisState;
                 toJSON(message: _18.GenesisState): unknown;
                 fromPartial(object: Partial<_18.GenesisState>): _18.GenesisState;
@@ -378,7 +378,7 @@ export declare namespace cosmos {
             BaseAccount: {
                 typeUrl: string;
                 encode(message: _17.BaseAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _17.BaseAccount;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _17.BaseAccount;
                 fromJSON(object: any): _17.BaseAccount;
                 toJSON(message: _17.BaseAccount): unknown;
                 fromPartial(object: Partial<_17.BaseAccount>): _17.BaseAccount;
@@ -395,7 +395,7 @@ export declare namespace cosmos {
             ModuleAccount: {
                 typeUrl: string;
                 encode(message: _17.ModuleAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _17.ModuleAccount;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _17.ModuleAccount;
                 fromJSON(object: any): _17.ModuleAccount;
                 toJSON(message: _17.ModuleAccount): unknown;
                 fromPartial(object: Partial<_17.ModuleAccount>): _17.ModuleAccount;
@@ -412,7 +412,7 @@ export declare namespace cosmos {
             Params: {
                 typeUrl: string;
                 encode(message: _17.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _17.Params;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _17.Params;
                 fromJSON(object: any): _17.Params;
                 toJSON(message: _17.Params): unknown;
                 fromPartial(object: Partial<_17.Params>): _17.Params;
@@ -529,7 +529,7 @@ export declare namespace cosmos {
             MsgGrant: {
                 typeUrl: string;
                 encode(message: _24.MsgGrant, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _24.MsgGrant;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _24.MsgGrant;
                 fromJSON(object: any): _24.MsgGrant;
                 toJSON(message: _24.MsgGrant): unknown;
                 fromPartial(object: Partial<_24.MsgGrant>): _24.MsgGrant;
@@ -546,7 +546,7 @@ export declare namespace cosmos {
             MsgExecResponse: {
                 typeUrl: string;
                 encode(message: _24.MsgExecResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _24.MsgExecResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _24.MsgExecResponse;
                 fromJSON(object: any): _24.MsgExecResponse;
                 toJSON(message: _24.MsgExecResponse): unknown;
                 fromPartial(object: Partial<_24.MsgExecResponse>): _24.MsgExecResponse;
@@ -563,7 +563,7 @@ export declare namespace cosmos {
             MsgExec: {
                 typeUrl: string;
                 encode(message: _24.MsgExec, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _24.MsgExec;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _24.MsgExec;
                 fromJSON(object: any): _24.MsgExec;
                 toJSON(message: _24.MsgExec): unknown;
                 fromPartial(object: Partial<_24.MsgExec>): _24.MsgExec;
@@ -580,7 +580,7 @@ export declare namespace cosmos {
             MsgGrantResponse: {
                 typeUrl: string;
                 encode(_: _24.MsgGrantResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _24.MsgGrantResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _24.MsgGrantResponse;
                 fromJSON(_: any): _24.MsgGrantResponse;
                 toJSON(_: _24.MsgGrantResponse): unknown;
                 fromPartial(_: Partial<_24.MsgGrantResponse>): _24.MsgGrantResponse;
@@ -597,7 +597,7 @@ export declare namespace cosmos {
             MsgRevoke: {
                 typeUrl: string;
                 encode(message: _24.MsgRevoke, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _24.MsgRevoke;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _24.MsgRevoke;
                 fromJSON(object: any): _24.MsgRevoke;
                 toJSON(message: _24.MsgRevoke): unknown;
                 fromPartial(object: Partial<_24.MsgRevoke>): _24.MsgRevoke;
@@ -614,7 +614,7 @@ export declare namespace cosmos {
             MsgRevokeResponse: {
                 typeUrl: string;
                 encode(_: _24.MsgRevokeResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _24.MsgRevokeResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _24.MsgRevokeResponse;
                 fromJSON(_: any): _24.MsgRevokeResponse;
                 toJSON(_: _24.MsgRevokeResponse): unknown;
                 fromPartial(_: Partial<_24.MsgRevokeResponse>): _24.MsgRevokeResponse;
@@ -628,16 +628,16 @@ export declare namespace cosmos {
                 toProto(message: _24.MsgRevokeResponse): Uint8Array;
                 toProtoMsg(message: _24.MsgRevokeResponse): _24.MsgRevokeResponseProtoMsg;
             };
-            Sdk_Msg_InterfaceDecoder: (input: Uint8Array | import("..").BinaryReader) => import("../google/protobuf/any").Any;
+            Sdk_Msg_InterfaceDecoder: (input: import("..").BinaryReader | Uint8Array) => import("../google/protobuf/any").Any;
             Sdk_Msg_FromAmino: (content: import("../google/protobuf/any").AnyAmino) => import("../google/protobuf/any").Any;
             Sdk_Msg_ToAmino: (content: import("../google/protobuf/any").Any) => import("../google/protobuf/any").AnyAmino;
-            Cosmos_authzAuthorization_InterfaceDecoder: (input: Uint8Array | import("..").BinaryReader) => import("../google/protobuf/any").Any | _25.SendAuthorization | _72.StakeAuthorization | _20.GenericAuthorization;
+            Cosmos_authzAuthorization_InterfaceDecoder: (input: import("..").BinaryReader | Uint8Array) => import("../google/protobuf/any").Any | _25.SendAuthorization | _72.StakeAuthorization | _20.GenericAuthorization;
             Cosmos_authzAuthorization_FromAmino: (content: import("../google/protobuf/any").AnyAmino) => import("../google/protobuf/any").Any;
             Cosmos_authzAuthorization_ToAmino: (content: import("../google/protobuf/any").Any) => import("../google/protobuf/any").AnyAmino;
             QueryGrantsRequest: {
                 typeUrl: string;
                 encode(message: _23.QueryGrantsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _23.QueryGrantsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _23.QueryGrantsRequest;
                 fromJSON(object: any): _23.QueryGrantsRequest;
                 toJSON(message: _23.QueryGrantsRequest): unknown;
                 fromPartial(object: Partial<_23.QueryGrantsRequest>): _23.QueryGrantsRequest;
@@ -654,7 +654,7 @@ export declare namespace cosmos {
             QueryGrantsResponse: {
                 typeUrl: string;
                 encode(message: _23.QueryGrantsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _23.QueryGrantsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _23.QueryGrantsResponse;
                 fromJSON(object: any): _23.QueryGrantsResponse;
                 toJSON(message: _23.QueryGrantsResponse): unknown;
                 fromPartial(object: Partial<_23.QueryGrantsResponse>): _23.QueryGrantsResponse;
@@ -671,7 +671,7 @@ export declare namespace cosmos {
             QueryGranterGrantsRequest: {
                 typeUrl: string;
                 encode(message: _23.QueryGranterGrantsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _23.QueryGranterGrantsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _23.QueryGranterGrantsRequest;
                 fromJSON(object: any): _23.QueryGranterGrantsRequest;
                 toJSON(message: _23.QueryGranterGrantsRequest): unknown;
                 fromPartial(object: Partial<_23.QueryGranterGrantsRequest>): _23.QueryGranterGrantsRequest;
@@ -688,7 +688,7 @@ export declare namespace cosmos {
             QueryGranterGrantsResponse: {
                 typeUrl: string;
                 encode(message: _23.QueryGranterGrantsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _23.QueryGranterGrantsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _23.QueryGranterGrantsResponse;
                 fromJSON(object: any): _23.QueryGranterGrantsResponse;
                 toJSON(message: _23.QueryGranterGrantsResponse): unknown;
                 fromPartial(object: Partial<_23.QueryGranterGrantsResponse>): _23.QueryGranterGrantsResponse;
@@ -705,7 +705,7 @@ export declare namespace cosmos {
             QueryGranteeGrantsRequest: {
                 typeUrl: string;
                 encode(message: _23.QueryGranteeGrantsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _23.QueryGranteeGrantsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _23.QueryGranteeGrantsRequest;
                 fromJSON(object: any): _23.QueryGranteeGrantsRequest;
                 toJSON(message: _23.QueryGranteeGrantsRequest): unknown;
                 fromPartial(object: Partial<_23.QueryGranteeGrantsRequest>): _23.QueryGranteeGrantsRequest;
@@ -722,7 +722,7 @@ export declare namespace cosmos {
             QueryGranteeGrantsResponse: {
                 typeUrl: string;
                 encode(message: _23.QueryGranteeGrantsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _23.QueryGranteeGrantsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _23.QueryGranteeGrantsResponse;
                 fromJSON(object: any): _23.QueryGranteeGrantsResponse;
                 toJSON(message: _23.QueryGranteeGrantsResponse): unknown;
                 fromPartial(object: Partial<_23.QueryGranteeGrantsResponse>): _23.QueryGranteeGrantsResponse;
@@ -739,7 +739,7 @@ export declare namespace cosmos {
             GenesisState: {
                 typeUrl: string;
                 encode(message: _22.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _22.GenesisState;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _22.GenesisState;
                 fromJSON(object: any): _22.GenesisState;
                 toJSON(message: _22.GenesisState): unknown;
                 fromPartial(object: Partial<_22.GenesisState>): _22.GenesisState;
@@ -756,7 +756,7 @@ export declare namespace cosmos {
             EventGrant: {
                 typeUrl: string;
                 encode(message: _21.EventGrant, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _21.EventGrant;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _21.EventGrant;
                 fromJSON(object: any): _21.EventGrant;
                 toJSON(message: _21.EventGrant): unknown;
                 fromPartial(object: Partial<_21.EventGrant>): _21.EventGrant;
@@ -773,7 +773,7 @@ export declare namespace cosmos {
             EventRevoke: {
                 typeUrl: string;
                 encode(message: _21.EventRevoke, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _21.EventRevoke;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _21.EventRevoke;
                 fromJSON(object: any): _21.EventRevoke;
                 toJSON(message: _21.EventRevoke): unknown;
                 fromPartial(object: Partial<_21.EventRevoke>): _21.EventRevoke;
@@ -790,7 +790,7 @@ export declare namespace cosmos {
             GenericAuthorization: {
                 typeUrl: string;
                 encode(message: _20.GenericAuthorization, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _20.GenericAuthorization;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _20.GenericAuthorization;
                 fromJSON(object: any): _20.GenericAuthorization;
                 toJSON(message: _20.GenericAuthorization): unknown;
                 fromPartial(object: Partial<_20.GenericAuthorization>): _20.GenericAuthorization;
@@ -807,7 +807,7 @@ export declare namespace cosmos {
             Grant: {
                 typeUrl: string;
                 encode(message: _20.Grant, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _20.Grant;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _20.Grant;
                 fromJSON(object: any): _20.Grant;
                 toJSON(message: _20.Grant): unknown;
                 fromPartial(object: Partial<_20.Grant>): _20.Grant;
@@ -824,7 +824,7 @@ export declare namespace cosmos {
             GrantAuthorization: {
                 typeUrl: string;
                 encode(message: _20.GrantAuthorization, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _20.GrantAuthorization;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _20.GrantAuthorization;
                 fromJSON(object: any): _20.GrantAuthorization;
                 toJSON(message: _20.GrantAuthorization): unknown;
                 fromPartial(object: Partial<_20.GrantAuthorization>): _20.GrantAuthorization;
@@ -841,7 +841,7 @@ export declare namespace cosmos {
             GrantQueueItem: {
                 typeUrl: string;
                 encode(message: _20.GrantQueueItem, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _20.GrantQueueItem;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _20.GrantQueueItem;
                 fromJSON(object: any): _20.GrantQueueItem;
                 toJSON(message: _20.GrantQueueItem): unknown;
                 fromPartial(object: Partial<_20.GrantQueueItem>): _20.GrantQueueItem;
@@ -933,7 +933,7 @@ export declare namespace cosmos {
             MsgSend: {
                 typeUrl: string;
                 encode(message: _29.MsgSend, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _29.MsgSend;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _29.MsgSend;
                 fromJSON(object: any): _29.MsgSend;
                 toJSON(message: _29.MsgSend): unknown;
                 fromPartial(object: Partial<_29.MsgSend>): _29.MsgSend;
@@ -950,7 +950,7 @@ export declare namespace cosmos {
             MsgSendResponse: {
                 typeUrl: string;
                 encode(_: _29.MsgSendResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _29.MsgSendResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _29.MsgSendResponse;
                 fromJSON(_: any): _29.MsgSendResponse;
                 toJSON(_: _29.MsgSendResponse): unknown;
                 fromPartial(_: Partial<_29.MsgSendResponse>): _29.MsgSendResponse;
@@ -967,7 +967,7 @@ export declare namespace cosmos {
             MsgMultiSend: {
                 typeUrl: string;
                 encode(message: _29.MsgMultiSend, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _29.MsgMultiSend;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _29.MsgMultiSend;
                 fromJSON(object: any): _29.MsgMultiSend;
                 toJSON(message: _29.MsgMultiSend): unknown;
                 fromPartial(object: Partial<_29.MsgMultiSend>): _29.MsgMultiSend;
@@ -984,7 +984,7 @@ export declare namespace cosmos {
             MsgMultiSendResponse: {
                 typeUrl: string;
                 encode(_: _29.MsgMultiSendResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _29.MsgMultiSendResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _29.MsgMultiSendResponse;
                 fromJSON(_: any): _29.MsgMultiSendResponse;
                 toJSON(_: _29.MsgMultiSendResponse): unknown;
                 fromPartial(_: Partial<_29.MsgMultiSendResponse>): _29.MsgMultiSendResponse;
@@ -1001,7 +1001,7 @@ export declare namespace cosmos {
             QueryBalanceRequest: {
                 typeUrl: string;
                 encode(message: _28.QueryBalanceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryBalanceRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryBalanceRequest;
                 fromJSON(object: any): _28.QueryBalanceRequest;
                 toJSON(message: _28.QueryBalanceRequest): unknown;
                 fromPartial(object: Partial<_28.QueryBalanceRequest>): _28.QueryBalanceRequest;
@@ -1018,7 +1018,7 @@ export declare namespace cosmos {
             QueryBalanceResponse: {
                 typeUrl: string;
                 encode(message: _28.QueryBalanceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryBalanceResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryBalanceResponse;
                 fromJSON(object: any): _28.QueryBalanceResponse;
                 toJSON(message: _28.QueryBalanceResponse): unknown;
                 fromPartial(object: Partial<_28.QueryBalanceResponse>): _28.QueryBalanceResponse;
@@ -1035,7 +1035,7 @@ export declare namespace cosmos {
             QueryAllBalancesRequest: {
                 typeUrl: string;
                 encode(message: _28.QueryAllBalancesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryAllBalancesRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryAllBalancesRequest;
                 fromJSON(object: any): _28.QueryAllBalancesRequest;
                 toJSON(message: _28.QueryAllBalancesRequest): unknown;
                 fromPartial(object: Partial<_28.QueryAllBalancesRequest>): _28.QueryAllBalancesRequest;
@@ -1052,7 +1052,7 @@ export declare namespace cosmos {
             QueryAllBalancesResponse: {
                 typeUrl: string;
                 encode(message: _28.QueryAllBalancesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryAllBalancesResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryAllBalancesResponse;
                 fromJSON(object: any): _28.QueryAllBalancesResponse;
                 toJSON(message: _28.QueryAllBalancesResponse): unknown;
                 fromPartial(object: Partial<_28.QueryAllBalancesResponse>): _28.QueryAllBalancesResponse;
@@ -1069,7 +1069,7 @@ export declare namespace cosmos {
             QuerySpendableBalancesRequest: {
                 typeUrl: string;
                 encode(message: _28.QuerySpendableBalancesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QuerySpendableBalancesRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QuerySpendableBalancesRequest;
                 fromJSON(object: any): _28.QuerySpendableBalancesRequest;
                 toJSON(message: _28.QuerySpendableBalancesRequest): unknown;
                 fromPartial(object: Partial<_28.QuerySpendableBalancesRequest>): _28.QuerySpendableBalancesRequest;
@@ -1086,7 +1086,7 @@ export declare namespace cosmos {
             QuerySpendableBalancesResponse: {
                 typeUrl: string;
                 encode(message: _28.QuerySpendableBalancesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QuerySpendableBalancesResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QuerySpendableBalancesResponse;
                 fromJSON(object: any): _28.QuerySpendableBalancesResponse;
                 toJSON(message: _28.QuerySpendableBalancesResponse): unknown;
                 fromPartial(object: Partial<_28.QuerySpendableBalancesResponse>): _28.QuerySpendableBalancesResponse;
@@ -1103,7 +1103,7 @@ export declare namespace cosmos {
             QueryTotalSupplyRequest: {
                 typeUrl: string;
                 encode(message: _28.QueryTotalSupplyRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryTotalSupplyRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryTotalSupplyRequest;
                 fromJSON(object: any): _28.QueryTotalSupplyRequest;
                 toJSON(message: _28.QueryTotalSupplyRequest): unknown;
                 fromPartial(object: Partial<_28.QueryTotalSupplyRequest>): _28.QueryTotalSupplyRequest;
@@ -1120,7 +1120,7 @@ export declare namespace cosmos {
             QueryTotalSupplyResponse: {
                 typeUrl: string;
                 encode(message: _28.QueryTotalSupplyResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryTotalSupplyResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryTotalSupplyResponse;
                 fromJSON(object: any): _28.QueryTotalSupplyResponse;
                 toJSON(message: _28.QueryTotalSupplyResponse): unknown;
                 fromPartial(object: Partial<_28.QueryTotalSupplyResponse>): _28.QueryTotalSupplyResponse;
@@ -1137,7 +1137,7 @@ export declare namespace cosmos {
             QuerySupplyOfRequest: {
                 typeUrl: string;
                 encode(message: _28.QuerySupplyOfRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QuerySupplyOfRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QuerySupplyOfRequest;
                 fromJSON(object: any): _28.QuerySupplyOfRequest;
                 toJSON(message: _28.QuerySupplyOfRequest): unknown;
                 fromPartial(object: Partial<_28.QuerySupplyOfRequest>): _28.QuerySupplyOfRequest;
@@ -1154,7 +1154,7 @@ export declare namespace cosmos {
             QuerySupplyOfResponse: {
                 typeUrl: string;
                 encode(message: _28.QuerySupplyOfResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QuerySupplyOfResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QuerySupplyOfResponse;
                 fromJSON(object: any): _28.QuerySupplyOfResponse;
                 toJSON(message: _28.QuerySupplyOfResponse): unknown;
                 fromPartial(object: Partial<_28.QuerySupplyOfResponse>): _28.QuerySupplyOfResponse;
@@ -1171,7 +1171,7 @@ export declare namespace cosmos {
             QueryParamsRequest: {
                 typeUrl: string;
                 encode(_: _28.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryParamsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryParamsRequest;
                 fromJSON(_: any): _28.QueryParamsRequest;
                 toJSON(_: _28.QueryParamsRequest): unknown;
                 fromPartial(_: Partial<_28.QueryParamsRequest>): _28.QueryParamsRequest;
@@ -1188,7 +1188,7 @@ export declare namespace cosmos {
             QueryParamsResponse: {
                 typeUrl: string;
                 encode(message: _28.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryParamsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryParamsResponse;
                 fromJSON(object: any): _28.QueryParamsResponse;
                 toJSON(message: _28.QueryParamsResponse): unknown;
                 fromPartial(object: Partial<_28.QueryParamsResponse>): _28.QueryParamsResponse;
@@ -1205,7 +1205,7 @@ export declare namespace cosmos {
             QueryDenomsMetadataRequest: {
                 typeUrl: string;
                 encode(message: _28.QueryDenomsMetadataRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDenomsMetadataRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryDenomsMetadataRequest;
                 fromJSON(object: any): _28.QueryDenomsMetadataRequest;
                 toJSON(message: _28.QueryDenomsMetadataRequest): unknown;
                 fromPartial(object: Partial<_28.QueryDenomsMetadataRequest>): _28.QueryDenomsMetadataRequest;
@@ -1222,7 +1222,7 @@ export declare namespace cosmos {
             QueryDenomsMetadataResponse: {
                 typeUrl: string;
                 encode(message: _28.QueryDenomsMetadataResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDenomsMetadataResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryDenomsMetadataResponse;
                 fromJSON(object: any): _28.QueryDenomsMetadataResponse;
                 toJSON(message: _28.QueryDenomsMetadataResponse): unknown;
                 fromPartial(object: Partial<_28.QueryDenomsMetadataResponse>): _28.QueryDenomsMetadataResponse;
@@ -1239,7 +1239,7 @@ export declare namespace cosmos {
             QueryDenomMetadataRequest: {
                 typeUrl: string;
                 encode(message: _28.QueryDenomMetadataRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDenomMetadataRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryDenomMetadataRequest;
                 fromJSON(object: any): _28.QueryDenomMetadataRequest;
                 toJSON(message: _28.QueryDenomMetadataRequest): unknown;
                 fromPartial(object: Partial<_28.QueryDenomMetadataRequest>): _28.QueryDenomMetadataRequest;
@@ -1256,7 +1256,7 @@ export declare namespace cosmos {
             QueryDenomMetadataResponse: {
                 typeUrl: string;
                 encode(message: _28.QueryDenomMetadataResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDenomMetadataResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryDenomMetadataResponse;
                 fromJSON(object: any): _28.QueryDenomMetadataResponse;
                 toJSON(message: _28.QueryDenomMetadataResponse): unknown;
                 fromPartial(object: Partial<_28.QueryDenomMetadataResponse>): _28.QueryDenomMetadataResponse;
@@ -1273,7 +1273,7 @@ export declare namespace cosmos {
             QueryDenomOwnersRequest: {
                 typeUrl: string;
                 encode(message: _28.QueryDenomOwnersRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDenomOwnersRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryDenomOwnersRequest;
                 fromJSON(object: any): _28.QueryDenomOwnersRequest;
                 toJSON(message: _28.QueryDenomOwnersRequest): unknown;
                 fromPartial(object: Partial<_28.QueryDenomOwnersRequest>): _28.QueryDenomOwnersRequest;
@@ -1290,7 +1290,7 @@ export declare namespace cosmos {
             DenomOwner: {
                 typeUrl: string;
                 encode(message: _28.DenomOwner, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.DenomOwner;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.DenomOwner;
                 fromJSON(object: any): _28.DenomOwner;
                 toJSON(message: _28.DenomOwner): unknown;
                 fromPartial(object: Partial<_28.DenomOwner>): _28.DenomOwner;
@@ -1307,7 +1307,7 @@ export declare namespace cosmos {
             QueryDenomOwnersResponse: {
                 typeUrl: string;
                 encode(message: _28.QueryDenomOwnersResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _28.QueryDenomOwnersResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _28.QueryDenomOwnersResponse;
                 fromJSON(object: any): _28.QueryDenomOwnersResponse;
                 toJSON(message: _28.QueryDenomOwnersResponse): unknown;
                 fromPartial(object: Partial<_28.QueryDenomOwnersResponse>): _28.QueryDenomOwnersResponse;
@@ -1324,7 +1324,7 @@ export declare namespace cosmos {
             GenesisState: {
                 typeUrl: string;
                 encode(message: _27.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _27.GenesisState;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _27.GenesisState;
                 fromJSON(object: any): _27.GenesisState;
                 toJSON(message: _27.GenesisState): unknown;
                 fromPartial(object: Partial<_27.GenesisState>): _27.GenesisState;
@@ -1341,7 +1341,7 @@ export declare namespace cosmos {
             Balance: {
                 typeUrl: string;
                 encode(message: _27.Balance, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _27.Balance;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _27.Balance;
                 fromJSON(object: any): _27.Balance;
                 toJSON(message: _27.Balance): unknown;
                 fromPartial(object: Partial<_27.Balance>): _27.Balance;
@@ -1358,7 +1358,7 @@ export declare namespace cosmos {
             Params: {
                 typeUrl: string;
                 encode(message: _26.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.Params;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _26.Params;
                 fromJSON(object: any): _26.Params;
                 toJSON(message: _26.Params): unknown;
                 fromPartial(object: Partial<_26.Params>): _26.Params;
@@ -1375,7 +1375,7 @@ export declare namespace cosmos {
             SendEnabled: {
                 typeUrl: string;
                 encode(message: _26.SendEnabled, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.SendEnabled;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _26.SendEnabled;
                 fromJSON(object: any): _26.SendEnabled;
                 toJSON(message: _26.SendEnabled): unknown;
                 fromPartial(object: Partial<_26.SendEnabled>): _26.SendEnabled;
@@ -1392,7 +1392,7 @@ export declare namespace cosmos {
             Input: {
                 typeUrl: string;
                 encode(message: _26.Input, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.Input;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _26.Input;
                 fromJSON(object: any): _26.Input;
                 toJSON(message: _26.Input): unknown;
                 fromPartial(object: Partial<_26.Input>): _26.Input;
@@ -1409,7 +1409,7 @@ export declare namespace cosmos {
             Output: {
                 typeUrl: string;
                 encode(message: _26.Output, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.Output;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _26.Output;
                 fromJSON(object: any): _26.Output;
                 toJSON(message: _26.Output): unknown;
                 fromPartial(object: Partial<_26.Output>): _26.Output;
@@ -1426,7 +1426,7 @@ export declare namespace cosmos {
             Supply: {
                 typeUrl: string;
                 encode(message: _26.Supply, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.Supply;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _26.Supply;
                 fromJSON(object: any): _26.Supply;
                 toJSON(message: _26.Supply): unknown;
                 fromPartial(object: Partial<_26.Supply>): _26.Supply;
@@ -1443,7 +1443,7 @@ export declare namespace cosmos {
             DenomUnit: {
                 typeUrl: string;
                 encode(message: _26.DenomUnit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.DenomUnit;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _26.DenomUnit;
                 fromJSON(object: any): _26.DenomUnit;
                 toJSON(message: _26.DenomUnit): unknown;
                 fromPartial(object: Partial<_26.DenomUnit>): _26.DenomUnit;
@@ -1460,7 +1460,7 @@ export declare namespace cosmos {
             Metadata: {
                 typeUrl: string;
                 encode(message: _26.Metadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _26.Metadata;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _26.Metadata;
                 fromJSON(object: any): _26.Metadata;
                 toJSON(message: _26.Metadata): unknown;
                 fromPartial(object: Partial<_26.Metadata>): _26.Metadata;
@@ -1477,7 +1477,7 @@ export declare namespace cosmos {
             SendAuthorization: {
                 typeUrl: string;
                 encode(message: _25.SendAuthorization, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _25.SendAuthorization;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _25.SendAuthorization;
                 fromJSON(object: any): _25.SendAuthorization;
                 toJSON(message: _25.SendAuthorization): unknown;
                 fromPartial(object: Partial<_25.SendAuthorization>): _25.SendAuthorization;
@@ -1500,7 +1500,7 @@ export declare namespace cosmos {
                 TxResponse: {
                     typeUrl: string;
                     encode(message: _30.TxResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _30.TxResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _30.TxResponse;
                     fromJSON(object: any): _30.TxResponse;
                     toJSON(message: _30.TxResponse): unknown;
                     fromPartial(object: Partial<_30.TxResponse>): _30.TxResponse;
@@ -1517,7 +1517,7 @@ export declare namespace cosmos {
                 ABCIMessageLog: {
                     typeUrl: string;
                     encode(message: _30.ABCIMessageLog, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _30.ABCIMessageLog;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _30.ABCIMessageLog;
                     fromJSON(object: any): _30.ABCIMessageLog;
                     toJSON(message: _30.ABCIMessageLog): unknown;
                     fromPartial(object: Partial<_30.ABCIMessageLog>): _30.ABCIMessageLog;
@@ -1534,7 +1534,7 @@ export declare namespace cosmos {
                 StringEvent: {
                     typeUrl: string;
                     encode(message: _30.StringEvent, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _30.StringEvent;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _30.StringEvent;
                     fromJSON(object: any): _30.StringEvent;
                     toJSON(message: _30.StringEvent): unknown;
                     fromPartial(object: Partial<_30.StringEvent>): _30.StringEvent;
@@ -1551,7 +1551,7 @@ export declare namespace cosmos {
                 Attribute: {
                     typeUrl: string;
                     encode(message: _30.Attribute, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _30.Attribute;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _30.Attribute;
                     fromJSON(object: any): _30.Attribute;
                     toJSON(message: _30.Attribute): unknown;
                     fromPartial(object: Partial<_30.Attribute>): _30.Attribute;
@@ -1568,7 +1568,7 @@ export declare namespace cosmos {
                 GasInfo: {
                     typeUrl: string;
                     encode(message: _30.GasInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _30.GasInfo;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _30.GasInfo;
                     fromJSON(object: any): _30.GasInfo;
                     toJSON(message: _30.GasInfo): unknown;
                     fromPartial(object: Partial<_30.GasInfo>): _30.GasInfo;
@@ -1585,7 +1585,7 @@ export declare namespace cosmos {
                 Result: {
                     typeUrl: string;
                     encode(message: _30.Result, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _30.Result;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _30.Result;
                     fromJSON(object: any): _30.Result;
                     toJSON(message: _30.Result): unknown;
                     fromPartial(object: Partial<_30.Result>): _30.Result;
@@ -1602,7 +1602,7 @@ export declare namespace cosmos {
                 SimulationResponse: {
                     typeUrl: string;
                     encode(message: _30.SimulationResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _30.SimulationResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _30.SimulationResponse;
                     fromJSON(object: any): _30.SimulationResponse;
                     toJSON(message: _30.SimulationResponse): unknown;
                     fromPartial(object: Partial<_30.SimulationResponse>): _30.SimulationResponse;
@@ -1619,7 +1619,7 @@ export declare namespace cosmos {
                 MsgData: {
                     typeUrl: string;
                     encode(message: _30.MsgData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _30.MsgData;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _30.MsgData;
                     fromJSON(object: any): _30.MsgData;
                     toJSON(message: _30.MsgData): unknown;
                     fromPartial(object: Partial<_30.MsgData>): _30.MsgData;
@@ -1636,7 +1636,7 @@ export declare namespace cosmos {
                 TxMsgData: {
                     typeUrl: string;
                     encode(message: _30.TxMsgData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _30.TxMsgData;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _30.TxMsgData;
                     fromJSON(object: any): _30.TxMsgData;
                     toJSON(message: _30.TxMsgData): unknown;
                     fromPartial(object: Partial<_30.TxMsgData>): _30.TxMsgData;
@@ -1653,7 +1653,7 @@ export declare namespace cosmos {
                 SearchTxsResult: {
                     typeUrl: string;
                     encode(message: _30.SearchTxsResult, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _30.SearchTxsResult;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _30.SearchTxsResult;
                     fromJSON(object: any): _30.SearchTxsResult;
                     toJSON(message: _30.SearchTxsResult): unknown;
                     fromPartial(object: Partial<_30.SearchTxsResult>): _30.SearchTxsResult;
@@ -1675,7 +1675,7 @@ export declare namespace cosmos {
                 PageRequest: {
                     typeUrl: string;
                     encode(message: _31.PageRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _31.PageRequest;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _31.PageRequest;
                     fromJSON(object: any): _31.PageRequest;
                     toJSON(message: _31.PageRequest): unknown;
                     fromPartial(object: Partial<_31.PageRequest>): _31.PageRequest;
@@ -1692,7 +1692,7 @@ export declare namespace cosmos {
                 PageResponse: {
                     typeUrl: string;
                     encode(message: _31.PageResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _31.PageResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _31.PageResponse;
                     fromJSON(object: any): _31.PageResponse;
                     toJSON(message: _31.PageResponse): unknown;
                     fromPartial(object: Partial<_31.PageResponse>): _31.PageResponse;
@@ -1714,7 +1714,7 @@ export declare namespace cosmos {
                 AppDescriptor: {
                     typeUrl: string;
                     encode(message: _32.AppDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.AppDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.AppDescriptor;
                     fromJSON(object: any): _32.AppDescriptor;
                     toJSON(message: _32.AppDescriptor): unknown;
                     fromPartial(object: Partial<_32.AppDescriptor>): _32.AppDescriptor;
@@ -1731,7 +1731,7 @@ export declare namespace cosmos {
                 TxDescriptor: {
                     typeUrl: string;
                     encode(message: _32.TxDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.TxDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.TxDescriptor;
                     fromJSON(object: any): _32.TxDescriptor;
                     toJSON(message: _32.TxDescriptor): unknown;
                     fromPartial(object: Partial<_32.TxDescriptor>): _32.TxDescriptor;
@@ -1748,7 +1748,7 @@ export declare namespace cosmos {
                 AuthnDescriptor: {
                     typeUrl: string;
                     encode(message: _32.AuthnDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.AuthnDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.AuthnDescriptor;
                     fromJSON(object: any): _32.AuthnDescriptor;
                     toJSON(message: _32.AuthnDescriptor): unknown;
                     fromPartial(object: Partial<_32.AuthnDescriptor>): _32.AuthnDescriptor;
@@ -1765,7 +1765,7 @@ export declare namespace cosmos {
                 SigningModeDescriptor: {
                     typeUrl: string;
                     encode(message: _32.SigningModeDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.SigningModeDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.SigningModeDescriptor;
                     fromJSON(object: any): _32.SigningModeDescriptor;
                     toJSON(message: _32.SigningModeDescriptor): unknown;
                     fromPartial(object: Partial<_32.SigningModeDescriptor>): _32.SigningModeDescriptor;
@@ -1782,7 +1782,7 @@ export declare namespace cosmos {
                 ChainDescriptor: {
                     typeUrl: string;
                     encode(message: _32.ChainDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.ChainDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.ChainDescriptor;
                     fromJSON(object: any): _32.ChainDescriptor;
                     toJSON(message: _32.ChainDescriptor): unknown;
                     fromPartial(object: Partial<_32.ChainDescriptor>): _32.ChainDescriptor;
@@ -1799,7 +1799,7 @@ export declare namespace cosmos {
                 CodecDescriptor: {
                     typeUrl: string;
                     encode(message: _32.CodecDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.CodecDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.CodecDescriptor;
                     fromJSON(object: any): _32.CodecDescriptor;
                     toJSON(message: _32.CodecDescriptor): unknown;
                     fromPartial(object: Partial<_32.CodecDescriptor>): _32.CodecDescriptor;
@@ -1816,7 +1816,7 @@ export declare namespace cosmos {
                 InterfaceDescriptor: {
                     typeUrl: string;
                     encode(message: _32.InterfaceDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.InterfaceDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.InterfaceDescriptor;
                     fromJSON(object: any): _32.InterfaceDescriptor;
                     toJSON(message: _32.InterfaceDescriptor): unknown;
                     fromPartial(object: Partial<_32.InterfaceDescriptor>): _32.InterfaceDescriptor;
@@ -1833,7 +1833,7 @@ export declare namespace cosmos {
                 InterfaceImplementerDescriptor: {
                     typeUrl: string;
                     encode(message: _32.InterfaceImplementerDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.InterfaceImplementerDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.InterfaceImplementerDescriptor;
                     fromJSON(object: any): _32.InterfaceImplementerDescriptor;
                     toJSON(message: _32.InterfaceImplementerDescriptor): unknown;
                     fromPartial(object: Partial<_32.InterfaceImplementerDescriptor>): _32.InterfaceImplementerDescriptor;
@@ -1850,7 +1850,7 @@ export declare namespace cosmos {
                 InterfaceAcceptingMessageDescriptor: {
                     typeUrl: string;
                     encode(message: _32.InterfaceAcceptingMessageDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.InterfaceAcceptingMessageDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.InterfaceAcceptingMessageDescriptor;
                     fromJSON(object: any): _32.InterfaceAcceptingMessageDescriptor;
                     toJSON(message: _32.InterfaceAcceptingMessageDescriptor): unknown;
                     fromPartial(object: Partial<_32.InterfaceAcceptingMessageDescriptor>): _32.InterfaceAcceptingMessageDescriptor;
@@ -1867,7 +1867,7 @@ export declare namespace cosmos {
                 ConfigurationDescriptor: {
                     typeUrl: string;
                     encode(message: _32.ConfigurationDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.ConfigurationDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.ConfigurationDescriptor;
                     fromJSON(object: any): _32.ConfigurationDescriptor;
                     toJSON(message: _32.ConfigurationDescriptor): unknown;
                     fromPartial(object: Partial<_32.ConfigurationDescriptor>): _32.ConfigurationDescriptor;
@@ -1884,7 +1884,7 @@ export declare namespace cosmos {
                 MsgDescriptor: {
                     typeUrl: string;
                     encode(message: _32.MsgDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.MsgDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.MsgDescriptor;
                     fromJSON(object: any): _32.MsgDescriptor;
                     toJSON(message: _32.MsgDescriptor): unknown;
                     fromPartial(object: Partial<_32.MsgDescriptor>): _32.MsgDescriptor;
@@ -1901,7 +1901,7 @@ export declare namespace cosmos {
                 GetAuthnDescriptorRequest: {
                     typeUrl: string;
                     encode(_: _32.GetAuthnDescriptorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.GetAuthnDescriptorRequest;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.GetAuthnDescriptorRequest;
                     fromJSON(_: any): _32.GetAuthnDescriptorRequest;
                     toJSON(_: _32.GetAuthnDescriptorRequest): unknown;
                     fromPartial(_: Partial<_32.GetAuthnDescriptorRequest>): _32.GetAuthnDescriptorRequest;
@@ -1918,7 +1918,7 @@ export declare namespace cosmos {
                 GetAuthnDescriptorResponse: {
                     typeUrl: string;
                     encode(message: _32.GetAuthnDescriptorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.GetAuthnDescriptorResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.GetAuthnDescriptorResponse;
                     fromJSON(object: any): _32.GetAuthnDescriptorResponse;
                     toJSON(message: _32.GetAuthnDescriptorResponse): unknown;
                     fromPartial(object: Partial<_32.GetAuthnDescriptorResponse>): _32.GetAuthnDescriptorResponse;
@@ -1935,7 +1935,7 @@ export declare namespace cosmos {
                 GetChainDescriptorRequest: {
                     typeUrl: string;
                     encode(_: _32.GetChainDescriptorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.GetChainDescriptorRequest;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.GetChainDescriptorRequest;
                     fromJSON(_: any): _32.GetChainDescriptorRequest;
                     toJSON(_: _32.GetChainDescriptorRequest): unknown;
                     fromPartial(_: Partial<_32.GetChainDescriptorRequest>): _32.GetChainDescriptorRequest;
@@ -1952,7 +1952,7 @@ export declare namespace cosmos {
                 GetChainDescriptorResponse: {
                     typeUrl: string;
                     encode(message: _32.GetChainDescriptorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.GetChainDescriptorResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.GetChainDescriptorResponse;
                     fromJSON(object: any): _32.GetChainDescriptorResponse;
                     toJSON(message: _32.GetChainDescriptorResponse): unknown;
                     fromPartial(object: Partial<_32.GetChainDescriptorResponse>): _32.GetChainDescriptorResponse;
@@ -1969,7 +1969,7 @@ export declare namespace cosmos {
                 GetCodecDescriptorRequest: {
                     typeUrl: string;
                     encode(_: _32.GetCodecDescriptorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.GetCodecDescriptorRequest;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.GetCodecDescriptorRequest;
                     fromJSON(_: any): _32.GetCodecDescriptorRequest;
                     toJSON(_: _32.GetCodecDescriptorRequest): unknown;
                     fromPartial(_: Partial<_32.GetCodecDescriptorRequest>): _32.GetCodecDescriptorRequest;
@@ -1986,7 +1986,7 @@ export declare namespace cosmos {
                 GetCodecDescriptorResponse: {
                     typeUrl: string;
                     encode(message: _32.GetCodecDescriptorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.GetCodecDescriptorResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.GetCodecDescriptorResponse;
                     fromJSON(object: any): _32.GetCodecDescriptorResponse;
                     toJSON(message: _32.GetCodecDescriptorResponse): unknown;
                     fromPartial(object: Partial<_32.GetCodecDescriptorResponse>): _32.GetCodecDescriptorResponse;
@@ -2003,7 +2003,7 @@ export declare namespace cosmos {
                 GetConfigurationDescriptorRequest: {
                     typeUrl: string;
                     encode(_: _32.GetConfigurationDescriptorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.GetConfigurationDescriptorRequest;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.GetConfigurationDescriptorRequest;
                     fromJSON(_: any): _32.GetConfigurationDescriptorRequest;
                     toJSON(_: _32.GetConfigurationDescriptorRequest): unknown;
                     fromPartial(_: Partial<_32.GetConfigurationDescriptorRequest>): _32.GetConfigurationDescriptorRequest;
@@ -2020,7 +2020,7 @@ export declare namespace cosmos {
                 GetConfigurationDescriptorResponse: {
                     typeUrl: string;
                     encode(message: _32.GetConfigurationDescriptorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.GetConfigurationDescriptorResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.GetConfigurationDescriptorResponse;
                     fromJSON(object: any): _32.GetConfigurationDescriptorResponse;
                     toJSON(message: _32.GetConfigurationDescriptorResponse): unknown;
                     fromPartial(object: Partial<_32.GetConfigurationDescriptorResponse>): _32.GetConfigurationDescriptorResponse;
@@ -2037,7 +2037,7 @@ export declare namespace cosmos {
                 GetQueryServicesDescriptorRequest: {
                     typeUrl: string;
                     encode(_: _32.GetQueryServicesDescriptorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.GetQueryServicesDescriptorRequest;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.GetQueryServicesDescriptorRequest;
                     fromJSON(_: any): _32.GetQueryServicesDescriptorRequest;
                     toJSON(_: _32.GetQueryServicesDescriptorRequest): unknown;
                     fromPartial(_: Partial<_32.GetQueryServicesDescriptorRequest>): _32.GetQueryServicesDescriptorRequest;
@@ -2054,7 +2054,7 @@ export declare namespace cosmos {
                 GetQueryServicesDescriptorResponse: {
                     typeUrl: string;
                     encode(message: _32.GetQueryServicesDescriptorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.GetQueryServicesDescriptorResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.GetQueryServicesDescriptorResponse;
                     fromJSON(object: any): _32.GetQueryServicesDescriptorResponse;
                     toJSON(message: _32.GetQueryServicesDescriptorResponse): unknown;
                     fromPartial(object: Partial<_32.GetQueryServicesDescriptorResponse>): _32.GetQueryServicesDescriptorResponse;
@@ -2071,7 +2071,7 @@ export declare namespace cosmos {
                 GetTxDescriptorRequest: {
                     typeUrl: string;
                     encode(_: _32.GetTxDescriptorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.GetTxDescriptorRequest;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.GetTxDescriptorRequest;
                     fromJSON(_: any): _32.GetTxDescriptorRequest;
                     toJSON(_: _32.GetTxDescriptorRequest): unknown;
                     fromPartial(_: Partial<_32.GetTxDescriptorRequest>): _32.GetTxDescriptorRequest;
@@ -2088,7 +2088,7 @@ export declare namespace cosmos {
                 GetTxDescriptorResponse: {
                     typeUrl: string;
                     encode(message: _32.GetTxDescriptorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.GetTxDescriptorResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.GetTxDescriptorResponse;
                     fromJSON(object: any): _32.GetTxDescriptorResponse;
                     toJSON(message: _32.GetTxDescriptorResponse): unknown;
                     fromPartial(object: Partial<_32.GetTxDescriptorResponse>): _32.GetTxDescriptorResponse;
@@ -2105,7 +2105,7 @@ export declare namespace cosmos {
                 QueryServicesDescriptor: {
                     typeUrl: string;
                     encode(message: _32.QueryServicesDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryServicesDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.QueryServicesDescriptor;
                     fromJSON(object: any): _32.QueryServicesDescriptor;
                     toJSON(message: _32.QueryServicesDescriptor): unknown;
                     fromPartial(object: Partial<_32.QueryServicesDescriptor>): _32.QueryServicesDescriptor;
@@ -2122,7 +2122,7 @@ export declare namespace cosmos {
                 QueryServiceDescriptor: {
                     typeUrl: string;
                     encode(message: _32.QueryServiceDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryServiceDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.QueryServiceDescriptor;
                     fromJSON(object: any): _32.QueryServiceDescriptor;
                     toJSON(message: _32.QueryServiceDescriptor): unknown;
                     fromPartial(object: Partial<_32.QueryServiceDescriptor>): _32.QueryServiceDescriptor;
@@ -2139,7 +2139,7 @@ export declare namespace cosmos {
                 QueryMethodDescriptor: {
                     typeUrl: string;
                     encode(message: _32.QueryMethodDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _32.QueryMethodDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _32.QueryMethodDescriptor;
                     fromJSON(object: any): _32.QueryMethodDescriptor;
                     toJSON(message: _32.QueryMethodDescriptor): unknown;
                     fromPartial(object: Partial<_32.QueryMethodDescriptor>): _32.QueryMethodDescriptor;
@@ -2164,7 +2164,7 @@ export declare namespace cosmos {
                 GetValidatorSetByHeightRequest: {
                     typeUrl: string;
                     encode(message: _33.GetValidatorSetByHeightRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.GetValidatorSetByHeightRequest;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.GetValidatorSetByHeightRequest;
                     fromJSON(object: any): _33.GetValidatorSetByHeightRequest;
                     toJSON(message: _33.GetValidatorSetByHeightRequest): unknown;
                     fromPartial(object: Partial<_33.GetValidatorSetByHeightRequest>): _33.GetValidatorSetByHeightRequest;
@@ -2181,7 +2181,7 @@ export declare namespace cosmos {
                 GetValidatorSetByHeightResponse: {
                     typeUrl: string;
                     encode(message: _33.GetValidatorSetByHeightResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.GetValidatorSetByHeightResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.GetValidatorSetByHeightResponse;
                     fromJSON(object: any): _33.GetValidatorSetByHeightResponse;
                     toJSON(message: _33.GetValidatorSetByHeightResponse): unknown;
                     fromPartial(object: Partial<_33.GetValidatorSetByHeightResponse>): _33.GetValidatorSetByHeightResponse;
@@ -2198,7 +2198,7 @@ export declare namespace cosmos {
                 GetLatestValidatorSetRequest: {
                     typeUrl: string;
                     encode(message: _33.GetLatestValidatorSetRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.GetLatestValidatorSetRequest;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.GetLatestValidatorSetRequest;
                     fromJSON(object: any): _33.GetLatestValidatorSetRequest;
                     toJSON(message: _33.GetLatestValidatorSetRequest): unknown;
                     fromPartial(object: Partial<_33.GetLatestValidatorSetRequest>): _33.GetLatestValidatorSetRequest;
@@ -2215,7 +2215,7 @@ export declare namespace cosmos {
                 GetLatestValidatorSetResponse: {
                     typeUrl: string;
                     encode(message: _33.GetLatestValidatorSetResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.GetLatestValidatorSetResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.GetLatestValidatorSetResponse;
                     fromJSON(object: any): _33.GetLatestValidatorSetResponse;
                     toJSON(message: _33.GetLatestValidatorSetResponse): unknown;
                     fromPartial(object: Partial<_33.GetLatestValidatorSetResponse>): _33.GetLatestValidatorSetResponse;
@@ -2232,7 +2232,7 @@ export declare namespace cosmos {
                 Validator: {
                     typeUrl: string;
                     encode(message: _33.Validator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.Validator;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.Validator;
                     fromJSON(object: any): _33.Validator;
                     toJSON(message: _33.Validator): unknown;
                     fromPartial(object: Partial<_33.Validator>): _33.Validator;
@@ -2249,7 +2249,7 @@ export declare namespace cosmos {
                 GetBlockByHeightRequest: {
                     typeUrl: string;
                     encode(message: _33.GetBlockByHeightRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.GetBlockByHeightRequest;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.GetBlockByHeightRequest;
                     fromJSON(object: any): _33.GetBlockByHeightRequest;
                     toJSON(message: _33.GetBlockByHeightRequest): unknown;
                     fromPartial(object: Partial<_33.GetBlockByHeightRequest>): _33.GetBlockByHeightRequest;
@@ -2266,7 +2266,7 @@ export declare namespace cosmos {
                 GetBlockByHeightResponse: {
                     typeUrl: string;
                     encode(message: _33.GetBlockByHeightResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.GetBlockByHeightResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.GetBlockByHeightResponse;
                     fromJSON(object: any): _33.GetBlockByHeightResponse;
                     toJSON(message: _33.GetBlockByHeightResponse): unknown;
                     fromPartial(object: Partial<_33.GetBlockByHeightResponse>): _33.GetBlockByHeightResponse;
@@ -2283,7 +2283,7 @@ export declare namespace cosmos {
                 GetLatestBlockRequest: {
                     typeUrl: string;
                     encode(_: _33.GetLatestBlockRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.GetLatestBlockRequest;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.GetLatestBlockRequest;
                     fromJSON(_: any): _33.GetLatestBlockRequest;
                     toJSON(_: _33.GetLatestBlockRequest): unknown;
                     fromPartial(_: Partial<_33.GetLatestBlockRequest>): _33.GetLatestBlockRequest;
@@ -2300,7 +2300,7 @@ export declare namespace cosmos {
                 GetLatestBlockResponse: {
                     typeUrl: string;
                     encode(message: _33.GetLatestBlockResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.GetLatestBlockResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.GetLatestBlockResponse;
                     fromJSON(object: any): _33.GetLatestBlockResponse;
                     toJSON(message: _33.GetLatestBlockResponse): unknown;
                     fromPartial(object: Partial<_33.GetLatestBlockResponse>): _33.GetLatestBlockResponse;
@@ -2317,7 +2317,7 @@ export declare namespace cosmos {
                 GetSyncingRequest: {
                     typeUrl: string;
                     encode(_: _33.GetSyncingRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.GetSyncingRequest;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.GetSyncingRequest;
                     fromJSON(_: any): _33.GetSyncingRequest;
                     toJSON(_: _33.GetSyncingRequest): unknown;
                     fromPartial(_: Partial<_33.GetSyncingRequest>): _33.GetSyncingRequest;
@@ -2334,7 +2334,7 @@ export declare namespace cosmos {
                 GetSyncingResponse: {
                     typeUrl: string;
                     encode(message: _33.GetSyncingResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.GetSyncingResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.GetSyncingResponse;
                     fromJSON(object: any): _33.GetSyncingResponse;
                     toJSON(message: _33.GetSyncingResponse): unknown;
                     fromPartial(object: Partial<_33.GetSyncingResponse>): _33.GetSyncingResponse;
@@ -2351,7 +2351,7 @@ export declare namespace cosmos {
                 GetNodeInfoRequest: {
                     typeUrl: string;
                     encode(_: _33.GetNodeInfoRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.GetNodeInfoRequest;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.GetNodeInfoRequest;
                     fromJSON(_: any): _33.GetNodeInfoRequest;
                     toJSON(_: _33.GetNodeInfoRequest): unknown;
                     fromPartial(_: Partial<_33.GetNodeInfoRequest>): _33.GetNodeInfoRequest;
@@ -2368,7 +2368,7 @@ export declare namespace cosmos {
                 GetNodeInfoResponse: {
                     typeUrl: string;
                     encode(message: _33.GetNodeInfoResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.GetNodeInfoResponse;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.GetNodeInfoResponse;
                     fromJSON(object: any): _33.GetNodeInfoResponse;
                     toJSON(message: _33.GetNodeInfoResponse): unknown;
                     fromPartial(object: Partial<_33.GetNodeInfoResponse>): _33.GetNodeInfoResponse;
@@ -2385,7 +2385,7 @@ export declare namespace cosmos {
                 VersionInfo: {
                     typeUrl: string;
                     encode(message: _33.VersionInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.VersionInfo;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.VersionInfo;
                     fromJSON(object: any): _33.VersionInfo;
                     toJSON(message: _33.VersionInfo): unknown;
                     fromPartial(object: Partial<_33.VersionInfo>): _33.VersionInfo;
@@ -2402,7 +2402,7 @@ export declare namespace cosmos {
                 Module: {
                     typeUrl: string;
                     encode(message: _33.Module, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _33.Module;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _33.Module;
                     fromJSON(object: any): _33.Module;
                     toJSON(message: _33.Module): unknown;
                     fromPartial(object: Partial<_33.Module>): _33.Module;
@@ -2423,7 +2423,7 @@ export declare namespace cosmos {
             Coin: {
                 typeUrl: string;
                 encode(message: _34.Coin, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _34.Coin;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _34.Coin;
                 fromJSON(object: any): _34.Coin;
                 toJSON(message: _34.Coin): unknown;
                 fromPartial(object: Partial<_34.Coin>): _34.Coin;
@@ -2440,7 +2440,7 @@ export declare namespace cosmos {
             DecCoin: {
                 typeUrl: string;
                 encode(message: _34.DecCoin, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _34.DecCoin;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _34.DecCoin;
                 fromJSON(object: any): _34.DecCoin;
                 toJSON(message: _34.DecCoin): unknown;
                 fromPartial(object: Partial<_34.DecCoin>): _34.DecCoin;
@@ -2457,7 +2457,7 @@ export declare namespace cosmos {
             IntProto: {
                 typeUrl: string;
                 encode(message: _34.IntProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _34.IntProto;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _34.IntProto;
                 fromJSON(object: any): _34.IntProto;
                 toJSON(message: _34.IntProto): unknown;
                 fromPartial(object: Partial<_34.IntProto>): _34.IntProto;
@@ -2474,7 +2474,7 @@ export declare namespace cosmos {
             DecProto: {
                 typeUrl: string;
                 encode(message: _34.DecProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _34.DecProto;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _34.DecProto;
                 fromJSON(object: any): _34.DecProto;
                 toJSON(message: _34.DecProto): unknown;
                 fromPartial(object: Partial<_34.DecProto>): _34.DecProto;
@@ -2496,7 +2496,7 @@ export declare namespace cosmos {
             PubKey: {
                 typeUrl: string;
                 encode(message: _35.PubKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _35.PubKey;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _35.PubKey;
                 fromJSON(object: any): _35.PubKey;
                 toJSON(message: _35.PubKey): unknown;
                 fromPartial(object: Partial<_35.PubKey>): _35.PubKey;
@@ -2513,7 +2513,7 @@ export declare namespace cosmos {
             PrivKey: {
                 typeUrl: string;
                 encode(message: _35.PrivKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _35.PrivKey;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _35.PrivKey;
                 fromJSON(object: any): _35.PrivKey;
                 toJSON(message: _35.PrivKey): unknown;
                 fromPartial(object: Partial<_35.PrivKey>): _35.PrivKey;
@@ -2534,7 +2534,7 @@ export declare namespace cosmos {
                 BIP44Params: {
                     typeUrl: string;
                     encode(message: _36.BIP44Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _36.BIP44Params;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _36.BIP44Params;
                     fromJSON(object: any): _36.BIP44Params;
                     toJSON(message: _36.BIP44Params): unknown;
                     fromPartial(object: Partial<_36.BIP44Params>): _36.BIP44Params;
@@ -2556,7 +2556,7 @@ export declare namespace cosmos {
                 Record: {
                     typeUrl: string;
                     encode(message: _37.Record, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.Record;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _37.Record;
                     fromJSON(object: any): _37.Record;
                     toJSON(message: _37.Record): unknown;
                     fromPartial(object: Partial<_37.Record>): _37.Record;
@@ -2573,7 +2573,7 @@ export declare namespace cosmos {
                 Record_Local: {
                     typeUrl: string;
                     encode(message: _37.Record_Local, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.Record_Local;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _37.Record_Local;
                     fromJSON(object: any): _37.Record_Local;
                     toJSON(message: _37.Record_Local): unknown;
                     fromPartial(object: Partial<_37.Record_Local>): _37.Record_Local;
@@ -2590,7 +2590,7 @@ export declare namespace cosmos {
                 Record_Ledger: {
                     typeUrl: string;
                     encode(message: _37.Record_Ledger, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.Record_Ledger;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _37.Record_Ledger;
                     fromJSON(object: any): _37.Record_Ledger;
                     toJSON(message: _37.Record_Ledger): unknown;
                     fromPartial(object: Partial<_37.Record_Ledger>): _37.Record_Ledger;
@@ -2607,7 +2607,7 @@ export declare namespace cosmos {
                 Record_Multi: {
                     typeUrl: string;
                     encode(_: _37.Record_Multi, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.Record_Multi;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _37.Record_Multi;
                     fromJSON(_: any): _37.Record_Multi;
                     toJSON(_: _37.Record_Multi): unknown;
                     fromPartial(_: Partial<_37.Record_Multi>): _37.Record_Multi;
@@ -2624,7 +2624,7 @@ export declare namespace cosmos {
                 Record_Offline: {
                     typeUrl: string;
                     encode(_: _37.Record_Offline, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _37.Record_Offline;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _37.Record_Offline;
                     fromJSON(_: any): _37.Record_Offline;
                     toJSON(_: _37.Record_Offline): unknown;
                     fromPartial(_: Partial<_37.Record_Offline>): _37.Record_Offline;
@@ -2645,7 +2645,7 @@ export declare namespace cosmos {
             LegacyAminoPubKey: {
                 typeUrl: string;
                 encode(message: _38.LegacyAminoPubKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _38.LegacyAminoPubKey;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _38.LegacyAminoPubKey;
                 fromJSON(object: any): _38.LegacyAminoPubKey;
                 toJSON(message: _38.LegacyAminoPubKey): unknown;
                 fromPartial(object: Partial<_38.LegacyAminoPubKey>): _38.LegacyAminoPubKey;
@@ -2665,7 +2665,7 @@ export declare namespace cosmos {
             PubKey: {
                 typeUrl: string;
                 encode(message: _39.PubKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _39.PubKey;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _39.PubKey;
                 fromJSON(object: any): _39.PubKey;
                 toJSON(message: _39.PubKey): unknown;
                 fromPartial(object: Partial<_39.PubKey>): _39.PubKey;
@@ -2682,7 +2682,7 @@ export declare namespace cosmos {
             PrivKey: {
                 typeUrl: string;
                 encode(message: _39.PrivKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _39.PrivKey;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _39.PrivKey;
                 fromJSON(object: any): _39.PrivKey;
                 toJSON(message: _39.PrivKey): unknown;
                 fromPartial(object: Partial<_39.PrivKey>): _39.PrivKey;
@@ -2702,7 +2702,7 @@ export declare namespace cosmos {
             PubKey: {
                 typeUrl: string;
                 encode(message: _40.PubKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _40.PubKey;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _40.PubKey;
                 fromJSON(object: any): _40.PubKey;
                 toJSON(message: _40.PubKey): unknown;
                 fromPartial(object: Partial<_40.PubKey>): _40.PubKey;
@@ -2719,7 +2719,7 @@ export declare namespace cosmos {
             PrivKey: {
                 typeUrl: string;
                 encode(message: _40.PrivKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _40.PrivKey;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _40.PrivKey;
                 fromJSON(object: any): _40.PrivKey;
                 toJSON(message: _40.PrivKey): unknown;
                 fromPartial(object: Partial<_40.PrivKey>): _40.PrivKey;
@@ -2861,7 +2861,7 @@ export declare namespace cosmos {
             MsgSetWithdrawAddress: {
                 typeUrl: string;
                 encode(message: _44.MsgSetWithdrawAddress, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _44.MsgSetWithdrawAddress;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _44.MsgSetWithdrawAddress;
                 fromJSON(object: any): _44.MsgSetWithdrawAddress;
                 toJSON(message: _44.MsgSetWithdrawAddress): unknown;
                 fromPartial(object: Partial<_44.MsgSetWithdrawAddress>): _44.MsgSetWithdrawAddress;
@@ -2878,7 +2878,7 @@ export declare namespace cosmos {
             MsgSetWithdrawAddressResponse: {
                 typeUrl: string;
                 encode(_: _44.MsgSetWithdrawAddressResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _44.MsgSetWithdrawAddressResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _44.MsgSetWithdrawAddressResponse;
                 fromJSON(_: any): _44.MsgSetWithdrawAddressResponse;
                 toJSON(_: _44.MsgSetWithdrawAddressResponse): unknown;
                 fromPartial(_: Partial<_44.MsgSetWithdrawAddressResponse>): _44.MsgSetWithdrawAddressResponse;
@@ -2895,7 +2895,7 @@ export declare namespace cosmos {
             MsgWithdrawDelegatorReward: {
                 typeUrl: string;
                 encode(message: _44.MsgWithdrawDelegatorReward, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _44.MsgWithdrawDelegatorReward;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _44.MsgWithdrawDelegatorReward;
                 fromJSON(object: any): _44.MsgWithdrawDelegatorReward;
                 toJSON(message: _44.MsgWithdrawDelegatorReward): unknown;
                 fromPartial(object: Partial<_44.MsgWithdrawDelegatorReward>): _44.MsgWithdrawDelegatorReward;
@@ -2912,7 +2912,7 @@ export declare namespace cosmos {
             MsgWithdrawDelegatorRewardResponse: {
                 typeUrl: string;
                 encode(message: _44.MsgWithdrawDelegatorRewardResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _44.MsgWithdrawDelegatorRewardResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _44.MsgWithdrawDelegatorRewardResponse;
                 fromJSON(object: any): _44.MsgWithdrawDelegatorRewardResponse;
                 toJSON(message: _44.MsgWithdrawDelegatorRewardResponse): unknown;
                 fromPartial(object: Partial<_44.MsgWithdrawDelegatorRewardResponse>): _44.MsgWithdrawDelegatorRewardResponse;
@@ -2929,7 +2929,7 @@ export declare namespace cosmos {
             MsgWithdrawValidatorCommission: {
                 typeUrl: string;
                 encode(message: _44.MsgWithdrawValidatorCommission, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _44.MsgWithdrawValidatorCommission;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _44.MsgWithdrawValidatorCommission;
                 fromJSON(object: any): _44.MsgWithdrawValidatorCommission;
                 toJSON(message: _44.MsgWithdrawValidatorCommission): unknown;
                 fromPartial(object: Partial<_44.MsgWithdrawValidatorCommission>): _44.MsgWithdrawValidatorCommission;
@@ -2946,7 +2946,7 @@ export declare namespace cosmos {
             MsgWithdrawValidatorCommissionResponse: {
                 typeUrl: string;
                 encode(message: _44.MsgWithdrawValidatorCommissionResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _44.MsgWithdrawValidatorCommissionResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _44.MsgWithdrawValidatorCommissionResponse;
                 fromJSON(object: any): _44.MsgWithdrawValidatorCommissionResponse;
                 toJSON(message: _44.MsgWithdrawValidatorCommissionResponse): unknown;
                 fromPartial(object: Partial<_44.MsgWithdrawValidatorCommissionResponse>): _44.MsgWithdrawValidatorCommissionResponse;
@@ -2963,7 +2963,7 @@ export declare namespace cosmos {
             MsgFundCommunityPool: {
                 typeUrl: string;
                 encode(message: _44.MsgFundCommunityPool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _44.MsgFundCommunityPool;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _44.MsgFundCommunityPool;
                 fromJSON(object: any): _44.MsgFundCommunityPool;
                 toJSON(message: _44.MsgFundCommunityPool): unknown;
                 fromPartial(object: Partial<_44.MsgFundCommunityPool>): _44.MsgFundCommunityPool;
@@ -2980,7 +2980,7 @@ export declare namespace cosmos {
             MsgFundCommunityPoolResponse: {
                 typeUrl: string;
                 encode(_: _44.MsgFundCommunityPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _44.MsgFundCommunityPoolResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _44.MsgFundCommunityPoolResponse;
                 fromJSON(_: any): _44.MsgFundCommunityPoolResponse;
                 toJSON(_: _44.MsgFundCommunityPoolResponse): unknown;
                 fromPartial(_: Partial<_44.MsgFundCommunityPoolResponse>): _44.MsgFundCommunityPoolResponse;
@@ -2997,7 +2997,7 @@ export declare namespace cosmos {
             QueryParamsRequest: {
                 typeUrl: string;
                 encode(_: _43.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryParamsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryParamsRequest;
                 fromJSON(_: any): _43.QueryParamsRequest;
                 toJSON(_: _43.QueryParamsRequest): unknown;
                 fromPartial(_: Partial<_43.QueryParamsRequest>): _43.QueryParamsRequest;
@@ -3014,7 +3014,7 @@ export declare namespace cosmos {
             QueryParamsResponse: {
                 typeUrl: string;
                 encode(message: _43.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryParamsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryParamsResponse;
                 fromJSON(object: any): _43.QueryParamsResponse;
                 toJSON(message: _43.QueryParamsResponse): unknown;
                 fromPartial(object: Partial<_43.QueryParamsResponse>): _43.QueryParamsResponse;
@@ -3031,7 +3031,7 @@ export declare namespace cosmos {
             QueryValidatorOutstandingRewardsRequest: {
                 typeUrl: string;
                 encode(message: _43.QueryValidatorOutstandingRewardsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryValidatorOutstandingRewardsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryValidatorOutstandingRewardsRequest;
                 fromJSON(object: any): _43.QueryValidatorOutstandingRewardsRequest;
                 toJSON(message: _43.QueryValidatorOutstandingRewardsRequest): unknown;
                 fromPartial(object: Partial<_43.QueryValidatorOutstandingRewardsRequest>): _43.QueryValidatorOutstandingRewardsRequest;
@@ -3048,7 +3048,7 @@ export declare namespace cosmos {
             QueryValidatorOutstandingRewardsResponse: {
                 typeUrl: string;
                 encode(message: _43.QueryValidatorOutstandingRewardsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryValidatorOutstandingRewardsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryValidatorOutstandingRewardsResponse;
                 fromJSON(object: any): _43.QueryValidatorOutstandingRewardsResponse;
                 toJSON(message: _43.QueryValidatorOutstandingRewardsResponse): unknown;
                 fromPartial(object: Partial<_43.QueryValidatorOutstandingRewardsResponse>): _43.QueryValidatorOutstandingRewardsResponse;
@@ -3065,7 +3065,7 @@ export declare namespace cosmos {
             QueryValidatorCommissionRequest: {
                 typeUrl: string;
                 encode(message: _43.QueryValidatorCommissionRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryValidatorCommissionRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryValidatorCommissionRequest;
                 fromJSON(object: any): _43.QueryValidatorCommissionRequest;
                 toJSON(message: _43.QueryValidatorCommissionRequest): unknown;
                 fromPartial(object: Partial<_43.QueryValidatorCommissionRequest>): _43.QueryValidatorCommissionRequest;
@@ -3082,7 +3082,7 @@ export declare namespace cosmos {
             QueryValidatorCommissionResponse: {
                 typeUrl: string;
                 encode(message: _43.QueryValidatorCommissionResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryValidatorCommissionResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryValidatorCommissionResponse;
                 fromJSON(object: any): _43.QueryValidatorCommissionResponse;
                 toJSON(message: _43.QueryValidatorCommissionResponse): unknown;
                 fromPartial(object: Partial<_43.QueryValidatorCommissionResponse>): _43.QueryValidatorCommissionResponse;
@@ -3099,7 +3099,7 @@ export declare namespace cosmos {
             QueryValidatorSlashesRequest: {
                 typeUrl: string;
                 encode(message: _43.QueryValidatorSlashesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryValidatorSlashesRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryValidatorSlashesRequest;
                 fromJSON(object: any): _43.QueryValidatorSlashesRequest;
                 toJSON(message: _43.QueryValidatorSlashesRequest): unknown;
                 fromPartial(object: Partial<_43.QueryValidatorSlashesRequest>): _43.QueryValidatorSlashesRequest;
@@ -3116,7 +3116,7 @@ export declare namespace cosmos {
             QueryValidatorSlashesResponse: {
                 typeUrl: string;
                 encode(message: _43.QueryValidatorSlashesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryValidatorSlashesResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryValidatorSlashesResponse;
                 fromJSON(object: any): _43.QueryValidatorSlashesResponse;
                 toJSON(message: _43.QueryValidatorSlashesResponse): unknown;
                 fromPartial(object: Partial<_43.QueryValidatorSlashesResponse>): _43.QueryValidatorSlashesResponse;
@@ -3133,7 +3133,7 @@ export declare namespace cosmos {
             QueryDelegationRewardsRequest: {
                 typeUrl: string;
                 encode(message: _43.QueryDelegationRewardsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryDelegationRewardsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryDelegationRewardsRequest;
                 fromJSON(object: any): _43.QueryDelegationRewardsRequest;
                 toJSON(message: _43.QueryDelegationRewardsRequest): unknown;
                 fromPartial(object: Partial<_43.QueryDelegationRewardsRequest>): _43.QueryDelegationRewardsRequest;
@@ -3150,7 +3150,7 @@ export declare namespace cosmos {
             QueryDelegationRewardsResponse: {
                 typeUrl: string;
                 encode(message: _43.QueryDelegationRewardsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryDelegationRewardsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryDelegationRewardsResponse;
                 fromJSON(object: any): _43.QueryDelegationRewardsResponse;
                 toJSON(message: _43.QueryDelegationRewardsResponse): unknown;
                 fromPartial(object: Partial<_43.QueryDelegationRewardsResponse>): _43.QueryDelegationRewardsResponse;
@@ -3167,7 +3167,7 @@ export declare namespace cosmos {
             QueryDelegationTotalRewardsRequest: {
                 typeUrl: string;
                 encode(message: _43.QueryDelegationTotalRewardsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryDelegationTotalRewardsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryDelegationTotalRewardsRequest;
                 fromJSON(object: any): _43.QueryDelegationTotalRewardsRequest;
                 toJSON(message: _43.QueryDelegationTotalRewardsRequest): unknown;
                 fromPartial(object: Partial<_43.QueryDelegationTotalRewardsRequest>): _43.QueryDelegationTotalRewardsRequest;
@@ -3184,7 +3184,7 @@ export declare namespace cosmos {
             QueryDelegationTotalRewardsResponse: {
                 typeUrl: string;
                 encode(message: _43.QueryDelegationTotalRewardsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryDelegationTotalRewardsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryDelegationTotalRewardsResponse;
                 fromJSON(object: any): _43.QueryDelegationTotalRewardsResponse;
                 toJSON(message: _43.QueryDelegationTotalRewardsResponse): unknown;
                 fromPartial(object: Partial<_43.QueryDelegationTotalRewardsResponse>): _43.QueryDelegationTotalRewardsResponse;
@@ -3201,7 +3201,7 @@ export declare namespace cosmos {
             QueryDelegatorValidatorsRequest: {
                 typeUrl: string;
                 encode(message: _43.QueryDelegatorValidatorsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryDelegatorValidatorsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryDelegatorValidatorsRequest;
                 fromJSON(object: any): _43.QueryDelegatorValidatorsRequest;
                 toJSON(message: _43.QueryDelegatorValidatorsRequest): unknown;
                 fromPartial(object: Partial<_43.QueryDelegatorValidatorsRequest>): _43.QueryDelegatorValidatorsRequest;
@@ -3218,7 +3218,7 @@ export declare namespace cosmos {
             QueryDelegatorValidatorsResponse: {
                 typeUrl: string;
                 encode(message: _43.QueryDelegatorValidatorsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryDelegatorValidatorsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryDelegatorValidatorsResponse;
                 fromJSON(object: any): _43.QueryDelegatorValidatorsResponse;
                 toJSON(message: _43.QueryDelegatorValidatorsResponse): unknown;
                 fromPartial(object: Partial<_43.QueryDelegatorValidatorsResponse>): _43.QueryDelegatorValidatorsResponse;
@@ -3235,7 +3235,7 @@ export declare namespace cosmos {
             QueryDelegatorWithdrawAddressRequest: {
                 typeUrl: string;
                 encode(message: _43.QueryDelegatorWithdrawAddressRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryDelegatorWithdrawAddressRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryDelegatorWithdrawAddressRequest;
                 fromJSON(object: any): _43.QueryDelegatorWithdrawAddressRequest;
                 toJSON(message: _43.QueryDelegatorWithdrawAddressRequest): unknown;
                 fromPartial(object: Partial<_43.QueryDelegatorWithdrawAddressRequest>): _43.QueryDelegatorWithdrawAddressRequest;
@@ -3252,7 +3252,7 @@ export declare namespace cosmos {
             QueryDelegatorWithdrawAddressResponse: {
                 typeUrl: string;
                 encode(message: _43.QueryDelegatorWithdrawAddressResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryDelegatorWithdrawAddressResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryDelegatorWithdrawAddressResponse;
                 fromJSON(object: any): _43.QueryDelegatorWithdrawAddressResponse;
                 toJSON(message: _43.QueryDelegatorWithdrawAddressResponse): unknown;
                 fromPartial(object: Partial<_43.QueryDelegatorWithdrawAddressResponse>): _43.QueryDelegatorWithdrawAddressResponse;
@@ -3269,7 +3269,7 @@ export declare namespace cosmos {
             QueryCommunityPoolRequest: {
                 typeUrl: string;
                 encode(_: _43.QueryCommunityPoolRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryCommunityPoolRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryCommunityPoolRequest;
                 fromJSON(_: any): _43.QueryCommunityPoolRequest;
                 toJSON(_: _43.QueryCommunityPoolRequest): unknown;
                 fromPartial(_: Partial<_43.QueryCommunityPoolRequest>): _43.QueryCommunityPoolRequest;
@@ -3286,7 +3286,7 @@ export declare namespace cosmos {
             QueryCommunityPoolResponse: {
                 typeUrl: string;
                 encode(message: _43.QueryCommunityPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _43.QueryCommunityPoolResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _43.QueryCommunityPoolResponse;
                 fromJSON(object: any): _43.QueryCommunityPoolResponse;
                 toJSON(message: _43.QueryCommunityPoolResponse): unknown;
                 fromPartial(object: Partial<_43.QueryCommunityPoolResponse>): _43.QueryCommunityPoolResponse;
@@ -3303,7 +3303,7 @@ export declare namespace cosmos {
             DelegatorWithdrawInfo: {
                 typeUrl: string;
                 encode(message: _42.DelegatorWithdrawInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.DelegatorWithdrawInfo;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _42.DelegatorWithdrawInfo;
                 fromJSON(object: any): _42.DelegatorWithdrawInfo;
                 toJSON(message: _42.DelegatorWithdrawInfo): unknown;
                 fromPartial(object: Partial<_42.DelegatorWithdrawInfo>): _42.DelegatorWithdrawInfo;
@@ -3320,7 +3320,7 @@ export declare namespace cosmos {
             ValidatorOutstandingRewardsRecord: {
                 typeUrl: string;
                 encode(message: _42.ValidatorOutstandingRewardsRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.ValidatorOutstandingRewardsRecord;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _42.ValidatorOutstandingRewardsRecord;
                 fromJSON(object: any): _42.ValidatorOutstandingRewardsRecord;
                 toJSON(message: _42.ValidatorOutstandingRewardsRecord): unknown;
                 fromPartial(object: Partial<_42.ValidatorOutstandingRewardsRecord>): _42.ValidatorOutstandingRewardsRecord;
@@ -3337,7 +3337,7 @@ export declare namespace cosmos {
             ValidatorAccumulatedCommissionRecord: {
                 typeUrl: string;
                 encode(message: _42.ValidatorAccumulatedCommissionRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.ValidatorAccumulatedCommissionRecord;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _42.ValidatorAccumulatedCommissionRecord;
                 fromJSON(object: any): _42.ValidatorAccumulatedCommissionRecord;
                 toJSON(message: _42.ValidatorAccumulatedCommissionRecord): unknown;
                 fromPartial(object: Partial<_42.ValidatorAccumulatedCommissionRecord>): _42.ValidatorAccumulatedCommissionRecord;
@@ -3354,7 +3354,7 @@ export declare namespace cosmos {
             ValidatorHistoricalRewardsRecord: {
                 typeUrl: string;
                 encode(message: _42.ValidatorHistoricalRewardsRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.ValidatorHistoricalRewardsRecord;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _42.ValidatorHistoricalRewardsRecord;
                 fromJSON(object: any): _42.ValidatorHistoricalRewardsRecord;
                 toJSON(message: _42.ValidatorHistoricalRewardsRecord): unknown;
                 fromPartial(object: Partial<_42.ValidatorHistoricalRewardsRecord>): _42.ValidatorHistoricalRewardsRecord;
@@ -3371,7 +3371,7 @@ export declare namespace cosmos {
             ValidatorCurrentRewardsRecord: {
                 typeUrl: string;
                 encode(message: _42.ValidatorCurrentRewardsRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.ValidatorCurrentRewardsRecord;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _42.ValidatorCurrentRewardsRecord;
                 fromJSON(object: any): _42.ValidatorCurrentRewardsRecord;
                 toJSON(message: _42.ValidatorCurrentRewardsRecord): unknown;
                 fromPartial(object: Partial<_42.ValidatorCurrentRewardsRecord>): _42.ValidatorCurrentRewardsRecord;
@@ -3388,7 +3388,7 @@ export declare namespace cosmos {
             DelegatorStartingInfoRecord: {
                 typeUrl: string;
                 encode(message: _42.DelegatorStartingInfoRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.DelegatorStartingInfoRecord;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _42.DelegatorStartingInfoRecord;
                 fromJSON(object: any): _42.DelegatorStartingInfoRecord;
                 toJSON(message: _42.DelegatorStartingInfoRecord): unknown;
                 fromPartial(object: Partial<_42.DelegatorStartingInfoRecord>): _42.DelegatorStartingInfoRecord;
@@ -3405,7 +3405,7 @@ export declare namespace cosmos {
             ValidatorSlashEventRecord: {
                 typeUrl: string;
                 encode(message: _42.ValidatorSlashEventRecord, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.ValidatorSlashEventRecord;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _42.ValidatorSlashEventRecord;
                 fromJSON(object: any): _42.ValidatorSlashEventRecord;
                 toJSON(message: _42.ValidatorSlashEventRecord): unknown;
                 fromPartial(object: Partial<_42.ValidatorSlashEventRecord>): _42.ValidatorSlashEventRecord;
@@ -3422,7 +3422,7 @@ export declare namespace cosmos {
             GenesisState: {
                 typeUrl: string;
                 encode(message: _42.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _42.GenesisState;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _42.GenesisState;
                 fromJSON(object: any): _42.GenesisState;
                 toJSON(message: _42.GenesisState): unknown;
                 fromPartial(object: Partial<_42.GenesisState>): _42.GenesisState;
@@ -3439,7 +3439,7 @@ export declare namespace cosmos {
             Params: {
                 typeUrl: string;
                 encode(message: _41.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.Params;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _41.Params;
                 fromJSON(object: any): _41.Params;
                 toJSON(message: _41.Params): unknown;
                 fromPartial(object: Partial<_41.Params>): _41.Params;
@@ -3456,7 +3456,7 @@ export declare namespace cosmos {
             ValidatorHistoricalRewards: {
                 typeUrl: string;
                 encode(message: _41.ValidatorHistoricalRewards, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.ValidatorHistoricalRewards;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _41.ValidatorHistoricalRewards;
                 fromJSON(object: any): _41.ValidatorHistoricalRewards;
                 toJSON(message: _41.ValidatorHistoricalRewards): unknown;
                 fromPartial(object: Partial<_41.ValidatorHistoricalRewards>): _41.ValidatorHistoricalRewards;
@@ -3473,7 +3473,7 @@ export declare namespace cosmos {
             ValidatorCurrentRewards: {
                 typeUrl: string;
                 encode(message: _41.ValidatorCurrentRewards, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.ValidatorCurrentRewards;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _41.ValidatorCurrentRewards;
                 fromJSON(object: any): _41.ValidatorCurrentRewards;
                 toJSON(message: _41.ValidatorCurrentRewards): unknown;
                 fromPartial(object: Partial<_41.ValidatorCurrentRewards>): _41.ValidatorCurrentRewards;
@@ -3490,7 +3490,7 @@ export declare namespace cosmos {
             ValidatorAccumulatedCommission: {
                 typeUrl: string;
                 encode(message: _41.ValidatorAccumulatedCommission, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.ValidatorAccumulatedCommission;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _41.ValidatorAccumulatedCommission;
                 fromJSON(object: any): _41.ValidatorAccumulatedCommission;
                 toJSON(message: _41.ValidatorAccumulatedCommission): unknown;
                 fromPartial(object: Partial<_41.ValidatorAccumulatedCommission>): _41.ValidatorAccumulatedCommission;
@@ -3507,7 +3507,7 @@ export declare namespace cosmos {
             ValidatorOutstandingRewards: {
                 typeUrl: string;
                 encode(message: _41.ValidatorOutstandingRewards, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.ValidatorOutstandingRewards;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _41.ValidatorOutstandingRewards;
                 fromJSON(object: any): _41.ValidatorOutstandingRewards;
                 toJSON(message: _41.ValidatorOutstandingRewards): unknown;
                 fromPartial(object: Partial<_41.ValidatorOutstandingRewards>): _41.ValidatorOutstandingRewards;
@@ -3524,7 +3524,7 @@ export declare namespace cosmos {
             ValidatorSlashEvent: {
                 typeUrl: string;
                 encode(message: _41.ValidatorSlashEvent, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.ValidatorSlashEvent;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _41.ValidatorSlashEvent;
                 fromJSON(object: any): _41.ValidatorSlashEvent;
                 toJSON(message: _41.ValidatorSlashEvent): unknown;
                 fromPartial(object: Partial<_41.ValidatorSlashEvent>): _41.ValidatorSlashEvent;
@@ -3541,7 +3541,7 @@ export declare namespace cosmos {
             ValidatorSlashEvents: {
                 typeUrl: string;
                 encode(message: _41.ValidatorSlashEvents, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.ValidatorSlashEvents;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _41.ValidatorSlashEvents;
                 fromJSON(object: any): _41.ValidatorSlashEvents;
                 toJSON(message: _41.ValidatorSlashEvents): unknown;
                 fromPartial(object: Partial<_41.ValidatorSlashEvents>): _41.ValidatorSlashEvents;
@@ -3558,7 +3558,7 @@ export declare namespace cosmos {
             FeePool: {
                 typeUrl: string;
                 encode(message: _41.FeePool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.FeePool;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _41.FeePool;
                 fromJSON(object: any): _41.FeePool;
                 toJSON(message: _41.FeePool): unknown;
                 fromPartial(object: Partial<_41.FeePool>): _41.FeePool;
@@ -3575,7 +3575,7 @@ export declare namespace cosmos {
             CommunityPoolSpendProposal: {
                 typeUrl: string;
                 encode(message: _41.CommunityPoolSpendProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.CommunityPoolSpendProposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _41.CommunityPoolSpendProposal;
                 fromJSON(object: any): _41.CommunityPoolSpendProposal;
                 toJSON(message: _41.CommunityPoolSpendProposal): unknown;
                 fromPartial(object: Partial<_41.CommunityPoolSpendProposal>): _41.CommunityPoolSpendProposal;
@@ -3592,7 +3592,7 @@ export declare namespace cosmos {
             DelegatorStartingInfo: {
                 typeUrl: string;
                 encode(message: _41.DelegatorStartingInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.DelegatorStartingInfo;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _41.DelegatorStartingInfo;
                 fromJSON(object: any): _41.DelegatorStartingInfo;
                 toJSON(message: _41.DelegatorStartingInfo): unknown;
                 fromPartial(object: Partial<_41.DelegatorStartingInfo>): _41.DelegatorStartingInfo;
@@ -3609,7 +3609,7 @@ export declare namespace cosmos {
             DelegationDelegatorReward: {
                 typeUrl: string;
                 encode(message: _41.DelegationDelegatorReward, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.DelegationDelegatorReward;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _41.DelegationDelegatorReward;
                 fromJSON(object: any): _41.DelegationDelegatorReward;
                 toJSON(message: _41.DelegationDelegatorReward): unknown;
                 fromPartial(object: Partial<_41.DelegationDelegatorReward>): _41.DelegationDelegatorReward;
@@ -3626,7 +3626,7 @@ export declare namespace cosmos {
             CommunityPoolSpendProposalWithDeposit: {
                 typeUrl: string;
                 encode(message: _41.CommunityPoolSpendProposalWithDeposit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _41.CommunityPoolSpendProposalWithDeposit;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _41.CommunityPoolSpendProposalWithDeposit;
                 fromJSON(object: any): _41.CommunityPoolSpendProposalWithDeposit;
                 toJSON(message: _41.CommunityPoolSpendProposalWithDeposit): unknown;
                 fromPartial(object: Partial<_41.CommunityPoolSpendProposalWithDeposit>): _41.CommunityPoolSpendProposalWithDeposit;
@@ -3718,7 +3718,7 @@ export declare namespace cosmos {
             MsgGrantAllowance: {
                 typeUrl: string;
                 encode(message: _48.MsgGrantAllowance, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _48.MsgGrantAllowance;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _48.MsgGrantAllowance;
                 fromJSON(object: any): _48.MsgGrantAllowance;
                 toJSON(message: _48.MsgGrantAllowance): unknown;
                 fromPartial(object: Partial<_48.MsgGrantAllowance>): _48.MsgGrantAllowance;
@@ -3735,7 +3735,7 @@ export declare namespace cosmos {
             MsgGrantAllowanceResponse: {
                 typeUrl: string;
                 encode(_: _48.MsgGrantAllowanceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _48.MsgGrantAllowanceResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _48.MsgGrantAllowanceResponse;
                 fromJSON(_: any): _48.MsgGrantAllowanceResponse;
                 toJSON(_: _48.MsgGrantAllowanceResponse): unknown;
                 fromPartial(_: Partial<_48.MsgGrantAllowanceResponse>): _48.MsgGrantAllowanceResponse;
@@ -3752,7 +3752,7 @@ export declare namespace cosmos {
             MsgRevokeAllowance: {
                 typeUrl: string;
                 encode(message: _48.MsgRevokeAllowance, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _48.MsgRevokeAllowance;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _48.MsgRevokeAllowance;
                 fromJSON(object: any): _48.MsgRevokeAllowance;
                 toJSON(message: _48.MsgRevokeAllowance): unknown;
                 fromPartial(object: Partial<_48.MsgRevokeAllowance>): _48.MsgRevokeAllowance;
@@ -3769,7 +3769,7 @@ export declare namespace cosmos {
             MsgRevokeAllowanceResponse: {
                 typeUrl: string;
                 encode(_: _48.MsgRevokeAllowanceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _48.MsgRevokeAllowanceResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _48.MsgRevokeAllowanceResponse;
                 fromJSON(_: any): _48.MsgRevokeAllowanceResponse;
                 toJSON(_: _48.MsgRevokeAllowanceResponse): unknown;
                 fromPartial(_: Partial<_48.MsgRevokeAllowanceResponse>): _48.MsgRevokeAllowanceResponse;
@@ -3783,13 +3783,13 @@ export declare namespace cosmos {
                 toProto(message: _48.MsgRevokeAllowanceResponse): Uint8Array;
                 toProtoMsg(message: _48.MsgRevokeAllowanceResponse): _48.MsgRevokeAllowanceResponseProtoMsg;
             };
-            Cosmos_feegrantFeeAllowanceI_InterfaceDecoder: (input: Uint8Array | import("..").BinaryReader) => import("../google/protobuf/any").Any | _45.BasicAllowance | _45.PeriodicAllowance | _45.AllowedMsgAllowance;
+            Cosmos_feegrantFeeAllowanceI_InterfaceDecoder: (input: import("..").BinaryReader | Uint8Array) => import("../google/protobuf/any").Any | _45.BasicAllowance | _45.PeriodicAllowance | _45.AllowedMsgAllowance;
             Cosmos_feegrantFeeAllowanceI_FromAmino: (content: import("../google/protobuf/any").AnyAmino) => import("../google/protobuf/any").Any;
             Cosmos_feegrantFeeAllowanceI_ToAmino: (content: import("../google/protobuf/any").Any) => import("../google/protobuf/any").AnyAmino;
             QueryAllowanceRequest: {
                 typeUrl: string;
                 encode(message: _47.QueryAllowanceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _47.QueryAllowanceRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _47.QueryAllowanceRequest;
                 fromJSON(object: any): _47.QueryAllowanceRequest;
                 toJSON(message: _47.QueryAllowanceRequest): unknown;
                 fromPartial(object: Partial<_47.QueryAllowanceRequest>): _47.QueryAllowanceRequest;
@@ -3806,7 +3806,7 @@ export declare namespace cosmos {
             QueryAllowanceResponse: {
                 typeUrl: string;
                 encode(message: _47.QueryAllowanceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _47.QueryAllowanceResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _47.QueryAllowanceResponse;
                 fromJSON(object: any): _47.QueryAllowanceResponse;
                 toJSON(message: _47.QueryAllowanceResponse): unknown;
                 fromPartial(object: Partial<_47.QueryAllowanceResponse>): _47.QueryAllowanceResponse;
@@ -3823,7 +3823,7 @@ export declare namespace cosmos {
             QueryAllowancesRequest: {
                 typeUrl: string;
                 encode(message: _47.QueryAllowancesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _47.QueryAllowancesRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _47.QueryAllowancesRequest;
                 fromJSON(object: any): _47.QueryAllowancesRequest;
                 toJSON(message: _47.QueryAllowancesRequest): unknown;
                 fromPartial(object: Partial<_47.QueryAllowancesRequest>): _47.QueryAllowancesRequest;
@@ -3840,7 +3840,7 @@ export declare namespace cosmos {
             QueryAllowancesResponse: {
                 typeUrl: string;
                 encode(message: _47.QueryAllowancesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _47.QueryAllowancesResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _47.QueryAllowancesResponse;
                 fromJSON(object: any): _47.QueryAllowancesResponse;
                 toJSON(message: _47.QueryAllowancesResponse): unknown;
                 fromPartial(object: Partial<_47.QueryAllowancesResponse>): _47.QueryAllowancesResponse;
@@ -3857,7 +3857,7 @@ export declare namespace cosmos {
             QueryAllowancesByGranterRequest: {
                 typeUrl: string;
                 encode(message: _47.QueryAllowancesByGranterRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _47.QueryAllowancesByGranterRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _47.QueryAllowancesByGranterRequest;
                 fromJSON(object: any): _47.QueryAllowancesByGranterRequest;
                 toJSON(message: _47.QueryAllowancesByGranterRequest): unknown;
                 fromPartial(object: Partial<_47.QueryAllowancesByGranterRequest>): _47.QueryAllowancesByGranterRequest;
@@ -3874,7 +3874,7 @@ export declare namespace cosmos {
             QueryAllowancesByGranterResponse: {
                 typeUrl: string;
                 encode(message: _47.QueryAllowancesByGranterResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _47.QueryAllowancesByGranterResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _47.QueryAllowancesByGranterResponse;
                 fromJSON(object: any): _47.QueryAllowancesByGranterResponse;
                 toJSON(message: _47.QueryAllowancesByGranterResponse): unknown;
                 fromPartial(object: Partial<_47.QueryAllowancesByGranterResponse>): _47.QueryAllowancesByGranterResponse;
@@ -3891,7 +3891,7 @@ export declare namespace cosmos {
             GenesisState: {
                 typeUrl: string;
                 encode(message: _46.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _46.GenesisState;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _46.GenesisState;
                 fromJSON(object: any): _46.GenesisState;
                 toJSON(message: _46.GenesisState): unknown;
                 fromPartial(object: Partial<_46.GenesisState>): _46.GenesisState;
@@ -3908,7 +3908,7 @@ export declare namespace cosmos {
             BasicAllowance: {
                 typeUrl: string;
                 encode(message: _45.BasicAllowance, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.BasicAllowance;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _45.BasicAllowance;
                 fromJSON(object: any): _45.BasicAllowance;
                 toJSON(message: _45.BasicAllowance): unknown;
                 fromPartial(object: Partial<_45.BasicAllowance>): _45.BasicAllowance;
@@ -3925,7 +3925,7 @@ export declare namespace cosmos {
             PeriodicAllowance: {
                 typeUrl: string;
                 encode(message: _45.PeriodicAllowance, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.PeriodicAllowance;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _45.PeriodicAllowance;
                 fromJSON(object: any): _45.PeriodicAllowance;
                 toJSON(message: _45.PeriodicAllowance): unknown;
                 fromPartial(object: Partial<_45.PeriodicAllowance>): _45.PeriodicAllowance;
@@ -3942,7 +3942,7 @@ export declare namespace cosmos {
             AllowedMsgAllowance: {
                 typeUrl: string;
                 encode(message: _45.AllowedMsgAllowance, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.AllowedMsgAllowance;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _45.AllowedMsgAllowance;
                 fromJSON(object: any): _45.AllowedMsgAllowance;
                 toJSON(message: _45.AllowedMsgAllowance): unknown;
                 fromPartial(object: Partial<_45.AllowedMsgAllowance>): _45.AllowedMsgAllowance;
@@ -3959,7 +3959,7 @@ export declare namespace cosmos {
             Grant: {
                 typeUrl: string;
                 encode(message: _45.Grant, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _45.Grant;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _45.Grant;
                 fromJSON(object: any): _45.Grant;
                 toJSON(message: _45.Grant): unknown;
                 fromPartial(object: Partial<_45.Grant>): _45.Grant;
@@ -4126,7 +4126,7 @@ export declare namespace cosmos {
             MsgSubmitProposal: {
                 typeUrl: string;
                 encode(message: _52.MsgSubmitProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.MsgSubmitProposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _52.MsgSubmitProposal;
                 fromJSON(object: any): _52.MsgSubmitProposal;
                 toJSON(message: _52.MsgSubmitProposal): unknown;
                 fromPartial(object: Partial<_52.MsgSubmitProposal>): _52.MsgSubmitProposal;
@@ -4143,7 +4143,7 @@ export declare namespace cosmos {
             MsgSubmitProposalResponse: {
                 typeUrl: string;
                 encode(message: _52.MsgSubmitProposalResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.MsgSubmitProposalResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _52.MsgSubmitProposalResponse;
                 fromJSON(object: any): _52.MsgSubmitProposalResponse;
                 toJSON(message: _52.MsgSubmitProposalResponse): unknown;
                 fromPartial(object: Partial<_52.MsgSubmitProposalResponse>): _52.MsgSubmitProposalResponse;
@@ -4160,7 +4160,7 @@ export declare namespace cosmos {
             MsgExecLegacyContent: {
                 typeUrl: string;
                 encode(message: _52.MsgExecLegacyContent, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.MsgExecLegacyContent;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _52.MsgExecLegacyContent;
                 fromJSON(object: any): _52.MsgExecLegacyContent;
                 toJSON(message: _52.MsgExecLegacyContent): unknown;
                 fromPartial(object: Partial<_52.MsgExecLegacyContent>): _52.MsgExecLegacyContent;
@@ -4177,7 +4177,7 @@ export declare namespace cosmos {
             MsgExecLegacyContentResponse: {
                 typeUrl: string;
                 encode(_: _52.MsgExecLegacyContentResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.MsgExecLegacyContentResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _52.MsgExecLegacyContentResponse;
                 fromJSON(_: any): _52.MsgExecLegacyContentResponse;
                 toJSON(_: _52.MsgExecLegacyContentResponse): unknown;
                 fromPartial(_: Partial<_52.MsgExecLegacyContentResponse>): _52.MsgExecLegacyContentResponse;
@@ -4194,7 +4194,7 @@ export declare namespace cosmos {
             MsgVote: {
                 typeUrl: string;
                 encode(message: _52.MsgVote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.MsgVote;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _52.MsgVote;
                 fromJSON(object: any): _52.MsgVote;
                 toJSON(message: _52.MsgVote): unknown;
                 fromPartial(object: Partial<_52.MsgVote>): _52.MsgVote;
@@ -4211,7 +4211,7 @@ export declare namespace cosmos {
             MsgVoteResponse: {
                 typeUrl: string;
                 encode(_: _52.MsgVoteResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.MsgVoteResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _52.MsgVoteResponse;
                 fromJSON(_: any): _52.MsgVoteResponse;
                 toJSON(_: _52.MsgVoteResponse): unknown;
                 fromPartial(_: Partial<_52.MsgVoteResponse>): _52.MsgVoteResponse;
@@ -4228,7 +4228,7 @@ export declare namespace cosmos {
             MsgVoteWeighted: {
                 typeUrl: string;
                 encode(message: _52.MsgVoteWeighted, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.MsgVoteWeighted;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _52.MsgVoteWeighted;
                 fromJSON(object: any): _52.MsgVoteWeighted;
                 toJSON(message: _52.MsgVoteWeighted): unknown;
                 fromPartial(object: Partial<_52.MsgVoteWeighted>): _52.MsgVoteWeighted;
@@ -4245,7 +4245,7 @@ export declare namespace cosmos {
             MsgVoteWeightedResponse: {
                 typeUrl: string;
                 encode(_: _52.MsgVoteWeightedResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.MsgVoteWeightedResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _52.MsgVoteWeightedResponse;
                 fromJSON(_: any): _52.MsgVoteWeightedResponse;
                 toJSON(_: _52.MsgVoteWeightedResponse): unknown;
                 fromPartial(_: Partial<_52.MsgVoteWeightedResponse>): _52.MsgVoteWeightedResponse;
@@ -4262,7 +4262,7 @@ export declare namespace cosmos {
             MsgDeposit: {
                 typeUrl: string;
                 encode(message: _52.MsgDeposit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.MsgDeposit;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _52.MsgDeposit;
                 fromJSON(object: any): _52.MsgDeposit;
                 toJSON(message: _52.MsgDeposit): unknown;
                 fromPartial(object: Partial<_52.MsgDeposit>): _52.MsgDeposit;
@@ -4279,7 +4279,7 @@ export declare namespace cosmos {
             MsgDepositResponse: {
                 typeUrl: string;
                 encode(_: _52.MsgDepositResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _52.MsgDepositResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _52.MsgDepositResponse;
                 fromJSON(_: any): _52.MsgDepositResponse;
                 toJSON(_: _52.MsgDepositResponse): unknown;
                 fromPartial(_: Partial<_52.MsgDepositResponse>): _52.MsgDepositResponse;
@@ -4293,13 +4293,13 @@ export declare namespace cosmos {
                 toProto(message: _52.MsgDepositResponse): Uint8Array;
                 toProtoMsg(message: _52.MsgDepositResponse): _52.MsgDepositResponseProtoMsg;
             };
-            Cosmos_govv1beta1Content_InterfaceDecoder: (input: Uint8Array | import("..").BinaryReader) => import("../google/protobuf/any").Any | _41.CommunityPoolSpendProposal | _41.CommunityPoolSpendProposalWithDeposit | _70.ParameterChangeProposal | _82.SoftwareUpgradeProposal | _82.CancelSoftwareUpgradeProposal | _54.TextProposal;
+            Cosmos_govv1beta1Content_InterfaceDecoder: (input: import("..").BinaryReader | Uint8Array) => import("../google/protobuf/any").Any | _41.CommunityPoolSpendProposal | _41.CommunityPoolSpendProposalWithDeposit | _70.ParameterChangeProposal | _82.SoftwareUpgradeProposal | _82.CancelSoftwareUpgradeProposal | _54.TextProposal;
             Cosmos_govv1beta1Content_FromAmino: (content: import("../google/protobuf/any").AnyAmino) => import("../google/protobuf/any").Any;
             Cosmos_govv1beta1Content_ToAmino: (content: import("../google/protobuf/any").Any) => import("../google/protobuf/any").AnyAmino;
             QueryProposalRequest: {
                 typeUrl: string;
                 encode(message: _51.QueryProposalRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryProposalRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryProposalRequest;
                 fromJSON(object: any): _51.QueryProposalRequest;
                 toJSON(message: _51.QueryProposalRequest): unknown;
                 fromPartial(object: Partial<_51.QueryProposalRequest>): _51.QueryProposalRequest;
@@ -4316,7 +4316,7 @@ export declare namespace cosmos {
             QueryProposalResponse: {
                 typeUrl: string;
                 encode(message: _51.QueryProposalResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryProposalResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryProposalResponse;
                 fromJSON(object: any): _51.QueryProposalResponse;
                 toJSON(message: _51.QueryProposalResponse): unknown;
                 fromPartial(object: Partial<_51.QueryProposalResponse>): _51.QueryProposalResponse;
@@ -4333,7 +4333,7 @@ export declare namespace cosmos {
             QueryProposalsRequest: {
                 typeUrl: string;
                 encode(message: _51.QueryProposalsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryProposalsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryProposalsRequest;
                 fromJSON(object: any): _51.QueryProposalsRequest;
                 toJSON(message: _51.QueryProposalsRequest): unknown;
                 fromPartial(object: Partial<_51.QueryProposalsRequest>): _51.QueryProposalsRequest;
@@ -4350,7 +4350,7 @@ export declare namespace cosmos {
             QueryProposalsResponse: {
                 typeUrl: string;
                 encode(message: _51.QueryProposalsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryProposalsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryProposalsResponse;
                 fromJSON(object: any): _51.QueryProposalsResponse;
                 toJSON(message: _51.QueryProposalsResponse): unknown;
                 fromPartial(object: Partial<_51.QueryProposalsResponse>): _51.QueryProposalsResponse;
@@ -4367,7 +4367,7 @@ export declare namespace cosmos {
             QueryVoteRequest: {
                 typeUrl: string;
                 encode(message: _51.QueryVoteRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryVoteRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryVoteRequest;
                 fromJSON(object: any): _51.QueryVoteRequest;
                 toJSON(message: _51.QueryVoteRequest): unknown;
                 fromPartial(object: Partial<_51.QueryVoteRequest>): _51.QueryVoteRequest;
@@ -4384,7 +4384,7 @@ export declare namespace cosmos {
             QueryVoteResponse: {
                 typeUrl: string;
                 encode(message: _51.QueryVoteResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryVoteResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryVoteResponse;
                 fromJSON(object: any): _51.QueryVoteResponse;
                 toJSON(message: _51.QueryVoteResponse): unknown;
                 fromPartial(object: Partial<_51.QueryVoteResponse>): _51.QueryVoteResponse;
@@ -4401,7 +4401,7 @@ export declare namespace cosmos {
             QueryVotesRequest: {
                 typeUrl: string;
                 encode(message: _51.QueryVotesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryVotesRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryVotesRequest;
                 fromJSON(object: any): _51.QueryVotesRequest;
                 toJSON(message: _51.QueryVotesRequest): unknown;
                 fromPartial(object: Partial<_51.QueryVotesRequest>): _51.QueryVotesRequest;
@@ -4418,7 +4418,7 @@ export declare namespace cosmos {
             QueryVotesResponse: {
                 typeUrl: string;
                 encode(message: _51.QueryVotesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryVotesResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryVotesResponse;
                 fromJSON(object: any): _51.QueryVotesResponse;
                 toJSON(message: _51.QueryVotesResponse): unknown;
                 fromPartial(object: Partial<_51.QueryVotesResponse>): _51.QueryVotesResponse;
@@ -4435,7 +4435,7 @@ export declare namespace cosmos {
             QueryParamsRequest: {
                 typeUrl: string;
                 encode(message: _51.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryParamsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryParamsRequest;
                 fromJSON(object: any): _51.QueryParamsRequest;
                 toJSON(message: _51.QueryParamsRequest): unknown;
                 fromPartial(object: Partial<_51.QueryParamsRequest>): _51.QueryParamsRequest;
@@ -4452,7 +4452,7 @@ export declare namespace cosmos {
             QueryParamsResponse: {
                 typeUrl: string;
                 encode(message: _51.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryParamsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryParamsResponse;
                 fromJSON(object: any): _51.QueryParamsResponse;
                 toJSON(message: _51.QueryParamsResponse): unknown;
                 fromPartial(object: Partial<_51.QueryParamsResponse>): _51.QueryParamsResponse;
@@ -4469,7 +4469,7 @@ export declare namespace cosmos {
             QueryDepositRequest: {
                 typeUrl: string;
                 encode(message: _51.QueryDepositRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryDepositRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryDepositRequest;
                 fromJSON(object: any): _51.QueryDepositRequest;
                 toJSON(message: _51.QueryDepositRequest): unknown;
                 fromPartial(object: Partial<_51.QueryDepositRequest>): _51.QueryDepositRequest;
@@ -4486,7 +4486,7 @@ export declare namespace cosmos {
             QueryDepositResponse: {
                 typeUrl: string;
                 encode(message: _51.QueryDepositResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryDepositResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryDepositResponse;
                 fromJSON(object: any): _51.QueryDepositResponse;
                 toJSON(message: _51.QueryDepositResponse): unknown;
                 fromPartial(object: Partial<_51.QueryDepositResponse>): _51.QueryDepositResponse;
@@ -4503,7 +4503,7 @@ export declare namespace cosmos {
             QueryDepositsRequest: {
                 typeUrl: string;
                 encode(message: _51.QueryDepositsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryDepositsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryDepositsRequest;
                 fromJSON(object: any): _51.QueryDepositsRequest;
                 toJSON(message: _51.QueryDepositsRequest): unknown;
                 fromPartial(object: Partial<_51.QueryDepositsRequest>): _51.QueryDepositsRequest;
@@ -4520,7 +4520,7 @@ export declare namespace cosmos {
             QueryDepositsResponse: {
                 typeUrl: string;
                 encode(message: _51.QueryDepositsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryDepositsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryDepositsResponse;
                 fromJSON(object: any): _51.QueryDepositsResponse;
                 toJSON(message: _51.QueryDepositsResponse): unknown;
                 fromPartial(object: Partial<_51.QueryDepositsResponse>): _51.QueryDepositsResponse;
@@ -4537,7 +4537,7 @@ export declare namespace cosmos {
             QueryTallyResultRequest: {
                 typeUrl: string;
                 encode(message: _51.QueryTallyResultRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryTallyResultRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryTallyResultRequest;
                 fromJSON(object: any): _51.QueryTallyResultRequest;
                 toJSON(message: _51.QueryTallyResultRequest): unknown;
                 fromPartial(object: Partial<_51.QueryTallyResultRequest>): _51.QueryTallyResultRequest;
@@ -4554,7 +4554,7 @@ export declare namespace cosmos {
             QueryTallyResultResponse: {
                 typeUrl: string;
                 encode(message: _51.QueryTallyResultResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _51.QueryTallyResultResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _51.QueryTallyResultResponse;
                 fromJSON(object: any): _51.QueryTallyResultResponse;
                 toJSON(message: _51.QueryTallyResultResponse): unknown;
                 fromPartial(object: Partial<_51.QueryTallyResultResponse>): _51.QueryTallyResultResponse;
@@ -4581,7 +4581,7 @@ export declare namespace cosmos {
             WeightedVoteOption: {
                 typeUrl: string;
                 encode(message: _50.WeightedVoteOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.WeightedVoteOption;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _50.WeightedVoteOption;
                 fromJSON(object: any): _50.WeightedVoteOption;
                 toJSON(message: _50.WeightedVoteOption): unknown;
                 fromPartial(object: Partial<_50.WeightedVoteOption>): _50.WeightedVoteOption;
@@ -4598,7 +4598,7 @@ export declare namespace cosmos {
             Deposit: {
                 typeUrl: string;
                 encode(message: _50.Deposit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.Deposit;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _50.Deposit;
                 fromJSON(object: any): _50.Deposit;
                 toJSON(message: _50.Deposit): unknown;
                 fromPartial(object: Partial<_50.Deposit>): _50.Deposit;
@@ -4615,7 +4615,7 @@ export declare namespace cosmos {
             Proposal: {
                 typeUrl: string;
                 encode(message: _50.Proposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.Proposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _50.Proposal;
                 fromJSON(object: any): _50.Proposal;
                 toJSON(message: _50.Proposal): unknown;
                 fromPartial(object: Partial<_50.Proposal>): _50.Proposal;
@@ -4632,7 +4632,7 @@ export declare namespace cosmos {
             TallyResult: {
                 typeUrl: string;
                 encode(message: _50.TallyResult, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.TallyResult;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _50.TallyResult;
                 fromJSON(object: any): _50.TallyResult;
                 toJSON(message: _50.TallyResult): unknown;
                 fromPartial(object: Partial<_50.TallyResult>): _50.TallyResult;
@@ -4649,7 +4649,7 @@ export declare namespace cosmos {
             Vote: {
                 typeUrl: string;
                 encode(message: _50.Vote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.Vote;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _50.Vote;
                 fromJSON(object: any): _50.Vote;
                 toJSON(message: _50.Vote): unknown;
                 fromPartial(object: Partial<_50.Vote>): _50.Vote;
@@ -4666,7 +4666,7 @@ export declare namespace cosmos {
             DepositParams: {
                 typeUrl: string;
                 encode(message: _50.DepositParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.DepositParams;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _50.DepositParams;
                 fromJSON(object: any): _50.DepositParams;
                 toJSON(message: _50.DepositParams): unknown;
                 fromPartial(object: Partial<_50.DepositParams>): _50.DepositParams;
@@ -4683,7 +4683,7 @@ export declare namespace cosmos {
             VotingParams: {
                 typeUrl: string;
                 encode(message: _50.VotingParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.VotingParams;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _50.VotingParams;
                 fromJSON(object: any): _50.VotingParams;
                 toJSON(message: _50.VotingParams): unknown;
                 fromPartial(object: Partial<_50.VotingParams>): _50.VotingParams;
@@ -4700,7 +4700,7 @@ export declare namespace cosmos {
             TallyParams: {
                 typeUrl: string;
                 encode(message: _50.TallyParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _50.TallyParams;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _50.TallyParams;
                 fromJSON(object: any): _50.TallyParams;
                 toJSON(message: _50.TallyParams): unknown;
                 fromPartial(object: Partial<_50.TallyParams>): _50.TallyParams;
@@ -4717,7 +4717,7 @@ export declare namespace cosmos {
             GenesisState: {
                 typeUrl: string;
                 encode(message: _49.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _49.GenesisState;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _49.GenesisState;
                 fromJSON(object: any): _49.GenesisState;
                 toJSON(message: _49.GenesisState): unknown;
                 fromPartial(object: Partial<_49.GenesisState>): _49.GenesisState;
@@ -4857,7 +4857,7 @@ export declare namespace cosmos {
             MsgSubmitProposal: {
                 typeUrl: string;
                 encode(message: _56.MsgSubmitProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MsgSubmitProposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _56.MsgSubmitProposal;
                 fromJSON(object: any): _56.MsgSubmitProposal;
                 toJSON(message: _56.MsgSubmitProposal): unknown;
                 fromPartial(object: Partial<_56.MsgSubmitProposal>): _56.MsgSubmitProposal;
@@ -4874,7 +4874,7 @@ export declare namespace cosmos {
             MsgSubmitProposalResponse: {
                 typeUrl: string;
                 encode(message: _56.MsgSubmitProposalResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MsgSubmitProposalResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _56.MsgSubmitProposalResponse;
                 fromJSON(object: any): _56.MsgSubmitProposalResponse;
                 toJSON(message: _56.MsgSubmitProposalResponse): unknown;
                 fromPartial(object: Partial<_56.MsgSubmitProposalResponse>): _56.MsgSubmitProposalResponse;
@@ -4891,7 +4891,7 @@ export declare namespace cosmos {
             MsgVote: {
                 typeUrl: string;
                 encode(message: _56.MsgVote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MsgVote;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _56.MsgVote;
                 fromJSON(object: any): _56.MsgVote;
                 toJSON(message: _56.MsgVote): unknown;
                 fromPartial(object: Partial<_56.MsgVote>): _56.MsgVote;
@@ -4908,7 +4908,7 @@ export declare namespace cosmos {
             MsgVoteResponse: {
                 typeUrl: string;
                 encode(_: _56.MsgVoteResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MsgVoteResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _56.MsgVoteResponse;
                 fromJSON(_: any): _56.MsgVoteResponse;
                 toJSON(_: _56.MsgVoteResponse): unknown;
                 fromPartial(_: Partial<_56.MsgVoteResponse>): _56.MsgVoteResponse;
@@ -4925,7 +4925,7 @@ export declare namespace cosmos {
             MsgVoteWeighted: {
                 typeUrl: string;
                 encode(message: _56.MsgVoteWeighted, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MsgVoteWeighted;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _56.MsgVoteWeighted;
                 fromJSON(object: any): _56.MsgVoteWeighted;
                 toJSON(message: _56.MsgVoteWeighted): unknown;
                 fromPartial(object: Partial<_56.MsgVoteWeighted>): _56.MsgVoteWeighted;
@@ -4942,7 +4942,7 @@ export declare namespace cosmos {
             MsgVoteWeightedResponse: {
                 typeUrl: string;
                 encode(_: _56.MsgVoteWeightedResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MsgVoteWeightedResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _56.MsgVoteWeightedResponse;
                 fromJSON(_: any): _56.MsgVoteWeightedResponse;
                 toJSON(_: _56.MsgVoteWeightedResponse): unknown;
                 fromPartial(_: Partial<_56.MsgVoteWeightedResponse>): _56.MsgVoteWeightedResponse;
@@ -4959,7 +4959,7 @@ export declare namespace cosmos {
             MsgDeposit: {
                 typeUrl: string;
                 encode(message: _56.MsgDeposit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MsgDeposit;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _56.MsgDeposit;
                 fromJSON(object: any): _56.MsgDeposit;
                 toJSON(message: _56.MsgDeposit): unknown;
                 fromPartial(object: Partial<_56.MsgDeposit>): _56.MsgDeposit;
@@ -4976,7 +4976,7 @@ export declare namespace cosmos {
             MsgDepositResponse: {
                 typeUrl: string;
                 encode(_: _56.MsgDepositResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _56.MsgDepositResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _56.MsgDepositResponse;
                 fromJSON(_: any): _56.MsgDepositResponse;
                 toJSON(_: _56.MsgDepositResponse): unknown;
                 fromPartial(_: Partial<_56.MsgDepositResponse>): _56.MsgDepositResponse;
@@ -4990,13 +4990,13 @@ export declare namespace cosmos {
                 toProto(message: _56.MsgDepositResponse): Uint8Array;
                 toProtoMsg(message: _56.MsgDepositResponse): _56.MsgDepositResponseProtoMsg;
             };
-            Cosmos_govv1beta1Content_InterfaceDecoder: (input: Uint8Array | import("..").BinaryReader) => import("../google/protobuf/any").Any | _41.CommunityPoolSpendProposal | _41.CommunityPoolSpendProposalWithDeposit | _70.ParameterChangeProposal | _82.SoftwareUpgradeProposal | _82.CancelSoftwareUpgradeProposal | _54.TextProposal;
+            Cosmos_govv1beta1Content_InterfaceDecoder: (input: import("..").BinaryReader | Uint8Array) => import("../google/protobuf/any").Any | _41.CommunityPoolSpendProposal | _41.CommunityPoolSpendProposalWithDeposit | _70.ParameterChangeProposal | _82.SoftwareUpgradeProposal | _82.CancelSoftwareUpgradeProposal | _54.TextProposal;
             Cosmos_govv1beta1Content_FromAmino: (content: import("../google/protobuf/any").AnyAmino) => import("../google/protobuf/any").Any;
             Cosmos_govv1beta1Content_ToAmino: (content: import("../google/protobuf/any").Any) => import("../google/protobuf/any").AnyAmino;
             QueryProposalRequest: {
                 typeUrl: string;
                 encode(message: _55.QueryProposalRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryProposalRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryProposalRequest;
                 fromJSON(object: any): _55.QueryProposalRequest;
                 toJSON(message: _55.QueryProposalRequest): unknown;
                 fromPartial(object: Partial<_55.QueryProposalRequest>): _55.QueryProposalRequest;
@@ -5013,7 +5013,7 @@ export declare namespace cosmos {
             QueryProposalResponse: {
                 typeUrl: string;
                 encode(message: _55.QueryProposalResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryProposalResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryProposalResponse;
                 fromJSON(object: any): _55.QueryProposalResponse;
                 toJSON(message: _55.QueryProposalResponse): unknown;
                 fromPartial(object: Partial<_55.QueryProposalResponse>): _55.QueryProposalResponse;
@@ -5030,7 +5030,7 @@ export declare namespace cosmos {
             QueryProposalsRequest: {
                 typeUrl: string;
                 encode(message: _55.QueryProposalsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryProposalsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryProposalsRequest;
                 fromJSON(object: any): _55.QueryProposalsRequest;
                 toJSON(message: _55.QueryProposalsRequest): unknown;
                 fromPartial(object: Partial<_55.QueryProposalsRequest>): _55.QueryProposalsRequest;
@@ -5047,7 +5047,7 @@ export declare namespace cosmos {
             QueryProposalsResponse: {
                 typeUrl: string;
                 encode(message: _55.QueryProposalsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryProposalsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryProposalsResponse;
                 fromJSON(object: any): _55.QueryProposalsResponse;
                 toJSON(message: _55.QueryProposalsResponse): unknown;
                 fromPartial(object: Partial<_55.QueryProposalsResponse>): _55.QueryProposalsResponse;
@@ -5064,7 +5064,7 @@ export declare namespace cosmos {
             QueryVoteRequest: {
                 typeUrl: string;
                 encode(message: _55.QueryVoteRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryVoteRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryVoteRequest;
                 fromJSON(object: any): _55.QueryVoteRequest;
                 toJSON(message: _55.QueryVoteRequest): unknown;
                 fromPartial(object: Partial<_55.QueryVoteRequest>): _55.QueryVoteRequest;
@@ -5081,7 +5081,7 @@ export declare namespace cosmos {
             QueryVoteResponse: {
                 typeUrl: string;
                 encode(message: _55.QueryVoteResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryVoteResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryVoteResponse;
                 fromJSON(object: any): _55.QueryVoteResponse;
                 toJSON(message: _55.QueryVoteResponse): unknown;
                 fromPartial(object: Partial<_55.QueryVoteResponse>): _55.QueryVoteResponse;
@@ -5098,7 +5098,7 @@ export declare namespace cosmos {
             QueryVotesRequest: {
                 typeUrl: string;
                 encode(message: _55.QueryVotesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryVotesRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryVotesRequest;
                 fromJSON(object: any): _55.QueryVotesRequest;
                 toJSON(message: _55.QueryVotesRequest): unknown;
                 fromPartial(object: Partial<_55.QueryVotesRequest>): _55.QueryVotesRequest;
@@ -5115,7 +5115,7 @@ export declare namespace cosmos {
             QueryVotesResponse: {
                 typeUrl: string;
                 encode(message: _55.QueryVotesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryVotesResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryVotesResponse;
                 fromJSON(object: any): _55.QueryVotesResponse;
                 toJSON(message: _55.QueryVotesResponse): unknown;
                 fromPartial(object: Partial<_55.QueryVotesResponse>): _55.QueryVotesResponse;
@@ -5132,7 +5132,7 @@ export declare namespace cosmos {
             QueryParamsRequest: {
                 typeUrl: string;
                 encode(message: _55.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryParamsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryParamsRequest;
                 fromJSON(object: any): _55.QueryParamsRequest;
                 toJSON(message: _55.QueryParamsRequest): unknown;
                 fromPartial(object: Partial<_55.QueryParamsRequest>): _55.QueryParamsRequest;
@@ -5149,7 +5149,7 @@ export declare namespace cosmos {
             QueryParamsResponse: {
                 typeUrl: string;
                 encode(message: _55.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryParamsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryParamsResponse;
                 fromJSON(object: any): _55.QueryParamsResponse;
                 toJSON(message: _55.QueryParamsResponse): unknown;
                 fromPartial(object: Partial<_55.QueryParamsResponse>): _55.QueryParamsResponse;
@@ -5166,7 +5166,7 @@ export declare namespace cosmos {
             QueryDepositRequest: {
                 typeUrl: string;
                 encode(message: _55.QueryDepositRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryDepositRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryDepositRequest;
                 fromJSON(object: any): _55.QueryDepositRequest;
                 toJSON(message: _55.QueryDepositRequest): unknown;
                 fromPartial(object: Partial<_55.QueryDepositRequest>): _55.QueryDepositRequest;
@@ -5183,7 +5183,7 @@ export declare namespace cosmos {
             QueryDepositResponse: {
                 typeUrl: string;
                 encode(message: _55.QueryDepositResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryDepositResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryDepositResponse;
                 fromJSON(object: any): _55.QueryDepositResponse;
                 toJSON(message: _55.QueryDepositResponse): unknown;
                 fromPartial(object: Partial<_55.QueryDepositResponse>): _55.QueryDepositResponse;
@@ -5200,7 +5200,7 @@ export declare namespace cosmos {
             QueryDepositsRequest: {
                 typeUrl: string;
                 encode(message: _55.QueryDepositsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryDepositsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryDepositsRequest;
                 fromJSON(object: any): _55.QueryDepositsRequest;
                 toJSON(message: _55.QueryDepositsRequest): unknown;
                 fromPartial(object: Partial<_55.QueryDepositsRequest>): _55.QueryDepositsRequest;
@@ -5217,7 +5217,7 @@ export declare namespace cosmos {
             QueryDepositsResponse: {
                 typeUrl: string;
                 encode(message: _55.QueryDepositsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryDepositsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryDepositsResponse;
                 fromJSON(object: any): _55.QueryDepositsResponse;
                 toJSON(message: _55.QueryDepositsResponse): unknown;
                 fromPartial(object: Partial<_55.QueryDepositsResponse>): _55.QueryDepositsResponse;
@@ -5234,7 +5234,7 @@ export declare namespace cosmos {
             QueryTallyResultRequest: {
                 typeUrl: string;
                 encode(message: _55.QueryTallyResultRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryTallyResultRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryTallyResultRequest;
                 fromJSON(object: any): _55.QueryTallyResultRequest;
                 toJSON(message: _55.QueryTallyResultRequest): unknown;
                 fromPartial(object: Partial<_55.QueryTallyResultRequest>): _55.QueryTallyResultRequest;
@@ -5251,7 +5251,7 @@ export declare namespace cosmos {
             QueryTallyResultResponse: {
                 typeUrl: string;
                 encode(message: _55.QueryTallyResultResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _55.QueryTallyResultResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _55.QueryTallyResultResponse;
                 fromJSON(object: any): _55.QueryTallyResultResponse;
                 toJSON(message: _55.QueryTallyResultResponse): unknown;
                 fromPartial(object: Partial<_55.QueryTallyResultResponse>): _55.QueryTallyResultResponse;
@@ -5278,7 +5278,7 @@ export declare namespace cosmos {
             WeightedVoteOption: {
                 typeUrl: string;
                 encode(message: _54.WeightedVoteOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.WeightedVoteOption;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _54.WeightedVoteOption;
                 fromJSON(object: any): _54.WeightedVoteOption;
                 toJSON(message: _54.WeightedVoteOption): unknown;
                 fromPartial(object: Partial<_54.WeightedVoteOption>): _54.WeightedVoteOption;
@@ -5295,7 +5295,7 @@ export declare namespace cosmos {
             TextProposal: {
                 typeUrl: string;
                 encode(message: _54.TextProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.TextProposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _54.TextProposal;
                 fromJSON(object: any): _54.TextProposal;
                 toJSON(message: _54.TextProposal): unknown;
                 fromPartial(object: Partial<_54.TextProposal>): _54.TextProposal;
@@ -5312,7 +5312,7 @@ export declare namespace cosmos {
             Deposit: {
                 typeUrl: string;
                 encode(message: _54.Deposit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.Deposit;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _54.Deposit;
                 fromJSON(object: any): _54.Deposit;
                 toJSON(message: _54.Deposit): unknown;
                 fromPartial(object: Partial<_54.Deposit>): _54.Deposit;
@@ -5329,7 +5329,7 @@ export declare namespace cosmos {
             Proposal: {
                 typeUrl: string;
                 encode(message: _54.Proposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.Proposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _54.Proposal;
                 fromJSON(object: any): _54.Proposal;
                 toJSON(message: _54.Proposal): unknown;
                 fromPartial(object: Partial<_54.Proposal>): _54.Proposal;
@@ -5346,7 +5346,7 @@ export declare namespace cosmos {
             TallyResult: {
                 typeUrl: string;
                 encode(message: _54.TallyResult, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.TallyResult;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _54.TallyResult;
                 fromJSON(object: any): _54.TallyResult;
                 toJSON(message: _54.TallyResult): unknown;
                 fromPartial(object: Partial<_54.TallyResult>): _54.TallyResult;
@@ -5363,7 +5363,7 @@ export declare namespace cosmos {
             Vote: {
                 typeUrl: string;
                 encode(message: _54.Vote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.Vote;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _54.Vote;
                 fromJSON(object: any): _54.Vote;
                 toJSON(message: _54.Vote): unknown;
                 fromPartial(object: Partial<_54.Vote>): _54.Vote;
@@ -5380,7 +5380,7 @@ export declare namespace cosmos {
             DepositParams: {
                 typeUrl: string;
                 encode(message: _54.DepositParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.DepositParams;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _54.DepositParams;
                 fromJSON(object: any): _54.DepositParams;
                 toJSON(message: _54.DepositParams): unknown;
                 fromPartial(object: Partial<_54.DepositParams>): _54.DepositParams;
@@ -5397,7 +5397,7 @@ export declare namespace cosmos {
             VotingParams: {
                 typeUrl: string;
                 encode(message: _54.VotingParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.VotingParams;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _54.VotingParams;
                 fromJSON(object: any): _54.VotingParams;
                 toJSON(message: _54.VotingParams): unknown;
                 fromPartial(object: Partial<_54.VotingParams>): _54.VotingParams;
@@ -5414,7 +5414,7 @@ export declare namespace cosmos {
             TallyParams: {
                 typeUrl: string;
                 encode(message: _54.TallyParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _54.TallyParams;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _54.TallyParams;
                 fromJSON(object: any): _54.TallyParams;
                 toJSON(message: _54.TallyParams): unknown;
                 fromPartial(object: Partial<_54.TallyParams>): _54.TallyParams;
@@ -5431,7 +5431,7 @@ export declare namespace cosmos {
             GenesisState: {
                 typeUrl: string;
                 encode(message: _53.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _53.GenesisState;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _53.GenesisState;
                 fromJSON(object: any): _53.GenesisState;
                 toJSON(message: _53.GenesisState): unknown;
                 fromPartial(object: Partial<_53.GenesisState>): _53.GenesisState;
@@ -5843,7 +5843,7 @@ export declare namespace cosmos {
             Member: {
                 typeUrl: string;
                 encode(message: _61.Member, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.Member;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _61.Member;
                 fromJSON(object: any): _61.Member;
                 toJSON(message: _61.Member): unknown;
                 fromPartial(object: Partial<_61.Member>): _61.Member;
@@ -5860,7 +5860,7 @@ export declare namespace cosmos {
             Members: {
                 typeUrl: string;
                 encode(message: _61.Members, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.Members;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _61.Members;
                 fromJSON(object: any): _61.Members;
                 toJSON(message: _61.Members): unknown;
                 fromPartial(object: Partial<_61.Members>): _61.Members;
@@ -5877,7 +5877,7 @@ export declare namespace cosmos {
             ThresholdDecisionPolicy: {
                 typeUrl: string;
                 encode(message: _61.ThresholdDecisionPolicy, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.ThresholdDecisionPolicy;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _61.ThresholdDecisionPolicy;
                 fromJSON(object: any): _61.ThresholdDecisionPolicy;
                 toJSON(message: _61.ThresholdDecisionPolicy): unknown;
                 fromPartial(object: Partial<_61.ThresholdDecisionPolicy>): _61.ThresholdDecisionPolicy;
@@ -5894,7 +5894,7 @@ export declare namespace cosmos {
             PercentageDecisionPolicy: {
                 typeUrl: string;
                 encode(message: _61.PercentageDecisionPolicy, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.PercentageDecisionPolicy;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _61.PercentageDecisionPolicy;
                 fromJSON(object: any): _61.PercentageDecisionPolicy;
                 toJSON(message: _61.PercentageDecisionPolicy): unknown;
                 fromPartial(object: Partial<_61.PercentageDecisionPolicy>): _61.PercentageDecisionPolicy;
@@ -5911,7 +5911,7 @@ export declare namespace cosmos {
             DecisionPolicyWindows: {
                 typeUrl: string;
                 encode(message: _61.DecisionPolicyWindows, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.DecisionPolicyWindows;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _61.DecisionPolicyWindows;
                 fromJSON(object: any): _61.DecisionPolicyWindows;
                 toJSON(message: _61.DecisionPolicyWindows): unknown;
                 fromPartial(object: Partial<_61.DecisionPolicyWindows>): _61.DecisionPolicyWindows;
@@ -5928,7 +5928,7 @@ export declare namespace cosmos {
             GroupInfo: {
                 typeUrl: string;
                 encode(message: _61.GroupInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.GroupInfo;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _61.GroupInfo;
                 fromJSON(object: any): _61.GroupInfo;
                 toJSON(message: _61.GroupInfo): unknown;
                 fromPartial(object: Partial<_61.GroupInfo>): _61.GroupInfo;
@@ -5945,7 +5945,7 @@ export declare namespace cosmos {
             GroupMember: {
                 typeUrl: string;
                 encode(message: _61.GroupMember, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.GroupMember;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _61.GroupMember;
                 fromJSON(object: any): _61.GroupMember;
                 toJSON(message: _61.GroupMember): unknown;
                 fromPartial(object: Partial<_61.GroupMember>): _61.GroupMember;
@@ -5962,7 +5962,7 @@ export declare namespace cosmos {
             GroupPolicyInfo: {
                 typeUrl: string;
                 encode(message: _61.GroupPolicyInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.GroupPolicyInfo;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _61.GroupPolicyInfo;
                 fromJSON(object: any): _61.GroupPolicyInfo;
                 toJSON(message: _61.GroupPolicyInfo): unknown;
                 fromPartial(object: Partial<_61.GroupPolicyInfo>): _61.GroupPolicyInfo;
@@ -5979,7 +5979,7 @@ export declare namespace cosmos {
             Proposal: {
                 typeUrl: string;
                 encode(message: _61.Proposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.Proposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _61.Proposal;
                 fromJSON(object: any): _61.Proposal;
                 toJSON(message: _61.Proposal): unknown;
                 fromPartial(object: Partial<_61.Proposal>): _61.Proposal;
@@ -5996,7 +5996,7 @@ export declare namespace cosmos {
             TallyResult: {
                 typeUrl: string;
                 encode(message: _61.TallyResult, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.TallyResult;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _61.TallyResult;
                 fromJSON(object: any): _61.TallyResult;
                 toJSON(message: _61.TallyResult): unknown;
                 fromPartial(object: Partial<_61.TallyResult>): _61.TallyResult;
@@ -6013,7 +6013,7 @@ export declare namespace cosmos {
             Vote: {
                 typeUrl: string;
                 encode(message: _61.Vote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _61.Vote;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _61.Vote;
                 fromJSON(object: any): _61.Vote;
                 toJSON(message: _61.Vote): unknown;
                 fromPartial(object: Partial<_61.Vote>): _61.Vote;
@@ -6027,7 +6027,7 @@ export declare namespace cosmos {
                 toProto(message: _61.Vote): Uint8Array;
                 toProtoMsg(message: _61.Vote): _61.VoteProtoMsg;
             };
-            Cosmos_groupDecisionPolicy_InterfaceDecoder: (input: Uint8Array | import("..").BinaryReader) => import("../google/protobuf/any").Any | _61.ThresholdDecisionPolicy | _61.PercentageDecisionPolicy;
+            Cosmos_groupDecisionPolicy_InterfaceDecoder: (input: import("..").BinaryReader | Uint8Array) => import("../google/protobuf/any").Any | _61.ThresholdDecisionPolicy | _61.PercentageDecisionPolicy;
             Cosmos_groupDecisionPolicy_FromAmino: (content: import("../google/protobuf/any").AnyAmino) => import("../google/protobuf/any").Any;
             Cosmos_groupDecisionPolicy_ToAmino: (content: import("../google/protobuf/any").Any) => import("../google/protobuf/any").AnyAmino;
             execFromJSON(object: any): _60.Exec;
@@ -6038,7 +6038,7 @@ export declare namespace cosmos {
             MsgCreateGroup: {
                 typeUrl: string;
                 encode(message: _60.MsgCreateGroup, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgCreateGroup;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgCreateGroup;
                 fromJSON(object: any): _60.MsgCreateGroup;
                 toJSON(message: _60.MsgCreateGroup): unknown;
                 fromPartial(object: Partial<_60.MsgCreateGroup>): _60.MsgCreateGroup;
@@ -6055,7 +6055,7 @@ export declare namespace cosmos {
             MsgCreateGroupResponse: {
                 typeUrl: string;
                 encode(message: _60.MsgCreateGroupResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgCreateGroupResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgCreateGroupResponse;
                 fromJSON(object: any): _60.MsgCreateGroupResponse;
                 toJSON(message: _60.MsgCreateGroupResponse): unknown;
                 fromPartial(object: Partial<_60.MsgCreateGroupResponse>): _60.MsgCreateGroupResponse;
@@ -6072,7 +6072,7 @@ export declare namespace cosmos {
             MsgUpdateGroupMembers: {
                 typeUrl: string;
                 encode(message: _60.MsgUpdateGroupMembers, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgUpdateGroupMembers;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgUpdateGroupMembers;
                 fromJSON(object: any): _60.MsgUpdateGroupMembers;
                 toJSON(message: _60.MsgUpdateGroupMembers): unknown;
                 fromPartial(object: Partial<_60.MsgUpdateGroupMembers>): _60.MsgUpdateGroupMembers;
@@ -6089,7 +6089,7 @@ export declare namespace cosmos {
             MsgUpdateGroupMembersResponse: {
                 typeUrl: string;
                 encode(_: _60.MsgUpdateGroupMembersResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgUpdateGroupMembersResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgUpdateGroupMembersResponse;
                 fromJSON(_: any): _60.MsgUpdateGroupMembersResponse;
                 toJSON(_: _60.MsgUpdateGroupMembersResponse): unknown;
                 fromPartial(_: Partial<_60.MsgUpdateGroupMembersResponse>): _60.MsgUpdateGroupMembersResponse;
@@ -6106,7 +6106,7 @@ export declare namespace cosmos {
             MsgUpdateGroupAdmin: {
                 typeUrl: string;
                 encode(message: _60.MsgUpdateGroupAdmin, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgUpdateGroupAdmin;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgUpdateGroupAdmin;
                 fromJSON(object: any): _60.MsgUpdateGroupAdmin;
                 toJSON(message: _60.MsgUpdateGroupAdmin): unknown;
                 fromPartial(object: Partial<_60.MsgUpdateGroupAdmin>): _60.MsgUpdateGroupAdmin;
@@ -6123,7 +6123,7 @@ export declare namespace cosmos {
             MsgUpdateGroupAdminResponse: {
                 typeUrl: string;
                 encode(_: _60.MsgUpdateGroupAdminResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgUpdateGroupAdminResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgUpdateGroupAdminResponse;
                 fromJSON(_: any): _60.MsgUpdateGroupAdminResponse;
                 toJSON(_: _60.MsgUpdateGroupAdminResponse): unknown;
                 fromPartial(_: Partial<_60.MsgUpdateGroupAdminResponse>): _60.MsgUpdateGroupAdminResponse;
@@ -6140,7 +6140,7 @@ export declare namespace cosmos {
             MsgUpdateGroupMetadata: {
                 typeUrl: string;
                 encode(message: _60.MsgUpdateGroupMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgUpdateGroupMetadata;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgUpdateGroupMetadata;
                 fromJSON(object: any): _60.MsgUpdateGroupMetadata;
                 toJSON(message: _60.MsgUpdateGroupMetadata): unknown;
                 fromPartial(object: Partial<_60.MsgUpdateGroupMetadata>): _60.MsgUpdateGroupMetadata;
@@ -6157,7 +6157,7 @@ export declare namespace cosmos {
             MsgUpdateGroupMetadataResponse: {
                 typeUrl: string;
                 encode(_: _60.MsgUpdateGroupMetadataResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgUpdateGroupMetadataResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgUpdateGroupMetadataResponse;
                 fromJSON(_: any): _60.MsgUpdateGroupMetadataResponse;
                 toJSON(_: _60.MsgUpdateGroupMetadataResponse): unknown;
                 fromPartial(_: Partial<_60.MsgUpdateGroupMetadataResponse>): _60.MsgUpdateGroupMetadataResponse;
@@ -6174,7 +6174,7 @@ export declare namespace cosmos {
             MsgCreateGroupPolicy: {
                 typeUrl: string;
                 encode(message: _60.MsgCreateGroupPolicy, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgCreateGroupPolicy;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgCreateGroupPolicy;
                 fromJSON(object: any): _60.MsgCreateGroupPolicy;
                 toJSON(message: _60.MsgCreateGroupPolicy): unknown;
                 fromPartial(object: Partial<_60.MsgCreateGroupPolicy>): _60.MsgCreateGroupPolicy;
@@ -6191,7 +6191,7 @@ export declare namespace cosmos {
             MsgCreateGroupPolicyResponse: {
                 typeUrl: string;
                 encode(message: _60.MsgCreateGroupPolicyResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgCreateGroupPolicyResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgCreateGroupPolicyResponse;
                 fromJSON(object: any): _60.MsgCreateGroupPolicyResponse;
                 toJSON(message: _60.MsgCreateGroupPolicyResponse): unknown;
                 fromPartial(object: Partial<_60.MsgCreateGroupPolicyResponse>): _60.MsgCreateGroupPolicyResponse;
@@ -6208,7 +6208,7 @@ export declare namespace cosmos {
             MsgUpdateGroupPolicyAdmin: {
                 typeUrl: string;
                 encode(message: _60.MsgUpdateGroupPolicyAdmin, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgUpdateGroupPolicyAdmin;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgUpdateGroupPolicyAdmin;
                 fromJSON(object: any): _60.MsgUpdateGroupPolicyAdmin;
                 toJSON(message: _60.MsgUpdateGroupPolicyAdmin): unknown;
                 fromPartial(object: Partial<_60.MsgUpdateGroupPolicyAdmin>): _60.MsgUpdateGroupPolicyAdmin;
@@ -6225,7 +6225,7 @@ export declare namespace cosmos {
             MsgCreateGroupWithPolicy: {
                 typeUrl: string;
                 encode(message: _60.MsgCreateGroupWithPolicy, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgCreateGroupWithPolicy;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgCreateGroupWithPolicy;
                 fromJSON(object: any): _60.MsgCreateGroupWithPolicy;
                 toJSON(message: _60.MsgCreateGroupWithPolicy): unknown;
                 fromPartial(object: Partial<_60.MsgCreateGroupWithPolicy>): _60.MsgCreateGroupWithPolicy;
@@ -6242,7 +6242,7 @@ export declare namespace cosmos {
             MsgCreateGroupWithPolicyResponse: {
                 typeUrl: string;
                 encode(message: _60.MsgCreateGroupWithPolicyResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgCreateGroupWithPolicyResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgCreateGroupWithPolicyResponse;
                 fromJSON(object: any): _60.MsgCreateGroupWithPolicyResponse;
                 toJSON(message: _60.MsgCreateGroupWithPolicyResponse): unknown;
                 fromPartial(object: Partial<_60.MsgCreateGroupWithPolicyResponse>): _60.MsgCreateGroupWithPolicyResponse;
@@ -6259,7 +6259,7 @@ export declare namespace cosmos {
             MsgUpdateGroupPolicyAdminResponse: {
                 typeUrl: string;
                 encode(_: _60.MsgUpdateGroupPolicyAdminResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgUpdateGroupPolicyAdminResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgUpdateGroupPolicyAdminResponse;
                 fromJSON(_: any): _60.MsgUpdateGroupPolicyAdminResponse;
                 toJSON(_: _60.MsgUpdateGroupPolicyAdminResponse): unknown;
                 fromPartial(_: Partial<_60.MsgUpdateGroupPolicyAdminResponse>): _60.MsgUpdateGroupPolicyAdminResponse;
@@ -6276,7 +6276,7 @@ export declare namespace cosmos {
             MsgUpdateGroupPolicyDecisionPolicy: {
                 typeUrl: string;
                 encode(message: _60.MsgUpdateGroupPolicyDecisionPolicy, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgUpdateGroupPolicyDecisionPolicy;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgUpdateGroupPolicyDecisionPolicy;
                 fromJSON(object: any): _60.MsgUpdateGroupPolicyDecisionPolicy;
                 toJSON(message: _60.MsgUpdateGroupPolicyDecisionPolicy): unknown;
                 fromPartial(object: Partial<_60.MsgUpdateGroupPolicyDecisionPolicy>): _60.MsgUpdateGroupPolicyDecisionPolicy;
@@ -6293,7 +6293,7 @@ export declare namespace cosmos {
             MsgUpdateGroupPolicyDecisionPolicyResponse: {
                 typeUrl: string;
                 encode(_: _60.MsgUpdateGroupPolicyDecisionPolicyResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgUpdateGroupPolicyDecisionPolicyResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgUpdateGroupPolicyDecisionPolicyResponse;
                 fromJSON(_: any): _60.MsgUpdateGroupPolicyDecisionPolicyResponse;
                 toJSON(_: _60.MsgUpdateGroupPolicyDecisionPolicyResponse): unknown;
                 fromPartial(_: Partial<_60.MsgUpdateGroupPolicyDecisionPolicyResponse>): _60.MsgUpdateGroupPolicyDecisionPolicyResponse;
@@ -6310,7 +6310,7 @@ export declare namespace cosmos {
             MsgUpdateGroupPolicyMetadata: {
                 typeUrl: string;
                 encode(message: _60.MsgUpdateGroupPolicyMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgUpdateGroupPolicyMetadata;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgUpdateGroupPolicyMetadata;
                 fromJSON(object: any): _60.MsgUpdateGroupPolicyMetadata;
                 toJSON(message: _60.MsgUpdateGroupPolicyMetadata): unknown;
                 fromPartial(object: Partial<_60.MsgUpdateGroupPolicyMetadata>): _60.MsgUpdateGroupPolicyMetadata;
@@ -6327,7 +6327,7 @@ export declare namespace cosmos {
             MsgUpdateGroupPolicyMetadataResponse: {
                 typeUrl: string;
                 encode(_: _60.MsgUpdateGroupPolicyMetadataResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgUpdateGroupPolicyMetadataResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgUpdateGroupPolicyMetadataResponse;
                 fromJSON(_: any): _60.MsgUpdateGroupPolicyMetadataResponse;
                 toJSON(_: _60.MsgUpdateGroupPolicyMetadataResponse): unknown;
                 fromPartial(_: Partial<_60.MsgUpdateGroupPolicyMetadataResponse>): _60.MsgUpdateGroupPolicyMetadataResponse;
@@ -6344,7 +6344,7 @@ export declare namespace cosmos {
             MsgSubmitProposal: {
                 typeUrl: string;
                 encode(message: _60.MsgSubmitProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgSubmitProposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgSubmitProposal;
                 fromJSON(object: any): _60.MsgSubmitProposal;
                 toJSON(message: _60.MsgSubmitProposal): unknown;
                 fromPartial(object: Partial<_60.MsgSubmitProposal>): _60.MsgSubmitProposal;
@@ -6361,7 +6361,7 @@ export declare namespace cosmos {
             MsgSubmitProposalResponse: {
                 typeUrl: string;
                 encode(message: _60.MsgSubmitProposalResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgSubmitProposalResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgSubmitProposalResponse;
                 fromJSON(object: any): _60.MsgSubmitProposalResponse;
                 toJSON(message: _60.MsgSubmitProposalResponse): unknown;
                 fromPartial(object: Partial<_60.MsgSubmitProposalResponse>): _60.MsgSubmitProposalResponse;
@@ -6378,7 +6378,7 @@ export declare namespace cosmos {
             MsgWithdrawProposal: {
                 typeUrl: string;
                 encode(message: _60.MsgWithdrawProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgWithdrawProposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgWithdrawProposal;
                 fromJSON(object: any): _60.MsgWithdrawProposal;
                 toJSON(message: _60.MsgWithdrawProposal): unknown;
                 fromPartial(object: Partial<_60.MsgWithdrawProposal>): _60.MsgWithdrawProposal;
@@ -6395,7 +6395,7 @@ export declare namespace cosmos {
             MsgWithdrawProposalResponse: {
                 typeUrl: string;
                 encode(_: _60.MsgWithdrawProposalResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgWithdrawProposalResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgWithdrawProposalResponse;
                 fromJSON(_: any): _60.MsgWithdrawProposalResponse;
                 toJSON(_: _60.MsgWithdrawProposalResponse): unknown;
                 fromPartial(_: Partial<_60.MsgWithdrawProposalResponse>): _60.MsgWithdrawProposalResponse;
@@ -6412,7 +6412,7 @@ export declare namespace cosmos {
             MsgVote: {
                 typeUrl: string;
                 encode(message: _60.MsgVote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgVote;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgVote;
                 fromJSON(object: any): _60.MsgVote;
                 toJSON(message: _60.MsgVote): unknown;
                 fromPartial(object: Partial<_60.MsgVote>): _60.MsgVote;
@@ -6429,7 +6429,7 @@ export declare namespace cosmos {
             MsgVoteResponse: {
                 typeUrl: string;
                 encode(_: _60.MsgVoteResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgVoteResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgVoteResponse;
                 fromJSON(_: any): _60.MsgVoteResponse;
                 toJSON(_: _60.MsgVoteResponse): unknown;
                 fromPartial(_: Partial<_60.MsgVoteResponse>): _60.MsgVoteResponse;
@@ -6446,7 +6446,7 @@ export declare namespace cosmos {
             MsgExec: {
                 typeUrl: string;
                 encode(message: _60.MsgExec, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgExec;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgExec;
                 fromJSON(object: any): _60.MsgExec;
                 toJSON(message: _60.MsgExec): unknown;
                 fromPartial(object: Partial<_60.MsgExec>): _60.MsgExec;
@@ -6463,7 +6463,7 @@ export declare namespace cosmos {
             MsgExecResponse: {
                 typeUrl: string;
                 encode(_: _60.MsgExecResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgExecResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgExecResponse;
                 fromJSON(_: any): _60.MsgExecResponse;
                 toJSON(_: _60.MsgExecResponse): unknown;
                 fromPartial(_: Partial<_60.MsgExecResponse>): _60.MsgExecResponse;
@@ -6480,7 +6480,7 @@ export declare namespace cosmos {
             MsgLeaveGroup: {
                 typeUrl: string;
                 encode(message: _60.MsgLeaveGroup, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgLeaveGroup;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgLeaveGroup;
                 fromJSON(object: any): _60.MsgLeaveGroup;
                 toJSON(message: _60.MsgLeaveGroup): unknown;
                 fromPartial(object: Partial<_60.MsgLeaveGroup>): _60.MsgLeaveGroup;
@@ -6497,7 +6497,7 @@ export declare namespace cosmos {
             MsgLeaveGroupResponse: {
                 typeUrl: string;
                 encode(_: _60.MsgLeaveGroupResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _60.MsgLeaveGroupResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _60.MsgLeaveGroupResponse;
                 fromJSON(_: any): _60.MsgLeaveGroupResponse;
                 toJSON(_: _60.MsgLeaveGroupResponse): unknown;
                 fromPartial(_: Partial<_60.MsgLeaveGroupResponse>): _60.MsgLeaveGroupResponse;
@@ -6514,7 +6514,7 @@ export declare namespace cosmos {
             QueryGroupInfoRequest: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupInfoRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupInfoRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupInfoRequest;
                 fromJSON(object: any): _59.QueryGroupInfoRequest;
                 toJSON(message: _59.QueryGroupInfoRequest): unknown;
                 fromPartial(object: Partial<_59.QueryGroupInfoRequest>): _59.QueryGroupInfoRequest;
@@ -6531,7 +6531,7 @@ export declare namespace cosmos {
             QueryGroupInfoResponse: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupInfoResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupInfoResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupInfoResponse;
                 fromJSON(object: any): _59.QueryGroupInfoResponse;
                 toJSON(message: _59.QueryGroupInfoResponse): unknown;
                 fromPartial(object: Partial<_59.QueryGroupInfoResponse>): _59.QueryGroupInfoResponse;
@@ -6548,7 +6548,7 @@ export declare namespace cosmos {
             QueryGroupPolicyInfoRequest: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupPolicyInfoRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupPolicyInfoRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupPolicyInfoRequest;
                 fromJSON(object: any): _59.QueryGroupPolicyInfoRequest;
                 toJSON(message: _59.QueryGroupPolicyInfoRequest): unknown;
                 fromPartial(object: Partial<_59.QueryGroupPolicyInfoRequest>): _59.QueryGroupPolicyInfoRequest;
@@ -6565,7 +6565,7 @@ export declare namespace cosmos {
             QueryGroupPolicyInfoResponse: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupPolicyInfoResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupPolicyInfoResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupPolicyInfoResponse;
                 fromJSON(object: any): _59.QueryGroupPolicyInfoResponse;
                 toJSON(message: _59.QueryGroupPolicyInfoResponse): unknown;
                 fromPartial(object: Partial<_59.QueryGroupPolicyInfoResponse>): _59.QueryGroupPolicyInfoResponse;
@@ -6582,7 +6582,7 @@ export declare namespace cosmos {
             QueryGroupMembersRequest: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupMembersRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupMembersRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupMembersRequest;
                 fromJSON(object: any): _59.QueryGroupMembersRequest;
                 toJSON(message: _59.QueryGroupMembersRequest): unknown;
                 fromPartial(object: Partial<_59.QueryGroupMembersRequest>): _59.QueryGroupMembersRequest;
@@ -6599,7 +6599,7 @@ export declare namespace cosmos {
             QueryGroupMembersResponse: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupMembersResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupMembersResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupMembersResponse;
                 fromJSON(object: any): _59.QueryGroupMembersResponse;
                 toJSON(message: _59.QueryGroupMembersResponse): unknown;
                 fromPartial(object: Partial<_59.QueryGroupMembersResponse>): _59.QueryGroupMembersResponse;
@@ -6616,7 +6616,7 @@ export declare namespace cosmos {
             QueryGroupsByAdminRequest: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupsByAdminRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupsByAdminRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupsByAdminRequest;
                 fromJSON(object: any): _59.QueryGroupsByAdminRequest;
                 toJSON(message: _59.QueryGroupsByAdminRequest): unknown;
                 fromPartial(object: Partial<_59.QueryGroupsByAdminRequest>): _59.QueryGroupsByAdminRequest;
@@ -6633,7 +6633,7 @@ export declare namespace cosmos {
             QueryGroupsByAdminResponse: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupsByAdminResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupsByAdminResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupsByAdminResponse;
                 fromJSON(object: any): _59.QueryGroupsByAdminResponse;
                 toJSON(message: _59.QueryGroupsByAdminResponse): unknown;
                 fromPartial(object: Partial<_59.QueryGroupsByAdminResponse>): _59.QueryGroupsByAdminResponse;
@@ -6650,7 +6650,7 @@ export declare namespace cosmos {
             QueryGroupPoliciesByGroupRequest: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupPoliciesByGroupRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupPoliciesByGroupRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupPoliciesByGroupRequest;
                 fromJSON(object: any): _59.QueryGroupPoliciesByGroupRequest;
                 toJSON(message: _59.QueryGroupPoliciesByGroupRequest): unknown;
                 fromPartial(object: Partial<_59.QueryGroupPoliciesByGroupRequest>): _59.QueryGroupPoliciesByGroupRequest;
@@ -6667,7 +6667,7 @@ export declare namespace cosmos {
             QueryGroupPoliciesByGroupResponse: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupPoliciesByGroupResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupPoliciesByGroupResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupPoliciesByGroupResponse;
                 fromJSON(object: any): _59.QueryGroupPoliciesByGroupResponse;
                 toJSON(message: _59.QueryGroupPoliciesByGroupResponse): unknown;
                 fromPartial(object: Partial<_59.QueryGroupPoliciesByGroupResponse>): _59.QueryGroupPoliciesByGroupResponse;
@@ -6684,7 +6684,7 @@ export declare namespace cosmos {
             QueryGroupPoliciesByAdminRequest: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupPoliciesByAdminRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupPoliciesByAdminRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupPoliciesByAdminRequest;
                 fromJSON(object: any): _59.QueryGroupPoliciesByAdminRequest;
                 toJSON(message: _59.QueryGroupPoliciesByAdminRequest): unknown;
                 fromPartial(object: Partial<_59.QueryGroupPoliciesByAdminRequest>): _59.QueryGroupPoliciesByAdminRequest;
@@ -6701,7 +6701,7 @@ export declare namespace cosmos {
             QueryGroupPoliciesByAdminResponse: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupPoliciesByAdminResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupPoliciesByAdminResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupPoliciesByAdminResponse;
                 fromJSON(object: any): _59.QueryGroupPoliciesByAdminResponse;
                 toJSON(message: _59.QueryGroupPoliciesByAdminResponse): unknown;
                 fromPartial(object: Partial<_59.QueryGroupPoliciesByAdminResponse>): _59.QueryGroupPoliciesByAdminResponse;
@@ -6718,7 +6718,7 @@ export declare namespace cosmos {
             QueryProposalRequest: {
                 typeUrl: string;
                 encode(message: _59.QueryProposalRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryProposalRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryProposalRequest;
                 fromJSON(object: any): _59.QueryProposalRequest;
                 toJSON(message: _59.QueryProposalRequest): unknown;
                 fromPartial(object: Partial<_59.QueryProposalRequest>): _59.QueryProposalRequest;
@@ -6735,7 +6735,7 @@ export declare namespace cosmos {
             QueryProposalResponse: {
                 typeUrl: string;
                 encode(message: _59.QueryProposalResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryProposalResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryProposalResponse;
                 fromJSON(object: any): _59.QueryProposalResponse;
                 toJSON(message: _59.QueryProposalResponse): unknown;
                 fromPartial(object: Partial<_59.QueryProposalResponse>): _59.QueryProposalResponse;
@@ -6752,7 +6752,7 @@ export declare namespace cosmos {
             QueryProposalsByGroupPolicyRequest: {
                 typeUrl: string;
                 encode(message: _59.QueryProposalsByGroupPolicyRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryProposalsByGroupPolicyRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryProposalsByGroupPolicyRequest;
                 fromJSON(object: any): _59.QueryProposalsByGroupPolicyRequest;
                 toJSON(message: _59.QueryProposalsByGroupPolicyRequest): unknown;
                 fromPartial(object: Partial<_59.QueryProposalsByGroupPolicyRequest>): _59.QueryProposalsByGroupPolicyRequest;
@@ -6769,7 +6769,7 @@ export declare namespace cosmos {
             QueryProposalsByGroupPolicyResponse: {
                 typeUrl: string;
                 encode(message: _59.QueryProposalsByGroupPolicyResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryProposalsByGroupPolicyResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryProposalsByGroupPolicyResponse;
                 fromJSON(object: any): _59.QueryProposalsByGroupPolicyResponse;
                 toJSON(message: _59.QueryProposalsByGroupPolicyResponse): unknown;
                 fromPartial(object: Partial<_59.QueryProposalsByGroupPolicyResponse>): _59.QueryProposalsByGroupPolicyResponse;
@@ -6786,7 +6786,7 @@ export declare namespace cosmos {
             QueryVoteByProposalVoterRequest: {
                 typeUrl: string;
                 encode(message: _59.QueryVoteByProposalVoterRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryVoteByProposalVoterRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryVoteByProposalVoterRequest;
                 fromJSON(object: any): _59.QueryVoteByProposalVoterRequest;
                 toJSON(message: _59.QueryVoteByProposalVoterRequest): unknown;
                 fromPartial(object: Partial<_59.QueryVoteByProposalVoterRequest>): _59.QueryVoteByProposalVoterRequest;
@@ -6803,7 +6803,7 @@ export declare namespace cosmos {
             QueryVoteByProposalVoterResponse: {
                 typeUrl: string;
                 encode(message: _59.QueryVoteByProposalVoterResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryVoteByProposalVoterResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryVoteByProposalVoterResponse;
                 fromJSON(object: any): _59.QueryVoteByProposalVoterResponse;
                 toJSON(message: _59.QueryVoteByProposalVoterResponse): unknown;
                 fromPartial(object: Partial<_59.QueryVoteByProposalVoterResponse>): _59.QueryVoteByProposalVoterResponse;
@@ -6820,7 +6820,7 @@ export declare namespace cosmos {
             QueryVotesByProposalRequest: {
                 typeUrl: string;
                 encode(message: _59.QueryVotesByProposalRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryVotesByProposalRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryVotesByProposalRequest;
                 fromJSON(object: any): _59.QueryVotesByProposalRequest;
                 toJSON(message: _59.QueryVotesByProposalRequest): unknown;
                 fromPartial(object: Partial<_59.QueryVotesByProposalRequest>): _59.QueryVotesByProposalRequest;
@@ -6837,7 +6837,7 @@ export declare namespace cosmos {
             QueryVotesByProposalResponse: {
                 typeUrl: string;
                 encode(message: _59.QueryVotesByProposalResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryVotesByProposalResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryVotesByProposalResponse;
                 fromJSON(object: any): _59.QueryVotesByProposalResponse;
                 toJSON(message: _59.QueryVotesByProposalResponse): unknown;
                 fromPartial(object: Partial<_59.QueryVotesByProposalResponse>): _59.QueryVotesByProposalResponse;
@@ -6854,7 +6854,7 @@ export declare namespace cosmos {
             QueryVotesByVoterRequest: {
                 typeUrl: string;
                 encode(message: _59.QueryVotesByVoterRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryVotesByVoterRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryVotesByVoterRequest;
                 fromJSON(object: any): _59.QueryVotesByVoterRequest;
                 toJSON(message: _59.QueryVotesByVoterRequest): unknown;
                 fromPartial(object: Partial<_59.QueryVotesByVoterRequest>): _59.QueryVotesByVoterRequest;
@@ -6871,7 +6871,7 @@ export declare namespace cosmos {
             QueryVotesByVoterResponse: {
                 typeUrl: string;
                 encode(message: _59.QueryVotesByVoterResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryVotesByVoterResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryVotesByVoterResponse;
                 fromJSON(object: any): _59.QueryVotesByVoterResponse;
                 toJSON(message: _59.QueryVotesByVoterResponse): unknown;
                 fromPartial(object: Partial<_59.QueryVotesByVoterResponse>): _59.QueryVotesByVoterResponse;
@@ -6888,7 +6888,7 @@ export declare namespace cosmos {
             QueryGroupsByMemberRequest: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupsByMemberRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupsByMemberRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupsByMemberRequest;
                 fromJSON(object: any): _59.QueryGroupsByMemberRequest;
                 toJSON(message: _59.QueryGroupsByMemberRequest): unknown;
                 fromPartial(object: Partial<_59.QueryGroupsByMemberRequest>): _59.QueryGroupsByMemberRequest;
@@ -6905,7 +6905,7 @@ export declare namespace cosmos {
             QueryGroupsByMemberResponse: {
                 typeUrl: string;
                 encode(message: _59.QueryGroupsByMemberResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryGroupsByMemberResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryGroupsByMemberResponse;
                 fromJSON(object: any): _59.QueryGroupsByMemberResponse;
                 toJSON(message: _59.QueryGroupsByMemberResponse): unknown;
                 fromPartial(object: Partial<_59.QueryGroupsByMemberResponse>): _59.QueryGroupsByMemberResponse;
@@ -6922,7 +6922,7 @@ export declare namespace cosmos {
             QueryTallyResultRequest: {
                 typeUrl: string;
                 encode(message: _59.QueryTallyResultRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryTallyResultRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryTallyResultRequest;
                 fromJSON(object: any): _59.QueryTallyResultRequest;
                 toJSON(message: _59.QueryTallyResultRequest): unknown;
                 fromPartial(object: Partial<_59.QueryTallyResultRequest>): _59.QueryTallyResultRequest;
@@ -6939,7 +6939,7 @@ export declare namespace cosmos {
             QueryTallyResultResponse: {
                 typeUrl: string;
                 encode(message: _59.QueryTallyResultResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _59.QueryTallyResultResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _59.QueryTallyResultResponse;
                 fromJSON(object: any): _59.QueryTallyResultResponse;
                 toJSON(message: _59.QueryTallyResultResponse): unknown;
                 fromPartial(object: Partial<_59.QueryTallyResultResponse>): _59.QueryTallyResultResponse;
@@ -6956,7 +6956,7 @@ export declare namespace cosmos {
             GenesisState: {
                 typeUrl: string;
                 encode(message: _58.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _58.GenesisState;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _58.GenesisState;
                 fromJSON(object: any): _58.GenesisState;
                 toJSON(message: _58.GenesisState): unknown;
                 fromPartial(object: Partial<_58.GenesisState>): _58.GenesisState;
@@ -6973,7 +6973,7 @@ export declare namespace cosmos {
             EventCreateGroup: {
                 typeUrl: string;
                 encode(message: _57.EventCreateGroup, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.EventCreateGroup;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _57.EventCreateGroup;
                 fromJSON(object: any): _57.EventCreateGroup;
                 toJSON(message: _57.EventCreateGroup): unknown;
                 fromPartial(object: Partial<_57.EventCreateGroup>): _57.EventCreateGroup;
@@ -6990,7 +6990,7 @@ export declare namespace cosmos {
             EventUpdateGroup: {
                 typeUrl: string;
                 encode(message: _57.EventUpdateGroup, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.EventUpdateGroup;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _57.EventUpdateGroup;
                 fromJSON(object: any): _57.EventUpdateGroup;
                 toJSON(message: _57.EventUpdateGroup): unknown;
                 fromPartial(object: Partial<_57.EventUpdateGroup>): _57.EventUpdateGroup;
@@ -7007,7 +7007,7 @@ export declare namespace cosmos {
             EventCreateGroupPolicy: {
                 typeUrl: string;
                 encode(message: _57.EventCreateGroupPolicy, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.EventCreateGroupPolicy;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _57.EventCreateGroupPolicy;
                 fromJSON(object: any): _57.EventCreateGroupPolicy;
                 toJSON(message: _57.EventCreateGroupPolicy): unknown;
                 fromPartial(object: Partial<_57.EventCreateGroupPolicy>): _57.EventCreateGroupPolicy;
@@ -7024,7 +7024,7 @@ export declare namespace cosmos {
             EventUpdateGroupPolicy: {
                 typeUrl: string;
                 encode(message: _57.EventUpdateGroupPolicy, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.EventUpdateGroupPolicy;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _57.EventUpdateGroupPolicy;
                 fromJSON(object: any): _57.EventUpdateGroupPolicy;
                 toJSON(message: _57.EventUpdateGroupPolicy): unknown;
                 fromPartial(object: Partial<_57.EventUpdateGroupPolicy>): _57.EventUpdateGroupPolicy;
@@ -7041,7 +7041,7 @@ export declare namespace cosmos {
             EventSubmitProposal: {
                 typeUrl: string;
                 encode(message: _57.EventSubmitProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.EventSubmitProposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _57.EventSubmitProposal;
                 fromJSON(object: any): _57.EventSubmitProposal;
                 toJSON(message: _57.EventSubmitProposal): unknown;
                 fromPartial(object: Partial<_57.EventSubmitProposal>): _57.EventSubmitProposal;
@@ -7058,7 +7058,7 @@ export declare namespace cosmos {
             EventWithdrawProposal: {
                 typeUrl: string;
                 encode(message: _57.EventWithdrawProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.EventWithdrawProposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _57.EventWithdrawProposal;
                 fromJSON(object: any): _57.EventWithdrawProposal;
                 toJSON(message: _57.EventWithdrawProposal): unknown;
                 fromPartial(object: Partial<_57.EventWithdrawProposal>): _57.EventWithdrawProposal;
@@ -7075,7 +7075,7 @@ export declare namespace cosmos {
             EventVote: {
                 typeUrl: string;
                 encode(message: _57.EventVote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.EventVote;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _57.EventVote;
                 fromJSON(object: any): _57.EventVote;
                 toJSON(message: _57.EventVote): unknown;
                 fromPartial(object: Partial<_57.EventVote>): _57.EventVote;
@@ -7092,7 +7092,7 @@ export declare namespace cosmos {
             EventExec: {
                 typeUrl: string;
                 encode(message: _57.EventExec, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.EventExec;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _57.EventExec;
                 fromJSON(object: any): _57.EventExec;
                 toJSON(message: _57.EventExec): unknown;
                 fromPartial(object: Partial<_57.EventExec>): _57.EventExec;
@@ -7109,7 +7109,7 @@ export declare namespace cosmos {
             EventLeaveGroup: {
                 typeUrl: string;
                 encode(message: _57.EventLeaveGroup, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _57.EventLeaveGroup;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _57.EventLeaveGroup;
                 fromJSON(object: any): _57.EventLeaveGroup;
                 toJSON(message: _57.EventLeaveGroup): unknown;
                 fromPartial(object: Partial<_57.EventLeaveGroup>): _57.EventLeaveGroup;
@@ -7134,7 +7134,7 @@ export declare namespace cosmos {
             QueryParamsRequest: {
                 typeUrl: string;
                 encode(_: _64.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryParamsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _64.QueryParamsRequest;
                 fromJSON(_: any): _64.QueryParamsRequest;
                 toJSON(_: _64.QueryParamsRequest): unknown;
                 fromPartial(_: Partial<_64.QueryParamsRequest>): _64.QueryParamsRequest;
@@ -7151,7 +7151,7 @@ export declare namespace cosmos {
             QueryParamsResponse: {
                 typeUrl: string;
                 encode(message: _64.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryParamsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _64.QueryParamsResponse;
                 fromJSON(object: any): _64.QueryParamsResponse;
                 toJSON(message: _64.QueryParamsResponse): unknown;
                 fromPartial(object: Partial<_64.QueryParamsResponse>): _64.QueryParamsResponse;
@@ -7168,7 +7168,7 @@ export declare namespace cosmos {
             QueryInflationRequest: {
                 typeUrl: string;
                 encode(_: _64.QueryInflationRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryInflationRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _64.QueryInflationRequest;
                 fromJSON(_: any): _64.QueryInflationRequest;
                 toJSON(_: _64.QueryInflationRequest): unknown;
                 fromPartial(_: Partial<_64.QueryInflationRequest>): _64.QueryInflationRequest;
@@ -7185,7 +7185,7 @@ export declare namespace cosmos {
             QueryInflationResponse: {
                 typeUrl: string;
                 encode(message: _64.QueryInflationResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryInflationResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _64.QueryInflationResponse;
                 fromJSON(object: any): _64.QueryInflationResponse;
                 toJSON(message: _64.QueryInflationResponse): unknown;
                 fromPartial(object: Partial<_64.QueryInflationResponse>): _64.QueryInflationResponse;
@@ -7202,7 +7202,7 @@ export declare namespace cosmos {
             QueryAnnualProvisionsRequest: {
                 typeUrl: string;
                 encode(_: _64.QueryAnnualProvisionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryAnnualProvisionsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _64.QueryAnnualProvisionsRequest;
                 fromJSON(_: any): _64.QueryAnnualProvisionsRequest;
                 toJSON(_: _64.QueryAnnualProvisionsRequest): unknown;
                 fromPartial(_: Partial<_64.QueryAnnualProvisionsRequest>): _64.QueryAnnualProvisionsRequest;
@@ -7219,7 +7219,7 @@ export declare namespace cosmos {
             QueryAnnualProvisionsResponse: {
                 typeUrl: string;
                 encode(message: _64.QueryAnnualProvisionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _64.QueryAnnualProvisionsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _64.QueryAnnualProvisionsResponse;
                 fromJSON(object: any): _64.QueryAnnualProvisionsResponse;
                 toJSON(message: _64.QueryAnnualProvisionsResponse): unknown;
                 fromPartial(object: Partial<_64.QueryAnnualProvisionsResponse>): _64.QueryAnnualProvisionsResponse;
@@ -7236,7 +7236,7 @@ export declare namespace cosmos {
             Minter: {
                 typeUrl: string;
                 encode(message: _63.Minter, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.Minter;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _63.Minter;
                 fromJSON(object: any): _63.Minter;
                 toJSON(message: _63.Minter): unknown;
                 fromPartial(object: Partial<_63.Minter>): _63.Minter;
@@ -7253,7 +7253,7 @@ export declare namespace cosmos {
             Params: {
                 typeUrl: string;
                 encode(message: _63.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _63.Params;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _63.Params;
                 fromJSON(object: any): _63.Params;
                 toJSON(message: _63.Params): unknown;
                 fromPartial(object: Partial<_63.Params>): _63.Params;
@@ -7270,7 +7270,7 @@ export declare namespace cosmos {
             GenesisState: {
                 typeUrl: string;
                 encode(message: _62.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _62.GenesisState;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _62.GenesisState;
                 fromJSON(object: any): _62.GenesisState;
                 toJSON(message: _62.GenesisState): unknown;
                 fromPartial(object: Partial<_62.GenesisState>): _62.GenesisState;
@@ -7337,7 +7337,7 @@ export declare namespace cosmos {
             MsgSend: {
                 typeUrl: string;
                 encode(message: _69.MsgSend, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.MsgSend;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _69.MsgSend;
                 fromJSON(object: any): _69.MsgSend;
                 toJSON(message: _69.MsgSend): unknown;
                 fromPartial(object: Partial<_69.MsgSend>): _69.MsgSend;
@@ -7354,7 +7354,7 @@ export declare namespace cosmos {
             MsgSendResponse: {
                 typeUrl: string;
                 encode(_: _69.MsgSendResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _69.MsgSendResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _69.MsgSendResponse;
                 fromJSON(_: any): _69.MsgSendResponse;
                 toJSON(_: _69.MsgSendResponse): unknown;
                 fromPartial(_: Partial<_69.MsgSendResponse>): _69.MsgSendResponse;
@@ -7371,7 +7371,7 @@ export declare namespace cosmos {
             QueryBalanceRequest: {
                 typeUrl: string;
                 encode(message: _68.QueryBalanceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryBalanceRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QueryBalanceRequest;
                 fromJSON(object: any): _68.QueryBalanceRequest;
                 toJSON(message: _68.QueryBalanceRequest): unknown;
                 fromPartial(object: Partial<_68.QueryBalanceRequest>): _68.QueryBalanceRequest;
@@ -7388,7 +7388,7 @@ export declare namespace cosmos {
             QueryBalanceResponse: {
                 typeUrl: string;
                 encode(message: _68.QueryBalanceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryBalanceResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QueryBalanceResponse;
                 fromJSON(object: any): _68.QueryBalanceResponse;
                 toJSON(message: _68.QueryBalanceResponse): unknown;
                 fromPartial(object: Partial<_68.QueryBalanceResponse>): _68.QueryBalanceResponse;
@@ -7405,7 +7405,7 @@ export declare namespace cosmos {
             QueryOwnerRequest: {
                 typeUrl: string;
                 encode(message: _68.QueryOwnerRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryOwnerRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QueryOwnerRequest;
                 fromJSON(object: any): _68.QueryOwnerRequest;
                 toJSON(message: _68.QueryOwnerRequest): unknown;
                 fromPartial(object: Partial<_68.QueryOwnerRequest>): _68.QueryOwnerRequest;
@@ -7422,7 +7422,7 @@ export declare namespace cosmos {
             QueryOwnerResponse: {
                 typeUrl: string;
                 encode(message: _68.QueryOwnerResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryOwnerResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QueryOwnerResponse;
                 fromJSON(object: any): _68.QueryOwnerResponse;
                 toJSON(message: _68.QueryOwnerResponse): unknown;
                 fromPartial(object: Partial<_68.QueryOwnerResponse>): _68.QueryOwnerResponse;
@@ -7439,7 +7439,7 @@ export declare namespace cosmos {
             QuerySupplyRequest: {
                 typeUrl: string;
                 encode(message: _68.QuerySupplyRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QuerySupplyRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QuerySupplyRequest;
                 fromJSON(object: any): _68.QuerySupplyRequest;
                 toJSON(message: _68.QuerySupplyRequest): unknown;
                 fromPartial(object: Partial<_68.QuerySupplyRequest>): _68.QuerySupplyRequest;
@@ -7456,7 +7456,7 @@ export declare namespace cosmos {
             QuerySupplyResponse: {
                 typeUrl: string;
                 encode(message: _68.QuerySupplyResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QuerySupplyResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QuerySupplyResponse;
                 fromJSON(object: any): _68.QuerySupplyResponse;
                 toJSON(message: _68.QuerySupplyResponse): unknown;
                 fromPartial(object: Partial<_68.QuerySupplyResponse>): _68.QuerySupplyResponse;
@@ -7473,7 +7473,7 @@ export declare namespace cosmos {
             QueryNFTsRequest: {
                 typeUrl: string;
                 encode(message: _68.QueryNFTsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryNFTsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QueryNFTsRequest;
                 fromJSON(object: any): _68.QueryNFTsRequest;
                 toJSON(message: _68.QueryNFTsRequest): unknown;
                 fromPartial(object: Partial<_68.QueryNFTsRequest>): _68.QueryNFTsRequest;
@@ -7490,7 +7490,7 @@ export declare namespace cosmos {
             QueryNFTsResponse: {
                 typeUrl: string;
                 encode(message: _68.QueryNFTsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryNFTsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QueryNFTsResponse;
                 fromJSON(object: any): _68.QueryNFTsResponse;
                 toJSON(message: _68.QueryNFTsResponse): unknown;
                 fromPartial(object: Partial<_68.QueryNFTsResponse>): _68.QueryNFTsResponse;
@@ -7507,7 +7507,7 @@ export declare namespace cosmos {
             QueryNFTRequest: {
                 typeUrl: string;
                 encode(message: _68.QueryNFTRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryNFTRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QueryNFTRequest;
                 fromJSON(object: any): _68.QueryNFTRequest;
                 toJSON(message: _68.QueryNFTRequest): unknown;
                 fromPartial(object: Partial<_68.QueryNFTRequest>): _68.QueryNFTRequest;
@@ -7524,7 +7524,7 @@ export declare namespace cosmos {
             QueryNFTResponse: {
                 typeUrl: string;
                 encode(message: _68.QueryNFTResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryNFTResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QueryNFTResponse;
                 fromJSON(object: any): _68.QueryNFTResponse;
                 toJSON(message: _68.QueryNFTResponse): unknown;
                 fromPartial(object: Partial<_68.QueryNFTResponse>): _68.QueryNFTResponse;
@@ -7541,7 +7541,7 @@ export declare namespace cosmos {
             QueryClassRequest: {
                 typeUrl: string;
                 encode(message: _68.QueryClassRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryClassRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QueryClassRequest;
                 fromJSON(object: any): _68.QueryClassRequest;
                 toJSON(message: _68.QueryClassRequest): unknown;
                 fromPartial(object: Partial<_68.QueryClassRequest>): _68.QueryClassRequest;
@@ -7558,7 +7558,7 @@ export declare namespace cosmos {
             QueryClassResponse: {
                 typeUrl: string;
                 encode(message: _68.QueryClassResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryClassResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QueryClassResponse;
                 fromJSON(object: any): _68.QueryClassResponse;
                 toJSON(message: _68.QueryClassResponse): unknown;
                 fromPartial(object: Partial<_68.QueryClassResponse>): _68.QueryClassResponse;
@@ -7575,7 +7575,7 @@ export declare namespace cosmos {
             QueryClassesRequest: {
                 typeUrl: string;
                 encode(message: _68.QueryClassesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryClassesRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QueryClassesRequest;
                 fromJSON(object: any): _68.QueryClassesRequest;
                 toJSON(message: _68.QueryClassesRequest): unknown;
                 fromPartial(object: Partial<_68.QueryClassesRequest>): _68.QueryClassesRequest;
@@ -7592,7 +7592,7 @@ export declare namespace cosmos {
             QueryClassesResponse: {
                 typeUrl: string;
                 encode(message: _68.QueryClassesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _68.QueryClassesResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _68.QueryClassesResponse;
                 fromJSON(object: any): _68.QueryClassesResponse;
                 toJSON(message: _68.QueryClassesResponse): unknown;
                 fromPartial(object: Partial<_68.QueryClassesResponse>): _68.QueryClassesResponse;
@@ -7609,7 +7609,7 @@ export declare namespace cosmos {
             Class: {
                 typeUrl: string;
                 encode(message: _67.Class, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.Class;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _67.Class;
                 fromJSON(object: any): _67.Class;
                 toJSON(message: _67.Class): unknown;
                 fromPartial(object: Partial<_67.Class>): _67.Class;
@@ -7626,7 +7626,7 @@ export declare namespace cosmos {
             NFT: {
                 typeUrl: string;
                 encode(message: _67.NFT, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _67.NFT;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _67.NFT;
                 fromJSON(object: any): _67.NFT;
                 toJSON(message: _67.NFT): unknown;
                 fromPartial(object: Partial<_67.NFT>): _67.NFT;
@@ -7643,7 +7643,7 @@ export declare namespace cosmos {
             GenesisState: {
                 typeUrl: string;
                 encode(message: _66.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.GenesisState;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _66.GenesisState;
                 fromJSON(object: any): _66.GenesisState;
                 toJSON(message: _66.GenesisState): unknown;
                 fromPartial(object: Partial<_66.GenesisState>): _66.GenesisState;
@@ -7660,7 +7660,7 @@ export declare namespace cosmos {
             Entry: {
                 typeUrl: string;
                 encode(message: _66.Entry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _66.Entry;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _66.Entry;
                 fromJSON(object: any): _66.Entry;
                 toJSON(message: _66.Entry): unknown;
                 fromPartial(object: Partial<_66.Entry>): _66.Entry;
@@ -7677,7 +7677,7 @@ export declare namespace cosmos {
             EventSend: {
                 typeUrl: string;
                 encode(message: _65.EventSend, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.EventSend;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _65.EventSend;
                 fromJSON(object: any): _65.EventSend;
                 toJSON(message: _65.EventSend): unknown;
                 fromPartial(object: Partial<_65.EventSend>): _65.EventSend;
@@ -7694,7 +7694,7 @@ export declare namespace cosmos {
             EventMint: {
                 typeUrl: string;
                 encode(message: _65.EventMint, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.EventMint;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _65.EventMint;
                 fromJSON(object: any): _65.EventMint;
                 toJSON(message: _65.EventMint): unknown;
                 fromPartial(object: Partial<_65.EventMint>): _65.EventMint;
@@ -7711,7 +7711,7 @@ export declare namespace cosmos {
             EventBurn: {
                 typeUrl: string;
                 encode(message: _65.EventBurn, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _65.EventBurn;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _65.EventBurn;
                 fromJSON(object: any): _65.EventBurn;
                 toJSON(message: _65.EventBurn): unknown;
                 fromPartial(object: Partial<_65.EventBurn>): _65.EventBurn;
@@ -7736,7 +7736,7 @@ export declare namespace cosmos {
             QueryParamsRequest: {
                 typeUrl: string;
                 encode(message: _71.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryParamsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _71.QueryParamsRequest;
                 fromJSON(object: any): _71.QueryParamsRequest;
                 toJSON(message: _71.QueryParamsRequest): unknown;
                 fromPartial(object: Partial<_71.QueryParamsRequest>): _71.QueryParamsRequest;
@@ -7753,7 +7753,7 @@ export declare namespace cosmos {
             QueryParamsResponse: {
                 typeUrl: string;
                 encode(message: _71.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QueryParamsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _71.QueryParamsResponse;
                 fromJSON(object: any): _71.QueryParamsResponse;
                 toJSON(message: _71.QueryParamsResponse): unknown;
                 fromPartial(object: Partial<_71.QueryParamsResponse>): _71.QueryParamsResponse;
@@ -7770,7 +7770,7 @@ export declare namespace cosmos {
             QuerySubspacesRequest: {
                 typeUrl: string;
                 encode(_: _71.QuerySubspacesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QuerySubspacesRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _71.QuerySubspacesRequest;
                 fromJSON(_: any): _71.QuerySubspacesRequest;
                 toJSON(_: _71.QuerySubspacesRequest): unknown;
                 fromPartial(_: Partial<_71.QuerySubspacesRequest>): _71.QuerySubspacesRequest;
@@ -7787,7 +7787,7 @@ export declare namespace cosmos {
             QuerySubspacesResponse: {
                 typeUrl: string;
                 encode(message: _71.QuerySubspacesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.QuerySubspacesResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _71.QuerySubspacesResponse;
                 fromJSON(object: any): _71.QuerySubspacesResponse;
                 toJSON(message: _71.QuerySubspacesResponse): unknown;
                 fromPartial(object: Partial<_71.QuerySubspacesResponse>): _71.QuerySubspacesResponse;
@@ -7804,7 +7804,7 @@ export declare namespace cosmos {
             Subspace: {
                 typeUrl: string;
                 encode(message: _71.Subspace, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _71.Subspace;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _71.Subspace;
                 fromJSON(object: any): _71.Subspace;
                 toJSON(message: _71.Subspace): unknown;
                 fromPartial(object: Partial<_71.Subspace>): _71.Subspace;
@@ -7821,7 +7821,7 @@ export declare namespace cosmos {
             ParameterChangeProposal: {
                 typeUrl: string;
                 encode(message: _70.ParameterChangeProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.ParameterChangeProposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _70.ParameterChangeProposal;
                 fromJSON(object: any): _70.ParameterChangeProposal;
                 toJSON(message: _70.ParameterChangeProposal): unknown;
                 fromPartial(object: Partial<_70.ParameterChangeProposal>): _70.ParameterChangeProposal;
@@ -7838,7 +7838,7 @@ export declare namespace cosmos {
             ParamChange: {
                 typeUrl: string;
                 encode(message: _70.ParamChange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _70.ParamChange;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _70.ParamChange;
                 fromJSON(object: any): _70.ParamChange;
                 toJSON(message: _70.ParamChange): unknown;
                 fromPartial(object: Partial<_70.ParamChange>): _70.ParamChange;
@@ -8005,7 +8005,7 @@ export declare namespace cosmos {
             MsgCreateValidator: {
                 typeUrl: string;
                 encode(message: _76.MsgCreateValidator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.MsgCreateValidator;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _76.MsgCreateValidator;
                 fromJSON(object: any): _76.MsgCreateValidator;
                 toJSON(message: _76.MsgCreateValidator): unknown;
                 fromPartial(object: Partial<_76.MsgCreateValidator>): _76.MsgCreateValidator;
@@ -8022,7 +8022,7 @@ export declare namespace cosmos {
             MsgCreateValidatorResponse: {
                 typeUrl: string;
                 encode(_: _76.MsgCreateValidatorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.MsgCreateValidatorResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _76.MsgCreateValidatorResponse;
                 fromJSON(_: any): _76.MsgCreateValidatorResponse;
                 toJSON(_: _76.MsgCreateValidatorResponse): unknown;
                 fromPartial(_: Partial<_76.MsgCreateValidatorResponse>): _76.MsgCreateValidatorResponse;
@@ -8039,7 +8039,7 @@ export declare namespace cosmos {
             MsgEditValidator: {
                 typeUrl: string;
                 encode(message: _76.MsgEditValidator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.MsgEditValidator;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _76.MsgEditValidator;
                 fromJSON(object: any): _76.MsgEditValidator;
                 toJSON(message: _76.MsgEditValidator): unknown;
                 fromPartial(object: Partial<_76.MsgEditValidator>): _76.MsgEditValidator;
@@ -8056,7 +8056,7 @@ export declare namespace cosmos {
             MsgEditValidatorResponse: {
                 typeUrl: string;
                 encode(_: _76.MsgEditValidatorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.MsgEditValidatorResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _76.MsgEditValidatorResponse;
                 fromJSON(_: any): _76.MsgEditValidatorResponse;
                 toJSON(_: _76.MsgEditValidatorResponse): unknown;
                 fromPartial(_: Partial<_76.MsgEditValidatorResponse>): _76.MsgEditValidatorResponse;
@@ -8073,7 +8073,7 @@ export declare namespace cosmos {
             MsgDelegate: {
                 typeUrl: string;
                 encode(message: _76.MsgDelegate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.MsgDelegate;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _76.MsgDelegate;
                 fromJSON(object: any): _76.MsgDelegate;
                 toJSON(message: _76.MsgDelegate): unknown;
                 fromPartial(object: Partial<_76.MsgDelegate>): _76.MsgDelegate;
@@ -8090,7 +8090,7 @@ export declare namespace cosmos {
             MsgDelegateResponse: {
                 typeUrl: string;
                 encode(_: _76.MsgDelegateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.MsgDelegateResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _76.MsgDelegateResponse;
                 fromJSON(_: any): _76.MsgDelegateResponse;
                 toJSON(_: _76.MsgDelegateResponse): unknown;
                 fromPartial(_: Partial<_76.MsgDelegateResponse>): _76.MsgDelegateResponse;
@@ -8107,7 +8107,7 @@ export declare namespace cosmos {
             MsgBeginRedelegate: {
                 typeUrl: string;
                 encode(message: _76.MsgBeginRedelegate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.MsgBeginRedelegate;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _76.MsgBeginRedelegate;
                 fromJSON(object: any): _76.MsgBeginRedelegate;
                 toJSON(message: _76.MsgBeginRedelegate): unknown;
                 fromPartial(object: Partial<_76.MsgBeginRedelegate>): _76.MsgBeginRedelegate;
@@ -8124,7 +8124,7 @@ export declare namespace cosmos {
             MsgBeginRedelegateResponse: {
                 typeUrl: string;
                 encode(message: _76.MsgBeginRedelegateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.MsgBeginRedelegateResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _76.MsgBeginRedelegateResponse;
                 fromJSON(object: any): _76.MsgBeginRedelegateResponse;
                 toJSON(message: _76.MsgBeginRedelegateResponse): unknown;
                 fromPartial(object: Partial<_76.MsgBeginRedelegateResponse>): _76.MsgBeginRedelegateResponse;
@@ -8141,7 +8141,7 @@ export declare namespace cosmos {
             MsgUndelegate: {
                 typeUrl: string;
                 encode(message: _76.MsgUndelegate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.MsgUndelegate;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _76.MsgUndelegate;
                 fromJSON(object: any): _76.MsgUndelegate;
                 toJSON(message: _76.MsgUndelegate): unknown;
                 fromPartial(object: Partial<_76.MsgUndelegate>): _76.MsgUndelegate;
@@ -8158,7 +8158,7 @@ export declare namespace cosmos {
             MsgUndelegateResponse: {
                 typeUrl: string;
                 encode(message: _76.MsgUndelegateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _76.MsgUndelegateResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _76.MsgUndelegateResponse;
                 fromJSON(object: any): _76.MsgUndelegateResponse;
                 toJSON(message: _76.MsgUndelegateResponse): unknown;
                 fromPartial(object: Partial<_76.MsgUndelegateResponse>): _76.MsgUndelegateResponse;
@@ -8172,7 +8172,7 @@ export declare namespace cosmos {
                 toProto(message: _76.MsgUndelegateResponse): Uint8Array;
                 toProtoMsg(message: _76.MsgUndelegateResponse): _76.MsgUndelegateResponseProtoMsg;
             };
-            Cosmos_cryptoPubKey_InterfaceDecoder: (input: Uint8Array | import("..").BinaryReader) => import("../google/protobuf/any").Any;
+            Cosmos_cryptoPubKey_InterfaceDecoder: (input: import("..").BinaryReader | Uint8Array) => import("../google/protobuf/any").Any;
             Cosmos_cryptoPubKey_FromAmino: (content: import("../google/protobuf/any").AnyAmino) => import("cosmjs-types/google/protobuf/any").Any;
             Cosmos_cryptoPubKey_ToAmino: (content: import("../google/protobuf/any").Any) => import("@cosmjs/amino").Pubkey;
             bondStatusFromJSON(object: any): _75.BondStatus;
@@ -8183,7 +8183,7 @@ export declare namespace cosmos {
             HistoricalInfo: {
                 typeUrl: string;
                 encode(message: _75.HistoricalInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.HistoricalInfo;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.HistoricalInfo;
                 fromJSON(object: any): _75.HistoricalInfo;
                 toJSON(message: _75.HistoricalInfo): unknown;
                 fromPartial(object: Partial<_75.HistoricalInfo>): _75.HistoricalInfo;
@@ -8200,7 +8200,7 @@ export declare namespace cosmos {
             CommissionRates: {
                 typeUrl: string;
                 encode(message: _75.CommissionRates, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.CommissionRates;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.CommissionRates;
                 fromJSON(object: any): _75.CommissionRates;
                 toJSON(message: _75.CommissionRates): unknown;
                 fromPartial(object: Partial<_75.CommissionRates>): _75.CommissionRates;
@@ -8217,7 +8217,7 @@ export declare namespace cosmos {
             Commission: {
                 typeUrl: string;
                 encode(message: _75.Commission, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Commission;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.Commission;
                 fromJSON(object: any): _75.Commission;
                 toJSON(message: _75.Commission): unknown;
                 fromPartial(object: Partial<_75.Commission>): _75.Commission;
@@ -8234,7 +8234,7 @@ export declare namespace cosmos {
             Description: {
                 typeUrl: string;
                 encode(message: _75.Description, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Description;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.Description;
                 fromJSON(object: any): _75.Description;
                 toJSON(message: _75.Description): unknown;
                 fromPartial(object: Partial<_75.Description>): _75.Description;
@@ -8251,7 +8251,7 @@ export declare namespace cosmos {
             Validator: {
                 typeUrl: string;
                 encode(message: _75.Validator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Validator;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.Validator;
                 fromJSON(object: any): _75.Validator;
                 toJSON(message: _75.Validator): unknown;
                 fromPartial(object: Partial<_75.Validator>): _75.Validator;
@@ -8268,7 +8268,7 @@ export declare namespace cosmos {
             ValAddresses: {
                 typeUrl: string;
                 encode(message: _75.ValAddresses, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.ValAddresses;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.ValAddresses;
                 fromJSON(object: any): _75.ValAddresses;
                 toJSON(message: _75.ValAddresses): unknown;
                 fromPartial(object: Partial<_75.ValAddresses>): _75.ValAddresses;
@@ -8285,7 +8285,7 @@ export declare namespace cosmos {
             DVPair: {
                 typeUrl: string;
                 encode(message: _75.DVPair, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.DVPair;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.DVPair;
                 fromJSON(object: any): _75.DVPair;
                 toJSON(message: _75.DVPair): unknown;
                 fromPartial(object: Partial<_75.DVPair>): _75.DVPair;
@@ -8302,7 +8302,7 @@ export declare namespace cosmos {
             DVPairs: {
                 typeUrl: string;
                 encode(message: _75.DVPairs, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.DVPairs;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.DVPairs;
                 fromJSON(object: any): _75.DVPairs;
                 toJSON(message: _75.DVPairs): unknown;
                 fromPartial(object: Partial<_75.DVPairs>): _75.DVPairs;
@@ -8319,7 +8319,7 @@ export declare namespace cosmos {
             DVVTriplet: {
                 typeUrl: string;
                 encode(message: _75.DVVTriplet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.DVVTriplet;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.DVVTriplet;
                 fromJSON(object: any): _75.DVVTriplet;
                 toJSON(message: _75.DVVTriplet): unknown;
                 fromPartial(object: Partial<_75.DVVTriplet>): _75.DVVTriplet;
@@ -8336,7 +8336,7 @@ export declare namespace cosmos {
             DVVTriplets: {
                 typeUrl: string;
                 encode(message: _75.DVVTriplets, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.DVVTriplets;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.DVVTriplets;
                 fromJSON(object: any): _75.DVVTriplets;
                 toJSON(message: _75.DVVTriplets): unknown;
                 fromPartial(object: Partial<_75.DVVTriplets>): _75.DVVTriplets;
@@ -8353,7 +8353,7 @@ export declare namespace cosmos {
             Delegation: {
                 typeUrl: string;
                 encode(message: _75.Delegation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Delegation;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.Delegation;
                 fromJSON(object: any): _75.Delegation;
                 toJSON(message: _75.Delegation): unknown;
                 fromPartial(object: Partial<_75.Delegation>): _75.Delegation;
@@ -8370,7 +8370,7 @@ export declare namespace cosmos {
             UnbondingDelegation: {
                 typeUrl: string;
                 encode(message: _75.UnbondingDelegation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.UnbondingDelegation;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.UnbondingDelegation;
                 fromJSON(object: any): _75.UnbondingDelegation;
                 toJSON(message: _75.UnbondingDelegation): unknown;
                 fromPartial(object: Partial<_75.UnbondingDelegation>): _75.UnbondingDelegation;
@@ -8387,7 +8387,7 @@ export declare namespace cosmos {
             UnbondingDelegationEntry: {
                 typeUrl: string;
                 encode(message: _75.UnbondingDelegationEntry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.UnbondingDelegationEntry;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.UnbondingDelegationEntry;
                 fromJSON(object: any): _75.UnbondingDelegationEntry;
                 toJSON(message: _75.UnbondingDelegationEntry): unknown;
                 fromPartial(object: Partial<_75.UnbondingDelegationEntry>): _75.UnbondingDelegationEntry;
@@ -8404,7 +8404,7 @@ export declare namespace cosmos {
             RedelegationEntry: {
                 typeUrl: string;
                 encode(message: _75.RedelegationEntry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RedelegationEntry;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.RedelegationEntry;
                 fromJSON(object: any): _75.RedelegationEntry;
                 toJSON(message: _75.RedelegationEntry): unknown;
                 fromPartial(object: Partial<_75.RedelegationEntry>): _75.RedelegationEntry;
@@ -8421,7 +8421,7 @@ export declare namespace cosmos {
             Redelegation: {
                 typeUrl: string;
                 encode(message: _75.Redelegation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Redelegation;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.Redelegation;
                 fromJSON(object: any): _75.Redelegation;
                 toJSON(message: _75.Redelegation): unknown;
                 fromPartial(object: Partial<_75.Redelegation>): _75.Redelegation;
@@ -8438,7 +8438,7 @@ export declare namespace cosmos {
             Params: {
                 typeUrl: string;
                 encode(message: _75.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Params;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.Params;
                 fromJSON(object: any): _75.Params;
                 toJSON(message: _75.Params): unknown;
                 fromPartial(object: Partial<_75.Params>): _75.Params;
@@ -8455,7 +8455,7 @@ export declare namespace cosmos {
             DelegationResponse: {
                 typeUrl: string;
                 encode(message: _75.DelegationResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.DelegationResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.DelegationResponse;
                 fromJSON(object: any): _75.DelegationResponse;
                 toJSON(message: _75.DelegationResponse): unknown;
                 fromPartial(object: Partial<_75.DelegationResponse>): _75.DelegationResponse;
@@ -8472,7 +8472,7 @@ export declare namespace cosmos {
             RedelegationEntryResponse: {
                 typeUrl: string;
                 encode(message: _75.RedelegationEntryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RedelegationEntryResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.RedelegationEntryResponse;
                 fromJSON(object: any): _75.RedelegationEntryResponse;
                 toJSON(message: _75.RedelegationEntryResponse): unknown;
                 fromPartial(object: Partial<_75.RedelegationEntryResponse>): _75.RedelegationEntryResponse;
@@ -8489,7 +8489,7 @@ export declare namespace cosmos {
             RedelegationResponse: {
                 typeUrl: string;
                 encode(message: _75.RedelegationResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.RedelegationResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.RedelegationResponse;
                 fromJSON(object: any): _75.RedelegationResponse;
                 toJSON(message: _75.RedelegationResponse): unknown;
                 fromPartial(object: Partial<_75.RedelegationResponse>): _75.RedelegationResponse;
@@ -8506,7 +8506,7 @@ export declare namespace cosmos {
             Pool: {
                 typeUrl: string;
                 encode(message: _75.Pool, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _75.Pool;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _75.Pool;
                 fromJSON(object: any): _75.Pool;
                 toJSON(message: _75.Pool): unknown;
                 fromPartial(object: Partial<_75.Pool>): _75.Pool;
@@ -8523,7 +8523,7 @@ export declare namespace cosmos {
             QueryValidatorsRequest: {
                 typeUrl: string;
                 encode(message: _74.QueryValidatorsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryValidatorsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryValidatorsRequest;
                 fromJSON(object: any): _74.QueryValidatorsRequest;
                 toJSON(message: _74.QueryValidatorsRequest): unknown;
                 fromPartial(object: Partial<_74.QueryValidatorsRequest>): _74.QueryValidatorsRequest;
@@ -8540,7 +8540,7 @@ export declare namespace cosmos {
             QueryValidatorsResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryValidatorsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryValidatorsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryValidatorsResponse;
                 fromJSON(object: any): _74.QueryValidatorsResponse;
                 toJSON(message: _74.QueryValidatorsResponse): unknown;
                 fromPartial(object: Partial<_74.QueryValidatorsResponse>): _74.QueryValidatorsResponse;
@@ -8557,7 +8557,7 @@ export declare namespace cosmos {
             QueryValidatorRequest: {
                 typeUrl: string;
                 encode(message: _74.QueryValidatorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryValidatorRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryValidatorRequest;
                 fromJSON(object: any): _74.QueryValidatorRequest;
                 toJSON(message: _74.QueryValidatorRequest): unknown;
                 fromPartial(object: Partial<_74.QueryValidatorRequest>): _74.QueryValidatorRequest;
@@ -8574,7 +8574,7 @@ export declare namespace cosmos {
             QueryValidatorResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryValidatorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryValidatorResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryValidatorResponse;
                 fromJSON(object: any): _74.QueryValidatorResponse;
                 toJSON(message: _74.QueryValidatorResponse): unknown;
                 fromPartial(object: Partial<_74.QueryValidatorResponse>): _74.QueryValidatorResponse;
@@ -8591,7 +8591,7 @@ export declare namespace cosmos {
             QueryValidatorDelegationsRequest: {
                 typeUrl: string;
                 encode(message: _74.QueryValidatorDelegationsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryValidatorDelegationsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryValidatorDelegationsRequest;
                 fromJSON(object: any): _74.QueryValidatorDelegationsRequest;
                 toJSON(message: _74.QueryValidatorDelegationsRequest): unknown;
                 fromPartial(object: Partial<_74.QueryValidatorDelegationsRequest>): _74.QueryValidatorDelegationsRequest;
@@ -8608,7 +8608,7 @@ export declare namespace cosmos {
             QueryValidatorDelegationsResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryValidatorDelegationsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryValidatorDelegationsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryValidatorDelegationsResponse;
                 fromJSON(object: any): _74.QueryValidatorDelegationsResponse;
                 toJSON(message: _74.QueryValidatorDelegationsResponse): unknown;
                 fromPartial(object: Partial<_74.QueryValidatorDelegationsResponse>): _74.QueryValidatorDelegationsResponse;
@@ -8625,7 +8625,7 @@ export declare namespace cosmos {
             QueryValidatorUnbondingDelegationsRequest: {
                 typeUrl: string;
                 encode(message: _74.QueryValidatorUnbondingDelegationsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryValidatorUnbondingDelegationsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryValidatorUnbondingDelegationsRequest;
                 fromJSON(object: any): _74.QueryValidatorUnbondingDelegationsRequest;
                 toJSON(message: _74.QueryValidatorUnbondingDelegationsRequest): unknown;
                 fromPartial(object: Partial<_74.QueryValidatorUnbondingDelegationsRequest>): _74.QueryValidatorUnbondingDelegationsRequest;
@@ -8642,7 +8642,7 @@ export declare namespace cosmos {
             QueryValidatorUnbondingDelegationsResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryValidatorUnbondingDelegationsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryValidatorUnbondingDelegationsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryValidatorUnbondingDelegationsResponse;
                 fromJSON(object: any): _74.QueryValidatorUnbondingDelegationsResponse;
                 toJSON(message: _74.QueryValidatorUnbondingDelegationsResponse): unknown;
                 fromPartial(object: Partial<_74.QueryValidatorUnbondingDelegationsResponse>): _74.QueryValidatorUnbondingDelegationsResponse;
@@ -8659,7 +8659,7 @@ export declare namespace cosmos {
             QueryDelegationRequest: {
                 typeUrl: string;
                 encode(message: _74.QueryDelegationRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryDelegationRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryDelegationRequest;
                 fromJSON(object: any): _74.QueryDelegationRequest;
                 toJSON(message: _74.QueryDelegationRequest): unknown;
                 fromPartial(object: Partial<_74.QueryDelegationRequest>): _74.QueryDelegationRequest;
@@ -8676,7 +8676,7 @@ export declare namespace cosmos {
             QueryDelegationResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryDelegationResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryDelegationResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryDelegationResponse;
                 fromJSON(object: any): _74.QueryDelegationResponse;
                 toJSON(message: _74.QueryDelegationResponse): unknown;
                 fromPartial(object: Partial<_74.QueryDelegationResponse>): _74.QueryDelegationResponse;
@@ -8693,7 +8693,7 @@ export declare namespace cosmos {
             QueryUnbondingDelegationRequest: {
                 typeUrl: string;
                 encode(message: _74.QueryUnbondingDelegationRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryUnbondingDelegationRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryUnbondingDelegationRequest;
                 fromJSON(object: any): _74.QueryUnbondingDelegationRequest;
                 toJSON(message: _74.QueryUnbondingDelegationRequest): unknown;
                 fromPartial(object: Partial<_74.QueryUnbondingDelegationRequest>): _74.QueryUnbondingDelegationRequest;
@@ -8710,7 +8710,7 @@ export declare namespace cosmos {
             QueryUnbondingDelegationResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryUnbondingDelegationResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryUnbondingDelegationResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryUnbondingDelegationResponse;
                 fromJSON(object: any): _74.QueryUnbondingDelegationResponse;
                 toJSON(message: _74.QueryUnbondingDelegationResponse): unknown;
                 fromPartial(object: Partial<_74.QueryUnbondingDelegationResponse>): _74.QueryUnbondingDelegationResponse;
@@ -8727,7 +8727,7 @@ export declare namespace cosmos {
             QueryDelegatorDelegationsRequest: {
                 typeUrl: string;
                 encode(message: _74.QueryDelegatorDelegationsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryDelegatorDelegationsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryDelegatorDelegationsRequest;
                 fromJSON(object: any): _74.QueryDelegatorDelegationsRequest;
                 toJSON(message: _74.QueryDelegatorDelegationsRequest): unknown;
                 fromPartial(object: Partial<_74.QueryDelegatorDelegationsRequest>): _74.QueryDelegatorDelegationsRequest;
@@ -8744,7 +8744,7 @@ export declare namespace cosmos {
             QueryDelegatorDelegationsResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryDelegatorDelegationsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryDelegatorDelegationsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryDelegatorDelegationsResponse;
                 fromJSON(object: any): _74.QueryDelegatorDelegationsResponse;
                 toJSON(message: _74.QueryDelegatorDelegationsResponse): unknown;
                 fromPartial(object: Partial<_74.QueryDelegatorDelegationsResponse>): _74.QueryDelegatorDelegationsResponse;
@@ -8761,7 +8761,7 @@ export declare namespace cosmos {
             QueryDelegatorUnbondingDelegationsRequest: {
                 typeUrl: string;
                 encode(message: _74.QueryDelegatorUnbondingDelegationsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryDelegatorUnbondingDelegationsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryDelegatorUnbondingDelegationsRequest;
                 fromJSON(object: any): _74.QueryDelegatorUnbondingDelegationsRequest;
                 toJSON(message: _74.QueryDelegatorUnbondingDelegationsRequest): unknown;
                 fromPartial(object: Partial<_74.QueryDelegatorUnbondingDelegationsRequest>): _74.QueryDelegatorUnbondingDelegationsRequest;
@@ -8778,7 +8778,7 @@ export declare namespace cosmos {
             QueryDelegatorUnbondingDelegationsResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryDelegatorUnbondingDelegationsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryDelegatorUnbondingDelegationsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryDelegatorUnbondingDelegationsResponse;
                 fromJSON(object: any): _74.QueryDelegatorUnbondingDelegationsResponse;
                 toJSON(message: _74.QueryDelegatorUnbondingDelegationsResponse): unknown;
                 fromPartial(object: Partial<_74.QueryDelegatorUnbondingDelegationsResponse>): _74.QueryDelegatorUnbondingDelegationsResponse;
@@ -8795,7 +8795,7 @@ export declare namespace cosmos {
             QueryRedelegationsRequest: {
                 typeUrl: string;
                 encode(message: _74.QueryRedelegationsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryRedelegationsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryRedelegationsRequest;
                 fromJSON(object: any): _74.QueryRedelegationsRequest;
                 toJSON(message: _74.QueryRedelegationsRequest): unknown;
                 fromPartial(object: Partial<_74.QueryRedelegationsRequest>): _74.QueryRedelegationsRequest;
@@ -8812,7 +8812,7 @@ export declare namespace cosmos {
             QueryRedelegationsResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryRedelegationsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryRedelegationsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryRedelegationsResponse;
                 fromJSON(object: any): _74.QueryRedelegationsResponse;
                 toJSON(message: _74.QueryRedelegationsResponse): unknown;
                 fromPartial(object: Partial<_74.QueryRedelegationsResponse>): _74.QueryRedelegationsResponse;
@@ -8829,7 +8829,7 @@ export declare namespace cosmos {
             QueryDelegatorValidatorsRequest: {
                 typeUrl: string;
                 encode(message: _74.QueryDelegatorValidatorsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryDelegatorValidatorsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryDelegatorValidatorsRequest;
                 fromJSON(object: any): _74.QueryDelegatorValidatorsRequest;
                 toJSON(message: _74.QueryDelegatorValidatorsRequest): unknown;
                 fromPartial(object: Partial<_74.QueryDelegatorValidatorsRequest>): _74.QueryDelegatorValidatorsRequest;
@@ -8846,7 +8846,7 @@ export declare namespace cosmos {
             QueryDelegatorValidatorsResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryDelegatorValidatorsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryDelegatorValidatorsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryDelegatorValidatorsResponse;
                 fromJSON(object: any): _74.QueryDelegatorValidatorsResponse;
                 toJSON(message: _74.QueryDelegatorValidatorsResponse): unknown;
                 fromPartial(object: Partial<_74.QueryDelegatorValidatorsResponse>): _74.QueryDelegatorValidatorsResponse;
@@ -8863,7 +8863,7 @@ export declare namespace cosmos {
             QueryDelegatorValidatorRequest: {
                 typeUrl: string;
                 encode(message: _74.QueryDelegatorValidatorRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryDelegatorValidatorRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryDelegatorValidatorRequest;
                 fromJSON(object: any): _74.QueryDelegatorValidatorRequest;
                 toJSON(message: _74.QueryDelegatorValidatorRequest): unknown;
                 fromPartial(object: Partial<_74.QueryDelegatorValidatorRequest>): _74.QueryDelegatorValidatorRequest;
@@ -8880,7 +8880,7 @@ export declare namespace cosmos {
             QueryDelegatorValidatorResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryDelegatorValidatorResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryDelegatorValidatorResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryDelegatorValidatorResponse;
                 fromJSON(object: any): _74.QueryDelegatorValidatorResponse;
                 toJSON(message: _74.QueryDelegatorValidatorResponse): unknown;
                 fromPartial(object: Partial<_74.QueryDelegatorValidatorResponse>): _74.QueryDelegatorValidatorResponse;
@@ -8897,7 +8897,7 @@ export declare namespace cosmos {
             QueryHistoricalInfoRequest: {
                 typeUrl: string;
                 encode(message: _74.QueryHistoricalInfoRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryHistoricalInfoRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryHistoricalInfoRequest;
                 fromJSON(object: any): _74.QueryHistoricalInfoRequest;
                 toJSON(message: _74.QueryHistoricalInfoRequest): unknown;
                 fromPartial(object: Partial<_74.QueryHistoricalInfoRequest>): _74.QueryHistoricalInfoRequest;
@@ -8914,7 +8914,7 @@ export declare namespace cosmos {
             QueryHistoricalInfoResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryHistoricalInfoResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryHistoricalInfoResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryHistoricalInfoResponse;
                 fromJSON(object: any): _74.QueryHistoricalInfoResponse;
                 toJSON(message: _74.QueryHistoricalInfoResponse): unknown;
                 fromPartial(object: Partial<_74.QueryHistoricalInfoResponse>): _74.QueryHistoricalInfoResponse;
@@ -8931,7 +8931,7 @@ export declare namespace cosmos {
             QueryPoolRequest: {
                 typeUrl: string;
                 encode(_: _74.QueryPoolRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryPoolRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryPoolRequest;
                 fromJSON(_: any): _74.QueryPoolRequest;
                 toJSON(_: _74.QueryPoolRequest): unknown;
                 fromPartial(_: Partial<_74.QueryPoolRequest>): _74.QueryPoolRequest;
@@ -8948,7 +8948,7 @@ export declare namespace cosmos {
             QueryPoolResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryPoolResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryPoolResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryPoolResponse;
                 fromJSON(object: any): _74.QueryPoolResponse;
                 toJSON(message: _74.QueryPoolResponse): unknown;
                 fromPartial(object: Partial<_74.QueryPoolResponse>): _74.QueryPoolResponse;
@@ -8965,7 +8965,7 @@ export declare namespace cosmos {
             QueryParamsRequest: {
                 typeUrl: string;
                 encode(_: _74.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryParamsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryParamsRequest;
                 fromJSON(_: any): _74.QueryParamsRequest;
                 toJSON(_: _74.QueryParamsRequest): unknown;
                 fromPartial(_: Partial<_74.QueryParamsRequest>): _74.QueryParamsRequest;
@@ -8982,7 +8982,7 @@ export declare namespace cosmos {
             QueryParamsResponse: {
                 typeUrl: string;
                 encode(message: _74.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _74.QueryParamsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _74.QueryParamsResponse;
                 fromJSON(object: any): _74.QueryParamsResponse;
                 toJSON(message: _74.QueryParamsResponse): unknown;
                 fromPartial(object: Partial<_74.QueryParamsResponse>): _74.QueryParamsResponse;
@@ -8999,7 +8999,7 @@ export declare namespace cosmos {
             GenesisState: {
                 typeUrl: string;
                 encode(message: _73.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.GenesisState;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _73.GenesisState;
                 fromJSON(object: any): _73.GenesisState;
                 toJSON(message: _73.GenesisState): unknown;
                 fromPartial(object: Partial<_73.GenesisState>): _73.GenesisState;
@@ -9016,7 +9016,7 @@ export declare namespace cosmos {
             LastValidatorPower: {
                 typeUrl: string;
                 encode(message: _73.LastValidatorPower, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _73.LastValidatorPower;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _73.LastValidatorPower;
                 fromJSON(object: any): _73.LastValidatorPower;
                 toJSON(message: _73.LastValidatorPower): unknown;
                 fromPartial(object: Partial<_73.LastValidatorPower>): _73.LastValidatorPower;
@@ -9038,7 +9038,7 @@ export declare namespace cosmos {
             StakeAuthorization: {
                 typeUrl: string;
                 encode(message: _72.StakeAuthorization, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.StakeAuthorization;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _72.StakeAuthorization;
                 fromJSON(object: any): _72.StakeAuthorization;
                 toJSON(message: _72.StakeAuthorization): unknown;
                 fromPartial(object: Partial<_72.StakeAuthorization>): _72.StakeAuthorization;
@@ -9055,7 +9055,7 @@ export declare namespace cosmos {
             StakeAuthorization_Validators: {
                 typeUrl: string;
                 encode(message: _72.StakeAuthorization_Validators, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _72.StakeAuthorization_Validators;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _72.StakeAuthorization_Validators;
                 fromJSON(object: any): _72.StakeAuthorization_Validators;
                 toJSON(message: _72.StakeAuthorization_Validators): unknown;
                 fromPartial(object: Partial<_72.StakeAuthorization_Validators>): _72.StakeAuthorization_Validators;
@@ -9083,7 +9083,7 @@ export declare namespace cosmos {
                 SignatureDescriptors: {
                     typeUrl: string;
                     encode(message: _77.SignatureDescriptors, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.SignatureDescriptors;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _77.SignatureDescriptors;
                     fromJSON(object: any): _77.SignatureDescriptors;
                     toJSON(message: _77.SignatureDescriptors): unknown;
                     fromPartial(object: Partial<_77.SignatureDescriptors>): _77.SignatureDescriptors;
@@ -9100,7 +9100,7 @@ export declare namespace cosmos {
                 SignatureDescriptor: {
                     typeUrl: string;
                     encode(message: _77.SignatureDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.SignatureDescriptor;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _77.SignatureDescriptor;
                     fromJSON(object: any): _77.SignatureDescriptor;
                     toJSON(message: _77.SignatureDescriptor): unknown;
                     fromPartial(object: Partial<_77.SignatureDescriptor>): _77.SignatureDescriptor;
@@ -9117,7 +9117,7 @@ export declare namespace cosmos {
                 SignatureDescriptor_Data: {
                     typeUrl: string;
                     encode(message: _77.SignatureDescriptor_Data, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.SignatureDescriptor_Data;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _77.SignatureDescriptor_Data;
                     fromJSON(object: any): _77.SignatureDescriptor_Data;
                     toJSON(message: _77.SignatureDescriptor_Data): unknown;
                     fromPartial(object: Partial<_77.SignatureDescriptor_Data>): _77.SignatureDescriptor_Data;
@@ -9134,7 +9134,7 @@ export declare namespace cosmos {
                 SignatureDescriptor_Data_Single: {
                     typeUrl: string;
                     encode(message: _77.SignatureDescriptor_Data_Single, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.SignatureDescriptor_Data_Single;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _77.SignatureDescriptor_Data_Single;
                     fromJSON(object: any): _77.SignatureDescriptor_Data_Single;
                     toJSON(message: _77.SignatureDescriptor_Data_Single): unknown;
                     fromPartial(object: Partial<_77.SignatureDescriptor_Data_Single>): _77.SignatureDescriptor_Data_Single;
@@ -9151,7 +9151,7 @@ export declare namespace cosmos {
                 SignatureDescriptor_Data_Multi: {
                     typeUrl: string;
                     encode(message: _77.SignatureDescriptor_Data_Multi, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _77.SignatureDescriptor_Data_Multi;
+                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _77.SignatureDescriptor_Data_Multi;
                     fromJSON(object: any): _77.SignatureDescriptor_Data_Multi;
                     toJSON(message: _77.SignatureDescriptor_Data_Multi): unknown;
                     fromPartial(object: Partial<_77.SignatureDescriptor_Data_Multi>): _77.SignatureDescriptor_Data_Multi;
@@ -9175,7 +9175,7 @@ export declare namespace cosmos {
             Tx: {
                 typeUrl: string;
                 encode(message: _79.Tx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.Tx;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _79.Tx;
                 fromJSON(object: any): _79.Tx;
                 toJSON(message: _79.Tx): unknown;
                 fromPartial(object: Partial<_79.Tx>): _79.Tx;
@@ -9192,7 +9192,7 @@ export declare namespace cosmos {
             TxRaw: {
                 typeUrl: string;
                 encode(message: _79.TxRaw, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.TxRaw;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _79.TxRaw;
                 fromJSON(object: any): _79.TxRaw;
                 toJSON(message: _79.TxRaw): unknown;
                 fromPartial(object: Partial<_79.TxRaw>): _79.TxRaw;
@@ -9209,7 +9209,7 @@ export declare namespace cosmos {
             SignDoc: {
                 typeUrl: string;
                 encode(message: _79.SignDoc, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.SignDoc;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _79.SignDoc;
                 fromJSON(object: any): _79.SignDoc;
                 toJSON(message: _79.SignDoc): unknown;
                 fromPartial(object: Partial<_79.SignDoc>): _79.SignDoc;
@@ -9226,7 +9226,7 @@ export declare namespace cosmos {
             SignDocDirectAux: {
                 typeUrl: string;
                 encode(message: _79.SignDocDirectAux, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.SignDocDirectAux;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _79.SignDocDirectAux;
                 fromJSON(object: any): _79.SignDocDirectAux;
                 toJSON(message: _79.SignDocDirectAux): unknown;
                 fromPartial(object: Partial<_79.SignDocDirectAux>): _79.SignDocDirectAux;
@@ -9243,7 +9243,7 @@ export declare namespace cosmos {
             TxBody: {
                 typeUrl: string;
                 encode(message: _79.TxBody, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.TxBody;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _79.TxBody;
                 fromJSON(object: any): _79.TxBody;
                 toJSON(message: _79.TxBody): unknown;
                 fromPartial(object: Partial<_79.TxBody>): _79.TxBody;
@@ -9260,7 +9260,7 @@ export declare namespace cosmos {
             AuthInfo: {
                 typeUrl: string;
                 encode(message: _79.AuthInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.AuthInfo;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _79.AuthInfo;
                 fromJSON(object: any): _79.AuthInfo;
                 toJSON(message: _79.AuthInfo): unknown;
                 fromPartial(object: Partial<_79.AuthInfo>): _79.AuthInfo;
@@ -9277,7 +9277,7 @@ export declare namespace cosmos {
             SignerInfo: {
                 typeUrl: string;
                 encode(message: _79.SignerInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.SignerInfo;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _79.SignerInfo;
                 fromJSON(object: any): _79.SignerInfo;
                 toJSON(message: _79.SignerInfo): unknown;
                 fromPartial(object: Partial<_79.SignerInfo>): _79.SignerInfo;
@@ -9294,7 +9294,7 @@ export declare namespace cosmos {
             ModeInfo: {
                 typeUrl: string;
                 encode(message: _79.ModeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.ModeInfo;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _79.ModeInfo;
                 fromJSON(object: any): _79.ModeInfo;
                 toJSON(message: _79.ModeInfo): unknown;
                 fromPartial(object: Partial<_79.ModeInfo>): _79.ModeInfo;
@@ -9311,7 +9311,7 @@ export declare namespace cosmos {
             ModeInfo_Single: {
                 typeUrl: string;
                 encode(message: _79.ModeInfo_Single, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.ModeInfo_Single;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _79.ModeInfo_Single;
                 fromJSON(object: any): _79.ModeInfo_Single;
                 toJSON(message: _79.ModeInfo_Single): unknown;
                 fromPartial(object: Partial<_79.ModeInfo_Single>): _79.ModeInfo_Single;
@@ -9328,7 +9328,7 @@ export declare namespace cosmos {
             ModeInfo_Multi: {
                 typeUrl: string;
                 encode(message: _79.ModeInfo_Multi, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.ModeInfo_Multi;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _79.ModeInfo_Multi;
                 fromJSON(object: any): _79.ModeInfo_Multi;
                 toJSON(message: _79.ModeInfo_Multi): unknown;
                 fromPartial(object: Partial<_79.ModeInfo_Multi>): _79.ModeInfo_Multi;
@@ -9345,7 +9345,7 @@ export declare namespace cosmos {
             Fee: {
                 typeUrl: string;
                 encode(message: _79.Fee, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.Fee;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _79.Fee;
                 fromJSON(object: any): _79.Fee;
                 toJSON(message: _79.Fee): unknown;
                 fromPartial(object: Partial<_79.Fee>): _79.Fee;
@@ -9362,7 +9362,7 @@ export declare namespace cosmos {
             Tip: {
                 typeUrl: string;
                 encode(message: _79.Tip, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.Tip;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _79.Tip;
                 fromJSON(object: any): _79.Tip;
                 toJSON(message: _79.Tip): unknown;
                 fromPartial(object: Partial<_79.Tip>): _79.Tip;
@@ -9379,7 +9379,7 @@ export declare namespace cosmos {
             AuxSignerData: {
                 typeUrl: string;
                 encode(message: _79.AuxSignerData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _79.AuxSignerData;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _79.AuxSignerData;
                 fromJSON(object: any): _79.AuxSignerData;
                 toJSON(message: _79.AuxSignerData): unknown;
                 fromPartial(object: Partial<_79.AuxSignerData>): _79.AuxSignerData;
@@ -9406,7 +9406,7 @@ export declare namespace cosmos {
             GetTxsEventRequest: {
                 typeUrl: string;
                 encode(message: _78.GetTxsEventRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.GetTxsEventRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _78.GetTxsEventRequest;
                 fromJSON(object: any): _78.GetTxsEventRequest;
                 toJSON(message: _78.GetTxsEventRequest): unknown;
                 fromPartial(object: Partial<_78.GetTxsEventRequest>): _78.GetTxsEventRequest;
@@ -9423,7 +9423,7 @@ export declare namespace cosmos {
             GetTxsEventResponse: {
                 typeUrl: string;
                 encode(message: _78.GetTxsEventResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.GetTxsEventResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _78.GetTxsEventResponse;
                 fromJSON(object: any): _78.GetTxsEventResponse;
                 toJSON(message: _78.GetTxsEventResponse): unknown;
                 fromPartial(object: Partial<_78.GetTxsEventResponse>): _78.GetTxsEventResponse;
@@ -9440,7 +9440,7 @@ export declare namespace cosmos {
             BroadcastTxRequest: {
                 typeUrl: string;
                 encode(message: _78.BroadcastTxRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.BroadcastTxRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _78.BroadcastTxRequest;
                 fromJSON(object: any): _78.BroadcastTxRequest;
                 toJSON(message: _78.BroadcastTxRequest): unknown;
                 fromPartial(object: Partial<_78.BroadcastTxRequest>): _78.BroadcastTxRequest;
@@ -9457,7 +9457,7 @@ export declare namespace cosmos {
             BroadcastTxResponse: {
                 typeUrl: string;
                 encode(message: _78.BroadcastTxResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.BroadcastTxResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _78.BroadcastTxResponse;
                 fromJSON(object: any): _78.BroadcastTxResponse;
                 toJSON(message: _78.BroadcastTxResponse): unknown;
                 fromPartial(object: Partial<_78.BroadcastTxResponse>): _78.BroadcastTxResponse;
@@ -9474,7 +9474,7 @@ export declare namespace cosmos {
             SimulateRequest: {
                 typeUrl: string;
                 encode(message: _78.SimulateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.SimulateRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _78.SimulateRequest;
                 fromJSON(object: any): _78.SimulateRequest;
                 toJSON(message: _78.SimulateRequest): unknown;
                 fromPartial(object: Partial<_78.SimulateRequest>): _78.SimulateRequest;
@@ -9491,7 +9491,7 @@ export declare namespace cosmos {
             SimulateResponse: {
                 typeUrl: string;
                 encode(message: _78.SimulateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.SimulateResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _78.SimulateResponse;
                 fromJSON(object: any): _78.SimulateResponse;
                 toJSON(message: _78.SimulateResponse): unknown;
                 fromPartial(object: Partial<_78.SimulateResponse>): _78.SimulateResponse;
@@ -9508,7 +9508,7 @@ export declare namespace cosmos {
             GetTxRequest: {
                 typeUrl: string;
                 encode(message: _78.GetTxRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.GetTxRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _78.GetTxRequest;
                 fromJSON(object: any): _78.GetTxRequest;
                 toJSON(message: _78.GetTxRequest): unknown;
                 fromPartial(object: Partial<_78.GetTxRequest>): _78.GetTxRequest;
@@ -9525,7 +9525,7 @@ export declare namespace cosmos {
             GetTxResponse: {
                 typeUrl: string;
                 encode(message: _78.GetTxResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.GetTxResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _78.GetTxResponse;
                 fromJSON(object: any): _78.GetTxResponse;
                 toJSON(message: _78.GetTxResponse): unknown;
                 fromPartial(object: Partial<_78.GetTxResponse>): _78.GetTxResponse;
@@ -9542,7 +9542,7 @@ export declare namespace cosmos {
             GetBlockWithTxsRequest: {
                 typeUrl: string;
                 encode(message: _78.GetBlockWithTxsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.GetBlockWithTxsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _78.GetBlockWithTxsRequest;
                 fromJSON(object: any): _78.GetBlockWithTxsRequest;
                 toJSON(message: _78.GetBlockWithTxsRequest): unknown;
                 fromPartial(object: Partial<_78.GetBlockWithTxsRequest>): _78.GetBlockWithTxsRequest;
@@ -9559,7 +9559,7 @@ export declare namespace cosmos {
             GetBlockWithTxsResponse: {
                 typeUrl: string;
                 encode(message: _78.GetBlockWithTxsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _78.GetBlockWithTxsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _78.GetBlockWithTxsResponse;
                 fromJSON(object: any): _78.GetBlockWithTxsResponse;
                 toJSON(message: _78.GetBlockWithTxsResponse): unknown;
                 fromPartial(object: Partial<_78.GetBlockWithTxsResponse>): _78.GetBlockWithTxsResponse;
@@ -9651,7 +9651,7 @@ export declare namespace cosmos {
             Plan: {
                 typeUrl: string;
                 encode(message: _82.Plan, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.Plan;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _82.Plan;
                 fromJSON(object: any): _82.Plan;
                 toJSON(message: _82.Plan): unknown;
                 fromPartial(object: Partial<_82.Plan>): _82.Plan;
@@ -9668,7 +9668,7 @@ export declare namespace cosmos {
             SoftwareUpgradeProposal: {
                 typeUrl: string;
                 encode(message: _82.SoftwareUpgradeProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.SoftwareUpgradeProposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _82.SoftwareUpgradeProposal;
                 fromJSON(object: any): _82.SoftwareUpgradeProposal;
                 toJSON(message: _82.SoftwareUpgradeProposal): unknown;
                 fromPartial(object: Partial<_82.SoftwareUpgradeProposal>): _82.SoftwareUpgradeProposal;
@@ -9685,7 +9685,7 @@ export declare namespace cosmos {
             CancelSoftwareUpgradeProposal: {
                 typeUrl: string;
                 encode(message: _82.CancelSoftwareUpgradeProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.CancelSoftwareUpgradeProposal;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _82.CancelSoftwareUpgradeProposal;
                 fromJSON(object: any): _82.CancelSoftwareUpgradeProposal;
                 toJSON(message: _82.CancelSoftwareUpgradeProposal): unknown;
                 fromPartial(object: Partial<_82.CancelSoftwareUpgradeProposal>): _82.CancelSoftwareUpgradeProposal;
@@ -9702,7 +9702,7 @@ export declare namespace cosmos {
             ModuleVersion: {
                 typeUrl: string;
                 encode(message: _82.ModuleVersion, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _82.ModuleVersion;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _82.ModuleVersion;
                 fromJSON(object: any): _82.ModuleVersion;
                 toJSON(message: _82.ModuleVersion): unknown;
                 fromPartial(object: Partial<_82.ModuleVersion>): _82.ModuleVersion;
@@ -9719,7 +9719,7 @@ export declare namespace cosmos {
             MsgSoftwareUpgrade: {
                 typeUrl: string;
                 encode(message: _81.MsgSoftwareUpgrade, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.MsgSoftwareUpgrade;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _81.MsgSoftwareUpgrade;
                 fromJSON(object: any): _81.MsgSoftwareUpgrade;
                 toJSON(message: _81.MsgSoftwareUpgrade): unknown;
                 fromPartial(object: Partial<_81.MsgSoftwareUpgrade>): _81.MsgSoftwareUpgrade;
@@ -9736,7 +9736,7 @@ export declare namespace cosmos {
             MsgSoftwareUpgradeResponse: {
                 typeUrl: string;
                 encode(_: _81.MsgSoftwareUpgradeResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.MsgSoftwareUpgradeResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _81.MsgSoftwareUpgradeResponse;
                 fromJSON(_: any): _81.MsgSoftwareUpgradeResponse;
                 toJSON(_: _81.MsgSoftwareUpgradeResponse): unknown;
                 fromPartial(_: Partial<_81.MsgSoftwareUpgradeResponse>): _81.MsgSoftwareUpgradeResponse;
@@ -9753,7 +9753,7 @@ export declare namespace cosmos {
             MsgCancelUpgrade: {
                 typeUrl: string;
                 encode(message: _81.MsgCancelUpgrade, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.MsgCancelUpgrade;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _81.MsgCancelUpgrade;
                 fromJSON(object: any): _81.MsgCancelUpgrade;
                 toJSON(message: _81.MsgCancelUpgrade): unknown;
                 fromPartial(object: Partial<_81.MsgCancelUpgrade>): _81.MsgCancelUpgrade;
@@ -9770,7 +9770,7 @@ export declare namespace cosmos {
             MsgCancelUpgradeResponse: {
                 typeUrl: string;
                 encode(_: _81.MsgCancelUpgradeResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _81.MsgCancelUpgradeResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _81.MsgCancelUpgradeResponse;
                 fromJSON(_: any): _81.MsgCancelUpgradeResponse;
                 toJSON(_: _81.MsgCancelUpgradeResponse): unknown;
                 fromPartial(_: Partial<_81.MsgCancelUpgradeResponse>): _81.MsgCancelUpgradeResponse;
@@ -9787,7 +9787,7 @@ export declare namespace cosmos {
             QueryCurrentPlanRequest: {
                 typeUrl: string;
                 encode(_: _80.QueryCurrentPlanRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.QueryCurrentPlanRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _80.QueryCurrentPlanRequest;
                 fromJSON(_: any): _80.QueryCurrentPlanRequest;
                 toJSON(_: _80.QueryCurrentPlanRequest): unknown;
                 fromPartial(_: Partial<_80.QueryCurrentPlanRequest>): _80.QueryCurrentPlanRequest;
@@ -9804,7 +9804,7 @@ export declare namespace cosmos {
             QueryCurrentPlanResponse: {
                 typeUrl: string;
                 encode(message: _80.QueryCurrentPlanResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.QueryCurrentPlanResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _80.QueryCurrentPlanResponse;
                 fromJSON(object: any): _80.QueryCurrentPlanResponse;
                 toJSON(message: _80.QueryCurrentPlanResponse): unknown;
                 fromPartial(object: Partial<_80.QueryCurrentPlanResponse>): _80.QueryCurrentPlanResponse;
@@ -9821,7 +9821,7 @@ export declare namespace cosmos {
             QueryAppliedPlanRequest: {
                 typeUrl: string;
                 encode(message: _80.QueryAppliedPlanRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.QueryAppliedPlanRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _80.QueryAppliedPlanRequest;
                 fromJSON(object: any): _80.QueryAppliedPlanRequest;
                 toJSON(message: _80.QueryAppliedPlanRequest): unknown;
                 fromPartial(object: Partial<_80.QueryAppliedPlanRequest>): _80.QueryAppliedPlanRequest;
@@ -9838,7 +9838,7 @@ export declare namespace cosmos {
             QueryAppliedPlanResponse: {
                 typeUrl: string;
                 encode(message: _80.QueryAppliedPlanResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.QueryAppliedPlanResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _80.QueryAppliedPlanResponse;
                 fromJSON(object: any): _80.QueryAppliedPlanResponse;
                 toJSON(message: _80.QueryAppliedPlanResponse): unknown;
                 fromPartial(object: Partial<_80.QueryAppliedPlanResponse>): _80.QueryAppliedPlanResponse;
@@ -9855,7 +9855,7 @@ export declare namespace cosmos {
             QueryUpgradedConsensusStateRequest: {
                 typeUrl: string;
                 encode(message: _80.QueryUpgradedConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.QueryUpgradedConsensusStateRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _80.QueryUpgradedConsensusStateRequest;
                 fromJSON(object: any): _80.QueryUpgradedConsensusStateRequest;
                 toJSON(message: _80.QueryUpgradedConsensusStateRequest): unknown;
                 fromPartial(object: Partial<_80.QueryUpgradedConsensusStateRequest>): _80.QueryUpgradedConsensusStateRequest;
@@ -9872,7 +9872,7 @@ export declare namespace cosmos {
             QueryUpgradedConsensusStateResponse: {
                 typeUrl: string;
                 encode(message: _80.QueryUpgradedConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.QueryUpgradedConsensusStateResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _80.QueryUpgradedConsensusStateResponse;
                 fromJSON(object: any): _80.QueryUpgradedConsensusStateResponse;
                 toJSON(message: _80.QueryUpgradedConsensusStateResponse): unknown;
                 fromPartial(object: Partial<_80.QueryUpgradedConsensusStateResponse>): _80.QueryUpgradedConsensusStateResponse;
@@ -9889,7 +9889,7 @@ export declare namespace cosmos {
             QueryModuleVersionsRequest: {
                 typeUrl: string;
                 encode(message: _80.QueryModuleVersionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.QueryModuleVersionsRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _80.QueryModuleVersionsRequest;
                 fromJSON(object: any): _80.QueryModuleVersionsRequest;
                 toJSON(message: _80.QueryModuleVersionsRequest): unknown;
                 fromPartial(object: Partial<_80.QueryModuleVersionsRequest>): _80.QueryModuleVersionsRequest;
@@ -9906,7 +9906,7 @@ export declare namespace cosmos {
             QueryModuleVersionsResponse: {
                 typeUrl: string;
                 encode(message: _80.QueryModuleVersionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.QueryModuleVersionsResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _80.QueryModuleVersionsResponse;
                 fromJSON(object: any): _80.QueryModuleVersionsResponse;
                 toJSON(message: _80.QueryModuleVersionsResponse): unknown;
                 fromPartial(object: Partial<_80.QueryModuleVersionsResponse>): _80.QueryModuleVersionsResponse;
@@ -9923,7 +9923,7 @@ export declare namespace cosmos {
             QueryAuthorityRequest: {
                 typeUrl: string;
                 encode(_: _80.QueryAuthorityRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.QueryAuthorityRequest;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _80.QueryAuthorityRequest;
                 fromJSON(_: any): _80.QueryAuthorityRequest;
                 toJSON(_: _80.QueryAuthorityRequest): unknown;
                 fromPartial(_: Partial<_80.QueryAuthorityRequest>): _80.QueryAuthorityRequest;
@@ -9940,7 +9940,7 @@ export declare namespace cosmos {
             QueryAuthorityResponse: {
                 typeUrl: string;
                 encode(message: _80.QueryAuthorityResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _80.QueryAuthorityResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _80.QueryAuthorityResponse;
                 fromJSON(object: any): _80.QueryAuthorityResponse;
                 toJSON(message: _80.QueryAuthorityResponse): unknown;
                 fromPartial(object: Partial<_80.QueryAuthorityResponse>): _80.QueryAuthorityResponse;
@@ -10054,7 +10054,7 @@ export declare namespace cosmos {
             BaseVestingAccount: {
                 typeUrl: string;
                 encode(message: _84.BaseVestingAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.BaseVestingAccount;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _84.BaseVestingAccount;
                 fromJSON(object: any): _84.BaseVestingAccount;
                 toJSON(message: _84.BaseVestingAccount): unknown;
                 fromPartial(object: Partial<_84.BaseVestingAccount>): _84.BaseVestingAccount;
@@ -10071,7 +10071,7 @@ export declare namespace cosmos {
             ContinuousVestingAccount: {
                 typeUrl: string;
                 encode(message: _84.ContinuousVestingAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.ContinuousVestingAccount;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _84.ContinuousVestingAccount;
                 fromJSON(object: any): _84.ContinuousVestingAccount;
                 toJSON(message: _84.ContinuousVestingAccount): unknown;
                 fromPartial(object: Partial<_84.ContinuousVestingAccount>): _84.ContinuousVestingAccount;
@@ -10088,7 +10088,7 @@ export declare namespace cosmos {
             DelayedVestingAccount: {
                 typeUrl: string;
                 encode(message: _84.DelayedVestingAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.DelayedVestingAccount;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _84.DelayedVestingAccount;
                 fromJSON(object: any): _84.DelayedVestingAccount;
                 toJSON(message: _84.DelayedVestingAccount): unknown;
                 fromPartial(object: Partial<_84.DelayedVestingAccount>): _84.DelayedVestingAccount;
@@ -10105,7 +10105,7 @@ export declare namespace cosmos {
             Period: {
                 typeUrl: string;
                 encode(message: _84.Period, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.Period;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _84.Period;
                 fromJSON(object: any): _84.Period;
                 toJSON(message: _84.Period): unknown;
                 fromPartial(object: Partial<_84.Period>): _84.Period;
@@ -10122,7 +10122,7 @@ export declare namespace cosmos {
             PeriodicVestingAccount: {
                 typeUrl: string;
                 encode(message: _84.PeriodicVestingAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.PeriodicVestingAccount;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _84.PeriodicVestingAccount;
                 fromJSON(object: any): _84.PeriodicVestingAccount;
                 toJSON(message: _84.PeriodicVestingAccount): unknown;
                 fromPartial(object: Partial<_84.PeriodicVestingAccount>): _84.PeriodicVestingAccount;
@@ -10139,7 +10139,7 @@ export declare namespace cosmos {
             PermanentLockedAccount: {
                 typeUrl: string;
                 encode(message: _84.PermanentLockedAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _84.PermanentLockedAccount;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _84.PermanentLockedAccount;
                 fromJSON(object: any): _84.PermanentLockedAccount;
                 toJSON(message: _84.PermanentLockedAccount): unknown;
                 fromPartial(object: Partial<_84.PermanentLockedAccount>): _84.PermanentLockedAccount;
@@ -10156,7 +10156,7 @@ export declare namespace cosmos {
             MsgCreateVestingAccount: {
                 typeUrl: string;
                 encode(message: _83.MsgCreateVestingAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.MsgCreateVestingAccount;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _83.MsgCreateVestingAccount;
                 fromJSON(object: any): _83.MsgCreateVestingAccount;
                 toJSON(message: _83.MsgCreateVestingAccount): unknown;
                 fromPartial(object: Partial<_83.MsgCreateVestingAccount>): _83.MsgCreateVestingAccount;
@@ -10173,7 +10173,7 @@ export declare namespace cosmos {
             MsgCreateVestingAccountResponse: {
                 typeUrl: string;
                 encode(_: _83.MsgCreateVestingAccountResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.MsgCreateVestingAccountResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _83.MsgCreateVestingAccountResponse;
                 fromJSON(_: any): _83.MsgCreateVestingAccountResponse;
                 toJSON(_: _83.MsgCreateVestingAccountResponse): unknown;
                 fromPartial(_: Partial<_83.MsgCreateVestingAccountResponse>): _83.MsgCreateVestingAccountResponse;
@@ -10190,7 +10190,7 @@ export declare namespace cosmos {
             MsgCreatePermanentLockedAccount: {
                 typeUrl: string;
                 encode(message: _83.MsgCreatePermanentLockedAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.MsgCreatePermanentLockedAccount;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _83.MsgCreatePermanentLockedAccount;
                 fromJSON(object: any): _83.MsgCreatePermanentLockedAccount;
                 toJSON(message: _83.MsgCreatePermanentLockedAccount): unknown;
                 fromPartial(object: Partial<_83.MsgCreatePermanentLockedAccount>): _83.MsgCreatePermanentLockedAccount;
@@ -10207,7 +10207,7 @@ export declare namespace cosmos {
             MsgCreatePermanentLockedAccountResponse: {
                 typeUrl: string;
                 encode(_: _83.MsgCreatePermanentLockedAccountResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.MsgCreatePermanentLockedAccountResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _83.MsgCreatePermanentLockedAccountResponse;
                 fromJSON(_: any): _83.MsgCreatePermanentLockedAccountResponse;
                 toJSON(_: _83.MsgCreatePermanentLockedAccountResponse): unknown;
                 fromPartial(_: Partial<_83.MsgCreatePermanentLockedAccountResponse>): _83.MsgCreatePermanentLockedAccountResponse;
@@ -10224,7 +10224,7 @@ export declare namespace cosmos {
             MsgCreatePeriodicVestingAccount: {
                 typeUrl: string;
                 encode(message: _83.MsgCreatePeriodicVestingAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.MsgCreatePeriodicVestingAccount;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _83.MsgCreatePeriodicVestingAccount;
                 fromJSON(object: any): _83.MsgCreatePeriodicVestingAccount;
                 toJSON(message: _83.MsgCreatePeriodicVestingAccount): unknown;
                 fromPartial(object: Partial<_83.MsgCreatePeriodicVestingAccount>): _83.MsgCreatePeriodicVestingAccount;
@@ -10241,7 +10241,7 @@ export declare namespace cosmos {
             MsgCreatePeriodicVestingAccountResponse: {
                 typeUrl: string;
                 encode(_: _83.MsgCreatePeriodicVestingAccountResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _83.MsgCreatePeriodicVestingAccountResponse;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _83.MsgCreatePeriodicVestingAccountResponse;
                 fromJSON(_: any): _83.MsgCreatePeriodicVestingAccountResponse;
                 toJSON(_: _83.MsgCreatePeriodicVestingAccountResponse): unknown;
                 fromPartial(_: Partial<_83.MsgCreatePeriodicVestingAccountResponse>): _83.MsgCreatePeriodicVestingAccountResponse;

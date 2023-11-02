@@ -35,7 +35,7 @@ export declare namespace tendermint {
         Request: {
             typeUrl: string;
             encode(message: _91.Request, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.Request;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.Request;
             fromJSON(object: any): _91.Request;
             toJSON(message: _91.Request): unknown;
             fromPartial(object: Partial<_91.Request>): _91.Request;
@@ -51,7 +51,7 @@ export declare namespace tendermint {
         RequestEcho: {
             typeUrl: string;
             encode(message: _91.RequestEcho, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestEcho;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestEcho;
             fromJSON(object: any): _91.RequestEcho;
             toJSON(message: _91.RequestEcho): unknown;
             fromPartial(object: Partial<_91.RequestEcho>): _91.RequestEcho;
@@ -67,7 +67,7 @@ export declare namespace tendermint {
         RequestFlush: {
             typeUrl: string;
             encode(_: _91.RequestFlush, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestFlush;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestFlush;
             fromJSON(_: any): _91.RequestFlush;
             toJSON(_: _91.RequestFlush): unknown;
             fromPartial(_: Partial<_91.RequestFlush>): _91.RequestFlush;
@@ -83,7 +83,7 @@ export declare namespace tendermint {
         RequestInfo: {
             typeUrl: string;
             encode(message: _91.RequestInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestInfo;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestInfo;
             fromJSON(object: any): _91.RequestInfo;
             toJSON(message: _91.RequestInfo): unknown;
             fromPartial(object: Partial<_91.RequestInfo>): _91.RequestInfo;
@@ -99,7 +99,7 @@ export declare namespace tendermint {
         RequestSetOption: {
             typeUrl: string;
             encode(message: _91.RequestSetOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestSetOption;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestSetOption;
             fromJSON(object: any): _91.RequestSetOption;
             toJSON(message: _91.RequestSetOption): unknown;
             fromPartial(object: Partial<_91.RequestSetOption>): _91.RequestSetOption;
@@ -115,7 +115,7 @@ export declare namespace tendermint {
         RequestInitChain: {
             typeUrl: string;
             encode(message: _91.RequestInitChain, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestInitChain;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestInitChain;
             fromJSON(object: any): _91.RequestInitChain;
             toJSON(message: _91.RequestInitChain): unknown;
             fromPartial(object: Partial<_91.RequestInitChain>): _91.RequestInitChain;
@@ -131,7 +131,7 @@ export declare namespace tendermint {
         RequestQuery: {
             typeUrl: string;
             encode(message: _91.RequestQuery, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestQuery;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestQuery;
             fromJSON(object: any): _91.RequestQuery;
             toJSON(message: _91.RequestQuery): unknown;
             fromPartial(object: Partial<_91.RequestQuery>): _91.RequestQuery;
@@ -147,7 +147,7 @@ export declare namespace tendermint {
         RequestBeginBlock: {
             typeUrl: string;
             encode(message: _91.RequestBeginBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestBeginBlock;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestBeginBlock;
             fromJSON(object: any): _91.RequestBeginBlock;
             toJSON(message: _91.RequestBeginBlock): unknown;
             fromPartial(object: Partial<_91.RequestBeginBlock>): _91.RequestBeginBlock;
@@ -163,7 +163,7 @@ export declare namespace tendermint {
         RequestCheckTx: {
             typeUrl: string;
             encode(message: _91.RequestCheckTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestCheckTx;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestCheckTx;
             fromJSON(object: any): _91.RequestCheckTx;
             toJSON(message: _91.RequestCheckTx): unknown;
             fromPartial(object: Partial<_91.RequestCheckTx>): _91.RequestCheckTx;
@@ -179,7 +179,7 @@ export declare namespace tendermint {
         RequestDeliverTx: {
             typeUrl: string;
             encode(message: _91.RequestDeliverTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestDeliverTx;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestDeliverTx;
             fromJSON(object: any): _91.RequestDeliverTx;
             toJSON(message: _91.RequestDeliverTx): unknown;
             fromPartial(object: Partial<_91.RequestDeliverTx>): _91.RequestDeliverTx;
@@ -195,7 +195,7 @@ export declare namespace tendermint {
         RequestEndBlock: {
             typeUrl: string;
             encode(message: _91.RequestEndBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestEndBlock;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestEndBlock;
             fromJSON(object: any): _91.RequestEndBlock;
             toJSON(message: _91.RequestEndBlock): unknown;
             fromPartial(object: Partial<_91.RequestEndBlock>): _91.RequestEndBlock;
@@ -211,7 +211,7 @@ export declare namespace tendermint {
         RequestCommit: {
             typeUrl: string;
             encode(_: _91.RequestCommit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestCommit;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestCommit;
             fromJSON(_: any): _91.RequestCommit;
             toJSON(_: _91.RequestCommit): unknown;
             fromPartial(_: Partial<_91.RequestCommit>): _91.RequestCommit;
@@ -227,7 +227,7 @@ export declare namespace tendermint {
         RequestListSnapshots: {
             typeUrl: string;
             encode(_: _91.RequestListSnapshots, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestListSnapshots;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestListSnapshots;
             fromJSON(_: any): _91.RequestListSnapshots;
             toJSON(_: _91.RequestListSnapshots): unknown;
             fromPartial(_: Partial<_91.RequestListSnapshots>): _91.RequestListSnapshots;
@@ -243,7 +243,7 @@ export declare namespace tendermint {
         RequestOfferSnapshot: {
             typeUrl: string;
             encode(message: _91.RequestOfferSnapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestOfferSnapshot;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestOfferSnapshot;
             fromJSON(object: any): _91.RequestOfferSnapshot;
             toJSON(message: _91.RequestOfferSnapshot): unknown;
             fromPartial(object: Partial<_91.RequestOfferSnapshot>): _91.RequestOfferSnapshot;
@@ -259,7 +259,7 @@ export declare namespace tendermint {
         RequestLoadSnapshotChunk: {
             typeUrl: string;
             encode(message: _91.RequestLoadSnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestLoadSnapshotChunk;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestLoadSnapshotChunk;
             fromJSON(object: any): _91.RequestLoadSnapshotChunk;
             toJSON(message: _91.RequestLoadSnapshotChunk): unknown;
             fromPartial(object: Partial<_91.RequestLoadSnapshotChunk>): _91.RequestLoadSnapshotChunk;
@@ -275,7 +275,7 @@ export declare namespace tendermint {
         RequestApplySnapshotChunk: {
             typeUrl: string;
             encode(message: _91.RequestApplySnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.RequestApplySnapshotChunk;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.RequestApplySnapshotChunk;
             fromJSON(object: any): _91.RequestApplySnapshotChunk;
             toJSON(message: _91.RequestApplySnapshotChunk): unknown;
             fromPartial(object: Partial<_91.RequestApplySnapshotChunk>): _91.RequestApplySnapshotChunk;
@@ -291,7 +291,7 @@ export declare namespace tendermint {
         Response: {
             typeUrl: string;
             encode(message: _91.Response, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.Response;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.Response;
             fromJSON(object: any): _91.Response;
             toJSON(message: _91.Response): unknown;
             fromPartial(object: Partial<_91.Response>): _91.Response;
@@ -307,7 +307,7 @@ export declare namespace tendermint {
         ResponseException: {
             typeUrl: string;
             encode(message: _91.ResponseException, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseException;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseException;
             fromJSON(object: any): _91.ResponseException;
             toJSON(message: _91.ResponseException): unknown;
             fromPartial(object: Partial<_91.ResponseException>): _91.ResponseException;
@@ -323,7 +323,7 @@ export declare namespace tendermint {
         ResponseEcho: {
             typeUrl: string;
             encode(message: _91.ResponseEcho, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseEcho;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseEcho;
             fromJSON(object: any): _91.ResponseEcho;
             toJSON(message: _91.ResponseEcho): unknown;
             fromPartial(object: Partial<_91.ResponseEcho>): _91.ResponseEcho;
@@ -339,7 +339,7 @@ export declare namespace tendermint {
         ResponseFlush: {
             typeUrl: string;
             encode(_: _91.ResponseFlush, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseFlush;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseFlush;
             fromJSON(_: any): _91.ResponseFlush;
             toJSON(_: _91.ResponseFlush): unknown;
             fromPartial(_: Partial<_91.ResponseFlush>): _91.ResponseFlush;
@@ -355,7 +355,7 @@ export declare namespace tendermint {
         ResponseInfo: {
             typeUrl: string;
             encode(message: _91.ResponseInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseInfo;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseInfo;
             fromJSON(object: any): _91.ResponseInfo;
             toJSON(message: _91.ResponseInfo): unknown;
             fromPartial(object: Partial<_91.ResponseInfo>): _91.ResponseInfo;
@@ -371,7 +371,7 @@ export declare namespace tendermint {
         ResponseSetOption: {
             typeUrl: string;
             encode(message: _91.ResponseSetOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseSetOption;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseSetOption;
             fromJSON(object: any): _91.ResponseSetOption;
             toJSON(message: _91.ResponseSetOption): unknown;
             fromPartial(object: Partial<_91.ResponseSetOption>): _91.ResponseSetOption;
@@ -387,7 +387,7 @@ export declare namespace tendermint {
         ResponseInitChain: {
             typeUrl: string;
             encode(message: _91.ResponseInitChain, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseInitChain;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseInitChain;
             fromJSON(object: any): _91.ResponseInitChain;
             toJSON(message: _91.ResponseInitChain): unknown;
             fromPartial(object: Partial<_91.ResponseInitChain>): _91.ResponseInitChain;
@@ -403,7 +403,7 @@ export declare namespace tendermint {
         ResponseQuery: {
             typeUrl: string;
             encode(message: _91.ResponseQuery, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseQuery;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseQuery;
             fromJSON(object: any): _91.ResponseQuery;
             toJSON(message: _91.ResponseQuery): unknown;
             fromPartial(object: Partial<_91.ResponseQuery>): _91.ResponseQuery;
@@ -419,7 +419,7 @@ export declare namespace tendermint {
         ResponseBeginBlock: {
             typeUrl: string;
             encode(message: _91.ResponseBeginBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseBeginBlock;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseBeginBlock;
             fromJSON(object: any): _91.ResponseBeginBlock;
             toJSON(message: _91.ResponseBeginBlock): unknown;
             fromPartial(object: Partial<_91.ResponseBeginBlock>): _91.ResponseBeginBlock;
@@ -435,7 +435,7 @@ export declare namespace tendermint {
         ResponseCheckTx: {
             typeUrl: string;
             encode(message: _91.ResponseCheckTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseCheckTx;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseCheckTx;
             fromJSON(object: any): _91.ResponseCheckTx;
             toJSON(message: _91.ResponseCheckTx): unknown;
             fromPartial(object: Partial<_91.ResponseCheckTx>): _91.ResponseCheckTx;
@@ -451,7 +451,7 @@ export declare namespace tendermint {
         ResponseDeliverTx: {
             typeUrl: string;
             encode(message: _91.ResponseDeliverTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseDeliverTx;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseDeliverTx;
             fromJSON(object: any): _91.ResponseDeliverTx;
             toJSON(message: _91.ResponseDeliverTx): unknown;
             fromPartial(object: Partial<_91.ResponseDeliverTx>): _91.ResponseDeliverTx;
@@ -467,7 +467,7 @@ export declare namespace tendermint {
         ResponseEndBlock: {
             typeUrl: string;
             encode(message: _91.ResponseEndBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseEndBlock;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseEndBlock;
             fromJSON(object: any): _91.ResponseEndBlock;
             toJSON(message: _91.ResponseEndBlock): unknown;
             fromPartial(object: Partial<_91.ResponseEndBlock>): _91.ResponseEndBlock;
@@ -483,7 +483,7 @@ export declare namespace tendermint {
         ResponseCommit: {
             typeUrl: string;
             encode(message: _91.ResponseCommit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseCommit;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseCommit;
             fromJSON(object: any): _91.ResponseCommit;
             toJSON(message: _91.ResponseCommit): unknown;
             fromPartial(object: Partial<_91.ResponseCommit>): _91.ResponseCommit;
@@ -499,7 +499,7 @@ export declare namespace tendermint {
         ResponseListSnapshots: {
             typeUrl: string;
             encode(message: _91.ResponseListSnapshots, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseListSnapshots;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseListSnapshots;
             fromJSON(object: any): _91.ResponseListSnapshots;
             toJSON(message: _91.ResponseListSnapshots): unknown;
             fromPartial(object: Partial<_91.ResponseListSnapshots>): _91.ResponseListSnapshots;
@@ -515,7 +515,7 @@ export declare namespace tendermint {
         ResponseOfferSnapshot: {
             typeUrl: string;
             encode(message: _91.ResponseOfferSnapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseOfferSnapshot;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseOfferSnapshot;
             fromJSON(object: any): _91.ResponseOfferSnapshot;
             toJSON(message: _91.ResponseOfferSnapshot): unknown;
             fromPartial(object: Partial<_91.ResponseOfferSnapshot>): _91.ResponseOfferSnapshot;
@@ -531,7 +531,7 @@ export declare namespace tendermint {
         ResponseLoadSnapshotChunk: {
             typeUrl: string;
             encode(message: _91.ResponseLoadSnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseLoadSnapshotChunk;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseLoadSnapshotChunk;
             fromJSON(object: any): _91.ResponseLoadSnapshotChunk;
             toJSON(message: _91.ResponseLoadSnapshotChunk): unknown;
             fromPartial(object: Partial<_91.ResponseLoadSnapshotChunk>): _91.ResponseLoadSnapshotChunk;
@@ -547,7 +547,7 @@ export declare namespace tendermint {
         ResponseApplySnapshotChunk: {
             typeUrl: string;
             encode(message: _91.ResponseApplySnapshotChunk, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ResponseApplySnapshotChunk;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ResponseApplySnapshotChunk;
             fromJSON(object: any): _91.ResponseApplySnapshotChunk;
             toJSON(message: _91.ResponseApplySnapshotChunk): unknown;
             fromPartial(object: Partial<_91.ResponseApplySnapshotChunk>): _91.ResponseApplySnapshotChunk;
@@ -563,7 +563,7 @@ export declare namespace tendermint {
         ConsensusParams: {
             typeUrl: string;
             encode(message: _91.ConsensusParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ConsensusParams;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ConsensusParams;
             fromJSON(object: any): _91.ConsensusParams;
             toJSON(message: _91.ConsensusParams): unknown;
             fromPartial(object: Partial<_91.ConsensusParams>): _91.ConsensusParams;
@@ -579,7 +579,7 @@ export declare namespace tendermint {
         BlockParams: {
             typeUrl: string;
             encode(message: _91.BlockParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.BlockParams;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.BlockParams;
             fromJSON(object: any): _91.BlockParams;
             toJSON(message: _91.BlockParams): unknown;
             fromPartial(object: Partial<_91.BlockParams>): _91.BlockParams;
@@ -595,7 +595,7 @@ export declare namespace tendermint {
         LastCommitInfo: {
             typeUrl: string;
             encode(message: _91.LastCommitInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.LastCommitInfo;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.LastCommitInfo;
             fromJSON(object: any): _91.LastCommitInfo;
             toJSON(message: _91.LastCommitInfo): unknown;
             fromPartial(object: Partial<_91.LastCommitInfo>): _91.LastCommitInfo;
@@ -611,7 +611,7 @@ export declare namespace tendermint {
         Event: {
             typeUrl: string;
             encode(message: _91.Event, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.Event;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.Event;
             fromJSON(object: any): _91.Event;
             toJSON(message: _91.Event): unknown;
             fromPartial(object: Partial<_91.Event>): _91.Event;
@@ -627,7 +627,7 @@ export declare namespace tendermint {
         EventAttribute: {
             typeUrl: string;
             encode(message: _91.EventAttribute, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.EventAttribute;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.EventAttribute;
             fromJSON(object: any): _91.EventAttribute;
             toJSON(message: _91.EventAttribute): unknown;
             fromPartial(object: Partial<_91.EventAttribute>): _91.EventAttribute;
@@ -643,7 +643,7 @@ export declare namespace tendermint {
         TxResult: {
             typeUrl: string;
             encode(message: _91.TxResult, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.TxResult;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.TxResult;
             fromJSON(object: any): _91.TxResult;
             toJSON(message: _91.TxResult): unknown;
             fromPartial(object: Partial<_91.TxResult>): _91.TxResult;
@@ -659,7 +659,7 @@ export declare namespace tendermint {
         Validator: {
             typeUrl: string;
             encode(message: _91.Validator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.Validator;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.Validator;
             fromJSON(object: any): _91.Validator;
             toJSON(message: _91.Validator): unknown;
             fromPartial(object: Partial<_91.Validator>): _91.Validator;
@@ -675,7 +675,7 @@ export declare namespace tendermint {
         ValidatorUpdate: {
             typeUrl: string;
             encode(message: _91.ValidatorUpdate, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.ValidatorUpdate;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.ValidatorUpdate;
             fromJSON(object: any): _91.ValidatorUpdate;
             toJSON(message: _91.ValidatorUpdate): unknown;
             fromPartial(object: Partial<_91.ValidatorUpdate>): _91.ValidatorUpdate;
@@ -691,7 +691,7 @@ export declare namespace tendermint {
         VoteInfo: {
             typeUrl: string;
             encode(message: _91.VoteInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.VoteInfo;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.VoteInfo;
             fromJSON(object: any): _91.VoteInfo;
             toJSON(message: _91.VoteInfo): unknown;
             fromPartial(object: Partial<_91.VoteInfo>): _91.VoteInfo;
@@ -707,7 +707,7 @@ export declare namespace tendermint {
         Evidence: {
             typeUrl: string;
             encode(message: _91.Evidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.Evidence;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.Evidence;
             fromJSON(object: any): _91.Evidence;
             toJSON(message: _91.Evidence): unknown;
             fromPartial(object: Partial<_91.Evidence>): _91.Evidence;
@@ -723,7 +723,7 @@ export declare namespace tendermint {
         Snapshot: {
             typeUrl: string;
             encode(message: _91.Snapshot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _91.Snapshot;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _91.Snapshot;
             fromJSON(object: any): _91.Snapshot;
             toJSON(message: _91.Snapshot): unknown;
             fromPartial(object: Partial<_91.Snapshot>): _91.Snapshot;
@@ -742,7 +742,7 @@ export declare namespace tendermint {
         Proof: {
             typeUrl: string;
             encode(message: _93.Proof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _93.Proof;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _93.Proof;
             fromJSON(object: any): _93.Proof;
             toJSON(message: _93.Proof): unknown;
             fromPartial(object: Partial<_93.Proof>): _93.Proof;
@@ -758,7 +758,7 @@ export declare namespace tendermint {
         ValueOp: {
             typeUrl: string;
             encode(message: _93.ValueOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _93.ValueOp;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _93.ValueOp;
             fromJSON(object: any): _93.ValueOp;
             toJSON(message: _93.ValueOp): unknown;
             fromPartial(object: Partial<_93.ValueOp>): _93.ValueOp;
@@ -774,7 +774,7 @@ export declare namespace tendermint {
         DominoOp: {
             typeUrl: string;
             encode(message: _93.DominoOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _93.DominoOp;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _93.DominoOp;
             fromJSON(object: any): _93.DominoOp;
             toJSON(message: _93.DominoOp): unknown;
             fromPartial(object: Partial<_93.DominoOp>): _93.DominoOp;
@@ -790,7 +790,7 @@ export declare namespace tendermint {
         ProofOp: {
             typeUrl: string;
             encode(message: _93.ProofOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _93.ProofOp;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _93.ProofOp;
             fromJSON(object: any): _93.ProofOp;
             toJSON(message: _93.ProofOp): unknown;
             fromPartial(object: Partial<_93.ProofOp>): _93.ProofOp;
@@ -806,7 +806,7 @@ export declare namespace tendermint {
         ProofOps: {
             typeUrl: string;
             encode(message: _93.ProofOps, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _93.ProofOps;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _93.ProofOps;
             fromJSON(object: any): _93.ProofOps;
             toJSON(message: _93.ProofOps): unknown;
             fromPartial(object: Partial<_93.ProofOps>): _93.ProofOps;
@@ -822,7 +822,7 @@ export declare namespace tendermint {
         PublicKey: {
             typeUrl: string;
             encode(message: _92.PublicKey, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _92.PublicKey;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _92.PublicKey;
             fromJSON(object: any): _92.PublicKey;
             toJSON(message: _92.PublicKey): unknown;
             fromPartial(object: Partial<_92.PublicKey>): _92.PublicKey;
@@ -842,7 +842,7 @@ export declare namespace tendermint {
             BitArray: {
                 typeUrl: string;
                 encode(message: _94.BitArray, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                decode(input: Uint8Array | import("..").BinaryReader, length?: number): _94.BitArray;
+                decode(input: import("..").BinaryReader | Uint8Array, length?: number): _94.BitArray;
                 fromJSON(object: any): _94.BitArray;
                 toJSON(message: _94.BitArray): unknown;
                 fromPartial(object: Partial<_94.BitArray>): _94.BitArray;
@@ -862,7 +862,7 @@ export declare namespace tendermint {
         ProtocolVersion: {
             typeUrl: string;
             encode(message: _95.ProtocolVersion, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _95.ProtocolVersion;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _95.ProtocolVersion;
             fromJSON(object: any): _95.ProtocolVersion;
             toJSON(message: _95.ProtocolVersion): unknown;
             fromPartial(object: Partial<_95.ProtocolVersion>): _95.ProtocolVersion;
@@ -878,7 +878,7 @@ export declare namespace tendermint {
         NodeInfo: {
             typeUrl: string;
             encode(message: _95.NodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _95.NodeInfo;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _95.NodeInfo;
             fromJSON(object: any): _95.NodeInfo;
             toJSON(message: _95.NodeInfo): unknown;
             fromPartial(object: Partial<_95.NodeInfo>): _95.NodeInfo;
@@ -894,7 +894,7 @@ export declare namespace tendermint {
         NodeInfoOther: {
             typeUrl: string;
             encode(message: _95.NodeInfoOther, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _95.NodeInfoOther;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _95.NodeInfoOther;
             fromJSON(object: any): _95.NodeInfoOther;
             toJSON(message: _95.NodeInfoOther): unknown;
             fromPartial(object: Partial<_95.NodeInfoOther>): _95.NodeInfoOther;
@@ -910,7 +910,7 @@ export declare namespace tendermint {
         PeerInfo: {
             typeUrl: string;
             encode(message: _95.PeerInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _95.PeerInfo;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _95.PeerInfo;
             fromJSON(object: any): _95.PeerInfo;
             toJSON(message: _95.PeerInfo): unknown;
             fromPartial(object: Partial<_95.PeerInfo>): _95.PeerInfo;
@@ -926,7 +926,7 @@ export declare namespace tendermint {
         PeerAddressInfo: {
             typeUrl: string;
             encode(message: _95.PeerAddressInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _95.PeerAddressInfo;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _95.PeerAddressInfo;
             fromJSON(object: any): _95.PeerAddressInfo;
             toJSON(message: _95.PeerAddressInfo): unknown;
             fromPartial(object: Partial<_95.PeerAddressInfo>): _95.PeerAddressInfo;
@@ -945,7 +945,7 @@ export declare namespace tendermint {
         ValidatorSet: {
             typeUrl: string;
             encode(message: _100.ValidatorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _100.ValidatorSet;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _100.ValidatorSet;
             fromJSON(object: any): _100.ValidatorSet;
             toJSON(message: _100.ValidatorSet): unknown;
             fromPartial(object: Partial<_100.ValidatorSet>): _100.ValidatorSet;
@@ -961,7 +961,7 @@ export declare namespace tendermint {
         Validator: {
             typeUrl: string;
             encode(message: _100.Validator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _100.Validator;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _100.Validator;
             fromJSON(object: any): _100.Validator;
             toJSON(message: _100.Validator): unknown;
             fromPartial(object: Partial<_100.Validator>): _100.Validator;
@@ -977,7 +977,7 @@ export declare namespace tendermint {
         SimpleValidator: {
             typeUrl: string;
             encode(message: _100.SimpleValidator, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _100.SimpleValidator;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _100.SimpleValidator;
             fromJSON(object: any): _100.SimpleValidator;
             toJSON(message: _100.SimpleValidator): unknown;
             fromPartial(object: Partial<_100.SimpleValidator>): _100.SimpleValidator;
@@ -1003,7 +1003,7 @@ export declare namespace tendermint {
         PartSetHeader: {
             typeUrl: string;
             encode(message: _99.PartSetHeader, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.PartSetHeader;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _99.PartSetHeader;
             fromJSON(object: any): _99.PartSetHeader;
             toJSON(message: _99.PartSetHeader): unknown;
             fromPartial(object: Partial<_99.PartSetHeader>): _99.PartSetHeader;
@@ -1019,7 +1019,7 @@ export declare namespace tendermint {
         Part: {
             typeUrl: string;
             encode(message: _99.Part, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.Part;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _99.Part;
             fromJSON(object: any): _99.Part;
             toJSON(message: _99.Part): unknown;
             fromPartial(object: Partial<_99.Part>): _99.Part;
@@ -1035,7 +1035,7 @@ export declare namespace tendermint {
         BlockID: {
             typeUrl: string;
             encode(message: _99.BlockID, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.BlockID;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _99.BlockID;
             fromJSON(object: any): _99.BlockID;
             toJSON(message: _99.BlockID): unknown;
             fromPartial(object: Partial<_99.BlockID>): _99.BlockID;
@@ -1051,7 +1051,7 @@ export declare namespace tendermint {
         Header: {
             typeUrl: string;
             encode(message: _99.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.Header;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _99.Header;
             fromJSON(object: any): _99.Header;
             toJSON(message: _99.Header): unknown;
             fromPartial(object: Partial<_99.Header>): _99.Header;
@@ -1067,7 +1067,7 @@ export declare namespace tendermint {
         Data: {
             typeUrl: string;
             encode(message: _99.Data, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.Data;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _99.Data;
             fromJSON(object: any): _99.Data;
             toJSON(message: _99.Data): unknown;
             fromPartial(object: Partial<_99.Data>): _99.Data;
@@ -1083,7 +1083,7 @@ export declare namespace tendermint {
         Vote: {
             typeUrl: string;
             encode(message: _99.Vote, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.Vote;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _99.Vote;
             fromJSON(object: any): _99.Vote;
             toJSON(message: _99.Vote): unknown;
             fromPartial(object: Partial<_99.Vote>): _99.Vote;
@@ -1099,7 +1099,7 @@ export declare namespace tendermint {
         Commit: {
             typeUrl: string;
             encode(message: _99.Commit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.Commit;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _99.Commit;
             fromJSON(object: any): _99.Commit;
             toJSON(message: _99.Commit): unknown;
             fromPartial(object: Partial<_99.Commit>): _99.Commit;
@@ -1115,7 +1115,7 @@ export declare namespace tendermint {
         CommitSig: {
             typeUrl: string;
             encode(message: _99.CommitSig, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.CommitSig;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _99.CommitSig;
             fromJSON(object: any): _99.CommitSig;
             toJSON(message: _99.CommitSig): unknown;
             fromPartial(object: Partial<_99.CommitSig>): _99.CommitSig;
@@ -1131,7 +1131,7 @@ export declare namespace tendermint {
         Proposal: {
             typeUrl: string;
             encode(message: _99.Proposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.Proposal;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _99.Proposal;
             fromJSON(object: any): _99.Proposal;
             toJSON(message: _99.Proposal): unknown;
             fromPartial(object: Partial<_99.Proposal>): _99.Proposal;
@@ -1147,7 +1147,7 @@ export declare namespace tendermint {
         SignedHeader: {
             typeUrl: string;
             encode(message: _99.SignedHeader, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.SignedHeader;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _99.SignedHeader;
             fromJSON(object: any): _99.SignedHeader;
             toJSON(message: _99.SignedHeader): unknown;
             fromPartial(object: Partial<_99.SignedHeader>): _99.SignedHeader;
@@ -1163,7 +1163,7 @@ export declare namespace tendermint {
         LightBlock: {
             typeUrl: string;
             encode(message: _99.LightBlock, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.LightBlock;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _99.LightBlock;
             fromJSON(object: any): _99.LightBlock;
             toJSON(message: _99.LightBlock): unknown;
             fromPartial(object: Partial<_99.LightBlock>): _99.LightBlock;
@@ -1179,7 +1179,7 @@ export declare namespace tendermint {
         BlockMeta: {
             typeUrl: string;
             encode(message: _99.BlockMeta, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.BlockMeta;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _99.BlockMeta;
             fromJSON(object: any): _99.BlockMeta;
             toJSON(message: _99.BlockMeta): unknown;
             fromPartial(object: Partial<_99.BlockMeta>): _99.BlockMeta;
@@ -1195,7 +1195,7 @@ export declare namespace tendermint {
         TxProof: {
             typeUrl: string;
             encode(message: _99.TxProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _99.TxProof;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _99.TxProof;
             fromJSON(object: any): _99.TxProof;
             toJSON(message: _99.TxProof): unknown;
             fromPartial(object: Partial<_99.TxProof>): _99.TxProof;
@@ -1211,7 +1211,7 @@ export declare namespace tendermint {
         ConsensusParams: {
             typeUrl: string;
             encode(message: _98.ConsensusParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _98.ConsensusParams;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _98.ConsensusParams;
             fromJSON(object: any): _98.ConsensusParams;
             toJSON(message: _98.ConsensusParams): unknown;
             fromPartial(object: Partial<_98.ConsensusParams>): _98.ConsensusParams;
@@ -1227,7 +1227,7 @@ export declare namespace tendermint {
         BlockParams: {
             typeUrl: string;
             encode(message: _98.BlockParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _98.BlockParams;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _98.BlockParams;
             fromJSON(object: any): _98.BlockParams;
             toJSON(message: _98.BlockParams): unknown;
             fromPartial(object: Partial<_98.BlockParams>): _98.BlockParams;
@@ -1243,7 +1243,7 @@ export declare namespace tendermint {
         EvidenceParams: {
             typeUrl: string;
             encode(message: _98.EvidenceParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _98.EvidenceParams;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _98.EvidenceParams;
             fromJSON(object: any): _98.EvidenceParams;
             toJSON(message: _98.EvidenceParams): unknown;
             fromPartial(object: Partial<_98.EvidenceParams>): _98.EvidenceParams;
@@ -1259,7 +1259,7 @@ export declare namespace tendermint {
         ValidatorParams: {
             typeUrl: string;
             encode(message: _98.ValidatorParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _98.ValidatorParams;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _98.ValidatorParams;
             fromJSON(object: any): _98.ValidatorParams;
             toJSON(message: _98.ValidatorParams): unknown;
             fromPartial(object: Partial<_98.ValidatorParams>): _98.ValidatorParams;
@@ -1275,7 +1275,7 @@ export declare namespace tendermint {
         VersionParams: {
             typeUrl: string;
             encode(message: _98.VersionParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _98.VersionParams;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _98.VersionParams;
             fromJSON(object: any): _98.VersionParams;
             toJSON(message: _98.VersionParams): unknown;
             fromPartial(object: Partial<_98.VersionParams>): _98.VersionParams;
@@ -1291,7 +1291,7 @@ export declare namespace tendermint {
         HashedParams: {
             typeUrl: string;
             encode(message: _98.HashedParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _98.HashedParams;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _98.HashedParams;
             fromJSON(object: any): _98.HashedParams;
             toJSON(message: _98.HashedParams): unknown;
             fromPartial(object: Partial<_98.HashedParams>): _98.HashedParams;
@@ -1307,7 +1307,7 @@ export declare namespace tendermint {
         Evidence: {
             typeUrl: string;
             encode(message: _97.Evidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _97.Evidence;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _97.Evidence;
             fromJSON(object: any): _97.Evidence;
             toJSON(message: _97.Evidence): unknown;
             fromPartial(object: Partial<_97.Evidence>): _97.Evidence;
@@ -1323,7 +1323,7 @@ export declare namespace tendermint {
         DuplicateVoteEvidence: {
             typeUrl: string;
             encode(message: _97.DuplicateVoteEvidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _97.DuplicateVoteEvidence;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _97.DuplicateVoteEvidence;
             fromJSON(object: any): _97.DuplicateVoteEvidence;
             toJSON(message: _97.DuplicateVoteEvidence): unknown;
             fromPartial(object: Partial<_97.DuplicateVoteEvidence>): _97.DuplicateVoteEvidence;
@@ -1339,7 +1339,7 @@ export declare namespace tendermint {
         LightClientAttackEvidence: {
             typeUrl: string;
             encode(message: _97.LightClientAttackEvidence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _97.LightClientAttackEvidence;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _97.LightClientAttackEvidence;
             fromJSON(object: any): _97.LightClientAttackEvidence;
             toJSON(message: _97.LightClientAttackEvidence): unknown;
             fromPartial(object: Partial<_97.LightClientAttackEvidence>): _97.LightClientAttackEvidence;
@@ -1355,7 +1355,7 @@ export declare namespace tendermint {
         EvidenceList: {
             typeUrl: string;
             encode(message: _97.EvidenceList, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _97.EvidenceList;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _97.EvidenceList;
             fromJSON(object: any): _97.EvidenceList;
             toJSON(message: _97.EvidenceList): unknown;
             fromPartial(object: Partial<_97.EvidenceList>): _97.EvidenceList;
@@ -1371,7 +1371,7 @@ export declare namespace tendermint {
         Block: {
             typeUrl: string;
             encode(message: _96.Block, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _96.Block;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _96.Block;
             fromJSON(object: any): _96.Block;
             toJSON(message: _96.Block): unknown;
             fromPartial(object: Partial<_96.Block>): _96.Block;
@@ -1390,7 +1390,7 @@ export declare namespace tendermint {
         App: {
             typeUrl: string;
             encode(message: _101.App, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _101.App;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _101.App;
             fromJSON(object: any): _101.App;
             toJSON(message: _101.App): unknown;
             fromPartial(object: Partial<_101.App>): _101.App;
@@ -1406,7 +1406,7 @@ export declare namespace tendermint {
         Consensus: {
             typeUrl: string;
             encode(message: _101.Consensus, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _101.Consensus;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _101.Consensus;
             fromJSON(object: any): _101.Consensus;
             toJSON(message: _101.Consensus): unknown;
             fromPartial(object: Partial<_101.Consensus>): _101.Consensus;
