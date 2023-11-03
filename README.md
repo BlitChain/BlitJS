@@ -14,8 +14,7 @@ Include BlitJS in your project by adding the following script tag in your HTML f
     default as blitjs,
     experimentalHelpers,
   } from "https://cdn.jsdelivr.net/npm/@blitchain/blitjs/+esm";
-      let { makeKeplrClient, runFunction, queryFunction } =
-        experimentalHelpers;
+    let { makeKeplrClient, runFunction, queryFunction } = experimentalHelpers;
 
     let rpcEndpoint = "http://testnet.blitchain.net:26657";
     let restEndpoint = "http://testnet.blitchain.net:1317";
