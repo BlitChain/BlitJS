@@ -2,8 +2,7 @@ import * as blitjs from './codegen';
 
 export default blitjs;
 
-
-export const makeChainInfo = async ({ rpcEndpoint, restEndpoint }) => {
+const makeChainInfo = async ({ rpcEndpoint, restEndpoint }) => {
   const queryClient = await blitjs.blit.ClientFactory.createLCDClient({
     restEndpoint
   });
@@ -24,8 +23,8 @@ export const makeChainInfo = async ({ rpcEndpoint, restEndpoint }) => {
     rest: restEndpoint,
     stakeCurrency: {
       coinDenom: 'blit',
-      coinMinimalDenom: 'blit',
-      coinDecimals: 0
+      coinMinimalDenom: 'ublit',
+      coinDecimals: 6
     },
     bip44: {
       coinType: 118
@@ -40,30 +39,31 @@ export const makeChainInfo = async ({ rpcEndpoint, restEndpoint }) => {
     },
     currencies: [
       {
-        coinDenom: 'BLIT',
+        coinDenom: 'blit',
         coinMinimalDenom: 'ublit',
         coinDecimals: 6
       }
     ],
     feeCurrencies: [
       {
-        coinDenom: 'BLIT',
+        coinDenom: 'blit',
         coinMinimalDenom: 'ublit',
         coinDecimals: 0,
         gasPriceStep: { low: 0.0, average: 0.000001, high: 1 }
       }
     ]
-  }
-}
+  };
+};
 
 const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
   if (!window.keplr) {
     throw new Error('Please install keplr extension');
   }
 
-  await window.keplr.experimentalSuggestChain(await makeChainInfo({ rpcEndpoint, restEndpoint })));
-  await window.keplr.enable(chainId);
-  const offlineSigner = window.getOfflineSigner(chainId);
+  const chainInfo = await makeChainInfo({ rpcEndpoint, restEndpoint });
+  await window.keplr.experimentalSuggestChain(chainInfo);
+  await window.keplr.enable(chainInfo.chainId);
+  const offlineSigner = window.getOfflineSigner(chainInfo.chainId);
   const client = await blitjs.getSigningBlitClient({
     rpcEndpoint,
     signer: offlineSigner
@@ -128,5 +128,6 @@ const queryFunction = async ({ queryClient, script_address, caller_address, func
 export const experimentalHelpers = {
   makeKeplrClient,
   runFunction,
-  queryFunction
+  queryFunction,
+  makeChainInfo
 };
