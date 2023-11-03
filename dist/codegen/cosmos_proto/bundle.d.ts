@@ -9,7 +9,7 @@ export declare const cosmos_proto: {
     InterfaceDescriptor: {
         typeUrl: string;
         encode(message: _16.InterfaceDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _16.InterfaceDescriptor;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.InterfaceDescriptor;
         fromJSON(object: any): _16.InterfaceDescriptor;
         toJSON(message: _16.InterfaceDescriptor): unknown;
         fromPartial(object: Partial<_16.InterfaceDescriptor>): _16.InterfaceDescriptor;
@@ -25,7 +25,7 @@ export declare const cosmos_proto: {
     ScalarDescriptor: {
         typeUrl: string;
         encode(message: _16.ScalarDescriptor, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _16.ScalarDescriptor;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.ScalarDescriptor;
         fromJSON(object: any): _16.ScalarDescriptor;
         toJSON(message: _16.ScalarDescriptor): unknown;
         fromPartial(object: Partial<_16.ScalarDescriptor>): _16.ScalarDescriptor;

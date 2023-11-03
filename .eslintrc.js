@@ -21,12 +21,7 @@ module.exports = {
     'no-await-in-loop': 0,
     'no-prototype-builtins': 0,
     'no-return-assign': ['error', 'except-parens'],
-    'no-restricted-syntax': [
-      2,
-      'ForInStatement',
-      'LabeledStatement',
-      'WithStatement'
-    ],
+    'no-restricted-syntax': [2, 'ForInStatement', 'LabeledStatement', 'WithStatement'],
     'no-unused-vars': [
       0,
       {
@@ -63,7 +58,7 @@ module.exports = {
       {
         trailingComma: 'none',
         singleQuote: true,
-        printWidth: 80
+        printWidth: 180
       }
     ]
   }

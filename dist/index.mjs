@@ -1,78 +1,71 @@
 import * as blitjs from './codegen';
 export default blitjs;
-// Query client setup
-const makeQueryClient = async ({ restEndpoint }) => {
-    return await blitjs.blit.ClientFactory.createLCDClient({
+export const makeChainInfo = async ({ rpcEndpoint, restEndpoint }) => {
+    const queryClient = await blitjs.blit.ClientFactory.createLCDClient({
         restEndpoint
     });
+    const nodeInfo = await queryClient.cosmos.base.tendermint.v1beta1.getNodeInfo();
+    const chainId = nodeInfo.default_node_info.network;
+    let chainName = 'Blit';
+    if (chainId.includes('test')) {
+        chainName = `${chainName} Testnet (${chainId})`;
+    }
+    if (chainId.includes('dev')) {
+        chainName = `${chainName} Devnet (${chainId})`;
+    }
+    return {
+        features: [],
+        chainId: chainId,
+        chainName: chainName,
+        rpc: rpcEndpoint,
+        rest: restEndpoint,
+        stakeCurrency: {
+            coinDenom: 'blit',
+            coinMinimalDenom: 'blit',
+            coinDecimals: 0
+        },
+        bip44: {
+            coinType: 118
+        },
+        bech32Config: {
+            bech32PrefixAccAddr: 'blit',
+            bech32PrefixAccPub: 'blitpub',
+            bech32PrefixValAddr: 'blitvaloper',
+            bech32PrefixValPub: 'blitvaloperpub',
+            bech32PrefixConsAddr: 'blitvalcons',
+            bech32PrefixConsPub: 'blitvalconspub'
+        },
+        currencies: [
+            {
+                coinDenom: 'BLIT',
+                coinMinimalDenom: 'ublit',
+                coinDecimals: 6
+            }
+        ],
+        feeCurrencies: [
+            {
+                coinDenom: 'BLIT',
+                coinMinimalDenom: 'ublit',
+                coinDecimals: 0,
+                gasPriceStep: { low: 0.0, average: 0.000001, high: 1 }
+            }
+        ]
+    };
 };
-// Client setup for Keplr
-const makeKeplrClient = ({ rpcEndpoint, restEndpoint, chainId }) => {
-    return new Promise((resolve, reject) => {
-        if (!window.keplr) {
-            reject(new Error('Please install keplr extension'));
-        }
-        else {
-            try {
-                window.keplr
-                    .experimentalSuggestChain({
-                    features: [],
-                    chainId: chainId,
-                    chainName: 'Blit Testnet',
-                    rpc: rpcEndpoint,
-                    rest: restEndpoint,
-                    stakeCurrency: {
-                        coinDenom: 'blit',
-                        coinMinimalDenom: 'blit',
-                        coinDecimals: 0
-                    },
-                    bip44: {
-                        coinType: 118
-                    },
-                    bech32Config: {
-                        bech32PrefixAccAddr: 'blit',
-                        bech32PrefixAccPub: 'blitpub',
-                        bech32PrefixValAddr: 'blitvaloper',
-                        bech32PrefixValPub: 'blitvaloperpub',
-                        bech32PrefixConsAddr: 'blitvalcons',
-                        bech32PrefixConsPub: 'blitvalconspub'
-                    },
-                    currencies: [
-                        {
-                            coinDenom: 'blit',
-                            coinMinimalDenom: 'blit',
-                            coinDecimals: 0
-                        }
-                    ],
-                    feeCurrencies: [
-                        {
-                            coinDenom: 'blit',
-                            coinMinimalDenom: 'blit',
-                            coinDecimals: 0,
-                            gasPriceStep: { low: 0.0, average: 0.000001, high: 1 }
-                        }
-                    ]
-                })
-                    .then(() => {
-                    window.keplr.enable(chainId);
-                    window.getOfflineSigner(chainId).then((offlineSigner) => {
-                        blitjs
-                            .getSigningBlitClient({
-                            rpcEndpoint,
-                            signer: offlineSigner
-                        })
-                            .then((client) => {
-                            client.gasPrice = '0.000001blit';
-                            resolve(client);
-                        });
-                    });
-                });
-            }
-            catch (error) {
-                reject(error);
-            }
-        }
+const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
+    if (!window.keplr) {
+        throw new Error('Please install keplr extension');
+    }
+    await window.keplr.experimentalSuggestChain(await makeChainInfo({ rpcEndpoint, restEndpoint }));
+    ;
+    await window.keplr.enable(chainId);
+    const offlineSigner = window.getOfflineSigner(chainId);
+    const client = await blitjs.getSigningBlitClient({
+        rpcEndpoint,
+        signer: offlineSigner
     });
+    client.gasPrice = '0.000001blit';
+    return client;
 };
 const runFunction = async ({ msgClient, caller_address, script_address, function_name, kwargs, extra_code, grantee }) => {
     const message = blitjs.blit.script.MessageComposer.withTypeUrl.run({
@@ -129,7 +122,6 @@ const queryFunction = async ({ queryClient, script_address, caller_address, func
     }
 };
 export const experimentalHelpers = {
-    makeQueryClient,
     makeKeplrClient,
     runFunction,
     queryFunction
