@@ -284,7 +284,21 @@ Output:
 }
 */
 ```
+## Hints
 
+### Out of gas
+
+Q: I'm getting an error like `out of gas in location: WritePerByte; gasWanted: 47347, gasUsed: 48728: out of gas`
+
+A: Try replacing `"auto"` with 1.5 like this:
+
+```
+await msgClient.signAndBroadcast(address, [message], "auto")
+```
+
+```
+await msgClient.signAndBroadcast(address, [message], 1.5)
+```
 
 # How to query a function in a script 
 
@@ -351,21 +365,7 @@ let message2 = blitjs.blit.storage.MessageComposer.fromPartial.updateStorage({
 await msgClient.signAndBroadcast(address, [message2], "auto")
 // Output: {code: 0, height: 1090191, txIndex: 0, events: Array(8), rawLog: '[{"msg_index":0,"events":[{"type":"message","attri…m02jkt2"},{"key":"module","value":"storage"}]}]}]', …}
 ```
-## Hints
 
-### Out of gas
-
-Q: I'm getting an error like `out of gas in location: WritePerByte; gasWanted: 47347, gasUsed: 48728: out of gas`
-
-A: Try replacing `"auto"` with 1.5 like this:
-
-```
-await msgClient.signAndBroadcast(address, [message], "auto")
-```
-
-```
-await msgClient.signAndBroadcast(address, [message], 1.5)
-```
 
 
 # Msg Reference
