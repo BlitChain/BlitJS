@@ -14,36 +14,33 @@ Include BlitJS in your project by adding the following script tag in your HTML f
     default as blitjs,
     experimentalHelpers,
   } from "https://cdn.jsdelivr.net/npm/@blitchain/blitjs/+esm";
-    let { makeKeplrClient, runFunction, queryFunction } = experimentalHelpers;
+  let {
+    makeKeplrClient,
+    runFunction,
+    queryFunction
+  } = experimentalHelpers;
 
-    let rpcEndpoint = "http://testnet.blitchain.net:26657";
-    let restEndpoint = "http://testnet.blitchain.net:1317";
-    let chainId = "blit-dev";
+  let rpcEndpoint = "http://testnet.blitchain.net:26657";
+  let restEndpoint = "http://testnet.blitchain.net:1317";
+  
+  let msgClient = await makeKeplrClient({ rpcEndpoint, restEndpoint });
+  let queryClient = await blitjs.blit.ClientFactory.createLCDClient({ restEndpoint });
+  
+  let address = (await msgClient.signer.getAccounts())[0].address;
+  console.log(address);
+  
+  let balanceResponse = await queryClient.cosmos.bank.v1beta1.allBalances({
+    address,
+  });
+  console.log(balanceResponse);
 
-    let msgClient = await makeKeplrClient({
-      rpcEndpoint,
-      restEndpoint,
-      chainId,
-    });
-    let queryClient = await blitjs.blit.ClientFactory.createLCDClient({
-      restEndpoint
-    });
-
-    let address = (await msgClient.signer.getAccounts())[0].address;
-    console.log(address);
-
-    let balanceResponse = await queryClient.cosmos.bank.v1beta1.allBalances({
-      address,
-    });
-    console.log(balanceResponse);
-
-    window.blitjs = blitjs;
-    window.runFunction = runFunction;
-    window.queryFunction = queryFunction;
-    window.msgClient = msgClient;
-    window.queryClient = queryClient;
-    window.address = address;
-
+  // Optional: If you want console access for debugging
+  window.blitjs = blitjs;
+  window.runFunction = runFunction;
+  window.queryFunction = queryFunction;
+  window.msgClient = msgClient;
+  window.queryClient = queryClient;
+  window.address = address;
 </script>
 ```
 
@@ -60,20 +57,10 @@ npm install @blitchain/blitjs
 
 ```js
 const {default: blitjs, experimentalHelpers} = (await import("https://cdn.jsdelivr.net/npm/@blitchain/blitjs/+esm"));
-let {  makeKeplrClient, runFunction, queryFunction } = experimentalHelpers;
+const { makeKeplrClient, runFunction, queryFunction } = experimentalHelpers;
 
 ```
 
-## Creating the Clients:
-
-```js
-let rpcEndpoint = "http://testnet.blitchain.net:26657";
-let restEndpoint = "http://testnet.blitchain.net:1317";
-
-let msgClient = await makeKeplrClient({ rpcEndpoint, restEndpoint });
-let queryClient = await blitjs.blit.ClientFactory.createLCDClient({ restEndpoint });
-
-```
 
 # Querying the chain:
 
