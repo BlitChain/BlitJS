@@ -150,7 +150,7 @@ await msgClient.signAndBroadcast(address, [message], "auto")
 
 ### Using the `grantee` field
 
-As a convenience, `UpdateScriptMsg` has a `grantee` field that will automatically create and execute the Authz Exec message if you have the corrisponding `/blit.script.MsgUpdateScript` permission.
+As a convenience, `UpdateScriptMsg` has a `grantee` field that will automatically create and execute the Authz Exec message if you have the corresponding `/blit.script.MsgUpdateScript` permission.
 
 ```js
 let newCode = `
