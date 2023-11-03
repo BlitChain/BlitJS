@@ -1,46 +1,5 @@
 import * as blitjs from './codegen';
 export default blitjs;
-export declare const makeChainInfo: ({ rpcEndpoint, restEndpoint }: {
-    rpcEndpoint: any;
-    restEndpoint: any;
-}) => Promise<{
-    features: any[];
-    chainId: any;
-    chainName: string;
-    rpc: any;
-    rest: any;
-    stakeCurrency: {
-        coinDenom: string;
-        coinMinimalDenom: string;
-        coinDecimals: number;
-    };
-    bip44: {
-        coinType: number;
-    };
-    bech32Config: {
-        bech32PrefixAccAddr: string;
-        bech32PrefixAccPub: string;
-        bech32PrefixValAddr: string;
-        bech32PrefixValPub: string;
-        bech32PrefixConsAddr: string;
-        bech32PrefixConsPub: string;
-    };
-    currencies: {
-        coinDenom: string;
-        coinMinimalDenom: string;
-        coinDecimals: number;
-    }[];
-    feeCurrencies: {
-        coinDenom: string;
-        coinMinimalDenom: string;
-        coinDecimals: number;
-        gasPriceStep: {
-            low: number;
-            average: number;
-            high: number;
-        };
-    }[];
-}>;
 export declare const experimentalHelpers: {
     makeKeplrClient: ({ rpcEndpoint, restEndpoint }: {
         rpcEndpoint: any;
@@ -64,4 +23,45 @@ export declare const experimentalHelpers: {
         extra_code: any;
         grantee: any;
     }) => Promise<any>;
+    makeChainInfo: ({ rpcEndpoint, restEndpoint }: {
+        rpcEndpoint: any;
+        restEndpoint: any;
+    }) => Promise<{
+        features: any[];
+        chainId: any;
+        chainName: string;
+        rpc: any;
+        rest: any;
+        stakeCurrency: {
+            coinDenom: string;
+            coinMinimalDenom: string;
+            coinDecimals: number;
+        };
+        bip44: {
+            coinType: number;
+        };
+        bech32Config: {
+            bech32PrefixAccAddr: string;
+            bech32PrefixAccPub: string;
+            bech32PrefixValAddr: string;
+            bech32PrefixValPub: string;
+            bech32PrefixConsAddr: string;
+            bech32PrefixConsPub: string;
+        };
+        currencies: {
+            coinDenom: string;
+            coinMinimalDenom: string;
+            coinDecimals: number;
+        }[];
+        feeCurrencies: {
+            coinDenom: string;
+            coinMinimalDenom: string;
+            coinDecimals: number;
+            gasPriceStep: {
+                low: number;
+                average: number;
+                high: number;
+            };
+        }[];
+    }>;
 };

@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.experimentalHelpers = exports.makeChainInfo = void 0;
+exports.experimentalHelpers = void 0;
 const blitjs = __importStar(require("./codegen"));
 exports.default = blitjs;
 const makeChainInfo = async ({ rpcEndpoint, restEndpoint }) => {
@@ -47,8 +47,8 @@ const makeChainInfo = async ({ rpcEndpoint, restEndpoint }) => {
         rest: restEndpoint,
         stakeCurrency: {
             coinDenom: 'blit',
-            coinMinimalDenom: 'blit',
-            coinDecimals: 0
+            coinMinimalDenom: 'ublit',
+            coinDecimals: 6
         },
         bip44: {
             coinType: 118
@@ -63,14 +63,14 @@ const makeChainInfo = async ({ rpcEndpoint, restEndpoint }) => {
         },
         currencies: [
             {
-                coinDenom: 'BLIT',
+                coinDenom: 'blit',
                 coinMinimalDenom: 'ublit',
                 coinDecimals: 6
             }
         ],
         feeCurrencies: [
             {
-                coinDenom: 'BLIT',
+                coinDenom: 'blit',
                 coinMinimalDenom: 'ublit',
                 coinDecimals: 0,
                 gasPriceStep: { low: 0.0, average: 0.000001, high: 1 }
@@ -78,15 +78,14 @@ const makeChainInfo = async ({ rpcEndpoint, restEndpoint }) => {
         ]
     };
 };
-exports.makeChainInfo = makeChainInfo;
 const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
     if (!window.keplr) {
         throw new Error('Please install keplr extension');
     }
-    await window.keplr.experimentalSuggestChain(await (0, exports.makeChainInfo)({ rpcEndpoint, restEndpoint }));
-    ;
-    await window.keplr.enable(chainId);
-    const offlineSigner = window.getOfflineSigner(chainId);
+    const chainInfo = await makeChainInfo({ rpcEndpoint, restEndpoint });
+    await window.keplr.experimentalSuggestChain(chainInfo);
+    await window.keplr.enable(chainInfo.chainId);
+    const offlineSigner = window.getOfflineSigner(chainInfo.chainId);
     const client = await blitjs.getSigningBlitClient({
         rpcEndpoint,
         signer: offlineSigner
@@ -151,6 +150,7 @@ const queryFunction = async ({ queryClient, script_address, caller_address, func
 exports.experimentalHelpers = {
     makeKeplrClient,
     runFunction,
-    queryFunction
+    queryFunction,
+    makeChainInfo
 };
 //# sourceMappingURL=index.js.map

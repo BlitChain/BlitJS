@@ -9,7 +9,7 @@ export declare namespace google {
         Timestamp: {
             typeUrl: string;
             encode(message: _90.Timestamp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _90.Timestamp;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _90.Timestamp;
             fromJSON(object: any): _90.Timestamp;
             toJSON(message: _90.Timestamp): unknown;
             fromPartial(object: Partial<_90.Timestamp>): _90.Timestamp;
@@ -25,7 +25,7 @@ export declare namespace google {
         Empty: {
             typeUrl: string;
             encode(_: _89.Empty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _89.Empty;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _89.Empty;
             fromJSON(_: any): _89.Empty;
             toJSON(_: _89.Empty): unknown;
             fromPartial(_: Partial<_89.Empty>): _89.Empty;
@@ -41,7 +41,7 @@ export declare namespace google {
         Duration: {
             typeUrl: string;
             encode(message: _88.Duration, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _88.Duration;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _88.Duration;
             fromJSON(object: any): _88.Duration;
             toJSON(message: _88.Duration): unknown;
             fromPartial(object: Partial<_88.Duration>): _88.Duration;
@@ -87,7 +87,7 @@ export declare namespace google {
         FileDescriptorSet: {
             typeUrl: string;
             encode(message: _87.FileDescriptorSet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.FileDescriptorSet;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.FileDescriptorSet;
             fromJSON(object: any): _87.FileDescriptorSet;
             toJSON(message: _87.FileDescriptorSet): unknown;
             fromPartial(object: Partial<_87.FileDescriptorSet>): _87.FileDescriptorSet;
@@ -103,7 +103,7 @@ export declare namespace google {
         FileDescriptorProto: {
             typeUrl: string;
             encode(message: _87.FileDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.FileDescriptorProto;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.FileDescriptorProto;
             fromJSON(object: any): _87.FileDescriptorProto;
             toJSON(message: _87.FileDescriptorProto): unknown;
             fromPartial(object: Partial<_87.FileDescriptorProto>): _87.FileDescriptorProto;
@@ -119,7 +119,7 @@ export declare namespace google {
         DescriptorProto: {
             typeUrl: string;
             encode(message: _87.DescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.DescriptorProto;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.DescriptorProto;
             fromJSON(object: any): _87.DescriptorProto;
             toJSON(message: _87.DescriptorProto): unknown;
             fromPartial(object: Partial<_87.DescriptorProto>): _87.DescriptorProto;
@@ -135,7 +135,7 @@ export declare namespace google {
         DescriptorProto_ExtensionRange: {
             typeUrl: string;
             encode(message: _87.DescriptorProto_ExtensionRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.DescriptorProto_ExtensionRange;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.DescriptorProto_ExtensionRange;
             fromJSON(object: any): _87.DescriptorProto_ExtensionRange;
             toJSON(message: _87.DescriptorProto_ExtensionRange): unknown;
             fromPartial(object: Partial<_87.DescriptorProto_ExtensionRange>): _87.DescriptorProto_ExtensionRange;
@@ -151,7 +151,7 @@ export declare namespace google {
         DescriptorProto_ReservedRange: {
             typeUrl: string;
             encode(message: _87.DescriptorProto_ReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.DescriptorProto_ReservedRange;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.DescriptorProto_ReservedRange;
             fromJSON(object: any): _87.DescriptorProto_ReservedRange;
             toJSON(message: _87.DescriptorProto_ReservedRange): unknown;
             fromPartial(object: Partial<_87.DescriptorProto_ReservedRange>): _87.DescriptorProto_ReservedRange;
@@ -167,7 +167,7 @@ export declare namespace google {
         ExtensionRangeOptions: {
             typeUrl: string;
             encode(message: _87.ExtensionRangeOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.ExtensionRangeOptions;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.ExtensionRangeOptions;
             fromJSON(object: any): _87.ExtensionRangeOptions;
             toJSON(message: _87.ExtensionRangeOptions): unknown;
             fromPartial(object: Partial<_87.ExtensionRangeOptions>): _87.ExtensionRangeOptions;
@@ -183,7 +183,7 @@ export declare namespace google {
         FieldDescriptorProto: {
             typeUrl: string;
             encode(message: _87.FieldDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.FieldDescriptorProto;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.FieldDescriptorProto;
             fromJSON(object: any): _87.FieldDescriptorProto;
             toJSON(message: _87.FieldDescriptorProto): unknown;
             fromPartial(object: Partial<_87.FieldDescriptorProto>): _87.FieldDescriptorProto;
@@ -199,7 +199,7 @@ export declare namespace google {
         OneofDescriptorProto: {
             typeUrl: string;
             encode(message: _87.OneofDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.OneofDescriptorProto;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.OneofDescriptorProto;
             fromJSON(object: any): _87.OneofDescriptorProto;
             toJSON(message: _87.OneofDescriptorProto): unknown;
             fromPartial(object: Partial<_87.OneofDescriptorProto>): _87.OneofDescriptorProto;
@@ -215,7 +215,7 @@ export declare namespace google {
         EnumDescriptorProto: {
             typeUrl: string;
             encode(message: _87.EnumDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.EnumDescriptorProto;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.EnumDescriptorProto;
             fromJSON(object: any): _87.EnumDescriptorProto;
             toJSON(message: _87.EnumDescriptorProto): unknown;
             fromPartial(object: Partial<_87.EnumDescriptorProto>): _87.EnumDescriptorProto;
@@ -231,7 +231,7 @@ export declare namespace google {
         EnumDescriptorProto_EnumReservedRange: {
             typeUrl: string;
             encode(message: _87.EnumDescriptorProto_EnumReservedRange, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.EnumDescriptorProto_EnumReservedRange;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.EnumDescriptorProto_EnumReservedRange;
             fromJSON(object: any): _87.EnumDescriptorProto_EnumReservedRange;
             toJSON(message: _87.EnumDescriptorProto_EnumReservedRange): unknown;
             fromPartial(object: Partial<_87.EnumDescriptorProto_EnumReservedRange>): _87.EnumDescriptorProto_EnumReservedRange;
@@ -247,7 +247,7 @@ export declare namespace google {
         EnumValueDescriptorProto: {
             typeUrl: string;
             encode(message: _87.EnumValueDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.EnumValueDescriptorProto;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.EnumValueDescriptorProto;
             fromJSON(object: any): _87.EnumValueDescriptorProto;
             toJSON(message: _87.EnumValueDescriptorProto): unknown;
             fromPartial(object: Partial<_87.EnumValueDescriptorProto>): _87.EnumValueDescriptorProto;
@@ -263,7 +263,7 @@ export declare namespace google {
         ServiceDescriptorProto: {
             typeUrl: string;
             encode(message: _87.ServiceDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.ServiceDescriptorProto;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.ServiceDescriptorProto;
             fromJSON(object: any): _87.ServiceDescriptorProto;
             toJSON(message: _87.ServiceDescriptorProto): unknown;
             fromPartial(object: Partial<_87.ServiceDescriptorProto>): _87.ServiceDescriptorProto;
@@ -279,7 +279,7 @@ export declare namespace google {
         MethodDescriptorProto: {
             typeUrl: string;
             encode(message: _87.MethodDescriptorProto, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.MethodDescriptorProto;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.MethodDescriptorProto;
             fromJSON(object: any): _87.MethodDescriptorProto;
             toJSON(message: _87.MethodDescriptorProto): unknown;
             fromPartial(object: Partial<_87.MethodDescriptorProto>): _87.MethodDescriptorProto;
@@ -295,7 +295,7 @@ export declare namespace google {
         FileOptions: {
             typeUrl: string;
             encode(message: _87.FileOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.FileOptions;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.FileOptions;
             fromJSON(object: any): _87.FileOptions;
             toJSON(message: _87.FileOptions): unknown;
             fromPartial(object: Partial<_87.FileOptions>): _87.FileOptions;
@@ -311,7 +311,7 @@ export declare namespace google {
         MessageOptions: {
             typeUrl: string;
             encode(message: _87.MessageOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.MessageOptions;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.MessageOptions;
             fromJSON(object: any): _87.MessageOptions;
             toJSON(message: _87.MessageOptions): unknown;
             fromPartial(object: Partial<_87.MessageOptions>): _87.MessageOptions;
@@ -327,7 +327,7 @@ export declare namespace google {
         FieldOptions: {
             typeUrl: string;
             encode(message: _87.FieldOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.FieldOptions;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.FieldOptions;
             fromJSON(object: any): _87.FieldOptions;
             toJSON(message: _87.FieldOptions): unknown;
             fromPartial(object: Partial<_87.FieldOptions>): _87.FieldOptions;
@@ -343,7 +343,7 @@ export declare namespace google {
         OneofOptions: {
             typeUrl: string;
             encode(message: _87.OneofOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.OneofOptions;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.OneofOptions;
             fromJSON(object: any): _87.OneofOptions;
             toJSON(message: _87.OneofOptions): unknown;
             fromPartial(object: Partial<_87.OneofOptions>): _87.OneofOptions;
@@ -359,7 +359,7 @@ export declare namespace google {
         EnumOptions: {
             typeUrl: string;
             encode(message: _87.EnumOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.EnumOptions;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.EnumOptions;
             fromJSON(object: any): _87.EnumOptions;
             toJSON(message: _87.EnumOptions): unknown;
             fromPartial(object: Partial<_87.EnumOptions>): _87.EnumOptions;
@@ -375,7 +375,7 @@ export declare namespace google {
         EnumValueOptions: {
             typeUrl: string;
             encode(message: _87.EnumValueOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.EnumValueOptions;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.EnumValueOptions;
             fromJSON(object: any): _87.EnumValueOptions;
             toJSON(message: _87.EnumValueOptions): unknown;
             fromPartial(object: Partial<_87.EnumValueOptions>): _87.EnumValueOptions;
@@ -391,7 +391,7 @@ export declare namespace google {
         ServiceOptions: {
             typeUrl: string;
             encode(message: _87.ServiceOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.ServiceOptions;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.ServiceOptions;
             fromJSON(object: any): _87.ServiceOptions;
             toJSON(message: _87.ServiceOptions): unknown;
             fromPartial(object: Partial<_87.ServiceOptions>): _87.ServiceOptions;
@@ -407,7 +407,7 @@ export declare namespace google {
         MethodOptions: {
             typeUrl: string;
             encode(message: _87.MethodOptions, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.MethodOptions;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.MethodOptions;
             fromJSON(object: any): _87.MethodOptions;
             toJSON(message: _87.MethodOptions): unknown;
             fromPartial(object: Partial<_87.MethodOptions>): _87.MethodOptions;
@@ -423,7 +423,7 @@ export declare namespace google {
         UninterpretedOption: {
             typeUrl: string;
             encode(message: _87.UninterpretedOption, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.UninterpretedOption;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.UninterpretedOption;
             fromJSON(object: any): _87.UninterpretedOption;
             toJSON(message: _87.UninterpretedOption): unknown;
             fromPartial(object: Partial<_87.UninterpretedOption>): _87.UninterpretedOption;
@@ -439,7 +439,7 @@ export declare namespace google {
         UninterpretedOption_NamePart: {
             typeUrl: string;
             encode(message: _87.UninterpretedOption_NamePart, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.UninterpretedOption_NamePart;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.UninterpretedOption_NamePart;
             fromJSON(object: any): _87.UninterpretedOption_NamePart;
             toJSON(message: _87.UninterpretedOption_NamePart): unknown;
             fromPartial(object: Partial<_87.UninterpretedOption_NamePart>): _87.UninterpretedOption_NamePart;
@@ -455,7 +455,7 @@ export declare namespace google {
         SourceCodeInfo: {
             typeUrl: string;
             encode(message: _87.SourceCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.SourceCodeInfo;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.SourceCodeInfo;
             fromJSON(object: any): _87.SourceCodeInfo;
             toJSON(message: _87.SourceCodeInfo): unknown;
             fromPartial(object: Partial<_87.SourceCodeInfo>): _87.SourceCodeInfo;
@@ -471,7 +471,7 @@ export declare namespace google {
         SourceCodeInfo_Location: {
             typeUrl: string;
             encode(message: _87.SourceCodeInfo_Location, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.SourceCodeInfo_Location;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.SourceCodeInfo_Location;
             fromJSON(object: any): _87.SourceCodeInfo_Location;
             toJSON(message: _87.SourceCodeInfo_Location): unknown;
             fromPartial(object: Partial<_87.SourceCodeInfo_Location>): _87.SourceCodeInfo_Location;
@@ -487,7 +487,7 @@ export declare namespace google {
         GeneratedCodeInfo: {
             typeUrl: string;
             encode(message: _87.GeneratedCodeInfo, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.GeneratedCodeInfo;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.GeneratedCodeInfo;
             fromJSON(object: any): _87.GeneratedCodeInfo;
             toJSON(message: _87.GeneratedCodeInfo): unknown;
             fromPartial(object: Partial<_87.GeneratedCodeInfo>): _87.GeneratedCodeInfo;
@@ -503,7 +503,7 @@ export declare namespace google {
         GeneratedCodeInfo_Annotation: {
             typeUrl: string;
             encode(message: _87.GeneratedCodeInfo_Annotation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _87.GeneratedCodeInfo_Annotation;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _87.GeneratedCodeInfo_Annotation;
             fromJSON(object: any): _87.GeneratedCodeInfo_Annotation;
             toJSON(message: _87.GeneratedCodeInfo_Annotation): unknown;
             fromPartial(object: Partial<_87.GeneratedCodeInfo_Annotation>): _87.GeneratedCodeInfo_Annotation;
@@ -519,7 +519,7 @@ export declare namespace google {
         Any: {
             typeUrl: string;
             encode(message: _86.Any, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _86.Any;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _86.Any;
             fromJSON(object: any): _86.Any;
             toJSON(message: _86.Any): unknown;
             fromPartial(object: Partial<_86.Any>): _86.Any;
