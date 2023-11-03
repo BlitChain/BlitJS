@@ -26,7 +26,9 @@ Include BlitJS in your project by adding the following script tag in your HTML f
       restEndpoint,
       chainId,
     });
-    let queryClient = await makeQueryClient({ restEndpoint });
+    let queryClient = await blitjs.blit.ClientFactory.createLCDClient({
+      restEndpoint
+    });
 
     let address = (await msgClient.signer.getAccounts())[0].address;
     console.log(address);
@@ -59,7 +61,7 @@ npm install @blitchain/blitjs
 
 ```js
 const {default: blitjs, experimentalHelpers} = (await import("https://cdn.jsdelivr.net/npm/@blitchain/blitjs/+esm"));
-let { makeQueryClient, makeKeplrClient, runFunction, queryFunction } = experimentalHelpers;
+let {  makeKeplrClient, runFunction, queryFunction } = experimentalHelpers;
 
 ```
 
@@ -68,10 +70,10 @@ let { makeQueryClient, makeKeplrClient, runFunction, queryFunction } = experimen
 ```js
 let rpcEndpoint = "http://testnet.blitchain.net:26657";
 let restEndpoint = "http://testnet.blitchain.net:1317";
-let chainId = "blit-dev";
 
-let msgClient = await makeKeplrClient({ rpcEndpoint, restEndpoint, chainId });
-let queryClient = await makeQueryClient({ restEndpoint });
+let msgClient = await makeKeplrClient({ rpcEndpoint, restEndpoint });
+let queryClient = await blitjs.blit.ClientFactory.createLCDClient({ restEndpoint });
+
 ```
 
 # Querying the chain:
@@ -94,7 +96,7 @@ console.log(balanceResponse);
 {
     "balances": [
         {
-            "denom": "blit",
+            "denom": "ublit",
             "amount": "8419418"
         }
     ],
