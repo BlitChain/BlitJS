@@ -102,7 +102,7 @@ export const Params = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/Params",
+            type: "cosmos-sdk/x/bank/Params",
             value: Params.toAmino(message)
         };
     },

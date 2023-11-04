@@ -27,7 +27,7 @@ exports.Msg = void 0;
 //@ts-nocheck
 const fm = __importStar(require("../../../grpc-gateway"));
 class Msg {
-    /** SubmitProposal defines a method to create new proposal given a content. */
+    /** SubmitProposal defines a method to create new proposal given the messages. */
     static SubmitProposal(request, initRequest) {
         return fm.fetchReq(`/cosmos.gov.v1/SubmitProposal`, {
             ...initRequest,
@@ -65,6 +65,19 @@ class Msg {
     /** Deposit defines a method to add deposit on a specific proposal. */
     static Deposit(request, initRequest) {
         return fm.fetchReq(`/cosmos.gov.v1/Deposit`, {
+            ...initRequest,
+            method: "POST",
+            body: JSON.stringify(request, fm.replacer)
+        });
+    }
+    /**
+     * UpdateParams defines a governance operation for updating the x/gov module
+     * parameters. The authority is defined in the keeper.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    static UpdateParams(request, initRequest) {
+        return fm.fetchReq(`/cosmos.gov.v1/UpdateParams`, {
             ...initRequest,
             method: "POST",
             body: JSON.stringify(request, fm.replacer)

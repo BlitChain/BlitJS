@@ -1,4 +1,4 @@
-import { ProposalStatus, Proposal, ProposalAmino, ProposalSDKType, Vote, VoteAmino, VoteSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType, Deposit, DepositAmino, DepositSDKType, TallyResult, TallyResultAmino, TallyResultSDKType } from "./gov";
+import { ProposalStatus, Proposal, ProposalAmino, ProposalSDKType, Vote, VoteAmino, VoteSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType, Params, ParamsAmino, ParamsSDKType, Deposit, DepositAmino, DepositSDKType, TallyResult, TallyResultAmino, TallyResultSDKType } from "./gov";
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.gov.v1";
@@ -30,6 +30,7 @@ export interface QueryProposalRequestSDKType {
 }
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
 export interface QueryProposalResponse {
+    /** proposal is the requested governance proposal. */
     proposal?: Proposal;
 }
 export interface QueryProposalResponseProtoMsg {
@@ -42,6 +43,7 @@ export interface QueryProposalResponseProtoMsg {
 }
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
 export interface QueryProposalResponseAmino {
+    /** proposal is the requested governance proposal. */
     proposal?: ProposalAmino;
 }
 export interface QueryProposalResponseAminoMsg {
@@ -98,6 +100,7 @@ export interface QueryProposalsRequestSDKType {
  * method.
  */
 export interface QueryProposalsResponse {
+    /** proposals defines all the requested governance proposals. */
     proposals: Proposal[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
@@ -115,6 +118,7 @@ export interface QueryProposalsResponseProtoMsg {
  * method.
  */
 export interface QueryProposalsResponseAmino {
+    /** proposals defines all the requested governance proposals. */
     proposals: ProposalAmino[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;
@@ -135,7 +139,7 @@ export interface QueryProposalsResponseSDKType {
 export interface QueryVoteRequest {
     /** proposal_id defines the unique id of the proposal. */
     proposal_id: bigint;
-    /** voter defines the oter address for the proposals. */
+    /** voter defines the voter address for the proposals. */
     voter: string;
 }
 export interface QueryVoteRequestProtoMsg {
@@ -150,7 +154,7 @@ export interface QueryVoteRequestProtoMsg {
 export interface QueryVoteRequestAmino {
     /** proposal_id defines the unique id of the proposal. */
     proposal_id: string;
-    /** voter defines the oter address for the proposals. */
+    /** voter defines the voter address for the proposals. */
     voter: string;
 }
 export interface QueryVoteRequestAminoMsg {
@@ -164,7 +168,7 @@ export interface QueryVoteRequestSDKType {
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponse {
-    /** vote defined the queried vote. */
+    /** vote defines the queried vote. */
     vote?: Vote;
 }
 export interface QueryVoteResponseProtoMsg {
@@ -177,7 +181,7 @@ export interface QueryVoteResponseProtoMsg {
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponseAmino {
-    /** vote defined the queried vote. */
+    /** vote defines the queried vote. */
     vote?: VoteAmino;
 }
 export interface QueryVoteResponseAminoMsg {
@@ -221,7 +225,7 @@ export interface QueryVotesRequestSDKType {
 }
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponse {
-    /** votes defined the queried votes. */
+    /** votes defines the queried votes. */
     votes: Vote[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
@@ -236,7 +240,7 @@ export interface QueryVotesResponseProtoMsg {
 }
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponseAmino {
-    /** votes defined the queried votes. */
+    /** votes defines the queried votes. */
     votes: VoteAmino[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;
@@ -284,12 +288,30 @@ export interface QueryParamsRequestSDKType {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
-    /** voting_params defines the parameters related to voting. */
+    /**
+     * Deprecated: Prefer to use `params` instead.
+     * voting_params defines the parameters related to voting.
+     */
+    /** @deprecated */
     voting_params?: VotingParams;
-    /** deposit_params defines the parameters related to deposit. */
+    /**
+     * Deprecated: Prefer to use `params` instead.
+     * deposit_params defines the parameters related to deposit.
+     */
+    /** @deprecated */
     deposit_params?: DepositParams;
-    /** tally_params defines the parameters related to tally. */
+    /**
+     * Deprecated: Prefer to use `params` instead.
+     * tally_params defines the parameters related to tally.
+     */
+    /** @deprecated */
     tally_params?: TallyParams;
+    /**
+     * params defines all the paramaters of x/gov module.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    params?: Params;
 }
 export interface QueryParamsResponseProtoMsg {
     type_url: "/cosmos.gov.v1.QueryParamsResponse";
@@ -301,12 +323,30 @@ export interface QueryParamsResponseProtoMsg {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseAmino {
-    /** voting_params defines the parameters related to voting. */
+    /**
+     * Deprecated: Prefer to use `params` instead.
+     * voting_params defines the parameters related to voting.
+     */
+    /** @deprecated */
     voting_params?: VotingParamsAmino;
-    /** deposit_params defines the parameters related to deposit. */
+    /**
+     * Deprecated: Prefer to use `params` instead.
+     * deposit_params defines the parameters related to deposit.
+     */
+    /** @deprecated */
     deposit_params?: DepositParamsAmino;
-    /** tally_params defines the parameters related to tally. */
+    /**
+     * Deprecated: Prefer to use `params` instead.
+     * tally_params defines the parameters related to tally.
+     */
+    /** @deprecated */
     tally_params?: TallyParamsAmino;
+    /**
+     * params defines all the paramaters of x/gov module.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
     type: "cosmos-sdk/v1/QueryParamsResponse";
@@ -314,9 +354,13 @@ export interface QueryParamsResponseAminoMsg {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
+    /** @deprecated */
     voting_params?: VotingParamsSDKType;
+    /** @deprecated */
     deposit_params?: DepositParamsSDKType;
+    /** @deprecated */
     tally_params?: TallyParamsSDKType;
+    params?: ParamsSDKType;
 }
 /** QueryDepositRequest is the request type for the Query/Deposit RPC method. */
 export interface QueryDepositRequest {
@@ -408,6 +452,7 @@ export interface QueryDepositsRequestSDKType {
 }
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponse {
+    /** deposits defines the requested deposits. */
     deposits: Deposit[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
@@ -422,6 +467,7 @@ export interface QueryDepositsResponseProtoMsg {
 }
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponseAmino {
+    /** deposits defines the requested deposits. */
     deposits: DepositAmino[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;

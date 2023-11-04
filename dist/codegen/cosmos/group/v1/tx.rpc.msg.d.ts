@@ -21,7 +21,7 @@ export declare class Msg {
     static UpdateGroupPolicyMetadata(request: MsgUpdateGroupPolicyMetadata, initRequest?: fm.InitReq): Promise<MsgUpdateGroupPolicyMetadataResponse>;
     /** SubmitProposal submits a new proposal. */
     static SubmitProposal(request: MsgSubmitProposal, initRequest?: fm.InitReq): Promise<MsgSubmitProposalResponse>;
-    /** WithdrawProposal aborts a proposal. */
+    /** WithdrawProposal withdraws a proposal. */
     static WithdrawProposal(request: MsgWithdrawProposal, initRequest?: fm.InitReq): Promise<MsgWithdrawProposalResponse>;
     /** Vote allows a voter to vote on a proposal. */
     static Vote(request: MsgVote, initRequest?: fm.InitReq): Promise<MsgVoteResponse>;

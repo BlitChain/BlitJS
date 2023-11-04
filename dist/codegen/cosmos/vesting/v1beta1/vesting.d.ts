@@ -11,6 +11,7 @@ export interface BaseVestingAccount {
     original_vesting: Coin[];
     delegated_free: Coin[];
     delegated_vesting: Coin[];
+    /** Vesting end time, as unix timestamp (in seconds). */
     end_time: bigint;
 }
 export interface BaseVestingAccountProtoMsg {
@@ -30,6 +31,7 @@ export interface BaseVestingAccountAmino {
     original_vesting: CoinAmino[];
     delegated_free: CoinAmino[];
     delegated_vesting: CoinAmino[];
+    /** Vesting end time, as unix timestamp (in seconds). */
     end_time: string;
 }
 export interface BaseVestingAccountAminoMsg {
@@ -53,6 +55,7 @@ export interface BaseVestingAccountSDKType {
  */
 export interface ContinuousVestingAccount {
     base_vesting_account?: BaseVestingAccount;
+    /** Vesting start time, as unix timestamp (in seconds). */
     start_time: bigint;
 }
 export interface ContinuousVestingAccountProtoMsg {
@@ -69,6 +72,7 @@ export interface ContinuousVestingAccountProtoMsg {
  */
 export interface ContinuousVestingAccountAmino {
     base_vesting_account?: BaseVestingAccountAmino;
+    /** Vesting start time, as unix timestamp (in seconds). */
     start_time: string;
 }
 export interface ContinuousVestingAccountAminoMsg {
@@ -121,6 +125,7 @@ export interface DelayedVestingAccountSDKType {
 }
 /** Period defines a length of time and amount of coins that will vest. */
 export interface Period {
+    /** Period duration in seconds. */
     length: bigint;
     amount: Coin[];
 }
@@ -134,6 +139,7 @@ export interface PeriodProtoMsg {
 }
 /** Period defines a length of time and amount of coins that will vest. */
 export interface PeriodAmino {
+    /** Period duration in seconds. */
     length: string;
     amount: CoinAmino[];
 }

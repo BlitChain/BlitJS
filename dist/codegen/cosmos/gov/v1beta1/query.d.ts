@@ -98,6 +98,7 @@ export interface QueryProposalsRequestSDKType {
  * method.
  */
 export interface QueryProposalsResponse {
+    /** proposals defines all the requested governance proposals. */
     proposals: Proposal[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
@@ -115,6 +116,7 @@ export interface QueryProposalsResponseProtoMsg {
  * method.
  */
 export interface QueryProposalsResponseAmino {
+    /** proposals defines all the requested governance proposals. */
     proposals: ProposalAmino[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;
@@ -135,7 +137,7 @@ export interface QueryProposalsResponseSDKType {
 export interface QueryVoteRequest {
     /** proposal_id defines the unique id of the proposal. */
     proposal_id: bigint;
-    /** voter defines the oter address for the proposals. */
+    /** voter defines the voter address for the proposals. */
     voter: string;
 }
 export interface QueryVoteRequestProtoMsg {
@@ -150,7 +152,7 @@ export interface QueryVoteRequestProtoMsg {
 export interface QueryVoteRequestAmino {
     /** proposal_id defines the unique id of the proposal. */
     proposal_id: string;
-    /** voter defines the oter address for the proposals. */
+    /** voter defines the voter address for the proposals. */
     voter: string;
 }
 export interface QueryVoteRequestAminoMsg {
@@ -164,7 +166,7 @@ export interface QueryVoteRequestSDKType {
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponse {
-    /** vote defined the queried vote. */
+    /** vote defines the queried vote. */
     vote: Vote;
 }
 export interface QueryVoteResponseProtoMsg {
@@ -177,7 +179,7 @@ export interface QueryVoteResponseProtoMsg {
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponseAmino {
-    /** vote defined the queried vote. */
+    /** vote defines the queried vote. */
     vote?: VoteAmino;
 }
 export interface QueryVoteResponseAminoMsg {
@@ -221,7 +223,7 @@ export interface QueryVotesRequestSDKType {
 }
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponse {
-    /** votes defined the queried votes. */
+    /** votes defines the queried votes. */
     votes: Vote[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
@@ -236,7 +238,7 @@ export interface QueryVotesResponseProtoMsg {
 }
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponseAmino {
-    /** votes defined the queried votes. */
+    /** votes defines the queried votes. */
     votes: VoteAmino[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;
@@ -408,6 +410,7 @@ export interface QueryDepositsRequestSDKType {
 }
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponse {
+    /** deposits defines the requested deposits. */
     deposits: Deposit[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
@@ -422,6 +425,7 @@ export interface QueryDepositsResponseProtoMsg {
 }
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponseAmino {
+    /** deposits defines the requested deposits. */
     deposits: DepositAmino[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;

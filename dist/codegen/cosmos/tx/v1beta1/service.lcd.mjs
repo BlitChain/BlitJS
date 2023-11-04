@@ -27,6 +27,12 @@ export class LCDQueryClient {
         if (typeof params?.order_by !== "undefined") {
             options.params.order_by = params.order_by;
         }
+        if (typeof params?.page !== "undefined") {
+            options.params.page = params.page;
+        }
+        if (typeof params?.limit !== "undefined") {
+            options.params.limit = params.limit;
+        }
         const endpoint = `cosmos/tx/v1beta1/txs`;
         return await this.req.get(endpoint, options);
     }

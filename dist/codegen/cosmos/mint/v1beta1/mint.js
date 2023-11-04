@@ -247,7 +247,7 @@ exports.Params = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/Params",
+            type: "cosmos-sdk/x/mint/Params",
             value: exports.Params.toAmino(message)
         };
     },

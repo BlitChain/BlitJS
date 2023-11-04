@@ -28,7 +28,7 @@ export declare const experimentalHelpers: {
         restEndpoint: any;
     }) => Promise<{
         features: any[];
-        chainId: any;
+        chainId: string;
         chainName: string;
         rpc: any;
         rest: any;

@@ -1,6 +1,6 @@
 //@ts-nocheck
 import * as fm from "../../../grpc-gateway";
-import { MsgCreateValidator, MsgCreateValidatorResponse, MsgEditValidator, MsgEditValidatorResponse, MsgDelegate, MsgDelegateResponse, MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgUndelegate, MsgUndelegateResponse } from "./tx";
+import { MsgCreateValidator, MsgCreateValidatorResponse, MsgEditValidator, MsgEditValidatorResponse, MsgDelegate, MsgDelegateResponse, MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgUndelegate, MsgUndelegateResponse, MsgCancelUnbondingDelegation, MsgCancelUnbondingDelegationResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
 export class Msg {
   /** CreateValidator defines a method for creating a new validator. */
   static CreateValidator(request: MsgCreateValidator, initRequest?: fm.InitReq): Promise<MsgCreateValidatorResponse> {
@@ -46,6 +46,31 @@ export class Msg {
    */
   static Undelegate(request: MsgUndelegate, initRequest?: fm.InitReq): Promise<MsgUndelegateResponse> {
     return fm.fetchReq(`/cosmos.staking.v1beta1/Undelegate`, {
+      ...initRequest,
+      method: "POST",
+      body: JSON.stringify(request, fm.replacer)
+    });
+  }
+  /**
+   * CancelUnbondingDelegation defines a method for performing canceling the unbonding delegation
+   * and delegate back to previous validator.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+  static CancelUnbondingDelegation(request: MsgCancelUnbondingDelegation, initRequest?: fm.InitReq): Promise<MsgCancelUnbondingDelegationResponse> {
+    return fm.fetchReq(`/cosmos.staking.v1beta1/CancelUnbondingDelegation`, {
+      ...initRequest,
+      method: "POST",
+      body: JSON.stringify(request, fm.replacer)
+    });
+  }
+  /**
+   * UpdateParams defines an operation for updating the x/staking module
+   * parameters.
+   * Since: cosmos-sdk 0.47
+   */
+  static UpdateParams(request: MsgUpdateParams, initRequest?: fm.InitReq): Promise<MsgUpdateParamsResponse> {
+    return fm.fetchReq(`/cosmos.staking.v1beta1/UpdateParams`, {
       ...initRequest,
       method: "POST",
       body: JSON.stringify(request, fm.replacer)

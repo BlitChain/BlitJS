@@ -102,7 +102,7 @@ export const LegacyAminoPubKey = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/LegacyAminoPubKey",
+            type: "tendermint/PubKeyMultisigThreshold",
             value: LegacyAminoPubKey.toAmino(message)
         };
     },

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cosmos_authzAuthorization_ToAmino = exports.Cosmos_authzAuthorization_FromAmino = exports.Cosmos_authzAuthorization_InterfaceDecoder = exports.GrantQueueItem = exports.GrantAuthorization = exports.Grant = exports.GenericAuthorization = exports.protobufPackage = void 0;
+exports.Cosmos_authzv1beta1Authorization_ToAmino = exports.Cosmos_authzv1beta1Authorization_FromAmino = exports.Cosmos_authzv1beta1Authorization_InterfaceDecoder = exports.GrantQueueItem = exports.GrantAuthorization = exports.Grant = exports.GenericAuthorization = exports.protobufPackage = void 0;
 //@ts-nocheck
 const any_1 = require("../../../google/protobuf/any");
 const timestamp_1 = require("../../../google/protobuf/timestamp");
@@ -122,7 +122,7 @@ exports.Grant = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.authorization = (0, exports.Cosmos_authzAuthorization_InterfaceDecoder)(reader);
+                    message.authorization = (0, exports.Cosmos_authzv1beta1Authorization_InterfaceDecoder)(reader);
                     break;
                 case 2:
                     message.expiration = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.decode(reader, reader.uint32()));
@@ -166,13 +166,13 @@ exports.Grant = {
     },
     fromAmino(object) {
         return {
-            authorization: object?.authorization ? (0, exports.Cosmos_authzAuthorization_FromAmino)(object.authorization) : undefined,
+            authorization: object?.authorization ? (0, exports.Cosmos_authzv1beta1Authorization_FromAmino)(object.authorization) : undefined,
             expiration: object?.expiration
         };
     },
     toAmino(message) {
         const obj = {};
-        obj.authorization = message.authorization ? (0, exports.Cosmos_authzAuthorization_ToAmino)(message.authorization) : undefined;
+        obj.authorization = message.authorization ? (0, exports.Cosmos_authzv1beta1Authorization_ToAmino)(message.authorization) : undefined;
         obj.expiration = message.expiration;
         return obj;
     },
@@ -237,7 +237,7 @@ exports.GrantAuthorization = {
                     message.grantee = reader.string();
                     break;
                 case 3:
-                    message.authorization = (0, exports.Cosmos_authzAuthorization_InterfaceDecoder)(reader);
+                    message.authorization = (0, exports.Cosmos_authzv1beta1Authorization_InterfaceDecoder)(reader);
                     break;
                 case 4:
                     message.expiration = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.decode(reader, reader.uint32()));
@@ -293,7 +293,7 @@ exports.GrantAuthorization = {
         return {
             granter: object.granter,
             grantee: object.grantee,
-            authorization: object?.authorization ? (0, exports.Cosmos_authzAuthorization_FromAmino)(object.authorization) : undefined,
+            authorization: object?.authorization ? (0, exports.Cosmos_authzv1beta1Authorization_FromAmino)(object.authorization) : undefined,
             expiration: object?.expiration
         };
     },
@@ -301,7 +301,7 @@ exports.GrantAuthorization = {
         const obj = {};
         obj.granter = message.granter;
         obj.grantee = message.grantee;
-        obj.authorization = message.authorization ? (0, exports.Cosmos_authzAuthorization_ToAmino)(message.authorization) : undefined;
+        obj.authorization = message.authorization ? (0, exports.Cosmos_authzv1beta1Authorization_ToAmino)(message.authorization) : undefined;
         obj.expiration = message.expiration;
         return obj;
     },
@@ -429,7 +429,7 @@ exports.GrantQueueItem = {
         };
     }
 };
-const Cosmos_authzAuthorization_InterfaceDecoder = (input) => {
+const Cosmos_authzv1beta1Authorization_InterfaceDecoder = (input) => {
     const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
     const data = any_1.Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
@@ -443,8 +443,8 @@ const Cosmos_authzAuthorization_InterfaceDecoder = (input) => {
             return data;
     }
 };
-exports.Cosmos_authzAuthorization_InterfaceDecoder = Cosmos_authzAuthorization_InterfaceDecoder;
-const Cosmos_authzAuthorization_FromAmino = (content) => {
+exports.Cosmos_authzv1beta1Authorization_InterfaceDecoder = Cosmos_authzv1beta1Authorization_InterfaceDecoder;
+const Cosmos_authzv1beta1Authorization_FromAmino = (content) => {
     switch (content.type) {
         case "cosmos-sdk/GenericAuthorization":
             return any_1.Any.fromPartial({
@@ -465,8 +465,8 @@ const Cosmos_authzAuthorization_FromAmino = (content) => {
             return any_1.Any.fromAmino(content);
     }
 };
-exports.Cosmos_authzAuthorization_FromAmino = Cosmos_authzAuthorization_FromAmino;
-const Cosmos_authzAuthorization_ToAmino = (content) => {
+exports.Cosmos_authzv1beta1Authorization_FromAmino = Cosmos_authzv1beta1Authorization_FromAmino;
+const Cosmos_authzv1beta1Authorization_ToAmino = (content) => {
     switch (content.typeUrl) {
         case "/cosmos.authz.v1beta1.GenericAuthorization":
             return {
@@ -487,5 +487,5 @@ const Cosmos_authzAuthorization_ToAmino = (content) => {
             return any_1.Any.toAmino(content);
     }
 };
-exports.Cosmos_authzAuthorization_ToAmino = Cosmos_authzAuthorization_ToAmino;
+exports.Cosmos_authzv1beta1Authorization_ToAmino = Cosmos_authzv1beta1Authorization_ToAmino;
 //# sourceMappingURL=authz.js.map

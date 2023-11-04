@@ -228,6 +228,6 @@ export declare const GrantQueueItem: {
     toProto(message: GrantQueueItem): Uint8Array;
     toProtoMsg(message: GrantQueueItem): GrantQueueItemProtoMsg;
 };
-export declare const Cosmos_authzAuthorization_InterfaceDecoder: (input: BinaryReader | Uint8Array) => GenericAuthorization | SendAuthorization | StakeAuthorization | Any;
-export declare const Cosmos_authzAuthorization_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_authzAuthorization_ToAmino: (content: Any) => AnyAmino;
+export declare const Cosmos_authzv1beta1Authorization_InterfaceDecoder: (input: BinaryReader | Uint8Array) => GenericAuthorization | SendAuthorization | StakeAuthorization | Any;
+export declare const Cosmos_authzv1beta1Authorization_FromAmino: (content: AnyAmino) => Any;
+export declare const Cosmos_authzv1beta1Authorization_ToAmino: (content: Any) => AnyAmino;

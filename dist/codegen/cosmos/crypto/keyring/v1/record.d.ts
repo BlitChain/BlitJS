@@ -8,13 +8,13 @@ export interface Record {
     name: string;
     /** pub_key represents a public key in any format */
     pub_key?: Any;
-    /** local stores the public information about a locally stored key */
+    /** local stores the private key locally. */
     local?: Record_Local;
-    /** ledger stores the public information about a Ledger key */
+    /** ledger stores the information about a Ledger key. */
     ledger?: Record_Ledger;
-    /** Multi does not store any information. */
+    /** Multi does not store any other information. */
     multi?: Record_Multi;
-    /** Offline does not store any information. */
+    /** Offline does not store any other information. */
     offline?: Record_Offline;
 }
 export interface RecordProtoMsg {
@@ -31,13 +31,13 @@ export interface RecordAmino {
     name: string;
     /** pub_key represents a public key in any format */
     pub_key?: AnyAmino;
-    /** local stores the public information about a locally stored key */
+    /** local stores the private key locally. */
     local?: Record_LocalAmino;
-    /** ledger stores the public information about a Ledger key */
+    /** ledger stores the information about a Ledger key. */
     ledger?: Record_LedgerAmino;
-    /** Multi does not store any information. */
+    /** Multi does not store any other information. */
     multi?: Record_MultiAmino;
-    /** Offline does not store any information. */
+    /** Offline does not store any other information. */
     offline?: Record_OfflineAmino;
 }
 export interface RecordAminoMsg {
@@ -59,7 +59,6 @@ export interface RecordSDKType {
  */
 export interface Record_Local {
     priv_key?: Any;
-    priv_key_type: string;
 }
 export interface Record_LocalProtoMsg {
     type_url: "/cosmos.crypto.keyring.v1.Local";
@@ -75,7 +74,6 @@ export interface Record_LocalProtoMsg {
  */
 export interface Record_LocalAmino {
     priv_key?: AnyAmino;
-    priv_key_type: string;
 }
 export interface Record_LocalAminoMsg {
     type: "cosmos-sdk/Local";
@@ -87,7 +85,6 @@ export interface Record_LocalAminoMsg {
  */
 export interface Record_LocalSDKType {
     priv_key?: AnySDKType;
-    priv_key_type: string;
 }
 /** Ledger item */
 export interface Record_Ledger {

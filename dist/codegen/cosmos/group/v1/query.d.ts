@@ -30,7 +30,7 @@ export interface QueryGroupInfoRequestSDKType {
 }
 /** QueryGroupInfoResponse is the Query/GroupInfo response type. */
 export interface QueryGroupInfoResponse {
-    /** info is the GroupInfo for the group. */
+    /** info is the GroupInfo of the group. */
     info?: GroupInfo;
 }
 export interface QueryGroupInfoResponseProtoMsg {
@@ -43,7 +43,7 @@ export interface QueryGroupInfoResponseProtoMsg {
 }
 /** QueryGroupInfoResponse is the Query/GroupInfo response type. */
 export interface QueryGroupInfoResponseAmino {
-    /** info is the GroupInfo for the group. */
+    /** info is the GroupInfo of the group. */
     info?: GroupInfoAmino;
 }
 export interface QueryGroupInfoResponseAminoMsg {
@@ -82,7 +82,7 @@ export interface QueryGroupPolicyInfoRequestSDKType {
 }
 /** QueryGroupPolicyInfoResponse is the Query/GroupPolicyInfo response type. */
 export interface QueryGroupPolicyInfoResponse {
-    /** info is the GroupPolicyInfo for the group policy. */
+    /** info is the GroupPolicyInfo of the group policy. */
     info?: GroupPolicyInfo;
 }
 export interface QueryGroupPolicyInfoResponseProtoMsg {
@@ -95,7 +95,7 @@ export interface QueryGroupPolicyInfoResponseProtoMsg {
 }
 /** QueryGroupPolicyInfoResponse is the Query/GroupPolicyInfo response type. */
 export interface QueryGroupPolicyInfoResponseAmino {
-    /** info is the GroupPolicyInfo for the group policy. */
+    /** info is the GroupPolicyInfo of the group policy. */
     info?: GroupPolicyInfoAmino;
 }
 export interface QueryGroupPolicyInfoResponseAminoMsg {
@@ -763,6 +763,87 @@ export interface QueryTallyResultResponseAminoMsg {
 export interface QueryTallyResultResponseSDKType {
     tally: TallyResultSDKType;
 }
+/**
+ * QueryGroupsRequest is the Query/Groups request type.
+ *
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsRequest {
+    /** pagination defines an optional pagination for the request. */
+    pagination?: PageRequest;
+}
+export interface QueryGroupsRequestProtoMsg {
+    type_url: "/cosmos.group.v1.QueryGroupsRequest";
+    value: Uint8Array;
+}
+export interface QueryGroupsRequestProtoMsg {
+    type_url: "/cosmos.group.v1.QueryGroupsRequest";
+    value: Uint8Array;
+}
+/**
+ * QueryGroupsRequest is the Query/Groups request type.
+ *
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsRequestAmino {
+    /** pagination defines an optional pagination for the request. */
+    pagination?: PageRequestAmino;
+}
+export interface QueryGroupsRequestAminoMsg {
+    type: "cosmos-sdk/QueryGroupsRequest";
+    value: QueryGroupsRequestAmino;
+}
+/**
+ * QueryGroupsRequest is the Query/Groups request type.
+ *
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsRequestSDKType {
+    pagination?: PageRequestSDKType;
+}
+/**
+ * QueryGroupsResponse is the Query/Groups response type.
+ *
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsResponse {
+    /** `groups` is all the groups present in state. */
+    groups: GroupInfo[];
+    /** pagination defines the pagination in the response. */
+    pagination?: PageResponse;
+}
+export interface QueryGroupsResponseProtoMsg {
+    type_url: "/cosmos.group.v1.QueryGroupsResponse";
+    value: Uint8Array;
+}
+export interface QueryGroupsResponseProtoMsg {
+    type_url: "/cosmos.group.v1.QueryGroupsResponse";
+    value: Uint8Array;
+}
+/**
+ * QueryGroupsResponse is the Query/Groups response type.
+ *
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsResponseAmino {
+    /** `groups` is all the groups present in state. */
+    groups: GroupInfoAmino[];
+    /** pagination defines the pagination in the response. */
+    pagination?: PageResponseAmino;
+}
+export interface QueryGroupsResponseAminoMsg {
+    type: "cosmos-sdk/QueryGroupsResponse";
+    value: QueryGroupsResponseAmino;
+}
+/**
+ * QueryGroupsResponse is the Query/Groups response type.
+ *
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsResponseSDKType {
+    groups: GroupInfoSDKType[];
+    pagination?: PageResponseSDKType;
+}
 export declare const QueryGroupInfoRequest: {
     typeUrl: string;
     encode(message: QueryGroupInfoRequest, writer?: BinaryWriter): BinaryWriter;
@@ -1204,4 +1285,38 @@ export declare const QueryTallyResultResponse: {
     fromProtoMsg(message: QueryTallyResultResponseProtoMsg): QueryTallyResultResponse;
     toProto(message: QueryTallyResultResponse): Uint8Array;
     toProtoMsg(message: QueryTallyResultResponse): QueryTallyResultResponseProtoMsg;
+};
+export declare const QueryGroupsRequest: {
+    typeUrl: string;
+    encode(message: QueryGroupsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupsRequest;
+    fromJSON(object: any): QueryGroupsRequest;
+    toJSON(message: QueryGroupsRequest): unknown;
+    fromPartial(object: Partial<QueryGroupsRequest>): QueryGroupsRequest;
+    fromSDK(object: QueryGroupsRequestSDKType): QueryGroupsRequest;
+    toSDK(message: QueryGroupsRequest): QueryGroupsRequestSDKType;
+    fromAmino(object: QueryGroupsRequestAmino): QueryGroupsRequest;
+    toAmino(message: QueryGroupsRequest): QueryGroupsRequestAmino;
+    fromAminoMsg(object: QueryGroupsRequestAminoMsg): QueryGroupsRequest;
+    toAminoMsg(message: QueryGroupsRequest): QueryGroupsRequestAminoMsg;
+    fromProtoMsg(message: QueryGroupsRequestProtoMsg): QueryGroupsRequest;
+    toProto(message: QueryGroupsRequest): Uint8Array;
+    toProtoMsg(message: QueryGroupsRequest): QueryGroupsRequestProtoMsg;
+};
+export declare const QueryGroupsResponse: {
+    typeUrl: string;
+    encode(message: QueryGroupsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupsResponse;
+    fromJSON(object: any): QueryGroupsResponse;
+    toJSON(message: QueryGroupsResponse): unknown;
+    fromPartial(object: Partial<QueryGroupsResponse>): QueryGroupsResponse;
+    fromSDK(object: QueryGroupsResponseSDKType): QueryGroupsResponse;
+    toSDK(message: QueryGroupsResponse): QueryGroupsResponseSDKType;
+    fromAmino(object: QueryGroupsResponseAmino): QueryGroupsResponse;
+    toAmino(message: QueryGroupsResponse): QueryGroupsResponseAmino;
+    fromAminoMsg(object: QueryGroupsResponseAminoMsg): QueryGroupsResponse;
+    toAminoMsg(message: QueryGroupsResponse): QueryGroupsResponseAminoMsg;
+    fromProtoMsg(message: QueryGroupsResponseProtoMsg): QueryGroupsResponse;
+    toProto(message: QueryGroupsResponse): Uint8Array;
+    toProtoMsg(message: QueryGroupsResponse): QueryGroupsResponseProtoMsg;
 };

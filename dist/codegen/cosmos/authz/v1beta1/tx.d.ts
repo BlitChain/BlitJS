@@ -1,7 +1,5 @@
-import { Grant, GrantAmino, GrantSDKType, GenericAuthorization } from "./authz";
+import { Grant, GrantAmino, GrantSDKType } from "./authz";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import { SendAuthorization } from "../../bank/v1beta1/authz";
-import { StakeAuthorization } from "../../staking/v1beta1/authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.authz.v1beta1";
 /**
@@ -75,7 +73,7 @@ export interface MsgExecResponseSDKType {
 export interface MsgExec {
     grantee: string;
     /**
-     * Authorization Msg requests to execute. Each msg must implement Authorization interface
+     * Execute Msg.
      * The x/authz will try to find a grant matching (msg.signers[0], grantee, MsgTypeURL(msg))
      * triple and validate it.
      */
@@ -91,7 +89,7 @@ export interface MsgExecProtoMsg {
 }
 export type MsgExecEncoded = Omit<MsgExec, "msgs"> & {
     /**
-     * Authorization Msg requests to execute. Each msg must implement Authorization interface
+     * Execute Msg.
      * The x/authz will try to find a grant matching (msg.signers[0], grantee, MsgTypeURL(msg))
      * triple and validate it.
      */
@@ -105,7 +103,7 @@ export type MsgExecEncoded = Omit<MsgExec, "msgs"> & {
 export interface MsgExecAmino {
     grantee: string;
     /**
-     * Authorization Msg requests to execute. Each msg must implement Authorization interface
+     * Execute Msg.
      * The x/authz will try to find a grant matching (msg.signers[0], grantee, MsgTypeURL(msg))
      * triple and validate it.
      */
@@ -307,9 +305,6 @@ export declare const MsgRevokeResponse: {
     toProto(message: MsgRevokeResponse): Uint8Array;
     toProtoMsg(message: MsgRevokeResponse): MsgRevokeResponseProtoMsg;
 };
-export declare const Sdk_Msg_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
-export declare const Sdk_Msg_FromAmino: (content: AnyAmino) => Any;
-export declare const Sdk_Msg_ToAmino: (content: Any) => AnyAmino;
-export declare const Cosmos_authzAuthorization_InterfaceDecoder: (input: BinaryReader | Uint8Array) => GenericAuthorization | SendAuthorization | StakeAuthorization | Any;
-export declare const Cosmos_authzAuthorization_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_authzAuthorization_ToAmino: (content: Any) => AnyAmino;
+export declare const Cosmos_basev1beta1Msg_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
+export declare const Cosmos_basev1beta1Msg_FromAmino: (content: AnyAmino) => Any;
+export declare const Cosmos_basev1beta1Msg_ToAmino: (content: Any) => AnyAmino;

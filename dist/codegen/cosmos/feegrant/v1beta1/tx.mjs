@@ -39,7 +39,7 @@ export const MsgGrantAllowance = {
                     message.grantee = reader.string();
                     break;
                 case 3:
-                    message.allowance = Cosmos_feegrantFeeAllowanceI_InterfaceDecoder(reader);
+                    message.allowance = Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder(reader);
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -87,14 +87,14 @@ export const MsgGrantAllowance = {
         return {
             granter: object.granter,
             grantee: object.grantee,
-            allowance: object?.allowance ? Cosmos_feegrantFeeAllowanceI_FromAmino(object.allowance) : undefined
+            allowance: object?.allowance ? Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino(object.allowance) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
         obj.granter = message.granter;
         obj.grantee = message.grantee;
-        obj.allowance = message.allowance ? Cosmos_feegrantFeeAllowanceI_ToAmino(message.allowance) : undefined;
+        obj.allowance = message.allowance ? Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino(message.allowance) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -358,7 +358,7 @@ export const MsgRevokeAllowanceResponse = {
         };
     }
 };
-export const Cosmos_feegrantFeeAllowanceI_InterfaceDecoder = (input) => {
+export const Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder = (input) => {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const data = Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
@@ -372,7 +372,7 @@ export const Cosmos_feegrantFeeAllowanceI_InterfaceDecoder = (input) => {
             return data;
     }
 };
-export const Cosmos_feegrantFeeAllowanceI_FromAmino = (content) => {
+export const Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino = (content) => {
     switch (content.type) {
         case "cosmos-sdk/BasicAllowance":
             return Any.fromPartial({
@@ -393,7 +393,7 @@ export const Cosmos_feegrantFeeAllowanceI_FromAmino = (content) => {
             return Any.fromAmino(content);
     }
 };
-export const Cosmos_feegrantFeeAllowanceI_ToAmino = (content) => {
+export const Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino = (content) => {
     switch (content.typeUrl) {
         case "/cosmos.feegrant.v1beta1.BasicAllowance":
             return {

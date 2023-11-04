@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { Deposit, Vote, Proposal, DepositParams, VotingParams, TallyParams } from "./gov";
+import { Deposit, Vote, Proposal, DepositParams, VotingParams, TallyParams, Params } from "./gov";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
 export const protobufPackage = "cosmos.gov.v1";
@@ -11,7 +11,8 @@ function createBaseGenesisState() {
         proposals: [],
         deposit_params: undefined,
         voting_params: undefined,
-        tally_params: undefined
+        tally_params: undefined,
+        params: undefined
     };
 }
 export const GenesisState = {
@@ -37,6 +38,9 @@ export const GenesisState = {
         }
         if (message.tally_params !== undefined) {
             TallyParams.encode(message.tally_params, writer.uint32(58).fork()).ldelim();
+        }
+        if (message.params !== undefined) {
+            Params.encode(message.params, writer.uint32(66).fork()).ldelim();
         }
         return writer;
     },
@@ -68,6 +72,9 @@ export const GenesisState = {
                 case 7:
                     message.tally_params = TallyParams.decode(reader, reader.uint32());
                     break;
+                case 8:
+                    message.params = Params.decode(reader, reader.uint32());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -83,7 +90,8 @@ export const GenesisState = {
             proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => Proposal.fromJSON(e)) : [],
             deposit_params: isSet(object.deposit_params) ? DepositParams.fromJSON(object.deposit_params) : undefined,
             voting_params: isSet(object.voting_params) ? VotingParams.fromJSON(object.voting_params) : undefined,
-            tally_params: isSet(object.tally_params) ? TallyParams.fromJSON(object.tally_params) : undefined
+            tally_params: isSet(object.tally_params) ? TallyParams.fromJSON(object.tally_params) : undefined,
+            params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
         };
     },
     toJSON(message) {
@@ -110,6 +118,7 @@ export const GenesisState = {
         message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? DepositParams.toJSON(message.deposit_params) : undefined);
         message.voting_params !== undefined && (obj.voting_params = message.voting_params ? VotingParams.toJSON(message.voting_params) : undefined);
         message.tally_params !== undefined && (obj.tally_params = message.tally_params ? TallyParams.toJSON(message.tally_params) : undefined);
+        message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -121,6 +130,7 @@ export const GenesisState = {
         message.deposit_params = object.deposit_params !== undefined && object.deposit_params !== null ? DepositParams.fromPartial(object.deposit_params) : undefined;
         message.voting_params = object.voting_params !== undefined && object.voting_params !== null ? VotingParams.fromPartial(object.voting_params) : undefined;
         message.tally_params = object.tally_params !== undefined && object.tally_params !== null ? TallyParams.fromPartial(object.tally_params) : undefined;
+        message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
         return message;
     },
     fromSDK(object) {
@@ -131,7 +141,8 @@ export const GenesisState = {
             proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => Proposal.fromSDK(e)) : [],
             deposit_params: object.deposit_params ? DepositParams.fromSDK(object.deposit_params) : undefined,
             voting_params: object.voting_params ? VotingParams.fromSDK(object.voting_params) : undefined,
-            tally_params: object.tally_params ? TallyParams.fromSDK(object.tally_params) : undefined
+            tally_params: object.tally_params ? TallyParams.fromSDK(object.tally_params) : undefined,
+            params: object.params ? Params.fromSDK(object.params) : undefined
         };
     },
     toSDK(message) {
@@ -158,6 +169,7 @@ export const GenesisState = {
         message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? DepositParams.toSDK(message.deposit_params) : undefined);
         message.voting_params !== undefined && (obj.voting_params = message.voting_params ? VotingParams.toSDK(message.voting_params) : undefined);
         message.tally_params !== undefined && (obj.tally_params = message.tally_params ? TallyParams.toSDK(message.tally_params) : undefined);
+        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
         return obj;
     },
     fromAmino(object) {
@@ -168,7 +180,8 @@ export const GenesisState = {
             proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => Proposal.fromAmino(e)) : [],
             deposit_params: object?.deposit_params ? DepositParams.fromAmino(object.deposit_params) : undefined,
             voting_params: object?.voting_params ? VotingParams.fromAmino(object.voting_params) : undefined,
-            tally_params: object?.tally_params ? TallyParams.fromAmino(object.tally_params) : undefined
+            tally_params: object?.tally_params ? TallyParams.fromAmino(object.tally_params) : undefined,
+            params: object?.params ? Params.fromAmino(object.params) : undefined
         };
     },
     toAmino(message) {
@@ -195,6 +208,7 @@ export const GenesisState = {
         obj.deposit_params = message.deposit_params ? DepositParams.toAmino(message.deposit_params) : undefined;
         obj.voting_params = message.voting_params ? VotingParams.toAmino(message.voting_params) : undefined;
         obj.tally_params = message.tally_params ? TallyParams.toAmino(message.tally_params) : undefined;
+        obj.params = message.params ? Params.toAmino(message.params) : undefined;
         return obj;
     },
     fromAminoMsg(object) {

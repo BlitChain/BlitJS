@@ -1,6 +1,6 @@
 //@ts-nocheck
 import * as fm from "../../../grpc-gateway";
-import { QueryGroupInfoRequest, QueryGroupInfoResponse, QueryGroupPolicyInfoRequest, QueryGroupPolicyInfoResponse, QueryGroupMembersRequest, QueryGroupMembersResponse, QueryGroupsByAdminRequest, QueryGroupsByAdminResponse, QueryGroupPoliciesByGroupRequest, QueryGroupPoliciesByGroupResponse, QueryGroupPoliciesByAdminRequest, QueryGroupPoliciesByAdminResponse, QueryProposalRequest, QueryProposalResponse, QueryProposalsByGroupPolicyRequest, QueryProposalsByGroupPolicyResponse, QueryVoteByProposalVoterRequest, QueryVoteByProposalVoterResponse, QueryVotesByProposalRequest, QueryVotesByProposalResponse, QueryVotesByVoterRequest, QueryVotesByVoterResponse, QueryGroupsByMemberRequest, QueryGroupsByMemberResponse, QueryTallyResultRequest, QueryTallyResultResponse } from "./query";
+import { QueryGroupInfoRequest, QueryGroupInfoResponse, QueryGroupPolicyInfoRequest, QueryGroupPolicyInfoResponse, QueryGroupMembersRequest, QueryGroupMembersResponse, QueryGroupsByAdminRequest, QueryGroupsByAdminResponse, QueryGroupPoliciesByGroupRequest, QueryGroupPoliciesByGroupResponse, QueryGroupPoliciesByAdminRequest, QueryGroupPoliciesByAdminResponse, QueryProposalRequest, QueryProposalResponse, QueryProposalsByGroupPolicyRequest, QueryProposalsByGroupPolicyResponse, QueryVoteByProposalVoterRequest, QueryVoteByProposalVoterResponse, QueryVotesByProposalRequest, QueryVotesByProposalResponse, QueryVotesByVoterRequest, QueryVotesByVoterResponse, QueryGroupsByMemberRequest, QueryGroupsByMemberResponse, QueryTallyResultRequest, QueryTallyResultResponse, QueryGroupsRequest, QueryGroupsResponse } from "./query";
 export class Query {
   /** GroupInfo queries group info based on group id. */
   static GroupInfo(request: QueryGroupInfoRequest, initRequest?: fm.InitReq): Promise<QueryGroupInfoResponse> {
@@ -20,7 +20,7 @@ export class Query {
       method: "GET"
     });
   }
-  /** GroupMembers queries members of a group */
+  /** GroupMembers queries members of a group by group id. */
   static GroupMembers(request: QueryGroupMembersRequest, initRequest?: fm.InitReq): Promise<QueryGroupMembersResponse> {
     return fm.fetchReq(`/cosmos/group/v1/group_members/${request["group_id"]}?${fm.renderURLSearchParams({
       ...request
@@ -47,7 +47,7 @@ export class Query {
       method: "GET"
     });
   }
-  /** GroupsByAdmin queries group policies by admin address. */
+  /** GroupPoliciesByAdmin queries group policies by admin address. */
   static GroupPoliciesByAdmin(request: QueryGroupPoliciesByAdminRequest, initRequest?: fm.InitReq): Promise<QueryGroupPoliciesByAdminResponse> {
     return fm.fetchReq(`/cosmos/group/v1/group_policies_by_admin/${request["admin"]}?${fm.renderURLSearchParams({
       ...request
@@ -83,7 +83,7 @@ export class Query {
       method: "GET"
     });
   }
-  /** VotesByProposal queries a vote by proposal. */
+  /** VotesByProposal queries a vote by proposal id. */
   static VotesByProposal(request: QueryVotesByProposalRequest, initRequest?: fm.InitReq): Promise<QueryVotesByProposalResponse> {
     return fm.fetchReq(`/cosmos/group/v1/votes_by_proposal/${request["proposal_id"]}?${fm.renderURLSearchParams({
       ...request
@@ -110,11 +110,30 @@ export class Query {
       method: "GET"
     });
   }
-  /** TallyResult queries the tally of a proposal votes. */
+  /**
+   * TallyResult returns the tally result of a proposal. If the proposal is
+   * still in voting period, then this query computes the current tally state,
+   * which might not be final. On the other hand, if the proposal is final,
+   * then it simply returns the `final_tally_result` state stored in the
+   * proposal itself.
+   */
   static TallyResult(request: QueryTallyResultRequest, initRequest?: fm.InitReq): Promise<QueryTallyResultResponse> {
     return fm.fetchReq(`/cosmos/group/v1/proposals/${request["proposal_id"]}/tally?${fm.renderURLSearchParams({
       ...request
     }, ["proposal_id"])}`, {
+      ...initRequest,
+      method: "GET"
+    });
+  }
+  /**
+   * Groups queries all groups in state.
+   * 
+   * Since: cosmos-sdk 0.47.1
+   */
+  static Groups(request: QueryGroupsRequest, initRequest?: fm.InitReq): Promise<QueryGroupsResponse> {
+    return fm.fetchReq(`/cosmos/group/v1/groups?${fm.renderURLSearchParams({
+      ...request
+    }, [])}`, {
       ...initRequest,
       method: "GET"
     });
@@ -139,7 +158,7 @@ export class QueryClientImpl {
       pathPrefix: this.url
     });
   }
-  /** GroupMembers queries members of a group */
+  /** GroupMembers queries members of a group by group id. */
   async GroupMembers(req: QueryGroupMembersRequest, headers?: HeadersInit): Promise<QueryGroupMembersResponse> {
     return Query.GroupMembers(req, {
       headers,
@@ -160,7 +179,7 @@ export class QueryClientImpl {
       pathPrefix: this.url
     });
   }
-  /** GroupsByAdmin queries group policies by admin address. */
+  /** GroupPoliciesByAdmin queries group policies by admin address. */
   async GroupPoliciesByAdmin(req: QueryGroupPoliciesByAdminRequest, headers?: HeadersInit): Promise<QueryGroupPoliciesByAdminResponse> {
     return Query.GroupPoliciesByAdmin(req, {
       headers,
@@ -188,7 +207,7 @@ export class QueryClientImpl {
       pathPrefix: this.url
     });
   }
-  /** VotesByProposal queries a vote by proposal. */
+  /** VotesByProposal queries a vote by proposal id. */
   async VotesByProposal(req: QueryVotesByProposalRequest, headers?: HeadersInit): Promise<QueryVotesByProposalResponse> {
     return Query.VotesByProposal(req, {
       headers,
@@ -209,9 +228,26 @@ export class QueryClientImpl {
       pathPrefix: this.url
     });
   }
-  /** TallyResult queries the tally of a proposal votes. */
+  /**
+   * TallyResult returns the tally result of a proposal. If the proposal is
+   * still in voting period, then this query computes the current tally state,
+   * which might not be final. On the other hand, if the proposal is final,
+   * then it simply returns the `final_tally_result` state stored in the
+   * proposal itself.
+   */
   async TallyResult(req: QueryTallyResultRequest, headers?: HeadersInit): Promise<QueryTallyResultResponse> {
     return Query.TallyResult(req, {
+      headers,
+      pathPrefix: this.url
+    });
+  }
+  /**
+   * Groups queries all groups in state.
+   * 
+   * Since: cosmos-sdk 0.47.1
+   */
+  async Groups(req: QueryGroupsRequest, headers?: HeadersInit): Promise<QueryGroupsResponse> {
+    return Query.Groups(req, {
       headers,
       pathPrefix: this.url
     });

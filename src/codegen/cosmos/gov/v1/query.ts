@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { ProposalStatus, Proposal, ProposalAmino, ProposalSDKType, Vote, VoteAmino, VoteSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType, Deposit, DepositAmino, DepositSDKType, TallyResult, TallyResultAmino, TallyResultSDKType, proposalStatusFromJSON, proposalStatusToJSON } from "./gov";
+import { ProposalStatus, Proposal, ProposalAmino, ProposalSDKType, Vote, VoteAmino, VoteSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType, Params, ParamsAmino, ParamsSDKType, Deposit, DepositAmino, DepositSDKType, TallyResult, TallyResultAmino, TallyResultSDKType, proposalStatusFromJSON, proposalStatusToJSON } from "./gov";
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
@@ -32,6 +32,7 @@ export interface QueryProposalRequestSDKType {
 }
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
 export interface QueryProposalResponse {
+  /** proposal is the requested governance proposal. */
   proposal?: Proposal;
 }
 export interface QueryProposalResponseProtoMsg {
@@ -44,6 +45,7 @@ export interface QueryProposalResponseProtoMsg {
 }
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
 export interface QueryProposalResponseAmino {
+  /** proposal is the requested governance proposal. */
   proposal?: ProposalAmino;
 }
 export interface QueryProposalResponseAminoMsg {
@@ -100,6 +102,7 @@ export interface QueryProposalsRequestSDKType {
  * method.
  */
 export interface QueryProposalsResponse {
+  /** proposals defines all the requested governance proposals. */
   proposals: Proposal[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponse;
@@ -117,6 +120,7 @@ export interface QueryProposalsResponseProtoMsg {
  * method.
  */
 export interface QueryProposalsResponseAmino {
+  /** proposals defines all the requested governance proposals. */
   proposals: ProposalAmino[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
@@ -137,7 +141,7 @@ export interface QueryProposalsResponseSDKType {
 export interface QueryVoteRequest {
   /** proposal_id defines the unique id of the proposal. */
   proposal_id: bigint;
-  /** voter defines the oter address for the proposals. */
+  /** voter defines the voter address for the proposals. */
   voter: string;
 }
 export interface QueryVoteRequestProtoMsg {
@@ -152,7 +156,7 @@ export interface QueryVoteRequestProtoMsg {
 export interface QueryVoteRequestAmino {
   /** proposal_id defines the unique id of the proposal. */
   proposal_id: string;
-  /** voter defines the oter address for the proposals. */
+  /** voter defines the voter address for the proposals. */
   voter: string;
 }
 export interface QueryVoteRequestAminoMsg {
@@ -166,7 +170,7 @@ export interface QueryVoteRequestSDKType {
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponse {
-  /** vote defined the queried vote. */
+  /** vote defines the queried vote. */
   vote?: Vote;
 }
 export interface QueryVoteResponseProtoMsg {
@@ -179,7 +183,7 @@ export interface QueryVoteResponseProtoMsg {
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponseAmino {
-  /** vote defined the queried vote. */
+  /** vote defines the queried vote. */
   vote?: VoteAmino;
 }
 export interface QueryVoteResponseAminoMsg {
@@ -223,7 +227,7 @@ export interface QueryVotesRequestSDKType {
 }
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponse {
-  /** votes defined the queried votes. */
+  /** votes defines the queried votes. */
   votes: Vote[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponse;
@@ -238,7 +242,7 @@ export interface QueryVotesResponseProtoMsg {
 }
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponseAmino {
-  /** votes defined the queried votes. */
+  /** votes defines the queried votes. */
   votes: VoteAmino[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
@@ -286,12 +290,30 @@ export interface QueryParamsRequestSDKType {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
-  /** voting_params defines the parameters related to voting. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * voting_params defines the parameters related to voting.
+   */
+  /** @deprecated */
   voting_params?: VotingParams;
-  /** deposit_params defines the parameters related to deposit. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * deposit_params defines the parameters related to deposit.
+   */
+  /** @deprecated */
   deposit_params?: DepositParams;
-  /** tally_params defines the parameters related to tally. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * tally_params defines the parameters related to tally.
+   */
+  /** @deprecated */
   tally_params?: TallyParams;
+  /**
+   * params defines all the paramaters of x/gov module.
+   * 
+   * Since: cosmos-sdk 0.47
+   */
+  params?: Params;
 }
 export interface QueryParamsResponseProtoMsg {
   type_url: "/cosmos.gov.v1.QueryParamsResponse";
@@ -303,12 +325,30 @@ export interface QueryParamsResponseProtoMsg {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseAmino {
-  /** voting_params defines the parameters related to voting. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * voting_params defines the parameters related to voting.
+   */
+  /** @deprecated */
   voting_params?: VotingParamsAmino;
-  /** deposit_params defines the parameters related to deposit. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * deposit_params defines the parameters related to deposit.
+   */
+  /** @deprecated */
   deposit_params?: DepositParamsAmino;
-  /** tally_params defines the parameters related to tally. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * tally_params defines the parameters related to tally.
+   */
+  /** @deprecated */
   tally_params?: TallyParamsAmino;
+  /**
+   * params defines all the paramaters of x/gov module.
+   * 
+   * Since: cosmos-sdk 0.47
+   */
+  params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
   type: "cosmos-sdk/v1/QueryParamsResponse";
@@ -316,9 +356,13 @@ export interface QueryParamsResponseAminoMsg {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
+  /** @deprecated */
   voting_params?: VotingParamsSDKType;
+  /** @deprecated */
   deposit_params?: DepositParamsSDKType;
+  /** @deprecated */
   tally_params?: TallyParamsSDKType;
+  params?: ParamsSDKType;
 }
 /** QueryDepositRequest is the request type for the Query/Deposit RPC method. */
 export interface QueryDepositRequest {
@@ -410,6 +454,7 @@ export interface QueryDepositsRequestSDKType {
 }
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponse {
+  /** deposits defines the requested deposits. */
   deposits: Deposit[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponse;
@@ -424,6 +469,7 @@ export interface QueryDepositsResponseProtoMsg {
 }
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponseAmino {
+  /** deposits defines the requested deposits. */
   deposits: DepositAmino[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
@@ -1398,7 +1444,8 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     voting_params: undefined,
     deposit_params: undefined,
-    tally_params: undefined
+    tally_params: undefined,
+    params: undefined
   };
 }
 export const QueryParamsResponse = {
@@ -1412,6 +1459,9 @@ export const QueryParamsResponse = {
     }
     if (message.tally_params !== undefined) {
       TallyParams.encode(message.tally_params, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.params !== undefined) {
+      Params.encode(message.params, writer.uint32(34).fork()).ldelim();
     }
     return writer;
   },
@@ -1431,6 +1481,9 @@ export const QueryParamsResponse = {
         case 3:
           message.tally_params = TallyParams.decode(reader, reader.uint32());
           break;
+        case 4:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1442,7 +1495,8 @@ export const QueryParamsResponse = {
     return {
       voting_params: isSet(object.voting_params) ? VotingParams.fromJSON(object.voting_params) : undefined,
       deposit_params: isSet(object.deposit_params) ? DepositParams.fromJSON(object.deposit_params) : undefined,
-      tally_params: isSet(object.tally_params) ? TallyParams.fromJSON(object.tally_params) : undefined
+      tally_params: isSet(object.tally_params) ? TallyParams.fromJSON(object.tally_params) : undefined,
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
     };
   },
   toJSON(message: QueryParamsResponse): unknown {
@@ -1450,6 +1504,7 @@ export const QueryParamsResponse = {
     message.voting_params !== undefined && (obj.voting_params = message.voting_params ? VotingParams.toJSON(message.voting_params) : undefined);
     message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? DepositParams.toJSON(message.deposit_params) : undefined);
     message.tally_params !== undefined && (obj.tally_params = message.tally_params ? TallyParams.toJSON(message.tally_params) : undefined);
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
     return obj;
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
@@ -1457,13 +1512,15 @@ export const QueryParamsResponse = {
     message.voting_params = object.voting_params !== undefined && object.voting_params !== null ? VotingParams.fromPartial(object.voting_params) : undefined;
     message.deposit_params = object.deposit_params !== undefined && object.deposit_params !== null ? DepositParams.fromPartial(object.deposit_params) : undefined;
     message.tally_params = object.tally_params !== undefined && object.tally_params !== null ? TallyParams.fromPartial(object.tally_params) : undefined;
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
   fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse {
     return {
       voting_params: object.voting_params ? VotingParams.fromSDK(object.voting_params) : undefined,
       deposit_params: object.deposit_params ? DepositParams.fromSDK(object.deposit_params) : undefined,
-      tally_params: object.tally_params ? TallyParams.fromSDK(object.tally_params) : undefined
+      tally_params: object.tally_params ? TallyParams.fromSDK(object.tally_params) : undefined,
+      params: object.params ? Params.fromSDK(object.params) : undefined
     };
   },
   toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType {
@@ -1471,13 +1528,15 @@ export const QueryParamsResponse = {
     message.voting_params !== undefined && (obj.voting_params = message.voting_params ? VotingParams.toSDK(message.voting_params) : undefined);
     message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? DepositParams.toSDK(message.deposit_params) : undefined);
     message.tally_params !== undefined && (obj.tally_params = message.tally_params ? TallyParams.toSDK(message.tally_params) : undefined);
+    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
     return obj;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
     return {
       voting_params: object?.voting_params ? VotingParams.fromAmino(object.voting_params) : undefined,
       deposit_params: object?.deposit_params ? DepositParams.fromAmino(object.deposit_params) : undefined,
-      tally_params: object?.tally_params ? TallyParams.fromAmino(object.tally_params) : undefined
+      tally_params: object?.tally_params ? TallyParams.fromAmino(object.tally_params) : undefined,
+      params: object?.params ? Params.fromAmino(object.params) : undefined
     };
   },
   toAmino(message: QueryParamsResponse): QueryParamsResponseAmino {
@@ -1485,6 +1544,7 @@ export const QueryParamsResponse = {
     obj.voting_params = message.voting_params ? VotingParams.toAmino(message.voting_params) : undefined;
     obj.deposit_params = message.deposit_params ? DepositParams.toAmino(message.deposit_params) : undefined;
     obj.tally_params = message.tally_params ? TallyParams.toAmino(message.tally_params) : undefined;
+    obj.params = message.params ? Params.toAmino(message.params) : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse {

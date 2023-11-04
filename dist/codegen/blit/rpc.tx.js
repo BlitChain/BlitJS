@@ -31,11 +31,17 @@ const createRPCMsgClient = async ({ rpc }) => ({
         storage: new (await Promise.resolve().then(() => __importStar(require("./storage/tx.rpc.msg")))).MsgClientImpl(rpc)
     },
     cosmos: {
+        auth: {
+            v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/auth/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)
+        },
         authz: {
             v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/authz/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)
         },
         bank: {
             v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/bank/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)
+        },
+        consensus: {
+            v1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/consensus/v1/tx.rpc.msg")))).MsgClientImpl(rpc)
         },
         distribution: {
             v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/distribution/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)
@@ -49,6 +55,9 @@ const createRPCMsgClient = async ({ rpc }) => ({
         },
         group: {
             v1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/group/v1/tx.rpc.msg")))).MsgClientImpl(rpc)
+        },
+        mint: {
+            v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/mint/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)
         },
         nft: {
             v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/nft/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)

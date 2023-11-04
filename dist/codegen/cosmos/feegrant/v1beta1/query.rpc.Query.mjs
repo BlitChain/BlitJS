@@ -21,7 +21,8 @@ export class Query {
     }
     /**
      * AllowancesByGranter returns all the grants given by an address
-     * Since v0.46
+     *
+     * Since: cosmos-sdk 0.46
      */
     static AllowancesByGranter(request, initRequest) {
         return fm.fetchReq(`/cosmos/feegrant/v1beta1/issued/${request["granter"]}?${fm.renderURLSearchParams({
@@ -53,7 +54,8 @@ export class QueryClientImpl {
     }
     /**
      * AllowancesByGranter returns all the grants given by an address
-     * Since v0.46
+     *
+     * Since: cosmos-sdk 0.46
      */
     async AllowancesByGranter(req, headers) {
         return Query.AllowancesByGranter(req, {

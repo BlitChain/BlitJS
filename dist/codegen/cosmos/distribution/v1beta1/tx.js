@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MsgFundCommunityPoolResponse = exports.MsgFundCommunityPool = exports.MsgWithdrawValidatorCommissionResponse = exports.MsgWithdrawValidatorCommission = exports.MsgWithdrawDelegatorRewardResponse = exports.MsgWithdrawDelegatorReward = exports.MsgSetWithdrawAddressResponse = exports.MsgSetWithdrawAddress = exports.protobufPackage = void 0;
+exports.MsgCommunityPoolSpendResponse = exports.MsgCommunityPoolSpend = exports.MsgUpdateParamsResponse = exports.MsgUpdateParams = exports.MsgFundCommunityPoolResponse = exports.MsgFundCommunityPool = exports.MsgWithdrawValidatorCommissionResponse = exports.MsgWithdrawValidatorCommission = exports.MsgWithdrawDelegatorRewardResponse = exports.MsgWithdrawDelegatorReward = exports.MsgSetWithdrawAddressResponse = exports.MsgSetWithdrawAddress = exports.protobufPackage = void 0;
 //@ts-nocheck
 const coin_1 = require("../../base/v1beta1/coin");
+const distribution_1 = require("./distribution");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
 exports.protobufPackage = "cosmos.distribution.v1beta1";
@@ -750,6 +751,375 @@ exports.MsgFundCommunityPoolResponse = {
         return {
             typeUrl: "/cosmos.distribution.v1beta1.MsgFundCommunityPoolResponse",
             value: exports.MsgFundCommunityPoolResponse.encode(message).finish()
+        };
+    }
+};
+function createBaseMsgUpdateParams() {
+    return {
+        authority: "",
+        params: distribution_1.Params.fromPartial({})
+    };
+}
+exports.MsgUpdateParams = {
+    typeUrl: "/cosmos.distribution.v1beta1.MsgUpdateParams",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.authority !== "") {
+            writer.uint32(10).string(message.authority);
+        }
+        if (message.params !== undefined) {
+            distribution_1.Params.encode(message.params, writer.uint32(18).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseMsgUpdateParams();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.authority = reader.string();
+                    break;
+                case 2:
+                    message.params = distribution_1.Params.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            authority: (0, helpers_1.isSet)(object.authority) ? String(object.authority) : "",
+            params: (0, helpers_1.isSet)(object.params) ? distribution_1.Params.fromJSON(object.params) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.authority !== undefined && (obj.authority = message.authority);
+        message.params !== undefined && (obj.params = message.params ? distribution_1.Params.toJSON(message.params) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseMsgUpdateParams();
+        message.authority = object.authority ?? "";
+        message.params = object.params !== undefined && object.params !== null ? distribution_1.Params.fromPartial(object.params) : undefined;
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            authority: object?.authority,
+            params: object.params ? distribution_1.Params.fromSDK(object.params) : undefined
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        obj.authority = message.authority;
+        message.params !== undefined && (obj.params = message.params ? distribution_1.Params.toSDK(message.params) : undefined);
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            authority: object.authority,
+            params: object?.params ? distribution_1.Params.fromAmino(object.params) : undefined
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.authority = message.authority;
+        obj.params = message.params ? distribution_1.Params.toAmino(message.params) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgUpdateParams.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/distribution/MsgUpdateParams",
+            value: exports.MsgUpdateParams.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgUpdateParams.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgUpdateParams.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.distribution.v1beta1.MsgUpdateParams",
+            value: exports.MsgUpdateParams.encode(message).finish()
+        };
+    }
+};
+function createBaseMsgUpdateParamsResponse() {
+    return {};
+}
+exports.MsgUpdateParamsResponse = {
+    typeUrl: "/cosmos.distribution.v1beta1.MsgUpdateParamsResponse",
+    encode(_, writer = binary_1.BinaryWriter.create()) {
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseMsgUpdateParamsResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
+    fromPartial(_) {
+        const message = createBaseMsgUpdateParamsResponse();
+        return message;
+    },
+    fromSDK(_) {
+        return {};
+    },
+    toSDK(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAmino(_) {
+        return {};
+    },
+    toAmino(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgUpdateParamsResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgUpdateParamsResponse",
+            value: exports.MsgUpdateParamsResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgUpdateParamsResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgUpdateParamsResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.distribution.v1beta1.MsgUpdateParamsResponse",
+            value: exports.MsgUpdateParamsResponse.encode(message).finish()
+        };
+    }
+};
+function createBaseMsgCommunityPoolSpend() {
+    return {
+        authority: "",
+        recipient: "",
+        amount: []
+    };
+}
+exports.MsgCommunityPoolSpend = {
+    typeUrl: "/cosmos.distribution.v1beta1.MsgCommunityPoolSpend",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.authority !== "") {
+            writer.uint32(10).string(message.authority);
+        }
+        if (message.recipient !== "") {
+            writer.uint32(18).string(message.recipient);
+        }
+        for (const v of message.amount) {
+            coin_1.Coin.encode(v, writer.uint32(26).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseMsgCommunityPoolSpend();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.authority = reader.string();
+                    break;
+                case 2:
+                    message.recipient = reader.string();
+                    break;
+                case 3:
+                    message.amount.push(coin_1.Coin.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            authority: (0, helpers_1.isSet)(object.authority) ? String(object.authority) : "",
+            recipient: (0, helpers_1.isSet)(object.recipient) ? String(object.recipient) : "",
+            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.authority !== undefined && (obj.authority = message.authority);
+        message.recipient !== undefined && (obj.recipient = message.recipient);
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.amount = [];
+        }
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseMsgCommunityPoolSpend();
+        message.authority = object.authority ?? "";
+        message.recipient = object.recipient ?? "";
+        message.amount = object.amount?.map(e => coin_1.Coin.fromPartial(e)) || [];
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            authority: object?.authority,
+            recipient: object?.recipient,
+            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromSDK(e)) : []
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        obj.authority = message.authority;
+        obj.recipient = message.recipient;
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toSDK(e) : undefined);
+        }
+        else {
+            obj.amount = [];
+        }
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            authority: object.authority,
+            recipient: object.recipient,
+            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromAmino(e)) : []
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.authority = message.authority;
+        obj.recipient = message.recipient;
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toAmino(e) : undefined);
+        }
+        else {
+            obj.amount = [];
+        }
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgCommunityPoolSpend.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/distr/MsgCommunityPoolSpend",
+            value: exports.MsgCommunityPoolSpend.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgCommunityPoolSpend.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgCommunityPoolSpend.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.distribution.v1beta1.MsgCommunityPoolSpend",
+            value: exports.MsgCommunityPoolSpend.encode(message).finish()
+        };
+    }
+};
+function createBaseMsgCommunityPoolSpendResponse() {
+    return {};
+}
+exports.MsgCommunityPoolSpendResponse = {
+    typeUrl: "/cosmos.distribution.v1beta1.MsgCommunityPoolSpendResponse",
+    encode(_, writer = binary_1.BinaryWriter.create()) {
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseMsgCommunityPoolSpendResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
+    fromPartial(_) {
+        const message = createBaseMsgCommunityPoolSpendResponse();
+        return message;
+    },
+    fromSDK(_) {
+        return {};
+    },
+    toSDK(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAmino(_) {
+        return {};
+    },
+    toAmino(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgCommunityPoolSpendResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgCommunityPoolSpendResponse",
+            value: exports.MsgCommunityPoolSpendResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgCommunityPoolSpendResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgCommunityPoolSpendResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.distribution.v1beta1.MsgCommunityPoolSpendResponse",
+            value: exports.MsgCommunityPoolSpendResponse.encode(message).finish()
         };
     }
 };

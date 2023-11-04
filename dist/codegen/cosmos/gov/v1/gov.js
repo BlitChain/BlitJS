@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TallyParams = exports.VotingParams = exports.DepositParams = exports.Vote = exports.TallyResult = exports.Proposal = exports.Deposit = exports.WeightedVoteOption = exports.proposalStatusToJSON = exports.proposalStatusFromJSON = exports.ProposalStatusAmino = exports.ProposalStatusSDKType = exports.ProposalStatus = exports.voteOptionToJSON = exports.voteOptionFromJSON = exports.VoteOptionAmino = exports.VoteOptionSDKType = exports.VoteOption = exports.protobufPackage = void 0;
+exports.Params = exports.TallyParams = exports.VotingParams = exports.DepositParams = exports.Vote = exports.TallyResult = exports.Proposal = exports.Deposit = exports.WeightedVoteOption = exports.proposalStatusToJSON = exports.proposalStatusFromJSON = exports.ProposalStatusAmino = exports.ProposalStatusSDKType = exports.ProposalStatus = exports.voteOptionToJSON = exports.voteOptionFromJSON = exports.VoteOptionAmino = exports.VoteOptionSDKType = exports.VoteOption = exports.protobufPackage = void 0;
 //@ts-nocheck
 const coin_1 = require("../../base/v1beta1/coin");
 const any_1 = require("../../../google/protobuf/any");
@@ -71,7 +71,7 @@ exports.voteOptionToJSON = voteOptionToJSON;
 /** ProposalStatus enumerates the valid statuses of a proposal. */
 var ProposalStatus;
 (function (ProposalStatus) {
-    /** PROPOSAL_STATUS_UNSPECIFIED - PROPOSAL_STATUS_UNSPECIFIED defines the default propopsal status. */
+    /** PROPOSAL_STATUS_UNSPECIFIED - PROPOSAL_STATUS_UNSPECIFIED defines the default proposal status. */
     ProposalStatus[ProposalStatus["PROPOSAL_STATUS_UNSPECIFIED"] = 0] = "PROPOSAL_STATUS_UNSPECIFIED";
     /**
      * PROPOSAL_STATUS_DEPOSIT_PERIOD - PROPOSAL_STATUS_DEPOSIT_PERIOD defines a proposal status during the deposit
@@ -391,7 +391,10 @@ function createBaseProposal() {
         total_deposit: [],
         voting_start_time: undefined,
         voting_end_time: undefined,
-        metadata: ""
+        metadata: "",
+        title: "",
+        summary: "",
+        proposer: ""
     };
 }
 exports.Proposal = {
@@ -426,6 +429,15 @@ exports.Proposal = {
         }
         if (message.metadata !== "") {
             writer.uint32(82).string(message.metadata);
+        }
+        if (message.title !== "") {
+            writer.uint32(90).string(message.title);
+        }
+        if (message.summary !== "") {
+            writer.uint32(98).string(message.summary);
+        }
+        if (message.proposer !== "") {
+            writer.uint32(106).string(message.proposer);
         }
         return writer;
     },
@@ -466,6 +478,15 @@ exports.Proposal = {
                 case 10:
                     message.metadata = reader.string();
                     break;
+                case 11:
+                    message.title = reader.string();
+                    break;
+                case 12:
+                    message.summary = reader.string();
+                    break;
+                case 13:
+                    message.proposer = reader.string();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -484,7 +505,10 @@ exports.Proposal = {
             total_deposit: Array.isArray(object?.total_deposit) ? object.total_deposit.map((e) => coin_1.Coin.fromJSON(e)) : [],
             voting_start_time: (0, helpers_1.isSet)(object.voting_start_time) ? (0, helpers_1.fromJsonTimestamp)(object.voting_start_time) : undefined,
             voting_end_time: (0, helpers_1.isSet)(object.voting_end_time) ? (0, helpers_1.fromJsonTimestamp)(object.voting_end_time) : undefined,
-            metadata: (0, helpers_1.isSet)(object.metadata) ? String(object.metadata) : ""
+            metadata: (0, helpers_1.isSet)(object.metadata) ? String(object.metadata) : "",
+            title: (0, helpers_1.isSet)(object.title) ? String(object.title) : "",
+            summary: (0, helpers_1.isSet)(object.summary) ? String(object.summary) : "",
+            proposer: (0, helpers_1.isSet)(object.proposer) ? String(object.proposer) : ""
         };
     },
     toJSON(message) {
@@ -509,6 +533,9 @@ exports.Proposal = {
         message.voting_start_time !== undefined && (obj.voting_start_time = message.voting_start_time.toISOString());
         message.voting_end_time !== undefined && (obj.voting_end_time = message.voting_end_time.toISOString());
         message.metadata !== undefined && (obj.metadata = message.metadata);
+        message.title !== undefined && (obj.title = message.title);
+        message.summary !== undefined && (obj.summary = message.summary);
+        message.proposer !== undefined && (obj.proposer = message.proposer);
         return obj;
     },
     fromPartial(object) {
@@ -523,6 +550,9 @@ exports.Proposal = {
         message.voting_start_time = object.voting_start_time ?? undefined;
         message.voting_end_time = object.voting_end_time ?? undefined;
         message.metadata = object.metadata ?? "";
+        message.title = object.title ?? "";
+        message.summary = object.summary ?? "";
+        message.proposer = object.proposer ?? "";
         return message;
     },
     fromSDK(object) {
@@ -536,7 +566,10 @@ exports.Proposal = {
             total_deposit: Array.isArray(object?.total_deposit) ? object.total_deposit.map((e) => coin_1.Coin.fromSDK(e)) : [],
             voting_start_time: object.voting_start_time ? timestamp_1.Timestamp.fromSDK(object.voting_start_time) : undefined,
             voting_end_time: object.voting_end_time ? timestamp_1.Timestamp.fromSDK(object.voting_end_time) : undefined,
-            metadata: object?.metadata
+            metadata: object?.metadata,
+            title: object?.title,
+            summary: object?.summary,
+            proposer: object?.proposer
         };
     },
     toSDK(message) {
@@ -561,6 +594,9 @@ exports.Proposal = {
         message.voting_start_time !== undefined && (obj.voting_start_time = message.voting_start_time ? timestamp_1.Timestamp.toSDK(message.voting_start_time) : undefined);
         message.voting_end_time !== undefined && (obj.voting_end_time = message.voting_end_time ? timestamp_1.Timestamp.toSDK(message.voting_end_time) : undefined);
         obj.metadata = message.metadata;
+        obj.title = message.title;
+        obj.summary = message.summary;
+        obj.proposer = message.proposer;
         return obj;
     },
     fromAmino(object) {
@@ -574,7 +610,10 @@ exports.Proposal = {
             total_deposit: Array.isArray(object?.total_deposit) ? object.total_deposit.map((e) => coin_1.Coin.fromAmino(e)) : [],
             voting_start_time: object?.voting_start_time,
             voting_end_time: object?.voting_end_time,
-            metadata: object.metadata
+            metadata: object.metadata,
+            title: object.title,
+            summary: object.summary,
+            proposer: object.proposer
         };
     },
     toAmino(message) {
@@ -599,6 +638,9 @@ exports.Proposal = {
         obj.voting_start_time = message.voting_start_time;
         obj.voting_end_time = message.voting_end_time;
         obj.metadata = message.metadata;
+        obj.title = message.title;
+        obj.summary = message.summary;
+        obj.proposer = message.proposer;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1211,6 +1253,234 @@ exports.TallyParams = {
         return {
             typeUrl: "/cosmos.gov.v1.TallyParams",
             value: exports.TallyParams.encode(message).finish()
+        };
+    }
+};
+function createBaseParams() {
+    return {
+        min_deposit: [],
+        max_deposit_period: undefined,
+        voting_period: undefined,
+        quorum: "",
+        threshold: "",
+        veto_threshold: "",
+        min_initial_deposit_ratio: "",
+        burn_vote_quorum: false,
+        burn_proposal_deposit_prevote: false,
+        burn_vote_veto: false
+    };
+}
+exports.Params = {
+    typeUrl: "/cosmos.gov.v1.Params",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        for (const v of message.min_deposit) {
+            coin_1.Coin.encode(v, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.max_deposit_period !== undefined) {
+            duration_1.Duration.encode(message.max_deposit_period, writer.uint32(18).fork()).ldelim();
+        }
+        if (message.voting_period !== undefined) {
+            duration_1.Duration.encode(message.voting_period, writer.uint32(26).fork()).ldelim();
+        }
+        if (message.quorum !== "") {
+            writer.uint32(34).string(message.quorum);
+        }
+        if (message.threshold !== "") {
+            writer.uint32(42).string(message.threshold);
+        }
+        if (message.veto_threshold !== "") {
+            writer.uint32(50).string(message.veto_threshold);
+        }
+        if (message.min_initial_deposit_ratio !== "") {
+            writer.uint32(58).string(message.min_initial_deposit_ratio);
+        }
+        if (message.burn_vote_quorum === true) {
+            writer.uint32(104).bool(message.burn_vote_quorum);
+        }
+        if (message.burn_proposal_deposit_prevote === true) {
+            writer.uint32(112).bool(message.burn_proposal_deposit_prevote);
+        }
+        if (message.burn_vote_veto === true) {
+            writer.uint32(120).bool(message.burn_vote_veto);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseParams();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.min_deposit.push(coin_1.Coin.decode(reader, reader.uint32()));
+                    break;
+                case 2:
+                    message.max_deposit_period = duration_1.Duration.decode(reader, reader.uint32());
+                    break;
+                case 3:
+                    message.voting_period = duration_1.Duration.decode(reader, reader.uint32());
+                    break;
+                case 4:
+                    message.quorum = reader.string();
+                    break;
+                case 5:
+                    message.threshold = reader.string();
+                    break;
+                case 6:
+                    message.veto_threshold = reader.string();
+                    break;
+                case 7:
+                    message.min_initial_deposit_ratio = reader.string();
+                    break;
+                case 13:
+                    message.burn_vote_quorum = reader.bool();
+                    break;
+                case 14:
+                    message.burn_proposal_deposit_prevote = reader.bool();
+                    break;
+                case 15:
+                    message.burn_vote_veto = reader.bool();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            min_deposit: Array.isArray(object?.min_deposit) ? object.min_deposit.map((e) => coin_1.Coin.fromJSON(e)) : [],
+            max_deposit_period: (0, helpers_1.isSet)(object.max_deposit_period) ? duration_1.Duration.fromJSON(object.max_deposit_period) : undefined,
+            voting_period: (0, helpers_1.isSet)(object.voting_period) ? duration_1.Duration.fromJSON(object.voting_period) : undefined,
+            quorum: (0, helpers_1.isSet)(object.quorum) ? String(object.quorum) : "",
+            threshold: (0, helpers_1.isSet)(object.threshold) ? String(object.threshold) : "",
+            veto_threshold: (0, helpers_1.isSet)(object.veto_threshold) ? String(object.veto_threshold) : "",
+            min_initial_deposit_ratio: (0, helpers_1.isSet)(object.min_initial_deposit_ratio) ? String(object.min_initial_deposit_ratio) : "",
+            burn_vote_quorum: (0, helpers_1.isSet)(object.burn_vote_quorum) ? Boolean(object.burn_vote_quorum) : false,
+            burn_proposal_deposit_prevote: (0, helpers_1.isSet)(object.burn_proposal_deposit_prevote) ? Boolean(object.burn_proposal_deposit_prevote) : false,
+            burn_vote_veto: (0, helpers_1.isSet)(object.burn_vote_veto) ? Boolean(object.burn_vote_veto) : false
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.min_deposit) {
+            obj.min_deposit = message.min_deposit.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.min_deposit = [];
+        }
+        message.max_deposit_period !== undefined && (obj.max_deposit_period = message.max_deposit_period ? duration_1.Duration.toJSON(message.max_deposit_period) : undefined);
+        message.voting_period !== undefined && (obj.voting_period = message.voting_period ? duration_1.Duration.toJSON(message.voting_period) : undefined);
+        message.quorum !== undefined && (obj.quorum = message.quorum);
+        message.threshold !== undefined && (obj.threshold = message.threshold);
+        message.veto_threshold !== undefined && (obj.veto_threshold = message.veto_threshold);
+        message.min_initial_deposit_ratio !== undefined && (obj.min_initial_deposit_ratio = message.min_initial_deposit_ratio);
+        message.burn_vote_quorum !== undefined && (obj.burn_vote_quorum = message.burn_vote_quorum);
+        message.burn_proposal_deposit_prevote !== undefined && (obj.burn_proposal_deposit_prevote = message.burn_proposal_deposit_prevote);
+        message.burn_vote_veto !== undefined && (obj.burn_vote_veto = message.burn_vote_veto);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseParams();
+        message.min_deposit = object.min_deposit?.map(e => coin_1.Coin.fromPartial(e)) || [];
+        message.max_deposit_period = object.max_deposit_period !== undefined && object.max_deposit_period !== null ? duration_1.Duration.fromPartial(object.max_deposit_period) : undefined;
+        message.voting_period = object.voting_period !== undefined && object.voting_period !== null ? duration_1.Duration.fromPartial(object.voting_period) : undefined;
+        message.quorum = object.quorum ?? "";
+        message.threshold = object.threshold ?? "";
+        message.veto_threshold = object.veto_threshold ?? "";
+        message.min_initial_deposit_ratio = object.min_initial_deposit_ratio ?? "";
+        message.burn_vote_quorum = object.burn_vote_quorum ?? false;
+        message.burn_proposal_deposit_prevote = object.burn_proposal_deposit_prevote ?? false;
+        message.burn_vote_veto = object.burn_vote_veto ?? false;
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            min_deposit: Array.isArray(object?.min_deposit) ? object.min_deposit.map((e) => coin_1.Coin.fromSDK(e)) : [],
+            max_deposit_period: object.max_deposit_period ? duration_1.Duration.fromSDK(object.max_deposit_period) : undefined,
+            voting_period: object.voting_period ? duration_1.Duration.fromSDK(object.voting_period) : undefined,
+            quorum: object?.quorum,
+            threshold: object?.threshold,
+            veto_threshold: object?.veto_threshold,
+            min_initial_deposit_ratio: object?.min_initial_deposit_ratio,
+            burn_vote_quorum: object?.burn_vote_quorum,
+            burn_proposal_deposit_prevote: object?.burn_proposal_deposit_prevote,
+            burn_vote_veto: object?.burn_vote_veto
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        if (message.min_deposit) {
+            obj.min_deposit = message.min_deposit.map(e => e ? coin_1.Coin.toSDK(e) : undefined);
+        }
+        else {
+            obj.min_deposit = [];
+        }
+        message.max_deposit_period !== undefined && (obj.max_deposit_period = message.max_deposit_period ? duration_1.Duration.toSDK(message.max_deposit_period) : undefined);
+        message.voting_period !== undefined && (obj.voting_period = message.voting_period ? duration_1.Duration.toSDK(message.voting_period) : undefined);
+        obj.quorum = message.quorum;
+        obj.threshold = message.threshold;
+        obj.veto_threshold = message.veto_threshold;
+        obj.min_initial_deposit_ratio = message.min_initial_deposit_ratio;
+        obj.burn_vote_quorum = message.burn_vote_quorum;
+        obj.burn_proposal_deposit_prevote = message.burn_proposal_deposit_prevote;
+        obj.burn_vote_veto = message.burn_vote_veto;
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            min_deposit: Array.isArray(object?.min_deposit) ? object.min_deposit.map((e) => coin_1.Coin.fromAmino(e)) : [],
+            max_deposit_period: object?.max_deposit_period ? duration_1.Duration.fromAmino(object.max_deposit_period) : undefined,
+            voting_period: object?.voting_period ? duration_1.Duration.fromAmino(object.voting_period) : undefined,
+            quorum: object.quorum,
+            threshold: object.threshold,
+            veto_threshold: object.veto_threshold,
+            min_initial_deposit_ratio: object.min_initial_deposit_ratio,
+            burn_vote_quorum: object.burn_vote_quorum,
+            burn_proposal_deposit_prevote: object.burn_proposal_deposit_prevote,
+            burn_vote_veto: object.burn_vote_veto
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        if (message.min_deposit) {
+            obj.min_deposit = message.min_deposit.map(e => e ? coin_1.Coin.toAmino(e) : undefined);
+        }
+        else {
+            obj.min_deposit = [];
+        }
+        obj.max_deposit_period = message.max_deposit_period ? duration_1.Duration.toAmino(message.max_deposit_period) : undefined;
+        obj.voting_period = message.voting_period ? duration_1.Duration.toAmino(message.voting_period) : undefined;
+        obj.quorum = message.quorum;
+        obj.threshold = message.threshold;
+        obj.veto_threshold = message.veto_threshold;
+        obj.min_initial_deposit_ratio = message.min_initial_deposit_ratio;
+        obj.burn_vote_quorum = message.burn_vote_quorum;
+        obj.burn_proposal_deposit_prevote = message.burn_proposal_deposit_prevote;
+        obj.burn_vote_veto = message.burn_vote_veto;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.Params.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/v1/Params",
+            value: exports.Params.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.Params.decode(message.value);
+    },
+    toProto(message) {
+        return exports.Params.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1.Params",
+            value: exports.Params.encode(message).finish()
         };
     }
 };

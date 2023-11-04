@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { Deposit, DepositAmino, DepositSDKType, Vote, VoteAmino, VoteSDKType, Proposal, ProposalAmino, ProposalSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType } from "./gov";
+import { Deposit, DepositAmino, DepositSDKType, Vote, VoteAmino, VoteSDKType, Proposal, ProposalAmino, ProposalSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType, Params, ParamsAmino, ParamsSDKType } from "./gov";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
 export const protobufPackage = "cosmos.gov.v1";
@@ -13,12 +13,30 @@ export interface GenesisState {
   votes: Vote[];
   /** proposals defines all the proposals present at genesis. */
   proposals: Proposal[];
-  /** params defines all the paramaters of related to deposit. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * deposit_params defines all the paramaters of related to deposit.
+   */
+  /** @deprecated */
   deposit_params?: DepositParams;
-  /** params defines all the paramaters of related to voting. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * voting_params defines all the paramaters of related to voting.
+   */
+  /** @deprecated */
   voting_params?: VotingParams;
-  /** params defines all the paramaters of related to tally. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * tally_params defines all the paramaters of related to tally.
+   */
+  /** @deprecated */
   tally_params?: TallyParams;
+  /**
+   * params defines all the paramaters of x/gov module.
+   * 
+   * Since: cosmos-sdk 0.47
+   */
+  params?: Params;
 }
 export interface GenesisStateProtoMsg {
   type_url: "/cosmos.gov.v1.GenesisState";
@@ -38,12 +56,30 @@ export interface GenesisStateAmino {
   votes: VoteAmino[];
   /** proposals defines all the proposals present at genesis. */
   proposals: ProposalAmino[];
-  /** params defines all the paramaters of related to deposit. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * deposit_params defines all the paramaters of related to deposit.
+   */
+  /** @deprecated */
   deposit_params?: DepositParamsAmino;
-  /** params defines all the paramaters of related to voting. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * voting_params defines all the paramaters of related to voting.
+   */
+  /** @deprecated */
   voting_params?: VotingParamsAmino;
-  /** params defines all the paramaters of related to tally. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * tally_params defines all the paramaters of related to tally.
+   */
+  /** @deprecated */
   tally_params?: TallyParamsAmino;
+  /**
+   * params defines all the paramaters of x/gov module.
+   * 
+   * Since: cosmos-sdk 0.47
+   */
+  params?: ParamsAmino;
 }
 export interface GenesisStateAminoMsg {
   type: "cosmos-sdk/v1/GenesisState";
@@ -55,9 +91,13 @@ export interface GenesisStateSDKType {
   deposits: DepositSDKType[];
   votes: VoteSDKType[];
   proposals: ProposalSDKType[];
+  /** @deprecated */
   deposit_params?: DepositParamsSDKType;
+  /** @deprecated */
   voting_params?: VotingParamsSDKType;
+  /** @deprecated */
   tally_params?: TallyParamsSDKType;
+  params?: ParamsSDKType;
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -67,7 +107,8 @@ function createBaseGenesisState(): GenesisState {
     proposals: [],
     deposit_params: undefined,
     voting_params: undefined,
-    tally_params: undefined
+    tally_params: undefined,
+    params: undefined
   };
 }
 export const GenesisState = {
@@ -93,6 +134,9 @@ export const GenesisState = {
     }
     if (message.tally_params !== undefined) {
       TallyParams.encode(message.tally_params, writer.uint32(58).fork()).ldelim();
+    }
+    if (message.params !== undefined) {
+      Params.encode(message.params, writer.uint32(66).fork()).ldelim();
     }
     return writer;
   },
@@ -124,6 +168,9 @@ export const GenesisState = {
         case 7:
           message.tally_params = TallyParams.decode(reader, reader.uint32());
           break;
+        case 8:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -139,7 +186,8 @@ export const GenesisState = {
       proposals: Array.isArray(object?.proposals) ? object.proposals.map((e: any) => Proposal.fromJSON(e)) : [],
       deposit_params: isSet(object.deposit_params) ? DepositParams.fromJSON(object.deposit_params) : undefined,
       voting_params: isSet(object.voting_params) ? VotingParams.fromJSON(object.voting_params) : undefined,
-      tally_params: isSet(object.tally_params) ? TallyParams.fromJSON(object.tally_params) : undefined
+      tally_params: isSet(object.tally_params) ? TallyParams.fromJSON(object.tally_params) : undefined,
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
     };
   },
   toJSON(message: GenesisState): unknown {
@@ -163,6 +211,7 @@ export const GenesisState = {
     message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? DepositParams.toJSON(message.deposit_params) : undefined);
     message.voting_params !== undefined && (obj.voting_params = message.voting_params ? VotingParams.toJSON(message.voting_params) : undefined);
     message.tally_params !== undefined && (obj.tally_params = message.tally_params ? TallyParams.toJSON(message.tally_params) : undefined);
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
     return obj;
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
@@ -174,6 +223,7 @@ export const GenesisState = {
     message.deposit_params = object.deposit_params !== undefined && object.deposit_params !== null ? DepositParams.fromPartial(object.deposit_params) : undefined;
     message.voting_params = object.voting_params !== undefined && object.voting_params !== null ? VotingParams.fromPartial(object.voting_params) : undefined;
     message.tally_params = object.tally_params !== undefined && object.tally_params !== null ? TallyParams.fromPartial(object.tally_params) : undefined;
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
   fromSDK(object: GenesisStateSDKType): GenesisState {
@@ -184,7 +234,8 @@ export const GenesisState = {
       proposals: Array.isArray(object?.proposals) ? object.proposals.map((e: any) => Proposal.fromSDK(e)) : [],
       deposit_params: object.deposit_params ? DepositParams.fromSDK(object.deposit_params) : undefined,
       voting_params: object.voting_params ? VotingParams.fromSDK(object.voting_params) : undefined,
-      tally_params: object.tally_params ? TallyParams.fromSDK(object.tally_params) : undefined
+      tally_params: object.tally_params ? TallyParams.fromSDK(object.tally_params) : undefined,
+      params: object.params ? Params.fromSDK(object.params) : undefined
     };
   },
   toSDK(message: GenesisState): GenesisStateSDKType {
@@ -208,6 +259,7 @@ export const GenesisState = {
     message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? DepositParams.toSDK(message.deposit_params) : undefined);
     message.voting_params !== undefined && (obj.voting_params = message.voting_params ? VotingParams.toSDK(message.voting_params) : undefined);
     message.tally_params !== undefined && (obj.tally_params = message.tally_params ? TallyParams.toSDK(message.tally_params) : undefined);
+    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
     return obj;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -218,7 +270,8 @@ export const GenesisState = {
       proposals: Array.isArray(object?.proposals) ? object.proposals.map((e: any) => Proposal.fromAmino(e)) : [],
       deposit_params: object?.deposit_params ? DepositParams.fromAmino(object.deposit_params) : undefined,
       voting_params: object?.voting_params ? VotingParams.fromAmino(object.voting_params) : undefined,
-      tally_params: object?.tally_params ? TallyParams.fromAmino(object.tally_params) : undefined
+      tally_params: object?.tally_params ? TallyParams.fromAmino(object.tally_params) : undefined,
+      params: object?.params ? Params.fromAmino(object.params) : undefined
     };
   },
   toAmino(message: GenesisState): GenesisStateAmino {
@@ -242,6 +295,7 @@ export const GenesisState = {
     obj.deposit_params = message.deposit_params ? DepositParams.toAmino(message.deposit_params) : undefined;
     obj.voting_params = message.voting_params ? VotingParams.toAmino(message.voting_params) : undefined;
     obj.tally_params = message.tally_params ? TallyParams.toAmino(message.tally_params) : undefined;
+    obj.params = message.params ? Params.toAmino(message.params) : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {

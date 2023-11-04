@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgSubmitProposal, MsgExecLegacyContent, MsgVote, MsgVoteWeighted, MsgDeposit } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/cosmos.gov.v1.MsgSubmitProposal", MsgSubmitProposal], ["/cosmos.gov.v1.MsgExecLegacyContent", MsgExecLegacyContent], ["/cosmos.gov.v1.MsgVote", MsgVote], ["/cosmos.gov.v1.MsgVoteWeighted", MsgVoteWeighted], ["/cosmos.gov.v1.MsgDeposit", MsgDeposit]];
+import { MsgSubmitProposal, MsgExecLegacyContent, MsgVote, MsgVoteWeighted, MsgDeposit, MsgUpdateParams } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/cosmos.gov.v1.MsgSubmitProposal", MsgSubmitProposal], ["/cosmos.gov.v1.MsgExecLegacyContent", MsgExecLegacyContent], ["/cosmos.gov.v1.MsgVote", MsgVote], ["/cosmos.gov.v1.MsgVoteWeighted", MsgVoteWeighted], ["/cosmos.gov.v1.MsgDeposit", MsgDeposit], ["/cosmos.gov.v1.MsgUpdateParams", MsgUpdateParams]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -38,6 +38,12 @@ export const MessageComposer = {
         typeUrl: "/cosmos.gov.v1.MsgDeposit",
         value: MsgDeposit.encode(value).finish()
       };
+    },
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
+        value: MsgUpdateParams.encode(value).finish()
+      };
     }
   },
   withTypeUrl: {
@@ -68,6 +74,12 @@ export const MessageComposer = {
     deposit(value: MsgDeposit) {
       return {
         typeUrl: "/cosmos.gov.v1.MsgDeposit",
+        value
+      };
+    },
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
         value
       };
     }
@@ -102,6 +114,12 @@ export const MessageComposer = {
         typeUrl: "/cosmos.gov.v1.MsgDeposit",
         value: MsgDeposit.toJSON(value)
       };
+    },
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
+        value: MsgUpdateParams.toJSON(value)
+      };
     }
   },
   fromJSON: {
@@ -134,6 +152,12 @@ export const MessageComposer = {
         typeUrl: "/cosmos.gov.v1.MsgDeposit",
         value: MsgDeposit.fromJSON(value)
       };
+    },
+    updateParams(value: any) {
+      return {
+        typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
+        value: MsgUpdateParams.fromJSON(value)
+      };
     }
   },
   fromPartial: {
@@ -165,6 +189,12 @@ export const MessageComposer = {
       return {
         typeUrl: "/cosmos.gov.v1.MsgDeposit",
         value: MsgDeposit.fromPartial(value)
+      };
+    },
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
+        value: MsgUpdateParams.fromPartial(value)
       };
     }
   }

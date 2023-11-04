@@ -179,7 +179,7 @@ export interface BlockIDSDKType {
   hash: Uint8Array;
   part_set_header: PartSetHeaderSDKType;
 }
-/** Header defines the structure of a Tendermint block header. */
+/** Header defines the structure of a block header. */
 export interface Header {
   /** basic block info */
   version: Consensus;
@@ -213,7 +213,7 @@ export interface HeaderProtoMsg {
   type_url: "/tendermint.types.Header";
   value: Uint8Array;
 }
-/** Header defines the structure of a Tendermint block header. */
+/** Header defines the structure of a block header. */
 export interface HeaderAmino {
   /** basic block info */
   version?: ConsensusAmino;
@@ -243,7 +243,7 @@ export interface HeaderAminoMsg {
   type: "/tendermint.types.Header";
   value: HeaderAmino;
 }
-/** Header defines the structure of a Tendermint block header. */
+/** Header defines the structure of a block header. */
 export interface HeaderSDKType {
   version: ConsensusSDKType;
   chain_id: string;
@@ -302,7 +302,6 @@ export interface Vote {
   type: SignedMsgType;
   height: bigint;
   round: number;
-  /** zero if vote is nil. */
   block_id: BlockID;
   timestamp: Date;
   validator_address: Uint8Array;
@@ -325,7 +324,6 @@ export interface VoteAmino {
   type: SignedMsgType;
   height: string;
   round: number;
-  /** zero if vote is nil. */
   block_id?: BlockIDAmino;
   timestamp?: Date;
   validator_address: Uint8Array;

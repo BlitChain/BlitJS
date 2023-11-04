@@ -323,7 +323,7 @@ export const AllowedMsgAllowance = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.allowance = Cosmos_feegrantFeeAllowanceI_InterfaceDecoder(reader);
+                    message.allowance = Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder(reader);
                     break;
                 case 2:
                     message.allowed_messages.push(reader.string());
@@ -377,13 +377,13 @@ export const AllowedMsgAllowance = {
     },
     fromAmino(object) {
         return {
-            allowance: object?.allowance ? Cosmos_feegrantFeeAllowanceI_FromAmino(object.allowance) : undefined,
+            allowance: object?.allowance ? Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino(object.allowance) : undefined,
             allowed_messages: Array.isArray(object?.allowed_messages) ? object.allowed_messages.map((e) => e) : []
         };
     },
     toAmino(message) {
         const obj = {};
-        obj.allowance = message.allowance ? Cosmos_feegrantFeeAllowanceI_ToAmino(message.allowance) : undefined;
+        obj.allowance = message.allowance ? Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino(message.allowance) : undefined;
         if (message.allowed_messages) {
             obj.allowed_messages = message.allowed_messages.map(e => e);
         }
@@ -449,7 +449,7 @@ export const Grant = {
                     message.grantee = reader.string();
                     break;
                 case 3:
-                    message.allowance = Cosmos_feegrantFeeAllowanceI_InterfaceDecoder(reader);
+                    message.allowance = Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder(reader);
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -497,14 +497,14 @@ export const Grant = {
         return {
             granter: object.granter,
             grantee: object.grantee,
-            allowance: object?.allowance ? Cosmos_feegrantFeeAllowanceI_FromAmino(object.allowance) : undefined
+            allowance: object?.allowance ? Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino(object.allowance) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
         obj.granter = message.granter;
         obj.grantee = message.grantee;
-        obj.allowance = message.allowance ? Cosmos_feegrantFeeAllowanceI_ToAmino(message.allowance) : undefined;
+        obj.allowance = message.allowance ? Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino(message.allowance) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -529,7 +529,7 @@ export const Grant = {
         };
     }
 };
-export const Cosmos_feegrantFeeAllowanceI_InterfaceDecoder = (input) => {
+export const Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder = (input) => {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const data = Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
@@ -543,7 +543,7 @@ export const Cosmos_feegrantFeeAllowanceI_InterfaceDecoder = (input) => {
             return data;
     }
 };
-export const Cosmos_feegrantFeeAllowanceI_FromAmino = (content) => {
+export const Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino = (content) => {
     switch (content.type) {
         case "cosmos-sdk/BasicAllowance":
             return Any.fromPartial({
@@ -564,7 +564,7 @@ export const Cosmos_feegrantFeeAllowanceI_FromAmino = (content) => {
             return Any.fromAmino(content);
     }
 };
-export const Cosmos_feegrantFeeAllowanceI_ToAmino = (content) => {
+export const Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino = (content) => {
     switch (content.typeUrl) {
         case "/cosmos.feegrant.v1beta1.BasicAllowance":
             return {

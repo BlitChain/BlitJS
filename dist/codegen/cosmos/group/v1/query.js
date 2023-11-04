@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QueryTallyResultResponse = exports.QueryTallyResultRequest = exports.QueryGroupsByMemberResponse = exports.QueryGroupsByMemberRequest = exports.QueryVotesByVoterResponse = exports.QueryVotesByVoterRequest = exports.QueryVotesByProposalResponse = exports.QueryVotesByProposalRequest = exports.QueryVoteByProposalVoterResponse = exports.QueryVoteByProposalVoterRequest = exports.QueryProposalsByGroupPolicyResponse = exports.QueryProposalsByGroupPolicyRequest = exports.QueryProposalResponse = exports.QueryProposalRequest = exports.QueryGroupPoliciesByAdminResponse = exports.QueryGroupPoliciesByAdminRequest = exports.QueryGroupPoliciesByGroupResponse = exports.QueryGroupPoliciesByGroupRequest = exports.QueryGroupsByAdminResponse = exports.QueryGroupsByAdminRequest = exports.QueryGroupMembersResponse = exports.QueryGroupMembersRequest = exports.QueryGroupPolicyInfoResponse = exports.QueryGroupPolicyInfoRequest = exports.QueryGroupInfoResponse = exports.QueryGroupInfoRequest = exports.protobufPackage = void 0;
+exports.QueryGroupsResponse = exports.QueryGroupsRequest = exports.QueryTallyResultResponse = exports.QueryTallyResultRequest = exports.QueryGroupsByMemberResponse = exports.QueryGroupsByMemberRequest = exports.QueryVotesByVoterResponse = exports.QueryVotesByVoterRequest = exports.QueryVotesByProposalResponse = exports.QueryVotesByProposalRequest = exports.QueryVoteByProposalVoterResponse = exports.QueryVoteByProposalVoterRequest = exports.QueryProposalsByGroupPolicyResponse = exports.QueryProposalsByGroupPolicyRequest = exports.QueryProposalResponse = exports.QueryProposalRequest = exports.QueryGroupPoliciesByAdminResponse = exports.QueryGroupPoliciesByAdminRequest = exports.QueryGroupPoliciesByGroupResponse = exports.QueryGroupPoliciesByGroupRequest = exports.QueryGroupsByAdminResponse = exports.QueryGroupsByAdminRequest = exports.QueryGroupMembersResponse = exports.QueryGroupMembersRequest = exports.QueryGroupPolicyInfoResponse = exports.QueryGroupPolicyInfoRequest = exports.QueryGroupInfoResponse = exports.QueryGroupInfoRequest = exports.protobufPackage = void 0;
 //@ts-nocheck
 const pagination_1 = require("../../base/query/v1beta1/pagination");
 const types_1 = require("./types");
@@ -2624,6 +2624,209 @@ exports.QueryTallyResultResponse = {
         return {
             typeUrl: "/cosmos.group.v1.QueryTallyResultResponse",
             value: exports.QueryTallyResultResponse.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryGroupsRequest() {
+    return {
+        pagination: undefined
+    };
+}
+exports.QueryGroupsRequest = {
+    typeUrl: "/cosmos.group.v1.QueryGroupsRequest",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.pagination !== undefined) {
+            pagination_1.PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryGroupsRequest();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 2:
+                    message.pagination = pagination_1.PageRequest.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageRequest.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toJSON(message.pagination) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryGroupsRequest();
+        message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.pagination = message.pagination ? pagination_1.PageRequest.toAmino(message.pagination) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.QueryGroupsRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryGroupsRequest",
+            value: exports.QueryGroupsRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.QueryGroupsRequest.decode(message.value);
+    },
+    toProto(message) {
+        return exports.QueryGroupsRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.group.v1.QueryGroupsRequest",
+            value: exports.QueryGroupsRequest.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryGroupsResponse() {
+    return {
+        groups: [],
+        pagination: undefined
+    };
+}
+exports.QueryGroupsResponse = {
+    typeUrl: "/cosmos.group.v1.QueryGroupsResponse",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        for (const v of message.groups) {
+            types_1.GroupInfo.encode(v, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.pagination !== undefined) {
+            pagination_1.PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryGroupsResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.groups.push(types_1.GroupInfo.decode(reader, reader.uint32()));
+                    break;
+                case 2:
+                    message.pagination = pagination_1.PageResponse.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            groups: Array.isArray(object?.groups) ? object.groups.map((e) => types_1.GroupInfo.fromJSON(e)) : [],
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageResponse.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.groups) {
+            obj.groups = message.groups.map(e => e ? types_1.GroupInfo.toJSON(e) : undefined);
+        }
+        else {
+            obj.groups = [];
+        }
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toJSON(message.pagination) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryGroupsResponse();
+        message.groups = object.groups?.map(e => types_1.GroupInfo.fromPartial(e)) || [];
+        message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            groups: Array.isArray(object?.groups) ? object.groups.map((e) => types_1.GroupInfo.fromSDK(e)) : [],
+            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        if (message.groups) {
+            obj.groups = message.groups.map(e => e ? types_1.GroupInfo.toSDK(e) : undefined);
+        }
+        else {
+            obj.groups = [];
+        }
+        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            groups: Array.isArray(object?.groups) ? object.groups.map((e) => types_1.GroupInfo.fromAmino(e)) : [],
+            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        if (message.groups) {
+            obj.groups = message.groups.map(e => e ? types_1.GroupInfo.toAmino(e) : undefined);
+        }
+        else {
+            obj.groups = [];
+        }
+        obj.pagination = message.pagination ? pagination_1.PageResponse.toAmino(message.pagination) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.QueryGroupsResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryGroupsResponse",
+            value: exports.QueryGroupsResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.QueryGroupsResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.QueryGroupsResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.group.v1.QueryGroupsResponse",
+            value: exports.QueryGroupsResponse.encode(message).finish()
         };
     }
 };

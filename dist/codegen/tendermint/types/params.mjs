@@ -5,10 +5,10 @@ import { isSet } from "../../helpers";
 export const protobufPackage = "tendermint.types";
 function createBaseConsensusParams() {
     return {
-        block: BlockParams.fromPartial({}),
-        evidence: EvidenceParams.fromPartial({}),
-        validator: ValidatorParams.fromPartial({}),
-        version: VersionParams.fromPartial({})
+        block: undefined,
+        evidence: undefined,
+        validator: undefined,
+        version: undefined
     };
 }
 export const ConsensusParams = {
@@ -129,8 +129,7 @@ export const ConsensusParams = {
 function createBaseBlockParams() {
     return {
         max_bytes: BigInt(0),
-        max_gas: BigInt(0),
-        time_iota_ms: BigInt(0)
+        max_gas: BigInt(0)
     };
 }
 export const BlockParams = {
@@ -141,9 +140,6 @@ export const BlockParams = {
         }
         if (message.max_gas !== BigInt(0)) {
             writer.uint32(16).int64(message.max_gas);
-        }
-        if (message.time_iota_ms !== BigInt(0)) {
-            writer.uint32(24).int64(message.time_iota_ms);
         }
         return writer;
     },
@@ -160,9 +156,6 @@ export const BlockParams = {
                 case 2:
                     message.max_gas = reader.int64();
                     break;
-                case 3:
-                    message.time_iota_ms = reader.int64();
-                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -173,50 +166,43 @@ export const BlockParams = {
     fromJSON(object) {
         return {
             max_bytes: isSet(object.max_bytes) ? BigInt(object.max_bytes.toString()) : BigInt(0),
-            max_gas: isSet(object.max_gas) ? BigInt(object.max_gas.toString()) : BigInt(0),
-            time_iota_ms: isSet(object.time_iota_ms) ? BigInt(object.time_iota_ms.toString()) : BigInt(0)
+            max_gas: isSet(object.max_gas) ? BigInt(object.max_gas.toString()) : BigInt(0)
         };
     },
     toJSON(message) {
         const obj = {};
         message.max_bytes !== undefined && (obj.max_bytes = (message.max_bytes || BigInt(0)).toString());
         message.max_gas !== undefined && (obj.max_gas = (message.max_gas || BigInt(0)).toString());
-        message.time_iota_ms !== undefined && (obj.time_iota_ms = (message.time_iota_ms || BigInt(0)).toString());
         return obj;
     },
     fromPartial(object) {
         const message = createBaseBlockParams();
         message.max_bytes = object.max_bytes !== undefined && object.max_bytes !== null ? BigInt(object.max_bytes.toString()) : BigInt(0);
         message.max_gas = object.max_gas !== undefined && object.max_gas !== null ? BigInt(object.max_gas.toString()) : BigInt(0);
-        message.time_iota_ms = object.time_iota_ms !== undefined && object.time_iota_ms !== null ? BigInt(object.time_iota_ms.toString()) : BigInt(0);
         return message;
     },
     fromSDK(object) {
         return {
             max_bytes: object?.max_bytes,
-            max_gas: object?.max_gas,
-            time_iota_ms: object?.time_iota_ms
+            max_gas: object?.max_gas
         };
     },
     toSDK(message) {
         const obj = {};
         obj.max_bytes = message.max_bytes;
         obj.max_gas = message.max_gas;
-        obj.time_iota_ms = message.time_iota_ms;
         return obj;
     },
     fromAmino(object) {
         return {
             max_bytes: BigInt(object.max_bytes),
-            max_gas: BigInt(object.max_gas),
-            time_iota_ms: BigInt(object.time_iota_ms)
+            max_gas: BigInt(object.max_gas)
         };
     },
     toAmino(message) {
         const obj = {};
         obj.max_bytes = message.max_bytes ? message.max_bytes.toString() : undefined;
         obj.max_gas = message.max_gas ? message.max_gas.toString() : undefined;
-        obj.time_iota_ms = message.time_iota_ms ? message.time_iota_ms.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -442,14 +428,14 @@ export const ValidatorParams = {
 };
 function createBaseVersionParams() {
     return {
-        app_version: BigInt(0)
+        app: BigInt(0)
     };
 }
 export const VersionParams = {
     typeUrl: "/tendermint.types.VersionParams",
     encode(message, writer = BinaryWriter.create()) {
-        if (message.app_version !== BigInt(0)) {
-            writer.uint32(8).uint64(message.app_version);
+        if (message.app !== BigInt(0)) {
+            writer.uint32(8).uint64(message.app);
         }
         return writer;
     },
@@ -461,7 +447,7 @@ export const VersionParams = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.app_version = reader.uint64();
+                    message.app = reader.uint64();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -472,37 +458,37 @@ export const VersionParams = {
     },
     fromJSON(object) {
         return {
-            app_version: isSet(object.app_version) ? BigInt(object.app_version.toString()) : BigInt(0)
+            app: isSet(object.app) ? BigInt(object.app.toString()) : BigInt(0)
         };
     },
     toJSON(message) {
         const obj = {};
-        message.app_version !== undefined && (obj.app_version = (message.app_version || BigInt(0)).toString());
+        message.app !== undefined && (obj.app = (message.app || BigInt(0)).toString());
         return obj;
     },
     fromPartial(object) {
         const message = createBaseVersionParams();
-        message.app_version = object.app_version !== undefined && object.app_version !== null ? BigInt(object.app_version.toString()) : BigInt(0);
+        message.app = object.app !== undefined && object.app !== null ? BigInt(object.app.toString()) : BigInt(0);
         return message;
     },
     fromSDK(object) {
         return {
-            app_version: object?.app_version
+            app: object?.app
         };
     },
     toSDK(message) {
         const obj = {};
-        obj.app_version = message.app_version;
+        obj.app = message.app;
         return obj;
     },
     fromAmino(object) {
         return {
-            app_version: BigInt(object.app_version)
+            app: BigInt(object.app)
         };
     },
     toAmino(message) {
         const obj = {};
-        obj.app_version = message.app_version ? message.app_version.toString() : undefined;
+        obj.app = message.app ? message.app.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

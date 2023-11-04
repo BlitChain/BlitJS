@@ -6,10 +6,10 @@ export declare const protobufPackage = "tendermint.types";
  * validity of blocks.
  */
 export interface ConsensusParams {
-    block: BlockParams;
-    evidence: EvidenceParams;
-    validator: ValidatorParams;
-    version: VersionParams;
+    block?: BlockParams;
+    evidence?: EvidenceParams;
+    validator?: ValidatorParams;
+    version?: VersionParams;
 }
 export interface ConsensusParamsProtoMsg {
     type_url: "/tendermint.types.ConsensusParams";
@@ -38,10 +38,10 @@ export interface ConsensusParamsAminoMsg {
  * validity of blocks.
  */
 export interface ConsensusParamsSDKType {
-    block: BlockParamsSDKType;
-    evidence: EvidenceParamsSDKType;
-    validator: ValidatorParamsSDKType;
-    version: VersionParamsSDKType;
+    block?: BlockParamsSDKType;
+    evidence?: EvidenceParamsSDKType;
+    validator?: ValidatorParamsSDKType;
+    version?: VersionParamsSDKType;
 }
 /** BlockParams contains limits on the block size. */
 export interface BlockParams {
@@ -55,13 +55,6 @@ export interface BlockParams {
      * Note: must be greater or equal to -1
      */
     max_gas: bigint;
-    /**
-     * Minimum time increment between consecutive blocks (in milliseconds) If the
-     * block header timestamp is ahead of the system clock, decrease this value.
-     *
-     * Not exposed to the application.
-     */
-    time_iota_ms: bigint;
 }
 export interface BlockParamsProtoMsg {
     type_url: "/tendermint.types.BlockParams";
@@ -83,13 +76,6 @@ export interface BlockParamsAmino {
      * Note: must be greater or equal to -1
      */
     max_gas: string;
-    /**
-     * Minimum time increment between consecutive blocks (in milliseconds) If the
-     * block header timestamp is ahead of the system clock, decrease this value.
-     *
-     * Not exposed to the application.
-     */
-    time_iota_ms: string;
 }
 export interface BlockParamsAminoMsg {
     type: "/tendermint.types.BlockParams";
@@ -99,7 +85,6 @@ export interface BlockParamsAminoMsg {
 export interface BlockParamsSDKType {
     max_bytes: bigint;
     max_gas: bigint;
-    time_iota_ms: bigint;
 }
 /** EvidenceParams determine how we handle evidence of malfeasance. */
 export interface EvidenceParams {
@@ -202,7 +187,7 @@ export interface ValidatorParamsSDKType {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParams {
-    app_version: bigint;
+    app: bigint;
 }
 export interface VersionParamsProtoMsg {
     type_url: "/tendermint.types.VersionParams";
@@ -214,7 +199,7 @@ export interface VersionParamsProtoMsg {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParamsAmino {
-    app_version: string;
+    app: string;
 }
 export interface VersionParamsAminoMsg {
     type: "/tendermint.types.VersionParams";
@@ -222,7 +207,7 @@ export interface VersionParamsAminoMsg {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParamsSDKType {
-    app_version: bigint;
+    app: bigint;
 }
 /**
  * HashedParams is a subset of ConsensusParams.

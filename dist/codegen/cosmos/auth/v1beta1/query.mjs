@@ -117,7 +117,7 @@ export const QueryAccountsResponse = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.accounts.push(Cosmos_authAccountI_InterfaceDecoder(reader));
+                    message.accounts.push(Cosmos_authv1beta1AccountI_InterfaceDecoder(reader));
                     break;
                 case 2:
                     message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -171,14 +171,14 @@ export const QueryAccountsResponse = {
     },
     fromAmino(object) {
         return {
-            accounts: Array.isArray(object?.accounts) ? object.accounts.map((e) => Cosmos_authAccountI_FromAmino(e)) : [],
+            accounts: Array.isArray(object?.accounts) ? object.accounts.map((e) => Cosmos_authv1beta1AccountI_FromAmino(e)) : [],
             pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
         if (message.accounts) {
-            obj.accounts = message.accounts.map(e => e ? Cosmos_authAccountI_ToAmino(e) : undefined);
+            obj.accounts = message.accounts.map(e => e ? Cosmos_authv1beta1AccountI_ToAmino(e) : undefined);
         }
         else {
             obj.accounts = [];
@@ -295,162 +295,6 @@ export const QueryAccountRequest = {
         };
     }
 };
-function createBaseQueryModuleAccountsRequest() {
-    return {};
-}
-export const QueryModuleAccountsRequest = {
-    typeUrl: "/cosmos.auth.v1beta1.QueryModuleAccountsRequest",
-    encode(_, writer = BinaryWriter.create()) {
-        return writer;
-    },
-    decode(input, length) {
-        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseQueryModuleAccountsRequest();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-            }
-        }
-        return message;
-    },
-    fromJSON(_) {
-        return {};
-    },
-    toJSON(_) {
-        const obj = {};
-        return obj;
-    },
-    fromPartial(_) {
-        const message = createBaseQueryModuleAccountsRequest();
-        return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
-    },
-    fromAmino(_) {
-        return {};
-    },
-    toAmino(_) {
-        const obj = {};
-        return obj;
-    },
-    fromAminoMsg(object) {
-        return QueryModuleAccountsRequest.fromAmino(object.value);
-    },
-    toAminoMsg(message) {
-        return {
-            type: "cosmos-sdk/QueryModuleAccountsRequest",
-            value: QueryModuleAccountsRequest.toAmino(message)
-        };
-    },
-    fromProtoMsg(message) {
-        return QueryModuleAccountsRequest.decode(message.value);
-    },
-    toProto(message) {
-        return QueryModuleAccountsRequest.encode(message).finish();
-    },
-    toProtoMsg(message) {
-        return {
-            typeUrl: "/cosmos.auth.v1beta1.QueryModuleAccountsRequest",
-            value: QueryModuleAccountsRequest.encode(message).finish()
-        };
-    }
-};
-function createBaseQueryParamsResponse() {
-    return {
-        params: Params.fromPartial({})
-    };
-}
-export const QueryParamsResponse = {
-    typeUrl: "/cosmos.auth.v1beta1.QueryParamsResponse",
-    encode(message, writer = BinaryWriter.create()) {
-        if (message.params !== undefined) {
-            Params.encode(message.params, writer.uint32(10).fork()).ldelim();
-        }
-        return writer;
-    },
-    decode(input, length) {
-        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseQueryParamsResponse();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    message.params = Params.decode(reader, reader.uint32());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-            }
-        }
-        return message;
-    },
-    fromJSON(object) {
-        return {
-            params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
-        };
-    },
-    toJSON(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-        return obj;
-    },
-    fromPartial(object) {
-        const message = createBaseQueryParamsResponse();
-        message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-        return message;
-    },
-    fromSDK(object) {
-        return {
-            params: object.params ? Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-        return obj;
-    },
-    fromAmino(object) {
-        return {
-            params: object?.params ? Params.fromAmino(object.params) : undefined
-        };
-    },
-    toAmino(message) {
-        const obj = {};
-        obj.params = message.params ? Params.toAmino(message.params) : undefined;
-        return obj;
-    },
-    fromAminoMsg(object) {
-        return QueryParamsResponse.fromAmino(object.value);
-    },
-    toAminoMsg(message) {
-        return {
-            type: "cosmos-sdk/QueryParamsResponse",
-            value: QueryParamsResponse.toAmino(message)
-        };
-    },
-    fromProtoMsg(message) {
-        return QueryParamsResponse.decode(message.value);
-    },
-    toProto(message) {
-        return QueryParamsResponse.encode(message).finish();
-    },
-    toProtoMsg(message) {
-        return {
-            typeUrl: "/cosmos.auth.v1beta1.QueryParamsResponse",
-            value: QueryParamsResponse.encode(message).finish()
-        };
-    }
-};
 function createBaseQueryAccountResponse() {
     return {
         account: undefined
@@ -472,7 +316,7 @@ export const QueryAccountResponse = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.account = Cosmos_authAccountI_InterfaceDecoder(reader);
+                    message.account = Cosmos_authv1beta1AccountI_InterfaceDecoder(reader);
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -508,12 +352,12 @@ export const QueryAccountResponse = {
     },
     fromAmino(object) {
         return {
-            account: object?.account ? Cosmos_authAccountI_FromAmino(object.account) : undefined
+            account: object?.account ? Cosmos_authv1beta1AccountI_FromAmino(object.account) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
-        obj.account = message.account ? Cosmos_authAccountI_ToAmino(message.account) : undefined;
+        obj.account = message.account ? Cosmos_authv1beta1AccountI_ToAmino(message.account) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -607,6 +451,162 @@ export const QueryParamsRequest = {
         };
     }
 };
+function createBaseQueryParamsResponse() {
+    return {
+        params: Params.fromPartial({})
+    };
+}
+export const QueryParamsResponse = {
+    typeUrl: "/cosmos.auth.v1beta1.QueryParamsResponse",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.params !== undefined) {
+            Params.encode(message.params, writer.uint32(10).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryParamsResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.params = Params.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryParamsResponse();
+        message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            params: object.params ? Params.fromSDK(object.params) : undefined
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            params: object?.params ? Params.fromAmino(object.params) : undefined
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.params = message.params ? Params.toAmino(message.params) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryParamsResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryParamsResponse",
+            value: QueryParamsResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryParamsResponse.decode(message.value);
+    },
+    toProto(message) {
+        return QueryParamsResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.auth.v1beta1.QueryParamsResponse",
+            value: QueryParamsResponse.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryModuleAccountsRequest() {
+    return {};
+}
+export const QueryModuleAccountsRequest = {
+    typeUrl: "/cosmos.auth.v1beta1.QueryModuleAccountsRequest",
+    encode(_, writer = BinaryWriter.create()) {
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryModuleAccountsRequest();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
+    fromPartial(_) {
+        const message = createBaseQueryModuleAccountsRequest();
+        return message;
+    },
+    fromSDK(_) {
+        return {};
+    },
+    toSDK(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAmino(_) {
+        return {};
+    },
+    toAmino(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryModuleAccountsRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryModuleAccountsRequest",
+            value: QueryModuleAccountsRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryModuleAccountsRequest.decode(message.value);
+    },
+    toProto(message) {
+        return QueryModuleAccountsRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.auth.v1beta1.QueryModuleAccountsRequest",
+            value: QueryModuleAccountsRequest.encode(message).finish()
+        };
+    }
+};
 function createBaseQueryModuleAccountsResponse() {
     return {
         accounts: []
@@ -628,7 +628,7 @@ export const QueryModuleAccountsResponse = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.accounts.push(Cosmos_authModuleAccountI_InterfaceDecoder(reader));
+                    message.accounts.push(Cosmos_authv1beta1ModuleAccountI_InterfaceDecoder(reader));
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -674,13 +674,13 @@ export const QueryModuleAccountsResponse = {
     },
     fromAmino(object) {
         return {
-            accounts: Array.isArray(object?.accounts) ? object.accounts.map((e) => Cosmos_authModuleAccountI_FromAmino(e)) : []
+            accounts: Array.isArray(object?.accounts) ? object.accounts.map((e) => Cosmos_authv1beta1ModuleAccountI_FromAmino(e)) : []
         };
     },
     toAmino(message) {
         const obj = {};
         if (message.accounts) {
-            obj.accounts = message.accounts.map(e => e ? Cosmos_authModuleAccountI_ToAmino(e) : undefined);
+            obj.accounts = message.accounts.map(e => e ? Cosmos_authv1beta1ModuleAccountI_ToAmino(e) : undefined);
         }
         else {
             obj.accounts = [];
@@ -706,6 +706,180 @@ export const QueryModuleAccountsResponse = {
         return {
             typeUrl: "/cosmos.auth.v1beta1.QueryModuleAccountsResponse",
             value: QueryModuleAccountsResponse.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryModuleAccountByNameRequest() {
+    return {
+        name: ""
+    };
+}
+export const QueryModuleAccountByNameRequest = {
+    typeUrl: "/cosmos.auth.v1beta1.QueryModuleAccountByNameRequest",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.name !== "") {
+            writer.uint32(10).string(message.name);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryModuleAccountByNameRequest();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.name = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            name: isSet(object.name) ? String(object.name) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.name !== undefined && (obj.name = message.name);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryModuleAccountByNameRequest();
+        message.name = object.name ?? "";
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            name: object?.name
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        obj.name = message.name;
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            name: object.name
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.name = message.name;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryModuleAccountByNameRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryModuleAccountByNameRequest",
+            value: QueryModuleAccountByNameRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryModuleAccountByNameRequest.decode(message.value);
+    },
+    toProto(message) {
+        return QueryModuleAccountByNameRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.auth.v1beta1.QueryModuleAccountByNameRequest",
+            value: QueryModuleAccountByNameRequest.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryModuleAccountByNameResponse() {
+    return {
+        account: undefined
+    };
+}
+export const QueryModuleAccountByNameResponse = {
+    typeUrl: "/cosmos.auth.v1beta1.QueryModuleAccountByNameResponse",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.account !== undefined) {
+            Any.encode(message.account, writer.uint32(10).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryModuleAccountByNameResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.account = Cosmos_authv1beta1ModuleAccountI_InterfaceDecoder(reader);
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            account: isSet(object.account) ? Any.fromJSON(object.account) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.account !== undefined && (obj.account = message.account ? Any.toJSON(message.account) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryModuleAccountByNameResponse();
+        message.account = object.account !== undefined && object.account !== null ? Any.fromPartial(object.account) : undefined;
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            account: object.account ? Any.fromSDK(object.account) : undefined
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        message.account !== undefined && (obj.account = message.account ? Any.toSDK(message.account) : undefined);
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            account: object?.account ? Cosmos_authv1beta1ModuleAccountI_FromAmino(object.account) : undefined
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.account = message.account ? Cosmos_authv1beta1ModuleAccountI_ToAmino(message.account) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryModuleAccountByNameResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryModuleAccountByNameResponse",
+            value: QueryModuleAccountByNameResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryModuleAccountByNameResponse.decode(message.value);
+    },
+    toProto(message) {
+        return QueryModuleAccountByNameResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.auth.v1beta1.QueryModuleAccountByNameResponse",
+            value: QueryModuleAccountByNameResponse.encode(message).finish()
         };
     }
 };
@@ -1213,7 +1387,369 @@ export const AddressStringToBytesResponse = {
         };
     }
 };
-export const Cosmos_authAccountI_InterfaceDecoder = (input) => {
+function createBaseQueryAccountAddressByIDRequest() {
+    return {
+        id: BigInt(0),
+        account_id: BigInt(0)
+    };
+}
+export const QueryAccountAddressByIDRequest = {
+    typeUrl: "/cosmos.auth.v1beta1.QueryAccountAddressByIDRequest",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.id !== BigInt(0)) {
+            writer.uint32(8).int64(message.id);
+        }
+        if (message.account_id !== BigInt(0)) {
+            writer.uint32(16).uint64(message.account_id);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryAccountAddressByIDRequest();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.id = reader.int64();
+                    break;
+                case 2:
+                    message.account_id = reader.uint64();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0),
+            account_id: isSet(object.account_id) ? BigInt(object.account_id.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
+        message.account_id !== undefined && (obj.account_id = (message.account_id || BigInt(0)).toString());
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryAccountAddressByIDRequest();
+        message.id = object.id !== undefined && object.id !== null ? BigInt(object.id.toString()) : BigInt(0);
+        message.account_id = object.account_id !== undefined && object.account_id !== null ? BigInt(object.account_id.toString()) : BigInt(0);
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            id: object?.id,
+            account_id: object?.account_id
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        obj.id = message.id;
+        obj.account_id = message.account_id;
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            id: BigInt(object.id),
+            account_id: BigInt(object.account_id)
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.id = message.id ? message.id.toString() : undefined;
+        obj.account_id = message.account_id ? message.account_id.toString() : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryAccountAddressByIDRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryAccountAddressByIDRequest",
+            value: QueryAccountAddressByIDRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryAccountAddressByIDRequest.decode(message.value);
+    },
+    toProto(message) {
+        return QueryAccountAddressByIDRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.auth.v1beta1.QueryAccountAddressByIDRequest",
+            value: QueryAccountAddressByIDRequest.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryAccountAddressByIDResponse() {
+    return {
+        account_address: ""
+    };
+}
+export const QueryAccountAddressByIDResponse = {
+    typeUrl: "/cosmos.auth.v1beta1.QueryAccountAddressByIDResponse",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.account_address !== "") {
+            writer.uint32(10).string(message.account_address);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryAccountAddressByIDResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.account_address = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            account_address: isSet(object.account_address) ? String(object.account_address) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.account_address !== undefined && (obj.account_address = message.account_address);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryAccountAddressByIDResponse();
+        message.account_address = object.account_address ?? "";
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            account_address: object?.account_address
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        obj.account_address = message.account_address;
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            account_address: object.account_address
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.account_address = message.account_address;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryAccountAddressByIDResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryAccountAddressByIDResponse",
+            value: QueryAccountAddressByIDResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryAccountAddressByIDResponse.decode(message.value);
+    },
+    toProto(message) {
+        return QueryAccountAddressByIDResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.auth.v1beta1.QueryAccountAddressByIDResponse",
+            value: QueryAccountAddressByIDResponse.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryAccountInfoRequest() {
+    return {
+        address: ""
+    };
+}
+export const QueryAccountInfoRequest = {
+    typeUrl: "/cosmos.auth.v1beta1.QueryAccountInfoRequest",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.address !== "") {
+            writer.uint32(10).string(message.address);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryAccountInfoRequest();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.address = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            address: isSet(object.address) ? String(object.address) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.address !== undefined && (obj.address = message.address);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryAccountInfoRequest();
+        message.address = object.address ?? "";
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            address: object?.address
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        obj.address = message.address;
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            address: object.address
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.address = message.address;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryAccountInfoRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryAccountInfoRequest",
+            value: QueryAccountInfoRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryAccountInfoRequest.decode(message.value);
+    },
+    toProto(message) {
+        return QueryAccountInfoRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.auth.v1beta1.QueryAccountInfoRequest",
+            value: QueryAccountInfoRequest.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryAccountInfoResponse() {
+    return {
+        info: undefined
+    };
+}
+export const QueryAccountInfoResponse = {
+    typeUrl: "/cosmos.auth.v1beta1.QueryAccountInfoResponse",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.info !== undefined) {
+            BaseAccount.encode(message.info, writer.uint32(10).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryAccountInfoResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.info = BaseAccount.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            info: isSet(object.info) ? BaseAccount.fromJSON(object.info) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.info !== undefined && (obj.info = message.info ? BaseAccount.toJSON(message.info) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryAccountInfoResponse();
+        message.info = object.info !== undefined && object.info !== null ? BaseAccount.fromPartial(object.info) : undefined;
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            info: object.info ? BaseAccount.fromSDK(object.info) : undefined
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        message.info !== undefined && (obj.info = message.info ? BaseAccount.toSDK(message.info) : undefined);
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            info: object?.info ? BaseAccount.fromAmino(object.info) : undefined
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.info = message.info ? BaseAccount.toAmino(message.info) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryAccountInfoResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryAccountInfoResponse",
+            value: QueryAccountInfoResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryAccountInfoResponse.decode(message.value);
+    },
+    toProto(message) {
+        return QueryAccountInfoResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.auth.v1beta1.QueryAccountInfoResponse",
+            value: QueryAccountInfoResponse.encode(message).finish()
+        };
+    }
+};
+export const Cosmos_authv1beta1AccountI_InterfaceDecoder = (input) => {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const data = Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
@@ -1223,7 +1759,7 @@ export const Cosmos_authAccountI_InterfaceDecoder = (input) => {
             return data;
     }
 };
-export const Cosmos_authAccountI_FromAmino = (content) => {
+export const Cosmos_authv1beta1AccountI_FromAmino = (content) => {
     switch (content.type) {
         case "cosmos-sdk/BaseAccount":
             return Any.fromPartial({
@@ -1234,7 +1770,7 @@ export const Cosmos_authAccountI_FromAmino = (content) => {
             return Any.fromAmino(content);
     }
 };
-export const Cosmos_authAccountI_ToAmino = (content) => {
+export const Cosmos_authv1beta1AccountI_ToAmino = (content) => {
     switch (content.typeUrl) {
         case "/cosmos.auth.v1beta1.BaseAccount":
             return {
@@ -1245,7 +1781,7 @@ export const Cosmos_authAccountI_ToAmino = (content) => {
             return Any.toAmino(content);
     }
 };
-export const Cosmos_authModuleAccountI_InterfaceDecoder = (input) => {
+export const Cosmos_authv1beta1ModuleAccountI_InterfaceDecoder = (input) => {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const data = Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
@@ -1255,7 +1791,7 @@ export const Cosmos_authModuleAccountI_InterfaceDecoder = (input) => {
             return data;
     }
 };
-export const Cosmos_authModuleAccountI_FromAmino = (content) => {
+export const Cosmos_authv1beta1ModuleAccountI_FromAmino = (content) => {
     switch (content.type) {
         case "cosmos-sdk/ModuleAccount":
             return Any.fromPartial({
@@ -1266,7 +1802,7 @@ export const Cosmos_authModuleAccountI_FromAmino = (content) => {
             return Any.fromAmino(content);
     }
 };
-export const Cosmos_authModuleAccountI_ToAmino = (content) => {
+export const Cosmos_authv1beta1ModuleAccountI_ToAmino = (content) => {
     switch (content.typeUrl) {
         case "/cosmos.auth.v1beta1.ModuleAccount":
             return {

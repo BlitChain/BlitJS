@@ -50,6 +50,68 @@ export interface QueryParamsResponseAminoMsg {
 export interface QueryParamsResponseSDKType {
     params: ParamsSDKType;
 }
+/** QueryValidatorDistributionInfoRequest is the request type for the Query/ValidatorDistributionInfo RPC method. */
+export interface QueryValidatorDistributionInfoRequest {
+    /** validator_address defines the validator address to query for. */
+    validator_address: string;
+}
+export interface QueryValidatorDistributionInfoRequestProtoMsg {
+    type_url: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoRequest";
+    value: Uint8Array;
+}
+export interface QueryValidatorDistributionInfoRequestProtoMsg {
+    type_url: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoRequest";
+    value: Uint8Array;
+}
+/** QueryValidatorDistributionInfoRequest is the request type for the Query/ValidatorDistributionInfo RPC method. */
+export interface QueryValidatorDistributionInfoRequestAmino {
+    /** validator_address defines the validator address to query for. */
+    validator_address: string;
+}
+export interface QueryValidatorDistributionInfoRequestAminoMsg {
+    type: "cosmos-sdk/QueryValidatorDistributionInfoRequest";
+    value: QueryValidatorDistributionInfoRequestAmino;
+}
+/** QueryValidatorDistributionInfoRequest is the request type for the Query/ValidatorDistributionInfo RPC method. */
+export interface QueryValidatorDistributionInfoRequestSDKType {
+    validator_address: string;
+}
+/** QueryValidatorDistributionInfoResponse is the response type for the Query/ValidatorDistributionInfo RPC method. */
+export interface QueryValidatorDistributionInfoResponse {
+    /** operator_address defines the validator operator address. */
+    operator_address: string;
+    /** self_bond_rewards defines the self delegations rewards. */
+    self_bond_rewards: DecCoin[];
+    /** commission defines the commission the validator received. */
+    commission: DecCoin[];
+}
+export interface QueryValidatorDistributionInfoResponseProtoMsg {
+    type_url: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoResponse";
+    value: Uint8Array;
+}
+export interface QueryValidatorDistributionInfoResponseProtoMsg {
+    type_url: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoResponse";
+    value: Uint8Array;
+}
+/** QueryValidatorDistributionInfoResponse is the response type for the Query/ValidatorDistributionInfo RPC method. */
+export interface QueryValidatorDistributionInfoResponseAmino {
+    /** operator_address defines the validator operator address. */
+    operator_address: string;
+    /** self_bond_rewards defines the self delegations rewards. */
+    self_bond_rewards: DecCoinAmino[];
+    /** commission defines the commission the validator received. */
+    commission: DecCoinAmino[];
+}
+export interface QueryValidatorDistributionInfoResponseAminoMsg {
+    type: "cosmos-sdk/QueryValidatorDistributionInfoResponse";
+    value: QueryValidatorDistributionInfoResponseAmino;
+}
+/** QueryValidatorDistributionInfoResponse is the response type for the Query/ValidatorDistributionInfo RPC method. */
+export interface QueryValidatorDistributionInfoResponseSDKType {
+    operator_address: string;
+    self_bond_rewards: DecCoinSDKType[];
+    commission: DecCoinSDKType[];
+}
 /**
  * QueryValidatorOutstandingRewardsRequest is the request type for the
  * Query/ValidatorOutstandingRewards RPC method.
@@ -158,7 +220,7 @@ export interface QueryValidatorCommissionRequestSDKType {
  * Query/ValidatorCommission RPC method
  */
 export interface QueryValidatorCommissionResponse {
-    /** commission defines the commision the validator received. */
+    /** commission defines the commission the validator received. */
     commission: ValidatorAccumulatedCommission;
 }
 export interface QueryValidatorCommissionResponseProtoMsg {
@@ -174,7 +236,7 @@ export interface QueryValidatorCommissionResponseProtoMsg {
  * Query/ValidatorCommission RPC method
  */
 export interface QueryValidatorCommissionResponseAmino {
-    /** commission defines the commision the validator received. */
+    /** commission defines the commission the validator received. */
     commission?: ValidatorAccumulatedCommissionAmino;
 }
 export interface QueryValidatorCommissionResponseAminoMsg {
@@ -666,6 +728,40 @@ export declare const QueryParamsResponse: {
     fromProtoMsg(message: QueryParamsResponseProtoMsg): QueryParamsResponse;
     toProto(message: QueryParamsResponse): Uint8Array;
     toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg;
+};
+export declare const QueryValidatorDistributionInfoRequest: {
+    typeUrl: string;
+    encode(message: QueryValidatorDistributionInfoRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorDistributionInfoRequest;
+    fromJSON(object: any): QueryValidatorDistributionInfoRequest;
+    toJSON(message: QueryValidatorDistributionInfoRequest): unknown;
+    fromPartial(object: Partial<QueryValidatorDistributionInfoRequest>): QueryValidatorDistributionInfoRequest;
+    fromSDK(object: QueryValidatorDistributionInfoRequestSDKType): QueryValidatorDistributionInfoRequest;
+    toSDK(message: QueryValidatorDistributionInfoRequest): QueryValidatorDistributionInfoRequestSDKType;
+    fromAmino(object: QueryValidatorDistributionInfoRequestAmino): QueryValidatorDistributionInfoRequest;
+    toAmino(message: QueryValidatorDistributionInfoRequest): QueryValidatorDistributionInfoRequestAmino;
+    fromAminoMsg(object: QueryValidatorDistributionInfoRequestAminoMsg): QueryValidatorDistributionInfoRequest;
+    toAminoMsg(message: QueryValidatorDistributionInfoRequest): QueryValidatorDistributionInfoRequestAminoMsg;
+    fromProtoMsg(message: QueryValidatorDistributionInfoRequestProtoMsg): QueryValidatorDistributionInfoRequest;
+    toProto(message: QueryValidatorDistributionInfoRequest): Uint8Array;
+    toProtoMsg(message: QueryValidatorDistributionInfoRequest): QueryValidatorDistributionInfoRequestProtoMsg;
+};
+export declare const QueryValidatorDistributionInfoResponse: {
+    typeUrl: string;
+    encode(message: QueryValidatorDistributionInfoResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorDistributionInfoResponse;
+    fromJSON(object: any): QueryValidatorDistributionInfoResponse;
+    toJSON(message: QueryValidatorDistributionInfoResponse): unknown;
+    fromPartial(object: Partial<QueryValidatorDistributionInfoResponse>): QueryValidatorDistributionInfoResponse;
+    fromSDK(object: QueryValidatorDistributionInfoResponseSDKType): QueryValidatorDistributionInfoResponse;
+    toSDK(message: QueryValidatorDistributionInfoResponse): QueryValidatorDistributionInfoResponseSDKType;
+    fromAmino(object: QueryValidatorDistributionInfoResponseAmino): QueryValidatorDistributionInfoResponse;
+    toAmino(message: QueryValidatorDistributionInfoResponse): QueryValidatorDistributionInfoResponseAmino;
+    fromAminoMsg(object: QueryValidatorDistributionInfoResponseAminoMsg): QueryValidatorDistributionInfoResponse;
+    toAminoMsg(message: QueryValidatorDistributionInfoResponse): QueryValidatorDistributionInfoResponseAminoMsg;
+    fromProtoMsg(message: QueryValidatorDistributionInfoResponseProtoMsg): QueryValidatorDistributionInfoResponse;
+    toProto(message: QueryValidatorDistributionInfoResponse): Uint8Array;
+    toProtoMsg(message: QueryValidatorDistributionInfoResponse): QueryValidatorDistributionInfoResponseProtoMsg;
 };
 export declare const QueryValidatorOutstandingRewardsRequest: {
     typeUrl: string;

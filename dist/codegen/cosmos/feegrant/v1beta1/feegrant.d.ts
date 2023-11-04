@@ -4,14 +4,14 @@ import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf
 import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.feegrant.v1beta1";
 /**
- * BasicAllowance implements Allowance with a one-time grant of tokens
+ * BasicAllowance implements Allowance with a one-time grant of coins
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
  */
 export interface BasicAllowance {
     $typeUrl?: "/cosmos.feegrant.v1beta1.BasicAllowance";
     /**
-     * spend_limit specifies the maximum amount of tokens that can be spent
-     * by this allowance and will be updated as tokens are spent. If it is
+     * spend_limit specifies the maximum amount of coins that can be spent
+     * by this allowance and will be updated as coins are spent. If it is
      * empty, there is no spend limit and any amount of coins can be spent.
      */
     spend_limit: Coin[];
@@ -27,13 +27,13 @@ export interface BasicAllowanceProtoMsg {
     value: Uint8Array;
 }
 /**
- * BasicAllowance implements Allowance with a one-time grant of tokens
+ * BasicAllowance implements Allowance with a one-time grant of coins
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
  */
 export interface BasicAllowanceAmino {
     /**
-     * spend_limit specifies the maximum amount of tokens that can be spent
-     * by this allowance and will be updated as tokens are spent. If it is
+     * spend_limit specifies the maximum amount of coins that can be spent
+     * by this allowance and will be updated as coins are spent. If it is
      * empty, there is no spend limit and any amount of coins can be spent.
      */
     spend_limit: CoinAmino[];
@@ -45,7 +45,7 @@ export interface BasicAllowanceAminoMsg {
     value: BasicAllowanceAmino;
 }
 /**
- * BasicAllowance implements Allowance with a one-time grant of tokens
+ * BasicAllowance implements Allowance with a one-time grant of coins
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
  */
 export interface BasicAllowanceSDKType {
@@ -273,6 +273,6 @@ export declare const Grant: {
     toProto(message: Grant): Uint8Array;
     toProtoMsg(message: Grant): GrantProtoMsg;
 };
-export declare const Cosmos_feegrantFeeAllowanceI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => BasicAllowance | PeriodicAllowance | AllowedMsgAllowance | Any;
-export declare const Cosmos_feegrantFeeAllowanceI_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_feegrantFeeAllowanceI_ToAmino: (content: Any) => AnyAmino;
+export declare const Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => BasicAllowance | PeriodicAllowance | AllowedMsgAllowance | Any;
+export declare const Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino: (content: AnyAmino) => Any;
+export declare const Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino: (content: Any) => AnyAmino;

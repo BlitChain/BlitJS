@@ -8,7 +8,10 @@ export const protobufPackage = "cosmos.group.v1";
 /** VoteOption enumerates the valid vote options for a given proposal. */
 export var VoteOption;
 (function (VoteOption) {
-    /** VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines a no-op vote option. */
+    /**
+     * VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines an unspecified vote option which will
+     * return an error.
+     */
     VoteOption[VoteOption["VOTE_OPTION_UNSPECIFIED"] = 0] = "VOTE_OPTION_UNSPECIFIED";
     /** VOTE_OPTION_YES - VOTE_OPTION_YES defines a yes vote option. */
     VoteOption[VoteOption["VOTE_OPTION_YES"] = 1] = "VOTE_OPTION_YES";
@@ -67,17 +70,28 @@ export var ProposalStatus;
 (function (ProposalStatus) {
     /** PROPOSAL_STATUS_UNSPECIFIED - An empty value is invalid and not allowed. */
     ProposalStatus[ProposalStatus["PROPOSAL_STATUS_UNSPECIFIED"] = 0] = "PROPOSAL_STATUS_UNSPECIFIED";
-    /** PROPOSAL_STATUS_SUBMITTED - Initial status of a proposal when persisted. */
+    /** PROPOSAL_STATUS_SUBMITTED - Initial status of a proposal when submitted. */
     ProposalStatus[ProposalStatus["PROPOSAL_STATUS_SUBMITTED"] = 1] = "PROPOSAL_STATUS_SUBMITTED";
-    /** PROPOSAL_STATUS_CLOSED - Final status of a proposal when the final tally was executed. */
-    ProposalStatus[ProposalStatus["PROPOSAL_STATUS_CLOSED"] = 2] = "PROPOSAL_STATUS_CLOSED";
-    /** PROPOSAL_STATUS_ABORTED - Final status of a proposal when the group was modified before the final tally. */
-    ProposalStatus[ProposalStatus["PROPOSAL_STATUS_ABORTED"] = 3] = "PROPOSAL_STATUS_ABORTED";
     /**
-     * PROPOSAL_STATUS_WITHDRAWN - A proposal can be deleted before the voting start time by the owner. When this happens the final status
-     * is Withdrawn.
+     * PROPOSAL_STATUS_ACCEPTED - Final status of a proposal when the final tally is done and the outcome
+     * passes the group policy's decision policy.
      */
-    ProposalStatus[ProposalStatus["PROPOSAL_STATUS_WITHDRAWN"] = 4] = "PROPOSAL_STATUS_WITHDRAWN";
+    ProposalStatus[ProposalStatus["PROPOSAL_STATUS_ACCEPTED"] = 2] = "PROPOSAL_STATUS_ACCEPTED";
+    /**
+     * PROPOSAL_STATUS_REJECTED - Final status of a proposal when the final tally is done and the outcome
+     * is rejected by the group policy's decision policy.
+     */
+    ProposalStatus[ProposalStatus["PROPOSAL_STATUS_REJECTED"] = 3] = "PROPOSAL_STATUS_REJECTED";
+    /**
+     * PROPOSAL_STATUS_ABORTED - Final status of a proposal when the group policy is modified before the
+     * final tally.
+     */
+    ProposalStatus[ProposalStatus["PROPOSAL_STATUS_ABORTED"] = 4] = "PROPOSAL_STATUS_ABORTED";
+    /**
+     * PROPOSAL_STATUS_WITHDRAWN - A proposal can be withdrawn before the voting start time by the owner.
+     * When this happens the final status is Withdrawn.
+     */
+    ProposalStatus[ProposalStatus["PROPOSAL_STATUS_WITHDRAWN"] = 5] = "PROPOSAL_STATUS_WITHDRAWN";
     ProposalStatus[ProposalStatus["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
 })(ProposalStatus || (ProposalStatus = {}));
 export const ProposalStatusSDKType = ProposalStatus;
@@ -91,12 +105,15 @@ export function proposalStatusFromJSON(object) {
         case "PROPOSAL_STATUS_SUBMITTED":
             return ProposalStatus.PROPOSAL_STATUS_SUBMITTED;
         case 2:
-        case "PROPOSAL_STATUS_CLOSED":
-            return ProposalStatus.PROPOSAL_STATUS_CLOSED;
+        case "PROPOSAL_STATUS_ACCEPTED":
+            return ProposalStatus.PROPOSAL_STATUS_ACCEPTED;
         case 3:
+        case "PROPOSAL_STATUS_REJECTED":
+            return ProposalStatus.PROPOSAL_STATUS_REJECTED;
+        case 4:
         case "PROPOSAL_STATUS_ABORTED":
             return ProposalStatus.PROPOSAL_STATUS_ABORTED;
-        case 4:
+        case 5:
         case "PROPOSAL_STATUS_WITHDRAWN":
             return ProposalStatus.PROPOSAL_STATUS_WITHDRAWN;
         case -1:
@@ -111,63 +128,15 @@ export function proposalStatusToJSON(object) {
             return "PROPOSAL_STATUS_UNSPECIFIED";
         case ProposalStatus.PROPOSAL_STATUS_SUBMITTED:
             return "PROPOSAL_STATUS_SUBMITTED";
-        case ProposalStatus.PROPOSAL_STATUS_CLOSED:
-            return "PROPOSAL_STATUS_CLOSED";
+        case ProposalStatus.PROPOSAL_STATUS_ACCEPTED:
+            return "PROPOSAL_STATUS_ACCEPTED";
+        case ProposalStatus.PROPOSAL_STATUS_REJECTED:
+            return "PROPOSAL_STATUS_REJECTED";
         case ProposalStatus.PROPOSAL_STATUS_ABORTED:
             return "PROPOSAL_STATUS_ABORTED";
         case ProposalStatus.PROPOSAL_STATUS_WITHDRAWN:
             return "PROPOSAL_STATUS_WITHDRAWN";
         case ProposalStatus.UNRECOGNIZED:
-        default:
-            return "UNRECOGNIZED";
-    }
-}
-/** ProposalResult defines types of proposal results. */
-export var ProposalResult;
-(function (ProposalResult) {
-    /** PROPOSAL_RESULT_UNSPECIFIED - An empty value is invalid and not allowed */
-    ProposalResult[ProposalResult["PROPOSAL_RESULT_UNSPECIFIED"] = 0] = "PROPOSAL_RESULT_UNSPECIFIED";
-    /** PROPOSAL_RESULT_UNFINALIZED - Until a final tally has happened the status is unfinalized */
-    ProposalResult[ProposalResult["PROPOSAL_RESULT_UNFINALIZED"] = 1] = "PROPOSAL_RESULT_UNFINALIZED";
-    /** PROPOSAL_RESULT_ACCEPTED - Final result of the tally */
-    ProposalResult[ProposalResult["PROPOSAL_RESULT_ACCEPTED"] = 2] = "PROPOSAL_RESULT_ACCEPTED";
-    /** PROPOSAL_RESULT_REJECTED - Final result of the tally */
-    ProposalResult[ProposalResult["PROPOSAL_RESULT_REJECTED"] = 3] = "PROPOSAL_RESULT_REJECTED";
-    ProposalResult[ProposalResult["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
-})(ProposalResult || (ProposalResult = {}));
-export const ProposalResultSDKType = ProposalResult;
-export const ProposalResultAmino = ProposalResult;
-export function proposalResultFromJSON(object) {
-    switch (object) {
-        case 0:
-        case "PROPOSAL_RESULT_UNSPECIFIED":
-            return ProposalResult.PROPOSAL_RESULT_UNSPECIFIED;
-        case 1:
-        case "PROPOSAL_RESULT_UNFINALIZED":
-            return ProposalResult.PROPOSAL_RESULT_UNFINALIZED;
-        case 2:
-        case "PROPOSAL_RESULT_ACCEPTED":
-            return ProposalResult.PROPOSAL_RESULT_ACCEPTED;
-        case 3:
-        case "PROPOSAL_RESULT_REJECTED":
-            return ProposalResult.PROPOSAL_RESULT_REJECTED;
-        case -1:
-        case "UNRECOGNIZED":
-        default:
-            return ProposalResult.UNRECOGNIZED;
-    }
-}
-export function proposalResultToJSON(object) {
-    switch (object) {
-        case ProposalResult.PROPOSAL_RESULT_UNSPECIFIED:
-            return "PROPOSAL_RESULT_UNSPECIFIED";
-        case ProposalResult.PROPOSAL_RESULT_UNFINALIZED:
-            return "PROPOSAL_RESULT_UNFINALIZED";
-        case ProposalResult.PROPOSAL_RESULT_ACCEPTED:
-            return "PROPOSAL_RESULT_ACCEPTED";
-        case ProposalResult.PROPOSAL_RESULT_REJECTED:
-            return "PROPOSAL_RESULT_REJECTED";
-        case ProposalResult.UNRECOGNIZED:
         default:
             return "UNRECOGNIZED";
     }
@@ -351,28 +320,42 @@ export const Member = {
         };
     }
 };
-function createBaseMembers() {
+function createBaseMemberRequest() {
     return {
-        members: []
+        address: "",
+        weight: "",
+        metadata: ""
     };
 }
-export const Members = {
-    typeUrl: "/cosmos.group.v1.Members",
+export const MemberRequest = {
+    typeUrl: "/cosmos.group.v1.MemberRequest",
     encode(message, writer = BinaryWriter.create()) {
-        for (const v of message.members) {
-            Member.encode(v, writer.uint32(10).fork()).ldelim();
+        if (message.address !== "") {
+            writer.uint32(10).string(message.address);
+        }
+        if (message.weight !== "") {
+            writer.uint32(18).string(message.weight);
+        }
+        if (message.metadata !== "") {
+            writer.uint32(26).string(message.metadata);
         }
         return writer;
     },
     decode(input, length) {
         const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseMembers();
+        const message = createBaseMemberRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.members.push(Member.decode(reader, reader.uint32()));
+                    message.address = reader.string();
+                    break;
+                case 2:
+                    message.weight = reader.string();
+                    break;
+                case 3:
+                    message.metadata = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -383,73 +366,72 @@ export const Members = {
     },
     fromJSON(object) {
         return {
-            members: Array.isArray(object?.members) ? object.members.map((e) => Member.fromJSON(e)) : []
+            address: isSet(object.address) ? String(object.address) : "",
+            weight: isSet(object.weight) ? String(object.weight) : "",
+            metadata: isSet(object.metadata) ? String(object.metadata) : ""
         };
     },
     toJSON(message) {
         const obj = {};
-        if (message.members) {
-            obj.members = message.members.map(e => e ? Member.toJSON(e) : undefined);
-        }
-        else {
-            obj.members = [];
-        }
+        message.address !== undefined && (obj.address = message.address);
+        message.weight !== undefined && (obj.weight = message.weight);
+        message.metadata !== undefined && (obj.metadata = message.metadata);
         return obj;
     },
     fromPartial(object) {
-        const message = createBaseMembers();
-        message.members = object.members?.map(e => Member.fromPartial(e)) || [];
+        const message = createBaseMemberRequest();
+        message.address = object.address ?? "";
+        message.weight = object.weight ?? "";
+        message.metadata = object.metadata ?? "";
         return message;
     },
     fromSDK(object) {
         return {
-            members: Array.isArray(object?.members) ? object.members.map((e) => Member.fromSDK(e)) : []
+            address: object?.address,
+            weight: object?.weight,
+            metadata: object?.metadata
         };
     },
     toSDK(message) {
         const obj = {};
-        if (message.members) {
-            obj.members = message.members.map(e => e ? Member.toSDK(e) : undefined);
-        }
-        else {
-            obj.members = [];
-        }
+        obj.address = message.address;
+        obj.weight = message.weight;
+        obj.metadata = message.metadata;
         return obj;
     },
     fromAmino(object) {
         return {
-            members: Array.isArray(object?.members) ? object.members.map((e) => Member.fromAmino(e)) : []
+            address: object.address,
+            weight: object.weight,
+            metadata: object.metadata
         };
     },
     toAmino(message) {
         const obj = {};
-        if (message.members) {
-            obj.members = message.members.map(e => e ? Member.toAmino(e) : undefined);
-        }
-        else {
-            obj.members = [];
-        }
+        obj.address = message.address;
+        obj.weight = message.weight;
+        obj.metadata = message.metadata;
         return obj;
     },
     fromAminoMsg(object) {
-        return Members.fromAmino(object.value);
+        return MemberRequest.fromAmino(object.value);
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/Members",
-            value: Members.toAmino(message)
+            type: "cosmos-sdk/MemberRequest",
+            value: MemberRequest.toAmino(message)
         };
     },
     fromProtoMsg(message) {
-        return Members.decode(message.value);
+        return MemberRequest.decode(message.value);
     },
     toProto(message) {
-        return Members.encode(message).finish();
+        return MemberRequest.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/cosmos.group.v1.Members",
-            value: Members.encode(message).finish()
+            typeUrl: "/cosmos.group.v1.MemberRequest",
+            value: MemberRequest.encode(message).finish()
         };
     }
 };
@@ -1076,7 +1058,7 @@ export const GroupPolicyInfo = {
                     message.version = reader.uint64();
                     break;
                 case 6:
-                    message.decision_policy = Cosmos_groupDecisionPolicy_InterfaceDecoder(reader);
+                    message.decision_policy = Cosmos_groupv1DecisionPolicy_InterfaceDecoder(reader);
                     break;
                 case 7:
                     message.created_at = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
@@ -1150,7 +1132,7 @@ export const GroupPolicyInfo = {
             admin: object.admin,
             metadata: object.metadata,
             version: BigInt(object.version),
-            decision_policy: object?.decision_policy ? Cosmos_groupDecisionPolicy_FromAmino(object.decision_policy) : undefined,
+            decision_policy: object?.decision_policy ? Cosmos_groupv1DecisionPolicy_FromAmino(object.decision_policy) : undefined,
             created_at: object.created_at
         };
     },
@@ -1161,7 +1143,7 @@ export const GroupPolicyInfo = {
         obj.admin = message.admin;
         obj.metadata = message.metadata;
         obj.version = message.version ? message.version.toString() : undefined;
-        obj.decision_policy = message.decision_policy ? Cosmos_groupDecisionPolicy_ToAmino(message.decision_policy) : undefined;
+        obj.decision_policy = message.decision_policy ? Cosmos_groupv1DecisionPolicy_ToAmino(message.decision_policy) : undefined;
         obj.created_at = message.created_at;
         return obj;
     },
@@ -1190,18 +1172,19 @@ export const GroupPolicyInfo = {
 function createBaseProposal() {
     return {
         id: BigInt(0),
-        address: "",
+        group_policy_address: "",
         metadata: "",
         proposers: [],
         submit_time: new Date(),
         group_version: BigInt(0),
         group_policy_version: BigInt(0),
         status: 0,
-        result: 0,
         final_tally_result: TallyResult.fromPartial({}),
         voting_period_end: new Date(),
         executor_result: 0,
-        messages: []
+        messages: [],
+        title: "",
+        summary: ""
     };
 }
 export const Proposal = {
@@ -1210,8 +1193,8 @@ export const Proposal = {
         if (message.id !== BigInt(0)) {
             writer.uint32(8).uint64(message.id);
         }
-        if (message.address !== "") {
-            writer.uint32(18).string(message.address);
+        if (message.group_policy_address !== "") {
+            writer.uint32(18).string(message.group_policy_address);
         }
         if (message.metadata !== "") {
             writer.uint32(26).string(message.metadata);
@@ -1231,20 +1214,23 @@ export const Proposal = {
         if (message.status !== 0) {
             writer.uint32(64).int32(message.status);
         }
-        if (message.result !== 0) {
-            writer.uint32(72).int32(message.result);
-        }
         if (message.final_tally_result !== undefined) {
-            TallyResult.encode(message.final_tally_result, writer.uint32(82).fork()).ldelim();
+            TallyResult.encode(message.final_tally_result, writer.uint32(74).fork()).ldelim();
         }
         if (message.voting_period_end !== undefined) {
-            Timestamp.encode(toTimestamp(message.voting_period_end), writer.uint32(90).fork()).ldelim();
+            Timestamp.encode(toTimestamp(message.voting_period_end), writer.uint32(82).fork()).ldelim();
         }
         if (message.executor_result !== 0) {
-            writer.uint32(96).int32(message.executor_result);
+            writer.uint32(88).int32(message.executor_result);
         }
         for (const v of message.messages) {
-            Any.encode(v, writer.uint32(106).fork()).ldelim();
+            Any.encode(v, writer.uint32(98).fork()).ldelim();
+        }
+        if (message.title !== "") {
+            writer.uint32(106).string(message.title);
+        }
+        if (message.summary !== "") {
+            writer.uint32(114).string(message.summary);
         }
         return writer;
     },
@@ -1259,7 +1245,7 @@ export const Proposal = {
                     message.id = reader.uint64();
                     break;
                 case 2:
-                    message.address = reader.string();
+                    message.group_policy_address = reader.string();
                     break;
                 case 3:
                     message.metadata = reader.string();
@@ -1280,19 +1266,22 @@ export const Proposal = {
                     message.status = reader.int32();
                     break;
                 case 9:
-                    message.result = reader.int32();
-                    break;
-                case 10:
                     message.final_tally_result = TallyResult.decode(reader, reader.uint32());
                     break;
-                case 11:
+                case 10:
                     message.voting_period_end = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
                     break;
-                case 12:
+                case 11:
                     message.executor_result = reader.int32();
                     break;
-                case 13:
+                case 12:
                     message.messages.push(Any.decode(reader, reader.uint32()));
+                    break;
+                case 13:
+                    message.title = reader.string();
+                    break;
+                case 14:
+                    message.summary = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1304,24 +1293,25 @@ export const Proposal = {
     fromJSON(object) {
         return {
             id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0),
-            address: isSet(object.address) ? String(object.address) : "",
+            group_policy_address: isSet(object.group_policy_address) ? String(object.group_policy_address) : "",
             metadata: isSet(object.metadata) ? String(object.metadata) : "",
             proposers: Array.isArray(object?.proposers) ? object.proposers.map((e) => String(e)) : [],
             submit_time: isSet(object.submit_time) ? fromJsonTimestamp(object.submit_time) : undefined,
             group_version: isSet(object.group_version) ? BigInt(object.group_version.toString()) : BigInt(0),
             group_policy_version: isSet(object.group_policy_version) ? BigInt(object.group_policy_version.toString()) : BigInt(0),
             status: isSet(object.status) ? proposalStatusFromJSON(object.status) : -1,
-            result: isSet(object.result) ? proposalResultFromJSON(object.result) : -1,
             final_tally_result: isSet(object.final_tally_result) ? TallyResult.fromJSON(object.final_tally_result) : undefined,
             voting_period_end: isSet(object.voting_period_end) ? fromJsonTimestamp(object.voting_period_end) : undefined,
             executor_result: isSet(object.executor_result) ? proposalExecutorResultFromJSON(object.executor_result) : -1,
-            messages: Array.isArray(object?.messages) ? object.messages.map((e) => Any.fromJSON(e)) : []
+            messages: Array.isArray(object?.messages) ? object.messages.map((e) => Any.fromJSON(e)) : [],
+            title: isSet(object.title) ? String(object.title) : "",
+            summary: isSet(object.summary) ? String(object.summary) : ""
         };
     },
     toJSON(message) {
         const obj = {};
         message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
-        message.address !== undefined && (obj.address = message.address);
+        message.group_policy_address !== undefined && (obj.group_policy_address = message.group_policy_address);
         message.metadata !== undefined && (obj.metadata = message.metadata);
         if (message.proposers) {
             obj.proposers = message.proposers.map(e => e);
@@ -1333,7 +1323,6 @@ export const Proposal = {
         message.group_version !== undefined && (obj.group_version = (message.group_version || BigInt(0)).toString());
         message.group_policy_version !== undefined && (obj.group_policy_version = (message.group_policy_version || BigInt(0)).toString());
         message.status !== undefined && (obj.status = proposalStatusToJSON(message.status));
-        message.result !== undefined && (obj.result = proposalResultToJSON(message.result));
         message.final_tally_result !== undefined && (obj.final_tally_result = message.final_tally_result ? TallyResult.toJSON(message.final_tally_result) : undefined);
         message.voting_period_end !== undefined && (obj.voting_period_end = message.voting_period_end.toISOString());
         message.executor_result !== undefined && (obj.executor_result = proposalExecutorResultToJSON(message.executor_result));
@@ -1343,46 +1332,50 @@ export const Proposal = {
         else {
             obj.messages = [];
         }
+        message.title !== undefined && (obj.title = message.title);
+        message.summary !== undefined && (obj.summary = message.summary);
         return obj;
     },
     fromPartial(object) {
         const message = createBaseProposal();
         message.id = object.id !== undefined && object.id !== null ? BigInt(object.id.toString()) : BigInt(0);
-        message.address = object.address ?? "";
+        message.group_policy_address = object.group_policy_address ?? "";
         message.metadata = object.metadata ?? "";
         message.proposers = object.proposers?.map(e => e) || [];
         message.submit_time = object.submit_time ?? undefined;
         message.group_version = object.group_version !== undefined && object.group_version !== null ? BigInt(object.group_version.toString()) : BigInt(0);
         message.group_policy_version = object.group_policy_version !== undefined && object.group_policy_version !== null ? BigInt(object.group_policy_version.toString()) : BigInt(0);
         message.status = object.status ?? 0;
-        message.result = object.result ?? 0;
         message.final_tally_result = object.final_tally_result !== undefined && object.final_tally_result !== null ? TallyResult.fromPartial(object.final_tally_result) : undefined;
         message.voting_period_end = object.voting_period_end ?? undefined;
         message.executor_result = object.executor_result ?? 0;
         message.messages = object.messages?.map(e => Any.fromPartial(e)) || [];
+        message.title = object.title ?? "";
+        message.summary = object.summary ?? "";
         return message;
     },
     fromSDK(object) {
         return {
             id: object?.id,
-            address: object?.address,
+            group_policy_address: object?.group_policy_address,
             metadata: object?.metadata,
             proposers: Array.isArray(object?.proposers) ? object.proposers.map((e) => e) : [],
             submit_time: object.submit_time ? Timestamp.fromSDK(object.submit_time) : undefined,
             group_version: object?.group_version,
             group_policy_version: object?.group_policy_version,
             status: isSet(object.status) ? proposalStatusFromJSON(object.status) : -1,
-            result: isSet(object.result) ? proposalResultFromJSON(object.result) : -1,
             final_tally_result: object.final_tally_result ? TallyResult.fromSDK(object.final_tally_result) : undefined,
             voting_period_end: object.voting_period_end ? Timestamp.fromSDK(object.voting_period_end) : undefined,
             executor_result: isSet(object.executor_result) ? proposalExecutorResultFromJSON(object.executor_result) : -1,
-            messages: Array.isArray(object?.messages) ? object.messages.map((e) => Any.fromSDK(e)) : []
+            messages: Array.isArray(object?.messages) ? object.messages.map((e) => Any.fromSDK(e)) : [],
+            title: object?.title,
+            summary: object?.summary
         };
     },
     toSDK(message) {
         const obj = {};
         obj.id = message.id;
-        obj.address = message.address;
+        obj.group_policy_address = message.group_policy_address;
         obj.metadata = message.metadata;
         if (message.proposers) {
             obj.proposers = message.proposers.map(e => e);
@@ -1394,7 +1387,6 @@ export const Proposal = {
         obj.group_version = message.group_version;
         obj.group_policy_version = message.group_policy_version;
         message.status !== undefined && (obj.status = proposalStatusToJSON(message.status));
-        message.result !== undefined && (obj.result = proposalResultToJSON(message.result));
         message.final_tally_result !== undefined && (obj.final_tally_result = message.final_tally_result ? TallyResult.toSDK(message.final_tally_result) : undefined);
         message.voting_period_end !== undefined && (obj.voting_period_end = message.voting_period_end ? Timestamp.toSDK(message.voting_period_end) : undefined);
         message.executor_result !== undefined && (obj.executor_result = proposalExecutorResultToJSON(message.executor_result));
@@ -1404,29 +1396,32 @@ export const Proposal = {
         else {
             obj.messages = [];
         }
+        obj.title = message.title;
+        obj.summary = message.summary;
         return obj;
     },
     fromAmino(object) {
         return {
             id: BigInt(object.id),
-            address: object.address,
+            group_policy_address: object.group_policy_address,
             metadata: object.metadata,
             proposers: Array.isArray(object?.proposers) ? object.proposers.map((e) => e) : [],
             submit_time: object.submit_time,
             group_version: BigInt(object.group_version),
             group_policy_version: BigInt(object.group_policy_version),
             status: isSet(object.status) ? proposalStatusFromJSON(object.status) : -1,
-            result: isSet(object.result) ? proposalResultFromJSON(object.result) : -1,
             final_tally_result: object?.final_tally_result ? TallyResult.fromAmino(object.final_tally_result) : undefined,
             voting_period_end: object.voting_period_end,
             executor_result: isSet(object.executor_result) ? proposalExecutorResultFromJSON(object.executor_result) : -1,
-            messages: Array.isArray(object?.messages) ? object.messages.map((e) => Any.fromAmino(e)) : []
+            messages: Array.isArray(object?.messages) ? object.messages.map((e) => Any.fromAmino(e)) : [],
+            title: object.title,
+            summary: object.summary
         };
     },
     toAmino(message) {
         const obj = {};
         obj.id = message.id ? message.id.toString() : undefined;
-        obj.address = message.address;
+        obj.group_policy_address = message.group_policy_address;
         obj.metadata = message.metadata;
         if (message.proposers) {
             obj.proposers = message.proposers.map(e => e);
@@ -1438,7 +1433,6 @@ export const Proposal = {
         obj.group_version = message.group_version ? message.group_version.toString() : undefined;
         obj.group_policy_version = message.group_policy_version ? message.group_policy_version.toString() : undefined;
         obj.status = message.status;
-        obj.result = message.result;
         obj.final_tally_result = message.final_tally_result ? TallyResult.toAmino(message.final_tally_result) : undefined;
         obj.voting_period_end = message.voting_period_end;
         obj.executor_result = message.executor_result;
@@ -1448,6 +1442,8 @@ export const Proposal = {
         else {
             obj.messages = [];
         }
+        obj.title = message.title;
+        obj.summary = message.summary;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1744,7 +1740,7 @@ export const Vote = {
         };
     }
 };
-export const Cosmos_groupDecisionPolicy_InterfaceDecoder = (input) => {
+export const Cosmos_groupv1DecisionPolicy_InterfaceDecoder = (input) => {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const data = Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
@@ -1756,7 +1752,7 @@ export const Cosmos_groupDecisionPolicy_InterfaceDecoder = (input) => {
             return data;
     }
 };
-export const Cosmos_groupDecisionPolicy_FromAmino = (content) => {
+export const Cosmos_groupv1DecisionPolicy_FromAmino = (content) => {
     switch (content.type) {
         case "cosmos-sdk/ThresholdDecisionPolicy":
             return Any.fromPartial({
@@ -1772,7 +1768,7 @@ export const Cosmos_groupDecisionPolicy_FromAmino = (content) => {
             return Any.fromAmino(content);
     }
 };
-export const Cosmos_groupDecisionPolicy_ToAmino = (content) => {
+export const Cosmos_groupv1DecisionPolicy_ToAmino = (content) => {
     switch (content.typeUrl) {
         case "/cosmos.group.v1.ThresholdDecisionPolicy":
             return {

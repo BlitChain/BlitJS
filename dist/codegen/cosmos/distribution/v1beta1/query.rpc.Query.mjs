@@ -10,6 +10,15 @@ export class Query {
             method: "GET"
         });
     }
+    /** ValidatorDistributionInfo queries validator commission and self-delegation rewards for validator */
+    static ValidatorDistributionInfo(request, initRequest) {
+        return fm.fetchReq(`/cosmos/distribution/v1beta1/validators/${request["validator_address"]}?${fm.renderURLSearchParams({
+            ...request
+        }, ["validator_address"])}`, {
+            ...initRequest,
+            method: "GET"
+        });
+    }
     /** ValidatorOutstandingRewards queries rewards of a validator address. */
     static ValidatorOutstandingRewards(request, initRequest) {
         return fm.fetchReq(`/cosmos/distribution/v1beta1/validators/${request["validator_address"]}/outstanding_rewards?${fm.renderURLSearchParams({
@@ -94,6 +103,13 @@ export class QueryClientImpl {
     /** Params queries params of the distribution module. */
     async Params(req, headers) {
         return Query.Params(req, {
+            headers,
+            pathPrefix: this.url
+        });
+    }
+    /** ValidatorDistributionInfo queries validator commission and self-delegation rewards for validator */
+    async ValidatorDistributionInfo(req, headers) {
+        return Query.ValidatorDistributionInfo(req, {
             headers,
             pathPrefix: this.url
         });

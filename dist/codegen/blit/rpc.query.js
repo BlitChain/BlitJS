@@ -44,9 +44,15 @@ const createGrpcGateWayClient = async ({ endpoint }) => {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/bank/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)
             },
             base: {
+                node: {
+                    v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/base/node/v1beta1/query.rpc.Service")))).ServiceClientImpl(endpoint)
+                },
                 tendermint: {
                     v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/base/tendermint/v1beta1/query.rpc.Service")))).ServiceClientImpl(endpoint)
                 }
+            },
+            consensus: {
+                v1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/consensus/v1/query.rpc.Query")))).QueryClientImpl(endpoint)
             },
             distribution: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/distribution/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)
@@ -66,6 +72,11 @@ const createGrpcGateWayClient = async ({ endpoint }) => {
             },
             nft: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/nft/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)
+            },
+            orm: {
+                query: {
+                    v1alpha1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/orm/query/v1alpha1/query.rpc.Query")))).QueryClientImpl(endpoint)
+                }
             },
             params: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/params/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)

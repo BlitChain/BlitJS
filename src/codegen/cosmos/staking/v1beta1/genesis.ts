@@ -5,7 +5,7 @@ import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 export const protobufPackage = "cosmos.staking.v1beta1";
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisState {
-  /** params defines all the paramaters of related to deposit. */
+  /** params defines all the parameters of related to deposit. */
   params: Params;
   /**
    * last_total_power tracks the total amounts of bonded tokens recorded during
@@ -37,7 +37,7 @@ export interface GenesisStateProtoMsg {
 }
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisStateAmino {
-  /** params defines all the paramaters of related to deposit. */
+  /** params defines all the parameters of related to deposit. */
   params?: ParamsAmino;
   /**
    * last_total_power tracks the total amounts of bonded tokens recorded during

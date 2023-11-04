@@ -17,9 +17,15 @@ export declare const createGrpcGateWayClient: ({ endpoint }: {
             v1beta1: import("../cosmos/bank/v1beta1/query.rpc.Query").QueryClientImpl;
         };
         base: {
+            node: {
+                v1beta1: import("../cosmos/base/node/v1beta1/query.rpc.Service").ServiceClientImpl;
+            };
             tendermint: {
                 v1beta1: import("../cosmos/base/tendermint/v1beta1/query.rpc.Service").ServiceClientImpl;
             };
+        };
+        consensus: {
+            v1: import("../cosmos/consensus/v1/query.rpc.Query").QueryClientImpl;
         };
         distribution: {
             v1beta1: import("../cosmos/distribution/v1beta1/query.rpc.Query").QueryClientImpl;
@@ -39,6 +45,11 @@ export declare const createGrpcGateWayClient: ({ endpoint }: {
         };
         nft: {
             v1beta1: import("../cosmos/nft/v1beta1/query.rpc.Query").QueryClientImpl;
+        };
+        orm: {
+            query: {
+                v1alpha1: import("../cosmos/orm/query/v1alpha1/query.rpc.Query").QueryClientImpl;
+            };
         };
         params: {
             v1beta1: import("../cosmos/params/v1beta1/query.rpc.Query").QueryClientImpl;

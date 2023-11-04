@@ -10,7 +10,12 @@ export class Query {
             method: "GET"
         });
     }
-    /** AllBalances queries the balance of all coins for a single account. */
+    /**
+     * AllBalances queries the balance of all coins for a single account.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     static AllBalances(request, initRequest) {
         return fm.fetchReq(`/cosmos/bank/v1beta1/balances/${request["address"]}?${fm.renderURLSearchParams({
             ...request
@@ -20,8 +25,13 @@ export class Query {
         });
     }
     /**
-     * SpendableBalances queries the spenable balance of all coins for a single
+     * SpendableBalances queries the spendable balance of all coins for a single
      * account.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     *
+     * Since: cosmos-sdk 0.46
      */
     static SpendableBalances(request, initRequest) {
         return fm.fetchReq(`/cosmos/bank/v1beta1/spendable_balances/${request["address"]}?${fm.renderURLSearchParams({
@@ -31,7 +41,29 @@ export class Query {
             method: "GET"
         });
     }
-    /** TotalSupply queries the total supply of all coins. */
+    /**
+     * SpendableBalanceByDenom queries the spendable balance of a single denom for
+     * a single account.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    static SpendableBalanceByDenom(request, initRequest) {
+        return fm.fetchReq(`/cosmos/bank/v1beta1/spendable_balances/${request["address"]}/by_denom?${fm.renderURLSearchParams({
+            ...request
+        }, ["address"])}`, {
+            ...initRequest,
+            method: "GET"
+        });
+    }
+    /**
+     * TotalSupply queries the total supply of all coins.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     static TotalSupply(request, initRequest) {
         return fm.fetchReq(`/cosmos/bank/v1beta1/supply?${fm.renderURLSearchParams({
             ...request
@@ -40,7 +72,12 @@ export class Query {
             method: "GET"
         });
     }
-    /** SupplyOf queries the supply of a single coin. */
+    /**
+     * SupplyOf queries the supply of a single coin.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     static SupplyOf(request, initRequest) {
         return fm.fetchReq(`/cosmos/bank/v1beta1/supply/by_denom?${fm.renderURLSearchParams({
             ...request
@@ -82,11 +119,33 @@ export class Query {
     /**
      * DenomOwners queries for all account addresses that own a particular token
      * denomination.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     *
+     * Since: cosmos-sdk 0.46
      */
     static DenomOwners(request, initRequest) {
         return fm.fetchReq(`/cosmos/bank/v1beta1/denom_owners/${request["denom"]}?${fm.renderURLSearchParams({
             ...request
         }, ["denom"])}`, {
+            ...initRequest,
+            method: "GET"
+        });
+    }
+    /**
+     * SendEnabled queries for SendEnabled entries.
+     *
+     * This query only returns denominations that have specific SendEnabled settings.
+     * Any denomination that does not have a specific setting will use the default
+     * params.default_send_enabled, and will not be returned by this query.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    static SendEnabled(request, initRequest) {
+        return fm.fetchReq(`/cosmos/bank/v1beta1/send_enabled?${fm.renderURLSearchParams({
+            ...request
+        }, [])}`, {
             ...initRequest,
             method: "GET"
         });
@@ -104,7 +163,12 @@ export class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /** AllBalances queries the balance of all coins for a single account. */
+    /**
+     * AllBalances queries the balance of all coins for a single account.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     async AllBalances(req, headers) {
         return Query.AllBalances(req, {
             headers,
@@ -112,8 +176,13 @@ export class QueryClientImpl {
         });
     }
     /**
-     * SpendableBalances queries the spenable balance of all coins for a single
+     * SpendableBalances queries the spendable balance of all coins for a single
      * account.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     *
+     * Since: cosmos-sdk 0.46
      */
     async SpendableBalances(req, headers) {
         return Query.SpendableBalances(req, {
@@ -121,14 +190,39 @@ export class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /** TotalSupply queries the total supply of all coins. */
+    /**
+     * SpendableBalanceByDenom queries the spendable balance of a single denom for
+     * a single account.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    async SpendableBalanceByDenom(req, headers) {
+        return Query.SpendableBalanceByDenom(req, {
+            headers,
+            pathPrefix: this.url
+        });
+    }
+    /**
+     * TotalSupply queries the total supply of all coins.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     async TotalSupply(req, headers) {
         return Query.TotalSupply(req, {
             headers,
             pathPrefix: this.url
         });
     }
-    /** SupplyOf queries the supply of a single coin. */
+    /**
+     * SupplyOf queries the supply of a single coin.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     async SupplyOf(req, headers) {
         return Query.SupplyOf(req, {
             headers,
@@ -162,9 +256,29 @@ export class QueryClientImpl {
     /**
      * DenomOwners queries for all account addresses that own a particular token
      * denomination.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     *
+     * Since: cosmos-sdk 0.46
      */
     async DenomOwners(req, headers) {
         return Query.DenomOwners(req, {
+            headers,
+            pathPrefix: this.url
+        });
+    }
+    /**
+     * SendEnabled queries for SendEnabled entries.
+     *
+     * This query only returns denominations that have specific SendEnabled settings.
+     * Any denomination that does not have a specific setting will use the default
+     * params.default_send_enabled, and will not be returned by this query.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    async SendEnabled(req, headers) {
+        return Query.SendEnabled(req, {
             headers,
             pathPrefix: this.url
         });

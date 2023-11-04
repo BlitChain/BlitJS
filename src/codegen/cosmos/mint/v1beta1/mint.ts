@@ -34,7 +34,7 @@ export interface MinterSDKType {
   inflation: string;
   annual_provisions: string;
 }
-/** Params holds parameters for the mint module. */
+/** Params defines the parameters for the x/mint module. */
 export interface Params {
   /** type of coin to mint */
   mint_denom: string;
@@ -57,7 +57,7 @@ export interface ParamsProtoMsg {
   type_url: "/cosmos.mint.v1beta1.Params";
   value: Uint8Array;
 }
-/** Params holds parameters for the mint module. */
+/** Params defines the parameters for the x/mint module. */
 export interface ParamsAmino {
   /** type of coin to mint */
   mint_denom: string;
@@ -73,10 +73,10 @@ export interface ParamsAmino {
   blocks_per_year: string;
 }
 export interface ParamsAminoMsg {
-  type: "cosmos-sdk/Params";
+  type: "cosmos-sdk/x/mint/Params";
   value: ParamsAmino;
 }
-/** Params holds parameters for the mint module. */
+/** Params defines the parameters for the x/mint module. */
 export interface ParamsSDKType {
   mint_denom: string;
   inflation_rate_change: string;
@@ -326,7 +326,7 @@ export const Params = {
   },
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
-      type: "cosmos-sdk/Params",
+      type: "cosmos-sdk/x/mint/Params",
       value: Params.toAmino(message)
     };
   },

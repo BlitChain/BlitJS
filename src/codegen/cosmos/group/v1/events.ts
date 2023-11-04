@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { ProposalExecutorResult, proposalExecutorResultFromJSON, proposalExecutorResultToJSON } from "./types";
+import { ProposalExecutorResult, ProposalStatus, TallyResult, TallyResultAmino, TallyResultSDKType, proposalExecutorResultFromJSON, proposalExecutorResultToJSON, proposalStatusFromJSON, proposalStatusToJSON } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
 export const protobufPackage = "cosmos.group.v1";
@@ -191,6 +191,8 @@ export interface EventExec {
   proposal_id: bigint;
   /** result is the proposal execution result. */
   result: ProposalExecutorResult;
+  /** logs contains error logs in case the execution result is FAILURE. */
+  logs: string;
 }
 export interface EventExecProtoMsg {
   type_url: "/cosmos.group.v1.EventExec";
@@ -206,6 +208,8 @@ export interface EventExecAmino {
   proposal_id: string;
   /** result is the proposal execution result. */
   result: ProposalExecutorResult;
+  /** logs contains error logs in case the execution result is FAILURE. */
+  logs: string;
 }
 export interface EventExecAminoMsg {
   type: "cosmos-sdk/EventExec";
@@ -215,6 +219,7 @@ export interface EventExecAminoMsg {
 export interface EventExecSDKType {
   proposal_id: bigint;
   result: ProposalExecutorResult;
+  logs: string;
 }
 /** EventLeaveGroup is an event emitted when group member leaves the group. */
 export interface EventLeaveGroup {
@@ -246,6 +251,42 @@ export interface EventLeaveGroupAminoMsg {
 export interface EventLeaveGroupSDKType {
   group_id: bigint;
   address: string;
+}
+/** EventProposalPruned is an event emitted when a proposal is pruned. */
+export interface EventProposalPruned {
+  /** proposal_id is the unique ID of the proposal. */
+  proposal_id: bigint;
+  /** status is the proposal status (UNSPECIFIED, SUBMITTED, ACCEPTED, REJECTED, ABORTED, WITHDRAWN). */
+  status: ProposalStatus;
+  /** tally_result is the proposal tally result (when applicable). */
+  tally_result?: TallyResult;
+}
+export interface EventProposalPrunedProtoMsg {
+  type_url: "/cosmos.group.v1.EventProposalPruned";
+  value: Uint8Array;
+}
+export interface EventProposalPrunedProtoMsg {
+  type_url: "/cosmos.group.v1.EventProposalPruned";
+  value: Uint8Array;
+}
+/** EventProposalPruned is an event emitted when a proposal is pruned. */
+export interface EventProposalPrunedAmino {
+  /** proposal_id is the unique ID of the proposal. */
+  proposal_id: string;
+  /** status is the proposal status (UNSPECIFIED, SUBMITTED, ACCEPTED, REJECTED, ABORTED, WITHDRAWN). */
+  status: ProposalStatus;
+  /** tally_result is the proposal tally result (when applicable). */
+  tally_result?: TallyResultAmino;
+}
+export interface EventProposalPrunedAminoMsg {
+  type: "cosmos-sdk/EventProposalPruned";
+  value: EventProposalPrunedAmino;
+}
+/** EventProposalPruned is an event emitted when a proposal is pruned. */
+export interface EventProposalPrunedSDKType {
+  proposal_id: bigint;
+  status: ProposalStatus;
+  tally_result?: TallyResultSDKType;
 }
 function createBaseEventCreateGroup(): EventCreateGroup {
   return {
@@ -859,7 +900,8 @@ export const EventVote = {
 function createBaseEventExec(): EventExec {
   return {
     proposal_id: BigInt(0),
-    result: 0
+    result: 0,
+    logs: ""
   };
 }
 export const EventExec = {
@@ -870,6 +912,9 @@ export const EventExec = {
     }
     if (message.result !== 0) {
       writer.uint32(16).int32(message.result);
+    }
+    if (message.logs !== "") {
+      writer.uint32(26).string(message.logs);
     }
     return writer;
   },
@@ -886,6 +931,9 @@ export const EventExec = {
         case 2:
           message.result = (reader.int32() as any);
           break;
+        case 3:
+          message.logs = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -896,43 +944,50 @@ export const EventExec = {
   fromJSON(object: any): EventExec {
     return {
       proposal_id: isSet(object.proposal_id) ? BigInt(object.proposal_id.toString()) : BigInt(0),
-      result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1
+      result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1,
+      logs: isSet(object.logs) ? String(object.logs) : ""
     };
   },
   toJSON(message: EventExec): unknown {
     const obj: any = {};
     message.proposal_id !== undefined && (obj.proposal_id = (message.proposal_id || BigInt(0)).toString());
     message.result !== undefined && (obj.result = proposalExecutorResultToJSON(message.result));
+    message.logs !== undefined && (obj.logs = message.logs);
     return obj;
   },
   fromPartial(object: Partial<EventExec>): EventExec {
     const message = createBaseEventExec();
     message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
     message.result = object.result ?? 0;
+    message.logs = object.logs ?? "";
     return message;
   },
   fromSDK(object: EventExecSDKType): EventExec {
     return {
       proposal_id: object?.proposal_id,
-      result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1
+      result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1,
+      logs: object?.logs
     };
   },
   toSDK(message: EventExec): EventExecSDKType {
     const obj: any = {};
     obj.proposal_id = message.proposal_id;
     message.result !== undefined && (obj.result = proposalExecutorResultToJSON(message.result));
+    obj.logs = message.logs;
     return obj;
   },
   fromAmino(object: EventExecAmino): EventExec {
     return {
       proposal_id: BigInt(object.proposal_id),
-      result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1
+      result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1,
+      logs: object.logs
     };
   },
   toAmino(message: EventExec): EventExecAmino {
     const obj: any = {};
     obj.proposal_id = message.proposal_id ? message.proposal_id.toString() : undefined;
     obj.result = message.result;
+    obj.logs = message.logs;
     return obj;
   },
   fromAminoMsg(object: EventExecAminoMsg): EventExec {
@@ -1055,6 +1110,121 @@ export const EventLeaveGroup = {
     return {
       typeUrl: "/cosmos.group.v1.EventLeaveGroup",
       value: EventLeaveGroup.encode(message).finish()
+    };
+  }
+};
+function createBaseEventProposalPruned(): EventProposalPruned {
+  return {
+    proposal_id: BigInt(0),
+    status: 0,
+    tally_result: undefined
+  };
+}
+export const EventProposalPruned = {
+  typeUrl: "/cosmos.group.v1.EventProposalPruned",
+  encode(message: EventProposalPruned, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.proposal_id !== BigInt(0)) {
+      writer.uint32(8).uint64(message.proposal_id);
+    }
+    if (message.status !== 0) {
+      writer.uint32(16).int32(message.status);
+    }
+    if (message.tally_result !== undefined) {
+      TallyResult.encode(message.tally_result, writer.uint32(26).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): EventProposalPruned {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseEventProposalPruned();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.proposal_id = reader.uint64();
+          break;
+        case 2:
+          message.status = (reader.int32() as any);
+          break;
+        case 3:
+          message.tally_result = TallyResult.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): EventProposalPruned {
+    return {
+      proposal_id: isSet(object.proposal_id) ? BigInt(object.proposal_id.toString()) : BigInt(0),
+      status: isSet(object.status) ? proposalStatusFromJSON(object.status) : -1,
+      tally_result: isSet(object.tally_result) ? TallyResult.fromJSON(object.tally_result) : undefined
+    };
+  },
+  toJSON(message: EventProposalPruned): unknown {
+    const obj: any = {};
+    message.proposal_id !== undefined && (obj.proposal_id = (message.proposal_id || BigInt(0)).toString());
+    message.status !== undefined && (obj.status = proposalStatusToJSON(message.status));
+    message.tally_result !== undefined && (obj.tally_result = message.tally_result ? TallyResult.toJSON(message.tally_result) : undefined);
+    return obj;
+  },
+  fromPartial(object: Partial<EventProposalPruned>): EventProposalPruned {
+    const message = createBaseEventProposalPruned();
+    message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
+    message.status = object.status ?? 0;
+    message.tally_result = object.tally_result !== undefined && object.tally_result !== null ? TallyResult.fromPartial(object.tally_result) : undefined;
+    return message;
+  },
+  fromSDK(object: EventProposalPrunedSDKType): EventProposalPruned {
+    return {
+      proposal_id: object?.proposal_id,
+      status: isSet(object.status) ? proposalStatusFromJSON(object.status) : -1,
+      tally_result: object.tally_result ? TallyResult.fromSDK(object.tally_result) : undefined
+    };
+  },
+  toSDK(message: EventProposalPruned): EventProposalPrunedSDKType {
+    const obj: any = {};
+    obj.proposal_id = message.proposal_id;
+    message.status !== undefined && (obj.status = proposalStatusToJSON(message.status));
+    message.tally_result !== undefined && (obj.tally_result = message.tally_result ? TallyResult.toSDK(message.tally_result) : undefined);
+    return obj;
+  },
+  fromAmino(object: EventProposalPrunedAmino): EventProposalPruned {
+    return {
+      proposal_id: BigInt(object.proposal_id),
+      status: isSet(object.status) ? proposalStatusFromJSON(object.status) : -1,
+      tally_result: object?.tally_result ? TallyResult.fromAmino(object.tally_result) : undefined
+    };
+  },
+  toAmino(message: EventProposalPruned): EventProposalPrunedAmino {
+    const obj: any = {};
+    obj.proposal_id = message.proposal_id ? message.proposal_id.toString() : undefined;
+    obj.status = message.status;
+    obj.tally_result = message.tally_result ? TallyResult.toAmino(message.tally_result) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: EventProposalPrunedAminoMsg): EventProposalPruned {
+    return EventProposalPruned.fromAmino(object.value);
+  },
+  toAminoMsg(message: EventProposalPruned): EventProposalPrunedAminoMsg {
+    return {
+      type: "cosmos-sdk/EventProposalPruned",
+      value: EventProposalPruned.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: EventProposalPrunedProtoMsg): EventProposalPruned {
+    return EventProposalPruned.decode(message.value);
+  },
+  toProto(message: EventProposalPruned): Uint8Array {
+    return EventProposalPruned.encode(message).finish();
+  },
+  toProtoMsg(message: EventProposalPruned): EventProposalPrunedProtoMsg {
+    return {
+      typeUrl: "/cosmos.group.v1.EventProposalPruned",
+      value: EventProposalPruned.encode(message).finish()
     };
   }
 };

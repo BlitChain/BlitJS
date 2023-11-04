@@ -1,7 +1,7 @@
 import * as fm from "../../../grpc-gateway";
-import { MsgSubmitProposal, MsgSubmitProposalResponse, MsgExecLegacyContent, MsgExecLegacyContentResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse, MsgDeposit, MsgDepositResponse } from "./tx";
+import { MsgSubmitProposal, MsgSubmitProposalResponse, MsgExecLegacyContent, MsgExecLegacyContentResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse, MsgDeposit, MsgDepositResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
 export declare class Msg {
-    /** SubmitProposal defines a method to create new proposal given a content. */
+    /** SubmitProposal defines a method to create new proposal given the messages. */
     static SubmitProposal(request: MsgSubmitProposal, initRequest?: fm.InitReq): Promise<MsgSubmitProposalResponse>;
     /**
      * ExecLegacyContent defines a Msg to be in included in a MsgSubmitProposal
@@ -14,4 +14,11 @@ export declare class Msg {
     static VoteWeighted(request: MsgVoteWeighted, initRequest?: fm.InitReq): Promise<MsgVoteWeightedResponse>;
     /** Deposit defines a method to add deposit on a specific proposal. */
     static Deposit(request: MsgDeposit, initRequest?: fm.InitReq): Promise<MsgDepositResponse>;
+    /**
+     * UpdateParams defines a governance operation for updating the x/gov module
+     * parameters. The authority is defined in the keeper.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    static UpdateParams(request: MsgUpdateParams, initRequest?: fm.InitReq): Promise<MsgUpdateParamsResponse>;
 }

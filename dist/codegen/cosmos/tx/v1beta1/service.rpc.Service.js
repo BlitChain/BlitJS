@@ -74,6 +74,54 @@ class Service {
             method: "GET"
         });
     }
+    /**
+     * TxDecode decodes the transaction.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    static TxDecode(request, initRequest) {
+        return fm.fetchReq(`/cosmos/tx/v1beta1/TxDecode`, {
+            ...initRequest,
+            method: "POST",
+            body: JSON.stringify(request, fm.replacer)
+        });
+    }
+    /**
+     * TxEncode encodes the transaction.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    static TxEncode(request, initRequest) {
+        return fm.fetchReq(`/cosmos/tx/v1beta1/TxEncode`, {
+            ...initRequest,
+            method: "POST",
+            body: JSON.stringify(request, fm.replacer)
+        });
+    }
+    /**
+     * TxEncodeAmino encodes an Amino transaction from JSON to encoded bytes.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    static TxEncodeAmino(request, initRequest) {
+        return fm.fetchReq(`/cosmos/tx/v1beta1/TxEncodeAmino`, {
+            ...initRequest,
+            method: "POST",
+            body: JSON.stringify(request, fm.replacer)
+        });
+    }
+    /**
+     * TxDecodeAmino decodes an Amino transaction from encoded bytes to JSON.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    static TxDecodeAmino(request, initRequest) {
+        return fm.fetchReq(`/cosmos/tx/v1beta1/TxDecodeAmino`, {
+            ...initRequest,
+            method: "POST",
+            body: JSON.stringify(request, fm.replacer)
+        });
+    }
 }
 exports.Service = Service;
 class ServiceClientImpl {
@@ -116,6 +164,50 @@ class ServiceClientImpl {
      */
     async GetBlockWithTxs(req, headers) {
         return Service.GetBlockWithTxs(req, {
+            headers,
+            pathPrefix: this.url
+        });
+    }
+    /**
+     * TxDecode decodes the transaction.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    async TxDecode(req, headers) {
+        return Service.TxDecode(req, {
+            headers,
+            pathPrefix: this.url
+        });
+    }
+    /**
+     * TxEncode encodes the transaction.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    async TxEncode(req, headers) {
+        return Service.TxEncode(req, {
+            headers,
+            pathPrefix: this.url
+        });
+    }
+    /**
+     * TxEncodeAmino encodes an Amino transaction from JSON to encoded bytes.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    async TxEncodeAmino(req, headers) {
+        return Service.TxEncodeAmino(req, {
+            headers,
+            pathPrefix: this.url
+        });
+    }
+    /**
+     * TxDecodeAmino decodes an Amino transaction from encoded bytes to JSON.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    async TxDecodeAmino(req, headers) {
+        return Service.TxDecodeAmino(req, {
             headers,
             pathPrefix: this.url
         });

@@ -28,6 +28,11 @@ exports.AminoConverter = {
         aminoType: "cosmos-sdk/v1/MsgDeposit",
         toAmino: tx_1.MsgDeposit.toAmino,
         fromAmino: tx_1.MsgDeposit.fromAmino
+    },
+    "/cosmos.gov.v1.MsgUpdateParams": {
+        aminoType: "cosmos-sdk/x/gov/v1/MsgUpdateParams",
+        toAmino: tx_1.MsgUpdateParams.toAmino,
+        fromAmino: tx_1.MsgUpdateParams.fromAmino
     }
 };
 //# sourceMappingURL=tx.amino.js.map

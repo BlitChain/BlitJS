@@ -128,7 +128,7 @@ export const BIP44Params = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/BIP44Params",
+            type: "crypto/keys/hd/BIP44Params",
             value: BIP44Params.toAmino(message)
         };
     },

@@ -7,7 +7,8 @@ export declare class Query {
     static Allowances(request: QueryAllowancesRequest, initRequest?: fm.InitReq): Promise<QueryAllowancesResponse>;
     /**
      * AllowancesByGranter returns all the grants given by an address
-     * Since v0.46
+     *
+     * Since: cosmos-sdk 0.46
      */
     static AllowancesByGranter(request: QueryAllowancesByGranterRequest, initRequest?: fm.InitReq): Promise<QueryAllowancesByGranterResponse>;
 }
@@ -20,7 +21,8 @@ export declare class QueryClientImpl {
     Allowances(req: QueryAllowancesRequest, headers?: HeadersInit): Promise<QueryAllowancesResponse>;
     /**
      * AllowancesByGranter returns all the grants given by an address
-     * Since v0.46
+     *
+     * Since: cosmos-sdk 0.46
      */
     AllowancesByGranter(req: QueryAllowancesByGranterRequest, headers?: HeadersInit): Promise<QueryAllowancesByGranterResponse>;
 }

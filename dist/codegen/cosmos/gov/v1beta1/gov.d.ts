@@ -26,7 +26,7 @@ export declare function voteOptionFromJSON(object: any): VoteOption;
 export declare function voteOptionToJSON(object: VoteOption): string;
 /** ProposalStatus enumerates the valid statuses of a proposal. */
 export declare enum ProposalStatus {
-    /** PROPOSAL_STATUS_UNSPECIFIED - PROPOSAL_STATUS_UNSPECIFIED defines the default propopsal status. */
+    /** PROPOSAL_STATUS_UNSPECIFIED - PROPOSAL_STATUS_UNSPECIFIED defines the default proposal status. */
     PROPOSAL_STATUS_UNSPECIFIED = 0,
     /**
      * PROPOSAL_STATUS_DEPOSIT_PERIOD - PROPOSAL_STATUS_DEPOSIT_PERIOD defines a proposal status during the deposit
@@ -65,7 +65,9 @@ export declare function proposalStatusToJSON(object: ProposalStatus): string;
  * Since: cosmos-sdk 0.43
  */
 export interface WeightedVoteOption {
+    /** option defines the valid vote options, it must not contain duplicate vote options. */
     option: VoteOption;
+    /** weight is the vote weight associated with the vote option. */
     weight: string;
 }
 export interface WeightedVoteOptionProtoMsg {
@@ -82,7 +84,9 @@ export interface WeightedVoteOptionProtoMsg {
  * Since: cosmos-sdk 0.43
  */
 export interface WeightedVoteOptionAmino {
+    /** option defines the valid vote options, it must not contain duplicate vote options. */
     option: VoteOption;
+    /** weight is the vote weight associated with the vote option. */
     weight: string;
 }
 export interface WeightedVoteOptionAminoMsg {
@@ -104,7 +108,9 @@ export interface WeightedVoteOptionSDKType {
  */
 export interface TextProposal {
     $typeUrl?: "/cosmos.gov.v1beta1.TextProposal";
+    /** title of the proposal. */
     title: string;
+    /** description associated with the proposal. */
     description: string;
 }
 export interface TextProposalProtoMsg {
@@ -120,7 +126,9 @@ export interface TextProposalProtoMsg {
  * manually updated in case of approval.
  */
 export interface TextProposalAmino {
+    /** title of the proposal. */
     title: string;
+    /** description associated with the proposal. */
     description: string;
 }
 export interface TextProposalAminoMsg {
@@ -141,8 +149,11 @@ export interface TextProposalSDKType {
  * proposal.
  */
 export interface Deposit {
+    /** proposal_id defines the unique id of the proposal. */
     proposal_id: bigint;
+    /** depositor defines the deposit addresses from the proposals. */
     depositor: string;
+    /** amount to be deposited by depositor. */
     amount: Coin[];
 }
 export interface DepositProtoMsg {
@@ -158,8 +169,11 @@ export interface DepositProtoMsg {
  * proposal.
  */
 export interface DepositAmino {
+    /** proposal_id defines the unique id of the proposal. */
     proposal_id: string;
+    /** depositor defines the deposit addresses from the proposals. */
     depositor: string;
+    /** amount to be deposited by depositor. */
     amount: CoinAmino[];
 }
 export interface DepositAminoMsg {
@@ -177,8 +191,11 @@ export interface DepositSDKType {
 }
 /** Proposal defines the core field members of a governance proposal. */
 export interface Proposal {
+    /** proposal_id defines the unique id of the proposal. */
     proposal_id: bigint;
+    /** content is the proposal's content. */
     content?: (TextProposal & CommunityPoolSpendProposal & CommunityPoolSpendProposalWithDeposit & ParameterChangeProposal & SoftwareUpgradeProposal & CancelSoftwareUpgradeProposal & Any) | undefined;
+    /** status defines the proposal status. */
     status: ProposalStatus;
     /**
      * final_tally_result is the final tally result of the proposal. When
@@ -186,10 +203,15 @@ export interface Proposal {
      * proposal's voting period has ended.
      */
     final_tally_result: TallyResult;
+    /** submit_time is the time of proposal submission. */
     submit_time: Date;
+    /** deposit_end_time is the end time for deposition. */
     deposit_end_time: Date;
+    /** total_deposit is the total deposit on the proposal. */
     total_deposit: Coin[];
+    /** voting_start_time is the starting time to vote on a proposal. */
     voting_start_time: Date;
+    /** voting_end_time is the end time of voting on a proposal. */
     voting_end_time: Date;
 }
 export interface ProposalProtoMsg {
@@ -201,12 +223,15 @@ export interface ProposalProtoMsg {
     value: Uint8Array;
 }
 export type ProposalEncoded = Omit<Proposal, "content"> & {
-    content?: TextProposalProtoMsg | CommunityPoolSpendProposalProtoMsg | CommunityPoolSpendProposalWithDepositProtoMsg | ParameterChangeProposalProtoMsg | SoftwareUpgradeProposalProtoMsg | CancelSoftwareUpgradeProposalProtoMsg | AnyProtoMsg | undefined;
+    /** content is the proposal's content. */ content?: TextProposalProtoMsg | CommunityPoolSpendProposalProtoMsg | CommunityPoolSpendProposalWithDepositProtoMsg | ParameterChangeProposalProtoMsg | SoftwareUpgradeProposalProtoMsg | CancelSoftwareUpgradeProposalProtoMsg | AnyProtoMsg | undefined;
 };
 /** Proposal defines the core field members of a governance proposal. */
 export interface ProposalAmino {
+    /** proposal_id defines the unique id of the proposal. */
     proposal_id: string;
+    /** content is the proposal's content. */
     content?: AnyAmino;
+    /** status defines the proposal status. */
     status: ProposalStatus;
     /**
      * final_tally_result is the final tally result of the proposal. When
@@ -214,10 +239,15 @@ export interface ProposalAmino {
      * proposal's voting period has ended.
      */
     final_tally_result?: TallyResultAmino;
+    /** submit_time is the time of proposal submission. */
     submit_time?: Date;
+    /** deposit_end_time is the end time for deposition. */
     deposit_end_time?: Date;
+    /** total_deposit is the total deposit on the proposal. */
     total_deposit: CoinAmino[];
+    /** voting_start_time is the starting time to vote on a proposal. */
     voting_start_time?: Date;
+    /** voting_end_time is the end time of voting on a proposal. */
     voting_end_time?: Date;
 }
 export interface ProposalAminoMsg {
@@ -238,9 +268,13 @@ export interface ProposalSDKType {
 }
 /** TallyResult defines a standard tally for a governance proposal. */
 export interface TallyResult {
+    /** yes is the number of yes votes on a proposal. */
     yes: string;
+    /** abstain is the number of abstain votes on a proposal. */
     abstain: string;
+    /** no is the number of no votes on a proposal. */
     no: string;
+    /** no_with_veto is the number of no with veto votes on a proposal. */
     no_with_veto: string;
 }
 export interface TallyResultProtoMsg {
@@ -253,9 +287,13 @@ export interface TallyResultProtoMsg {
 }
 /** TallyResult defines a standard tally for a governance proposal. */
 export interface TallyResultAmino {
+    /** yes is the number of yes votes on a proposal. */
     yes: string;
+    /** abstain is the number of abstain votes on a proposal. */
     abstain: string;
+    /** no is the number of no votes on a proposal. */
     no: string;
+    /** no_with_veto is the number of no with veto votes on a proposal. */
     no_with_veto: string;
 }
 export interface TallyResultAminoMsg {
@@ -274,7 +312,9 @@ export interface TallyResultSDKType {
  * A Vote consists of a proposal ID, the voter, and the vote option.
  */
 export interface Vote {
+    /** proposal_id defines the unique id of the proposal. */
     proposal_id: bigint;
+    /** voter is the voter address of the proposal. */
     voter: string;
     /**
      * Deprecated: Prefer to use `options` instead. This field is set in queries
@@ -283,7 +323,11 @@ export interface Vote {
      */
     /** @deprecated */
     option: VoteOption;
-    /** Since: cosmos-sdk 0.43 */
+    /**
+     * options is the weighted vote options.
+     *
+     * Since: cosmos-sdk 0.43
+     */
     options: WeightedVoteOption[];
 }
 export interface VoteProtoMsg {
@@ -299,7 +343,9 @@ export interface VoteProtoMsg {
  * A Vote consists of a proposal ID, the voter, and the vote option.
  */
 export interface VoteAmino {
+    /** proposal_id defines the unique id of the proposal. */
     proposal_id: string;
+    /** voter is the voter address of the proposal. */
     voter: string;
     /**
      * Deprecated: Prefer to use `options` instead. This field is set in queries
@@ -308,7 +354,11 @@ export interface VoteAmino {
      */
     /** @deprecated */
     option: VoteOption;
-    /** Since: cosmos-sdk 0.43 */
+    /**
+     * options is the weighted vote options.
+     *
+     * Since: cosmos-sdk 0.43
+     */
     options: WeightedVoteOptionAmino[];
 }
 export interface VoteAminoMsg {
@@ -332,7 +382,7 @@ export interface DepositParams {
     min_deposit: Coin[];
     /**
      * Maximum period for Atom holders to deposit on a proposal. Initial value: 2
-     *  months.
+     * months.
      */
     max_deposit_period: Duration;
 }
@@ -350,7 +400,7 @@ export interface DepositParamsAmino {
     min_deposit: CoinAmino[];
     /**
      * Maximum period for Atom holders to deposit on a proposal. Initial value: 2
-     *  months.
+     * months.
      */
     max_deposit_period?: DurationAmino;
 }
@@ -365,7 +415,7 @@ export interface DepositParamsSDKType {
 }
 /** VotingParams defines the params for voting on governance proposals. */
 export interface VotingParams {
-    /** Length of the voting period. */
+    /** Duration of the voting period. */
     voting_period: Duration;
 }
 export interface VotingParamsProtoMsg {
@@ -378,7 +428,7 @@ export interface VotingParamsProtoMsg {
 }
 /** VotingParams defines the params for voting on governance proposals. */
 export interface VotingParamsAmino {
-    /** Length of the voting period. */
+    /** Duration of the voting period. */
     voting_period?: DurationAmino;
 }
 export interface VotingParamsAminoMsg {
@@ -393,14 +443,14 @@ export interface VotingParamsSDKType {
 export interface TallyParams {
     /**
      * Minimum percentage of total stake needed to vote for a result to be
-     *  considered valid.
+     * considered valid.
      */
     quorum: Uint8Array;
     /** Minimum proportion of Yes votes for proposal to pass. Default value: 0.5. */
     threshold: Uint8Array;
     /**
      * Minimum value of Veto votes to Total votes ratio for proposal to be
-     *  vetoed. Default value: 1/3.
+     * vetoed. Default value: 1/3.
      */
     veto_threshold: Uint8Array;
 }
@@ -416,14 +466,14 @@ export interface TallyParamsProtoMsg {
 export interface TallyParamsAmino {
     /**
      * Minimum percentage of total stake needed to vote for a result to be
-     *  considered valid.
+     * considered valid.
      */
     quorum: Uint8Array;
     /** Minimum proportion of Yes votes for proposal to pass. Default value: 0.5. */
     threshold: Uint8Array;
     /**
      * Minimum value of Veto votes to Total votes ratio for proposal to be
-     *  vetoed. Default value: 1/3.
+     * vetoed. Default value: 1/3.
      */
     veto_threshold: Uint8Array;
 }

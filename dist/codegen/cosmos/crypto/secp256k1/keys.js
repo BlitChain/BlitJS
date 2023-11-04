@@ -75,7 +75,7 @@ exports.PubKey = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/PubKey",
+            type: "tendermint/PubKeySecp256k1",
             value: exports.PubKey.toAmino(message)
         };
     },
@@ -162,7 +162,7 @@ exports.PrivKey = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/PrivKey",
+            type: "tendermint/PrivKeySecp256k1",
             value: exports.PrivKey.toAmino(message)
         };
     },

@@ -12,7 +12,8 @@ function createBaseGenesisState() {
         params: bank_1.Params.fromPartial({}),
         balances: [],
         supply: [],
-        denom_metadata: []
+        denom_metadata: [],
+        send_enabled: []
     };
 }
 exports.GenesisState = {
@@ -29,6 +30,9 @@ exports.GenesisState = {
         }
         for (const v of message.denom_metadata) {
             bank_1.Metadata.encode(v, writer.uint32(34).fork()).ldelim();
+        }
+        for (const v of message.send_enabled) {
+            bank_1.SendEnabled.encode(v, writer.uint32(42).fork()).ldelim();
         }
         return writer;
     },
@@ -51,6 +55,9 @@ exports.GenesisState = {
                 case 4:
                     message.denom_metadata.push(bank_1.Metadata.decode(reader, reader.uint32()));
                     break;
+                case 5:
+                    message.send_enabled.push(bank_1.SendEnabled.decode(reader, reader.uint32()));
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -63,7 +70,8 @@ exports.GenesisState = {
             params: (0, helpers_1.isSet)(object.params) ? bank_1.Params.fromJSON(object.params) : undefined,
             balances: Array.isArray(object?.balances) ? object.balances.map((e) => exports.Balance.fromJSON(e)) : [],
             supply: Array.isArray(object?.supply) ? object.supply.map((e) => coin_1.Coin.fromJSON(e)) : [],
-            denom_metadata: Array.isArray(object?.denom_metadata) ? object.denom_metadata.map((e) => bank_1.Metadata.fromJSON(e)) : []
+            denom_metadata: Array.isArray(object?.denom_metadata) ? object.denom_metadata.map((e) => bank_1.Metadata.fromJSON(e)) : [],
+            send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e) => bank_1.SendEnabled.fromJSON(e)) : []
         };
     },
     toJSON(message) {
@@ -87,6 +95,12 @@ exports.GenesisState = {
         else {
             obj.denom_metadata = [];
         }
+        if (message.send_enabled) {
+            obj.send_enabled = message.send_enabled.map(e => e ? bank_1.SendEnabled.toJSON(e) : undefined);
+        }
+        else {
+            obj.send_enabled = [];
+        }
         return obj;
     },
     fromPartial(object) {
@@ -95,6 +109,7 @@ exports.GenesisState = {
         message.balances = object.balances?.map(e => exports.Balance.fromPartial(e)) || [];
         message.supply = object.supply?.map(e => coin_1.Coin.fromPartial(e)) || [];
         message.denom_metadata = object.denom_metadata?.map(e => bank_1.Metadata.fromPartial(e)) || [];
+        message.send_enabled = object.send_enabled?.map(e => bank_1.SendEnabled.fromPartial(e)) || [];
         return message;
     },
     fromSDK(object) {
@@ -102,7 +117,8 @@ exports.GenesisState = {
             params: object.params ? bank_1.Params.fromSDK(object.params) : undefined,
             balances: Array.isArray(object?.balances) ? object.balances.map((e) => exports.Balance.fromSDK(e)) : [],
             supply: Array.isArray(object?.supply) ? object.supply.map((e) => coin_1.Coin.fromSDK(e)) : [],
-            denom_metadata: Array.isArray(object?.denom_metadata) ? object.denom_metadata.map((e) => bank_1.Metadata.fromSDK(e)) : []
+            denom_metadata: Array.isArray(object?.denom_metadata) ? object.denom_metadata.map((e) => bank_1.Metadata.fromSDK(e)) : [],
+            send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e) => bank_1.SendEnabled.fromSDK(e)) : []
         };
     },
     toSDK(message) {
@@ -126,6 +142,12 @@ exports.GenesisState = {
         else {
             obj.denom_metadata = [];
         }
+        if (message.send_enabled) {
+            obj.send_enabled = message.send_enabled.map(e => e ? bank_1.SendEnabled.toSDK(e) : undefined);
+        }
+        else {
+            obj.send_enabled = [];
+        }
         return obj;
     },
     fromAmino(object) {
@@ -133,7 +155,8 @@ exports.GenesisState = {
             params: object?.params ? bank_1.Params.fromAmino(object.params) : undefined,
             balances: Array.isArray(object?.balances) ? object.balances.map((e) => exports.Balance.fromAmino(e)) : [],
             supply: Array.isArray(object?.supply) ? object.supply.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            denom_metadata: Array.isArray(object?.denom_metadata) ? object.denom_metadata.map((e) => bank_1.Metadata.fromAmino(e)) : []
+            denom_metadata: Array.isArray(object?.denom_metadata) ? object.denom_metadata.map((e) => bank_1.Metadata.fromAmino(e)) : [],
+            send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e) => bank_1.SendEnabled.fromAmino(e)) : []
         };
     },
     toAmino(message) {
@@ -156,6 +179,12 @@ exports.GenesisState = {
         }
         else {
             obj.denom_metadata = [];
+        }
+        if (message.send_enabled) {
+            obj.send_enabled = message.send_enabled.map(e => e ? bank_1.SendEnabled.toAmino(e) : undefined);
+        }
+        else {
+            obj.send_enabled = [];
         }
         return obj;
     },

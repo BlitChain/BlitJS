@@ -31,7 +31,7 @@ export interface PubKeyAmino {
   key: Uint8Array;
 }
 export interface PubKeyAminoMsg {
-  type: "cosmos-sdk/PubKey";
+  type: "tendermint/PubKeySecp256k1";
   value: PubKeyAmino;
 }
 /**
@@ -61,7 +61,7 @@ export interface PrivKeyAmino {
   key: Uint8Array;
 }
 export interface PrivKeyAminoMsg {
-  type: "cosmos-sdk/PrivKey";
+  type: "tendermint/PrivKeySecp256k1";
   value: PrivKeyAmino;
 }
 /** PrivKey defines a secp256k1 private key. */
@@ -138,7 +138,7 @@ export const PubKey = {
   },
   toAminoMsg(message: PubKey): PubKeyAminoMsg {
     return {
-      type: "cosmos-sdk/PubKey",
+      type: "tendermint/PubKeySecp256k1",
       value: PubKey.toAmino(message)
     };
   },
@@ -225,7 +225,7 @@ export const PrivKey = {
   },
   toAminoMsg(message: PrivKey): PrivKeyAminoMsg {
     return {
-      type: "cosmos-sdk/PrivKey",
+      type: "tendermint/PrivKeySecp256k1",
       value: PrivKey.toAmino(message)
     };
   },

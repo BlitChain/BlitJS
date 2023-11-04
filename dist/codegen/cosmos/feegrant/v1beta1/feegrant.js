@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cosmos_feegrantFeeAllowanceI_ToAmino = exports.Cosmos_feegrantFeeAllowanceI_FromAmino = exports.Cosmos_feegrantFeeAllowanceI_InterfaceDecoder = exports.Grant = exports.AllowedMsgAllowance = exports.PeriodicAllowance = exports.BasicAllowance = exports.protobufPackage = void 0;
+exports.Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino = exports.Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino = exports.Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder = exports.Grant = exports.AllowedMsgAllowance = exports.PeriodicAllowance = exports.BasicAllowance = exports.protobufPackage = void 0;
 //@ts-nocheck
 const coin_1 = require("../../base/v1beta1/coin");
 const timestamp_1 = require("../../../google/protobuf/timestamp");
@@ -326,7 +326,7 @@ exports.AllowedMsgAllowance = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.allowance = (0, exports.Cosmos_feegrantFeeAllowanceI_InterfaceDecoder)(reader);
+                    message.allowance = (0, exports.Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder)(reader);
                     break;
                 case 2:
                     message.allowed_messages.push(reader.string());
@@ -380,13 +380,13 @@ exports.AllowedMsgAllowance = {
     },
     fromAmino(object) {
         return {
-            allowance: object?.allowance ? (0, exports.Cosmos_feegrantFeeAllowanceI_FromAmino)(object.allowance) : undefined,
+            allowance: object?.allowance ? (0, exports.Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino)(object.allowance) : undefined,
             allowed_messages: Array.isArray(object?.allowed_messages) ? object.allowed_messages.map((e) => e) : []
         };
     },
     toAmino(message) {
         const obj = {};
-        obj.allowance = message.allowance ? (0, exports.Cosmos_feegrantFeeAllowanceI_ToAmino)(message.allowance) : undefined;
+        obj.allowance = message.allowance ? (0, exports.Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino)(message.allowance) : undefined;
         if (message.allowed_messages) {
             obj.allowed_messages = message.allowed_messages.map(e => e);
         }
@@ -452,7 +452,7 @@ exports.Grant = {
                     message.grantee = reader.string();
                     break;
                 case 3:
-                    message.allowance = (0, exports.Cosmos_feegrantFeeAllowanceI_InterfaceDecoder)(reader);
+                    message.allowance = (0, exports.Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder)(reader);
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -500,14 +500,14 @@ exports.Grant = {
         return {
             granter: object.granter,
             grantee: object.grantee,
-            allowance: object?.allowance ? (0, exports.Cosmos_feegrantFeeAllowanceI_FromAmino)(object.allowance) : undefined
+            allowance: object?.allowance ? (0, exports.Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino)(object.allowance) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
         obj.granter = message.granter;
         obj.grantee = message.grantee;
-        obj.allowance = message.allowance ? (0, exports.Cosmos_feegrantFeeAllowanceI_ToAmino)(message.allowance) : undefined;
+        obj.allowance = message.allowance ? (0, exports.Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino)(message.allowance) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -532,7 +532,7 @@ exports.Grant = {
         };
     }
 };
-const Cosmos_feegrantFeeAllowanceI_InterfaceDecoder = (input) => {
+const Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder = (input) => {
     const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
     const data = any_1.Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
@@ -546,8 +546,8 @@ const Cosmos_feegrantFeeAllowanceI_InterfaceDecoder = (input) => {
             return data;
     }
 };
-exports.Cosmos_feegrantFeeAllowanceI_InterfaceDecoder = Cosmos_feegrantFeeAllowanceI_InterfaceDecoder;
-const Cosmos_feegrantFeeAllowanceI_FromAmino = (content) => {
+exports.Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder = Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder;
+const Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino = (content) => {
     switch (content.type) {
         case "cosmos-sdk/BasicAllowance":
             return any_1.Any.fromPartial({
@@ -568,8 +568,8 @@ const Cosmos_feegrantFeeAllowanceI_FromAmino = (content) => {
             return any_1.Any.fromAmino(content);
     }
 };
-exports.Cosmos_feegrantFeeAllowanceI_FromAmino = Cosmos_feegrantFeeAllowanceI_FromAmino;
-const Cosmos_feegrantFeeAllowanceI_ToAmino = (content) => {
+exports.Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino = Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino;
+const Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino = (content) => {
     switch (content.typeUrl) {
         case "/cosmos.feegrant.v1beta1.BasicAllowance":
             return {
@@ -590,5 +590,5 @@ const Cosmos_feegrantFeeAllowanceI_ToAmino = (content) => {
             return any_1.Any.toAmino(content);
     }
 };
-exports.Cosmos_feegrantFeeAllowanceI_ToAmino = Cosmos_feegrantFeeAllowanceI_ToAmino;
+exports.Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino = Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino;
 //# sourceMappingURL=feegrant.js.map

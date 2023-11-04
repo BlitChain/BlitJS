@@ -41,7 +41,7 @@ export interface BIP44ParamsAmino {
     address_index: number;
 }
 export interface BIP44ParamsAminoMsg {
-    type: "cosmos-sdk/BIP44Params";
+    type: "crypto/keys/hd/BIP44Params";
     value: BIP44ParamsAmino;
 }
 /** BIP44Params is used as path field in ledger item in Record. */

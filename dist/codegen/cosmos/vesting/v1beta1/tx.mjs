@@ -344,7 +344,7 @@ export const MsgCreatePermanentLockedAccount = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/MsgCreatePermanentLockedAccount",
+            type: "cosmos-sdk/MsgCreatePermLockedAccount",
             value: MsgCreatePermanentLockedAccount.toAmino(message)
         };
     },

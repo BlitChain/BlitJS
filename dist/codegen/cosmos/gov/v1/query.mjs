@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { Proposal, Vote, VotingParams, DepositParams, TallyParams, Deposit, TallyResult, proposalStatusFromJSON, proposalStatusToJSON } from "./gov";
+import { Proposal, Vote, VotingParams, DepositParams, TallyParams, Params, Deposit, TallyResult, proposalStatusFromJSON, proposalStatusToJSON } from "./gov";
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
@@ -919,7 +919,8 @@ function createBaseQueryParamsResponse() {
     return {
         voting_params: undefined,
         deposit_params: undefined,
-        tally_params: undefined
+        tally_params: undefined,
+        params: undefined
     };
 }
 export const QueryParamsResponse = {
@@ -933,6 +934,9 @@ export const QueryParamsResponse = {
         }
         if (message.tally_params !== undefined) {
             TallyParams.encode(message.tally_params, writer.uint32(26).fork()).ldelim();
+        }
+        if (message.params !== undefined) {
+            Params.encode(message.params, writer.uint32(34).fork()).ldelim();
         }
         return writer;
     },
@@ -952,6 +956,9 @@ export const QueryParamsResponse = {
                 case 3:
                     message.tally_params = TallyParams.decode(reader, reader.uint32());
                     break;
+                case 4:
+                    message.params = Params.decode(reader, reader.uint32());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -963,7 +970,8 @@ export const QueryParamsResponse = {
         return {
             voting_params: isSet(object.voting_params) ? VotingParams.fromJSON(object.voting_params) : undefined,
             deposit_params: isSet(object.deposit_params) ? DepositParams.fromJSON(object.deposit_params) : undefined,
-            tally_params: isSet(object.tally_params) ? TallyParams.fromJSON(object.tally_params) : undefined
+            tally_params: isSet(object.tally_params) ? TallyParams.fromJSON(object.tally_params) : undefined,
+            params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
         };
     },
     toJSON(message) {
@@ -971,6 +979,7 @@ export const QueryParamsResponse = {
         message.voting_params !== undefined && (obj.voting_params = message.voting_params ? VotingParams.toJSON(message.voting_params) : undefined);
         message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? DepositParams.toJSON(message.deposit_params) : undefined);
         message.tally_params !== undefined && (obj.tally_params = message.tally_params ? TallyParams.toJSON(message.tally_params) : undefined);
+        message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -978,13 +987,15 @@ export const QueryParamsResponse = {
         message.voting_params = object.voting_params !== undefined && object.voting_params !== null ? VotingParams.fromPartial(object.voting_params) : undefined;
         message.deposit_params = object.deposit_params !== undefined && object.deposit_params !== null ? DepositParams.fromPartial(object.deposit_params) : undefined;
         message.tally_params = object.tally_params !== undefined && object.tally_params !== null ? TallyParams.fromPartial(object.tally_params) : undefined;
+        message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
         return message;
     },
     fromSDK(object) {
         return {
             voting_params: object.voting_params ? VotingParams.fromSDK(object.voting_params) : undefined,
             deposit_params: object.deposit_params ? DepositParams.fromSDK(object.deposit_params) : undefined,
-            tally_params: object.tally_params ? TallyParams.fromSDK(object.tally_params) : undefined
+            tally_params: object.tally_params ? TallyParams.fromSDK(object.tally_params) : undefined,
+            params: object.params ? Params.fromSDK(object.params) : undefined
         };
     },
     toSDK(message) {
@@ -992,13 +1003,15 @@ export const QueryParamsResponse = {
         message.voting_params !== undefined && (obj.voting_params = message.voting_params ? VotingParams.toSDK(message.voting_params) : undefined);
         message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? DepositParams.toSDK(message.deposit_params) : undefined);
         message.tally_params !== undefined && (obj.tally_params = message.tally_params ? TallyParams.toSDK(message.tally_params) : undefined);
+        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
         return obj;
     },
     fromAmino(object) {
         return {
             voting_params: object?.voting_params ? VotingParams.fromAmino(object.voting_params) : undefined,
             deposit_params: object?.deposit_params ? DepositParams.fromAmino(object.deposit_params) : undefined,
-            tally_params: object?.tally_params ? TallyParams.fromAmino(object.tally_params) : undefined
+            tally_params: object?.tally_params ? TallyParams.fromAmino(object.tally_params) : undefined,
+            params: object?.params ? Params.fromAmino(object.params) : undefined
         };
     },
     toAmino(message) {
@@ -1006,6 +1019,7 @@ export const QueryParamsResponse = {
         obj.voting_params = message.voting_params ? VotingParams.toAmino(message.voting_params) : undefined;
         obj.deposit_params = message.deposit_params ? DepositParams.toAmino(message.deposit_params) : undefined;
         obj.tally_params = message.tally_params ? TallyParams.toAmino(message.tally_params) : undefined;
+        obj.params = message.params ? Params.toAmino(message.params) : undefined;
         return obj;
     },
     fromAminoMsg(object) {

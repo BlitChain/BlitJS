@@ -33,11 +33,21 @@ export const createLCDClient = async ({ restEndpoint }) => {
                 })
             },
             base: {
+                node: {
+                    v1beta1: new (await import("../cosmos/base/node/v1beta1/query.lcd")).LCDQueryClient({
+                        requestClient
+                    })
+                },
                 tendermint: {
                     v1beta1: new (await import("../cosmos/base/tendermint/v1beta1/query.lcd")).LCDQueryClient({
                         requestClient
                     })
                 }
+            },
+            consensus: {
+                v1: new (await import("../cosmos/consensus/v1/query.lcd")).LCDQueryClient({
+                    requestClient
+                })
             },
             distribution: {
                 v1beta1: new (await import("../cosmos/distribution/v1beta1/query.lcd")).LCDQueryClient({

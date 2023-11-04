@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageComposer = exports.load = exports.registry = void 0;
 const tx_1 = require("./tx");
-exports.registry = [["/cosmos.gov.v1.MsgSubmitProposal", tx_1.MsgSubmitProposal], ["/cosmos.gov.v1.MsgExecLegacyContent", tx_1.MsgExecLegacyContent], ["/cosmos.gov.v1.MsgVote", tx_1.MsgVote], ["/cosmos.gov.v1.MsgVoteWeighted", tx_1.MsgVoteWeighted], ["/cosmos.gov.v1.MsgDeposit", tx_1.MsgDeposit]];
+exports.registry = [["/cosmos.gov.v1.MsgSubmitProposal", tx_1.MsgSubmitProposal], ["/cosmos.gov.v1.MsgExecLegacyContent", tx_1.MsgExecLegacyContent], ["/cosmos.gov.v1.MsgVote", tx_1.MsgVote], ["/cosmos.gov.v1.MsgVoteWeighted", tx_1.MsgVoteWeighted], ["/cosmos.gov.v1.MsgDeposit", tx_1.MsgDeposit], ["/cosmos.gov.v1.MsgUpdateParams", tx_1.MsgUpdateParams]];
 const load = (protoRegistry) => {
     exports.registry.forEach(([typeUrl, mod]) => {
         protoRegistry.register(typeUrl, mod);
@@ -40,6 +40,12 @@ exports.MessageComposer = {
                 typeUrl: "/cosmos.gov.v1.MsgDeposit",
                 value: tx_1.MsgDeposit.encode(value).finish()
             };
+        },
+        updateParams(value) {
+            return {
+                typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
+                value: tx_1.MsgUpdateParams.encode(value).finish()
+            };
         }
     },
     withTypeUrl: {
@@ -70,6 +76,12 @@ exports.MessageComposer = {
         deposit(value) {
             return {
                 typeUrl: "/cosmos.gov.v1.MsgDeposit",
+                value
+            };
+        },
+        updateParams(value) {
+            return {
+                typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
                 value
             };
         }
@@ -104,6 +116,12 @@ exports.MessageComposer = {
                 typeUrl: "/cosmos.gov.v1.MsgDeposit",
                 value: tx_1.MsgDeposit.toJSON(value)
             };
+        },
+        updateParams(value) {
+            return {
+                typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
+                value: tx_1.MsgUpdateParams.toJSON(value)
+            };
         }
     },
     fromJSON: {
@@ -136,6 +154,12 @@ exports.MessageComposer = {
                 typeUrl: "/cosmos.gov.v1.MsgDeposit",
                 value: tx_1.MsgDeposit.fromJSON(value)
             };
+        },
+        updateParams(value) {
+            return {
+                typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
+                value: tx_1.MsgUpdateParams.fromJSON(value)
+            };
         }
     },
     fromPartial: {
@@ -167,6 +191,12 @@ exports.MessageComposer = {
             return {
                 typeUrl: "/cosmos.gov.v1.MsgDeposit",
                 value: tx_1.MsgDeposit.fromPartial(value)
+            };
+        },
+        updateParams(value) {
+            return {
+                typeUrl: "/cosmos.gov.v1.MsgUpdateParams",
+                value: tx_1.MsgUpdateParams.fromPartial(value)
             };
         }
     }

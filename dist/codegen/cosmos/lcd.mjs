@@ -22,11 +22,21 @@ export const createLCDClient = async ({ restEndpoint }) => {
                 })
             },
             base: {
+                node: {
+                    v1beta1: new (await import("./base/node/v1beta1/query.lcd")).LCDQueryClient({
+                        requestClient
+                    })
+                },
                 tendermint: {
                     v1beta1: new (await import("./base/tendermint/v1beta1/query.lcd")).LCDQueryClient({
                         requestClient
                     })
                 }
+            },
+            consensus: {
+                v1: new (await import("./consensus/v1/query.lcd")).LCDQueryClient({
+                    requestClient
+                })
             },
             distribution: {
                 v1beta1: new (await import("./distribution/v1beta1/query.lcd")).LCDQueryClient({

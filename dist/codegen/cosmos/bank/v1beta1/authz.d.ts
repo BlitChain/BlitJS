@@ -10,6 +10,13 @@ export declare const protobufPackage = "cosmos.bank.v1beta1";
 export interface SendAuthorization {
     $typeUrl?: "/cosmos.bank.v1beta1.SendAuthorization";
     spend_limit: Coin[];
+    /**
+     * allow_list specifies an optional list of addresses to whom the grantee can send tokens on behalf of the
+     * granter. If omitted, any recipient is allowed.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    allow_list: string[];
 }
 export interface SendAuthorizationProtoMsg {
     type_url: "/cosmos.bank.v1beta1.SendAuthorization";
@@ -27,6 +34,13 @@ export interface SendAuthorizationProtoMsg {
  */
 export interface SendAuthorizationAmino {
     spend_limit: CoinAmino[];
+    /**
+     * allow_list specifies an optional list of addresses to whom the grantee can send tokens on behalf of the
+     * granter. If omitted, any recipient is allowed.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    allow_list: string[];
 }
 export interface SendAuthorizationAminoMsg {
     type: "cosmos-sdk/SendAuthorization";
@@ -41,6 +55,7 @@ export interface SendAuthorizationAminoMsg {
 export interface SendAuthorizationSDKType {
     $typeUrl?: "/cosmos.bank.v1beta1.SendAuthorization";
     spend_limit: CoinSDKType[];
+    allow_list: string[];
 }
 export declare const SendAuthorization: {
     typeUrl: string;

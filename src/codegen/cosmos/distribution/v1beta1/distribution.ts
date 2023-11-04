@@ -7,7 +7,17 @@ export const protobufPackage = "cosmos.distribution.v1beta1";
 /** Params defines the set of params for the distribution module. */
 export interface Params {
   community_tax: string;
+  /**
+   * Deprecated: The base_proposer_reward field is deprecated and is no longer used
+   * in the x/distribution module's reward mechanism.
+   */
+  /** @deprecated */
   base_proposer_reward: string;
+  /**
+   * Deprecated: The bonus_proposer_reward field is deprecated and is no longer used
+   * in the x/distribution module's reward mechanism.
+   */
+  /** @deprecated */
   bonus_proposer_reward: string;
   withdraw_addr_enabled: boolean;
 }
@@ -22,18 +32,30 @@ export interface ParamsProtoMsg {
 /** Params defines the set of params for the distribution module. */
 export interface ParamsAmino {
   community_tax: string;
+  /**
+   * Deprecated: The base_proposer_reward field is deprecated and is no longer used
+   * in the x/distribution module's reward mechanism.
+   */
+  /** @deprecated */
   base_proposer_reward: string;
+  /**
+   * Deprecated: The bonus_proposer_reward field is deprecated and is no longer used
+   * in the x/distribution module's reward mechanism.
+   */
+  /** @deprecated */
   bonus_proposer_reward: string;
   withdraw_addr_enabled: boolean;
 }
 export interface ParamsAminoMsg {
-  type: "cosmos-sdk/Params";
+  type: "cosmos-sdk/x/distribution/Params";
   value: ParamsAmino;
 }
 /** Params defines the set of params for the distribution module. */
 export interface ParamsSDKType {
   community_tax: string;
+  /** @deprecated */
   base_proposer_reward: string;
+  /** @deprecated */
   bonus_proposer_reward: string;
   withdraw_addr_enabled: boolean;
 }
@@ -302,7 +324,13 @@ export interface FeePoolSDKType {
  * CommunityPoolSpendProposal details a proposal for use of community funds,
  * together with how many coins are proposed to be spent, and to which
  * recipient account.
+ * 
+ * Deprecated: Do not use. As of the Cosmos SDK release v0.47.x, there is no
+ * longer a need for an explicit CommunityPoolSpendProposal. To spend community
+ * pool funds, a simple MsgCommunityPoolSpend can be invoked from the x/gov
+ * module via a v1 governance proposal.
  */
+/** @deprecated */
 export interface CommunityPoolSpendProposal {
   $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal";
   title: string;
@@ -322,7 +350,13 @@ export interface CommunityPoolSpendProposalProtoMsg {
  * CommunityPoolSpendProposal details a proposal for use of community funds,
  * together with how many coins are proposed to be spent, and to which
  * recipient account.
+ * 
+ * Deprecated: Do not use. As of the Cosmos SDK release v0.47.x, there is no
+ * longer a need for an explicit CommunityPoolSpendProposal. To spend community
+ * pool funds, a simple MsgCommunityPoolSpend can be invoked from the x/gov
+ * module via a v1 governance proposal.
  */
+/** @deprecated */
 export interface CommunityPoolSpendProposalAmino {
   title: string;
   description: string;
@@ -337,7 +371,13 @@ export interface CommunityPoolSpendProposalAminoMsg {
  * CommunityPoolSpendProposal details a proposal for use of community funds,
  * together with how many coins are proposed to be spent, and to which
  * recipient account.
+ * 
+ * Deprecated: Do not use. As of the Cosmos SDK release v0.47.x, there is no
+ * longer a need for an explicit CommunityPoolSpendProposal. To spend community
+ * pool funds, a simple MsgCommunityPoolSpend can be invoked from the x/gov
+ * module via a v1 governance proposal.
  */
+/** @deprecated */
 export interface CommunityPoolSpendProposalSDKType {
   $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal";
   title: string;
@@ -591,7 +631,7 @@ export const Params = {
   },
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
-      type: "cosmos-sdk/Params",
+      type: "cosmos-sdk/x/distribution/Params",
       value: Params.toAmino(message)
     };
   },
