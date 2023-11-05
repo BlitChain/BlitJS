@@ -72,7 +72,7 @@ const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
   return client;
 };
 
-const runFunction = async ({ msgClient, caller_address, script_address, function_name, kwargs, extra_code, grantee }) => {
+const runFunction = async ({ msgClient, caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple = 1.5 }) => {
   const message = blitjs.blit.script.MessageComposer.withTypeUrl.run({
     caller_address,
     script_address,
@@ -81,7 +81,6 @@ const runFunction = async ({ msgClient, caller_address, script_address, function
     extra_code,
     grantee
   });
-  const gasMultiple = 1.5;
   const resp = await msgClient.signAndBroadcast(caller_address, [message], gasMultiple);
   if (resp.code !== 0) {
     // So we split into lines and get the last line which is the error
