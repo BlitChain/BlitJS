@@ -44,7 +44,7 @@ Include BlitJS in your project by adding the following script tag in your HTML f
 </script>
 ```
 
-# Install
+# Npm
 
 Install via npm:
 
@@ -52,6 +52,14 @@ Install via npm:
 npm install @blitchain/blitjs
 ```
 
+Import in your project
+
+```
+import {
+  default as blitjs,
+  experimentalHelpers,
+} from "@blitchain/blitjs/dist/index.mjs";
+```
 
 ## Brower Console
 
