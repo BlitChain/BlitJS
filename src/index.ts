@@ -1,4 +1,5 @@
 import * as blitjs from './codegen';
+import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 
 export default blitjs;
 
@@ -108,6 +109,22 @@ const runFunction = async ({ msgClient, caller_address, script_address, function
   }
 };
 
+const makeJsClient = async ({ mnemonic, rpcEndpoint, restEndpoint }) => {
+  if (!mnemonic) {
+    mnemonic = await DirectSecp256k1HdWallet.generate(24);
+  }
+  const signer = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic.secret.data, {
+    prefix: 'blit'
+  });
+
+  const client = await blitjs.getSigningBlitClient({
+    rpcEndpoint,
+    signer
+  });
+  client.gasPrice = '1ublit';
+  return client;
+};
+
 const queryFunction = async ({ queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }) => {
   const response = await queryClient.blit.script.eval({
     script_address,
@@ -126,6 +143,7 @@ const queryFunction = async ({ queryClient, script_address, caller_address, func
 
 export const experimentalHelpers = {
   makeKeplrClient,
+  makeJsClient,
   runFunction,
   queryFunction,
   makeChainInfo
