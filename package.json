@@ -1,6 +1,6 @@
 {
   "name": "@blitchain/blitjs",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Blit javascript client",
   "author": "Sybil Singleton <sybil.singleton@protonmail.com>",
   "homepage": "https://github.com/blitchain/blitjs#readme",
@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "build:cjs": "yarn tsc -p tsconfig.json --outDir dist --module commonjs || true",
-    "build:mjs": "yarn tsc -p tsconfig.json --outDir mjs --module es2022 --declaration false || true",
+    "build:mjs": "yarn tsc -p tsconfig.json --outDir mjs --module es2022 --declaration true || true",
     "clean:mjs": "rimraf mjs",
     "clean:dist": "rimraf dist",
     "clean": "npm run clean:mjs && npm run clean:dist",
