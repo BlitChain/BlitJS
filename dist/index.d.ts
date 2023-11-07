@@ -5,7 +5,12 @@ export declare const experimentalHelpers: {
         rpcEndpoint: any;
         restEndpoint: any;
     }) => Promise<import("@cosmjs/stargate").SigningStargateClient>;
-    runFunction: ({ msgClient, caller_address, script_address, function_name, kwargs, extra_code, grantee }: {
+    makeJsClient: ({ mnemonic, rpcEndpoint, restEndpoint }: {
+        mnemonic: any;
+        rpcEndpoint: any;
+        restEndpoint: any;
+    }) => Promise<import("@cosmjs/stargate").SigningStargateClient>;
+    runFunction: ({ msgClient, caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple }: {
         msgClient: any;
         caller_address: any;
         script_address: any;
@@ -13,6 +18,7 @@ export declare const experimentalHelpers: {
         kwargs: any;
         extra_code: any;
         grantee: any;
+        gasMultiple?: number;
     }) => Promise<any>;
     queryFunction: ({ queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }: {
         queryClient: any;

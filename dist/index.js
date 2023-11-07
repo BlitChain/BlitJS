@@ -25,6 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.experimentalHelpers = void 0;
 const blitjs = __importStar(require("./codegen"));
+const proto_signing_1 = require("@cosmjs/proto-signing");
 exports.default = blitjs;
 const makeChainInfo = async ({ rpcEndpoint, restEndpoint }) => {
     const queryClient = await blitjs.blit.ClientFactory.createLCDClient({
@@ -93,7 +94,7 @@ const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
     client.gasPrice = '0.000001blit';
     return client;
 };
-const runFunction = async ({ msgClient, caller_address, script_address, function_name, kwargs, extra_code, grantee }) => {
+const runFunction = async ({ msgClient, caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple = 1.5 }) => {
     const message = blitjs.blit.script.MessageComposer.withTypeUrl.run({
         caller_address,
         script_address,
@@ -102,7 +103,6 @@ const runFunction = async ({ msgClient, caller_address, script_address, function
         extra_code,
         grantee
     });
-    const gasMultiple = 1.5;
     const resp = await msgClient.signAndBroadcast(caller_address, [message], gasMultiple);
     if (resp.code !== 0) {
         // So we split into lines and get the last line which is the error
@@ -131,6 +131,20 @@ const runFunction = async ({ msgClient, caller_address, script_address, function
         throw e; // re-throw the error if it's not a SyntaxError
     }
 };
+const makeJsClient = async ({ mnemonic, rpcEndpoint, restEndpoint }) => {
+    if (!mnemonic) {
+        mnemonic = await proto_signing_1.DirectSecp256k1HdWallet.generate(24);
+    }
+    const signer = await proto_signing_1.DirectSecp256k1HdWallet.fromMnemonic(mnemonic.secret.data, {
+        prefix: 'blit'
+    });
+    const client = await blitjs.getSigningBlitClient({
+        rpcEndpoint,
+        signer
+    });
+    client.gasPrice = '1ublit';
+    return client;
+};
 const queryFunction = async ({ queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }) => {
     const response = await queryClient.blit.script.eval({
         script_address,
@@ -149,6 +163,7 @@ const queryFunction = async ({ queryClient, script_address, caller_address, func
 };
 exports.experimentalHelpers = {
     makeKeplrClient,
+    makeJsClient,
     runFunction,
     queryFunction,
     makeChainInfo
