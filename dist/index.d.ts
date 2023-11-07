@@ -10,8 +10,9 @@ export declare const experimentalHelpers: {
         rpcEndpoint: any;
         restEndpoint: any;
     }) => Promise<import("@cosmjs/stargate").SigningStargateClient>;
-    runFunction: ({ msgClient, caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple }: {
+    runFunction: ({ msgClient, msgs, caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple }: {
         msgClient: any;
+        msgs?: any[];
         caller_address: any;
         script_address: any;
         function_name: any;

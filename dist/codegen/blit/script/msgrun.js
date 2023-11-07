@@ -1,12 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MsgRunResponse = exports.MsgRun = exports.protobufPackage = void 0;
+exports.Cosmos_basev1beta1Msg_ToAmino = exports.Cosmos_basev1beta1Msg_FromAmino = exports.Cosmos_basev1beta1Msg_InterfaceDecoder = exports.MsgRunResponse = exports.MsgRun = exports.protobufPackage = void 0;
 //@ts-nocheck
+const any_1 = require("../../google/protobuf/any");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
 exports.protobufPackage = "blit.script";
 function createBaseMsgRun() {
     return {
+        msgs: [],
         caller_address: "",
         script_address: "",
         extra_code: "",
@@ -18,6 +20,9 @@ function createBaseMsgRun() {
 exports.MsgRun = {
     typeUrl: "/blit.script.MsgRun",
     encode(message, writer = binary_1.BinaryWriter.create()) {
+        for (const v of message.msgs) {
+            any_1.Any.encode(v, writer.uint32(10).fork()).ldelim();
+        }
         if (message.caller_address !== "") {
             writer.uint32(18).string(message.caller_address);
         }
@@ -45,6 +50,9 @@ exports.MsgRun = {
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
+                case 1:
+                    message.msgs.push((0, exports.Cosmos_basev1beta1Msg_InterfaceDecoder)(reader));
+                    break;
                 case 2:
                     message.caller_address = reader.string();
                     break;
@@ -72,6 +80,7 @@ exports.MsgRun = {
     },
     fromJSON(object) {
         return {
+            msgs: Array.isArray(object?.msgs) ? object.msgs.map((e) => any_1.Any.fromJSON(e)) : [],
             caller_address: (0, helpers_1.isSet)(object.caller_address) ? String(object.caller_address) : "",
             script_address: (0, helpers_1.isSet)(object.script_address) ? String(object.script_address) : "",
             extra_code: (0, helpers_1.isSet)(object.extra_code) ? String(object.extra_code) : "",
@@ -82,6 +91,12 @@ exports.MsgRun = {
     },
     toJSON(message) {
         const obj = {};
+        if (message.msgs) {
+            obj.msgs = message.msgs.map(e => e ? any_1.Any.toJSON(e) : undefined);
+        }
+        else {
+            obj.msgs = [];
+        }
         message.caller_address !== undefined && (obj.caller_address = message.caller_address);
         message.script_address !== undefined && (obj.script_address = message.script_address);
         message.extra_code !== undefined && (obj.extra_code = message.extra_code);
@@ -92,6 +107,7 @@ exports.MsgRun = {
     },
     fromPartial(object) {
         const message = createBaseMsgRun();
+        message.msgs = object.msgs?.map(e => any_1.Any.fromPartial(e)) || [];
         message.caller_address = object.caller_address ?? "";
         message.script_address = object.script_address ?? "";
         message.extra_code = object.extra_code ?? "";
@@ -102,6 +118,7 @@ exports.MsgRun = {
     },
     fromSDK(object) {
         return {
+            msgs: Array.isArray(object?.msgs) ? object.msgs.map((e) => any_1.Any.fromSDK(e)) : [],
             caller_address: object?.caller_address,
             script_address: object?.script_address,
             extra_code: object?.extra_code,
@@ -112,6 +129,12 @@ exports.MsgRun = {
     },
     toSDK(message) {
         const obj = {};
+        if (message.msgs) {
+            obj.msgs = message.msgs.map(e => e ? any_1.Any.toSDK(e) : undefined);
+        }
+        else {
+            obj.msgs = [];
+        }
         obj.caller_address = message.caller_address;
         obj.script_address = message.script_address;
         obj.extra_code = message.extra_code;
@@ -122,6 +145,7 @@ exports.MsgRun = {
     },
     fromAmino(object) {
         return {
+            msgs: Array.isArray(object?.msgs) ? object.msgs.map((e) => (0, exports.Cosmos_basev1beta1Msg_FromAmino)(e)) : [],
             caller_address: object.caller_address,
             script_address: object.script_address,
             extra_code: object.extra_code,
@@ -132,6 +156,12 @@ exports.MsgRun = {
     },
     toAmino(message) {
         const obj = {};
+        if (message.msgs) {
+            obj.msgs = message.msgs.map(e => e ? (0, exports.Cosmos_basev1beta1Msg_ToAmino)(e) : undefined);
+        }
+        else {
+            obj.msgs = [];
+        }
         obj.caller_address = message.caller_address;
         obj.script_address = message.script_address;
         obj.extra_code = message.extra_code;
@@ -237,4 +267,21 @@ exports.MsgRunResponse = {
         };
     }
 };
+const Cosmos_basev1beta1Msg_InterfaceDecoder = (input) => {
+    const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+    const data = any_1.Any.decode(reader, reader.uint32());
+    switch (data.typeUrl) {
+        default:
+            return data;
+    }
+};
+exports.Cosmos_basev1beta1Msg_InterfaceDecoder = Cosmos_basev1beta1Msg_InterfaceDecoder;
+const Cosmos_basev1beta1Msg_FromAmino = (content) => {
+    return any_1.Any.fromAmino(content);
+};
+exports.Cosmos_basev1beta1Msg_FromAmino = Cosmos_basev1beta1Msg_FromAmino;
+const Cosmos_basev1beta1Msg_ToAmino = (content) => {
+    return any_1.Any.toAmino(content);
+};
+exports.Cosmos_basev1beta1Msg_ToAmino = Cosmos_basev1beta1Msg_ToAmino;
 //# sourceMappingURL=msgrun.js.map

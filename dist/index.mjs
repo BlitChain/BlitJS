@@ -68,8 +68,9 @@ const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
     client.gasPrice = '0.000001blit';
     return client;
 };
-const runFunction = async ({ msgClient, caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple = 1.5 }) => {
+const runFunction = async ({ msgClient, msgs = [], caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple = 1.5 }) => {
     const message = blitjs.blit.script.MessageComposer.withTypeUrl.run({
+        msgs,
         caller_address,
         script_address,
         function_name,

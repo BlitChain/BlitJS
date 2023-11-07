@@ -1,9 +1,11 @@
 //@ts-nocheck
+import { Any } from "../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
 export const protobufPackage = "blit.script";
 function createBaseMsgRun() {
     return {
+        msgs: [],
         caller_address: "",
         script_address: "",
         extra_code: "",
@@ -15,6 +17,9 @@ function createBaseMsgRun() {
 export const MsgRun = {
     typeUrl: "/blit.script.MsgRun",
     encode(message, writer = BinaryWriter.create()) {
+        for (const v of message.msgs) {
+            Any.encode(v, writer.uint32(10).fork()).ldelim();
+        }
         if (message.caller_address !== "") {
             writer.uint32(18).string(message.caller_address);
         }
@@ -42,6 +47,9 @@ export const MsgRun = {
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
+                case 1:
+                    message.msgs.push(Cosmos_basev1beta1Msg_InterfaceDecoder(reader));
+                    break;
                 case 2:
                     message.caller_address = reader.string();
                     break;
@@ -69,6 +77,7 @@ export const MsgRun = {
     },
     fromJSON(object) {
         return {
+            msgs: Array.isArray(object?.msgs) ? object.msgs.map((e) => Any.fromJSON(e)) : [],
             caller_address: isSet(object.caller_address) ? String(object.caller_address) : "",
             script_address: isSet(object.script_address) ? String(object.script_address) : "",
             extra_code: isSet(object.extra_code) ? String(object.extra_code) : "",
@@ -79,6 +88,12 @@ export const MsgRun = {
     },
     toJSON(message) {
         const obj = {};
+        if (message.msgs) {
+            obj.msgs = message.msgs.map(e => e ? Any.toJSON(e) : undefined);
+        }
+        else {
+            obj.msgs = [];
+        }
         message.caller_address !== undefined && (obj.caller_address = message.caller_address);
         message.script_address !== undefined && (obj.script_address = message.script_address);
         message.extra_code !== undefined && (obj.extra_code = message.extra_code);
@@ -89,6 +104,7 @@ export const MsgRun = {
     },
     fromPartial(object) {
         const message = createBaseMsgRun();
+        message.msgs = object.msgs?.map(e => Any.fromPartial(e)) || [];
         message.caller_address = object.caller_address ?? "";
         message.script_address = object.script_address ?? "";
         message.extra_code = object.extra_code ?? "";
@@ -99,6 +115,7 @@ export const MsgRun = {
     },
     fromSDK(object) {
         return {
+            msgs: Array.isArray(object?.msgs) ? object.msgs.map((e) => Any.fromSDK(e)) : [],
             caller_address: object?.caller_address,
             script_address: object?.script_address,
             extra_code: object?.extra_code,
@@ -109,6 +126,12 @@ export const MsgRun = {
     },
     toSDK(message) {
         const obj = {};
+        if (message.msgs) {
+            obj.msgs = message.msgs.map(e => e ? Any.toSDK(e) : undefined);
+        }
+        else {
+            obj.msgs = [];
+        }
         obj.caller_address = message.caller_address;
         obj.script_address = message.script_address;
         obj.extra_code = message.extra_code;
@@ -119,6 +142,7 @@ export const MsgRun = {
     },
     fromAmino(object) {
         return {
+            msgs: Array.isArray(object?.msgs) ? object.msgs.map((e) => Cosmos_basev1beta1Msg_FromAmino(e)) : [],
             caller_address: object.caller_address,
             script_address: object.script_address,
             extra_code: object.extra_code,
@@ -129,6 +153,12 @@ export const MsgRun = {
     },
     toAmino(message) {
         const obj = {};
+        if (message.msgs) {
+            obj.msgs = message.msgs.map(e => e ? Cosmos_basev1beta1Msg_ToAmino(e) : undefined);
+        }
+        else {
+            obj.msgs = [];
+        }
         obj.caller_address = message.caller_address;
         obj.script_address = message.script_address;
         obj.extra_code = message.extra_code;
@@ -233,5 +263,19 @@ export const MsgRunResponse = {
             value: MsgRunResponse.encode(message).finish()
         };
     }
+};
+export const Cosmos_basev1beta1Msg_InterfaceDecoder = (input) => {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const data = Any.decode(reader, reader.uint32());
+    switch (data.typeUrl) {
+        default:
+            return data;
+    }
+};
+export const Cosmos_basev1beta1Msg_FromAmino = (content) => {
+    return Any.fromAmino(content);
+};
+export const Cosmos_basev1beta1Msg_ToAmino = (content) => {
+    return Any.toAmino(content);
 };
 //# sourceMappingURL=msgrun.js.map

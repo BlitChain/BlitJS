@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MsgUpdateScriptResponse = exports.MsgUpdateScript = exports.MsgCreateScriptResponse = exports.MsgCreateScript = exports.MsgUpdateParamsResponse = exports.MsgUpdateParams = exports.protobufPackage = void 0;
+exports.Cosmos_basev1beta1Msg_ToAmino = exports.Cosmos_basev1beta1Msg_FromAmino = exports.Cosmos_basev1beta1Msg_InterfaceDecoder = exports.MsgUpdateScriptResponse = exports.MsgUpdateScript = exports.MsgCreateScriptResponse = exports.MsgCreateScript = exports.MsgUpdateParamsResponse = exports.MsgUpdateParams = exports.protobufPackage = void 0;
 //@ts-nocheck
 const params_1 = require("./params");
+const any_1 = require("../../google/protobuf/any");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
 exports.protobufPackage = "blit.script";
@@ -579,4 +580,21 @@ exports.MsgUpdateScriptResponse = {
         };
     }
 };
+const Cosmos_basev1beta1Msg_InterfaceDecoder = (input) => {
+    const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+    const data = any_1.Any.decode(reader, reader.uint32());
+    switch (data.typeUrl) {
+        default:
+            return data;
+    }
+};
+exports.Cosmos_basev1beta1Msg_InterfaceDecoder = Cosmos_basev1beta1Msg_InterfaceDecoder;
+const Cosmos_basev1beta1Msg_FromAmino = (content) => {
+    return any_1.Any.fromAmino(content);
+};
+exports.Cosmos_basev1beta1Msg_FromAmino = Cosmos_basev1beta1Msg_FromAmino;
+const Cosmos_basev1beta1Msg_ToAmino = (content) => {
+    return any_1.Any.toAmino(content);
+};
+exports.Cosmos_basev1beta1Msg_ToAmino = Cosmos_basev1beta1Msg_ToAmino;
 //# sourceMappingURL=tx.js.map

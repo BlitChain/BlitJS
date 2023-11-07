@@ -388,6 +388,9 @@ export declare namespace blit {
             toProto(message: _10.MsgUpdateScriptResponse): Uint8Array;
             toProtoMsg(message: _10.MsgUpdateScriptResponse): _10.MsgUpdateScriptResponseProtoMsg;
         };
+        Cosmos_basev1beta1Msg_InterfaceDecoder: (input: import("..").BinaryReader | Uint8Array) => import("../google/protobuf/any").Any;
+        Cosmos_basev1beta1Msg_FromAmino: (content: import("../google/protobuf/any").AnyAmino) => import("../google/protobuf/any").Any;
+        Cosmos_basev1beta1Msg_ToAmino: (content: import("../google/protobuf/any").Any) => import("../google/protobuf/any").AnyAmino;
         Script: {
             typeUrl: string;
             encode(message: _9.Script, writer?: import("..").BinaryWriter): import("..").BinaryWriter;

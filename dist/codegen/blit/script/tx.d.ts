@@ -1,4 +1,5 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Any, AnyAmino } from "../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
 export declare const protobufPackage = "blit.script";
 /**
@@ -278,3 +279,6 @@ export declare const MsgUpdateScriptResponse: {
     toProto(message: MsgUpdateScriptResponse): Uint8Array;
     toProtoMsg(message: MsgUpdateScriptResponse): MsgUpdateScriptResponseProtoMsg;
 };
+export declare const Cosmos_basev1beta1Msg_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
+export declare const Cosmos_basev1beta1Msg_FromAmino: (content: AnyAmino) => Any;
+export declare const Cosmos_basev1beta1Msg_ToAmino: (content: Any) => AnyAmino;
