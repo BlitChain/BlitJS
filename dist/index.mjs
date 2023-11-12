@@ -68,9 +68,9 @@ const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
     client.gasPrice = '0.000001blit';
     return client;
 };
-const runFunction = async ({ msgClient, msgs = [], caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple = 1.5 }) => {
+const runFunction = async ({ msgClient, attached_messages = [], caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple = 1.5 }) => {
     const message = blitjs.blit.script.MessageComposer.withTypeUrl.run({
-        msgs,
+        attached_messages: JSON.stringify(attached_messages),
         caller_address,
         script_address,
         function_name,
@@ -120,8 +120,9 @@ const makeJsClient = async ({ mnemonic, rpcEndpoint, restEndpoint }) => {
     client.gasPrice = '1ublit';
     return client;
 };
-const queryFunction = async ({ queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }) => {
+const queryFunction = async ({ attached_messages = [], queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }) => {
     const response = await queryClient.blit.script.eval({
+        attached_messages: JSON.stringify(attached_messages),
         script_address,
         caller_address,
         function_name,

@@ -1,17 +1,16 @@
 //@ts-nocheck
-import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
 export const protobufPackage = "blit.script";
 /** MsgRun runs a script at a specific address */
 export interface MsgRun {
-  msgs: (Any)[] | Any[];
   caller_address: string;
   script_address: string;
   extra_code: string;
   function_name: string;
   kwargs: string;
   grantee: string;
+  attached_messages: string;
 }
 export interface MsgRunProtoMsg {
   type_url: "/blit.script.MsgRun";
@@ -21,18 +20,15 @@ export interface MsgRunProtoMsg {
   type_url: "/blit.script.MsgRun";
   value: Uint8Array;
 }
-export type MsgRunEncoded = Omit<MsgRun, "msgs"> & {
-  msgs: (AnyProtoMsg)[];
-};
 /** MsgRun runs a script at a specific address */
 export interface MsgRunAmino {
-  msgs: AnyAmino[];
   caller_address: string;
   script_address: string;
   extra_code: string;
   function_name: string;
   kwargs: string;
   grantee: string;
+  attached_messages: string;
 }
 export interface MsgRunAminoMsg {
   type: "/blit.script.MsgRun";
@@ -40,13 +36,13 @@ export interface MsgRunAminoMsg {
 }
 /** MsgRun runs a script at a specific address */
 export interface MsgRunSDKType {
-  msgs: (AnySDKType)[];
   caller_address: string;
   script_address: string;
   extra_code: string;
   function_name: string;
   kwargs: string;
   grantee: string;
+  attached_messages: string;
 }
 export interface MsgRunResponse {
   response: string;
@@ -71,21 +67,18 @@ export interface MsgRunResponseSDKType {
 }
 function createBaseMsgRun(): MsgRun {
   return {
-    msgs: [],
     caller_address: "",
     script_address: "",
     extra_code: "",
     function_name: "",
     kwargs: "",
-    grantee: ""
+    grantee: "",
+    attached_messages: ""
   };
 }
 export const MsgRun = {
   typeUrl: "/blit.script.MsgRun",
   encode(message: MsgRun, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    for (const v of message.msgs) {
-      Any.encode((v! as Any), writer.uint32(10).fork()).ldelim();
-    }
     if (message.caller_address !== "") {
       writer.uint32(18).string(message.caller_address);
     }
@@ -104,6 +97,9 @@ export const MsgRun = {
     if (message.grantee !== "") {
       writer.uint32(58).string(message.grantee);
     }
+    if (message.attached_messages !== "") {
+      writer.uint32(10).string(message.attached_messages);
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgRun {
@@ -113,9 +109,6 @@ export const MsgRun = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.msgs.push((Cosmos_basev1beta1Msg_InterfaceDecoder(reader) as Any));
-          break;
         case 2:
           message.caller_address = reader.string();
           break;
@@ -134,6 +127,9 @@ export const MsgRun = {
         case 7:
           message.grantee = reader.string();
           break;
+        case 1:
+          message.attached_messages = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -143,91 +139,79 @@ export const MsgRun = {
   },
   fromJSON(object: any): MsgRun {
     return {
-      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Any.fromJSON(e)) : [],
       caller_address: isSet(object.caller_address) ? String(object.caller_address) : "",
       script_address: isSet(object.script_address) ? String(object.script_address) : "",
       extra_code: isSet(object.extra_code) ? String(object.extra_code) : "",
       function_name: isSet(object.function_name) ? String(object.function_name) : "",
       kwargs: isSet(object.kwargs) ? String(object.kwargs) : "",
-      grantee: isSet(object.grantee) ? String(object.grantee) : ""
+      grantee: isSet(object.grantee) ? String(object.grantee) : "",
+      attached_messages: isSet(object.attached_messages) ? String(object.attached_messages) : ""
     };
   },
   toJSON(message: MsgRun): unknown {
     const obj: any = {};
-    if (message.msgs) {
-      obj.msgs = message.msgs.map(e => e ? Any.toJSON(e) : undefined);
-    } else {
-      obj.msgs = [];
-    }
     message.caller_address !== undefined && (obj.caller_address = message.caller_address);
     message.script_address !== undefined && (obj.script_address = message.script_address);
     message.extra_code !== undefined && (obj.extra_code = message.extra_code);
     message.function_name !== undefined && (obj.function_name = message.function_name);
     message.kwargs !== undefined && (obj.kwargs = message.kwargs);
     message.grantee !== undefined && (obj.grantee = message.grantee);
+    message.attached_messages !== undefined && (obj.attached_messages = message.attached_messages);
     return obj;
   },
   fromPartial(object: Partial<MsgRun>): MsgRun {
     const message = createBaseMsgRun();
-    message.msgs = object.msgs?.map(e => Any.fromPartial(e)) || [];
     message.caller_address = object.caller_address ?? "";
     message.script_address = object.script_address ?? "";
     message.extra_code = object.extra_code ?? "";
     message.function_name = object.function_name ?? "";
     message.kwargs = object.kwargs ?? "";
     message.grantee = object.grantee ?? "";
+    message.attached_messages = object.attached_messages ?? "";
     return message;
   },
   fromSDK(object: MsgRunSDKType): MsgRun {
     return {
-      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Any.fromSDK(e)) : [],
       caller_address: object?.caller_address,
       script_address: object?.script_address,
       extra_code: object?.extra_code,
       function_name: object?.function_name,
       kwargs: object?.kwargs,
-      grantee: object?.grantee
+      grantee: object?.grantee,
+      attached_messages: object?.attached_messages
     };
   },
   toSDK(message: MsgRun): MsgRunSDKType {
     const obj: any = {};
-    if (message.msgs) {
-      obj.msgs = message.msgs.map(e => e ? Any.toSDK(e) : undefined);
-    } else {
-      obj.msgs = [];
-    }
     obj.caller_address = message.caller_address;
     obj.script_address = message.script_address;
     obj.extra_code = message.extra_code;
     obj.function_name = message.function_name;
     obj.kwargs = message.kwargs;
     obj.grantee = message.grantee;
+    obj.attached_messages = message.attached_messages;
     return obj;
   },
   fromAmino(object: MsgRunAmino): MsgRun {
     return {
-      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Cosmos_basev1beta1Msg_FromAmino(e)) : [],
       caller_address: object.caller_address,
       script_address: object.script_address,
       extra_code: object.extra_code,
       function_name: object.function_name,
       kwargs: object.kwargs,
-      grantee: object.grantee
+      grantee: object.grantee,
+      attached_messages: object.attached_messages
     };
   },
   toAmino(message: MsgRun): MsgRunAmino {
     const obj: any = {};
-    if (message.msgs) {
-      obj.msgs = message.msgs.map(e => e ? Cosmos_basev1beta1Msg_ToAmino((e as Any)) : undefined);
-    } else {
-      obj.msgs = [];
-    }
     obj.caller_address = message.caller_address;
     obj.script_address = message.script_address;
     obj.extra_code = message.extra_code;
     obj.function_name = message.function_name;
     obj.kwargs = message.kwargs;
     obj.grantee = message.grantee;
+    obj.attached_messages = message.attached_messages;
     return obj;
   },
   fromAminoMsg(object: MsgRunAminoMsg): MsgRun {
@@ -326,18 +310,4 @@ export const MsgRunResponse = {
       value: MsgRunResponse.encode(message).finish()
     };
   }
-};
-export const Cosmos_basev1beta1Msg_InterfaceDecoder = (input: BinaryReader | Uint8Array): Any => {
-  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32());
-  switch (data.typeUrl) {
-    default:
-      return data;
-  }
-};
-export const Cosmos_basev1beta1Msg_FromAmino = (content: AnyAmino) => {
-  return Any.fromAmino(content);
-};
-export const Cosmos_basev1beta1Msg_ToAmino = (content: Any) => {
-  return Any.toAmino(content);
 };

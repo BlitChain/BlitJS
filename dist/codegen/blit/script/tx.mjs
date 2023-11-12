@@ -1,6 +1,5 @@
 //@ts-nocheck
 import { Params } from "./params";
-import { Any } from "../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
 export const protobufPackage = "blit.script";
@@ -576,19 +575,5 @@ export const MsgUpdateScriptResponse = {
             value: MsgUpdateScriptResponse.encode(message).finish()
         };
     }
-};
-export const Cosmos_basev1beta1Msg_InterfaceDecoder = (input) => {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    const data = Any.decode(reader, reader.uint32());
-    switch (data.typeUrl) {
-        default:
-            return data;
-    }
-};
-export const Cosmos_basev1beta1Msg_FromAmino = (content) => {
-    return Any.fromAmino(content);
-};
-export const Cosmos_basev1beta1Msg_ToAmino = (content) => {
-    return Any.toAmino(content);
 };
 //# sourceMappingURL=tx.js.map
