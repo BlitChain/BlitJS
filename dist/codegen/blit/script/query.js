@@ -688,7 +688,8 @@ function createBaseQueryEvalRequest() {
         extra_code: "",
         function_name: "",
         kwargs: "",
-        grantee: ""
+        grantee: "",
+        attached_messages: ""
     };
 }
 exports.QueryEvalRequest = {
@@ -711,6 +712,9 @@ exports.QueryEvalRequest = {
         }
         if (message.grantee !== "") {
             writer.uint32(58).string(message.grantee);
+        }
+        if (message.attached_messages !== "") {
+            writer.uint32(66).string(message.attached_messages);
         }
         return writer;
     },
@@ -739,6 +743,9 @@ exports.QueryEvalRequest = {
                 case 7:
                     message.grantee = reader.string();
                     break;
+                case 8:
+                    message.attached_messages = reader.string();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -753,7 +760,8 @@ exports.QueryEvalRequest = {
             extra_code: (0, helpers_1.isSet)(object.extra_code) ? String(object.extra_code) : "",
             function_name: (0, helpers_1.isSet)(object.function_name) ? String(object.function_name) : "",
             kwargs: (0, helpers_1.isSet)(object.kwargs) ? String(object.kwargs) : "",
-            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : ""
+            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : "",
+            attached_messages: (0, helpers_1.isSet)(object.attached_messages) ? String(object.attached_messages) : ""
         };
     },
     toJSON(message) {
@@ -764,6 +772,7 @@ exports.QueryEvalRequest = {
         message.function_name !== undefined && (obj.function_name = message.function_name);
         message.kwargs !== undefined && (obj.kwargs = message.kwargs);
         message.grantee !== undefined && (obj.grantee = message.grantee);
+        message.attached_messages !== undefined && (obj.attached_messages = message.attached_messages);
         return obj;
     },
     fromPartial(object) {
@@ -774,6 +783,7 @@ exports.QueryEvalRequest = {
         message.function_name = object.function_name ?? "";
         message.kwargs = object.kwargs ?? "";
         message.grantee = object.grantee ?? "";
+        message.attached_messages = object.attached_messages ?? "";
         return message;
     },
     fromSDK(object) {
@@ -783,7 +793,8 @@ exports.QueryEvalRequest = {
             extra_code: object?.extra_code,
             function_name: object?.function_name,
             kwargs: object?.kwargs,
-            grantee: object?.grantee
+            grantee: object?.grantee,
+            attached_messages: object?.attached_messages
         };
     },
     toSDK(message) {
@@ -794,6 +805,7 @@ exports.QueryEvalRequest = {
         obj.function_name = message.function_name;
         obj.kwargs = message.kwargs;
         obj.grantee = message.grantee;
+        obj.attached_messages = message.attached_messages;
         return obj;
     },
     fromAmino(object) {
@@ -803,7 +815,8 @@ exports.QueryEvalRequest = {
             extra_code: object.extra_code,
             function_name: object.function_name,
             kwargs: object.kwargs,
-            grantee: object.grantee
+            grantee: object.grantee,
+            attached_messages: object.attached_messages
         };
     },
     toAmino(message) {
@@ -814,6 +827,7 @@ exports.QueryEvalRequest = {
         obj.function_name = message.function_name;
         obj.kwargs = message.kwargs;
         obj.grantee = message.grantee;
+        obj.attached_messages = message.attached_messages;
         return obj;
     },
     fromAminoMsg(object) {

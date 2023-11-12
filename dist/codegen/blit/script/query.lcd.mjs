@@ -53,6 +53,9 @@ export class LCDQueryClient {
         if (typeof params?.grantee !== "undefined") {
             options.params.grantee = params.grantee;
         }
+        if (typeof params?.attached_messages !== "undefined") {
+            options.params.attached_messages = params.attached_messages;
+        }
         const endpoint = `blit/script/eval/${params.script_address}`;
         return await this.req.get(endpoint, options);
     }

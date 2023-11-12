@@ -189,6 +189,7 @@ export interface QueryEvalRequest {
     function_name: string;
     kwargs: string;
     grantee: string;
+    attached_messages: string;
 }
 export interface QueryEvalRequestProtoMsg {
     type_url: "/blit.script.QueryEvalRequest";
@@ -205,6 +206,7 @@ export interface QueryEvalRequestAmino {
     function_name: string;
     kwargs: string;
     grantee: string;
+    attached_messages: string;
 }
 export interface QueryEvalRequestAminoMsg {
     type: "/blit.script.QueryEvalRequest";
@@ -217,6 +219,7 @@ export interface QueryEvalRequestSDKType {
     function_name: string;
     kwargs: string;
     grantee: string;
+    attached_messages: string;
 }
 export interface QueryEvalResponse {
     response: string;

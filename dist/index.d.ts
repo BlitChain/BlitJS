@@ -10,9 +10,9 @@ export declare const experimentalHelpers: {
         rpcEndpoint: any;
         restEndpoint: any;
     }) => Promise<import("@cosmjs/stargate").SigningStargateClient>;
-    runFunction: ({ msgClient, msgs, caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple }: {
+    runFunction: ({ msgClient, attached_messages, caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple }: {
         msgClient: any;
-        msgs?: any[];
+        attached_messages?: any[];
         caller_address: any;
         script_address: any;
         function_name: any;
@@ -21,7 +21,8 @@ export declare const experimentalHelpers: {
         grantee: any;
         gasMultiple?: number;
     }) => Promise<any>;
-    queryFunction: ({ queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }: {
+    queryFunction: ({ attached_messages, queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }: {
+        attached_messages?: any[];
         queryClient: any;
         script_address: any;
         caller_address: any;
