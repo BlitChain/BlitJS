@@ -1,6 +1,6 @@
 //@ts-nocheck
-import * as _116 from "./gogo";
+import * as _126 from "./gogo";
 export const gogoproto = {
-    ..._116
+    ..._126
 };
 //# sourceMappingURL=bundle.js.map

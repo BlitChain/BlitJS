@@ -24,6 +24,9 @@ export const createGrpcGateWayClient = async ({
           v1beta1: new (await import("./base/tendermint/v1beta1/query.rpc.Service")).ServiceClientImpl(endpoint)
         }
       },
+      circuit: {
+        v1: new (await import("./circuit/v1/query.rpc.Query")).QueryClientImpl(endpoint)
+      },
       consensus: {
         v1: new (await import("./consensus/v1/query.rpc.Query")).QueryClientImpl(endpoint)
       },

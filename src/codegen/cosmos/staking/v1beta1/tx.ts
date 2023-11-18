@@ -13,6 +13,12 @@ export interface MsgCreateValidator {
   description: Description;
   commission: CommissionRates;
   min_self_delegation: string;
+  /**
+   * Deprecated: Use of Delegator Address in MsgCreateValidator is deprecated.
+   * The validator address bytes and delegator address bytes refer to the same account while creating validator (defer
+   * only in bech32 notation).
+   */
+  /** @deprecated */
   delegator_address: string;
   validator_address: string;
   pubkey?: (Any) | undefined;
@@ -34,6 +40,12 @@ export interface MsgCreateValidatorAmino {
   description?: DescriptionAmino;
   commission?: CommissionRatesAmino;
   min_self_delegation: string;
+  /**
+   * Deprecated: Use of Delegator Address in MsgCreateValidator is deprecated.
+   * The validator address bytes and delegator address bytes refer to the same account while creating validator (defer
+   * only in bech32 notation).
+   */
+  /** @deprecated */
   delegator_address: string;
   validator_address: string;
   pubkey?: AnyAmino;
@@ -48,6 +60,7 @@ export interface MsgCreateValidatorSDKType {
   description: DescriptionSDKType;
   commission: CommissionRatesSDKType;
   min_self_delegation: string;
+  /** @deprecated */
   delegator_address: string;
   validator_address: string;
   pubkey?: AnySDKType | undefined;
@@ -299,6 +312,12 @@ export interface MsgUndelegateSDKType {
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponse {
   completion_time: Date;
+  /**
+   * amount returns the amount of undelegated coins
+   * 
+   * Since: cosmos-sdk 0.50
+   */
+  amount: Coin;
 }
 export interface MsgUndelegateResponseProtoMsg {
   type_url: "/cosmos.staking.v1beta1.MsgUndelegateResponse";
@@ -311,6 +330,12 @@ export interface MsgUndelegateResponseProtoMsg {
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponseAmino {
   completion_time?: Date;
+  /**
+   * amount returns the amount of undelegated coins
+   * 
+   * Since: cosmos-sdk 0.50
+   */
+  amount?: CoinAmino;
 }
 export interface MsgUndelegateResponseAminoMsg {
   type: "cosmos-sdk/MsgUndelegateResponse";
@@ -319,6 +344,7 @@ export interface MsgUndelegateResponseAminoMsg {
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponseSDKType {
   completion_time: Date;
+  amount: CoinSDKType;
 }
 /**
  * MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator
@@ -1438,7 +1464,8 @@ export const MsgUndelegate = {
 };
 function createBaseMsgUndelegateResponse(): MsgUndelegateResponse {
   return {
-    completion_time: new Date()
+    completion_time: new Date(),
+    amount: Coin.fromPartial({})
   };
 }
 export const MsgUndelegateResponse = {
@@ -1446,6 +1473,9 @@ export const MsgUndelegateResponse = {
   encode(message: MsgUndelegateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.completion_time !== undefined) {
       Timestamp.encode(toTimestamp(message.completion_time), writer.uint32(10).fork()).ldelim();
+    }
+    if (message.amount !== undefined) {
+      Coin.encode(message.amount, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
@@ -1459,6 +1489,9 @@ export const MsgUndelegateResponse = {
         case 1:
           message.completion_time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
+        case 2:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1468,37 +1501,44 @@ export const MsgUndelegateResponse = {
   },
   fromJSON(object: any): MsgUndelegateResponse {
     return {
-      completion_time: isSet(object.completion_time) ? fromJsonTimestamp(object.completion_time) : undefined
+      completion_time: isSet(object.completion_time) ? fromJsonTimestamp(object.completion_time) : undefined,
+      amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
     };
   },
   toJSON(message: MsgUndelegateResponse): unknown {
     const obj: any = {};
     message.completion_time !== undefined && (obj.completion_time = message.completion_time.toISOString());
+    message.amount !== undefined && (obj.amount = message.amount ? Coin.toJSON(message.amount) : undefined);
     return obj;
   },
   fromPartial(object: Partial<MsgUndelegateResponse>): MsgUndelegateResponse {
     const message = createBaseMsgUndelegateResponse();
     message.completion_time = object.completion_time ?? undefined;
+    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     return message;
   },
   fromSDK(object: MsgUndelegateResponseSDKType): MsgUndelegateResponse {
     return {
-      completion_time: object.completion_time ? Timestamp.fromSDK(object.completion_time) : undefined
+      completion_time: object.completion_time ? Timestamp.fromSDK(object.completion_time) : undefined,
+      amount: object.amount ? Coin.fromSDK(object.amount) : undefined
     };
   },
   toSDK(message: MsgUndelegateResponse): MsgUndelegateResponseSDKType {
     const obj: any = {};
     message.completion_time !== undefined && (obj.completion_time = message.completion_time ? Timestamp.toSDK(message.completion_time) : undefined);
+    message.amount !== undefined && (obj.amount = message.amount ? Coin.toSDK(message.amount) : undefined);
     return obj;
   },
   fromAmino(object: MsgUndelegateResponseAmino): MsgUndelegateResponse {
     return {
-      completion_time: object.completion_time
+      completion_time: object.completion_time,
+      amount: object?.amount ? Coin.fromAmino(object.amount) : undefined
     };
   },
   toAmino(message: MsgUndelegateResponse): MsgUndelegateResponseAmino {
     const obj: any = {};
     obj.completion_time = message.completion_time;
+    obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgUndelegateResponseAminoMsg): MsgUndelegateResponse {

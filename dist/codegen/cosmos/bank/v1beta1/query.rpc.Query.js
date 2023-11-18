@@ -130,6 +130,15 @@ class Query {
             method: "GET"
         });
     }
+    /** DenomsMetadata queries the client metadata of a given coin denomination. */
+    static DenomMetadataByQueryString(request, initRequest) {
+        return fm.fetchReq(`/cosmos/bank/v1beta1/denoms_metadata_by_query_string?${fm.renderURLSearchParams({
+            ...request
+        }, [])}`, {
+            ...initRequest,
+            method: "GET"
+        });
+    }
     /**
      * DenomsMetadata queries the client metadata for all registered coin
      * denominations.
@@ -266,6 +275,13 @@ class QueryClientImpl {
     /** DenomsMetadata queries the client metadata of a given coin denomination. */
     async DenomMetadata(req, headers) {
         return Query.DenomMetadata(req, {
+            headers,
+            pathPrefix: this.url
+        });
+    }
+    /** DenomsMetadata queries the client metadata of a given coin denomination. */
+    async DenomMetadataByQueryString(req, headers) {
+        return Query.DenomMetadataByQueryString(req, {
             headers,
             pathPrefix: this.url
         });

@@ -2,12 +2,13 @@
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { VoteOption, WeightedVoteOption, WeightedVoteOptionAmino, WeightedVoteOptionSDKType, Params, ParamsAmino, ParamsSDKType, voteOptionFromJSON, voteOptionToJSON } from "./gov";
+import { Timestamp } from "../../../google/protobuf/timestamp";
 import { CommunityPoolSpendProposal, CommunityPoolSpendProposalProtoMsg, CommunityPoolSpendProposalSDKType, CommunityPoolSpendProposalWithDeposit, CommunityPoolSpendProposalWithDepositProtoMsg, CommunityPoolSpendProposalWithDepositSDKType } from "../../distribution/v1beta1/distribution";
 import { TextProposal, TextProposalProtoMsg, TextProposalSDKType } from "../v1beta1/gov";
 import { ParameterChangeProposal, ParameterChangeProposalProtoMsg, ParameterChangeProposalSDKType } from "../../params/v1beta1/params";
 import { SoftwareUpgradeProposal, SoftwareUpgradeProposalProtoMsg, SoftwareUpgradeProposalSDKType, CancelSoftwareUpgradeProposal, CancelSoftwareUpgradeProposalProtoMsg, CancelSoftwareUpgradeProposalSDKType } from "../../upgrade/v1beta1/upgrade";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet } from "../../../helpers";
+import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
 export const protobufPackage = "cosmos.gov.v1";
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
@@ -34,6 +35,12 @@ export interface MsgSubmitProposal {
    * Since: cosmos-sdk 0.47
    */
   summary: string;
+  /**
+   * expedited defines if the proposal is expedited or not
+   * 
+   * Since: cosmos-sdk 0.50
+   */
+  expedited: boolean;
 }
 export interface MsgSubmitProposalProtoMsg {
   type_url: "/cosmos.gov.v1.MsgSubmitProposal";
@@ -68,6 +75,12 @@ export interface MsgSubmitProposalAmino {
    * Since: cosmos-sdk 0.47
    */
   summary: string;
+  /**
+   * expedited defines if the proposal is expedited or not
+   * 
+   * Since: cosmos-sdk 0.50
+   */
+  expedited: boolean;
 }
 export interface MsgSubmitProposalAminoMsg {
   type: "cosmos-sdk/v1/MsgSubmitProposal";
@@ -84,6 +97,7 @@ export interface MsgSubmitProposalSDKType {
   metadata: string;
   title: string;
   summary: string;
+  expedited: boolean;
 }
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
 export interface MsgSubmitProposalResponse {
@@ -428,6 +442,100 @@ export interface MsgUpdateParamsResponseAminoMsg {
  * Since: cosmos-sdk 0.47
  */
 export interface MsgUpdateParamsResponseSDKType {}
+/**
+ * MsgCancelProposal is the Msg/CancelProposal request type.
+ * 
+ * Since: cosmos-sdk 0.50
+ */
+export interface MsgCancelProposal {
+  /** proposal_id defines the unique id of the proposal. */
+  proposal_id: bigint;
+  /** proposer is the account address of the proposer. */
+  proposer: string;
+}
+export interface MsgCancelProposalProtoMsg {
+  type_url: "/cosmos.gov.v1.MsgCancelProposal";
+  value: Uint8Array;
+}
+export interface MsgCancelProposalProtoMsg {
+  type_url: "/cosmos.gov.v1.MsgCancelProposal";
+  value: Uint8Array;
+}
+/**
+ * MsgCancelProposal is the Msg/CancelProposal request type.
+ * 
+ * Since: cosmos-sdk 0.50
+ */
+export interface MsgCancelProposalAmino {
+  /** proposal_id defines the unique id of the proposal. */
+  proposal_id: string;
+  /** proposer is the account address of the proposer. */
+  proposer: string;
+}
+export interface MsgCancelProposalAminoMsg {
+  type: "cosmos-sdk/v1/MsgCancelProposal";
+  value: MsgCancelProposalAmino;
+}
+/**
+ * MsgCancelProposal is the Msg/CancelProposal request type.
+ * 
+ * Since: cosmos-sdk 0.50
+ */
+export interface MsgCancelProposalSDKType {
+  proposal_id: bigint;
+  proposer: string;
+}
+/**
+ * MsgCancelProposalResponse defines the response structure for executing a
+ * MsgCancelProposal message.
+ * 
+ * Since: cosmos-sdk 0.50
+ */
+export interface MsgCancelProposalResponse {
+  /** proposal_id defines the unique id of the proposal. */
+  proposal_id: bigint;
+  /** canceled_time is the time when proposal is canceled. */
+  canceled_time: Date;
+  /** canceled_height defines the block height at which the proposal is canceled. */
+  canceled_height: bigint;
+}
+export interface MsgCancelProposalResponseProtoMsg {
+  type_url: "/cosmos.gov.v1.MsgCancelProposalResponse";
+  value: Uint8Array;
+}
+export interface MsgCancelProposalResponseProtoMsg {
+  type_url: "/cosmos.gov.v1.MsgCancelProposalResponse";
+  value: Uint8Array;
+}
+/**
+ * MsgCancelProposalResponse defines the response structure for executing a
+ * MsgCancelProposal message.
+ * 
+ * Since: cosmos-sdk 0.50
+ */
+export interface MsgCancelProposalResponseAmino {
+  /** proposal_id defines the unique id of the proposal. */
+  proposal_id: string;
+  /** canceled_time is the time when proposal is canceled. */
+  canceled_time?: Date;
+  /** canceled_height defines the block height at which the proposal is canceled. */
+  canceled_height: string;
+}
+export interface MsgCancelProposalResponseAminoMsg {
+  type: "cosmos-sdk/v1/MsgCancelProposalResponse";
+  value: MsgCancelProposalResponseAmino;
+}
+/**
+ * MsgCancelProposalResponse defines the response structure for executing a
+ * MsgCancelProposal message.
+ * 
+ * Since: cosmos-sdk 0.50
+ */
+export interface MsgCancelProposalResponseSDKType {
+  proposal_id: bigint;
+  canceled_time: Date;
+  canceled_height: bigint;
+}
 function createBaseMsgSubmitProposal(): MsgSubmitProposal {
   return {
     messages: [],
@@ -435,7 +543,8 @@ function createBaseMsgSubmitProposal(): MsgSubmitProposal {
     proposer: "",
     metadata: "",
     title: "",
-    summary: ""
+    summary: "",
+    expedited: false
   };
 }
 export const MsgSubmitProposal = {
@@ -458,6 +567,9 @@ export const MsgSubmitProposal = {
     }
     if (message.summary !== "") {
       writer.uint32(50).string(message.summary);
+    }
+    if (message.expedited === true) {
+      writer.uint32(56).bool(message.expedited);
     }
     return writer;
   },
@@ -486,6 +598,9 @@ export const MsgSubmitProposal = {
         case 6:
           message.summary = reader.string();
           break;
+        case 7:
+          message.expedited = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -500,7 +615,8 @@ export const MsgSubmitProposal = {
       proposer: isSet(object.proposer) ? String(object.proposer) : "",
       metadata: isSet(object.metadata) ? String(object.metadata) : "",
       title: isSet(object.title) ? String(object.title) : "",
-      summary: isSet(object.summary) ? String(object.summary) : ""
+      summary: isSet(object.summary) ? String(object.summary) : "",
+      expedited: isSet(object.expedited) ? Boolean(object.expedited) : false
     };
   },
   toJSON(message: MsgSubmitProposal): unknown {
@@ -519,6 +635,7 @@ export const MsgSubmitProposal = {
     message.metadata !== undefined && (obj.metadata = message.metadata);
     message.title !== undefined && (obj.title = message.title);
     message.summary !== undefined && (obj.summary = message.summary);
+    message.expedited !== undefined && (obj.expedited = message.expedited);
     return obj;
   },
   fromPartial(object: Partial<MsgSubmitProposal>): MsgSubmitProposal {
@@ -529,6 +646,7 @@ export const MsgSubmitProposal = {
     message.metadata = object.metadata ?? "";
     message.title = object.title ?? "";
     message.summary = object.summary ?? "";
+    message.expedited = object.expedited ?? false;
     return message;
   },
   fromSDK(object: MsgSubmitProposalSDKType): MsgSubmitProposal {
@@ -538,7 +656,8 @@ export const MsgSubmitProposal = {
       proposer: object?.proposer,
       metadata: object?.metadata,
       title: object?.title,
-      summary: object?.summary
+      summary: object?.summary,
+      expedited: object?.expedited
     };
   },
   toSDK(message: MsgSubmitProposal): MsgSubmitProposalSDKType {
@@ -557,6 +676,7 @@ export const MsgSubmitProposal = {
     obj.metadata = message.metadata;
     obj.title = message.title;
     obj.summary = message.summary;
+    obj.expedited = message.expedited;
     return obj;
   },
   fromAmino(object: MsgSubmitProposalAmino): MsgSubmitProposal {
@@ -566,7 +686,8 @@ export const MsgSubmitProposal = {
       proposer: object.proposer,
       metadata: object.metadata,
       title: object.title,
-      summary: object.summary
+      summary: object.summary,
+      expedited: object.expedited
     };
   },
   toAmino(message: MsgSubmitProposal): MsgSubmitProposalAmino {
@@ -585,6 +706,7 @@ export const MsgSubmitProposal = {
     obj.metadata = message.metadata;
     obj.title = message.title;
     obj.summary = message.summary;
+    obj.expedited = message.expedited;
     return obj;
   },
   fromAminoMsg(object: MsgSubmitProposalAminoMsg): MsgSubmitProposal {
@@ -1637,6 +1759,222 @@ export const MsgUpdateParamsResponse = {
     return {
       typeUrl: "/cosmos.gov.v1.MsgUpdateParamsResponse",
       value: MsgUpdateParamsResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgCancelProposal(): MsgCancelProposal {
+  return {
+    proposal_id: BigInt(0),
+    proposer: ""
+  };
+}
+export const MsgCancelProposal = {
+  typeUrl: "/cosmos.gov.v1.MsgCancelProposal",
+  encode(message: MsgCancelProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.proposal_id !== BigInt(0)) {
+      writer.uint32(8).uint64(message.proposal_id);
+    }
+    if (message.proposer !== "") {
+      writer.uint32(18).string(message.proposer);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCancelProposal {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCancelProposal();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.proposal_id = reader.uint64();
+          break;
+        case 2:
+          message.proposer = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): MsgCancelProposal {
+    return {
+      proposal_id: isSet(object.proposal_id) ? BigInt(object.proposal_id.toString()) : BigInt(0),
+      proposer: isSet(object.proposer) ? String(object.proposer) : ""
+    };
+  },
+  toJSON(message: MsgCancelProposal): unknown {
+    const obj: any = {};
+    message.proposal_id !== undefined && (obj.proposal_id = (message.proposal_id || BigInt(0)).toString());
+    message.proposer !== undefined && (obj.proposer = message.proposer);
+    return obj;
+  },
+  fromPartial(object: Partial<MsgCancelProposal>): MsgCancelProposal {
+    const message = createBaseMsgCancelProposal();
+    message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
+    message.proposer = object.proposer ?? "";
+    return message;
+  },
+  fromSDK(object: MsgCancelProposalSDKType): MsgCancelProposal {
+    return {
+      proposal_id: object?.proposal_id,
+      proposer: object?.proposer
+    };
+  },
+  toSDK(message: MsgCancelProposal): MsgCancelProposalSDKType {
+    const obj: any = {};
+    obj.proposal_id = message.proposal_id;
+    obj.proposer = message.proposer;
+    return obj;
+  },
+  fromAmino(object: MsgCancelProposalAmino): MsgCancelProposal {
+    return {
+      proposal_id: BigInt(object.proposal_id),
+      proposer: object.proposer
+    };
+  },
+  toAmino(message: MsgCancelProposal): MsgCancelProposalAmino {
+    const obj: any = {};
+    obj.proposal_id = message.proposal_id ? message.proposal_id.toString() : undefined;
+    obj.proposer = message.proposer;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCancelProposalAminoMsg): MsgCancelProposal {
+    return MsgCancelProposal.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgCancelProposal): MsgCancelProposalAminoMsg {
+    return {
+      type: "cosmos-sdk/v1/MsgCancelProposal",
+      value: MsgCancelProposal.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgCancelProposalProtoMsg): MsgCancelProposal {
+    return MsgCancelProposal.decode(message.value);
+  },
+  toProto(message: MsgCancelProposal): Uint8Array {
+    return MsgCancelProposal.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCancelProposal): MsgCancelProposalProtoMsg {
+    return {
+      typeUrl: "/cosmos.gov.v1.MsgCancelProposal",
+      value: MsgCancelProposal.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgCancelProposalResponse(): MsgCancelProposalResponse {
+  return {
+    proposal_id: BigInt(0),
+    canceled_time: new Date(),
+    canceled_height: BigInt(0)
+  };
+}
+export const MsgCancelProposalResponse = {
+  typeUrl: "/cosmos.gov.v1.MsgCancelProposalResponse",
+  encode(message: MsgCancelProposalResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.proposal_id !== BigInt(0)) {
+      writer.uint32(8).uint64(message.proposal_id);
+    }
+    if (message.canceled_time !== undefined) {
+      Timestamp.encode(toTimestamp(message.canceled_time), writer.uint32(18).fork()).ldelim();
+    }
+    if (message.canceled_height !== BigInt(0)) {
+      writer.uint32(24).uint64(message.canceled_height);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCancelProposalResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCancelProposalResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.proposal_id = reader.uint64();
+          break;
+        case 2:
+          message.canceled_time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 3:
+          message.canceled_height = reader.uint64();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): MsgCancelProposalResponse {
+    return {
+      proposal_id: isSet(object.proposal_id) ? BigInt(object.proposal_id.toString()) : BigInt(0),
+      canceled_time: isSet(object.canceled_time) ? fromJsonTimestamp(object.canceled_time) : undefined,
+      canceled_height: isSet(object.canceled_height) ? BigInt(object.canceled_height.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgCancelProposalResponse): unknown {
+    const obj: any = {};
+    message.proposal_id !== undefined && (obj.proposal_id = (message.proposal_id || BigInt(0)).toString());
+    message.canceled_time !== undefined && (obj.canceled_time = message.canceled_time.toISOString());
+    message.canceled_height !== undefined && (obj.canceled_height = (message.canceled_height || BigInt(0)).toString());
+    return obj;
+  },
+  fromPartial(object: Partial<MsgCancelProposalResponse>): MsgCancelProposalResponse {
+    const message = createBaseMsgCancelProposalResponse();
+    message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
+    message.canceled_time = object.canceled_time ?? undefined;
+    message.canceled_height = object.canceled_height !== undefined && object.canceled_height !== null ? BigInt(object.canceled_height.toString()) : BigInt(0);
+    return message;
+  },
+  fromSDK(object: MsgCancelProposalResponseSDKType): MsgCancelProposalResponse {
+    return {
+      proposal_id: object?.proposal_id,
+      canceled_time: object.canceled_time ? Timestamp.fromSDK(object.canceled_time) : undefined,
+      canceled_height: object?.canceled_height
+    };
+  },
+  toSDK(message: MsgCancelProposalResponse): MsgCancelProposalResponseSDKType {
+    const obj: any = {};
+    obj.proposal_id = message.proposal_id;
+    message.canceled_time !== undefined && (obj.canceled_time = message.canceled_time ? Timestamp.toSDK(message.canceled_time) : undefined);
+    obj.canceled_height = message.canceled_height;
+    return obj;
+  },
+  fromAmino(object: MsgCancelProposalResponseAmino): MsgCancelProposalResponse {
+    return {
+      proposal_id: BigInt(object.proposal_id),
+      canceled_time: object.canceled_time,
+      canceled_height: BigInt(object.canceled_height)
+    };
+  },
+  toAmino(message: MsgCancelProposalResponse): MsgCancelProposalResponseAmino {
+    const obj: any = {};
+    obj.proposal_id = message.proposal_id ? message.proposal_id.toString() : undefined;
+    obj.canceled_time = message.canceled_time;
+    obj.canceled_height = message.canceled_height ? message.canceled_height.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCancelProposalResponseAminoMsg): MsgCancelProposalResponse {
+    return MsgCancelProposalResponse.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgCancelProposalResponse): MsgCancelProposalResponseAminoMsg {
+    return {
+      type: "cosmos-sdk/v1/MsgCancelProposalResponse",
+      value: MsgCancelProposalResponse.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgCancelProposalResponseProtoMsg): MsgCancelProposalResponse {
+    return MsgCancelProposalResponse.decode(message.value);
+  },
+  toProto(message: MsgCancelProposalResponse): Uint8Array {
+    return MsgCancelProposalResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCancelProposalResponse): MsgCancelProposalResponseProtoMsg {
+    return {
+      typeUrl: "/cosmos.gov.v1.MsgCancelProposalResponse",
+      value: MsgCancelProposalResponse.encode(message).finish()
     };
   }
 };

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.HashedParams = exports.VersionParams = exports.ValidatorParams = exports.EvidenceParams = exports.BlockParams = exports.ConsensusParams = exports.protobufPackage = void 0;
+exports.ABCIParams = exports.HashedParams = exports.VersionParams = exports.ValidatorParams = exports.EvidenceParams = exports.BlockParams = exports.ConsensusParams = exports.protobufPackage = void 0;
 //@ts-nocheck
 const duration_1 = require("../../google/protobuf/duration");
 const binary_1 = require("../../binary");
@@ -11,7 +11,8 @@ function createBaseConsensusParams() {
         block: undefined,
         evidence: undefined,
         validator: undefined,
-        version: undefined
+        version: undefined,
+        abci: undefined
     };
 }
 exports.ConsensusParams = {
@@ -28,6 +29,9 @@ exports.ConsensusParams = {
         }
         if (message.version !== undefined) {
             exports.VersionParams.encode(message.version, writer.uint32(34).fork()).ldelim();
+        }
+        if (message.abci !== undefined) {
+            exports.ABCIParams.encode(message.abci, writer.uint32(42).fork()).ldelim();
         }
         return writer;
     },
@@ -50,6 +54,9 @@ exports.ConsensusParams = {
                 case 4:
                     message.version = exports.VersionParams.decode(reader, reader.uint32());
                     break;
+                case 5:
+                    message.abci = exports.ABCIParams.decode(reader, reader.uint32());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -62,7 +69,8 @@ exports.ConsensusParams = {
             block: (0, helpers_1.isSet)(object.block) ? exports.BlockParams.fromJSON(object.block) : undefined,
             evidence: (0, helpers_1.isSet)(object.evidence) ? exports.EvidenceParams.fromJSON(object.evidence) : undefined,
             validator: (0, helpers_1.isSet)(object.validator) ? exports.ValidatorParams.fromJSON(object.validator) : undefined,
-            version: (0, helpers_1.isSet)(object.version) ? exports.VersionParams.fromJSON(object.version) : undefined
+            version: (0, helpers_1.isSet)(object.version) ? exports.VersionParams.fromJSON(object.version) : undefined,
+            abci: (0, helpers_1.isSet)(object.abci) ? exports.ABCIParams.fromJSON(object.abci) : undefined
         };
     },
     toJSON(message) {
@@ -71,6 +79,7 @@ exports.ConsensusParams = {
         message.evidence !== undefined && (obj.evidence = message.evidence ? exports.EvidenceParams.toJSON(message.evidence) : undefined);
         message.validator !== undefined && (obj.validator = message.validator ? exports.ValidatorParams.toJSON(message.validator) : undefined);
         message.version !== undefined && (obj.version = message.version ? exports.VersionParams.toJSON(message.version) : undefined);
+        message.abci !== undefined && (obj.abci = message.abci ? exports.ABCIParams.toJSON(message.abci) : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -79,6 +88,7 @@ exports.ConsensusParams = {
         message.evidence = object.evidence !== undefined && object.evidence !== null ? exports.EvidenceParams.fromPartial(object.evidence) : undefined;
         message.validator = object.validator !== undefined && object.validator !== null ? exports.ValidatorParams.fromPartial(object.validator) : undefined;
         message.version = object.version !== undefined && object.version !== null ? exports.VersionParams.fromPartial(object.version) : undefined;
+        message.abci = object.abci !== undefined && object.abci !== null ? exports.ABCIParams.fromPartial(object.abci) : undefined;
         return message;
     },
     fromSDK(object) {
@@ -86,7 +96,8 @@ exports.ConsensusParams = {
             block: object.block ? exports.BlockParams.fromSDK(object.block) : undefined,
             evidence: object.evidence ? exports.EvidenceParams.fromSDK(object.evidence) : undefined,
             validator: object.validator ? exports.ValidatorParams.fromSDK(object.validator) : undefined,
-            version: object.version ? exports.VersionParams.fromSDK(object.version) : undefined
+            version: object.version ? exports.VersionParams.fromSDK(object.version) : undefined,
+            abci: object.abci ? exports.ABCIParams.fromSDK(object.abci) : undefined
         };
     },
     toSDK(message) {
@@ -95,6 +106,7 @@ exports.ConsensusParams = {
         message.evidence !== undefined && (obj.evidence = message.evidence ? exports.EvidenceParams.toSDK(message.evidence) : undefined);
         message.validator !== undefined && (obj.validator = message.validator ? exports.ValidatorParams.toSDK(message.validator) : undefined);
         message.version !== undefined && (obj.version = message.version ? exports.VersionParams.toSDK(message.version) : undefined);
+        message.abci !== undefined && (obj.abci = message.abci ? exports.ABCIParams.toSDK(message.abci) : undefined);
         return obj;
     },
     fromAmino(object) {
@@ -102,7 +114,8 @@ exports.ConsensusParams = {
             block: object?.block ? exports.BlockParams.fromAmino(object.block) : undefined,
             evidence: object?.evidence ? exports.EvidenceParams.fromAmino(object.evidence) : undefined,
             validator: object?.validator ? exports.ValidatorParams.fromAmino(object.validator) : undefined,
-            version: object?.version ? exports.VersionParams.fromAmino(object.version) : undefined
+            version: object?.version ? exports.VersionParams.fromAmino(object.version) : undefined,
+            abci: object?.abci ? exports.ABCIParams.fromAmino(object.abci) : undefined
         };
     },
     toAmino(message) {
@@ -111,6 +124,7 @@ exports.ConsensusParams = {
         obj.evidence = message.evidence ? exports.EvidenceParams.toAmino(message.evidence) : undefined;
         obj.validator = message.validator ? exports.ValidatorParams.toAmino(message.validator) : undefined;
         obj.version = message.version ? exports.VersionParams.toAmino(message.version) : undefined;
+        obj.abci = message.abci ? exports.ABCIParams.toAmino(message.abci) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -602,6 +616,87 @@ exports.HashedParams = {
         return {
             typeUrl: "/tendermint.types.HashedParams",
             value: exports.HashedParams.encode(message).finish()
+        };
+    }
+};
+function createBaseABCIParams() {
+    return {
+        vote_extensions_enable_height: BigInt(0)
+    };
+}
+exports.ABCIParams = {
+    typeUrl: "/tendermint.types.ABCIParams",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.vote_extensions_enable_height !== BigInt(0)) {
+            writer.uint32(8).int64(message.vote_extensions_enable_height);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseABCIParams();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.vote_extensions_enable_height = reader.int64();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            vote_extensions_enable_height: (0, helpers_1.isSet)(object.vote_extensions_enable_height) ? BigInt(object.vote_extensions_enable_height.toString()) : BigInt(0)
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.vote_extensions_enable_height !== undefined && (obj.vote_extensions_enable_height = (message.vote_extensions_enable_height || BigInt(0)).toString());
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseABCIParams();
+        message.vote_extensions_enable_height = object.vote_extensions_enable_height !== undefined && object.vote_extensions_enable_height !== null ? BigInt(object.vote_extensions_enable_height.toString()) : BigInt(0);
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            vote_extensions_enable_height: object?.vote_extensions_enable_height
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        obj.vote_extensions_enable_height = message.vote_extensions_enable_height;
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            vote_extensions_enable_height: BigInt(object.vote_extensions_enable_height)
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.vote_extensions_enable_height = message.vote_extensions_enable_height ? message.vote_extensions_enable_height.toString() : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.ABCIParams.fromAmino(object.value);
+    },
+    fromProtoMsg(message) {
+        return exports.ABCIParams.decode(message.value);
+    },
+    toProto(message) {
+        return exports.ABCIParams.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/tendermint.types.ABCIParams",
+            value: exports.ABCIParams.encode(message).finish()
         };
     }
 };

@@ -366,7 +366,7 @@ exports.ModuleCredential = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/ModuleCredential",
+            type: "cosmos-sdk/GroupAccountCredential",
             value: exports.ModuleCredential.toAmino(message)
         };
     },

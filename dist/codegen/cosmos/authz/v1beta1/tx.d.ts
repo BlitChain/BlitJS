@@ -41,29 +41,26 @@ export interface MsgGrantSDKType {
     grantee: string;
     grant: GrantSDKType;
 }
-/** MsgExecResponse defines the Msg/MsgExecResponse response type. */
-export interface MsgExecResponse {
-    results: Uint8Array[];
+/** MsgGrantResponse defines the Msg/MsgGrant response type. */
+export interface MsgGrantResponse {
 }
-export interface MsgExecResponseProtoMsg {
-    type_url: "/cosmos.authz.v1beta1.MsgExecResponse";
+export interface MsgGrantResponseProtoMsg {
+    type_url: "/cosmos.authz.v1beta1.MsgGrantResponse";
     value: Uint8Array;
 }
-export interface MsgExecResponseProtoMsg {
-    type_url: "/cosmos.authz.v1beta1.MsgExecResponse";
+export interface MsgGrantResponseProtoMsg {
+    type_url: "/cosmos.authz.v1beta1.MsgGrantResponse";
     value: Uint8Array;
 }
-/** MsgExecResponse defines the Msg/MsgExecResponse response type. */
-export interface MsgExecResponseAmino {
-    results: Uint8Array[];
+/** MsgGrantResponse defines the Msg/MsgGrant response type. */
+export interface MsgGrantResponseAmino {
 }
-export interface MsgExecResponseAminoMsg {
-    type: "cosmos-sdk/MsgExecResponse";
-    value: MsgExecResponseAmino;
+export interface MsgGrantResponseAminoMsg {
+    type: "cosmos-sdk/MsgGrantResponse";
+    value: MsgGrantResponseAmino;
 }
-/** MsgExecResponse defines the Msg/MsgExecResponse response type. */
-export interface MsgExecResponseSDKType {
-    results: Uint8Array[];
+/** MsgGrantResponse defines the Msg/MsgGrant response type. */
+export interface MsgGrantResponseSDKType {
 }
 /**
  * MsgExec attempts to execute the provided messages using
@@ -122,26 +119,29 @@ export interface MsgExecSDKType {
     grantee: string;
     msgs: (AnySDKType)[];
 }
-/** MsgGrantResponse defines the Msg/MsgGrant response type. */
-export interface MsgGrantResponse {
+/** MsgExecResponse defines the Msg/MsgExecResponse response type. */
+export interface MsgExecResponse {
+    results: Uint8Array[];
 }
-export interface MsgGrantResponseProtoMsg {
-    type_url: "/cosmos.authz.v1beta1.MsgGrantResponse";
+export interface MsgExecResponseProtoMsg {
+    type_url: "/cosmos.authz.v1beta1.MsgExecResponse";
     value: Uint8Array;
 }
-export interface MsgGrantResponseProtoMsg {
-    type_url: "/cosmos.authz.v1beta1.MsgGrantResponse";
+export interface MsgExecResponseProtoMsg {
+    type_url: "/cosmos.authz.v1beta1.MsgExecResponse";
     value: Uint8Array;
 }
-/** MsgGrantResponse defines the Msg/MsgGrant response type. */
-export interface MsgGrantResponseAmino {
+/** MsgExecResponse defines the Msg/MsgExecResponse response type. */
+export interface MsgExecResponseAmino {
+    results: Uint8Array[];
 }
-export interface MsgGrantResponseAminoMsg {
-    type: "cosmos-sdk/MsgGrantResponse";
-    value: MsgGrantResponseAmino;
+export interface MsgExecResponseAminoMsg {
+    type: "cosmos-sdk/MsgExecResponse";
+    value: MsgExecResponseAmino;
 }
-/** MsgGrantResponse defines the Msg/MsgGrant response type. */
-export interface MsgGrantResponseSDKType {
+/** MsgExecResponse defines the Msg/MsgExecResponse response type. */
+export interface MsgExecResponseSDKType {
+    results: Uint8Array[];
 }
 /**
  * MsgRevoke revokes any authorization with the provided sdk.Msg type on the
@@ -220,22 +220,22 @@ export declare const MsgGrant: {
     toProto(message: MsgGrant): Uint8Array;
     toProtoMsg(message: MsgGrant): MsgGrantProtoMsg;
 };
-export declare const MsgExecResponse: {
+export declare const MsgGrantResponse: {
     typeUrl: string;
-    encode(message: MsgExecResponse, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): MsgExecResponse;
-    fromJSON(object: any): MsgExecResponse;
-    toJSON(message: MsgExecResponse): unknown;
-    fromPartial(object: Partial<MsgExecResponse>): MsgExecResponse;
-    fromSDK(object: MsgExecResponseSDKType): MsgExecResponse;
-    toSDK(message: MsgExecResponse): MsgExecResponseSDKType;
-    fromAmino(object: MsgExecResponseAmino): MsgExecResponse;
-    toAmino(message: MsgExecResponse): MsgExecResponseAmino;
-    fromAminoMsg(object: MsgExecResponseAminoMsg): MsgExecResponse;
-    toAminoMsg(message: MsgExecResponse): MsgExecResponseAminoMsg;
-    fromProtoMsg(message: MsgExecResponseProtoMsg): MsgExecResponse;
-    toProto(message: MsgExecResponse): Uint8Array;
-    toProtoMsg(message: MsgExecResponse): MsgExecResponseProtoMsg;
+    encode(_: MsgGrantResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgGrantResponse;
+    fromJSON(_: any): MsgGrantResponse;
+    toJSON(_: MsgGrantResponse): unknown;
+    fromPartial(_: Partial<MsgGrantResponse>): MsgGrantResponse;
+    fromSDK(_: MsgGrantResponseSDKType): MsgGrantResponse;
+    toSDK(_: MsgGrantResponse): MsgGrantResponseSDKType;
+    fromAmino(_: MsgGrantResponseAmino): MsgGrantResponse;
+    toAmino(_: MsgGrantResponse): MsgGrantResponseAmino;
+    fromAminoMsg(object: MsgGrantResponseAminoMsg): MsgGrantResponse;
+    toAminoMsg(message: MsgGrantResponse): MsgGrantResponseAminoMsg;
+    fromProtoMsg(message: MsgGrantResponseProtoMsg): MsgGrantResponse;
+    toProto(message: MsgGrantResponse): Uint8Array;
+    toProtoMsg(message: MsgGrantResponse): MsgGrantResponseProtoMsg;
 };
 export declare const MsgExec: {
     typeUrl: string;
@@ -254,22 +254,22 @@ export declare const MsgExec: {
     toProto(message: MsgExec): Uint8Array;
     toProtoMsg(message: MsgExec): MsgExecProtoMsg;
 };
-export declare const MsgGrantResponse: {
+export declare const MsgExecResponse: {
     typeUrl: string;
-    encode(_: MsgGrantResponse, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): MsgGrantResponse;
-    fromJSON(_: any): MsgGrantResponse;
-    toJSON(_: MsgGrantResponse): unknown;
-    fromPartial(_: Partial<MsgGrantResponse>): MsgGrantResponse;
-    fromSDK(_: MsgGrantResponseSDKType): MsgGrantResponse;
-    toSDK(_: MsgGrantResponse): MsgGrantResponseSDKType;
-    fromAmino(_: MsgGrantResponseAmino): MsgGrantResponse;
-    toAmino(_: MsgGrantResponse): MsgGrantResponseAmino;
-    fromAminoMsg(object: MsgGrantResponseAminoMsg): MsgGrantResponse;
-    toAminoMsg(message: MsgGrantResponse): MsgGrantResponseAminoMsg;
-    fromProtoMsg(message: MsgGrantResponseProtoMsg): MsgGrantResponse;
-    toProto(message: MsgGrantResponse): Uint8Array;
-    toProtoMsg(message: MsgGrantResponse): MsgGrantResponseProtoMsg;
+    encode(message: MsgExecResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgExecResponse;
+    fromJSON(object: any): MsgExecResponse;
+    toJSON(message: MsgExecResponse): unknown;
+    fromPartial(object: Partial<MsgExecResponse>): MsgExecResponse;
+    fromSDK(object: MsgExecResponseSDKType): MsgExecResponse;
+    toSDK(message: MsgExecResponse): MsgExecResponseSDKType;
+    fromAmino(object: MsgExecResponseAmino): MsgExecResponse;
+    toAmino(message: MsgExecResponse): MsgExecResponseAmino;
+    fromAminoMsg(object: MsgExecResponseAminoMsg): MsgExecResponse;
+    toAminoMsg(message: MsgExecResponse): MsgExecResponseAminoMsg;
+    fromProtoMsg(message: MsgExecResponseProtoMsg): MsgExecResponse;
+    toProto(message: MsgExecResponse): Uint8Array;
+    toProtoMsg(message: MsgExecResponse): MsgExecResponseProtoMsg;
 };
 export declare const MsgRevoke: {
     typeUrl: string;

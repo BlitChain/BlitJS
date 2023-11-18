@@ -1,7 +1,7 @@
 //@ts-nocheck
 import * as fm from "../../../grpc-gateway";
 export class Query {
-    /** Params queries the parameters of x/consensus_param module. */
+    /** Params queries the parameters of x/consensus module. */
     static Params(request, initRequest) {
         return fm.fetchReq(`/cosmos/consensus/v1/params?${fm.renderURLSearchParams({
             ...request
@@ -16,7 +16,7 @@ export class QueryClientImpl {
     constructor(url) {
         this.url = url;
     }
-    /** Params queries the parameters of x/consensus_param module. */
+    /** Params queries the parameters of x/consensus module. */
     async Params(req, headers) {
         return Query.Params(req, {
             headers,

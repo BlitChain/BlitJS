@@ -14,7 +14,7 @@ export declare class Query {
     /** DelegationRewards queries the total rewards accrued by a delegation. */
     static DelegationRewards(request: QueryDelegationRewardsRequest, initRequest?: fm.InitReq): Promise<QueryDelegationRewardsResponse>;
     /**
-     * DelegationTotalRewards queries the total rewards accrued by a each
+     * DelegationTotalRewards queries the total rewards accrued by each
      * validator.
      */
     static DelegationTotalRewards(request: QueryDelegationTotalRewardsRequest, initRequest?: fm.InitReq): Promise<QueryDelegationTotalRewardsResponse>;
@@ -41,7 +41,7 @@ export declare class QueryClientImpl {
     /** DelegationRewards queries the total rewards accrued by a delegation. */
     DelegationRewards(req: QueryDelegationRewardsRequest, headers?: HeadersInit): Promise<QueryDelegationRewardsResponse>;
     /**
-     * DelegationTotalRewards queries the total rewards accrued by a each
+     * DelegationTotalRewards queries the total rewards accrued by each
      * validator.
      */
     DelegationTotalRewards(req: QueryDelegationTotalRewardsRequest, headers?: HeadersInit): Promise<QueryDelegationTotalRewardsResponse>;

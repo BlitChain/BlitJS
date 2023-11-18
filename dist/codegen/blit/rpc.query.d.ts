@@ -24,6 +24,9 @@ export declare const createGrpcGateWayClient: ({ endpoint }: {
                 v1beta1: import("../cosmos/base/tendermint/v1beta1/query.rpc.Service").ServiceClientImpl;
             };
         };
+        circuit: {
+            v1: import("../cosmos/circuit/v1/query.rpc.Query").QueryClientImpl;
+        };
         consensus: {
             v1: import("../cosmos/consensus/v1/query.rpc.Query").QueryClientImpl;
         };

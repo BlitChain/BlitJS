@@ -29,6 +29,9 @@ export const createGrpcGateWayClient = async ({
           v1beta1: new (await import("../cosmos/base/tendermint/v1beta1/query.rpc.Service")).ServiceClientImpl(endpoint)
         }
       },
+      circuit: {
+        v1: new (await import("../cosmos/circuit/v1/query.rpc.Query")).QueryClientImpl(endpoint)
+      },
       consensus: {
         v1: new (await import("../cosmos/consensus/v1/query.rpc.Query")).QueryClientImpl(endpoint)
       },

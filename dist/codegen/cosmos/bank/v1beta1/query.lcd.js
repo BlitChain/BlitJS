@@ -15,6 +15,7 @@ class LCDQueryClient {
         this.supplyOf = this.supplyOf.bind(this);
         this.params = this.params.bind(this);
         this.denomMetadata = this.denomMetadata.bind(this);
+        this.denomMetadataByQueryString = this.denomMetadataByQueryString.bind(this);
         this.denomsMetadata = this.denomsMetadata.bind(this);
         this.denomOwners = this.denomOwners.bind(this);
         this.sendEnabled = this.sendEnabled.bind(this);
@@ -40,6 +41,9 @@ class LCDQueryClient {
         };
         if (typeof params?.pagination !== "undefined") {
             (0, helpers_1.setPaginationParams)(options, params.pagination);
+        }
+        if (typeof params?.resolve_denom !== "undefined") {
+            options.params.resolve_denom = params.resolve_denom;
         }
         const endpoint = `cosmos/bank/v1beta1/balances/${params.address}`;
         return await this.req.get(endpoint, options);
@@ -117,6 +121,17 @@ class LCDQueryClient {
     async denomMetadata(params) {
         const endpoint = `cosmos/bank/v1beta1/denoms_metadata/${params.denom}`;
         return await this.req.get(endpoint);
+    }
+    /* DenomsMetadata queries the client metadata of a given coin denomination. */
+    async denomMetadataByQueryString(params) {
+        const options = {
+            params: {}
+        };
+        if (typeof params?.denom !== "undefined") {
+            options.params.denom = params.denom;
+        }
+        const endpoint = `cosmos/bank/v1beta1/denoms_metadata_by_query_string`;
+        return await this.req.get(endpoint, options);
     }
     /* DenomsMetadata queries the client metadata for all registered coin
      denominations. */

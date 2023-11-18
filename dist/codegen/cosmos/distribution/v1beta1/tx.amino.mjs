@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgSetWithdrawAddress, MsgWithdrawDelegatorReward, MsgWithdrawValidatorCommission, MsgFundCommunityPool, MsgUpdateParams, MsgCommunityPoolSpend } from "./tx";
+import { MsgSetWithdrawAddress, MsgWithdrawDelegatorReward, MsgWithdrawValidatorCommission, MsgFundCommunityPool, MsgUpdateParams, MsgCommunityPoolSpend, MsgDepositValidatorRewardsPool } from "./tx";
 export const AminoConverter = {
     "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress": {
         aminoType: "cosmos-sdk/MsgModifyWithdrawAddress",
@@ -30,6 +30,11 @@ export const AminoConverter = {
         aminoType: "cosmos-sdk/distr/MsgCommunityPoolSpend",
         toAmino: MsgCommunityPoolSpend.toAmino,
         fromAmino: MsgCommunityPoolSpend.fromAmino
+    },
+    "/cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPool": {
+        aminoType: "cosmos-sdk/distr/MsgDepositValRewards",
+        toAmino: MsgDepositValidatorRewardsPool.toAmino,
+        fromAmino: MsgDepositValidatorRewardsPool.fromAmino
     }
 };
 //# sourceMappingURL=tx.amino.js.map

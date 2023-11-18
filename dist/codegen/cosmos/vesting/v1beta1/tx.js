@@ -560,7 +560,7 @@ exports.MsgCreatePeriodicVestingAccount = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/MsgCreatePeriodicVestingAccount",
+            type: "cosmos-sdk/MsgCreatePeriodVestAccount",
             value: exports.MsgCreatePeriodicVestingAccount.toAmino(message)
         };
     },

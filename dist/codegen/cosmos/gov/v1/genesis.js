@@ -15,7 +15,8 @@ function createBaseGenesisState() {
         deposit_params: undefined,
         voting_params: undefined,
         tally_params: undefined,
-        params: undefined
+        params: undefined,
+        constitution: ""
     };
 }
 exports.GenesisState = {
@@ -44,6 +45,9 @@ exports.GenesisState = {
         }
         if (message.params !== undefined) {
             gov_1.Params.encode(message.params, writer.uint32(66).fork()).ldelim();
+        }
+        if (message.constitution !== "") {
+            writer.uint32(74).string(message.constitution);
         }
         return writer;
     },
@@ -78,6 +82,9 @@ exports.GenesisState = {
                 case 8:
                     message.params = gov_1.Params.decode(reader, reader.uint32());
                     break;
+                case 9:
+                    message.constitution = reader.string();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -94,7 +101,8 @@ exports.GenesisState = {
             deposit_params: (0, helpers_1.isSet)(object.deposit_params) ? gov_1.DepositParams.fromJSON(object.deposit_params) : undefined,
             voting_params: (0, helpers_1.isSet)(object.voting_params) ? gov_1.VotingParams.fromJSON(object.voting_params) : undefined,
             tally_params: (0, helpers_1.isSet)(object.tally_params) ? gov_1.TallyParams.fromJSON(object.tally_params) : undefined,
-            params: (0, helpers_1.isSet)(object.params) ? gov_1.Params.fromJSON(object.params) : undefined
+            params: (0, helpers_1.isSet)(object.params) ? gov_1.Params.fromJSON(object.params) : undefined,
+            constitution: (0, helpers_1.isSet)(object.constitution) ? String(object.constitution) : ""
         };
     },
     toJSON(message) {
@@ -122,6 +130,7 @@ exports.GenesisState = {
         message.voting_params !== undefined && (obj.voting_params = message.voting_params ? gov_1.VotingParams.toJSON(message.voting_params) : undefined);
         message.tally_params !== undefined && (obj.tally_params = message.tally_params ? gov_1.TallyParams.toJSON(message.tally_params) : undefined);
         message.params !== undefined && (obj.params = message.params ? gov_1.Params.toJSON(message.params) : undefined);
+        message.constitution !== undefined && (obj.constitution = message.constitution);
         return obj;
     },
     fromPartial(object) {
@@ -134,6 +143,7 @@ exports.GenesisState = {
         message.voting_params = object.voting_params !== undefined && object.voting_params !== null ? gov_1.VotingParams.fromPartial(object.voting_params) : undefined;
         message.tally_params = object.tally_params !== undefined && object.tally_params !== null ? gov_1.TallyParams.fromPartial(object.tally_params) : undefined;
         message.params = object.params !== undefined && object.params !== null ? gov_1.Params.fromPartial(object.params) : undefined;
+        message.constitution = object.constitution ?? "";
         return message;
     },
     fromSDK(object) {
@@ -145,7 +155,8 @@ exports.GenesisState = {
             deposit_params: object.deposit_params ? gov_1.DepositParams.fromSDK(object.deposit_params) : undefined,
             voting_params: object.voting_params ? gov_1.VotingParams.fromSDK(object.voting_params) : undefined,
             tally_params: object.tally_params ? gov_1.TallyParams.fromSDK(object.tally_params) : undefined,
-            params: object.params ? gov_1.Params.fromSDK(object.params) : undefined
+            params: object.params ? gov_1.Params.fromSDK(object.params) : undefined,
+            constitution: object?.constitution
         };
     },
     toSDK(message) {
@@ -173,6 +184,7 @@ exports.GenesisState = {
         message.voting_params !== undefined && (obj.voting_params = message.voting_params ? gov_1.VotingParams.toSDK(message.voting_params) : undefined);
         message.tally_params !== undefined && (obj.tally_params = message.tally_params ? gov_1.TallyParams.toSDK(message.tally_params) : undefined);
         message.params !== undefined && (obj.params = message.params ? gov_1.Params.toSDK(message.params) : undefined);
+        obj.constitution = message.constitution;
         return obj;
     },
     fromAmino(object) {
@@ -184,7 +196,8 @@ exports.GenesisState = {
             deposit_params: object?.deposit_params ? gov_1.DepositParams.fromAmino(object.deposit_params) : undefined,
             voting_params: object?.voting_params ? gov_1.VotingParams.fromAmino(object.voting_params) : undefined,
             tally_params: object?.tally_params ? gov_1.TallyParams.fromAmino(object.tally_params) : undefined,
-            params: object?.params ? gov_1.Params.fromAmino(object.params) : undefined
+            params: object?.params ? gov_1.Params.fromAmino(object.params) : undefined,
+            constitution: object.constitution
         };
     },
     toAmino(message) {
@@ -212,6 +225,7 @@ exports.GenesisState = {
         obj.voting_params = message.voting_params ? gov_1.VotingParams.toAmino(message.voting_params) : undefined;
         obj.tally_params = message.tally_params ? gov_1.TallyParams.toAmino(message.tally_params) : undefined;
         obj.params = message.params ? gov_1.Params.toAmino(message.params) : undefined;
+        obj.constitution = message.constitution;
         return obj;
     },
     fromAminoMsg(object) {

@@ -8,6 +8,12 @@ export interface MsgCreateValidator {
     description: Description;
     commission: CommissionRates;
     min_self_delegation: string;
+    /**
+     * Deprecated: Use of Delegator Address in MsgCreateValidator is deprecated.
+     * The validator address bytes and delegator address bytes refer to the same account while creating validator (defer
+     * only in bech32 notation).
+     */
+    /** @deprecated */
     delegator_address: string;
     validator_address: string;
     pubkey?: (Any) | undefined;
@@ -29,6 +35,12 @@ export interface MsgCreateValidatorAmino {
     description?: DescriptionAmino;
     commission?: CommissionRatesAmino;
     min_self_delegation: string;
+    /**
+     * Deprecated: Use of Delegator Address in MsgCreateValidator is deprecated.
+     * The validator address bytes and delegator address bytes refer to the same account while creating validator (defer
+     * only in bech32 notation).
+     */
+    /** @deprecated */
     delegator_address: string;
     validator_address: string;
     pubkey?: AnyAmino;
@@ -43,6 +55,7 @@ export interface MsgCreateValidatorSDKType {
     description: DescriptionSDKType;
     commission: CommissionRatesSDKType;
     min_self_delegation: string;
+    /** @deprecated */
     delegator_address: string;
     validator_address: string;
     pubkey?: AnySDKType | undefined;
@@ -303,6 +316,12 @@ export interface MsgUndelegateSDKType {
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponse {
     completion_time: Date;
+    /**
+     * amount returns the amount of undelegated coins
+     *
+     * Since: cosmos-sdk 0.50
+     */
+    amount: Coin;
 }
 export interface MsgUndelegateResponseProtoMsg {
     type_url: "/cosmos.staking.v1beta1.MsgUndelegateResponse";
@@ -315,6 +334,12 @@ export interface MsgUndelegateResponseProtoMsg {
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponseAmino {
     completion_time?: Date;
+    /**
+     * amount returns the amount of undelegated coins
+     *
+     * Since: cosmos-sdk 0.50
+     */
+    amount?: CoinAmino;
 }
 export interface MsgUndelegateResponseAminoMsg {
     type: "cosmos-sdk/MsgUndelegateResponse";
@@ -323,6 +348,7 @@ export interface MsgUndelegateResponseAminoMsg {
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponseSDKType {
     completion_time: Date;
+    amount: CoinSDKType;
 }
 /**
  * MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator

@@ -119,29 +119,21 @@ export const MsgGrant = {
         };
     }
 };
-function createBaseMsgExecResponse() {
-    return {
-        results: []
-    };
+function createBaseMsgGrantResponse() {
+    return {};
 }
-export const MsgExecResponse = {
-    typeUrl: "/cosmos.authz.v1beta1.MsgExecResponse",
-    encode(message, writer = BinaryWriter.create()) {
-        for (const v of message.results) {
-            writer.uint32(10).bytes(v);
-        }
+export const MsgGrantResponse = {
+    typeUrl: "/cosmos.authz.v1beta1.MsgGrantResponse",
+    encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
     decode(input, length) {
         const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseMsgExecResponse();
+        const message = createBaseMsgGrantResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                case 1:
-                    message.results.push(reader.bytes());
-                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -149,75 +141,50 @@ export const MsgExecResponse = {
         }
         return message;
     },
-    fromJSON(object) {
-        return {
-            results: Array.isArray(object?.results) ? object.results.map((e) => bytesFromBase64(e)) : []
-        };
+    fromJSON(_) {
+        return {};
     },
-    toJSON(message) {
+    toJSON(_) {
         const obj = {};
-        if (message.results) {
-            obj.results = message.results.map(e => base64FromBytes(e !== undefined ? e : new Uint8Array()));
-        }
-        else {
-            obj.results = [];
-        }
         return obj;
     },
-    fromPartial(object) {
-        const message = createBaseMsgExecResponse();
-        message.results = object.results?.map(e => e) || [];
+    fromPartial(_) {
+        const message = createBaseMsgGrantResponse();
         return message;
     },
-    fromSDK(object) {
-        return {
-            results: Array.isArray(object?.results) ? object.results.map((e) => e) : []
-        };
+    fromSDK(_) {
+        return {};
     },
-    toSDK(message) {
+    toSDK(_) {
         const obj = {};
-        if (message.results) {
-            obj.results = message.results.map(e => e);
-        }
-        else {
-            obj.results = [];
-        }
         return obj;
     },
-    fromAmino(object) {
-        return {
-            results: Array.isArray(object?.results) ? object.results.map((e) => e) : []
-        };
+    fromAmino(_) {
+        return {};
     },
-    toAmino(message) {
+    toAmino(_) {
         const obj = {};
-        if (message.results) {
-            obj.results = message.results.map(e => e);
-        }
-        else {
-            obj.results = [];
-        }
         return obj;
     },
     fromAminoMsg(object) {
-        return MsgExecResponse.fromAmino(object.value);
+        return MsgGrantResponse.fromAmino(object.value);
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/MsgExecResponse",
-            value: MsgExecResponse.toAmino(message)
+            type: "cosmos-sdk/MsgGrantResponse",
+            value: MsgGrantResponse.toAmino(message)
         };
     },
     fromProtoMsg(message) {
-        return MsgExecResponse.decode(message.value);
+        return MsgGrantResponse.decode(message.value);
     },
     toProto(message) {
-        return MsgExecResponse.encode(message).finish();
+        return MsgGrantResponse.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/cosmos.authz.v1beta1.MsgExecResponse",
-            value: MsgExecResponse.encode(message).finish()
+            typeUrl: "/cosmos.authz.v1beta1.MsgGrantResponse",
+            value: MsgGrantResponse.encode(message).finish()
         };
     }
 };
@@ -337,21 +304,29 @@ export const MsgExec = {
         };
     }
 };
-function createBaseMsgGrantResponse() {
-    return {};
+function createBaseMsgExecResponse() {
+    return {
+        results: []
+    };
 }
-export const MsgGrantResponse = {
-    typeUrl: "/cosmos.authz.v1beta1.MsgGrantResponse",
-    encode(_, writer = BinaryWriter.create()) {
+export const MsgExecResponse = {
+    typeUrl: "/cosmos.authz.v1beta1.MsgExecResponse",
+    encode(message, writer = BinaryWriter.create()) {
+        for (const v of message.results) {
+            writer.uint32(10).bytes(v);
+        }
         return writer;
     },
     decode(input, length) {
         const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseMsgGrantResponse();
+        const message = createBaseMsgExecResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
+                case 1:
+                    message.results.push(reader.bytes());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -359,50 +334,75 @@ export const MsgGrantResponse = {
         }
         return message;
     },
-    fromJSON(_) {
-        return {};
+    fromJSON(object) {
+        return {
+            results: Array.isArray(object?.results) ? object.results.map((e) => bytesFromBase64(e)) : []
+        };
     },
-    toJSON(_) {
+    toJSON(message) {
         const obj = {};
+        if (message.results) {
+            obj.results = message.results.map(e => base64FromBytes(e !== undefined ? e : new Uint8Array()));
+        }
+        else {
+            obj.results = [];
+        }
         return obj;
     },
-    fromPartial(_) {
-        const message = createBaseMsgGrantResponse();
+    fromPartial(object) {
+        const message = createBaseMsgExecResponse();
+        message.results = object.results?.map(e => e) || [];
         return message;
     },
-    fromSDK(_) {
-        return {};
+    fromSDK(object) {
+        return {
+            results: Array.isArray(object?.results) ? object.results.map((e) => e) : []
+        };
     },
-    toSDK(_) {
+    toSDK(message) {
         const obj = {};
+        if (message.results) {
+            obj.results = message.results.map(e => e);
+        }
+        else {
+            obj.results = [];
+        }
         return obj;
     },
-    fromAmino(_) {
-        return {};
+    fromAmino(object) {
+        return {
+            results: Array.isArray(object?.results) ? object.results.map((e) => e) : []
+        };
     },
-    toAmino(_) {
+    toAmino(message) {
         const obj = {};
+        if (message.results) {
+            obj.results = message.results.map(e => e);
+        }
+        else {
+            obj.results = [];
+        }
         return obj;
     },
     fromAminoMsg(object) {
-        return MsgGrantResponse.fromAmino(object.value);
+        return MsgExecResponse.fromAmino(object.value);
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/MsgGrantResponse",
-            value: MsgGrantResponse.toAmino(message)
+            type: "cosmos-sdk/MsgExecResponse",
+            value: MsgExecResponse.toAmino(message)
         };
     },
     fromProtoMsg(message) {
-        return MsgGrantResponse.decode(message.value);
+        return MsgExecResponse.decode(message.value);
     },
     toProto(message) {
-        return MsgGrantResponse.encode(message).finish();
+        return MsgExecResponse.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/cosmos.authz.v1beta1.MsgGrantResponse",
-            value: MsgGrantResponse.encode(message).finish()
+            typeUrl: "/cosmos.authz.v1beta1.MsgExecResponse",
+            value: MsgExecResponse.encode(message).finish()
         };
     }
 };

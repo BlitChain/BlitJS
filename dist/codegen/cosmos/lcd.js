@@ -59,6 +59,11 @@ const createLCDClient = async ({ restEndpoint }) => {
                     })
                 }
             },
+            circuit: {
+                v1: new (await Promise.resolve().then(() => __importStar(require("./circuit/v1/query.lcd")))).LCDQueryClient({
+                    requestClient
+                })
+            },
             consensus: {
                 v1: new (await Promise.resolve().then(() => __importStar(require("./consensus/v1/query.lcd")))).LCDQueryClient({
                     requestClient

@@ -35,6 +35,24 @@ export interface Module {
    * to be used in keeper construction.
    */
   override_store_keys: StoreKeyConfig[];
+  /**
+   * order_migrations defines the order in which module migrations are performed.
+   * If this is left empty, it uses the default migration order.
+   * https://pkg.go.dev/github.com/cosmos/cosmos-sdk@v0.47.0-alpha2/types/module#DefaultMigrationsOrder
+   */
+  order_migrations: string[];
+  /**
+   * precommiters specifies the module names of the precommiters
+   * to call in the order in which they should be called. If this is left empty
+   * no precommit function will be registered.
+   */
+  precommiters: string[];
+  /**
+   * prepare_check_staters specifies the module names of the prepare_check_staters
+   * to call in the order in which they should be called. If this is left empty
+   * no preparecheckstate function will be registered.
+   */
+  prepare_check_staters: string[];
 }
 export interface ModuleProtoMsg {
   type_url: "/cosmos.app.runtime.v1alpha1.Module";
@@ -77,6 +95,24 @@ export interface ModuleAmino {
    * to be used in keeper construction.
    */
   override_store_keys: StoreKeyConfigAmino[];
+  /**
+   * order_migrations defines the order in which module migrations are performed.
+   * If this is left empty, it uses the default migration order.
+   * https://pkg.go.dev/github.com/cosmos/cosmos-sdk@v0.47.0-alpha2/types/module#DefaultMigrationsOrder
+   */
+  order_migrations: string[];
+  /**
+   * precommiters specifies the module names of the precommiters
+   * to call in the order in which they should be called. If this is left empty
+   * no precommit function will be registered.
+   */
+  precommiters: string[];
+  /**
+   * prepare_check_staters specifies the module names of the prepare_check_staters
+   * to call in the order in which they should be called. If this is left empty
+   * no preparecheckstate function will be registered.
+   */
+  prepare_check_staters: string[];
 }
 export interface ModuleAminoMsg {
   type: "cosmos-sdk/Module";
@@ -90,6 +126,9 @@ export interface ModuleSDKType {
   init_genesis: string[];
   export_genesis: string[];
   override_store_keys: StoreKeyConfigSDKType[];
+  order_migrations: string[];
+  precommiters: string[];
+  prepare_check_staters: string[];
 }
 /**
  * StoreKeyConfig may be supplied to override the default module store key, which
@@ -138,7 +177,10 @@ function createBaseModule(): Module {
     end_blockers: [],
     init_genesis: [],
     export_genesis: [],
-    override_store_keys: []
+    override_store_keys: [],
+    order_migrations: [],
+    precommiters: [],
+    prepare_check_staters: []
   };
 }
 export const Module = {
@@ -161,6 +203,15 @@ export const Module = {
     }
     for (const v of message.override_store_keys) {
       StoreKeyConfig.encode(v!, writer.uint32(50).fork()).ldelim();
+    }
+    for (const v of message.order_migrations) {
+      writer.uint32(58).string(v!);
+    }
+    for (const v of message.precommiters) {
+      writer.uint32(66).string(v!);
+    }
+    for (const v of message.prepare_check_staters) {
+      writer.uint32(74).string(v!);
     }
     return writer;
   },
@@ -189,6 +240,15 @@ export const Module = {
         case 6:
           message.override_store_keys.push(StoreKeyConfig.decode(reader, reader.uint32()));
           break;
+        case 7:
+          message.order_migrations.push(reader.string());
+          break;
+        case 8:
+          message.precommiters.push(reader.string());
+          break;
+        case 9:
+          message.prepare_check_staters.push(reader.string());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -203,7 +263,10 @@ export const Module = {
       end_blockers: Array.isArray(object?.end_blockers) ? object.end_blockers.map((e: any) => String(e)) : [],
       init_genesis: Array.isArray(object?.init_genesis) ? object.init_genesis.map((e: any) => String(e)) : [],
       export_genesis: Array.isArray(object?.export_genesis) ? object.export_genesis.map((e: any) => String(e)) : [],
-      override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e: any) => StoreKeyConfig.fromJSON(e)) : []
+      override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e: any) => StoreKeyConfig.fromJSON(e)) : [],
+      order_migrations: Array.isArray(object?.order_migrations) ? object.order_migrations.map((e: any) => String(e)) : [],
+      precommiters: Array.isArray(object?.precommiters) ? object.precommiters.map((e: any) => String(e)) : [],
+      prepare_check_staters: Array.isArray(object?.prepare_check_staters) ? object.prepare_check_staters.map((e: any) => String(e)) : []
     };
   },
   toJSON(message: Module): unknown {
@@ -234,6 +297,21 @@ export const Module = {
     } else {
       obj.override_store_keys = [];
     }
+    if (message.order_migrations) {
+      obj.order_migrations = message.order_migrations.map(e => e);
+    } else {
+      obj.order_migrations = [];
+    }
+    if (message.precommiters) {
+      obj.precommiters = message.precommiters.map(e => e);
+    } else {
+      obj.precommiters = [];
+    }
+    if (message.prepare_check_staters) {
+      obj.prepare_check_staters = message.prepare_check_staters.map(e => e);
+    } else {
+      obj.prepare_check_staters = [];
+    }
     return obj;
   },
   fromPartial(object: Partial<Module>): Module {
@@ -244,6 +322,9 @@ export const Module = {
     message.init_genesis = object.init_genesis?.map(e => e) || [];
     message.export_genesis = object.export_genesis?.map(e => e) || [];
     message.override_store_keys = object.override_store_keys?.map(e => StoreKeyConfig.fromPartial(e)) || [];
+    message.order_migrations = object.order_migrations?.map(e => e) || [];
+    message.precommiters = object.precommiters?.map(e => e) || [];
+    message.prepare_check_staters = object.prepare_check_staters?.map(e => e) || [];
     return message;
   },
   fromSDK(object: ModuleSDKType): Module {
@@ -253,7 +334,10 @@ export const Module = {
       end_blockers: Array.isArray(object?.end_blockers) ? object.end_blockers.map((e: any) => e) : [],
       init_genesis: Array.isArray(object?.init_genesis) ? object.init_genesis.map((e: any) => e) : [],
       export_genesis: Array.isArray(object?.export_genesis) ? object.export_genesis.map((e: any) => e) : [],
-      override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e: any) => StoreKeyConfig.fromSDK(e)) : []
+      override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e: any) => StoreKeyConfig.fromSDK(e)) : [],
+      order_migrations: Array.isArray(object?.order_migrations) ? object.order_migrations.map((e: any) => e) : [],
+      precommiters: Array.isArray(object?.precommiters) ? object.precommiters.map((e: any) => e) : [],
+      prepare_check_staters: Array.isArray(object?.prepare_check_staters) ? object.prepare_check_staters.map((e: any) => e) : []
     };
   },
   toSDK(message: Module): ModuleSDKType {
@@ -284,6 +368,21 @@ export const Module = {
     } else {
       obj.override_store_keys = [];
     }
+    if (message.order_migrations) {
+      obj.order_migrations = message.order_migrations.map(e => e);
+    } else {
+      obj.order_migrations = [];
+    }
+    if (message.precommiters) {
+      obj.precommiters = message.precommiters.map(e => e);
+    } else {
+      obj.precommiters = [];
+    }
+    if (message.prepare_check_staters) {
+      obj.prepare_check_staters = message.prepare_check_staters.map(e => e);
+    } else {
+      obj.prepare_check_staters = [];
+    }
     return obj;
   },
   fromAmino(object: ModuleAmino): Module {
@@ -293,7 +392,10 @@ export const Module = {
       end_blockers: Array.isArray(object?.end_blockers) ? object.end_blockers.map((e: any) => e) : [],
       init_genesis: Array.isArray(object?.init_genesis) ? object.init_genesis.map((e: any) => e) : [],
       export_genesis: Array.isArray(object?.export_genesis) ? object.export_genesis.map((e: any) => e) : [],
-      override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e: any) => StoreKeyConfig.fromAmino(e)) : []
+      override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e: any) => StoreKeyConfig.fromAmino(e)) : [],
+      order_migrations: Array.isArray(object?.order_migrations) ? object.order_migrations.map((e: any) => e) : [],
+      precommiters: Array.isArray(object?.precommiters) ? object.precommiters.map((e: any) => e) : [],
+      prepare_check_staters: Array.isArray(object?.prepare_check_staters) ? object.prepare_check_staters.map((e: any) => e) : []
     };
   },
   toAmino(message: Module): ModuleAmino {
@@ -323,6 +425,21 @@ export const Module = {
       obj.override_store_keys = message.override_store_keys.map(e => e ? StoreKeyConfig.toAmino(e) : undefined);
     } else {
       obj.override_store_keys = [];
+    }
+    if (message.order_migrations) {
+      obj.order_migrations = message.order_migrations.map(e => e);
+    } else {
+      obj.order_migrations = [];
+    }
+    if (message.precommiters) {
+      obj.precommiters = message.precommiters.map(e => e);
+    } else {
+      obj.precommiters = [];
+    }
+    if (message.prepare_check_staters) {
+      obj.prepare_check_staters = message.prepare_check_staters.map(e => e);
+    } else {
+      obj.prepare_check_staters = [];
     }
     return obj;
   },

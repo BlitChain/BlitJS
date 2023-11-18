@@ -1,5 +1,5 @@
 import * as fm from "../../../grpc-gateway";
-import { QueryBalanceRequest, QueryBalanceResponse, QueryAllBalancesRequest, QueryAllBalancesResponse, QuerySpendableBalancesRequest, QuerySpendableBalancesResponse, QuerySpendableBalanceByDenomRequest, QuerySpendableBalanceByDenomResponse, QueryTotalSupplyRequest, QueryTotalSupplyResponse, QuerySupplyOfRequest, QuerySupplyOfResponse, QueryParamsRequest, QueryParamsResponse, QueryDenomMetadataRequest, QueryDenomMetadataResponse, QueryDenomsMetadataRequest, QueryDenomsMetadataResponse, QueryDenomOwnersRequest, QueryDenomOwnersResponse, QuerySendEnabledRequest, QuerySendEnabledResponse } from "./query";
+import { QueryBalanceRequest, QueryBalanceResponse, QueryAllBalancesRequest, QueryAllBalancesResponse, QuerySpendableBalancesRequest, QuerySpendableBalancesResponse, QuerySpendableBalanceByDenomRequest, QuerySpendableBalanceByDenomResponse, QueryTotalSupplyRequest, QueryTotalSupplyResponse, QuerySupplyOfRequest, QuerySupplyOfResponse, QueryParamsRequest, QueryParamsResponse, QueryDenomMetadataRequest, QueryDenomMetadataResponse, QueryDenomMetadataByQueryStringRequest, QueryDenomMetadataByQueryStringResponse, QueryDenomsMetadataRequest, QueryDenomsMetadataResponse, QueryDenomOwnersRequest, QueryDenomOwnersResponse, QuerySendEnabledRequest, QuerySendEnabledResponse } from "./query";
 export declare class Query {
     /** Balance queries the balance of a single coin for a single account. */
     static Balance(request: QueryBalanceRequest, initRequest?: fm.InitReq): Promise<QueryBalanceResponse>;
@@ -48,6 +48,8 @@ export declare class Query {
     static Params(request: QueryParamsRequest, initRequest?: fm.InitReq): Promise<QueryParamsResponse>;
     /** DenomsMetadata queries the client metadata of a given coin denomination. */
     static DenomMetadata(request: QueryDenomMetadataRequest, initRequest?: fm.InitReq): Promise<QueryDenomMetadataResponse>;
+    /** DenomsMetadata queries the client metadata of a given coin denomination. */
+    static DenomMetadataByQueryString(request: QueryDenomMetadataByQueryStringRequest, initRequest?: fm.InitReq): Promise<QueryDenomMetadataByQueryStringResponse>;
     /**
      * DenomsMetadata queries the client metadata for all registered coin
      * denominations.
@@ -124,6 +126,8 @@ export declare class QueryClientImpl {
     Params(req: QueryParamsRequest, headers?: HeadersInit): Promise<QueryParamsResponse>;
     /** DenomsMetadata queries the client metadata of a given coin denomination. */
     DenomMetadata(req: QueryDenomMetadataRequest, headers?: HeadersInit): Promise<QueryDenomMetadataResponse>;
+    /** DenomsMetadata queries the client metadata of a given coin denomination. */
+    DenomMetadataByQueryString(req: QueryDenomMetadataByQueryStringRequest, headers?: HeadersInit): Promise<QueryDenomMetadataByQueryStringResponse>;
     /**
      * DenomsMetadata queries the client metadata for all registered coin
      * denominations.

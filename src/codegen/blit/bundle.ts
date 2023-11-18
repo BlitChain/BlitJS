@@ -14,35 +14,35 @@ import * as _12 from "./storage/params";
 import * as _13 from "./storage/query";
 import * as _14 from "./storage/storage";
 import * as _15 from "./storage/tx";
-import * as _133 from "./blit/tx.amino";
-import * as _134 from "./script/tx.amino";
-import * as _135 from "./storage/tx.amino";
-import * as _136 from "./blit/tx.registry";
-import * as _137 from "./script/tx.registry";
-import * as _138 from "./storage/tx.registry";
-import * as _139 from "./blit/query.lcd";
-import * as _140 from "./script/query.lcd";
-import * as _141 from "./storage/query.lcd";
-import * as _142 from "./blit/query.rpc.Query";
-import * as _143 from "./script/query.rpc.Query";
-import * as _144 from "./storage/query.rpc.Query";
-import * as _145 from "./blit/tx.rpc.msg";
-import * as _146 from "./script/tx.rpc.msg";
-import * as _147 from "./storage/tx.rpc.msg";
-import * as _225 from "./lcd";
-import * as _226 from "./rpc.query";
-import * as _227 from "./rpc.tx";
+import * as _143 from "./blit/tx.amino";
+import * as _144 from "./script/tx.amino";
+import * as _145 from "./storage/tx.amino";
+import * as _146 from "./blit/tx.registry";
+import * as _147 from "./script/tx.registry";
+import * as _148 from "./storage/tx.registry";
+import * as _149 from "./blit/query.lcd";
+import * as _150 from "./script/query.lcd";
+import * as _151 from "./storage/query.lcd";
+import * as _152 from "./blit/query.rpc.Query";
+import * as _153 from "./script/query.rpc.Query";
+import * as _154 from "./storage/query.rpc.Query";
+import * as _155 from "./blit/tx.rpc.msg";
+import * as _156 from "./script/tx.rpc.msg";
+import * as _157 from "./storage/tx.rpc.msg";
+import * as _240 from "./lcd";
+import * as _241 from "./rpc.query";
+import * as _242 from "./rpc.tx";
 export namespace blit {
   export const blit = {
     ..._1,
     ..._2,
     ..._3,
     ..._4,
-    ..._133,
-    ..._136,
-    ..._139,
-    ..._142,
-    ..._145
+    ..._143,
+    ..._146,
+    ..._149,
+    ..._152,
+    ..._155
   };
   export const script = {
     ..._5,
@@ -51,11 +51,11 @@ export namespace blit {
     ..._8,
     ..._9,
     ..._10,
-    ..._134,
-    ..._137,
-    ..._140,
-    ..._143,
-    ..._146
+    ..._144,
+    ..._147,
+    ..._150,
+    ..._153,
+    ..._156
   };
   export const storage = {
     ..._11,
@@ -63,15 +63,15 @@ export namespace blit {
     ..._13,
     ..._14,
     ..._15,
-    ..._135,
-    ..._138,
-    ..._141,
-    ..._144,
-    ..._147
+    ..._145,
+    ..._148,
+    ..._151,
+    ..._154,
+    ..._157
   };
   export const ClientFactory = {
-    ..._225,
-    ..._226,
-    ..._227
+    ..._240,
+    ..._241,
+    ..._242
   };
 }

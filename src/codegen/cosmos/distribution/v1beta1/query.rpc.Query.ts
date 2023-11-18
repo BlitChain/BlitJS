@@ -57,7 +57,7 @@ export class Query {
     });
   }
   /**
-   * DelegationTotalRewards queries the total rewards accrued by a each
+   * DelegationTotalRewards queries the total rewards accrued by each
    * validator.
    */
   static DelegationTotalRewards(request: QueryDelegationTotalRewardsRequest, initRequest?: fm.InitReq): Promise<QueryDelegationTotalRewardsResponse> {
@@ -144,7 +144,7 @@ export class QueryClientImpl {
     });
   }
   /**
-   * DelegationTotalRewards queries the total rewards accrued by a each
+   * DelegationTotalRewards queries the total rewards accrued by each
    * validator.
    */
   async DelegationTotalRewards(req: QueryDelegationTotalRewardsRequest, headers?: HeadersInit): Promise<QueryDelegationTotalRewardsResponse> {

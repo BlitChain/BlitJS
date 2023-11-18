@@ -27,6 +27,15 @@ exports.QueryClientImpl = exports.Query = void 0;
 //@ts-nocheck
 const fm = __importStar(require("../../../grpc-gateway"));
 class Query {
+    /** Constitution queries the chain's constitution. */
+    static Constitution(request, initRequest) {
+        return fm.fetchReq(`/cosmos/gov/v1/constitution?${fm.renderURLSearchParams({
+            ...request
+        }, [])}`, {
+            ...initRequest,
+            method: "GET"
+        });
+    }
     /** Proposal queries proposal details based on ProposalID. */
     static Proposal(request, initRequest) {
         return fm.fetchReq(`/cosmos/gov/v1/proposals/${request["proposal_id"]}?${fm.renderURLSearchParams({
@@ -72,7 +81,7 @@ class Query {
             method: "GET"
         });
     }
-    /** Deposit queries single deposit information based proposalID, depositAddr. */
+    /** Deposit queries single deposit information based on proposalID, depositAddr. */
     static Deposit(request, initRequest) {
         return fm.fetchReq(`/cosmos/gov/v1/proposals/${request["proposal_id"]}/deposits/${request["depositor"]}?${fm.renderURLSearchParams({
             ...request
@@ -105,6 +114,13 @@ class QueryClientImpl {
     url;
     constructor(url) {
         this.url = url;
+    }
+    /** Constitution queries the chain's constitution. */
+    async Constitution(req, headers) {
+        return Query.Constitution(req, {
+            headers,
+            pathPrefix: this.url
+        });
     }
     /** Proposal queries proposal details based on ProposalID. */
     async Proposal(req, headers) {
@@ -141,7 +157,7 @@ class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /** Deposit queries single deposit information based proposalID, depositAddr. */
+    /** Deposit queries single deposit information based on proposalID, depositAddr. */
     async Deposit(req, headers) {
         return Query.Deposit(req, {
             headers,

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MsgCommunityPoolSpendResponse = exports.MsgCommunityPoolSpend = exports.MsgUpdateParamsResponse = exports.MsgUpdateParams = exports.MsgFundCommunityPoolResponse = exports.MsgFundCommunityPool = exports.MsgWithdrawValidatorCommissionResponse = exports.MsgWithdrawValidatorCommission = exports.MsgWithdrawDelegatorRewardResponse = exports.MsgWithdrawDelegatorReward = exports.MsgSetWithdrawAddressResponse = exports.MsgSetWithdrawAddress = exports.protobufPackage = void 0;
+exports.MsgDepositValidatorRewardsPoolResponse = exports.MsgDepositValidatorRewardsPool = exports.MsgCommunityPoolSpendResponse = exports.MsgCommunityPoolSpend = exports.MsgUpdateParamsResponse = exports.MsgUpdateParams = exports.MsgFundCommunityPoolResponse = exports.MsgFundCommunityPool = exports.MsgWithdrawValidatorCommissionResponse = exports.MsgWithdrawValidatorCommission = exports.MsgWithdrawDelegatorRewardResponse = exports.MsgWithdrawDelegatorReward = exports.MsgSetWithdrawAddressResponse = exports.MsgSetWithdrawAddress = exports.protobufPackage = void 0;
 //@ts-nocheck
 const coin_1 = require("../../base/v1beta1/coin");
 const distribution_1 = require("./distribution");
@@ -1120,6 +1120,205 @@ exports.MsgCommunityPoolSpendResponse = {
         return {
             typeUrl: "/cosmos.distribution.v1beta1.MsgCommunityPoolSpendResponse",
             value: exports.MsgCommunityPoolSpendResponse.encode(message).finish()
+        };
+    }
+};
+function createBaseMsgDepositValidatorRewardsPool() {
+    return {
+        depositor: "",
+        validator_address: "",
+        amount: []
+    };
+}
+exports.MsgDepositValidatorRewardsPool = {
+    typeUrl: "/cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPool",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.depositor !== "") {
+            writer.uint32(10).string(message.depositor);
+        }
+        if (message.validator_address !== "") {
+            writer.uint32(18).string(message.validator_address);
+        }
+        for (const v of message.amount) {
+            coin_1.Coin.encode(v, writer.uint32(26).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseMsgDepositValidatorRewardsPool();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.depositor = reader.string();
+                    break;
+                case 2:
+                    message.validator_address = reader.string();
+                    break;
+                case 3:
+                    message.amount.push(coin_1.Coin.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            depositor: (0, helpers_1.isSet)(object.depositor) ? String(object.depositor) : "",
+            validator_address: (0, helpers_1.isSet)(object.validator_address) ? String(object.validator_address) : "",
+            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.depositor !== undefined && (obj.depositor = message.depositor);
+        message.validator_address !== undefined && (obj.validator_address = message.validator_address);
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.amount = [];
+        }
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseMsgDepositValidatorRewardsPool();
+        message.depositor = object.depositor ?? "";
+        message.validator_address = object.validator_address ?? "";
+        message.amount = object.amount?.map(e => coin_1.Coin.fromPartial(e)) || [];
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            depositor: object?.depositor,
+            validator_address: object?.validator_address,
+            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromSDK(e)) : []
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        obj.depositor = message.depositor;
+        obj.validator_address = message.validator_address;
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toSDK(e) : undefined);
+        }
+        else {
+            obj.amount = [];
+        }
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            depositor: object.depositor,
+            validator_address: object.validator_address,
+            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromAmino(e)) : []
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.depositor = message.depositor;
+        obj.validator_address = message.validator_address;
+        if (message.amount) {
+            obj.amount = message.amount.map(e => e ? coin_1.Coin.toAmino(e) : undefined);
+        }
+        else {
+            obj.amount = [];
+        }
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgDepositValidatorRewardsPool.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/distr/MsgDepositValRewards",
+            value: exports.MsgDepositValidatorRewardsPool.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgDepositValidatorRewardsPool.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgDepositValidatorRewardsPool.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPool",
+            value: exports.MsgDepositValidatorRewardsPool.encode(message).finish()
+        };
+    }
+};
+function createBaseMsgDepositValidatorRewardsPoolResponse() {
+    return {};
+}
+exports.MsgDepositValidatorRewardsPoolResponse = {
+    typeUrl: "/cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPoolResponse",
+    encode(_, writer = binary_1.BinaryWriter.create()) {
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseMsgDepositValidatorRewardsPoolResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
+    fromPartial(_) {
+        const message = createBaseMsgDepositValidatorRewardsPoolResponse();
+        return message;
+    },
+    fromSDK(_) {
+        return {};
+    },
+    toSDK(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAmino(_) {
+        return {};
+    },
+    toAmino(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.MsgDepositValidatorRewardsPoolResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/MsgDepositValidatorRewardsPoolResponse",
+            value: exports.MsgDepositValidatorRewardsPoolResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.MsgDepositValidatorRewardsPoolResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.MsgDepositValidatorRewardsPoolResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPoolResponse",
+            value: exports.MsgDepositValidatorRewardsPoolResponse.encode(message).finish()
         };
     }
 };

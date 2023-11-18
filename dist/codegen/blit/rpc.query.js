@@ -51,6 +51,9 @@ const createGrpcGateWayClient = async ({ endpoint }) => {
                     v1beta1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/base/tendermint/v1beta1/query.rpc.Service")))).ServiceClientImpl(endpoint)
                 }
             },
+            circuit: {
+                v1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/circuit/v1/query.rpc.Query")))).QueryClientImpl(endpoint)
+            },
             consensus: {
                 v1: new (await Promise.resolve().then(() => __importStar(require("../cosmos/consensus/v1/query.rpc.Query")))).QueryClientImpl(endpoint)
             },

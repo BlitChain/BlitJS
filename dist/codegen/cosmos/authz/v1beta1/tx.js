@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cosmos_basev1beta1Msg_ToAmino = exports.Cosmos_basev1beta1Msg_FromAmino = exports.Cosmos_basev1beta1Msg_InterfaceDecoder = exports.MsgRevokeResponse = exports.MsgRevoke = exports.MsgGrantResponse = exports.MsgExec = exports.MsgExecResponse = exports.MsgGrant = exports.protobufPackage = void 0;
+exports.Cosmos_basev1beta1Msg_ToAmino = exports.Cosmos_basev1beta1Msg_FromAmino = exports.Cosmos_basev1beta1Msg_InterfaceDecoder = exports.MsgRevokeResponse = exports.MsgRevoke = exports.MsgExecResponse = exports.MsgExec = exports.MsgGrantResponse = exports.MsgGrant = exports.protobufPackage = void 0;
 //@ts-nocheck
 const authz_1 = require("./authz");
 const any_1 = require("../../../google/protobuf/any");
@@ -122,29 +122,21 @@ exports.MsgGrant = {
         };
     }
 };
-function createBaseMsgExecResponse() {
-    return {
-        results: []
-    };
+function createBaseMsgGrantResponse() {
+    return {};
 }
-exports.MsgExecResponse = {
-    typeUrl: "/cosmos.authz.v1beta1.MsgExecResponse",
-    encode(message, writer = binary_1.BinaryWriter.create()) {
-        for (const v of message.results) {
-            writer.uint32(10).bytes(v);
-        }
+exports.MsgGrantResponse = {
+    typeUrl: "/cosmos.authz.v1beta1.MsgGrantResponse",
+    encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
     decode(input, length) {
         const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseMsgExecResponse();
+        const message = createBaseMsgGrantResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                case 1:
-                    message.results.push(reader.bytes());
-                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -152,75 +144,50 @@ exports.MsgExecResponse = {
         }
         return message;
     },
-    fromJSON(object) {
-        return {
-            results: Array.isArray(object?.results) ? object.results.map((e) => (0, helpers_1.bytesFromBase64)(e)) : []
-        };
+    fromJSON(_) {
+        return {};
     },
-    toJSON(message) {
+    toJSON(_) {
         const obj = {};
-        if (message.results) {
-            obj.results = message.results.map(e => (0, helpers_1.base64FromBytes)(e !== undefined ? e : new Uint8Array()));
-        }
-        else {
-            obj.results = [];
-        }
         return obj;
     },
-    fromPartial(object) {
-        const message = createBaseMsgExecResponse();
-        message.results = object.results?.map(e => e) || [];
+    fromPartial(_) {
+        const message = createBaseMsgGrantResponse();
         return message;
     },
-    fromSDK(object) {
-        return {
-            results: Array.isArray(object?.results) ? object.results.map((e) => e) : []
-        };
+    fromSDK(_) {
+        return {};
     },
-    toSDK(message) {
+    toSDK(_) {
         const obj = {};
-        if (message.results) {
-            obj.results = message.results.map(e => e);
-        }
-        else {
-            obj.results = [];
-        }
         return obj;
     },
-    fromAmino(object) {
-        return {
-            results: Array.isArray(object?.results) ? object.results.map((e) => e) : []
-        };
+    fromAmino(_) {
+        return {};
     },
-    toAmino(message) {
+    toAmino(_) {
         const obj = {};
-        if (message.results) {
-            obj.results = message.results.map(e => e);
-        }
-        else {
-            obj.results = [];
-        }
         return obj;
     },
     fromAminoMsg(object) {
-        return exports.MsgExecResponse.fromAmino(object.value);
+        return exports.MsgGrantResponse.fromAmino(object.value);
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/MsgExecResponse",
-            value: exports.MsgExecResponse.toAmino(message)
+            type: "cosmos-sdk/MsgGrantResponse",
+            value: exports.MsgGrantResponse.toAmino(message)
         };
     },
     fromProtoMsg(message) {
-        return exports.MsgExecResponse.decode(message.value);
+        return exports.MsgGrantResponse.decode(message.value);
     },
     toProto(message) {
-        return exports.MsgExecResponse.encode(message).finish();
+        return exports.MsgGrantResponse.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/cosmos.authz.v1beta1.MsgExecResponse",
-            value: exports.MsgExecResponse.encode(message).finish()
+            typeUrl: "/cosmos.authz.v1beta1.MsgGrantResponse",
+            value: exports.MsgGrantResponse.encode(message).finish()
         };
     }
 };
@@ -340,21 +307,29 @@ exports.MsgExec = {
         };
     }
 };
-function createBaseMsgGrantResponse() {
-    return {};
+function createBaseMsgExecResponse() {
+    return {
+        results: []
+    };
 }
-exports.MsgGrantResponse = {
-    typeUrl: "/cosmos.authz.v1beta1.MsgGrantResponse",
-    encode(_, writer = binary_1.BinaryWriter.create()) {
+exports.MsgExecResponse = {
+    typeUrl: "/cosmos.authz.v1beta1.MsgExecResponse",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        for (const v of message.results) {
+            writer.uint32(10).bytes(v);
+        }
         return writer;
     },
     decode(input, length) {
         const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseMsgGrantResponse();
+        const message = createBaseMsgExecResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
+                case 1:
+                    message.results.push(reader.bytes());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -362,50 +337,75 @@ exports.MsgGrantResponse = {
         }
         return message;
     },
-    fromJSON(_) {
-        return {};
+    fromJSON(object) {
+        return {
+            results: Array.isArray(object?.results) ? object.results.map((e) => (0, helpers_1.bytesFromBase64)(e)) : []
+        };
     },
-    toJSON(_) {
+    toJSON(message) {
         const obj = {};
+        if (message.results) {
+            obj.results = message.results.map(e => (0, helpers_1.base64FromBytes)(e !== undefined ? e : new Uint8Array()));
+        }
+        else {
+            obj.results = [];
+        }
         return obj;
     },
-    fromPartial(_) {
-        const message = createBaseMsgGrantResponse();
+    fromPartial(object) {
+        const message = createBaseMsgExecResponse();
+        message.results = object.results?.map(e => e) || [];
         return message;
     },
-    fromSDK(_) {
-        return {};
+    fromSDK(object) {
+        return {
+            results: Array.isArray(object?.results) ? object.results.map((e) => e) : []
+        };
     },
-    toSDK(_) {
+    toSDK(message) {
         const obj = {};
+        if (message.results) {
+            obj.results = message.results.map(e => e);
+        }
+        else {
+            obj.results = [];
+        }
         return obj;
     },
-    fromAmino(_) {
-        return {};
+    fromAmino(object) {
+        return {
+            results: Array.isArray(object?.results) ? object.results.map((e) => e) : []
+        };
     },
-    toAmino(_) {
+    toAmino(message) {
         const obj = {};
+        if (message.results) {
+            obj.results = message.results.map(e => e);
+        }
+        else {
+            obj.results = [];
+        }
         return obj;
     },
     fromAminoMsg(object) {
-        return exports.MsgGrantResponse.fromAmino(object.value);
+        return exports.MsgExecResponse.fromAmino(object.value);
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/MsgGrantResponse",
-            value: exports.MsgGrantResponse.toAmino(message)
+            type: "cosmos-sdk/MsgExecResponse",
+            value: exports.MsgExecResponse.toAmino(message)
         };
     },
     fromProtoMsg(message) {
-        return exports.MsgGrantResponse.decode(message.value);
+        return exports.MsgExecResponse.decode(message.value);
     },
     toProto(message) {
-        return exports.MsgGrantResponse.encode(message).finish();
+        return exports.MsgExecResponse.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/cosmos.authz.v1beta1.MsgGrantResponse",
-            value: exports.MsgGrantResponse.encode(message).finish()
+            typeUrl: "/cosmos.authz.v1beta1.MsgExecResponse",
+            value: exports.MsgExecResponse.encode(message).finish()
         };
     }
 };

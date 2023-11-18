@@ -196,7 +196,8 @@ export const QueryBalanceResponse = {
 function createBaseQueryAllBalancesRequest() {
     return {
         address: "",
-        pagination: undefined
+        pagination: undefined,
+        resolve_denom: false
     };
 }
 export const QueryAllBalancesRequest = {
@@ -207,6 +208,9 @@ export const QueryAllBalancesRequest = {
         }
         if (message.pagination !== undefined) {
             PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+        }
+        if (message.resolve_denom === true) {
+            writer.uint32(24).bool(message.resolve_denom);
         }
         return writer;
     },
@@ -223,6 +227,9 @@ export const QueryAllBalancesRequest = {
                 case 2:
                     message.pagination = PageRequest.decode(reader, reader.uint32());
                     break;
+                case 3:
+                    message.resolve_denom = reader.bool();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -233,43 +240,50 @@ export const QueryAllBalancesRequest = {
     fromJSON(object) {
         return {
             address: isSet(object.address) ? String(object.address) : "",
-            pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+            pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined,
+            resolve_denom: isSet(object.resolve_denom) ? Boolean(object.resolve_denom) : false
         };
     },
     toJSON(message) {
         const obj = {};
         message.address !== undefined && (obj.address = message.address);
         message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+        message.resolve_denom !== undefined && (obj.resolve_denom = message.resolve_denom);
         return obj;
     },
     fromPartial(object) {
         const message = createBaseQueryAllBalancesRequest();
         message.address = object.address ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+        message.resolve_denom = object.resolve_denom ?? false;
         return message;
     },
     fromSDK(object) {
         return {
             address: object?.address,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
+            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined,
+            resolve_denom: object?.resolve_denom
         };
     },
     toSDK(message) {
         const obj = {};
         obj.address = message.address;
         message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
+        obj.resolve_denom = message.resolve_denom;
         return obj;
     },
     fromAmino(object) {
         return {
             address: object.address,
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
+            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined,
+            resolve_denom: object.resolve_denom
         };
     },
     toAmino(message) {
         const obj = {};
         obj.address = message.address;
         obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+        obj.resolve_denom = message.resolve_denom;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1722,6 +1736,180 @@ export const QueryDenomMetadataResponse = {
         return {
             typeUrl: "/cosmos.bank.v1beta1.QueryDenomMetadataResponse",
             value: QueryDenomMetadataResponse.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryDenomMetadataByQueryStringRequest() {
+    return {
+        denom: ""
+    };
+}
+export const QueryDenomMetadataByQueryStringRequest = {
+    typeUrl: "/cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.denom !== "") {
+            writer.uint32(10).string(message.denom);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryDenomMetadataByQueryStringRequest();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.denom = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            denom: isSet(object.denom) ? String(object.denom) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.denom !== undefined && (obj.denom = message.denom);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryDenomMetadataByQueryStringRequest();
+        message.denom = object.denom ?? "";
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            denom: object?.denom
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        obj.denom = message.denom;
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            denom: object.denom
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.denom = message.denom;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryDenomMetadataByQueryStringRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryDenomMetadataByQueryStringRequest",
+            value: QueryDenomMetadataByQueryStringRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryDenomMetadataByQueryStringRequest.decode(message.value);
+    },
+    toProto(message) {
+        return QueryDenomMetadataByQueryStringRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest",
+            value: QueryDenomMetadataByQueryStringRequest.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryDenomMetadataByQueryStringResponse() {
+    return {
+        metadata: Metadata.fromPartial({})
+    };
+}
+export const QueryDenomMetadataByQueryStringResponse = {
+    typeUrl: "/cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.metadata !== undefined) {
+            Metadata.encode(message.metadata, writer.uint32(10).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryDenomMetadataByQueryStringResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.metadata = Metadata.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            metadata: isSet(object.metadata) ? Metadata.fromJSON(object.metadata) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.metadata !== undefined && (obj.metadata = message.metadata ? Metadata.toJSON(message.metadata) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryDenomMetadataByQueryStringResponse();
+        message.metadata = object.metadata !== undefined && object.metadata !== null ? Metadata.fromPartial(object.metadata) : undefined;
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            metadata: object.metadata ? Metadata.fromSDK(object.metadata) : undefined
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        message.metadata !== undefined && (obj.metadata = message.metadata ? Metadata.toSDK(message.metadata) : undefined);
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            metadata: object?.metadata ? Metadata.fromAmino(object.metadata) : undefined
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.metadata = message.metadata ? Metadata.toAmino(message.metadata) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryDenomMetadataByQueryStringResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryDenomMetadataByQueryStringResponse",
+            value: QueryDenomMetadataByQueryStringResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryDenomMetadataByQueryStringResponse.decode(message.value);
+    },
+    toProto(message) {
+        return QueryDenomMetadataByQueryStringResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse",
+            value: QueryDenomMetadataByQueryStringResponse.encode(message).finish()
         };
     }
 };

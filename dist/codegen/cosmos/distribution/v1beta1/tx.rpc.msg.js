@@ -99,6 +99,19 @@ class Msg {
             body: JSON.stringify(request, fm.replacer)
         });
     }
+    /**
+     * DepositValidatorRewardsPool defines a method to provide additional rewards
+     * to delegators to a specific validator.
+     *
+     * Since: cosmos-sdk 0.50
+     */
+    static DepositValidatorRewardsPool(request, initRequest) {
+        return fm.fetchReq(`/cosmos.distribution.v1beta1/DepositValidatorRewardsPool`, {
+            ...initRequest,
+            method: "POST",
+            body: JSON.stringify(request, fm.replacer)
+        });
+    }
 }
 exports.Msg = Msg;
 //# sourceMappingURL=tx.rpc.msg.js.map

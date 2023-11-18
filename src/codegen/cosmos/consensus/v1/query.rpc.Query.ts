@@ -2,7 +2,7 @@
 import * as fm from "../../../grpc-gateway";
 import { QueryParamsRequest, QueryParamsResponse } from "./query";
 export class Query {
-  /** Params queries the parameters of x/consensus_param module. */
+  /** Params queries the parameters of x/consensus module. */
   static Params(request: QueryParamsRequest, initRequest?: fm.InitReq): Promise<QueryParamsResponse> {
     return fm.fetchReq(`/cosmos/consensus/v1/params?${fm.renderURLSearchParams({
       ...request
@@ -17,7 +17,7 @@ export class QueryClientImpl {
   constructor(url: string) {
     this.url = url;
   }
-  /** Params queries the parameters of x/consensus_param module. */
+  /** Params queries the parameters of x/consensus module. */
   async Params(req: QueryParamsRequest, headers?: HeadersInit): Promise<QueryParamsResponse> {
     return Query.Params(req, {
       headers,

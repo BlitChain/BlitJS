@@ -485,9 +485,9 @@ export interface DVVTripletsSDKType {
  * validator.
  */
 export interface Delegation {
-    /** delegator_address is the bech32-encoded address of the delegator. */
+    /** delegator_address is the encoded address of the delegator. */
     delegator_address: string;
-    /** validator_address is the bech32-encoded address of the validator. */
+    /** validator_address is the encoded address of the validator. */
     validator_address: string;
     /** shares define the delegation shares received. */
     shares: string;
@@ -506,9 +506,9 @@ export interface DelegationProtoMsg {
  * validator.
  */
 export interface DelegationAmino {
-    /** delegator_address is the bech32-encoded address of the delegator. */
+    /** delegator_address is the encoded address of the delegator. */
     delegator_address: string;
-    /** validator_address is the bech32-encoded address of the validator. */
+    /** validator_address is the encoded address of the validator. */
     validator_address: string;
     /** shares define the delegation shares received. */
     shares: string;
@@ -532,9 +532,9 @@ export interface DelegationSDKType {
  * for a single validator in an time-ordered list.
  */
 export interface UnbondingDelegation {
-    /** delegator_address is the bech32-encoded address of the delegator. */
+    /** delegator_address is the encoded address of the delegator. */
     delegator_address: string;
-    /** validator_address is the bech32-encoded address of the validator. */
+    /** validator_address is the encoded address of the validator. */
     validator_address: string;
     /** entries are the unbonding delegation entries. */
     entries: UnbondingDelegationEntry[];
@@ -552,9 +552,9 @@ export interface UnbondingDelegationProtoMsg {
  * for a single validator in an time-ordered list.
  */
 export interface UnbondingDelegationAmino {
-    /** delegator_address is the bech32-encoded address of the delegator. */
+    /** delegator_address is the encoded address of the delegator. */
     delegator_address: string;
-    /** validator_address is the bech32-encoded address of the validator. */
+    /** validator_address is the encoded address of the validator. */
     validator_address: string;
     /** entries are the unbonding delegation entries. */
     entries: UnbondingDelegationEntryAmino[];

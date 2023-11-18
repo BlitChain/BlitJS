@@ -35,6 +35,9 @@ const createRPCMsgClient = async ({ rpc }) => ({
         bank: {
             v1beta1: new (await Promise.resolve().then(() => __importStar(require("./bank/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)
         },
+        circuit: {
+            v1: new (await Promise.resolve().then(() => __importStar(require("./circuit/v1/tx.rpc.msg")))).MsgClientImpl(rpc)
+        },
         consensus: {
             v1: new (await Promise.resolve().then(() => __importStar(require("./consensus/v1/tx.rpc.msg")))).MsgClientImpl(rpc)
         },

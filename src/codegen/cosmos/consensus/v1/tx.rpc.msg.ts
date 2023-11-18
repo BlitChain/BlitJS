@@ -3,7 +3,7 @@ import * as fm from "../../../grpc-gateway";
 import { MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
 export class Msg {
   /**
-   * UpdateParams defines a governance operation for updating the x/consensus_param module parameters.
+   * UpdateParams defines a governance operation for updating the x/consensus module parameters.
    * The authority is defined in the keeper.
    * 
    * Since: cosmos-sdk 0.47

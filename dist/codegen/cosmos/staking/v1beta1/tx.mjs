@@ -963,7 +963,8 @@ export const MsgUndelegate = {
 };
 function createBaseMsgUndelegateResponse() {
     return {
-        completion_time: new Date()
+        completion_time: new Date(),
+        amount: Coin.fromPartial({})
     };
 }
 export const MsgUndelegateResponse = {
@@ -971,6 +972,9 @@ export const MsgUndelegateResponse = {
     encode(message, writer = BinaryWriter.create()) {
         if (message.completion_time !== undefined) {
             Timestamp.encode(toTimestamp(message.completion_time), writer.uint32(10).fork()).ldelim();
+        }
+        if (message.amount !== undefined) {
+            Coin.encode(message.amount, writer.uint32(18).fork()).ldelim();
         }
         return writer;
     },
@@ -984,6 +988,9 @@ export const MsgUndelegateResponse = {
                 case 1:
                     message.completion_time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
                     break;
+                case 2:
+                    message.amount = Coin.decode(reader, reader.uint32());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -993,37 +1000,44 @@ export const MsgUndelegateResponse = {
     },
     fromJSON(object) {
         return {
-            completion_time: isSet(object.completion_time) ? fromJsonTimestamp(object.completion_time) : undefined
+            completion_time: isSet(object.completion_time) ? fromJsonTimestamp(object.completion_time) : undefined,
+            amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
         };
     },
     toJSON(message) {
         const obj = {};
         message.completion_time !== undefined && (obj.completion_time = message.completion_time.toISOString());
+        message.amount !== undefined && (obj.amount = message.amount ? Coin.toJSON(message.amount) : undefined);
         return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgUndelegateResponse();
         message.completion_time = object.completion_time ?? undefined;
+        message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
         return message;
     },
     fromSDK(object) {
         return {
-            completion_time: object.completion_time ? Timestamp.fromSDK(object.completion_time) : undefined
+            completion_time: object.completion_time ? Timestamp.fromSDK(object.completion_time) : undefined,
+            amount: object.amount ? Coin.fromSDK(object.amount) : undefined
         };
     },
     toSDK(message) {
         const obj = {};
         message.completion_time !== undefined && (obj.completion_time = message.completion_time ? Timestamp.toSDK(message.completion_time) : undefined);
+        message.amount !== undefined && (obj.amount = message.amount ? Coin.toSDK(message.amount) : undefined);
         return obj;
     },
     fromAmino(object) {
         return {
-            completion_time: object.completion_time
+            completion_time: object.completion_time,
+            amount: object?.amount ? Coin.fromAmino(object.amount) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
         obj.completion_time = message.completion_time;
+        obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
         return obj;
     },
     fromAminoMsg(object) {

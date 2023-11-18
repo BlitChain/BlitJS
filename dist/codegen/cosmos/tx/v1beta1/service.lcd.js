@@ -36,6 +36,9 @@ class LCDQueryClient {
         if (typeof params?.limit !== "undefined") {
             options.params.limit = params.limit;
         }
+        if (typeof params?.query !== "undefined") {
+            options.params.query = params.query;
+        }
         const endpoint = `cosmos/tx/v1beta1/txs`;
         return await this.req.get(endpoint, options);
     }

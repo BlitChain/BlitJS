@@ -83,6 +83,18 @@ class Msg {
             body: JSON.stringify(request, fm.replacer)
         });
     }
+    /**
+     * CancelProposal defines a method to cancel governance proposal
+     *
+     * Since: cosmos-sdk 0.50
+     */
+    static CancelProposal(request, initRequest) {
+        return fm.fetchReq(`/cosmos.gov.v1/CancelProposal`, {
+            ...initRequest,
+            method: "POST",
+            body: JSON.stringify(request, fm.replacer)
+        });
+    }
 }
 exports.Msg = Msg;
 //# sourceMappingURL=tx.rpc.msg.js.map

@@ -30,6 +30,7 @@ const stargate_1 = require("@cosmjs/stargate");
 const cosmosAuthV1beta1TxRegistry = __importStar(require("./auth/v1beta1/tx.registry"));
 const cosmosAuthzV1beta1TxRegistry = __importStar(require("./authz/v1beta1/tx.registry"));
 const cosmosBankV1beta1TxRegistry = __importStar(require("./bank/v1beta1/tx.registry"));
+const cosmosCircuitV1TxRegistry = __importStar(require("./circuit/v1/tx.registry"));
 const cosmosConsensusV1TxRegistry = __importStar(require("./consensus/v1/tx.registry"));
 const cosmosDistributionV1beta1TxRegistry = __importStar(require("./distribution/v1beta1/tx.registry"));
 const cosmosFeegrantV1beta1TxRegistry = __importStar(require("./feegrant/v1beta1/tx.registry"));
@@ -44,6 +45,7 @@ const cosmosVestingV1beta1TxRegistry = __importStar(require("./vesting/v1beta1/t
 const cosmosAuthV1beta1TxAmino = __importStar(require("./auth/v1beta1/tx.amino"));
 const cosmosAuthzV1beta1TxAmino = __importStar(require("./authz/v1beta1/tx.amino"));
 const cosmosBankV1beta1TxAmino = __importStar(require("./bank/v1beta1/tx.amino"));
+const cosmosCircuitV1TxAmino = __importStar(require("./circuit/v1/tx.amino"));
 const cosmosConsensusV1TxAmino = __importStar(require("./consensus/v1/tx.amino"));
 const cosmosDistributionV1beta1TxAmino = __importStar(require("./distribution/v1beta1/tx.amino"));
 const cosmosFeegrantV1beta1TxAmino = __importStar(require("./feegrant/v1beta1/tx.amino"));
@@ -59,6 +61,7 @@ exports.cosmosAminoConverters = {
     ...cosmosAuthV1beta1TxAmino.AminoConverter,
     ...cosmosAuthzV1beta1TxAmino.AminoConverter,
     ...cosmosBankV1beta1TxAmino.AminoConverter,
+    ...cosmosCircuitV1TxAmino.AminoConverter,
     ...cosmosConsensusV1TxAmino.AminoConverter,
     ...cosmosDistributionV1beta1TxAmino.AminoConverter,
     ...cosmosFeegrantV1beta1TxAmino.AminoConverter,
@@ -71,7 +74,7 @@ exports.cosmosAminoConverters = {
     ...cosmosUpgradeV1beta1TxAmino.AminoConverter,
     ...cosmosVestingV1beta1TxAmino.AminoConverter
 };
-exports.cosmosProtoRegistry = [...cosmosAuthV1beta1TxRegistry.registry, ...cosmosAuthzV1beta1TxRegistry.registry, ...cosmosBankV1beta1TxRegistry.registry, ...cosmosConsensusV1TxRegistry.registry, ...cosmosDistributionV1beta1TxRegistry.registry, ...cosmosFeegrantV1beta1TxRegistry.registry, ...cosmosGovV1TxRegistry.registry, ...cosmosGovV1beta1TxRegistry.registry, ...cosmosGroupV1TxRegistry.registry, ...cosmosMintV1beta1TxRegistry.registry, ...cosmosNftV1beta1TxRegistry.registry, ...cosmosStakingV1beta1TxRegistry.registry, ...cosmosUpgradeV1beta1TxRegistry.registry, ...cosmosVestingV1beta1TxRegistry.registry];
+exports.cosmosProtoRegistry = [...cosmosAuthV1beta1TxRegistry.registry, ...cosmosAuthzV1beta1TxRegistry.registry, ...cosmosBankV1beta1TxRegistry.registry, ...cosmosCircuitV1TxRegistry.registry, ...cosmosConsensusV1TxRegistry.registry, ...cosmosDistributionV1beta1TxRegistry.registry, ...cosmosFeegrantV1beta1TxRegistry.registry, ...cosmosGovV1TxRegistry.registry, ...cosmosGovV1beta1TxRegistry.registry, ...cosmosGroupV1TxRegistry.registry, ...cosmosMintV1beta1TxRegistry.registry, ...cosmosNftV1beta1TxRegistry.registry, ...cosmosStakingV1beta1TxRegistry.registry, ...cosmosUpgradeV1beta1TxRegistry.registry, ...cosmosVestingV1beta1TxRegistry.registry];
 const getSigningCosmosClientOptions = () => {
     const registry = new proto_signing_1.Registry([...exports.cosmosProtoRegistry]);
     const aminoTypes = new stargate_1.AminoTypes({

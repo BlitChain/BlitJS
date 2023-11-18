@@ -1,5 +1,5 @@
 import * as fm from "../../../grpc-gateway";
-import { MsgSubmitProposal, MsgSubmitProposalResponse, MsgExecLegacyContent, MsgExecLegacyContentResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse, MsgDeposit, MsgDepositResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
+import { MsgSubmitProposal, MsgSubmitProposalResponse, MsgExecLegacyContent, MsgExecLegacyContentResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse, MsgDeposit, MsgDepositResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgCancelProposal, MsgCancelProposalResponse } from "./tx";
 export declare class Msg {
     /** SubmitProposal defines a method to create new proposal given the messages. */
     static SubmitProposal(request: MsgSubmitProposal, initRequest?: fm.InitReq): Promise<MsgSubmitProposalResponse>;
@@ -21,4 +21,10 @@ export declare class Msg {
      * Since: cosmos-sdk 0.47
      */
     static UpdateParams(request: MsgUpdateParams, initRequest?: fm.InitReq): Promise<MsgUpdateParamsResponse>;
+    /**
+     * CancelProposal defines a method to cancel governance proposal
+     *
+     * Since: cosmos-sdk 0.50
+     */
+    static CancelProposal(request: MsgCancelProposal, initRequest?: fm.InitReq): Promise<MsgCancelProposalResponse>;
 }
