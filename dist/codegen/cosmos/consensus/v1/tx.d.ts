@@ -1,4 +1,4 @@
-import { BlockParams, BlockParamsAmino, BlockParamsSDKType, EvidenceParams, EvidenceParamsAmino, EvidenceParamsSDKType, ValidatorParams, ValidatorParamsAmino, ValidatorParamsSDKType } from "../../../tendermint/types/params";
+import { BlockParams, BlockParamsAmino, BlockParamsSDKType, EvidenceParams, EvidenceParamsAmino, EvidenceParamsSDKType, ValidatorParams, ValidatorParamsAmino, ValidatorParamsSDKType, ABCIParams, ABCIParamsAmino, ABCIParamsSDKType } from "../../../tendermint/types/params";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.consensus.v1";
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
@@ -15,6 +15,8 @@ export interface MsgUpdateParams {
     block?: BlockParams;
     evidence?: EvidenceParams;
     validator?: ValidatorParams;
+    /** Since: cosmos-sdk 0.50 */
+    abci?: ABCIParams;
 }
 export interface MsgUpdateParamsProtoMsg {
     type_url: "/cosmos.consensus.v1.MsgUpdateParams";
@@ -38,9 +40,11 @@ export interface MsgUpdateParamsAmino {
     block?: BlockParamsAmino;
     evidence?: EvidenceParamsAmino;
     validator?: ValidatorParamsAmino;
+    /** Since: cosmos-sdk 0.50 */
+    abci?: ABCIParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
-    type: "cosmos-sdk/MsgUpdateParams";
+    type: "cosmos-sdk/x/consensus/MsgUpdateParams";
     value: MsgUpdateParamsAmino;
 }
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
@@ -49,6 +53,7 @@ export interface MsgUpdateParamsSDKType {
     block?: BlockParamsSDKType;
     evidence?: EvidenceParamsSDKType;
     validator?: ValidatorParamsSDKType;
+    abci?: ABCIParamsSDKType;
 }
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a

@@ -1,5 +1,5 @@
 import * as fm from "../../../grpc-gateway";
-import { MsgSetWithdrawAddress, MsgSetWithdrawAddressResponse, MsgWithdrawDelegatorReward, MsgWithdrawDelegatorRewardResponse, MsgWithdrawValidatorCommission, MsgWithdrawValidatorCommissionResponse, MsgFundCommunityPool, MsgFundCommunityPoolResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgCommunityPoolSpend, MsgCommunityPoolSpendResponse } from "./tx";
+import { MsgSetWithdrawAddress, MsgSetWithdrawAddressResponse, MsgWithdrawDelegatorReward, MsgWithdrawDelegatorRewardResponse, MsgWithdrawValidatorCommission, MsgWithdrawValidatorCommissionResponse, MsgFundCommunityPool, MsgFundCommunityPoolResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgCommunityPoolSpend, MsgCommunityPoolSpendResponse, MsgDepositValidatorRewardsPool, MsgDepositValidatorRewardsPoolResponse } from "./tx";
 export declare class Msg {
     /**
      * SetWithdrawAddress defines a method to change the withdraw address
@@ -37,4 +37,11 @@ export declare class Msg {
      * Since: cosmos-sdk 0.47
      */
     static CommunityPoolSpend(request: MsgCommunityPoolSpend, initRequest?: fm.InitReq): Promise<MsgCommunityPoolSpendResponse>;
+    /**
+     * DepositValidatorRewardsPool defines a method to provide additional rewards
+     * to delegators to a specific validator.
+     *
+     * Since: cosmos-sdk 0.50
+     */
+    static DepositValidatorRewardsPool(request: MsgDepositValidatorRewardsPool, initRequest?: fm.InitReq): Promise<MsgDepositValidatorRewardsPoolResponse>;
 }

@@ -82,7 +82,7 @@ class Query {
         });
     }
     /**
-     * DelegationTotalRewards queries the total rewards accrued by a each
+     * DelegationTotalRewards queries the total rewards accrued by each
      * validator.
      */
     static DelegationTotalRewards(request, initRequest) {
@@ -170,7 +170,7 @@ class QueryClientImpl {
         });
     }
     /**
-     * DelegationTotalRewards queries the total rewards accrued by a each
+     * DelegationTotalRewards queries the total rewards accrued by each
      * validator.
      */
     async DelegationTotalRewards(req, headers) {

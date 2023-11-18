@@ -11,7 +11,8 @@ function createBaseMsgUpdateParams() {
         authority: "",
         block: undefined,
         evidence: undefined,
-        validator: undefined
+        validator: undefined,
+        abci: undefined
     };
 }
 exports.MsgUpdateParams = {
@@ -28,6 +29,9 @@ exports.MsgUpdateParams = {
         }
         if (message.validator !== undefined) {
             params_1.ValidatorParams.encode(message.validator, writer.uint32(34).fork()).ldelim();
+        }
+        if (message.abci !== undefined) {
+            params_1.ABCIParams.encode(message.abci, writer.uint32(42).fork()).ldelim();
         }
         return writer;
     },
@@ -50,6 +54,9 @@ exports.MsgUpdateParams = {
                 case 4:
                     message.validator = params_1.ValidatorParams.decode(reader, reader.uint32());
                     break;
+                case 5:
+                    message.abci = params_1.ABCIParams.decode(reader, reader.uint32());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -62,7 +69,8 @@ exports.MsgUpdateParams = {
             authority: (0, helpers_1.isSet)(object.authority) ? String(object.authority) : "",
             block: (0, helpers_1.isSet)(object.block) ? params_1.BlockParams.fromJSON(object.block) : undefined,
             evidence: (0, helpers_1.isSet)(object.evidence) ? params_1.EvidenceParams.fromJSON(object.evidence) : undefined,
-            validator: (0, helpers_1.isSet)(object.validator) ? params_1.ValidatorParams.fromJSON(object.validator) : undefined
+            validator: (0, helpers_1.isSet)(object.validator) ? params_1.ValidatorParams.fromJSON(object.validator) : undefined,
+            abci: (0, helpers_1.isSet)(object.abci) ? params_1.ABCIParams.fromJSON(object.abci) : undefined
         };
     },
     toJSON(message) {
@@ -71,6 +79,7 @@ exports.MsgUpdateParams = {
         message.block !== undefined && (obj.block = message.block ? params_1.BlockParams.toJSON(message.block) : undefined);
         message.evidence !== undefined && (obj.evidence = message.evidence ? params_1.EvidenceParams.toJSON(message.evidence) : undefined);
         message.validator !== undefined && (obj.validator = message.validator ? params_1.ValidatorParams.toJSON(message.validator) : undefined);
+        message.abci !== undefined && (obj.abci = message.abci ? params_1.ABCIParams.toJSON(message.abci) : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -79,6 +88,7 @@ exports.MsgUpdateParams = {
         message.block = object.block !== undefined && object.block !== null ? params_1.BlockParams.fromPartial(object.block) : undefined;
         message.evidence = object.evidence !== undefined && object.evidence !== null ? params_1.EvidenceParams.fromPartial(object.evidence) : undefined;
         message.validator = object.validator !== undefined && object.validator !== null ? params_1.ValidatorParams.fromPartial(object.validator) : undefined;
+        message.abci = object.abci !== undefined && object.abci !== null ? params_1.ABCIParams.fromPartial(object.abci) : undefined;
         return message;
     },
     fromSDK(object) {
@@ -86,7 +96,8 @@ exports.MsgUpdateParams = {
             authority: object?.authority,
             block: object.block ? params_1.BlockParams.fromSDK(object.block) : undefined,
             evidence: object.evidence ? params_1.EvidenceParams.fromSDK(object.evidence) : undefined,
-            validator: object.validator ? params_1.ValidatorParams.fromSDK(object.validator) : undefined
+            validator: object.validator ? params_1.ValidatorParams.fromSDK(object.validator) : undefined,
+            abci: object.abci ? params_1.ABCIParams.fromSDK(object.abci) : undefined
         };
     },
     toSDK(message) {
@@ -95,6 +106,7 @@ exports.MsgUpdateParams = {
         message.block !== undefined && (obj.block = message.block ? params_1.BlockParams.toSDK(message.block) : undefined);
         message.evidence !== undefined && (obj.evidence = message.evidence ? params_1.EvidenceParams.toSDK(message.evidence) : undefined);
         message.validator !== undefined && (obj.validator = message.validator ? params_1.ValidatorParams.toSDK(message.validator) : undefined);
+        message.abci !== undefined && (obj.abci = message.abci ? params_1.ABCIParams.toSDK(message.abci) : undefined);
         return obj;
     },
     fromAmino(object) {
@@ -102,7 +114,8 @@ exports.MsgUpdateParams = {
             authority: object.authority,
             block: object?.block ? params_1.BlockParams.fromAmino(object.block) : undefined,
             evidence: object?.evidence ? params_1.EvidenceParams.fromAmino(object.evidence) : undefined,
-            validator: object?.validator ? params_1.ValidatorParams.fromAmino(object.validator) : undefined
+            validator: object?.validator ? params_1.ValidatorParams.fromAmino(object.validator) : undefined,
+            abci: object?.abci ? params_1.ABCIParams.fromAmino(object.abci) : undefined
         };
     },
     toAmino(message) {
@@ -111,6 +124,7 @@ exports.MsgUpdateParams = {
         obj.block = message.block ? params_1.BlockParams.toAmino(message.block) : undefined;
         obj.evidence = message.evidence ? params_1.EvidenceParams.toAmino(message.evidence) : undefined;
         obj.validator = message.validator ? params_1.ValidatorParams.toAmino(message.validator) : undefined;
+        obj.abci = message.abci ? params_1.ABCIParams.toAmino(message.abci) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -118,7 +132,7 @@ exports.MsgUpdateParams = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/MsgUpdateParams",
+            type: "cosmos-sdk/x/consensus/MsgUpdateParams",
             value: exports.MsgUpdateParams.toAmino(message)
         };
     },

@@ -1,11 +1,62 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SimpleValidator = exports.Validator = exports.ValidatorSet = exports.protobufPackage = void 0;
+exports.SimpleValidator = exports.Validator = exports.ValidatorSet = exports.blockIDFlagToJSON = exports.blockIDFlagFromJSON = exports.BlockIDFlagAmino = exports.BlockIDFlagSDKType = exports.BlockIDFlag = exports.protobufPackage = void 0;
 //@ts-nocheck
 const keys_1 = require("../crypto/keys");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
 exports.protobufPackage = "tendermint.types";
+/** BlockIdFlag indicates which BlockID the signature is for */
+var BlockIDFlag;
+(function (BlockIDFlag) {
+    /** BLOCK_ID_FLAG_UNKNOWN - indicates an error condition */
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_UNKNOWN"] = 0] = "BLOCK_ID_FLAG_UNKNOWN";
+    /** BLOCK_ID_FLAG_ABSENT - the vote was not received */
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_ABSENT"] = 1] = "BLOCK_ID_FLAG_ABSENT";
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_COMMIT"] = 2] = "BLOCK_ID_FLAG_COMMIT";
+    /** BLOCK_ID_FLAG_NIL - voted for nil */
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_NIL"] = 3] = "BLOCK_ID_FLAG_NIL";
+    BlockIDFlag[BlockIDFlag["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
+})(BlockIDFlag || (exports.BlockIDFlag = BlockIDFlag = {}));
+exports.BlockIDFlagSDKType = BlockIDFlag;
+exports.BlockIDFlagAmino = BlockIDFlag;
+function blockIDFlagFromJSON(object) {
+    switch (object) {
+        case 0:
+        case "BLOCK_ID_FLAG_UNKNOWN":
+            return BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN;
+        case 1:
+        case "BLOCK_ID_FLAG_ABSENT":
+            return BlockIDFlag.BLOCK_ID_FLAG_ABSENT;
+        case 2:
+        case "BLOCK_ID_FLAG_COMMIT":
+            return BlockIDFlag.BLOCK_ID_FLAG_COMMIT;
+        case 3:
+        case "BLOCK_ID_FLAG_NIL":
+            return BlockIDFlag.BLOCK_ID_FLAG_NIL;
+        case -1:
+        case "UNRECOGNIZED":
+        default:
+            return BlockIDFlag.UNRECOGNIZED;
+    }
+}
+exports.blockIDFlagFromJSON = blockIDFlagFromJSON;
+function blockIDFlagToJSON(object) {
+    switch (object) {
+        case BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN:
+            return "BLOCK_ID_FLAG_UNKNOWN";
+        case BlockIDFlag.BLOCK_ID_FLAG_ABSENT:
+            return "BLOCK_ID_FLAG_ABSENT";
+        case BlockIDFlag.BLOCK_ID_FLAG_COMMIT:
+            return "BLOCK_ID_FLAG_COMMIT";
+        case BlockIDFlag.BLOCK_ID_FLAG_NIL:
+            return "BLOCK_ID_FLAG_NIL";
+        case BlockIDFlag.UNRECOGNIZED:
+        default:
+            return "UNRECOGNIZED";
+    }
+}
+exports.blockIDFlagToJSON = blockIDFlagToJSON;
 function createBaseValidatorSet() {
     return {
         validators: [],

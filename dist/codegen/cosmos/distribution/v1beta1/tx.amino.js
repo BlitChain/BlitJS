@@ -33,6 +33,11 @@ exports.AminoConverter = {
         aminoType: "cosmos-sdk/distr/MsgCommunityPoolSpend",
         toAmino: tx_1.MsgCommunityPoolSpend.toAmino,
         fromAmino: tx_1.MsgCommunityPoolSpend.fromAmino
+    },
+    "/cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPool": {
+        aminoType: "cosmos-sdk/distr/MsgDepositValRewards",
+        toAmino: tx_1.MsgDepositValidatorRewardsPool.toAmino,
+        fromAmino: tx_1.MsgDepositValidatorRewardsPool.fromAmino
     }
 };
 //# sourceMappingURL=tx.amino.js.map

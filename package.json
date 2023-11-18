@@ -62,10 +62,10 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "@cosmjs/amino": "0.31.3",
-    "@cosmjs/proto-signing": "^0.31.3",
-    "@cosmjs/stargate": "^0.31.3",
-    "@cosmjs/tendermint-rpc": "^0.31.3",
+    "@cosmjs/amino": "^0.32.0-rc.1",
+    "@cosmjs/proto-signing": "^0.32.0-rc.1",
+    "@cosmjs/stargate": "^0.32.0-rc.1",
+    "@cosmjs/tendermint-rpc": "^0.32.0-rc.1",
     "@cosmology/lcd": "^0.13.0"
   }
 }

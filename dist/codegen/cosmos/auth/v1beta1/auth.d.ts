@@ -117,7 +117,7 @@ export interface ModuleCredentialAmino {
     derivation_keys: Uint8Array[];
 }
 export interface ModuleCredentialAminoMsg {
-    type: "cosmos-sdk/ModuleCredential";
+    type: "cosmos-sdk/GroupAccountCredential";
     value: ModuleCredentialAmino;
 }
 /**

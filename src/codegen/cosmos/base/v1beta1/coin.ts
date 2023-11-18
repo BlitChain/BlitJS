@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { Decimal } from "@cosmjs/math";
 export const protobufPackage = "cosmos.base.v1beta1";
 /**
  * Coin defines a token with a denomination and an amount.
@@ -86,7 +87,10 @@ export interface DecCoinSDKType {
   denom: string;
   amount: string;
 }
-/** IntProto defines a Protobuf wrapper around an Int object. */
+/**
+ * IntProto defines a Protobuf wrapper around an Int object.
+ * Deprecated: Prefer to use math.Int directly. It supports binary Marshal and Unmarshal.
+ */
 export interface IntProto {
   int: string;
 }
@@ -98,7 +102,10 @@ export interface IntProtoProtoMsg {
   type_url: "/cosmos.base.v1beta1.IntProto";
   value: Uint8Array;
 }
-/** IntProto defines a Protobuf wrapper around an Int object. */
+/**
+ * IntProto defines a Protobuf wrapper around an Int object.
+ * Deprecated: Prefer to use math.Int directly. It supports binary Marshal and Unmarshal.
+ */
 export interface IntProtoAmino {
   int: string;
 }
@@ -106,11 +113,17 @@ export interface IntProtoAminoMsg {
   type: "cosmos-sdk/IntProto";
   value: IntProtoAmino;
 }
-/** IntProto defines a Protobuf wrapper around an Int object. */
+/**
+ * IntProto defines a Protobuf wrapper around an Int object.
+ * Deprecated: Prefer to use math.Int directly. It supports binary Marshal and Unmarshal.
+ */
 export interface IntProtoSDKType {
   int: string;
 }
-/** DecProto defines a Protobuf wrapper around a Dec object. */
+/**
+ * DecProto defines a Protobuf wrapper around a Dec object.
+ * Deprecated: Prefer to use math.LegacyDec directly. It supports binary Marshal and Unmarshal.
+ */
 export interface DecProto {
   dec: string;
 }
@@ -122,7 +135,10 @@ export interface DecProtoProtoMsg {
   type_url: "/cosmos.base.v1beta1.DecProto";
   value: Uint8Array;
 }
-/** DecProto defines a Protobuf wrapper around a Dec object. */
+/**
+ * DecProto defines a Protobuf wrapper around a Dec object.
+ * Deprecated: Prefer to use math.LegacyDec directly. It supports binary Marshal and Unmarshal.
+ */
 export interface DecProtoAmino {
   dec: string;
 }
@@ -130,7 +146,10 @@ export interface DecProtoAminoMsg {
   type: "cosmos-sdk/DecProto";
   value: DecProtoAmino;
 }
-/** DecProto defines a Protobuf wrapper around a Dec object. */
+/**
+ * DecProto defines a Protobuf wrapper around a Dec object.
+ * Deprecated: Prefer to use math.LegacyDec directly. It supports binary Marshal and Unmarshal.
+ */
 export interface DecProtoSDKType {
   dec: string;
 }
@@ -248,7 +267,7 @@ export const DecCoin = {
       writer.uint32(10).string(message.denom);
     }
     if (message.amount !== "") {
-      writer.uint32(18).string(message.amount);
+      writer.uint32(18).string(Decimal.fromUserInput(message.amount, 18).atomics);
     }
     return writer;
   },
@@ -263,7 +282,7 @@ export const DecCoin = {
           message.denom = reader.string();
           break;
         case 2:
-          message.amount = reader.string();
+          message.amount = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         default:
           reader.skipType(tag & 7);
@@ -432,7 +451,7 @@ export const DecProto = {
   typeUrl: "/cosmos.base.v1beta1.DecProto",
   encode(message: DecProto, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.dec !== "") {
-      writer.uint32(10).string(message.dec);
+      writer.uint32(10).string(Decimal.fromUserInput(message.dec, 18).atomics);
     }
     return writer;
   },
@@ -444,7 +463,7 @@ export const DecProto = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.dec = reader.string();
+          message.dec = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         default:
           reader.skipType(tag & 7);

@@ -5,7 +5,7 @@ exports.AminoConverter = void 0;
 const tx_1 = require("./tx");
 exports.AminoConverter = {
     "/cosmos.consensus.v1.MsgUpdateParams": {
-        aminoType: "cosmos-sdk/MsgUpdateParams",
+        aminoType: "cosmos-sdk/x/consensus/MsgUpdateParams",
         toAmino: tx_1.MsgUpdateParams.toAmino,
         fromAmino: tx_1.MsgUpdateParams.fromAmino
     }

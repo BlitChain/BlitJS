@@ -12,6 +12,9 @@ export declare const createRPCMsgClient: ({ rpc }: {
         bank: {
             v1beta1: any;
         };
+        circuit: {
+            v1: any;
+        };
         consensus: {
             v1: any;
         };

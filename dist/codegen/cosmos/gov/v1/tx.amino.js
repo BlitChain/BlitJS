@@ -33,6 +33,11 @@ exports.AminoConverter = {
         aminoType: "cosmos-sdk/x/gov/v1/MsgUpdateParams",
         toAmino: tx_1.MsgUpdateParams.toAmino,
         fromAmino: tx_1.MsgUpdateParams.fromAmino
+    },
+    "/cosmos.gov.v1.MsgCancelProposal": {
+        aminoType: "cosmos-sdk/v1/MsgCancelProposal",
+        toAmino: tx_1.MsgCancelProposal.toAmino,
+        fromAmino: tx_1.MsgCancelProposal.fromAmino
     }
 };
 //# sourceMappingURL=tx.amino.js.map

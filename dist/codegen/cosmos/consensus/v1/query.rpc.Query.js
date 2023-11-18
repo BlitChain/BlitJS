@@ -27,7 +27,7 @@ exports.QueryClientImpl = exports.Query = void 0;
 //@ts-nocheck
 const fm = __importStar(require("../../../grpc-gateway"));
 class Query {
-    /** Params queries the parameters of x/consensus_param module. */
+    /** Params queries the parameters of x/consensus module. */
     static Params(request, initRequest) {
         return fm.fetchReq(`/cosmos/consensus/v1/params?${fm.renderURLSearchParams({
             ...request
@@ -43,7 +43,7 @@ class QueryClientImpl {
     constructor(url) {
         this.url = url;
     }
-    /** Params queries the parameters of x/consensus_param module. */
+    /** Params queries the parameters of x/consensus module. */
     async Params(req, headers) {
         return Query.Params(req, {
             headers,

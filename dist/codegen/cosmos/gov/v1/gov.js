@@ -394,7 +394,9 @@ function createBaseProposal() {
         metadata: "",
         title: "",
         summary: "",
-        proposer: ""
+        proposer: "",
+        expedited: false,
+        failed_reason: ""
     };
 }
 exports.Proposal = {
@@ -438,6 +440,12 @@ exports.Proposal = {
         }
         if (message.proposer !== "") {
             writer.uint32(106).string(message.proposer);
+        }
+        if (message.expedited === true) {
+            writer.uint32(112).bool(message.expedited);
+        }
+        if (message.failed_reason !== "") {
+            writer.uint32(122).string(message.failed_reason);
         }
         return writer;
     },
@@ -487,6 +495,12 @@ exports.Proposal = {
                 case 13:
                     message.proposer = reader.string();
                     break;
+                case 14:
+                    message.expedited = reader.bool();
+                    break;
+                case 15:
+                    message.failed_reason = reader.string();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -508,7 +522,9 @@ exports.Proposal = {
             metadata: (0, helpers_1.isSet)(object.metadata) ? String(object.metadata) : "",
             title: (0, helpers_1.isSet)(object.title) ? String(object.title) : "",
             summary: (0, helpers_1.isSet)(object.summary) ? String(object.summary) : "",
-            proposer: (0, helpers_1.isSet)(object.proposer) ? String(object.proposer) : ""
+            proposer: (0, helpers_1.isSet)(object.proposer) ? String(object.proposer) : "",
+            expedited: (0, helpers_1.isSet)(object.expedited) ? Boolean(object.expedited) : false,
+            failed_reason: (0, helpers_1.isSet)(object.failed_reason) ? String(object.failed_reason) : ""
         };
     },
     toJSON(message) {
@@ -536,6 +552,8 @@ exports.Proposal = {
         message.title !== undefined && (obj.title = message.title);
         message.summary !== undefined && (obj.summary = message.summary);
         message.proposer !== undefined && (obj.proposer = message.proposer);
+        message.expedited !== undefined && (obj.expedited = message.expedited);
+        message.failed_reason !== undefined && (obj.failed_reason = message.failed_reason);
         return obj;
     },
     fromPartial(object) {
@@ -553,6 +571,8 @@ exports.Proposal = {
         message.title = object.title ?? "";
         message.summary = object.summary ?? "";
         message.proposer = object.proposer ?? "";
+        message.expedited = object.expedited ?? false;
+        message.failed_reason = object.failed_reason ?? "";
         return message;
     },
     fromSDK(object) {
@@ -569,7 +589,9 @@ exports.Proposal = {
             metadata: object?.metadata,
             title: object?.title,
             summary: object?.summary,
-            proposer: object?.proposer
+            proposer: object?.proposer,
+            expedited: object?.expedited,
+            failed_reason: object?.failed_reason
         };
     },
     toSDK(message) {
@@ -597,6 +619,8 @@ exports.Proposal = {
         obj.title = message.title;
         obj.summary = message.summary;
         obj.proposer = message.proposer;
+        obj.expedited = message.expedited;
+        obj.failed_reason = message.failed_reason;
         return obj;
     },
     fromAmino(object) {
@@ -613,7 +637,9 @@ exports.Proposal = {
             metadata: object.metadata,
             title: object.title,
             summary: object.summary,
-            proposer: object.proposer
+            proposer: object.proposer,
+            expedited: object.expedited,
+            failed_reason: object.failed_reason
         };
     },
     toAmino(message) {
@@ -641,6 +667,8 @@ exports.Proposal = {
         obj.title = message.title;
         obj.summary = message.summary;
         obj.proposer = message.proposer;
+        obj.expedited = message.expedited;
+        obj.failed_reason = message.failed_reason;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1265,9 +1293,15 @@ function createBaseParams() {
         threshold: "",
         veto_threshold: "",
         min_initial_deposit_ratio: "",
+        proposal_cancel_ratio: "",
+        proposal_cancel_dest: "",
+        expedited_voting_period: undefined,
+        expedited_threshold: "",
+        expedited_min_deposit: [],
         burn_vote_quorum: false,
         burn_proposal_deposit_prevote: false,
-        burn_vote_veto: false
+        burn_vote_veto: false,
+        min_deposit_ratio: ""
     };
 }
 exports.Params = {
@@ -1294,6 +1328,21 @@ exports.Params = {
         if (message.min_initial_deposit_ratio !== "") {
             writer.uint32(58).string(message.min_initial_deposit_ratio);
         }
+        if (message.proposal_cancel_ratio !== "") {
+            writer.uint32(66).string(message.proposal_cancel_ratio);
+        }
+        if (message.proposal_cancel_dest !== "") {
+            writer.uint32(74).string(message.proposal_cancel_dest);
+        }
+        if (message.expedited_voting_period !== undefined) {
+            duration_1.Duration.encode(message.expedited_voting_period, writer.uint32(82).fork()).ldelim();
+        }
+        if (message.expedited_threshold !== "") {
+            writer.uint32(90).string(message.expedited_threshold);
+        }
+        for (const v of message.expedited_min_deposit) {
+            coin_1.Coin.encode(v, writer.uint32(98).fork()).ldelim();
+        }
         if (message.burn_vote_quorum === true) {
             writer.uint32(104).bool(message.burn_vote_quorum);
         }
@@ -1302,6 +1351,9 @@ exports.Params = {
         }
         if (message.burn_vote_veto === true) {
             writer.uint32(120).bool(message.burn_vote_veto);
+        }
+        if (message.min_deposit_ratio !== "") {
+            writer.uint32(130).string(message.min_deposit_ratio);
         }
         return writer;
     },
@@ -1333,6 +1385,21 @@ exports.Params = {
                 case 7:
                     message.min_initial_deposit_ratio = reader.string();
                     break;
+                case 8:
+                    message.proposal_cancel_ratio = reader.string();
+                    break;
+                case 9:
+                    message.proposal_cancel_dest = reader.string();
+                    break;
+                case 10:
+                    message.expedited_voting_period = duration_1.Duration.decode(reader, reader.uint32());
+                    break;
+                case 11:
+                    message.expedited_threshold = reader.string();
+                    break;
+                case 12:
+                    message.expedited_min_deposit.push(coin_1.Coin.decode(reader, reader.uint32()));
+                    break;
                 case 13:
                     message.burn_vote_quorum = reader.bool();
                     break;
@@ -1341,6 +1408,9 @@ exports.Params = {
                     break;
                 case 15:
                     message.burn_vote_veto = reader.bool();
+                    break;
+                case 16:
+                    message.min_deposit_ratio = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1358,9 +1428,15 @@ exports.Params = {
             threshold: (0, helpers_1.isSet)(object.threshold) ? String(object.threshold) : "",
             veto_threshold: (0, helpers_1.isSet)(object.veto_threshold) ? String(object.veto_threshold) : "",
             min_initial_deposit_ratio: (0, helpers_1.isSet)(object.min_initial_deposit_ratio) ? String(object.min_initial_deposit_ratio) : "",
+            proposal_cancel_ratio: (0, helpers_1.isSet)(object.proposal_cancel_ratio) ? String(object.proposal_cancel_ratio) : "",
+            proposal_cancel_dest: (0, helpers_1.isSet)(object.proposal_cancel_dest) ? String(object.proposal_cancel_dest) : "",
+            expedited_voting_period: (0, helpers_1.isSet)(object.expedited_voting_period) ? duration_1.Duration.fromJSON(object.expedited_voting_period) : undefined,
+            expedited_threshold: (0, helpers_1.isSet)(object.expedited_threshold) ? String(object.expedited_threshold) : "",
+            expedited_min_deposit: Array.isArray(object?.expedited_min_deposit) ? object.expedited_min_deposit.map((e) => coin_1.Coin.fromJSON(e)) : [],
             burn_vote_quorum: (0, helpers_1.isSet)(object.burn_vote_quorum) ? Boolean(object.burn_vote_quorum) : false,
             burn_proposal_deposit_prevote: (0, helpers_1.isSet)(object.burn_proposal_deposit_prevote) ? Boolean(object.burn_proposal_deposit_prevote) : false,
-            burn_vote_veto: (0, helpers_1.isSet)(object.burn_vote_veto) ? Boolean(object.burn_vote_veto) : false
+            burn_vote_veto: (0, helpers_1.isSet)(object.burn_vote_veto) ? Boolean(object.burn_vote_veto) : false,
+            min_deposit_ratio: (0, helpers_1.isSet)(object.min_deposit_ratio) ? String(object.min_deposit_ratio) : ""
         };
     },
     toJSON(message) {
@@ -1377,9 +1453,20 @@ exports.Params = {
         message.threshold !== undefined && (obj.threshold = message.threshold);
         message.veto_threshold !== undefined && (obj.veto_threshold = message.veto_threshold);
         message.min_initial_deposit_ratio !== undefined && (obj.min_initial_deposit_ratio = message.min_initial_deposit_ratio);
+        message.proposal_cancel_ratio !== undefined && (obj.proposal_cancel_ratio = message.proposal_cancel_ratio);
+        message.proposal_cancel_dest !== undefined && (obj.proposal_cancel_dest = message.proposal_cancel_dest);
+        message.expedited_voting_period !== undefined && (obj.expedited_voting_period = message.expedited_voting_period ? duration_1.Duration.toJSON(message.expedited_voting_period) : undefined);
+        message.expedited_threshold !== undefined && (obj.expedited_threshold = message.expedited_threshold);
+        if (message.expedited_min_deposit) {
+            obj.expedited_min_deposit = message.expedited_min_deposit.map(e => e ? coin_1.Coin.toJSON(e) : undefined);
+        }
+        else {
+            obj.expedited_min_deposit = [];
+        }
         message.burn_vote_quorum !== undefined && (obj.burn_vote_quorum = message.burn_vote_quorum);
         message.burn_proposal_deposit_prevote !== undefined && (obj.burn_proposal_deposit_prevote = message.burn_proposal_deposit_prevote);
         message.burn_vote_veto !== undefined && (obj.burn_vote_veto = message.burn_vote_veto);
+        message.min_deposit_ratio !== undefined && (obj.min_deposit_ratio = message.min_deposit_ratio);
         return obj;
     },
     fromPartial(object) {
@@ -1391,9 +1478,15 @@ exports.Params = {
         message.threshold = object.threshold ?? "";
         message.veto_threshold = object.veto_threshold ?? "";
         message.min_initial_deposit_ratio = object.min_initial_deposit_ratio ?? "";
+        message.proposal_cancel_ratio = object.proposal_cancel_ratio ?? "";
+        message.proposal_cancel_dest = object.proposal_cancel_dest ?? "";
+        message.expedited_voting_period = object.expedited_voting_period !== undefined && object.expedited_voting_period !== null ? duration_1.Duration.fromPartial(object.expedited_voting_period) : undefined;
+        message.expedited_threshold = object.expedited_threshold ?? "";
+        message.expedited_min_deposit = object.expedited_min_deposit?.map(e => coin_1.Coin.fromPartial(e)) || [];
         message.burn_vote_quorum = object.burn_vote_quorum ?? false;
         message.burn_proposal_deposit_prevote = object.burn_proposal_deposit_prevote ?? false;
         message.burn_vote_veto = object.burn_vote_veto ?? false;
+        message.min_deposit_ratio = object.min_deposit_ratio ?? "";
         return message;
     },
     fromSDK(object) {
@@ -1405,9 +1498,15 @@ exports.Params = {
             threshold: object?.threshold,
             veto_threshold: object?.veto_threshold,
             min_initial_deposit_ratio: object?.min_initial_deposit_ratio,
+            proposal_cancel_ratio: object?.proposal_cancel_ratio,
+            proposal_cancel_dest: object?.proposal_cancel_dest,
+            expedited_voting_period: object.expedited_voting_period ? duration_1.Duration.fromSDK(object.expedited_voting_period) : undefined,
+            expedited_threshold: object?.expedited_threshold,
+            expedited_min_deposit: Array.isArray(object?.expedited_min_deposit) ? object.expedited_min_deposit.map((e) => coin_1.Coin.fromSDK(e)) : [],
             burn_vote_quorum: object?.burn_vote_quorum,
             burn_proposal_deposit_prevote: object?.burn_proposal_deposit_prevote,
-            burn_vote_veto: object?.burn_vote_veto
+            burn_vote_veto: object?.burn_vote_veto,
+            min_deposit_ratio: object?.min_deposit_ratio
         };
     },
     toSDK(message) {
@@ -1424,9 +1523,20 @@ exports.Params = {
         obj.threshold = message.threshold;
         obj.veto_threshold = message.veto_threshold;
         obj.min_initial_deposit_ratio = message.min_initial_deposit_ratio;
+        obj.proposal_cancel_ratio = message.proposal_cancel_ratio;
+        obj.proposal_cancel_dest = message.proposal_cancel_dest;
+        message.expedited_voting_period !== undefined && (obj.expedited_voting_period = message.expedited_voting_period ? duration_1.Duration.toSDK(message.expedited_voting_period) : undefined);
+        obj.expedited_threshold = message.expedited_threshold;
+        if (message.expedited_min_deposit) {
+            obj.expedited_min_deposit = message.expedited_min_deposit.map(e => e ? coin_1.Coin.toSDK(e) : undefined);
+        }
+        else {
+            obj.expedited_min_deposit = [];
+        }
         obj.burn_vote_quorum = message.burn_vote_quorum;
         obj.burn_proposal_deposit_prevote = message.burn_proposal_deposit_prevote;
         obj.burn_vote_veto = message.burn_vote_veto;
+        obj.min_deposit_ratio = message.min_deposit_ratio;
         return obj;
     },
     fromAmino(object) {
@@ -1438,9 +1548,15 @@ exports.Params = {
             threshold: object.threshold,
             veto_threshold: object.veto_threshold,
             min_initial_deposit_ratio: object.min_initial_deposit_ratio,
+            proposal_cancel_ratio: object.proposal_cancel_ratio,
+            proposal_cancel_dest: object.proposal_cancel_dest,
+            expedited_voting_period: object?.expedited_voting_period ? duration_1.Duration.fromAmino(object.expedited_voting_period) : undefined,
+            expedited_threshold: object.expedited_threshold,
+            expedited_min_deposit: Array.isArray(object?.expedited_min_deposit) ? object.expedited_min_deposit.map((e) => coin_1.Coin.fromAmino(e)) : [],
             burn_vote_quorum: object.burn_vote_quorum,
             burn_proposal_deposit_prevote: object.burn_proposal_deposit_prevote,
-            burn_vote_veto: object.burn_vote_veto
+            burn_vote_veto: object.burn_vote_veto,
+            min_deposit_ratio: object.min_deposit_ratio
         };
     },
     toAmino(message) {
@@ -1457,9 +1573,20 @@ exports.Params = {
         obj.threshold = message.threshold;
         obj.veto_threshold = message.veto_threshold;
         obj.min_initial_deposit_ratio = message.min_initial_deposit_ratio;
+        obj.proposal_cancel_ratio = message.proposal_cancel_ratio;
+        obj.proposal_cancel_dest = message.proposal_cancel_dest;
+        obj.expedited_voting_period = message.expedited_voting_period ? duration_1.Duration.toAmino(message.expedited_voting_period) : undefined;
+        obj.expedited_threshold = message.expedited_threshold;
+        if (message.expedited_min_deposit) {
+            obj.expedited_min_deposit = message.expedited_min_deposit.map(e => e ? coin_1.Coin.toAmino(e) : undefined);
+        }
+        else {
+            obj.expedited_min_deposit = [];
+        }
         obj.burn_vote_quorum = message.burn_vote_quorum;
         obj.burn_proposal_deposit_prevote = message.burn_proposal_deposit_prevote;
         obj.burn_vote_veto = message.burn_vote_veto;
+        obj.min_deposit_ratio = message.min_deposit_ratio;
         return obj;
     },
     fromAminoMsg(object) {

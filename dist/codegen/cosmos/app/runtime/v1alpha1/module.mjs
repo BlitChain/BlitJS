@@ -9,7 +9,10 @@ function createBaseModule() {
         end_blockers: [],
         init_genesis: [],
         export_genesis: [],
-        override_store_keys: []
+        override_store_keys: [],
+        order_migrations: [],
+        precommiters: [],
+        prepare_check_staters: []
     };
 }
 export const Module = {
@@ -32,6 +35,15 @@ export const Module = {
         }
         for (const v of message.override_store_keys) {
             StoreKeyConfig.encode(v, writer.uint32(50).fork()).ldelim();
+        }
+        for (const v of message.order_migrations) {
+            writer.uint32(58).string(v);
+        }
+        for (const v of message.precommiters) {
+            writer.uint32(66).string(v);
+        }
+        for (const v of message.prepare_check_staters) {
+            writer.uint32(74).string(v);
         }
         return writer;
     },
@@ -60,6 +72,15 @@ export const Module = {
                 case 6:
                     message.override_store_keys.push(StoreKeyConfig.decode(reader, reader.uint32()));
                     break;
+                case 7:
+                    message.order_migrations.push(reader.string());
+                    break;
+                case 8:
+                    message.precommiters.push(reader.string());
+                    break;
+                case 9:
+                    message.prepare_check_staters.push(reader.string());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -74,7 +95,10 @@ export const Module = {
             end_blockers: Array.isArray(object?.end_blockers) ? object.end_blockers.map((e) => String(e)) : [],
             init_genesis: Array.isArray(object?.init_genesis) ? object.init_genesis.map((e) => String(e)) : [],
             export_genesis: Array.isArray(object?.export_genesis) ? object.export_genesis.map((e) => String(e)) : [],
-            override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e) => StoreKeyConfig.fromJSON(e)) : []
+            override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e) => StoreKeyConfig.fromJSON(e)) : [],
+            order_migrations: Array.isArray(object?.order_migrations) ? object.order_migrations.map((e) => String(e)) : [],
+            precommiters: Array.isArray(object?.precommiters) ? object.precommiters.map((e) => String(e)) : [],
+            prepare_check_staters: Array.isArray(object?.prepare_check_staters) ? object.prepare_check_staters.map((e) => String(e)) : []
         };
     },
     toJSON(message) {
@@ -110,6 +134,24 @@ export const Module = {
         else {
             obj.override_store_keys = [];
         }
+        if (message.order_migrations) {
+            obj.order_migrations = message.order_migrations.map(e => e);
+        }
+        else {
+            obj.order_migrations = [];
+        }
+        if (message.precommiters) {
+            obj.precommiters = message.precommiters.map(e => e);
+        }
+        else {
+            obj.precommiters = [];
+        }
+        if (message.prepare_check_staters) {
+            obj.prepare_check_staters = message.prepare_check_staters.map(e => e);
+        }
+        else {
+            obj.prepare_check_staters = [];
+        }
         return obj;
     },
     fromPartial(object) {
@@ -120,6 +162,9 @@ export const Module = {
         message.init_genesis = object.init_genesis?.map(e => e) || [];
         message.export_genesis = object.export_genesis?.map(e => e) || [];
         message.override_store_keys = object.override_store_keys?.map(e => StoreKeyConfig.fromPartial(e)) || [];
+        message.order_migrations = object.order_migrations?.map(e => e) || [];
+        message.precommiters = object.precommiters?.map(e => e) || [];
+        message.prepare_check_staters = object.prepare_check_staters?.map(e => e) || [];
         return message;
     },
     fromSDK(object) {
@@ -129,7 +174,10 @@ export const Module = {
             end_blockers: Array.isArray(object?.end_blockers) ? object.end_blockers.map((e) => e) : [],
             init_genesis: Array.isArray(object?.init_genesis) ? object.init_genesis.map((e) => e) : [],
             export_genesis: Array.isArray(object?.export_genesis) ? object.export_genesis.map((e) => e) : [],
-            override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e) => StoreKeyConfig.fromSDK(e)) : []
+            override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e) => StoreKeyConfig.fromSDK(e)) : [],
+            order_migrations: Array.isArray(object?.order_migrations) ? object.order_migrations.map((e) => e) : [],
+            precommiters: Array.isArray(object?.precommiters) ? object.precommiters.map((e) => e) : [],
+            prepare_check_staters: Array.isArray(object?.prepare_check_staters) ? object.prepare_check_staters.map((e) => e) : []
         };
     },
     toSDK(message) {
@@ -165,6 +213,24 @@ export const Module = {
         else {
             obj.override_store_keys = [];
         }
+        if (message.order_migrations) {
+            obj.order_migrations = message.order_migrations.map(e => e);
+        }
+        else {
+            obj.order_migrations = [];
+        }
+        if (message.precommiters) {
+            obj.precommiters = message.precommiters.map(e => e);
+        }
+        else {
+            obj.precommiters = [];
+        }
+        if (message.prepare_check_staters) {
+            obj.prepare_check_staters = message.prepare_check_staters.map(e => e);
+        }
+        else {
+            obj.prepare_check_staters = [];
+        }
         return obj;
     },
     fromAmino(object) {
@@ -174,7 +240,10 @@ export const Module = {
             end_blockers: Array.isArray(object?.end_blockers) ? object.end_blockers.map((e) => e) : [],
             init_genesis: Array.isArray(object?.init_genesis) ? object.init_genesis.map((e) => e) : [],
             export_genesis: Array.isArray(object?.export_genesis) ? object.export_genesis.map((e) => e) : [],
-            override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e) => StoreKeyConfig.fromAmino(e)) : []
+            override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e) => StoreKeyConfig.fromAmino(e)) : [],
+            order_migrations: Array.isArray(object?.order_migrations) ? object.order_migrations.map((e) => e) : [],
+            precommiters: Array.isArray(object?.precommiters) ? object.precommiters.map((e) => e) : [],
+            prepare_check_staters: Array.isArray(object?.prepare_check_staters) ? object.prepare_check_staters.map((e) => e) : []
         };
     },
     toAmino(message) {
@@ -209,6 +278,24 @@ export const Module = {
         }
         else {
             obj.override_store_keys = [];
+        }
+        if (message.order_migrations) {
+            obj.order_migrations = message.order_migrations.map(e => e);
+        }
+        else {
+            obj.order_migrations = [];
+        }
+        if (message.precommiters) {
+            obj.precommiters = message.precommiters.map(e => e);
+        }
+        else {
+            obj.precommiters = [];
+        }
+        if (message.prepare_check_staters) {
+            obj.prepare_check_staters = message.prepare_check_staters.map(e => e);
+        }
+        else {
+            obj.prepare_check_staters = [];
         }
         return obj;
     },

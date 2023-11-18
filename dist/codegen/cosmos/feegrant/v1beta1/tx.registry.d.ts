@@ -1,5 +1,5 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgGrantAllowance, MsgRevokeAllowance } from "./tx";
+import { MsgGrantAllowance, MsgRevokeAllowance, MsgPruneAllowances } from "./tx";
 export declare const registry: ReadonlyArray<[string, GeneratedType]>;
 export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
@@ -9,6 +9,10 @@ export declare const MessageComposer: {
             value: Uint8Array;
         };
         revokeAllowance(value: MsgRevokeAllowance): {
+            typeUrl: string;
+            value: Uint8Array;
+        };
+        pruneAllowances(value: MsgPruneAllowances): {
             typeUrl: string;
             value: Uint8Array;
         };
@@ -22,6 +26,10 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgRevokeAllowance;
         };
+        pruneAllowances(value: MsgPruneAllowances): {
+            typeUrl: string;
+            value: MsgPruneAllowances;
+        };
     };
     toJSON: {
         grantAllowance(value: MsgGrantAllowance): {
@@ -29,6 +37,10 @@ export declare const MessageComposer: {
             value: unknown;
         };
         revokeAllowance(value: MsgRevokeAllowance): {
+            typeUrl: string;
+            value: unknown;
+        };
+        pruneAllowances(value: MsgPruneAllowances): {
             typeUrl: string;
             value: unknown;
         };
@@ -42,6 +54,10 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgRevokeAllowance;
         };
+        pruneAllowances(value: any): {
+            typeUrl: string;
+            value: MsgPruneAllowances;
+        };
     };
     fromPartial: {
         grantAllowance(value: MsgGrantAllowance): {
@@ -51,6 +67,10 @@ export declare const MessageComposer: {
         revokeAllowance(value: MsgRevokeAllowance): {
             typeUrl: string;
             value: MsgRevokeAllowance;
+        };
+        pruneAllowances(value: MsgPruneAllowances): {
+            typeUrl: string;
+            value: MsgPruneAllowances;
         };
     };
 };

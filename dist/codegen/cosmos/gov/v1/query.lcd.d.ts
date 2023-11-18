@@ -1,10 +1,11 @@
 import { LCDClient } from "@cosmology/lcd";
-import { QueryProposalRequest, QueryProposalResponseSDKType, QueryProposalsRequest, QueryProposalsResponseSDKType, QueryVoteRequest, QueryVoteResponseSDKType, QueryVotesRequest, QueryVotesResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDepositRequest, QueryDepositResponseSDKType, QueryDepositsRequest, QueryDepositsResponseSDKType, QueryTallyResultRequest, QueryTallyResultResponseSDKType } from "./query";
+import { QueryConstitutionRequest, QueryConstitutionResponseSDKType, QueryProposalRequest, QueryProposalResponseSDKType, QueryProposalsRequest, QueryProposalsResponseSDKType, QueryVoteRequest, QueryVoteResponseSDKType, QueryVotesRequest, QueryVotesResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDepositRequest, QueryDepositResponseSDKType, QueryDepositsRequest, QueryDepositsResponseSDKType, QueryTallyResultRequest, QueryTallyResultResponseSDKType } from "./query";
 export declare class LCDQueryClient {
     req: LCDClient;
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
+    constitution(_params?: QueryConstitutionRequest): Promise<QueryConstitutionResponseSDKType>;
     proposal(params: QueryProposalRequest): Promise<QueryProposalResponseSDKType>;
     proposals(params: QueryProposalsRequest): Promise<QueryProposalsResponseSDKType>;
     vote(params: QueryVoteRequest): Promise<QueryVoteResponseSDKType>;

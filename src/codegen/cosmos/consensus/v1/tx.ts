@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { BlockParams, BlockParamsAmino, BlockParamsSDKType, EvidenceParams, EvidenceParamsAmino, EvidenceParamsSDKType, ValidatorParams, ValidatorParamsAmino, ValidatorParamsSDKType } from "../../../tendermint/types/params";
+import { BlockParams, BlockParamsAmino, BlockParamsSDKType, EvidenceParams, EvidenceParamsAmino, EvidenceParamsSDKType, ValidatorParams, ValidatorParamsAmino, ValidatorParamsSDKType, ABCIParams, ABCIParamsAmino, ABCIParamsSDKType } from "../../../tendermint/types/params";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
 export const protobufPackage = "cosmos.consensus.v1";
@@ -17,6 +17,8 @@ export interface MsgUpdateParams {
   block?: BlockParams;
   evidence?: EvidenceParams;
   validator?: ValidatorParams;
+  /** Since: cosmos-sdk 0.50 */
+  abci?: ABCIParams;
 }
 export interface MsgUpdateParamsProtoMsg {
   type_url: "/cosmos.consensus.v1.MsgUpdateParams";
@@ -40,9 +42,11 @@ export interface MsgUpdateParamsAmino {
   block?: BlockParamsAmino;
   evidence?: EvidenceParamsAmino;
   validator?: ValidatorParamsAmino;
+  /** Since: cosmos-sdk 0.50 */
+  abci?: ABCIParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
-  type: "cosmos-sdk/MsgUpdateParams";
+  type: "cosmos-sdk/x/consensus/MsgUpdateParams";
   value: MsgUpdateParamsAmino;
 }
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
@@ -51,6 +55,7 @@ export interface MsgUpdateParamsSDKType {
   block?: BlockParamsSDKType;
   evidence?: EvidenceParamsSDKType;
   validator?: ValidatorParamsSDKType;
+  abci?: ABCIParamsSDKType;
 }
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
@@ -84,7 +89,8 @@ function createBaseMsgUpdateParams(): MsgUpdateParams {
     authority: "",
     block: undefined,
     evidence: undefined,
-    validator: undefined
+    validator: undefined,
+    abci: undefined
   };
 }
 export const MsgUpdateParams = {
@@ -101,6 +107,9 @@ export const MsgUpdateParams = {
     }
     if (message.validator !== undefined) {
       ValidatorParams.encode(message.validator, writer.uint32(34).fork()).ldelim();
+    }
+    if (message.abci !== undefined) {
+      ABCIParams.encode(message.abci, writer.uint32(42).fork()).ldelim();
     }
     return writer;
   },
@@ -123,6 +132,9 @@ export const MsgUpdateParams = {
         case 4:
           message.validator = ValidatorParams.decode(reader, reader.uint32());
           break;
+        case 5:
+          message.abci = ABCIParams.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -135,7 +147,8 @@ export const MsgUpdateParams = {
       authority: isSet(object.authority) ? String(object.authority) : "",
       block: isSet(object.block) ? BlockParams.fromJSON(object.block) : undefined,
       evidence: isSet(object.evidence) ? EvidenceParams.fromJSON(object.evidence) : undefined,
-      validator: isSet(object.validator) ? ValidatorParams.fromJSON(object.validator) : undefined
+      validator: isSet(object.validator) ? ValidatorParams.fromJSON(object.validator) : undefined,
+      abci: isSet(object.abci) ? ABCIParams.fromJSON(object.abci) : undefined
     };
   },
   toJSON(message: MsgUpdateParams): unknown {
@@ -144,6 +157,7 @@ export const MsgUpdateParams = {
     message.block !== undefined && (obj.block = message.block ? BlockParams.toJSON(message.block) : undefined);
     message.evidence !== undefined && (obj.evidence = message.evidence ? EvidenceParams.toJSON(message.evidence) : undefined);
     message.validator !== undefined && (obj.validator = message.validator ? ValidatorParams.toJSON(message.validator) : undefined);
+    message.abci !== undefined && (obj.abci = message.abci ? ABCIParams.toJSON(message.abci) : undefined);
     return obj;
   },
   fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams {
@@ -152,6 +166,7 @@ export const MsgUpdateParams = {
     message.block = object.block !== undefined && object.block !== null ? BlockParams.fromPartial(object.block) : undefined;
     message.evidence = object.evidence !== undefined && object.evidence !== null ? EvidenceParams.fromPartial(object.evidence) : undefined;
     message.validator = object.validator !== undefined && object.validator !== null ? ValidatorParams.fromPartial(object.validator) : undefined;
+    message.abci = object.abci !== undefined && object.abci !== null ? ABCIParams.fromPartial(object.abci) : undefined;
     return message;
   },
   fromSDK(object: MsgUpdateParamsSDKType): MsgUpdateParams {
@@ -159,7 +174,8 @@ export const MsgUpdateParams = {
       authority: object?.authority,
       block: object.block ? BlockParams.fromSDK(object.block) : undefined,
       evidence: object.evidence ? EvidenceParams.fromSDK(object.evidence) : undefined,
-      validator: object.validator ? ValidatorParams.fromSDK(object.validator) : undefined
+      validator: object.validator ? ValidatorParams.fromSDK(object.validator) : undefined,
+      abci: object.abci ? ABCIParams.fromSDK(object.abci) : undefined
     };
   },
   toSDK(message: MsgUpdateParams): MsgUpdateParamsSDKType {
@@ -168,6 +184,7 @@ export const MsgUpdateParams = {
     message.block !== undefined && (obj.block = message.block ? BlockParams.toSDK(message.block) : undefined);
     message.evidence !== undefined && (obj.evidence = message.evidence ? EvidenceParams.toSDK(message.evidence) : undefined);
     message.validator !== undefined && (obj.validator = message.validator ? ValidatorParams.toSDK(message.validator) : undefined);
+    message.abci !== undefined && (obj.abci = message.abci ? ABCIParams.toSDK(message.abci) : undefined);
     return obj;
   },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
@@ -175,7 +192,8 @@ export const MsgUpdateParams = {
       authority: object.authority,
       block: object?.block ? BlockParams.fromAmino(object.block) : undefined,
       evidence: object?.evidence ? EvidenceParams.fromAmino(object.evidence) : undefined,
-      validator: object?.validator ? ValidatorParams.fromAmino(object.validator) : undefined
+      validator: object?.validator ? ValidatorParams.fromAmino(object.validator) : undefined,
+      abci: object?.abci ? ABCIParams.fromAmino(object.abci) : undefined
     };
   },
   toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino {
@@ -184,6 +202,7 @@ export const MsgUpdateParams = {
     obj.block = message.block ? BlockParams.toAmino(message.block) : undefined;
     obj.evidence = message.evidence ? EvidenceParams.toAmino(message.evidence) : undefined;
     obj.validator = message.validator ? ValidatorParams.toAmino(message.validator) : undefined;
+    obj.abci = message.abci ? ABCIParams.toAmino(message.abci) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams {
@@ -191,7 +210,7 @@ export const MsgUpdateParams = {
   },
   toAminoMsg(message: MsgUpdateParams): MsgUpdateParamsAminoMsg {
     return {
-      type: "cosmos-sdk/MsgUpdateParams",
+      type: "cosmos-sdk/x/consensus/MsgUpdateParams",
       value: MsgUpdateParams.toAmino(message)
     };
   },

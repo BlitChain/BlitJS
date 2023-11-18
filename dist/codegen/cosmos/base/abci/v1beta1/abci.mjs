@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { Any } from "../../../../google/protobuf/any";
 import { Event } from "../../../../tendermint/abci/types";
+import { Block } from "../../../../tendermint/types/block";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
 export const protobufPackage = "cosmos.base.abci.v1beta1";
@@ -1398,6 +1399,178 @@ export const SearchTxsResult = {
         return {
             typeUrl: "/cosmos.base.abci.v1beta1.SearchTxsResult",
             value: SearchTxsResult.encode(message).finish()
+        };
+    }
+};
+function createBaseSearchBlocksResult() {
+    return {
+        total_count: BigInt(0),
+        count: BigInt(0),
+        page_number: BigInt(0),
+        page_total: BigInt(0),
+        limit: BigInt(0),
+        blocks: []
+    };
+}
+export const SearchBlocksResult = {
+    typeUrl: "/cosmos.base.abci.v1beta1.SearchBlocksResult",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.total_count !== BigInt(0)) {
+            writer.uint32(8).int64(message.total_count);
+        }
+        if (message.count !== BigInt(0)) {
+            writer.uint32(16).int64(message.count);
+        }
+        if (message.page_number !== BigInt(0)) {
+            writer.uint32(24).int64(message.page_number);
+        }
+        if (message.page_total !== BigInt(0)) {
+            writer.uint32(32).int64(message.page_total);
+        }
+        if (message.limit !== BigInt(0)) {
+            writer.uint32(40).int64(message.limit);
+        }
+        for (const v of message.blocks) {
+            Block.encode(v, writer.uint32(50).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseSearchBlocksResult();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.total_count = reader.int64();
+                    break;
+                case 2:
+                    message.count = reader.int64();
+                    break;
+                case 3:
+                    message.page_number = reader.int64();
+                    break;
+                case 4:
+                    message.page_total = reader.int64();
+                    break;
+                case 5:
+                    message.limit = reader.int64();
+                    break;
+                case 6:
+                    message.blocks.push(Block.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            total_count: isSet(object.total_count) ? BigInt(object.total_count.toString()) : BigInt(0),
+            count: isSet(object.count) ? BigInt(object.count.toString()) : BigInt(0),
+            page_number: isSet(object.page_number) ? BigInt(object.page_number.toString()) : BigInt(0),
+            page_total: isSet(object.page_total) ? BigInt(object.page_total.toString()) : BigInt(0),
+            limit: isSet(object.limit) ? BigInt(object.limit.toString()) : BigInt(0),
+            blocks: Array.isArray(object?.blocks) ? object.blocks.map((e) => Block.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.total_count !== undefined && (obj.total_count = (message.total_count || BigInt(0)).toString());
+        message.count !== undefined && (obj.count = (message.count || BigInt(0)).toString());
+        message.page_number !== undefined && (obj.page_number = (message.page_number || BigInt(0)).toString());
+        message.page_total !== undefined && (obj.page_total = (message.page_total || BigInt(0)).toString());
+        message.limit !== undefined && (obj.limit = (message.limit || BigInt(0)).toString());
+        if (message.blocks) {
+            obj.blocks = message.blocks.map(e => e ? Block.toJSON(e) : undefined);
+        }
+        else {
+            obj.blocks = [];
+        }
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseSearchBlocksResult();
+        message.total_count = object.total_count !== undefined && object.total_count !== null ? BigInt(object.total_count.toString()) : BigInt(0);
+        message.count = object.count !== undefined && object.count !== null ? BigInt(object.count.toString()) : BigInt(0);
+        message.page_number = object.page_number !== undefined && object.page_number !== null ? BigInt(object.page_number.toString()) : BigInt(0);
+        message.page_total = object.page_total !== undefined && object.page_total !== null ? BigInt(object.page_total.toString()) : BigInt(0);
+        message.limit = object.limit !== undefined && object.limit !== null ? BigInt(object.limit.toString()) : BigInt(0);
+        message.blocks = object.blocks?.map(e => Block.fromPartial(e)) || [];
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            total_count: object?.total_count,
+            count: object?.count,
+            page_number: object?.page_number,
+            page_total: object?.page_total,
+            limit: object?.limit,
+            blocks: Array.isArray(object?.blocks) ? object.blocks.map((e) => Block.fromSDK(e)) : []
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        obj.total_count = message.total_count;
+        obj.count = message.count;
+        obj.page_number = message.page_number;
+        obj.page_total = message.page_total;
+        obj.limit = message.limit;
+        if (message.blocks) {
+            obj.blocks = message.blocks.map(e => e ? Block.toSDK(e) : undefined);
+        }
+        else {
+            obj.blocks = [];
+        }
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            total_count: BigInt(object.total_count),
+            count: BigInt(object.count),
+            page_number: BigInt(object.page_number),
+            page_total: BigInt(object.page_total),
+            limit: BigInt(object.limit),
+            blocks: Array.isArray(object?.blocks) ? object.blocks.map((e) => Block.fromAmino(e)) : []
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.total_count = message.total_count ? message.total_count.toString() : undefined;
+        obj.count = message.count ? message.count.toString() : undefined;
+        obj.page_number = message.page_number ? message.page_number.toString() : undefined;
+        obj.page_total = message.page_total ? message.page_total.toString() : undefined;
+        obj.limit = message.limit ? message.limit.toString() : undefined;
+        if (message.blocks) {
+            obj.blocks = message.blocks.map(e => e ? Block.toAmino(e) : undefined);
+        }
+        else {
+            obj.blocks = [];
+        }
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return SearchBlocksResult.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/SearchBlocksResult",
+            value: SearchBlocksResult.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return SearchBlocksResult.decode(message.value);
+    },
+    toProto(message) {
+        return SearchBlocksResult.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.base.abci.v1beta1.SearchBlocksResult",
+            value: SearchBlocksResult.encode(message).finish()
         };
     }
 };

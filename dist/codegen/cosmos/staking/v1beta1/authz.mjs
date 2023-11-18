@@ -18,6 +18,8 @@ export var AuthorizationType;
     AuthorizationType[AuthorizationType["AUTHORIZATION_TYPE_UNDELEGATE"] = 2] = "AUTHORIZATION_TYPE_UNDELEGATE";
     /** AUTHORIZATION_TYPE_REDELEGATE - AUTHORIZATION_TYPE_REDELEGATE defines an authorization type for Msg/BeginRedelegate */
     AuthorizationType[AuthorizationType["AUTHORIZATION_TYPE_REDELEGATE"] = 3] = "AUTHORIZATION_TYPE_REDELEGATE";
+    /** AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION - AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION defines an authorization type for Msg/MsgCancelUnbondingDelegation */
+    AuthorizationType[AuthorizationType["AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION"] = 4] = "AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION";
     AuthorizationType[AuthorizationType["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
 })(AuthorizationType || (AuthorizationType = {}));
 export const AuthorizationTypeSDKType = AuthorizationType;
@@ -36,6 +38,9 @@ export function authorizationTypeFromJSON(object) {
         case 3:
         case "AUTHORIZATION_TYPE_REDELEGATE":
             return AuthorizationType.AUTHORIZATION_TYPE_REDELEGATE;
+        case 4:
+        case "AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION":
+            return AuthorizationType.AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION;
         case -1:
         case "UNRECOGNIZED":
         default:
@@ -52,6 +57,8 @@ export function authorizationTypeToJSON(object) {
             return "AUTHORIZATION_TYPE_UNDELEGATE";
         case AuthorizationType.AUTHORIZATION_TYPE_REDELEGATE:
             return "AUTHORIZATION_TYPE_REDELEGATE";
+        case AuthorizationType.AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION:
+            return "AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION";
         case AuthorizationType.UNRECOGNIZED:
         default:
             return "UNRECOGNIZED";

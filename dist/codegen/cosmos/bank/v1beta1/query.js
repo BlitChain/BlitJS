@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QuerySendEnabledResponse = exports.QuerySendEnabledRequest = exports.QueryDenomOwnersResponse = exports.DenomOwner = exports.QueryDenomOwnersRequest = exports.QueryDenomMetadataResponse = exports.QueryDenomMetadataRequest = exports.QueryDenomsMetadataResponse = exports.QueryDenomsMetadataRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.QuerySupplyOfResponse = exports.QuerySupplyOfRequest = exports.QueryTotalSupplyResponse = exports.QueryTotalSupplyRequest = exports.QuerySpendableBalanceByDenomResponse = exports.QuerySpendableBalanceByDenomRequest = exports.QuerySpendableBalancesResponse = exports.QuerySpendableBalancesRequest = exports.QueryAllBalancesResponse = exports.QueryAllBalancesRequest = exports.QueryBalanceResponse = exports.QueryBalanceRequest = exports.protobufPackage = void 0;
+exports.QuerySendEnabledResponse = exports.QuerySendEnabledRequest = exports.QueryDenomOwnersResponse = exports.DenomOwner = exports.QueryDenomOwnersRequest = exports.QueryDenomMetadataByQueryStringResponse = exports.QueryDenomMetadataByQueryStringRequest = exports.QueryDenomMetadataResponse = exports.QueryDenomMetadataRequest = exports.QueryDenomsMetadataResponse = exports.QueryDenomsMetadataRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.QuerySupplyOfResponse = exports.QuerySupplyOfRequest = exports.QueryTotalSupplyResponse = exports.QueryTotalSupplyRequest = exports.QuerySpendableBalanceByDenomResponse = exports.QuerySpendableBalanceByDenomRequest = exports.QuerySpendableBalancesResponse = exports.QuerySpendableBalancesRequest = exports.QueryAllBalancesResponse = exports.QueryAllBalancesRequest = exports.QueryBalanceResponse = exports.QueryBalanceRequest = exports.protobufPackage = void 0;
 //@ts-nocheck
 const pagination_1 = require("../../base/query/v1beta1/pagination");
 const coin_1 = require("../../base/v1beta1/coin");
@@ -199,7 +199,8 @@ exports.QueryBalanceResponse = {
 function createBaseQueryAllBalancesRequest() {
     return {
         address: "",
-        pagination: undefined
+        pagination: undefined,
+        resolve_denom: false
     };
 }
 exports.QueryAllBalancesRequest = {
@@ -210,6 +211,9 @@ exports.QueryAllBalancesRequest = {
         }
         if (message.pagination !== undefined) {
             pagination_1.PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+        }
+        if (message.resolve_denom === true) {
+            writer.uint32(24).bool(message.resolve_denom);
         }
         return writer;
     },
@@ -226,6 +230,9 @@ exports.QueryAllBalancesRequest = {
                 case 2:
                     message.pagination = pagination_1.PageRequest.decode(reader, reader.uint32());
                     break;
+                case 3:
+                    message.resolve_denom = reader.bool();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -236,43 +243,50 @@ exports.QueryAllBalancesRequest = {
     fromJSON(object) {
         return {
             address: (0, helpers_1.isSet)(object.address) ? String(object.address) : "",
-            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageRequest.fromJSON(object.pagination) : undefined
+            pagination: (0, helpers_1.isSet)(object.pagination) ? pagination_1.PageRequest.fromJSON(object.pagination) : undefined,
+            resolve_denom: (0, helpers_1.isSet)(object.resolve_denom) ? Boolean(object.resolve_denom) : false
         };
     },
     toJSON(message) {
         const obj = {};
         message.address !== undefined && (obj.address = message.address);
         message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toJSON(message.pagination) : undefined);
+        message.resolve_denom !== undefined && (obj.resolve_denom = message.resolve_denom);
         return obj;
     },
     fromPartial(object) {
         const message = createBaseQueryAllBalancesRequest();
         message.address = object.address ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
+        message.resolve_denom = object.resolve_denom ?? false;
         return message;
     },
     fromSDK(object) {
         return {
             address: object?.address,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
+            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined,
+            resolve_denom: object?.resolve_denom
         };
     },
     toSDK(message) {
         const obj = {};
         obj.address = message.address;
         message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
+        obj.resolve_denom = message.resolve_denom;
         return obj;
     },
     fromAmino(object) {
         return {
             address: object.address,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
+            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined,
+            resolve_denom: object.resolve_denom
         };
     },
     toAmino(message) {
         const obj = {};
         obj.address = message.address;
         obj.pagination = message.pagination ? pagination_1.PageRequest.toAmino(message.pagination) : undefined;
+        obj.resolve_denom = message.resolve_denom;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1725,6 +1739,180 @@ exports.QueryDenomMetadataResponse = {
         return {
             typeUrl: "/cosmos.bank.v1beta1.QueryDenomMetadataResponse",
             value: exports.QueryDenomMetadataResponse.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryDenomMetadataByQueryStringRequest() {
+    return {
+        denom: ""
+    };
+}
+exports.QueryDenomMetadataByQueryStringRequest = {
+    typeUrl: "/cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.denom !== "") {
+            writer.uint32(10).string(message.denom);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryDenomMetadataByQueryStringRequest();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.denom = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            denom: (0, helpers_1.isSet)(object.denom) ? String(object.denom) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.denom !== undefined && (obj.denom = message.denom);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryDenomMetadataByQueryStringRequest();
+        message.denom = object.denom ?? "";
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            denom: object?.denom
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        obj.denom = message.denom;
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            denom: object.denom
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.denom = message.denom;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.QueryDenomMetadataByQueryStringRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryDenomMetadataByQueryStringRequest",
+            value: exports.QueryDenomMetadataByQueryStringRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.QueryDenomMetadataByQueryStringRequest.decode(message.value);
+    },
+    toProto(message) {
+        return exports.QueryDenomMetadataByQueryStringRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest",
+            value: exports.QueryDenomMetadataByQueryStringRequest.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryDenomMetadataByQueryStringResponse() {
+    return {
+        metadata: bank_1.Metadata.fromPartial({})
+    };
+}
+exports.QueryDenomMetadataByQueryStringResponse = {
+    typeUrl: "/cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.metadata !== undefined) {
+            bank_1.Metadata.encode(message.metadata, writer.uint32(10).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryDenomMetadataByQueryStringResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.metadata = bank_1.Metadata.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            metadata: (0, helpers_1.isSet)(object.metadata) ? bank_1.Metadata.fromJSON(object.metadata) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.metadata !== undefined && (obj.metadata = message.metadata ? bank_1.Metadata.toJSON(message.metadata) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryDenomMetadataByQueryStringResponse();
+        message.metadata = object.metadata !== undefined && object.metadata !== null ? bank_1.Metadata.fromPartial(object.metadata) : undefined;
+        return message;
+    },
+    fromSDK(object) {
+        return {
+            metadata: object.metadata ? bank_1.Metadata.fromSDK(object.metadata) : undefined
+        };
+    },
+    toSDK(message) {
+        const obj = {};
+        message.metadata !== undefined && (obj.metadata = message.metadata ? bank_1.Metadata.toSDK(message.metadata) : undefined);
+        return obj;
+    },
+    fromAmino(object) {
+        return {
+            metadata: object?.metadata ? bank_1.Metadata.fromAmino(object.metadata) : undefined
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.metadata = message.metadata ? bank_1.Metadata.toAmino(message.metadata) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.QueryDenomMetadataByQueryStringResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryDenomMetadataByQueryStringResponse",
+            value: exports.QueryDenomMetadataByQueryStringResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.QueryDenomMetadataByQueryStringResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.QueryDenomMetadataByQueryStringResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse",
+            value: exports.QueryDenomMetadataByQueryStringResponse.encode(message).finish()
         };
     }
 };

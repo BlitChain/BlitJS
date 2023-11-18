@@ -35,6 +35,14 @@ class Service {
             body: JSON.stringify(request, fm.replacer)
         });
     }
+    /** Status queries for the node status. */
+    static Status(request, initRequest) {
+        return fm.fetchReq(`/cosmos/base/node/v1beta1/Status`, {
+            ...initRequest,
+            method: "POST",
+            body: JSON.stringify(request, fm.replacer)
+        });
+    }
 }
 exports.Service = Service;
 class ServiceClientImpl {
@@ -45,6 +53,13 @@ class ServiceClientImpl {
     /** Config queries for the operator configuration. */
     async Config(req, headers) {
         return Service.Config(req, {
+            headers,
+            pathPrefix: this.url
+        });
+    }
+    /** Status queries for the node status. */
+    async Status(req, headers) {
+        return Service.Status(req, {
             headers,
             pathPrefix: this.url
         });

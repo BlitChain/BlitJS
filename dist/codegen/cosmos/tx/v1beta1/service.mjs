@@ -10,7 +10,10 @@ export const protobufPackage = "cosmos.tx.v1beta1";
 /** OrderBy defines the sorting order */
 export var OrderBy;
 (function (OrderBy) {
-    /** ORDER_BY_UNSPECIFIED - ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults to ASC in this case. */
+    /**
+     * ORDER_BY_UNSPECIFIED - ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults
+     * to ASC in this case.
+     */
     OrderBy[OrderBy["ORDER_BY_UNSPECIFIED"] = 0] = "ORDER_BY_UNSPECIFIED";
     /** ORDER_BY_ASC - ORDER_BY_ASC defines ascending order */
     OrderBy[OrderBy["ORDER_BY_ASC"] = 1] = "ORDER_BY_ASC";
@@ -50,7 +53,10 @@ export function orderByToJSON(object) {
             return "UNRECOGNIZED";
     }
 }
-/** BroadcastMode specifies the broadcast mode for the TxService.Broadcast RPC method. */
+/**
+ * BroadcastMode specifies the broadcast mode for the TxService.Broadcast RPC
+ * method.
+ */
 export var BroadcastMode;
 (function (BroadcastMode) {
     /** BROADCAST_MODE_UNSPECIFIED - zero-value for mode ordering */
@@ -61,13 +67,13 @@ export var BroadcastMode;
      */
     BroadcastMode[BroadcastMode["BROADCAST_MODE_BLOCK"] = 1] = "BROADCAST_MODE_BLOCK";
     /**
-     * BROADCAST_MODE_SYNC - BROADCAST_MODE_SYNC defines a tx broadcasting mode where the client waits for
-     * a CheckTx execution response only.
+     * BROADCAST_MODE_SYNC - BROADCAST_MODE_SYNC defines a tx broadcasting mode where the client waits
+     * for a CheckTx execution response only.
      */
     BroadcastMode[BroadcastMode["BROADCAST_MODE_SYNC"] = 2] = "BROADCAST_MODE_SYNC";
     /**
-     * BROADCAST_MODE_ASYNC - BROADCAST_MODE_ASYNC defines a tx broadcasting mode where the client returns
-     * immediately.
+     * BROADCAST_MODE_ASYNC - BROADCAST_MODE_ASYNC defines a tx broadcasting mode where the client
+     * returns immediately.
      */
     BroadcastMode[BroadcastMode["BROADCAST_MODE_ASYNC"] = 3] = "BROADCAST_MODE_ASYNC";
     BroadcastMode[BroadcastMode["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
@@ -115,7 +121,8 @@ function createBaseGetTxsEventRequest() {
         pagination: undefined,
         order_by: 0,
         page: BigInt(0),
-        limit: BigInt(0)
+        limit: BigInt(0),
+        query: ""
     };
 }
 export const GetTxsEventRequest = {
@@ -135,6 +142,9 @@ export const GetTxsEventRequest = {
         }
         if (message.limit !== BigInt(0)) {
             writer.uint32(40).uint64(message.limit);
+        }
+        if (message.query !== "") {
+            writer.uint32(50).string(message.query);
         }
         return writer;
     },
@@ -160,6 +170,9 @@ export const GetTxsEventRequest = {
                 case 5:
                     message.limit = reader.uint64();
                     break;
+                case 6:
+                    message.query = reader.string();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -173,7 +186,8 @@ export const GetTxsEventRequest = {
             pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined,
             order_by: isSet(object.order_by) ? orderByFromJSON(object.order_by) : -1,
             page: isSet(object.page) ? BigInt(object.page.toString()) : BigInt(0),
-            limit: isSet(object.limit) ? BigInt(object.limit.toString()) : BigInt(0)
+            limit: isSet(object.limit) ? BigInt(object.limit.toString()) : BigInt(0),
+            query: isSet(object.query) ? String(object.query) : ""
         };
     },
     toJSON(message) {
@@ -188,6 +202,7 @@ export const GetTxsEventRequest = {
         message.order_by !== undefined && (obj.order_by = orderByToJSON(message.order_by));
         message.page !== undefined && (obj.page = (message.page || BigInt(0)).toString());
         message.limit !== undefined && (obj.limit = (message.limit || BigInt(0)).toString());
+        message.query !== undefined && (obj.query = message.query);
         return obj;
     },
     fromPartial(object) {
@@ -197,6 +212,7 @@ export const GetTxsEventRequest = {
         message.order_by = object.order_by ?? 0;
         message.page = object.page !== undefined && object.page !== null ? BigInt(object.page.toString()) : BigInt(0);
         message.limit = object.limit !== undefined && object.limit !== null ? BigInt(object.limit.toString()) : BigInt(0);
+        message.query = object.query ?? "";
         return message;
     },
     fromSDK(object) {
@@ -205,7 +221,8 @@ export const GetTxsEventRequest = {
             pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined,
             order_by: isSet(object.order_by) ? orderByFromJSON(object.order_by) : -1,
             page: object?.page,
-            limit: object?.limit
+            limit: object?.limit,
+            query: object?.query
         };
     },
     toSDK(message) {
@@ -220,6 +237,7 @@ export const GetTxsEventRequest = {
         message.order_by !== undefined && (obj.order_by = orderByToJSON(message.order_by));
         obj.page = message.page;
         obj.limit = message.limit;
+        obj.query = message.query;
         return obj;
     },
     fromAmino(object) {
@@ -228,7 +246,8 @@ export const GetTxsEventRequest = {
             pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined,
             order_by: isSet(object.order_by) ? orderByFromJSON(object.order_by) : -1,
             page: BigInt(object.page),
-            limit: BigInt(object.limit)
+            limit: BigInt(object.limit),
+            query: object.query
         };
     },
     toAmino(message) {
@@ -243,6 +262,7 @@ export const GetTxsEventRequest = {
         obj.order_by = message.order_by;
         obj.page = message.page ? message.page.toString() : undefined;
         obj.limit = message.limit ? message.limit.toString() : undefined;
+        obj.query = message.query;
         return obj;
     },
     fromAminoMsg(object) {

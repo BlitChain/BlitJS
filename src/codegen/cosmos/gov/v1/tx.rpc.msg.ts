@@ -1,6 +1,6 @@
 //@ts-nocheck
 import * as fm from "../../../grpc-gateway";
-import { MsgSubmitProposal, MsgSubmitProposalResponse, MsgExecLegacyContent, MsgExecLegacyContentResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse, MsgDeposit, MsgDepositResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
+import { MsgSubmitProposal, MsgSubmitProposalResponse, MsgExecLegacyContent, MsgExecLegacyContentResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse, MsgDeposit, MsgDepositResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgCancelProposal, MsgCancelProposalResponse } from "./tx";
 export class Msg {
   /** SubmitProposal defines a method to create new proposal given the messages. */
   static SubmitProposal(request: MsgSubmitProposal, initRequest?: fm.InitReq): Promise<MsgSubmitProposalResponse> {
@@ -53,6 +53,18 @@ export class Msg {
    */
   static UpdateParams(request: MsgUpdateParams, initRequest?: fm.InitReq): Promise<MsgUpdateParamsResponse> {
     return fm.fetchReq(`/cosmos.gov.v1/UpdateParams`, {
+      ...initRequest,
+      method: "POST",
+      body: JSON.stringify(request, fm.replacer)
+    });
+  }
+  /**
+   * CancelProposal defines a method to cancel governance proposal
+   * 
+   * Since: cosmos-sdk 0.50
+   */
+  static CancelProposal(request: MsgCancelProposal, initRequest?: fm.InitReq): Promise<MsgCancelProposalResponse> {
+    return fm.fetchReq(`/cosmos.gov.v1/CancelProposal`, {
       ...initRequest,
       method: "POST",
       body: JSON.stringify(request, fm.replacer)

@@ -7,6 +7,7 @@ class LCDQueryClient {
     req;
     constructor({ requestClient }) {
         this.req = requestClient;
+        this.constitution = this.constitution.bind(this);
         this.proposal = this.proposal.bind(this);
         this.proposals = this.proposals.bind(this);
         this.vote = this.vote.bind(this);
@@ -15,6 +16,11 @@ class LCDQueryClient {
         this.deposit = this.deposit.bind(this);
         this.deposits = this.deposits.bind(this);
         this.tallyResult = this.tallyResult.bind(this);
+    }
+    /* Constitution queries the chain's constitution. */
+    async constitution(_params = {}) {
+        const endpoint = `cosmos/gov/v1/constitution`;
+        return await this.req.get(endpoint);
     }
     /* Proposal queries proposal details based on ProposalID. */
     async proposal(params) {
@@ -62,7 +68,7 @@ class LCDQueryClient {
         const endpoint = `cosmos/gov/v1/params/${params.params_type}`;
         return await this.req.get(endpoint);
     }
-    /* Deposit queries single deposit information based proposalID, depositAddr. */
+    /* Deposit queries single deposit information based on proposalID, depositAddr. */
     async deposit(params) {
         const endpoint = `cosmos/gov/v1/proposals/${params.proposal_id}/deposits/${params.depositor}`;
         return await this.req.get(endpoint);

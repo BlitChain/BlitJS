@@ -1,6 +1,6 @@
 //@ts-nocheck
 import * as fm from "../../../grpc-gateway";
-import { QueryBalanceRequest, QueryBalanceResponse, QueryAllBalancesRequest, QueryAllBalancesResponse, QuerySpendableBalancesRequest, QuerySpendableBalancesResponse, QuerySpendableBalanceByDenomRequest, QuerySpendableBalanceByDenomResponse, QueryTotalSupplyRequest, QueryTotalSupplyResponse, QuerySupplyOfRequest, QuerySupplyOfResponse, QueryParamsRequest, QueryParamsResponse, QueryDenomMetadataRequest, QueryDenomMetadataResponse, QueryDenomsMetadataRequest, QueryDenomsMetadataResponse, QueryDenomOwnersRequest, QueryDenomOwnersResponse, QuerySendEnabledRequest, QuerySendEnabledResponse } from "./query";
+import { QueryBalanceRequest, QueryBalanceResponse, QueryAllBalancesRequest, QueryAllBalancesResponse, QuerySpendableBalancesRequest, QuerySpendableBalancesResponse, QuerySpendableBalanceByDenomRequest, QuerySpendableBalanceByDenomResponse, QueryTotalSupplyRequest, QueryTotalSupplyResponse, QuerySupplyOfRequest, QuerySupplyOfResponse, QueryParamsRequest, QueryParamsResponse, QueryDenomMetadataRequest, QueryDenomMetadataResponse, QueryDenomMetadataByQueryStringRequest, QueryDenomMetadataByQueryStringResponse, QueryDenomsMetadataRequest, QueryDenomsMetadataResponse, QueryDenomOwnersRequest, QueryDenomOwnersResponse, QuerySendEnabledRequest, QuerySendEnabledResponse } from "./query";
 export class Query {
   /** Balance queries the balance of a single coin for a single account. */
   static Balance(request: QueryBalanceRequest, initRequest?: fm.InitReq): Promise<QueryBalanceResponse> {
@@ -101,6 +101,15 @@ export class Query {
     return fm.fetchReq(`/cosmos/bank/v1beta1/denoms_metadata/${request["denom"]}?${fm.renderURLSearchParams({
       ...request
     }, ["denom"])}`, {
+      ...initRequest,
+      method: "GET"
+    });
+  }
+  /** DenomsMetadata queries the client metadata of a given coin denomination. */
+  static DenomMetadataByQueryString(request: QueryDenomMetadataByQueryStringRequest, initRequest?: fm.InitReq): Promise<QueryDenomMetadataByQueryStringResponse> {
+    return fm.fetchReq(`/cosmos/bank/v1beta1/denoms_metadata_by_query_string?${fm.renderURLSearchParams({
+      ...request
+    }, [])}`, {
       ...initRequest,
       method: "GET"
     });
@@ -240,6 +249,13 @@ export class QueryClientImpl {
   /** DenomsMetadata queries the client metadata of a given coin denomination. */
   async DenomMetadata(req: QueryDenomMetadataRequest, headers?: HeadersInit): Promise<QueryDenomMetadataResponse> {
     return Query.DenomMetadata(req, {
+      headers,
+      pathPrefix: this.url
+    });
+  }
+  /** DenomsMetadata queries the client metadata of a given coin denomination. */
+  async DenomMetadataByQueryString(req: QueryDenomMetadataByQueryStringRequest, headers?: HeadersInit): Promise<QueryDenomMetadataByQueryStringResponse> {
+    return Query.DenomMetadataByQueryString(req, {
       headers,
       pathPrefix: this.url
     });

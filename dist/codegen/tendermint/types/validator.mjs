@@ -3,6 +3,55 @@ import { PublicKey } from "../crypto/keys";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../helpers";
 export const protobufPackage = "tendermint.types";
+/** BlockIdFlag indicates which BlockID the signature is for */
+export var BlockIDFlag;
+(function (BlockIDFlag) {
+    /** BLOCK_ID_FLAG_UNKNOWN - indicates an error condition */
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_UNKNOWN"] = 0] = "BLOCK_ID_FLAG_UNKNOWN";
+    /** BLOCK_ID_FLAG_ABSENT - the vote was not received */
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_ABSENT"] = 1] = "BLOCK_ID_FLAG_ABSENT";
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_COMMIT"] = 2] = "BLOCK_ID_FLAG_COMMIT";
+    /** BLOCK_ID_FLAG_NIL - voted for nil */
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_NIL"] = 3] = "BLOCK_ID_FLAG_NIL";
+    BlockIDFlag[BlockIDFlag["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
+})(BlockIDFlag || (BlockIDFlag = {}));
+export const BlockIDFlagSDKType = BlockIDFlag;
+export const BlockIDFlagAmino = BlockIDFlag;
+export function blockIDFlagFromJSON(object) {
+    switch (object) {
+        case 0:
+        case "BLOCK_ID_FLAG_UNKNOWN":
+            return BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN;
+        case 1:
+        case "BLOCK_ID_FLAG_ABSENT":
+            return BlockIDFlag.BLOCK_ID_FLAG_ABSENT;
+        case 2:
+        case "BLOCK_ID_FLAG_COMMIT":
+            return BlockIDFlag.BLOCK_ID_FLAG_COMMIT;
+        case 3:
+        case "BLOCK_ID_FLAG_NIL":
+            return BlockIDFlag.BLOCK_ID_FLAG_NIL;
+        case -1:
+        case "UNRECOGNIZED":
+        default:
+            return BlockIDFlag.UNRECOGNIZED;
+    }
+}
+export function blockIDFlagToJSON(object) {
+    switch (object) {
+        case BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN:
+            return "BLOCK_ID_FLAG_UNKNOWN";
+        case BlockIDFlag.BLOCK_ID_FLAG_ABSENT:
+            return "BLOCK_ID_FLAG_ABSENT";
+        case BlockIDFlag.BLOCK_ID_FLAG_COMMIT:
+            return "BLOCK_ID_FLAG_COMMIT";
+        case BlockIDFlag.BLOCK_ID_FLAG_NIL:
+            return "BLOCK_ID_FLAG_NIL";
+        case BlockIDFlag.UNRECOGNIZED:
+        default:
+            return "UNRECOGNIZED";
+    }
+}
 function createBaseValidatorSet() {
     return {
         validators: [],
