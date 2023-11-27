@@ -104,14 +104,14 @@ const runFunction = async ({ msgClient, attached_messages = [], caller_address, 
         extra_code,
         grantee
     });
-    const resp = await msgClient.signAndBroadcast(caller_address, [message], gasMultiple);
+    const resp = await msgClient.signAndBroadcast(grantee || caller_address, [message], gasMultiple);
     if (resp.code !== 0) {
         // So we split into lines and get the last line which is the error
         const lastLine = resp.rawLog.split('\n').slice(-1)[0];
         // strip ": Exception in Script" only from lastLine (technically this will remove it anywhere in the result, but that's fine)
         const result = lastLine.replace(': Exception in Script', '');
         try {
-            return JSON.parse(result);
+            return { tx: resp, result: JSON.parse(result) };
         }
         catch (e) {
             if (e instanceof SyntaxError) {
@@ -123,7 +123,10 @@ const runFunction = async ({ msgClient, attached_messages = [], caller_address, 
     const msgResponse = resp.msgResponses[0];
     try {
         // Parse the response
-        return JSON.parse(blitjs.blit.script.MsgRunResponse.fromProtoMsg(msgResponse).response);
+        return {
+            tx: resp,
+            result: JSON.parse(blitjs.blit.script.MsgRunResponse.fromProtoMsg(msgResponse).response)
+        };
     }
     catch (e) {
         if (e instanceof SyntaxError) {

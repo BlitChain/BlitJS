@@ -11,7 +11,7 @@ telescope({
   protoDirs,
   outPath,
   options: {
-    includeExternalHelpers: false,
+    includeExternalHelpers: true,
     tsDisable: {
       disableAll: true
     },

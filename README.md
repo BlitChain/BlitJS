@@ -267,16 +267,18 @@ let runResp = await runFunction({
 console.log(runResp); 
 /*
 Output:
-{
-    "exception": null,
-    "gas_limit": 100000,
-    "nodes_called": 15,
-    "result": {
-        "name": "Bob"
-    },
-    "script_gas_consumed": 45281,
-    "stdout": "Hello Bob!\n"
-}
+{ 
+    tx: { ..raw transaction details }
+    result: {
+        "exception": null,
+        "gas_limit": 100000,
+        "nodes_called": 15,
+        "result": {
+            "name": "Bob"
+        },
+        "script_gas_consumed": 45281,
+        "stdout": "Hello Bob!\n"
+    }
 */
 ```
 ## Hints

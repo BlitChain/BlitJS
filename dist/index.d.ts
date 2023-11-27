@@ -20,7 +20,10 @@ export declare const experimentalHelpers: {
         extra_code: any;
         grantee: any;
         gasMultiple?: number;
-    }) => Promise<any>;
+    }) => Promise<{
+        tx: any;
+        result: any;
+    }>;
     queryFunction: ({ attached_messages, queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }: {
         attached_messages?: any[];
         queryClient: any;
