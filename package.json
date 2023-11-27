@@ -1,6 +1,6 @@
 {
   "name": "@blitchain/blitjs",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Blit javascript client",
   "author": "Sybil Singleton <sybil.singleton@protonmail.com>",
   "homepage": "https://github.com/blitchain/blitjs#readme",
