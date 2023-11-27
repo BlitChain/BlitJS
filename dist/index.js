@@ -134,9 +134,9 @@ const runFunction = async ({ msgClient, attached_messages = [], caller_address, 
 };
 const makeJsClient = async ({ mnemonic, rpcEndpoint, restEndpoint }) => {
     if (!mnemonic) {
-        mnemonic = await proto_signing_1.DirectSecp256k1HdWallet.generate(24);
+        mnemonic = await proto_signing_1.DirectSecp256k1HdWallet.generate(24).secret.data;
     }
-    const signer = await proto_signing_1.DirectSecp256k1HdWallet.fromMnemonic(mnemonic.secret.data, {
+    const signer = await proto_signing_1.DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
         prefix: 'blit'
     });
     const client = await blitjs.getSigningBlitClient({
