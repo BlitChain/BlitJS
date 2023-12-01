@@ -83,7 +83,16 @@ const runFunction = async ({ msgClient, attached_messages = [], caller_address, 
     extra_code,
     grantee
   });
-  const resp = await msgClient.signAndBroadcast(grantee || caller_address, [message], gasMultiple);
+  try {
+    var resp = await msgClient.signAndBroadcast(grantee, [message], gasMultiple);
+  } catch (e) {
+    let result = e.message.split('\n').slice(-1)[0];
+    //find last }
+    const lastBracket = result.lastIndexOf('}');
+    //remove everything after last }
+    result = result.substring(0, lastBracket + 1);
+    return { tx: null, result: JSON.parse(result) };
+  }
   if (resp.code !== 0) {
     // So we split into lines and get the last line which is the error
     const lastLine = resp.rawLog.split('\n').slice(-1)[0];
