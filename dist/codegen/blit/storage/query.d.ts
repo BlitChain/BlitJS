@@ -10,10 +10,6 @@ export interface QueryParamsRequestProtoMsg {
     type_url: "/blit.storage.QueryParamsRequest";
     value: Uint8Array;
 }
-export interface QueryParamsRequestProtoMsg {
-    type_url: "/blit.storage.QueryParamsRequest";
-    value: Uint8Array;
-}
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequestAmino {
 }
@@ -28,10 +24,6 @@ export interface QueryParamsRequestSDKType {
 export interface QueryParamsResponse {
     /** params holds all the parameters of this module. */
     params: Params;
-}
-export interface QueryParamsResponseProtoMsg {
-    type_url: "/blit.storage.QueryParamsResponse";
-    value: Uint8Array;
 }
 export interface QueryParamsResponseProtoMsg {
     type_url: "/blit.storage.QueryParamsResponse";
@@ -58,10 +50,6 @@ export interface QueryStorageDetailRequestProtoMsg {
     type_url: "/blit.storage.QueryStorageDetailRequest";
     value: Uint8Array;
 }
-export interface QueryStorageDetailRequestProtoMsg {
-    type_url: "/blit.storage.QueryStorageDetailRequest";
-    value: Uint8Array;
-}
 export interface QueryStorageDetailRequestAmino {
     address: string;
     index: string;
@@ -76,10 +64,6 @@ export interface QueryStorageDetailRequestSDKType {
 }
 export interface QueryStorageDetailResponse {
     storage: Storage;
-}
-export interface QueryStorageDetailResponseProtoMsg {
-    type_url: "/blit.storage.QueryStorageDetailResponse";
-    value: Uint8Array;
 }
 export interface QueryStorageDetailResponseProtoMsg {
     type_url: "/blit.storage.QueryStorageDetailResponse";
@@ -104,10 +88,6 @@ export interface QueryFilterStorageRequestProtoMsg {
     type_url: "/blit.storage.QueryFilterStorageRequest";
     value: Uint8Array;
 }
-export interface QueryFilterStorageRequestProtoMsg {
-    type_url: "/blit.storage.QueryFilterStorageRequest";
-    value: Uint8Array;
-}
 export interface QueryFilterStorageRequestAmino {
     filter_address: string;
     filter_index_prefix: string;
@@ -125,10 +105,6 @@ export interface QueryFilterStorageRequestSDKType {
 export interface QueryFilterStorageResponse {
     storage: Storage[];
     pagination?: PageResponse;
-}
-export interface QueryFilterStorageResponseProtoMsg {
-    type_url: "/blit.storage.QueryFilterStorageResponse";
-    value: Uint8Array;
 }
 export interface QueryFilterStorageResponseProtoMsg {
     type_url: "/blit.storage.QueryFilterStorageResponse";

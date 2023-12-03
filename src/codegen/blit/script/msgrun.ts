@@ -16,10 +16,6 @@ export interface MsgRunProtoMsg {
   type_url: "/blit.script.MsgRun";
   value: Uint8Array;
 }
-export interface MsgRunProtoMsg {
-  type_url: "/blit.script.MsgRun";
-  value: Uint8Array;
-}
 /** MsgRun runs a script at a specific address */
 export interface MsgRunAmino {
   caller_address: string;
@@ -46,10 +42,6 @@ export interface MsgRunSDKType {
 }
 export interface MsgRunResponse {
   response: string;
-}
-export interface MsgRunResponseProtoMsg {
-  type_url: "/blit.script.MsgRunResponse";
-  value: Uint8Array;
 }
 export interface MsgRunResponseProtoMsg {
   type_url: "/blit.script.MsgRunResponse";

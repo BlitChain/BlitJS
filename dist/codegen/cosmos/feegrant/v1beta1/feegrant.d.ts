@@ -4,14 +4,14 @@ import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf
 import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.feegrant.v1beta1";
 /**
- * BasicAllowance implements Allowance with a one-time grant of coins
+ * BasicAllowance implements Allowance with a one-time grant of tokens
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
  */
 export interface BasicAllowance {
     $typeUrl?: "/cosmos.feegrant.v1beta1.BasicAllowance";
     /**
-     * spend_limit specifies the maximum amount of coins that can be spent
-     * by this allowance and will be updated as coins are spent. If it is
+     * spend_limit specifies the maximum amount of tokens that can be spent
+     * by this allowance and will be updated as tokens are spent. If it is
      * empty, there is no spend limit and any amount of coins can be spent.
      */
     spend_limit: Coin[];
@@ -22,30 +22,26 @@ export interface BasicAllowanceProtoMsg {
     type_url: "/cosmos.feegrant.v1beta1.BasicAllowance";
     value: Uint8Array;
 }
-export interface BasicAllowanceProtoMsg {
-    type_url: "/cosmos.feegrant.v1beta1.BasicAllowance";
-    value: Uint8Array;
-}
 /**
- * BasicAllowance implements Allowance with a one-time grant of coins
+ * BasicAllowance implements Allowance with a one-time grant of tokens
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
  */
 export interface BasicAllowanceAmino {
     /**
-     * spend_limit specifies the maximum amount of coins that can be spent
-     * by this allowance and will be updated as coins are spent. If it is
+     * spend_limit specifies the maximum amount of tokens that can be spent
+     * by this allowance and will be updated as tokens are spent. If it is
      * empty, there is no spend limit and any amount of coins can be spent.
      */
     spend_limit: CoinAmino[];
     /** expiration specifies an optional time when this allowance expires */
-    expiration?: Date;
+    expiration?: string;
 }
 export interface BasicAllowanceAminoMsg {
     type: "cosmos-sdk/BasicAllowance";
     value: BasicAllowanceAmino;
 }
 /**
- * BasicAllowance implements Allowance with a one-time grant of coins
+ * BasicAllowance implements Allowance with a one-time grant of tokens
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
  */
 export interface BasicAllowanceSDKType {
@@ -84,10 +80,6 @@ export interface PeriodicAllowanceProtoMsg {
     type_url: "/cosmos.feegrant.v1beta1.PeriodicAllowance";
     value: Uint8Array;
 }
-export interface PeriodicAllowanceProtoMsg {
-    type_url: "/cosmos.feegrant.v1beta1.PeriodicAllowance";
-    value: Uint8Array;
-}
 /**
  * PeriodicAllowance extends Allowance to allow for both a maximum cap,
  * as well as a limit per time period.
@@ -112,7 +104,7 @@ export interface PeriodicAllowanceAmino {
      * it is calculated from the start time of the first transaction after the
      * last period ended
      */
-    period_reset?: Date;
+    period_reset?: string;
 }
 export interface PeriodicAllowanceAminoMsg {
     type: "cosmos-sdk/PeriodicAllowance";
@@ -137,10 +129,6 @@ export interface AllowedMsgAllowance {
     allowance?: (BasicAllowance & PeriodicAllowance & AllowedMsgAllowance & Any) | undefined;
     /** allowed_messages are the messages for which the grantee has the access. */
     allowed_messages: string[];
-}
-export interface AllowedMsgAllowanceProtoMsg {
-    type_url: "/cosmos.feegrant.v1beta1.AllowedMsgAllowance";
-    value: Uint8Array;
 }
 export interface AllowedMsgAllowanceProtoMsg {
     type_url: "/cosmos.feegrant.v1beta1.AllowedMsgAllowance";
@@ -174,10 +162,6 @@ export interface Grant {
     grantee: string;
     /** allowance can be any of basic, periodic, allowed fee allowance. */
     allowance?: (BasicAllowance & PeriodicAllowance & AllowedMsgAllowance & Any) | undefined;
-}
-export interface GrantProtoMsg {
-    type_url: "/cosmos.feegrant.v1beta1.Grant";
-    value: Uint8Array;
 }
 export interface GrantProtoMsg {
     type_url: "/cosmos.feegrant.v1beta1.Grant";
@@ -273,6 +257,6 @@ export declare const Grant: {
     toProto(message: Grant): Uint8Array;
     toProtoMsg(message: Grant): GrantProtoMsg;
 };
-export declare const Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => BasicAllowance | PeriodicAllowance | AllowedMsgAllowance | Any;
-export declare const Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino: (content: Any) => AnyAmino;
+export declare const Cosmos_feegrantFeeAllowanceI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => BasicAllowance | PeriodicAllowance | AllowedMsgAllowance | Any;
+export declare const Cosmos_feegrantFeeAllowanceI_FromAmino: (content: AnyAmino) => Any;
+export declare const Cosmos_feegrantFeeAllowanceI_ToAmino: (content: Any) => AnyAmino;

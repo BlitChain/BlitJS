@@ -1,6 +1,6 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import { Params, ParamsAmino, ParamsSDKType, BaseAccount, BaseAccountProtoMsg, BaseAccountAmino, BaseAccountSDKType, ModuleAccount, ModuleAccountProtoMsg, ModuleAccountSDKType } from "./auth";
+import { Params, ParamsAmino, ParamsSDKType, BaseAccount, BaseAccountProtoMsg, BaseAccountSDKType, ModuleAccount, ModuleAccountProtoMsg, ModuleAccountSDKType } from "./auth";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.auth.v1beta1";
 /**
@@ -11,10 +11,6 @@ export declare const protobufPackage = "cosmos.auth.v1beta1";
 export interface QueryAccountsRequest {
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequest;
-}
-export interface QueryAccountsRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryAccountsRequest";
-    value: Uint8Array;
 }
 export interface QueryAccountsRequestProtoMsg {
     type_url: "/cosmos.auth.v1beta1.QueryAccountsRequest";
@@ -56,10 +52,6 @@ export interface QueryAccountsResponseProtoMsg {
     type_url: "/cosmos.auth.v1beta1.QueryAccountsResponse";
     value: Uint8Array;
 }
-export interface QueryAccountsResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryAccountsResponse";
-    value: Uint8Array;
-}
 export type QueryAccountsResponseEncoded = Omit<QueryAccountsResponse, "accounts"> & {
     /** accounts are the existing accounts */ accounts: (BaseAccountProtoMsg | AnyProtoMsg)[];
 };
@@ -96,10 +88,6 @@ export interface QueryAccountRequestProtoMsg {
     type_url: "/cosmos.auth.v1beta1.QueryAccountRequest";
     value: Uint8Array;
 }
-export interface QueryAccountRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryAccountRequest";
-    value: Uint8Array;
-}
 /** QueryAccountRequest is the request type for the Query/Account RPC method. */
 export interface QueryAccountRequestAmino {
     /** address defines the address to query for. */
@@ -113,14 +101,49 @@ export interface QueryAccountRequestAminoMsg {
 export interface QueryAccountRequestSDKType {
     address: string;
 }
+/** QueryModuleAccountsRequest is the request type for the Query/ModuleAccounts RPC method. */
+export interface QueryModuleAccountsRequest {
+}
+export interface QueryModuleAccountsRequestProtoMsg {
+    type_url: "/cosmos.auth.v1beta1.QueryModuleAccountsRequest";
+    value: Uint8Array;
+}
+/** QueryModuleAccountsRequest is the request type for the Query/ModuleAccounts RPC method. */
+export interface QueryModuleAccountsRequestAmino {
+}
+export interface QueryModuleAccountsRequestAminoMsg {
+    type: "cosmos-sdk/QueryModuleAccountsRequest";
+    value: QueryModuleAccountsRequestAmino;
+}
+/** QueryModuleAccountsRequest is the request type for the Query/ModuleAccounts RPC method. */
+export interface QueryModuleAccountsRequestSDKType {
+}
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+export interface QueryParamsResponse {
+    /** params defines the parameters of the module. */
+    params: Params;
+}
+export interface QueryParamsResponseProtoMsg {
+    type_url: "/cosmos.auth.v1beta1.QueryParamsResponse";
+    value: Uint8Array;
+}
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+export interface QueryParamsResponseAmino {
+    /** params defines the parameters of the module. */
+    params?: ParamsAmino;
+}
+export interface QueryParamsResponseAminoMsg {
+    type: "cosmos-sdk/QueryParamsResponse";
+    value: QueryParamsResponseAmino;
+}
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+export interface QueryParamsResponseSDKType {
+    params: ParamsSDKType;
+}
 /** QueryAccountResponse is the response type for the Query/Account RPC method. */
 export interface QueryAccountResponse {
     /** account defines the account of the corresponding address. */
     account?: (BaseAccount & Any) | undefined;
-}
-export interface QueryAccountResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryAccountResponse";
-    value: Uint8Array;
 }
 export interface QueryAccountResponseProtoMsg {
     type_url: "/cosmos.auth.v1beta1.QueryAccountResponse";
@@ -149,10 +172,6 @@ export interface QueryParamsRequestProtoMsg {
     type_url: "/cosmos.auth.v1beta1.QueryParamsRequest";
     value: Uint8Array;
 }
-export interface QueryParamsRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryParamsRequest";
-    value: Uint8Array;
-}
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequestAmino {
 }
@@ -163,76 +182,9 @@ export interface QueryParamsRequestAminoMsg {
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequestSDKType {
 }
-/** QueryParamsResponse is the response type for the Query/Params RPC method. */
-export interface QueryParamsResponse {
-    /** params defines the parameters of the module. */
-    params: Params;
-}
-export interface QueryParamsResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryParamsResponse";
-    value: Uint8Array;
-}
-export interface QueryParamsResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryParamsResponse";
-    value: Uint8Array;
-}
-/** QueryParamsResponse is the response type for the Query/Params RPC method. */
-export interface QueryParamsResponseAmino {
-    /** params defines the parameters of the module. */
-    params?: ParamsAmino;
-}
-export interface QueryParamsResponseAminoMsg {
-    type: "cosmos-sdk/QueryParamsResponse";
-    value: QueryParamsResponseAmino;
-}
-/** QueryParamsResponse is the response type for the Query/Params RPC method. */
-export interface QueryParamsResponseSDKType {
-    params: ParamsSDKType;
-}
-/**
- * QueryModuleAccountsRequest is the request type for the Query/ModuleAccounts RPC method.
- *
- * Since: cosmos-sdk 0.46
- */
-export interface QueryModuleAccountsRequest {
-}
-export interface QueryModuleAccountsRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryModuleAccountsRequest";
-    value: Uint8Array;
-}
-export interface QueryModuleAccountsRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryModuleAccountsRequest";
-    value: Uint8Array;
-}
-/**
- * QueryModuleAccountsRequest is the request type for the Query/ModuleAccounts RPC method.
- *
- * Since: cosmos-sdk 0.46
- */
-export interface QueryModuleAccountsRequestAmino {
-}
-export interface QueryModuleAccountsRequestAminoMsg {
-    type: "cosmos-sdk/QueryModuleAccountsRequest";
-    value: QueryModuleAccountsRequestAmino;
-}
-/**
- * QueryModuleAccountsRequest is the request type for the Query/ModuleAccounts RPC method.
- *
- * Since: cosmos-sdk 0.46
- */
-export interface QueryModuleAccountsRequestSDKType {
-}
-/**
- * QueryModuleAccountsResponse is the response type for the Query/ModuleAccounts RPC method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** QueryModuleAccountsResponse is the response type for the Query/ModuleAccounts RPC method. */
 export interface QueryModuleAccountsResponse {
     accounts: (ModuleAccount & Any)[] | Any[];
-}
-export interface QueryModuleAccountsResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryModuleAccountsResponse";
-    value: Uint8Array;
 }
 export interface QueryModuleAccountsResponseProtoMsg {
     type_url: "/cosmos.auth.v1beta1.QueryModuleAccountsResponse";
@@ -241,11 +193,7 @@ export interface QueryModuleAccountsResponseProtoMsg {
 export type QueryModuleAccountsResponseEncoded = Omit<QueryModuleAccountsResponse, "accounts"> & {
     accounts: (ModuleAccountProtoMsg | AnyProtoMsg)[];
 };
-/**
- * QueryModuleAccountsResponse is the response type for the Query/ModuleAccounts RPC method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** QueryModuleAccountsResponse is the response type for the Query/ModuleAccounts RPC method. */
 export interface QueryModuleAccountsResponseAmino {
     accounts: AnyAmino[];
 }
@@ -253,103 +201,28 @@ export interface QueryModuleAccountsResponseAminoMsg {
     type: "cosmos-sdk/QueryModuleAccountsResponse";
     value: QueryModuleAccountsResponseAmino;
 }
-/**
- * QueryModuleAccountsResponse is the response type for the Query/ModuleAccounts RPC method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** QueryModuleAccountsResponse is the response type for the Query/ModuleAccounts RPC method. */
 export interface QueryModuleAccountsResponseSDKType {
     accounts: (ModuleAccountSDKType | AnySDKType)[];
 }
-/** QueryModuleAccountByNameRequest is the request type for the Query/ModuleAccountByName RPC method. */
-export interface QueryModuleAccountByNameRequest {
-    name: string;
-}
-export interface QueryModuleAccountByNameRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryModuleAccountByNameRequest";
-    value: Uint8Array;
-}
-export interface QueryModuleAccountByNameRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryModuleAccountByNameRequest";
-    value: Uint8Array;
-}
-/** QueryModuleAccountByNameRequest is the request type for the Query/ModuleAccountByName RPC method. */
-export interface QueryModuleAccountByNameRequestAmino {
-    name: string;
-}
-export interface QueryModuleAccountByNameRequestAminoMsg {
-    type: "cosmos-sdk/QueryModuleAccountByNameRequest";
-    value: QueryModuleAccountByNameRequestAmino;
-}
-/** QueryModuleAccountByNameRequest is the request type for the Query/ModuleAccountByName RPC method. */
-export interface QueryModuleAccountByNameRequestSDKType {
-    name: string;
-}
-/** QueryModuleAccountByNameResponse is the response type for the Query/ModuleAccountByName RPC method. */
-export interface QueryModuleAccountByNameResponse {
-    account?: (ModuleAccount & Any) | undefined;
-}
-export interface QueryModuleAccountByNameResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryModuleAccountByNameResponse";
-    value: Uint8Array;
-}
-export interface QueryModuleAccountByNameResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryModuleAccountByNameResponse";
-    value: Uint8Array;
-}
-export type QueryModuleAccountByNameResponseEncoded = Omit<QueryModuleAccountByNameResponse, "account"> & {
-    account?: ModuleAccountProtoMsg | AnyProtoMsg | undefined;
-};
-/** QueryModuleAccountByNameResponse is the response type for the Query/ModuleAccountByName RPC method. */
-export interface QueryModuleAccountByNameResponseAmino {
-    account?: AnyAmino;
-}
-export interface QueryModuleAccountByNameResponseAminoMsg {
-    type: "cosmos-sdk/QueryModuleAccountByNameResponse";
-    value: QueryModuleAccountByNameResponseAmino;
-}
-/** QueryModuleAccountByNameResponse is the response type for the Query/ModuleAccountByName RPC method. */
-export interface QueryModuleAccountByNameResponseSDKType {
-    account?: ModuleAccountSDKType | AnySDKType | undefined;
-}
-/**
- * Bech32PrefixRequest is the request type for Bech32Prefix rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** Bech32PrefixRequest is the request type for Bech32Prefix rpc method */
 export interface Bech32PrefixRequest {
 }
 export interface Bech32PrefixRequestProtoMsg {
     type_url: "/cosmos.auth.v1beta1.Bech32PrefixRequest";
     value: Uint8Array;
 }
-export interface Bech32PrefixRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.Bech32PrefixRequest";
-    value: Uint8Array;
-}
-/**
- * Bech32PrefixRequest is the request type for Bech32Prefix rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** Bech32PrefixRequest is the request type for Bech32Prefix rpc method */
 export interface Bech32PrefixRequestAmino {
 }
 export interface Bech32PrefixRequestAminoMsg {
     type: "cosmos-sdk/Bech32PrefixRequest";
     value: Bech32PrefixRequestAmino;
 }
-/**
- * Bech32PrefixRequest is the request type for Bech32Prefix rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** Bech32PrefixRequest is the request type for Bech32Prefix rpc method */
 export interface Bech32PrefixRequestSDKType {
 }
-/**
- * Bech32PrefixResponse is the response type for Bech32Prefix rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** Bech32PrefixResponse is the response type for Bech32Prefix rpc method */
 export interface Bech32PrefixResponse {
     bech32_prefix: string;
 }
@@ -357,15 +230,7 @@ export interface Bech32PrefixResponseProtoMsg {
     type_url: "/cosmos.auth.v1beta1.Bech32PrefixResponse";
     value: Uint8Array;
 }
-export interface Bech32PrefixResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.Bech32PrefixResponse";
-    value: Uint8Array;
-}
-/**
- * Bech32PrefixResponse is the response type for Bech32Prefix rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** Bech32PrefixResponse is the response type for Bech32Prefix rpc method */
 export interface Bech32PrefixResponseAmino {
     bech32_prefix: string;
 }
@@ -373,19 +238,11 @@ export interface Bech32PrefixResponseAminoMsg {
     type: "cosmos-sdk/Bech32PrefixResponse";
     value: Bech32PrefixResponseAmino;
 }
-/**
- * Bech32PrefixResponse is the response type for Bech32Prefix rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** Bech32PrefixResponse is the response type for Bech32Prefix rpc method */
 export interface Bech32PrefixResponseSDKType {
     bech32_prefix: string;
 }
-/**
- * AddressBytesToStringRequest is the request type for AddressString rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** AddressBytesToStringRequest is the request type for AddressString rpc method */
 export interface AddressBytesToStringRequest {
     address_bytes: Uint8Array;
 }
@@ -393,15 +250,7 @@ export interface AddressBytesToStringRequestProtoMsg {
     type_url: "/cosmos.auth.v1beta1.AddressBytesToStringRequest";
     value: Uint8Array;
 }
-export interface AddressBytesToStringRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.AddressBytesToStringRequest";
-    value: Uint8Array;
-}
-/**
- * AddressBytesToStringRequest is the request type for AddressString rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** AddressBytesToStringRequest is the request type for AddressString rpc method */
 export interface AddressBytesToStringRequestAmino {
     address_bytes: Uint8Array;
 }
@@ -409,19 +258,11 @@ export interface AddressBytesToStringRequestAminoMsg {
     type: "cosmos-sdk/AddressBytesToStringRequest";
     value: AddressBytesToStringRequestAmino;
 }
-/**
- * AddressBytesToStringRequest is the request type for AddressString rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** AddressBytesToStringRequest is the request type for AddressString rpc method */
 export interface AddressBytesToStringRequestSDKType {
     address_bytes: Uint8Array;
 }
-/**
- * AddressBytesToStringResponse is the response type for AddressString rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** AddressBytesToStringResponse is the response type for AddressString rpc method */
 export interface AddressBytesToStringResponse {
     address_string: string;
 }
@@ -429,15 +270,7 @@ export interface AddressBytesToStringResponseProtoMsg {
     type_url: "/cosmos.auth.v1beta1.AddressBytesToStringResponse";
     value: Uint8Array;
 }
-export interface AddressBytesToStringResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.AddressBytesToStringResponse";
-    value: Uint8Array;
-}
-/**
- * AddressBytesToStringResponse is the response type for AddressString rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** AddressBytesToStringResponse is the response type for AddressString rpc method */
 export interface AddressBytesToStringResponseAmino {
     address_string: string;
 }
@@ -445,19 +278,11 @@ export interface AddressBytesToStringResponseAminoMsg {
     type: "cosmos-sdk/AddressBytesToStringResponse";
     value: AddressBytesToStringResponseAmino;
 }
-/**
- * AddressBytesToStringResponse is the response type for AddressString rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** AddressBytesToStringResponse is the response type for AddressString rpc method */
 export interface AddressBytesToStringResponseSDKType {
     address_string: string;
 }
-/**
- * AddressStringToBytesRequest is the request type for AccountBytes rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** AddressStringToBytesRequest is the request type for AccountBytes rpc method */
 export interface AddressStringToBytesRequest {
     address_string: string;
 }
@@ -465,15 +290,7 @@ export interface AddressStringToBytesRequestProtoMsg {
     type_url: "/cosmos.auth.v1beta1.AddressStringToBytesRequest";
     value: Uint8Array;
 }
-export interface AddressStringToBytesRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.AddressStringToBytesRequest";
-    value: Uint8Array;
-}
-/**
- * AddressStringToBytesRequest is the request type for AccountBytes rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** AddressStringToBytesRequest is the request type for AccountBytes rpc method */
 export interface AddressStringToBytesRequestAmino {
     address_string: string;
 }
@@ -481,19 +298,11 @@ export interface AddressStringToBytesRequestAminoMsg {
     type: "cosmos-sdk/AddressStringToBytesRequest";
     value: AddressStringToBytesRequestAmino;
 }
-/**
- * AddressStringToBytesRequest is the request type for AccountBytes rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** AddressStringToBytesRequest is the request type for AccountBytes rpc method */
 export interface AddressStringToBytesRequestSDKType {
     address_string: string;
 }
-/**
- * AddressStringToBytesResponse is the response type for AddressBytes rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** AddressStringToBytesResponse is the response type for AddressBytes rpc method */
 export interface AddressStringToBytesResponse {
     address_bytes: Uint8Array;
 }
@@ -501,15 +310,7 @@ export interface AddressStringToBytesResponseProtoMsg {
     type_url: "/cosmos.auth.v1beta1.AddressStringToBytesResponse";
     value: Uint8Array;
 }
-export interface AddressStringToBytesResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.AddressStringToBytesResponse";
-    value: Uint8Array;
-}
-/**
- * AddressStringToBytesResponse is the response type for AddressBytes rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** AddressStringToBytesResponse is the response type for AddressBytes rpc method */
 export interface AddressStringToBytesResponseAmino {
     address_bytes: Uint8Array;
 }
@@ -517,191 +318,9 @@ export interface AddressStringToBytesResponseAminoMsg {
     type: "cosmos-sdk/AddressStringToBytesResponse";
     value: AddressStringToBytesResponseAmino;
 }
-/**
- * AddressStringToBytesResponse is the response type for AddressBytes rpc method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** AddressStringToBytesResponse is the response type for AddressBytes rpc method */
 export interface AddressStringToBytesResponseSDKType {
     address_bytes: Uint8Array;
-}
-/**
- * QueryAccountAddressByIDRequest is the request type for AccountAddressByID rpc method
- *
- * Since: cosmos-sdk 0.46.2
- */
-export interface QueryAccountAddressByIDRequest {
-    /**
-     * Deprecated, use account_id instead
-     *
-     * id is the account number of the address to be queried. This field
-     * should have been an uint64 (like all account numbers), and will be
-     * updated to uint64 in a future version of the auth query.
-     */
-    /** @deprecated */
-    id: bigint;
-    /**
-     * account_id is the account number of the address to be queried.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    account_id: bigint;
-}
-export interface QueryAccountAddressByIDRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryAccountAddressByIDRequest";
-    value: Uint8Array;
-}
-export interface QueryAccountAddressByIDRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryAccountAddressByIDRequest";
-    value: Uint8Array;
-}
-/**
- * QueryAccountAddressByIDRequest is the request type for AccountAddressByID rpc method
- *
- * Since: cosmos-sdk 0.46.2
- */
-export interface QueryAccountAddressByIDRequestAmino {
-    /**
-     * Deprecated, use account_id instead
-     *
-     * id is the account number of the address to be queried. This field
-     * should have been an uint64 (like all account numbers), and will be
-     * updated to uint64 in a future version of the auth query.
-     */
-    /** @deprecated */
-    id: string;
-    /**
-     * account_id is the account number of the address to be queried.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    account_id: string;
-}
-export interface QueryAccountAddressByIDRequestAminoMsg {
-    type: "cosmos-sdk/QueryAccountAddressByIDRequest";
-    value: QueryAccountAddressByIDRequestAmino;
-}
-/**
- * QueryAccountAddressByIDRequest is the request type for AccountAddressByID rpc method
- *
- * Since: cosmos-sdk 0.46.2
- */
-export interface QueryAccountAddressByIDRequestSDKType {
-    /** @deprecated */
-    id: bigint;
-    account_id: bigint;
-}
-/**
- * QueryAccountAddressByIDResponse is the response type for AccountAddressByID rpc method
- *
- * Since: cosmos-sdk 0.46.2
- */
-export interface QueryAccountAddressByIDResponse {
-    account_address: string;
-}
-export interface QueryAccountAddressByIDResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryAccountAddressByIDResponse";
-    value: Uint8Array;
-}
-export interface QueryAccountAddressByIDResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryAccountAddressByIDResponse";
-    value: Uint8Array;
-}
-/**
- * QueryAccountAddressByIDResponse is the response type for AccountAddressByID rpc method
- *
- * Since: cosmos-sdk 0.46.2
- */
-export interface QueryAccountAddressByIDResponseAmino {
-    account_address: string;
-}
-export interface QueryAccountAddressByIDResponseAminoMsg {
-    type: "cosmos-sdk/QueryAccountAddressByIDResponse";
-    value: QueryAccountAddressByIDResponseAmino;
-}
-/**
- * QueryAccountAddressByIDResponse is the response type for AccountAddressByID rpc method
- *
- * Since: cosmos-sdk 0.46.2
- */
-export interface QueryAccountAddressByIDResponseSDKType {
-    account_address: string;
-}
-/**
- * QueryAccountInfoRequest is the Query/AccountInfo request type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QueryAccountInfoRequest {
-    /** address is the account address string. */
-    address: string;
-}
-export interface QueryAccountInfoRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryAccountInfoRequest";
-    value: Uint8Array;
-}
-export interface QueryAccountInfoRequestProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryAccountInfoRequest";
-    value: Uint8Array;
-}
-/**
- * QueryAccountInfoRequest is the Query/AccountInfo request type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QueryAccountInfoRequestAmino {
-    /** address is the account address string. */
-    address: string;
-}
-export interface QueryAccountInfoRequestAminoMsg {
-    type: "cosmos-sdk/QueryAccountInfoRequest";
-    value: QueryAccountInfoRequestAmino;
-}
-/**
- * QueryAccountInfoRequest is the Query/AccountInfo request type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QueryAccountInfoRequestSDKType {
-    address: string;
-}
-/**
- * QueryAccountInfoResponse is the Query/AccountInfo response type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QueryAccountInfoResponse {
-    /** info is the account info which is represented by BaseAccount. */
-    info?: BaseAccount;
-}
-export interface QueryAccountInfoResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryAccountInfoResponse";
-    value: Uint8Array;
-}
-export interface QueryAccountInfoResponseProtoMsg {
-    type_url: "/cosmos.auth.v1beta1.QueryAccountInfoResponse";
-    value: Uint8Array;
-}
-/**
- * QueryAccountInfoResponse is the Query/AccountInfo response type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QueryAccountInfoResponseAmino {
-    /** info is the account info which is represented by BaseAccount. */
-    info?: BaseAccountAmino;
-}
-export interface QueryAccountInfoResponseAminoMsg {
-    type: "cosmos-sdk/QueryAccountInfoResponse";
-    value: QueryAccountInfoResponseAmino;
-}
-/**
- * QueryAccountInfoResponse is the Query/AccountInfo response type.
- *
- * Since: cosmos-sdk 0.47
- */
-export interface QueryAccountInfoResponseSDKType {
-    info?: BaseAccountSDKType;
 }
 export declare const QueryAccountsRequest: {
     typeUrl: string;
@@ -754,6 +373,40 @@ export declare const QueryAccountRequest: {
     toProto(message: QueryAccountRequest): Uint8Array;
     toProtoMsg(message: QueryAccountRequest): QueryAccountRequestProtoMsg;
 };
+export declare const QueryModuleAccountsRequest: {
+    typeUrl: string;
+    encode(_: QueryModuleAccountsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleAccountsRequest;
+    fromJSON(_: any): QueryModuleAccountsRequest;
+    toJSON(_: QueryModuleAccountsRequest): unknown;
+    fromPartial(_: Partial<QueryModuleAccountsRequest>): QueryModuleAccountsRequest;
+    fromSDK(_: QueryModuleAccountsRequestSDKType): QueryModuleAccountsRequest;
+    toSDK(_: QueryModuleAccountsRequest): QueryModuleAccountsRequestSDKType;
+    fromAmino(_: QueryModuleAccountsRequestAmino): QueryModuleAccountsRequest;
+    toAmino(_: QueryModuleAccountsRequest): QueryModuleAccountsRequestAmino;
+    fromAminoMsg(object: QueryModuleAccountsRequestAminoMsg): QueryModuleAccountsRequest;
+    toAminoMsg(message: QueryModuleAccountsRequest): QueryModuleAccountsRequestAminoMsg;
+    fromProtoMsg(message: QueryModuleAccountsRequestProtoMsg): QueryModuleAccountsRequest;
+    toProto(message: QueryModuleAccountsRequest): Uint8Array;
+    toProtoMsg(message: QueryModuleAccountsRequest): QueryModuleAccountsRequestProtoMsg;
+};
+export declare const QueryParamsResponse: {
+    typeUrl: string;
+    encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
+    fromJSON(object: any): QueryParamsResponse;
+    toJSON(message: QueryParamsResponse): unknown;
+    fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
+    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
+    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
+    fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
+    toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
+    fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse;
+    toAminoMsg(message: QueryParamsResponse): QueryParamsResponseAminoMsg;
+    fromProtoMsg(message: QueryParamsResponseProtoMsg): QueryParamsResponse;
+    toProto(message: QueryParamsResponse): Uint8Array;
+    toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg;
+};
 export declare const QueryAccountResponse: {
     typeUrl: string;
     encode(message: QueryAccountResponse, writer?: BinaryWriter): BinaryWriter;
@@ -788,40 +441,6 @@ export declare const QueryParamsRequest: {
     toProto(message: QueryParamsRequest): Uint8Array;
     toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg;
 };
-export declare const QueryParamsResponse: {
-    typeUrl: string;
-    encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
-    fromJSON(object: any): QueryParamsResponse;
-    toJSON(message: QueryParamsResponse): unknown;
-    fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
-    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
-    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
-    fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
-    toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
-    fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse;
-    toAminoMsg(message: QueryParamsResponse): QueryParamsResponseAminoMsg;
-    fromProtoMsg(message: QueryParamsResponseProtoMsg): QueryParamsResponse;
-    toProto(message: QueryParamsResponse): Uint8Array;
-    toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg;
-};
-export declare const QueryModuleAccountsRequest: {
-    typeUrl: string;
-    encode(_: QueryModuleAccountsRequest, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleAccountsRequest;
-    fromJSON(_: any): QueryModuleAccountsRequest;
-    toJSON(_: QueryModuleAccountsRequest): unknown;
-    fromPartial(_: Partial<QueryModuleAccountsRequest>): QueryModuleAccountsRequest;
-    fromSDK(_: QueryModuleAccountsRequestSDKType): QueryModuleAccountsRequest;
-    toSDK(_: QueryModuleAccountsRequest): QueryModuleAccountsRequestSDKType;
-    fromAmino(_: QueryModuleAccountsRequestAmino): QueryModuleAccountsRequest;
-    toAmino(_: QueryModuleAccountsRequest): QueryModuleAccountsRequestAmino;
-    fromAminoMsg(object: QueryModuleAccountsRequestAminoMsg): QueryModuleAccountsRequest;
-    toAminoMsg(message: QueryModuleAccountsRequest): QueryModuleAccountsRequestAminoMsg;
-    fromProtoMsg(message: QueryModuleAccountsRequestProtoMsg): QueryModuleAccountsRequest;
-    toProto(message: QueryModuleAccountsRequest): Uint8Array;
-    toProtoMsg(message: QueryModuleAccountsRequest): QueryModuleAccountsRequestProtoMsg;
-};
 export declare const QueryModuleAccountsResponse: {
     typeUrl: string;
     encode(message: QueryModuleAccountsResponse, writer?: BinaryWriter): BinaryWriter;
@@ -838,40 +457,6 @@ export declare const QueryModuleAccountsResponse: {
     fromProtoMsg(message: QueryModuleAccountsResponseProtoMsg): QueryModuleAccountsResponse;
     toProto(message: QueryModuleAccountsResponse): Uint8Array;
     toProtoMsg(message: QueryModuleAccountsResponse): QueryModuleAccountsResponseProtoMsg;
-};
-export declare const QueryModuleAccountByNameRequest: {
-    typeUrl: string;
-    encode(message: QueryModuleAccountByNameRequest, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleAccountByNameRequest;
-    fromJSON(object: any): QueryModuleAccountByNameRequest;
-    toJSON(message: QueryModuleAccountByNameRequest): unknown;
-    fromPartial(object: Partial<QueryModuleAccountByNameRequest>): QueryModuleAccountByNameRequest;
-    fromSDK(object: QueryModuleAccountByNameRequestSDKType): QueryModuleAccountByNameRequest;
-    toSDK(message: QueryModuleAccountByNameRequest): QueryModuleAccountByNameRequestSDKType;
-    fromAmino(object: QueryModuleAccountByNameRequestAmino): QueryModuleAccountByNameRequest;
-    toAmino(message: QueryModuleAccountByNameRequest): QueryModuleAccountByNameRequestAmino;
-    fromAminoMsg(object: QueryModuleAccountByNameRequestAminoMsg): QueryModuleAccountByNameRequest;
-    toAminoMsg(message: QueryModuleAccountByNameRequest): QueryModuleAccountByNameRequestAminoMsg;
-    fromProtoMsg(message: QueryModuleAccountByNameRequestProtoMsg): QueryModuleAccountByNameRequest;
-    toProto(message: QueryModuleAccountByNameRequest): Uint8Array;
-    toProtoMsg(message: QueryModuleAccountByNameRequest): QueryModuleAccountByNameRequestProtoMsg;
-};
-export declare const QueryModuleAccountByNameResponse: {
-    typeUrl: string;
-    encode(message: QueryModuleAccountByNameResponse, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleAccountByNameResponse;
-    fromJSON(object: any): QueryModuleAccountByNameResponse;
-    toJSON(message: QueryModuleAccountByNameResponse): unknown;
-    fromPartial(object: Partial<QueryModuleAccountByNameResponse>): QueryModuleAccountByNameResponse;
-    fromSDK(object: QueryModuleAccountByNameResponseSDKType): QueryModuleAccountByNameResponse;
-    toSDK(message: QueryModuleAccountByNameResponse): QueryModuleAccountByNameResponseSDKType;
-    fromAmino(object: QueryModuleAccountByNameResponseAmino): QueryModuleAccountByNameResponse;
-    toAmino(message: QueryModuleAccountByNameResponse): QueryModuleAccountByNameResponseAmino;
-    fromAminoMsg(object: QueryModuleAccountByNameResponseAminoMsg): QueryModuleAccountByNameResponse;
-    toAminoMsg(message: QueryModuleAccountByNameResponse): QueryModuleAccountByNameResponseAminoMsg;
-    fromProtoMsg(message: QueryModuleAccountByNameResponseProtoMsg): QueryModuleAccountByNameResponse;
-    toProto(message: QueryModuleAccountByNameResponse): Uint8Array;
-    toProtoMsg(message: QueryModuleAccountByNameResponse): QueryModuleAccountByNameResponseProtoMsg;
 };
 export declare const Bech32PrefixRequest: {
     typeUrl: string;
@@ -975,77 +560,9 @@ export declare const AddressStringToBytesResponse: {
     toProto(message: AddressStringToBytesResponse): Uint8Array;
     toProtoMsg(message: AddressStringToBytesResponse): AddressStringToBytesResponseProtoMsg;
 };
-export declare const QueryAccountAddressByIDRequest: {
-    typeUrl: string;
-    encode(message: QueryAccountAddressByIDRequest, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountAddressByIDRequest;
-    fromJSON(object: any): QueryAccountAddressByIDRequest;
-    toJSON(message: QueryAccountAddressByIDRequest): unknown;
-    fromPartial(object: Partial<QueryAccountAddressByIDRequest>): QueryAccountAddressByIDRequest;
-    fromSDK(object: QueryAccountAddressByIDRequestSDKType): QueryAccountAddressByIDRequest;
-    toSDK(message: QueryAccountAddressByIDRequest): QueryAccountAddressByIDRequestSDKType;
-    fromAmino(object: QueryAccountAddressByIDRequestAmino): QueryAccountAddressByIDRequest;
-    toAmino(message: QueryAccountAddressByIDRequest): QueryAccountAddressByIDRequestAmino;
-    fromAminoMsg(object: QueryAccountAddressByIDRequestAminoMsg): QueryAccountAddressByIDRequest;
-    toAminoMsg(message: QueryAccountAddressByIDRequest): QueryAccountAddressByIDRequestAminoMsg;
-    fromProtoMsg(message: QueryAccountAddressByIDRequestProtoMsg): QueryAccountAddressByIDRequest;
-    toProto(message: QueryAccountAddressByIDRequest): Uint8Array;
-    toProtoMsg(message: QueryAccountAddressByIDRequest): QueryAccountAddressByIDRequestProtoMsg;
-};
-export declare const QueryAccountAddressByIDResponse: {
-    typeUrl: string;
-    encode(message: QueryAccountAddressByIDResponse, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountAddressByIDResponse;
-    fromJSON(object: any): QueryAccountAddressByIDResponse;
-    toJSON(message: QueryAccountAddressByIDResponse): unknown;
-    fromPartial(object: Partial<QueryAccountAddressByIDResponse>): QueryAccountAddressByIDResponse;
-    fromSDK(object: QueryAccountAddressByIDResponseSDKType): QueryAccountAddressByIDResponse;
-    toSDK(message: QueryAccountAddressByIDResponse): QueryAccountAddressByIDResponseSDKType;
-    fromAmino(object: QueryAccountAddressByIDResponseAmino): QueryAccountAddressByIDResponse;
-    toAmino(message: QueryAccountAddressByIDResponse): QueryAccountAddressByIDResponseAmino;
-    fromAminoMsg(object: QueryAccountAddressByIDResponseAminoMsg): QueryAccountAddressByIDResponse;
-    toAminoMsg(message: QueryAccountAddressByIDResponse): QueryAccountAddressByIDResponseAminoMsg;
-    fromProtoMsg(message: QueryAccountAddressByIDResponseProtoMsg): QueryAccountAddressByIDResponse;
-    toProto(message: QueryAccountAddressByIDResponse): Uint8Array;
-    toProtoMsg(message: QueryAccountAddressByIDResponse): QueryAccountAddressByIDResponseProtoMsg;
-};
-export declare const QueryAccountInfoRequest: {
-    typeUrl: string;
-    encode(message: QueryAccountInfoRequest, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountInfoRequest;
-    fromJSON(object: any): QueryAccountInfoRequest;
-    toJSON(message: QueryAccountInfoRequest): unknown;
-    fromPartial(object: Partial<QueryAccountInfoRequest>): QueryAccountInfoRequest;
-    fromSDK(object: QueryAccountInfoRequestSDKType): QueryAccountInfoRequest;
-    toSDK(message: QueryAccountInfoRequest): QueryAccountInfoRequestSDKType;
-    fromAmino(object: QueryAccountInfoRequestAmino): QueryAccountInfoRequest;
-    toAmino(message: QueryAccountInfoRequest): QueryAccountInfoRequestAmino;
-    fromAminoMsg(object: QueryAccountInfoRequestAminoMsg): QueryAccountInfoRequest;
-    toAminoMsg(message: QueryAccountInfoRequest): QueryAccountInfoRequestAminoMsg;
-    fromProtoMsg(message: QueryAccountInfoRequestProtoMsg): QueryAccountInfoRequest;
-    toProto(message: QueryAccountInfoRequest): Uint8Array;
-    toProtoMsg(message: QueryAccountInfoRequest): QueryAccountInfoRequestProtoMsg;
-};
-export declare const QueryAccountInfoResponse: {
-    typeUrl: string;
-    encode(message: QueryAccountInfoResponse, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountInfoResponse;
-    fromJSON(object: any): QueryAccountInfoResponse;
-    toJSON(message: QueryAccountInfoResponse): unknown;
-    fromPartial(object: Partial<QueryAccountInfoResponse>): QueryAccountInfoResponse;
-    fromSDK(object: QueryAccountInfoResponseSDKType): QueryAccountInfoResponse;
-    toSDK(message: QueryAccountInfoResponse): QueryAccountInfoResponseSDKType;
-    fromAmino(object: QueryAccountInfoResponseAmino): QueryAccountInfoResponse;
-    toAmino(message: QueryAccountInfoResponse): QueryAccountInfoResponseAmino;
-    fromAminoMsg(object: QueryAccountInfoResponseAminoMsg): QueryAccountInfoResponse;
-    toAminoMsg(message: QueryAccountInfoResponse): QueryAccountInfoResponseAminoMsg;
-    fromProtoMsg(message: QueryAccountInfoResponseProtoMsg): QueryAccountInfoResponse;
-    toProto(message: QueryAccountInfoResponse): Uint8Array;
-    toProtoMsg(message: QueryAccountInfoResponse): QueryAccountInfoResponseProtoMsg;
-};
-export declare const Cosmos_authv1beta1AccountI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => BaseAccount | Any;
-export declare const Cosmos_authv1beta1AccountI_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_authv1beta1AccountI_ToAmino: (content: Any) => AnyAmino;
-export declare const Cosmos_authv1beta1ModuleAccountI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => ModuleAccount | Any;
-export declare const Cosmos_authv1beta1ModuleAccountI_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_authv1beta1ModuleAccountI_ToAmino: (content: Any) => AnyAmino;
+export declare const Cosmos_authAccountI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => BaseAccount | Any;
+export declare const Cosmos_authAccountI_FromAmino: (content: AnyAmino) => Any;
+export declare const Cosmos_authAccountI_ToAmino: (content: Any) => AnyAmino;
+export declare const Cosmos_authModuleAccountI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => ModuleAccount | Any;
+export declare const Cosmos_authModuleAccountI_FromAmino: (content: AnyAmino) => Any;
+export declare const Cosmos_authModuleAccountI_ToAmino: (content: Any) => AnyAmino;

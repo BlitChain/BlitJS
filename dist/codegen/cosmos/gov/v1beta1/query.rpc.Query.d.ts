@@ -11,7 +11,7 @@ export declare class Query {
     static Votes(request: QueryVotesRequest, initRequest?: fm.InitReq): Promise<QueryVotesResponse>;
     /** Params queries all parameters of the gov module. */
     static Params(request: QueryParamsRequest, initRequest?: fm.InitReq): Promise<QueryParamsResponse>;
-    /** Deposit queries single deposit information based on proposalID, depositor address. */
+    /** Deposit queries single deposit information based proposalID, depositAddr. */
     static Deposit(request: QueryDepositRequest, initRequest?: fm.InitReq): Promise<QueryDepositResponse>;
     /** Deposits queries all deposits of a single proposal. */
     static Deposits(request: QueryDepositsRequest, initRequest?: fm.InitReq): Promise<QueryDepositsResponse>;
@@ -31,7 +31,7 @@ export declare class QueryClientImpl {
     Votes(req: QueryVotesRequest, headers?: HeadersInit): Promise<QueryVotesResponse>;
     /** Params queries all parameters of the gov module. */
     Params(req: QueryParamsRequest, headers?: HeadersInit): Promise<QueryParamsResponse>;
-    /** Deposit queries single deposit information based on proposalID, depositor address. */
+    /** Deposit queries single deposit information based proposalID, depositAddr. */
     Deposit(req: QueryDepositRequest, headers?: HeadersInit): Promise<QueryDepositResponse>;
     /** Deposits queries all deposits of a single proposal. */
     Deposits(req: QueryDepositsRequest, headers?: HeadersInit): Promise<QueryDepositsResponse>;

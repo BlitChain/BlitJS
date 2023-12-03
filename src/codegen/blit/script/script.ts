@@ -11,10 +11,6 @@ export interface ScriptProtoMsg {
   type_url: "/blit.script.Script";
   value: Uint8Array;
 }
-export interface ScriptProtoMsg {
-  type_url: "/blit.script.Script";
-  value: Uint8Array;
-}
 export interface ScriptAmino {
   address: string;
   code: string;

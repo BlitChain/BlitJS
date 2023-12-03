@@ -26,20 +26,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createRPCMsgClient = void 0;
 const createRPCMsgClient = async ({ rpc }) => ({
     cosmos: {
-        auth: {
-            v1beta1: new (await Promise.resolve().then(() => __importStar(require("./auth/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)
-        },
         authz: {
             v1beta1: new (await Promise.resolve().then(() => __importStar(require("./authz/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)
         },
         bank: {
             v1beta1: new (await Promise.resolve().then(() => __importStar(require("./bank/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)
-        },
-        circuit: {
-            v1: new (await Promise.resolve().then(() => __importStar(require("./circuit/v1/tx.rpc.msg")))).MsgClientImpl(rpc)
-        },
-        consensus: {
-            v1: new (await Promise.resolve().then(() => __importStar(require("./consensus/v1/tx.rpc.msg")))).MsgClientImpl(rpc)
         },
         distribution: {
             v1beta1: new (await Promise.resolve().then(() => __importStar(require("./distribution/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)
@@ -53,9 +44,6 @@ const createRPCMsgClient = async ({ rpc }) => ({
         },
         group: {
             v1: new (await Promise.resolve().then(() => __importStar(require("./group/v1/tx.rpc.msg")))).MsgClientImpl(rpc)
-        },
-        mint: {
-            v1beta1: new (await Promise.resolve().then(() => __importStar(require("./mint/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)
         },
         nft: {
             v1beta1: new (await Promise.resolve().then(() => __importStar(require("./nft/v1beta1/tx.rpc.msg")))).MsgClientImpl(rpc)

@@ -1,7 +1,6 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
-import { Decimal } from "@cosmjs/math";
 export const protobufPackage = "cosmos.base.v1beta1";
 function createBaseCoin() {
     return {
@@ -117,7 +116,7 @@ export const DecCoin = {
             writer.uint32(10).string(message.denom);
         }
         if (message.amount !== "") {
-            writer.uint32(18).string(Decimal.fromUserInput(message.amount, 18).atomics);
+            writer.uint32(18).string(message.amount);
         }
         return writer;
     },
@@ -132,7 +131,7 @@ export const DecCoin = {
                     message.denom = reader.string();
                     break;
                 case 2:
-                    message.amount = Decimal.fromAtomics(reader.string(), 18).toString();
+                    message.amount = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -301,7 +300,7 @@ export const DecProto = {
     typeUrl: "/cosmos.base.v1beta1.DecProto",
     encode(message, writer = BinaryWriter.create()) {
         if (message.dec !== "") {
-            writer.uint32(10).string(Decimal.fromUserInput(message.dec, 18).atomics);
+            writer.uint32(10).string(message.dec);
         }
         return writer;
     },
@@ -313,7 +312,7 @@ export const DecProto = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.dec = Decimal.fromAtomics(reader.string(), 18).toString();
+                    message.dec = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);

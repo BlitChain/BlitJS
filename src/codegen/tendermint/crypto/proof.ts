@@ -12,10 +12,6 @@ export interface ProofProtoMsg {
   type_url: "/tendermint.crypto.Proof";
   value: Uint8Array;
 }
-export interface ProofProtoMsg {
-  type_url: "/tendermint.crypto.Proof";
-  value: Uint8Array;
-}
 export interface ProofAmino {
   total: string;
   index: string;
@@ -42,10 +38,6 @@ export interface ValueOpProtoMsg {
   type_url: "/tendermint.crypto.ValueOp";
   value: Uint8Array;
 }
-export interface ValueOpProtoMsg {
-  type_url: "/tendermint.crypto.ValueOp";
-  value: Uint8Array;
-}
 export interface ValueOpAmino {
   /** Encoded in ProofOp.Key. */
   key: Uint8Array;
@@ -64,10 +56,6 @@ export interface DominoOp {
   key: string;
   input: string;
   output: string;
-}
-export interface DominoOpProtoMsg {
-  type_url: "/tendermint.crypto.DominoOp";
-  value: Uint8Array;
 }
 export interface DominoOpProtoMsg {
   type_url: "/tendermint.crypto.DominoOp";
@@ -101,10 +89,6 @@ export interface ProofOpProtoMsg {
   type_url: "/tendermint.crypto.ProofOp";
   value: Uint8Array;
 }
-export interface ProofOpProtoMsg {
-  type_url: "/tendermint.crypto.ProofOp";
-  value: Uint8Array;
-}
 /**
  * ProofOp defines an operation used for calculating Merkle root
  * The data could be arbitrary format, providing nessecary data
@@ -132,10 +116,6 @@ export interface ProofOpSDKType {
 /** ProofOps is Merkle proof defined by the list of ProofOps */
 export interface ProofOps {
   ops: ProofOp[];
-}
-export interface ProofOpsProtoMsg {
-  type_url: "/tendermint.crypto.ProofOps";
-  value: Uint8Array;
 }
 export interface ProofOpsProtoMsg {
   type_url: "/tendermint.crypto.ProofOps";

@@ -15,10 +15,6 @@ export interface QueryAllowanceRequestProtoMsg {
   type_url: "/cosmos.feegrant.v1beta1.QueryAllowanceRequest";
   value: Uint8Array;
 }
-export interface QueryAllowanceRequestProtoMsg {
-  type_url: "/cosmos.feegrant.v1beta1.QueryAllowanceRequest";
-  value: Uint8Array;
-}
 /** QueryAllowanceRequest is the request type for the Query/Allowance RPC method. */
 export interface QueryAllowanceRequestAmino {
   /** granter is the address of the user granting an allowance of their funds. */
@@ -44,10 +40,6 @@ export interface QueryAllowanceResponseProtoMsg {
   type_url: "/cosmos.feegrant.v1beta1.QueryAllowanceResponse";
   value: Uint8Array;
 }
-export interface QueryAllowanceResponseProtoMsg {
-  type_url: "/cosmos.feegrant.v1beta1.QueryAllowanceResponse";
-  value: Uint8Array;
-}
 /** QueryAllowanceResponse is the response type for the Query/Allowance RPC method. */
 export interface QueryAllowanceResponseAmino {
   /** allowance is a allowance granted for grantee by granter. */
@@ -66,10 +58,6 @@ export interface QueryAllowancesRequest {
   grantee: string;
   /** pagination defines an pagination for the request. */
   pagination?: PageRequest;
-}
-export interface QueryAllowancesRequestProtoMsg {
-  type_url: "/cosmos.feegrant.v1beta1.QueryAllowancesRequest";
-  value: Uint8Array;
 }
 export interface QueryAllowancesRequestProtoMsg {
   type_url: "/cosmos.feegrant.v1beta1.QueryAllowancesRequest";
@@ -101,10 +89,6 @@ export interface QueryAllowancesResponseProtoMsg {
   type_url: "/cosmos.feegrant.v1beta1.QueryAllowancesResponse";
   value: Uint8Array;
 }
-export interface QueryAllowancesResponseProtoMsg {
-  type_url: "/cosmos.feegrant.v1beta1.QueryAllowancesResponse";
-  value: Uint8Array;
-}
 /** QueryAllowancesResponse is the response type for the Query/Allowances RPC method. */
 export interface QueryAllowancesResponseAmino {
   /** allowances are allowance's granted for grantee by granter. */
@@ -121,11 +105,7 @@ export interface QueryAllowancesResponseSDKType {
   allowances: GrantSDKType[];
   pagination?: PageResponseSDKType;
 }
-/**
- * QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method.
- * 
- * Since: cosmos-sdk 0.46
- */
+/** QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method. */
 export interface QueryAllowancesByGranterRequest {
   granter: string;
   /** pagination defines an pagination for the request. */
@@ -135,15 +115,7 @@ export interface QueryAllowancesByGranterRequestProtoMsg {
   type_url: "/cosmos.feegrant.v1beta1.QueryAllowancesByGranterRequest";
   value: Uint8Array;
 }
-export interface QueryAllowancesByGranterRequestProtoMsg {
-  type_url: "/cosmos.feegrant.v1beta1.QueryAllowancesByGranterRequest";
-  value: Uint8Array;
-}
-/**
- * QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method.
- * 
- * Since: cosmos-sdk 0.46
- */
+/** QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method. */
 export interface QueryAllowancesByGranterRequestAmino {
   granter: string;
   /** pagination defines an pagination for the request. */
@@ -153,20 +125,12 @@ export interface QueryAllowancesByGranterRequestAminoMsg {
   type: "cosmos-sdk/QueryAllowancesByGranterRequest";
   value: QueryAllowancesByGranterRequestAmino;
 }
-/**
- * QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method.
- * 
- * Since: cosmos-sdk 0.46
- */
+/** QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method. */
 export interface QueryAllowancesByGranterRequestSDKType {
   granter: string;
   pagination?: PageRequestSDKType;
 }
-/**
- * QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method.
- * 
- * Since: cosmos-sdk 0.46
- */
+/** QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method. */
 export interface QueryAllowancesByGranterResponse {
   /** allowances that have been issued by the granter. */
   allowances: Grant[];
@@ -177,15 +141,7 @@ export interface QueryAllowancesByGranterResponseProtoMsg {
   type_url: "/cosmos.feegrant.v1beta1.QueryAllowancesByGranterResponse";
   value: Uint8Array;
 }
-export interface QueryAllowancesByGranterResponseProtoMsg {
-  type_url: "/cosmos.feegrant.v1beta1.QueryAllowancesByGranterResponse";
-  value: Uint8Array;
-}
-/**
- * QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method.
- * 
- * Since: cosmos-sdk 0.46
- */
+/** QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method. */
 export interface QueryAllowancesByGranterResponseAmino {
   /** allowances that have been issued by the granter. */
   allowances: GrantAmino[];
@@ -196,11 +152,7 @@ export interface QueryAllowancesByGranterResponseAminoMsg {
   type: "cosmos-sdk/QueryAllowancesByGranterResponse";
   value: QueryAllowancesByGranterResponseAmino;
 }
-/**
- * QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method.
- * 
- * Since: cosmos-sdk 0.46
- */
+/** QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method. */
 export interface QueryAllowancesByGranterResponseSDKType {
   allowances: GrantSDKType[];
   pagination?: PageResponseSDKType;

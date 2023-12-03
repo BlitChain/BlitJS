@@ -1,6 +1,6 @@
 //@ts-nocheck
 import * as fm from "../../../grpc-gateway";
-import { SimulateRequest, SimulateResponse, GetTxRequest, GetTxResponse, BroadcastTxRequest, BroadcastTxResponse, GetTxsEventRequest, GetTxsEventResponse, GetBlockWithTxsRequest, GetBlockWithTxsResponse, TxDecodeRequest, TxDecodeResponse, TxEncodeRequest, TxEncodeResponse, TxEncodeAminoRequest, TxEncodeAminoResponse, TxDecodeAminoRequest, TxDecodeAminoResponse } from "./service";
+import { SimulateRequest, SimulateResponse, GetTxRequest, GetTxResponse, BroadcastTxRequest, BroadcastTxResponse, GetTxsEventRequest, GetTxsEventResponse, GetBlockWithTxsRequest, GetBlockWithTxsResponse } from "./service";
 export class Service {
   /** Simulate simulates executing a transaction for estimating gas usage. */
   static Simulate(request: SimulateRequest, initRequest?: fm.InitReq): Promise<SimulateResponse> {
@@ -49,54 +49,6 @@ export class Service {
       method: "GET"
     });
   }
-  /**
-   * TxDecode decodes the transaction.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-  static TxDecode(request: TxDecodeRequest, initRequest?: fm.InitReq): Promise<TxDecodeResponse> {
-    return fm.fetchReq(`/cosmos/tx/v1beta1/TxDecode`, {
-      ...initRequest,
-      method: "POST",
-      body: JSON.stringify(request, fm.replacer)
-    });
-  }
-  /**
-   * TxEncode encodes the transaction.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-  static TxEncode(request: TxEncodeRequest, initRequest?: fm.InitReq): Promise<TxEncodeResponse> {
-    return fm.fetchReq(`/cosmos/tx/v1beta1/TxEncode`, {
-      ...initRequest,
-      method: "POST",
-      body: JSON.stringify(request, fm.replacer)
-    });
-  }
-  /**
-   * TxEncodeAmino encodes an Amino transaction from JSON to encoded bytes.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-  static TxEncodeAmino(request: TxEncodeAminoRequest, initRequest?: fm.InitReq): Promise<TxEncodeAminoResponse> {
-    return fm.fetchReq(`/cosmos/tx/v1beta1/TxEncodeAmino`, {
-      ...initRequest,
-      method: "POST",
-      body: JSON.stringify(request, fm.replacer)
-    });
-  }
-  /**
-   * TxDecodeAmino decodes an Amino transaction from encoded bytes to JSON.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-  static TxDecodeAmino(request: TxDecodeAminoRequest, initRequest?: fm.InitReq): Promise<TxDecodeAminoResponse> {
-    return fm.fetchReq(`/cosmos/tx/v1beta1/TxDecodeAmino`, {
-      ...initRequest,
-      method: "POST",
-      body: JSON.stringify(request, fm.replacer)
-    });
-  }
 }
 export class ServiceClientImpl {
   private readonly url: string;
@@ -138,50 +90,6 @@ export class ServiceClientImpl {
    */
   async GetBlockWithTxs(req: GetBlockWithTxsRequest, headers?: HeadersInit): Promise<GetBlockWithTxsResponse> {
     return Service.GetBlockWithTxs(req, {
-      headers,
-      pathPrefix: this.url
-    });
-  }
-  /**
-   * TxDecode decodes the transaction.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-  async TxDecode(req: TxDecodeRequest, headers?: HeadersInit): Promise<TxDecodeResponse> {
-    return Service.TxDecode(req, {
-      headers,
-      pathPrefix: this.url
-    });
-  }
-  /**
-   * TxEncode encodes the transaction.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-  async TxEncode(req: TxEncodeRequest, headers?: HeadersInit): Promise<TxEncodeResponse> {
-    return Service.TxEncode(req, {
-      headers,
-      pathPrefix: this.url
-    });
-  }
-  /**
-   * TxEncodeAmino encodes an Amino transaction from JSON to encoded bytes.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-  async TxEncodeAmino(req: TxEncodeAminoRequest, headers?: HeadersInit): Promise<TxEncodeAminoResponse> {
-    return Service.TxEncodeAmino(req, {
-      headers,
-      pathPrefix: this.url
-    });
-  }
-  /**
-   * TxDecodeAmino decodes an Amino transaction from encoded bytes to JSON.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-  async TxDecodeAmino(req: TxDecodeAminoRequest, headers?: HeadersInit): Promise<TxDecodeAminoResponse> {
-    return Service.TxDecodeAmino(req, {
       headers,
       pathPrefix: this.url
     });

@@ -24,10 +24,6 @@ export interface ClassProtoMsg {
   type_url: "/cosmos.nft.v1beta1.Class";
   value: Uint8Array;
 }
-export interface ClassProtoMsg {
-  type_url: "/cosmos.nft.v1beta1.Class";
-  value: Uint8Array;
-}
 /** Class defines the class of the nft type. */
 export interface ClassAmino {
   /** id defines the unique identifier of the NFT classification, similar to the contract address of ERC721 */
@@ -71,10 +67,6 @@ export interface NFT {
   uri_hash: string;
   /** data is an app specific data of the NFT. Optional */
   data?: Any;
-}
-export interface NFTProtoMsg {
-  type_url: "/cosmos.nft.v1beta1.NFT";
-  value: Uint8Array;
 }
 export interface NFTProtoMsg {
   type_url: "/cosmos.nft.v1beta1.NFT";

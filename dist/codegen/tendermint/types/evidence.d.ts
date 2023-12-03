@@ -10,10 +10,6 @@ export interface EvidenceProtoMsg {
     type_url: "/tendermint.types.Evidence";
     value: Uint8Array;
 }
-export interface EvidenceProtoMsg {
-    type_url: "/tendermint.types.Evidence";
-    value: Uint8Array;
-}
 export interface EvidenceAmino {
     duplicate_vote_evidence?: DuplicateVoteEvidenceAmino;
     light_client_attack_evidence?: LightClientAttackEvidenceAmino;
@@ -38,17 +34,13 @@ export interface DuplicateVoteEvidenceProtoMsg {
     type_url: "/tendermint.types.DuplicateVoteEvidence";
     value: Uint8Array;
 }
-export interface DuplicateVoteEvidenceProtoMsg {
-    type_url: "/tendermint.types.DuplicateVoteEvidence";
-    value: Uint8Array;
-}
 /** DuplicateVoteEvidence contains evidence of a validator signed two conflicting votes. */
 export interface DuplicateVoteEvidenceAmino {
     vote_a?: VoteAmino;
     vote_b?: VoteAmino;
     total_voting_power: string;
     validator_power: string;
-    timestamp?: Date;
+    timestamp?: string;
 }
 export interface DuplicateVoteEvidenceAminoMsg {
     type: "/tendermint.types.DuplicateVoteEvidence";
@@ -74,17 +66,13 @@ export interface LightClientAttackEvidenceProtoMsg {
     type_url: "/tendermint.types.LightClientAttackEvidence";
     value: Uint8Array;
 }
-export interface LightClientAttackEvidenceProtoMsg {
-    type_url: "/tendermint.types.LightClientAttackEvidence";
-    value: Uint8Array;
-}
 /** LightClientAttackEvidence contains evidence of a set of validators attempting to mislead a light client. */
 export interface LightClientAttackEvidenceAmino {
     conflicting_block?: LightBlockAmino;
     common_height: string;
     byzantine_validators: ValidatorAmino[];
     total_voting_power: string;
-    timestamp?: Date;
+    timestamp?: string;
 }
 export interface LightClientAttackEvidenceAminoMsg {
     type: "/tendermint.types.LightClientAttackEvidence";
@@ -100,10 +88,6 @@ export interface LightClientAttackEvidenceSDKType {
 }
 export interface EvidenceList {
     evidence: Evidence[];
-}
-export interface EvidenceListProtoMsg {
-    type_url: "/tendermint.types.EvidenceList";
-    value: Uint8Array;
 }
 export interface EvidenceListProtoMsg {
     type_url: "/tendermint.types.EvidenceList";

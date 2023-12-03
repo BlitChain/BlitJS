@@ -33,10 +33,6 @@ export interface GenesisStateProtoMsg {
     type_url: "/cosmos.group.v1.GenesisState";
     value: Uint8Array;
 }
-export interface GenesisStateProtoMsg {
-    type_url: "/cosmos.group.v1.GenesisState";
-    value: Uint8Array;
-}
 /** GenesisState defines the group module's genesis state. */
 export interface GenesisStateAmino {
     /**

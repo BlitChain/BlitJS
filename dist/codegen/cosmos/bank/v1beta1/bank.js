@@ -105,7 +105,7 @@ exports.Params = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/x/bank/Params",
+            type: "cosmos-sdk/Params",
             value: exports.Params.toAmino(message)
         };
     },

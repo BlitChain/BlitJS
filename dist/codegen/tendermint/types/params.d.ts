@@ -6,15 +6,10 @@ export declare const protobufPackage = "tendermint.types";
  * validity of blocks.
  */
 export interface ConsensusParams {
-    block?: BlockParams;
-    evidence?: EvidenceParams;
-    validator?: ValidatorParams;
-    version?: VersionParams;
-    abci?: ABCIParams;
-}
-export interface ConsensusParamsProtoMsg {
-    type_url: "/tendermint.types.ConsensusParams";
-    value: Uint8Array;
+    block: BlockParams;
+    evidence: EvidenceParams;
+    validator: ValidatorParams;
+    version: VersionParams;
 }
 export interface ConsensusParamsProtoMsg {
     type_url: "/tendermint.types.ConsensusParams";
@@ -29,7 +24,6 @@ export interface ConsensusParamsAmino {
     evidence?: EvidenceParamsAmino;
     validator?: ValidatorParamsAmino;
     version?: VersionParamsAmino;
-    abci?: ABCIParamsAmino;
 }
 export interface ConsensusParamsAminoMsg {
     type: "/tendermint.types.ConsensusParams";
@@ -40,11 +34,10 @@ export interface ConsensusParamsAminoMsg {
  * validity of blocks.
  */
 export interface ConsensusParamsSDKType {
-    block?: BlockParamsSDKType;
-    evidence?: EvidenceParamsSDKType;
-    validator?: ValidatorParamsSDKType;
-    version?: VersionParamsSDKType;
-    abci?: ABCIParamsSDKType;
+    block: BlockParamsSDKType;
+    evidence: EvidenceParamsSDKType;
+    validator: ValidatorParamsSDKType;
+    version: VersionParamsSDKType;
 }
 /** BlockParams contains limits on the block size. */
 export interface BlockParams {
@@ -58,10 +51,13 @@ export interface BlockParams {
      * Note: must be greater or equal to -1
      */
     max_gas: bigint;
-}
-export interface BlockParamsProtoMsg {
-    type_url: "/tendermint.types.BlockParams";
-    value: Uint8Array;
+    /**
+     * Minimum time increment between consecutive blocks (in milliseconds) If the
+     * block header timestamp is ahead of the system clock, decrease this value.
+     *
+     * Not exposed to the application.
+     */
+    time_iota_ms: bigint;
 }
 export interface BlockParamsProtoMsg {
     type_url: "/tendermint.types.BlockParams";
@@ -79,6 +75,13 @@ export interface BlockParamsAmino {
      * Note: must be greater or equal to -1
      */
     max_gas: string;
+    /**
+     * Minimum time increment between consecutive blocks (in milliseconds) If the
+     * block header timestamp is ahead of the system clock, decrease this value.
+     *
+     * Not exposed to the application.
+     */
+    time_iota_ms: string;
 }
 export interface BlockParamsAminoMsg {
     type: "/tendermint.types.BlockParams";
@@ -88,6 +91,7 @@ export interface BlockParamsAminoMsg {
 export interface BlockParamsSDKType {
     max_bytes: bigint;
     max_gas: bigint;
+    time_iota_ms: bigint;
 }
 /** EvidenceParams determine how we handle evidence of malfeasance. */
 export interface EvidenceParams {
@@ -112,10 +116,6 @@ export interface EvidenceParams {
      * Default is 1048576 or 1MB
      */
     max_bytes: bigint;
-}
-export interface EvidenceParamsProtoMsg {
-    type_url: "/tendermint.types.EvidenceParams";
-    value: Uint8Array;
 }
 export interface EvidenceParamsProtoMsg {
     type_url: "/tendermint.types.EvidenceParams";
@@ -166,10 +166,6 @@ export interface ValidatorParamsProtoMsg {
     type_url: "/tendermint.types.ValidatorParams";
     value: Uint8Array;
 }
-export interface ValidatorParamsProtoMsg {
-    type_url: "/tendermint.types.ValidatorParams";
-    value: Uint8Array;
-}
 /**
  * ValidatorParams restrict the public key types validators can use.
  * NOTE: uses ABCI pubkey naming, not Amino names.
@@ -190,11 +186,7 @@ export interface ValidatorParamsSDKType {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParams {
-    app: bigint;
-}
-export interface VersionParamsProtoMsg {
-    type_url: "/tendermint.types.VersionParams";
-    value: Uint8Array;
+    app_version: bigint;
 }
 export interface VersionParamsProtoMsg {
     type_url: "/tendermint.types.VersionParams";
@@ -202,7 +194,7 @@ export interface VersionParamsProtoMsg {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParamsAmino {
-    app: string;
+    app_version: string;
 }
 export interface VersionParamsAminoMsg {
     type: "/tendermint.types.VersionParams";
@@ -210,7 +202,7 @@ export interface VersionParamsAminoMsg {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParamsSDKType {
-    app: bigint;
+    app_version: bigint;
 }
 /**
  * HashedParams is a subset of ConsensusParams.
@@ -220,10 +212,6 @@ export interface VersionParamsSDKType {
 export interface HashedParams {
     block_max_bytes: bigint;
     block_max_gas: bigint;
-}
-export interface HashedParamsProtoMsg {
-    type_url: "/tendermint.types.HashedParams";
-    value: Uint8Array;
 }
 export interface HashedParamsProtoMsg {
     type_url: "/tendermint.types.HashedParams";
@@ -250,52 +238,6 @@ export interface HashedParamsAminoMsg {
 export interface HashedParamsSDKType {
     block_max_bytes: bigint;
     block_max_gas: bigint;
-}
-/** ABCIParams configure functionality specific to the Application Blockchain Interface. */
-export interface ABCIParams {
-    /**
-     * vote_extensions_enable_height configures the first height during which
-     * vote extensions will be enabled. During this specified height, and for all
-     * subsequent heights, precommit messages that do not contain valid extension data
-     * will be considered invalid. Prior to this height, vote extensions will not
-     * be used or accepted by validators on the network.
-     *
-     * Once enabled, vote extensions will be created by the application in ExtendVote,
-     * passed to the application for validation in VerifyVoteExtension and given
-     * to the application to use when proposing a block during PrepareProposal.
-     */
-    vote_extensions_enable_height: bigint;
-}
-export interface ABCIParamsProtoMsg {
-    type_url: "/tendermint.types.ABCIParams";
-    value: Uint8Array;
-}
-export interface ABCIParamsProtoMsg {
-    type_url: "/tendermint.types.ABCIParams";
-    value: Uint8Array;
-}
-/** ABCIParams configure functionality specific to the Application Blockchain Interface. */
-export interface ABCIParamsAmino {
-    /**
-     * vote_extensions_enable_height configures the first height during which
-     * vote extensions will be enabled. During this specified height, and for all
-     * subsequent heights, precommit messages that do not contain valid extension data
-     * will be considered invalid. Prior to this height, vote extensions will not
-     * be used or accepted by validators on the network.
-     *
-     * Once enabled, vote extensions will be created by the application in ExtendVote,
-     * passed to the application for validation in VerifyVoteExtension and given
-     * to the application to use when proposing a block during PrepareProposal.
-     */
-    vote_extensions_enable_height: string;
-}
-export interface ABCIParamsAminoMsg {
-    type: "/tendermint.types.ABCIParams";
-    value: ABCIParamsAmino;
-}
-/** ABCIParams configure functionality specific to the Application Blockchain Interface. */
-export interface ABCIParamsSDKType {
-    vote_extensions_enable_height: bigint;
 }
 export declare const ConsensusParams: {
     typeUrl: string;
@@ -392,20 +334,4 @@ export declare const HashedParams: {
     fromProtoMsg(message: HashedParamsProtoMsg): HashedParams;
     toProto(message: HashedParams): Uint8Array;
     toProtoMsg(message: HashedParams): HashedParamsProtoMsg;
-};
-export declare const ABCIParams: {
-    typeUrl: string;
-    encode(message: ABCIParams, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): ABCIParams;
-    fromJSON(object: any): ABCIParams;
-    toJSON(message: ABCIParams): unknown;
-    fromPartial(object: Partial<ABCIParams>): ABCIParams;
-    fromSDK(object: ABCIParamsSDKType): ABCIParams;
-    toSDK(message: ABCIParams): ABCIParamsSDKType;
-    fromAmino(object: ABCIParamsAmino): ABCIParams;
-    toAmino(message: ABCIParams): ABCIParamsAmino;
-    fromAminoMsg(object: ABCIParamsAminoMsg): ABCIParams;
-    fromProtoMsg(message: ABCIParamsProtoMsg): ABCIParams;
-    toProto(message: ABCIParams): Uint8Array;
-    toProtoMsg(message: ABCIParams): ABCIParamsProtoMsg;
 };

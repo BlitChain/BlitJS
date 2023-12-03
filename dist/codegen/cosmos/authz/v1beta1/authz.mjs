@@ -119,7 +119,7 @@ export const Grant = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.authorization = Cosmos_authzv1beta1Authorization_InterfaceDecoder(reader);
+                    message.authorization = Cosmos_authzAuthorization_InterfaceDecoder(reader);
                     break;
                 case 2:
                     message.expiration = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
@@ -163,14 +163,14 @@ export const Grant = {
     },
     fromAmino(object) {
         return {
-            authorization: object?.authorization ? Cosmos_authzv1beta1Authorization_FromAmino(object.authorization) : undefined,
-            expiration: object?.expiration
+            authorization: object?.authorization ? Cosmos_authzAuthorization_FromAmino(object.authorization) : undefined,
+            expiration: object?.expiration ? fromTimestamp(Timestamp.fromAmino(object.expiration)) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
-        obj.authorization = message.authorization ? Cosmos_authzv1beta1Authorization_ToAmino(message.authorization) : undefined;
-        obj.expiration = message.expiration;
+        obj.authorization = message.authorization ? Cosmos_authzAuthorization_ToAmino(message.authorization) : undefined;
+        obj.expiration = message.expiration ? Timestamp.toAmino(toTimestamp(message.expiration)) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -234,7 +234,7 @@ export const GrantAuthorization = {
                     message.grantee = reader.string();
                     break;
                 case 3:
-                    message.authorization = Cosmos_authzv1beta1Authorization_InterfaceDecoder(reader);
+                    message.authorization = Cosmos_authzAuthorization_InterfaceDecoder(reader);
                     break;
                 case 4:
                     message.expiration = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
@@ -290,16 +290,16 @@ export const GrantAuthorization = {
         return {
             granter: object.granter,
             grantee: object.grantee,
-            authorization: object?.authorization ? Cosmos_authzv1beta1Authorization_FromAmino(object.authorization) : undefined,
-            expiration: object?.expiration
+            authorization: object?.authorization ? Cosmos_authzAuthorization_FromAmino(object.authorization) : undefined,
+            expiration: object?.expiration ? fromTimestamp(Timestamp.fromAmino(object.expiration)) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
         obj.granter = message.granter;
         obj.grantee = message.grantee;
-        obj.authorization = message.authorization ? Cosmos_authzv1beta1Authorization_ToAmino(message.authorization) : undefined;
-        obj.expiration = message.expiration;
+        obj.authorization = message.authorization ? Cosmos_authzAuthorization_ToAmino(message.authorization) : undefined;
+        obj.expiration = message.expiration ? Timestamp.toAmino(toTimestamp(message.expiration)) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -426,21 +426,21 @@ export const GrantQueueItem = {
         };
     }
 };
-export const Cosmos_authzv1beta1Authorization_InterfaceDecoder = (input) => {
+export const Cosmos_authzAuthorization_InterfaceDecoder = (input) => {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    const data = Any.decode(reader, reader.uint32());
+    const data = Any.decode(reader, reader.uint32(), true);
     switch (data.typeUrl) {
         case "/cosmos.authz.v1beta1.GenericAuthorization":
-            return GenericAuthorization.decode(data.value);
+            return GenericAuthorization.decode(data.value, undefined, true);
         case "/cosmos.bank.v1beta1.SendAuthorization":
-            return SendAuthorization.decode(data.value);
+            return SendAuthorization.decode(data.value, undefined, true);
         case "/cosmos.staking.v1beta1.StakeAuthorization":
-            return StakeAuthorization.decode(data.value);
+            return StakeAuthorization.decode(data.value, undefined, true);
         default:
             return data;
     }
 };
-export const Cosmos_authzv1beta1Authorization_FromAmino = (content) => {
+export const Cosmos_authzAuthorization_FromAmino = (content) => {
     switch (content.type) {
         case "cosmos-sdk/GenericAuthorization":
             return Any.fromPartial({
@@ -461,22 +461,22 @@ export const Cosmos_authzv1beta1Authorization_FromAmino = (content) => {
             return Any.fromAmino(content);
     }
 };
-export const Cosmos_authzv1beta1Authorization_ToAmino = (content) => {
+export const Cosmos_authzAuthorization_ToAmino = (content) => {
     switch (content.typeUrl) {
         case "/cosmos.authz.v1beta1.GenericAuthorization":
             return {
                 type: "cosmos-sdk/GenericAuthorization",
-                value: GenericAuthorization.toAmino(GenericAuthorization.decode(content.value))
+                value: GenericAuthorization.toAmino(GenericAuthorization.decode(content.value, undefined))
             };
         case "/cosmos.bank.v1beta1.SendAuthorization":
             return {
                 type: "cosmos-sdk/SendAuthorization",
-                value: SendAuthorization.toAmino(SendAuthorization.decode(content.value))
+                value: SendAuthorization.toAmino(SendAuthorization.decode(content.value, undefined))
             };
         case "/cosmos.staking.v1beta1.StakeAuthorization":
             return {
                 type: "cosmos-sdk/StakeAuthorization",
-                value: StakeAuthorization.toAmino(StakeAuthorization.decode(content.value))
+                value: StakeAuthorization.toAmino(StakeAuthorization.decode(content.value, undefined))
             };
         default:
             return Any.toAmino(content);

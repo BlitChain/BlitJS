@@ -15,10 +15,6 @@ export interface AppProtoMsg {
   type_url: "/tendermint.version.App";
   value: Uint8Array;
 }
-export interface AppProtoMsg {
-  type_url: "/tendermint.version.App";
-  value: Uint8Array;
-}
 /**
  * App includes the protocol and software version for the application.
  * This information is included in ResponseInfo. The App.Protocol can be
@@ -49,10 +45,6 @@ export interface AppSDKType {
 export interface Consensus {
   block: bigint;
   app: bigint;
-}
-export interface ConsensusProtoMsg {
-  type_url: "/tendermint.version.Consensus";
-  value: Uint8Array;
 }
 export interface ConsensusProtoMsg {
   type_url: "/tendermint.version.Consensus";

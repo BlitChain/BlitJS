@@ -18,10 +18,6 @@ export interface MsgUpdateParamsProtoMsg {
   type_url: "/blit.script.MsgUpdateParams";
   value: Uint8Array;
 }
-export interface MsgUpdateParamsProtoMsg {
-  type_url: "/blit.script.MsgUpdateParams";
-  value: Uint8Array;
-}
 /**
  * MsgUpdateParams is the Msg/UpdateParams request type.
  * 
@@ -57,10 +53,6 @@ export interface MsgUpdateParamsResponseProtoMsg {
   type_url: "/blit.script.MsgUpdateParamsResponse";
   value: Uint8Array;
 }
-export interface MsgUpdateParamsResponseProtoMsg {
-  type_url: "/blit.script.MsgUpdateParamsResponse";
-  value: Uint8Array;
-}
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
@@ -90,10 +82,6 @@ export interface MsgCreateScriptProtoMsg {
   type_url: "/blit.script.MsgCreateScript";
   value: Uint8Array;
 }
-export interface MsgCreateScriptProtoMsg {
-  type_url: "/blit.script.MsgCreateScript";
-  value: Uint8Array;
-}
 export interface MsgCreateScriptAmino {
   creator: string;
   code: string;
@@ -118,10 +106,6 @@ export interface MsgCreateScriptResponseProtoMsg {
   type_url: "/blit.script.MsgCreateScriptResponse";
   value: Uint8Array;
 }
-export interface MsgCreateScriptResponseProtoMsg {
-  type_url: "/blit.script.MsgCreateScriptResponse";
-  value: Uint8Array;
-}
 export interface MsgCreateScriptResponseAmino {
   address: string;
 }
@@ -136,10 +120,6 @@ export interface MsgUpdateScript {
   address: string;
   code: string;
   grantee: string;
-}
-export interface MsgUpdateScriptProtoMsg {
-  type_url: "/blit.script.MsgUpdateScript";
-  value: Uint8Array;
 }
 export interface MsgUpdateScriptProtoMsg {
   type_url: "/blit.script.MsgUpdateScript";
@@ -161,10 +141,6 @@ export interface MsgUpdateScriptSDKType {
 }
 export interface MsgUpdateScriptResponse {
   version: bigint;
-}
-export interface MsgUpdateScriptResponseProtoMsg {
-  type_url: "/blit.script.MsgUpdateScriptResponse";
-  value: Uint8Array;
 }
 export interface MsgUpdateScriptResponseProtoMsg {
   type_url: "/blit.script.MsgUpdateScriptResponse";

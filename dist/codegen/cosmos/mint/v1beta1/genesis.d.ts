@@ -5,12 +5,8 @@ export declare const protobufPackage = "cosmos.mint.v1beta1";
 export interface GenesisState {
     /** minter is a space for holding current inflation information. */
     minter: Minter;
-    /** params defines all the parameters of the module. */
+    /** params defines all the paramaters of the module. */
     params: Params;
-}
-export interface GenesisStateProtoMsg {
-    type_url: "/cosmos.mint.v1beta1.GenesisState";
-    value: Uint8Array;
 }
 export interface GenesisStateProtoMsg {
     type_url: "/cosmos.mint.v1beta1.GenesisState";
@@ -20,7 +16,7 @@ export interface GenesisStateProtoMsg {
 export interface GenesisStateAmino {
     /** minter is a space for holding current inflation information. */
     minter?: MinterAmino;
-    /** params defines all the parameters of the module. */
+    /** params defines all the paramaters of the module. */
     params?: ParamsAmino;
 }
 export interface GenesisStateAminoMsg {

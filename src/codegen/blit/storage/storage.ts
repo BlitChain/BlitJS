@@ -11,10 +11,6 @@ export interface StorageProtoMsg {
   type_url: "/blit.storage.Storage";
   value: Uint8Array;
 }
-export interface StorageProtoMsg {
-  type_url: "/blit.storage.Storage";
-  value: Uint8Array;
-}
 export interface StorageAmino {
   address: string;
   index: string;

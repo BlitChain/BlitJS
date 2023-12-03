@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { isSet } from "../../../helpers";
 export const protobufPackage = "cosmos.auth.v1beta1";
 /**
  * BaseAccount defines a base account type. It contains all the necessary fields
@@ -14,10 +14,6 @@ export interface BaseAccount {
   pub_key?: Any;
   account_number: bigint;
   sequence: bigint;
-}
-export interface BaseAccountProtoMsg {
-  type_url: "/cosmos.auth.v1beta1.BaseAccount";
-  value: Uint8Array;
 }
 export interface BaseAccountProtoMsg {
   type_url: "/cosmos.auth.v1beta1.BaseAccount";
@@ -61,10 +57,6 @@ export interface ModuleAccountProtoMsg {
   type_url: "/cosmos.auth.v1beta1.ModuleAccount";
   value: Uint8Array;
 }
-export interface ModuleAccountProtoMsg {
-  type_url: "/cosmos.auth.v1beta1.ModuleAccount";
-  value: Uint8Array;
-}
 /** ModuleAccount defines an account for modules that holds coins on a pool. */
 export interface ModuleAccountAmino {
   base_account?: BaseAccountAmino;
@@ -82,55 +74,6 @@ export interface ModuleAccountSDKType {
   name: string;
   permissions: string[];
 }
-/**
- * ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
- * 
- * Since: cosmos-sdk 0.47
- */
-export interface ModuleCredential {
-  /** module_name is the name of the module used for address derivation (passed into address.Module). */
-  module_name: string;
-  /**
-   * derivation_keys is for deriving a module account address (passed into address.Module)
-   * adding more keys creates sub-account addresses (passed into address.Derive)
-   */
-  derivation_keys: Uint8Array[];
-}
-export interface ModuleCredentialProtoMsg {
-  type_url: "/cosmos.auth.v1beta1.ModuleCredential";
-  value: Uint8Array;
-}
-export interface ModuleCredentialProtoMsg {
-  type_url: "/cosmos.auth.v1beta1.ModuleCredential";
-  value: Uint8Array;
-}
-/**
- * ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
- * 
- * Since: cosmos-sdk 0.47
- */
-export interface ModuleCredentialAmino {
-  /** module_name is the name of the module used for address derivation (passed into address.Module). */
-  module_name: string;
-  /**
-   * derivation_keys is for deriving a module account address (passed into address.Module)
-   * adding more keys creates sub-account addresses (passed into address.Derive)
-   */
-  derivation_keys: Uint8Array[];
-}
-export interface ModuleCredentialAminoMsg {
-  type: "cosmos-sdk/GroupAccountCredential";
-  value: ModuleCredentialAmino;
-}
-/**
- * ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
- * 
- * Since: cosmos-sdk 0.47
- */
-export interface ModuleCredentialSDKType {
-  module_name: string;
-  derivation_keys: Uint8Array[];
-}
 /** Params defines the parameters for the auth module. */
 export interface Params {
   max_memo_characters: bigint;
@@ -138,10 +81,6 @@ export interface Params {
   tx_size_cost_per_byte: bigint;
   sig_verify_cost_ed25519: bigint;
   sig_verify_cost_secp256k1: bigint;
-}
-export interface ParamsProtoMsg {
-  type_url: "/cosmos.auth.v1beta1.Params";
-  value: Uint8Array;
 }
 export interface ParamsProtoMsg {
   type_url: "/cosmos.auth.v1beta1.Params";
@@ -156,7 +95,7 @@ export interface ParamsAmino {
   sig_verify_cost_secp256k1: string;
 }
 export interface ParamsAminoMsg {
-  type: "cosmos-sdk/x/auth/Params";
+  type: "cosmos-sdk/Params";
   value: ParamsAmino;
 }
 /** Params defines the parameters for the auth module. */
@@ -425,119 +364,6 @@ export const ModuleAccount = {
     };
   }
 };
-function createBaseModuleCredential(): ModuleCredential {
-  return {
-    module_name: "",
-    derivation_keys: []
-  };
-}
-export const ModuleCredential = {
-  typeUrl: "/cosmos.auth.v1beta1.ModuleCredential",
-  encode(message: ModuleCredential, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.module_name !== "") {
-      writer.uint32(10).string(message.module_name);
-    }
-    for (const v of message.derivation_keys) {
-      writer.uint32(18).bytes(v!);
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): ModuleCredential {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseModuleCredential();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.module_name = reader.string();
-          break;
-        case 2:
-          message.derivation_keys.push(reader.bytes());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromJSON(object: any): ModuleCredential {
-    return {
-      module_name: isSet(object.module_name) ? String(object.module_name) : "",
-      derivation_keys: Array.isArray(object?.derivation_keys) ? object.derivation_keys.map((e: any) => bytesFromBase64(e)) : []
-    };
-  },
-  toJSON(message: ModuleCredential): unknown {
-    const obj: any = {};
-    message.module_name !== undefined && (obj.module_name = message.module_name);
-    if (message.derivation_keys) {
-      obj.derivation_keys = message.derivation_keys.map(e => base64FromBytes(e !== undefined ? e : new Uint8Array()));
-    } else {
-      obj.derivation_keys = [];
-    }
-    return obj;
-  },
-  fromPartial(object: Partial<ModuleCredential>): ModuleCredential {
-    const message = createBaseModuleCredential();
-    message.module_name = object.module_name ?? "";
-    message.derivation_keys = object.derivation_keys?.map(e => e) || [];
-    return message;
-  },
-  fromSDK(object: ModuleCredentialSDKType): ModuleCredential {
-    return {
-      module_name: object?.module_name,
-      derivation_keys: Array.isArray(object?.derivation_keys) ? object.derivation_keys.map((e: any) => e) : []
-    };
-  },
-  toSDK(message: ModuleCredential): ModuleCredentialSDKType {
-    const obj: any = {};
-    obj.module_name = message.module_name;
-    if (message.derivation_keys) {
-      obj.derivation_keys = message.derivation_keys.map(e => e);
-    } else {
-      obj.derivation_keys = [];
-    }
-    return obj;
-  },
-  fromAmino(object: ModuleCredentialAmino): ModuleCredential {
-    return {
-      module_name: object.module_name,
-      derivation_keys: Array.isArray(object?.derivation_keys) ? object.derivation_keys.map((e: any) => e) : []
-    };
-  },
-  toAmino(message: ModuleCredential): ModuleCredentialAmino {
-    const obj: any = {};
-    obj.module_name = message.module_name;
-    if (message.derivation_keys) {
-      obj.derivation_keys = message.derivation_keys.map(e => e);
-    } else {
-      obj.derivation_keys = [];
-    }
-    return obj;
-  },
-  fromAminoMsg(object: ModuleCredentialAminoMsg): ModuleCredential {
-    return ModuleCredential.fromAmino(object.value);
-  },
-  toAminoMsg(message: ModuleCredential): ModuleCredentialAminoMsg {
-    return {
-      type: "cosmos-sdk/GroupAccountCredential",
-      value: ModuleCredential.toAmino(message)
-    };
-  },
-  fromProtoMsg(message: ModuleCredentialProtoMsg): ModuleCredential {
-    return ModuleCredential.decode(message.value);
-  },
-  toProto(message: ModuleCredential): Uint8Array {
-    return ModuleCredential.encode(message).finish();
-  },
-  toProtoMsg(message: ModuleCredential): ModuleCredentialProtoMsg {
-    return {
-      typeUrl: "/cosmos.auth.v1beta1.ModuleCredential",
-      value: ModuleCredential.encode(message).finish()
-    };
-  }
-};
 function createBaseParams(): Params {
   return {
     max_memo_characters: BigInt(0),
@@ -664,7 +490,7 @@ export const Params = {
   },
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
-      type: "cosmos-sdk/x/auth/Params",
+      type: "cosmos-sdk/Params",
       value: Params.toAmino(message)
     };
   },

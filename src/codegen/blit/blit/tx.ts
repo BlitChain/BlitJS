@@ -18,10 +18,6 @@ export interface MsgUpdateParamsProtoMsg {
   type_url: "/blit.blit.MsgUpdateParams";
   value: Uint8Array;
 }
-export interface MsgUpdateParamsProtoMsg {
-  type_url: "/blit.blit.MsgUpdateParams";
-  value: Uint8Array;
-}
 /**
  * MsgUpdateParams is the Msg/UpdateParams request type.
  * 
@@ -53,10 +49,6 @@ export interface MsgUpdateParamsSDKType {
  * Since: cosmos-sdk 0.47
  */
 export interface MsgUpdateParamsResponse {}
-export interface MsgUpdateParamsResponseProtoMsg {
-  type_url: "/blit.blit.MsgUpdateParamsResponse";
-  value: Uint8Array;
-}
 export interface MsgUpdateParamsResponseProtoMsg {
   type_url: "/blit.blit.MsgUpdateParamsResponse";
   value: Uint8Array;

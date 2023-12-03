@@ -14,10 +14,6 @@ export interface BlockProtoMsg {
   type_url: "/tendermint.types.Block";
   value: Uint8Array;
 }
-export interface BlockProtoMsg {
-  type_url: "/tendermint.types.Block";
-  value: Uint8Array;
-}
 export interface BlockAmino {
   header?: HeaderAmino;
   data?: DataAmino;

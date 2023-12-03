@@ -2,18 +2,10 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.nft.v1beta1";
 /** EventSend is emitted on Msg/Send */
 export interface EventSend {
-    /** class_id associated with the nft */
     class_id: string;
-    /** id is a unique identifier of the nft */
     id: string;
-    /** sender is the address of the owner of nft */
     sender: string;
-    /** receiver is the receiver address of nft */
     receiver: string;
-}
-export interface EventSendProtoMsg {
-    type_url: "/cosmos.nft.v1beta1.EventSend";
-    value: Uint8Array;
 }
 export interface EventSendProtoMsg {
     type_url: "/cosmos.nft.v1beta1.EventSend";
@@ -21,13 +13,9 @@ export interface EventSendProtoMsg {
 }
 /** EventSend is emitted on Msg/Send */
 export interface EventSendAmino {
-    /** class_id associated with the nft */
     class_id: string;
-    /** id is a unique identifier of the nft */
     id: string;
-    /** sender is the address of the owner of nft */
     sender: string;
-    /** receiver is the receiver address of nft */
     receiver: string;
 }
 export interface EventSendAminoMsg {
@@ -43,16 +31,9 @@ export interface EventSendSDKType {
 }
 /** EventMint is emitted on Mint */
 export interface EventMint {
-    /** class_id associated with the nft */
     class_id: string;
-    /** id is a unique identifier of the nft */
     id: string;
-    /** owner is the owner address of the nft */
     owner: string;
-}
-export interface EventMintProtoMsg {
-    type_url: "/cosmos.nft.v1beta1.EventMint";
-    value: Uint8Array;
 }
 export interface EventMintProtoMsg {
     type_url: "/cosmos.nft.v1beta1.EventMint";
@@ -60,11 +41,8 @@ export interface EventMintProtoMsg {
 }
 /** EventMint is emitted on Mint */
 export interface EventMintAmino {
-    /** class_id associated with the nft */
     class_id: string;
-    /** id is a unique identifier of the nft */
     id: string;
-    /** owner is the owner address of the nft */
     owner: string;
 }
 export interface EventMintAminoMsg {
@@ -79,16 +57,9 @@ export interface EventMintSDKType {
 }
 /** EventBurn is emitted on Burn */
 export interface EventBurn {
-    /** class_id associated with the nft */
     class_id: string;
-    /** id is a unique identifier of the nft */
     id: string;
-    /** owner is the owner address of the nft */
     owner: string;
-}
-export interface EventBurnProtoMsg {
-    type_url: "/cosmos.nft.v1beta1.EventBurn";
-    value: Uint8Array;
 }
 export interface EventBurnProtoMsg {
     type_url: "/cosmos.nft.v1beta1.EventBurn";
@@ -96,11 +67,8 @@ export interface EventBurnProtoMsg {
 }
 /** EventBurn is emitted on Burn */
 export interface EventBurnAmino {
-    /** class_id associated with the nft */
     class_id: string;
-    /** id is a unique identifier of the nft */
     id: string;
-    /** owner is the owner address of the nft */
     owner: string;
 }
 export interface EventBurnAminoMsg {

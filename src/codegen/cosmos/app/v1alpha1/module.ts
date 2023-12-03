@@ -6,8 +6,10 @@ export const protobufPackage = "cosmos.app.v1alpha1";
 export interface ModuleDescriptor {
   /**
    * go_import names the package that should be imported by an app to load the
-   * module in the runtime module registry. It is required to make debugging
-   * of configuration errors easier for users.
+   * module in the runtime module registry. Either go_import must be defined here
+   * or the go_package option must be defined at the file level to indicate
+   * to users where to location the module implementation. go_import takes
+   * precedence over go_package when both are defined.
    */
   go_import: string;
   /**
@@ -32,16 +34,14 @@ export interface ModuleDescriptorProtoMsg {
   type_url: "/cosmos.app.v1alpha1.ModuleDescriptor";
   value: Uint8Array;
 }
-export interface ModuleDescriptorProtoMsg {
-  type_url: "/cosmos.app.v1alpha1.ModuleDescriptor";
-  value: Uint8Array;
-}
 /** ModuleDescriptor describes an app module. */
 export interface ModuleDescriptorAmino {
   /**
    * go_import names the package that should be imported by an app to load the
-   * module in the runtime module registry. It is required to make debugging
-   * of configuration errors easier for users.
+   * module in the runtime module registry. Either go_import must be defined here
+   * or the go_package option must be defined at the file level to indicate
+   * to users where to location the module implementation. go_import takes
+   * precedence over go_package when both are defined.
    */
   go_import: string;
   /**
@@ -85,13 +85,13 @@ export interface PackageReference {
    * present in a previous version.
    * 
    * A package should indicate its revision with a source code comment
-   * above the package declaration in one of its files containing the
-   * text "Revision N" where N is an integer revision. All packages start
+   * above the package declaration in one of its fields containing the
+   * test "Revision N" where N is an integer revision. All packages start
    * at revision 0 the first time they are released in a module.
    * 
    * When a new version of a module is released and items are added to existing
    * .proto files, these definitions should contain comments of the form
-   * "Since: Revision N" where N is an integer revision.
+   * "Since Revision N" where N is an integer revision.
    * 
    * When the module runtime starts up, it will check the pinned proto
    * image and panic if there are runtime protobuf definitions that are not
@@ -119,10 +119,6 @@ export interface PackageReferenceProtoMsg {
   type_url: "/cosmos.app.v1alpha1.PackageReference";
   value: Uint8Array;
 }
-export interface PackageReferenceProtoMsg {
-  type_url: "/cosmos.app.v1alpha1.PackageReference";
-  value: Uint8Array;
-}
 /** PackageReference is a reference to a protobuf package used by a module. */
 export interface PackageReferenceAmino {
   /** name is the fully-qualified name of the package. */
@@ -136,13 +132,13 @@ export interface PackageReferenceAmino {
    * present in a previous version.
    * 
    * A package should indicate its revision with a source code comment
-   * above the package declaration in one of its files containing the
-   * text "Revision N" where N is an integer revision. All packages start
+   * above the package declaration in one of its fields containing the
+   * test "Revision N" where N is an integer revision. All packages start
    * at revision 0 the first time they are released in a module.
    * 
    * When a new version of a module is released and items are added to existing
    * .proto files, these definitions should contain comments of the form
-   * "Since: Revision N" where N is an integer revision.
+   * "Since Revision N" where N is an integer revision.
    * 
    * When the module runtime starts up, it will check the pinned proto
    * image and panic if there are runtime protobuf definitions that are not
@@ -185,10 +181,6 @@ export interface MigrateFromInfo {
    * for the previous module version, ex: "cosmos.group.module.v1.Module".
    */
   module: string;
-}
-export interface MigrateFromInfoProtoMsg {
-  type_url: "/cosmos.app.v1alpha1.MigrateFromInfo";
-  value: Uint8Array;
 }
 export interface MigrateFromInfoProtoMsg {
   type_url: "/cosmos.app.v1alpha1.MigrateFromInfo";

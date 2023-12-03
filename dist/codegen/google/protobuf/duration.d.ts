@@ -81,10 +81,6 @@ export interface DurationProtoMsg {
     type_url: "/google.protobuf.Duration";
     value: Uint8Array;
 }
-export interface DurationProtoMsg {
-    type_url: "/google.protobuf.Duration";
-    value: Uint8Array;
-}
 /**
  * A Duration represents a signed, fixed-length span of time represented
  * as a count of seconds and fractions of seconds at nanosecond

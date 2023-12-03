@@ -12,10 +12,6 @@ export interface GenesisStateProtoMsg {
     type_url: "/blit.script.GenesisState";
     value: Uint8Array;
 }
-export interface GenesisStateProtoMsg {
-    type_url: "/blit.script.GenesisState";
-    value: Uint8Array;
-}
 /** GenesisState defines the script module's genesis state. */
 export interface GenesisStateAmino {
     /** params defines all the parameters of the module. */

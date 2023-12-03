@@ -6,11 +6,7 @@ export declare class Query {
      * key.
      */
     static Params(request: QueryParamsRequest, initRequest?: fm.InitReq): Promise<QueryParamsResponse>;
-    /**
-     * Subspaces queries for all registered subspaces and all keys for a subspace.
-     *
-     * Since: cosmos-sdk 0.46
-     */
+    /** Subspaces queries for all registered subspaces and all keys for a subspace. */
     static Subspaces(request: QuerySubspacesRequest, initRequest?: fm.InitReq): Promise<QuerySubspacesResponse>;
 }
 export declare class QueryClientImpl {
@@ -21,10 +17,6 @@ export declare class QueryClientImpl {
      * key.
      */
     Params(req: QueryParamsRequest, headers?: HeadersInit): Promise<QueryParamsResponse>;
-    /**
-     * Subspaces queries for all registered subspaces and all keys for a subspace.
-     *
-     * Since: cosmos-sdk 0.46
-     */
+    /** Subspaces queries for all registered subspaces and all keys for a subspace. */
     Subspaces(req: QuerySubspacesRequest, headers?: HeadersInit): Promise<QuerySubspacesResponse>;
 }

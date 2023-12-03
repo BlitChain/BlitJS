@@ -7,10 +7,6 @@ export interface ParamsProtoMsg {
   type_url: "/blit.script.Params";
   value: Uint8Array;
 }
-export interface ParamsProtoMsg {
-  type_url: "/blit.script.Params";
-  value: Uint8Array;
-}
 /** Params defines the parameters for the module. */
 export interface ParamsAmino {}
 export interface ParamsAminoMsg {

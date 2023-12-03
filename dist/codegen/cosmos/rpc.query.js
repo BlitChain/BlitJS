@@ -39,18 +39,9 @@ const createGrpcGateWayClient = async ({ endpoint }) => {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("./bank/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)
             },
             base: {
-                node: {
-                    v1beta1: new (await Promise.resolve().then(() => __importStar(require("./base/node/v1beta1/query.rpc.Service")))).ServiceClientImpl(endpoint)
-                },
                 tendermint: {
                     v1beta1: new (await Promise.resolve().then(() => __importStar(require("./base/tendermint/v1beta1/query.rpc.Service")))).ServiceClientImpl(endpoint)
                 }
-            },
-            circuit: {
-                v1: new (await Promise.resolve().then(() => __importStar(require("./circuit/v1/query.rpc.Query")))).QueryClientImpl(endpoint)
-            },
-            consensus: {
-                v1: new (await Promise.resolve().then(() => __importStar(require("./consensus/v1/query.rpc.Query")))).QueryClientImpl(endpoint)
             },
             distribution: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("./distribution/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)
@@ -70,11 +61,6 @@ const createGrpcGateWayClient = async ({ endpoint }) => {
             },
             nft: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("./nft/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)
-            },
-            orm: {
-                query: {
-                    v1alpha1: new (await Promise.resolve().then(() => __importStar(require("./orm/query/v1alpha1/query.rpc.Query")))).QueryClientImpl(endpoint)
-                }
             },
             params: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("./params/v1beta1/query.rpc.Query")))).QueryClientImpl(endpoint)

@@ -13,10 +13,6 @@ export interface QueryProposalRequestProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryProposalRequest";
   value: Uint8Array;
 }
-export interface QueryProposalRequestProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryProposalRequest";
-  value: Uint8Array;
-}
 /** QueryProposalRequest is the request type for the Query/Proposal RPC method. */
 export interface QueryProposalRequestAmino {
   /** proposal_id defines the unique id of the proposal. */
@@ -33,10 +29,6 @@ export interface QueryProposalRequestSDKType {
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
 export interface QueryProposalResponse {
   proposal: Proposal;
-}
-export interface QueryProposalResponseProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryProposalResponse";
-  value: Uint8Array;
 }
 export interface QueryProposalResponseProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryProposalResponse";
@@ -69,10 +61,6 @@ export interface QueryProposalsRequestProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryProposalsRequest";
   value: Uint8Array;
 }
-export interface QueryProposalsRequestProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryProposalsRequest";
-  value: Uint8Array;
-}
 /** QueryProposalsRequest is the request type for the Query/Proposals RPC method. */
 export interface QueryProposalsRequestAmino {
   /** proposal_status defines the status of the proposals. */
@@ -100,14 +88,9 @@ export interface QueryProposalsRequestSDKType {
  * method.
  */
 export interface QueryProposalsResponse {
-  /** proposals defines all the requested governance proposals. */
   proposals: Proposal[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponse;
-}
-export interface QueryProposalsResponseProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryProposalsResponse";
-  value: Uint8Array;
 }
 export interface QueryProposalsResponseProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryProposalsResponse";
@@ -118,7 +101,6 @@ export interface QueryProposalsResponseProtoMsg {
  * method.
  */
 export interface QueryProposalsResponseAmino {
-  /** proposals defines all the requested governance proposals. */
   proposals: ProposalAmino[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
@@ -139,12 +121,8 @@ export interface QueryProposalsResponseSDKType {
 export interface QueryVoteRequest {
   /** proposal_id defines the unique id of the proposal. */
   proposal_id: bigint;
-  /** voter defines the voter address for the proposals. */
+  /** voter defines the oter address for the proposals. */
   voter: string;
-}
-export interface QueryVoteRequestProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryVoteRequest";
-  value: Uint8Array;
 }
 export interface QueryVoteRequestProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryVoteRequest";
@@ -154,7 +132,7 @@ export interface QueryVoteRequestProtoMsg {
 export interface QueryVoteRequestAmino {
   /** proposal_id defines the unique id of the proposal. */
   proposal_id: string;
-  /** voter defines the voter address for the proposals. */
+  /** voter defines the oter address for the proposals. */
   voter: string;
 }
 export interface QueryVoteRequestAminoMsg {
@@ -168,12 +146,8 @@ export interface QueryVoteRequestSDKType {
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponse {
-  /** vote defines the queried vote. */
+  /** vote defined the queried vote. */
   vote: Vote;
-}
-export interface QueryVoteResponseProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryVoteResponse";
-  value: Uint8Array;
 }
 export interface QueryVoteResponseProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryVoteResponse";
@@ -181,7 +155,7 @@ export interface QueryVoteResponseProtoMsg {
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponseAmino {
-  /** vote defines the queried vote. */
+  /** vote defined the queried vote. */
   vote?: VoteAmino;
 }
 export interface QueryVoteResponseAminoMsg {
@@ -198,10 +172,6 @@ export interface QueryVotesRequest {
   proposal_id: bigint;
   /** pagination defines an optional pagination for the request. */
   pagination?: PageRequest;
-}
-export interface QueryVotesRequestProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryVotesRequest";
-  value: Uint8Array;
 }
 export interface QueryVotesRequestProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryVotesRequest";
@@ -225,7 +195,7 @@ export interface QueryVotesRequestSDKType {
 }
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponse {
-  /** votes defines the queried votes. */
+  /** votes defined the queried votes. */
   votes: Vote[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponse;
@@ -234,13 +204,9 @@ export interface QueryVotesResponseProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryVotesResponse";
   value: Uint8Array;
 }
-export interface QueryVotesResponseProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryVotesResponse";
-  value: Uint8Array;
-}
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponseAmino {
-  /** votes defines the queried votes. */
+  /** votes defined the queried votes. */
   votes: VoteAmino[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
@@ -261,10 +227,6 @@ export interface QueryParamsRequest {
    * "tallying" or "deposit".
    */
   params_type: string;
-}
-export interface QueryParamsRequestProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryParamsRequest";
-  value: Uint8Array;
 }
 export interface QueryParamsRequestProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryParamsRequest";
@@ -294,10 +256,6 @@ export interface QueryParamsResponse {
   deposit_params: DepositParams;
   /** tally_params defines the parameters related to tally. */
   tally_params: TallyParams;
-}
-export interface QueryParamsResponseProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryParamsResponse";
-  value: Uint8Array;
 }
 export interface QueryParamsResponseProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryParamsResponse";
@@ -333,10 +291,6 @@ export interface QueryDepositRequestProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryDepositRequest";
   value: Uint8Array;
 }
-export interface QueryDepositRequestProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryDepositRequest";
-  value: Uint8Array;
-}
 /** QueryDepositRequest is the request type for the Query/Deposit RPC method. */
 export interface QueryDepositRequestAmino {
   /** proposal_id defines the unique id of the proposal. */
@@ -357,10 +311,6 @@ export interface QueryDepositRequestSDKType {
 export interface QueryDepositResponse {
   /** deposit defines the requested deposit. */
   deposit: Deposit;
-}
-export interface QueryDepositResponseProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryDepositResponse";
-  value: Uint8Array;
 }
 export interface QueryDepositResponseProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryDepositResponse";
@@ -390,10 +340,6 @@ export interface QueryDepositsRequestProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryDepositsRequest";
   value: Uint8Array;
 }
-export interface QueryDepositsRequestProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryDepositsRequest";
-  value: Uint8Array;
-}
 /** QueryDepositsRequest is the request type for the Query/Deposits RPC method. */
 export interface QueryDepositsRequestAmino {
   /** proposal_id defines the unique id of the proposal. */
@@ -412,7 +358,6 @@ export interface QueryDepositsRequestSDKType {
 }
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponse {
-  /** deposits defines the requested deposits. */
   deposits: Deposit[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponse;
@@ -421,13 +366,8 @@ export interface QueryDepositsResponseProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryDepositsResponse";
   value: Uint8Array;
 }
-export interface QueryDepositsResponseProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryDepositsResponse";
-  value: Uint8Array;
-}
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponseAmino {
-  /** deposits defines the requested deposits. */
   deposits: DepositAmino[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
@@ -450,10 +390,6 @@ export interface QueryTallyResultRequestProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryTallyResultRequest";
   value: Uint8Array;
 }
-export interface QueryTallyResultRequestProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryTallyResultRequest";
-  value: Uint8Array;
-}
 /** QueryTallyResultRequest is the request type for the Query/Tally RPC method. */
 export interface QueryTallyResultRequestAmino {
   /** proposal_id defines the unique id of the proposal. */
@@ -471,10 +407,6 @@ export interface QueryTallyResultRequestSDKType {
 export interface QueryTallyResultResponse {
   /** tally defines the requested tally. */
   tally: TallyResult;
-}
-export interface QueryTallyResultResponseProtoMsg {
-  type_url: "/cosmos.gov.v1beta1.QueryTallyResultResponse";
-  value: Uint8Array;
 }
 export interface QueryTallyResultResponseProtoMsg {
   type_url: "/cosmos.gov.v1beta1.QueryTallyResultResponse";

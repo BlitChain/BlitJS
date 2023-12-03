@@ -8,8 +8,7 @@ exports.protobufPackage = "cosmos.bank.v1beta1";
 function createBaseSendAuthorization() {
     return {
         $typeUrl: "/cosmos.bank.v1beta1.SendAuthorization",
-        spend_limit: [],
-        allow_list: []
+        spend_limit: []
     };
 }
 exports.SendAuthorization = {
@@ -17,9 +16,6 @@ exports.SendAuthorization = {
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.spend_limit) {
             coin_1.Coin.encode(v, writer.uint32(10).fork()).ldelim();
-        }
-        for (const v of message.allow_list) {
-            writer.uint32(18).string(v);
         }
         return writer;
     },
@@ -33,9 +29,6 @@ exports.SendAuthorization = {
                 case 1:
                     message.spend_limit.push(coin_1.Coin.decode(reader, reader.uint32()));
                     break;
-                case 2:
-                    message.allow_list.push(reader.string());
-                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -45,8 +38,7 @@ exports.SendAuthorization = {
     },
     fromJSON(object) {
         return {
-            spend_limit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e) => coin_1.Coin.fromJSON(e)) : [],
-            allow_list: Array.isArray(object?.allow_list) ? object.allow_list.map((e) => String(e)) : []
+            spend_limit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e) => coin_1.Coin.fromJSON(e)) : []
         };
     },
     toJSON(message) {
@@ -57,24 +49,16 @@ exports.SendAuthorization = {
         else {
             obj.spend_limit = [];
         }
-        if (message.allow_list) {
-            obj.allow_list = message.allow_list.map(e => e);
-        }
-        else {
-            obj.allow_list = [];
-        }
         return obj;
     },
     fromPartial(object) {
         const message = createBaseSendAuthorization();
         message.spend_limit = object.spend_limit?.map(e => coin_1.Coin.fromPartial(e)) || [];
-        message.allow_list = object.allow_list?.map(e => e) || [];
         return message;
     },
     fromSDK(object) {
         return {
-            spend_limit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e) => coin_1.Coin.fromSDK(e)) : [],
-            allow_list: Array.isArray(object?.allow_list) ? object.allow_list.map((e) => e) : []
+            spend_limit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e) => coin_1.Coin.fromSDK(e)) : []
         };
     },
     toSDK(message) {
@@ -85,18 +69,11 @@ exports.SendAuthorization = {
         else {
             obj.spend_limit = [];
         }
-        if (message.allow_list) {
-            obj.allow_list = message.allow_list.map(e => e);
-        }
-        else {
-            obj.allow_list = [];
-        }
         return obj;
     },
     fromAmino(object) {
         return {
-            spend_limit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            allow_list: Array.isArray(object?.allow_list) ? object.allow_list.map((e) => e) : []
+            spend_limit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e) => coin_1.Coin.fromAmino(e)) : []
         };
     },
     toAmino(message) {
@@ -106,12 +83,6 @@ exports.SendAuthorization = {
         }
         else {
             obj.spend_limit = [];
-        }
-        if (message.allow_list) {
-            obj.allow_list = message.allow_list.map(e => e);
-        }
-        else {
-            obj.allow_list = [];
         }
         return obj;
     },

@@ -7,12 +7,7 @@ export const protobufPackage = "cosmos.nft.v1beta1";
 export interface GenesisState {
   /** class defines the class of the nft type. */
   classes: Class[];
-  /** entry defines all nft owned by a person. */
   entries: Entry[];
-}
-export interface GenesisStateProtoMsg {
-  type_url: "/cosmos.nft.v1beta1.GenesisState";
-  value: Uint8Array;
 }
 export interface GenesisStateProtoMsg {
   type_url: "/cosmos.nft.v1beta1.GenesisState";
@@ -22,7 +17,6 @@ export interface GenesisStateProtoMsg {
 export interface GenesisStateAmino {
   /** class defines the class of the nft type. */
   classes: ClassAmino[];
-  /** entry defines all nft owned by a person. */
   entries: EntryAmino[];
 }
 export interface GenesisStateAminoMsg {
@@ -40,10 +34,6 @@ export interface Entry {
   owner: string;
   /** nfts is a group of nfts of the same owner */
   nfts: NFT[];
-}
-export interface EntryProtoMsg {
-  type_url: "/cosmos.nft.v1beta1.Entry";
-  value: Uint8Array;
 }
 export interface EntryProtoMsg {
   type_url: "/cosmos.nft.v1beta1.Entry";

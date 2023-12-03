@@ -8,7 +8,6 @@ class LCDQueryClient {
     constructor({ requestClient }) {
         this.req = requestClient;
         this.params = this.params.bind(this);
-        this.validatorDistributionInfo = this.validatorDistributionInfo.bind(this);
         this.validatorOutstandingRewards = this.validatorOutstandingRewards.bind(this);
         this.validatorCommission = this.validatorCommission.bind(this);
         this.validatorSlashes = this.validatorSlashes.bind(this);
@@ -21,11 +20,6 @@ class LCDQueryClient {
     /* Params queries params of the distribution module. */
     async params(_params = {}) {
         const endpoint = `cosmos/distribution/v1beta1/params`;
-        return await this.req.get(endpoint);
-    }
-    /* ValidatorDistributionInfo queries validator commission and self-delegation rewards for validator */
-    async validatorDistributionInfo(params) {
-        const endpoint = `cosmos/distribution/v1beta1/validators/${params.validator_address}`;
         return await this.req.get(endpoint);
     }
     /* ValidatorOutstandingRewards queries rewards of a validator address. */
@@ -60,7 +54,7 @@ class LCDQueryClient {
         const endpoint = `cosmos/distribution/v1beta1/delegators/${params.delegator_address}/rewards/${params.validator_address}`;
         return await this.req.get(endpoint);
     }
-    /* DelegationTotalRewards queries the total rewards accrued by each
+    /* DelegationTotalRewards queries the total rewards accrued by a each
      validator. */
     async delegationTotalRewards(params) {
         const endpoint = `cosmos/distribution/v1beta1/delegators/${params.delegator_address}/rewards`;

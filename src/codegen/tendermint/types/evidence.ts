@@ -13,10 +13,6 @@ export interface EvidenceProtoMsg {
   type_url: "/tendermint.types.Evidence";
   value: Uint8Array;
 }
-export interface EvidenceProtoMsg {
-  type_url: "/tendermint.types.Evidence";
-  value: Uint8Array;
-}
 export interface EvidenceAmino {
   duplicate_vote_evidence?: DuplicateVoteEvidenceAmino;
   light_client_attack_evidence?: LightClientAttackEvidenceAmino;
@@ -41,17 +37,13 @@ export interface DuplicateVoteEvidenceProtoMsg {
   type_url: "/tendermint.types.DuplicateVoteEvidence";
   value: Uint8Array;
 }
-export interface DuplicateVoteEvidenceProtoMsg {
-  type_url: "/tendermint.types.DuplicateVoteEvidence";
-  value: Uint8Array;
-}
 /** DuplicateVoteEvidence contains evidence of a validator signed two conflicting votes. */
 export interface DuplicateVoteEvidenceAmino {
   vote_a?: VoteAmino;
   vote_b?: VoteAmino;
   total_voting_power: string;
   validator_power: string;
-  timestamp?: Date;
+  timestamp?: string;
 }
 export interface DuplicateVoteEvidenceAminoMsg {
   type: "/tendermint.types.DuplicateVoteEvidence";
@@ -77,17 +69,13 @@ export interface LightClientAttackEvidenceProtoMsg {
   type_url: "/tendermint.types.LightClientAttackEvidence";
   value: Uint8Array;
 }
-export interface LightClientAttackEvidenceProtoMsg {
-  type_url: "/tendermint.types.LightClientAttackEvidence";
-  value: Uint8Array;
-}
 /** LightClientAttackEvidence contains evidence of a set of validators attempting to mislead a light client. */
 export interface LightClientAttackEvidenceAmino {
   conflicting_block?: LightBlockAmino;
   common_height: string;
   byzantine_validators: ValidatorAmino[];
   total_voting_power: string;
-  timestamp?: Date;
+  timestamp?: string;
 }
 export interface LightClientAttackEvidenceAminoMsg {
   type: "/tendermint.types.LightClientAttackEvidence";
@@ -103,10 +91,6 @@ export interface LightClientAttackEvidenceSDKType {
 }
 export interface EvidenceList {
   evidence: Evidence[];
-}
-export interface EvidenceListProtoMsg {
-  type_url: "/tendermint.types.EvidenceList";
-  value: Uint8Array;
 }
 export interface EvidenceListProtoMsg {
   type_url: "/tendermint.types.EvidenceList";
@@ -326,7 +310,7 @@ export const DuplicateVoteEvidence = {
       vote_b: object?.vote_b ? Vote.fromAmino(object.vote_b) : undefined,
       total_voting_power: BigInt(object.total_voting_power),
       validator_power: BigInt(object.validator_power),
-      timestamp: object.timestamp
+      timestamp: object?.timestamp ? fromTimestamp(Timestamp.fromAmino(object.timestamp)) : undefined
     };
   },
   toAmino(message: DuplicateVoteEvidence): DuplicateVoteEvidenceAmino {
@@ -335,7 +319,7 @@ export const DuplicateVoteEvidence = {
     obj.vote_b = message.vote_b ? Vote.toAmino(message.vote_b) : undefined;
     obj.total_voting_power = message.total_voting_power ? message.total_voting_power.toString() : undefined;
     obj.validator_power = message.validator_power ? message.validator_power.toString() : undefined;
-    obj.timestamp = message.timestamp;
+    obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
     return obj;
   },
   fromAminoMsg(object: DuplicateVoteEvidenceAminoMsg): DuplicateVoteEvidence {
@@ -471,7 +455,7 @@ export const LightClientAttackEvidence = {
       common_height: BigInt(object.common_height),
       byzantine_validators: Array.isArray(object?.byzantine_validators) ? object.byzantine_validators.map((e: any) => Validator.fromAmino(e)) : [],
       total_voting_power: BigInt(object.total_voting_power),
-      timestamp: object.timestamp
+      timestamp: object?.timestamp ? fromTimestamp(Timestamp.fromAmino(object.timestamp)) : undefined
     };
   },
   toAmino(message: LightClientAttackEvidence): LightClientAttackEvidenceAmino {
@@ -484,7 +468,7 @@ export const LightClientAttackEvidence = {
       obj.byzantine_validators = [];
     }
     obj.total_voting_power = message.total_voting_power ? message.total_voting_power.toString() : undefined;
-    obj.timestamp = message.timestamp;
+    obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
     return obj;
   },
   fromAminoMsg(object: LightClientAttackEvidenceAminoMsg): LightClientAttackEvidence {

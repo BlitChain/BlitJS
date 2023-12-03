@@ -20,10 +20,6 @@ export interface BIP44ParamsProtoMsg {
     type_url: "/cosmos.crypto.hd.v1.BIP44Params";
     value: Uint8Array;
 }
-export interface BIP44ParamsProtoMsg {
-    type_url: "/cosmos.crypto.hd.v1.BIP44Params";
-    value: Uint8Array;
-}
 /** BIP44Params is used as path field in ledger item in Record. */
 export interface BIP44ParamsAmino {
     /** purpose is a constant set to 44' (or 0x8000002C) following the BIP43 recommendation */
@@ -41,7 +37,7 @@ export interface BIP44ParamsAmino {
     address_index: number;
 }
 export interface BIP44ParamsAminoMsg {
-    type: "crypto/keys/hd/BIP44Params";
+    type: "cosmos-sdk/BIP44Params";
     value: BIP44ParamsAmino;
 }
 /** BIP44Params is used as path field in ledger item in Record. */

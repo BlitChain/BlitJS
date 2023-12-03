@@ -14,10 +14,6 @@ export interface CoinProtoMsg {
     type_url: "/cosmos.base.v1beta1.Coin";
     value: Uint8Array;
 }
-export interface CoinProtoMsg {
-    type_url: "/cosmos.base.v1beta1.Coin";
-    value: Uint8Array;
-}
 /**
  * Coin defines a token with a denomination and an amount.
  *
@@ -56,10 +52,6 @@ export interface DecCoinProtoMsg {
     type_url: "/cosmos.base.v1beta1.DecCoin";
     value: Uint8Array;
 }
-export interface DecCoinProtoMsg {
-    type_url: "/cosmos.base.v1beta1.DecCoin";
-    value: Uint8Array;
-}
 /**
  * DecCoin defines a token with a denomination and a decimal amount.
  *
@@ -84,10 +76,7 @@ export interface DecCoinSDKType {
     denom: string;
     amount: string;
 }
-/**
- * IntProto defines a Protobuf wrapper around an Int object.
- * Deprecated: Prefer to use math.Int directly. It supports binary Marshal and Unmarshal.
- */
+/** IntProto defines a Protobuf wrapper around an Int object. */
 export interface IntProto {
     int: string;
 }
@@ -95,14 +84,7 @@ export interface IntProtoProtoMsg {
     type_url: "/cosmos.base.v1beta1.IntProto";
     value: Uint8Array;
 }
-export interface IntProtoProtoMsg {
-    type_url: "/cosmos.base.v1beta1.IntProto";
-    value: Uint8Array;
-}
-/**
- * IntProto defines a Protobuf wrapper around an Int object.
- * Deprecated: Prefer to use math.Int directly. It supports binary Marshal and Unmarshal.
- */
+/** IntProto defines a Protobuf wrapper around an Int object. */
 export interface IntProtoAmino {
     int: string;
 }
@@ -110,17 +92,11 @@ export interface IntProtoAminoMsg {
     type: "cosmos-sdk/IntProto";
     value: IntProtoAmino;
 }
-/**
- * IntProto defines a Protobuf wrapper around an Int object.
- * Deprecated: Prefer to use math.Int directly. It supports binary Marshal and Unmarshal.
- */
+/** IntProto defines a Protobuf wrapper around an Int object. */
 export interface IntProtoSDKType {
     int: string;
 }
-/**
- * DecProto defines a Protobuf wrapper around a Dec object.
- * Deprecated: Prefer to use math.LegacyDec directly. It supports binary Marshal and Unmarshal.
- */
+/** DecProto defines a Protobuf wrapper around a Dec object. */
 export interface DecProto {
     dec: string;
 }
@@ -128,14 +104,7 @@ export interface DecProtoProtoMsg {
     type_url: "/cosmos.base.v1beta1.DecProto";
     value: Uint8Array;
 }
-export interface DecProtoProtoMsg {
-    type_url: "/cosmos.base.v1beta1.DecProto";
-    value: Uint8Array;
-}
-/**
- * DecProto defines a Protobuf wrapper around a Dec object.
- * Deprecated: Prefer to use math.LegacyDec directly. It supports binary Marshal and Unmarshal.
- */
+/** DecProto defines a Protobuf wrapper around a Dec object. */
 export interface DecProtoAmino {
     dec: string;
 }
@@ -143,10 +112,7 @@ export interface DecProtoAminoMsg {
     type: "cosmos-sdk/DecProto";
     value: DecProtoAmino;
 }
-/**
- * DecProto defines a Protobuf wrapper around a Dec object.
- * Deprecated: Prefer to use math.LegacyDec directly. It supports binary Marshal and Unmarshal.
- */
+/** DecProto defines a Protobuf wrapper around a Dec object. */
 export interface DecProtoSDKType {
     dec: string;
 }

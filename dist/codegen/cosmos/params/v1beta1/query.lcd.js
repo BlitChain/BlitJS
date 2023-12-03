@@ -23,9 +23,7 @@ class LCDQueryClient {
         const endpoint = `cosmos/params/v1beta1/params`;
         return await this.req.get(endpoint, options);
     }
-    /* Subspaces queries for all registered subspaces and all keys for a subspace.
-    
-     Since: cosmos-sdk 0.46 */
+    /* Subspaces queries for all registered subspaces and all keys for a subspace. */
     async subspaces(_params = {}) {
         const endpoint = `cosmos/params/v1beta1/subspaces`;
         return await this.req.get(endpoint);

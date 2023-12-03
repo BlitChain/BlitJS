@@ -10,10 +10,6 @@ export interface QueryParamsRequestProtoMsg {
     type_url: "/blit.script.QueryParamsRequest";
     value: Uint8Array;
 }
-export interface QueryParamsRequestProtoMsg {
-    type_url: "/blit.script.QueryParamsRequest";
-    value: Uint8Array;
-}
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequestAmino {
 }
@@ -28,10 +24,6 @@ export interface QueryParamsRequestSDKType {
 export interface QueryParamsResponse {
     /** params holds all the parameters of this module. */
     params: Params;
-}
-export interface QueryParamsResponseProtoMsg {
-    type_url: "/blit.script.QueryParamsResponse";
-    value: Uint8Array;
 }
 export interface QueryParamsResponseProtoMsg {
     type_url: "/blit.script.QueryParamsResponse";
@@ -57,10 +49,6 @@ export interface QueryScriptRequestProtoMsg {
     type_url: "/blit.script.QueryScriptRequest";
     value: Uint8Array;
 }
-export interface QueryScriptRequestProtoMsg {
-    type_url: "/blit.script.QueryScriptRequest";
-    value: Uint8Array;
-}
 export interface QueryScriptRequestAmino {
     address: string;
 }
@@ -73,10 +61,6 @@ export interface QueryScriptRequestSDKType {
 }
 export interface QueryScriptResponse {
     script: Script;
-}
-export interface QueryScriptResponseProtoMsg {
-    type_url: "/blit.script.QueryScriptResponse";
-    value: Uint8Array;
 }
 export interface QueryScriptResponseProtoMsg {
     type_url: "/blit.script.QueryScriptResponse";
@@ -99,10 +83,6 @@ export interface QueryScriptsRequestProtoMsg {
     type_url: "/blit.script.QueryScriptsRequest";
     value: Uint8Array;
 }
-export interface QueryScriptsRequestProtoMsg {
-    type_url: "/blit.script.QueryScriptsRequest";
-    value: Uint8Array;
-}
 export interface QueryScriptsRequestAmino {
     pagination?: PageRequestAmino;
 }
@@ -116,10 +96,6 @@ export interface QueryScriptsRequestSDKType {
 export interface QueryScriptsResponse {
     script: Script[];
     pagination?: PageResponse;
-}
-export interface QueryScriptsResponseProtoMsg {
-    type_url: "/blit.script.QueryScriptsResponse";
-    value: Uint8Array;
 }
 export interface QueryScriptsResponseProtoMsg {
     type_url: "/blit.script.QueryScriptsResponse";
@@ -145,10 +121,6 @@ export interface QueryWebRequestProtoMsg {
     type_url: "/blit.script.QueryWebRequest";
     value: Uint8Array;
 }
-export interface QueryWebRequestProtoMsg {
-    type_url: "/blit.script.QueryWebRequest";
-    value: Uint8Array;
-}
 export interface QueryWebRequestAmino {
     address: string;
     httprequest: string;
@@ -163,10 +135,6 @@ export interface QueryWebRequestSDKType {
 }
 export interface QueryWebResponse {
     httpresponse: string;
-}
-export interface QueryWebResponseProtoMsg {
-    type_url: "/blit.script.QueryWebResponse";
-    value: Uint8Array;
 }
 export interface QueryWebResponseProtoMsg {
     type_url: "/blit.script.QueryWebResponse";
@@ -190,10 +158,6 @@ export interface QueryEvalRequest {
     kwargs: string;
     grantee: string;
     attached_messages: string;
-}
-export interface QueryEvalRequestProtoMsg {
-    type_url: "/blit.script.QueryEvalRequest";
-    value: Uint8Array;
 }
 export interface QueryEvalRequestProtoMsg {
     type_url: "/blit.script.QueryEvalRequest";
@@ -223,10 +187,6 @@ export interface QueryEvalRequestSDKType {
 }
 export interface QueryEvalResponse {
     response: string;
-}
-export interface QueryEvalResponseProtoMsg {
-    type_url: "/blit.script.QueryEvalResponse";
-    value: Uint8Array;
 }
 export interface QueryEvalResponseProtoMsg {
     type_url: "/blit.script.QueryEvalResponse";

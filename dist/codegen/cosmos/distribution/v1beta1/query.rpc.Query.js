@@ -36,15 +36,6 @@ class Query {
             method: "GET"
         });
     }
-    /** ValidatorDistributionInfo queries validator commission and self-delegation rewards for validator */
-    static ValidatorDistributionInfo(request, initRequest) {
-        return fm.fetchReq(`/cosmos/distribution/v1beta1/validators/${request["validator_address"]}?${fm.renderURLSearchParams({
-            ...request
-        }, ["validator_address"])}`, {
-            ...initRequest,
-            method: "GET"
-        });
-    }
     /** ValidatorOutstandingRewards queries rewards of a validator address. */
     static ValidatorOutstandingRewards(request, initRequest) {
         return fm.fetchReq(`/cosmos/distribution/v1beta1/validators/${request["validator_address"]}/outstanding_rewards?${fm.renderURLSearchParams({
@@ -82,7 +73,7 @@ class Query {
         });
     }
     /**
-     * DelegationTotalRewards queries the total rewards accrued by each
+     * DelegationTotalRewards queries the total rewards accrued by a each
      * validator.
      */
     static DelegationTotalRewards(request, initRequest) {
@@ -134,13 +125,6 @@ class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /** ValidatorDistributionInfo queries validator commission and self-delegation rewards for validator */
-    async ValidatorDistributionInfo(req, headers) {
-        return Query.ValidatorDistributionInfo(req, {
-            headers,
-            pathPrefix: this.url
-        });
-    }
     /** ValidatorOutstandingRewards queries rewards of a validator address. */
     async ValidatorOutstandingRewards(req, headers) {
         return Query.ValidatorOutstandingRewards(req, {
@@ -170,7 +154,7 @@ class QueryClientImpl {
         });
     }
     /**
-     * DelegationTotalRewards queries the total rewards accrued by each
+     * DelegationTotalRewards queries the total rewards accrued by a each
      * validator.
      */
     async DelegationTotalRewards(req, headers) {

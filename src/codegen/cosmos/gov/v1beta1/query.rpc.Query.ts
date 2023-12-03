@@ -47,7 +47,7 @@ export class Query {
       method: "GET"
     });
   }
-  /** Deposit queries single deposit information based on proposalID, depositor address. */
+  /** Deposit queries single deposit information based proposalID, depositAddr. */
   static Deposit(request: QueryDepositRequest, initRequest?: fm.InitReq): Promise<QueryDepositResponse> {
     return fm.fetchReq(`/cosmos/gov/v1beta1/proposals/${request["proposal_id"]}/deposits/${request["depositor"]}?${fm.renderURLSearchParams({
       ...request
@@ -115,7 +115,7 @@ export class QueryClientImpl {
       pathPrefix: this.url
     });
   }
-  /** Deposit queries single deposit information based on proposalID, depositor address. */
+  /** Deposit queries single deposit information based proposalID, depositAddr. */
   async Deposit(req: QueryDepositRequest, headers?: HeadersInit): Promise<QueryDepositResponse> {
     return Query.Deposit(req, {
       headers,

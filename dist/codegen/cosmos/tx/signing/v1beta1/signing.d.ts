@@ -26,15 +26,14 @@ export declare enum SignMode {
     /**
      * SIGN_MODE_TEXTUAL - SIGN_MODE_TEXTUAL is a future signing mode that will verify some
      * human-readable textual representation on top of the binary representation
-     * from SIGN_MODE_DIRECT.
-     *
-     * Since: cosmos-sdk 0.50
+     * from SIGN_MODE_DIRECT. It is currently not supported.
      */
     SIGN_MODE_TEXTUAL = 2,
     /**
      * SIGN_MODE_DIRECT_AUX - SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
      * SignDocDirectAux. As opposed to SIGN_MODE_DIRECT, this sign mode does not
-     * require signers signing over other signers' `signer_info`.
+     * require signers signing over other signers' `signer_info`. It also allows
+     * for adding Tips in transactions.
      *
      * Since: cosmos-sdk 0.46
      */
@@ -44,19 +43,6 @@ export declare enum SignMode {
      * Amino JSON and will be removed in the future.
      */
     SIGN_MODE_LEGACY_AMINO_JSON = 127,
-    /**
-     * SIGN_MODE_EIP_191 - SIGN_MODE_EIP_191 specifies the sign mode for EIP 191 signing on the Cosmos
-     * SDK. Ref: https://eips.ethereum.org/EIPS/eip-191
-     *
-     * Currently, SIGN_MODE_EIP_191 is registered as a SignMode enum variant,
-     * but is not implemented on the SDK by default. To enable EIP-191, you need
-     * to pass a custom `TxConfig` that has an implementation of
-     * `SignModeHandler` for EIP-191. The SDK may decide to fully support
-     * EIP-191 in the future.
-     *
-     * Since: cosmos-sdk 0.45.2
-     */
-    SIGN_MODE_EIP_191 = 191,
     UNRECOGNIZED = -1
 }
 export declare const SignModeSDKType: typeof SignMode;
@@ -67,10 +53,6 @@ export declare function signModeToJSON(object: SignMode): string;
 export interface SignatureDescriptors {
     /** signatures are the signature descriptors */
     signatures: SignatureDescriptor[];
-}
-export interface SignatureDescriptorsProtoMsg {
-    type_url: "/cosmos.tx.signing.v1beta1.SignatureDescriptors";
-    value: Uint8Array;
 }
 export interface SignatureDescriptorsProtoMsg {
     type_url: "/cosmos.tx.signing.v1beta1.SignatureDescriptors";
@@ -105,10 +87,6 @@ export interface SignatureDescriptor {
      * replay attacks.
      */
     sequence: bigint;
-}
-export interface SignatureDescriptorProtoMsg {
-    type_url: "/cosmos.tx.signing.v1beta1.SignatureDescriptor";
-    value: Uint8Array;
 }
 export interface SignatureDescriptorProtoMsg {
     type_url: "/cosmos.tx.signing.v1beta1.SignatureDescriptor";
@@ -157,10 +135,6 @@ export interface SignatureDescriptor_DataProtoMsg {
     type_url: "/cosmos.tx.signing.v1beta1.Data";
     value: Uint8Array;
 }
-export interface SignatureDescriptor_DataProtoMsg {
-    type_url: "/cosmos.tx.signing.v1beta1.Data";
-    value: Uint8Array;
-}
 /** Data represents signature data */
 export interface SignatureDescriptor_DataAmino {
     /** single represents a single signer */
@@ -188,10 +162,6 @@ export interface SignatureDescriptor_Data_SingleProtoMsg {
     type_url: "/cosmos.tx.signing.v1beta1.Single";
     value: Uint8Array;
 }
-export interface SignatureDescriptor_Data_SingleProtoMsg {
-    type_url: "/cosmos.tx.signing.v1beta1.Single";
-    value: Uint8Array;
-}
 /** Single is the signature data for a single signer */
 export interface SignatureDescriptor_Data_SingleAmino {
     /** mode is the signing mode of the single signer */
@@ -214,10 +184,6 @@ export interface SignatureDescriptor_Data_Multi {
     bitarray?: CompactBitArray;
     /** signatures is the signatures of the multi-signature */
     signatures: SignatureDescriptor_Data[];
-}
-export interface SignatureDescriptor_Data_MultiProtoMsg {
-    type_url: "/cosmos.tx.signing.v1beta1.Multi";
-    value: Uint8Array;
 }
 export interface SignatureDescriptor_Data_MultiProtoMsg {
     type_url: "/cosmos.tx.signing.v1beta1.Multi";

@@ -7,14 +7,10 @@ export declare const protobufPackage = "cosmos.upgrade.v1beta1";
  * Since: cosmos-sdk 0.46
  */
 export interface MsgSoftwareUpgrade {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+    /** authority is the address of the governance account. */
     authority: string;
     /** plan is the upgrade plan. */
     plan: Plan;
-}
-export interface MsgSoftwareUpgradeProtoMsg {
-    type_url: "/cosmos.upgrade.v1beta1.MsgSoftwareUpgrade";
-    value: Uint8Array;
 }
 export interface MsgSoftwareUpgradeProtoMsg {
     type_url: "/cosmos.upgrade.v1beta1.MsgSoftwareUpgrade";
@@ -26,7 +22,7 @@ export interface MsgSoftwareUpgradeProtoMsg {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgSoftwareUpgradeAmino {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+    /** authority is the address of the governance account. */
     authority: string;
     /** plan is the upgrade plan. */
     plan?: PlanAmino;
@@ -50,10 +46,6 @@ export interface MsgSoftwareUpgradeSDKType {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgSoftwareUpgradeResponse {
-}
-export interface MsgSoftwareUpgradeResponseProtoMsg {
-    type_url: "/cosmos.upgrade.v1beta1.MsgSoftwareUpgradeResponse";
-    value: Uint8Array;
 }
 export interface MsgSoftwareUpgradeResponseProtoMsg {
     type_url: "/cosmos.upgrade.v1beta1.MsgSoftwareUpgradeResponse";
@@ -83,12 +75,8 @@ export interface MsgSoftwareUpgradeResponseSDKType {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgCancelUpgrade {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+    /** authority is the address of the governance account. */
     authority: string;
-}
-export interface MsgCancelUpgradeProtoMsg {
-    type_url: "/cosmos.upgrade.v1beta1.MsgCancelUpgrade";
-    value: Uint8Array;
 }
 export interface MsgCancelUpgradeProtoMsg {
     type_url: "/cosmos.upgrade.v1beta1.MsgCancelUpgrade";
@@ -100,7 +88,7 @@ export interface MsgCancelUpgradeProtoMsg {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgCancelUpgradeAmino {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+    /** authority is the address of the governance account. */
     authority: string;
 }
 export interface MsgCancelUpgradeAminoMsg {
@@ -121,10 +109,6 @@ export interface MsgCancelUpgradeSDKType {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgCancelUpgradeResponse {
-}
-export interface MsgCancelUpgradeResponseProtoMsg {
-    type_url: "/cosmos.upgrade.v1beta1.MsgCancelUpgradeResponse";
-    value: Uint8Array;
 }
 export interface MsgCancelUpgradeResponseProtoMsg {
     type_url: "/cosmos.upgrade.v1beta1.MsgCancelUpgradeResponse";

@@ -2,10 +2,56 @@
 import { Proof } from "../crypto/proof";
 import { Consensus } from "../version/types";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { ValidatorSet, blockIDFlagFromJSON, blockIDFlagToJSON } from "./validator";
+import { ValidatorSet } from "./validator";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, bytesFromBase64, base64FromBytes, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
 export const protobufPackage = "tendermint.types";
+/** BlockIdFlag indicates which BlcokID the signature is for */
+export var BlockIDFlag;
+(function (BlockIDFlag) {
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_UNKNOWN"] = 0] = "BLOCK_ID_FLAG_UNKNOWN";
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_ABSENT"] = 1] = "BLOCK_ID_FLAG_ABSENT";
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_COMMIT"] = 2] = "BLOCK_ID_FLAG_COMMIT";
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_NIL"] = 3] = "BLOCK_ID_FLAG_NIL";
+    BlockIDFlag[BlockIDFlag["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
+})(BlockIDFlag || (BlockIDFlag = {}));
+export const BlockIDFlagSDKType = BlockIDFlag;
+export const BlockIDFlagAmino = BlockIDFlag;
+export function blockIDFlagFromJSON(object) {
+    switch (object) {
+        case 0:
+        case "BLOCK_ID_FLAG_UNKNOWN":
+            return BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN;
+        case 1:
+        case "BLOCK_ID_FLAG_ABSENT":
+            return BlockIDFlag.BLOCK_ID_FLAG_ABSENT;
+        case 2:
+        case "BLOCK_ID_FLAG_COMMIT":
+            return BlockIDFlag.BLOCK_ID_FLAG_COMMIT;
+        case 3:
+        case "BLOCK_ID_FLAG_NIL":
+            return BlockIDFlag.BLOCK_ID_FLAG_NIL;
+        case -1:
+        case "UNRECOGNIZED":
+        default:
+            return BlockIDFlag.UNRECOGNIZED;
+    }
+}
+export function blockIDFlagToJSON(object) {
+    switch (object) {
+        case BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN:
+            return "BLOCK_ID_FLAG_UNKNOWN";
+        case BlockIDFlag.BLOCK_ID_FLAG_ABSENT:
+            return "BLOCK_ID_FLAG_ABSENT";
+        case BlockIDFlag.BLOCK_ID_FLAG_COMMIT:
+            return "BLOCK_ID_FLAG_COMMIT";
+        case BlockIDFlag.BLOCK_ID_FLAG_NIL:
+            return "BLOCK_ID_FLAG_NIL";
+        case BlockIDFlag.UNRECOGNIZED:
+        default:
+            return "UNRECOGNIZED";
+    }
+}
 /** SignedMsgType is a type of signed message in the consensus. */
 export var SignedMsgType;
 (function (SignedMsgType) {
@@ -569,7 +615,7 @@ export const Header = {
             version: object?.version ? Consensus.fromAmino(object.version) : undefined,
             chain_id: object.chain_id,
             height: BigInt(object.height),
-            time: object.time,
+            time: object?.time ? fromTimestamp(Timestamp.fromAmino(object.time)) : undefined,
             last_block_id: object?.last_block_id ? BlockID.fromAmino(object.last_block_id) : undefined,
             last_commit_hash: object.last_commit_hash,
             data_hash: object.data_hash,
@@ -587,7 +633,7 @@ export const Header = {
         obj.version = message.version ? Consensus.toAmino(message.version) : undefined;
         obj.chain_id = message.chain_id;
         obj.height = message.height ? message.height.toString() : undefined;
-        obj.time = message.time;
+        obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : undefined;
         obj.last_block_id = message.last_block_id ? BlockID.toAmino(message.last_block_id) : undefined;
         obj.last_commit_hash = message.last_commit_hash;
         obj.data_hash = message.data_hash;
@@ -721,9 +767,7 @@ function createBaseVote() {
         timestamp: new Date(),
         validator_address: new Uint8Array(),
         validator_index: 0,
-        signature: new Uint8Array(),
-        extension: new Uint8Array(),
-        extension_signature: new Uint8Array()
+        signature: new Uint8Array()
     };
 }
 export const Vote = {
@@ -752,12 +796,6 @@ export const Vote = {
         }
         if (message.signature.length !== 0) {
             writer.uint32(66).bytes(message.signature);
-        }
-        if (message.extension.length !== 0) {
-            writer.uint32(74).bytes(message.extension);
-        }
-        if (message.extension_signature.length !== 0) {
-            writer.uint32(82).bytes(message.extension_signature);
         }
         return writer;
     },
@@ -792,12 +830,6 @@ export const Vote = {
                 case 8:
                     message.signature = reader.bytes();
                     break;
-                case 9:
-                    message.extension = reader.bytes();
-                    break;
-                case 10:
-                    message.extension_signature = reader.bytes();
-                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -814,9 +846,7 @@ export const Vote = {
             timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined,
             validator_address: isSet(object.validator_address) ? bytesFromBase64(object.validator_address) : new Uint8Array(),
             validator_index: isSet(object.validator_index) ? Number(object.validator_index) : 0,
-            signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array(),
-            extension: isSet(object.extension) ? bytesFromBase64(object.extension) : new Uint8Array(),
-            extension_signature: isSet(object.extension_signature) ? bytesFromBase64(object.extension_signature) : new Uint8Array()
+            signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array()
         };
     },
     toJSON(message) {
@@ -829,8 +859,6 @@ export const Vote = {
         message.validator_address !== undefined && (obj.validator_address = base64FromBytes(message.validator_address !== undefined ? message.validator_address : new Uint8Array()));
         message.validator_index !== undefined && (obj.validator_index = Math.round(message.validator_index));
         message.signature !== undefined && (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : new Uint8Array()));
-        message.extension !== undefined && (obj.extension = base64FromBytes(message.extension !== undefined ? message.extension : new Uint8Array()));
-        message.extension_signature !== undefined && (obj.extension_signature = base64FromBytes(message.extension_signature !== undefined ? message.extension_signature : new Uint8Array()));
         return obj;
     },
     fromPartial(object) {
@@ -843,8 +871,6 @@ export const Vote = {
         message.validator_address = object.validator_address ?? new Uint8Array();
         message.validator_index = object.validator_index ?? 0;
         message.signature = object.signature ?? new Uint8Array();
-        message.extension = object.extension ?? new Uint8Array();
-        message.extension_signature = object.extension_signature ?? new Uint8Array();
         return message;
     },
     fromSDK(object) {
@@ -856,9 +882,7 @@ export const Vote = {
             timestamp: object.timestamp ? Timestamp.fromSDK(object.timestamp) : undefined,
             validator_address: object?.validator_address,
             validator_index: object?.validator_index,
-            signature: object?.signature,
-            extension: object?.extension,
-            extension_signature: object?.extension_signature
+            signature: object?.signature
         };
     },
     toSDK(message) {
@@ -871,8 +895,6 @@ export const Vote = {
         obj.validator_address = message.validator_address;
         obj.validator_index = message.validator_index;
         obj.signature = message.signature;
-        obj.extension = message.extension;
-        obj.extension_signature = message.extension_signature;
         return obj;
     },
     fromAmino(object) {
@@ -881,12 +903,10 @@ export const Vote = {
             height: BigInt(object.height),
             round: object.round,
             block_id: object?.block_id ? BlockID.fromAmino(object.block_id) : undefined,
-            timestamp: object.timestamp,
+            timestamp: object?.timestamp ? fromTimestamp(Timestamp.fromAmino(object.timestamp)) : undefined,
             validator_address: object.validator_address,
             validator_index: object.validator_index,
-            signature: object.signature,
-            extension: object.extension,
-            extension_signature: object.extension_signature
+            signature: object.signature
         };
     },
     toAmino(message) {
@@ -895,12 +915,10 @@ export const Vote = {
         obj.height = message.height ? message.height.toString() : undefined;
         obj.round = message.round;
         obj.block_id = message.block_id ? BlockID.toAmino(message.block_id) : undefined;
-        obj.timestamp = message.timestamp;
+        obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
         obj.validator_address = message.validator_address;
         obj.validator_index = message.validator_index;
         obj.signature = message.signature;
-        obj.extension = message.extension;
-        obj.extension_signature = message.extension_signature;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1152,7 +1170,7 @@ export const CommitSig = {
         return {
             block_id_flag: isSet(object.block_id_flag) ? blockIDFlagFromJSON(object.block_id_flag) : -1,
             validator_address: object.validator_address,
-            timestamp: object.timestamp,
+            timestamp: object?.timestamp ? fromTimestamp(Timestamp.fromAmino(object.timestamp)) : undefined,
             signature: object.signature
         };
     },
@@ -1160,7 +1178,7 @@ export const CommitSig = {
         const obj = {};
         obj.block_id_flag = message.block_id_flag;
         obj.validator_address = message.validator_address;
-        obj.timestamp = message.timestamp;
+        obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
         obj.signature = message.signature;
         return obj;
     },
@@ -1177,295 +1195,6 @@ export const CommitSig = {
         return {
             typeUrl: "/tendermint.types.CommitSig",
             value: CommitSig.encode(message).finish()
-        };
-    }
-};
-function createBaseExtendedCommit() {
-    return {
-        height: BigInt(0),
-        round: 0,
-        block_id: BlockID.fromPartial({}),
-        extended_signatures: []
-    };
-}
-export const ExtendedCommit = {
-    typeUrl: "/tendermint.types.ExtendedCommit",
-    encode(message, writer = BinaryWriter.create()) {
-        if (message.height !== BigInt(0)) {
-            writer.uint32(8).int64(message.height);
-        }
-        if (message.round !== 0) {
-            writer.uint32(16).int32(message.round);
-        }
-        if (message.block_id !== undefined) {
-            BlockID.encode(message.block_id, writer.uint32(26).fork()).ldelim();
-        }
-        for (const v of message.extended_signatures) {
-            ExtendedCommitSig.encode(v, writer.uint32(34).fork()).ldelim();
-        }
-        return writer;
-    },
-    decode(input, length) {
-        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseExtendedCommit();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    message.height = reader.int64();
-                    break;
-                case 2:
-                    message.round = reader.int32();
-                    break;
-                case 3:
-                    message.block_id = BlockID.decode(reader, reader.uint32());
-                    break;
-                case 4:
-                    message.extended_signatures.push(ExtendedCommitSig.decode(reader, reader.uint32()));
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-            }
-        }
-        return message;
-    },
-    fromJSON(object) {
-        return {
-            height: isSet(object.height) ? BigInt(object.height.toString()) : BigInt(0),
-            round: isSet(object.round) ? Number(object.round) : 0,
-            block_id: isSet(object.block_id) ? BlockID.fromJSON(object.block_id) : undefined,
-            extended_signatures: Array.isArray(object?.extended_signatures) ? object.extended_signatures.map((e) => ExtendedCommitSig.fromJSON(e)) : []
-        };
-    },
-    toJSON(message) {
-        const obj = {};
-        message.height !== undefined && (obj.height = (message.height || BigInt(0)).toString());
-        message.round !== undefined && (obj.round = Math.round(message.round));
-        message.block_id !== undefined && (obj.block_id = message.block_id ? BlockID.toJSON(message.block_id) : undefined);
-        if (message.extended_signatures) {
-            obj.extended_signatures = message.extended_signatures.map(e => e ? ExtendedCommitSig.toJSON(e) : undefined);
-        }
-        else {
-            obj.extended_signatures = [];
-        }
-        return obj;
-    },
-    fromPartial(object) {
-        const message = createBaseExtendedCommit();
-        message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt(0);
-        message.round = object.round ?? 0;
-        message.block_id = object.block_id !== undefined && object.block_id !== null ? BlockID.fromPartial(object.block_id) : undefined;
-        message.extended_signatures = object.extended_signatures?.map(e => ExtendedCommitSig.fromPartial(e)) || [];
-        return message;
-    },
-    fromSDK(object) {
-        return {
-            height: object?.height,
-            round: object?.round,
-            block_id: object.block_id ? BlockID.fromSDK(object.block_id) : undefined,
-            extended_signatures: Array.isArray(object?.extended_signatures) ? object.extended_signatures.map((e) => ExtendedCommitSig.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.height = message.height;
-        obj.round = message.round;
-        message.block_id !== undefined && (obj.block_id = message.block_id ? BlockID.toSDK(message.block_id) : undefined);
-        if (message.extended_signatures) {
-            obj.extended_signatures = message.extended_signatures.map(e => e ? ExtendedCommitSig.toSDK(e) : undefined);
-        }
-        else {
-            obj.extended_signatures = [];
-        }
-        return obj;
-    },
-    fromAmino(object) {
-        return {
-            height: BigInt(object.height),
-            round: object.round,
-            block_id: object?.block_id ? BlockID.fromAmino(object.block_id) : undefined,
-            extended_signatures: Array.isArray(object?.extended_signatures) ? object.extended_signatures.map((e) => ExtendedCommitSig.fromAmino(e)) : []
-        };
-    },
-    toAmino(message) {
-        const obj = {};
-        obj.height = message.height ? message.height.toString() : undefined;
-        obj.round = message.round;
-        obj.block_id = message.block_id ? BlockID.toAmino(message.block_id) : undefined;
-        if (message.extended_signatures) {
-            obj.extended_signatures = message.extended_signatures.map(e => e ? ExtendedCommitSig.toAmino(e) : undefined);
-        }
-        else {
-            obj.extended_signatures = [];
-        }
-        return obj;
-    },
-    fromAminoMsg(object) {
-        return ExtendedCommit.fromAmino(object.value);
-    },
-    fromProtoMsg(message) {
-        return ExtendedCommit.decode(message.value);
-    },
-    toProto(message) {
-        return ExtendedCommit.encode(message).finish();
-    },
-    toProtoMsg(message) {
-        return {
-            typeUrl: "/tendermint.types.ExtendedCommit",
-            value: ExtendedCommit.encode(message).finish()
-        };
-    }
-};
-function createBaseExtendedCommitSig() {
-    return {
-        block_id_flag: 0,
-        validator_address: new Uint8Array(),
-        timestamp: new Date(),
-        signature: new Uint8Array(),
-        extension: new Uint8Array(),
-        extension_signature: new Uint8Array()
-    };
-}
-export const ExtendedCommitSig = {
-    typeUrl: "/tendermint.types.ExtendedCommitSig",
-    encode(message, writer = BinaryWriter.create()) {
-        if (message.block_id_flag !== 0) {
-            writer.uint32(8).int32(message.block_id_flag);
-        }
-        if (message.validator_address.length !== 0) {
-            writer.uint32(18).bytes(message.validator_address);
-        }
-        if (message.timestamp !== undefined) {
-            Timestamp.encode(toTimestamp(message.timestamp), writer.uint32(26).fork()).ldelim();
-        }
-        if (message.signature.length !== 0) {
-            writer.uint32(34).bytes(message.signature);
-        }
-        if (message.extension.length !== 0) {
-            writer.uint32(42).bytes(message.extension);
-        }
-        if (message.extension_signature.length !== 0) {
-            writer.uint32(50).bytes(message.extension_signature);
-        }
-        return writer;
-    },
-    decode(input, length) {
-        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseExtendedCommitSig();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    message.block_id_flag = reader.int32();
-                    break;
-                case 2:
-                    message.validator_address = reader.bytes();
-                    break;
-                case 3:
-                    message.timestamp = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-                    break;
-                case 4:
-                    message.signature = reader.bytes();
-                    break;
-                case 5:
-                    message.extension = reader.bytes();
-                    break;
-                case 6:
-                    message.extension_signature = reader.bytes();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-            }
-        }
-        return message;
-    },
-    fromJSON(object) {
-        return {
-            block_id_flag: isSet(object.block_id_flag) ? blockIDFlagFromJSON(object.block_id_flag) : -1,
-            validator_address: isSet(object.validator_address) ? bytesFromBase64(object.validator_address) : new Uint8Array(),
-            timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined,
-            signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array(),
-            extension: isSet(object.extension) ? bytesFromBase64(object.extension) : new Uint8Array(),
-            extension_signature: isSet(object.extension_signature) ? bytesFromBase64(object.extension_signature) : new Uint8Array()
-        };
-    },
-    toJSON(message) {
-        const obj = {};
-        message.block_id_flag !== undefined && (obj.block_id_flag = blockIDFlagToJSON(message.block_id_flag));
-        message.validator_address !== undefined && (obj.validator_address = base64FromBytes(message.validator_address !== undefined ? message.validator_address : new Uint8Array()));
-        message.timestamp !== undefined && (obj.timestamp = message.timestamp.toISOString());
-        message.signature !== undefined && (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : new Uint8Array()));
-        message.extension !== undefined && (obj.extension = base64FromBytes(message.extension !== undefined ? message.extension : new Uint8Array()));
-        message.extension_signature !== undefined && (obj.extension_signature = base64FromBytes(message.extension_signature !== undefined ? message.extension_signature : new Uint8Array()));
-        return obj;
-    },
-    fromPartial(object) {
-        const message = createBaseExtendedCommitSig();
-        message.block_id_flag = object.block_id_flag ?? 0;
-        message.validator_address = object.validator_address ?? new Uint8Array();
-        message.timestamp = object.timestamp ?? undefined;
-        message.signature = object.signature ?? new Uint8Array();
-        message.extension = object.extension ?? new Uint8Array();
-        message.extension_signature = object.extension_signature ?? new Uint8Array();
-        return message;
-    },
-    fromSDK(object) {
-        return {
-            block_id_flag: isSet(object.block_id_flag) ? blockIDFlagFromJSON(object.block_id_flag) : -1,
-            validator_address: object?.validator_address,
-            timestamp: object.timestamp ? Timestamp.fromSDK(object.timestamp) : undefined,
-            signature: object?.signature,
-            extension: object?.extension,
-            extension_signature: object?.extension_signature
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.block_id_flag !== undefined && (obj.block_id_flag = blockIDFlagToJSON(message.block_id_flag));
-        obj.validator_address = message.validator_address;
-        message.timestamp !== undefined && (obj.timestamp = message.timestamp ? Timestamp.toSDK(message.timestamp) : undefined);
-        obj.signature = message.signature;
-        obj.extension = message.extension;
-        obj.extension_signature = message.extension_signature;
-        return obj;
-    },
-    fromAmino(object) {
-        return {
-            block_id_flag: isSet(object.block_id_flag) ? blockIDFlagFromJSON(object.block_id_flag) : -1,
-            validator_address: object.validator_address,
-            timestamp: object.timestamp,
-            signature: object.signature,
-            extension: object.extension,
-            extension_signature: object.extension_signature
-        };
-    },
-    toAmino(message) {
-        const obj = {};
-        obj.block_id_flag = message.block_id_flag;
-        obj.validator_address = message.validator_address;
-        obj.timestamp = message.timestamp;
-        obj.signature = message.signature;
-        obj.extension = message.extension;
-        obj.extension_signature = message.extension_signature;
-        return obj;
-    },
-    fromAminoMsg(object) {
-        return ExtendedCommitSig.fromAmino(object.value);
-    },
-    fromProtoMsg(message) {
-        return ExtendedCommitSig.decode(message.value);
-    },
-    toProto(message) {
-        return ExtendedCommitSig.encode(message).finish();
-    },
-    toProtoMsg(message) {
-        return {
-            typeUrl: "/tendermint.types.ExtendedCommitSig",
-            value: ExtendedCommitSig.encode(message).finish()
         };
     }
 };
@@ -1603,7 +1332,7 @@ export const Proposal = {
             round: object.round,
             pol_round: object.pol_round,
             block_id: object?.block_id ? BlockID.fromAmino(object.block_id) : undefined,
-            timestamp: object.timestamp,
+            timestamp: object?.timestamp ? fromTimestamp(Timestamp.fromAmino(object.timestamp)) : undefined,
             signature: object.signature
         };
     },
@@ -1614,7 +1343,7 @@ export const Proposal = {
         obj.round = message.round;
         obj.pol_round = message.pol_round;
         obj.block_id = message.block_id ? BlockID.toAmino(message.block_id) : undefined;
-        obj.timestamp = message.timestamp;
+        obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
         obj.signature = message.signature;
         return obj;
     },

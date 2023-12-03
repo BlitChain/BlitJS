@@ -1,14 +1,10 @@
-import { ProposalExecutorResult, ProposalStatus, TallyResult, TallyResultAmino, TallyResultSDKType } from "./types";
+import { ProposalExecutorResult } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.group.v1";
 /** EventCreateGroup is an event emitted when a group is created. */
 export interface EventCreateGroup {
     /** group_id is the unique ID of the group. */
     group_id: bigint;
-}
-export interface EventCreateGroupProtoMsg {
-    type_url: "/cosmos.group.v1.EventCreateGroup";
-    value: Uint8Array;
 }
 export interface EventCreateGroupProtoMsg {
     type_url: "/cosmos.group.v1.EventCreateGroup";
@@ -36,10 +32,6 @@ export interface EventUpdateGroupProtoMsg {
     type_url: "/cosmos.group.v1.EventUpdateGroup";
     value: Uint8Array;
 }
-export interface EventUpdateGroupProtoMsg {
-    type_url: "/cosmos.group.v1.EventUpdateGroup";
-    value: Uint8Array;
-}
 /** EventUpdateGroup is an event emitted when a group is updated. */
 export interface EventUpdateGroupAmino {
     /** group_id is the unique ID of the group. */
@@ -57,10 +49,6 @@ export interface EventUpdateGroupSDKType {
 export interface EventCreateGroupPolicy {
     /** address is the account address of the group policy. */
     address: string;
-}
-export interface EventCreateGroupPolicyProtoMsg {
-    type_url: "/cosmos.group.v1.EventCreateGroupPolicy";
-    value: Uint8Array;
 }
 export interface EventCreateGroupPolicyProtoMsg {
     type_url: "/cosmos.group.v1.EventCreateGroupPolicy";
@@ -88,10 +76,6 @@ export interface EventUpdateGroupPolicyProtoMsg {
     type_url: "/cosmos.group.v1.EventUpdateGroupPolicy";
     value: Uint8Array;
 }
-export interface EventUpdateGroupPolicyProtoMsg {
-    type_url: "/cosmos.group.v1.EventUpdateGroupPolicy";
-    value: Uint8Array;
-}
 /** EventUpdateGroupPolicy is an event emitted when a group policy is updated. */
 export interface EventUpdateGroupPolicyAmino {
     /** address is the account address of the group policy. */
@@ -109,10 +93,6 @@ export interface EventUpdateGroupPolicySDKType {
 export interface EventSubmitProposal {
     /** proposal_id is the unique ID of the proposal. */
     proposal_id: bigint;
-}
-export interface EventSubmitProposalProtoMsg {
-    type_url: "/cosmos.group.v1.EventSubmitProposal";
-    value: Uint8Array;
 }
 export interface EventSubmitProposalProtoMsg {
     type_url: "/cosmos.group.v1.EventSubmitProposal";
@@ -140,10 +120,6 @@ export interface EventWithdrawProposalProtoMsg {
     type_url: "/cosmos.group.v1.EventWithdrawProposal";
     value: Uint8Array;
 }
-export interface EventWithdrawProposalProtoMsg {
-    type_url: "/cosmos.group.v1.EventWithdrawProposal";
-    value: Uint8Array;
-}
 /** EventWithdrawProposal is an event emitted when a proposal is withdrawn. */
 export interface EventWithdrawProposalAmino {
     /** proposal_id is the unique ID of the proposal. */
@@ -161,10 +137,6 @@ export interface EventWithdrawProposalSDKType {
 export interface EventVote {
     /** proposal_id is the unique ID of the proposal. */
     proposal_id: bigint;
-}
-export interface EventVoteProtoMsg {
-    type_url: "/cosmos.group.v1.EventVote";
-    value: Uint8Array;
 }
 export interface EventVoteProtoMsg {
     type_url: "/cosmos.group.v1.EventVote";
@@ -189,12 +161,6 @@ export interface EventExec {
     proposal_id: bigint;
     /** result is the proposal execution result. */
     result: ProposalExecutorResult;
-    /** logs contains error logs in case the execution result is FAILURE. */
-    logs: string;
-}
-export interface EventExecProtoMsg {
-    type_url: "/cosmos.group.v1.EventExec";
-    value: Uint8Array;
 }
 export interface EventExecProtoMsg {
     type_url: "/cosmos.group.v1.EventExec";
@@ -206,8 +172,6 @@ export interface EventExecAmino {
     proposal_id: string;
     /** result is the proposal execution result. */
     result: ProposalExecutorResult;
-    /** logs contains error logs in case the execution result is FAILURE. */
-    logs: string;
 }
 export interface EventExecAminoMsg {
     type: "cosmos-sdk/EventExec";
@@ -217,7 +181,6 @@ export interface EventExecAminoMsg {
 export interface EventExecSDKType {
     proposal_id: bigint;
     result: ProposalExecutorResult;
-    logs: string;
 }
 /** EventLeaveGroup is an event emitted when group member leaves the group. */
 export interface EventLeaveGroup {
@@ -225,10 +188,6 @@ export interface EventLeaveGroup {
     group_id: bigint;
     /** address is the account address of the group member. */
     address: string;
-}
-export interface EventLeaveGroupProtoMsg {
-    type_url: "/cosmos.group.v1.EventLeaveGroup";
-    value: Uint8Array;
 }
 export interface EventLeaveGroupProtoMsg {
     type_url: "/cosmos.group.v1.EventLeaveGroup";
@@ -249,42 +208,6 @@ export interface EventLeaveGroupAminoMsg {
 export interface EventLeaveGroupSDKType {
     group_id: bigint;
     address: string;
-}
-/** EventProposalPruned is an event emitted when a proposal is pruned. */
-export interface EventProposalPruned {
-    /** proposal_id is the unique ID of the proposal. */
-    proposal_id: bigint;
-    /** status is the proposal status (UNSPECIFIED, SUBMITTED, ACCEPTED, REJECTED, ABORTED, WITHDRAWN). */
-    status: ProposalStatus;
-    /** tally_result is the proposal tally result (when applicable). */
-    tally_result?: TallyResult;
-}
-export interface EventProposalPrunedProtoMsg {
-    type_url: "/cosmos.group.v1.EventProposalPruned";
-    value: Uint8Array;
-}
-export interface EventProposalPrunedProtoMsg {
-    type_url: "/cosmos.group.v1.EventProposalPruned";
-    value: Uint8Array;
-}
-/** EventProposalPruned is an event emitted when a proposal is pruned. */
-export interface EventProposalPrunedAmino {
-    /** proposal_id is the unique ID of the proposal. */
-    proposal_id: string;
-    /** status is the proposal status (UNSPECIFIED, SUBMITTED, ACCEPTED, REJECTED, ABORTED, WITHDRAWN). */
-    status: ProposalStatus;
-    /** tally_result is the proposal tally result (when applicable). */
-    tally_result?: TallyResultAmino;
-}
-export interface EventProposalPrunedAminoMsg {
-    type: "cosmos-sdk/EventProposalPruned";
-    value: EventProposalPrunedAmino;
-}
-/** EventProposalPruned is an event emitted when a proposal is pruned. */
-export interface EventProposalPrunedSDKType {
-    proposal_id: bigint;
-    status: ProposalStatus;
-    tally_result?: TallyResultSDKType;
 }
 export declare const EventCreateGroup: {
     typeUrl: string;
@@ -438,21 +361,4 @@ export declare const EventLeaveGroup: {
     fromProtoMsg(message: EventLeaveGroupProtoMsg): EventLeaveGroup;
     toProto(message: EventLeaveGroup): Uint8Array;
     toProtoMsg(message: EventLeaveGroup): EventLeaveGroupProtoMsg;
-};
-export declare const EventProposalPruned: {
-    typeUrl: string;
-    encode(message: EventProposalPruned, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): EventProposalPruned;
-    fromJSON(object: any): EventProposalPruned;
-    toJSON(message: EventProposalPruned): unknown;
-    fromPartial(object: Partial<EventProposalPruned>): EventProposalPruned;
-    fromSDK(object: EventProposalPrunedSDKType): EventProposalPruned;
-    toSDK(message: EventProposalPruned): EventProposalPrunedSDKType;
-    fromAmino(object: EventProposalPrunedAmino): EventProposalPruned;
-    toAmino(message: EventProposalPruned): EventProposalPrunedAmino;
-    fromAminoMsg(object: EventProposalPrunedAminoMsg): EventProposalPruned;
-    toAminoMsg(message: EventProposalPruned): EventProposalPrunedAminoMsg;
-    fromProtoMsg(message: EventProposalPrunedProtoMsg): EventProposalPruned;
-    toProto(message: EventProposalPruned): Uint8Array;
-    toProtoMsg(message: EventProposalPruned): EventProposalPrunedProtoMsg;
 };

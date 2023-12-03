@@ -16,10 +16,6 @@ export interface GenericAuthorizationProtoMsg {
     type_url: "/cosmos.authz.v1beta1.GenericAuthorization";
     value: Uint8Array;
 }
-export interface GenericAuthorizationProtoMsg {
-    type_url: "/cosmos.authz.v1beta1.GenericAuthorization";
-    value: Uint8Array;
-}
 /**
  * GenericAuthorization gives the grantee unrestricted permissions to execute
  * the provided method on behalf of the granter's account.
@@ -57,10 +53,6 @@ export interface GrantProtoMsg {
     type_url: "/cosmos.authz.v1beta1.Grant";
     value: Uint8Array;
 }
-export interface GrantProtoMsg {
-    type_url: "/cosmos.authz.v1beta1.Grant";
-    value: Uint8Array;
-}
 export type GrantEncoded = Omit<Grant, "authorization"> & {
     authorization?: GenericAuthorizationProtoMsg | SendAuthorizationProtoMsg | StakeAuthorizationProtoMsg | AnyProtoMsg | undefined;
 };
@@ -75,7 +67,7 @@ export interface GrantAmino {
      * doesn't have a time expiration (other conditions  in `authorization`
      * may apply to invalidate the grant)
      */
-    expiration?: Date;
+    expiration?: string;
 }
 export interface GrantAminoMsg {
     type: "cosmos-sdk/Grant";
@@ -103,10 +95,6 @@ export interface GrantAuthorizationProtoMsg {
     type_url: "/cosmos.authz.v1beta1.GrantAuthorization";
     value: Uint8Array;
 }
-export interface GrantAuthorizationProtoMsg {
-    type_url: "/cosmos.authz.v1beta1.GrantAuthorization";
-    value: Uint8Array;
-}
 export type GrantAuthorizationEncoded = Omit<GrantAuthorization, "authorization"> & {
     authorization?: GenericAuthorizationProtoMsg | SendAuthorizationProtoMsg | StakeAuthorizationProtoMsg | AnyProtoMsg | undefined;
 };
@@ -118,7 +106,7 @@ export interface GrantAuthorizationAmino {
     granter: string;
     grantee: string;
     authorization?: AnyAmino;
-    expiration?: Date;
+    expiration?: string;
 }
 export interface GrantAuthorizationAminoMsg {
     type: "cosmos-sdk/GrantAuthorization";
@@ -138,10 +126,6 @@ export interface GrantAuthorizationSDKType {
 export interface GrantQueueItem {
     /** msg_type_urls contains the list of TypeURL of a sdk.Msg. */
     msg_type_urls: string[];
-}
-export interface GrantQueueItemProtoMsg {
-    type_url: "/cosmos.authz.v1beta1.GrantQueueItem";
-    value: Uint8Array;
 }
 export interface GrantQueueItemProtoMsg {
     type_url: "/cosmos.authz.v1beta1.GrantQueueItem";
@@ -228,6 +212,6 @@ export declare const GrantQueueItem: {
     toProto(message: GrantQueueItem): Uint8Array;
     toProtoMsg(message: GrantQueueItem): GrantQueueItemProtoMsg;
 };
-export declare const Cosmos_authzv1beta1Authorization_InterfaceDecoder: (input: BinaryReader | Uint8Array) => GenericAuthorization | SendAuthorization | StakeAuthorization | Any;
-export declare const Cosmos_authzv1beta1Authorization_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_authzv1beta1Authorization_ToAmino: (content: Any) => AnyAmino;
+export declare const Cosmos_authzAuthorization_InterfaceDecoder: (input: BinaryReader | Uint8Array) => GenericAuthorization | SendAuthorization | StakeAuthorization | Any;
+export declare const Cosmos_authzAuthorization_FromAmino: (content: AnyAmino) => Any;
+export declare const Cosmos_authzAuthorization_ToAmino: (content: Any) => AnyAmino;

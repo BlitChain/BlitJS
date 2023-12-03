@@ -8,10 +8,6 @@ export interface BitArrayProtoMsg {
     type_url: "/tendermint.libs.bits.BitArray";
     value: Uint8Array;
 }
-export interface BitArrayProtoMsg {
-    type_url: "/tendermint.libs.bits.BitArray";
-    value: Uint8Array;
-}
 export interface BitArrayAmino {
     bits: string;
     elems: string[];

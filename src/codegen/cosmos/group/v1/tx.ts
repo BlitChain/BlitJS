@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MemberRequest, MemberRequestAmino, MemberRequestSDKType, VoteOption, ProposalExecutorResult, ThresholdDecisionPolicy, ThresholdDecisionPolicyProtoMsg, ThresholdDecisionPolicySDKType, PercentageDecisionPolicy, PercentageDecisionPolicyProtoMsg, PercentageDecisionPolicySDKType, voteOptionFromJSON, voteOptionToJSON, proposalExecutorResultFromJSON, proposalExecutorResultToJSON } from "./types";
+import { Member, MemberAmino, MemberSDKType, VoteOption, ThresholdDecisionPolicy, ThresholdDecisionPolicyProtoMsg, ThresholdDecisionPolicySDKType, PercentageDecisionPolicy, PercentageDecisionPolicyProtoMsg, PercentageDecisionPolicySDKType, voteOptionFromJSON, voteOptionToJSON } from "./types";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
@@ -52,13 +52,9 @@ export interface MsgCreateGroup {
   /** admin is the account address of the group admin. */
   admin: string;
   /** members defines the group members. */
-  members: MemberRequest[];
+  members: Member[];
   /** metadata is any arbitrary metadata to attached to the group. */
   metadata: string;
-}
-export interface MsgCreateGroupProtoMsg {
-  type_url: "/cosmos.group.v1.MsgCreateGroup";
-  value: Uint8Array;
 }
 export interface MsgCreateGroupProtoMsg {
   type_url: "/cosmos.group.v1.MsgCreateGroup";
@@ -69,7 +65,7 @@ export interface MsgCreateGroupAmino {
   /** admin is the account address of the group admin. */
   admin: string;
   /** members defines the group members. */
-  members: MemberRequestAmino[];
+  members: MemberAmino[];
   /** metadata is any arbitrary metadata to attached to the group. */
   metadata: string;
 }
@@ -80,17 +76,13 @@ export interface MsgCreateGroupAminoMsg {
 /** MsgCreateGroup is the Msg/CreateGroup request type. */
 export interface MsgCreateGroupSDKType {
   admin: string;
-  members: MemberRequestSDKType[];
+  members: MemberSDKType[];
   metadata: string;
 }
 /** MsgCreateGroupResponse is the Msg/CreateGroup response type. */
 export interface MsgCreateGroupResponse {
   /** group_id is the unique ID of the newly created group. */
   group_id: bigint;
-}
-export interface MsgCreateGroupResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgCreateGroupResponse";
-  value: Uint8Array;
 }
 export interface MsgCreateGroupResponseProtoMsg {
   type_url: "/cosmos.group.v1.MsgCreateGroupResponse";
@@ -119,11 +111,7 @@ export interface MsgUpdateGroupMembers {
    * member_updates is the list of members to update,
    * set weight to 0 to remove a member.
    */
-  member_updates: MemberRequest[];
-}
-export interface MsgUpdateGroupMembersProtoMsg {
-  type_url: "/cosmos.group.v1.MsgUpdateGroupMembers";
-  value: Uint8Array;
+  member_updates: Member[];
 }
 export interface MsgUpdateGroupMembersProtoMsg {
   type_url: "/cosmos.group.v1.MsgUpdateGroupMembers";
@@ -139,7 +127,7 @@ export interface MsgUpdateGroupMembersAmino {
    * member_updates is the list of members to update,
    * set weight to 0 to remove a member.
    */
-  member_updates: MemberRequestAmino[];
+  member_updates: MemberAmino[];
 }
 export interface MsgUpdateGroupMembersAminoMsg {
   type: "cosmos-sdk/MsgUpdateGroupMembers";
@@ -149,14 +137,10 @@ export interface MsgUpdateGroupMembersAminoMsg {
 export interface MsgUpdateGroupMembersSDKType {
   admin: string;
   group_id: bigint;
-  member_updates: MemberRequestSDKType[];
+  member_updates: MemberSDKType[];
 }
 /** MsgUpdateGroupMembersResponse is the Msg/UpdateGroupMembers response type. */
 export interface MsgUpdateGroupMembersResponse {}
-export interface MsgUpdateGroupMembersResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgUpdateGroupMembersResponse";
-  value: Uint8Array;
-}
 export interface MsgUpdateGroupMembersResponseProtoMsg {
   type_url: "/cosmos.group.v1.MsgUpdateGroupMembersResponse";
   value: Uint8Array;
@@ -177,10 +161,6 @@ export interface MsgUpdateGroupAdmin {
   group_id: bigint;
   /** new_admin is the group new admin account address. */
   new_admin: string;
-}
-export interface MsgUpdateGroupAdminProtoMsg {
-  type_url: "/cosmos.group.v1.MsgUpdateGroupAdmin";
-  value: Uint8Array;
 }
 export interface MsgUpdateGroupAdminProtoMsg {
   type_url: "/cosmos.group.v1.MsgUpdateGroupAdmin";
@@ -211,10 +191,6 @@ export interface MsgUpdateGroupAdminResponseProtoMsg {
   type_url: "/cosmos.group.v1.MsgUpdateGroupAdminResponse";
   value: Uint8Array;
 }
-export interface MsgUpdateGroupAdminResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgUpdateGroupAdminResponse";
-  value: Uint8Array;
-}
 /** MsgUpdateGroupAdminResponse is the Msg/UpdateGroupAdmin response type. */
 export interface MsgUpdateGroupAdminResponseAmino {}
 export interface MsgUpdateGroupAdminResponseAminoMsg {
@@ -231,10 +207,6 @@ export interface MsgUpdateGroupMetadata {
   group_id: bigint;
   /** metadata is the updated group's metadata. */
   metadata: string;
-}
-export interface MsgUpdateGroupMetadataProtoMsg {
-  type_url: "/cosmos.group.v1.MsgUpdateGroupMetadata";
-  value: Uint8Array;
 }
 export interface MsgUpdateGroupMetadataProtoMsg {
   type_url: "/cosmos.group.v1.MsgUpdateGroupMetadata";
@@ -265,10 +237,6 @@ export interface MsgUpdateGroupMetadataResponseProtoMsg {
   type_url: "/cosmos.group.v1.MsgUpdateGroupMetadataResponse";
   value: Uint8Array;
 }
-export interface MsgUpdateGroupMetadataResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgUpdateGroupMetadataResponse";
-  value: Uint8Array;
-}
 /** MsgUpdateGroupMetadataResponse is the Msg/UpdateGroupMetadata response type. */
 export interface MsgUpdateGroupMetadataResponseAmino {}
 export interface MsgUpdateGroupMetadataResponseAminoMsg {
@@ -287,10 +255,6 @@ export interface MsgCreateGroupPolicy {
   metadata: string;
   /** decision_policy specifies the group policy's decision policy. */
   decision_policy?: (ThresholdDecisionPolicy & PercentageDecisionPolicy & Any) | undefined;
-}
-export interface MsgCreateGroupPolicyProtoMsg {
-  type_url: "/cosmos.group.v1.MsgCreateGroupPolicy";
-  value: Uint8Array;
 }
 export interface MsgCreateGroupPolicyProtoMsg {
   type_url: "/cosmos.group.v1.MsgCreateGroupPolicy";
@@ -330,10 +294,6 @@ export interface MsgCreateGroupPolicyResponseProtoMsg {
   type_url: "/cosmos.group.v1.MsgCreateGroupPolicyResponse";
   value: Uint8Array;
 }
-export interface MsgCreateGroupPolicyResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgCreateGroupPolicyResponse";
-  value: Uint8Array;
-}
 /** MsgCreateGroupPolicyResponse is the Msg/CreateGroupPolicy response type. */
 export interface MsgCreateGroupPolicyResponseAmino {
   /** address is the account address of the newly created group policy. */
@@ -351,14 +311,10 @@ export interface MsgCreateGroupPolicyResponseSDKType {
 export interface MsgUpdateGroupPolicyAdmin {
   /** admin is the account address of the group admin. */
   admin: string;
-  /** group_policy_address is the account address of the group policy. */
-  group_policy_address: string;
+  /** address is the account address of the group policy. */
+  address: string;
   /** new_admin is the new group policy admin. */
   new_admin: string;
-}
-export interface MsgUpdateGroupPolicyAdminProtoMsg {
-  type_url: "/cosmos.group.v1.MsgUpdateGroupPolicyAdmin";
-  value: Uint8Array;
 }
 export interface MsgUpdateGroupPolicyAdminProtoMsg {
   type_url: "/cosmos.group.v1.MsgUpdateGroupPolicyAdmin";
@@ -368,8 +324,8 @@ export interface MsgUpdateGroupPolicyAdminProtoMsg {
 export interface MsgUpdateGroupPolicyAdminAmino {
   /** admin is the account address of the group admin. */
   admin: string;
-  /** group_policy_address is the account address of the group policy. */
-  group_policy_address: string;
+  /** address is the account address of the group policy. */
+  address: string;
   /** new_admin is the new group policy admin. */
   new_admin: string;
 }
@@ -380,48 +336,23 @@ export interface MsgUpdateGroupPolicyAdminAminoMsg {
 /** MsgUpdateGroupPolicyAdmin is the Msg/UpdateGroupPolicyAdmin request type. */
 export interface MsgUpdateGroupPolicyAdminSDKType {
   admin: string;
-  group_policy_address: string;
+  address: string;
   new_admin: string;
 }
-/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
-export interface MsgUpdateGroupPolicyAdminResponse {}
-export interface MsgUpdateGroupPolicyAdminResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse";
-  value: Uint8Array;
-}
-export interface MsgUpdateGroupPolicyAdminResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse";
-  value: Uint8Array;
-}
-/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
-export interface MsgUpdateGroupPolicyAdminResponseAmino {}
-export interface MsgUpdateGroupPolicyAdminResponseAminoMsg {
-  type: "cosmos-sdk/MsgUpdateGroupPolicyAdminResponse";
-  value: MsgUpdateGroupPolicyAdminResponseAmino;
-}
-/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
-export interface MsgUpdateGroupPolicyAdminResponseSDKType {}
 /** MsgCreateGroupWithPolicy is the Msg/CreateGroupWithPolicy request type. */
 export interface MsgCreateGroupWithPolicy {
   /** admin is the account address of the group and group policy admin. */
   admin: string;
   /** members defines the group members. */
-  members: MemberRequest[];
+  members: Member[];
   /** group_metadata is any arbitrary metadata attached to the group. */
   group_metadata: string;
   /** group_policy_metadata is any arbitrary metadata attached to the group policy. */
   group_policy_metadata: string;
-  /**
-   * group_policy_as_admin is a boolean field, if set to true, the group policy account address will be used as group
-   * and group policy admin.
-   */
+  /** group_policy_as_admin is a boolean field, if set to true, the group policy account address will be used as group and group policy admin. */
   group_policy_as_admin: boolean;
   /** decision_policy specifies the group policy's decision policy. */
   decision_policy?: (ThresholdDecisionPolicy & PercentageDecisionPolicy & Any) | undefined;
-}
-export interface MsgCreateGroupWithPolicyProtoMsg {
-  type_url: "/cosmos.group.v1.MsgCreateGroupWithPolicy";
-  value: Uint8Array;
 }
 export interface MsgCreateGroupWithPolicyProtoMsg {
   type_url: "/cosmos.group.v1.MsgCreateGroupWithPolicy";
@@ -435,15 +366,12 @@ export interface MsgCreateGroupWithPolicyAmino {
   /** admin is the account address of the group and group policy admin. */
   admin: string;
   /** members defines the group members. */
-  members: MemberRequestAmino[];
+  members: MemberAmino[];
   /** group_metadata is any arbitrary metadata attached to the group. */
   group_metadata: string;
   /** group_policy_metadata is any arbitrary metadata attached to the group policy. */
   group_policy_metadata: string;
-  /**
-   * group_policy_as_admin is a boolean field, if set to true, the group policy account address will be used as group
-   * and group policy admin.
-   */
+  /** group_policy_as_admin is a boolean field, if set to true, the group policy account address will be used as group and group policy admin. */
   group_policy_as_admin: boolean;
   /** decision_policy specifies the group policy's decision policy. */
   decision_policy?: AnyAmino;
@@ -455,7 +383,7 @@ export interface MsgCreateGroupWithPolicyAminoMsg {
 /** MsgCreateGroupWithPolicy is the Msg/CreateGroupWithPolicy request type. */
 export interface MsgCreateGroupWithPolicySDKType {
   admin: string;
-  members: MemberRequestSDKType[];
+  members: MemberSDKType[];
   group_metadata: string;
   group_policy_metadata: string;
   group_policy_as_admin: boolean;
@@ -467,10 +395,6 @@ export interface MsgCreateGroupWithPolicyResponse {
   group_id: bigint;
   /** group_policy_address is the account address of the newly created group policy. */
   group_policy_address: string;
-}
-export interface MsgCreateGroupWithPolicyResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgCreateGroupWithPolicyResponse";
-  value: Uint8Array;
 }
 export interface MsgCreateGroupWithPolicyResponseProtoMsg {
   type_url: "/cosmos.group.v1.MsgCreateGroupWithPolicyResponse";
@@ -492,18 +416,28 @@ export interface MsgCreateGroupWithPolicyResponseSDKType {
   group_id: bigint;
   group_policy_address: string;
 }
+/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
+export interface MsgUpdateGroupPolicyAdminResponse {}
+export interface MsgUpdateGroupPolicyAdminResponseProtoMsg {
+  type_url: "/cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse";
+  value: Uint8Array;
+}
+/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
+export interface MsgUpdateGroupPolicyAdminResponseAmino {}
+export interface MsgUpdateGroupPolicyAdminResponseAminoMsg {
+  type: "cosmos-sdk/MsgUpdateGroupPolicyAdminResponse";
+  value: MsgUpdateGroupPolicyAdminResponseAmino;
+}
+/** MsgUpdateGroupPolicyAdminResponse is the Msg/UpdateGroupPolicyAdmin response type. */
+export interface MsgUpdateGroupPolicyAdminResponseSDKType {}
 /** MsgUpdateGroupPolicyDecisionPolicy is the Msg/UpdateGroupPolicyDecisionPolicy request type. */
 export interface MsgUpdateGroupPolicyDecisionPolicy {
   /** admin is the account address of the group admin. */
   admin: string;
-  /** group_policy_address is the account address of group policy. */
-  group_policy_address: string;
+  /** address is the account address of group policy. */
+  address: string;
   /** decision_policy is the updated group policy's decision policy. */
   decision_policy?: (ThresholdDecisionPolicy & PercentageDecisionPolicy & Any) | undefined;
-}
-export interface MsgUpdateGroupPolicyDecisionPolicyProtoMsg {
-  type_url: "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy";
-  value: Uint8Array;
 }
 export interface MsgUpdateGroupPolicyDecisionPolicyProtoMsg {
   type_url: "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy";
@@ -516,27 +450,23 @@ export type MsgUpdateGroupPolicyDecisionPolicyEncoded = Omit<MsgUpdateGroupPolic
 export interface MsgUpdateGroupPolicyDecisionPolicyAmino {
   /** admin is the account address of the group admin. */
   admin: string;
-  /** group_policy_address is the account address of group policy. */
-  group_policy_address: string;
+  /** address is the account address of group policy. */
+  address: string;
   /** decision_policy is the updated group policy's decision policy. */
   decision_policy?: AnyAmino;
 }
 export interface MsgUpdateGroupPolicyDecisionPolicyAminoMsg {
-  type: "cosmos-sdk/MsgUpdateGroupDecisionPolicy";
+  type: "cosmos-sdk/MsgUpdateGroupPolicyDecisionPolicy";
   value: MsgUpdateGroupPolicyDecisionPolicyAmino;
 }
 /** MsgUpdateGroupPolicyDecisionPolicy is the Msg/UpdateGroupPolicyDecisionPolicy request type. */
 export interface MsgUpdateGroupPolicyDecisionPolicySDKType {
   admin: string;
-  group_policy_address: string;
+  address: string;
   decision_policy?: ThresholdDecisionPolicySDKType | PercentageDecisionPolicySDKType | AnySDKType | undefined;
 }
 /** MsgUpdateGroupPolicyDecisionPolicyResponse is the Msg/UpdateGroupPolicyDecisionPolicy response type. */
 export interface MsgUpdateGroupPolicyDecisionPolicyResponse {}
-export interface MsgUpdateGroupPolicyDecisionPolicyResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse";
-  value: Uint8Array;
-}
 export interface MsgUpdateGroupPolicyDecisionPolicyResponseProtoMsg {
   type_url: "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse";
   value: Uint8Array;
@@ -553,14 +483,10 @@ export interface MsgUpdateGroupPolicyDecisionPolicyResponseSDKType {}
 export interface MsgUpdateGroupPolicyMetadata {
   /** admin is the account address of the group admin. */
   admin: string;
-  /** group_policy_address is the account address of group policy. */
-  group_policy_address: string;
-  /** metadata is the group policy metadata to be updated. */
+  /** address is the account address of group policy. */
+  address: string;
+  /** metadata is the updated group policy metadata. */
   metadata: string;
-}
-export interface MsgUpdateGroupPolicyMetadataProtoMsg {
-  type_url: "/cosmos.group.v1.MsgUpdateGroupPolicyMetadata";
-  value: Uint8Array;
 }
 export interface MsgUpdateGroupPolicyMetadataProtoMsg {
   type_url: "/cosmos.group.v1.MsgUpdateGroupPolicyMetadata";
@@ -570,9 +496,9 @@ export interface MsgUpdateGroupPolicyMetadataProtoMsg {
 export interface MsgUpdateGroupPolicyMetadataAmino {
   /** admin is the account address of the group admin. */
   admin: string;
-  /** group_policy_address is the account address of group policy. */
-  group_policy_address: string;
-  /** metadata is the group policy metadata to be updated. */
+  /** address is the account address of group policy. */
+  address: string;
+  /** metadata is the updated group policy metadata. */
   metadata: string;
 }
 export interface MsgUpdateGroupPolicyMetadataAminoMsg {
@@ -582,15 +508,11 @@ export interface MsgUpdateGroupPolicyMetadataAminoMsg {
 /** MsgUpdateGroupPolicyMetadata is the Msg/UpdateGroupPolicyMetadata request type. */
 export interface MsgUpdateGroupPolicyMetadataSDKType {
   admin: string;
-  group_policy_address: string;
+  address: string;
   metadata: string;
 }
 /** MsgUpdateGroupPolicyMetadataResponse is the Msg/UpdateGroupPolicyMetadata response type. */
 export interface MsgUpdateGroupPolicyMetadataResponse {}
-export interface MsgUpdateGroupPolicyMetadataResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse";
-  value: Uint8Array;
-}
 export interface MsgUpdateGroupPolicyMetadataResponseProtoMsg {
   type_url: "/cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse";
   value: Uint8Array;
@@ -605,14 +527,14 @@ export interface MsgUpdateGroupPolicyMetadataResponseAminoMsg {
 export interface MsgUpdateGroupPolicyMetadataResponseSDKType {}
 /** MsgSubmitProposal is the Msg/SubmitProposal request type. */
 export interface MsgSubmitProposal {
-  /** group_policy_address is the account address of group policy. */
-  group_policy_address: string;
+  /** address is the account address of group policy. */
+  address: string;
   /**
    * proposers are the account addresses of the proposers.
    * Proposers signatures will be counted as yes votes.
    */
   proposers: string[];
-  /** metadata is any arbitrary metadata attached to the proposal. */
+  /** metadata is any arbitrary metadata to attached to the proposal. */
   metadata: string;
   /** messages is a list of `sdk.Msg`s that will be executed if the proposal passes. */
   messages: Any[];
@@ -622,22 +544,6 @@ export interface MsgSubmitProposal {
    * If so, proposers signatures are considered as Yes votes.
    */
   exec: Exec;
-  /**
-   * title is the title of the proposal.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-  title: string;
-  /**
-   * summary is the summary of the proposal.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-  summary: string;
-}
-export interface MsgSubmitProposalProtoMsg {
-  type_url: "/cosmos.group.v1.MsgSubmitProposal";
-  value: Uint8Array;
 }
 export interface MsgSubmitProposalProtoMsg {
   type_url: "/cosmos.group.v1.MsgSubmitProposal";
@@ -645,14 +551,14 @@ export interface MsgSubmitProposalProtoMsg {
 }
 /** MsgSubmitProposal is the Msg/SubmitProposal request type. */
 export interface MsgSubmitProposalAmino {
-  /** group_policy_address is the account address of group policy. */
-  group_policy_address: string;
+  /** address is the account address of group policy. */
+  address: string;
   /**
    * proposers are the account addresses of the proposers.
    * Proposers signatures will be counted as yes votes.
    */
   proposers: string[];
-  /** metadata is any arbitrary metadata attached to the proposal. */
+  /** metadata is any arbitrary metadata to attached to the proposal. */
   metadata: string;
   /** messages is a list of `sdk.Msg`s that will be executed if the proposal passes. */
   messages: AnyAmino[];
@@ -662,18 +568,6 @@ export interface MsgSubmitProposalAmino {
    * If so, proposers signatures are considered as Yes votes.
    */
   exec: Exec;
-  /**
-   * title is the title of the proposal.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-  title: string;
-  /**
-   * summary is the summary of the proposal.
-   * 
-   * Since: cosmos-sdk 0.47
-   */
-  summary: string;
 }
 export interface MsgSubmitProposalAminoMsg {
   type: "cosmos-sdk/group/MsgSubmitProposal";
@@ -681,22 +575,16 @@ export interface MsgSubmitProposalAminoMsg {
 }
 /** MsgSubmitProposal is the Msg/SubmitProposal request type. */
 export interface MsgSubmitProposalSDKType {
-  group_policy_address: string;
+  address: string;
   proposers: string[];
   metadata: string;
   messages: AnySDKType[];
   exec: Exec;
-  title: string;
-  summary: string;
 }
 /** MsgSubmitProposalResponse is the Msg/SubmitProposal response type. */
 export interface MsgSubmitProposalResponse {
   /** proposal is the unique ID of the proposal. */
   proposal_id: bigint;
-}
-export interface MsgSubmitProposalResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgSubmitProposalResponse";
-  value: Uint8Array;
 }
 export interface MsgSubmitProposalResponseProtoMsg {
   type_url: "/cosmos.group.v1.MsgSubmitProposalResponse";
@@ -726,10 +614,6 @@ export interface MsgWithdrawProposalProtoMsg {
   type_url: "/cosmos.group.v1.MsgWithdrawProposal";
   value: Uint8Array;
 }
-export interface MsgWithdrawProposalProtoMsg {
-  type_url: "/cosmos.group.v1.MsgWithdrawProposal";
-  value: Uint8Array;
-}
 /** MsgWithdrawProposal is the Msg/WithdrawProposal request type. */
 export interface MsgWithdrawProposalAmino {
   /** proposal is the unique ID of the proposal. */
@@ -752,10 +636,6 @@ export interface MsgWithdrawProposalResponseProtoMsg {
   type_url: "/cosmos.group.v1.MsgWithdrawProposalResponse";
   value: Uint8Array;
 }
-export interface MsgWithdrawProposalResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgWithdrawProposalResponse";
-  value: Uint8Array;
-}
 /** MsgWithdrawProposalResponse is the Msg/WithdrawProposal response type. */
 export interface MsgWithdrawProposalResponseAmino {}
 export interface MsgWithdrawProposalResponseAminoMsg {
@@ -772,17 +652,13 @@ export interface MsgVote {
   voter: string;
   /** option is the voter's choice on the proposal. */
   option: VoteOption;
-  /** metadata is any arbitrary metadata attached to the vote. */
+  /** metadata is any arbitrary metadata to attached to the vote. */
   metadata: string;
   /**
    * exec defines whether the proposal should be executed
    * immediately after voting or not.
    */
   exec: Exec;
-}
-export interface MsgVoteProtoMsg {
-  type_url: "/cosmos.group.v1.MsgVote";
-  value: Uint8Array;
 }
 export interface MsgVoteProtoMsg {
   type_url: "/cosmos.group.v1.MsgVote";
@@ -796,7 +672,7 @@ export interface MsgVoteAmino {
   voter: string;
   /** option is the voter's choice on the proposal. */
   option: VoteOption;
-  /** metadata is any arbitrary metadata attached to the vote. */
+  /** metadata is any arbitrary metadata to attached to the vote. */
   metadata: string;
   /**
    * exec defines whether the proposal should be executed
@@ -822,10 +698,6 @@ export interface MsgVoteResponseProtoMsg {
   type_url: "/cosmos.group.v1.MsgVoteResponse";
   value: Uint8Array;
 }
-export interface MsgVoteResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgVoteResponse";
-  value: Uint8Array;
-}
 /** MsgVoteResponse is the Msg/Vote response type. */
 export interface MsgVoteResponseAmino {}
 export interface MsgVoteResponseAminoMsg {
@@ -838,12 +710,8 @@ export interface MsgVoteResponseSDKType {}
 export interface MsgExec {
   /** proposal is the unique ID of the proposal. */
   proposal_id: bigint;
-  /** executor is the account address used to execute the proposal. */
-  executor: string;
-}
-export interface MsgExecProtoMsg {
-  type_url: "/cosmos.group.v1.MsgExec";
-  value: Uint8Array;
+  /** signer is the account address used to execute the proposal. */
+  signer: string;
 }
 export interface MsgExecProtoMsg {
   type_url: "/cosmos.group.v1.MsgExec";
@@ -853,8 +721,8 @@ export interface MsgExecProtoMsg {
 export interface MsgExecAmino {
   /** proposal is the unique ID of the proposal. */
   proposal_id: string;
-  /** executor is the account address used to execute the proposal. */
-  executor: string;
+  /** signer is the account address used to execute the proposal. */
+  signer: string;
 }
 export interface MsgExecAminoMsg {
   type: "cosmos-sdk/group/MsgExec";
@@ -863,44 +731,28 @@ export interface MsgExecAminoMsg {
 /** MsgExec is the Msg/Exec request type. */
 export interface MsgExecSDKType {
   proposal_id: bigint;
-  executor: string;
+  signer: string;
 }
 /** MsgExecResponse is the Msg/Exec request type. */
-export interface MsgExecResponse {
-  /** result is the final result of the proposal execution. */
-  result: ProposalExecutorResult;
-}
-export interface MsgExecResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgExecResponse";
-  value: Uint8Array;
-}
+export interface MsgExecResponse {}
 export interface MsgExecResponseProtoMsg {
   type_url: "/cosmos.group.v1.MsgExecResponse";
   value: Uint8Array;
 }
 /** MsgExecResponse is the Msg/Exec request type. */
-export interface MsgExecResponseAmino {
-  /** result is the final result of the proposal execution. */
-  result: ProposalExecutorResult;
-}
+export interface MsgExecResponseAmino {}
 export interface MsgExecResponseAminoMsg {
   type: "cosmos-sdk/MsgExecResponse";
   value: MsgExecResponseAmino;
 }
 /** MsgExecResponse is the Msg/Exec request type. */
-export interface MsgExecResponseSDKType {
-  result: ProposalExecutorResult;
-}
+export interface MsgExecResponseSDKType {}
 /** MsgLeaveGroup is the Msg/LeaveGroup request type. */
 export interface MsgLeaveGroup {
   /** address is the account address of the group member. */
   address: string;
   /** group_id is the unique ID of the group. */
   group_id: bigint;
-}
-export interface MsgLeaveGroupProtoMsg {
-  type_url: "/cosmos.group.v1.MsgLeaveGroup";
-  value: Uint8Array;
 }
 export interface MsgLeaveGroupProtoMsg {
   type_url: "/cosmos.group.v1.MsgLeaveGroup";
@@ -928,10 +780,6 @@ export interface MsgLeaveGroupResponseProtoMsg {
   type_url: "/cosmos.group.v1.MsgLeaveGroupResponse";
   value: Uint8Array;
 }
-export interface MsgLeaveGroupResponseProtoMsg {
-  type_url: "/cosmos.group.v1.MsgLeaveGroupResponse";
-  value: Uint8Array;
-}
 /** MsgLeaveGroupResponse is the Msg/LeaveGroup response type. */
 export interface MsgLeaveGroupResponseAmino {}
 export interface MsgLeaveGroupResponseAminoMsg {
@@ -954,7 +802,7 @@ export const MsgCreateGroup = {
       writer.uint32(10).string(message.admin);
     }
     for (const v of message.members) {
-      MemberRequest.encode(v!, writer.uint32(18).fork()).ldelim();
+      Member.encode(v!, writer.uint32(18).fork()).ldelim();
     }
     if (message.metadata !== "") {
       writer.uint32(26).string(message.metadata);
@@ -972,7 +820,7 @@ export const MsgCreateGroup = {
           message.admin = reader.string();
           break;
         case 2:
-          message.members.push(MemberRequest.decode(reader, reader.uint32()));
+          message.members.push(Member.decode(reader, reader.uint32()));
           break;
         case 3:
           message.metadata = reader.string();
@@ -987,7 +835,7 @@ export const MsgCreateGroup = {
   fromJSON(object: any): MsgCreateGroup {
     return {
       admin: isSet(object.admin) ? String(object.admin) : "",
-      members: Array.isArray(object?.members) ? object.members.map((e: any) => MemberRequest.fromJSON(e)) : [],
+      members: Array.isArray(object?.members) ? object.members.map((e: any) => Member.fromJSON(e)) : [],
       metadata: isSet(object.metadata) ? String(object.metadata) : ""
     };
   },
@@ -995,7 +843,7 @@ export const MsgCreateGroup = {
     const obj: any = {};
     message.admin !== undefined && (obj.admin = message.admin);
     if (message.members) {
-      obj.members = message.members.map(e => e ? MemberRequest.toJSON(e) : undefined);
+      obj.members = message.members.map(e => e ? Member.toJSON(e) : undefined);
     } else {
       obj.members = [];
     }
@@ -1005,14 +853,14 @@ export const MsgCreateGroup = {
   fromPartial(object: Partial<MsgCreateGroup>): MsgCreateGroup {
     const message = createBaseMsgCreateGroup();
     message.admin = object.admin ?? "";
-    message.members = object.members?.map(e => MemberRequest.fromPartial(e)) || [];
+    message.members = object.members?.map(e => Member.fromPartial(e)) || [];
     message.metadata = object.metadata ?? "";
     return message;
   },
   fromSDK(object: MsgCreateGroupSDKType): MsgCreateGroup {
     return {
       admin: object?.admin,
-      members: Array.isArray(object?.members) ? object.members.map((e: any) => MemberRequest.fromSDK(e)) : [],
+      members: Array.isArray(object?.members) ? object.members.map((e: any) => Member.fromSDK(e)) : [],
       metadata: object?.metadata
     };
   },
@@ -1020,7 +868,7 @@ export const MsgCreateGroup = {
     const obj: any = {};
     obj.admin = message.admin;
     if (message.members) {
-      obj.members = message.members.map(e => e ? MemberRequest.toSDK(e) : undefined);
+      obj.members = message.members.map(e => e ? Member.toSDK(e) : undefined);
     } else {
       obj.members = [];
     }
@@ -1030,7 +878,7 @@ export const MsgCreateGroup = {
   fromAmino(object: MsgCreateGroupAmino): MsgCreateGroup {
     return {
       admin: object.admin,
-      members: Array.isArray(object?.members) ? object.members.map((e: any) => MemberRequest.fromAmino(e)) : [],
+      members: Array.isArray(object?.members) ? object.members.map((e: any) => Member.fromAmino(e)) : [],
       metadata: object.metadata
     };
   },
@@ -1038,7 +886,7 @@ export const MsgCreateGroup = {
     const obj: any = {};
     obj.admin = message.admin;
     if (message.members) {
-      obj.members = message.members.map(e => e ? MemberRequest.toAmino(e) : undefined);
+      obj.members = message.members.map(e => e ? Member.toAmino(e) : undefined);
     } else {
       obj.members = [];
     }
@@ -1171,7 +1019,7 @@ export const MsgUpdateGroupMembers = {
       writer.uint32(16).uint64(message.group_id);
     }
     for (const v of message.member_updates) {
-      MemberRequest.encode(v!, writer.uint32(26).fork()).ldelim();
+      Member.encode(v!, writer.uint32(26).fork()).ldelim();
     }
     return writer;
   },
@@ -1189,7 +1037,7 @@ export const MsgUpdateGroupMembers = {
           message.group_id = reader.uint64();
           break;
         case 3:
-          message.member_updates.push(MemberRequest.decode(reader, reader.uint32()));
+          message.member_updates.push(Member.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -1202,7 +1050,7 @@ export const MsgUpdateGroupMembers = {
     return {
       admin: isSet(object.admin) ? String(object.admin) : "",
       group_id: isSet(object.group_id) ? BigInt(object.group_id.toString()) : BigInt(0),
-      member_updates: Array.isArray(object?.member_updates) ? object.member_updates.map((e: any) => MemberRequest.fromJSON(e)) : []
+      member_updates: Array.isArray(object?.member_updates) ? object.member_updates.map((e: any) => Member.fromJSON(e)) : []
     };
   },
   toJSON(message: MsgUpdateGroupMembers): unknown {
@@ -1210,7 +1058,7 @@ export const MsgUpdateGroupMembers = {
     message.admin !== undefined && (obj.admin = message.admin);
     message.group_id !== undefined && (obj.group_id = (message.group_id || BigInt(0)).toString());
     if (message.member_updates) {
-      obj.member_updates = message.member_updates.map(e => e ? MemberRequest.toJSON(e) : undefined);
+      obj.member_updates = message.member_updates.map(e => e ? Member.toJSON(e) : undefined);
     } else {
       obj.member_updates = [];
     }
@@ -1220,14 +1068,14 @@ export const MsgUpdateGroupMembers = {
     const message = createBaseMsgUpdateGroupMembers();
     message.admin = object.admin ?? "";
     message.group_id = object.group_id !== undefined && object.group_id !== null ? BigInt(object.group_id.toString()) : BigInt(0);
-    message.member_updates = object.member_updates?.map(e => MemberRequest.fromPartial(e)) || [];
+    message.member_updates = object.member_updates?.map(e => Member.fromPartial(e)) || [];
     return message;
   },
   fromSDK(object: MsgUpdateGroupMembersSDKType): MsgUpdateGroupMembers {
     return {
       admin: object?.admin,
       group_id: object?.group_id,
-      member_updates: Array.isArray(object?.member_updates) ? object.member_updates.map((e: any) => MemberRequest.fromSDK(e)) : []
+      member_updates: Array.isArray(object?.member_updates) ? object.member_updates.map((e: any) => Member.fromSDK(e)) : []
     };
   },
   toSDK(message: MsgUpdateGroupMembers): MsgUpdateGroupMembersSDKType {
@@ -1235,7 +1083,7 @@ export const MsgUpdateGroupMembers = {
     obj.admin = message.admin;
     obj.group_id = message.group_id;
     if (message.member_updates) {
-      obj.member_updates = message.member_updates.map(e => e ? MemberRequest.toSDK(e) : undefined);
+      obj.member_updates = message.member_updates.map(e => e ? Member.toSDK(e) : undefined);
     } else {
       obj.member_updates = [];
     }
@@ -1245,7 +1093,7 @@ export const MsgUpdateGroupMembers = {
     return {
       admin: object.admin,
       group_id: BigInt(object.group_id),
-      member_updates: Array.isArray(object?.member_updates) ? object.member_updates.map((e: any) => MemberRequest.fromAmino(e)) : []
+      member_updates: Array.isArray(object?.member_updates) ? object.member_updates.map((e: any) => Member.fromAmino(e)) : []
     };
   },
   toAmino(message: MsgUpdateGroupMembers): MsgUpdateGroupMembersAmino {
@@ -1253,7 +1101,7 @@ export const MsgUpdateGroupMembers = {
     obj.admin = message.admin;
     obj.group_id = message.group_id ? message.group_id.toString() : undefined;
     if (message.member_updates) {
-      obj.member_updates = message.member_updates.map(e => e ? MemberRequest.toAmino(e) : undefined);
+      obj.member_updates = message.member_updates.map(e => e ? Member.toAmino(e) : undefined);
     } else {
       obj.member_updates = [];
     }
@@ -1760,7 +1608,7 @@ export const MsgCreateGroupPolicy = {
           message.metadata = reader.string();
           break;
         case 4:
-          message.decision_policy = (Cosmos_groupv1DecisionPolicy_InterfaceDecoder(reader) as Any);
+          message.decision_policy = (Cosmos_groupDecisionPolicy_InterfaceDecoder(reader) as Any);
           break;
         default:
           reader.skipType(tag & 7);
@@ -1814,7 +1662,7 @@ export const MsgCreateGroupPolicy = {
       admin: object.admin,
       group_id: BigInt(object.group_id),
       metadata: object.metadata,
-      decision_policy: object?.decision_policy ? Cosmos_groupv1DecisionPolicy_FromAmino(object.decision_policy) : undefined
+      decision_policy: object?.decision_policy ? Cosmos_groupDecisionPolicy_FromAmino(object.decision_policy) : undefined
     };
   },
   toAmino(message: MsgCreateGroupPolicy): MsgCreateGroupPolicyAmino {
@@ -1822,7 +1670,7 @@ export const MsgCreateGroupPolicy = {
     obj.admin = message.admin;
     obj.group_id = message.group_id ? message.group_id.toString() : undefined;
     obj.metadata = message.metadata;
-    obj.decision_policy = message.decision_policy ? Cosmos_groupv1DecisionPolicy_ToAmino((message.decision_policy as Any)) : undefined;
+    obj.decision_policy = message.decision_policy ? Cosmos_groupDecisionPolicy_ToAmino((message.decision_policy as Any)) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgCreateGroupPolicyAminoMsg): MsgCreateGroupPolicy {
@@ -1937,7 +1785,7 @@ export const MsgCreateGroupPolicyResponse = {
 function createBaseMsgUpdateGroupPolicyAdmin(): MsgUpdateGroupPolicyAdmin {
   return {
     admin: "",
-    group_policy_address: "",
+    address: "",
     new_admin: ""
   };
 }
@@ -1947,8 +1795,8 @@ export const MsgUpdateGroupPolicyAdmin = {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
     }
-    if (message.group_policy_address !== "") {
-      writer.uint32(18).string(message.group_policy_address);
+    if (message.address !== "") {
+      writer.uint32(18).string(message.address);
     }
     if (message.new_admin !== "") {
       writer.uint32(26).string(message.new_admin);
@@ -1966,7 +1814,7 @@ export const MsgUpdateGroupPolicyAdmin = {
           message.admin = reader.string();
           break;
         case 2:
-          message.group_policy_address = reader.string();
+          message.address = reader.string();
           break;
         case 3:
           message.new_admin = reader.string();
@@ -1981,49 +1829,49 @@ export const MsgUpdateGroupPolicyAdmin = {
   fromJSON(object: any): MsgUpdateGroupPolicyAdmin {
     return {
       admin: isSet(object.admin) ? String(object.admin) : "",
-      group_policy_address: isSet(object.group_policy_address) ? String(object.group_policy_address) : "",
+      address: isSet(object.address) ? String(object.address) : "",
       new_admin: isSet(object.new_admin) ? String(object.new_admin) : ""
     };
   },
   toJSON(message: MsgUpdateGroupPolicyAdmin): unknown {
     const obj: any = {};
     message.admin !== undefined && (obj.admin = message.admin);
-    message.group_policy_address !== undefined && (obj.group_policy_address = message.group_policy_address);
+    message.address !== undefined && (obj.address = message.address);
     message.new_admin !== undefined && (obj.new_admin = message.new_admin);
     return obj;
   },
   fromPartial(object: Partial<MsgUpdateGroupPolicyAdmin>): MsgUpdateGroupPolicyAdmin {
     const message = createBaseMsgUpdateGroupPolicyAdmin();
     message.admin = object.admin ?? "";
-    message.group_policy_address = object.group_policy_address ?? "";
+    message.address = object.address ?? "";
     message.new_admin = object.new_admin ?? "";
     return message;
   },
   fromSDK(object: MsgUpdateGroupPolicyAdminSDKType): MsgUpdateGroupPolicyAdmin {
     return {
       admin: object?.admin,
-      group_policy_address: object?.group_policy_address,
+      address: object?.address,
       new_admin: object?.new_admin
     };
   },
   toSDK(message: MsgUpdateGroupPolicyAdmin): MsgUpdateGroupPolicyAdminSDKType {
     const obj: any = {};
     obj.admin = message.admin;
-    obj.group_policy_address = message.group_policy_address;
+    obj.address = message.address;
     obj.new_admin = message.new_admin;
     return obj;
   },
   fromAmino(object: MsgUpdateGroupPolicyAdminAmino): MsgUpdateGroupPolicyAdmin {
     return {
       admin: object.admin,
-      group_policy_address: object.group_policy_address,
+      address: object.address,
       new_admin: object.new_admin
     };
   },
   toAmino(message: MsgUpdateGroupPolicyAdmin): MsgUpdateGroupPolicyAdminAmino {
     const obj: any = {};
     obj.admin = message.admin;
-    obj.group_policy_address = message.group_policy_address;
+    obj.address = message.address;
     obj.new_admin = message.new_admin;
     return obj;
   },
@@ -2049,75 +1897,6 @@ export const MsgUpdateGroupPolicyAdmin = {
     };
   }
 };
-function createBaseMsgUpdateGroupPolicyAdminResponse(): MsgUpdateGroupPolicyAdminResponse {
-  return {};
-}
-export const MsgUpdateGroupPolicyAdminResponse = {
-  typeUrl: "/cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse",
-  encode(_: MsgUpdateGroupPolicyAdminResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupPolicyAdminResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgUpdateGroupPolicyAdminResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromJSON(_: any): MsgUpdateGroupPolicyAdminResponse {
-    return {};
-  },
-  toJSON(_: MsgUpdateGroupPolicyAdminResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-  fromPartial(_: Partial<MsgUpdateGroupPolicyAdminResponse>): MsgUpdateGroupPolicyAdminResponse {
-    const message = createBaseMsgUpdateGroupPolicyAdminResponse();
-    return message;
-  },
-  fromSDK(_: MsgUpdateGroupPolicyAdminResponseSDKType): MsgUpdateGroupPolicyAdminResponse {
-    return {};
-  },
-  toSDK(_: MsgUpdateGroupPolicyAdminResponse): MsgUpdateGroupPolicyAdminResponseSDKType {
-    const obj: any = {};
-    return obj;
-  },
-  fromAmino(_: MsgUpdateGroupPolicyAdminResponseAmino): MsgUpdateGroupPolicyAdminResponse {
-    return {};
-  },
-  toAmino(_: MsgUpdateGroupPolicyAdminResponse): MsgUpdateGroupPolicyAdminResponseAmino {
-    const obj: any = {};
-    return obj;
-  },
-  fromAminoMsg(object: MsgUpdateGroupPolicyAdminResponseAminoMsg): MsgUpdateGroupPolicyAdminResponse {
-    return MsgUpdateGroupPolicyAdminResponse.fromAmino(object.value);
-  },
-  toAminoMsg(message: MsgUpdateGroupPolicyAdminResponse): MsgUpdateGroupPolicyAdminResponseAminoMsg {
-    return {
-      type: "cosmos-sdk/MsgUpdateGroupPolicyAdminResponse",
-      value: MsgUpdateGroupPolicyAdminResponse.toAmino(message)
-    };
-  },
-  fromProtoMsg(message: MsgUpdateGroupPolicyAdminResponseProtoMsg): MsgUpdateGroupPolicyAdminResponse {
-    return MsgUpdateGroupPolicyAdminResponse.decode(message.value);
-  },
-  toProto(message: MsgUpdateGroupPolicyAdminResponse): Uint8Array {
-    return MsgUpdateGroupPolicyAdminResponse.encode(message).finish();
-  },
-  toProtoMsg(message: MsgUpdateGroupPolicyAdminResponse): MsgUpdateGroupPolicyAdminResponseProtoMsg {
-    return {
-      typeUrl: "/cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse",
-      value: MsgUpdateGroupPolicyAdminResponse.encode(message).finish()
-    };
-  }
-};
 function createBaseMsgCreateGroupWithPolicy(): MsgCreateGroupWithPolicy {
   return {
     admin: "",
@@ -2135,7 +1914,7 @@ export const MsgCreateGroupWithPolicy = {
       writer.uint32(10).string(message.admin);
     }
     for (const v of message.members) {
-      MemberRequest.encode(v!, writer.uint32(18).fork()).ldelim();
+      Member.encode(v!, writer.uint32(18).fork()).ldelim();
     }
     if (message.group_metadata !== "") {
       writer.uint32(26).string(message.group_metadata);
@@ -2162,7 +1941,7 @@ export const MsgCreateGroupWithPolicy = {
           message.admin = reader.string();
           break;
         case 2:
-          message.members.push(MemberRequest.decode(reader, reader.uint32()));
+          message.members.push(Member.decode(reader, reader.uint32()));
           break;
         case 3:
           message.group_metadata = reader.string();
@@ -2174,7 +1953,7 @@ export const MsgCreateGroupWithPolicy = {
           message.group_policy_as_admin = reader.bool();
           break;
         case 6:
-          message.decision_policy = (Cosmos_groupv1DecisionPolicy_InterfaceDecoder(reader) as Any);
+          message.decision_policy = (Cosmos_groupDecisionPolicy_InterfaceDecoder(reader) as Any);
           break;
         default:
           reader.skipType(tag & 7);
@@ -2186,7 +1965,7 @@ export const MsgCreateGroupWithPolicy = {
   fromJSON(object: any): MsgCreateGroupWithPolicy {
     return {
       admin: isSet(object.admin) ? String(object.admin) : "",
-      members: Array.isArray(object?.members) ? object.members.map((e: any) => MemberRequest.fromJSON(e)) : [],
+      members: Array.isArray(object?.members) ? object.members.map((e: any) => Member.fromJSON(e)) : [],
       group_metadata: isSet(object.group_metadata) ? String(object.group_metadata) : "",
       group_policy_metadata: isSet(object.group_policy_metadata) ? String(object.group_policy_metadata) : "",
       group_policy_as_admin: isSet(object.group_policy_as_admin) ? Boolean(object.group_policy_as_admin) : false,
@@ -2197,7 +1976,7 @@ export const MsgCreateGroupWithPolicy = {
     const obj: any = {};
     message.admin !== undefined && (obj.admin = message.admin);
     if (message.members) {
-      obj.members = message.members.map(e => e ? MemberRequest.toJSON(e) : undefined);
+      obj.members = message.members.map(e => e ? Member.toJSON(e) : undefined);
     } else {
       obj.members = [];
     }
@@ -2210,7 +1989,7 @@ export const MsgCreateGroupWithPolicy = {
   fromPartial(object: Partial<MsgCreateGroupWithPolicy>): MsgCreateGroupWithPolicy {
     const message = createBaseMsgCreateGroupWithPolicy();
     message.admin = object.admin ?? "";
-    message.members = object.members?.map(e => MemberRequest.fromPartial(e)) || [];
+    message.members = object.members?.map(e => Member.fromPartial(e)) || [];
     message.group_metadata = object.group_metadata ?? "";
     message.group_policy_metadata = object.group_policy_metadata ?? "";
     message.group_policy_as_admin = object.group_policy_as_admin ?? false;
@@ -2220,7 +1999,7 @@ export const MsgCreateGroupWithPolicy = {
   fromSDK(object: MsgCreateGroupWithPolicySDKType): MsgCreateGroupWithPolicy {
     return {
       admin: object?.admin,
-      members: Array.isArray(object?.members) ? object.members.map((e: any) => MemberRequest.fromSDK(e)) : [],
+      members: Array.isArray(object?.members) ? object.members.map((e: any) => Member.fromSDK(e)) : [],
       group_metadata: object?.group_metadata,
       group_policy_metadata: object?.group_policy_metadata,
       group_policy_as_admin: object?.group_policy_as_admin,
@@ -2231,7 +2010,7 @@ export const MsgCreateGroupWithPolicy = {
     const obj: any = {};
     obj.admin = message.admin;
     if (message.members) {
-      obj.members = message.members.map(e => e ? MemberRequest.toSDK(e) : undefined);
+      obj.members = message.members.map(e => e ? Member.toSDK(e) : undefined);
     } else {
       obj.members = [];
     }
@@ -2244,25 +2023,25 @@ export const MsgCreateGroupWithPolicy = {
   fromAmino(object: MsgCreateGroupWithPolicyAmino): MsgCreateGroupWithPolicy {
     return {
       admin: object.admin,
-      members: Array.isArray(object?.members) ? object.members.map((e: any) => MemberRequest.fromAmino(e)) : [],
+      members: Array.isArray(object?.members) ? object.members.map((e: any) => Member.fromAmino(e)) : [],
       group_metadata: object.group_metadata,
       group_policy_metadata: object.group_policy_metadata,
       group_policy_as_admin: object.group_policy_as_admin,
-      decision_policy: object?.decision_policy ? Cosmos_groupv1DecisionPolicy_FromAmino(object.decision_policy) : undefined
+      decision_policy: object?.decision_policy ? Cosmos_groupDecisionPolicy_FromAmino(object.decision_policy) : undefined
     };
   },
   toAmino(message: MsgCreateGroupWithPolicy): MsgCreateGroupWithPolicyAmino {
     const obj: any = {};
     obj.admin = message.admin;
     if (message.members) {
-      obj.members = message.members.map(e => e ? MemberRequest.toAmino(e) : undefined);
+      obj.members = message.members.map(e => e ? Member.toAmino(e) : undefined);
     } else {
       obj.members = [];
     }
     obj.group_metadata = message.group_metadata;
     obj.group_policy_metadata = message.group_policy_metadata;
     obj.group_policy_as_admin = message.group_policy_as_admin;
-    obj.decision_policy = message.decision_policy ? Cosmos_groupv1DecisionPolicy_ToAmino((message.decision_policy as Any)) : undefined;
+    obj.decision_policy = message.decision_policy ? Cosmos_groupDecisionPolicy_ToAmino((message.decision_policy as Any)) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgCreateGroupWithPolicyAminoMsg): MsgCreateGroupWithPolicy {
@@ -2388,10 +2167,79 @@ export const MsgCreateGroupWithPolicyResponse = {
     };
   }
 };
+function createBaseMsgUpdateGroupPolicyAdminResponse(): MsgUpdateGroupPolicyAdminResponse {
+  return {};
+}
+export const MsgUpdateGroupPolicyAdminResponse = {
+  typeUrl: "/cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse",
+  encode(_: MsgUpdateGroupPolicyAdminResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupPolicyAdminResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateGroupPolicyAdminResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(_: any): MsgUpdateGroupPolicyAdminResponse {
+    return {};
+  },
+  toJSON(_: MsgUpdateGroupPolicyAdminResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+  fromPartial(_: Partial<MsgUpdateGroupPolicyAdminResponse>): MsgUpdateGroupPolicyAdminResponse {
+    const message = createBaseMsgUpdateGroupPolicyAdminResponse();
+    return message;
+  },
+  fromSDK(_: MsgUpdateGroupPolicyAdminResponseSDKType): MsgUpdateGroupPolicyAdminResponse {
+    return {};
+  },
+  toSDK(_: MsgUpdateGroupPolicyAdminResponse): MsgUpdateGroupPolicyAdminResponseSDKType {
+    const obj: any = {};
+    return obj;
+  },
+  fromAmino(_: MsgUpdateGroupPolicyAdminResponseAmino): MsgUpdateGroupPolicyAdminResponse {
+    return {};
+  },
+  toAmino(_: MsgUpdateGroupPolicyAdminResponse): MsgUpdateGroupPolicyAdminResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateGroupPolicyAdminResponseAminoMsg): MsgUpdateGroupPolicyAdminResponse {
+    return MsgUpdateGroupPolicyAdminResponse.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgUpdateGroupPolicyAdminResponse): MsgUpdateGroupPolicyAdminResponseAminoMsg {
+    return {
+      type: "cosmos-sdk/MsgUpdateGroupPolicyAdminResponse",
+      value: MsgUpdateGroupPolicyAdminResponse.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgUpdateGroupPolicyAdminResponseProtoMsg): MsgUpdateGroupPolicyAdminResponse {
+    return MsgUpdateGroupPolicyAdminResponse.decode(message.value);
+  },
+  toProto(message: MsgUpdateGroupPolicyAdminResponse): Uint8Array {
+    return MsgUpdateGroupPolicyAdminResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateGroupPolicyAdminResponse): MsgUpdateGroupPolicyAdminResponseProtoMsg {
+    return {
+      typeUrl: "/cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse",
+      value: MsgUpdateGroupPolicyAdminResponse.encode(message).finish()
+    };
+  }
+};
 function createBaseMsgUpdateGroupPolicyDecisionPolicy(): MsgUpdateGroupPolicyDecisionPolicy {
   return {
     admin: "",
-    group_policy_address: "",
+    address: "",
     decision_policy: undefined
   };
 }
@@ -2401,8 +2249,8 @@ export const MsgUpdateGroupPolicyDecisionPolicy = {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
     }
-    if (message.group_policy_address !== "") {
-      writer.uint32(18).string(message.group_policy_address);
+    if (message.address !== "") {
+      writer.uint32(18).string(message.address);
     }
     if (message.decision_policy !== undefined) {
       Any.encode((message.decision_policy as Any), writer.uint32(26).fork()).ldelim();
@@ -2420,10 +2268,10 @@ export const MsgUpdateGroupPolicyDecisionPolicy = {
           message.admin = reader.string();
           break;
         case 2:
-          message.group_policy_address = reader.string();
+          message.address = reader.string();
           break;
         case 3:
-          message.decision_policy = (Cosmos_groupv1DecisionPolicy_InterfaceDecoder(reader) as Any);
+          message.decision_policy = (Cosmos_groupDecisionPolicy_InterfaceDecoder(reader) as Any);
           break;
         default:
           reader.skipType(tag & 7);
@@ -2435,50 +2283,50 @@ export const MsgUpdateGroupPolicyDecisionPolicy = {
   fromJSON(object: any): MsgUpdateGroupPolicyDecisionPolicy {
     return {
       admin: isSet(object.admin) ? String(object.admin) : "",
-      group_policy_address: isSet(object.group_policy_address) ? String(object.group_policy_address) : "",
+      address: isSet(object.address) ? String(object.address) : "",
       decision_policy: isSet(object.decision_policy) ? Any.fromJSON(object.decision_policy) : undefined
     };
   },
   toJSON(message: MsgUpdateGroupPolicyDecisionPolicy): unknown {
     const obj: any = {};
     message.admin !== undefined && (obj.admin = message.admin);
-    message.group_policy_address !== undefined && (obj.group_policy_address = message.group_policy_address);
+    message.address !== undefined && (obj.address = message.address);
     message.decision_policy !== undefined && (obj.decision_policy = message.decision_policy ? Any.toJSON(message.decision_policy) : undefined);
     return obj;
   },
   fromPartial(object: Partial<MsgUpdateGroupPolicyDecisionPolicy>): MsgUpdateGroupPolicyDecisionPolicy {
     const message = createBaseMsgUpdateGroupPolicyDecisionPolicy();
     message.admin = object.admin ?? "";
-    message.group_policy_address = object.group_policy_address ?? "";
+    message.address = object.address ?? "";
     message.decision_policy = object.decision_policy !== undefined && object.decision_policy !== null ? Any.fromPartial(object.decision_policy) : undefined;
     return message;
   },
   fromSDK(object: MsgUpdateGroupPolicyDecisionPolicySDKType): MsgUpdateGroupPolicyDecisionPolicy {
     return {
       admin: object?.admin,
-      group_policy_address: object?.group_policy_address,
+      address: object?.address,
       decision_policy: object.decision_policy ? Any.fromSDK(object.decision_policy) : undefined
     };
   },
   toSDK(message: MsgUpdateGroupPolicyDecisionPolicy): MsgUpdateGroupPolicyDecisionPolicySDKType {
     const obj: any = {};
     obj.admin = message.admin;
-    obj.group_policy_address = message.group_policy_address;
+    obj.address = message.address;
     message.decision_policy !== undefined && (obj.decision_policy = message.decision_policy ? Any.toSDK(message.decision_policy) : undefined);
     return obj;
   },
   fromAmino(object: MsgUpdateGroupPolicyDecisionPolicyAmino): MsgUpdateGroupPolicyDecisionPolicy {
     return {
       admin: object.admin,
-      group_policy_address: object.group_policy_address,
-      decision_policy: object?.decision_policy ? Cosmos_groupv1DecisionPolicy_FromAmino(object.decision_policy) : undefined
+      address: object.address,
+      decision_policy: object?.decision_policy ? Cosmos_groupDecisionPolicy_FromAmino(object.decision_policy) : undefined
     };
   },
   toAmino(message: MsgUpdateGroupPolicyDecisionPolicy): MsgUpdateGroupPolicyDecisionPolicyAmino {
     const obj: any = {};
     obj.admin = message.admin;
-    obj.group_policy_address = message.group_policy_address;
-    obj.decision_policy = message.decision_policy ? Cosmos_groupv1DecisionPolicy_ToAmino((message.decision_policy as Any)) : undefined;
+    obj.address = message.address;
+    obj.decision_policy = message.decision_policy ? Cosmos_groupDecisionPolicy_ToAmino((message.decision_policy as Any)) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgUpdateGroupPolicyDecisionPolicyAminoMsg): MsgUpdateGroupPolicyDecisionPolicy {
@@ -2486,7 +2334,7 @@ export const MsgUpdateGroupPolicyDecisionPolicy = {
   },
   toAminoMsg(message: MsgUpdateGroupPolicyDecisionPolicy): MsgUpdateGroupPolicyDecisionPolicyAminoMsg {
     return {
-      type: "cosmos-sdk/MsgUpdateGroupDecisionPolicy",
+      type: "cosmos-sdk/MsgUpdateGroupPolicyDecisionPolicy",
       value: MsgUpdateGroupPolicyDecisionPolicy.toAmino(message)
     };
   },
@@ -2575,7 +2423,7 @@ export const MsgUpdateGroupPolicyDecisionPolicyResponse = {
 function createBaseMsgUpdateGroupPolicyMetadata(): MsgUpdateGroupPolicyMetadata {
   return {
     admin: "",
-    group_policy_address: "",
+    address: "",
     metadata: ""
   };
 }
@@ -2585,8 +2433,8 @@ export const MsgUpdateGroupPolicyMetadata = {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
     }
-    if (message.group_policy_address !== "") {
-      writer.uint32(18).string(message.group_policy_address);
+    if (message.address !== "") {
+      writer.uint32(18).string(message.address);
     }
     if (message.metadata !== "") {
       writer.uint32(26).string(message.metadata);
@@ -2604,7 +2452,7 @@ export const MsgUpdateGroupPolicyMetadata = {
           message.admin = reader.string();
           break;
         case 2:
-          message.group_policy_address = reader.string();
+          message.address = reader.string();
           break;
         case 3:
           message.metadata = reader.string();
@@ -2619,49 +2467,49 @@ export const MsgUpdateGroupPolicyMetadata = {
   fromJSON(object: any): MsgUpdateGroupPolicyMetadata {
     return {
       admin: isSet(object.admin) ? String(object.admin) : "",
-      group_policy_address: isSet(object.group_policy_address) ? String(object.group_policy_address) : "",
+      address: isSet(object.address) ? String(object.address) : "",
       metadata: isSet(object.metadata) ? String(object.metadata) : ""
     };
   },
   toJSON(message: MsgUpdateGroupPolicyMetadata): unknown {
     const obj: any = {};
     message.admin !== undefined && (obj.admin = message.admin);
-    message.group_policy_address !== undefined && (obj.group_policy_address = message.group_policy_address);
+    message.address !== undefined && (obj.address = message.address);
     message.metadata !== undefined && (obj.metadata = message.metadata);
     return obj;
   },
   fromPartial(object: Partial<MsgUpdateGroupPolicyMetadata>): MsgUpdateGroupPolicyMetadata {
     const message = createBaseMsgUpdateGroupPolicyMetadata();
     message.admin = object.admin ?? "";
-    message.group_policy_address = object.group_policy_address ?? "";
+    message.address = object.address ?? "";
     message.metadata = object.metadata ?? "";
     return message;
   },
   fromSDK(object: MsgUpdateGroupPolicyMetadataSDKType): MsgUpdateGroupPolicyMetadata {
     return {
       admin: object?.admin,
-      group_policy_address: object?.group_policy_address,
+      address: object?.address,
       metadata: object?.metadata
     };
   },
   toSDK(message: MsgUpdateGroupPolicyMetadata): MsgUpdateGroupPolicyMetadataSDKType {
     const obj: any = {};
     obj.admin = message.admin;
-    obj.group_policy_address = message.group_policy_address;
+    obj.address = message.address;
     obj.metadata = message.metadata;
     return obj;
   },
   fromAmino(object: MsgUpdateGroupPolicyMetadataAmino): MsgUpdateGroupPolicyMetadata {
     return {
       admin: object.admin,
-      group_policy_address: object.group_policy_address,
+      address: object.address,
       metadata: object.metadata
     };
   },
   toAmino(message: MsgUpdateGroupPolicyMetadata): MsgUpdateGroupPolicyMetadataAmino {
     const obj: any = {};
     obj.admin = message.admin;
-    obj.group_policy_address = message.group_policy_address;
+    obj.address = message.address;
     obj.metadata = message.metadata;
     return obj;
   },
@@ -2758,20 +2606,18 @@ export const MsgUpdateGroupPolicyMetadataResponse = {
 };
 function createBaseMsgSubmitProposal(): MsgSubmitProposal {
   return {
-    group_policy_address: "",
+    address: "",
     proposers: [],
     metadata: "",
     messages: [],
-    exec: 0,
-    title: "",
-    summary: ""
+    exec: 0
   };
 }
 export const MsgSubmitProposal = {
   typeUrl: "/cosmos.group.v1.MsgSubmitProposal",
   encode(message: MsgSubmitProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.group_policy_address !== "") {
-      writer.uint32(10).string(message.group_policy_address);
+    if (message.address !== "") {
+      writer.uint32(10).string(message.address);
     }
     for (const v of message.proposers) {
       writer.uint32(18).string(v!);
@@ -2785,12 +2631,6 @@ export const MsgSubmitProposal = {
     if (message.exec !== 0) {
       writer.uint32(40).int32(message.exec);
     }
-    if (message.title !== "") {
-      writer.uint32(50).string(message.title);
-    }
-    if (message.summary !== "") {
-      writer.uint32(58).string(message.summary);
-    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitProposal {
@@ -2801,7 +2641,7 @@ export const MsgSubmitProposal = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.group_policy_address = reader.string();
+          message.address = reader.string();
           break;
         case 2:
           message.proposers.push(reader.string());
@@ -2815,12 +2655,6 @@ export const MsgSubmitProposal = {
         case 5:
           message.exec = (reader.int32() as any);
           break;
-        case 6:
-          message.title = reader.string();
-          break;
-        case 7:
-          message.summary = reader.string();
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -2830,18 +2664,16 @@ export const MsgSubmitProposal = {
   },
   fromJSON(object: any): MsgSubmitProposal {
     return {
-      group_policy_address: isSet(object.group_policy_address) ? String(object.group_policy_address) : "",
+      address: isSet(object.address) ? String(object.address) : "",
       proposers: Array.isArray(object?.proposers) ? object.proposers.map((e: any) => String(e)) : [],
       metadata: isSet(object.metadata) ? String(object.metadata) : "",
       messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromJSON(e)) : [],
-      exec: isSet(object.exec) ? execFromJSON(object.exec) : -1,
-      title: isSet(object.title) ? String(object.title) : "",
-      summary: isSet(object.summary) ? String(object.summary) : ""
+      exec: isSet(object.exec) ? execFromJSON(object.exec) : -1
     };
   },
   toJSON(message: MsgSubmitProposal): unknown {
     const obj: any = {};
-    message.group_policy_address !== undefined && (obj.group_policy_address = message.group_policy_address);
+    message.address !== undefined && (obj.address = message.address);
     if (message.proposers) {
       obj.proposers = message.proposers.map(e => e);
     } else {
@@ -2854,35 +2686,29 @@ export const MsgSubmitProposal = {
       obj.messages = [];
     }
     message.exec !== undefined && (obj.exec = execToJSON(message.exec));
-    message.title !== undefined && (obj.title = message.title);
-    message.summary !== undefined && (obj.summary = message.summary);
     return obj;
   },
   fromPartial(object: Partial<MsgSubmitProposal>): MsgSubmitProposal {
     const message = createBaseMsgSubmitProposal();
-    message.group_policy_address = object.group_policy_address ?? "";
+    message.address = object.address ?? "";
     message.proposers = object.proposers?.map(e => e) || [];
     message.metadata = object.metadata ?? "";
     message.messages = object.messages?.map(e => Any.fromPartial(e)) || [];
     message.exec = object.exec ?? 0;
-    message.title = object.title ?? "";
-    message.summary = object.summary ?? "";
     return message;
   },
   fromSDK(object: MsgSubmitProposalSDKType): MsgSubmitProposal {
     return {
-      group_policy_address: object?.group_policy_address,
+      address: object?.address,
       proposers: Array.isArray(object?.proposers) ? object.proposers.map((e: any) => e) : [],
       metadata: object?.metadata,
       messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromSDK(e)) : [],
-      exec: isSet(object.exec) ? execFromJSON(object.exec) : -1,
-      title: object?.title,
-      summary: object?.summary
+      exec: isSet(object.exec) ? execFromJSON(object.exec) : -1
     };
   },
   toSDK(message: MsgSubmitProposal): MsgSubmitProposalSDKType {
     const obj: any = {};
-    obj.group_policy_address = message.group_policy_address;
+    obj.address = message.address;
     if (message.proposers) {
       obj.proposers = message.proposers.map(e => e);
     } else {
@@ -2895,24 +2721,20 @@ export const MsgSubmitProposal = {
       obj.messages = [];
     }
     message.exec !== undefined && (obj.exec = execToJSON(message.exec));
-    obj.title = message.title;
-    obj.summary = message.summary;
     return obj;
   },
   fromAmino(object: MsgSubmitProposalAmino): MsgSubmitProposal {
     return {
-      group_policy_address: object.group_policy_address,
+      address: object.address,
       proposers: Array.isArray(object?.proposers) ? object.proposers.map((e: any) => e) : [],
       metadata: object.metadata,
       messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromAmino(e)) : [],
-      exec: isSet(object.exec) ? execFromJSON(object.exec) : -1,
-      title: object.title,
-      summary: object.summary
+      exec: isSet(object.exec) ? execFromJSON(object.exec) : -1
     };
   },
   toAmino(message: MsgSubmitProposal): MsgSubmitProposalAmino {
     const obj: any = {};
-    obj.group_policy_address = message.group_policy_address;
+    obj.address = message.address;
     if (message.proposers) {
       obj.proposers = message.proposers.map(e => e);
     } else {
@@ -2925,8 +2747,6 @@ export const MsgSubmitProposal = {
       obj.messages = [];
     }
     obj.exec = message.exec;
-    obj.title = message.title;
-    obj.summary = message.summary;
     return obj;
   },
   fromAminoMsg(object: MsgSubmitProposalAminoMsg): MsgSubmitProposal {
@@ -3423,7 +3243,7 @@ export const MsgVoteResponse = {
 function createBaseMsgExec(): MsgExec {
   return {
     proposal_id: BigInt(0),
-    executor: ""
+    signer: ""
   };
 }
 export const MsgExec = {
@@ -3432,8 +3252,8 @@ export const MsgExec = {
     if (message.proposal_id !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposal_id);
     }
-    if (message.executor !== "") {
-      writer.uint32(18).string(message.executor);
+    if (message.signer !== "") {
+      writer.uint32(18).string(message.signer);
     }
     return writer;
   },
@@ -3448,7 +3268,7 @@ export const MsgExec = {
           message.proposal_id = reader.uint64();
           break;
         case 2:
-          message.executor = reader.string();
+          message.signer = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -3460,43 +3280,43 @@ export const MsgExec = {
   fromJSON(object: any): MsgExec {
     return {
       proposal_id: isSet(object.proposal_id) ? BigInt(object.proposal_id.toString()) : BigInt(0),
-      executor: isSet(object.executor) ? String(object.executor) : ""
+      signer: isSet(object.signer) ? String(object.signer) : ""
     };
   },
   toJSON(message: MsgExec): unknown {
     const obj: any = {};
     message.proposal_id !== undefined && (obj.proposal_id = (message.proposal_id || BigInt(0)).toString());
-    message.executor !== undefined && (obj.executor = message.executor);
+    message.signer !== undefined && (obj.signer = message.signer);
     return obj;
   },
   fromPartial(object: Partial<MsgExec>): MsgExec {
     const message = createBaseMsgExec();
     message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
-    message.executor = object.executor ?? "";
+    message.signer = object.signer ?? "";
     return message;
   },
   fromSDK(object: MsgExecSDKType): MsgExec {
     return {
       proposal_id: object?.proposal_id,
-      executor: object?.executor
+      signer: object?.signer
     };
   },
   toSDK(message: MsgExec): MsgExecSDKType {
     const obj: any = {};
     obj.proposal_id = message.proposal_id;
-    obj.executor = message.executor;
+    obj.signer = message.signer;
     return obj;
   },
   fromAmino(object: MsgExecAmino): MsgExec {
     return {
       proposal_id: BigInt(object.proposal_id),
-      executor: object.executor
+      signer: object.signer
     };
   },
   toAmino(message: MsgExec): MsgExecAmino {
     const obj: any = {};
     obj.proposal_id = message.proposal_id ? message.proposal_id.toString() : undefined;
-    obj.executor = message.executor;
+    obj.signer = message.signer;
     return obj;
   },
   fromAminoMsg(object: MsgExecAminoMsg): MsgExec {
@@ -3522,16 +3342,11 @@ export const MsgExec = {
   }
 };
 function createBaseMsgExecResponse(): MsgExecResponse {
-  return {
-    result: 0
-  };
+  return {};
 }
 export const MsgExecResponse = {
   typeUrl: "/cosmos.group.v1.MsgExecResponse",
-  encode(message: MsgExecResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.result !== 0) {
-      writer.uint32(16).int32(message.result);
-    }
+  encode(_: MsgExecResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgExecResponse {
@@ -3541,9 +3356,6 @@ export const MsgExecResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 2:
-          message.result = (reader.int32() as any);
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -3551,39 +3363,29 @@ export const MsgExecResponse = {
     }
     return message;
   },
-  fromJSON(object: any): MsgExecResponse {
-    return {
-      result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1
-    };
+  fromJSON(_: any): MsgExecResponse {
+    return {};
   },
-  toJSON(message: MsgExecResponse): unknown {
+  toJSON(_: MsgExecResponse): unknown {
     const obj: any = {};
-    message.result !== undefined && (obj.result = proposalExecutorResultToJSON(message.result));
     return obj;
   },
-  fromPartial(object: Partial<MsgExecResponse>): MsgExecResponse {
+  fromPartial(_: Partial<MsgExecResponse>): MsgExecResponse {
     const message = createBaseMsgExecResponse();
-    message.result = object.result ?? 0;
     return message;
   },
-  fromSDK(object: MsgExecResponseSDKType): MsgExecResponse {
-    return {
-      result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1
-    };
+  fromSDK(_: MsgExecResponseSDKType): MsgExecResponse {
+    return {};
   },
-  toSDK(message: MsgExecResponse): MsgExecResponseSDKType {
+  toSDK(_: MsgExecResponse): MsgExecResponseSDKType {
     const obj: any = {};
-    message.result !== undefined && (obj.result = proposalExecutorResultToJSON(message.result));
     return obj;
   },
-  fromAmino(object: MsgExecResponseAmino): MsgExecResponse {
-    return {
-      result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1
-    };
+  fromAmino(_: MsgExecResponseAmino): MsgExecResponse {
+    return {};
   },
-  toAmino(message: MsgExecResponse): MsgExecResponseAmino {
+  toAmino(_: MsgExecResponse): MsgExecResponseAmino {
     const obj: any = {};
-    obj.result = message.result;
     return obj;
   },
   fromAminoMsg(object: MsgExecResponseAminoMsg): MsgExecResponse {
@@ -3778,19 +3580,19 @@ export const MsgLeaveGroupResponse = {
     };
   }
 };
-export const Cosmos_groupv1DecisionPolicy_InterfaceDecoder = (input: BinaryReader | Uint8Array): ThresholdDecisionPolicy | PercentageDecisionPolicy | Any => {
+export const Cosmos_groupDecisionPolicy_InterfaceDecoder = (input: BinaryReader | Uint8Array): ThresholdDecisionPolicy | PercentageDecisionPolicy | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32());
+  const data = Any.decode(reader, reader.uint32(), true);
   switch (data.typeUrl) {
     case "/cosmos.group.v1.ThresholdDecisionPolicy":
-      return ThresholdDecisionPolicy.decode(data.value);
+      return ThresholdDecisionPolicy.decode(data.value, undefined, true);
     case "/cosmos.group.v1.PercentageDecisionPolicy":
-      return PercentageDecisionPolicy.decode(data.value);
+      return PercentageDecisionPolicy.decode(data.value, undefined, true);
     default:
       return data;
   }
 };
-export const Cosmos_groupv1DecisionPolicy_FromAmino = (content: AnyAmino) => {
+export const Cosmos_groupDecisionPolicy_FromAmino = (content: AnyAmino) => {
   switch (content.type) {
     case "cosmos-sdk/ThresholdDecisionPolicy":
       return Any.fromPartial({
@@ -3806,17 +3608,17 @@ export const Cosmos_groupv1DecisionPolicy_FromAmino = (content: AnyAmino) => {
       return Any.fromAmino(content);
   }
 };
-export const Cosmos_groupv1DecisionPolicy_ToAmino = (content: Any) => {
+export const Cosmos_groupDecisionPolicy_ToAmino = (content: Any) => {
   switch (content.typeUrl) {
     case "/cosmos.group.v1.ThresholdDecisionPolicy":
       return {
         type: "cosmos-sdk/ThresholdDecisionPolicy",
-        value: ThresholdDecisionPolicy.toAmino(ThresholdDecisionPolicy.decode(content.value))
+        value: ThresholdDecisionPolicy.toAmino(ThresholdDecisionPolicy.decode(content.value, undefined))
       };
     case "/cosmos.group.v1.PercentageDecisionPolicy":
       return {
         type: "cosmos-sdk/PercentageDecisionPolicy",
-        value: PercentageDecisionPolicy.toAmino(PercentageDecisionPolicy.decode(content.value))
+        value: PercentageDecisionPolicy.toAmino(PercentageDecisionPolicy.decode(content.value, undefined))
       };
     default:
       return Any.toAmino(content);

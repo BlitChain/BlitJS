@@ -1,4 +1,4 @@
-import { Deposit, DepositAmino, DepositSDKType, Vote, VoteAmino, VoteSDKType, Proposal, ProposalAmino, ProposalSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType, Params, ParamsAmino, ParamsSDKType } from "./gov";
+import { Deposit, DepositAmino, DepositSDKType, Vote, VoteAmino, VoteSDKType, Proposal, ProposalAmino, ProposalSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType } from "./gov";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.gov.v1";
 /** GenesisState defines the gov module's genesis state. */
@@ -11,43 +11,12 @@ export interface GenesisState {
     votes: Vote[];
     /** proposals defines all the proposals present at genesis. */
     proposals: Proposal[];
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * deposit_params defines all the paramaters of related to deposit.
-     */
-    /** @deprecated */
+    /** params defines all the paramaters of related to deposit. */
     deposit_params?: DepositParams;
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * voting_params defines all the paramaters of related to voting.
-     */
-    /** @deprecated */
+    /** params defines all the paramaters of related to voting. */
     voting_params?: VotingParams;
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * tally_params defines all the paramaters of related to tally.
-     */
-    /** @deprecated */
+    /** params defines all the paramaters of related to tally. */
     tally_params?: TallyParams;
-    /**
-     * params defines all the paramaters of x/gov module.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    params?: Params;
-    /**
-     * The constitution allows builders to lay a foundation and define purpose.
-     * This is an immutable string set in genesis.
-     * There are no amendments, to go outside of scope, just fork.
-     * constitution is an immutable string in genesis for a chain builder to lay out their vision, ideas and ideals.
-     *
-     * Since: cosmos-sdk 0.50
-     */
-    constitution: string;
-}
-export interface GenesisStateProtoMsg {
-    type_url: "/cosmos.gov.v1.GenesisState";
-    value: Uint8Array;
 }
 export interface GenesisStateProtoMsg {
     type_url: "/cosmos.gov.v1.GenesisState";
@@ -63,39 +32,12 @@ export interface GenesisStateAmino {
     votes: VoteAmino[];
     /** proposals defines all the proposals present at genesis. */
     proposals: ProposalAmino[];
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * deposit_params defines all the paramaters of related to deposit.
-     */
-    /** @deprecated */
+    /** params defines all the paramaters of related to deposit. */
     deposit_params?: DepositParamsAmino;
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * voting_params defines all the paramaters of related to voting.
-     */
-    /** @deprecated */
+    /** params defines all the paramaters of related to voting. */
     voting_params?: VotingParamsAmino;
-    /**
-     * Deprecated: Prefer to use `params` instead.
-     * tally_params defines all the paramaters of related to tally.
-     */
-    /** @deprecated */
+    /** params defines all the paramaters of related to tally. */
     tally_params?: TallyParamsAmino;
-    /**
-     * params defines all the paramaters of x/gov module.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    params?: ParamsAmino;
-    /**
-     * The constitution allows builders to lay a foundation and define purpose.
-     * This is an immutable string set in genesis.
-     * There are no amendments, to go outside of scope, just fork.
-     * constitution is an immutable string in genesis for a chain builder to lay out their vision, ideas and ideals.
-     *
-     * Since: cosmos-sdk 0.50
-     */
-    constitution: string;
 }
 export interface GenesisStateAminoMsg {
     type: "cosmos-sdk/v1/GenesisState";
@@ -107,14 +49,9 @@ export interface GenesisStateSDKType {
     deposits: DepositSDKType[];
     votes: VoteSDKType[];
     proposals: ProposalSDKType[];
-    /** @deprecated */
     deposit_params?: DepositParamsSDKType;
-    /** @deprecated */
     voting_params?: VotingParamsSDKType;
-    /** @deprecated */
     tally_params?: TallyParamsSDKType;
-    params?: ParamsSDKType;
-    constitution: string;
 }
 export declare const GenesisState: {
     typeUrl: string;

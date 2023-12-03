@@ -9,7 +9,7 @@ export declare class Msg {
     static SoftwareUpgrade(request: MsgSoftwareUpgrade, initRequest?: fm.InitReq): Promise<MsgSoftwareUpgradeResponse>;
     /**
      * CancelUpgrade is a governance operation for cancelling a previously
-     * approved software upgrade.
+     * approvid software upgrade.
      *
      * Since: cosmos-sdk 0.46
      */

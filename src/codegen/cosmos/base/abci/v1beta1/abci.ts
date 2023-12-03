@@ -1,7 +1,6 @@
 //@ts-nocheck
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Event, EventAmino, EventSDKType } from "../../../../tendermint/abci/types";
-import { Block, BlockAmino, BlockSDKType } from "../../../../tendermint/types/block";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
 export const protobufPackage = "cosmos.base.abci.v1beta1";
@@ -44,16 +43,12 @@ export interface TxResponse {
   /**
    * Events defines all the events emitted by processing a transaction. Note,
    * these events include those emitted by processing all the messages and those
-   * emitted from the ante. Whereas Logs contains the events, with
+   * emitted from the ante handler. Whereas Logs contains the events, with
    * additional metadata, emitted only by processing the messages.
    * 
    * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
    */
   events: Event[];
-}
-export interface TxResponseProtoMsg {
-  type_url: "/cosmos.base.abci.v1beta1.TxResponse";
-  value: Uint8Array;
 }
 export interface TxResponseProtoMsg {
   type_url: "/cosmos.base.abci.v1beta1.TxResponse";
@@ -98,7 +93,7 @@ export interface TxResponseAmino {
   /**
    * Events defines all the events emitted by processing a transaction. Note,
    * these events include those emitted by processing all the messages and those
-   * emitted from the ante. Whereas Logs contains the events, with
+   * emitted from the ante handler. Whereas Logs contains the events, with
    * additional metadata, emitted only by processing the messages.
    * 
    * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
@@ -142,10 +137,6 @@ export interface ABCIMessageLogProtoMsg {
   type_url: "/cosmos.base.abci.v1beta1.ABCIMessageLog";
   value: Uint8Array;
 }
-export interface ABCIMessageLogProtoMsg {
-  type_url: "/cosmos.base.abci.v1beta1.ABCIMessageLog";
-  value: Uint8Array;
-}
 /** ABCIMessageLog defines a structure containing an indexed tx ABCI message log. */
 export interface ABCIMessageLogAmino {
   msg_index: number;
@@ -173,10 +164,6 @@ export interface ABCIMessageLogSDKType {
 export interface StringEvent {
   type: string;
   attributes: Attribute[];
-}
-export interface StringEventProtoMsg {
-  type_url: "/cosmos.base.abci.v1beta1.StringEvent";
-  value: Uint8Array;
 }
 export interface StringEventProtoMsg {
   type_url: "/cosmos.base.abci.v1beta1.StringEvent";
@@ -214,10 +201,6 @@ export interface AttributeProtoMsg {
   type_url: "/cosmos.base.abci.v1beta1.Attribute";
   value: Uint8Array;
 }
-export interface AttributeProtoMsg {
-  type_url: "/cosmos.base.abci.v1beta1.Attribute";
-  value: Uint8Array;
-}
 /**
  * Attribute defines an attribute wrapper where the key and value are
  * strings instead of raw bytes.
@@ -244,10 +227,6 @@ export interface GasInfo {
   gas_wanted: bigint;
   /** GasUsed is the amount of gas actually consumed. */
   gas_used: bigint;
-}
-export interface GasInfoProtoMsg {
-  type_url: "/cosmos.base.abci.v1beta1.GasInfo";
-  value: Uint8Array;
 }
 export interface GasInfoProtoMsg {
   type_url: "/cosmos.base.abci.v1beta1.GasInfo";
@@ -292,10 +271,6 @@ export interface Result {
    * Since: cosmos-sdk 0.46
    */
   msg_responses: Any[];
-}
-export interface ResultProtoMsg {
-  type_url: "/cosmos.base.abci.v1beta1.Result";
-  value: Uint8Array;
 }
 export interface ResultProtoMsg {
   type_url: "/cosmos.base.abci.v1beta1.Result";
@@ -349,10 +324,6 @@ export interface SimulationResponseProtoMsg {
   type_url: "/cosmos.base.abci.v1beta1.SimulationResponse";
   value: Uint8Array;
 }
-export interface SimulationResponseProtoMsg {
-  type_url: "/cosmos.base.abci.v1beta1.SimulationResponse";
-  value: Uint8Array;
-}
 /**
  * SimulationResponse defines the response generated when a transaction is
  * successfully simulated.
@@ -381,10 +352,6 @@ export interface SimulationResponseSDKType {
 export interface MsgData {
   msg_type: string;
   data: Uint8Array;
-}
-export interface MsgDataProtoMsg {
-  type_url: "/cosmos.base.abci.v1beta1.MsgData";
-  value: Uint8Array;
 }
 export interface MsgDataProtoMsg {
   type_url: "/cosmos.base.abci.v1beta1.MsgData";
@@ -426,10 +393,6 @@ export interface TxMsgData {
    * Since: cosmos-sdk 0.46
    */
   msg_responses: Any[];
-}
-export interface TxMsgDataProtoMsg {
-  type_url: "/cosmos.base.abci.v1beta1.TxMsgData";
-  value: Uint8Array;
 }
 export interface TxMsgDataProtoMsg {
   type_url: "/cosmos.base.abci.v1beta1.TxMsgData";
@@ -482,10 +445,6 @@ export interface SearchTxsResultProtoMsg {
   type_url: "/cosmos.base.abci.v1beta1.SearchTxsResult";
   value: Uint8Array;
 }
-export interface SearchTxsResultProtoMsg {
-  type_url: "/cosmos.base.abci.v1beta1.SearchTxsResult";
-  value: Uint8Array;
-}
 /** SearchTxsResult defines a structure for querying txs pageable */
 export interface SearchTxsResultAmino {
   /** Count of all txs */
@@ -513,57 +472,6 @@ export interface SearchTxsResultSDKType {
   page_total: bigint;
   limit: bigint;
   txs: TxResponseSDKType[];
-}
-/** SearchBlocksResult defines a structure for querying blocks pageable */
-export interface SearchBlocksResult {
-  /** Count of all blocks */
-  total_count: bigint;
-  /** Count of blocks in current page */
-  count: bigint;
-  /** Index of current page, start from 1 */
-  page_number: bigint;
-  /** Count of total pages */
-  page_total: bigint;
-  /** Max count blocks per page */
-  limit: bigint;
-  /** List of blocks in current page */
-  blocks: Block[];
-}
-export interface SearchBlocksResultProtoMsg {
-  type_url: "/cosmos.base.abci.v1beta1.SearchBlocksResult";
-  value: Uint8Array;
-}
-export interface SearchBlocksResultProtoMsg {
-  type_url: "/cosmos.base.abci.v1beta1.SearchBlocksResult";
-  value: Uint8Array;
-}
-/** SearchBlocksResult defines a structure for querying blocks pageable */
-export interface SearchBlocksResultAmino {
-  /** Count of all blocks */
-  total_count: string;
-  /** Count of blocks in current page */
-  count: string;
-  /** Index of current page, start from 1 */
-  page_number: string;
-  /** Count of total pages */
-  page_total: string;
-  /** Max count blocks per page */
-  limit: string;
-  /** List of blocks in current page */
-  blocks: BlockAmino[];
-}
-export interface SearchBlocksResultAminoMsg {
-  type: "cosmos-sdk/SearchBlocksResult";
-  value: SearchBlocksResultAmino;
-}
-/** SearchBlocksResult defines a structure for querying blocks pageable */
-export interface SearchBlocksResultSDKType {
-  total_count: bigint;
-  count: bigint;
-  page_number: bigint;
-  page_total: bigint;
-  limit: bigint;
-  blocks: BlockSDKType[];
 }
 function createBaseTxResponse(): TxResponse {
   return {
@@ -1932,175 +1840,6 @@ export const SearchTxsResult = {
     return {
       typeUrl: "/cosmos.base.abci.v1beta1.SearchTxsResult",
       value: SearchTxsResult.encode(message).finish()
-    };
-  }
-};
-function createBaseSearchBlocksResult(): SearchBlocksResult {
-  return {
-    total_count: BigInt(0),
-    count: BigInt(0),
-    page_number: BigInt(0),
-    page_total: BigInt(0),
-    limit: BigInt(0),
-    blocks: []
-  };
-}
-export const SearchBlocksResult = {
-  typeUrl: "/cosmos.base.abci.v1beta1.SearchBlocksResult",
-  encode(message: SearchBlocksResult, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.total_count !== BigInt(0)) {
-      writer.uint32(8).int64(message.total_count);
-    }
-    if (message.count !== BigInt(0)) {
-      writer.uint32(16).int64(message.count);
-    }
-    if (message.page_number !== BigInt(0)) {
-      writer.uint32(24).int64(message.page_number);
-    }
-    if (message.page_total !== BigInt(0)) {
-      writer.uint32(32).int64(message.page_total);
-    }
-    if (message.limit !== BigInt(0)) {
-      writer.uint32(40).int64(message.limit);
-    }
-    for (const v of message.blocks) {
-      Block.encode(v!, writer.uint32(50).fork()).ldelim();
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): SearchBlocksResult {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseSearchBlocksResult();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.total_count = reader.int64();
-          break;
-        case 2:
-          message.count = reader.int64();
-          break;
-        case 3:
-          message.page_number = reader.int64();
-          break;
-        case 4:
-          message.page_total = reader.int64();
-          break;
-        case 5:
-          message.limit = reader.int64();
-          break;
-        case 6:
-          message.blocks.push(Block.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromJSON(object: any): SearchBlocksResult {
-    return {
-      total_count: isSet(object.total_count) ? BigInt(object.total_count.toString()) : BigInt(0),
-      count: isSet(object.count) ? BigInt(object.count.toString()) : BigInt(0),
-      page_number: isSet(object.page_number) ? BigInt(object.page_number.toString()) : BigInt(0),
-      page_total: isSet(object.page_total) ? BigInt(object.page_total.toString()) : BigInt(0),
-      limit: isSet(object.limit) ? BigInt(object.limit.toString()) : BigInt(0),
-      blocks: Array.isArray(object?.blocks) ? object.blocks.map((e: any) => Block.fromJSON(e)) : []
-    };
-  },
-  toJSON(message: SearchBlocksResult): unknown {
-    const obj: any = {};
-    message.total_count !== undefined && (obj.total_count = (message.total_count || BigInt(0)).toString());
-    message.count !== undefined && (obj.count = (message.count || BigInt(0)).toString());
-    message.page_number !== undefined && (obj.page_number = (message.page_number || BigInt(0)).toString());
-    message.page_total !== undefined && (obj.page_total = (message.page_total || BigInt(0)).toString());
-    message.limit !== undefined && (obj.limit = (message.limit || BigInt(0)).toString());
-    if (message.blocks) {
-      obj.blocks = message.blocks.map(e => e ? Block.toJSON(e) : undefined);
-    } else {
-      obj.blocks = [];
-    }
-    return obj;
-  },
-  fromPartial(object: Partial<SearchBlocksResult>): SearchBlocksResult {
-    const message = createBaseSearchBlocksResult();
-    message.total_count = object.total_count !== undefined && object.total_count !== null ? BigInt(object.total_count.toString()) : BigInt(0);
-    message.count = object.count !== undefined && object.count !== null ? BigInt(object.count.toString()) : BigInt(0);
-    message.page_number = object.page_number !== undefined && object.page_number !== null ? BigInt(object.page_number.toString()) : BigInt(0);
-    message.page_total = object.page_total !== undefined && object.page_total !== null ? BigInt(object.page_total.toString()) : BigInt(0);
-    message.limit = object.limit !== undefined && object.limit !== null ? BigInt(object.limit.toString()) : BigInt(0);
-    message.blocks = object.blocks?.map(e => Block.fromPartial(e)) || [];
-    return message;
-  },
-  fromSDK(object: SearchBlocksResultSDKType): SearchBlocksResult {
-    return {
-      total_count: object?.total_count,
-      count: object?.count,
-      page_number: object?.page_number,
-      page_total: object?.page_total,
-      limit: object?.limit,
-      blocks: Array.isArray(object?.blocks) ? object.blocks.map((e: any) => Block.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: SearchBlocksResult): SearchBlocksResultSDKType {
-    const obj: any = {};
-    obj.total_count = message.total_count;
-    obj.count = message.count;
-    obj.page_number = message.page_number;
-    obj.page_total = message.page_total;
-    obj.limit = message.limit;
-    if (message.blocks) {
-      obj.blocks = message.blocks.map(e => e ? Block.toSDK(e) : undefined);
-    } else {
-      obj.blocks = [];
-    }
-    return obj;
-  },
-  fromAmino(object: SearchBlocksResultAmino): SearchBlocksResult {
-    return {
-      total_count: BigInt(object.total_count),
-      count: BigInt(object.count),
-      page_number: BigInt(object.page_number),
-      page_total: BigInt(object.page_total),
-      limit: BigInt(object.limit),
-      blocks: Array.isArray(object?.blocks) ? object.blocks.map((e: any) => Block.fromAmino(e)) : []
-    };
-  },
-  toAmino(message: SearchBlocksResult): SearchBlocksResultAmino {
-    const obj: any = {};
-    obj.total_count = message.total_count ? message.total_count.toString() : undefined;
-    obj.count = message.count ? message.count.toString() : undefined;
-    obj.page_number = message.page_number ? message.page_number.toString() : undefined;
-    obj.page_total = message.page_total ? message.page_total.toString() : undefined;
-    obj.limit = message.limit ? message.limit.toString() : undefined;
-    if (message.blocks) {
-      obj.blocks = message.blocks.map(e => e ? Block.toAmino(e) : undefined);
-    } else {
-      obj.blocks = [];
-    }
-    return obj;
-  },
-  fromAminoMsg(object: SearchBlocksResultAminoMsg): SearchBlocksResult {
-    return SearchBlocksResult.fromAmino(object.value);
-  },
-  toAminoMsg(message: SearchBlocksResult): SearchBlocksResultAminoMsg {
-    return {
-      type: "cosmos-sdk/SearchBlocksResult",
-      value: SearchBlocksResult.toAmino(message)
-    };
-  },
-  fromProtoMsg(message: SearchBlocksResultProtoMsg): SearchBlocksResult {
-    return SearchBlocksResult.decode(message.value);
-  },
-  toProto(message: SearchBlocksResult): Uint8Array {
-    return SearchBlocksResult.encode(message).finish();
-  },
-  toProtoMsg(message: SearchBlocksResult): SearchBlocksResultProtoMsg {
-    return {
-      typeUrl: "/cosmos.base.abci.v1beta1.SearchBlocksResult",
-      value: SearchBlocksResult.encode(message).finish()
     };
   }
 };

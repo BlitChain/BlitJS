@@ -2,12 +2,7 @@
 import * as fm from "../../../grpc-gateway";
 import { QueryValidatorsRequest, QueryValidatorsResponse, QueryValidatorRequest, QueryValidatorResponse, QueryValidatorDelegationsRequest, QueryValidatorDelegationsResponse, QueryValidatorUnbondingDelegationsRequest, QueryValidatorUnbondingDelegationsResponse, QueryDelegationRequest, QueryDelegationResponse, QueryUnbondingDelegationRequest, QueryUnbondingDelegationResponse, QueryDelegatorDelegationsRequest, QueryDelegatorDelegationsResponse, QueryDelegatorUnbondingDelegationsRequest, QueryDelegatorUnbondingDelegationsResponse, QueryRedelegationsRequest, QueryRedelegationsResponse, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponse, QueryDelegatorValidatorRequest, QueryDelegatorValidatorResponse, QueryHistoricalInfoRequest, QueryHistoricalInfoResponse, QueryPoolRequest, QueryPoolResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
 export class Query {
-  /**
-   * Validators queries all validators that match the given status.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** Validators queries all validators that match the given status. */
   static Validators(request: QueryValidatorsRequest, initRequest?: fm.InitReq): Promise<QueryValidatorsResponse> {
     return fm.fetchReq(`/cosmos/staking/v1beta1/validators?${fm.renderURLSearchParams({
       ...request
@@ -25,12 +20,7 @@ export class Query {
       method: "GET"
     });
   }
-  /**
-   * ValidatorDelegations queries delegate info for given validator.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** ValidatorDelegations queries delegate info for given validator. */
   static ValidatorDelegations(request: QueryValidatorDelegationsRequest, initRequest?: fm.InitReq): Promise<QueryValidatorDelegationsResponse> {
     return fm.fetchReq(`/cosmos/staking/v1beta1/validators/${request["validator_addr"]}/delegations?${fm.renderURLSearchParams({
       ...request
@@ -39,12 +29,7 @@ export class Query {
       method: "GET"
     });
   }
-  /**
-   * ValidatorUnbondingDelegations queries unbonding delegations of a validator.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** ValidatorUnbondingDelegations queries unbonding delegations of a validator. */
   static ValidatorUnbondingDelegations(request: QueryValidatorUnbondingDelegationsRequest, initRequest?: fm.InitReq): Promise<QueryValidatorUnbondingDelegationsResponse> {
     return fm.fetchReq(`/cosmos/staking/v1beta1/validators/${request["validator_addr"]}/unbonding_delegations?${fm.renderURLSearchParams({
       ...request
@@ -74,12 +59,7 @@ export class Query {
       method: "GET"
     });
   }
-  /**
-   * DelegatorDelegations queries all delegations of a given delegator address.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** DelegatorDelegations queries all delegations of a given delegator address. */
   static DelegatorDelegations(request: QueryDelegatorDelegationsRequest, initRequest?: fm.InitReq): Promise<QueryDelegatorDelegationsResponse> {
     return fm.fetchReq(`/cosmos/staking/v1beta1/delegations/${request["delegator_addr"]}?${fm.renderURLSearchParams({
       ...request
@@ -91,9 +71,6 @@ export class Query {
   /**
    * DelegatorUnbondingDelegations queries all unbonding delegations of a given
    * delegator address.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
    */
   static DelegatorUnbondingDelegations(request: QueryDelegatorUnbondingDelegationsRequest, initRequest?: fm.InitReq): Promise<QueryDelegatorUnbondingDelegationsResponse> {
     return fm.fetchReq(`/cosmos/staking/v1beta1/delegators/${request["delegator_addr"]}/unbonding_delegations?${fm.renderURLSearchParams({
@@ -103,12 +80,7 @@ export class Query {
       method: "GET"
     });
   }
-  /**
-   * Redelegations queries redelegations of given address.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** Redelegations queries redelegations of given address. */
   static Redelegations(request: QueryRedelegationsRequest, initRequest?: fm.InitReq): Promise<QueryRedelegationsResponse> {
     return fm.fetchReq(`/cosmos/staking/v1beta1/delegators/${request["delegator_addr"]}/redelegations?${fm.renderURLSearchParams({
       ...request
@@ -120,9 +92,6 @@ export class Query {
   /**
    * DelegatorValidators queries all validators info for given delegator
    * address.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
    */
   static DelegatorValidators(request: QueryDelegatorValidatorsRequest, initRequest?: fm.InitReq): Promise<QueryDelegatorValidatorsResponse> {
     return fm.fetchReq(`/cosmos/staking/v1beta1/delegators/${request["delegator_addr"]}/validators?${fm.renderURLSearchParams({
@@ -177,12 +146,7 @@ export class QueryClientImpl {
   constructor(url: string) {
     this.url = url;
   }
-  /**
-   * Validators queries all validators that match the given status.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** Validators queries all validators that match the given status. */
   async Validators(req: QueryValidatorsRequest, headers?: HeadersInit): Promise<QueryValidatorsResponse> {
     return Query.Validators(req, {
       headers,
@@ -196,24 +160,14 @@ export class QueryClientImpl {
       pathPrefix: this.url
     });
   }
-  /**
-   * ValidatorDelegations queries delegate info for given validator.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** ValidatorDelegations queries delegate info for given validator. */
   async ValidatorDelegations(req: QueryValidatorDelegationsRequest, headers?: HeadersInit): Promise<QueryValidatorDelegationsResponse> {
     return Query.ValidatorDelegations(req, {
       headers,
       pathPrefix: this.url
     });
   }
-  /**
-   * ValidatorUnbondingDelegations queries unbonding delegations of a validator.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** ValidatorUnbondingDelegations queries unbonding delegations of a validator. */
   async ValidatorUnbondingDelegations(req: QueryValidatorUnbondingDelegationsRequest, headers?: HeadersInit): Promise<QueryValidatorUnbondingDelegationsResponse> {
     return Query.ValidatorUnbondingDelegations(req, {
       headers,
@@ -237,12 +191,7 @@ export class QueryClientImpl {
       pathPrefix: this.url
     });
   }
-  /**
-   * DelegatorDelegations queries all delegations of a given delegator address.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** DelegatorDelegations queries all delegations of a given delegator address. */
   async DelegatorDelegations(req: QueryDelegatorDelegationsRequest, headers?: HeadersInit): Promise<QueryDelegatorDelegationsResponse> {
     return Query.DelegatorDelegations(req, {
       headers,
@@ -252,9 +201,6 @@ export class QueryClientImpl {
   /**
    * DelegatorUnbondingDelegations queries all unbonding delegations of a given
    * delegator address.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
    */
   async DelegatorUnbondingDelegations(req: QueryDelegatorUnbondingDelegationsRequest, headers?: HeadersInit): Promise<QueryDelegatorUnbondingDelegationsResponse> {
     return Query.DelegatorUnbondingDelegations(req, {
@@ -262,12 +208,7 @@ export class QueryClientImpl {
       pathPrefix: this.url
     });
   }
-  /**
-   * Redelegations queries redelegations of given address.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** Redelegations queries redelegations of given address. */
   async Redelegations(req: QueryRedelegationsRequest, headers?: HeadersInit): Promise<QueryRedelegationsResponse> {
     return Query.Redelegations(req, {
       headers,
@@ -277,9 +218,6 @@ export class QueryClientImpl {
   /**
    * DelegatorValidators queries all validators info for given delegator
    * address.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
    */
   async DelegatorValidators(req: QueryDelegatorValidatorsRequest, headers?: HeadersInit): Promise<QueryDelegatorValidatorsResponse> {
     return Query.DelegatorValidators(req, {

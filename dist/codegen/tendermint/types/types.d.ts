@@ -1,8 +1,20 @@
 import { Proof, ProofAmino, ProofSDKType } from "../crypto/proof";
 import { Consensus, ConsensusAmino, ConsensusSDKType } from "../version/types";
-import { BlockIDFlag, ValidatorSet, ValidatorSetAmino, ValidatorSetSDKType } from "./validator";
+import { ValidatorSet, ValidatorSetAmino, ValidatorSetSDKType } from "./validator";
 import { BinaryReader, BinaryWriter } from "../../binary";
 export declare const protobufPackage = "tendermint.types";
+/** BlockIdFlag indicates which BlcokID the signature is for */
+export declare enum BlockIDFlag {
+    BLOCK_ID_FLAG_UNKNOWN = 0,
+    BLOCK_ID_FLAG_ABSENT = 1,
+    BLOCK_ID_FLAG_COMMIT = 2,
+    BLOCK_ID_FLAG_NIL = 3,
+    UNRECOGNIZED = -1
+}
+export declare const BlockIDFlagSDKType: typeof BlockIDFlag;
+export declare const BlockIDFlagAmino: typeof BlockIDFlag;
+export declare function blockIDFlagFromJSON(object: any): BlockIDFlag;
+export declare function blockIDFlagToJSON(object: BlockIDFlag): string;
 /** SignedMsgType is a type of signed message in the consensus. */
 export declare enum SignedMsgType {
     SIGNED_MSG_TYPE_UNKNOWN = 0,
@@ -21,10 +33,6 @@ export declare function signedMsgTypeToJSON(object: SignedMsgType): string;
 export interface PartSetHeader {
     total: number;
     hash: Uint8Array;
-}
-export interface PartSetHeaderProtoMsg {
-    type_url: "/tendermint.types.PartSetHeader";
-    value: Uint8Array;
 }
 export interface PartSetHeaderProtoMsg {
     type_url: "/tendermint.types.PartSetHeader";
@@ -53,10 +61,6 @@ export interface PartProtoMsg {
     type_url: "/tendermint.types.Part";
     value: Uint8Array;
 }
-export interface PartProtoMsg {
-    type_url: "/tendermint.types.Part";
-    value: Uint8Array;
-}
 export interface PartAmino {
     index: number;
     bytes: Uint8Array;
@@ -80,10 +84,6 @@ export interface BlockIDProtoMsg {
     type_url: "/tendermint.types.BlockID";
     value: Uint8Array;
 }
-export interface BlockIDProtoMsg {
-    type_url: "/tendermint.types.BlockID";
-    value: Uint8Array;
-}
 /** BlockID */
 export interface BlockIDAmino {
     hash: Uint8Array;
@@ -98,7 +98,7 @@ export interface BlockIDSDKType {
     hash: Uint8Array;
     part_set_header: PartSetHeaderSDKType;
 }
-/** Header defines the structure of a block header. */
+/** Header defines the structure of a Tendermint block header. */
 export interface Header {
     /** basic block info */
     version: Consensus;
@@ -128,17 +128,13 @@ export interface HeaderProtoMsg {
     type_url: "/tendermint.types.Header";
     value: Uint8Array;
 }
-export interface HeaderProtoMsg {
-    type_url: "/tendermint.types.Header";
-    value: Uint8Array;
-}
-/** Header defines the structure of a block header. */
+/** Header defines the structure of a Tendermint block header. */
 export interface HeaderAmino {
     /** basic block info */
     version?: ConsensusAmino;
     chain_id: string;
     height: string;
-    time?: Date;
+    time?: string;
     /** prev block info */
     last_block_id?: BlockIDAmino;
     /** hashes of block data */
@@ -162,7 +158,7 @@ export interface HeaderAminoMsg {
     type: "/tendermint.types.Header";
     value: HeaderAmino;
 }
-/** Header defines the structure of a block header. */
+/** Header defines the structure of a Tendermint block header. */
 export interface HeaderSDKType {
     version: ConsensusSDKType;
     chain_id: string;
@@ -192,10 +188,6 @@ export interface DataProtoMsg {
     type_url: "/tendermint.types.Data";
     value: Uint8Array;
 }
-export interface DataProtoMsg {
-    type_url: "/tendermint.types.Data";
-    value: Uint8Array;
-}
 /** Data contains the set of transactions included in the block */
 export interface DataAmino {
     /**
@@ -214,7 +206,7 @@ export interface DataSDKType {
     txs: Uint8Array[];
 }
 /**
- * Vote represents a prevote or precommit vote from validators for
+ * Vote represents a prevote, precommit, or commit vote from validators for
  * consensus.
  */
 export interface Vote {
@@ -226,33 +218,14 @@ export interface Vote {
     timestamp: Date;
     validator_address: Uint8Array;
     validator_index: number;
-    /**
-     * Vote signature by the validator if they participated in consensus for the
-     * associated block.
-     */
     signature: Uint8Array;
-    /**
-     * Vote extension provided by the application. Only valid for precommit
-     * messages.
-     */
-    extension: Uint8Array;
-    /**
-     * Vote extension signature by the validator if they participated in
-     * consensus for the associated block.
-     * Only valid for precommit messages.
-     */
-    extension_signature: Uint8Array;
-}
-export interface VoteProtoMsg {
-    type_url: "/tendermint.types.Vote";
-    value: Uint8Array;
 }
 export interface VoteProtoMsg {
     type_url: "/tendermint.types.Vote";
     value: Uint8Array;
 }
 /**
- * Vote represents a prevote or precommit vote from validators for
+ * Vote represents a prevote, precommit, or commit vote from validators for
  * consensus.
  */
 export interface VoteAmino {
@@ -261,32 +234,17 @@ export interface VoteAmino {
     round: number;
     /** zero if vote is nil. */
     block_id?: BlockIDAmino;
-    timestamp?: Date;
+    timestamp?: string;
     validator_address: Uint8Array;
     validator_index: number;
-    /**
-     * Vote signature by the validator if they participated in consensus for the
-     * associated block.
-     */
     signature: Uint8Array;
-    /**
-     * Vote extension provided by the application. Only valid for precommit
-     * messages.
-     */
-    extension: Uint8Array;
-    /**
-     * Vote extension signature by the validator if they participated in
-     * consensus for the associated block.
-     * Only valid for precommit messages.
-     */
-    extension_signature: Uint8Array;
 }
 export interface VoteAminoMsg {
     type: "/tendermint.types.Vote";
     value: VoteAmino;
 }
 /**
- * Vote represents a prevote or precommit vote from validators for
+ * Vote represents a prevote, precommit, or commit vote from validators for
  * consensus.
  */
 export interface VoteSDKType {
@@ -298,8 +256,6 @@ export interface VoteSDKType {
     validator_address: Uint8Array;
     validator_index: number;
     signature: Uint8Array;
-    extension: Uint8Array;
-    extension_signature: Uint8Array;
 }
 /** Commit contains the evidence that a block was committed by a set of validators. */
 export interface Commit {
@@ -307,10 +263,6 @@ export interface Commit {
     round: number;
     block_id: BlockID;
     signatures: CommitSig[];
-}
-export interface CommitProtoMsg {
-    type_url: "/tendermint.types.Commit";
-    value: Uint8Array;
 }
 export interface CommitProtoMsg {
     type_url: "/tendermint.types.Commit";
@@ -345,15 +297,11 @@ export interface CommitSigProtoMsg {
     type_url: "/tendermint.types.CommitSig";
     value: Uint8Array;
 }
-export interface CommitSigProtoMsg {
-    type_url: "/tendermint.types.CommitSig";
-    value: Uint8Array;
-}
 /** CommitSig is a part of the Vote included in a Commit. */
 export interface CommitSigAmino {
     block_id_flag: BlockIDFlag;
     validator_address: Uint8Array;
-    timestamp?: Date;
+    timestamp?: string;
     signature: Uint8Array;
 }
 export interface CommitSigAminoMsg {
@@ -366,91 +314,6 @@ export interface CommitSigSDKType {
     validator_address: Uint8Array;
     timestamp: Date;
     signature: Uint8Array;
-}
-export interface ExtendedCommit {
-    height: bigint;
-    round: number;
-    block_id: BlockID;
-    extended_signatures: ExtendedCommitSig[];
-}
-export interface ExtendedCommitProtoMsg {
-    type_url: "/tendermint.types.ExtendedCommit";
-    value: Uint8Array;
-}
-export interface ExtendedCommitProtoMsg {
-    type_url: "/tendermint.types.ExtendedCommit";
-    value: Uint8Array;
-}
-export interface ExtendedCommitAmino {
-    height: string;
-    round: number;
-    block_id?: BlockIDAmino;
-    extended_signatures: ExtendedCommitSigAmino[];
-}
-export interface ExtendedCommitAminoMsg {
-    type: "/tendermint.types.ExtendedCommit";
-    value: ExtendedCommitAmino;
-}
-export interface ExtendedCommitSDKType {
-    height: bigint;
-    round: number;
-    block_id: BlockIDSDKType;
-    extended_signatures: ExtendedCommitSigSDKType[];
-}
-/**
- * ExtendedCommitSig retains all the same fields as CommitSig but adds vote
- * extension-related fields. We use two signatures to ensure backwards compatibility.
- * That is the digest of the original signature is still the same in prior versions
- */
-export interface ExtendedCommitSig {
-    block_id_flag: BlockIDFlag;
-    validator_address: Uint8Array;
-    timestamp: Date;
-    signature: Uint8Array;
-    /** Vote extension data */
-    extension: Uint8Array;
-    /** Vote extension signature */
-    extension_signature: Uint8Array;
-}
-export interface ExtendedCommitSigProtoMsg {
-    type_url: "/tendermint.types.ExtendedCommitSig";
-    value: Uint8Array;
-}
-export interface ExtendedCommitSigProtoMsg {
-    type_url: "/tendermint.types.ExtendedCommitSig";
-    value: Uint8Array;
-}
-/**
- * ExtendedCommitSig retains all the same fields as CommitSig but adds vote
- * extension-related fields. We use two signatures to ensure backwards compatibility.
- * That is the digest of the original signature is still the same in prior versions
- */
-export interface ExtendedCommitSigAmino {
-    block_id_flag: BlockIDFlag;
-    validator_address: Uint8Array;
-    timestamp?: Date;
-    signature: Uint8Array;
-    /** Vote extension data */
-    extension: Uint8Array;
-    /** Vote extension signature */
-    extension_signature: Uint8Array;
-}
-export interface ExtendedCommitSigAminoMsg {
-    type: "/tendermint.types.ExtendedCommitSig";
-    value: ExtendedCommitSigAmino;
-}
-/**
- * ExtendedCommitSig retains all the same fields as CommitSig but adds vote
- * extension-related fields. We use two signatures to ensure backwards compatibility.
- * That is the digest of the original signature is still the same in prior versions
- */
-export interface ExtendedCommitSigSDKType {
-    block_id_flag: BlockIDFlag;
-    validator_address: Uint8Array;
-    timestamp: Date;
-    signature: Uint8Array;
-    extension: Uint8Array;
-    extension_signature: Uint8Array;
 }
 export interface Proposal {
     type: SignedMsgType;
@@ -465,17 +328,13 @@ export interface ProposalProtoMsg {
     type_url: "/tendermint.types.Proposal";
     value: Uint8Array;
 }
-export interface ProposalProtoMsg {
-    type_url: "/tendermint.types.Proposal";
-    value: Uint8Array;
-}
 export interface ProposalAmino {
     type: SignedMsgType;
     height: string;
     round: number;
     pol_round: number;
     block_id?: BlockIDAmino;
-    timestamp?: Date;
+    timestamp?: string;
     signature: Uint8Array;
 }
 export interface ProposalAminoMsg {
@@ -499,10 +358,6 @@ export interface SignedHeaderProtoMsg {
     type_url: "/tendermint.types.SignedHeader";
     value: Uint8Array;
 }
-export interface SignedHeaderProtoMsg {
-    type_url: "/tendermint.types.SignedHeader";
-    value: Uint8Array;
-}
 export interface SignedHeaderAmino {
     header?: HeaderAmino;
     commit?: CommitAmino;
@@ -518,10 +373,6 @@ export interface SignedHeaderSDKType {
 export interface LightBlock {
     signed_header?: SignedHeader;
     validator_set?: ValidatorSet;
-}
-export interface LightBlockProtoMsg {
-    type_url: "/tendermint.types.LightBlock";
-    value: Uint8Array;
 }
 export interface LightBlockProtoMsg {
     type_url: "/tendermint.types.LightBlock";
@@ -549,10 +400,6 @@ export interface BlockMetaProtoMsg {
     type_url: "/tendermint.types.BlockMeta";
     value: Uint8Array;
 }
-export interface BlockMetaProtoMsg {
-    type_url: "/tendermint.types.BlockMeta";
-    value: Uint8Array;
-}
 export interface BlockMetaAmino {
     block_id?: BlockIDAmino;
     block_size: string;
@@ -574,10 +421,6 @@ export interface TxProof {
     root_hash: Uint8Array;
     data: Uint8Array;
     proof?: Proof;
-}
-export interface TxProofProtoMsg {
-    type_url: "/tendermint.types.TxProof";
-    value: Uint8Array;
 }
 export interface TxProofProtoMsg {
     type_url: "/tendermint.types.TxProof";
@@ -726,38 +569,6 @@ export declare const CommitSig: {
     fromProtoMsg(message: CommitSigProtoMsg): CommitSig;
     toProto(message: CommitSig): Uint8Array;
     toProtoMsg(message: CommitSig): CommitSigProtoMsg;
-};
-export declare const ExtendedCommit: {
-    typeUrl: string;
-    encode(message: ExtendedCommit, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): ExtendedCommit;
-    fromJSON(object: any): ExtendedCommit;
-    toJSON(message: ExtendedCommit): unknown;
-    fromPartial(object: Partial<ExtendedCommit>): ExtendedCommit;
-    fromSDK(object: ExtendedCommitSDKType): ExtendedCommit;
-    toSDK(message: ExtendedCommit): ExtendedCommitSDKType;
-    fromAmino(object: ExtendedCommitAmino): ExtendedCommit;
-    toAmino(message: ExtendedCommit): ExtendedCommitAmino;
-    fromAminoMsg(object: ExtendedCommitAminoMsg): ExtendedCommit;
-    fromProtoMsg(message: ExtendedCommitProtoMsg): ExtendedCommit;
-    toProto(message: ExtendedCommit): Uint8Array;
-    toProtoMsg(message: ExtendedCommit): ExtendedCommitProtoMsg;
-};
-export declare const ExtendedCommitSig: {
-    typeUrl: string;
-    encode(message: ExtendedCommitSig, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): ExtendedCommitSig;
-    fromJSON(object: any): ExtendedCommitSig;
-    toJSON(message: ExtendedCommitSig): unknown;
-    fromPartial(object: Partial<ExtendedCommitSig>): ExtendedCommitSig;
-    fromSDK(object: ExtendedCommitSigSDKType): ExtendedCommitSig;
-    toSDK(message: ExtendedCommitSig): ExtendedCommitSigSDKType;
-    fromAmino(object: ExtendedCommitSigAmino): ExtendedCommitSig;
-    toAmino(message: ExtendedCommitSig): ExtendedCommitSigAmino;
-    fromAminoMsg(object: ExtendedCommitSigAminoMsg): ExtendedCommitSig;
-    fromProtoMsg(message: ExtendedCommitSigProtoMsg): ExtendedCommitSig;
-    toProto(message: ExtendedCommitSig): Uint8Array;
-    toProtoMsg(message: ExtendedCommitSig): ExtendedCommitSigProtoMsg;
 };
 export declare const Proposal: {
     typeUrl: string;

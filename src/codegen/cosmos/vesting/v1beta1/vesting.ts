@@ -13,12 +13,7 @@ export interface BaseVestingAccount {
   original_vesting: Coin[];
   delegated_free: Coin[];
   delegated_vesting: Coin[];
-  /** Vesting end time, as unix timestamp (in seconds). */
   end_time: bigint;
-}
-export interface BaseVestingAccountProtoMsg {
-  type_url: "/cosmos.vesting.v1beta1.BaseVestingAccount";
-  value: Uint8Array;
 }
 export interface BaseVestingAccountProtoMsg {
   type_url: "/cosmos.vesting.v1beta1.BaseVestingAccount";
@@ -33,7 +28,6 @@ export interface BaseVestingAccountAmino {
   original_vesting: CoinAmino[];
   delegated_free: CoinAmino[];
   delegated_vesting: CoinAmino[];
-  /** Vesting end time, as unix timestamp (in seconds). */
   end_time: string;
 }
 export interface BaseVestingAccountAminoMsg {
@@ -57,12 +51,7 @@ export interface BaseVestingAccountSDKType {
  */
 export interface ContinuousVestingAccount {
   base_vesting_account?: BaseVestingAccount;
-  /** Vesting start time, as unix timestamp (in seconds). */
   start_time: bigint;
-}
-export interface ContinuousVestingAccountProtoMsg {
-  type_url: "/cosmos.vesting.v1beta1.ContinuousVestingAccount";
-  value: Uint8Array;
 }
 export interface ContinuousVestingAccountProtoMsg {
   type_url: "/cosmos.vesting.v1beta1.ContinuousVestingAccount";
@@ -74,7 +63,6 @@ export interface ContinuousVestingAccountProtoMsg {
  */
 export interface ContinuousVestingAccountAmino {
   base_vesting_account?: BaseVestingAccountAmino;
-  /** Vesting start time, as unix timestamp (in seconds). */
   start_time: string;
 }
 export interface ContinuousVestingAccountAminoMsg {
@@ -96,10 +84,6 @@ export interface ContinuousVestingAccountSDKType {
  */
 export interface DelayedVestingAccount {
   base_vesting_account?: BaseVestingAccount;
-}
-export interface DelayedVestingAccountProtoMsg {
-  type_url: "/cosmos.vesting.v1beta1.DelayedVestingAccount";
-  value: Uint8Array;
 }
 export interface DelayedVestingAccountProtoMsg {
   type_url: "/cosmos.vesting.v1beta1.DelayedVestingAccount";
@@ -127,7 +111,6 @@ export interface DelayedVestingAccountSDKType {
 }
 /** Period defines a length of time and amount of coins that will vest. */
 export interface Period {
-  /** Period duration in seconds. */
   length: bigint;
   amount: Coin[];
 }
@@ -135,13 +118,8 @@ export interface PeriodProtoMsg {
   type_url: "/cosmos.vesting.v1beta1.Period";
   value: Uint8Array;
 }
-export interface PeriodProtoMsg {
-  type_url: "/cosmos.vesting.v1beta1.Period";
-  value: Uint8Array;
-}
 /** Period defines a length of time and amount of coins that will vest. */
 export interface PeriodAmino {
-  /** Period duration in seconds. */
   length: string;
   amount: CoinAmino[];
 }
@@ -162,10 +140,6 @@ export interface PeriodicVestingAccount {
   base_vesting_account?: BaseVestingAccount;
   start_time: bigint;
   vesting_periods: Period[];
-}
-export interface PeriodicVestingAccountProtoMsg {
-  type_url: "/cosmos.vesting.v1beta1.PeriodicVestingAccount";
-  value: Uint8Array;
 }
 export interface PeriodicVestingAccountProtoMsg {
   type_url: "/cosmos.vesting.v1beta1.PeriodicVestingAccount";
@@ -202,10 +176,6 @@ export interface PeriodicVestingAccountSDKType {
  */
 export interface PermanentLockedAccount {
   base_vesting_account?: BaseVestingAccount;
-}
-export interface PermanentLockedAccountProtoMsg {
-  type_url: "/cosmos.vesting.v1beta1.PermanentLockedAccount";
-  value: Uint8Array;
 }
 export interface PermanentLockedAccountProtoMsg {
   type_url: "/cosmos.vesting.v1beta1.PermanentLockedAccount";

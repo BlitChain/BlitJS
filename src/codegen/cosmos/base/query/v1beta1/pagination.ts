@@ -47,10 +47,6 @@ export interface PageRequestProtoMsg {
   type_url: "/cosmos.base.query.v1beta1.PageRequest";
   value: Uint8Array;
 }
-export interface PageRequestProtoMsg {
-  type_url: "/cosmos.base.query.v1beta1.PageRequest";
-  value: Uint8Array;
-}
 /**
  * PageRequest is to be embedded in gRPC request messages for efficient
  * pagination. Ex:
@@ -133,10 +129,6 @@ export interface PageResponse {
    * was set, its value is undefined otherwise
    */
   total: bigint;
-}
-export interface PageResponseProtoMsg {
-  type_url: "/cosmos.base.query.v1beta1.PageResponse";
-  value: Uint8Array;
 }
 export interface PageResponseProtoMsg {
   type_url: "/cosmos.base.query.v1beta1.PageResponse";

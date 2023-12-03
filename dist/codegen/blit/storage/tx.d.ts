@@ -16,10 +16,6 @@ export interface MsgUpdateParamsProtoMsg {
     type_url: "/blit.storage.MsgUpdateParams";
     value: Uint8Array;
 }
-export interface MsgUpdateParamsProtoMsg {
-    type_url: "/blit.storage.MsgUpdateParams";
-    value: Uint8Array;
-}
 /**
  * MsgUpdateParams is the Msg/UpdateParams request type.
  *
@@ -56,10 +52,6 @@ export interface MsgUpdateParamsResponseProtoMsg {
     type_url: "/blit.storage.MsgUpdateParamsResponse";
     value: Uint8Array;
 }
-export interface MsgUpdateParamsResponseProtoMsg {
-    type_url: "/blit.storage.MsgUpdateParamsResponse";
-    value: Uint8Array;
-}
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
@@ -90,10 +82,6 @@ export interface MsgCreateStorageProtoMsg {
     type_url: "/blit.storage.MsgCreateStorage";
     value: Uint8Array;
 }
-export interface MsgCreateStorageProtoMsg {
-    type_url: "/blit.storage.MsgCreateStorage";
-    value: Uint8Array;
-}
 export interface MsgCreateStorageAmino {
     address: string;
     index: string;
@@ -116,10 +104,6 @@ export interface MsgCreateStorageResponseProtoMsg {
     type_url: "/blit.storage.MsgCreateStorageResponse";
     value: Uint8Array;
 }
-export interface MsgCreateStorageResponseProtoMsg {
-    type_url: "/blit.storage.MsgCreateStorageResponse";
-    value: Uint8Array;
-}
 export interface MsgCreateStorageResponseAmino {
 }
 export interface MsgCreateStorageResponseAminoMsg {
@@ -133,10 +117,6 @@ export interface MsgUpdateStorage {
     index: string;
     data: string;
     grantee: string;
-}
-export interface MsgUpdateStorageProtoMsg {
-    type_url: "/blit.storage.MsgUpdateStorage";
-    value: Uint8Array;
 }
 export interface MsgUpdateStorageProtoMsg {
     type_url: "/blit.storage.MsgUpdateStorage";
@@ -164,10 +144,6 @@ export interface MsgUpdateStorageResponseProtoMsg {
     type_url: "/blit.storage.MsgUpdateStorageResponse";
     value: Uint8Array;
 }
-export interface MsgUpdateStorageResponseProtoMsg {
-    type_url: "/blit.storage.MsgUpdateStorageResponse";
-    value: Uint8Array;
-}
 export interface MsgUpdateStorageResponseAmino {
 }
 export interface MsgUpdateStorageResponseAminoMsg {
@@ -180,10 +156,6 @@ export interface MsgDeleteStorage {
     address: string;
     index: string;
     grantee: string;
-}
-export interface MsgDeleteStorageProtoMsg {
-    type_url: "/blit.storage.MsgDeleteStorage";
-    value: Uint8Array;
 }
 export interface MsgDeleteStorageProtoMsg {
     type_url: "/blit.storage.MsgDeleteStorage";
@@ -204,10 +176,6 @@ export interface MsgDeleteStorageSDKType {
     grantee: string;
 }
 export interface MsgDeleteStorageResponse {
-}
-export interface MsgDeleteStorageResponseProtoMsg {
-    type_url: "/blit.storage.MsgDeleteStorageResponse";
-    value: Uint8Array;
 }
 export interface MsgDeleteStorageResponseProtoMsg {
     type_url: "/blit.storage.MsgDeleteStorageResponse";

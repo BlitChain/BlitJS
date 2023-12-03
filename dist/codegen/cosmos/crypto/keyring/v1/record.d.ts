@@ -8,18 +8,14 @@ export interface Record {
     name: string;
     /** pub_key represents a public key in any format */
     pub_key?: Any;
-    /** local stores the private key locally. */
+    /** local stores the public information about a locally stored key */
     local?: Record_Local;
-    /** ledger stores the information about a Ledger key. */
+    /** ledger stores the public information about a Ledger key */
     ledger?: Record_Ledger;
-    /** Multi does not store any other information. */
+    /** Multi does not store any information. */
     multi?: Record_Multi;
-    /** Offline does not store any other information. */
+    /** Offline does not store any information. */
     offline?: Record_Offline;
-}
-export interface RecordProtoMsg {
-    type_url: "/cosmos.crypto.keyring.v1.Record";
-    value: Uint8Array;
 }
 export interface RecordProtoMsg {
     type_url: "/cosmos.crypto.keyring.v1.Record";
@@ -31,13 +27,13 @@ export interface RecordAmino {
     name: string;
     /** pub_key represents a public key in any format */
     pub_key?: AnyAmino;
-    /** local stores the private key locally. */
+    /** local stores the public information about a locally stored key */
     local?: Record_LocalAmino;
-    /** ledger stores the information about a Ledger key. */
+    /** ledger stores the public information about a Ledger key */
     ledger?: Record_LedgerAmino;
-    /** Multi does not store any other information. */
+    /** Multi does not store any information. */
     multi?: Record_MultiAmino;
-    /** Offline does not store any other information. */
+    /** Offline does not store any information. */
     offline?: Record_OfflineAmino;
 }
 export interface RecordAminoMsg {
@@ -59,10 +55,7 @@ export interface RecordSDKType {
  */
 export interface Record_Local {
     priv_key?: Any;
-}
-export interface Record_LocalProtoMsg {
-    type_url: "/cosmos.crypto.keyring.v1.Local";
-    value: Uint8Array;
+    priv_key_type: string;
 }
 export interface Record_LocalProtoMsg {
     type_url: "/cosmos.crypto.keyring.v1.Local";
@@ -74,6 +67,7 @@ export interface Record_LocalProtoMsg {
  */
 export interface Record_LocalAmino {
     priv_key?: AnyAmino;
+    priv_key_type: string;
 }
 export interface Record_LocalAminoMsg {
     type: "cosmos-sdk/Local";
@@ -85,14 +79,11 @@ export interface Record_LocalAminoMsg {
  */
 export interface Record_LocalSDKType {
     priv_key?: AnySDKType;
+    priv_key_type: string;
 }
 /** Ledger item */
 export interface Record_Ledger {
     path?: BIP44Params;
-}
-export interface Record_LedgerProtoMsg {
-    type_url: "/cosmos.crypto.keyring.v1.Ledger";
-    value: Uint8Array;
 }
 export interface Record_LedgerProtoMsg {
     type_url: "/cosmos.crypto.keyring.v1.Ledger";
@@ -117,10 +108,6 @@ export interface Record_MultiProtoMsg {
     type_url: "/cosmos.crypto.keyring.v1.Multi";
     value: Uint8Array;
 }
-export interface Record_MultiProtoMsg {
-    type_url: "/cosmos.crypto.keyring.v1.Multi";
-    value: Uint8Array;
-}
 /** Multi item */
 export interface Record_MultiAmino {
 }
@@ -133,10 +120,6 @@ export interface Record_MultiSDKType {
 }
 /** Offline item */
 export interface Record_Offline {
-}
-export interface Record_OfflineProtoMsg {
-    type_url: "/cosmos.crypto.keyring.v1.Offline";
-    value: Uint8Array;
 }
 export interface Record_OfflineProtoMsg {
     type_url: "/cosmos.crypto.keyring.v1.Offline";

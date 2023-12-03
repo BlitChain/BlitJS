@@ -1,6 +1,5 @@
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Event, EventAmino, EventSDKType } from "../../../../tendermint/abci/types";
-import { Block, BlockAmino, BlockSDKType } from "../../../../tendermint/types/block";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 export declare const protobufPackage = "cosmos.base.abci.v1beta1";
 /**
@@ -42,16 +41,12 @@ export interface TxResponse {
     /**
      * Events defines all the events emitted by processing a transaction. Note,
      * these events include those emitted by processing all the messages and those
-     * emitted from the ante. Whereas Logs contains the events, with
+     * emitted from the ante handler. Whereas Logs contains the events, with
      * additional metadata, emitted only by processing the messages.
      *
      * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
      */
     events: Event[];
-}
-export interface TxResponseProtoMsg {
-    type_url: "/cosmos.base.abci.v1beta1.TxResponse";
-    value: Uint8Array;
 }
 export interface TxResponseProtoMsg {
     type_url: "/cosmos.base.abci.v1beta1.TxResponse";
@@ -96,7 +91,7 @@ export interface TxResponseAmino {
     /**
      * Events defines all the events emitted by processing a transaction. Note,
      * these events include those emitted by processing all the messages and those
-     * emitted from the ante. Whereas Logs contains the events, with
+     * emitted from the ante handler. Whereas Logs contains the events, with
      * additional metadata, emitted only by processing the messages.
      *
      * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
@@ -140,10 +135,6 @@ export interface ABCIMessageLogProtoMsg {
     type_url: "/cosmos.base.abci.v1beta1.ABCIMessageLog";
     value: Uint8Array;
 }
-export interface ABCIMessageLogProtoMsg {
-    type_url: "/cosmos.base.abci.v1beta1.ABCIMessageLog";
-    value: Uint8Array;
-}
 /** ABCIMessageLog defines a structure containing an indexed tx ABCI message log. */
 export interface ABCIMessageLogAmino {
     msg_index: number;
@@ -171,10 +162,6 @@ export interface ABCIMessageLogSDKType {
 export interface StringEvent {
     type: string;
     attributes: Attribute[];
-}
-export interface StringEventProtoMsg {
-    type_url: "/cosmos.base.abci.v1beta1.StringEvent";
-    value: Uint8Array;
 }
 export interface StringEventProtoMsg {
     type_url: "/cosmos.base.abci.v1beta1.StringEvent";
@@ -212,10 +199,6 @@ export interface AttributeProtoMsg {
     type_url: "/cosmos.base.abci.v1beta1.Attribute";
     value: Uint8Array;
 }
-export interface AttributeProtoMsg {
-    type_url: "/cosmos.base.abci.v1beta1.Attribute";
-    value: Uint8Array;
-}
 /**
  * Attribute defines an attribute wrapper where the key and value are
  * strings instead of raw bytes.
@@ -242,10 +225,6 @@ export interface GasInfo {
     gas_wanted: bigint;
     /** GasUsed is the amount of gas actually consumed. */
     gas_used: bigint;
-}
-export interface GasInfoProtoMsg {
-    type_url: "/cosmos.base.abci.v1beta1.GasInfo";
-    value: Uint8Array;
 }
 export interface GasInfoProtoMsg {
     type_url: "/cosmos.base.abci.v1beta1.GasInfo";
@@ -290,10 +269,6 @@ export interface Result {
      * Since: cosmos-sdk 0.46
      */
     msg_responses: Any[];
-}
-export interface ResultProtoMsg {
-    type_url: "/cosmos.base.abci.v1beta1.Result";
-    value: Uint8Array;
 }
 export interface ResultProtoMsg {
     type_url: "/cosmos.base.abci.v1beta1.Result";
@@ -347,10 +322,6 @@ export interface SimulationResponseProtoMsg {
     type_url: "/cosmos.base.abci.v1beta1.SimulationResponse";
     value: Uint8Array;
 }
-export interface SimulationResponseProtoMsg {
-    type_url: "/cosmos.base.abci.v1beta1.SimulationResponse";
-    value: Uint8Array;
-}
 /**
  * SimulationResponse defines the response generated when a transaction is
  * successfully simulated.
@@ -379,10 +350,6 @@ export interface SimulationResponseSDKType {
 export interface MsgData {
     msg_type: string;
     data: Uint8Array;
-}
-export interface MsgDataProtoMsg {
-    type_url: "/cosmos.base.abci.v1beta1.MsgData";
-    value: Uint8Array;
 }
 export interface MsgDataProtoMsg {
     type_url: "/cosmos.base.abci.v1beta1.MsgData";
@@ -424,10 +391,6 @@ export interface TxMsgData {
      * Since: cosmos-sdk 0.46
      */
     msg_responses: Any[];
-}
-export interface TxMsgDataProtoMsg {
-    type_url: "/cosmos.base.abci.v1beta1.TxMsgData";
-    value: Uint8Array;
 }
 export interface TxMsgDataProtoMsg {
     type_url: "/cosmos.base.abci.v1beta1.TxMsgData";
@@ -480,10 +443,6 @@ export interface SearchTxsResultProtoMsg {
     type_url: "/cosmos.base.abci.v1beta1.SearchTxsResult";
     value: Uint8Array;
 }
-export interface SearchTxsResultProtoMsg {
-    type_url: "/cosmos.base.abci.v1beta1.SearchTxsResult";
-    value: Uint8Array;
-}
 /** SearchTxsResult defines a structure for querying txs pageable */
 export interface SearchTxsResultAmino {
     /** Count of all txs */
@@ -511,57 +470,6 @@ export interface SearchTxsResultSDKType {
     page_total: bigint;
     limit: bigint;
     txs: TxResponseSDKType[];
-}
-/** SearchBlocksResult defines a structure for querying blocks pageable */
-export interface SearchBlocksResult {
-    /** Count of all blocks */
-    total_count: bigint;
-    /** Count of blocks in current page */
-    count: bigint;
-    /** Index of current page, start from 1 */
-    page_number: bigint;
-    /** Count of total pages */
-    page_total: bigint;
-    /** Max count blocks per page */
-    limit: bigint;
-    /** List of blocks in current page */
-    blocks: Block[];
-}
-export interface SearchBlocksResultProtoMsg {
-    type_url: "/cosmos.base.abci.v1beta1.SearchBlocksResult";
-    value: Uint8Array;
-}
-export interface SearchBlocksResultProtoMsg {
-    type_url: "/cosmos.base.abci.v1beta1.SearchBlocksResult";
-    value: Uint8Array;
-}
-/** SearchBlocksResult defines a structure for querying blocks pageable */
-export interface SearchBlocksResultAmino {
-    /** Count of all blocks */
-    total_count: string;
-    /** Count of blocks in current page */
-    count: string;
-    /** Index of current page, start from 1 */
-    page_number: string;
-    /** Count of total pages */
-    page_total: string;
-    /** Max count blocks per page */
-    limit: string;
-    /** List of blocks in current page */
-    blocks: BlockAmino[];
-}
-export interface SearchBlocksResultAminoMsg {
-    type: "cosmos-sdk/SearchBlocksResult";
-    value: SearchBlocksResultAmino;
-}
-/** SearchBlocksResult defines a structure for querying blocks pageable */
-export interface SearchBlocksResultSDKType {
-    total_count: bigint;
-    count: bigint;
-    page_number: bigint;
-    page_total: bigint;
-    limit: bigint;
-    blocks: BlockSDKType[];
 }
 export declare const TxResponse: {
     typeUrl: string;
@@ -732,21 +640,4 @@ export declare const SearchTxsResult: {
     fromProtoMsg(message: SearchTxsResultProtoMsg): SearchTxsResult;
     toProto(message: SearchTxsResult): Uint8Array;
     toProtoMsg(message: SearchTxsResult): SearchTxsResultProtoMsg;
-};
-export declare const SearchBlocksResult: {
-    typeUrl: string;
-    encode(message: SearchBlocksResult, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): SearchBlocksResult;
-    fromJSON(object: any): SearchBlocksResult;
-    toJSON(message: SearchBlocksResult): unknown;
-    fromPartial(object: Partial<SearchBlocksResult>): SearchBlocksResult;
-    fromSDK(object: SearchBlocksResultSDKType): SearchBlocksResult;
-    toSDK(message: SearchBlocksResult): SearchBlocksResultSDKType;
-    fromAmino(object: SearchBlocksResultAmino): SearchBlocksResult;
-    toAmino(message: SearchBlocksResult): SearchBlocksResultAmino;
-    fromAminoMsg(object: SearchBlocksResultAminoMsg): SearchBlocksResult;
-    toAminoMsg(message: SearchBlocksResult): SearchBlocksResultAminoMsg;
-    fromProtoMsg(message: SearchBlocksResultProtoMsg): SearchBlocksResult;
-    toProto(message: SearchBlocksResult): Uint8Array;
-    toProtoMsg(message: SearchBlocksResult): SearchBlocksResultProtoMsg;
 };

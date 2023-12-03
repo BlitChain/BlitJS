@@ -73,7 +73,7 @@ export const Timestamp = {
         return fromJsonTimestamp(object);
     },
     toAmino(message) {
-        return fromTimestamp(message).toString();
+        return fromTimestamp(message).toISOString().replace(/\.\d+Z$/, "Z");
     },
     fromAminoMsg(object) {
         return Timestamp.fromAmino(object.value);

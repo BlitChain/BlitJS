@@ -4,7 +4,6 @@ exports.DecProto = exports.IntProto = exports.DecCoin = exports.Coin = exports.p
 //@ts-nocheck
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
-const math_1 = require("@cosmjs/math");
 exports.protobufPackage = "cosmos.base.v1beta1";
 function createBaseCoin() {
     return {
@@ -120,7 +119,7 @@ exports.DecCoin = {
             writer.uint32(10).string(message.denom);
         }
         if (message.amount !== "") {
-            writer.uint32(18).string(math_1.Decimal.fromUserInput(message.amount, 18).atomics);
+            writer.uint32(18).string(message.amount);
         }
         return writer;
     },
@@ -135,7 +134,7 @@ exports.DecCoin = {
                     message.denom = reader.string();
                     break;
                 case 2:
-                    message.amount = math_1.Decimal.fromAtomics(reader.string(), 18).toString();
+                    message.amount = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -304,7 +303,7 @@ exports.DecProto = {
     typeUrl: "/cosmos.base.v1beta1.DecProto",
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.dec !== "") {
-            writer.uint32(10).string(math_1.Decimal.fromUserInput(message.dec, 18).atomics);
+            writer.uint32(10).string(message.dec);
         }
         return writer;
     },
@@ -316,7 +315,7 @@ exports.DecProto = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.dec = math_1.Decimal.fromAtomics(reader.string(), 18).toString();
+                    message.dec = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);

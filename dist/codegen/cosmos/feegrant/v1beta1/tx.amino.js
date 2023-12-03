@@ -13,11 +13,6 @@ exports.AminoConverter = {
         aminoType: "cosmos-sdk/MsgRevokeAllowance",
         toAmino: tx_1.MsgRevokeAllowance.toAmino,
         fromAmino: tx_1.MsgRevokeAllowance.fromAmino
-    },
-    "/cosmos.feegrant.v1beta1.MsgPruneAllowances": {
-        aminoType: "cosmos-sdk/MsgPruneAllowances",
-        toAmino: tx_1.MsgPruneAllowances.toAmino,
-        fromAmino: tx_1.MsgPruneAllowances.fromAmino
     }
 };
 //# sourceMappingURL=tx.amino.js.map

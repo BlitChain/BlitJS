@@ -8,10 +8,6 @@ export interface QueryParamsRequestProtoMsg {
     type_url: "/cosmos.mint.v1beta1.QueryParamsRequest";
     value: Uint8Array;
 }
-export interface QueryParamsRequestProtoMsg {
-    type_url: "/cosmos.mint.v1beta1.QueryParamsRequest";
-    value: Uint8Array;
-}
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequestAmino {
 }
@@ -26,10 +22,6 @@ export interface QueryParamsRequestSDKType {
 export interface QueryParamsResponse {
     /** params defines the parameters of the module. */
     params: Params;
-}
-export interface QueryParamsResponseProtoMsg {
-    type_url: "/cosmos.mint.v1beta1.QueryParamsResponse";
-    value: Uint8Array;
 }
 export interface QueryParamsResponseProtoMsg {
     type_url: "/cosmos.mint.v1beta1.QueryParamsResponse";
@@ -55,10 +47,6 @@ export interface QueryInflationRequestProtoMsg {
     type_url: "/cosmos.mint.v1beta1.QueryInflationRequest";
     value: Uint8Array;
 }
-export interface QueryInflationRequestProtoMsg {
-    type_url: "/cosmos.mint.v1beta1.QueryInflationRequest";
-    value: Uint8Array;
-}
 /** QueryInflationRequest is the request type for the Query/Inflation RPC method. */
 export interface QueryInflationRequestAmino {
 }
@@ -76,10 +64,6 @@ export interface QueryInflationRequestSDKType {
 export interface QueryInflationResponse {
     /** inflation is the current minting inflation value. */
     inflation: Uint8Array;
-}
-export interface QueryInflationResponseProtoMsg {
-    type_url: "/cosmos.mint.v1beta1.QueryInflationResponse";
-    value: Uint8Array;
 }
 export interface QueryInflationResponseProtoMsg {
     type_url: "/cosmos.mint.v1beta1.QueryInflationResponse";
@@ -114,10 +98,6 @@ export interface QueryAnnualProvisionsRequestProtoMsg {
     type_url: "/cosmos.mint.v1beta1.QueryAnnualProvisionsRequest";
     value: Uint8Array;
 }
-export interface QueryAnnualProvisionsRequestProtoMsg {
-    type_url: "/cosmos.mint.v1beta1.QueryAnnualProvisionsRequest";
-    value: Uint8Array;
-}
 /**
  * QueryAnnualProvisionsRequest is the request type for the
  * Query/AnnualProvisions RPC method.
@@ -141,10 +121,6 @@ export interface QueryAnnualProvisionsRequestSDKType {
 export interface QueryAnnualProvisionsResponse {
     /** annual_provisions is the current minting annual provisions value. */
     annual_provisions: Uint8Array;
-}
-export interface QueryAnnualProvisionsResponseProtoMsg {
-    type_url: "/cosmos.mint.v1beta1.QueryAnnualProvisionsResponse";
-    value: Uint8Array;
 }
 export interface QueryAnnualProvisionsResponseProtoMsg {
     type_url: "/cosmos.mint.v1beta1.QueryAnnualProvisionsResponse";

@@ -6,6 +6,7 @@ import { Duration } from "../../../google/protobuf/duration";
 import { CommunityPoolSpendProposal, CommunityPoolSpendProposalWithDeposit } from "../../distribution/v1beta1/distribution";
 import { ParameterChangeProposal } from "../../params/v1beta1/params";
 import { SoftwareUpgradeProposal, CancelSoftwareUpgradeProposal } from "../../upgrade/v1beta1/upgrade";
+import { ClientUpdateProposal, UpgradeProposal } from "../../../ibc/core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp, bytesFromBase64, base64FromBytes } from "../../../helpers";
@@ -70,7 +71,7 @@ export function voteOptionToJSON(object) {
 /** ProposalStatus enumerates the valid statuses of a proposal. */
 export var ProposalStatus;
 (function (ProposalStatus) {
-    /** PROPOSAL_STATUS_UNSPECIFIED - PROPOSAL_STATUS_UNSPECIFIED defines the default proposal status. */
+    /** PROPOSAL_STATUS_UNSPECIFIED - PROPOSAL_STATUS_UNSPECIFIED defines the default propopsal status. */
     ProposalStatus[ProposalStatus["PROPOSAL_STATUS_UNSPECIFIED"] = 0] = "PROPOSAL_STATUS_UNSPECIFIED";
     /**
      * PROPOSAL_STATUS_DEPOSIT_PERIOD - PROPOSAL_STATUS_DEPOSIT_PERIOD defines a proposal status during the deposit
@@ -646,11 +647,11 @@ export const Proposal = {
             content: object?.content ? Cosmos_govv1beta1Content_FromAmino(object.content) : undefined,
             status: isSet(object.status) ? proposalStatusFromJSON(object.status) : -1,
             final_tally_result: object?.final_tally_result ? TallyResult.fromAmino(object.final_tally_result) : undefined,
-            submit_time: object.submit_time,
-            deposit_end_time: object.deposit_end_time,
+            submit_time: object?.submit_time ? fromTimestamp(Timestamp.fromAmino(object.submit_time)) : undefined,
+            deposit_end_time: object?.deposit_end_time ? fromTimestamp(Timestamp.fromAmino(object.deposit_end_time)) : undefined,
             total_deposit: Array.isArray(object?.total_deposit) ? object.total_deposit.map((e) => Coin.fromAmino(e)) : [],
-            voting_start_time: object.voting_start_time,
-            voting_end_time: object.voting_end_time
+            voting_start_time: object?.voting_start_time ? fromTimestamp(Timestamp.fromAmino(object.voting_start_time)) : undefined,
+            voting_end_time: object?.voting_end_time ? fromTimestamp(Timestamp.fromAmino(object.voting_end_time)) : undefined
         };
     },
     toAmino(message) {
@@ -659,16 +660,16 @@ export const Proposal = {
         obj.content = message.content ? Cosmos_govv1beta1Content_ToAmino(message.content) : undefined;
         obj.status = message.status;
         obj.final_tally_result = message.final_tally_result ? TallyResult.toAmino(message.final_tally_result) : undefined;
-        obj.submit_time = message.submit_time;
-        obj.deposit_end_time = message.deposit_end_time;
+        obj.submit_time = message.submit_time ? Timestamp.toAmino(toTimestamp(message.submit_time)) : undefined;
+        obj.deposit_end_time = message.deposit_end_time ? Timestamp.toAmino(toTimestamp(message.deposit_end_time)) : undefined;
         if (message.total_deposit) {
             obj.total_deposit = message.total_deposit.map(e => e ? Coin.toAmino(e) : undefined);
         }
         else {
             obj.total_deposit = [];
         }
-        obj.voting_start_time = message.voting_start_time;
-        obj.voting_end_time = message.voting_end_time;
+        obj.voting_start_time = message.voting_start_time ? Timestamp.toAmino(toTimestamp(message.voting_start_time)) : undefined;
+        obj.voting_end_time = message.voting_end_time ? Timestamp.toAmino(toTimestamp(message.voting_end_time)) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1286,20 +1287,24 @@ export const TallyParams = {
 };
 export const Cosmos_govv1beta1Content_InterfaceDecoder = (input) => {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    const data = Any.decode(reader, reader.uint32());
+    const data = Any.decode(reader, reader.uint32(), true);
     switch (data.typeUrl) {
         case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal":
-            return CommunityPoolSpendProposal.decode(data.value);
+            return CommunityPoolSpendProposal.decode(data.value, undefined, true);
         case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit":
-            return CommunityPoolSpendProposalWithDeposit.decode(data.value);
+            return CommunityPoolSpendProposalWithDeposit.decode(data.value, undefined, true);
         case "/cosmos.gov.v1beta1.TextProposal":
-            return TextProposal.decode(data.value);
+            return TextProposal.decode(data.value, undefined, true);
         case "/cosmos.params.v1beta1.ParameterChangeProposal":
-            return ParameterChangeProposal.decode(data.value);
+            return ParameterChangeProposal.decode(data.value, undefined, true);
         case "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal":
-            return SoftwareUpgradeProposal.decode(data.value);
+            return SoftwareUpgradeProposal.decode(data.value, undefined, true);
         case "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal":
-            return CancelSoftwareUpgradeProposal.decode(data.value);
+            return CancelSoftwareUpgradeProposal.decode(data.value, undefined, true);
+        case "/ibc.core.client.v1.ClientUpdateProposal":
+            return ClientUpdateProposal.decode(data.value, undefined, true);
+        case "/ibc.core.client.v1.UpgradeProposal":
+            return UpgradeProposal.decode(data.value, undefined, true);
         default:
             return data;
     }
@@ -1336,6 +1341,16 @@ export const Cosmos_govv1beta1Content_FromAmino = (content) => {
                 typeUrl: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal",
                 value: CancelSoftwareUpgradeProposal.encode(CancelSoftwareUpgradeProposal.fromPartial(CancelSoftwareUpgradeProposal.fromAmino(content.value))).finish()
             });
+        case "cosmos-sdk/ClientUpdateProposal":
+            return Any.fromPartial({
+                typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
+                value: ClientUpdateProposal.encode(ClientUpdateProposal.fromPartial(ClientUpdateProposal.fromAmino(content.value))).finish()
+            });
+        case "cosmos-sdk/UpgradeProposal":
+            return Any.fromPartial({
+                typeUrl: "/ibc.core.client.v1.UpgradeProposal",
+                value: UpgradeProposal.encode(UpgradeProposal.fromPartial(UpgradeProposal.fromAmino(content.value))).finish()
+            });
         default:
             return Any.fromAmino(content);
     }
@@ -1345,32 +1360,42 @@ export const Cosmos_govv1beta1Content_ToAmino = (content) => {
         case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal":
             return {
                 type: "cosmos-sdk/CommunityPoolSpendProposal",
-                value: CommunityPoolSpendProposal.toAmino(CommunityPoolSpendProposal.decode(content.value))
+                value: CommunityPoolSpendProposal.toAmino(CommunityPoolSpendProposal.decode(content.value, undefined))
             };
         case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit":
             return {
                 type: "cosmos-sdk/CommunityPoolSpendProposalWithDeposit",
-                value: CommunityPoolSpendProposalWithDeposit.toAmino(CommunityPoolSpendProposalWithDeposit.decode(content.value))
+                value: CommunityPoolSpendProposalWithDeposit.toAmino(CommunityPoolSpendProposalWithDeposit.decode(content.value, undefined))
             };
         case "/cosmos.gov.v1beta1.TextProposal":
             return {
                 type: "cosmos-sdk/TextProposal",
-                value: TextProposal.toAmino(TextProposal.decode(content.value))
+                value: TextProposal.toAmino(TextProposal.decode(content.value, undefined))
             };
         case "/cosmos.params.v1beta1.ParameterChangeProposal":
             return {
                 type: "cosmos-sdk/ParameterChangeProposal",
-                value: ParameterChangeProposal.toAmino(ParameterChangeProposal.decode(content.value))
+                value: ParameterChangeProposal.toAmino(ParameterChangeProposal.decode(content.value, undefined))
             };
         case "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal":
             return {
                 type: "cosmos-sdk/SoftwareUpgradeProposal",
-                value: SoftwareUpgradeProposal.toAmino(SoftwareUpgradeProposal.decode(content.value))
+                value: SoftwareUpgradeProposal.toAmino(SoftwareUpgradeProposal.decode(content.value, undefined))
             };
         case "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal":
             return {
                 type: "cosmos-sdk/CancelSoftwareUpgradeProposal",
-                value: CancelSoftwareUpgradeProposal.toAmino(CancelSoftwareUpgradeProposal.decode(content.value))
+                value: CancelSoftwareUpgradeProposal.toAmino(CancelSoftwareUpgradeProposal.decode(content.value, undefined))
+            };
+        case "/ibc.core.client.v1.ClientUpdateProposal":
+            return {
+                type: "cosmos-sdk/ClientUpdateProposal",
+                value: ClientUpdateProposal.toAmino(ClientUpdateProposal.decode(content.value, undefined))
+            };
+        case "/ibc.core.client.v1.UpgradeProposal":
+            return {
+                type: "cosmos-sdk/UpgradeProposal",
+                value: UpgradeProposal.toAmino(UpgradeProposal.decode(content.value, undefined))
             };
         default:
             return Any.toAmino(content);

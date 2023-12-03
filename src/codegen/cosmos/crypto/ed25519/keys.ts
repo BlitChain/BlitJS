@@ -16,10 +16,6 @@ export interface PubKeyProtoMsg {
   type_url: "/cosmos.crypto.ed25519.PubKey";
   value: Uint8Array;
 }
-export interface PubKeyProtoMsg {
-  type_url: "/cosmos.crypto.ed25519.PubKey";
-  value: Uint8Array;
-}
 /**
  * PubKey is an ed25519 public key for handling Tendermint keys in SDK.
  * It's needed for Any serialization and SDK compatibility.
@@ -31,7 +27,7 @@ export interface PubKeyAmino {
   key: Uint8Array;
 }
 export interface PubKeyAminoMsg {
-  type: "tendermint/PubKeyEd25519";
+  type: "cosmos-sdk/PubKey";
   value: PubKeyAmino;
 }
 /**
@@ -45,7 +41,7 @@ export interface PubKeySDKType {
   key: Uint8Array;
 }
 /**
- * PrivKey defines a ed25519 private key.
+ * Deprecated: PrivKey defines a ed25519 private key.
  * NOTE: ed25519 keys must not be used in SDK apps except in a tendermint validator context.
  */
 export interface PrivKey {
@@ -55,23 +51,19 @@ export interface PrivKeyProtoMsg {
   type_url: "/cosmos.crypto.ed25519.PrivKey";
   value: Uint8Array;
 }
-export interface PrivKeyProtoMsg {
-  type_url: "/cosmos.crypto.ed25519.PrivKey";
-  value: Uint8Array;
-}
 /**
- * PrivKey defines a ed25519 private key.
+ * Deprecated: PrivKey defines a ed25519 private key.
  * NOTE: ed25519 keys must not be used in SDK apps except in a tendermint validator context.
  */
 export interface PrivKeyAmino {
   key: Uint8Array;
 }
 export interface PrivKeyAminoMsg {
-  type: "tendermint/PrivKeyEd25519";
+  type: "cosmos-sdk/PrivKey";
   value: PrivKeyAmino;
 }
 /**
- * PrivKey defines a ed25519 private key.
+ * Deprecated: PrivKey defines a ed25519 private key.
  * NOTE: ed25519 keys must not be used in SDK apps except in a tendermint validator context.
  */
 export interface PrivKeySDKType {
@@ -147,7 +139,7 @@ export const PubKey = {
   },
   toAminoMsg(message: PubKey): PubKeyAminoMsg {
     return {
-      type: "tendermint/PubKeyEd25519",
+      type: "cosmos-sdk/PubKey",
       value: PubKey.toAmino(message)
     };
   },
@@ -234,7 +226,7 @@ export const PrivKey = {
   },
   toAminoMsg(message: PrivKey): PrivKeyAminoMsg {
     return {
-      type: "tendermint/PrivKeyEd25519",
+      type: "cosmos-sdk/PrivKey",
       value: PrivKey.toAmino(message)
     };
   },

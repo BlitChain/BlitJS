@@ -116,7 +116,7 @@ export const Params = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/x/distribution/Params",
+            type: "cosmos-sdk/Params",
             value: Params.toAmino(message)
         };
     },

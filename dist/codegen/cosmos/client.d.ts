@@ -52,25 +52,10 @@ export declare const cosmosAminoConverters: {
         toAmino: (message: import("./staking/v1beta1/tx").MsgUndelegate) => import("./staking/v1beta1/tx").MsgUndelegateAmino;
         fromAmino: (object: import("./staking/v1beta1/tx").MsgUndelegateAmino) => import("./staking/v1beta1/tx").MsgUndelegate;
     };
-    "/cosmos.staking.v1beta1.MsgCancelUnbondingDelegation": {
-        aminoType: string;
-        toAmino: (message: import("./staking/v1beta1/tx").MsgCancelUnbondingDelegation) => import("./staking/v1beta1/tx").MsgCancelUnbondingDelegationAmino;
-        fromAmino: (object: import("./staking/v1beta1/tx").MsgCancelUnbondingDelegationAmino) => import("./staking/v1beta1/tx").MsgCancelUnbondingDelegation;
-    };
-    "/cosmos.staking.v1beta1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: (message: import("./staking/v1beta1/tx").MsgUpdateParams) => import("./staking/v1beta1/tx").MsgUpdateParamsAmino;
-        fromAmino: (object: import("./staking/v1beta1/tx").MsgUpdateParamsAmino) => import("./staking/v1beta1/tx").MsgUpdateParams;
-    };
     "/cosmos.nft.v1beta1.MsgSend": {
         aminoType: string;
         toAmino: (message: import("./nft/v1beta1/tx").MsgSend) => import("./nft/v1beta1/tx").MsgSendAmino;
         fromAmino: (object: import("./nft/v1beta1/tx").MsgSendAmino) => import("./nft/v1beta1/tx").MsgSend;
-    };
-    "/cosmos.mint.v1beta1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: (message: import("./mint/v1beta1/tx").MsgUpdateParams) => import("./mint/v1beta1/tx").MsgUpdateParamsAmino;
-        fromAmino: (object: import("./mint/v1beta1/tx").MsgUpdateParamsAmino) => import("./mint/v1beta1/tx").MsgUpdateParams;
     };
     "/cosmos.group.v1.MsgCreateGroup": {
         aminoType: string;
@@ -187,16 +172,6 @@ export declare const cosmosAminoConverters: {
         toAmino: (message: import("./gov/v1/tx").MsgDeposit) => import("./gov/v1/tx").MsgDepositAmino;
         fromAmino: (object: import("./gov/v1/tx").MsgDepositAmino) => import("./gov/v1/tx").MsgDeposit;
     };
-    "/cosmos.gov.v1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: (message: import("./gov/v1/tx").MsgUpdateParams) => import("./gov/v1/tx").MsgUpdateParamsAmino;
-        fromAmino: (object: import("./gov/v1/tx").MsgUpdateParamsAmino) => import("./gov/v1/tx").MsgUpdateParams;
-    };
-    "/cosmos.gov.v1.MsgCancelProposal": {
-        aminoType: string;
-        toAmino: (message: import("./gov/v1/tx").MsgCancelProposal) => import("./gov/v1/tx").MsgCancelProposalAmino;
-        fromAmino: (object: import("./gov/v1/tx").MsgCancelProposalAmino) => import("./gov/v1/tx").MsgCancelProposal;
-    };
     "/cosmos.feegrant.v1beta1.MsgGrantAllowance": {
         aminoType: string;
         toAmino: (message: import("./feegrant/v1beta1/tx").MsgGrantAllowance) => import("./feegrant/v1beta1/tx").MsgGrantAllowanceAmino;
@@ -206,11 +181,6 @@ export declare const cosmosAminoConverters: {
         aminoType: string;
         toAmino: (message: import("./feegrant/v1beta1/tx").MsgRevokeAllowance) => import("./feegrant/v1beta1/tx").MsgRevokeAllowanceAmino;
         fromAmino: (object: import("./feegrant/v1beta1/tx").MsgRevokeAllowanceAmino) => import("./feegrant/v1beta1/tx").MsgRevokeAllowance;
-    };
-    "/cosmos.feegrant.v1beta1.MsgPruneAllowances": {
-        aminoType: string;
-        toAmino: (message: import("./feegrant/v1beta1/tx").MsgPruneAllowances) => import("./feegrant/v1beta1/tx").MsgPruneAllowancesAmino;
-        fromAmino: (object: import("./feegrant/v1beta1/tx").MsgPruneAllowancesAmino) => import("./feegrant/v1beta1/tx").MsgPruneAllowances;
     };
     "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress": {
         aminoType: string;
@@ -232,41 +202,6 @@ export declare const cosmosAminoConverters: {
         toAmino: (message: import("./distribution/v1beta1/tx").MsgFundCommunityPool) => import("./distribution/v1beta1/tx").MsgFundCommunityPoolAmino;
         fromAmino: (object: import("./distribution/v1beta1/tx").MsgFundCommunityPoolAmino) => import("./distribution/v1beta1/tx").MsgFundCommunityPool;
     };
-    "/cosmos.distribution.v1beta1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: (message: import("./distribution/v1beta1/tx").MsgUpdateParams) => import("./distribution/v1beta1/tx").MsgUpdateParamsAmino;
-        fromAmino: (object: import("./distribution/v1beta1/tx").MsgUpdateParamsAmino) => import("./distribution/v1beta1/tx").MsgUpdateParams;
-    };
-    "/cosmos.distribution.v1beta1.MsgCommunityPoolSpend": {
-        aminoType: string;
-        toAmino: (message: import("./distribution/v1beta1/tx").MsgCommunityPoolSpend) => import("./distribution/v1beta1/tx").MsgCommunityPoolSpendAmino;
-        fromAmino: (object: import("./distribution/v1beta1/tx").MsgCommunityPoolSpendAmino) => import("./distribution/v1beta1/tx").MsgCommunityPoolSpend;
-    };
-    "/cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPool": {
-        aminoType: string;
-        toAmino: (message: import("./distribution/v1beta1/tx").MsgDepositValidatorRewardsPool) => import("./distribution/v1beta1/tx").MsgDepositValidatorRewardsPoolAmino;
-        fromAmino: (object: import("./distribution/v1beta1/tx").MsgDepositValidatorRewardsPoolAmino) => import("./distribution/v1beta1/tx").MsgDepositValidatorRewardsPool;
-    };
-    "/cosmos.consensus.v1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: (message: import("./consensus/v1/tx").MsgUpdateParams) => import("./consensus/v1/tx").MsgUpdateParamsAmino;
-        fromAmino: (object: import("./consensus/v1/tx").MsgUpdateParamsAmino) => import("./consensus/v1/tx").MsgUpdateParams;
-    };
-    "/cosmos.circuit.v1.MsgAuthorizeCircuitBreaker": {
-        aminoType: string;
-        toAmino: (message: import("./circuit/v1/tx").MsgAuthorizeCircuitBreaker) => import("./circuit/v1/tx").MsgAuthorizeCircuitBreakerAmino;
-        fromAmino: (object: import("./circuit/v1/tx").MsgAuthorizeCircuitBreakerAmino) => import("./circuit/v1/tx").MsgAuthorizeCircuitBreaker;
-    };
-    "/cosmos.circuit.v1.MsgTripCircuitBreaker": {
-        aminoType: string;
-        toAmino: (message: import("./circuit/v1/tx").MsgTripCircuitBreaker) => import("./circuit/v1/tx").MsgTripCircuitBreakerAmino;
-        fromAmino: (object: import("./circuit/v1/tx").MsgTripCircuitBreakerAmino) => import("./circuit/v1/tx").MsgTripCircuitBreaker;
-    };
-    "/cosmos.circuit.v1.MsgResetCircuitBreaker": {
-        aminoType: string;
-        toAmino: (message: import("./circuit/v1/tx").MsgResetCircuitBreaker) => import("./circuit/v1/tx").MsgResetCircuitBreakerAmino;
-        fromAmino: (object: import("./circuit/v1/tx").MsgResetCircuitBreakerAmino) => import("./circuit/v1/tx").MsgResetCircuitBreaker;
-    };
     "/cosmos.bank.v1beta1.MsgSend": {
         aminoType: string;
         toAmino: (message: import("./bank/v1beta1/tx").MsgSend) => import("./bank/v1beta1/tx").MsgSendAmino;
@@ -276,16 +211,6 @@ export declare const cosmosAminoConverters: {
         aminoType: string;
         toAmino: (message: import("./bank/v1beta1/tx").MsgMultiSend) => import("./bank/v1beta1/tx").MsgMultiSendAmino;
         fromAmino: (object: import("./bank/v1beta1/tx").MsgMultiSendAmino) => import("./bank/v1beta1/tx").MsgMultiSend;
-    };
-    "/cosmos.bank.v1beta1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: (message: import("./bank/v1beta1/tx").MsgUpdateParams) => import("./bank/v1beta1/tx").MsgUpdateParamsAmino;
-        fromAmino: (object: import("./bank/v1beta1/tx").MsgUpdateParamsAmino) => import("./bank/v1beta1/tx").MsgUpdateParams;
-    };
-    "/cosmos.bank.v1beta1.MsgSetSendEnabled": {
-        aminoType: string;
-        toAmino: (message: import("./bank/v1beta1/tx").MsgSetSendEnabled) => import("./bank/v1beta1/tx").MsgSetSendEnabledAmino;
-        fromAmino: (object: import("./bank/v1beta1/tx").MsgSetSendEnabledAmino) => import("./bank/v1beta1/tx").MsgSetSendEnabled;
     };
     "/cosmos.authz.v1beta1.MsgGrant": {
         aminoType: string;
@@ -301,11 +226,6 @@ export declare const cosmosAminoConverters: {
         aminoType: string;
         toAmino: (message: import("./authz/v1beta1/tx").MsgRevoke) => import("./authz/v1beta1/tx").MsgRevokeAmino;
         fromAmino: (object: import("./authz/v1beta1/tx").MsgRevokeAmino) => import("./authz/v1beta1/tx").MsgRevoke;
-    };
-    "/cosmos.auth.v1beta1.MsgUpdateParams": {
-        aminoType: string;
-        toAmino: (message: import("./auth/v1beta1/tx").MsgUpdateParams) => import("./auth/v1beta1/tx").MsgUpdateParamsAmino;
-        fromAmino: (object: import("./auth/v1beta1/tx").MsgUpdateParamsAmino) => import("./auth/v1beta1/tx").MsgUpdateParams;
     };
 };
 export declare const cosmosProtoRegistry: ReadonlyArray<[string, GeneratedType]>;

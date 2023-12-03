@@ -15,10 +15,6 @@ export interface EventGrantProtoMsg {
   type_url: "/cosmos.authz.v1beta1.EventGrant";
   value: Uint8Array;
 }
-export interface EventGrantProtoMsg {
-  type_url: "/cosmos.authz.v1beta1.EventGrant";
-  value: Uint8Array;
-}
 /** EventGrant is emitted on Msg/Grant */
 export interface EventGrantAmino {
   /** Msg type URL for which an autorization is granted */
@@ -46,10 +42,6 @@ export interface EventRevoke {
   granter: string;
   /** Grantee account address */
   grantee: string;
-}
-export interface EventRevokeProtoMsg {
-  type_url: "/cosmos.authz.v1beta1.EventRevoke";
-  value: Uint8Array;
 }
 export interface EventRevokeProtoMsg {
   type_url: "/cosmos.authz.v1beta1.EventRevoke";

@@ -17,10 +17,6 @@ export interface DelegatorWithdrawInfoProtoMsg {
     type_url: "/cosmos.distribution.v1beta1.DelegatorWithdrawInfo";
     value: Uint8Array;
 }
-export interface DelegatorWithdrawInfoProtoMsg {
-    type_url: "/cosmos.distribution.v1beta1.DelegatorWithdrawInfo";
-    value: Uint8Array;
-}
 /**
  * DelegatorWithdrawInfo is the address for where distributions rewards are
  * withdrawn to by default this struct is only used at genesis to feed in
@@ -49,12 +45,8 @@ export interface DelegatorWithdrawInfoSDKType {
 export interface ValidatorOutstandingRewardsRecord {
     /** validator_address is the address of the validator. */
     validator_address: string;
-    /** outstanding_rewards represents the outstanding rewards of a validator. */
+    /** outstanding_rewards represents the oustanding rewards of a validator. */
     outstanding_rewards: DecCoin[];
-}
-export interface ValidatorOutstandingRewardsRecordProtoMsg {
-    type_url: "/cosmos.distribution.v1beta1.ValidatorOutstandingRewardsRecord";
-    value: Uint8Array;
 }
 export interface ValidatorOutstandingRewardsRecordProtoMsg {
     type_url: "/cosmos.distribution.v1beta1.ValidatorOutstandingRewardsRecord";
@@ -64,7 +56,7 @@ export interface ValidatorOutstandingRewardsRecordProtoMsg {
 export interface ValidatorOutstandingRewardsRecordAmino {
     /** validator_address is the address of the validator. */
     validator_address: string;
-    /** outstanding_rewards represents the outstanding rewards of a validator. */
+    /** outstanding_rewards represents the oustanding rewards of a validator. */
     outstanding_rewards: DecCoinAmino[];
 }
 export interface ValidatorOutstandingRewardsRecordAminoMsg {
@@ -85,10 +77,6 @@ export interface ValidatorAccumulatedCommissionRecord {
     validator_address: string;
     /** accumulated is the accumulated commission of a validator. */
     accumulated: ValidatorAccumulatedCommission;
-}
-export interface ValidatorAccumulatedCommissionRecordProtoMsg {
-    type_url: "/cosmos.distribution.v1beta1.ValidatorAccumulatedCommissionRecord";
-    value: Uint8Array;
 }
 export interface ValidatorAccumulatedCommissionRecordProtoMsg {
     type_url: "/cosmos.distribution.v1beta1.ValidatorAccumulatedCommissionRecord";
@@ -132,10 +120,6 @@ export interface ValidatorHistoricalRewardsRecordProtoMsg {
     type_url: "/cosmos.distribution.v1beta1.ValidatorHistoricalRewardsRecord";
     value: Uint8Array;
 }
-export interface ValidatorHistoricalRewardsRecordProtoMsg {
-    type_url: "/cosmos.distribution.v1beta1.ValidatorHistoricalRewardsRecord";
-    value: Uint8Array;
-}
 /**
  * ValidatorHistoricalRewardsRecord is used for import / export via genesis
  * json.
@@ -172,10 +156,6 @@ export interface ValidatorCurrentRewardsRecordProtoMsg {
     type_url: "/cosmos.distribution.v1beta1.ValidatorCurrentRewardsRecord";
     value: Uint8Array;
 }
-export interface ValidatorCurrentRewardsRecordProtoMsg {
-    type_url: "/cosmos.distribution.v1beta1.ValidatorCurrentRewardsRecord";
-    value: Uint8Array;
-}
 /** ValidatorCurrentRewardsRecord is used for import / export via genesis json. */
 export interface ValidatorCurrentRewardsRecordAmino {
     /** validator_address is the address of the validator. */
@@ -205,10 +185,6 @@ export interface DelegatorStartingInfoRecordProtoMsg {
     type_url: "/cosmos.distribution.v1beta1.DelegatorStartingInfoRecord";
     value: Uint8Array;
 }
-export interface DelegatorStartingInfoRecordProtoMsg {
-    type_url: "/cosmos.distribution.v1beta1.DelegatorStartingInfoRecord";
-    value: Uint8Array;
-}
 /** DelegatorStartingInfoRecord used for import / export via genesis json. */
 export interface DelegatorStartingInfoRecordAmino {
     /** delegator_address is the address of the delegator. */
@@ -232,7 +208,7 @@ export interface DelegatorStartingInfoRecordSDKType {
 export interface ValidatorSlashEventRecord {
     /** validator_address is the address of the validator. */
     validator_address: string;
-    /** height defines the block height at which the slash event occurred. */
+    /** height defines the block height at which the slash event occured. */
     height: bigint;
     /** period is the period of the slash event. */
     period: bigint;
@@ -243,15 +219,11 @@ export interface ValidatorSlashEventRecordProtoMsg {
     type_url: "/cosmos.distribution.v1beta1.ValidatorSlashEventRecord";
     value: Uint8Array;
 }
-export interface ValidatorSlashEventRecordProtoMsg {
-    type_url: "/cosmos.distribution.v1beta1.ValidatorSlashEventRecord";
-    value: Uint8Array;
-}
 /** ValidatorSlashEventRecord is used for import / export via genesis json. */
 export interface ValidatorSlashEventRecordAmino {
     /** validator_address is the address of the validator. */
     validator_address: string;
-    /** height defines the block height at which the slash event occurred. */
+    /** height defines the block height at which the slash event occured. */
     height: string;
     /** period is the period of the slash event. */
     period: string;
@@ -271,7 +243,7 @@ export interface ValidatorSlashEventRecordSDKType {
 }
 /** GenesisState defines the distribution module's genesis state. */
 export interface GenesisState {
-    /** params defines all the parameters of the module. */
+    /** params defines all the paramaters of the module. */
     params: Params;
     /** fee_pool defines the fee pool at genesis. */
     fee_pool: FeePool;
@@ -281,7 +253,7 @@ export interface GenesisState {
     previous_proposer: string;
     /** fee_pool defines the outstanding rewards of all validators at genesis. */
     outstanding_rewards: ValidatorOutstandingRewardsRecord[];
-    /** fee_pool defines the accumulated commissions of all validators at genesis. */
+    /** fee_pool defines the accumulated commisions of all validators at genesis. */
     validator_accumulated_commissions: ValidatorAccumulatedCommissionRecord[];
     /** fee_pool defines the historical rewards of all validators at genesis. */
     validator_historical_rewards: ValidatorHistoricalRewardsRecord[];
@@ -296,13 +268,9 @@ export interface GenesisStateProtoMsg {
     type_url: "/cosmos.distribution.v1beta1.GenesisState";
     value: Uint8Array;
 }
-export interface GenesisStateProtoMsg {
-    type_url: "/cosmos.distribution.v1beta1.GenesisState";
-    value: Uint8Array;
-}
 /** GenesisState defines the distribution module's genesis state. */
 export interface GenesisStateAmino {
-    /** params defines all the parameters of the module. */
+    /** params defines all the paramaters of the module. */
     params?: ParamsAmino;
     /** fee_pool defines the fee pool at genesis. */
     fee_pool?: FeePoolAmino;
@@ -312,7 +280,7 @@ export interface GenesisStateAmino {
     previous_proposer: string;
     /** fee_pool defines the outstanding rewards of all validators at genesis. */
     outstanding_rewards: ValidatorOutstandingRewardsRecordAmino[];
-    /** fee_pool defines the accumulated commissions of all validators at genesis. */
+    /** fee_pool defines the accumulated commisions of all validators at genesis. */
     validator_accumulated_commissions: ValidatorAccumulatedCommissionRecordAmino[];
     /** fee_pool defines the historical rewards of all validators at genesis. */
     validator_historical_rewards: ValidatorHistoricalRewardsRecordAmino[];

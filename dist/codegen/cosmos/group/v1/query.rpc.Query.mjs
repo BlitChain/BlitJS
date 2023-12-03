@@ -19,7 +19,7 @@ export class Query {
             method: "GET"
         });
     }
-    /** GroupMembers queries members of a group by group id. */
+    /** GroupMembers queries members of a group */
     static GroupMembers(request, initRequest) {
         return fm.fetchReq(`/cosmos/group/v1/group_members/${request["group_id"]}?${fm.renderURLSearchParams({
             ...request
@@ -46,7 +46,7 @@ export class Query {
             method: "GET"
         });
     }
-    /** GroupPoliciesByAdmin queries group policies by admin address. */
+    /** GroupsByAdmin queries group policies by admin address. */
     static GroupPoliciesByAdmin(request, initRequest) {
         return fm.fetchReq(`/cosmos/group/v1/group_policies_by_admin/${request["admin"]}?${fm.renderURLSearchParams({
             ...request
@@ -82,7 +82,7 @@ export class Query {
             method: "GET"
         });
     }
-    /** VotesByProposal queries a vote by proposal id. */
+    /** VotesByProposal queries a vote by proposal. */
     static VotesByProposal(request, initRequest) {
         return fm.fetchReq(`/cosmos/group/v1/votes_by_proposal/${request["proposal_id"]}?${fm.renderURLSearchParams({
             ...request
@@ -109,30 +109,11 @@ export class Query {
             method: "GET"
         });
     }
-    /**
-     * TallyResult returns the tally result of a proposal. If the proposal is
-     * still in voting period, then this query computes the current tally state,
-     * which might not be final. On the other hand, if the proposal is final,
-     * then it simply returns the `final_tally_result` state stored in the
-     * proposal itself.
-     */
+    /** TallyResult queries the tally of a proposal votes. */
     static TallyResult(request, initRequest) {
         return fm.fetchReq(`/cosmos/group/v1/proposals/${request["proposal_id"]}/tally?${fm.renderURLSearchParams({
             ...request
         }, ["proposal_id"])}`, {
-            ...initRequest,
-            method: "GET"
-        });
-    }
-    /**
-     * Groups queries all groups in state.
-     *
-     * Since: cosmos-sdk 0.47.1
-     */
-    static Groups(request, initRequest) {
-        return fm.fetchReq(`/cosmos/group/v1/groups?${fm.renderURLSearchParams({
-            ...request
-        }, [])}`, {
             ...initRequest,
             method: "GET"
         });
@@ -157,7 +138,7 @@ export class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /** GroupMembers queries members of a group by group id. */
+    /** GroupMembers queries members of a group */
     async GroupMembers(req, headers) {
         return Query.GroupMembers(req, {
             headers,
@@ -178,7 +159,7 @@ export class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /** GroupPoliciesByAdmin queries group policies by admin address. */
+    /** GroupsByAdmin queries group policies by admin address. */
     async GroupPoliciesByAdmin(req, headers) {
         return Query.GroupPoliciesByAdmin(req, {
             headers,
@@ -206,7 +187,7 @@ export class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /** VotesByProposal queries a vote by proposal id. */
+    /** VotesByProposal queries a vote by proposal. */
     async VotesByProposal(req, headers) {
         return Query.VotesByProposal(req, {
             headers,
@@ -227,26 +208,9 @@ export class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /**
-     * TallyResult returns the tally result of a proposal. If the proposal is
-     * still in voting period, then this query computes the current tally state,
-     * which might not be final. On the other hand, if the proposal is final,
-     * then it simply returns the `final_tally_result` state stored in the
-     * proposal itself.
-     */
+    /** TallyResult queries the tally of a proposal votes. */
     async TallyResult(req, headers) {
         return Query.TallyResult(req, {
-            headers,
-            pathPrefix: this.url
-        });
-    }
-    /**
-     * Groups queries all groups in state.
-     *
-     * Since: cosmos-sdk 0.47.1
-     */
-    async Groups(req, headers) {
-        return Query.Groups(req, {
             headers,
             pathPrefix: this.url
         });

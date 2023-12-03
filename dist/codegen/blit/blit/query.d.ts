@@ -8,10 +8,6 @@ export interface QueryParamsRequestProtoMsg {
     type_url: "/blit.blit.QueryParamsRequest";
     value: Uint8Array;
 }
-export interface QueryParamsRequestProtoMsg {
-    type_url: "/blit.blit.QueryParamsRequest";
-    value: Uint8Array;
-}
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequestAmino {
 }
@@ -26,10 +22,6 @@ export interface QueryParamsRequestSDKType {
 export interface QueryParamsResponse {
     /** params holds all the parameters of this module. */
     params: Params;
-}
-export interface QueryParamsResponseProtoMsg {
-    type_url: "/blit.blit.QueryParamsResponse";
-    value: Uint8Array;
 }
 export interface QueryParamsResponseProtoMsg {
     type_url: "/blit.blit.QueryParamsResponse";

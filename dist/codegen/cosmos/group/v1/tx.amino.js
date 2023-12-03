@@ -40,7 +40,7 @@ exports.AminoConverter = {
         fromAmino: tx_1.MsgUpdateGroupPolicyAdmin.fromAmino
     },
     "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy": {
-        aminoType: "cosmos-sdk/MsgUpdateGroupDecisionPolicy",
+        aminoType: "cosmos-sdk/MsgUpdateGroupPolicyDecisionPolicy",
         toAmino: tx_1.MsgUpdateGroupPolicyDecisionPolicy.toAmino,
         fromAmino: tx_1.MsgUpdateGroupPolicyDecisionPolicy.fromAmino
     },

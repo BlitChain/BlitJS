@@ -1,16 +1,7 @@
 //@ts-nocheck
 import * as fm from "../../../grpc-gateway";
-import { QueryConstitutionRequest, QueryConstitutionResponse, QueryProposalRequest, QueryProposalResponse, QueryProposalsRequest, QueryProposalsResponse, QueryVoteRequest, QueryVoteResponse, QueryVotesRequest, QueryVotesResponse, QueryParamsRequest, QueryParamsResponse, QueryDepositRequest, QueryDepositResponse, QueryDepositsRequest, QueryDepositsResponse, QueryTallyResultRequest, QueryTallyResultResponse } from "./query";
+import { QueryProposalRequest, QueryProposalResponse, QueryProposalsRequest, QueryProposalsResponse, QueryVoteRequest, QueryVoteResponse, QueryVotesRequest, QueryVotesResponse, QueryParamsRequest, QueryParamsResponse, QueryDepositRequest, QueryDepositResponse, QueryDepositsRequest, QueryDepositsResponse, QueryTallyResultRequest, QueryTallyResultResponse } from "./query";
 export class Query {
-  /** Constitution queries the chain's constitution. */
-  static Constitution(request: QueryConstitutionRequest, initRequest?: fm.InitReq): Promise<QueryConstitutionResponse> {
-    return fm.fetchReq(`/cosmos/gov/v1/constitution?${fm.renderURLSearchParams({
-      ...request
-    }, [])}`, {
-      ...initRequest,
-      method: "GET"
-    });
-  }
   /** Proposal queries proposal details based on ProposalID. */
   static Proposal(request: QueryProposalRequest, initRequest?: fm.InitReq): Promise<QueryProposalResponse> {
     return fm.fetchReq(`/cosmos/gov/v1/proposals/${request["proposal_id"]}?${fm.renderURLSearchParams({
@@ -56,7 +47,7 @@ export class Query {
       method: "GET"
     });
   }
-  /** Deposit queries single deposit information based on proposalID, depositAddr. */
+  /** Deposit queries single deposit information based proposalID, depositAddr. */
   static Deposit(request: QueryDepositRequest, initRequest?: fm.InitReq): Promise<QueryDepositResponse> {
     return fm.fetchReq(`/cosmos/gov/v1/proposals/${request["proposal_id"]}/deposits/${request["depositor"]}?${fm.renderURLSearchParams({
       ...request
@@ -88,13 +79,6 @@ export class QueryClientImpl {
   private readonly url: string;
   constructor(url: string) {
     this.url = url;
-  }
-  /** Constitution queries the chain's constitution. */
-  async Constitution(req: QueryConstitutionRequest, headers?: HeadersInit): Promise<QueryConstitutionResponse> {
-    return Query.Constitution(req, {
-      headers,
-      pathPrefix: this.url
-    });
   }
   /** Proposal queries proposal details based on ProposalID. */
   async Proposal(req: QueryProposalRequest, headers?: HeadersInit): Promise<QueryProposalResponse> {
@@ -131,7 +115,7 @@ export class QueryClientImpl {
       pathPrefix: this.url
     });
   }
-  /** Deposit queries single deposit information based on proposalID, depositAddr. */
+  /** Deposit queries single deposit information based proposalID, depositAddr. */
   async Deposit(req: QueryDepositRequest, headers?: HeadersInit): Promise<QueryDepositResponse> {
     return Query.Deposit(req, {
       headers,

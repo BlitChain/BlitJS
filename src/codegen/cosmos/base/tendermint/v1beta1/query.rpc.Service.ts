@@ -1,6 +1,6 @@
 //@ts-nocheck
 import * as fm from "../../../../grpc-gateway";
-import { GetNodeInfoRequest, GetNodeInfoResponse, GetSyncingRequest, GetSyncingResponse, GetLatestBlockRequest, GetLatestBlockResponse, GetBlockByHeightRequest, GetBlockByHeightResponse, GetLatestValidatorSetRequest, GetLatestValidatorSetResponse, GetValidatorSetByHeightRequest, GetValidatorSetByHeightResponse, ABCIQueryRequest, ABCIQueryResponse } from "./query";
+import { GetNodeInfoRequest, GetNodeInfoResponse, GetSyncingRequest, GetSyncingResponse, GetLatestBlockRequest, GetLatestBlockResponse, GetBlockByHeightRequest, GetBlockByHeightResponse, GetLatestValidatorSetRequest, GetLatestValidatorSetResponse, GetValidatorSetByHeightRequest, GetValidatorSetByHeightResponse } from "./query";
 export class Service {
   /** GetNodeInfo queries the current node info. */
   static GetNodeInfo(request: GetNodeInfoRequest, initRequest?: fm.InitReq): Promise<GetNodeInfoResponse> {
@@ -56,20 +56,6 @@ export class Service {
       method: "GET"
     });
   }
-  /**
-   * ABCIQuery defines a query handler that supports ABCI queries directly to the
-   * application, bypassing Tendermint completely. The ABCI query must contain
-   * a valid and supported path, including app, custom, p2p, and store.
-   * 
-   * Since: cosmos-sdk 0.46
-   */
-  static ABCIQuery(request: ABCIQueryRequest, initRequest?: fm.InitReq): Promise<ABCIQueryResponse> {
-    return fm.fetchReq(`/cosmos/base/tendermint/v1beta1/ABCIQuery`, {
-      ...initRequest,
-      method: "POST",
-      body: JSON.stringify(request, fm.replacer)
-    });
-  }
 }
 export class ServiceClientImpl {
   private readonly url: string;
@@ -114,19 +100,6 @@ export class ServiceClientImpl {
   /** GetValidatorSetByHeight queries validator-set at a given height. */
   async GetValidatorSetByHeight(req: GetValidatorSetByHeightRequest, headers?: HeadersInit): Promise<GetValidatorSetByHeightResponse> {
     return Service.GetValidatorSetByHeight(req, {
-      headers,
-      pathPrefix: this.url
-    });
-  }
-  /**
-   * ABCIQuery defines a query handler that supports ABCI queries directly to the
-   * application, bypassing Tendermint completely. The ABCI query must contain
-   * a valid and supported path, including app, custom, p2p, and store.
-   * 
-   * Since: cosmos-sdk 0.46
-   */
-  async ABCIQuery(req: ABCIQueryRequest, headers?: HeadersInit): Promise<ABCIQueryResponse> {
-    return Service.ABCIQuery(req, {
       headers,
       pathPrefix: this.url
     });

@@ -1,29 +1,10 @@
 import { PublicKey, PublicKeyAmino, PublicKeySDKType } from "../crypto/keys";
 import { BinaryReader, BinaryWriter } from "../../binary";
 export declare const protobufPackage = "tendermint.types";
-/** BlockIdFlag indicates which BlockID the signature is for */
-export declare enum BlockIDFlag {
-    /** BLOCK_ID_FLAG_UNKNOWN - indicates an error condition */
-    BLOCK_ID_FLAG_UNKNOWN = 0,
-    /** BLOCK_ID_FLAG_ABSENT - the vote was not received */
-    BLOCK_ID_FLAG_ABSENT = 1,
-    BLOCK_ID_FLAG_COMMIT = 2,
-    /** BLOCK_ID_FLAG_NIL - voted for nil */
-    BLOCK_ID_FLAG_NIL = 3,
-    UNRECOGNIZED = -1
-}
-export declare const BlockIDFlagSDKType: typeof BlockIDFlag;
-export declare const BlockIDFlagAmino: typeof BlockIDFlag;
-export declare function blockIDFlagFromJSON(object: any): BlockIDFlag;
-export declare function blockIDFlagToJSON(object: BlockIDFlag): string;
 export interface ValidatorSet {
     validators: Validator[];
     proposer?: Validator;
     total_voting_power: bigint;
-}
-export interface ValidatorSetProtoMsg {
-    type_url: "/tendermint.types.ValidatorSet";
-    value: Uint8Array;
 }
 export interface ValidatorSetProtoMsg {
     type_url: "/tendermint.types.ValidatorSet";
@@ -53,10 +34,6 @@ export interface ValidatorProtoMsg {
     type_url: "/tendermint.types.Validator";
     value: Uint8Array;
 }
-export interface ValidatorProtoMsg {
-    type_url: "/tendermint.types.Validator";
-    value: Uint8Array;
-}
 export interface ValidatorAmino {
     address: Uint8Array;
     pub_key?: PublicKeyAmino;
@@ -76,10 +53,6 @@ export interface ValidatorSDKType {
 export interface SimpleValidator {
     pub_key?: PublicKey;
     voting_power: bigint;
-}
-export interface SimpleValidatorProtoMsg {
-    type_url: "/tendermint.types.SimpleValidator";
-    value: Uint8Array;
 }
 export interface SimpleValidatorProtoMsg {
     type_url: "/tendermint.types.SimpleValidator";

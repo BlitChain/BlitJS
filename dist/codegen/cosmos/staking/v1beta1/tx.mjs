@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { Description, CommissionRates, Params } from "./staking";
+import { Description, CommissionRates } from "./staking";
 import { Any } from "../../../google/protobuf/any";
 import { Coin } from "../../base/v1beta1/coin";
 import { Timestamp } from "../../../google/protobuf/timestamp";
@@ -816,12 +816,12 @@ export const MsgBeginRedelegateResponse = {
     },
     fromAmino(object) {
         return {
-            completion_time: object.completion_time
+            completion_time: object?.completion_time ? fromTimestamp(Timestamp.fromAmino(object.completion_time)) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
-        obj.completion_time = message.completion_time;
+        obj.completion_time = message.completion_time ? Timestamp.toAmino(toTimestamp(message.completion_time)) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -963,8 +963,7 @@ export const MsgUndelegate = {
 };
 function createBaseMsgUndelegateResponse() {
     return {
-        completion_time: new Date(),
-        amount: Coin.fromPartial({})
+        completion_time: new Date()
     };
 }
 export const MsgUndelegateResponse = {
@@ -972,9 +971,6 @@ export const MsgUndelegateResponse = {
     encode(message, writer = BinaryWriter.create()) {
         if (message.completion_time !== undefined) {
             Timestamp.encode(toTimestamp(message.completion_time), writer.uint32(10).fork()).ldelim();
-        }
-        if (message.amount !== undefined) {
-            Coin.encode(message.amount, writer.uint32(18).fork()).ldelim();
         }
         return writer;
     },
@@ -988,9 +984,6 @@ export const MsgUndelegateResponse = {
                 case 1:
                     message.completion_time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
                     break;
-                case 2:
-                    message.amount = Coin.decode(reader, reader.uint32());
-                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -1000,44 +993,37 @@ export const MsgUndelegateResponse = {
     },
     fromJSON(object) {
         return {
-            completion_time: isSet(object.completion_time) ? fromJsonTimestamp(object.completion_time) : undefined,
-            amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
+            completion_time: isSet(object.completion_time) ? fromJsonTimestamp(object.completion_time) : undefined
         };
     },
     toJSON(message) {
         const obj = {};
         message.completion_time !== undefined && (obj.completion_time = message.completion_time.toISOString());
-        message.amount !== undefined && (obj.amount = message.amount ? Coin.toJSON(message.amount) : undefined);
         return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgUndelegateResponse();
         message.completion_time = object.completion_time ?? undefined;
-        message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
         return message;
     },
     fromSDK(object) {
         return {
-            completion_time: object.completion_time ? Timestamp.fromSDK(object.completion_time) : undefined,
-            amount: object.amount ? Coin.fromSDK(object.amount) : undefined
+            completion_time: object.completion_time ? Timestamp.fromSDK(object.completion_time) : undefined
         };
     },
     toSDK(message) {
         const obj = {};
         message.completion_time !== undefined && (obj.completion_time = message.completion_time ? Timestamp.toSDK(message.completion_time) : undefined);
-        message.amount !== undefined && (obj.amount = message.amount ? Coin.toSDK(message.amount) : undefined);
         return obj;
     },
     fromAmino(object) {
         return {
-            completion_time: object.completion_time,
-            amount: object?.amount ? Coin.fromAmino(object.amount) : undefined
+            completion_time: object?.completion_time ? fromTimestamp(Timestamp.fromAmino(object.completion_time)) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
-        obj.completion_time = message.completion_time;
-        obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
+        obj.completion_time = message.completion_time ? Timestamp.toAmino(toTimestamp(message.completion_time)) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1062,377 +1048,9 @@ export const MsgUndelegateResponse = {
         };
     }
 };
-function createBaseMsgCancelUnbondingDelegation() {
-    return {
-        delegator_address: "",
-        validator_address: "",
-        amount: Coin.fromPartial({}),
-        creation_height: BigInt(0)
-    };
-}
-export const MsgCancelUnbondingDelegation = {
-    typeUrl: "/cosmos.staking.v1beta1.MsgCancelUnbondingDelegation",
-    encode(message, writer = BinaryWriter.create()) {
-        if (message.delegator_address !== "") {
-            writer.uint32(10).string(message.delegator_address);
-        }
-        if (message.validator_address !== "") {
-            writer.uint32(18).string(message.validator_address);
-        }
-        if (message.amount !== undefined) {
-            Coin.encode(message.amount, writer.uint32(26).fork()).ldelim();
-        }
-        if (message.creation_height !== BigInt(0)) {
-            writer.uint32(32).int64(message.creation_height);
-        }
-        return writer;
-    },
-    decode(input, length) {
-        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseMsgCancelUnbondingDelegation();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    message.delegator_address = reader.string();
-                    break;
-                case 2:
-                    message.validator_address = reader.string();
-                    break;
-                case 3:
-                    message.amount = Coin.decode(reader, reader.uint32());
-                    break;
-                case 4:
-                    message.creation_height = reader.int64();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-            }
-        }
-        return message;
-    },
-    fromJSON(object) {
-        return {
-            delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : "",
-            validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
-            amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined,
-            creation_height: isSet(object.creation_height) ? BigInt(object.creation_height.toString()) : BigInt(0)
-        };
-    },
-    toJSON(message) {
-        const obj = {};
-        message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
-        message.validator_address !== undefined && (obj.validator_address = message.validator_address);
-        message.amount !== undefined && (obj.amount = message.amount ? Coin.toJSON(message.amount) : undefined);
-        message.creation_height !== undefined && (obj.creation_height = (message.creation_height || BigInt(0)).toString());
-        return obj;
-    },
-    fromPartial(object) {
-        const message = createBaseMsgCancelUnbondingDelegation();
-        message.delegator_address = object.delegator_address ?? "";
-        message.validator_address = object.validator_address ?? "";
-        message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
-        message.creation_height = object.creation_height !== undefined && object.creation_height !== null ? BigInt(object.creation_height.toString()) : BigInt(0);
-        return message;
-    },
-    fromSDK(object) {
-        return {
-            delegator_address: object?.delegator_address,
-            validator_address: object?.validator_address,
-            amount: object.amount ? Coin.fromSDK(object.amount) : undefined,
-            creation_height: object?.creation_height
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_address = message.delegator_address;
-        obj.validator_address = message.validator_address;
-        message.amount !== undefined && (obj.amount = message.amount ? Coin.toSDK(message.amount) : undefined);
-        obj.creation_height = message.creation_height;
-        return obj;
-    },
-    fromAmino(object) {
-        return {
-            delegator_address: object.delegator_address,
-            validator_address: object.validator_address,
-            amount: object?.amount ? Coin.fromAmino(object.amount) : undefined,
-            creation_height: BigInt(object.creation_height)
-        };
-    },
-    toAmino(message) {
-        const obj = {};
-        obj.delegator_address = message.delegator_address;
-        obj.validator_address = message.validator_address;
-        obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
-        obj.creation_height = message.creation_height ? message.creation_height.toString() : undefined;
-        return obj;
-    },
-    fromAminoMsg(object) {
-        return MsgCancelUnbondingDelegation.fromAmino(object.value);
-    },
-    toAminoMsg(message) {
-        return {
-            type: "cosmos-sdk/MsgCancelUnbondingDelegation",
-            value: MsgCancelUnbondingDelegation.toAmino(message)
-        };
-    },
-    fromProtoMsg(message) {
-        return MsgCancelUnbondingDelegation.decode(message.value);
-    },
-    toProto(message) {
-        return MsgCancelUnbondingDelegation.encode(message).finish();
-    },
-    toProtoMsg(message) {
-        return {
-            typeUrl: "/cosmos.staking.v1beta1.MsgCancelUnbondingDelegation",
-            value: MsgCancelUnbondingDelegation.encode(message).finish()
-        };
-    }
-};
-function createBaseMsgCancelUnbondingDelegationResponse() {
-    return {};
-}
-export const MsgCancelUnbondingDelegationResponse = {
-    typeUrl: "/cosmos.staking.v1beta1.MsgCancelUnbondingDelegationResponse",
-    encode(_, writer = BinaryWriter.create()) {
-        return writer;
-    },
-    decode(input, length) {
-        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseMsgCancelUnbondingDelegationResponse();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-            }
-        }
-        return message;
-    },
-    fromJSON(_) {
-        return {};
-    },
-    toJSON(_) {
-        const obj = {};
-        return obj;
-    },
-    fromPartial(_) {
-        const message = createBaseMsgCancelUnbondingDelegationResponse();
-        return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
-    },
-    fromAmino(_) {
-        return {};
-    },
-    toAmino(_) {
-        const obj = {};
-        return obj;
-    },
-    fromAminoMsg(object) {
-        return MsgCancelUnbondingDelegationResponse.fromAmino(object.value);
-    },
-    toAminoMsg(message) {
-        return {
-            type: "cosmos-sdk/MsgCancelUnbondingDelegationResponse",
-            value: MsgCancelUnbondingDelegationResponse.toAmino(message)
-        };
-    },
-    fromProtoMsg(message) {
-        return MsgCancelUnbondingDelegationResponse.decode(message.value);
-    },
-    toProto(message) {
-        return MsgCancelUnbondingDelegationResponse.encode(message).finish();
-    },
-    toProtoMsg(message) {
-        return {
-            typeUrl: "/cosmos.staking.v1beta1.MsgCancelUnbondingDelegationResponse",
-            value: MsgCancelUnbondingDelegationResponse.encode(message).finish()
-        };
-    }
-};
-function createBaseMsgUpdateParams() {
-    return {
-        authority: "",
-        params: Params.fromPartial({})
-    };
-}
-export const MsgUpdateParams = {
-    typeUrl: "/cosmos.staking.v1beta1.MsgUpdateParams",
-    encode(message, writer = BinaryWriter.create()) {
-        if (message.authority !== "") {
-            writer.uint32(10).string(message.authority);
-        }
-        if (message.params !== undefined) {
-            Params.encode(message.params, writer.uint32(18).fork()).ldelim();
-        }
-        return writer;
-    },
-    decode(input, length) {
-        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseMsgUpdateParams();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    message.authority = reader.string();
-                    break;
-                case 2:
-                    message.params = Params.decode(reader, reader.uint32());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-            }
-        }
-        return message;
-    },
-    fromJSON(object) {
-        return {
-            authority: isSet(object.authority) ? String(object.authority) : "",
-            params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
-        };
-    },
-    toJSON(message) {
-        const obj = {};
-        message.authority !== undefined && (obj.authority = message.authority);
-        message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-        return obj;
-    },
-    fromPartial(object) {
-        const message = createBaseMsgUpdateParams();
-        message.authority = object.authority ?? "";
-        message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-        return message;
-    },
-    fromSDK(object) {
-        return {
-            authority: object?.authority,
-            params: object.params ? Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.authority = message.authority;
-        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-        return obj;
-    },
-    fromAmino(object) {
-        return {
-            authority: object.authority,
-            params: object?.params ? Params.fromAmino(object.params) : undefined
-        };
-    },
-    toAmino(message) {
-        const obj = {};
-        obj.authority = message.authority;
-        obj.params = message.params ? Params.toAmino(message.params) : undefined;
-        return obj;
-    },
-    fromAminoMsg(object) {
-        return MsgUpdateParams.fromAmino(object.value);
-    },
-    toAminoMsg(message) {
-        return {
-            type: "cosmos-sdk/x/staking/MsgUpdateParams",
-            value: MsgUpdateParams.toAmino(message)
-        };
-    },
-    fromProtoMsg(message) {
-        return MsgUpdateParams.decode(message.value);
-    },
-    toProto(message) {
-        return MsgUpdateParams.encode(message).finish();
-    },
-    toProtoMsg(message) {
-        return {
-            typeUrl: "/cosmos.staking.v1beta1.MsgUpdateParams",
-            value: MsgUpdateParams.encode(message).finish()
-        };
-    }
-};
-function createBaseMsgUpdateParamsResponse() {
-    return {};
-}
-export const MsgUpdateParamsResponse = {
-    typeUrl: "/cosmos.staking.v1beta1.MsgUpdateParamsResponse",
-    encode(_, writer = BinaryWriter.create()) {
-        return writer;
-    },
-    decode(input, length) {
-        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseMsgUpdateParamsResponse();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-            }
-        }
-        return message;
-    },
-    fromJSON(_) {
-        return {};
-    },
-    toJSON(_) {
-        const obj = {};
-        return obj;
-    },
-    fromPartial(_) {
-        const message = createBaseMsgUpdateParamsResponse();
-        return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
-    },
-    fromAmino(_) {
-        return {};
-    },
-    toAmino(_) {
-        const obj = {};
-        return obj;
-    },
-    fromAminoMsg(object) {
-        return MsgUpdateParamsResponse.fromAmino(object.value);
-    },
-    toAminoMsg(message) {
-        return {
-            type: "cosmos-sdk/MsgUpdateParamsResponse",
-            value: MsgUpdateParamsResponse.toAmino(message)
-        };
-    },
-    fromProtoMsg(message) {
-        return MsgUpdateParamsResponse.decode(message.value);
-    },
-    toProto(message) {
-        return MsgUpdateParamsResponse.encode(message).finish();
-    },
-    toProtoMsg(message) {
-        return {
-            typeUrl: "/cosmos.staking.v1beta1.MsgUpdateParamsResponse",
-            value: MsgUpdateParamsResponse.encode(message).finish()
-        };
-    }
-};
 export const Cosmos_cryptoPubKey_InterfaceDecoder = (input) => {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    const data = Any.decode(reader, reader.uint32());
+    const data = Any.decode(reader, reader.uint32(), true);
     switch (data.typeUrl) {
         default:
             return data;

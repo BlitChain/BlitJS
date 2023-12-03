@@ -71,47 +71,6 @@ class Msg {
             body: JSON.stringify(request, fm.replacer)
         });
     }
-    /**
-     * UpdateParams defines a governance operation for updating the x/distribution
-     * module parameters. The authority is defined in the keeper.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    static UpdateParams(request, initRequest) {
-        return fm.fetchReq(`/cosmos.distribution.v1beta1/UpdateParams`, {
-            ...initRequest,
-            method: "POST",
-            body: JSON.stringify(request, fm.replacer)
-        });
-    }
-    /**
-     * CommunityPoolSpend defines a governance operation for sending tokens from
-     * the community pool in the x/distribution module to another account, which
-     * could be the governance module itself. The authority is defined in the
-     * keeper.
-     *
-     * Since: cosmos-sdk 0.47
-     */
-    static CommunityPoolSpend(request, initRequest) {
-        return fm.fetchReq(`/cosmos.distribution.v1beta1/CommunityPoolSpend`, {
-            ...initRequest,
-            method: "POST",
-            body: JSON.stringify(request, fm.replacer)
-        });
-    }
-    /**
-     * DepositValidatorRewardsPool defines a method to provide additional rewards
-     * to delegators to a specific validator.
-     *
-     * Since: cosmos-sdk 0.50
-     */
-    static DepositValidatorRewardsPool(request, initRequest) {
-        return fm.fetchReq(`/cosmos.distribution.v1beta1/DepositValidatorRewardsPool`, {
-            ...initRequest,
-            method: "POST",
-            body: JSON.stringify(request, fm.replacer)
-        });
-    }
 }
 exports.Msg = Msg;
 //# sourceMappingURL=tx.rpc.msg.js.map

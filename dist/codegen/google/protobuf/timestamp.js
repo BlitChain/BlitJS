@@ -76,7 +76,7 @@ exports.Timestamp = {
         return (0, helpers_1.fromJsonTimestamp)(object);
     },
     toAmino(message) {
-        return (0, helpers_1.fromTimestamp)(message).toString();
+        return (0, helpers_1.fromTimestamp)(message).toISOString().replace(/\.\d+Z$/, "Z");
     },
     fromAminoMsg(object) {
         return exports.Timestamp.fromAmino(object.value);

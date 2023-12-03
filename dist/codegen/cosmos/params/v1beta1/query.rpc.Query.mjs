@@ -13,11 +13,7 @@ export class Query {
             method: "GET"
         });
     }
-    /**
-     * Subspaces queries for all registered subspaces and all keys for a subspace.
-     *
-     * Since: cosmos-sdk 0.46
-     */
+    /** Subspaces queries for all registered subspaces and all keys for a subspace. */
     static Subspaces(request, initRequest) {
         return fm.fetchReq(`/cosmos/params/v1beta1/subspaces?${fm.renderURLSearchParams({
             ...request
@@ -42,11 +38,7 @@ export class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /**
-     * Subspaces queries for all registered subspaces and all keys for a subspace.
-     *
-     * Since: cosmos-sdk 0.46
-     */
+    /** Subspaces queries for all registered subspaces and all keys for a subspace. */
     async Subspaces(req, headers) {
         return Query.Subspaces(req, {
             headers,

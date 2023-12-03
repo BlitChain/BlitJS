@@ -14,10 +14,6 @@ export interface LegacyAminoPubKeyProtoMsg {
     type_url: "/cosmos.crypto.multisig.LegacyAminoPubKey";
     value: Uint8Array;
 }
-export interface LegacyAminoPubKeyProtoMsg {
-    type_url: "/cosmos.crypto.multisig.LegacyAminoPubKey";
-    value: Uint8Array;
-}
 /**
  * LegacyAminoPubKey specifies a public key type
  * which nests multiple public keys and a threshold,
@@ -28,7 +24,7 @@ export interface LegacyAminoPubKeyAmino {
     public_keys: AnyAmino[];
 }
 export interface LegacyAminoPubKeyAminoMsg {
-    type: "tendermint/PubKeyMultisigThreshold";
+    type: "cosmos-sdk/LegacyAminoPubKey";
     value: LegacyAminoPubKeyAmino;
 }
 /**

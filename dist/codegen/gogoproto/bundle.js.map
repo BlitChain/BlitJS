@@ -1,1 +1,1 @@
-{"version":3,"file":"bundle.js","sourceRoot":"","sources":["../../../src/codegen/gogoproto/bundle.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,aAAa;AACb,6CAA+B;AAClB,QAAA,SAAS,GAAG;IACvB,GAAG,IAAI;CACR,CAAC"}
+{"version":3,"file":"bundle.js","sourceRoot":"","sources":["../../../src/codegen/gogoproto/bundle.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,aAAa;AACb,4CAA8B;AACjB,QAAA,SAAS,GAAG;IACvB,GAAG,GAAG;CACP,CAAC"}

@@ -13,21 +13,21 @@ import * as _12 from "./storage/params";
 import * as _13 from "./storage/query";
 import * as _14 from "./storage/storage";
 import * as _15 from "./storage/tx";
-import * as _149 from "./blit/query.lcd";
-import * as _150 from "./script/query.lcd";
-import * as _151 from "./storage/query.lcd";
-import * as _152 from "./blit/query.rpc.Query";
-import * as _153 from "./script/query.rpc.Query";
-import * as _154 from "./storage/query.rpc.Query";
-import * as _155 from "./blit/tx.rpc.msg";
-import * as _156 from "./script/tx.rpc.msg";
-import * as _157 from "./storage/tx.rpc.msg";
+import * as _143 from "./blit/query.lcd";
+import * as _144 from "./script/query.lcd";
+import * as _145 from "./storage/query.lcd";
+import * as _146 from "./blit/query.rpc.Query";
+import * as _147 from "./script/query.rpc.Query";
+import * as _148 from "./storage/query.rpc.Query";
+import * as _149 from "./blit/tx.rpc.msg";
+import * as _150 from "./script/tx.rpc.msg";
+import * as _151 from "./storage/tx.rpc.msg";
 export declare namespace blit {
     const blit: {
-        Msg: typeof _155.Msg;
-        Query: typeof _152.Query;
-        QueryClientImpl: typeof _152.QueryClientImpl;
-        LCDQueryClient: typeof _149.LCDQueryClient;
+        Msg: typeof _149.Msg;
+        Query: typeof _146.Query;
+        QueryClientImpl: typeof _146.QueryClientImpl;
+        LCDQueryClient: typeof _143.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
@@ -170,10 +170,10 @@ export declare namespace blit {
         };
     };
     const script: {
-        Msg: typeof _156.Msg;
-        Query: typeof _153.Query;
-        QueryClientImpl: typeof _153.QueryClientImpl;
-        LCDQueryClient: typeof _150.LCDQueryClient;
+        Msg: typeof _150.Msg;
+        Query: typeof _147.Query;
+        QueryClientImpl: typeof _147.QueryClientImpl;
+        LCDQueryClient: typeof _144.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
@@ -631,10 +631,10 @@ export declare namespace blit {
         };
     };
     const storage: {
-        Msg: typeof _157.Msg;
-        Query: typeof _154.Query;
-        QueryClientImpl: typeof _154.QueryClientImpl;
-        LCDQueryClient: typeof _151.LCDQueryClient;
+        Msg: typeof _151.Msg;
+        Query: typeof _148.Query;
+        QueryClientImpl: typeof _148.QueryClientImpl;
+        LCDQueryClient: typeof _145.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
@@ -1037,20 +1037,11 @@ export declare namespace blit {
                 storage: any;
             };
             cosmos: {
-                auth: {
-                    v1beta1: any;
-                };
                 authz: {
                     v1beta1: any;
                 };
                 bank: {
                     v1beta1: any;
-                };
-                circuit: {
-                    v1: any;
-                };
-                consensus: {
-                    v1: any;
                 };
                 distribution: {
                     v1beta1: any;
@@ -1064,9 +1055,6 @@ export declare namespace blit {
                 };
                 group: {
                     v1: any;
-                };
-                mint: {
-                    v1beta1: any;
                 };
                 nft: {
                     v1beta1: any;
@@ -1086,9 +1074,9 @@ export declare namespace blit {
             endpoint: string;
         }) => Promise<{
             blit: {
-                blit: _152.QueryClientImpl;
-                script: _153.QueryClientImpl;
-                storage: _154.QueryClientImpl;
+                blit: _146.QueryClientImpl;
+                script: _147.QueryClientImpl;
+                storage: _148.QueryClientImpl;
             };
             cosmos: {
                 auth: {
@@ -1101,18 +1089,9 @@ export declare namespace blit {
                     v1beta1: import("../cosmos/bank/v1beta1/query.rpc.Query").QueryClientImpl;
                 };
                 base: {
-                    node: {
-                        v1beta1: import("../cosmos/base/node/v1beta1/query.rpc.Service").ServiceClientImpl;
-                    };
                     tendermint: {
                         v1beta1: import("../cosmos/base/tendermint/v1beta1/query.rpc.Service").ServiceClientImpl;
                     };
-                };
-                circuit: {
-                    v1: import("../cosmos/circuit/v1/query.rpc.Query").QueryClientImpl;
-                };
-                consensus: {
-                    v1: import("../cosmos/consensus/v1/query.rpc.Query").QueryClientImpl;
                 };
                 distribution: {
                     v1beta1: import("../cosmos/distribution/v1beta1/query.rpc.Query").QueryClientImpl;
@@ -1133,11 +1112,6 @@ export declare namespace blit {
                 nft: {
                     v1beta1: import("../cosmos/nft/v1beta1/query.rpc.Query").QueryClientImpl;
                 };
-                orm: {
-                    query: {
-                        v1alpha1: import("../cosmos/orm/query/v1alpha1/query.rpc.Query").QueryClientImpl;
-                    };
-                };
                 params: {
                     v1beta1: import("../cosmos/params/v1beta1/query.rpc.Query").QueryClientImpl;
                 };
@@ -1156,9 +1130,9 @@ export declare namespace blit {
             restEndpoint: string;
         }) => Promise<{
             blit: {
-                blit: _149.LCDQueryClient;
-                script: _150.LCDQueryClient;
-                storage: _151.LCDQueryClient;
+                blit: _143.LCDQueryClient;
+                script: _144.LCDQueryClient;
+                storage: _145.LCDQueryClient;
             };
             cosmos: {
                 auth: {
@@ -1171,18 +1145,9 @@ export declare namespace blit {
                     v1beta1: import("../cosmos/bank/v1beta1/query.lcd").LCDQueryClient;
                 };
                 base: {
-                    node: {
-                        v1beta1: import("../cosmos/base/node/v1beta1/query.lcd").LCDQueryClient;
-                    };
                     tendermint: {
                         v1beta1: import("../cosmos/base/tendermint/v1beta1/query.lcd").LCDQueryClient;
                     };
-                };
-                circuit: {
-                    v1: import("../cosmos/circuit/v1/query.lcd").LCDQueryClient;
-                };
-                consensus: {
-                    v1: import("../cosmos/consensus/v1/query.lcd").LCDQueryClient;
                 };
                 distribution: {
                     v1beta1: import("../cosmos/distribution/v1beta1/query.lcd").LCDQueryClient;

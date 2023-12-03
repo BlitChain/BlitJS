@@ -74,11 +74,7 @@ class Query {
             method: "GET"
         });
     }
-    /**
-     * Returns the account with authority to conduct upgrades
-     *
-     * Since: cosmos-sdk 0.46
-     */
+    /** Returns the account with authority to conduct upgrades */
     static Authority(request, initRequest) {
         return fm.fetchReq(`/cosmos/upgrade/v1beta1/authority?${fm.renderURLSearchParams({
             ...request
@@ -133,11 +129,7 @@ class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /**
-     * Returns the account with authority to conduct upgrades
-     *
-     * Since: cosmos-sdk 0.46
-     */
+    /** Returns the account with authority to conduct upgrades */
     async Authority(req, headers) {
         return Query.Authority(req, {
             headers,

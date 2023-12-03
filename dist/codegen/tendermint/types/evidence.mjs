@@ -209,7 +209,7 @@ export const DuplicateVoteEvidence = {
             vote_b: object?.vote_b ? Vote.fromAmino(object.vote_b) : undefined,
             total_voting_power: BigInt(object.total_voting_power),
             validator_power: BigInt(object.validator_power),
-            timestamp: object.timestamp
+            timestamp: object?.timestamp ? fromTimestamp(Timestamp.fromAmino(object.timestamp)) : undefined
         };
     },
     toAmino(message) {
@@ -218,7 +218,7 @@ export const DuplicateVoteEvidence = {
         obj.vote_b = message.vote_b ? Vote.toAmino(message.vote_b) : undefined;
         obj.total_voting_power = message.total_voting_power ? message.total_voting_power.toString() : undefined;
         obj.validator_power = message.validator_power ? message.validator_power.toString() : undefined;
-        obj.timestamp = message.timestamp;
+        obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -356,7 +356,7 @@ export const LightClientAttackEvidence = {
             common_height: BigInt(object.common_height),
             byzantine_validators: Array.isArray(object?.byzantine_validators) ? object.byzantine_validators.map((e) => Validator.fromAmino(e)) : [],
             total_voting_power: BigInt(object.total_voting_power),
-            timestamp: object.timestamp
+            timestamp: object?.timestamp ? fromTimestamp(Timestamp.fromAmino(object.timestamp)) : undefined
         };
     },
     toAmino(message) {
@@ -370,7 +370,7 @@ export const LightClientAttackEvidence = {
             obj.byzantine_validators = [];
         }
         obj.total_voting_power = message.total_voting_power ? message.total_voting_power.toString() : undefined;
-        obj.timestamp = message.timestamp;
+        obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
         return obj;
     },
     fromAminoMsg(object) {

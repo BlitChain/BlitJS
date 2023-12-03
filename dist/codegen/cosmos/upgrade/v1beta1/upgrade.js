@@ -113,7 +113,7 @@ exports.Plan = {
     fromAmino(object) {
         return {
             name: object.name,
-            time: object.time,
+            time: object?.time ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.time)) : undefined,
             height: BigInt(object.height),
             info: object.info,
             upgraded_client_state: object?.upgraded_client_state ? any_1.Any.fromAmino(object.upgraded_client_state) : undefined
@@ -122,7 +122,7 @@ exports.Plan = {
     toAmino(message) {
         const obj = {};
         obj.name = message.name;
-        obj.time = message.time;
+        obj.time = message.time ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.time)) : undefined;
         obj.height = message.height ? message.height.toString() : undefined;
         obj.info = message.info;
         obj.upgraded_client_state = message.upgraded_client_state ? any_1.Any.toAmino(message.upgraded_client_state) : undefined;

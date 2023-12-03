@@ -28,16 +28,6 @@ exports.AminoConverter = {
         aminoType: "cosmos-sdk/MsgUndelegate",
         toAmino: tx_1.MsgUndelegate.toAmino,
         fromAmino: tx_1.MsgUndelegate.fromAmino
-    },
-    "/cosmos.staking.v1beta1.MsgCancelUnbondingDelegation": {
-        aminoType: "cosmos-sdk/MsgCancelUnbondingDelegation",
-        toAmino: tx_1.MsgCancelUnbondingDelegation.toAmino,
-        fromAmino: tx_1.MsgCancelUnbondingDelegation.fromAmino
-    },
-    "/cosmos.staking.v1beta1.MsgUpdateParams": {
-        aminoType: "cosmos-sdk/x/staking/MsgUpdateParams",
-        toAmino: tx_1.MsgUpdateParams.toAmino,
-        fromAmino: tx_1.MsgUpdateParams.fromAmino
     }
 };
 //# sourceMappingURL=tx.amino.js.map

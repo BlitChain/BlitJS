@@ -12,10 +12,6 @@ export interface QueryCurrentPlanRequestProtoMsg {
   type_url: "/cosmos.upgrade.v1beta1.QueryCurrentPlanRequest";
   value: Uint8Array;
 }
-export interface QueryCurrentPlanRequestProtoMsg {
-  type_url: "/cosmos.upgrade.v1beta1.QueryCurrentPlanRequest";
-  value: Uint8Array;
-}
 /**
  * QueryCurrentPlanRequest is the request type for the Query/CurrentPlan RPC
  * method.
@@ -37,10 +33,6 @@ export interface QueryCurrentPlanRequestSDKType {}
 export interface QueryCurrentPlanResponse {
   /** plan is the current upgrade plan. */
   plan?: Plan;
-}
-export interface QueryCurrentPlanResponseProtoMsg {
-  type_url: "/cosmos.upgrade.v1beta1.QueryCurrentPlanResponse";
-  value: Uint8Array;
 }
 export interface QueryCurrentPlanResponseProtoMsg {
   type_url: "/cosmos.upgrade.v1beta1.QueryCurrentPlanResponse";
@@ -77,10 +69,6 @@ export interface QueryAppliedPlanRequestProtoMsg {
   type_url: "/cosmos.upgrade.v1beta1.QueryAppliedPlanRequest";
   value: Uint8Array;
 }
-export interface QueryAppliedPlanRequestProtoMsg {
-  type_url: "/cosmos.upgrade.v1beta1.QueryAppliedPlanRequest";
-  value: Uint8Array;
-}
 /**
  * QueryCurrentPlanRequest is the request type for the Query/AppliedPlan RPC
  * method.
@@ -107,10 +95,6 @@ export interface QueryAppliedPlanRequestSDKType {
 export interface QueryAppliedPlanResponse {
   /** height is the block height at which the plan was applied. */
   height: bigint;
-}
-export interface QueryAppliedPlanResponseProtoMsg {
-  type_url: "/cosmos.upgrade.v1beta1.QueryAppliedPlanResponse";
-  value: Uint8Array;
 }
 export interface QueryAppliedPlanResponseProtoMsg {
   type_url: "/cosmos.upgrade.v1beta1.QueryAppliedPlanResponse";
@@ -146,10 +130,6 @@ export interface QueryUpgradedConsensusStateRequest {
    * as this is the height under which next consensus state is stored
    */
   last_height: bigint;
-}
-export interface QueryUpgradedConsensusStateRequestProtoMsg {
-  type_url: "/cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateRequest";
-  value: Uint8Array;
 }
 export interface QueryUpgradedConsensusStateRequestProtoMsg {
   type_url: "/cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateRequest";
@@ -192,10 +172,6 @@ export interface QueryUpgradedConsensusStateResponseProtoMsg {
   type_url: "/cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateResponse";
   value: Uint8Array;
 }
-export interface QueryUpgradedConsensusStateResponseProtoMsg {
-  type_url: "/cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateResponse";
-  value: Uint8Array;
-}
 /**
  * QueryUpgradedConsensusStateResponse is the response type for the Query/UpgradedConsensusState
  * RPC method.
@@ -230,10 +206,6 @@ export interface QueryModuleVersionsRequest {
    * fetch the full list of module versions from state
    */
   module_name: string;
-}
-export interface QueryModuleVersionsRequestProtoMsg {
-  type_url: "/cosmos.upgrade.v1beta1.QueryModuleVersionsRequest";
-  value: Uint8Array;
 }
 export interface QueryModuleVersionsRequestProtoMsg {
   type_url: "/cosmos.upgrade.v1beta1.QueryModuleVersionsRequest";
@@ -280,10 +252,6 @@ export interface QueryModuleVersionsResponseProtoMsg {
   type_url: "/cosmos.upgrade.v1beta1.QueryModuleVersionsResponse";
   value: Uint8Array;
 }
-export interface QueryModuleVersionsResponseProtoMsg {
-  type_url: "/cosmos.upgrade.v1beta1.QueryModuleVersionsResponse";
-  value: Uint8Array;
-}
 /**
  * QueryModuleVersionsResponse is the response type for the Query/ModuleVersions
  * RPC method.
@@ -317,10 +285,6 @@ export interface QueryAuthorityRequestProtoMsg {
   type_url: "/cosmos.upgrade.v1beta1.QueryAuthorityRequest";
   value: Uint8Array;
 }
-export interface QueryAuthorityRequestProtoMsg {
-  type_url: "/cosmos.upgrade.v1beta1.QueryAuthorityRequest";
-  value: Uint8Array;
-}
 /**
  * QueryAuthorityRequest is the request type for Query/Authority
  * 
@@ -344,10 +308,6 @@ export interface QueryAuthorityRequestSDKType {}
  */
 export interface QueryAuthorityResponse {
   address: string;
-}
-export interface QueryAuthorityResponseProtoMsg {
-  type_url: "/cosmos.upgrade.v1beta1.QueryAuthorityResponse";
-  value: Uint8Array;
 }
 export interface QueryAuthorityResponseProtoMsg {
   type_url: "/cosmos.upgrade.v1beta1.QueryAuthorityResponse";

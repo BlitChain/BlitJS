@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageComposer = exports.load = exports.registry = void 0;
 const tx_1 = require("./tx");
-exports.registry = [["/cosmos.bank.v1beta1.MsgSend", tx_1.MsgSend], ["/cosmos.bank.v1beta1.MsgMultiSend", tx_1.MsgMultiSend], ["/cosmos.bank.v1beta1.MsgUpdateParams", tx_1.MsgUpdateParams], ["/cosmos.bank.v1beta1.MsgSetSendEnabled", tx_1.MsgSetSendEnabled]];
+exports.registry = [["/cosmos.bank.v1beta1.MsgSend", tx_1.MsgSend], ["/cosmos.bank.v1beta1.MsgMultiSend", tx_1.MsgMultiSend]];
 const load = (protoRegistry) => {
     exports.registry.forEach(([typeUrl, mod]) => {
         protoRegistry.register(typeUrl, mod);
@@ -22,18 +22,6 @@ exports.MessageComposer = {
                 typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
                 value: tx_1.MsgMultiSend.encode(value).finish()
             };
-        },
-        updateParams(value) {
-            return {
-                typeUrl: "/cosmos.bank.v1beta1.MsgUpdateParams",
-                value: tx_1.MsgUpdateParams.encode(value).finish()
-            };
-        },
-        setSendEnabled(value) {
-            return {
-                typeUrl: "/cosmos.bank.v1beta1.MsgSetSendEnabled",
-                value: tx_1.MsgSetSendEnabled.encode(value).finish()
-            };
         }
     },
     withTypeUrl: {
@@ -46,18 +34,6 @@ exports.MessageComposer = {
         multiSend(value) {
             return {
                 typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
-                value
-            };
-        },
-        updateParams(value) {
-            return {
-                typeUrl: "/cosmos.bank.v1beta1.MsgUpdateParams",
-                value
-            };
-        },
-        setSendEnabled(value) {
-            return {
-                typeUrl: "/cosmos.bank.v1beta1.MsgSetSendEnabled",
                 value
             };
         }
@@ -74,18 +50,6 @@ exports.MessageComposer = {
                 typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
                 value: tx_1.MsgMultiSend.toJSON(value)
             };
-        },
-        updateParams(value) {
-            return {
-                typeUrl: "/cosmos.bank.v1beta1.MsgUpdateParams",
-                value: tx_1.MsgUpdateParams.toJSON(value)
-            };
-        },
-        setSendEnabled(value) {
-            return {
-                typeUrl: "/cosmos.bank.v1beta1.MsgSetSendEnabled",
-                value: tx_1.MsgSetSendEnabled.toJSON(value)
-            };
         }
     },
     fromJSON: {
@@ -100,18 +64,6 @@ exports.MessageComposer = {
                 typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
                 value: tx_1.MsgMultiSend.fromJSON(value)
             };
-        },
-        updateParams(value) {
-            return {
-                typeUrl: "/cosmos.bank.v1beta1.MsgUpdateParams",
-                value: tx_1.MsgUpdateParams.fromJSON(value)
-            };
-        },
-        setSendEnabled(value) {
-            return {
-                typeUrl: "/cosmos.bank.v1beta1.MsgSetSendEnabled",
-                value: tx_1.MsgSetSendEnabled.fromJSON(value)
-            };
         }
     },
     fromPartial: {
@@ -125,18 +77,6 @@ exports.MessageComposer = {
             return {
                 typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
                 value: tx_1.MsgMultiSend.fromPartial(value)
-            };
-        },
-        updateParams(value) {
-            return {
-                typeUrl: "/cosmos.bank.v1beta1.MsgUpdateParams",
-                value: tx_1.MsgUpdateParams.fromPartial(value)
-            };
-        },
-        setSendEnabled(value) {
-            return {
-                typeUrl: "/cosmos.bank.v1beta1.MsgSetSendEnabled",
-                value: tx_1.MsgSetSendEnabled.fromPartial(value)
             };
         }
     }

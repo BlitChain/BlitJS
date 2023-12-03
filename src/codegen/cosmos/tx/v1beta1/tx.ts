@@ -26,10 +26,6 @@ export interface TxProtoMsg {
   type_url: "/cosmos.tx.v1beta1.Tx";
   value: Uint8Array;
 }
-export interface TxProtoMsg {
-  type_url: "/cosmos.tx.v1beta1.Tx";
-  value: Uint8Array;
-}
 /** Tx is the standard type used for broadcasting transactions. */
 export interface TxAmino {
   /** body is the processable content of the transaction */
@@ -80,10 +76,6 @@ export interface TxRaw {
    * public key and signing mode by position.
    */
   signatures: Uint8Array[];
-}
-export interface TxRawProtoMsg {
-  type_url: "/cosmos.tx.v1beta1.TxRaw";
-  value: Uint8Array;
 }
 export interface TxRawProtoMsg {
   type_url: "/cosmos.tx.v1beta1.TxRaw";
@@ -155,10 +147,6 @@ export interface SignDocProtoMsg {
   type_url: "/cosmos.tx.v1beta1.SignDoc";
   value: Uint8Array;
 }
-export interface SignDocProtoMsg {
-  type_url: "/cosmos.tx.v1beta1.SignDoc";
-  value: Uint8Array;
-}
 /** SignDoc is the type used for generating sign bytes for SIGN_MODE_DIRECT. */
 export interface SignDocAmino {
   /**
@@ -215,13 +203,11 @@ export interface SignDocDirectAux {
   account_number: bigint;
   /** sequence is the sequence number of the signing account. */
   sequence: bigint;
-  /** tips have been depreacted and should not be used */
-  /** @deprecated */
+  /**
+   * Tip is the optional tip used for meta-transactions. It should be left
+   * empty if the signer is not the tipper for this transaction.
+   */
   tip?: Tip;
-}
-export interface SignDocDirectAuxProtoMsg {
-  type_url: "/cosmos.tx.v1beta1.SignDocDirectAux";
-  value: Uint8Array;
 }
 export interface SignDocDirectAuxProtoMsg {
   type_url: "/cosmos.tx.v1beta1.SignDocDirectAux";
@@ -251,8 +237,10 @@ export interface SignDocDirectAuxAmino {
   account_number: string;
   /** sequence is the sequence number of the signing account. */
   sequence: string;
-  /** tips have been depreacted and should not be used */
-  /** @deprecated */
+  /**
+   * Tip is the optional tip used for meta-transactions. It should be left
+   * empty if the signer is not the tipper for this transaction.
+   */
   tip?: TipAmino;
 }
 export interface SignDocDirectAuxAminoMsg {
@@ -271,7 +259,6 @@ export interface SignDocDirectAuxSDKType {
   chain_id: string;
   account_number: bigint;
   sequence: bigint;
-  /** @deprecated */
   tip?: TipSDKType;
 }
 /** TxBody is the body of a transaction that all signers sign over. */
@@ -309,10 +296,6 @@ export interface TxBody {
    * and can't be handled, they will be ignored
    */
   non_critical_extension_options: Any[];
-}
-export interface TxBodyProtoMsg {
-  type_url: "/cosmos.tx.v1beta1.TxBody";
-  value: Uint8Array;
 }
 export interface TxBodyProtoMsg {
   type_url: "/cosmos.tx.v1beta1.TxBody";
@@ -386,19 +369,11 @@ export interface AuthInfo {
    */
   fee?: Fee;
   /**
-   * Tip is the optional tip used for transactions fees paid in another denom.
-   * 
-   * This field is ignored if the chain didn't enable tips, i.e. didn't add the
-   * `TipDecorator` in its posthandler.
+   * Tip is the optional tip used for meta-transactions.
    * 
    * Since: cosmos-sdk 0.46
    */
-  /** @deprecated */
   tip?: Tip;
-}
-export interface AuthInfoProtoMsg {
-  type_url: "/cosmos.tx.v1beta1.AuthInfo";
-  value: Uint8Array;
 }
 export interface AuthInfoProtoMsg {
   type_url: "/cosmos.tx.v1beta1.AuthInfo";
@@ -424,14 +399,10 @@ export interface AuthInfoAmino {
    */
   fee?: FeeAmino;
   /**
-   * Tip is the optional tip used for transactions fees paid in another denom.
-   * 
-   * This field is ignored if the chain didn't enable tips, i.e. didn't add the
-   * `TipDecorator` in its posthandler.
+   * Tip is the optional tip used for meta-transactions.
    * 
    * Since: cosmos-sdk 0.46
    */
-  /** @deprecated */
   tip?: TipAmino;
 }
 export interface AuthInfoAminoMsg {
@@ -445,7 +416,6 @@ export interface AuthInfoAminoMsg {
 export interface AuthInfoSDKType {
   signer_infos: SignerInfoSDKType[];
   fee?: FeeSDKType;
-  /** @deprecated */
   tip?: TipSDKType;
 }
 /**
@@ -470,10 +440,6 @@ export interface SignerInfo {
    * prevent replay attacks.
    */
   sequence: bigint;
-}
-export interface SignerInfoProtoMsg {
-  type_url: "/cosmos.tx.v1beta1.SignerInfo";
-  value: Uint8Array;
 }
 export interface SignerInfoProtoMsg {
   type_url: "/cosmos.tx.v1beta1.SignerInfo";
@@ -526,10 +492,6 @@ export interface ModeInfoProtoMsg {
   type_url: "/cosmos.tx.v1beta1.ModeInfo";
   value: Uint8Array;
 }
-export interface ModeInfoProtoMsg {
-  type_url: "/cosmos.tx.v1beta1.ModeInfo";
-  value: Uint8Array;
-}
 /** ModeInfo describes the signing mode of a single or nested multisig signer. */
 export interface ModeInfoAmino {
   /** single represents a single signer */
@@ -554,10 +516,6 @@ export interface ModeInfoSDKType {
 export interface ModeInfo_Single {
   /** mode is the signing mode of the single signer */
   mode: SignMode;
-}
-export interface ModeInfo_SingleProtoMsg {
-  type_url: "/cosmos.tx.v1beta1.Single";
-  value: Uint8Array;
 }
 export interface ModeInfo_SingleProtoMsg {
   type_url: "/cosmos.tx.v1beta1.Single";
@@ -593,10 +551,6 @@ export interface ModeInfo_Multi {
    * which could include nested multisig public keys
    */
   mode_infos: ModeInfo[];
-}
-export interface ModeInfo_MultiProtoMsg {
-  type_url: "/cosmos.tx.v1beta1.Multi";
-  value: Uint8Array;
 }
 export interface ModeInfo_MultiProtoMsg {
   type_url: "/cosmos.tx.v1beta1.Multi";
@@ -651,10 +605,6 @@ export interface FeeProtoMsg {
   type_url: "/cosmos.tx.v1beta1.Fee";
   value: Uint8Array;
 }
-export interface FeeProtoMsg {
-  type_url: "/cosmos.tx.v1beta1.Fee";
-  value: Uint8Array;
-}
 /**
  * Fee includes the amount of coins paid in fees and the maximum
  * gas to be used by the transaction. The ratio yields an effective "gasprice",
@@ -701,7 +651,6 @@ export interface FeeSDKType {
  * 
  * Since: cosmos-sdk 0.46
  */
-/** @deprecated */
 export interface Tip {
   /** amount is the amount of the tip */
   amount: Coin[];
@@ -712,16 +661,11 @@ export interface TipProtoMsg {
   type_url: "/cosmos.tx.v1beta1.Tip";
   value: Uint8Array;
 }
-export interface TipProtoMsg {
-  type_url: "/cosmos.tx.v1beta1.Tip";
-  value: Uint8Array;
-}
 /**
  * Tip is the tip used for meta-transactions.
  * 
  * Since: cosmos-sdk 0.46
  */
-/** @deprecated */
 export interface TipAmino {
   /** amount is the amount of the tip */
   amount: CoinAmino[];
@@ -737,7 +681,6 @@ export interface TipAminoMsg {
  * 
  * Since: cosmos-sdk 0.46
  */
-/** @deprecated */
 export interface TipSDKType {
   amount: CoinSDKType[];
   tipper: string;
@@ -758,19 +701,15 @@ export interface AuxSignerData {
    */
   address: string;
   /**
-   * sign_doc is the SIGN_MODE_DIRECT_AUX sign doc that the auxiliary signer
+   * sign_doc is the SIGN_MOD_DIRECT_AUX sign doc that the auxiliary signer
    * signs. Note: we use the same sign doc even if we're signing with
    * LEGACY_AMINO_JSON.
    */
   sign_doc?: SignDocDirectAux;
-  /** mode is the signing mode of the single signer. */
+  /** mode is the signing mode of the single signer */
   mode: SignMode;
   /** sig is the signature of the sign doc. */
   sig: Uint8Array;
-}
-export interface AuxSignerDataProtoMsg {
-  type_url: "/cosmos.tx.v1beta1.AuxSignerData";
-  value: Uint8Array;
 }
 export interface AuxSignerDataProtoMsg {
   type_url: "/cosmos.tx.v1beta1.AuxSignerData";
@@ -792,12 +731,12 @@ export interface AuxSignerDataAmino {
    */
   address: string;
   /**
-   * sign_doc is the SIGN_MODE_DIRECT_AUX sign doc that the auxiliary signer
+   * sign_doc is the SIGN_MOD_DIRECT_AUX sign doc that the auxiliary signer
    * signs. Note: we use the same sign doc even if we're signing with
    * LEGACY_AMINO_JSON.
    */
   sign_doc?: SignDocDirectAuxAmino;
-  /** mode is the signing mode of the single signer. */
+  /** mode is the signing mode of the single signer */
   mode: SignMode;
   /** sig is the signature of the sign doc. */
   sig: Uint8Array;

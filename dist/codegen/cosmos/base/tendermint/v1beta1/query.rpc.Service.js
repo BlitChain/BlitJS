@@ -81,20 +81,6 @@ class Service {
             method: "GET"
         });
     }
-    /**
-     * ABCIQuery defines a query handler that supports ABCI queries directly to the
-     * application, bypassing Tendermint completely. The ABCI query must contain
-     * a valid and supported path, including app, custom, p2p, and store.
-     *
-     * Since: cosmos-sdk 0.46
-     */
-    static ABCIQuery(request, initRequest) {
-        return fm.fetchReq(`/cosmos/base/tendermint/v1beta1/ABCIQuery`, {
-            ...initRequest,
-            method: "POST",
-            body: JSON.stringify(request, fm.replacer)
-        });
-    }
 }
 exports.Service = Service;
 class ServiceClientImpl {
@@ -140,19 +126,6 @@ class ServiceClientImpl {
     /** GetValidatorSetByHeight queries validator-set at a given height. */
     async GetValidatorSetByHeight(req, headers) {
         return Service.GetValidatorSetByHeight(req, {
-            headers,
-            pathPrefix: this.url
-        });
-    }
-    /**
-     * ABCIQuery defines a query handler that supports ABCI queries directly to the
-     * application, bypassing Tendermint completely. The ABCI query must contain
-     * a valid and supported path, including app, custom, p2p, and store.
-     *
-     * Since: cosmos-sdk 0.46
-     */
-    async ABCIQuery(req, headers) {
-        return Service.ABCIQuery(req, {
             headers,
             pathPrefix: this.url
         });

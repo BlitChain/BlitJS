@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageComposer = exports.load = exports.registry = void 0;
 const tx_1 = require("./tx");
-exports.registry = [["/cosmos.feegrant.v1beta1.MsgGrantAllowance", tx_1.MsgGrantAllowance], ["/cosmos.feegrant.v1beta1.MsgRevokeAllowance", tx_1.MsgRevokeAllowance], ["/cosmos.feegrant.v1beta1.MsgPruneAllowances", tx_1.MsgPruneAllowances]];
+exports.registry = [["/cosmos.feegrant.v1beta1.MsgGrantAllowance", tx_1.MsgGrantAllowance], ["/cosmos.feegrant.v1beta1.MsgRevokeAllowance", tx_1.MsgRevokeAllowance]];
 const load = (protoRegistry) => {
     exports.registry.forEach(([typeUrl, mod]) => {
         protoRegistry.register(typeUrl, mod);
@@ -22,12 +22,6 @@ exports.MessageComposer = {
                 typeUrl: "/cosmos.feegrant.v1beta1.MsgRevokeAllowance",
                 value: tx_1.MsgRevokeAllowance.encode(value).finish()
             };
-        },
-        pruneAllowances(value) {
-            return {
-                typeUrl: "/cosmos.feegrant.v1beta1.MsgPruneAllowances",
-                value: tx_1.MsgPruneAllowances.encode(value).finish()
-            };
         }
     },
     withTypeUrl: {
@@ -40,12 +34,6 @@ exports.MessageComposer = {
         revokeAllowance(value) {
             return {
                 typeUrl: "/cosmos.feegrant.v1beta1.MsgRevokeAllowance",
-                value
-            };
-        },
-        pruneAllowances(value) {
-            return {
-                typeUrl: "/cosmos.feegrant.v1beta1.MsgPruneAllowances",
                 value
             };
         }
@@ -62,12 +50,6 @@ exports.MessageComposer = {
                 typeUrl: "/cosmos.feegrant.v1beta1.MsgRevokeAllowance",
                 value: tx_1.MsgRevokeAllowance.toJSON(value)
             };
-        },
-        pruneAllowances(value) {
-            return {
-                typeUrl: "/cosmos.feegrant.v1beta1.MsgPruneAllowances",
-                value: tx_1.MsgPruneAllowances.toJSON(value)
-            };
         }
     },
     fromJSON: {
@@ -82,12 +64,6 @@ exports.MessageComposer = {
                 typeUrl: "/cosmos.feegrant.v1beta1.MsgRevokeAllowance",
                 value: tx_1.MsgRevokeAllowance.fromJSON(value)
             };
-        },
-        pruneAllowances(value) {
-            return {
-                typeUrl: "/cosmos.feegrant.v1beta1.MsgPruneAllowances",
-                value: tx_1.MsgPruneAllowances.fromJSON(value)
-            };
         }
     },
     fromPartial: {
@@ -101,12 +77,6 @@ exports.MessageComposer = {
             return {
                 typeUrl: "/cosmos.feegrant.v1beta1.MsgRevokeAllowance",
                 value: tx_1.MsgRevokeAllowance.fromPartial(value)
-            };
-        },
-        pruneAllowances(value) {
-            return {
-                typeUrl: "/cosmos.feegrant.v1beta1.MsgPruneAllowances",
-                value: tx_1.MsgPruneAllowances.fromPartial(value)
             };
         }
     }

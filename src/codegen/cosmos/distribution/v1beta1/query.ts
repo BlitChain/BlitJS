@@ -11,10 +11,6 @@ export interface QueryParamsRequestProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryParamsRequest";
   value: Uint8Array;
 }
-export interface QueryParamsRequestProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryParamsRequest";
-  value: Uint8Array;
-}
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
@@ -27,10 +23,6 @@ export interface QueryParamsRequestSDKType {}
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
   params: Params;
-}
-export interface QueryParamsResponseProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryParamsResponse";
-  value: Uint8Array;
 }
 export interface QueryParamsResponseProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryParamsResponse";
@@ -49,68 +41,6 @@ export interface QueryParamsResponseAminoMsg {
 export interface QueryParamsResponseSDKType {
   params: ParamsSDKType;
 }
-/** QueryValidatorDistributionInfoRequest is the request type for the Query/ValidatorDistributionInfo RPC method. */
-export interface QueryValidatorDistributionInfoRequest {
-  /** validator_address defines the validator address to query for. */
-  validator_address: string;
-}
-export interface QueryValidatorDistributionInfoRequestProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoRequest";
-  value: Uint8Array;
-}
-export interface QueryValidatorDistributionInfoRequestProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoRequest";
-  value: Uint8Array;
-}
-/** QueryValidatorDistributionInfoRequest is the request type for the Query/ValidatorDistributionInfo RPC method. */
-export interface QueryValidatorDistributionInfoRequestAmino {
-  /** validator_address defines the validator address to query for. */
-  validator_address: string;
-}
-export interface QueryValidatorDistributionInfoRequestAminoMsg {
-  type: "cosmos-sdk/QueryValidatorDistributionInfoRequest";
-  value: QueryValidatorDistributionInfoRequestAmino;
-}
-/** QueryValidatorDistributionInfoRequest is the request type for the Query/ValidatorDistributionInfo RPC method. */
-export interface QueryValidatorDistributionInfoRequestSDKType {
-  validator_address: string;
-}
-/** QueryValidatorDistributionInfoResponse is the response type for the Query/ValidatorDistributionInfo RPC method. */
-export interface QueryValidatorDistributionInfoResponse {
-  /** operator_address defines the validator operator address. */
-  operator_address: string;
-  /** self_bond_rewards defines the self delegations rewards. */
-  self_bond_rewards: DecCoin[];
-  /** commission defines the commission the validator received. */
-  commission: DecCoin[];
-}
-export interface QueryValidatorDistributionInfoResponseProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoResponse";
-  value: Uint8Array;
-}
-export interface QueryValidatorDistributionInfoResponseProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoResponse";
-  value: Uint8Array;
-}
-/** QueryValidatorDistributionInfoResponse is the response type for the Query/ValidatorDistributionInfo RPC method. */
-export interface QueryValidatorDistributionInfoResponseAmino {
-  /** operator_address defines the validator operator address. */
-  operator_address: string;
-  /** self_bond_rewards defines the self delegations rewards. */
-  self_bond_rewards: DecCoinAmino[];
-  /** commission defines the commission the validator received. */
-  commission: DecCoinAmino[];
-}
-export interface QueryValidatorDistributionInfoResponseAminoMsg {
-  type: "cosmos-sdk/QueryValidatorDistributionInfoResponse";
-  value: QueryValidatorDistributionInfoResponseAmino;
-}
-/** QueryValidatorDistributionInfoResponse is the response type for the Query/ValidatorDistributionInfo RPC method. */
-export interface QueryValidatorDistributionInfoResponseSDKType {
-  operator_address: string;
-  self_bond_rewards: DecCoinSDKType[];
-  commission: DecCoinSDKType[];
-}
 /**
  * QueryValidatorOutstandingRewardsRequest is the request type for the
  * Query/ValidatorOutstandingRewards RPC method.
@@ -118,10 +48,6 @@ export interface QueryValidatorDistributionInfoResponseSDKType {
 export interface QueryValidatorOutstandingRewardsRequest {
   /** validator_address defines the validator address to query for. */
   validator_address: string;
-}
-export interface QueryValidatorOutstandingRewardsRequestProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryValidatorOutstandingRewardsRequest";
-  value: Uint8Array;
 }
 export interface QueryValidatorOutstandingRewardsRequestProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryValidatorOutstandingRewardsRequest";
@@ -157,10 +83,6 @@ export interface QueryValidatorOutstandingRewardsResponseProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryValidatorOutstandingRewardsResponse";
   value: Uint8Array;
 }
-export interface QueryValidatorOutstandingRewardsResponseProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryValidatorOutstandingRewardsResponse";
-  value: Uint8Array;
-}
 /**
  * QueryValidatorOutstandingRewardsResponse is the response type for the
  * Query/ValidatorOutstandingRewards RPC method.
@@ -191,10 +113,6 @@ export interface QueryValidatorCommissionRequestProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryValidatorCommissionRequest";
   value: Uint8Array;
 }
-export interface QueryValidatorCommissionRequestProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryValidatorCommissionRequest";
-  value: Uint8Array;
-}
 /**
  * QueryValidatorCommissionRequest is the request type for the
  * Query/ValidatorCommission RPC method
@@ -219,12 +137,8 @@ export interface QueryValidatorCommissionRequestSDKType {
  * Query/ValidatorCommission RPC method
  */
 export interface QueryValidatorCommissionResponse {
-  /** commission defines the commission the validator received. */
+  /** commission defines the commision the validator received. */
   commission: ValidatorAccumulatedCommission;
-}
-export interface QueryValidatorCommissionResponseProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryValidatorCommissionResponse";
-  value: Uint8Array;
 }
 export interface QueryValidatorCommissionResponseProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryValidatorCommissionResponse";
@@ -235,7 +149,7 @@ export interface QueryValidatorCommissionResponseProtoMsg {
  * Query/ValidatorCommission RPC method
  */
 export interface QueryValidatorCommissionResponseAmino {
-  /** commission defines the commission the validator received. */
+  /** commission defines the commision the validator received. */
   commission?: ValidatorAccumulatedCommissionAmino;
 }
 export interface QueryValidatorCommissionResponseAminoMsg {
@@ -262,10 +176,6 @@ export interface QueryValidatorSlashesRequest {
   ending_height: bigint;
   /** pagination defines an optional pagination for the request. */
   pagination?: PageRequest;
-}
-export interface QueryValidatorSlashesRequestProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryValidatorSlashesRequest";
-  value: Uint8Array;
 }
 export interface QueryValidatorSlashesRequestProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryValidatorSlashesRequest";
@@ -313,10 +223,6 @@ export interface QueryValidatorSlashesResponseProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryValidatorSlashesResponse";
   value: Uint8Array;
 }
-export interface QueryValidatorSlashesResponseProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryValidatorSlashesResponse";
-  value: Uint8Array;
-}
 /**
  * QueryValidatorSlashesResponse is the response type for the
  * Query/ValidatorSlashes RPC method.
@@ -348,10 +254,6 @@ export interface QueryDelegationRewardsRequest {
   delegator_address: string;
   /** validator_address defines the validator address to query for. */
   validator_address: string;
-}
-export interface QueryDelegationRewardsRequestProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryDelegationRewardsRequest";
-  value: Uint8Array;
 }
 export interface QueryDelegationRewardsRequestProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryDelegationRewardsRequest";
@@ -391,10 +293,6 @@ export interface QueryDelegationRewardsResponseProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryDelegationRewardsResponse";
   value: Uint8Array;
 }
-export interface QueryDelegationRewardsResponseProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryDelegationRewardsResponse";
-  value: Uint8Array;
-}
 /**
  * QueryDelegationRewardsResponse is the response type for the
  * Query/DelegationRewards RPC method.
@@ -421,10 +319,6 @@ export interface QueryDelegationRewardsResponseSDKType {
 export interface QueryDelegationTotalRewardsRequest {
   /** delegator_address defines the delegator address to query for. */
   delegator_address: string;
-}
-export interface QueryDelegationTotalRewardsRequestProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryDelegationTotalRewardsRequest";
-  value: Uint8Array;
 }
 export interface QueryDelegationTotalRewardsRequestProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryDelegationTotalRewardsRequest";
@@ -458,10 +352,6 @@ export interface QueryDelegationTotalRewardsResponse {
   rewards: DelegationDelegatorReward[];
   /** total defines the sum of all the rewards. */
   total: DecCoin[];
-}
-export interface QueryDelegationTotalRewardsResponseProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryDelegationTotalRewardsResponse";
-  value: Uint8Array;
 }
 export interface QueryDelegationTotalRewardsResponseProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryDelegationTotalRewardsResponse";
@@ -501,10 +391,6 @@ export interface QueryDelegatorValidatorsRequestProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryDelegatorValidatorsRequest";
   value: Uint8Array;
 }
-export interface QueryDelegatorValidatorsRequestProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryDelegatorValidatorsRequest";
-  value: Uint8Array;
-}
 /**
  * QueryDelegatorValidatorsRequest is the request type for the
  * Query/DelegatorValidators RPC method.
@@ -531,10 +417,6 @@ export interface QueryDelegatorValidatorsRequestSDKType {
 export interface QueryDelegatorValidatorsResponse {
   /** validators defines the validators a delegator is delegating for. */
   validators: string[];
-}
-export interface QueryDelegatorValidatorsResponseProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryDelegatorValidatorsResponse";
-  value: Uint8Array;
 }
 export interface QueryDelegatorValidatorsResponseProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryDelegatorValidatorsResponse";
@@ -571,10 +453,6 @@ export interface QueryDelegatorWithdrawAddressRequestProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryDelegatorWithdrawAddressRequest";
   value: Uint8Array;
 }
-export interface QueryDelegatorWithdrawAddressRequestProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryDelegatorWithdrawAddressRequest";
-  value: Uint8Array;
-}
 /**
  * QueryDelegatorWithdrawAddressRequest is the request type for the
  * Query/DelegatorWithdrawAddress RPC method.
@@ -601,10 +479,6 @@ export interface QueryDelegatorWithdrawAddressRequestSDKType {
 export interface QueryDelegatorWithdrawAddressResponse {
   /** withdraw_address defines the delegator address to query for. */
   withdraw_address: string;
-}
-export interface QueryDelegatorWithdrawAddressResponseProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryDelegatorWithdrawAddressResponse";
-  value: Uint8Array;
 }
 export interface QueryDelegatorWithdrawAddressResponseProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryDelegatorWithdrawAddressResponse";
@@ -638,10 +512,6 @@ export interface QueryCommunityPoolRequestProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryCommunityPoolRequest";
   value: Uint8Array;
 }
-export interface QueryCommunityPoolRequestProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryCommunityPoolRequest";
-  value: Uint8Array;
-}
 /**
  * QueryCommunityPoolRequest is the request type for the Query/CommunityPool RPC
  * method.
@@ -663,10 +533,6 @@ export interface QueryCommunityPoolRequestSDKType {}
 export interface QueryCommunityPoolResponse {
   /** pool defines community pool's coins. */
   pool: DecCoin[];
-}
-export interface QueryCommunityPoolResponseProtoMsg {
-  type_url: "/cosmos.distribution.v1beta1.QueryCommunityPoolResponse";
-  value: Uint8Array;
 }
 export interface QueryCommunityPoolResponseProtoMsg {
   type_url: "/cosmos.distribution.v1beta1.QueryCommunityPoolResponse";
@@ -844,232 +710,6 @@ export const QueryParamsResponse = {
     return {
       typeUrl: "/cosmos.distribution.v1beta1.QueryParamsResponse",
       value: QueryParamsResponse.encode(message).finish()
-    };
-  }
-};
-function createBaseQueryValidatorDistributionInfoRequest(): QueryValidatorDistributionInfoRequest {
-  return {
-    validator_address: ""
-  };
-}
-export const QueryValidatorDistributionInfoRequest = {
-  typeUrl: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoRequest",
-  encode(message: QueryValidatorDistributionInfoRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorDistributionInfoRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryValidatorDistributionInfoRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.validator_address = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromJSON(object: any): QueryValidatorDistributionInfoRequest {
-    return {
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : ""
-    };
-  },
-  toJSON(message: QueryValidatorDistributionInfoRequest): unknown {
-    const obj: any = {};
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
-    return obj;
-  },
-  fromPartial(object: Partial<QueryValidatorDistributionInfoRequest>): QueryValidatorDistributionInfoRequest {
-    const message = createBaseQueryValidatorDistributionInfoRequest();
-    message.validator_address = object.validator_address ?? "";
-    return message;
-  },
-  fromSDK(object: QueryValidatorDistributionInfoRequestSDKType): QueryValidatorDistributionInfoRequest {
-    return {
-      validator_address: object?.validator_address
-    };
-  },
-  toSDK(message: QueryValidatorDistributionInfoRequest): QueryValidatorDistributionInfoRequestSDKType {
-    const obj: any = {};
-    obj.validator_address = message.validator_address;
-    return obj;
-  },
-  fromAmino(object: QueryValidatorDistributionInfoRequestAmino): QueryValidatorDistributionInfoRequest {
-    return {
-      validator_address: object.validator_address
-    };
-  },
-  toAmino(message: QueryValidatorDistributionInfoRequest): QueryValidatorDistributionInfoRequestAmino {
-    const obj: any = {};
-    obj.validator_address = message.validator_address;
-    return obj;
-  },
-  fromAminoMsg(object: QueryValidatorDistributionInfoRequestAminoMsg): QueryValidatorDistributionInfoRequest {
-    return QueryValidatorDistributionInfoRequest.fromAmino(object.value);
-  },
-  toAminoMsg(message: QueryValidatorDistributionInfoRequest): QueryValidatorDistributionInfoRequestAminoMsg {
-    return {
-      type: "cosmos-sdk/QueryValidatorDistributionInfoRequest",
-      value: QueryValidatorDistributionInfoRequest.toAmino(message)
-    };
-  },
-  fromProtoMsg(message: QueryValidatorDistributionInfoRequestProtoMsg): QueryValidatorDistributionInfoRequest {
-    return QueryValidatorDistributionInfoRequest.decode(message.value);
-  },
-  toProto(message: QueryValidatorDistributionInfoRequest): Uint8Array {
-    return QueryValidatorDistributionInfoRequest.encode(message).finish();
-  },
-  toProtoMsg(message: QueryValidatorDistributionInfoRequest): QueryValidatorDistributionInfoRequestProtoMsg {
-    return {
-      typeUrl: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoRequest",
-      value: QueryValidatorDistributionInfoRequest.encode(message).finish()
-    };
-  }
-};
-function createBaseQueryValidatorDistributionInfoResponse(): QueryValidatorDistributionInfoResponse {
-  return {
-    operator_address: "",
-    self_bond_rewards: [],
-    commission: []
-  };
-}
-export const QueryValidatorDistributionInfoResponse = {
-  typeUrl: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoResponse",
-  encode(message: QueryValidatorDistributionInfoResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.operator_address !== "") {
-      writer.uint32(10).string(message.operator_address);
-    }
-    for (const v of message.self_bond_rewards) {
-      DecCoin.encode(v!, writer.uint32(18).fork()).ldelim();
-    }
-    for (const v of message.commission) {
-      DecCoin.encode(v!, writer.uint32(26).fork()).ldelim();
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorDistributionInfoResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryValidatorDistributionInfoResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.operator_address = reader.string();
-          break;
-        case 2:
-          message.self_bond_rewards.push(DecCoin.decode(reader, reader.uint32()));
-          break;
-        case 3:
-          message.commission.push(DecCoin.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromJSON(object: any): QueryValidatorDistributionInfoResponse {
-    return {
-      operator_address: isSet(object.operator_address) ? String(object.operator_address) : "",
-      self_bond_rewards: Array.isArray(object?.self_bond_rewards) ? object.self_bond_rewards.map((e: any) => DecCoin.fromJSON(e)) : [],
-      commission: Array.isArray(object?.commission) ? object.commission.map((e: any) => DecCoin.fromJSON(e)) : []
-    };
-  },
-  toJSON(message: QueryValidatorDistributionInfoResponse): unknown {
-    const obj: any = {};
-    message.operator_address !== undefined && (obj.operator_address = message.operator_address);
-    if (message.self_bond_rewards) {
-      obj.self_bond_rewards = message.self_bond_rewards.map(e => e ? DecCoin.toJSON(e) : undefined);
-    } else {
-      obj.self_bond_rewards = [];
-    }
-    if (message.commission) {
-      obj.commission = message.commission.map(e => e ? DecCoin.toJSON(e) : undefined);
-    } else {
-      obj.commission = [];
-    }
-    return obj;
-  },
-  fromPartial(object: Partial<QueryValidatorDistributionInfoResponse>): QueryValidatorDistributionInfoResponse {
-    const message = createBaseQueryValidatorDistributionInfoResponse();
-    message.operator_address = object.operator_address ?? "";
-    message.self_bond_rewards = object.self_bond_rewards?.map(e => DecCoin.fromPartial(e)) || [];
-    message.commission = object.commission?.map(e => DecCoin.fromPartial(e)) || [];
-    return message;
-  },
-  fromSDK(object: QueryValidatorDistributionInfoResponseSDKType): QueryValidatorDistributionInfoResponse {
-    return {
-      operator_address: object?.operator_address,
-      self_bond_rewards: Array.isArray(object?.self_bond_rewards) ? object.self_bond_rewards.map((e: any) => DecCoin.fromSDK(e)) : [],
-      commission: Array.isArray(object?.commission) ? object.commission.map((e: any) => DecCoin.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: QueryValidatorDistributionInfoResponse): QueryValidatorDistributionInfoResponseSDKType {
-    const obj: any = {};
-    obj.operator_address = message.operator_address;
-    if (message.self_bond_rewards) {
-      obj.self_bond_rewards = message.self_bond_rewards.map(e => e ? DecCoin.toSDK(e) : undefined);
-    } else {
-      obj.self_bond_rewards = [];
-    }
-    if (message.commission) {
-      obj.commission = message.commission.map(e => e ? DecCoin.toSDK(e) : undefined);
-    } else {
-      obj.commission = [];
-    }
-    return obj;
-  },
-  fromAmino(object: QueryValidatorDistributionInfoResponseAmino): QueryValidatorDistributionInfoResponse {
-    return {
-      operator_address: object.operator_address,
-      self_bond_rewards: Array.isArray(object?.self_bond_rewards) ? object.self_bond_rewards.map((e: any) => DecCoin.fromAmino(e)) : [],
-      commission: Array.isArray(object?.commission) ? object.commission.map((e: any) => DecCoin.fromAmino(e)) : []
-    };
-  },
-  toAmino(message: QueryValidatorDistributionInfoResponse): QueryValidatorDistributionInfoResponseAmino {
-    const obj: any = {};
-    obj.operator_address = message.operator_address;
-    if (message.self_bond_rewards) {
-      obj.self_bond_rewards = message.self_bond_rewards.map(e => e ? DecCoin.toAmino(e) : undefined);
-    } else {
-      obj.self_bond_rewards = [];
-    }
-    if (message.commission) {
-      obj.commission = message.commission.map(e => e ? DecCoin.toAmino(e) : undefined);
-    } else {
-      obj.commission = [];
-    }
-    return obj;
-  },
-  fromAminoMsg(object: QueryValidatorDistributionInfoResponseAminoMsg): QueryValidatorDistributionInfoResponse {
-    return QueryValidatorDistributionInfoResponse.fromAmino(object.value);
-  },
-  toAminoMsg(message: QueryValidatorDistributionInfoResponse): QueryValidatorDistributionInfoResponseAminoMsg {
-    return {
-      type: "cosmos-sdk/QueryValidatorDistributionInfoResponse",
-      value: QueryValidatorDistributionInfoResponse.toAmino(message)
-    };
-  },
-  fromProtoMsg(message: QueryValidatorDistributionInfoResponseProtoMsg): QueryValidatorDistributionInfoResponse {
-    return QueryValidatorDistributionInfoResponse.decode(message.value);
-  },
-  toProto(message: QueryValidatorDistributionInfoResponse): Uint8Array {
-    return QueryValidatorDistributionInfoResponse.encode(message).finish();
-  },
-  toProtoMsg(message: QueryValidatorDistributionInfoResponse): QueryValidatorDistributionInfoResponseProtoMsg {
-    return {
-      typeUrl: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoResponse",
-      value: QueryValidatorDistributionInfoResponse.encode(message).finish()
     };
   }
 };

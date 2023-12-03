@@ -14,10 +14,6 @@ export interface MultiSignatureProtoMsg {
   type_url: "/cosmos.crypto.multisig.v1beta1.MultiSignature";
   value: Uint8Array;
 }
-export interface MultiSignatureProtoMsg {
-  type_url: "/cosmos.crypto.multisig.v1beta1.MultiSignature";
-  value: Uint8Array;
-}
 /**
  * MultiSignature wraps the signatures from a multisig.LegacyAminoPubKey.
  * See cosmos.tx.v1betata1.ModeInfo.Multi for how to specify which signers
@@ -47,10 +43,6 @@ export interface MultiSignatureSDKType {
 export interface CompactBitArray {
   extra_bits_stored: number;
   elems: Uint8Array;
-}
-export interface CompactBitArrayProtoMsg {
-  type_url: "/cosmos.crypto.multisig.v1beta1.CompactBitArray";
-  value: Uint8Array;
 }
 export interface CompactBitArrayProtoMsg {
   type_url: "/cosmos.crypto.multisig.v1beta1.CompactBitArray";

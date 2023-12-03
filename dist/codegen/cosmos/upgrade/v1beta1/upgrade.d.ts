@@ -20,7 +20,10 @@ export interface Plan {
      */
     /** @deprecated */
     time: Date;
-    /** The height at which the upgrade must be performed. */
+    /**
+     * The height at which the upgrade must be performed.
+     * Only used if Time is not set.
+     */
     height: bigint;
     /**
      * Any application specific upgrade info to be included on-chain
@@ -34,10 +37,6 @@ export interface Plan {
      */
     /** @deprecated */
     upgraded_client_state?: Any;
-}
-export interface PlanProtoMsg {
-    type_url: "/cosmos.upgrade.v1beta1.Plan";
-    value: Uint8Array;
 }
 export interface PlanProtoMsg {
     type_url: "/cosmos.upgrade.v1beta1.Plan";
@@ -61,8 +60,11 @@ export interface PlanAmino {
      * If this field is not empty, an error will be thrown.
      */
     /** @deprecated */
-    time?: Date;
-    /** The height at which the upgrade must be performed. */
+    time?: string;
+    /**
+     * The height at which the upgrade must be performed.
+     * Only used if Time is not set.
+     */
     height: string;
     /**
      * Any application specific upgrade info to be included on-chain
@@ -100,16 +102,9 @@ export interface PlanSDKType {
 /** @deprecated */
 export interface SoftwareUpgradeProposal {
     $typeUrl?: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
-    /** title of the proposal */
     title: string;
-    /** description of the proposal */
     description: string;
-    /** plan of the proposal */
     plan: Plan;
-}
-export interface SoftwareUpgradeProposalProtoMsg {
-    type_url: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
-    value: Uint8Array;
 }
 export interface SoftwareUpgradeProposalProtoMsg {
     type_url: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
@@ -123,11 +118,8 @@ export interface SoftwareUpgradeProposalProtoMsg {
  */
 /** @deprecated */
 export interface SoftwareUpgradeProposalAmino {
-    /** title of the proposal */
     title: string;
-    /** description of the proposal */
     description: string;
-    /** plan of the proposal */
     plan?: PlanAmino;
 }
 export interface SoftwareUpgradeProposalAminoMsg {
@@ -156,14 +148,8 @@ export interface SoftwareUpgradeProposalSDKType {
 /** @deprecated */
 export interface CancelSoftwareUpgradeProposal {
     $typeUrl?: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
-    /** title of the proposal */
     title: string;
-    /** description of the proposal */
     description: string;
-}
-export interface CancelSoftwareUpgradeProposalProtoMsg {
-    type_url: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
-    value: Uint8Array;
 }
 export interface CancelSoftwareUpgradeProposalProtoMsg {
     type_url: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
@@ -177,9 +163,7 @@ export interface CancelSoftwareUpgradeProposalProtoMsg {
  */
 /** @deprecated */
 export interface CancelSoftwareUpgradeProposalAmino {
-    /** title of the proposal */
     title: string;
-    /** description of the proposal */
     description: string;
 }
 export interface CancelSoftwareUpgradeProposalAminoMsg {
@@ -208,10 +192,6 @@ export interface ModuleVersion {
     name: string;
     /** consensus version of the app module */
     version: bigint;
-}
-export interface ModuleVersionProtoMsg {
-    type_url: "/cosmos.upgrade.v1beta1.ModuleVersion";
-    value: Uint8Array;
 }
 export interface ModuleVersionProtoMsg {
     type_url: "/cosmos.upgrade.v1beta1.ModuleVersion";

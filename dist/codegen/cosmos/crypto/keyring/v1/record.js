@@ -166,7 +166,8 @@ exports.Record = {
 };
 function createBaseRecord_Local() {
     return {
-        priv_key: undefined
+        priv_key: undefined,
+        priv_key_type: ""
     };
 }
 exports.Record_Local = {
@@ -174,6 +175,9 @@ exports.Record_Local = {
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.priv_key !== undefined) {
             any_1.Any.encode(message.priv_key, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.priv_key_type !== "") {
+            writer.uint32(18).string(message.priv_key_type);
         }
         return writer;
     },
@@ -187,6 +191,9 @@ exports.Record_Local = {
                 case 1:
                     message.priv_key = any_1.Any.decode(reader, reader.uint32());
                     break;
+                case 2:
+                    message.priv_key_type = reader.string();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -196,37 +203,44 @@ exports.Record_Local = {
     },
     fromJSON(object) {
         return {
-            priv_key: (0, helpers_1.isSet)(object.priv_key) ? any_1.Any.fromJSON(object.priv_key) : undefined
+            priv_key: (0, helpers_1.isSet)(object.priv_key) ? any_1.Any.fromJSON(object.priv_key) : undefined,
+            priv_key_type: (0, helpers_1.isSet)(object.priv_key_type) ? String(object.priv_key_type) : ""
         };
     },
     toJSON(message) {
         const obj = {};
         message.priv_key !== undefined && (obj.priv_key = message.priv_key ? any_1.Any.toJSON(message.priv_key) : undefined);
+        message.priv_key_type !== undefined && (obj.priv_key_type = message.priv_key_type);
         return obj;
     },
     fromPartial(object) {
         const message = createBaseRecord_Local();
         message.priv_key = object.priv_key !== undefined && object.priv_key !== null ? any_1.Any.fromPartial(object.priv_key) : undefined;
+        message.priv_key_type = object.priv_key_type ?? "";
         return message;
     },
     fromSDK(object) {
         return {
-            priv_key: object.priv_key ? any_1.Any.fromSDK(object.priv_key) : undefined
+            priv_key: object.priv_key ? any_1.Any.fromSDK(object.priv_key) : undefined,
+            priv_key_type: object?.priv_key_type
         };
     },
     toSDK(message) {
         const obj = {};
         message.priv_key !== undefined && (obj.priv_key = message.priv_key ? any_1.Any.toSDK(message.priv_key) : undefined);
+        obj.priv_key_type = message.priv_key_type;
         return obj;
     },
     fromAmino(object) {
         return {
-            priv_key: object?.priv_key ? any_1.Any.fromAmino(object.priv_key) : undefined
+            priv_key: object?.priv_key ? any_1.Any.fromAmino(object.priv_key) : undefined,
+            priv_key_type: object.priv_key_type
         };
     },
     toAmino(message) {
         const obj = {};
         obj.priv_key = message.priv_key ? any_1.Any.toAmino(message.priv_key) : undefined;
+        obj.priv_key_type = message.priv_key_type;
         return obj;
     },
     fromAminoMsg(object) {
