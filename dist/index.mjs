@@ -80,48 +80,55 @@ const runFunction = async ({ msgClient, attached_messages = [], caller_address, 
     });
     try {
         var resp = await msgClient.signAndBroadcast(grantee, [message], gasMultiple);
+        if (resp.code === 0) {
+            const msgResponse = resp.msgResponses[0];
+            try {
+                // Parse the response
+                return {
+                    tx: resp,
+                    result: JSON.parse(blitjs.blit.script.MsgRunResponse.fromProtoMsg(msgResponse).response)
+                };
+            }
+            catch (e) {
+                if (e instanceof SyntaxError) {
+                    throw new Error(resp.rawLog);
+                }
+                throw e; // re-throw the error if it's not a SyntaxError
+            }
+        }
+        else {
+            // So we split into lines and get the last line which is the error
+            const lastLine = resp.rawLog.split('\n').slice(-1)[0];
+            // strip ": Exception in Script" only from lastLine (technically this will remove it anywhere in the result, but that's fine)
+            const result = lastLine.replace(': Exception in Script', '');
+            try {
+                return { tx: resp, result: JSON.parse(result) };
+            }
+            catch (e) {
+                if (e instanceof SyntaxError) {
+                    throw new Error(resp.rawLog);
+                }
+                throw e; // re-throw the error if it's not a SyntaxError
+            }
+        }
     }
     catch (e) {
-        let result = e.message.split('\n').slice(-1)[0];
-        //find last }
-        const lastBracket = result.lastIndexOf('}');
-        //remove everything after last }
-        result = result.substring(0, lastBracket + 1);
-        return { tx: null, result: JSON.parse(result) };
-    }
-    if (resp.code !== 0) {
-        // So we split into lines and get the last line which is the error
-        const lastLine = resp.rawLog.split('\n').slice(-1)[0];
-        // strip ": Exception in Script" only from lastLine (technically this will remove it anywhere in the result, but that's fine)
-        const result = lastLine.replace(': Exception in Script', '');
         try {
-            return { tx: resp, result: JSON.parse(result) };
+            let result = e.message.split('\n').slice(-1)[0];
+            //find last }
+            const lastBracket = result.lastIndexOf('}');
+            //remove everything after last }
+            result = result.substring(0, lastBracket + 1);
+            return { tx: null, result: JSON.parse(result) };
         }
-        catch (e) {
-            if (e instanceof SyntaxError) {
-                throw new Error(resp.rawLog);
-            }
+        catch (e2) {
             throw e; // re-throw the error if it's not a SyntaxError
         }
-    }
-    const msgResponse = resp.msgResponses[0];
-    try {
-        // Parse the response
-        return {
-            tx: resp,
-            result: JSON.parse(blitjs.blit.script.MsgRunResponse.fromProtoMsg(msgResponse).response)
-        };
-    }
-    catch (e) {
-        if (e instanceof SyntaxError) {
-            throw new Error(resp.rawLog);
-        }
-        throw e; // re-throw the error if it's not a SyntaxError
     }
 };
 const makeJsClient = async ({ mnemonic, rpcEndpoint, restEndpoint }) => {
     if (!mnemonic) {
-        mnemonic = await DirectSecp256k1HdWallet.generate(24).secret.data;
+        mnemonic = (await DirectSecp256k1HdWallet.generate(24)).secret.data;
     }
     const signer = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
         prefix: 'blit'
