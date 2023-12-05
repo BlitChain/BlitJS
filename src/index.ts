@@ -65,10 +65,18 @@ const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
   await window.keplr.experimentalSuggestChain(chainInfo);
   await window.keplr.enable(chainInfo.chainId);
   const offlineSigner = window.getOfflineSigner(chainInfo.chainId);
+
   const client = await blitjs.getSigningBlitClient({
     rpcEndpoint,
     signer: offlineSigner
   });
+  const ibcClient = await blitjs.getSigningIbcClient({
+    rpcEndpoint,
+    signer: offlineSigner
+  });
+
+  ibcClient.registry.types.forEach((value, key) => client.registry.types.set(key, value));
+
   client.gasPrice = '0.000001blit';
   return client;
 };

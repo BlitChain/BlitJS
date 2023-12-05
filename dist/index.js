@@ -91,6 +91,11 @@ const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
         rpcEndpoint,
         signer: offlineSigner
     });
+    const ibcClient = await blitjs.getSigningIbcClient({
+        rpcEndpoint,
+        signer: offlineSigner
+    });
+    ibcClient.registry.types.forEach((value, key) => client.registry.types.set(key, value));
     client.gasPrice = '0.000001blit';
     return client;
 };
