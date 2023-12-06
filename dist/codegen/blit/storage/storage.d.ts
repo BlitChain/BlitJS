@@ -30,8 +30,6 @@ export declare const Storage: {
     fromJSON(object: any): Storage;
     toJSON(message: Storage): unknown;
     fromPartial(object: Partial<Storage>): Storage;
-    fromSDK(object: StorageSDKType): Storage;
-    toSDK(message: Storage): StorageSDKType;
     fromAmino(object: StorageAmino): Storage;
     toAmino(message: Storage): StorageAmino;
     fromAminoMsg(object: StorageAminoMsg): Storage;

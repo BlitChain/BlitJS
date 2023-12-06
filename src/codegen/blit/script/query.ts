@@ -234,13 +234,6 @@ export const QueryParamsRequest = {
     const message = createBaseQueryParamsRequest();
     return message;
   },
-  fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest {
-    return {};
-  },
-  toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType {
-    const obj: any = {};
-    return obj;
-  },
   fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest {
     return {};
   },
@@ -308,16 +301,6 @@ export const QueryParamsResponse = {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
-  },
-  fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse {
-    return {
-      params: object.params ? Params.fromSDK(object.params) : undefined
-    };
-  },
-  toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    return obj;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
     return {
@@ -390,16 +373,6 @@ export const QueryScriptRequest = {
     message.address = object.address ?? "";
     return message;
   },
-  fromSDK(object: QueryScriptRequestSDKType): QueryScriptRequest {
-    return {
-      address: object?.address
-    };
-  },
-  toSDK(message: QueryScriptRequest): QueryScriptRequestSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    return obj;
-  },
   fromAmino(object: QueryScriptRequestAmino): QueryScriptRequest {
     return {
       address: object.address
@@ -471,16 +444,6 @@ export const QueryScriptResponse = {
     message.script = object.script !== undefined && object.script !== null ? Script.fromPartial(object.script) : undefined;
     return message;
   },
-  fromSDK(object: QueryScriptResponseSDKType): QueryScriptResponse {
-    return {
-      script: object.script ? Script.fromSDK(object.script) : undefined
-    };
-  },
-  toSDK(message: QueryScriptResponse): QueryScriptResponseSDKType {
-    const obj: any = {};
-    message.script !== undefined && (obj.script = message.script ? Script.toSDK(message.script) : undefined);
-    return obj;
-  },
   fromAmino(object: QueryScriptResponseAmino): QueryScriptResponse {
     return {
       script: object?.script ? Script.fromAmino(object.script) : undefined
@@ -551,16 +514,6 @@ export const QueryScriptsRequest = {
     const message = createBaseQueryScriptsRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
-  },
-  fromSDK(object: QueryScriptsRequestSDKType): QueryScriptsRequest {
-    return {
-      pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-    };
-  },
-  toSDK(message: QueryScriptsRequest): QueryScriptsRequestSDKType {
-    const obj: any = {};
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-    return obj;
   },
   fromAmino(object: QueryScriptsRequestAmino): QueryScriptsRequest {
     return {
@@ -646,22 +599,6 @@ export const QueryScriptsResponse = {
     message.script = object.script?.map(e => Script.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
-  },
-  fromSDK(object: QueryScriptsResponseSDKType): QueryScriptsResponse {
-    return {
-      script: Array.isArray(object?.script) ? object.script.map((e: any) => Script.fromSDK(e)) : [],
-      pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-    };
-  },
-  toSDK(message: QueryScriptsResponse): QueryScriptsResponseSDKType {
-    const obj: any = {};
-    if (message.script) {
-      obj.script = message.script.map(e => e ? Script.toSDK(e) : undefined);
-    } else {
-      obj.script = [];
-    }
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-    return obj;
   },
   fromAmino(object: QueryScriptsResponseAmino): QueryScriptsResponse {
     return {
@@ -750,18 +687,6 @@ export const QueryWebRequest = {
     message.httprequest = object.httprequest ?? "";
     return message;
   },
-  fromSDK(object: QueryWebRequestSDKType): QueryWebRequest {
-    return {
-      address: object?.address,
-      httprequest: object?.httprequest
-    };
-  },
-  toSDK(message: QueryWebRequest): QueryWebRequestSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    obj.httprequest = message.httprequest;
-    return obj;
-  },
   fromAmino(object: QueryWebRequestAmino): QueryWebRequest {
     return {
       address: object.address,
@@ -834,16 +759,6 @@ export const QueryWebResponse = {
     const message = createBaseQueryWebResponse();
     message.httpresponse = object.httpresponse ?? "";
     return message;
-  },
-  fromSDK(object: QueryWebResponseSDKType): QueryWebResponse {
-    return {
-      httpresponse: object?.httpresponse
-    };
-  },
-  toSDK(message: QueryWebResponse): QueryWebResponseSDKType {
-    const obj: any = {};
-    obj.httpresponse = message.httpresponse;
-    return obj;
   },
   fromAmino(object: QueryWebResponseAmino): QueryWebResponse {
     return {
@@ -976,28 +891,6 @@ export const QueryEvalRequest = {
     message.attached_messages = object.attached_messages ?? "";
     return message;
   },
-  fromSDK(object: QueryEvalRequestSDKType): QueryEvalRequest {
-    return {
-      caller_address: object?.caller_address,
-      script_address: object?.script_address,
-      extra_code: object?.extra_code,
-      function_name: object?.function_name,
-      kwargs: object?.kwargs,
-      grantee: object?.grantee,
-      attached_messages: object?.attached_messages
-    };
-  },
-  toSDK(message: QueryEvalRequest): QueryEvalRequestSDKType {
-    const obj: any = {};
-    obj.caller_address = message.caller_address;
-    obj.script_address = message.script_address;
-    obj.extra_code = message.extra_code;
-    obj.function_name = message.function_name;
-    obj.kwargs = message.kwargs;
-    obj.grantee = message.grantee;
-    obj.attached_messages = message.attached_messages;
-    return obj;
-  },
   fromAmino(object: QueryEvalRequestAmino): QueryEvalRequest {
     return {
       caller_address: object.caller_address,
@@ -1080,16 +973,6 @@ export const QueryEvalResponse = {
     const message = createBaseQueryEvalResponse();
     message.response = object.response ?? "";
     return message;
-  },
-  fromSDK(object: QueryEvalResponseSDKType): QueryEvalResponse {
-    return {
-      response: object?.response
-    };
-  },
-  toSDK(message: QueryEvalResponse): QueryEvalResponseSDKType {
-    const obj: any = {};
-    obj.response = message.response;
-    return obj;
   },
   fromAmino(object: QueryEvalResponseAmino): QueryEvalResponse {
     return {

@@ -30,8 +30,6 @@ export declare const ClientState: {
     fromJSON(object: any): ClientState;
     toJSON(message: ClientState): unknown;
     fromPartial(object: Partial<ClientState>): ClientState;
-    fromSDK(object: ClientStateSDKType): ClientState;
-    toSDK(message: ClientState): ClientStateSDKType;
     fromAmino(object: ClientStateAmino): ClientState;
     toAmino(message: ClientState): ClientStateAmino;
     fromAminoMsg(object: ClientStateAminoMsg): ClientState;

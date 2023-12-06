@@ -39,7 +39,7 @@ export interface BIP44ParamsAmino {
   address_index: number;
 }
 export interface BIP44ParamsAminoMsg {
-  type: "cosmos-sdk/BIP44Params";
+  type: "crypto/keys/hd/BIP44Params";
   value: BIP44ParamsAmino;
 }
 /** BIP44Params is used as path field in ledger item in Record. */
@@ -135,24 +135,6 @@ export const BIP44Params = {
     message.address_index = object.address_index ?? 0;
     return message;
   },
-  fromSDK(object: BIP44ParamsSDKType): BIP44Params {
-    return {
-      purpose: object?.purpose,
-      coin_type: object?.coin_type,
-      account: object?.account,
-      change: object?.change,
-      address_index: object?.address_index
-    };
-  },
-  toSDK(message: BIP44Params): BIP44ParamsSDKType {
-    const obj: any = {};
-    obj.purpose = message.purpose;
-    obj.coin_type = message.coin_type;
-    obj.account = message.account;
-    obj.change = message.change;
-    obj.address_index = message.address_index;
-    return obj;
-  },
   fromAmino(object: BIP44ParamsAmino): BIP44Params {
     return {
       purpose: object.purpose,
@@ -176,7 +158,7 @@ export const BIP44Params = {
   },
   toAminoMsg(message: BIP44Params): BIP44ParamsAminoMsg {
     return {
-      type: "cosmos-sdk/BIP44Params",
+      type: "crypto/keys/hd/BIP44Params",
       value: BIP44Params.toAmino(message)
     };
   },

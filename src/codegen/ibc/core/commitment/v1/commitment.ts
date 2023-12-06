@@ -179,16 +179,6 @@ export const MerkleRoot = {
     message.hash = object.hash ?? new Uint8Array();
     return message;
   },
-  fromSDK(object: MerkleRootSDKType): MerkleRoot {
-    return {
-      hash: object?.hash
-    };
-  },
-  toSDK(message: MerkleRoot): MerkleRootSDKType {
-    const obj: any = {};
-    obj.hash = message.hash;
-    return obj;
-  },
   fromAmino(object: MerkleRootAmino): MerkleRoot {
     return {
       hash: object.hash
@@ -265,16 +255,6 @@ export const MerklePrefix = {
     const message = createBaseMerklePrefix();
     message.key_prefix = object.key_prefix ?? new Uint8Array();
     return message;
-  },
-  fromSDK(object: MerklePrefixSDKType): MerklePrefix {
-    return {
-      key_prefix: object?.key_prefix
-    };
-  },
-  toSDK(message: MerklePrefix): MerklePrefixSDKType {
-    const obj: any = {};
-    obj.key_prefix = message.key_prefix;
-    return obj;
   },
   fromAmino(object: MerklePrefixAmino): MerklePrefix {
     return {
@@ -356,20 +336,6 @@ export const MerklePath = {
     const message = createBaseMerklePath();
     message.key_path = object.key_path?.map(e => e) || [];
     return message;
-  },
-  fromSDK(object: MerklePathSDKType): MerklePath {
-    return {
-      key_path: Array.isArray(object?.key_path) ? object.key_path.map((e: any) => e) : []
-    };
-  },
-  toSDK(message: MerklePath): MerklePathSDKType {
-    const obj: any = {};
-    if (message.key_path) {
-      obj.key_path = message.key_path.map(e => e);
-    } else {
-      obj.key_path = [];
-    }
-    return obj;
   },
   fromAmino(object: MerklePathAmino): MerklePath {
     return {
@@ -455,20 +421,6 @@ export const MerkleProof = {
     const message = createBaseMerkleProof();
     message.proofs = object.proofs?.map(e => CommitmentProof.fromPartial(e)) || [];
     return message;
-  },
-  fromSDK(object: MerkleProofSDKType): MerkleProof {
-    return {
-      proofs: Array.isArray(object?.proofs) ? object.proofs.map((e: any) => CommitmentProof.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: MerkleProof): MerkleProofSDKType {
-    const obj: any = {};
-    if (message.proofs) {
-      obj.proofs = message.proofs.map(e => e ? CommitmentProof.toSDK(e) : undefined);
-    } else {
-      obj.proofs = [];
-    }
-    return obj;
   },
   fromAmino(object: MerkleProofAmino): MerkleProof {
     return {

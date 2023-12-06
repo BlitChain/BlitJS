@@ -202,28 +202,6 @@ export const Class = {
     message.data = object.data !== undefined && object.data !== null ? Any.fromPartial(object.data) : undefined;
     return message;
   },
-  fromSDK(object: ClassSDKType): Class {
-    return {
-      id: object?.id,
-      name: object?.name,
-      symbol: object?.symbol,
-      description: object?.description,
-      uri: object?.uri,
-      uri_hash: object?.uri_hash,
-      data: object.data ? Any.fromSDK(object.data) : undefined
-    };
-  },
-  toSDK(message: Class): ClassSDKType {
-    const obj: any = {};
-    obj.id = message.id;
-    obj.name = message.name;
-    obj.symbol = message.symbol;
-    obj.description = message.description;
-    obj.uri = message.uri;
-    obj.uri_hash = message.uri_hash;
-    message.data !== undefined && (obj.data = message.data ? Any.toSDK(message.data) : undefined);
-    return obj;
-  },
   fromAmino(object: ClassAmino): Class {
     return {
       id: object.id,
@@ -352,24 +330,6 @@ export const NFT = {
     message.uri_hash = object.uri_hash ?? "";
     message.data = object.data !== undefined && object.data !== null ? Any.fromPartial(object.data) : undefined;
     return message;
-  },
-  fromSDK(object: NFTSDKType): NFT {
-    return {
-      class_id: object?.class_id,
-      id: object?.id,
-      uri: object?.uri,
-      uri_hash: object?.uri_hash,
-      data: object.data ? Any.fromSDK(object.data) : undefined
-    };
-  },
-  toSDK(message: NFT): NFTSDKType {
-    const obj: any = {};
-    obj.class_id = message.class_id;
-    obj.id = message.id;
-    obj.uri = message.uri;
-    obj.uri_hash = message.uri_hash;
-    message.data !== undefined && (obj.data = message.data ? Any.toSDK(message.data) : undefined);
-    return obj;
   },
   fromAmino(object: NFTAmino): NFT {
     return {

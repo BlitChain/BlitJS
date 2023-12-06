@@ -1,8 +1,13 @@
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../query/v1beta1/pagination";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { BlockID, BlockIDAmino, BlockIDSDKType } from "../../../../tendermint/types/types";
-import { Block, BlockAmino, BlockSDKType } from "../../../../tendermint/types/block";
-import { NodeInfo, NodeInfoAmino, NodeInfoSDKType } from "../../../../tendermint/p2p/types";
+import { Block as Block1 } from "../../../../tendermint/types/block";
+import { BlockAmino as Block1Amino } from "../../../../tendermint/types/block";
+import { BlockSDKType as Block1SDKType } from "../../../../tendermint/types/block";
+import { Block as Block2 } from "./types";
+import { BlockAmino as Block2Amino } from "./types";
+import { BlockSDKType as Block2SDKType } from "./types";
+import { DefaultNodeInfo, DefaultNodeInfoAmino, DefaultNodeInfoSDKType } from "../../../../tendermint/p2p/types";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 export declare const protobufPackage = "cosmos.base.tendermint.v1beta1";
 /** GetValidatorSetByHeightRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
@@ -160,7 +165,10 @@ export interface GetBlockByHeightRequestSDKType {
 /** GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight RPC method. */
 export interface GetBlockByHeightResponse {
     block_id?: BlockID;
-    block?: Block;
+    /** Deprecated: please use `sdk_block` instead */
+    block?: Block1;
+    /** Since: cosmos-sdk 0.47 */
+    sdk_block?: Block2;
 }
 export interface GetBlockByHeightResponseProtoMsg {
     type_url: "/cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse";
@@ -169,7 +177,10 @@ export interface GetBlockByHeightResponseProtoMsg {
 /** GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight RPC method. */
 export interface GetBlockByHeightResponseAmino {
     block_id?: BlockIDAmino;
-    block?: BlockAmino;
+    /** Deprecated: please use `sdk_block` instead */
+    block?: Block1Amino;
+    /** Since: cosmos-sdk 0.47 */
+    sdk_block?: Block2Amino;
 }
 export interface GetBlockByHeightResponseAminoMsg {
     type: "cosmos-sdk/GetBlockByHeightResponse";
@@ -178,7 +189,8 @@ export interface GetBlockByHeightResponseAminoMsg {
 /** GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight RPC method. */
 export interface GetBlockByHeightResponseSDKType {
     block_id?: BlockIDSDKType;
-    block?: BlockSDKType;
+    block?: Block1SDKType;
+    sdk_block?: Block2SDKType;
 }
 /** GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC method. */
 export interface GetLatestBlockRequest {
@@ -200,7 +212,10 @@ export interface GetLatestBlockRequestSDKType {
 /** GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method. */
 export interface GetLatestBlockResponse {
     block_id?: BlockID;
-    block?: Block;
+    /** Deprecated: please use `sdk_block` instead */
+    block?: Block1;
+    /** Since: cosmos-sdk 0.47 */
+    sdk_block?: Block2;
 }
 export interface GetLatestBlockResponseProtoMsg {
     type_url: "/cosmos.base.tendermint.v1beta1.GetLatestBlockResponse";
@@ -209,7 +224,10 @@ export interface GetLatestBlockResponseProtoMsg {
 /** GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method. */
 export interface GetLatestBlockResponseAmino {
     block_id?: BlockIDAmino;
-    block?: BlockAmino;
+    /** Deprecated: please use `sdk_block` instead */
+    block?: Block1Amino;
+    /** Since: cosmos-sdk 0.47 */
+    sdk_block?: Block2Amino;
 }
 export interface GetLatestBlockResponseAminoMsg {
     type: "cosmos-sdk/GetLatestBlockResponse";
@@ -218,7 +236,8 @@ export interface GetLatestBlockResponseAminoMsg {
 /** GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method. */
 export interface GetLatestBlockResponseSDKType {
     block_id?: BlockIDSDKType;
-    block?: BlockSDKType;
+    block?: Block1SDKType;
+    sdk_block?: Block2SDKType;
 }
 /** GetSyncingRequest is the request type for the Query/GetSyncing RPC method. */
 export interface GetSyncingRequest {
@@ -276,7 +295,7 @@ export interface GetNodeInfoRequestSDKType {
 }
 /** GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC method. */
 export interface GetNodeInfoResponse {
-    node_info?: NodeInfo;
+    default_node_info?: DefaultNodeInfo;
     application_version?: VersionInfo;
 }
 export interface GetNodeInfoResponseProtoMsg {
@@ -285,7 +304,7 @@ export interface GetNodeInfoResponseProtoMsg {
 }
 /** GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC method. */
 export interface GetNodeInfoResponseAmino {
-    node_info?: NodeInfoAmino;
+    default_node_info?: DefaultNodeInfoAmino;
     application_version?: VersionInfoAmino;
 }
 export interface GetNodeInfoResponseAminoMsg {
@@ -294,7 +313,7 @@ export interface GetNodeInfoResponseAminoMsg {
 }
 /** GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC method. */
 export interface GetNodeInfoResponseSDKType {
-    node_info?: NodeInfoSDKType;
+    default_node_info?: DefaultNodeInfoSDKType;
     application_version?: VersionInfoSDKType;
 }
 /** VersionInfo is the type for the GetNodeInfoResponse message. */
@@ -372,6 +391,174 @@ export interface ModuleSDKType {
     version: string;
     sum: string;
 }
+/** ABCIQueryRequest defines the request structure for the ABCIQuery gRPC query. */
+export interface ABCIQueryRequest {
+    data: Uint8Array;
+    path: string;
+    height: bigint;
+    prove: boolean;
+}
+export interface ABCIQueryRequestProtoMsg {
+    type_url: "/cosmos.base.tendermint.v1beta1.ABCIQueryRequest";
+    value: Uint8Array;
+}
+/** ABCIQueryRequest defines the request structure for the ABCIQuery gRPC query. */
+export interface ABCIQueryRequestAmino {
+    data: Uint8Array;
+    path: string;
+    height: string;
+    prove: boolean;
+}
+export interface ABCIQueryRequestAminoMsg {
+    type: "cosmos-sdk/ABCIQueryRequest";
+    value: ABCIQueryRequestAmino;
+}
+/** ABCIQueryRequest defines the request structure for the ABCIQuery gRPC query. */
+export interface ABCIQueryRequestSDKType {
+    data: Uint8Array;
+    path: string;
+    height: bigint;
+    prove: boolean;
+}
+/**
+ * ABCIQueryResponse defines the response structure for the ABCIQuery gRPC query.
+ *
+ * Note: This type is a duplicate of the ResponseQuery proto type defined in
+ * Tendermint.
+ */
+export interface ABCIQueryResponse {
+    code: number;
+    /** nondeterministic */
+    log: string;
+    /** nondeterministic */
+    info: string;
+    index: bigint;
+    key: Uint8Array;
+    value: Uint8Array;
+    proof_ops?: ProofOps;
+    height: bigint;
+    codespace: string;
+}
+export interface ABCIQueryResponseProtoMsg {
+    type_url: "/cosmos.base.tendermint.v1beta1.ABCIQueryResponse";
+    value: Uint8Array;
+}
+/**
+ * ABCIQueryResponse defines the response structure for the ABCIQuery gRPC query.
+ *
+ * Note: This type is a duplicate of the ResponseQuery proto type defined in
+ * Tendermint.
+ */
+export interface ABCIQueryResponseAmino {
+    code: number;
+    /** nondeterministic */
+    log: string;
+    /** nondeterministic */
+    info: string;
+    index: string;
+    key: Uint8Array;
+    value: Uint8Array;
+    proof_ops?: ProofOpsAmino;
+    height: string;
+    codespace: string;
+}
+export interface ABCIQueryResponseAminoMsg {
+    type: "cosmos-sdk/ABCIQueryResponse";
+    value: ABCIQueryResponseAmino;
+}
+/**
+ * ABCIQueryResponse defines the response structure for the ABCIQuery gRPC query.
+ *
+ * Note: This type is a duplicate of the ResponseQuery proto type defined in
+ * Tendermint.
+ */
+export interface ABCIQueryResponseSDKType {
+    code: number;
+    log: string;
+    info: string;
+    index: bigint;
+    key: Uint8Array;
+    value: Uint8Array;
+    proof_ops?: ProofOpsSDKType;
+    height: bigint;
+    codespace: string;
+}
+/**
+ * ProofOp defines an operation used for calculating Merkle root. The data could
+ * be arbitrary format, providing necessary data for example neighbouring node
+ * hash.
+ *
+ * Note: This type is a duplicate of the ProofOp proto type defined in Tendermint.
+ */
+export interface ProofOp {
+    type: string;
+    key: Uint8Array;
+    data: Uint8Array;
+}
+export interface ProofOpProtoMsg {
+    type_url: "/cosmos.base.tendermint.v1beta1.ProofOp";
+    value: Uint8Array;
+}
+/**
+ * ProofOp defines an operation used for calculating Merkle root. The data could
+ * be arbitrary format, providing necessary data for example neighbouring node
+ * hash.
+ *
+ * Note: This type is a duplicate of the ProofOp proto type defined in Tendermint.
+ */
+export interface ProofOpAmino {
+    type: string;
+    key: Uint8Array;
+    data: Uint8Array;
+}
+export interface ProofOpAminoMsg {
+    type: "cosmos-sdk/ProofOp";
+    value: ProofOpAmino;
+}
+/**
+ * ProofOp defines an operation used for calculating Merkle root. The data could
+ * be arbitrary format, providing necessary data for example neighbouring node
+ * hash.
+ *
+ * Note: This type is a duplicate of the ProofOp proto type defined in Tendermint.
+ */
+export interface ProofOpSDKType {
+    type: string;
+    key: Uint8Array;
+    data: Uint8Array;
+}
+/**
+ * ProofOps is Merkle proof defined by the list of ProofOps.
+ *
+ * Note: This type is a duplicate of the ProofOps proto type defined in Tendermint.
+ */
+export interface ProofOps {
+    ops: ProofOp[];
+}
+export interface ProofOpsProtoMsg {
+    type_url: "/cosmos.base.tendermint.v1beta1.ProofOps";
+    value: Uint8Array;
+}
+/**
+ * ProofOps is Merkle proof defined by the list of ProofOps.
+ *
+ * Note: This type is a duplicate of the ProofOps proto type defined in Tendermint.
+ */
+export interface ProofOpsAmino {
+    ops: ProofOpAmino[];
+}
+export interface ProofOpsAminoMsg {
+    type: "cosmos-sdk/ProofOps";
+    value: ProofOpsAmino;
+}
+/**
+ * ProofOps is Merkle proof defined by the list of ProofOps.
+ *
+ * Note: This type is a duplicate of the ProofOps proto type defined in Tendermint.
+ */
+export interface ProofOpsSDKType {
+    ops: ProofOpSDKType[];
+}
 export declare const GetValidatorSetByHeightRequest: {
     typeUrl: string;
     encode(message: GetValidatorSetByHeightRequest, writer?: BinaryWriter): BinaryWriter;
@@ -379,8 +566,6 @@ export declare const GetValidatorSetByHeightRequest: {
     fromJSON(object: any): GetValidatorSetByHeightRequest;
     toJSON(message: GetValidatorSetByHeightRequest): unknown;
     fromPartial(object: Partial<GetValidatorSetByHeightRequest>): GetValidatorSetByHeightRequest;
-    fromSDK(object: GetValidatorSetByHeightRequestSDKType): GetValidatorSetByHeightRequest;
-    toSDK(message: GetValidatorSetByHeightRequest): GetValidatorSetByHeightRequestSDKType;
     fromAmino(object: GetValidatorSetByHeightRequestAmino): GetValidatorSetByHeightRequest;
     toAmino(message: GetValidatorSetByHeightRequest): GetValidatorSetByHeightRequestAmino;
     fromAminoMsg(object: GetValidatorSetByHeightRequestAminoMsg): GetValidatorSetByHeightRequest;
@@ -396,8 +581,6 @@ export declare const GetValidatorSetByHeightResponse: {
     fromJSON(object: any): GetValidatorSetByHeightResponse;
     toJSON(message: GetValidatorSetByHeightResponse): unknown;
     fromPartial(object: Partial<GetValidatorSetByHeightResponse>): GetValidatorSetByHeightResponse;
-    fromSDK(object: GetValidatorSetByHeightResponseSDKType): GetValidatorSetByHeightResponse;
-    toSDK(message: GetValidatorSetByHeightResponse): GetValidatorSetByHeightResponseSDKType;
     fromAmino(object: GetValidatorSetByHeightResponseAmino): GetValidatorSetByHeightResponse;
     toAmino(message: GetValidatorSetByHeightResponse): GetValidatorSetByHeightResponseAmino;
     fromAminoMsg(object: GetValidatorSetByHeightResponseAminoMsg): GetValidatorSetByHeightResponse;
@@ -413,8 +596,6 @@ export declare const GetLatestValidatorSetRequest: {
     fromJSON(object: any): GetLatestValidatorSetRequest;
     toJSON(message: GetLatestValidatorSetRequest): unknown;
     fromPartial(object: Partial<GetLatestValidatorSetRequest>): GetLatestValidatorSetRequest;
-    fromSDK(object: GetLatestValidatorSetRequestSDKType): GetLatestValidatorSetRequest;
-    toSDK(message: GetLatestValidatorSetRequest): GetLatestValidatorSetRequestSDKType;
     fromAmino(object: GetLatestValidatorSetRequestAmino): GetLatestValidatorSetRequest;
     toAmino(message: GetLatestValidatorSetRequest): GetLatestValidatorSetRequestAmino;
     fromAminoMsg(object: GetLatestValidatorSetRequestAminoMsg): GetLatestValidatorSetRequest;
@@ -430,8 +611,6 @@ export declare const GetLatestValidatorSetResponse: {
     fromJSON(object: any): GetLatestValidatorSetResponse;
     toJSON(message: GetLatestValidatorSetResponse): unknown;
     fromPartial(object: Partial<GetLatestValidatorSetResponse>): GetLatestValidatorSetResponse;
-    fromSDK(object: GetLatestValidatorSetResponseSDKType): GetLatestValidatorSetResponse;
-    toSDK(message: GetLatestValidatorSetResponse): GetLatestValidatorSetResponseSDKType;
     fromAmino(object: GetLatestValidatorSetResponseAmino): GetLatestValidatorSetResponse;
     toAmino(message: GetLatestValidatorSetResponse): GetLatestValidatorSetResponseAmino;
     fromAminoMsg(object: GetLatestValidatorSetResponseAminoMsg): GetLatestValidatorSetResponse;
@@ -447,8 +626,6 @@ export declare const Validator: {
     fromJSON(object: any): Validator;
     toJSON(message: Validator): unknown;
     fromPartial(object: Partial<Validator>): Validator;
-    fromSDK(object: ValidatorSDKType): Validator;
-    toSDK(message: Validator): ValidatorSDKType;
     fromAmino(object: ValidatorAmino): Validator;
     toAmino(message: Validator): ValidatorAmino;
     fromAminoMsg(object: ValidatorAminoMsg): Validator;
@@ -464,8 +641,6 @@ export declare const GetBlockByHeightRequest: {
     fromJSON(object: any): GetBlockByHeightRequest;
     toJSON(message: GetBlockByHeightRequest): unknown;
     fromPartial(object: Partial<GetBlockByHeightRequest>): GetBlockByHeightRequest;
-    fromSDK(object: GetBlockByHeightRequestSDKType): GetBlockByHeightRequest;
-    toSDK(message: GetBlockByHeightRequest): GetBlockByHeightRequestSDKType;
     fromAmino(object: GetBlockByHeightRequestAmino): GetBlockByHeightRequest;
     toAmino(message: GetBlockByHeightRequest): GetBlockByHeightRequestAmino;
     fromAminoMsg(object: GetBlockByHeightRequestAminoMsg): GetBlockByHeightRequest;
@@ -481,8 +656,6 @@ export declare const GetBlockByHeightResponse: {
     fromJSON(object: any): GetBlockByHeightResponse;
     toJSON(message: GetBlockByHeightResponse): unknown;
     fromPartial(object: Partial<GetBlockByHeightResponse>): GetBlockByHeightResponse;
-    fromSDK(object: GetBlockByHeightResponseSDKType): GetBlockByHeightResponse;
-    toSDK(message: GetBlockByHeightResponse): GetBlockByHeightResponseSDKType;
     fromAmino(object: GetBlockByHeightResponseAmino): GetBlockByHeightResponse;
     toAmino(message: GetBlockByHeightResponse): GetBlockByHeightResponseAmino;
     fromAminoMsg(object: GetBlockByHeightResponseAminoMsg): GetBlockByHeightResponse;
@@ -498,8 +671,6 @@ export declare const GetLatestBlockRequest: {
     fromJSON(_: any): GetLatestBlockRequest;
     toJSON(_: GetLatestBlockRequest): unknown;
     fromPartial(_: Partial<GetLatestBlockRequest>): GetLatestBlockRequest;
-    fromSDK(_: GetLatestBlockRequestSDKType): GetLatestBlockRequest;
-    toSDK(_: GetLatestBlockRequest): GetLatestBlockRequestSDKType;
     fromAmino(_: GetLatestBlockRequestAmino): GetLatestBlockRequest;
     toAmino(_: GetLatestBlockRequest): GetLatestBlockRequestAmino;
     fromAminoMsg(object: GetLatestBlockRequestAminoMsg): GetLatestBlockRequest;
@@ -515,8 +686,6 @@ export declare const GetLatestBlockResponse: {
     fromJSON(object: any): GetLatestBlockResponse;
     toJSON(message: GetLatestBlockResponse): unknown;
     fromPartial(object: Partial<GetLatestBlockResponse>): GetLatestBlockResponse;
-    fromSDK(object: GetLatestBlockResponseSDKType): GetLatestBlockResponse;
-    toSDK(message: GetLatestBlockResponse): GetLatestBlockResponseSDKType;
     fromAmino(object: GetLatestBlockResponseAmino): GetLatestBlockResponse;
     toAmino(message: GetLatestBlockResponse): GetLatestBlockResponseAmino;
     fromAminoMsg(object: GetLatestBlockResponseAminoMsg): GetLatestBlockResponse;
@@ -532,8 +701,6 @@ export declare const GetSyncingRequest: {
     fromJSON(_: any): GetSyncingRequest;
     toJSON(_: GetSyncingRequest): unknown;
     fromPartial(_: Partial<GetSyncingRequest>): GetSyncingRequest;
-    fromSDK(_: GetSyncingRequestSDKType): GetSyncingRequest;
-    toSDK(_: GetSyncingRequest): GetSyncingRequestSDKType;
     fromAmino(_: GetSyncingRequestAmino): GetSyncingRequest;
     toAmino(_: GetSyncingRequest): GetSyncingRequestAmino;
     fromAminoMsg(object: GetSyncingRequestAminoMsg): GetSyncingRequest;
@@ -549,8 +716,6 @@ export declare const GetSyncingResponse: {
     fromJSON(object: any): GetSyncingResponse;
     toJSON(message: GetSyncingResponse): unknown;
     fromPartial(object: Partial<GetSyncingResponse>): GetSyncingResponse;
-    fromSDK(object: GetSyncingResponseSDKType): GetSyncingResponse;
-    toSDK(message: GetSyncingResponse): GetSyncingResponseSDKType;
     fromAmino(object: GetSyncingResponseAmino): GetSyncingResponse;
     toAmino(message: GetSyncingResponse): GetSyncingResponseAmino;
     fromAminoMsg(object: GetSyncingResponseAminoMsg): GetSyncingResponse;
@@ -566,8 +731,6 @@ export declare const GetNodeInfoRequest: {
     fromJSON(_: any): GetNodeInfoRequest;
     toJSON(_: GetNodeInfoRequest): unknown;
     fromPartial(_: Partial<GetNodeInfoRequest>): GetNodeInfoRequest;
-    fromSDK(_: GetNodeInfoRequestSDKType): GetNodeInfoRequest;
-    toSDK(_: GetNodeInfoRequest): GetNodeInfoRequestSDKType;
     fromAmino(_: GetNodeInfoRequestAmino): GetNodeInfoRequest;
     toAmino(_: GetNodeInfoRequest): GetNodeInfoRequestAmino;
     fromAminoMsg(object: GetNodeInfoRequestAminoMsg): GetNodeInfoRequest;
@@ -583,8 +746,6 @@ export declare const GetNodeInfoResponse: {
     fromJSON(object: any): GetNodeInfoResponse;
     toJSON(message: GetNodeInfoResponse): unknown;
     fromPartial(object: Partial<GetNodeInfoResponse>): GetNodeInfoResponse;
-    fromSDK(object: GetNodeInfoResponseSDKType): GetNodeInfoResponse;
-    toSDK(message: GetNodeInfoResponse): GetNodeInfoResponseSDKType;
     fromAmino(object: GetNodeInfoResponseAmino): GetNodeInfoResponse;
     toAmino(message: GetNodeInfoResponse): GetNodeInfoResponseAmino;
     fromAminoMsg(object: GetNodeInfoResponseAminoMsg): GetNodeInfoResponse;
@@ -600,8 +761,6 @@ export declare const VersionInfo: {
     fromJSON(object: any): VersionInfo;
     toJSON(message: VersionInfo): unknown;
     fromPartial(object: Partial<VersionInfo>): VersionInfo;
-    fromSDK(object: VersionInfoSDKType): VersionInfo;
-    toSDK(message: VersionInfo): VersionInfoSDKType;
     fromAmino(object: VersionInfoAmino): VersionInfo;
     toAmino(message: VersionInfo): VersionInfoAmino;
     fromAminoMsg(object: VersionInfoAminoMsg): VersionInfo;
@@ -617,8 +776,6 @@ export declare const Module: {
     fromJSON(object: any): Module;
     toJSON(message: Module): unknown;
     fromPartial(object: Partial<Module>): Module;
-    fromSDK(object: ModuleSDKType): Module;
-    toSDK(message: Module): ModuleSDKType;
     fromAmino(object: ModuleAmino): Module;
     toAmino(message: Module): ModuleAmino;
     fromAminoMsg(object: ModuleAminoMsg): Module;
@@ -626,4 +783,64 @@ export declare const Module: {
     fromProtoMsg(message: ModuleProtoMsg): Module;
     toProto(message: Module): Uint8Array;
     toProtoMsg(message: Module): ModuleProtoMsg;
+};
+export declare const ABCIQueryRequest: {
+    typeUrl: string;
+    encode(message: ABCIQueryRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ABCIQueryRequest;
+    fromJSON(object: any): ABCIQueryRequest;
+    toJSON(message: ABCIQueryRequest): unknown;
+    fromPartial(object: Partial<ABCIQueryRequest>): ABCIQueryRequest;
+    fromAmino(object: ABCIQueryRequestAmino): ABCIQueryRequest;
+    toAmino(message: ABCIQueryRequest): ABCIQueryRequestAmino;
+    fromAminoMsg(object: ABCIQueryRequestAminoMsg): ABCIQueryRequest;
+    toAminoMsg(message: ABCIQueryRequest): ABCIQueryRequestAminoMsg;
+    fromProtoMsg(message: ABCIQueryRequestProtoMsg): ABCIQueryRequest;
+    toProto(message: ABCIQueryRequest): Uint8Array;
+    toProtoMsg(message: ABCIQueryRequest): ABCIQueryRequestProtoMsg;
+};
+export declare const ABCIQueryResponse: {
+    typeUrl: string;
+    encode(message: ABCIQueryResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ABCIQueryResponse;
+    fromJSON(object: any): ABCIQueryResponse;
+    toJSON(message: ABCIQueryResponse): unknown;
+    fromPartial(object: Partial<ABCIQueryResponse>): ABCIQueryResponse;
+    fromAmino(object: ABCIQueryResponseAmino): ABCIQueryResponse;
+    toAmino(message: ABCIQueryResponse): ABCIQueryResponseAmino;
+    fromAminoMsg(object: ABCIQueryResponseAminoMsg): ABCIQueryResponse;
+    toAminoMsg(message: ABCIQueryResponse): ABCIQueryResponseAminoMsg;
+    fromProtoMsg(message: ABCIQueryResponseProtoMsg): ABCIQueryResponse;
+    toProto(message: ABCIQueryResponse): Uint8Array;
+    toProtoMsg(message: ABCIQueryResponse): ABCIQueryResponseProtoMsg;
+};
+export declare const ProofOp: {
+    typeUrl: string;
+    encode(message: ProofOp, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ProofOp;
+    fromJSON(object: any): ProofOp;
+    toJSON(message: ProofOp): unknown;
+    fromPartial(object: Partial<ProofOp>): ProofOp;
+    fromAmino(object: ProofOpAmino): ProofOp;
+    toAmino(message: ProofOp): ProofOpAmino;
+    fromAminoMsg(object: ProofOpAminoMsg): ProofOp;
+    toAminoMsg(message: ProofOp): ProofOpAminoMsg;
+    fromProtoMsg(message: ProofOpProtoMsg): ProofOp;
+    toProto(message: ProofOp): Uint8Array;
+    toProtoMsg(message: ProofOp): ProofOpProtoMsg;
+};
+export declare const ProofOps: {
+    typeUrl: string;
+    encode(message: ProofOps, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ProofOps;
+    fromJSON(object: any): ProofOps;
+    toJSON(message: ProofOps): unknown;
+    fromPartial(object: Partial<ProofOps>): ProofOps;
+    fromAmino(object: ProofOpsAmino): ProofOps;
+    toAmino(message: ProofOps): ProofOpsAmino;
+    fromAminoMsg(object: ProofOpsAminoMsg): ProofOps;
+    toAminoMsg(message: ProofOps): ProofOpsAminoMsg;
+    fromProtoMsg(message: ProofOpsProtoMsg): ProofOps;
+    toProto(message: ProofOps): Uint8Array;
+    toProtoMsg(message: ProofOps): ProofOpsProtoMsg;
 };

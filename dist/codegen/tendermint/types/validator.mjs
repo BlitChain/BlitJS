@@ -3,6 +3,55 @@ import { PublicKey } from "../crypto/keys";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../helpers";
 export const protobufPackage = "tendermint.types";
+/** BlockIdFlag indicates which BlockID the signature is for */
+export var BlockIDFlag;
+(function (BlockIDFlag) {
+    /** BLOCK_ID_FLAG_UNKNOWN - indicates an error condition */
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_UNKNOWN"] = 0] = "BLOCK_ID_FLAG_UNKNOWN";
+    /** BLOCK_ID_FLAG_ABSENT - the vote was not received */
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_ABSENT"] = 1] = "BLOCK_ID_FLAG_ABSENT";
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_COMMIT"] = 2] = "BLOCK_ID_FLAG_COMMIT";
+    /** BLOCK_ID_FLAG_NIL - voted for nil */
+    BlockIDFlag[BlockIDFlag["BLOCK_ID_FLAG_NIL"] = 3] = "BLOCK_ID_FLAG_NIL";
+    BlockIDFlag[BlockIDFlag["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
+})(BlockIDFlag || (BlockIDFlag = {}));
+export const BlockIDFlagSDKType = BlockIDFlag;
+export const BlockIDFlagAmino = BlockIDFlag;
+export function blockIDFlagFromJSON(object) {
+    switch (object) {
+        case 0:
+        case "BLOCK_ID_FLAG_UNKNOWN":
+            return BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN;
+        case 1:
+        case "BLOCK_ID_FLAG_ABSENT":
+            return BlockIDFlag.BLOCK_ID_FLAG_ABSENT;
+        case 2:
+        case "BLOCK_ID_FLAG_COMMIT":
+            return BlockIDFlag.BLOCK_ID_FLAG_COMMIT;
+        case 3:
+        case "BLOCK_ID_FLAG_NIL":
+            return BlockIDFlag.BLOCK_ID_FLAG_NIL;
+        case -1:
+        case "UNRECOGNIZED":
+        default:
+            return BlockIDFlag.UNRECOGNIZED;
+    }
+}
+export function blockIDFlagToJSON(object) {
+    switch (object) {
+        case BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN:
+            return "BLOCK_ID_FLAG_UNKNOWN";
+        case BlockIDFlag.BLOCK_ID_FLAG_ABSENT:
+            return "BLOCK_ID_FLAG_ABSENT";
+        case BlockIDFlag.BLOCK_ID_FLAG_COMMIT:
+            return "BLOCK_ID_FLAG_COMMIT";
+        case BlockIDFlag.BLOCK_ID_FLAG_NIL:
+            return "BLOCK_ID_FLAG_NIL";
+        case BlockIDFlag.UNRECOGNIZED:
+        default:
+            return "UNRECOGNIZED";
+    }
+}
 function createBaseValidatorSet() {
     return {
         validators: [],
@@ -72,25 +121,6 @@ export const ValidatorSet = {
         message.proposer = object.proposer !== undefined && object.proposer !== null ? Validator.fromPartial(object.proposer) : undefined;
         message.total_voting_power = object.total_voting_power !== undefined && object.total_voting_power !== null ? BigInt(object.total_voting_power.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            validators: Array.isArray(object?.validators) ? object.validators.map((e) => Validator.fromSDK(e)) : [],
-            proposer: object.proposer ? Validator.fromSDK(object.proposer) : undefined,
-            total_voting_power: object?.total_voting_power
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.validators) {
-            obj.validators = message.validators.map(e => e ? Validator.toSDK(e) : undefined);
-        }
-        else {
-            obj.validators = [];
-        }
-        message.proposer !== undefined && (obj.proposer = message.proposer ? Validator.toSDK(message.proposer) : undefined);
-        obj.total_voting_power = message.total_voting_power;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -202,22 +232,6 @@ export const Validator = {
         message.proposer_priority = object.proposer_priority !== undefined && object.proposer_priority !== null ? BigInt(object.proposer_priority.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            address: object?.address,
-            pub_key: object.pub_key ? PublicKey.fromSDK(object.pub_key) : undefined,
-            voting_power: object?.voting_power,
-            proposer_priority: object?.proposer_priority
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        message.pub_key !== undefined && (obj.pub_key = message.pub_key ? PublicKey.toSDK(message.pub_key) : undefined);
-        obj.voting_power = message.voting_power;
-        obj.proposer_priority = message.proposer_priority;
-        return obj;
-    },
     fromAmino(object) {
         return {
             address: object.address,
@@ -304,18 +318,6 @@ export const SimpleValidator = {
         message.pub_key = object.pub_key !== undefined && object.pub_key !== null ? PublicKey.fromPartial(object.pub_key) : undefined;
         message.voting_power = object.voting_power !== undefined && object.voting_power !== null ? BigInt(object.voting_power.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            pub_key: object.pub_key ? PublicKey.fromSDK(object.pub_key) : undefined,
-            voting_power: object?.voting_power
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.pub_key !== undefined && (obj.pub_key = message.pub_key ? PublicKey.toSDK(message.pub_key) : undefined);
-        obj.voting_power = message.voting_power;
-        return obj;
     },
     fromAmino(object) {
         return {

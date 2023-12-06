@@ -90,20 +90,6 @@ export const Storage = {
     message.data = object.data ?? "";
     return message;
   },
-  fromSDK(object: StorageSDKType): Storage {
-    return {
-      address: object?.address,
-      index: object?.index,
-      data: object?.data
-    };
-  },
-  toSDK(message: Storage): StorageSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    obj.index = message.index;
-    obj.data = message.data;
-    return obj;
-  },
   fromAmino(object: StorageAmino): Storage {
     return {
       address: object.address,

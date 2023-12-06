@@ -126,43 +126,6 @@ exports.GenesisState = {
         message.tally_params = object.tally_params !== undefined && object.tally_params !== null ? gov_1.TallyParams.fromPartial(object.tally_params) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            starting_proposal_id: object?.starting_proposal_id,
-            deposits: Array.isArray(object?.deposits) ? object.deposits.map((e) => gov_1.Deposit.fromSDK(e)) : [],
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => gov_1.Vote.fromSDK(e)) : [],
-            proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => gov_1.Proposal.fromSDK(e)) : [],
-            deposit_params: object.deposit_params ? gov_1.DepositParams.fromSDK(object.deposit_params) : undefined,
-            voting_params: object.voting_params ? gov_1.VotingParams.fromSDK(object.voting_params) : undefined,
-            tally_params: object.tally_params ? gov_1.TallyParams.fromSDK(object.tally_params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.starting_proposal_id = message.starting_proposal_id;
-        if (message.deposits) {
-            obj.deposits = message.deposits.map(e => e ? gov_1.Deposit.toSDK(e) : undefined);
-        }
-        else {
-            obj.deposits = [];
-        }
-        if (message.votes) {
-            obj.votes = message.votes.map(e => e ? gov_1.Vote.toSDK(e) : undefined);
-        }
-        else {
-            obj.votes = [];
-        }
-        if (message.proposals) {
-            obj.proposals = message.proposals.map(e => e ? gov_1.Proposal.toSDK(e) : undefined);
-        }
-        else {
-            obj.proposals = [];
-        }
-        message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? gov_1.DepositParams.toSDK(message.deposit_params) : undefined);
-        message.voting_params !== undefined && (obj.voting_params = message.voting_params ? gov_1.VotingParams.toSDK(message.voting_params) : undefined);
-        message.tally_params !== undefined && (obj.tally_params = message.tally_params ? gov_1.TallyParams.toSDK(message.tally_params) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             starting_proposal_id: BigInt(object.starting_proposal_id),

@@ -128,22 +128,6 @@ export const MsgSend = {
     message.receiver = object.receiver ?? "";
     return message;
   },
-  fromSDK(object: MsgSendSDKType): MsgSend {
-    return {
-      class_id: object?.class_id,
-      id: object?.id,
-      sender: object?.sender,
-      receiver: object?.receiver
-    };
-  },
-  toSDK(message: MsgSend): MsgSendSDKType {
-    const obj: any = {};
-    obj.class_id = message.class_id;
-    obj.id = message.id;
-    obj.sender = message.sender;
-    obj.receiver = message.receiver;
-    return obj;
-  },
   fromAmino(object: MsgSendAmino): MsgSend {
     return {
       class_id: object.class_id,
@@ -214,13 +198,6 @@ export const MsgSendResponse = {
   fromPartial(_: Partial<MsgSendResponse>): MsgSendResponse {
     const message = createBaseMsgSendResponse();
     return message;
-  },
-  fromSDK(_: MsgSendResponseSDKType): MsgSendResponse {
-    return {};
-  },
-  toSDK(_: MsgSendResponse): MsgSendResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgSendResponseAmino): MsgSendResponse {
     return {};

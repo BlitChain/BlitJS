@@ -90,24 +90,6 @@ export const MsgConnectionOpenInit = {
         message.signer = object.signer ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            client_id: object?.client_id,
-            counterparty: object.counterparty ? Counterparty.fromSDK(object.counterparty) : undefined,
-            version: object.version ? Version.fromSDK(object.version) : undefined,
-            delay_period: object?.delay_period,
-            signer: object?.signer
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.client_id = message.client_id;
-        message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toSDK(message.counterparty) : undefined);
-        message.version !== undefined && (obj.version = message.version ? Version.toSDK(message.version) : undefined);
-        obj.delay_period = message.delay_period;
-        obj.signer = message.signer;
-        return obj;
-    },
     fromAmino(object) {
         return {
             client_id: object.client_id,
@@ -180,13 +162,6 @@ export const MsgConnectionOpenInitResponse = {
     fromPartial(_) {
         const message = createBaseMsgConnectionOpenInitResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -387,45 +362,6 @@ export const MsgConnectionOpenTry = {
         message.host_consensus_state_proof = object.host_consensus_state_proof ?? new Uint8Array();
         return message;
     },
-    fromSDK(object) {
-        return {
-            client_id: object?.client_id,
-            previous_connection_id: object?.previous_connection_id,
-            client_state: object.client_state ? Any.fromSDK(object.client_state) : undefined,
-            counterparty: object.counterparty ? Counterparty.fromSDK(object.counterparty) : undefined,
-            delay_period: object?.delay_period,
-            counterparty_versions: Array.isArray(object?.counterparty_versions) ? object.counterparty_versions.map((e) => Version.fromSDK(e)) : [],
-            proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-            proof_init: object?.proof_init,
-            proof_client: object?.proof_client,
-            proof_consensus: object?.proof_consensus,
-            consensus_height: object.consensus_height ? Height.fromSDK(object.consensus_height) : undefined,
-            signer: object?.signer,
-            host_consensus_state_proof: object?.host_consensus_state_proof
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.client_id = message.client_id;
-        obj.previous_connection_id = message.previous_connection_id;
-        message.client_state !== undefined && (obj.client_state = message.client_state ? Any.toSDK(message.client_state) : undefined);
-        message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toSDK(message.counterparty) : undefined);
-        obj.delay_period = message.delay_period;
-        if (message.counterparty_versions) {
-            obj.counterparty_versions = message.counterparty_versions.map(e => e ? Version.toSDK(e) : undefined);
-        }
-        else {
-            obj.counterparty_versions = [];
-        }
-        message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-        obj.proof_init = message.proof_init;
-        obj.proof_client = message.proof_client;
-        obj.proof_consensus = message.proof_consensus;
-        message.consensus_height !== undefined && (obj.consensus_height = message.consensus_height ? Height.toSDK(message.consensus_height) : undefined);
-        obj.signer = message.signer;
-        obj.host_consensus_state_proof = message.host_consensus_state_proof;
-        return obj;
-    },
     fromAmino(object) {
         return {
             client_id: object.client_id,
@@ -519,13 +455,6 @@ export const MsgConnectionOpenTryResponse = {
     fromPartial(_) {
         const message = createBaseMsgConnectionOpenTryResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -701,36 +630,6 @@ export const MsgConnectionOpenAck = {
         message.host_consensus_state_proof = object.host_consensus_state_proof ?? new Uint8Array();
         return message;
     },
-    fromSDK(object) {
-        return {
-            connection_id: object?.connection_id,
-            counterparty_connection_id: object?.counterparty_connection_id,
-            version: object.version ? Version.fromSDK(object.version) : undefined,
-            client_state: object.client_state ? Any.fromSDK(object.client_state) : undefined,
-            proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-            proof_try: object?.proof_try,
-            proof_client: object?.proof_client,
-            proof_consensus: object?.proof_consensus,
-            consensus_height: object.consensus_height ? Height.fromSDK(object.consensus_height) : undefined,
-            signer: object?.signer,
-            host_consensus_state_proof: object?.host_consensus_state_proof
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.connection_id = message.connection_id;
-        obj.counterparty_connection_id = message.counterparty_connection_id;
-        message.version !== undefined && (obj.version = message.version ? Version.toSDK(message.version) : undefined);
-        message.client_state !== undefined && (obj.client_state = message.client_state ? Any.toSDK(message.client_state) : undefined);
-        message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-        obj.proof_try = message.proof_try;
-        obj.proof_client = message.proof_client;
-        obj.proof_consensus = message.proof_consensus;
-        message.consensus_height !== undefined && (obj.consensus_height = message.consensus_height ? Height.toSDK(message.consensus_height) : undefined);
-        obj.signer = message.signer;
-        obj.host_consensus_state_proof = message.host_consensus_state_proof;
-        return obj;
-    },
     fromAmino(object) {
         return {
             connection_id: object.connection_id,
@@ -815,13 +714,6 @@ export const MsgConnectionOpenAckResponse = {
     fromPartial(_) {
         const message = createBaseMsgConnectionOpenAckResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -927,22 +819,6 @@ export const MsgConnectionOpenConfirm = {
         message.signer = object.signer ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            connection_id: object?.connection_id,
-            proof_ack: object?.proof_ack,
-            proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-            signer: object?.signer
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.connection_id = message.connection_id;
-        obj.proof_ack = message.proof_ack;
-        message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-        obj.signer = message.signer;
-        return obj;
-    },
     fromAmino(object) {
         return {
             connection_id: object.connection_id,
@@ -1013,13 +889,6 @@ export const MsgConnectionOpenConfirmResponse = {
     fromPartial(_) {
         const message = createBaseMsgConnectionOpenConfirmResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -1105,18 +974,6 @@ export const MsgUpdateParams = {
         message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            signer: object?.signer,
-            params: object.params ? Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.signer = message.signer;
-        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             signer: object.signer,
@@ -1183,13 +1040,6 @@ export const MsgUpdateParamsResponse = {
     fromPartial(_) {
         const message = createBaseMsgUpdateParamsResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};

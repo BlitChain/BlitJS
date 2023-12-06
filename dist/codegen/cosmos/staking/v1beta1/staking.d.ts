@@ -2,7 +2,9 @@ import { Header, HeaderAmino, HeaderSDKType } from "../../../tendermint/types/ty
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
+import { ValidatorUpdate, ValidatorUpdateAmino, ValidatorUpdateSDKType } from "../../../tendermint/abci/types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { Pubkey } from "@cosmjs/amino";
 export declare const protobufPackage = "cosmos.staking.v1beta1";
 /** BondStatus is the status of a validator. */
 export declare enum BondStatus {
@@ -20,6 +22,20 @@ export declare const BondStatusSDKType: typeof BondStatus;
 export declare const BondStatusAmino: typeof BondStatus;
 export declare function bondStatusFromJSON(object: any): BondStatus;
 export declare function bondStatusToJSON(object: BondStatus): string;
+/** Infraction indicates the infraction a validator commited. */
+export declare enum Infraction {
+    /** INFRACTION_UNSPECIFIED - UNSPECIFIED defines an empty infraction. */
+    INFRACTION_UNSPECIFIED = 0,
+    /** INFRACTION_DOUBLE_SIGN - DOUBLE_SIGN defines a validator that double-signs a block. */
+    INFRACTION_DOUBLE_SIGN = 1,
+    /** INFRACTION_DOWNTIME - DOWNTIME defines a validator that missed signing too many blocks. */
+    INFRACTION_DOWNTIME = 2,
+    UNRECOGNIZED = -1
+}
+export declare const InfractionSDKType: typeof Infraction;
+export declare const InfractionAmino: typeof Infraction;
+export declare function infractionFromJSON(object: any): Infraction;
+export declare function infractionToJSON(object: Infraction): string;
 /**
  * HistoricalInfo contains header and validator information for a given block.
  * It is stored as part of staking module's state, which persists the `n` most
@@ -199,8 +215,16 @@ export interface Validator {
     unbonding_time: Date;
     /** commission defines the commission parameters. */
     commission: Commission;
-    /** min_self_delegation is the validator's self declared minimum self delegation. */
+    /**
+     * min_self_delegation is the validator's self declared minimum self delegation.
+     *
+     * Since: cosmos-sdk 0.46
+     */
     min_self_delegation: string;
+    /** strictly positive if this validator's unbonding has been stopped by external modules */
+    unbonding_on_hold_ref_count: bigint;
+    /** list of unbonding ids, each uniquely identifing an unbonding of this validator */
+    unbonding_ids: bigint[];
 }
 export interface ValidatorProtoMsg {
     type_url: "/cosmos.staking.v1beta1.Validator";
@@ -240,8 +264,16 @@ export interface ValidatorAmino {
     unbonding_time?: string;
     /** commission defines the commission parameters. */
     commission?: CommissionAmino;
-    /** min_self_delegation is the validator's self declared minimum self delegation. */
+    /**
+     * min_self_delegation is the validator's self declared minimum self delegation.
+     *
+     * Since: cosmos-sdk 0.46
+     */
     min_self_delegation: string;
+    /** strictly positive if this validator's unbonding has been stopped by external modules */
+    unbonding_on_hold_ref_count: string;
+    /** list of unbonding ids, each uniquely identifing an unbonding of this validator */
+    unbonding_ids: string[];
 }
 export interface ValidatorAminoMsg {
     type: "cosmos-sdk/Validator";
@@ -269,6 +301,8 @@ export interface ValidatorSDKType {
     unbonding_time: Date;
     commission: CommissionSDKType;
     min_self_delegation: string;
+    unbonding_on_hold_ref_count: bigint;
+    unbonding_ids: bigint[];
 }
 /** ValAddresses defines a repeated set of validator addresses. */
 export interface ValAddresses {
@@ -412,9 +446,9 @@ export interface DVVTripletsSDKType {
  * validator.
  */
 export interface Delegation {
-    /** delegator_address is the bech32-encoded address of the delegator. */
+    /** delegator_address is the encoded address of the delegator. */
     delegator_address: string;
-    /** validator_address is the bech32-encoded address of the validator. */
+    /** validator_address is the encoded address of the validator. */
     validator_address: string;
     /** shares define the delegation shares received. */
     shares: string;
@@ -429,9 +463,9 @@ export interface DelegationProtoMsg {
  * validator.
  */
 export interface DelegationAmino {
-    /** delegator_address is the bech32-encoded address of the delegator. */
+    /** delegator_address is the encoded address of the delegator. */
     delegator_address: string;
-    /** validator_address is the bech32-encoded address of the validator. */
+    /** validator_address is the encoded address of the validator. */
     validator_address: string;
     /** shares define the delegation shares received. */
     shares: string;
@@ -455,9 +489,9 @@ export interface DelegationSDKType {
  * for a single validator in an time-ordered list.
  */
 export interface UnbondingDelegation {
-    /** delegator_address is the bech32-encoded address of the delegator. */
+    /** delegator_address is the encoded address of the delegator. */
     delegator_address: string;
-    /** validator_address is the bech32-encoded address of the validator. */
+    /** validator_address is the encoded address of the validator. */
     validator_address: string;
     /** entries are the unbonding delegation entries. */
     entries: UnbondingDelegationEntry[];
@@ -471,9 +505,9 @@ export interface UnbondingDelegationProtoMsg {
  * for a single validator in an time-ordered list.
  */
 export interface UnbondingDelegationAmino {
-    /** delegator_address is the bech32-encoded address of the delegator. */
+    /** delegator_address is the encoded address of the delegator. */
     delegator_address: string;
-    /** validator_address is the bech32-encoded address of the validator. */
+    /** validator_address is the encoded address of the validator. */
     validator_address: string;
     /** entries are the unbonding delegation entries. */
     entries: UnbondingDelegationEntryAmino[];
@@ -501,6 +535,10 @@ export interface UnbondingDelegationEntry {
     initial_balance: string;
     /** balance defines the tokens to receive at completion. */
     balance: string;
+    /** Incrementing id that uniquely identifies this entry */
+    unbonding_id: bigint;
+    /** Strictly positive if this entry's unbonding has been stopped by external modules */
+    unbonding_on_hold_ref_count: bigint;
 }
 export interface UnbondingDelegationEntryProtoMsg {
     type_url: "/cosmos.staking.v1beta1.UnbondingDelegationEntry";
@@ -516,6 +554,10 @@ export interface UnbondingDelegationEntryAmino {
     initial_balance: string;
     /** balance defines the tokens to receive at completion. */
     balance: string;
+    /** Incrementing id that uniquely identifies this entry */
+    unbonding_id: string;
+    /** Strictly positive if this entry's unbonding has been stopped by external modules */
+    unbonding_on_hold_ref_count: string;
 }
 export interface UnbondingDelegationEntryAminoMsg {
     type: "cosmos-sdk/UnbondingDelegationEntry";
@@ -527,6 +569,8 @@ export interface UnbondingDelegationEntrySDKType {
     completion_time: Date;
     initial_balance: string;
     balance: string;
+    unbonding_id: bigint;
+    unbonding_on_hold_ref_count: bigint;
 }
 /** RedelegationEntry defines a redelegation object with relevant metadata. */
 export interface RedelegationEntry {
@@ -538,6 +582,10 @@ export interface RedelegationEntry {
     initial_balance: string;
     /** shares_dst is the amount of destination-validator shares created by redelegation. */
     shares_dst: string;
+    /** Incrementing id that uniquely identifies this entry */
+    unbonding_id: bigint;
+    /** Strictly positive if this entry's unbonding has been stopped by external modules */
+    unbonding_on_hold_ref_count: bigint;
 }
 export interface RedelegationEntryProtoMsg {
     type_url: "/cosmos.staking.v1beta1.RedelegationEntry";
@@ -553,6 +601,10 @@ export interface RedelegationEntryAmino {
     initial_balance: string;
     /** shares_dst is the amount of destination-validator shares created by redelegation. */
     shares_dst: string;
+    /** Incrementing id that uniquely identifies this entry */
+    unbonding_id: string;
+    /** Strictly positive if this entry's unbonding has been stopped by external modules */
+    unbonding_on_hold_ref_count: string;
 }
 export interface RedelegationEntryAminoMsg {
     type: "cosmos-sdk/RedelegationEntry";
@@ -564,6 +616,8 @@ export interface RedelegationEntrySDKType {
     completion_time: Date;
     initial_balance: string;
     shares_dst: string;
+    unbonding_id: bigint;
+    unbonding_on_hold_ref_count: bigint;
 }
 /**
  * Redelegation contains the list of a particular delegator's redelegating bonds
@@ -611,7 +665,7 @@ export interface RedelegationSDKType {
     validator_dst_address: string;
     entries: RedelegationEntrySDKType[];
 }
-/** Params defines the parameters for the staking module. */
+/** Params defines the parameters for the x/staking module. */
 export interface Params {
     /** unbonding_time is the time duration of unbonding. */
     unbonding_time: Duration;
@@ -630,7 +684,7 @@ export interface ParamsProtoMsg {
     type_url: "/cosmos.staking.v1beta1.Params";
     value: Uint8Array;
 }
-/** Params defines the parameters for the staking module. */
+/** Params defines the parameters for the x/staking module. */
 export interface ParamsAmino {
     /** unbonding_time is the time duration of unbonding. */
     unbonding_time?: DurationAmino;
@@ -646,10 +700,10 @@ export interface ParamsAmino {
     min_commission_rate: string;
 }
 export interface ParamsAminoMsg {
-    type: "cosmos-sdk/Params";
+    type: "cosmos-sdk/x/staking/Params";
     value: ParamsAmino;
 }
-/** Params defines the parameters for the staking module. */
+/** Params defines the parameters for the x/staking module. */
 export interface ParamsSDKType {
     unbonding_time: DurationSDKType;
     max_validators: number;
@@ -792,6 +846,35 @@ export interface PoolSDKType {
     not_bonded_tokens: string;
     bonded_tokens: string;
 }
+/**
+ * ValidatorUpdates defines an array of abci.ValidatorUpdate objects.
+ * TODO: explore moving this to proto/cosmos/base to separate modules from tendermint dependence
+ */
+export interface ValidatorUpdates {
+    updates: ValidatorUpdate[];
+}
+export interface ValidatorUpdatesProtoMsg {
+    type_url: "/cosmos.staking.v1beta1.ValidatorUpdates";
+    value: Uint8Array;
+}
+/**
+ * ValidatorUpdates defines an array of abci.ValidatorUpdate objects.
+ * TODO: explore moving this to proto/cosmos/base to separate modules from tendermint dependence
+ */
+export interface ValidatorUpdatesAmino {
+    updates: ValidatorUpdateAmino[];
+}
+export interface ValidatorUpdatesAminoMsg {
+    type: "cosmos-sdk/ValidatorUpdates";
+    value: ValidatorUpdatesAmino;
+}
+/**
+ * ValidatorUpdates defines an array of abci.ValidatorUpdate objects.
+ * TODO: explore moving this to proto/cosmos/base to separate modules from tendermint dependence
+ */
+export interface ValidatorUpdatesSDKType {
+    updates: ValidatorUpdateSDKType[];
+}
 export declare const HistoricalInfo: {
     typeUrl: string;
     encode(message: HistoricalInfo, writer?: BinaryWriter): BinaryWriter;
@@ -799,8 +882,6 @@ export declare const HistoricalInfo: {
     fromJSON(object: any): HistoricalInfo;
     toJSON(message: HistoricalInfo): unknown;
     fromPartial(object: Partial<HistoricalInfo>): HistoricalInfo;
-    fromSDK(object: HistoricalInfoSDKType): HistoricalInfo;
-    toSDK(message: HistoricalInfo): HistoricalInfoSDKType;
     fromAmino(object: HistoricalInfoAmino): HistoricalInfo;
     toAmino(message: HistoricalInfo): HistoricalInfoAmino;
     fromAminoMsg(object: HistoricalInfoAminoMsg): HistoricalInfo;
@@ -816,8 +897,6 @@ export declare const CommissionRates: {
     fromJSON(object: any): CommissionRates;
     toJSON(message: CommissionRates): unknown;
     fromPartial(object: Partial<CommissionRates>): CommissionRates;
-    fromSDK(object: CommissionRatesSDKType): CommissionRates;
-    toSDK(message: CommissionRates): CommissionRatesSDKType;
     fromAmino(object: CommissionRatesAmino): CommissionRates;
     toAmino(message: CommissionRates): CommissionRatesAmino;
     fromAminoMsg(object: CommissionRatesAminoMsg): CommissionRates;
@@ -833,8 +912,6 @@ export declare const Commission: {
     fromJSON(object: any): Commission;
     toJSON(message: Commission): unknown;
     fromPartial(object: Partial<Commission>): Commission;
-    fromSDK(object: CommissionSDKType): Commission;
-    toSDK(message: Commission): CommissionSDKType;
     fromAmino(object: CommissionAmino): Commission;
     toAmino(message: Commission): CommissionAmino;
     fromAminoMsg(object: CommissionAminoMsg): Commission;
@@ -850,8 +927,6 @@ export declare const Description: {
     fromJSON(object: any): Description;
     toJSON(message: Description): unknown;
     fromPartial(object: Partial<Description>): Description;
-    fromSDK(object: DescriptionSDKType): Description;
-    toSDK(message: Description): DescriptionSDKType;
     fromAmino(object: DescriptionAmino): Description;
     toAmino(message: Description): DescriptionAmino;
     fromAminoMsg(object: DescriptionAminoMsg): Description;
@@ -867,8 +942,6 @@ export declare const Validator: {
     fromJSON(object: any): Validator;
     toJSON(message: Validator): unknown;
     fromPartial(object: Partial<Validator>): Validator;
-    fromSDK(object: ValidatorSDKType): Validator;
-    toSDK(message: Validator): ValidatorSDKType;
     fromAmino(object: ValidatorAmino): Validator;
     toAmino(message: Validator): ValidatorAmino;
     fromAminoMsg(object: ValidatorAminoMsg): Validator;
@@ -884,8 +957,6 @@ export declare const ValAddresses: {
     fromJSON(object: any): ValAddresses;
     toJSON(message: ValAddresses): unknown;
     fromPartial(object: Partial<ValAddresses>): ValAddresses;
-    fromSDK(object: ValAddressesSDKType): ValAddresses;
-    toSDK(message: ValAddresses): ValAddressesSDKType;
     fromAmino(object: ValAddressesAmino): ValAddresses;
     toAmino(message: ValAddresses): ValAddressesAmino;
     fromAminoMsg(object: ValAddressesAminoMsg): ValAddresses;
@@ -901,8 +972,6 @@ export declare const DVPair: {
     fromJSON(object: any): DVPair;
     toJSON(message: DVPair): unknown;
     fromPartial(object: Partial<DVPair>): DVPair;
-    fromSDK(object: DVPairSDKType): DVPair;
-    toSDK(message: DVPair): DVPairSDKType;
     fromAmino(object: DVPairAmino): DVPair;
     toAmino(message: DVPair): DVPairAmino;
     fromAminoMsg(object: DVPairAminoMsg): DVPair;
@@ -918,8 +987,6 @@ export declare const DVPairs: {
     fromJSON(object: any): DVPairs;
     toJSON(message: DVPairs): unknown;
     fromPartial(object: Partial<DVPairs>): DVPairs;
-    fromSDK(object: DVPairsSDKType): DVPairs;
-    toSDK(message: DVPairs): DVPairsSDKType;
     fromAmino(object: DVPairsAmino): DVPairs;
     toAmino(message: DVPairs): DVPairsAmino;
     fromAminoMsg(object: DVPairsAminoMsg): DVPairs;
@@ -935,8 +1002,6 @@ export declare const DVVTriplet: {
     fromJSON(object: any): DVVTriplet;
     toJSON(message: DVVTriplet): unknown;
     fromPartial(object: Partial<DVVTriplet>): DVVTriplet;
-    fromSDK(object: DVVTripletSDKType): DVVTriplet;
-    toSDK(message: DVVTriplet): DVVTripletSDKType;
     fromAmino(object: DVVTripletAmino): DVVTriplet;
     toAmino(message: DVVTriplet): DVVTripletAmino;
     fromAminoMsg(object: DVVTripletAminoMsg): DVVTriplet;
@@ -952,8 +1017,6 @@ export declare const DVVTriplets: {
     fromJSON(object: any): DVVTriplets;
     toJSON(message: DVVTriplets): unknown;
     fromPartial(object: Partial<DVVTriplets>): DVVTriplets;
-    fromSDK(object: DVVTripletsSDKType): DVVTriplets;
-    toSDK(message: DVVTriplets): DVVTripletsSDKType;
     fromAmino(object: DVVTripletsAmino): DVVTriplets;
     toAmino(message: DVVTriplets): DVVTripletsAmino;
     fromAminoMsg(object: DVVTripletsAminoMsg): DVVTriplets;
@@ -969,8 +1032,6 @@ export declare const Delegation: {
     fromJSON(object: any): Delegation;
     toJSON(message: Delegation): unknown;
     fromPartial(object: Partial<Delegation>): Delegation;
-    fromSDK(object: DelegationSDKType): Delegation;
-    toSDK(message: Delegation): DelegationSDKType;
     fromAmino(object: DelegationAmino): Delegation;
     toAmino(message: Delegation): DelegationAmino;
     fromAminoMsg(object: DelegationAminoMsg): Delegation;
@@ -986,8 +1047,6 @@ export declare const UnbondingDelegation: {
     fromJSON(object: any): UnbondingDelegation;
     toJSON(message: UnbondingDelegation): unknown;
     fromPartial(object: Partial<UnbondingDelegation>): UnbondingDelegation;
-    fromSDK(object: UnbondingDelegationSDKType): UnbondingDelegation;
-    toSDK(message: UnbondingDelegation): UnbondingDelegationSDKType;
     fromAmino(object: UnbondingDelegationAmino): UnbondingDelegation;
     toAmino(message: UnbondingDelegation): UnbondingDelegationAmino;
     fromAminoMsg(object: UnbondingDelegationAminoMsg): UnbondingDelegation;
@@ -1003,8 +1062,6 @@ export declare const UnbondingDelegationEntry: {
     fromJSON(object: any): UnbondingDelegationEntry;
     toJSON(message: UnbondingDelegationEntry): unknown;
     fromPartial(object: Partial<UnbondingDelegationEntry>): UnbondingDelegationEntry;
-    fromSDK(object: UnbondingDelegationEntrySDKType): UnbondingDelegationEntry;
-    toSDK(message: UnbondingDelegationEntry): UnbondingDelegationEntrySDKType;
     fromAmino(object: UnbondingDelegationEntryAmino): UnbondingDelegationEntry;
     toAmino(message: UnbondingDelegationEntry): UnbondingDelegationEntryAmino;
     fromAminoMsg(object: UnbondingDelegationEntryAminoMsg): UnbondingDelegationEntry;
@@ -1020,8 +1077,6 @@ export declare const RedelegationEntry: {
     fromJSON(object: any): RedelegationEntry;
     toJSON(message: RedelegationEntry): unknown;
     fromPartial(object: Partial<RedelegationEntry>): RedelegationEntry;
-    fromSDK(object: RedelegationEntrySDKType): RedelegationEntry;
-    toSDK(message: RedelegationEntry): RedelegationEntrySDKType;
     fromAmino(object: RedelegationEntryAmino): RedelegationEntry;
     toAmino(message: RedelegationEntry): RedelegationEntryAmino;
     fromAminoMsg(object: RedelegationEntryAminoMsg): RedelegationEntry;
@@ -1037,8 +1092,6 @@ export declare const Redelegation: {
     fromJSON(object: any): Redelegation;
     toJSON(message: Redelegation): unknown;
     fromPartial(object: Partial<Redelegation>): Redelegation;
-    fromSDK(object: RedelegationSDKType): Redelegation;
-    toSDK(message: Redelegation): RedelegationSDKType;
     fromAmino(object: RedelegationAmino): Redelegation;
     toAmino(message: Redelegation): RedelegationAmino;
     fromAminoMsg(object: RedelegationAminoMsg): Redelegation;
@@ -1054,8 +1107,6 @@ export declare const Params: {
     fromJSON(object: any): Params;
     toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
     fromAminoMsg(object: ParamsAminoMsg): Params;
@@ -1071,8 +1122,6 @@ export declare const DelegationResponse: {
     fromJSON(object: any): DelegationResponse;
     toJSON(message: DelegationResponse): unknown;
     fromPartial(object: Partial<DelegationResponse>): DelegationResponse;
-    fromSDK(object: DelegationResponseSDKType): DelegationResponse;
-    toSDK(message: DelegationResponse): DelegationResponseSDKType;
     fromAmino(object: DelegationResponseAmino): DelegationResponse;
     toAmino(message: DelegationResponse): DelegationResponseAmino;
     fromAminoMsg(object: DelegationResponseAminoMsg): DelegationResponse;
@@ -1088,8 +1137,6 @@ export declare const RedelegationEntryResponse: {
     fromJSON(object: any): RedelegationEntryResponse;
     toJSON(message: RedelegationEntryResponse): unknown;
     fromPartial(object: Partial<RedelegationEntryResponse>): RedelegationEntryResponse;
-    fromSDK(object: RedelegationEntryResponseSDKType): RedelegationEntryResponse;
-    toSDK(message: RedelegationEntryResponse): RedelegationEntryResponseSDKType;
     fromAmino(object: RedelegationEntryResponseAmino): RedelegationEntryResponse;
     toAmino(message: RedelegationEntryResponse): RedelegationEntryResponseAmino;
     fromAminoMsg(object: RedelegationEntryResponseAminoMsg): RedelegationEntryResponse;
@@ -1105,8 +1152,6 @@ export declare const RedelegationResponse: {
     fromJSON(object: any): RedelegationResponse;
     toJSON(message: RedelegationResponse): unknown;
     fromPartial(object: Partial<RedelegationResponse>): RedelegationResponse;
-    fromSDK(object: RedelegationResponseSDKType): RedelegationResponse;
-    toSDK(message: RedelegationResponse): RedelegationResponseSDKType;
     fromAmino(object: RedelegationResponseAmino): RedelegationResponse;
     toAmino(message: RedelegationResponse): RedelegationResponseAmino;
     fromAminoMsg(object: RedelegationResponseAminoMsg): RedelegationResponse;
@@ -1122,8 +1167,6 @@ export declare const Pool: {
     fromJSON(object: any): Pool;
     toJSON(message: Pool): unknown;
     fromPartial(object: Partial<Pool>): Pool;
-    fromSDK(object: PoolSDKType): Pool;
-    toSDK(message: Pool): PoolSDKType;
     fromAmino(object: PoolAmino): Pool;
     toAmino(message: Pool): PoolAmino;
     fromAminoMsg(object: PoolAminoMsg): Pool;
@@ -1132,6 +1175,21 @@ export declare const Pool: {
     toProto(message: Pool): Uint8Array;
     toProtoMsg(message: Pool): PoolProtoMsg;
 };
+export declare const ValidatorUpdates: {
+    typeUrl: string;
+    encode(message: ValidatorUpdates, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ValidatorUpdates;
+    fromJSON(object: any): ValidatorUpdates;
+    toJSON(message: ValidatorUpdates): unknown;
+    fromPartial(object: Partial<ValidatorUpdates>): ValidatorUpdates;
+    fromAmino(object: ValidatorUpdatesAmino): ValidatorUpdates;
+    toAmino(message: ValidatorUpdates): ValidatorUpdatesAmino;
+    fromAminoMsg(object: ValidatorUpdatesAminoMsg): ValidatorUpdates;
+    toAminoMsg(message: ValidatorUpdates): ValidatorUpdatesAminoMsg;
+    fromProtoMsg(message: ValidatorUpdatesProtoMsg): ValidatorUpdates;
+    toProto(message: ValidatorUpdates): Uint8Array;
+    toProtoMsg(message: ValidatorUpdates): ValidatorUpdatesProtoMsg;
+};
 export declare const Cosmos_cryptoPubKey_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
 export declare const Cosmos_cryptoPubKey_FromAmino: (content: AnyAmino) => import("cosmjs-types/google/protobuf/any").Any;
-export declare const Cosmos_cryptoPubKey_ToAmino: (content: Any) => import("@cosmjs/amino").Pubkey;
+export declare const Cosmos_cryptoPubKey_ToAmino: (content: Any) => Pubkey | null;

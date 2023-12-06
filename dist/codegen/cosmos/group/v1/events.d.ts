@@ -1,4 +1,4 @@
-import { ProposalExecutorResult } from "./types";
+import { ProposalExecutorResult, ProposalStatus, TallyResult, TallyResultAmino, TallyResultSDKType } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.group.v1";
 /** EventCreateGroup is an event emitted when a group is created. */
@@ -161,6 +161,8 @@ export interface EventExec {
     proposal_id: bigint;
     /** result is the proposal execution result. */
     result: ProposalExecutorResult;
+    /** logs contains error logs in case the execution result is FAILURE. */
+    logs: string;
 }
 export interface EventExecProtoMsg {
     type_url: "/cosmos.group.v1.EventExec";
@@ -172,6 +174,8 @@ export interface EventExecAmino {
     proposal_id: string;
     /** result is the proposal execution result. */
     result: ProposalExecutorResult;
+    /** logs contains error logs in case the execution result is FAILURE. */
+    logs: string;
 }
 export interface EventExecAminoMsg {
     type: "cosmos-sdk/EventExec";
@@ -181,6 +185,7 @@ export interface EventExecAminoMsg {
 export interface EventExecSDKType {
     proposal_id: bigint;
     result: ProposalExecutorResult;
+    logs: string;
 }
 /** EventLeaveGroup is an event emitted when group member leaves the group. */
 export interface EventLeaveGroup {
@@ -209,6 +214,38 @@ export interface EventLeaveGroupSDKType {
     group_id: bigint;
     address: string;
 }
+/** EventProposalPruned is an event emitted when a proposal is pruned. */
+export interface EventProposalPruned {
+    /** proposal_id is the unique ID of the proposal. */
+    proposal_id: bigint;
+    /** status is the proposal status (UNSPECIFIED, SUBMITTED, ACCEPTED, REJECTED, ABORTED, WITHDRAWN). */
+    status: ProposalStatus;
+    /** tally_result is the proposal tally result (when applicable). */
+    tally_result?: TallyResult;
+}
+export interface EventProposalPrunedProtoMsg {
+    type_url: "/cosmos.group.v1.EventProposalPruned";
+    value: Uint8Array;
+}
+/** EventProposalPruned is an event emitted when a proposal is pruned. */
+export interface EventProposalPrunedAmino {
+    /** proposal_id is the unique ID of the proposal. */
+    proposal_id: string;
+    /** status is the proposal status (UNSPECIFIED, SUBMITTED, ACCEPTED, REJECTED, ABORTED, WITHDRAWN). */
+    status: ProposalStatus;
+    /** tally_result is the proposal tally result (when applicable). */
+    tally_result?: TallyResultAmino;
+}
+export interface EventProposalPrunedAminoMsg {
+    type: "cosmos-sdk/EventProposalPruned";
+    value: EventProposalPrunedAmino;
+}
+/** EventProposalPruned is an event emitted when a proposal is pruned. */
+export interface EventProposalPrunedSDKType {
+    proposal_id: bigint;
+    status: ProposalStatus;
+    tally_result?: TallyResultSDKType;
+}
 export declare const EventCreateGroup: {
     typeUrl: string;
     encode(message: EventCreateGroup, writer?: BinaryWriter): BinaryWriter;
@@ -216,8 +253,6 @@ export declare const EventCreateGroup: {
     fromJSON(object: any): EventCreateGroup;
     toJSON(message: EventCreateGroup): unknown;
     fromPartial(object: Partial<EventCreateGroup>): EventCreateGroup;
-    fromSDK(object: EventCreateGroupSDKType): EventCreateGroup;
-    toSDK(message: EventCreateGroup): EventCreateGroupSDKType;
     fromAmino(object: EventCreateGroupAmino): EventCreateGroup;
     toAmino(message: EventCreateGroup): EventCreateGroupAmino;
     fromAminoMsg(object: EventCreateGroupAminoMsg): EventCreateGroup;
@@ -233,8 +268,6 @@ export declare const EventUpdateGroup: {
     fromJSON(object: any): EventUpdateGroup;
     toJSON(message: EventUpdateGroup): unknown;
     fromPartial(object: Partial<EventUpdateGroup>): EventUpdateGroup;
-    fromSDK(object: EventUpdateGroupSDKType): EventUpdateGroup;
-    toSDK(message: EventUpdateGroup): EventUpdateGroupSDKType;
     fromAmino(object: EventUpdateGroupAmino): EventUpdateGroup;
     toAmino(message: EventUpdateGroup): EventUpdateGroupAmino;
     fromAminoMsg(object: EventUpdateGroupAminoMsg): EventUpdateGroup;
@@ -250,8 +283,6 @@ export declare const EventCreateGroupPolicy: {
     fromJSON(object: any): EventCreateGroupPolicy;
     toJSON(message: EventCreateGroupPolicy): unknown;
     fromPartial(object: Partial<EventCreateGroupPolicy>): EventCreateGroupPolicy;
-    fromSDK(object: EventCreateGroupPolicySDKType): EventCreateGroupPolicy;
-    toSDK(message: EventCreateGroupPolicy): EventCreateGroupPolicySDKType;
     fromAmino(object: EventCreateGroupPolicyAmino): EventCreateGroupPolicy;
     toAmino(message: EventCreateGroupPolicy): EventCreateGroupPolicyAmino;
     fromAminoMsg(object: EventCreateGroupPolicyAminoMsg): EventCreateGroupPolicy;
@@ -267,8 +298,6 @@ export declare const EventUpdateGroupPolicy: {
     fromJSON(object: any): EventUpdateGroupPolicy;
     toJSON(message: EventUpdateGroupPolicy): unknown;
     fromPartial(object: Partial<EventUpdateGroupPolicy>): EventUpdateGroupPolicy;
-    fromSDK(object: EventUpdateGroupPolicySDKType): EventUpdateGroupPolicy;
-    toSDK(message: EventUpdateGroupPolicy): EventUpdateGroupPolicySDKType;
     fromAmino(object: EventUpdateGroupPolicyAmino): EventUpdateGroupPolicy;
     toAmino(message: EventUpdateGroupPolicy): EventUpdateGroupPolicyAmino;
     fromAminoMsg(object: EventUpdateGroupPolicyAminoMsg): EventUpdateGroupPolicy;
@@ -284,8 +313,6 @@ export declare const EventSubmitProposal: {
     fromJSON(object: any): EventSubmitProposal;
     toJSON(message: EventSubmitProposal): unknown;
     fromPartial(object: Partial<EventSubmitProposal>): EventSubmitProposal;
-    fromSDK(object: EventSubmitProposalSDKType): EventSubmitProposal;
-    toSDK(message: EventSubmitProposal): EventSubmitProposalSDKType;
     fromAmino(object: EventSubmitProposalAmino): EventSubmitProposal;
     toAmino(message: EventSubmitProposal): EventSubmitProposalAmino;
     fromAminoMsg(object: EventSubmitProposalAminoMsg): EventSubmitProposal;
@@ -301,8 +328,6 @@ export declare const EventWithdrawProposal: {
     fromJSON(object: any): EventWithdrawProposal;
     toJSON(message: EventWithdrawProposal): unknown;
     fromPartial(object: Partial<EventWithdrawProposal>): EventWithdrawProposal;
-    fromSDK(object: EventWithdrawProposalSDKType): EventWithdrawProposal;
-    toSDK(message: EventWithdrawProposal): EventWithdrawProposalSDKType;
     fromAmino(object: EventWithdrawProposalAmino): EventWithdrawProposal;
     toAmino(message: EventWithdrawProposal): EventWithdrawProposalAmino;
     fromAminoMsg(object: EventWithdrawProposalAminoMsg): EventWithdrawProposal;
@@ -318,8 +343,6 @@ export declare const EventVote: {
     fromJSON(object: any): EventVote;
     toJSON(message: EventVote): unknown;
     fromPartial(object: Partial<EventVote>): EventVote;
-    fromSDK(object: EventVoteSDKType): EventVote;
-    toSDK(message: EventVote): EventVoteSDKType;
     fromAmino(object: EventVoteAmino): EventVote;
     toAmino(message: EventVote): EventVoteAmino;
     fromAminoMsg(object: EventVoteAminoMsg): EventVote;
@@ -335,8 +358,6 @@ export declare const EventExec: {
     fromJSON(object: any): EventExec;
     toJSON(message: EventExec): unknown;
     fromPartial(object: Partial<EventExec>): EventExec;
-    fromSDK(object: EventExecSDKType): EventExec;
-    toSDK(message: EventExec): EventExecSDKType;
     fromAmino(object: EventExecAmino): EventExec;
     toAmino(message: EventExec): EventExecAmino;
     fromAminoMsg(object: EventExecAminoMsg): EventExec;
@@ -352,8 +373,6 @@ export declare const EventLeaveGroup: {
     fromJSON(object: any): EventLeaveGroup;
     toJSON(message: EventLeaveGroup): unknown;
     fromPartial(object: Partial<EventLeaveGroup>): EventLeaveGroup;
-    fromSDK(object: EventLeaveGroupSDKType): EventLeaveGroup;
-    toSDK(message: EventLeaveGroup): EventLeaveGroupSDKType;
     fromAmino(object: EventLeaveGroupAmino): EventLeaveGroup;
     toAmino(message: EventLeaveGroup): EventLeaveGroupAmino;
     fromAminoMsg(object: EventLeaveGroupAminoMsg): EventLeaveGroup;
@@ -361,4 +380,19 @@ export declare const EventLeaveGroup: {
     fromProtoMsg(message: EventLeaveGroupProtoMsg): EventLeaveGroup;
     toProto(message: EventLeaveGroup): Uint8Array;
     toProtoMsg(message: EventLeaveGroup): EventLeaveGroupProtoMsg;
+};
+export declare const EventProposalPruned: {
+    typeUrl: string;
+    encode(message: EventProposalPruned, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): EventProposalPruned;
+    fromJSON(object: any): EventProposalPruned;
+    toJSON(message: EventProposalPruned): unknown;
+    fromPartial(object: Partial<EventProposalPruned>): EventProposalPruned;
+    fromAmino(object: EventProposalPrunedAmino): EventProposalPruned;
+    toAmino(message: EventProposalPruned): EventProposalPrunedAmino;
+    fromAminoMsg(object: EventProposalPrunedAminoMsg): EventProposalPruned;
+    toAminoMsg(message: EventProposalPruned): EventProposalPrunedAminoMsg;
+    fromProtoMsg(message: EventProposalPrunedProtoMsg): EventProposalPruned;
+    toProto(message: EventProposalPruned): Uint8Array;
+    toProtoMsg(message: EventProposalPruned): EventProposalPrunedProtoMsg;
 };

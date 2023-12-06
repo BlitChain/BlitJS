@@ -91,32 +91,6 @@ exports.Allocation = {
         message.allow_list = object.allow_list?.map(e => e) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            source_port: object?.source_port,
-            source_channel: object?.source_channel,
-            spend_limit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e) => coin_1.Coin.fromSDK(e)) : [],
-            allow_list: Array.isArray(object?.allow_list) ? object.allow_list.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.source_port = message.source_port;
-        obj.source_channel = message.source_channel;
-        if (message.spend_limit) {
-            obj.spend_limit = message.spend_limit.map(e => e ? coin_1.Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.spend_limit = [];
-        }
-        if (message.allow_list) {
-            obj.allow_list = message.allow_list.map(e => e);
-        }
-        else {
-            obj.allow_list = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             source_port: object.source_port,
@@ -215,21 +189,6 @@ exports.TransferAuthorization = {
         const message = createBaseTransferAuthorization();
         message.allocations = object.allocations?.map(e => exports.Allocation.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            allocations: Array.isArray(object?.allocations) ? object.allocations.map((e) => exports.Allocation.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.allocations) {
-            obj.allocations = message.allocations.map(e => e ? exports.Allocation.toSDK(e) : undefined);
-        }
-        else {
-            obj.allocations = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {

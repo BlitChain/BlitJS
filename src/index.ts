@@ -75,7 +75,12 @@ const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
     signer: offlineSigner
   });
 
-  ibcClient.registry.types.forEach((value, key) => client.registry.types.set(key, value));
+  ibcClient.registry.types.forEach((value, key) => {
+    // add the ibc types to the blit client if they don't exist
+    if (!client.registry.types.has(key)) {
+      client.registry.types.set(key, value);
+    }
+  });
 
   client.gasPrice = '0.000001blit';
   return client;
@@ -149,6 +154,18 @@ const makeJsClient = async ({ mnemonic, rpcEndpoint, restEndpoint }) => {
     signer
   });
   client.gasPrice = '1ublit';
+
+  const ibcClient = await blitjs.getSigningIbcClient({
+    rpcEndpoint,
+    signer
+  });
+
+  ibcClient.registry.types.forEach((value, key) => {
+    // add the ibc types to the blit client if they don't exist
+    if (!client.registry.types.has(key)) {
+      client.registry.types.set(key, value);
+    }
+  });
   return client;
 };
 

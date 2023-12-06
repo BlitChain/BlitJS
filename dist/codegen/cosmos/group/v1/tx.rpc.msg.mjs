@@ -81,7 +81,7 @@ export class Msg {
             body: JSON.stringify(request, fm.replacer)
         });
     }
-    /** WithdrawProposal aborts a proposal. */
+    /** WithdrawProposal withdraws a proposal. */
     static WithdrawProposal(request, initRequest) {
         return fm.fetchReq(`/cosmos.group.v1/WithdrawProposal`, {
             ...initRequest,

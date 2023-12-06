@@ -114,7 +114,7 @@ export interface QueryGranterGrantsResponseSDKType {
     grants: GrantAuthorizationSDKType[];
     pagination?: PageResponseSDKType;
 }
-/** QueryGranteeGrantsRequest is the request type for the Query/IssuedGrants RPC method. */
+/** QueryGranteeGrantsRequest is the request type for the Query/GranteeGrants RPC method. */
 export interface QueryGranteeGrantsRequest {
     grantee: string;
     /** pagination defines an pagination for the request. */
@@ -124,7 +124,7 @@ export interface QueryGranteeGrantsRequestProtoMsg {
     type_url: "/cosmos.authz.v1beta1.QueryGranteeGrantsRequest";
     value: Uint8Array;
 }
-/** QueryGranteeGrantsRequest is the request type for the Query/IssuedGrants RPC method. */
+/** QueryGranteeGrantsRequest is the request type for the Query/GranteeGrants RPC method. */
 export interface QueryGranteeGrantsRequestAmino {
     grantee: string;
     /** pagination defines an pagination for the request. */
@@ -134,7 +134,7 @@ export interface QueryGranteeGrantsRequestAminoMsg {
     type: "cosmos-sdk/QueryGranteeGrantsRequest";
     value: QueryGranteeGrantsRequestAmino;
 }
-/** QueryGranteeGrantsRequest is the request type for the Query/IssuedGrants RPC method. */
+/** QueryGranteeGrantsRequest is the request type for the Query/GranteeGrants RPC method. */
 export interface QueryGranteeGrantsRequestSDKType {
     grantee: string;
     pagination?: PageRequestSDKType;
@@ -173,8 +173,6 @@ export declare const QueryGrantsRequest: {
     fromJSON(object: any): QueryGrantsRequest;
     toJSON(message: QueryGrantsRequest): unknown;
     fromPartial(object: Partial<QueryGrantsRequest>): QueryGrantsRequest;
-    fromSDK(object: QueryGrantsRequestSDKType): QueryGrantsRequest;
-    toSDK(message: QueryGrantsRequest): QueryGrantsRequestSDKType;
     fromAmino(object: QueryGrantsRequestAmino): QueryGrantsRequest;
     toAmino(message: QueryGrantsRequest): QueryGrantsRequestAmino;
     fromAminoMsg(object: QueryGrantsRequestAminoMsg): QueryGrantsRequest;
@@ -190,8 +188,6 @@ export declare const QueryGrantsResponse: {
     fromJSON(object: any): QueryGrantsResponse;
     toJSON(message: QueryGrantsResponse): unknown;
     fromPartial(object: Partial<QueryGrantsResponse>): QueryGrantsResponse;
-    fromSDK(object: QueryGrantsResponseSDKType): QueryGrantsResponse;
-    toSDK(message: QueryGrantsResponse): QueryGrantsResponseSDKType;
     fromAmino(object: QueryGrantsResponseAmino): QueryGrantsResponse;
     toAmino(message: QueryGrantsResponse): QueryGrantsResponseAmino;
     fromAminoMsg(object: QueryGrantsResponseAminoMsg): QueryGrantsResponse;
@@ -207,8 +203,6 @@ export declare const QueryGranterGrantsRequest: {
     fromJSON(object: any): QueryGranterGrantsRequest;
     toJSON(message: QueryGranterGrantsRequest): unknown;
     fromPartial(object: Partial<QueryGranterGrantsRequest>): QueryGranterGrantsRequest;
-    fromSDK(object: QueryGranterGrantsRequestSDKType): QueryGranterGrantsRequest;
-    toSDK(message: QueryGranterGrantsRequest): QueryGranterGrantsRequestSDKType;
     fromAmino(object: QueryGranterGrantsRequestAmino): QueryGranterGrantsRequest;
     toAmino(message: QueryGranterGrantsRequest): QueryGranterGrantsRequestAmino;
     fromAminoMsg(object: QueryGranterGrantsRequestAminoMsg): QueryGranterGrantsRequest;
@@ -224,8 +218,6 @@ export declare const QueryGranterGrantsResponse: {
     fromJSON(object: any): QueryGranterGrantsResponse;
     toJSON(message: QueryGranterGrantsResponse): unknown;
     fromPartial(object: Partial<QueryGranterGrantsResponse>): QueryGranterGrantsResponse;
-    fromSDK(object: QueryGranterGrantsResponseSDKType): QueryGranterGrantsResponse;
-    toSDK(message: QueryGranterGrantsResponse): QueryGranterGrantsResponseSDKType;
     fromAmino(object: QueryGranterGrantsResponseAmino): QueryGranterGrantsResponse;
     toAmino(message: QueryGranterGrantsResponse): QueryGranterGrantsResponseAmino;
     fromAminoMsg(object: QueryGranterGrantsResponseAminoMsg): QueryGranterGrantsResponse;
@@ -241,8 +233,6 @@ export declare const QueryGranteeGrantsRequest: {
     fromJSON(object: any): QueryGranteeGrantsRequest;
     toJSON(message: QueryGranteeGrantsRequest): unknown;
     fromPartial(object: Partial<QueryGranteeGrantsRequest>): QueryGranteeGrantsRequest;
-    fromSDK(object: QueryGranteeGrantsRequestSDKType): QueryGranteeGrantsRequest;
-    toSDK(message: QueryGranteeGrantsRequest): QueryGranteeGrantsRequestSDKType;
     fromAmino(object: QueryGranteeGrantsRequestAmino): QueryGranteeGrantsRequest;
     toAmino(message: QueryGranteeGrantsRequest): QueryGranteeGrantsRequestAmino;
     fromAminoMsg(object: QueryGranteeGrantsRequestAminoMsg): QueryGranteeGrantsRequest;
@@ -258,8 +248,6 @@ export declare const QueryGranteeGrantsResponse: {
     fromJSON(object: any): QueryGranteeGrantsResponse;
     toJSON(message: QueryGranteeGrantsResponse): unknown;
     fromPartial(object: Partial<QueryGranteeGrantsResponse>): QueryGranteeGrantsResponse;
-    fromSDK(object: QueryGranteeGrantsResponseSDKType): QueryGranteeGrantsResponse;
-    toSDK(message: QueryGranteeGrantsResponse): QueryGranteeGrantsResponseSDKType;
     fromAmino(object: QueryGranteeGrantsResponseAmino): QueryGranteeGrantsResponse;
     toAmino(message: QueryGranteeGrantsResponse): QueryGranteeGrantsResponseAmino;
     fromAminoMsg(object: QueryGranteeGrantsResponseAminoMsg): QueryGranteeGrantsResponse;

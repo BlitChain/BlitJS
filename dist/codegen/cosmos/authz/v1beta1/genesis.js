@@ -55,21 +55,6 @@ exports.GenesisState = {
         message.authorization = object.authorization?.map(e => authz_1.GrantAuthorization.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            authorization: Array.isArray(object?.authorization) ? object.authorization.map((e) => authz_1.GrantAuthorization.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.authorization) {
-            obj.authorization = message.authorization.map(e => e ? authz_1.GrantAuthorization.toSDK(e) : undefined);
-        }
-        else {
-            obj.authorization = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             authorization: Array.isArray(object?.authorization) ? object.authorization.map((e) => authz_1.GrantAuthorization.fromAmino(e)) : []

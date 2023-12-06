@@ -90,24 +90,6 @@ exports.BIP44Params = {
         message.address_index = object.address_index ?? 0;
         return message;
     },
-    fromSDK(object) {
-        return {
-            purpose: object?.purpose,
-            coin_type: object?.coin_type,
-            account: object?.account,
-            change: object?.change,
-            address_index: object?.address_index
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.purpose = message.purpose;
-        obj.coin_type = message.coin_type;
-        obj.account = message.account;
-        obj.change = message.change;
-        obj.address_index = message.address_index;
-        return obj;
-    },
     fromAmino(object) {
         return {
             purpose: object.purpose,
@@ -131,7 +113,7 @@ exports.BIP44Params = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/BIP44Params",
+            type: "crypto/keys/hd/BIP44Params",
             value: exports.BIP44Params.toAmino(message)
         };
     },

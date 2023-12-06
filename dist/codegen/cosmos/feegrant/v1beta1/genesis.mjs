@@ -52,21 +52,6 @@ export const GenesisState = {
         message.allowances = object.allowances?.map(e => Grant.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            allowances: Array.isArray(object?.allowances) ? object.allowances.map((e) => Grant.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.allowances) {
-            obj.allowances = message.allowances.map(e => e ? Grant.toSDK(e) : undefined);
-        }
-        else {
-            obj.allowances = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             allowances: Array.isArray(object?.allowances) ? object.allowances.map((e) => Grant.fromAmino(e)) : []

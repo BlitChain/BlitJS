@@ -17,6 +17,7 @@ export class LCDQueryClient {
         this.votesByVoter = this.votesByVoter.bind(this);
         this.groupsByMember = this.groupsByMember.bind(this);
         this.tallyResult = this.tallyResult.bind(this);
+        this.groups = this.groups.bind(this);
     }
     /* GroupInfo queries group info based on group id. */
     async groupInfo(params) {
@@ -28,7 +29,7 @@ export class LCDQueryClient {
         const endpoint = `cosmos/group/v1/group_policy_info/${params.address}`;
         return await this.req.get(endpoint);
     }
-    /* GroupMembers queries members of a group */
+    /* GroupMembers queries members of a group by group id. */
     async groupMembers(params) {
         const options = {
             params: {}
@@ -61,7 +62,7 @@ export class LCDQueryClient {
         const endpoint = `cosmos/group/v1/group_policies_by_group/${params.group_id}`;
         return await this.req.get(endpoint, options);
     }
-    /* GroupsByAdmin queries group policies by admin address. */
+    /* GroupPoliciesByAdmin queries group policies by admin address. */
     async groupPoliciesByAdmin(params) {
         const options = {
             params: {}
@@ -93,7 +94,7 @@ export class LCDQueryClient {
         const endpoint = `cosmos/group/v1/vote_by_proposal_voter/${params.proposal_id}/${params.voter}`;
         return await this.req.get(endpoint);
     }
-    /* VotesByProposal queries a vote by proposal. */
+    /* VotesByProposal queries a vote by proposal id. */
     async votesByProposal(params) {
         const options = {
             params: {}
@@ -126,10 +127,29 @@ export class LCDQueryClient {
         const endpoint = `cosmos/group/v1/groups_by_member/${params.address}`;
         return await this.req.get(endpoint, options);
     }
-    /* TallyResult queries the tally of a proposal votes. */
+    /* TallyResult returns the tally result of a proposal. If the proposal is
+     still in voting period, then this query computes the current tally state,
+     which might not be final. On the other hand, if the proposal is final,
+     then it simply returns the `final_tally_result` state stored in the
+     proposal itself. */
     async tallyResult(params) {
         const endpoint = `cosmos/group/v1/proposals/${params.proposal_id}/tally`;
         return await this.req.get(endpoint);
+    }
+    /* Groups queries all groups in state.
+    
+     Since: cosmos-sdk 0.47.1 */
+    async groups(params = {
+        pagination: undefined
+    }) {
+        const options = {
+            params: {}
+        };
+        if (typeof params?.pagination !== "undefined") {
+            setPaginationParams(options, params.pagination);
+        }
+        const endpoint = `cosmos/group/v1/groups`;
+        return await this.req.get(endpoint, options);
     }
 }
 //# sourceMappingURL=query.lcd.js.map

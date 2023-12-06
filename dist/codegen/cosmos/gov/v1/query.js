@@ -1,12 +1,151 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QueryTallyResultResponse = exports.QueryTallyResultRequest = exports.QueryDepositsResponse = exports.QueryDepositsRequest = exports.QueryDepositResponse = exports.QueryDepositRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.QueryVotesResponse = exports.QueryVotesRequest = exports.QueryVoteResponse = exports.QueryVoteRequest = exports.QueryProposalsResponse = exports.QueryProposalsRequest = exports.QueryProposalResponse = exports.QueryProposalRequest = exports.protobufPackage = void 0;
+exports.QueryTallyResultResponse = exports.QueryTallyResultRequest = exports.QueryDepositsResponse = exports.QueryDepositsRequest = exports.QueryDepositResponse = exports.QueryDepositRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.QueryVotesResponse = exports.QueryVotesRequest = exports.QueryVoteResponse = exports.QueryVoteRequest = exports.QueryProposalsResponse = exports.QueryProposalsRequest = exports.QueryProposalResponse = exports.QueryProposalRequest = exports.QueryConstitutionResponse = exports.QueryConstitutionRequest = exports.protobufPackage = void 0;
 //@ts-nocheck
 const gov_1 = require("./gov");
 const pagination_1 = require("../../base/query/v1beta1/pagination");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
 exports.protobufPackage = "cosmos.gov.v1";
+function createBaseQueryConstitutionRequest() {
+    return {};
+}
+exports.QueryConstitutionRequest = {
+    typeUrl: "/cosmos.gov.v1.QueryConstitutionRequest",
+    encode(_, writer = binary_1.BinaryWriter.create()) {
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryConstitutionRequest();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
+    fromPartial(_) {
+        const message = createBaseQueryConstitutionRequest();
+        return message;
+    },
+    fromAmino(_) {
+        return {};
+    },
+    toAmino(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.QueryConstitutionRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/v1/QueryConstitutionRequest",
+            value: exports.QueryConstitutionRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.QueryConstitutionRequest.decode(message.value);
+    },
+    toProto(message) {
+        return exports.QueryConstitutionRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1.QueryConstitutionRequest",
+            value: exports.QueryConstitutionRequest.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryConstitutionResponse() {
+    return {
+        constitution: ""
+    };
+}
+exports.QueryConstitutionResponse = {
+    typeUrl: "/cosmos.gov.v1.QueryConstitutionResponse",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.constitution !== "") {
+            writer.uint32(10).string(message.constitution);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryConstitutionResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.constitution = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            constitution: (0, helpers_1.isSet)(object.constitution) ? String(object.constitution) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.constitution !== undefined && (obj.constitution = message.constitution);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryConstitutionResponse();
+        message.constitution = object.constitution ?? "";
+        return message;
+    },
+    fromAmino(object) {
+        return {
+            constitution: object.constitution
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.constitution = message.constitution;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.QueryConstitutionResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/v1/QueryConstitutionResponse",
+            value: exports.QueryConstitutionResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.QueryConstitutionResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.QueryConstitutionResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1.QueryConstitutionResponse",
+            value: exports.QueryConstitutionResponse.encode(message).finish()
+        };
+    }
+};
 function createBaseQueryProposalRequest() {
     return {
         proposal_id: BigInt(0)
@@ -51,16 +190,6 @@ exports.QueryProposalRequest = {
         const message = createBaseQueryProposalRequest();
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -138,16 +267,6 @@ exports.QueryProposalResponse = {
         const message = createBaseQueryProposalResponse();
         message.proposal = object.proposal !== undefined && object.proposal !== null ? gov_1.Proposal.fromPartial(object.proposal) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal: object.proposal ? gov_1.Proposal.fromSDK(object.proposal) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.proposal !== undefined && (obj.proposal = message.proposal ? gov_1.Proposal.toSDK(message.proposal) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -256,22 +375,6 @@ exports.QueryProposalsRequest = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_status: (0, helpers_1.isSet)(object.proposal_status) ? (0, gov_1.proposalStatusFromJSON)(object.proposal_status) : -1,
-            voter: object?.voter,
-            depositor: object?.depositor,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.proposal_status !== undefined && (obj.proposal_status = (0, gov_1.proposalStatusToJSON)(message.proposal_status));
-        obj.voter = message.voter;
-        obj.depositor = message.depositor;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_status: (0, helpers_1.isSet)(object.proposal_status) ? (0, gov_1.proposalStatusFromJSON)(object.proposal_status) : -1,
@@ -370,23 +473,6 @@ exports.QueryProposalsResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => gov_1.Proposal.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.proposals) {
-            obj.proposals = message.proposals.map(e => e ? gov_1.Proposal.toSDK(e) : undefined);
-        }
-        else {
-            obj.proposals = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => gov_1.Proposal.fromAmino(e)) : [],
@@ -481,18 +567,6 @@ exports.QueryVoteRequest = {
         message.voter = object.voter ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            voter: object?.voter
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        obj.voter = message.voter;
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id),
@@ -571,16 +645,6 @@ exports.QueryVoteResponse = {
         const message = createBaseQueryVoteResponse();
         message.vote = object.vote !== undefined && object.vote !== null ? gov_1.Vote.fromPartial(object.vote) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            vote: object.vote ? gov_1.Vote.fromSDK(object.vote) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.vote !== undefined && (obj.vote = message.vote ? gov_1.Vote.toSDK(message.vote) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -668,18 +732,6 @@ exports.QueryVotesRequest = {
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -775,23 +827,6 @@ exports.QueryVotesResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => gov_1.Vote.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.votes) {
-            obj.votes = message.votes.map(e => e ? gov_1.Vote.toSDK(e) : undefined);
-        }
-        else {
-            obj.votes = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             votes: Array.isArray(object?.votes) ? object.votes.map((e) => gov_1.Vote.fromAmino(e)) : [],
@@ -876,16 +911,6 @@ exports.QueryParamsRequest = {
         message.params_type = object.params_type ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            params_type: object?.params_type
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.params_type = message.params_type;
-        return obj;
-    },
     fromAmino(object) {
         return {
             params_type: object.params_type
@@ -922,7 +947,8 @@ function createBaseQueryParamsResponse() {
     return {
         voting_params: undefined,
         deposit_params: undefined,
-        tally_params: undefined
+        tally_params: undefined,
+        params: undefined
     };
 }
 exports.QueryParamsResponse = {
@@ -936,6 +962,9 @@ exports.QueryParamsResponse = {
         }
         if (message.tally_params !== undefined) {
             gov_1.TallyParams.encode(message.tally_params, writer.uint32(26).fork()).ldelim();
+        }
+        if (message.params !== undefined) {
+            gov_1.Params.encode(message.params, writer.uint32(34).fork()).ldelim();
         }
         return writer;
     },
@@ -955,6 +984,9 @@ exports.QueryParamsResponse = {
                 case 3:
                     message.tally_params = gov_1.TallyParams.decode(reader, reader.uint32());
                     break;
+                case 4:
+                    message.params = gov_1.Params.decode(reader, reader.uint32());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -966,7 +998,8 @@ exports.QueryParamsResponse = {
         return {
             voting_params: (0, helpers_1.isSet)(object.voting_params) ? gov_1.VotingParams.fromJSON(object.voting_params) : undefined,
             deposit_params: (0, helpers_1.isSet)(object.deposit_params) ? gov_1.DepositParams.fromJSON(object.deposit_params) : undefined,
-            tally_params: (0, helpers_1.isSet)(object.tally_params) ? gov_1.TallyParams.fromJSON(object.tally_params) : undefined
+            tally_params: (0, helpers_1.isSet)(object.tally_params) ? gov_1.TallyParams.fromJSON(object.tally_params) : undefined,
+            params: (0, helpers_1.isSet)(object.params) ? gov_1.Params.fromJSON(object.params) : undefined
         };
     },
     toJSON(message) {
@@ -974,6 +1007,7 @@ exports.QueryParamsResponse = {
         message.voting_params !== undefined && (obj.voting_params = message.voting_params ? gov_1.VotingParams.toJSON(message.voting_params) : undefined);
         message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? gov_1.DepositParams.toJSON(message.deposit_params) : undefined);
         message.tally_params !== undefined && (obj.tally_params = message.tally_params ? gov_1.TallyParams.toJSON(message.tally_params) : undefined);
+        message.params !== undefined && (obj.params = message.params ? gov_1.Params.toJSON(message.params) : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -981,27 +1015,15 @@ exports.QueryParamsResponse = {
         message.voting_params = object.voting_params !== undefined && object.voting_params !== null ? gov_1.VotingParams.fromPartial(object.voting_params) : undefined;
         message.deposit_params = object.deposit_params !== undefined && object.deposit_params !== null ? gov_1.DepositParams.fromPartial(object.deposit_params) : undefined;
         message.tally_params = object.tally_params !== undefined && object.tally_params !== null ? gov_1.TallyParams.fromPartial(object.tally_params) : undefined;
+        message.params = object.params !== undefined && object.params !== null ? gov_1.Params.fromPartial(object.params) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            voting_params: object.voting_params ? gov_1.VotingParams.fromSDK(object.voting_params) : undefined,
-            deposit_params: object.deposit_params ? gov_1.DepositParams.fromSDK(object.deposit_params) : undefined,
-            tally_params: object.tally_params ? gov_1.TallyParams.fromSDK(object.tally_params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.voting_params !== undefined && (obj.voting_params = message.voting_params ? gov_1.VotingParams.toSDK(message.voting_params) : undefined);
-        message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? gov_1.DepositParams.toSDK(message.deposit_params) : undefined);
-        message.tally_params !== undefined && (obj.tally_params = message.tally_params ? gov_1.TallyParams.toSDK(message.tally_params) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
             voting_params: object?.voting_params ? gov_1.VotingParams.fromAmino(object.voting_params) : undefined,
             deposit_params: object?.deposit_params ? gov_1.DepositParams.fromAmino(object.deposit_params) : undefined,
-            tally_params: object?.tally_params ? gov_1.TallyParams.fromAmino(object.tally_params) : undefined
+            tally_params: object?.tally_params ? gov_1.TallyParams.fromAmino(object.tally_params) : undefined,
+            params: object?.params ? gov_1.Params.fromAmino(object.params) : undefined
         };
     },
     toAmino(message) {
@@ -1009,6 +1031,7 @@ exports.QueryParamsResponse = {
         obj.voting_params = message.voting_params ? gov_1.VotingParams.toAmino(message.voting_params) : undefined;
         obj.deposit_params = message.deposit_params ? gov_1.DepositParams.toAmino(message.deposit_params) : undefined;
         obj.tally_params = message.tally_params ? gov_1.TallyParams.toAmino(message.tally_params) : undefined;
+        obj.params = message.params ? gov_1.Params.toAmino(message.params) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1088,18 +1111,6 @@ exports.QueryDepositRequest = {
         message.depositor = object.depositor ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            depositor: object?.depositor
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        obj.depositor = message.depositor;
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id),
@@ -1178,16 +1189,6 @@ exports.QueryDepositResponse = {
         const message = createBaseQueryDepositResponse();
         message.deposit = object.deposit !== undefined && object.deposit !== null ? gov_1.Deposit.fromPartial(object.deposit) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            deposit: object.deposit ? gov_1.Deposit.fromSDK(object.deposit) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.deposit !== undefined && (obj.deposit = message.deposit ? gov_1.Deposit.toSDK(message.deposit) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1275,18 +1276,6 @@ exports.QueryDepositsRequest = {
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1382,23 +1371,6 @@ exports.QueryDepositsResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            deposits: Array.isArray(object?.deposits) ? object.deposits.map((e) => gov_1.Deposit.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.deposits) {
-            obj.deposits = message.deposits.map(e => e ? gov_1.Deposit.toSDK(e) : undefined);
-        }
-        else {
-            obj.deposits = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             deposits: Array.isArray(object?.deposits) ? object.deposits.map((e) => gov_1.Deposit.fromAmino(e)) : [],
@@ -1483,16 +1455,6 @@ exports.QueryTallyResultRequest = {
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id)
@@ -1569,16 +1531,6 @@ exports.QueryTallyResultResponse = {
         const message = createBaseQueryTallyResultResponse();
         message.tally = object.tally !== undefined && object.tally !== null ? gov_1.TallyResult.fromPartial(object.tally) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            tally: object.tally ? gov_1.TallyResult.fromSDK(object.tally) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.tally !== undefined && (obj.tally = message.tally ? gov_1.TallyResult.toSDK(message.tally) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {

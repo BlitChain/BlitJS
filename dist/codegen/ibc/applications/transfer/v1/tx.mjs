@@ -119,30 +119,6 @@ export const MsgTransfer = {
         message.memo = object.memo ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            source_port: object?.source_port,
-            source_channel: object?.source_channel,
-            token: object.token ? Coin.fromSDK(object.token) : undefined,
-            sender: object?.sender,
-            receiver: object?.receiver,
-            timeout_height: object.timeout_height ? Height.fromSDK(object.timeout_height) : undefined,
-            timeout_timestamp: object?.timeout_timestamp,
-            memo: object?.memo
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.source_port = message.source_port;
-        obj.source_channel = message.source_channel;
-        message.token !== undefined && (obj.token = message.token ? Coin.toSDK(message.token) : undefined);
-        obj.sender = message.sender;
-        obj.receiver = message.receiver;
-        message.timeout_height !== undefined && (obj.timeout_height = message.timeout_height ? Height.toSDK(message.timeout_height) : undefined);
-        obj.timeout_timestamp = message.timeout_timestamp;
-        obj.memo = message.memo;
-        return obj;
-    },
     fromAmino(object) {
         return {
             source_port: object.source_port,
@@ -234,16 +210,6 @@ export const MsgTransferResponse = {
         message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            sequence: object?.sequence
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.sequence = message.sequence;
-        return obj;
-    },
     fromAmino(object) {
         return {
             sequence: BigInt(object.sequence)
@@ -331,18 +297,6 @@ export const MsgUpdateParams = {
         message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            signer: object?.signer,
-            params: object.params ? Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.signer = message.signer;
-        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             signer: object.signer,
@@ -409,13 +363,6 @@ export const MsgUpdateParamsResponse = {
     fromPartial(_) {
         const message = createBaseMsgUpdateParamsResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};

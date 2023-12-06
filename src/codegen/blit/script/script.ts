@@ -90,20 +90,6 @@ export const Script = {
     message.version = object.version !== undefined && object.version !== null ? BigInt(object.version.toString()) : BigInt(0);
     return message;
   },
-  fromSDK(object: ScriptSDKType): Script {
-    return {
-      address: object?.address,
-      code: object?.code,
-      version: object?.version
-    };
-  },
-  toSDK(message: Script): ScriptSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    obj.code = message.code;
-    obj.version = message.version;
-    return obj;
-  },
   fromAmino(object: ScriptAmino): Script {
     return {
       address: object.address,

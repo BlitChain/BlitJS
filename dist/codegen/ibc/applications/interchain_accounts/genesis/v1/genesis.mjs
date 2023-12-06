@@ -59,18 +59,6 @@ export const GenesisState = {
         message.host_genesis_state = object.host_genesis_state !== undefined && object.host_genesis_state !== null ? HostGenesisState.fromPartial(object.host_genesis_state) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            controller_genesis_state: object.controller_genesis_state ? ControllerGenesisState.fromSDK(object.controller_genesis_state) : undefined,
-            host_genesis_state: object.host_genesis_state ? HostGenesisState.fromSDK(object.host_genesis_state) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.controller_genesis_state !== undefined && (obj.controller_genesis_state = message.controller_genesis_state ? ControllerGenesisState.toSDK(message.controller_genesis_state) : undefined);
-        message.host_genesis_state !== undefined && (obj.host_genesis_state = message.host_genesis_state ? HostGenesisState.toSDK(message.host_genesis_state) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             controller_genesis_state: object?.controller_genesis_state ? ControllerGenesisState.fromAmino(object.controller_genesis_state) : undefined,
@@ -194,37 +182,6 @@ export const ControllerGenesisState = {
         message.ports = object.ports?.map(e => e) || [];
         message.params = object.params !== undefined && object.params !== null ? Params1.fromPartial(object.params) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            active_channels: Array.isArray(object?.active_channels) ? object.active_channels.map((e) => ActiveChannel.fromSDK(e)) : [],
-            interchain_accounts: Array.isArray(object?.interchain_accounts) ? object.interchain_accounts.map((e) => RegisteredInterchainAccount.fromSDK(e)) : [],
-            ports: Array.isArray(object?.ports) ? object.ports.map((e) => e) : [],
-            params: object.params ? Params1.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.active_channels) {
-            obj.active_channels = message.active_channels.map(e => e ? ActiveChannel.toSDK(e) : undefined);
-        }
-        else {
-            obj.active_channels = [];
-        }
-        if (message.interchain_accounts) {
-            obj.interchain_accounts = message.interchain_accounts.map(e => e ? RegisteredInterchainAccount.toSDK(e) : undefined);
-        }
-        else {
-            obj.interchain_accounts = [];
-        }
-        if (message.ports) {
-            obj.ports = message.ports.map(e => e);
-        }
-        else {
-            obj.ports = [];
-        }
-        message.params !== undefined && (obj.params = message.params ? Params1.toSDK(message.params) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -364,32 +321,6 @@ export const HostGenesisState = {
         message.params = object.params !== undefined && object.params !== null ? Params2.fromPartial(object.params) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            active_channels: Array.isArray(object?.active_channels) ? object.active_channels.map((e) => ActiveChannel.fromSDK(e)) : [],
-            interchain_accounts: Array.isArray(object?.interchain_accounts) ? object.interchain_accounts.map((e) => RegisteredInterchainAccount.fromSDK(e)) : [],
-            port: object?.port,
-            params: object.params ? Params2.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.active_channels) {
-            obj.active_channels = message.active_channels.map(e => e ? ActiveChannel.toSDK(e) : undefined);
-        }
-        else {
-            obj.active_channels = [];
-        }
-        if (message.interchain_accounts) {
-            obj.interchain_accounts = message.interchain_accounts.map(e => e ? RegisteredInterchainAccount.toSDK(e) : undefined);
-        }
-        else {
-            obj.interchain_accounts = [];
-        }
-        obj.port = message.port;
-        message.params !== undefined && (obj.params = message.params ? Params2.toSDK(message.params) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             active_channels: Array.isArray(object?.active_channels) ? object.active_channels.map((e) => ActiveChannel.fromAmino(e)) : [],
@@ -513,22 +444,6 @@ export const ActiveChannel = {
         message.is_middleware_enabled = object.is_middleware_enabled ?? false;
         return message;
     },
-    fromSDK(object) {
-        return {
-            connection_id: object?.connection_id,
-            port_id: object?.port_id,
-            channel_id: object?.channel_id,
-            is_middleware_enabled: object?.is_middleware_enabled
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.connection_id = message.connection_id;
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        obj.is_middleware_enabled = message.is_middleware_enabled;
-        return obj;
-    },
     fromAmino(object) {
         return {
             connection_id: object.connection_id,
@@ -631,20 +546,6 @@ export const RegisteredInterchainAccount = {
         message.port_id = object.port_id ?? "";
         message.account_address = object.account_address ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            connection_id: object?.connection_id,
-            port_id: object?.port_id,
-            account_address: object?.account_address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.connection_id = message.connection_id;
-        obj.port_id = message.port_id;
-        obj.account_address = message.account_address;
-        return obj;
     },
     fromAmino(object) {
         return {

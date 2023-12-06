@@ -65,23 +65,6 @@ exports.Http = {
         message.fully_decode_reserved_expansion = object.fully_decode_reserved_expansion ?? false;
         return message;
     },
-    fromSDK(object) {
-        return {
-            rules: Array.isArray(object?.rules) ? object.rules.map((e) => exports.HttpRule.fromSDK(e)) : [],
-            fully_decode_reserved_expansion: object?.fully_decode_reserved_expansion
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.rules) {
-            obj.rules = message.rules.map(e => e ? exports.HttpRule.toSDK(e) : undefined);
-        }
-        else {
-            obj.rules = [];
-        }
-        obj.fully_decode_reserved_expansion = message.fully_decode_reserved_expansion;
-        return obj;
-    },
     fromAmino(object) {
         return {
             rules: Array.isArray(object?.rules) ? object.rules.map((e) => exports.HttpRule.fromAmino(e)) : [],
@@ -255,39 +238,6 @@ exports.HttpRule = {
         message.additional_bindings = object.additional_bindings?.map(e => exports.HttpRule.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            selector: object?.selector,
-            get: object?.get,
-            put: object?.put,
-            post: object?.post,
-            delete: object?.delete,
-            patch: object?.patch,
-            custom: object.custom ? exports.CustomHttpPattern.fromSDK(object.custom) : undefined,
-            body: object?.body,
-            response_body: object?.response_body,
-            additional_bindings: Array.isArray(object?.additional_bindings) ? object.additional_bindings.map((e) => exports.HttpRule.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.selector = message.selector;
-        obj.get = message.get;
-        obj.put = message.put;
-        obj.post = message.post;
-        obj.delete = message.delete;
-        obj.patch = message.patch;
-        message.custom !== undefined && (obj.custom = message.custom ? exports.CustomHttpPattern.toSDK(message.custom) : undefined);
-        obj.body = message.body;
-        obj.response_body = message.response_body;
-        if (message.additional_bindings) {
-            obj.additional_bindings = message.additional_bindings.map(e => e ? exports.HttpRule.toSDK(e) : undefined);
-        }
-        else {
-            obj.additional_bindings = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             selector: object.selector,
@@ -391,18 +341,6 @@ exports.CustomHttpPattern = {
         message.kind = object.kind ?? "";
         message.path = object.path ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            kind: object?.kind,
-            path: object?.path
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.kind = message.kind;
-        obj.path = message.path;
-        return obj;
     },
     fromAmino(object) {
         return {

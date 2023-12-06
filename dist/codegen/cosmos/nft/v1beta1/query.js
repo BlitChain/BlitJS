@@ -62,18 +62,6 @@ exports.QueryBalanceRequest = {
         message.owner = object.owner ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            class_id: object?.class_id,
-            owner: object?.owner
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.class_id = message.class_id;
-        obj.owner = message.owner;
-        return obj;
-    },
     fromAmino(object) {
         return {
             class_id: object.class_id,
@@ -152,16 +140,6 @@ exports.QueryBalanceResponse = {
         const message = createBaseQueryBalanceResponse();
         message.amount = object.amount !== undefined && object.amount !== null ? BigInt(object.amount.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            amount: object?.amount
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.amount = message.amount;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -250,18 +228,6 @@ exports.QueryOwnerRequest = {
         message.id = object.id ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            class_id: object?.class_id,
-            id: object?.id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.class_id = message.class_id;
-        obj.id = message.id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             class_id: object.class_id,
@@ -341,16 +307,6 @@ exports.QueryOwnerResponse = {
         message.owner = object.owner ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            owner: object?.owner
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.owner = message.owner;
-        return obj;
-    },
     fromAmino(object) {
         return {
             owner: object.owner
@@ -428,16 +384,6 @@ exports.QuerySupplyRequest = {
         message.class_id = object.class_id ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            class_id: object?.class_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.class_id = message.class_id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             class_id: object.class_id
@@ -514,16 +460,6 @@ exports.QuerySupplyResponse = {
         const message = createBaseQuerySupplyResponse();
         message.amount = object.amount !== undefined && object.amount !== null ? BigInt(object.amount.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            amount: object?.amount
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.amount = message.amount;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -622,20 +558,6 @@ exports.QueryNFTsRequest = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            class_id: object?.class_id,
-            owner: object?.owner,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.class_id = message.class_id;
-        obj.owner = message.owner;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             class_id: object.class_id,
@@ -732,23 +654,6 @@ exports.QueryNFTsResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            nfts: Array.isArray(object?.nfts) ? object.nfts.map((e) => nft_1.NFT.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.nfts) {
-            obj.nfts = message.nfts.map(e => e ? nft_1.NFT.toSDK(e) : undefined);
-        }
-        else {
-            obj.nfts = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             nfts: Array.isArray(object?.nfts) ? object.nfts.map((e) => nft_1.NFT.fromAmino(e)) : [],
@@ -843,18 +748,6 @@ exports.QueryNFTRequest = {
         message.id = object.id ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            class_id: object?.class_id,
-            id: object?.id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.class_id = message.class_id;
-        obj.id = message.id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             class_id: object.class_id,
@@ -934,16 +827,6 @@ exports.QueryNFTResponse = {
         message.nft = object.nft !== undefined && object.nft !== null ? nft_1.NFT.fromPartial(object.nft) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            nft: object.nft ? nft_1.NFT.fromSDK(object.nft) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.nft !== undefined && (obj.nft = message.nft ? nft_1.NFT.toSDK(message.nft) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             nft: object?.nft ? nft_1.NFT.fromAmino(object.nft) : undefined
@@ -1020,16 +903,6 @@ exports.QueryClassRequest = {
         const message = createBaseQueryClassRequest();
         message.class_id = object.class_id ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            class_id: object?.class_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.class_id = message.class_id;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1108,16 +981,6 @@ exports.QueryClassResponse = {
         message.class = object.class !== undefined && object.class !== null ? nft_1.Class.fromPartial(object.class) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            class: object.class ? nft_1.Class.fromSDK(object.class) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.class !== undefined && (obj.class = message.class ? nft_1.Class.toSDK(message.class) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             class: object?.class ? nft_1.Class.fromAmino(object.class) : undefined
@@ -1194,16 +1057,6 @@ exports.QueryClassesRequest = {
         const message = createBaseQueryClassesRequest();
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1296,23 +1149,6 @@ exports.QueryClassesResponse = {
         message.classes = object.classes?.map(e => nft_1.Class.fromPartial(e)) || [];
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            classes: Array.isArray(object?.classes) ? object.classes.map((e) => nft_1.Class.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.classes) {
-            obj.classes = message.classes.map(e => e ? nft_1.Class.toSDK(e) : undefined);
-        }
-        else {
-            obj.classes = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {

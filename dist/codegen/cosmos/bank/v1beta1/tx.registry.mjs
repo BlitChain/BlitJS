@@ -1,5 +1,5 @@
-import { MsgSend, MsgMultiSend } from "./tx";
-export const registry = [["/cosmos.bank.v1beta1.MsgSend", MsgSend], ["/cosmos.bank.v1beta1.MsgMultiSend", MsgMultiSend]];
+import { MsgSend, MsgMultiSend, MsgUpdateParams, MsgSetSendEnabled } from "./tx";
+export const registry = [["/cosmos.bank.v1beta1.MsgSend", MsgSend], ["/cosmos.bank.v1beta1.MsgMultiSend", MsgMultiSend], ["/cosmos.bank.v1beta1.MsgUpdateParams", MsgUpdateParams], ["/cosmos.bank.v1beta1.MsgSetSendEnabled", MsgSetSendEnabled]];
 export const load = (protoRegistry) => {
     registry.forEach(([typeUrl, mod]) => {
         protoRegistry.register(typeUrl, mod);
@@ -18,6 +18,18 @@ export const MessageComposer = {
                 typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
                 value: MsgMultiSend.encode(value).finish()
             };
+        },
+        updateParams(value) {
+            return {
+                typeUrl: "/cosmos.bank.v1beta1.MsgUpdateParams",
+                value: MsgUpdateParams.encode(value).finish()
+            };
+        },
+        setSendEnabled(value) {
+            return {
+                typeUrl: "/cosmos.bank.v1beta1.MsgSetSendEnabled",
+                value: MsgSetSendEnabled.encode(value).finish()
+            };
         }
     },
     withTypeUrl: {
@@ -30,6 +42,18 @@ export const MessageComposer = {
         multiSend(value) {
             return {
                 typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
+                value
+            };
+        },
+        updateParams(value) {
+            return {
+                typeUrl: "/cosmos.bank.v1beta1.MsgUpdateParams",
+                value
+            };
+        },
+        setSendEnabled(value) {
+            return {
+                typeUrl: "/cosmos.bank.v1beta1.MsgSetSendEnabled",
                 value
             };
         }
@@ -46,6 +70,18 @@ export const MessageComposer = {
                 typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
                 value: MsgMultiSend.toJSON(value)
             };
+        },
+        updateParams(value) {
+            return {
+                typeUrl: "/cosmos.bank.v1beta1.MsgUpdateParams",
+                value: MsgUpdateParams.toJSON(value)
+            };
+        },
+        setSendEnabled(value) {
+            return {
+                typeUrl: "/cosmos.bank.v1beta1.MsgSetSendEnabled",
+                value: MsgSetSendEnabled.toJSON(value)
+            };
         }
     },
     fromJSON: {
@@ -60,6 +96,18 @@ export const MessageComposer = {
                 typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
                 value: MsgMultiSend.fromJSON(value)
             };
+        },
+        updateParams(value) {
+            return {
+                typeUrl: "/cosmos.bank.v1beta1.MsgUpdateParams",
+                value: MsgUpdateParams.fromJSON(value)
+            };
+        },
+        setSendEnabled(value) {
+            return {
+                typeUrl: "/cosmos.bank.v1beta1.MsgSetSendEnabled",
+                value: MsgSetSendEnabled.fromJSON(value)
+            };
         }
     },
     fromPartial: {
@@ -73,6 +121,18 @@ export const MessageComposer = {
             return {
                 typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
                 value: MsgMultiSend.fromPartial(value)
+            };
+        },
+        updateParams(value) {
+            return {
+                typeUrl: "/cosmos.bank.v1beta1.MsgUpdateParams",
+                value: MsgUpdateParams.fromPartial(value)
+            };
+        },
+        setSendEnabled(value) {
+            return {
+                typeUrl: "/cosmos.bank.v1beta1.MsgSetSendEnabled",
+                value: MsgSetSendEnabled.fromPartial(value)
             };
         }
     }

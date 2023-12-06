@@ -50,16 +50,6 @@ exports.Params = {
         message.gasPerChar = object.gasPerChar ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            gasPerChar: object?.gasPerChar
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.gasPerChar = message.gasPerChar;
-        return obj;
-    },
     fromAmino(object) {
         return {
             gasPerChar: object.gasPerChar

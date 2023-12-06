@@ -178,8 +178,6 @@ export declare const PageRequest: {
     fromJSON(object: any): PageRequest;
     toJSON(message: PageRequest): unknown;
     fromPartial(object: Partial<PageRequest>): PageRequest;
-    fromSDK(object: PageRequestSDKType): PageRequest;
-    toSDK(message: PageRequest): PageRequestSDKType;
     fromAmino(object: PageRequestAmino): PageRequest;
     toAmino(message: PageRequest): PageRequestAmino;
     fromAminoMsg(object: PageRequestAminoMsg): PageRequest;
@@ -195,8 +193,6 @@ export declare const PageResponse: {
     fromJSON(object: any): PageResponse;
     toJSON(message: PageResponse): unknown;
     fromPartial(object: Partial<PageResponse>): PageResponse;
-    fromSDK(object: PageResponseSDKType): PageResponse;
-    toSDK(message: PageResponse): PageResponseSDKType;
     fromAmino(object: PageResponseAmino): PageResponse;
     toAmino(message: PageResponse): PageResponseAmino;
     fromAminoMsg(object: PageResponseAminoMsg): PageResponse;

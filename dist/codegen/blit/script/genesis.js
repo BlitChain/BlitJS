@@ -67,23 +67,6 @@ exports.GenesisState = {
         message.scriptList = object.scriptList?.map(e => script_1.Script.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            params: object.params ? params_1.Params.fromSDK(object.params) : undefined,
-            scriptList: Array.isArray(object?.scriptList) ? object.scriptList.map((e) => script_1.Script.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? params_1.Params.toSDK(message.params) : undefined);
-        if (message.scriptList) {
-            obj.scriptList = message.scriptList.map(e => e ? script_1.Script.toSDK(e) : undefined);
-        }
-        else {
-            obj.scriptList = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             params: object?.params ? params_1.Params.fromAmino(object.params) : undefined,

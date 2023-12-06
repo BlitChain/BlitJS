@@ -4,14 +4,14 @@ import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf
 import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.feegrant.v1beta1";
 /**
- * BasicAllowance implements Allowance with a one-time grant of tokens
+ * BasicAllowance implements Allowance with a one-time grant of coins
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
  */
 export interface BasicAllowance {
     $typeUrl?: "/cosmos.feegrant.v1beta1.BasicAllowance";
     /**
-     * spend_limit specifies the maximum amount of tokens that can be spent
-     * by this allowance and will be updated as tokens are spent. If it is
+     * spend_limit specifies the maximum amount of coins that can be spent
+     * by this allowance and will be updated as coins are spent. If it is
      * empty, there is no spend limit and any amount of coins can be spent.
      */
     spend_limit: Coin[];
@@ -23,13 +23,13 @@ export interface BasicAllowanceProtoMsg {
     value: Uint8Array;
 }
 /**
- * BasicAllowance implements Allowance with a one-time grant of tokens
+ * BasicAllowance implements Allowance with a one-time grant of coins
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
  */
 export interface BasicAllowanceAmino {
     /**
-     * spend_limit specifies the maximum amount of tokens that can be spent
-     * by this allowance and will be updated as tokens are spent. If it is
+     * spend_limit specifies the maximum amount of coins that can be spent
+     * by this allowance and will be updated as coins are spent. If it is
      * empty, there is no spend limit and any amount of coins can be spent.
      */
     spend_limit: CoinAmino[];
@@ -41,7 +41,7 @@ export interface BasicAllowanceAminoMsg {
     value: BasicAllowanceAmino;
 }
 /**
- * BasicAllowance implements Allowance with a one-time grant of tokens
+ * BasicAllowance implements Allowance with a one-time grant of coins
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
  */
 export interface BasicAllowanceSDKType {
@@ -196,8 +196,6 @@ export declare const BasicAllowance: {
     fromJSON(object: any): BasicAllowance;
     toJSON(message: BasicAllowance): unknown;
     fromPartial(object: Partial<BasicAllowance>): BasicAllowance;
-    fromSDK(object: BasicAllowanceSDKType): BasicAllowance;
-    toSDK(message: BasicAllowance): BasicAllowanceSDKType;
     fromAmino(object: BasicAllowanceAmino): BasicAllowance;
     toAmino(message: BasicAllowance): BasicAllowanceAmino;
     fromAminoMsg(object: BasicAllowanceAminoMsg): BasicAllowance;
@@ -213,8 +211,6 @@ export declare const PeriodicAllowance: {
     fromJSON(object: any): PeriodicAllowance;
     toJSON(message: PeriodicAllowance): unknown;
     fromPartial(object: Partial<PeriodicAllowance>): PeriodicAllowance;
-    fromSDK(object: PeriodicAllowanceSDKType): PeriodicAllowance;
-    toSDK(message: PeriodicAllowance): PeriodicAllowanceSDKType;
     fromAmino(object: PeriodicAllowanceAmino): PeriodicAllowance;
     toAmino(message: PeriodicAllowance): PeriodicAllowanceAmino;
     fromAminoMsg(object: PeriodicAllowanceAminoMsg): PeriodicAllowance;
@@ -230,8 +226,6 @@ export declare const AllowedMsgAllowance: {
     fromJSON(object: any): AllowedMsgAllowance;
     toJSON(message: AllowedMsgAllowance): unknown;
     fromPartial(object: Partial<AllowedMsgAllowance>): AllowedMsgAllowance;
-    fromSDK(object: AllowedMsgAllowanceSDKType): AllowedMsgAllowance;
-    toSDK(message: AllowedMsgAllowance): AllowedMsgAllowanceSDKType;
     fromAmino(object: AllowedMsgAllowanceAmino): AllowedMsgAllowance;
     toAmino(message: AllowedMsgAllowance): AllowedMsgAllowanceAmino;
     fromAminoMsg(object: AllowedMsgAllowanceAminoMsg): AllowedMsgAllowance;
@@ -247,8 +241,6 @@ export declare const Grant: {
     fromJSON(object: any): Grant;
     toJSON(message: Grant): unknown;
     fromPartial(object: Partial<Grant>): Grant;
-    fromSDK(object: GrantSDKType): Grant;
-    toSDK(message: Grant): GrantSDKType;
     fromAmino(object: GrantAmino): Grant;
     toAmino(message: Grant): GrantAmino;
     fromAminoMsg(object: GrantAminoMsg): Grant;
@@ -257,6 +249,6 @@ export declare const Grant: {
     toProto(message: Grant): Uint8Array;
     toProtoMsg(message: Grant): GrantProtoMsg;
 };
-export declare const Cosmos_feegrantFeeAllowanceI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => BasicAllowance | PeriodicAllowance | AllowedMsgAllowance | Any;
-export declare const Cosmos_feegrantFeeAllowanceI_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_feegrantFeeAllowanceI_ToAmino: (content: Any) => AnyAmino;
+export declare const Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => BasicAllowance | PeriodicAllowance | AllowedMsgAllowance | Any;
+export declare const Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino: (content: AnyAmino) => Any;
+export declare const Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino: (content: Any) => AnyAmino;

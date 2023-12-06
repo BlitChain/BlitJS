@@ -48,16 +48,6 @@ export const GenesisState = {
         message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            params: object.params ? Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             params: object?.params ? Params.fromAmino(object.params) : undefined

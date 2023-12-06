@@ -71,8 +71,6 @@ export declare const EventGrant: {
     fromJSON(object: any): EventGrant;
     toJSON(message: EventGrant): unknown;
     fromPartial(object: Partial<EventGrant>): EventGrant;
-    fromSDK(object: EventGrantSDKType): EventGrant;
-    toSDK(message: EventGrant): EventGrantSDKType;
     fromAmino(object: EventGrantAmino): EventGrant;
     toAmino(message: EventGrant): EventGrantAmino;
     fromAminoMsg(object: EventGrantAminoMsg): EventGrant;
@@ -88,8 +86,6 @@ export declare const EventRevoke: {
     fromJSON(object: any): EventRevoke;
     toJSON(message: EventRevoke): unknown;
     fromPartial(object: Partial<EventRevoke>): EventRevoke;
-    fromSDK(object: EventRevokeSDKType): EventRevoke;
-    toSDK(message: EventRevoke): EventRevokeSDKType;
     fromAmino(object: EventRevokeAmino): EventRevoke;
     toAmino(message: EventRevoke): EventRevokeAmino;
     fromAminoMsg(object: EventRevokeAminoMsg): EventRevoke;

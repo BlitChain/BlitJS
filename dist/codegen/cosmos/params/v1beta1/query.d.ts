@@ -53,6 +53,8 @@ export interface QueryParamsResponseSDKType {
 /**
  * QuerySubspacesRequest defines a request type for querying for all registered
  * subspaces and all keys for a subspace.
+ *
+ * Since: cosmos-sdk 0.46
  */
 export interface QuerySubspacesRequest {
 }
@@ -63,6 +65,8 @@ export interface QuerySubspacesRequestProtoMsg {
 /**
  * QuerySubspacesRequest defines a request type for querying for all registered
  * subspaces and all keys for a subspace.
+ *
+ * Since: cosmos-sdk 0.46
  */
 export interface QuerySubspacesRequestAmino {
 }
@@ -73,12 +77,16 @@ export interface QuerySubspacesRequestAminoMsg {
 /**
  * QuerySubspacesRequest defines a request type for querying for all registered
  * subspaces and all keys for a subspace.
+ *
+ * Since: cosmos-sdk 0.46
  */
 export interface QuerySubspacesRequestSDKType {
 }
 /**
  * QuerySubspacesResponse defines the response types for querying for all
  * registered subspaces and all keys for a subspace.
+ *
+ * Since: cosmos-sdk 0.46
  */
 export interface QuerySubspacesResponse {
     subspaces: Subspace[];
@@ -90,6 +98,8 @@ export interface QuerySubspacesResponseProtoMsg {
 /**
  * QuerySubspacesResponse defines the response types for querying for all
  * registered subspaces and all keys for a subspace.
+ *
+ * Since: cosmos-sdk 0.46
  */
 export interface QuerySubspacesResponseAmino {
     subspaces: SubspaceAmino[];
@@ -101,6 +111,8 @@ export interface QuerySubspacesResponseAminoMsg {
 /**
  * QuerySubspacesResponse defines the response types for querying for all
  * registered subspaces and all keys for a subspace.
+ *
+ * Since: cosmos-sdk 0.46
  */
 export interface QuerySubspacesResponseSDKType {
     subspaces: SubspaceSDKType[];
@@ -108,6 +120,8 @@ export interface QuerySubspacesResponseSDKType {
 /**
  * Subspace defines a parameter subspace name and all the keys that exist for
  * the subspace.
+ *
+ * Since: cosmos-sdk 0.46
  */
 export interface Subspace {
     subspace: string;
@@ -120,6 +134,8 @@ export interface SubspaceProtoMsg {
 /**
  * Subspace defines a parameter subspace name and all the keys that exist for
  * the subspace.
+ *
+ * Since: cosmos-sdk 0.46
  */
 export interface SubspaceAmino {
     subspace: string;
@@ -132,6 +148,8 @@ export interface SubspaceAminoMsg {
 /**
  * Subspace defines a parameter subspace name and all the keys that exist for
  * the subspace.
+ *
+ * Since: cosmos-sdk 0.46
  */
 export interface SubspaceSDKType {
     subspace: string;
@@ -144,8 +162,6 @@ export declare const QueryParamsRequest: {
     fromJSON(object: any): QueryParamsRequest;
     toJSON(message: QueryParamsRequest): unknown;
     fromPartial(object: Partial<QueryParamsRequest>): QueryParamsRequest;
-    fromSDK(object: QueryParamsRequestSDKType): QueryParamsRequest;
-    toSDK(message: QueryParamsRequest): QueryParamsRequestSDKType;
     fromAmino(object: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(message: QueryParamsRequest): QueryParamsRequestAmino;
     fromAminoMsg(object: QueryParamsRequestAminoMsg): QueryParamsRequest;
@@ -161,8 +177,6 @@ export declare const QueryParamsResponse: {
     fromJSON(object: any): QueryParamsResponse;
     toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
-    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
-    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
     fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse;
@@ -178,8 +192,6 @@ export declare const QuerySubspacesRequest: {
     fromJSON(_: any): QuerySubspacesRequest;
     toJSON(_: QuerySubspacesRequest): unknown;
     fromPartial(_: Partial<QuerySubspacesRequest>): QuerySubspacesRequest;
-    fromSDK(_: QuerySubspacesRequestSDKType): QuerySubspacesRequest;
-    toSDK(_: QuerySubspacesRequest): QuerySubspacesRequestSDKType;
     fromAmino(_: QuerySubspacesRequestAmino): QuerySubspacesRequest;
     toAmino(_: QuerySubspacesRequest): QuerySubspacesRequestAmino;
     fromAminoMsg(object: QuerySubspacesRequestAminoMsg): QuerySubspacesRequest;
@@ -195,8 +207,6 @@ export declare const QuerySubspacesResponse: {
     fromJSON(object: any): QuerySubspacesResponse;
     toJSON(message: QuerySubspacesResponse): unknown;
     fromPartial(object: Partial<QuerySubspacesResponse>): QuerySubspacesResponse;
-    fromSDK(object: QuerySubspacesResponseSDKType): QuerySubspacesResponse;
-    toSDK(message: QuerySubspacesResponse): QuerySubspacesResponseSDKType;
     fromAmino(object: QuerySubspacesResponseAmino): QuerySubspacesResponse;
     toAmino(message: QuerySubspacesResponse): QuerySubspacesResponseAmino;
     fromAminoMsg(object: QuerySubspacesResponseAminoMsg): QuerySubspacesResponse;
@@ -212,8 +222,6 @@ export declare const Subspace: {
     fromJSON(object: any): Subspace;
     toJSON(message: Subspace): unknown;
     fromPartial(object: Partial<Subspace>): Subspace;
-    fromSDK(object: SubspaceSDKType): Subspace;
-    toSDK(message: Subspace): SubspaceSDKType;
     fromAmino(object: SubspaceAmino): Subspace;
     toAmino(message: Subspace): SubspaceAmino;
     fromAminoMsg(object: SubspaceAminoMsg): Subspace;

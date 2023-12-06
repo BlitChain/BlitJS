@@ -294,8 +294,6 @@ export declare const ClientState: {
     fromJSON(object: any): ClientState;
     toJSON(message: ClientState): unknown;
     fromPartial(object: Partial<ClientState>): ClientState;
-    fromSDK(object: ClientStateSDKType): ClientState;
-    toSDK(message: ClientState): ClientStateSDKType;
     fromAmino(object: ClientStateAmino): ClientState;
     toAmino(message: ClientState): ClientStateAmino;
     fromAminoMsg(object: ClientStateAminoMsg): ClientState;
@@ -311,8 +309,6 @@ export declare const ConsensusState: {
     fromJSON(object: any): ConsensusState;
     toJSON(message: ConsensusState): unknown;
     fromPartial(object: Partial<ConsensusState>): ConsensusState;
-    fromSDK(object: ConsensusStateSDKType): ConsensusState;
-    toSDK(message: ConsensusState): ConsensusStateSDKType;
     fromAmino(object: ConsensusStateAmino): ConsensusState;
     toAmino(message: ConsensusState): ConsensusStateAmino;
     fromAminoMsg(object: ConsensusStateAminoMsg): ConsensusState;
@@ -328,8 +324,6 @@ export declare const Misbehaviour: {
     fromJSON(object: any): Misbehaviour;
     toJSON(message: Misbehaviour): unknown;
     fromPartial(object: Partial<Misbehaviour>): Misbehaviour;
-    fromSDK(object: MisbehaviourSDKType): Misbehaviour;
-    toSDK(message: Misbehaviour): MisbehaviourSDKType;
     fromAmino(object: MisbehaviourAmino): Misbehaviour;
     toAmino(message: Misbehaviour): MisbehaviourAmino;
     fromAminoMsg(object: MisbehaviourAminoMsg): Misbehaviour;
@@ -345,8 +339,6 @@ export declare const Header: {
     fromJSON(object: any): Header;
     toJSON(message: Header): unknown;
     fromPartial(object: Partial<Header>): Header;
-    fromSDK(object: HeaderSDKType): Header;
-    toSDK(message: Header): HeaderSDKType;
     fromAmino(object: HeaderAmino): Header;
     toAmino(message: Header): HeaderAmino;
     fromAminoMsg(object: HeaderAminoMsg): Header;
@@ -362,8 +354,6 @@ export declare const Fraction: {
     fromJSON(object: any): Fraction;
     toJSON(message: Fraction): unknown;
     fromPartial(object: Partial<Fraction>): Fraction;
-    fromSDK(object: FractionSDKType): Fraction;
-    toSDK(message: Fraction): FractionSDKType;
     fromAmino(object: FractionAmino): Fraction;
     toAmino(message: Fraction): FractionAmino;
     fromAminoMsg(object: FractionAminoMsg): Fraction;

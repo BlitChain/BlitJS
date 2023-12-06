@@ -58,18 +58,6 @@ export const GenesisState = {
         message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            minter: object.minter ? Minter.fromSDK(object.minter) : undefined,
-            params: object.params ? Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.minter !== undefined && (obj.minter = message.minter ? Minter.toSDK(message.minter) : undefined);
-        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             minter: object?.minter ? Minter.fromAmino(object.minter) : undefined,

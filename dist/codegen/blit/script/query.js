@@ -41,13 +41,6 @@ exports.QueryParamsRequest = {
         const message = createBaseQueryParamsRequest();
         return message;
     },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
-    },
     fromAmino(_) {
         return {};
     },
@@ -115,16 +108,6 @@ exports.QueryParamsResponse = {
         const message = createBaseQueryParamsResponse();
         message.params = object.params !== undefined && object.params !== null ? params_1.Params.fromPartial(object.params) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            params: object.params ? params_1.Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? params_1.Params.toSDK(message.params) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -197,16 +180,6 @@ exports.QueryScriptRequest = {
         message.address = object.address ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            address: object?.address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        return obj;
-    },
     fromAmino(object) {
         return {
             address: object.address
@@ -278,16 +251,6 @@ exports.QueryScriptResponse = {
         message.script = object.script !== undefined && object.script !== null ? script_1.Script.fromPartial(object.script) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            script: object.script ? script_1.Script.fromSDK(object.script) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.script !== undefined && (obj.script = message.script ? script_1.Script.toSDK(message.script) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             script: object?.script ? script_1.Script.fromAmino(object.script) : undefined
@@ -358,16 +321,6 @@ exports.QueryScriptsRequest = {
         const message = createBaseQueryScriptsRequest();
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -454,23 +407,6 @@ exports.QueryScriptsResponse = {
         message.script = object.script?.map(e => script_1.Script.fromPartial(e)) || [];
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            script: Array.isArray(object?.script) ? object.script.map((e) => script_1.Script.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.script) {
-            obj.script = message.script.map(e => e ? script_1.Script.toSDK(e) : undefined);
-        }
-        else {
-            obj.script = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -560,18 +496,6 @@ exports.QueryWebRequest = {
         message.httprequest = object.httprequest ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            address: object?.address,
-            httprequest: object?.httprequest
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        obj.httprequest = message.httprequest;
-        return obj;
-    },
     fromAmino(object) {
         return {
             address: object.address,
@@ -644,16 +568,6 @@ exports.QueryWebResponse = {
         const message = createBaseQueryWebResponse();
         message.httpresponse = object.httpresponse ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            httpresponse: object?.httpresponse
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.httpresponse = message.httpresponse;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -786,28 +700,6 @@ exports.QueryEvalRequest = {
         message.attached_messages = object.attached_messages ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            caller_address: object?.caller_address,
-            script_address: object?.script_address,
-            extra_code: object?.extra_code,
-            function_name: object?.function_name,
-            kwargs: object?.kwargs,
-            grantee: object?.grantee,
-            attached_messages: object?.attached_messages
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.caller_address = message.caller_address;
-        obj.script_address = message.script_address;
-        obj.extra_code = message.extra_code;
-        obj.function_name = message.function_name;
-        obj.kwargs = message.kwargs;
-        obj.grantee = message.grantee;
-        obj.attached_messages = message.attached_messages;
-        return obj;
-    },
     fromAmino(object) {
         return {
             caller_address: object.caller_address,
@@ -890,16 +782,6 @@ exports.QueryEvalResponse = {
         const message = createBaseQueryEvalResponse();
         message.response = object.response ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            response: object?.response
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.response = message.response;
-        return obj;
     },
     fromAmino(object) {
         return {

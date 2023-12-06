@@ -62,23 +62,6 @@ export const Params = {
         message.allow_messages = object.allow_messages?.map(e => e) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            host_enabled: object?.host_enabled,
-            allow_messages: Array.isArray(object?.allow_messages) ? object.allow_messages.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.host_enabled = message.host_enabled;
-        if (message.allow_messages) {
-            obj.allow_messages = message.allow_messages.map(e => e);
-        }
-        else {
-            obj.allow_messages = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             host_enabled: object.host_enabled,

@@ -61,18 +61,6 @@ exports.Any = {
         message.value = object.value ?? new Uint8Array();
         return message;
     },
-    fromSDK(object) {
-        return {
-            type_url: object?.type_url,
-            value: object?.value
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.type_url = message.type_url;
-        obj.value = message.value;
-        return obj;
-    },
     fromAmino(object) {
         return {
             typeUrl: object.type,

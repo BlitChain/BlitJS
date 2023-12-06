@@ -85,27 +85,6 @@ exports.Proof = {
         message.aunts = object.aunts?.map(e => e) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            total: object?.total,
-            index: object?.index,
-            leaf_hash: object?.leaf_hash,
-            aunts: Array.isArray(object?.aunts) ? object.aunts.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.total = message.total;
-        obj.index = message.index;
-        obj.leaf_hash = message.leaf_hash;
-        if (message.aunts) {
-            obj.aunts = message.aunts.map(e => e);
-        }
-        else {
-            obj.aunts = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             total: BigInt(object.total),
@@ -197,18 +176,6 @@ exports.ValueOp = {
         message.key = object.key ?? new Uint8Array();
         message.proof = object.proof !== undefined && object.proof !== null ? exports.Proof.fromPartial(object.proof) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            key: object?.key,
-            proof: object.proof ? exports.Proof.fromSDK(object.proof) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.key = message.key;
-        message.proof !== undefined && (obj.proof = message.proof ? exports.Proof.toSDK(message.proof) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -302,20 +269,6 @@ exports.DominoOp = {
         message.input = object.input ?? "";
         message.output = object.output ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            key: object?.key,
-            input: object?.input,
-            output: object?.output
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.key = message.key;
-        obj.input = message.input;
-        obj.output = message.output;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -412,20 +365,6 @@ exports.ProofOp = {
         message.data = object.data ?? new Uint8Array();
         return message;
     },
-    fromSDK(object) {
-        return {
-            type: object?.type,
-            key: object?.key,
-            data: object?.data
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.type = message.type;
-        obj.key = message.key;
-        obj.data = message.data;
-        return obj;
-    },
     fromAmino(object) {
         return {
             type: object.type,
@@ -505,21 +444,6 @@ exports.ProofOps = {
         const message = createBaseProofOps();
         message.ops = object.ops?.map(e => exports.ProofOp.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            ops: Array.isArray(object?.ops) ? object.ops.map((e) => exports.ProofOp.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.ops) {
-            obj.ops = message.ops.map(e => e ? exports.ProofOp.toSDK(e) : undefined);
-        }
-        else {
-            obj.ops = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {

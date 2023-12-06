@@ -39,13 +39,6 @@ exports.QueryParamsRequest = {
         const message = createBaseQueryParamsRequest();
         return message;
     },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
-    },
     fromAmino(_) {
         return {};
     },
@@ -120,16 +113,6 @@ exports.QueryParamsResponse = {
         message.params = object.params !== undefined && object.params !== null ? mint_1.Params.fromPartial(object.params) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            params: object.params ? mint_1.Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? mint_1.Params.toSDK(message.params) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             params: object?.params ? mint_1.Params.fromAmino(object.params) : undefined
@@ -194,13 +177,6 @@ exports.QueryInflationRequest = {
     fromPartial(_) {
         const message = createBaseQueryInflationRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -276,16 +252,6 @@ exports.QueryInflationResponse = {
         message.inflation = object.inflation ?? new Uint8Array();
         return message;
     },
-    fromSDK(object) {
-        return {
-            inflation: object?.inflation
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.inflation = message.inflation;
-        return obj;
-    },
     fromAmino(object) {
         return {
             inflation: object.inflation
@@ -350,13 +316,6 @@ exports.QueryAnnualProvisionsRequest = {
     fromPartial(_) {
         const message = createBaseQueryAnnualProvisionsRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -431,16 +390,6 @@ exports.QueryAnnualProvisionsResponse = {
         const message = createBaseQueryAnnualProvisionsResponse();
         message.annual_provisions = object.annual_provisions ?? new Uint8Array();
         return message;
-    },
-    fromSDK(object) {
-        return {
-            annual_provisions: object?.annual_provisions
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.annual_provisions = message.annual_provisions;
-        return obj;
     },
     fromAmino(object) {
         return {

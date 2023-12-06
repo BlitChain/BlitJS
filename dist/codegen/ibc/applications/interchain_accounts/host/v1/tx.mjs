@@ -58,18 +58,6 @@ export const MsgUpdateParams = {
         message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            signer: object?.signer,
-            params: object.params ? Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.signer = message.signer;
-        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             signer: object.signer,
@@ -136,13 +124,6 @@ export const MsgUpdateParamsResponse = {
     fromPartial(_) {
         const message = createBaseMsgUpdateParamsResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};

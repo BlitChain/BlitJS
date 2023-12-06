@@ -52,21 +52,6 @@ export const MultiSignature = {
         message.signatures = object.signatures?.map(e => e) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            signatures: Array.isArray(object?.signatures) ? object.signatures.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.signatures) {
-            obj.signatures = message.signatures.map(e => e);
-        }
-        else {
-            obj.signatures = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             signatures: Array.isArray(object?.signatures) ? object.signatures.map((e) => e) : []
@@ -158,18 +143,6 @@ export const CompactBitArray = {
         message.extra_bits_stored = object.extra_bits_stored ?? 0;
         message.elems = object.elems ?? new Uint8Array();
         return message;
-    },
-    fromSDK(object) {
-        return {
-            extra_bits_stored: object?.extra_bits_stored,
-            elems: object?.elems
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.extra_bits_stored = message.extra_bits_stored;
-        obj.elems = message.elems;
-        return obj;
     },
     fromAmino(object) {
         return {

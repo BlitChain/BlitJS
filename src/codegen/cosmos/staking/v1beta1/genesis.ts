@@ -5,7 +5,7 @@ import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 export const protobufPackage = "cosmos.staking.v1beta1";
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisState {
-  /** params defines all the paramaters of related to deposit. */
+  /** params defines all the parameters of related to deposit. */
   params: Params;
   /**
    * last_total_power tracks the total amounts of bonded tokens recorded during
@@ -17,7 +17,7 @@ export interface GenesisState {
    * of the last-block's bonded validators.
    */
   last_validator_powers: LastValidatorPower[];
-  /** delegations defines the validator set at genesis. */
+  /** validators defines the validator set at genesis. */
   validators: Validator[];
   /** delegations defines the delegations active at genesis. */
   delegations: Delegation[];
@@ -25,6 +25,7 @@ export interface GenesisState {
   unbonding_delegations: UnbondingDelegation[];
   /** redelegations defines the redelegations active at genesis. */
   redelegations: Redelegation[];
+  /** exported defines a bool to identify whether the chain dealing with exported or initialized genesis. */
   exported: boolean;
 }
 export interface GenesisStateProtoMsg {
@@ -33,7 +34,7 @@ export interface GenesisStateProtoMsg {
 }
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisStateAmino {
-  /** params defines all the paramaters of related to deposit. */
+  /** params defines all the parameters of related to deposit. */
   params?: ParamsAmino;
   /**
    * last_total_power tracks the total amounts of bonded tokens recorded during
@@ -45,7 +46,7 @@ export interface GenesisStateAmino {
    * of the last-block's bonded validators.
    */
   last_validator_powers: LastValidatorPowerAmino[];
-  /** delegations defines the validator set at genesis. */
+  /** validators defines the validator set at genesis. */
   validators: ValidatorAmino[];
   /** delegations defines the delegations active at genesis. */
   delegations: DelegationAmino[];
@@ -53,6 +54,7 @@ export interface GenesisStateAmino {
   unbonding_delegations: UnbondingDelegationAmino[];
   /** redelegations defines the redelegations active at genesis. */
   redelegations: RedelegationAmino[];
+  /** exported defines a bool to identify whether the chain dealing with exported or initialized genesis. */
   exported: boolean;
 }
 export interface GenesisStateAminoMsg {
@@ -232,50 +234,6 @@ export const GenesisState = {
     message.exported = object.exported ?? false;
     return message;
   },
-  fromSDK(object: GenesisStateSDKType): GenesisState {
-    return {
-      params: object.params ? Params.fromSDK(object.params) : undefined,
-      last_total_power: object?.last_total_power,
-      last_validator_powers: Array.isArray(object?.last_validator_powers) ? object.last_validator_powers.map((e: any) => LastValidatorPower.fromSDK(e)) : [],
-      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => Validator.fromSDK(e)) : [],
-      delegations: Array.isArray(object?.delegations) ? object.delegations.map((e: any) => Delegation.fromSDK(e)) : [],
-      unbonding_delegations: Array.isArray(object?.unbonding_delegations) ? object.unbonding_delegations.map((e: any) => UnbondingDelegation.fromSDK(e)) : [],
-      redelegations: Array.isArray(object?.redelegations) ? object.redelegations.map((e: any) => Redelegation.fromSDK(e)) : [],
-      exported: object?.exported
-    };
-  },
-  toSDK(message: GenesisState): GenesisStateSDKType {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    obj.last_total_power = message.last_total_power;
-    if (message.last_validator_powers) {
-      obj.last_validator_powers = message.last_validator_powers.map(e => e ? LastValidatorPower.toSDK(e) : undefined);
-    } else {
-      obj.last_validator_powers = [];
-    }
-    if (message.validators) {
-      obj.validators = message.validators.map(e => e ? Validator.toSDK(e) : undefined);
-    } else {
-      obj.validators = [];
-    }
-    if (message.delegations) {
-      obj.delegations = message.delegations.map(e => e ? Delegation.toSDK(e) : undefined);
-    } else {
-      obj.delegations = [];
-    }
-    if (message.unbonding_delegations) {
-      obj.unbonding_delegations = message.unbonding_delegations.map(e => e ? UnbondingDelegation.toSDK(e) : undefined);
-    } else {
-      obj.unbonding_delegations = [];
-    }
-    if (message.redelegations) {
-      obj.redelegations = message.redelegations.map(e => e ? Redelegation.toSDK(e) : undefined);
-    } else {
-      obj.redelegations = [];
-    }
-    obj.exported = message.exported;
-    return obj;
-  },
   fromAmino(object: GenesisStateAmino): GenesisState {
     return {
       params: object?.params ? Params.fromAmino(object.params) : undefined,
@@ -396,18 +354,6 @@ export const LastValidatorPower = {
     message.address = object.address ?? "";
     message.power = object.power !== undefined && object.power !== null ? BigInt(object.power.toString()) : BigInt(0);
     return message;
-  },
-  fromSDK(object: LastValidatorPowerSDKType): LastValidatorPower {
-    return {
-      address: object?.address,
-      power: object?.power
-    };
-  },
-  toSDK(message: LastValidatorPower): LastValidatorPowerSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    obj.power = message.power;
-    return obj;
   },
   fromAmino(object: LastValidatorPowerAmino): LastValidatorPower {
     return {

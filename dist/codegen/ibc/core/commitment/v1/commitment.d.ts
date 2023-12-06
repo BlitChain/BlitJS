@@ -139,8 +139,6 @@ export declare const MerkleRoot: {
     fromJSON(object: any): MerkleRoot;
     toJSON(message: MerkleRoot): unknown;
     fromPartial(object: Partial<MerkleRoot>): MerkleRoot;
-    fromSDK(object: MerkleRootSDKType): MerkleRoot;
-    toSDK(message: MerkleRoot): MerkleRootSDKType;
     fromAmino(object: MerkleRootAmino): MerkleRoot;
     toAmino(message: MerkleRoot): MerkleRootAmino;
     fromAminoMsg(object: MerkleRootAminoMsg): MerkleRoot;
@@ -156,8 +154,6 @@ export declare const MerklePrefix: {
     fromJSON(object: any): MerklePrefix;
     toJSON(message: MerklePrefix): unknown;
     fromPartial(object: Partial<MerklePrefix>): MerklePrefix;
-    fromSDK(object: MerklePrefixSDKType): MerklePrefix;
-    toSDK(message: MerklePrefix): MerklePrefixSDKType;
     fromAmino(object: MerklePrefixAmino): MerklePrefix;
     toAmino(message: MerklePrefix): MerklePrefixAmino;
     fromAminoMsg(object: MerklePrefixAminoMsg): MerklePrefix;
@@ -173,8 +169,6 @@ export declare const MerklePath: {
     fromJSON(object: any): MerklePath;
     toJSON(message: MerklePath): unknown;
     fromPartial(object: Partial<MerklePath>): MerklePath;
-    fromSDK(object: MerklePathSDKType): MerklePath;
-    toSDK(message: MerklePath): MerklePathSDKType;
     fromAmino(object: MerklePathAmino): MerklePath;
     toAmino(message: MerklePath): MerklePathAmino;
     fromAminoMsg(object: MerklePathAminoMsg): MerklePath;
@@ -190,8 +184,6 @@ export declare const MerkleProof: {
     fromJSON(object: any): MerkleProof;
     toJSON(message: MerkleProof): unknown;
     fromPartial(object: Partial<MerkleProof>): MerkleProof;
-    fromSDK(object: MerkleProofSDKType): MerkleProof;
-    toSDK(message: MerkleProof): MerkleProofSDKType;
     fromAmino(object: MerkleProofAmino): MerkleProof;
     toAmino(message: MerkleProof): MerkleProofAmino;
     fromAminoMsg(object: MerkleProofAminoMsg): MerkleProof;

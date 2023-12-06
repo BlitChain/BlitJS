@@ -11,6 +11,7 @@ export interface BaseVestingAccount {
     original_vesting: Coin[];
     delegated_free: Coin[];
     delegated_vesting: Coin[];
+    /** Vesting end time, as unix timestamp (in seconds). */
     end_time: bigint;
 }
 export interface BaseVestingAccountProtoMsg {
@@ -26,6 +27,7 @@ export interface BaseVestingAccountAmino {
     original_vesting: CoinAmino[];
     delegated_free: CoinAmino[];
     delegated_vesting: CoinAmino[];
+    /** Vesting end time, as unix timestamp (in seconds). */
     end_time: string;
 }
 export interface BaseVestingAccountAminoMsg {
@@ -49,6 +51,7 @@ export interface BaseVestingAccountSDKType {
  */
 export interface ContinuousVestingAccount {
     base_vesting_account?: BaseVestingAccount;
+    /** Vesting start time, as unix timestamp (in seconds). */
     start_time: bigint;
 }
 export interface ContinuousVestingAccountProtoMsg {
@@ -61,6 +64,7 @@ export interface ContinuousVestingAccountProtoMsg {
  */
 export interface ContinuousVestingAccountAmino {
     base_vesting_account?: BaseVestingAccountAmino;
+    /** Vesting start time, as unix timestamp (in seconds). */
     start_time: string;
 }
 export interface ContinuousVestingAccountAminoMsg {
@@ -109,6 +113,7 @@ export interface DelayedVestingAccountSDKType {
 }
 /** Period defines a length of time and amount of coins that will vest. */
 export interface Period {
+    /** Period duration in seconds. */
     length: bigint;
     amount: Coin[];
 }
@@ -118,6 +123,7 @@ export interface PeriodProtoMsg {
 }
 /** Period defines a length of time and amount of coins that will vest. */
 export interface PeriodAmino {
+    /** Period duration in seconds. */
     length: string;
     amount: CoinAmino[];
 }
@@ -210,8 +216,6 @@ export declare const BaseVestingAccount: {
     fromJSON(object: any): BaseVestingAccount;
     toJSON(message: BaseVestingAccount): unknown;
     fromPartial(object: Partial<BaseVestingAccount>): BaseVestingAccount;
-    fromSDK(object: BaseVestingAccountSDKType): BaseVestingAccount;
-    toSDK(message: BaseVestingAccount): BaseVestingAccountSDKType;
     fromAmino(object: BaseVestingAccountAmino): BaseVestingAccount;
     toAmino(message: BaseVestingAccount): BaseVestingAccountAmino;
     fromAminoMsg(object: BaseVestingAccountAminoMsg): BaseVestingAccount;
@@ -227,8 +231,6 @@ export declare const ContinuousVestingAccount: {
     fromJSON(object: any): ContinuousVestingAccount;
     toJSON(message: ContinuousVestingAccount): unknown;
     fromPartial(object: Partial<ContinuousVestingAccount>): ContinuousVestingAccount;
-    fromSDK(object: ContinuousVestingAccountSDKType): ContinuousVestingAccount;
-    toSDK(message: ContinuousVestingAccount): ContinuousVestingAccountSDKType;
     fromAmino(object: ContinuousVestingAccountAmino): ContinuousVestingAccount;
     toAmino(message: ContinuousVestingAccount): ContinuousVestingAccountAmino;
     fromAminoMsg(object: ContinuousVestingAccountAminoMsg): ContinuousVestingAccount;
@@ -244,8 +246,6 @@ export declare const DelayedVestingAccount: {
     fromJSON(object: any): DelayedVestingAccount;
     toJSON(message: DelayedVestingAccount): unknown;
     fromPartial(object: Partial<DelayedVestingAccount>): DelayedVestingAccount;
-    fromSDK(object: DelayedVestingAccountSDKType): DelayedVestingAccount;
-    toSDK(message: DelayedVestingAccount): DelayedVestingAccountSDKType;
     fromAmino(object: DelayedVestingAccountAmino): DelayedVestingAccount;
     toAmino(message: DelayedVestingAccount): DelayedVestingAccountAmino;
     fromAminoMsg(object: DelayedVestingAccountAminoMsg): DelayedVestingAccount;
@@ -261,8 +261,6 @@ export declare const Period: {
     fromJSON(object: any): Period;
     toJSON(message: Period): unknown;
     fromPartial(object: Partial<Period>): Period;
-    fromSDK(object: PeriodSDKType): Period;
-    toSDK(message: Period): PeriodSDKType;
     fromAmino(object: PeriodAmino): Period;
     toAmino(message: Period): PeriodAmino;
     fromAminoMsg(object: PeriodAminoMsg): Period;
@@ -278,8 +276,6 @@ export declare const PeriodicVestingAccount: {
     fromJSON(object: any): PeriodicVestingAccount;
     toJSON(message: PeriodicVestingAccount): unknown;
     fromPartial(object: Partial<PeriodicVestingAccount>): PeriodicVestingAccount;
-    fromSDK(object: PeriodicVestingAccountSDKType): PeriodicVestingAccount;
-    toSDK(message: PeriodicVestingAccount): PeriodicVestingAccountSDKType;
     fromAmino(object: PeriodicVestingAccountAmino): PeriodicVestingAccount;
     toAmino(message: PeriodicVestingAccount): PeriodicVestingAccountAmino;
     fromAminoMsg(object: PeriodicVestingAccountAminoMsg): PeriodicVestingAccount;
@@ -295,8 +291,6 @@ export declare const PermanentLockedAccount: {
     fromJSON(object: any): PermanentLockedAccount;
     toJSON(message: PermanentLockedAccount): unknown;
     fromPartial(object: Partial<PermanentLockedAccount>): PermanentLockedAccount;
-    fromSDK(object: PermanentLockedAccountSDKType): PermanentLockedAccount;
-    toSDK(message: PermanentLockedAccount): PermanentLockedAccountSDKType;
     fromAmino(object: PermanentLockedAccountAmino): PermanentLockedAccount;
     toAmino(message: PermanentLockedAccount): PermanentLockedAccountAmino;
     fromAminoMsg(object: PermanentLockedAccountAminoMsg): PermanentLockedAccount;

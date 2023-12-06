@@ -70,20 +70,6 @@ exports.Storage = {
         message.data = object.data ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            address: object?.address,
-            index: object?.index,
-            data: object?.data
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        obj.index = message.index;
-        obj.data = message.data;
-        return obj;
-    },
     fromAmino(object) {
         return {
             address: object.address,

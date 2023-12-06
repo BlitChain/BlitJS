@@ -49,6 +49,18 @@ class Msg {
             body: JSON.stringify(request, fm.replacer)
         });
     }
+    /**
+     * PruneAllowances prunes expired fee allowances, currently up to 75 at a time.
+     *
+     * Since cosmos-sdk 0.50
+     */
+    static PruneAllowances(request, initRequest) {
+        return fm.fetchReq(`/cosmos.feegrant.v1beta1/PruneAllowances`, {
+            ...initRequest,
+            method: "POST",
+            body: JSON.stringify(request, fm.replacer)
+        });
+    }
 }
 exports.Msg = Msg;
 //# sourceMappingURL=tx.rpc.msg.js.map

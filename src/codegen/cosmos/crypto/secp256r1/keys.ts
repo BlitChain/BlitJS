@@ -97,16 +97,6 @@ export const PubKey = {
     message.key = object.key ?? new Uint8Array();
     return message;
   },
-  fromSDK(object: PubKeySDKType): PubKey {
-    return {
-      key: object?.key
-    };
-  },
-  toSDK(message: PubKey): PubKeySDKType {
-    const obj: any = {};
-    obj.key = message.key;
-    return obj;
-  },
   fromAmino(object: PubKeyAmino): PubKey {
     return {
       key: object.key
@@ -183,16 +173,6 @@ export const PrivKey = {
     const message = createBasePrivKey();
     message.secret = object.secret ?? new Uint8Array();
     return message;
-  },
-  fromSDK(object: PrivKeySDKType): PrivKey {
-    return {
-      secret: object?.secret
-    };
-  },
-  toSDK(message: PrivKey): PrivKeySDKType {
-    const obj: any = {};
-    obj.secret = message.secret;
-    return obj;
   },
   fromAmino(object: PrivKeyAmino): PrivKey {
     return {

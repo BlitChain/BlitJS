@@ -13,6 +13,7 @@ export interface BaseVestingAccount {
   original_vesting: Coin[];
   delegated_free: Coin[];
   delegated_vesting: Coin[];
+  /** Vesting end time, as unix timestamp (in seconds). */
   end_time: bigint;
 }
 export interface BaseVestingAccountProtoMsg {
@@ -28,6 +29,7 @@ export interface BaseVestingAccountAmino {
   original_vesting: CoinAmino[];
   delegated_free: CoinAmino[];
   delegated_vesting: CoinAmino[];
+  /** Vesting end time, as unix timestamp (in seconds). */
   end_time: string;
 }
 export interface BaseVestingAccountAminoMsg {
@@ -51,6 +53,7 @@ export interface BaseVestingAccountSDKType {
  */
 export interface ContinuousVestingAccount {
   base_vesting_account?: BaseVestingAccount;
+  /** Vesting start time, as unix timestamp (in seconds). */
   start_time: bigint;
 }
 export interface ContinuousVestingAccountProtoMsg {
@@ -63,6 +66,7 @@ export interface ContinuousVestingAccountProtoMsg {
  */
 export interface ContinuousVestingAccountAmino {
   base_vesting_account?: BaseVestingAccountAmino;
+  /** Vesting start time, as unix timestamp (in seconds). */
   start_time: string;
 }
 export interface ContinuousVestingAccountAminoMsg {
@@ -111,6 +115,7 @@ export interface DelayedVestingAccountSDKType {
 }
 /** Period defines a length of time and amount of coins that will vest. */
 export interface Period {
+  /** Period duration in seconds. */
   length: bigint;
   amount: Coin[];
 }
@@ -120,6 +125,7 @@ export interface PeriodProtoMsg {
 }
 /** Period defines a length of time and amount of coins that will vest. */
 export interface PeriodAmino {
+  /** Period duration in seconds. */
   length: string;
   amount: CoinAmino[];
 }
@@ -302,36 +308,6 @@ export const BaseVestingAccount = {
     message.end_time = object.end_time !== undefined && object.end_time !== null ? BigInt(object.end_time.toString()) : BigInt(0);
     return message;
   },
-  fromSDK(object: BaseVestingAccountSDKType): BaseVestingAccount {
-    return {
-      base_account: object.base_account ? BaseAccount.fromSDK(object.base_account) : undefined,
-      original_vesting: Array.isArray(object?.original_vesting) ? object.original_vesting.map((e: any) => Coin.fromSDK(e)) : [],
-      delegated_free: Array.isArray(object?.delegated_free) ? object.delegated_free.map((e: any) => Coin.fromSDK(e)) : [],
-      delegated_vesting: Array.isArray(object?.delegated_vesting) ? object.delegated_vesting.map((e: any) => Coin.fromSDK(e)) : [],
-      end_time: object?.end_time
-    };
-  },
-  toSDK(message: BaseVestingAccount): BaseVestingAccountSDKType {
-    const obj: any = {};
-    message.base_account !== undefined && (obj.base_account = message.base_account ? BaseAccount.toSDK(message.base_account) : undefined);
-    if (message.original_vesting) {
-      obj.original_vesting = message.original_vesting.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.original_vesting = [];
-    }
-    if (message.delegated_free) {
-      obj.delegated_free = message.delegated_free.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.delegated_free = [];
-    }
-    if (message.delegated_vesting) {
-      obj.delegated_vesting = message.delegated_vesting.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.delegated_vesting = [];
-    }
-    obj.end_time = message.end_time;
-    return obj;
-  },
   fromAmino(object: BaseVestingAccountAmino): BaseVestingAccount {
     return {
       base_account: object?.base_account ? BaseAccount.fromAmino(object.base_account) : undefined,
@@ -439,18 +415,6 @@ export const ContinuousVestingAccount = {
     message.start_time = object.start_time !== undefined && object.start_time !== null ? BigInt(object.start_time.toString()) : BigInt(0);
     return message;
   },
-  fromSDK(object: ContinuousVestingAccountSDKType): ContinuousVestingAccount {
-    return {
-      base_vesting_account: object.base_vesting_account ? BaseVestingAccount.fromSDK(object.base_vesting_account) : undefined,
-      start_time: object?.start_time
-    };
-  },
-  toSDK(message: ContinuousVestingAccount): ContinuousVestingAccountSDKType {
-    const obj: any = {};
-    message.base_vesting_account !== undefined && (obj.base_vesting_account = message.base_vesting_account ? BaseVestingAccount.toSDK(message.base_vesting_account) : undefined);
-    obj.start_time = message.start_time;
-    return obj;
-  },
   fromAmino(object: ContinuousVestingAccountAmino): ContinuousVestingAccount {
     return {
       base_vesting_account: object?.base_vesting_account ? BaseVestingAccount.fromAmino(object.base_vesting_account) : undefined,
@@ -529,16 +493,6 @@ export const DelayedVestingAccount = {
     const message = createBaseDelayedVestingAccount();
     message.base_vesting_account = object.base_vesting_account !== undefined && object.base_vesting_account !== null ? BaseVestingAccount.fromPartial(object.base_vesting_account) : undefined;
     return message;
-  },
-  fromSDK(object: DelayedVestingAccountSDKType): DelayedVestingAccount {
-    return {
-      base_vesting_account: object.base_vesting_account ? BaseVestingAccount.fromSDK(object.base_vesting_account) : undefined
-    };
-  },
-  toSDK(message: DelayedVestingAccount): DelayedVestingAccountSDKType {
-    const obj: any = {};
-    message.base_vesting_account !== undefined && (obj.base_vesting_account = message.base_vesting_account ? BaseVestingAccount.toSDK(message.base_vesting_account) : undefined);
-    return obj;
   },
   fromAmino(object: DelayedVestingAccountAmino): DelayedVestingAccount {
     return {
@@ -630,22 +584,6 @@ export const Period = {
     message.length = object.length !== undefined && object.length !== null ? BigInt(object.length.toString()) : BigInt(0);
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
-  },
-  fromSDK(object: PeriodSDKType): Period {
-    return {
-      length: object?.length,
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: Period): PeriodSDKType {
-    const obj: any = {};
-    obj.length = message.length;
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-    return obj;
   },
   fromAmino(object: PeriodAmino): Period {
     return {
@@ -754,24 +692,6 @@ export const PeriodicVestingAccount = {
     message.vesting_periods = object.vesting_periods?.map(e => Period.fromPartial(e)) || [];
     return message;
   },
-  fromSDK(object: PeriodicVestingAccountSDKType): PeriodicVestingAccount {
-    return {
-      base_vesting_account: object.base_vesting_account ? BaseVestingAccount.fromSDK(object.base_vesting_account) : undefined,
-      start_time: object?.start_time,
-      vesting_periods: Array.isArray(object?.vesting_periods) ? object.vesting_periods.map((e: any) => Period.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: PeriodicVestingAccount): PeriodicVestingAccountSDKType {
-    const obj: any = {};
-    message.base_vesting_account !== undefined && (obj.base_vesting_account = message.base_vesting_account ? BaseVestingAccount.toSDK(message.base_vesting_account) : undefined);
-    obj.start_time = message.start_time;
-    if (message.vesting_periods) {
-      obj.vesting_periods = message.vesting_periods.map(e => e ? Period.toSDK(e) : undefined);
-    } else {
-      obj.vesting_periods = [];
-    }
-    return obj;
-  },
   fromAmino(object: PeriodicVestingAccountAmino): PeriodicVestingAccount {
     return {
       base_vesting_account: object?.base_vesting_account ? BaseVestingAccount.fromAmino(object.base_vesting_account) : undefined,
@@ -856,16 +776,6 @@ export const PermanentLockedAccount = {
     const message = createBasePermanentLockedAccount();
     message.base_vesting_account = object.base_vesting_account !== undefined && object.base_vesting_account !== null ? BaseVestingAccount.fromPartial(object.base_vesting_account) : undefined;
     return message;
-  },
-  fromSDK(object: PermanentLockedAccountSDKType): PermanentLockedAccount {
-    return {
-      base_vesting_account: object.base_vesting_account ? BaseVestingAccount.fromSDK(object.base_vesting_account) : undefined
-    };
-  },
-  toSDK(message: PermanentLockedAccount): PermanentLockedAccountSDKType {
-    const obj: any = {};
-    message.base_vesting_account !== undefined && (obj.base_vesting_account = message.base_vesting_account ? BaseVestingAccount.toSDK(message.base_vesting_account) : undefined);
-    return obj;
   },
   fromAmino(object: PermanentLockedAccountAmino): PermanentLockedAccount {
     return {

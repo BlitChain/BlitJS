@@ -117,30 +117,6 @@ export const GenesisState = {
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
-  fromSDK(object: GenesisStateSDKType): GenesisState {
-    return {
-      connections: Array.isArray(object?.connections) ? object.connections.map((e: any) => IdentifiedConnection.fromSDK(e)) : [],
-      client_connection_paths: Array.isArray(object?.client_connection_paths) ? object.client_connection_paths.map((e: any) => ConnectionPaths.fromSDK(e)) : [],
-      next_connection_sequence: object?.next_connection_sequence,
-      params: object.params ? Params.fromSDK(object.params) : undefined
-    };
-  },
-  toSDK(message: GenesisState): GenesisStateSDKType {
-    const obj: any = {};
-    if (message.connections) {
-      obj.connections = message.connections.map(e => e ? IdentifiedConnection.toSDK(e) : undefined);
-    } else {
-      obj.connections = [];
-    }
-    if (message.client_connection_paths) {
-      obj.client_connection_paths = message.client_connection_paths.map(e => e ? ConnectionPaths.toSDK(e) : undefined);
-    } else {
-      obj.client_connection_paths = [];
-    }
-    obj.next_connection_sequence = message.next_connection_sequence;
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    return obj;
-  },
   fromAmino(object: GenesisStateAmino): GenesisState {
     return {
       connections: Array.isArray(object?.connections) ? object.connections.map((e: any) => IdentifiedConnection.fromAmino(e)) : [],

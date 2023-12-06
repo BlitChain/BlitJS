@@ -102,8 +102,6 @@ export declare const Class: {
     fromJSON(object: any): Class;
     toJSON(message: Class): unknown;
     fromPartial(object: Partial<Class>): Class;
-    fromSDK(object: ClassSDKType): Class;
-    toSDK(message: Class): ClassSDKType;
     fromAmino(object: ClassAmino): Class;
     toAmino(message: Class): ClassAmino;
     fromAminoMsg(object: ClassAminoMsg): Class;
@@ -119,8 +117,6 @@ export declare const NFT: {
     fromJSON(object: any): NFT;
     toJSON(message: NFT): unknown;
     fromPartial(object: Partial<NFT>): NFT;
-    fromSDK(object: NFTSDKType): NFT;
-    toSDK(message: NFT): NFTSDKType;
     fromAmino(object: NFTAmino): NFT;
     toAmino(message: NFT): NFTAmino;
     fromAminoMsg(object: NFTAminoMsg): NFT;

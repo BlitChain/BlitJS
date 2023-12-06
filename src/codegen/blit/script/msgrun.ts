@@ -162,28 +162,6 @@ export const MsgRun = {
     message.attached_messages = object.attached_messages ?? "";
     return message;
   },
-  fromSDK(object: MsgRunSDKType): MsgRun {
-    return {
-      caller_address: object?.caller_address,
-      script_address: object?.script_address,
-      extra_code: object?.extra_code,
-      function_name: object?.function_name,
-      kwargs: object?.kwargs,
-      grantee: object?.grantee,
-      attached_messages: object?.attached_messages
-    };
-  },
-  toSDK(message: MsgRun): MsgRunSDKType {
-    const obj: any = {};
-    obj.caller_address = message.caller_address;
-    obj.script_address = message.script_address;
-    obj.extra_code = message.extra_code;
-    obj.function_name = message.function_name;
-    obj.kwargs = message.kwargs;
-    obj.grantee = message.grantee;
-    obj.attached_messages = message.attached_messages;
-    return obj;
-  },
   fromAmino(object: MsgRunAmino): MsgRun {
     return {
       caller_address: object.caller_address,
@@ -266,16 +244,6 @@ export const MsgRunResponse = {
     const message = createBaseMsgRunResponse();
     message.response = object.response ?? "";
     return message;
-  },
-  fromSDK(object: MsgRunResponseSDKType): MsgRunResponse {
-    return {
-      response: object?.response
-    };
-  },
-  toSDK(message: MsgRunResponse): MsgRunResponseSDKType {
-    const obj: any = {};
-    obj.response = message.response;
-    return obj;
   },
   fromAmino(object: MsgRunResponseAmino): MsgRunResponse {
     return {

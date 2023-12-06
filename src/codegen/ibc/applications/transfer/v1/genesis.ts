@@ -124,30 +124,6 @@ export const GenesisState = {
     message.total_escrowed = object.total_escrowed?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
-  fromSDK(object: GenesisStateSDKType): GenesisState {
-    return {
-      port_id: object?.port_id,
-      denom_traces: Array.isArray(object?.denom_traces) ? object.denom_traces.map((e: any) => DenomTrace.fromSDK(e)) : [],
-      params: object.params ? Params.fromSDK(object.params) : undefined,
-      total_escrowed: Array.isArray(object?.total_escrowed) ? object.total_escrowed.map((e: any) => Coin.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: GenesisState): GenesisStateSDKType {
-    const obj: any = {};
-    obj.port_id = message.port_id;
-    if (message.denom_traces) {
-      obj.denom_traces = message.denom_traces.map(e => e ? DenomTrace.toSDK(e) : undefined);
-    } else {
-      obj.denom_traces = [];
-    }
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    if (message.total_escrowed) {
-      obj.total_escrowed = message.total_escrowed.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.total_escrowed = [];
-    }
-    return obj;
-  },
   fromAmino(object: GenesisStateAmino): GenesisState {
     return {
       port_id: object.port_id,

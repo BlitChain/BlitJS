@@ -138,8 +138,6 @@ export declare const Proof: {
     fromJSON(object: any): Proof;
     toJSON(message: Proof): unknown;
     fromPartial(object: Partial<Proof>): Proof;
-    fromSDK(object: ProofSDKType): Proof;
-    toSDK(message: Proof): ProofSDKType;
     fromAmino(object: ProofAmino): Proof;
     toAmino(message: Proof): ProofAmino;
     fromAminoMsg(object: ProofAminoMsg): Proof;
@@ -154,8 +152,6 @@ export declare const ValueOp: {
     fromJSON(object: any): ValueOp;
     toJSON(message: ValueOp): unknown;
     fromPartial(object: Partial<ValueOp>): ValueOp;
-    fromSDK(object: ValueOpSDKType): ValueOp;
-    toSDK(message: ValueOp): ValueOpSDKType;
     fromAmino(object: ValueOpAmino): ValueOp;
     toAmino(message: ValueOp): ValueOpAmino;
     fromAminoMsg(object: ValueOpAminoMsg): ValueOp;
@@ -170,8 +166,6 @@ export declare const DominoOp: {
     fromJSON(object: any): DominoOp;
     toJSON(message: DominoOp): unknown;
     fromPartial(object: Partial<DominoOp>): DominoOp;
-    fromSDK(object: DominoOpSDKType): DominoOp;
-    toSDK(message: DominoOp): DominoOpSDKType;
     fromAmino(object: DominoOpAmino): DominoOp;
     toAmino(message: DominoOp): DominoOpAmino;
     fromAminoMsg(object: DominoOpAminoMsg): DominoOp;
@@ -186,8 +180,6 @@ export declare const ProofOp: {
     fromJSON(object: any): ProofOp;
     toJSON(message: ProofOp): unknown;
     fromPartial(object: Partial<ProofOp>): ProofOp;
-    fromSDK(object: ProofOpSDKType): ProofOp;
-    toSDK(message: ProofOp): ProofOpSDKType;
     fromAmino(object: ProofOpAmino): ProofOp;
     toAmino(message: ProofOp): ProofOpAmino;
     fromAminoMsg(object: ProofOpAminoMsg): ProofOp;
@@ -202,8 +194,6 @@ export declare const ProofOps: {
     fromJSON(object: any): ProofOps;
     toJSON(message: ProofOps): unknown;
     fromPartial(object: Partial<ProofOps>): ProofOps;
-    fromSDK(object: ProofOpsSDKType): ProofOps;
-    toSDK(message: ProofOps): ProofOpsSDKType;
     fromAmino(object: ProofOpsAmino): ProofOps;
     toAmino(message: ProofOps): ProofOpsAmino;
     fromAminoMsg(object: ProofOpsAminoMsg): ProofOps;

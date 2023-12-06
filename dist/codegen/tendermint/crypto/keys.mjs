@@ -57,18 +57,6 @@ export const PublicKey = {
         message.secp256k1 = object.secp256k1 ?? undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            ed25519: object?.ed25519,
-            secp256k1: object?.secp256k1
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.ed25519 = message.ed25519;
-        obj.secp256k1 = message.secp256k1;
-        return obj;
-    },
     fromAmino(object) {
         return {
             ed25519: object?.ed25519,

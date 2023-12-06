@@ -62,18 +62,6 @@ exports.DelegatorWithdrawInfo = {
         message.withdraw_address = object.withdraw_address ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            delegator_address: object?.delegator_address,
-            withdraw_address: object?.withdraw_address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_address = message.delegator_address;
-        obj.withdraw_address = message.withdraw_address;
-        return obj;
-    },
     fromAmino(object) {
         return {
             delegator_address: object.delegator_address,
@@ -168,23 +156,6 @@ exports.ValidatorOutstandingRewardsRecord = {
         message.outstanding_rewards = object.outstanding_rewards?.map(e => coin_1.DecCoin.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            validator_address: object?.validator_address,
-            outstanding_rewards: Array.isArray(object?.outstanding_rewards) ? object.outstanding_rewards.map((e) => coin_1.DecCoin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.validator_address = message.validator_address;
-        if (message.outstanding_rewards) {
-            obj.outstanding_rewards = message.outstanding_rewards.map(e => e ? coin_1.DecCoin.toSDK(e) : undefined);
-        }
-        else {
-            obj.outstanding_rewards = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             validator_address: object.validator_address,
@@ -278,18 +249,6 @@ exports.ValidatorAccumulatedCommissionRecord = {
         message.validator_address = object.validator_address ?? "";
         message.accumulated = object.accumulated !== undefined && object.accumulated !== null ? distribution_1.ValidatorAccumulatedCommission.fromPartial(object.accumulated) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            validator_address: object?.validator_address,
-            accumulated: object.accumulated ? distribution_1.ValidatorAccumulatedCommission.fromSDK(object.accumulated) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.validator_address = message.validator_address;
-        message.accumulated !== undefined && (obj.accumulated = message.accumulated ? distribution_1.ValidatorAccumulatedCommission.toSDK(message.accumulated) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -390,20 +349,6 @@ exports.ValidatorHistoricalRewardsRecord = {
         message.rewards = object.rewards !== undefined && object.rewards !== null ? distribution_1.ValidatorHistoricalRewards.fromPartial(object.rewards) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            validator_address: object?.validator_address,
-            period: object?.period,
-            rewards: object.rewards ? distribution_1.ValidatorHistoricalRewards.fromSDK(object.rewards) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.validator_address = message.validator_address;
-        obj.period = message.period;
-        message.rewards !== undefined && (obj.rewards = message.rewards ? distribution_1.ValidatorHistoricalRewards.toSDK(message.rewards) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             validator_address: object.validator_address,
@@ -494,18 +439,6 @@ exports.ValidatorCurrentRewardsRecord = {
         message.validator_address = object.validator_address ?? "";
         message.rewards = object.rewards !== undefined && object.rewards !== null ? distribution_1.ValidatorCurrentRewards.fromPartial(object.rewards) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            validator_address: object?.validator_address,
-            rewards: object.rewards ? distribution_1.ValidatorCurrentRewards.fromSDK(object.rewards) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.validator_address = message.validator_address;
-        message.rewards !== undefined && (obj.rewards = message.rewards ? distribution_1.ValidatorCurrentRewards.toSDK(message.rewards) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -605,20 +538,6 @@ exports.DelegatorStartingInfoRecord = {
         message.validator_address = object.validator_address ?? "";
         message.starting_info = object.starting_info !== undefined && object.starting_info !== null ? distribution_1.DelegatorStartingInfo.fromPartial(object.starting_info) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            delegator_address: object?.delegator_address,
-            validator_address: object?.validator_address,
-            starting_info: object.starting_info ? distribution_1.DelegatorStartingInfo.fromSDK(object.starting_info) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_address = message.delegator_address;
-        obj.validator_address = message.validator_address;
-        message.starting_info !== undefined && (obj.starting_info = message.starting_info ? distribution_1.DelegatorStartingInfo.toSDK(message.starting_info) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -730,22 +649,6 @@ exports.ValidatorSlashEventRecord = {
         message.period = object.period !== undefined && object.period !== null ? BigInt(object.period.toString()) : BigInt(0);
         message.validator_slash_event = object.validator_slash_event !== undefined && object.validator_slash_event !== null ? distribution_1.ValidatorSlashEvent.fromPartial(object.validator_slash_event) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            validator_address: object?.validator_address,
-            height: object?.height,
-            period: object?.period,
-            validator_slash_event: object.validator_slash_event ? distribution_1.ValidatorSlashEvent.fromSDK(object.validator_slash_event) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.validator_address = message.validator_address;
-        obj.height = message.height;
-        obj.period = message.period;
-        message.validator_slash_event !== undefined && (obj.validator_slash_event = message.validator_slash_event ? distribution_1.ValidatorSlashEvent.toSDK(message.validator_slash_event) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -954,69 +857,6 @@ exports.GenesisState = {
         message.delegator_starting_infos = object.delegator_starting_infos?.map(e => exports.DelegatorStartingInfoRecord.fromPartial(e)) || [];
         message.validator_slash_events = object.validator_slash_events?.map(e => exports.ValidatorSlashEventRecord.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            params: object.params ? distribution_1.Params.fromSDK(object.params) : undefined,
-            fee_pool: object.fee_pool ? distribution_1.FeePool.fromSDK(object.fee_pool) : undefined,
-            delegator_withdraw_infos: Array.isArray(object?.delegator_withdraw_infos) ? object.delegator_withdraw_infos.map((e) => exports.DelegatorWithdrawInfo.fromSDK(e)) : [],
-            previous_proposer: object?.previous_proposer,
-            outstanding_rewards: Array.isArray(object?.outstanding_rewards) ? object.outstanding_rewards.map((e) => exports.ValidatorOutstandingRewardsRecord.fromSDK(e)) : [],
-            validator_accumulated_commissions: Array.isArray(object?.validator_accumulated_commissions) ? object.validator_accumulated_commissions.map((e) => exports.ValidatorAccumulatedCommissionRecord.fromSDK(e)) : [],
-            validator_historical_rewards: Array.isArray(object?.validator_historical_rewards) ? object.validator_historical_rewards.map((e) => exports.ValidatorHistoricalRewardsRecord.fromSDK(e)) : [],
-            validator_current_rewards: Array.isArray(object?.validator_current_rewards) ? object.validator_current_rewards.map((e) => exports.ValidatorCurrentRewardsRecord.fromSDK(e)) : [],
-            delegator_starting_infos: Array.isArray(object?.delegator_starting_infos) ? object.delegator_starting_infos.map((e) => exports.DelegatorStartingInfoRecord.fromSDK(e)) : [],
-            validator_slash_events: Array.isArray(object?.validator_slash_events) ? object.validator_slash_events.map((e) => exports.ValidatorSlashEventRecord.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? distribution_1.Params.toSDK(message.params) : undefined);
-        message.fee_pool !== undefined && (obj.fee_pool = message.fee_pool ? distribution_1.FeePool.toSDK(message.fee_pool) : undefined);
-        if (message.delegator_withdraw_infos) {
-            obj.delegator_withdraw_infos = message.delegator_withdraw_infos.map(e => e ? exports.DelegatorWithdrawInfo.toSDK(e) : undefined);
-        }
-        else {
-            obj.delegator_withdraw_infos = [];
-        }
-        obj.previous_proposer = message.previous_proposer;
-        if (message.outstanding_rewards) {
-            obj.outstanding_rewards = message.outstanding_rewards.map(e => e ? exports.ValidatorOutstandingRewardsRecord.toSDK(e) : undefined);
-        }
-        else {
-            obj.outstanding_rewards = [];
-        }
-        if (message.validator_accumulated_commissions) {
-            obj.validator_accumulated_commissions = message.validator_accumulated_commissions.map(e => e ? exports.ValidatorAccumulatedCommissionRecord.toSDK(e) : undefined);
-        }
-        else {
-            obj.validator_accumulated_commissions = [];
-        }
-        if (message.validator_historical_rewards) {
-            obj.validator_historical_rewards = message.validator_historical_rewards.map(e => e ? exports.ValidatorHistoricalRewardsRecord.toSDK(e) : undefined);
-        }
-        else {
-            obj.validator_historical_rewards = [];
-        }
-        if (message.validator_current_rewards) {
-            obj.validator_current_rewards = message.validator_current_rewards.map(e => e ? exports.ValidatorCurrentRewardsRecord.toSDK(e) : undefined);
-        }
-        else {
-            obj.validator_current_rewards = [];
-        }
-        if (message.delegator_starting_infos) {
-            obj.delegator_starting_infos = message.delegator_starting_infos.map(e => e ? exports.DelegatorStartingInfoRecord.toSDK(e) : undefined);
-        }
-        else {
-            obj.delegator_starting_infos = [];
-        }
-        if (message.validator_slash_events) {
-            obj.validator_slash_events = message.validator_slash_events.map(e => e ? exports.ValidatorSlashEventRecord.toSDK(e) : undefined);
-        }
-        else {
-            obj.validator_slash_events = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {

@@ -64,23 +64,6 @@ export const GenesisState = {
         message.storageList = object.storageList?.map(e => Storage.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            params: object.params ? Params.fromSDK(object.params) : undefined,
-            storageList: Array.isArray(object?.storageList) ? object.storageList.map((e) => Storage.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-        if (message.storageList) {
-            obj.storageList = message.storageList.map(e => e ? Storage.toSDK(e) : undefined);
-        }
-        else {
-            obj.storageList = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             params: object?.params ? Params.fromAmino(object.params) : undefined,

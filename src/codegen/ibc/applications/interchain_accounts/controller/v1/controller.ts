@@ -78,16 +78,6 @@ export const Params = {
     message.controller_enabled = object.controller_enabled ?? false;
     return message;
   },
-  fromSDK(object: ParamsSDKType): Params {
-    return {
-      controller_enabled: object?.controller_enabled
-    };
-  },
-  toSDK(message: Params): ParamsSDKType {
-    const obj: any = {};
-    obj.controller_enabled = message.controller_enabled;
-    return obj;
-  },
   fromAmino(object: ParamsAmino): Params {
     return {
       controller_enabled: object.controller_enabled

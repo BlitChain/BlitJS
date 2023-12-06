@@ -180,22 +180,6 @@ exports.ClientState = {
         message.allow_update_after_proposal = object.allow_update_after_proposal ?? false;
         return message;
     },
-    fromSDK(object) {
-        return {
-            sequence: object?.sequence,
-            is_frozen: object?.is_frozen,
-            consensus_state: object.consensus_state ? exports.ConsensusState.fromSDK(object.consensus_state) : undefined,
-            allow_update_after_proposal: object?.allow_update_after_proposal
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.sequence = message.sequence;
-        obj.is_frozen = message.is_frozen;
-        message.consensus_state !== undefined && (obj.consensus_state = message.consensus_state ? exports.ConsensusState.toSDK(message.consensus_state) : undefined);
-        obj.allow_update_after_proposal = message.allow_update_after_proposal;
-        return obj;
-    },
     fromAmino(object) {
         return {
             sequence: BigInt(object.sequence),
@@ -298,20 +282,6 @@ exports.ConsensusState = {
         message.diversifier = object.diversifier ?? "";
         message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? BigInt(object.timestamp.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            public_key: object.public_key ? any_1.Any.fromSDK(object.public_key) : undefined,
-            diversifier: object?.diversifier,
-            timestamp: object?.timestamp
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.public_key !== undefined && (obj.public_key = message.public_key ? any_1.Any.toSDK(message.public_key) : undefined);
-        obj.diversifier = message.diversifier;
-        obj.timestamp = message.timestamp;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -434,24 +404,6 @@ exports.Header = {
         message.new_diversifier = object.new_diversifier ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            sequence: object?.sequence,
-            timestamp: object?.timestamp,
-            signature: object?.signature,
-            new_public_key: object.new_public_key ? any_1.Any.fromSDK(object.new_public_key) : undefined,
-            new_diversifier: object?.new_diversifier
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.sequence = message.sequence;
-        obj.timestamp = message.timestamp;
-        obj.signature = message.signature;
-        message.new_public_key !== undefined && (obj.new_public_key = message.new_public_key ? any_1.Any.toSDK(message.new_public_key) : undefined);
-        obj.new_diversifier = message.new_diversifier;
-        return obj;
-    },
     fromAmino(object) {
         return {
             sequence: BigInt(object.sequence),
@@ -567,22 +519,6 @@ exports.Misbehaviour = {
         message.signature_two = object.signature_two !== undefined && object.signature_two !== null ? exports.SignatureAndData.fromPartial(object.signature_two) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            client_id: object?.client_id,
-            sequence: object?.sequence,
-            signature_one: object.signature_one ? exports.SignatureAndData.fromSDK(object.signature_one) : undefined,
-            signature_two: object.signature_two ? exports.SignatureAndData.fromSDK(object.signature_two) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.client_id = message.client_id;
-        obj.sequence = message.sequence;
-        message.signature_one !== undefined && (obj.signature_one = message.signature_one ? exports.SignatureAndData.toSDK(message.signature_one) : undefined);
-        message.signature_two !== undefined && (obj.signature_two = message.signature_two ? exports.SignatureAndData.toSDK(message.signature_two) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             client_id: object.client_id,
@@ -696,22 +632,6 @@ exports.SignatureAndData = {
         message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? BigInt(object.timestamp.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            signature: object?.signature,
-            data_type: (0, helpers_1.isSet)(object.data_type) ? dataTypeFromJSON(object.data_type) : -1,
-            data: object?.data,
-            timestamp: object?.timestamp
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.signature = message.signature;
-        message.data_type !== undefined && (obj.data_type = dataTypeToJSON(message.data_type));
-        obj.data = message.data;
-        obj.timestamp = message.timestamp;
-        return obj;
-    },
     fromAmino(object) {
         return {
             signature: object.signature,
@@ -804,18 +724,6 @@ exports.TimestampedSignatureData = {
         message.signature_data = object.signature_data ?? new Uint8Array();
         message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? BigInt(object.timestamp.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            signature_data: object?.signature_data,
-            timestamp: object?.timestamp
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.signature_data = message.signature_data;
-        obj.timestamp = message.timestamp;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -936,24 +844,6 @@ exports.SignBytes = {
         message.data = object.data ?? new Uint8Array();
         return message;
     },
-    fromSDK(object) {
-        return {
-            sequence: object?.sequence,
-            timestamp: object?.timestamp,
-            diversifier: object?.diversifier,
-            data_type: (0, helpers_1.isSet)(object.data_type) ? dataTypeFromJSON(object.data_type) : -1,
-            data: object?.data
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.sequence = message.sequence;
-        obj.timestamp = message.timestamp;
-        obj.diversifier = message.diversifier;
-        message.data_type !== undefined && (obj.data_type = dataTypeToJSON(message.data_type));
-        obj.data = message.data;
-        return obj;
-    },
     fromAmino(object) {
         return {
             sequence: BigInt(object.sequence),
@@ -1049,18 +939,6 @@ exports.HeaderData = {
         message.new_diversifier = object.new_diversifier ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            new_pub_key: object.new_pub_key ? any_1.Any.fromSDK(object.new_pub_key) : undefined,
-            new_diversifier: object?.new_diversifier
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.new_pub_key !== undefined && (obj.new_pub_key = message.new_pub_key ? any_1.Any.toSDK(message.new_pub_key) : undefined);
-        obj.new_diversifier = message.new_diversifier;
-        return obj;
-    },
     fromAmino(object) {
         return {
             new_pub_key: object?.new_pub_key ? any_1.Any.fromAmino(object.new_pub_key) : undefined,
@@ -1149,18 +1027,6 @@ exports.ClientStateData = {
         message.path = object.path ?? new Uint8Array();
         message.client_state = object.client_state !== undefined && object.client_state !== null ? any_1.Any.fromPartial(object.client_state) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            path: object?.path,
-            client_state: object.client_state ? any_1.Any.fromSDK(object.client_state) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.path = message.path;
-        message.client_state !== undefined && (obj.client_state = message.client_state ? any_1.Any.toSDK(message.client_state) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1251,18 +1117,6 @@ exports.ConsensusStateData = {
         message.consensus_state = object.consensus_state !== undefined && object.consensus_state !== null ? any_1.Any.fromPartial(object.consensus_state) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            path: object?.path,
-            consensus_state: object.consensus_state ? any_1.Any.fromSDK(object.consensus_state) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.path = message.path;
-        message.consensus_state !== undefined && (obj.consensus_state = message.consensus_state ? any_1.Any.toSDK(message.consensus_state) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             path: object.path,
@@ -1351,18 +1205,6 @@ exports.ConnectionStateData = {
         message.path = object.path ?? new Uint8Array();
         message.connection = object.connection !== undefined && object.connection !== null ? connection_1.ConnectionEnd.fromPartial(object.connection) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            path: object?.path,
-            connection: object.connection ? connection_1.ConnectionEnd.fromSDK(object.connection) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.path = message.path;
-        message.connection !== undefined && (obj.connection = message.connection ? connection_1.ConnectionEnd.toSDK(message.connection) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1453,18 +1295,6 @@ exports.ChannelStateData = {
         message.channel = object.channel !== undefined && object.channel !== null ? channel_1.Channel.fromPartial(object.channel) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            path: object?.path,
-            channel: object.channel ? channel_1.Channel.fromSDK(object.channel) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.path = message.path;
-        message.channel !== undefined && (obj.channel = message.channel ? channel_1.Channel.toSDK(message.channel) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             path: object.path,
@@ -1553,18 +1383,6 @@ exports.PacketCommitmentData = {
         message.path = object.path ?? new Uint8Array();
         message.commitment = object.commitment ?? new Uint8Array();
         return message;
-    },
-    fromSDK(object) {
-        return {
-            path: object?.path,
-            commitment: object?.commitment
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.path = message.path;
-        obj.commitment = message.commitment;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1655,18 +1473,6 @@ exports.PacketAcknowledgementData = {
         message.acknowledgement = object.acknowledgement ?? new Uint8Array();
         return message;
     },
-    fromSDK(object) {
-        return {
-            path: object?.path,
-            acknowledgement: object?.acknowledgement
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.path = message.path;
-        obj.acknowledgement = message.acknowledgement;
-        return obj;
-    },
     fromAmino(object) {
         return {
             path: object.path,
@@ -1745,16 +1551,6 @@ exports.PacketReceiptAbsenceData = {
         const message = createBasePacketReceiptAbsenceData();
         message.path = object.path ?? new Uint8Array();
         return message;
-    },
-    fromSDK(object) {
-        return {
-            path: object?.path
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.path = message.path;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1842,18 +1638,6 @@ exports.NextSequenceRecvData = {
         message.path = object.path ?? new Uint8Array();
         message.next_seq_recv = object.next_seq_recv !== undefined && object.next_seq_recv !== null ? BigInt(object.next_seq_recv.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            path: object?.path,
-            next_seq_recv: object?.next_seq_recv
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.path = message.path;
-        obj.next_seq_recv = message.next_seq_recv;
-        return obj;
     },
     fromAmino(object) {
         return {

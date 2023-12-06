@@ -153,8 +153,6 @@ export declare const InterfaceDescriptor: {
     fromJSON(object: any): InterfaceDescriptor;
     toJSON(message: InterfaceDescriptor): unknown;
     fromPartial(object: Partial<InterfaceDescriptor>): InterfaceDescriptor;
-    fromSDK(object: InterfaceDescriptorSDKType): InterfaceDescriptor;
-    toSDK(message: InterfaceDescriptor): InterfaceDescriptorSDKType;
     fromAmino(object: InterfaceDescriptorAmino): InterfaceDescriptor;
     toAmino(message: InterfaceDescriptor): InterfaceDescriptorAmino;
     fromAminoMsg(object: InterfaceDescriptorAminoMsg): InterfaceDescriptor;
@@ -169,8 +167,6 @@ export declare const ScalarDescriptor: {
     fromJSON(object: any): ScalarDescriptor;
     toJSON(message: ScalarDescriptor): unknown;
     fromPartial(object: Partial<ScalarDescriptor>): ScalarDescriptor;
-    fromSDK(object: ScalarDescriptorSDKType): ScalarDescriptor;
-    toSDK(message: ScalarDescriptor): ScalarDescriptorSDKType;
     fromAmino(object: ScalarDescriptorAmino): ScalarDescriptor;
     toAmino(message: ScalarDescriptor): ScalarDescriptorAmino;
     fromAminoMsg(object: ScalarDescriptorAminoMsg): ScalarDescriptor;

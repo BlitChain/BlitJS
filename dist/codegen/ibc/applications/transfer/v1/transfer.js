@@ -60,18 +60,6 @@ exports.DenomTrace = {
         message.base_denom = object.base_denom ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            path: object?.path,
-            base_denom: object?.base_denom
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.path = message.path;
-        obj.base_denom = message.base_denom;
-        return obj;
-    },
     fromAmino(object) {
         return {
             path: object.path,
@@ -160,18 +148,6 @@ exports.Params = {
         message.send_enabled = object.send_enabled ?? false;
         message.receive_enabled = object.receive_enabled ?? false;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            send_enabled: object?.send_enabled,
-            receive_enabled: object?.receive_enabled
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.send_enabled = message.send_enabled;
-        obj.receive_enabled = message.receive_enabled;
-        return obj;
     },
     fromAmino(object) {
         return {

@@ -62,8 +62,6 @@ export declare const MsgRun: {
     fromJSON(object: any): MsgRun;
     toJSON(message: MsgRun): unknown;
     fromPartial(object: Partial<MsgRun>): MsgRun;
-    fromSDK(object: MsgRunSDKType): MsgRun;
-    toSDK(message: MsgRun): MsgRunSDKType;
     fromAmino(object: MsgRunAmino): MsgRun;
     toAmino(message: MsgRun): MsgRunAmino;
     fromAminoMsg(object: MsgRunAminoMsg): MsgRun;
@@ -78,8 +76,6 @@ export declare const MsgRunResponse: {
     fromJSON(object: any): MsgRunResponse;
     toJSON(message: MsgRunResponse): unknown;
     fromPartial(object: Partial<MsgRunResponse>): MsgRunResponse;
-    fromSDK(object: MsgRunResponseSDKType): MsgRunResponse;
-    toSDK(message: MsgRunResponse): MsgRunResponseSDKType;
     fromAmino(object: MsgRunResponseAmino): MsgRunResponse;
     toAmino(message: MsgRunResponse): MsgRunResponseAmino;
     fromAminoMsg(object: MsgRunResponseAminoMsg): MsgRunResponse;

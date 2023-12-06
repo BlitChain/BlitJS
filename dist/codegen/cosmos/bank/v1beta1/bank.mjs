@@ -63,23 +63,6 @@ export const Params = {
         message.default_send_enabled = object.default_send_enabled ?? false;
         return message;
     },
-    fromSDK(object) {
-        return {
-            send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e) => SendEnabled.fromSDK(e)) : [],
-            default_send_enabled: object?.default_send_enabled
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.send_enabled) {
-            obj.send_enabled = message.send_enabled.map(e => e ? SendEnabled.toSDK(e) : undefined);
-        }
-        else {
-            obj.send_enabled = [];
-        }
-        obj.default_send_enabled = message.default_send_enabled;
-        return obj;
-    },
     fromAmino(object) {
         return {
             send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e) => SendEnabled.fromAmino(e)) : [],
@@ -102,7 +85,7 @@ export const Params = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/Params",
+            type: "cosmos-sdk/x/bank/Params",
             value: Params.toAmino(message)
         };
     },
@@ -173,18 +156,6 @@ export const SendEnabled = {
         message.denom = object.denom ?? "";
         message.enabled = object.enabled ?? false;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            denom: object?.denom,
-            enabled: object?.enabled
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.denom = message.denom;
-        obj.enabled = message.enabled;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -279,23 +250,6 @@ export const Input = {
         message.address = object.address ?? "";
         message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            address: object?.address,
-            coins: Array.isArray(object?.coins) ? object.coins.map((e) => Coin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        if (message.coins) {
-            obj.coins = message.coins.map(e => e ? Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.coins = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -396,23 +350,6 @@ export const Output = {
         message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            address: object?.address,
-            coins: Array.isArray(object?.coins) ? object.coins.map((e) => Coin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        if (message.coins) {
-            obj.coins = message.coins.map(e => e ? Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.coins = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             address: object.address,
@@ -502,21 +439,6 @@ export const Supply = {
         const message = createBaseSupply();
         message.total = object.total?.map(e => Coin.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            total: Array.isArray(object?.total) ? object.total.map((e) => Coin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.total) {
-            obj.total = message.total.map(e => e ? Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.total = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -624,25 +546,6 @@ export const DenomUnit = {
         message.exponent = object.exponent ?? 0;
         message.aliases = object.aliases?.map(e => e) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            denom: object?.denom,
-            exponent: object?.exponent,
-            aliases: Array.isArray(object?.aliases) ? object.aliases.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.denom = message.denom;
-        obj.exponent = message.exponent;
-        if (message.aliases) {
-            obj.aliases = message.aliases.map(e => e);
-        }
-        else {
-            obj.aliases = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -804,35 +707,6 @@ export const Metadata = {
         message.uri = object.uri ?? "";
         message.uri_hash = object.uri_hash ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            description: object?.description,
-            denom_units: Array.isArray(object?.denom_units) ? object.denom_units.map((e) => DenomUnit.fromSDK(e)) : [],
-            base: object?.base,
-            display: object?.display,
-            name: object?.name,
-            symbol: object?.symbol,
-            uri: object?.uri,
-            uri_hash: object?.uri_hash
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.description = message.description;
-        if (message.denom_units) {
-            obj.denom_units = message.denom_units.map(e => e ? DenomUnit.toSDK(e) : undefined);
-        }
-        else {
-            obj.denom_units = [];
-        }
-        obj.base = message.base;
-        obj.display = message.display;
-        obj.name = message.name;
-        obj.symbol = message.symbol;
-        obj.uri = message.uri;
-        obj.uri_hash = message.uri_hash;
-        return obj;
     },
     fromAmino(object) {
         return {

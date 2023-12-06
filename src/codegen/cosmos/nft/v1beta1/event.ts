@@ -4,9 +4,13 @@ import { isSet } from "../../../helpers";
 export const protobufPackage = "cosmos.nft.v1beta1";
 /** EventSend is emitted on Msg/Send */
 export interface EventSend {
+  /** class_id associated with the nft */
   class_id: string;
+  /** id is a unique identifier of the nft */
   id: string;
+  /** sender is the address of the owner of nft */
   sender: string;
+  /** receiver is the receiver address of nft */
   receiver: string;
 }
 export interface EventSendProtoMsg {
@@ -15,9 +19,13 @@ export interface EventSendProtoMsg {
 }
 /** EventSend is emitted on Msg/Send */
 export interface EventSendAmino {
+  /** class_id associated with the nft */
   class_id: string;
+  /** id is a unique identifier of the nft */
   id: string;
+  /** sender is the address of the owner of nft */
   sender: string;
+  /** receiver is the receiver address of nft */
   receiver: string;
 }
 export interface EventSendAminoMsg {
@@ -33,8 +41,11 @@ export interface EventSendSDKType {
 }
 /** EventMint is emitted on Mint */
 export interface EventMint {
+  /** class_id associated with the nft */
   class_id: string;
+  /** id is a unique identifier of the nft */
   id: string;
+  /** owner is the owner address of the nft */
   owner: string;
 }
 export interface EventMintProtoMsg {
@@ -43,8 +54,11 @@ export interface EventMintProtoMsg {
 }
 /** EventMint is emitted on Mint */
 export interface EventMintAmino {
+  /** class_id associated with the nft */
   class_id: string;
+  /** id is a unique identifier of the nft */
   id: string;
+  /** owner is the owner address of the nft */
   owner: string;
 }
 export interface EventMintAminoMsg {
@@ -59,8 +73,11 @@ export interface EventMintSDKType {
 }
 /** EventBurn is emitted on Burn */
 export interface EventBurn {
+  /** class_id associated with the nft */
   class_id: string;
+  /** id is a unique identifier of the nft */
   id: string;
+  /** owner is the owner address of the nft */
   owner: string;
 }
 export interface EventBurnProtoMsg {
@@ -69,8 +86,11 @@ export interface EventBurnProtoMsg {
 }
 /** EventBurn is emitted on Burn */
 export interface EventBurnAmino {
+  /** class_id associated with the nft */
   class_id: string;
+  /** id is a unique identifier of the nft */
   id: string;
+  /** owner is the owner address of the nft */
   owner: string;
 }
 export interface EventBurnAminoMsg {
@@ -157,22 +177,6 @@ export const EventSend = {
     message.sender = object.sender ?? "";
     message.receiver = object.receiver ?? "";
     return message;
-  },
-  fromSDK(object: EventSendSDKType): EventSend {
-    return {
-      class_id: object?.class_id,
-      id: object?.id,
-      sender: object?.sender,
-      receiver: object?.receiver
-    };
-  },
-  toSDK(message: EventSend): EventSendSDKType {
-    const obj: any = {};
-    obj.class_id = message.class_id;
-    obj.id = message.id;
-    obj.sender = message.sender;
-    obj.receiver = message.receiver;
-    return obj;
   },
   fromAmino(object: EventSendAmino): EventSend {
     return {
@@ -277,20 +281,6 @@ export const EventMint = {
     message.owner = object.owner ?? "";
     return message;
   },
-  fromSDK(object: EventMintSDKType): EventMint {
-    return {
-      class_id: object?.class_id,
-      id: object?.id,
-      owner: object?.owner
-    };
-  },
-  toSDK(message: EventMint): EventMintSDKType {
-    const obj: any = {};
-    obj.class_id = message.class_id;
-    obj.id = message.id;
-    obj.owner = message.owner;
-    return obj;
-  },
   fromAmino(object: EventMintAmino): EventMint {
     return {
       class_id: object.class_id,
@@ -391,20 +381,6 @@ export const EventBurn = {
     message.id = object.id ?? "";
     message.owner = object.owner ?? "";
     return message;
-  },
-  fromSDK(object: EventBurnSDKType): EventBurn {
-    return {
-      class_id: object?.class_id,
-      id: object?.id,
-      owner: object?.owner
-    };
-  },
-  toSDK(message: EventBurn): EventBurnSDKType {
-    const obj: any = {};
-    obj.class_id = message.class_id;
-    obj.id = message.id;
-    obj.owner = message.owner;
-    return obj;
   },
   fromAmino(object: EventBurnAmino): EventBurn {
     return {

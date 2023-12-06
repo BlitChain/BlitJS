@@ -123,43 +123,6 @@ export const GenesisState = {
         message.tally_params = object.tally_params !== undefined && object.tally_params !== null ? TallyParams.fromPartial(object.tally_params) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            starting_proposal_id: object?.starting_proposal_id,
-            deposits: Array.isArray(object?.deposits) ? object.deposits.map((e) => Deposit.fromSDK(e)) : [],
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => Vote.fromSDK(e)) : [],
-            proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => Proposal.fromSDK(e)) : [],
-            deposit_params: object.deposit_params ? DepositParams.fromSDK(object.deposit_params) : undefined,
-            voting_params: object.voting_params ? VotingParams.fromSDK(object.voting_params) : undefined,
-            tally_params: object.tally_params ? TallyParams.fromSDK(object.tally_params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.starting_proposal_id = message.starting_proposal_id;
-        if (message.deposits) {
-            obj.deposits = message.deposits.map(e => e ? Deposit.toSDK(e) : undefined);
-        }
-        else {
-            obj.deposits = [];
-        }
-        if (message.votes) {
-            obj.votes = message.votes.map(e => e ? Vote.toSDK(e) : undefined);
-        }
-        else {
-            obj.votes = [];
-        }
-        if (message.proposals) {
-            obj.proposals = message.proposals.map(e => e ? Proposal.toSDK(e) : undefined);
-        }
-        else {
-            obj.proposals = [];
-        }
-        message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? DepositParams.toSDK(message.deposit_params) : undefined);
-        message.voting_params !== undefined && (obj.voting_params = message.voting_params ? VotingParams.toSDK(message.voting_params) : undefined);
-        message.tally_params !== undefined && (obj.tally_params = message.tally_params ? TallyParams.toSDK(message.tally_params) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             starting_proposal_id: BigInt(object.starting_proposal_id),

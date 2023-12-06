@@ -71,20 +71,6 @@ export const GenesisState = {
     message.allowances = object.allowances?.map(e => Grant.fromPartial(e)) || [];
     return message;
   },
-  fromSDK(object: GenesisStateSDKType): GenesisState {
-    return {
-      allowances: Array.isArray(object?.allowances) ? object.allowances.map((e: any) => Grant.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: GenesisState): GenesisStateSDKType {
-    const obj: any = {};
-    if (message.allowances) {
-      obj.allowances = message.allowances.map(e => e ? Grant.toSDK(e) : undefined);
-    } else {
-      obj.allowances = [];
-    }
-    return obj;
-  },
   fromAmino(object: GenesisStateAmino): GenesisState {
     return {
       allowances: Array.isArray(object?.allowances) ? object.allowances.map((e: any) => Grant.fromAmino(e)) : []

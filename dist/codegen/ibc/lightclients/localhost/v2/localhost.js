@@ -51,16 +51,6 @@ exports.ClientState = {
         message.latest_height = object.latest_height !== undefined && object.latest_height !== null ? client_1.Height.fromPartial(object.latest_height) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            latest_height: object.latest_height ? client_1.Height.fromSDK(object.latest_height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.latest_height !== undefined && (obj.latest_height = message.latest_height ? client_1.Height.toSDK(message.latest_height) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             latest_height: object?.latest_height ? client_1.Height.fromAmino(object.latest_height) : undefined

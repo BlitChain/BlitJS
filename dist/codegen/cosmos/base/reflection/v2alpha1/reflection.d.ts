@@ -725,8 +725,6 @@ export declare const AppDescriptor: {
     fromJSON(object: any): AppDescriptor;
     toJSON(message: AppDescriptor): unknown;
     fromPartial(object: Partial<AppDescriptor>): AppDescriptor;
-    fromSDK(object: AppDescriptorSDKType): AppDescriptor;
-    toSDK(message: AppDescriptor): AppDescriptorSDKType;
     fromAmino(object: AppDescriptorAmino): AppDescriptor;
     toAmino(message: AppDescriptor): AppDescriptorAmino;
     fromAminoMsg(object: AppDescriptorAminoMsg): AppDescriptor;
@@ -742,8 +740,6 @@ export declare const TxDescriptor: {
     fromJSON(object: any): TxDescriptor;
     toJSON(message: TxDescriptor): unknown;
     fromPartial(object: Partial<TxDescriptor>): TxDescriptor;
-    fromSDK(object: TxDescriptorSDKType): TxDescriptor;
-    toSDK(message: TxDescriptor): TxDescriptorSDKType;
     fromAmino(object: TxDescriptorAmino): TxDescriptor;
     toAmino(message: TxDescriptor): TxDescriptorAmino;
     fromAminoMsg(object: TxDescriptorAminoMsg): TxDescriptor;
@@ -759,8 +755,6 @@ export declare const AuthnDescriptor: {
     fromJSON(object: any): AuthnDescriptor;
     toJSON(message: AuthnDescriptor): unknown;
     fromPartial(object: Partial<AuthnDescriptor>): AuthnDescriptor;
-    fromSDK(object: AuthnDescriptorSDKType): AuthnDescriptor;
-    toSDK(message: AuthnDescriptor): AuthnDescriptorSDKType;
     fromAmino(object: AuthnDescriptorAmino): AuthnDescriptor;
     toAmino(message: AuthnDescriptor): AuthnDescriptorAmino;
     fromAminoMsg(object: AuthnDescriptorAminoMsg): AuthnDescriptor;
@@ -776,8 +770,6 @@ export declare const SigningModeDescriptor: {
     fromJSON(object: any): SigningModeDescriptor;
     toJSON(message: SigningModeDescriptor): unknown;
     fromPartial(object: Partial<SigningModeDescriptor>): SigningModeDescriptor;
-    fromSDK(object: SigningModeDescriptorSDKType): SigningModeDescriptor;
-    toSDK(message: SigningModeDescriptor): SigningModeDescriptorSDKType;
     fromAmino(object: SigningModeDescriptorAmino): SigningModeDescriptor;
     toAmino(message: SigningModeDescriptor): SigningModeDescriptorAmino;
     fromAminoMsg(object: SigningModeDescriptorAminoMsg): SigningModeDescriptor;
@@ -793,8 +785,6 @@ export declare const ChainDescriptor: {
     fromJSON(object: any): ChainDescriptor;
     toJSON(message: ChainDescriptor): unknown;
     fromPartial(object: Partial<ChainDescriptor>): ChainDescriptor;
-    fromSDK(object: ChainDescriptorSDKType): ChainDescriptor;
-    toSDK(message: ChainDescriptor): ChainDescriptorSDKType;
     fromAmino(object: ChainDescriptorAmino): ChainDescriptor;
     toAmino(message: ChainDescriptor): ChainDescriptorAmino;
     fromAminoMsg(object: ChainDescriptorAminoMsg): ChainDescriptor;
@@ -810,8 +800,6 @@ export declare const CodecDescriptor: {
     fromJSON(object: any): CodecDescriptor;
     toJSON(message: CodecDescriptor): unknown;
     fromPartial(object: Partial<CodecDescriptor>): CodecDescriptor;
-    fromSDK(object: CodecDescriptorSDKType): CodecDescriptor;
-    toSDK(message: CodecDescriptor): CodecDescriptorSDKType;
     fromAmino(object: CodecDescriptorAmino): CodecDescriptor;
     toAmino(message: CodecDescriptor): CodecDescriptorAmino;
     fromAminoMsg(object: CodecDescriptorAminoMsg): CodecDescriptor;
@@ -827,8 +815,6 @@ export declare const InterfaceDescriptor: {
     fromJSON(object: any): InterfaceDescriptor;
     toJSON(message: InterfaceDescriptor): unknown;
     fromPartial(object: Partial<InterfaceDescriptor>): InterfaceDescriptor;
-    fromSDK(object: InterfaceDescriptorSDKType): InterfaceDescriptor;
-    toSDK(message: InterfaceDescriptor): InterfaceDescriptorSDKType;
     fromAmino(object: InterfaceDescriptorAmino): InterfaceDescriptor;
     toAmino(message: InterfaceDescriptor): InterfaceDescriptorAmino;
     fromAminoMsg(object: InterfaceDescriptorAminoMsg): InterfaceDescriptor;
@@ -844,8 +830,6 @@ export declare const InterfaceImplementerDescriptor: {
     fromJSON(object: any): InterfaceImplementerDescriptor;
     toJSON(message: InterfaceImplementerDescriptor): unknown;
     fromPartial(object: Partial<InterfaceImplementerDescriptor>): InterfaceImplementerDescriptor;
-    fromSDK(object: InterfaceImplementerDescriptorSDKType): InterfaceImplementerDescriptor;
-    toSDK(message: InterfaceImplementerDescriptor): InterfaceImplementerDescriptorSDKType;
     fromAmino(object: InterfaceImplementerDescriptorAmino): InterfaceImplementerDescriptor;
     toAmino(message: InterfaceImplementerDescriptor): InterfaceImplementerDescriptorAmino;
     fromAminoMsg(object: InterfaceImplementerDescriptorAminoMsg): InterfaceImplementerDescriptor;
@@ -861,8 +845,6 @@ export declare const InterfaceAcceptingMessageDescriptor: {
     fromJSON(object: any): InterfaceAcceptingMessageDescriptor;
     toJSON(message: InterfaceAcceptingMessageDescriptor): unknown;
     fromPartial(object: Partial<InterfaceAcceptingMessageDescriptor>): InterfaceAcceptingMessageDescriptor;
-    fromSDK(object: InterfaceAcceptingMessageDescriptorSDKType): InterfaceAcceptingMessageDescriptor;
-    toSDK(message: InterfaceAcceptingMessageDescriptor): InterfaceAcceptingMessageDescriptorSDKType;
     fromAmino(object: InterfaceAcceptingMessageDescriptorAmino): InterfaceAcceptingMessageDescriptor;
     toAmino(message: InterfaceAcceptingMessageDescriptor): InterfaceAcceptingMessageDescriptorAmino;
     fromAminoMsg(object: InterfaceAcceptingMessageDescriptorAminoMsg): InterfaceAcceptingMessageDescriptor;
@@ -878,8 +860,6 @@ export declare const ConfigurationDescriptor: {
     fromJSON(object: any): ConfigurationDescriptor;
     toJSON(message: ConfigurationDescriptor): unknown;
     fromPartial(object: Partial<ConfigurationDescriptor>): ConfigurationDescriptor;
-    fromSDK(object: ConfigurationDescriptorSDKType): ConfigurationDescriptor;
-    toSDK(message: ConfigurationDescriptor): ConfigurationDescriptorSDKType;
     fromAmino(object: ConfigurationDescriptorAmino): ConfigurationDescriptor;
     toAmino(message: ConfigurationDescriptor): ConfigurationDescriptorAmino;
     fromAminoMsg(object: ConfigurationDescriptorAminoMsg): ConfigurationDescriptor;
@@ -895,8 +875,6 @@ export declare const MsgDescriptor: {
     fromJSON(object: any): MsgDescriptor;
     toJSON(message: MsgDescriptor): unknown;
     fromPartial(object: Partial<MsgDescriptor>): MsgDescriptor;
-    fromSDK(object: MsgDescriptorSDKType): MsgDescriptor;
-    toSDK(message: MsgDescriptor): MsgDescriptorSDKType;
     fromAmino(object: MsgDescriptorAmino): MsgDescriptor;
     toAmino(message: MsgDescriptor): MsgDescriptorAmino;
     fromAminoMsg(object: MsgDescriptorAminoMsg): MsgDescriptor;
@@ -912,8 +890,6 @@ export declare const GetAuthnDescriptorRequest: {
     fromJSON(_: any): GetAuthnDescriptorRequest;
     toJSON(_: GetAuthnDescriptorRequest): unknown;
     fromPartial(_: Partial<GetAuthnDescriptorRequest>): GetAuthnDescriptorRequest;
-    fromSDK(_: GetAuthnDescriptorRequestSDKType): GetAuthnDescriptorRequest;
-    toSDK(_: GetAuthnDescriptorRequest): GetAuthnDescriptorRequestSDKType;
     fromAmino(_: GetAuthnDescriptorRequestAmino): GetAuthnDescriptorRequest;
     toAmino(_: GetAuthnDescriptorRequest): GetAuthnDescriptorRequestAmino;
     fromAminoMsg(object: GetAuthnDescriptorRequestAminoMsg): GetAuthnDescriptorRequest;
@@ -929,8 +905,6 @@ export declare const GetAuthnDescriptorResponse: {
     fromJSON(object: any): GetAuthnDescriptorResponse;
     toJSON(message: GetAuthnDescriptorResponse): unknown;
     fromPartial(object: Partial<GetAuthnDescriptorResponse>): GetAuthnDescriptorResponse;
-    fromSDK(object: GetAuthnDescriptorResponseSDKType): GetAuthnDescriptorResponse;
-    toSDK(message: GetAuthnDescriptorResponse): GetAuthnDescriptorResponseSDKType;
     fromAmino(object: GetAuthnDescriptorResponseAmino): GetAuthnDescriptorResponse;
     toAmino(message: GetAuthnDescriptorResponse): GetAuthnDescriptorResponseAmino;
     fromAminoMsg(object: GetAuthnDescriptorResponseAminoMsg): GetAuthnDescriptorResponse;
@@ -946,8 +920,6 @@ export declare const GetChainDescriptorRequest: {
     fromJSON(_: any): GetChainDescriptorRequest;
     toJSON(_: GetChainDescriptorRequest): unknown;
     fromPartial(_: Partial<GetChainDescriptorRequest>): GetChainDescriptorRequest;
-    fromSDK(_: GetChainDescriptorRequestSDKType): GetChainDescriptorRequest;
-    toSDK(_: GetChainDescriptorRequest): GetChainDescriptorRequestSDKType;
     fromAmino(_: GetChainDescriptorRequestAmino): GetChainDescriptorRequest;
     toAmino(_: GetChainDescriptorRequest): GetChainDescriptorRequestAmino;
     fromAminoMsg(object: GetChainDescriptorRequestAminoMsg): GetChainDescriptorRequest;
@@ -963,8 +935,6 @@ export declare const GetChainDescriptorResponse: {
     fromJSON(object: any): GetChainDescriptorResponse;
     toJSON(message: GetChainDescriptorResponse): unknown;
     fromPartial(object: Partial<GetChainDescriptorResponse>): GetChainDescriptorResponse;
-    fromSDK(object: GetChainDescriptorResponseSDKType): GetChainDescriptorResponse;
-    toSDK(message: GetChainDescriptorResponse): GetChainDescriptorResponseSDKType;
     fromAmino(object: GetChainDescriptorResponseAmino): GetChainDescriptorResponse;
     toAmino(message: GetChainDescriptorResponse): GetChainDescriptorResponseAmino;
     fromAminoMsg(object: GetChainDescriptorResponseAminoMsg): GetChainDescriptorResponse;
@@ -980,8 +950,6 @@ export declare const GetCodecDescriptorRequest: {
     fromJSON(_: any): GetCodecDescriptorRequest;
     toJSON(_: GetCodecDescriptorRequest): unknown;
     fromPartial(_: Partial<GetCodecDescriptorRequest>): GetCodecDescriptorRequest;
-    fromSDK(_: GetCodecDescriptorRequestSDKType): GetCodecDescriptorRequest;
-    toSDK(_: GetCodecDescriptorRequest): GetCodecDescriptorRequestSDKType;
     fromAmino(_: GetCodecDescriptorRequestAmino): GetCodecDescriptorRequest;
     toAmino(_: GetCodecDescriptorRequest): GetCodecDescriptorRequestAmino;
     fromAminoMsg(object: GetCodecDescriptorRequestAminoMsg): GetCodecDescriptorRequest;
@@ -997,8 +965,6 @@ export declare const GetCodecDescriptorResponse: {
     fromJSON(object: any): GetCodecDescriptorResponse;
     toJSON(message: GetCodecDescriptorResponse): unknown;
     fromPartial(object: Partial<GetCodecDescriptorResponse>): GetCodecDescriptorResponse;
-    fromSDK(object: GetCodecDescriptorResponseSDKType): GetCodecDescriptorResponse;
-    toSDK(message: GetCodecDescriptorResponse): GetCodecDescriptorResponseSDKType;
     fromAmino(object: GetCodecDescriptorResponseAmino): GetCodecDescriptorResponse;
     toAmino(message: GetCodecDescriptorResponse): GetCodecDescriptorResponseAmino;
     fromAminoMsg(object: GetCodecDescriptorResponseAminoMsg): GetCodecDescriptorResponse;
@@ -1014,8 +980,6 @@ export declare const GetConfigurationDescriptorRequest: {
     fromJSON(_: any): GetConfigurationDescriptorRequest;
     toJSON(_: GetConfigurationDescriptorRequest): unknown;
     fromPartial(_: Partial<GetConfigurationDescriptorRequest>): GetConfigurationDescriptorRequest;
-    fromSDK(_: GetConfigurationDescriptorRequestSDKType): GetConfigurationDescriptorRequest;
-    toSDK(_: GetConfigurationDescriptorRequest): GetConfigurationDescriptorRequestSDKType;
     fromAmino(_: GetConfigurationDescriptorRequestAmino): GetConfigurationDescriptorRequest;
     toAmino(_: GetConfigurationDescriptorRequest): GetConfigurationDescriptorRequestAmino;
     fromAminoMsg(object: GetConfigurationDescriptorRequestAminoMsg): GetConfigurationDescriptorRequest;
@@ -1031,8 +995,6 @@ export declare const GetConfigurationDescriptorResponse: {
     fromJSON(object: any): GetConfigurationDescriptorResponse;
     toJSON(message: GetConfigurationDescriptorResponse): unknown;
     fromPartial(object: Partial<GetConfigurationDescriptorResponse>): GetConfigurationDescriptorResponse;
-    fromSDK(object: GetConfigurationDescriptorResponseSDKType): GetConfigurationDescriptorResponse;
-    toSDK(message: GetConfigurationDescriptorResponse): GetConfigurationDescriptorResponseSDKType;
     fromAmino(object: GetConfigurationDescriptorResponseAmino): GetConfigurationDescriptorResponse;
     toAmino(message: GetConfigurationDescriptorResponse): GetConfigurationDescriptorResponseAmino;
     fromAminoMsg(object: GetConfigurationDescriptorResponseAminoMsg): GetConfigurationDescriptorResponse;
@@ -1048,8 +1010,6 @@ export declare const GetQueryServicesDescriptorRequest: {
     fromJSON(_: any): GetQueryServicesDescriptorRequest;
     toJSON(_: GetQueryServicesDescriptorRequest): unknown;
     fromPartial(_: Partial<GetQueryServicesDescriptorRequest>): GetQueryServicesDescriptorRequest;
-    fromSDK(_: GetQueryServicesDescriptorRequestSDKType): GetQueryServicesDescriptorRequest;
-    toSDK(_: GetQueryServicesDescriptorRequest): GetQueryServicesDescriptorRequestSDKType;
     fromAmino(_: GetQueryServicesDescriptorRequestAmino): GetQueryServicesDescriptorRequest;
     toAmino(_: GetQueryServicesDescriptorRequest): GetQueryServicesDescriptorRequestAmino;
     fromAminoMsg(object: GetQueryServicesDescriptorRequestAminoMsg): GetQueryServicesDescriptorRequest;
@@ -1065,8 +1025,6 @@ export declare const GetQueryServicesDescriptorResponse: {
     fromJSON(object: any): GetQueryServicesDescriptorResponse;
     toJSON(message: GetQueryServicesDescriptorResponse): unknown;
     fromPartial(object: Partial<GetQueryServicesDescriptorResponse>): GetQueryServicesDescriptorResponse;
-    fromSDK(object: GetQueryServicesDescriptorResponseSDKType): GetQueryServicesDescriptorResponse;
-    toSDK(message: GetQueryServicesDescriptorResponse): GetQueryServicesDescriptorResponseSDKType;
     fromAmino(object: GetQueryServicesDescriptorResponseAmino): GetQueryServicesDescriptorResponse;
     toAmino(message: GetQueryServicesDescriptorResponse): GetQueryServicesDescriptorResponseAmino;
     fromAminoMsg(object: GetQueryServicesDescriptorResponseAminoMsg): GetQueryServicesDescriptorResponse;
@@ -1082,8 +1040,6 @@ export declare const GetTxDescriptorRequest: {
     fromJSON(_: any): GetTxDescriptorRequest;
     toJSON(_: GetTxDescriptorRequest): unknown;
     fromPartial(_: Partial<GetTxDescriptorRequest>): GetTxDescriptorRequest;
-    fromSDK(_: GetTxDescriptorRequestSDKType): GetTxDescriptorRequest;
-    toSDK(_: GetTxDescriptorRequest): GetTxDescriptorRequestSDKType;
     fromAmino(_: GetTxDescriptorRequestAmino): GetTxDescriptorRequest;
     toAmino(_: GetTxDescriptorRequest): GetTxDescriptorRequestAmino;
     fromAminoMsg(object: GetTxDescriptorRequestAminoMsg): GetTxDescriptorRequest;
@@ -1099,8 +1055,6 @@ export declare const GetTxDescriptorResponse: {
     fromJSON(object: any): GetTxDescriptorResponse;
     toJSON(message: GetTxDescriptorResponse): unknown;
     fromPartial(object: Partial<GetTxDescriptorResponse>): GetTxDescriptorResponse;
-    fromSDK(object: GetTxDescriptorResponseSDKType): GetTxDescriptorResponse;
-    toSDK(message: GetTxDescriptorResponse): GetTxDescriptorResponseSDKType;
     fromAmino(object: GetTxDescriptorResponseAmino): GetTxDescriptorResponse;
     toAmino(message: GetTxDescriptorResponse): GetTxDescriptorResponseAmino;
     fromAminoMsg(object: GetTxDescriptorResponseAminoMsg): GetTxDescriptorResponse;
@@ -1116,8 +1070,6 @@ export declare const QueryServicesDescriptor: {
     fromJSON(object: any): QueryServicesDescriptor;
     toJSON(message: QueryServicesDescriptor): unknown;
     fromPartial(object: Partial<QueryServicesDescriptor>): QueryServicesDescriptor;
-    fromSDK(object: QueryServicesDescriptorSDKType): QueryServicesDescriptor;
-    toSDK(message: QueryServicesDescriptor): QueryServicesDescriptorSDKType;
     fromAmino(object: QueryServicesDescriptorAmino): QueryServicesDescriptor;
     toAmino(message: QueryServicesDescriptor): QueryServicesDescriptorAmino;
     fromAminoMsg(object: QueryServicesDescriptorAminoMsg): QueryServicesDescriptor;
@@ -1133,8 +1085,6 @@ export declare const QueryServiceDescriptor: {
     fromJSON(object: any): QueryServiceDescriptor;
     toJSON(message: QueryServiceDescriptor): unknown;
     fromPartial(object: Partial<QueryServiceDescriptor>): QueryServiceDescriptor;
-    fromSDK(object: QueryServiceDescriptorSDKType): QueryServiceDescriptor;
-    toSDK(message: QueryServiceDescriptor): QueryServiceDescriptorSDKType;
     fromAmino(object: QueryServiceDescriptorAmino): QueryServiceDescriptor;
     toAmino(message: QueryServiceDescriptor): QueryServiceDescriptorAmino;
     fromAminoMsg(object: QueryServiceDescriptorAminoMsg): QueryServiceDescriptor;
@@ -1150,8 +1100,6 @@ export declare const QueryMethodDescriptor: {
     fromJSON(object: any): QueryMethodDescriptor;
     toJSON(message: QueryMethodDescriptor): unknown;
     fromPartial(object: Partial<QueryMethodDescriptor>): QueryMethodDescriptor;
-    fromSDK(object: QueryMethodDescriptorSDKType): QueryMethodDescriptor;
-    toSDK(message: QueryMethodDescriptor): QueryMethodDescriptorSDKType;
     fromAmino(object: QueryMethodDescriptorAmino): QueryMethodDescriptor;
     toAmino(message: QueryMethodDescriptor): QueryMethodDescriptorAmino;
     fromAminoMsg(object: QueryMethodDescriptorAminoMsg): QueryMethodDescriptor;

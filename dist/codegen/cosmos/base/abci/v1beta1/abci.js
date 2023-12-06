@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SearchTxsResult = exports.TxMsgData = exports.MsgData = exports.SimulationResponse = exports.Result = exports.GasInfo = exports.Attribute = exports.StringEvent = exports.ABCIMessageLog = exports.TxResponse = exports.protobufPackage = void 0;
+exports.SearchBlocksResult = exports.SearchTxsResult = exports.TxMsgData = exports.MsgData = exports.SimulationResponse = exports.Result = exports.GasInfo = exports.Attribute = exports.StringEvent = exports.ABCIMessageLog = exports.TxResponse = exports.protobufPackage = void 0;
 //@ts-nocheck
 const any_1 = require("../../../../google/protobuf/any");
 const types_1 = require("../../../../tendermint/abci/types");
+const block_1 = require("../../../../tendermint/types/block");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
 exports.protobufPackage = "cosmos.base.abci.v1beta1";
@@ -182,50 +183,6 @@ exports.TxResponse = {
         message.events = object.events?.map(e => types_1.Event.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            height: object?.height,
-            txhash: object?.txhash,
-            codespace: object?.codespace,
-            code: object?.code,
-            data: object?.data,
-            raw_log: object?.raw_log,
-            logs: Array.isArray(object?.logs) ? object.logs.map((e) => exports.ABCIMessageLog.fromSDK(e)) : [],
-            info: object?.info,
-            gas_wanted: object?.gas_wanted,
-            gas_used: object?.gas_used,
-            tx: object.tx ? any_1.Any.fromSDK(object.tx) : undefined,
-            timestamp: object?.timestamp,
-            events: Array.isArray(object?.events) ? object.events.map((e) => types_1.Event.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.height = message.height;
-        obj.txhash = message.txhash;
-        obj.codespace = message.codespace;
-        obj.code = message.code;
-        obj.data = message.data;
-        obj.raw_log = message.raw_log;
-        if (message.logs) {
-            obj.logs = message.logs.map(e => e ? exports.ABCIMessageLog.toSDK(e) : undefined);
-        }
-        else {
-            obj.logs = [];
-        }
-        obj.info = message.info;
-        obj.gas_wanted = message.gas_wanted;
-        obj.gas_used = message.gas_used;
-        message.tx !== undefined && (obj.tx = message.tx ? any_1.Any.toSDK(message.tx) : undefined);
-        obj.timestamp = message.timestamp;
-        if (message.events) {
-            obj.events = message.events.map(e => e ? types_1.Event.toSDK(e) : undefined);
-        }
-        else {
-            obj.events = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             height: BigInt(object.height),
@@ -362,25 +319,6 @@ exports.ABCIMessageLog = {
         message.events = object.events?.map(e => exports.StringEvent.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            msg_index: object?.msg_index,
-            log: object?.log,
-            events: Array.isArray(object?.events) ? object.events.map((e) => exports.StringEvent.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.msg_index = message.msg_index;
-        obj.log = message.log;
-        if (message.events) {
-            obj.events = message.events.map(e => e ? exports.StringEvent.toSDK(e) : undefined);
-        }
-        else {
-            obj.events = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             msg_index: object.msg_index,
@@ -482,23 +420,6 @@ exports.StringEvent = {
         message.attributes = object.attributes?.map(e => exports.Attribute.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            type: object?.type,
-            attributes: Array.isArray(object?.attributes) ? object.attributes.map((e) => exports.Attribute.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.type = message.type;
-        if (message.attributes) {
-            obj.attributes = message.attributes.map(e => e ? exports.Attribute.toSDK(e) : undefined);
-        }
-        else {
-            obj.attributes = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             type: object.type,
@@ -593,18 +514,6 @@ exports.Attribute = {
         message.value = object.value ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            key: object?.key,
-            value: object?.value
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.key = message.key;
-        obj.value = message.value;
-        return obj;
-    },
     fromAmino(object) {
         return {
             key: object.key,
@@ -693,18 +602,6 @@ exports.GasInfo = {
         message.gas_wanted = object.gas_wanted !== undefined && object.gas_wanted !== null ? BigInt(object.gas_wanted.toString()) : BigInt(0);
         message.gas_used = object.gas_used !== undefined && object.gas_used !== null ? BigInt(object.gas_used.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            gas_wanted: object?.gas_wanted,
-            gas_used: object?.gas_used
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.gas_wanted = message.gas_wanted;
-        obj.gas_used = message.gas_used;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -825,32 +722,6 @@ exports.Result = {
         message.msg_responses = object.msg_responses?.map(e => any_1.Any.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            data: object?.data,
-            log: object?.log,
-            events: Array.isArray(object?.events) ? object.events.map((e) => types_1.Event.fromSDK(e)) : [],
-            msg_responses: Array.isArray(object?.msg_responses) ? object.msg_responses.map((e) => any_1.Any.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.data = message.data;
-        obj.log = message.log;
-        if (message.events) {
-            obj.events = message.events.map(e => e ? types_1.Event.toSDK(e) : undefined);
-        }
-        else {
-            obj.events = [];
-        }
-        if (message.msg_responses) {
-            obj.msg_responses = message.msg_responses.map(e => e ? any_1.Any.toSDK(e) : undefined);
-        }
-        else {
-            obj.msg_responses = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             data: object.data,
@@ -954,18 +825,6 @@ exports.SimulationResponse = {
         message.result = object.result !== undefined && object.result !== null ? exports.Result.fromPartial(object.result) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            gas_info: object.gas_info ? exports.GasInfo.fromSDK(object.gas_info) : undefined,
-            result: object.result ? exports.Result.fromSDK(object.result) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.gas_info !== undefined && (obj.gas_info = message.gas_info ? exports.GasInfo.toSDK(message.gas_info) : undefined);
-        message.result !== undefined && (obj.result = message.result ? exports.Result.toSDK(message.result) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             gas_info: object?.gas_info ? exports.GasInfo.fromAmino(object.gas_info) : undefined,
@@ -1054,18 +913,6 @@ exports.MsgData = {
         message.msg_type = object.msg_type ?? "";
         message.data = object.data ?? new Uint8Array();
         return message;
-    },
-    fromSDK(object) {
-        return {
-            msg_type: object?.msg_type,
-            data: object?.data
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.msg_type = message.msg_type;
-        obj.data = message.data;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1165,28 +1012,6 @@ exports.TxMsgData = {
         message.data = object.data?.map(e => exports.MsgData.fromPartial(e)) || [];
         message.msg_responses = object.msg_responses?.map(e => any_1.Any.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            data: Array.isArray(object?.data) ? object.data.map((e) => exports.MsgData.fromSDK(e)) : [],
-            msg_responses: Array.isArray(object?.msg_responses) ? object.msg_responses.map((e) => any_1.Any.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.data) {
-            obj.data = message.data.map(e => e ? exports.MsgData.toSDK(e) : undefined);
-        }
-        else {
-            obj.data = [];
-        }
-        if (message.msg_responses) {
-            obj.msg_responses = message.msg_responses.map(e => e ? any_1.Any.toSDK(e) : undefined);
-        }
-        else {
-            obj.msg_responses = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1332,31 +1157,6 @@ exports.SearchTxsResult = {
         message.txs = object.txs?.map(e => exports.TxResponse.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            total_count: object?.total_count,
-            count: object?.count,
-            page_number: object?.page_number,
-            page_total: object?.page_total,
-            limit: object?.limit,
-            txs: Array.isArray(object?.txs) ? object.txs.map((e) => exports.TxResponse.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.total_count = message.total_count;
-        obj.count = message.count;
-        obj.page_number = message.page_number;
-        obj.page_total = message.page_total;
-        obj.limit = message.limit;
-        if (message.txs) {
-            obj.txs = message.txs.map(e => e ? exports.TxResponse.toSDK(e) : undefined);
-        }
-        else {
-            obj.txs = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             total_count: BigInt(object.total_count),
@@ -1401,6 +1201,153 @@ exports.SearchTxsResult = {
         return {
             typeUrl: "/cosmos.base.abci.v1beta1.SearchTxsResult",
             value: exports.SearchTxsResult.encode(message).finish()
+        };
+    }
+};
+function createBaseSearchBlocksResult() {
+    return {
+        total_count: BigInt(0),
+        count: BigInt(0),
+        page_number: BigInt(0),
+        page_total: BigInt(0),
+        limit: BigInt(0),
+        blocks: []
+    };
+}
+exports.SearchBlocksResult = {
+    typeUrl: "/cosmos.base.abci.v1beta1.SearchBlocksResult",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.total_count !== BigInt(0)) {
+            writer.uint32(8).int64(message.total_count);
+        }
+        if (message.count !== BigInt(0)) {
+            writer.uint32(16).int64(message.count);
+        }
+        if (message.page_number !== BigInt(0)) {
+            writer.uint32(24).int64(message.page_number);
+        }
+        if (message.page_total !== BigInt(0)) {
+            writer.uint32(32).int64(message.page_total);
+        }
+        if (message.limit !== BigInt(0)) {
+            writer.uint32(40).int64(message.limit);
+        }
+        for (const v of message.blocks) {
+            block_1.Block.encode(v, writer.uint32(50).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseSearchBlocksResult();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.total_count = reader.int64();
+                    break;
+                case 2:
+                    message.count = reader.int64();
+                    break;
+                case 3:
+                    message.page_number = reader.int64();
+                    break;
+                case 4:
+                    message.page_total = reader.int64();
+                    break;
+                case 5:
+                    message.limit = reader.int64();
+                    break;
+                case 6:
+                    message.blocks.push(block_1.Block.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            total_count: (0, helpers_1.isSet)(object.total_count) ? BigInt(object.total_count.toString()) : BigInt(0),
+            count: (0, helpers_1.isSet)(object.count) ? BigInt(object.count.toString()) : BigInt(0),
+            page_number: (0, helpers_1.isSet)(object.page_number) ? BigInt(object.page_number.toString()) : BigInt(0),
+            page_total: (0, helpers_1.isSet)(object.page_total) ? BigInt(object.page_total.toString()) : BigInt(0),
+            limit: (0, helpers_1.isSet)(object.limit) ? BigInt(object.limit.toString()) : BigInt(0),
+            blocks: Array.isArray(object?.blocks) ? object.blocks.map((e) => block_1.Block.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.total_count !== undefined && (obj.total_count = (message.total_count || BigInt(0)).toString());
+        message.count !== undefined && (obj.count = (message.count || BigInt(0)).toString());
+        message.page_number !== undefined && (obj.page_number = (message.page_number || BigInt(0)).toString());
+        message.page_total !== undefined && (obj.page_total = (message.page_total || BigInt(0)).toString());
+        message.limit !== undefined && (obj.limit = (message.limit || BigInt(0)).toString());
+        if (message.blocks) {
+            obj.blocks = message.blocks.map(e => e ? block_1.Block.toJSON(e) : undefined);
+        }
+        else {
+            obj.blocks = [];
+        }
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseSearchBlocksResult();
+        message.total_count = object.total_count !== undefined && object.total_count !== null ? BigInt(object.total_count.toString()) : BigInt(0);
+        message.count = object.count !== undefined && object.count !== null ? BigInt(object.count.toString()) : BigInt(0);
+        message.page_number = object.page_number !== undefined && object.page_number !== null ? BigInt(object.page_number.toString()) : BigInt(0);
+        message.page_total = object.page_total !== undefined && object.page_total !== null ? BigInt(object.page_total.toString()) : BigInt(0);
+        message.limit = object.limit !== undefined && object.limit !== null ? BigInt(object.limit.toString()) : BigInt(0);
+        message.blocks = object.blocks?.map(e => block_1.Block.fromPartial(e)) || [];
+        return message;
+    },
+    fromAmino(object) {
+        return {
+            total_count: BigInt(object.total_count),
+            count: BigInt(object.count),
+            page_number: BigInt(object.page_number),
+            page_total: BigInt(object.page_total),
+            limit: BigInt(object.limit),
+            blocks: Array.isArray(object?.blocks) ? object.blocks.map((e) => block_1.Block.fromAmino(e)) : []
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.total_count = message.total_count ? message.total_count.toString() : undefined;
+        obj.count = message.count ? message.count.toString() : undefined;
+        obj.page_number = message.page_number ? message.page_number.toString() : undefined;
+        obj.page_total = message.page_total ? message.page_total.toString() : undefined;
+        obj.limit = message.limit ? message.limit.toString() : undefined;
+        if (message.blocks) {
+            obj.blocks = message.blocks.map(e => e ? block_1.Block.toAmino(e) : undefined);
+        }
+        else {
+            obj.blocks = [];
+        }
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.SearchBlocksResult.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/SearchBlocksResult",
+            value: exports.SearchBlocksResult.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.SearchBlocksResult.decode(message.value);
+    },
+    toProto(message) {
+        return exports.SearchBlocksResult.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.base.abci.v1beta1.SearchBlocksResult",
+            value: exports.SearchBlocksResult.encode(message).finish()
         };
     }
 };

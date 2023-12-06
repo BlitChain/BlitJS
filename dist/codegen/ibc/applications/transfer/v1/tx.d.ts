@@ -173,8 +173,6 @@ export declare const MsgTransfer: {
     fromJSON(object: any): MsgTransfer;
     toJSON(message: MsgTransfer): unknown;
     fromPartial(object: Partial<MsgTransfer>): MsgTransfer;
-    fromSDK(object: MsgTransferSDKType): MsgTransfer;
-    toSDK(message: MsgTransfer): MsgTransferSDKType;
     fromAmino(object: MsgTransferAmino): MsgTransfer;
     toAmino(message: MsgTransfer): MsgTransferAmino;
     fromAminoMsg(object: MsgTransferAminoMsg): MsgTransfer;
@@ -190,8 +188,6 @@ export declare const MsgTransferResponse: {
     fromJSON(object: any): MsgTransferResponse;
     toJSON(message: MsgTransferResponse): unknown;
     fromPartial(object: Partial<MsgTransferResponse>): MsgTransferResponse;
-    fromSDK(object: MsgTransferResponseSDKType): MsgTransferResponse;
-    toSDK(message: MsgTransferResponse): MsgTransferResponseSDKType;
     fromAmino(object: MsgTransferResponseAmino): MsgTransferResponse;
     toAmino(message: MsgTransferResponse): MsgTransferResponseAmino;
     fromAminoMsg(object: MsgTransferResponseAminoMsg): MsgTransferResponse;
@@ -207,8 +203,6 @@ export declare const MsgUpdateParams: {
     fromJSON(object: any): MsgUpdateParams;
     toJSON(message: MsgUpdateParams): unknown;
     fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams;
-    fromSDK(object: MsgUpdateParamsSDKType): MsgUpdateParams;
-    toSDK(message: MsgUpdateParams): MsgUpdateParamsSDKType;
     fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams;
     toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino;
     fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams;
@@ -224,8 +218,6 @@ export declare const MsgUpdateParamsResponse: {
     fromJSON(_: any): MsgUpdateParamsResponse;
     toJSON(_: MsgUpdateParamsResponse): unknown;
     fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse;
-    fromSDK(_: MsgUpdateParamsResponseSDKType): MsgUpdateParamsResponse;
-    toSDK(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseSDKType;
     fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse;
     toAmino(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseAmino;
     fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse;

@@ -439,28 +439,6 @@ export const ConnectionEnd = {
     message.delay_period = object.delay_period !== undefined && object.delay_period !== null ? BigInt(object.delay_period.toString()) : BigInt(0);
     return message;
   },
-  fromSDK(object: ConnectionEndSDKType): ConnectionEnd {
-    return {
-      client_id: object?.client_id,
-      versions: Array.isArray(object?.versions) ? object.versions.map((e: any) => Version.fromSDK(e)) : [],
-      state: isSet(object.state) ? stateFromJSON(object.state) : -1,
-      counterparty: object.counterparty ? Counterparty.fromSDK(object.counterparty) : undefined,
-      delay_period: object?.delay_period
-    };
-  },
-  toSDK(message: ConnectionEnd): ConnectionEndSDKType {
-    const obj: any = {};
-    obj.client_id = message.client_id;
-    if (message.versions) {
-      obj.versions = message.versions.map(e => e ? Version.toSDK(e) : undefined);
-    } else {
-      obj.versions = [];
-    }
-    message.state !== undefined && (obj.state = stateToJSON(message.state));
-    message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toSDK(message.counterparty) : undefined);
-    obj.delay_period = message.delay_period;
-    return obj;
-  },
   fromAmino(object: ConnectionEndAmino): ConnectionEnd {
     return {
       client_id: object.client_id,
@@ -604,30 +582,6 @@ export const IdentifiedConnection = {
     message.delay_period = object.delay_period !== undefined && object.delay_period !== null ? BigInt(object.delay_period.toString()) : BigInt(0);
     return message;
   },
-  fromSDK(object: IdentifiedConnectionSDKType): IdentifiedConnection {
-    return {
-      id: object?.id,
-      client_id: object?.client_id,
-      versions: Array.isArray(object?.versions) ? object.versions.map((e: any) => Version.fromSDK(e)) : [],
-      state: isSet(object.state) ? stateFromJSON(object.state) : -1,
-      counterparty: object.counterparty ? Counterparty.fromSDK(object.counterparty) : undefined,
-      delay_period: object?.delay_period
-    };
-  },
-  toSDK(message: IdentifiedConnection): IdentifiedConnectionSDKType {
-    const obj: any = {};
-    obj.id = message.id;
-    obj.client_id = message.client_id;
-    if (message.versions) {
-      obj.versions = message.versions.map(e => e ? Version.toSDK(e) : undefined);
-    } else {
-      obj.versions = [];
-    }
-    message.state !== undefined && (obj.state = stateToJSON(message.state));
-    message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toSDK(message.counterparty) : undefined);
-    obj.delay_period = message.delay_period;
-    return obj;
-  },
   fromAmino(object: IdentifiedConnectionAmino): IdentifiedConnection {
     return {
       id: object.id,
@@ -739,20 +693,6 @@ export const Counterparty = {
     message.prefix = object.prefix !== undefined && object.prefix !== null ? MerklePrefix.fromPartial(object.prefix) : undefined;
     return message;
   },
-  fromSDK(object: CounterpartySDKType): Counterparty {
-    return {
-      client_id: object?.client_id,
-      connection_id: object?.connection_id,
-      prefix: object.prefix ? MerklePrefix.fromSDK(object.prefix) : undefined
-    };
-  },
-  toSDK(message: Counterparty): CounterpartySDKType {
-    const obj: any = {};
-    obj.client_id = message.client_id;
-    obj.connection_id = message.connection_id;
-    message.prefix !== undefined && (obj.prefix = message.prefix ? MerklePrefix.toSDK(message.prefix) : undefined);
-    return obj;
-  },
   fromAmino(object: CounterpartyAmino): Counterparty {
     return {
       client_id: object.client_id,
@@ -837,20 +777,6 @@ export const ClientPaths = {
     const message = createBaseClientPaths();
     message.paths = object.paths?.map(e => e) || [];
     return message;
-  },
-  fromSDK(object: ClientPathsSDKType): ClientPaths {
-    return {
-      paths: Array.isArray(object?.paths) ? object.paths.map((e: any) => e) : []
-    };
-  },
-  toSDK(message: ClientPaths): ClientPathsSDKType {
-    const obj: any = {};
-    if (message.paths) {
-      obj.paths = message.paths.map(e => e);
-    } else {
-      obj.paths = [];
-    }
-    return obj;
   },
   fromAmino(object: ClientPathsAmino): ClientPaths {
     return {
@@ -946,22 +872,6 @@ export const ConnectionPaths = {
     message.client_id = object.client_id ?? "";
     message.paths = object.paths?.map(e => e) || [];
     return message;
-  },
-  fromSDK(object: ConnectionPathsSDKType): ConnectionPaths {
-    return {
-      client_id: object?.client_id,
-      paths: Array.isArray(object?.paths) ? object.paths.map((e: any) => e) : []
-    };
-  },
-  toSDK(message: ConnectionPaths): ConnectionPathsSDKType {
-    const obj: any = {};
-    obj.client_id = message.client_id;
-    if (message.paths) {
-      obj.paths = message.paths.map(e => e);
-    } else {
-      obj.paths = [];
-    }
-    return obj;
   },
   fromAmino(object: ConnectionPathsAmino): ConnectionPaths {
     return {
@@ -1060,22 +970,6 @@ export const Version = {
     message.features = object.features?.map(e => e) || [];
     return message;
   },
-  fromSDK(object: VersionSDKType): Version {
-    return {
-      identifier: object?.identifier,
-      features: Array.isArray(object?.features) ? object.features.map((e: any) => e) : []
-    };
-  },
-  toSDK(message: Version): VersionSDKType {
-    const obj: any = {};
-    obj.identifier = message.identifier;
-    if (message.features) {
-      obj.features = message.features.map(e => e);
-    } else {
-      obj.features = [];
-    }
-    return obj;
-  },
   fromAmino(object: VersionAmino): Version {
     return {
       identifier: object.identifier,
@@ -1158,16 +1052,6 @@ export const Params = {
     const message = createBaseParams();
     message.max_expected_time_per_block = object.max_expected_time_per_block !== undefined && object.max_expected_time_per_block !== null ? BigInt(object.max_expected_time_per_block.toString()) : BigInt(0);
     return message;
-  },
-  fromSDK(object: ParamsSDKType): Params {
-    return {
-      max_expected_time_per_block: object?.max_expected_time_per_block
-    };
-  },
-  toSDK(message: Params): ParamsSDKType {
-    const obj: any = {};
-    obj.max_expected_time_per_block = message.max_expected_time_per_block;
-    return obj;
   },
   fromAmino(object: ParamsAmino): Params {
     return {

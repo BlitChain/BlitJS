@@ -54,8 +54,6 @@ export declare const Empty: {
     fromJSON(_: any): Empty;
     toJSON(_: Empty): unknown;
     fromPartial(_: Partial<Empty>): Empty;
-    fromSDK(_: EmptySDKType): Empty;
-    toSDK(_: Empty): EmptySDKType;
     fromAmino(_: EmptyAmino): Empty;
     toAmino(_: Empty): EmptyAmino;
     fromAminoMsg(object: EmptyAminoMsg): Empty;

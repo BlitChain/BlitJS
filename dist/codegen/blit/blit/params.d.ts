@@ -24,8 +24,6 @@ export declare const Params: {
     fromJSON(_: any): Params;
     toJSON(_: Params): unknown;
     fromPartial(_: Partial<Params>): Params;
-    fromSDK(_: ParamsSDKType): Params;
-    toSDK(_: Params): ParamsSDKType;
     fromAmino(_: ParamsAmino): Params;
     toAmino(_: Params): ParamsAmino;
     fromAminoMsg(object: ParamsAminoMsg): Params;

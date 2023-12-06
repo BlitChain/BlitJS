@@ -7,7 +7,10 @@ import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../h
 export const protobufPackage = "cosmos.group.v1";
 /** VoteOption enumerates the valid vote options for a given proposal. */
 export enum VoteOption {
-  /** VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines a no-op vote option. */
+  /**
+   * VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines an unspecified vote option which will
+   * return an error.
+   */
   VOTE_OPTION_UNSPECIFIED = 0,
   /** VOTE_OPTION_YES - VOTE_OPTION_YES defines a yes vote option. */
   VOTE_OPTION_YES = 1,
@@ -65,17 +68,28 @@ export function voteOptionToJSON(object: VoteOption): string {
 export enum ProposalStatus {
   /** PROPOSAL_STATUS_UNSPECIFIED - An empty value is invalid and not allowed. */
   PROPOSAL_STATUS_UNSPECIFIED = 0,
-  /** PROPOSAL_STATUS_SUBMITTED - Initial status of a proposal when persisted. */
+  /** PROPOSAL_STATUS_SUBMITTED - Initial status of a proposal when submitted. */
   PROPOSAL_STATUS_SUBMITTED = 1,
-  /** PROPOSAL_STATUS_CLOSED - Final status of a proposal when the final tally was executed. */
-  PROPOSAL_STATUS_CLOSED = 2,
-  /** PROPOSAL_STATUS_ABORTED - Final status of a proposal when the group was modified before the final tally. */
-  PROPOSAL_STATUS_ABORTED = 3,
   /**
-   * PROPOSAL_STATUS_WITHDRAWN - A proposal can be deleted before the voting start time by the owner. When this happens the final status
-   * is Withdrawn.
+   * PROPOSAL_STATUS_ACCEPTED - Final status of a proposal when the final tally is done and the outcome
+   * passes the group policy's decision policy.
    */
-  PROPOSAL_STATUS_WITHDRAWN = 4,
+  PROPOSAL_STATUS_ACCEPTED = 2,
+  /**
+   * PROPOSAL_STATUS_REJECTED - Final status of a proposal when the final tally is done and the outcome
+   * is rejected by the group policy's decision policy.
+   */
+  PROPOSAL_STATUS_REJECTED = 3,
+  /**
+   * PROPOSAL_STATUS_ABORTED - Final status of a proposal when the group policy is modified before the
+   * final tally.
+   */
+  PROPOSAL_STATUS_ABORTED = 4,
+  /**
+   * PROPOSAL_STATUS_WITHDRAWN - A proposal can be withdrawn before the voting start time by the owner.
+   * When this happens the final status is Withdrawn.
+   */
+  PROPOSAL_STATUS_WITHDRAWN = 5,
   UNRECOGNIZED = -1,
 }
 export const ProposalStatusSDKType = ProposalStatus;
@@ -89,12 +103,15 @@ export function proposalStatusFromJSON(object: any): ProposalStatus {
     case "PROPOSAL_STATUS_SUBMITTED":
       return ProposalStatus.PROPOSAL_STATUS_SUBMITTED;
     case 2:
-    case "PROPOSAL_STATUS_CLOSED":
-      return ProposalStatus.PROPOSAL_STATUS_CLOSED;
+    case "PROPOSAL_STATUS_ACCEPTED":
+      return ProposalStatus.PROPOSAL_STATUS_ACCEPTED;
     case 3:
+    case "PROPOSAL_STATUS_REJECTED":
+      return ProposalStatus.PROPOSAL_STATUS_REJECTED;
+    case 4:
     case "PROPOSAL_STATUS_ABORTED":
       return ProposalStatus.PROPOSAL_STATUS_ABORTED;
-    case 4:
+    case 5:
     case "PROPOSAL_STATUS_WITHDRAWN":
       return ProposalStatus.PROPOSAL_STATUS_WITHDRAWN;
     case -1:
@@ -109,62 +126,15 @@ export function proposalStatusToJSON(object: ProposalStatus): string {
       return "PROPOSAL_STATUS_UNSPECIFIED";
     case ProposalStatus.PROPOSAL_STATUS_SUBMITTED:
       return "PROPOSAL_STATUS_SUBMITTED";
-    case ProposalStatus.PROPOSAL_STATUS_CLOSED:
-      return "PROPOSAL_STATUS_CLOSED";
+    case ProposalStatus.PROPOSAL_STATUS_ACCEPTED:
+      return "PROPOSAL_STATUS_ACCEPTED";
+    case ProposalStatus.PROPOSAL_STATUS_REJECTED:
+      return "PROPOSAL_STATUS_REJECTED";
     case ProposalStatus.PROPOSAL_STATUS_ABORTED:
       return "PROPOSAL_STATUS_ABORTED";
     case ProposalStatus.PROPOSAL_STATUS_WITHDRAWN:
       return "PROPOSAL_STATUS_WITHDRAWN";
     case ProposalStatus.UNRECOGNIZED:
-    default:
-      return "UNRECOGNIZED";
-  }
-}
-/** ProposalResult defines types of proposal results. */
-export enum ProposalResult {
-  /** PROPOSAL_RESULT_UNSPECIFIED - An empty value is invalid and not allowed */
-  PROPOSAL_RESULT_UNSPECIFIED = 0,
-  /** PROPOSAL_RESULT_UNFINALIZED - Until a final tally has happened the status is unfinalized */
-  PROPOSAL_RESULT_UNFINALIZED = 1,
-  /** PROPOSAL_RESULT_ACCEPTED - Final result of the tally */
-  PROPOSAL_RESULT_ACCEPTED = 2,
-  /** PROPOSAL_RESULT_REJECTED - Final result of the tally */
-  PROPOSAL_RESULT_REJECTED = 3,
-  UNRECOGNIZED = -1,
-}
-export const ProposalResultSDKType = ProposalResult;
-export const ProposalResultAmino = ProposalResult;
-export function proposalResultFromJSON(object: any): ProposalResult {
-  switch (object) {
-    case 0:
-    case "PROPOSAL_RESULT_UNSPECIFIED":
-      return ProposalResult.PROPOSAL_RESULT_UNSPECIFIED;
-    case 1:
-    case "PROPOSAL_RESULT_UNFINALIZED":
-      return ProposalResult.PROPOSAL_RESULT_UNFINALIZED;
-    case 2:
-    case "PROPOSAL_RESULT_ACCEPTED":
-      return ProposalResult.PROPOSAL_RESULT_ACCEPTED;
-    case 3:
-    case "PROPOSAL_RESULT_REJECTED":
-      return ProposalResult.PROPOSAL_RESULT_REJECTED;
-    case -1:
-    case "UNRECOGNIZED":
-    default:
-      return ProposalResult.UNRECOGNIZED;
-  }
-}
-export function proposalResultToJSON(object: ProposalResult): string {
-  switch (object) {
-    case ProposalResult.PROPOSAL_RESULT_UNSPECIFIED:
-      return "PROPOSAL_RESULT_UNSPECIFIED";
-    case ProposalResult.PROPOSAL_RESULT_UNFINALIZED:
-      return "PROPOSAL_RESULT_UNFINALIZED";
-    case ProposalResult.PROPOSAL_RESULT_ACCEPTED:
-      return "PROPOSAL_RESULT_ACCEPTED";
-    case ProposalResult.PROPOSAL_RESULT_REJECTED:
-      return "PROPOSAL_RESULT_REJECTED";
-    case ProposalResult.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";
   }
@@ -220,14 +190,14 @@ export function proposalExecutorResultToJSON(object: ProposalExecutorResult): st
 }
 /**
  * Member represents a group member with an account address,
- * non-zero weight and metadata.
+ * non-zero weight, metadata and added_at timestamp.
  */
 export interface Member {
   /** address is the member's account address. */
   address: string;
   /** weight is the member's voting weight that should be greater than 0. */
   weight: string;
-  /** metadata is any arbitrary metadata to attached to the member. */
+  /** metadata is any arbitrary metadata attached to the member. */
   metadata: string;
   /** added_at is a timestamp specifying when a member was added. */
   added_at: Date;
@@ -238,14 +208,14 @@ export interface MemberProtoMsg {
 }
 /**
  * Member represents a group member with an account address,
- * non-zero weight and metadata.
+ * non-zero weight, metadata and added_at timestamp.
  */
 export interface MemberAmino {
   /** address is the member's account address. */
   address: string;
   /** weight is the member's voting weight that should be greater than 0. */
   weight: string;
-  /** metadata is any arbitrary metadata to attached to the member. */
+  /** metadata is any arbitrary metadata attached to the member. */
   metadata: string;
   /** added_at is a timestamp specifying when a member was added. */
   added_at?: string;
@@ -256,7 +226,7 @@ export interface MemberAminoMsg {
 }
 /**
  * Member represents a group member with an account address,
- * non-zero weight and metadata.
+ * non-zero weight, metadata and added_at timestamp.
  */
 export interface MemberSDKType {
   address: string;
@@ -264,32 +234,64 @@ export interface MemberSDKType {
   metadata: string;
   added_at: Date;
 }
-/** Members defines a repeated slice of Member objects. */
-export interface Members {
-  /** members is the list of members. */
-  members: Member[];
+/**
+ * MemberRequest represents a group member to be used in Msg server requests.
+ * Contrary to `Member`, it doesn't have any `added_at` field
+ * since this field cannot be set as part of requests.
+ */
+export interface MemberRequest {
+  /** address is the member's account address. */
+  address: string;
+  /** weight is the member's voting weight that should be greater than 0. */
+  weight: string;
+  /** metadata is any arbitrary metadata attached to the member. */
+  metadata: string;
 }
-export interface MembersProtoMsg {
-  type_url: "/cosmos.group.v1.Members";
+export interface MemberRequestProtoMsg {
+  type_url: "/cosmos.group.v1.MemberRequest";
   value: Uint8Array;
 }
-/** Members defines a repeated slice of Member objects. */
-export interface MembersAmino {
-  /** members is the list of members. */
-  members: MemberAmino[];
+/**
+ * MemberRequest represents a group member to be used in Msg server requests.
+ * Contrary to `Member`, it doesn't have any `added_at` field
+ * since this field cannot be set as part of requests.
+ */
+export interface MemberRequestAmino {
+  /** address is the member's account address. */
+  address: string;
+  /** weight is the member's voting weight that should be greater than 0. */
+  weight: string;
+  /** metadata is any arbitrary metadata attached to the member. */
+  metadata: string;
 }
-export interface MembersAminoMsg {
-  type: "cosmos-sdk/Members";
-  value: MembersAmino;
+export interface MemberRequestAminoMsg {
+  type: "cosmos-sdk/MemberRequest";
+  value: MemberRequestAmino;
 }
-/** Members defines a repeated slice of Member objects. */
-export interface MembersSDKType {
-  members: MemberSDKType[];
+/**
+ * MemberRequest represents a group member to be used in Msg server requests.
+ * Contrary to `Member`, it doesn't have any `added_at` field
+ * since this field cannot be set as part of requests.
+ */
+export interface MemberRequestSDKType {
+  address: string;
+  weight: string;
+  metadata: string;
 }
-/** ThresholdDecisionPolicy implements the DecisionPolicy interface */
+/**
+ * ThresholdDecisionPolicy is a decision policy where a proposal passes when it
+ * satisfies the two following conditions:
+ * 1. The sum of all `YES` voter's weights is greater or equal than the defined
+ *    `threshold`.
+ * 2. The voting and execution periods of the proposal respect the parameters
+ *    given by `windows`.
+ */
 export interface ThresholdDecisionPolicy {
   $typeUrl?: "/cosmos.group.v1.ThresholdDecisionPolicy";
-  /** threshold is the minimum weighted sum of yes votes that must be met or exceeded for a proposal to succeed. */
+  /**
+   * threshold is the minimum weighted sum of `YES` votes that must be met or
+   * exceeded for a proposal to succeed.
+   */
   threshold: string;
   /** windows defines the different windows for voting and execution. */
   windows?: DecisionPolicyWindows;
@@ -298,9 +300,19 @@ export interface ThresholdDecisionPolicyProtoMsg {
   type_url: "/cosmos.group.v1.ThresholdDecisionPolicy";
   value: Uint8Array;
 }
-/** ThresholdDecisionPolicy implements the DecisionPolicy interface */
+/**
+ * ThresholdDecisionPolicy is a decision policy where a proposal passes when it
+ * satisfies the two following conditions:
+ * 1. The sum of all `YES` voter's weights is greater or equal than the defined
+ *    `threshold`.
+ * 2. The voting and execution periods of the proposal respect the parameters
+ *    given by `windows`.
+ */
 export interface ThresholdDecisionPolicyAmino {
-  /** threshold is the minimum weighted sum of yes votes that must be met or exceeded for a proposal to succeed. */
+  /**
+   * threshold is the minimum weighted sum of `YES` votes that must be met or
+   * exceeded for a proposal to succeed.
+   */
   threshold: string;
   /** windows defines the different windows for voting and execution. */
   windows?: DecisionPolicyWindowsAmino;
@@ -309,16 +321,33 @@ export interface ThresholdDecisionPolicyAminoMsg {
   type: "cosmos-sdk/ThresholdDecisionPolicy";
   value: ThresholdDecisionPolicyAmino;
 }
-/** ThresholdDecisionPolicy implements the DecisionPolicy interface */
+/**
+ * ThresholdDecisionPolicy is a decision policy where a proposal passes when it
+ * satisfies the two following conditions:
+ * 1. The sum of all `YES` voter's weights is greater or equal than the defined
+ *    `threshold`.
+ * 2. The voting and execution periods of the proposal respect the parameters
+ *    given by `windows`.
+ */
 export interface ThresholdDecisionPolicySDKType {
   $typeUrl?: "/cosmos.group.v1.ThresholdDecisionPolicy";
   threshold: string;
   windows?: DecisionPolicyWindowsSDKType;
 }
-/** PercentageDecisionPolicy implements the DecisionPolicy interface */
+/**
+ * PercentageDecisionPolicy is a decision policy where a proposal passes when
+ * it satisfies the two following conditions:
+ * 1. The percentage of all `YES` voters' weights out of the total group weight
+ *    is greater or equal than the given `percentage`.
+ * 2. The voting and execution periods of the proposal respect the parameters
+ *    given by `windows`.
+ */
 export interface PercentageDecisionPolicy {
   $typeUrl?: "/cosmos.group.v1.PercentageDecisionPolicy";
-  /** percentage is the minimum percentage the weighted sum of yes votes must meet for a proposal to succeed. */
+  /**
+   * percentage is the minimum percentage of the weighted sum of `YES` votes must
+   * meet for a proposal to succeed.
+   */
   percentage: string;
   /** windows defines the different windows for voting and execution. */
   windows?: DecisionPolicyWindows;
@@ -327,9 +356,19 @@ export interface PercentageDecisionPolicyProtoMsg {
   type_url: "/cosmos.group.v1.PercentageDecisionPolicy";
   value: Uint8Array;
 }
-/** PercentageDecisionPolicy implements the DecisionPolicy interface */
+/**
+ * PercentageDecisionPolicy is a decision policy where a proposal passes when
+ * it satisfies the two following conditions:
+ * 1. The percentage of all `YES` voters' weights out of the total group weight
+ *    is greater or equal than the given `percentage`.
+ * 2. The voting and execution periods of the proposal respect the parameters
+ *    given by `windows`.
+ */
 export interface PercentageDecisionPolicyAmino {
-  /** percentage is the minimum percentage the weighted sum of yes votes must meet for a proposal to succeed. */
+  /**
+   * percentage is the minimum percentage of the weighted sum of `YES` votes must
+   * meet for a proposal to succeed.
+   */
   percentage: string;
   /** windows defines the different windows for voting and execution. */
   windows?: DecisionPolicyWindowsAmino;
@@ -338,7 +377,14 @@ export interface PercentageDecisionPolicyAminoMsg {
   type: "cosmos-sdk/PercentageDecisionPolicy";
   value: PercentageDecisionPolicyAmino;
 }
-/** PercentageDecisionPolicy implements the DecisionPolicy interface */
+/**
+ * PercentageDecisionPolicy is a decision policy where a proposal passes when
+ * it satisfies the two following conditions:
+ * 1. The percentage of all `YES` voters' weights out of the total group weight
+ *    is greater or equal than the given `percentage`.
+ * 2. The voting and execution periods of the proposal respect the parameters
+ *    given by `windows`.
+ */
 export interface PercentageDecisionPolicySDKType {
   $typeUrl?: "/cosmos.group.v1.PercentageDecisionPolicy";
   percentage: string;
@@ -407,7 +453,10 @@ export interface GroupInfo {
   id: bigint;
   /** admin is the account address of the group's admin. */
   admin: string;
-  /** metadata is any arbitrary metadata to attached to the group. */
+  /**
+   * metadata is any arbitrary metadata to attached to the group.
+   * the recommended format of the metadata is to be found here: https://docs.cosmos.network/v0.47/modules/group#group-1
+   */
   metadata: string;
   /**
    * version is used to track changes to a group's membership structure that
@@ -431,7 +480,10 @@ export interface GroupInfoAmino {
   id: string;
   /** admin is the account address of the group's admin. */
   admin: string;
-  /** metadata is any arbitrary metadata to attached to the group. */
+  /**
+   * metadata is any arbitrary metadata to attached to the group.
+   * the recommended format of the metadata is to be found here: https://docs.cosmos.network/v0.47/modules/group#group-1
+   */
   metadata: string;
   /**
    * version is used to track changes to a group's membership structure that
@@ -493,7 +545,11 @@ export interface GroupPolicyInfo {
   group_id: bigint;
   /** admin is the account address of the group admin. */
   admin: string;
-  /** metadata is any arbitrary metadata to attached to the group policy. */
+  /**
+   * metadata is any arbitrary metadata attached to the group policy.
+   * the recommended format of the metadata is to be found here:
+   * https://docs.cosmos.network/v0.47/modules/group#decision-policy-1
+   */
   metadata: string;
   /**
    * version is used to track changes to a group's GroupPolicyInfo structure that
@@ -520,7 +576,11 @@ export interface GroupPolicyInfoAmino {
   group_id: string;
   /** admin is the account address of the group admin. */
   admin: string;
-  /** metadata is any arbitrary metadata to attached to the group policy. */
+  /**
+   * metadata is any arbitrary metadata attached to the group policy.
+   * the recommended format of the metadata is to be found here:
+   * https://docs.cosmos.network/v0.47/modules/group#decision-policy-1
+   */
   metadata: string;
   /**
    * version is used to track changes to a group's GroupPolicyInfo structure that
@@ -555,50 +615,63 @@ export interface GroupPolicyInfoSDKType {
 export interface Proposal {
   /** id is the unique id of the proposal. */
   id: bigint;
-  /** address is the account address of group policy. */
-  address: string;
-  /** metadata is any arbitrary metadata to attached to the proposal. */
+  /** group_policy_address is the account address of group policy. */
+  group_policy_address: string;
+  /**
+   * metadata is any arbitrary metadata attached to the proposal.
+   * the recommended format of the metadata is to be found here:
+   * https://docs.cosmos.network/v0.47/modules/group#proposal-4
+   */
   metadata: string;
   /** proposers are the account addresses of the proposers. */
   proposers: string[];
   /** submit_time is a timestamp specifying when a proposal was submitted. */
   submit_time: Date;
   /**
-   * group_version tracks the version of the group that this proposal corresponds to.
-   * When group membership is changed, existing proposals from previous group versions will become invalid.
+   * group_version tracks the version of the group at proposal submission.
+   * This field is here for informational purposes only.
    */
   group_version: bigint;
   /**
-   * group_policy_version tracks the version of the group policy that this proposal corresponds to.
-   * When a decision policy is changed, existing proposals from previous policy versions will become invalid.
+   * group_policy_version tracks the version of the group policy at proposal submission.
+   * When a decision policy is changed, existing proposals from previous policy
+   * versions will become invalid with the `ABORTED` status.
+   * This field is here for informational purposes only.
    */
   group_policy_version: bigint;
   /** status represents the high level position in the life cycle of the proposal. Initial value is Submitted. */
   status: ProposalStatus;
   /**
-   * result is the final result based on the votes and election rule. Initial value is unfinalized.
-   * The result is persisted so that clients can always rely on this state and not have to replicate the logic.
-   */
-  result: ProposalResult;
-  /**
    * final_tally_result contains the sums of all weighted votes for this
-   * proposal for each vote option, after tallying. When querying a proposal
-   * via gRPC, this field is not populated until the proposal's voting period
-   * has ended.
+   * proposal for each vote option. It is empty at submission, and only
+   * populated after tallying, at voting period end or at proposal execution,
+   * whichever happens first.
    */
   final_tally_result: TallyResult;
   /**
    * voting_period_end is the timestamp before which voting must be done.
-   * Unless a successfull MsgExec is called before (to execute a proposal whose
+   * Unless a successful MsgExec is called before (to execute a proposal whose
    * tally is successful before the voting period ends), tallying will be done
-   * at this point, and the `final_tally_result`, as well
-   * as `status` and `result` fields will be accordingly updated.
+   * at this point, and the `final_tally_result`and `status` fields will be
+   * accordingly updated.
    */
   voting_period_end: Date;
-  /** executor_result is the final result based on the votes and election rule. Initial value is NotRun. */
+  /** executor_result is the final result of the proposal execution. Initial value is NotRun. */
   executor_result: ProposalExecutorResult;
-  /** messages is a list of Msgs that will be executed if the proposal passes. */
+  /** messages is a list of `sdk.Msg`s that will be executed if the proposal passes. */
   messages: Any[];
+  /**
+   * title is the title of the proposal
+   * 
+   * Since: cosmos-sdk 0.47
+   */
+  title: string;
+  /**
+   * summary is a short summary of the proposal
+   * 
+   * Since: cosmos-sdk 0.47
+   */
+  summary: string;
 }
 export interface ProposalProtoMsg {
   type_url: "/cosmos.group.v1.Proposal";
@@ -613,50 +686,63 @@ export interface ProposalProtoMsg {
 export interface ProposalAmino {
   /** id is the unique id of the proposal. */
   id: string;
-  /** address is the account address of group policy. */
-  address: string;
-  /** metadata is any arbitrary metadata to attached to the proposal. */
+  /** group_policy_address is the account address of group policy. */
+  group_policy_address: string;
+  /**
+   * metadata is any arbitrary metadata attached to the proposal.
+   * the recommended format of the metadata is to be found here:
+   * https://docs.cosmos.network/v0.47/modules/group#proposal-4
+   */
   metadata: string;
   /** proposers are the account addresses of the proposers. */
   proposers: string[];
   /** submit_time is a timestamp specifying when a proposal was submitted. */
   submit_time?: string;
   /**
-   * group_version tracks the version of the group that this proposal corresponds to.
-   * When group membership is changed, existing proposals from previous group versions will become invalid.
+   * group_version tracks the version of the group at proposal submission.
+   * This field is here for informational purposes only.
    */
   group_version: string;
   /**
-   * group_policy_version tracks the version of the group policy that this proposal corresponds to.
-   * When a decision policy is changed, existing proposals from previous policy versions will become invalid.
+   * group_policy_version tracks the version of the group policy at proposal submission.
+   * When a decision policy is changed, existing proposals from previous policy
+   * versions will become invalid with the `ABORTED` status.
+   * This field is here for informational purposes only.
    */
   group_policy_version: string;
   /** status represents the high level position in the life cycle of the proposal. Initial value is Submitted. */
   status: ProposalStatus;
   /**
-   * result is the final result based on the votes and election rule. Initial value is unfinalized.
-   * The result is persisted so that clients can always rely on this state and not have to replicate the logic.
-   */
-  result: ProposalResult;
-  /**
    * final_tally_result contains the sums of all weighted votes for this
-   * proposal for each vote option, after tallying. When querying a proposal
-   * via gRPC, this field is not populated until the proposal's voting period
-   * has ended.
+   * proposal for each vote option. It is empty at submission, and only
+   * populated after tallying, at voting period end or at proposal execution,
+   * whichever happens first.
    */
   final_tally_result?: TallyResultAmino;
   /**
    * voting_period_end is the timestamp before which voting must be done.
-   * Unless a successfull MsgExec is called before (to execute a proposal whose
+   * Unless a successful MsgExec is called before (to execute a proposal whose
    * tally is successful before the voting period ends), tallying will be done
-   * at this point, and the `final_tally_result`, as well
-   * as `status` and `result` fields will be accordingly updated.
+   * at this point, and the `final_tally_result`and `status` fields will be
+   * accordingly updated.
    */
   voting_period_end?: string;
-  /** executor_result is the final result based on the votes and election rule. Initial value is NotRun. */
+  /** executor_result is the final result of the proposal execution. Initial value is NotRun. */
   executor_result: ProposalExecutorResult;
-  /** messages is a list of Msgs that will be executed if the proposal passes. */
+  /** messages is a list of `sdk.Msg`s that will be executed if the proposal passes. */
   messages: AnyAmino[];
+  /**
+   * title is the title of the proposal
+   * 
+   * Since: cosmos-sdk 0.47
+   */
+  title: string;
+  /**
+   * summary is a short summary of the proposal
+   * 
+   * Since: cosmos-sdk 0.47
+   */
+  summary: string;
 }
 export interface ProposalAminoMsg {
   type: "cosmos-sdk/Proposal";
@@ -670,18 +756,19 @@ export interface ProposalAminoMsg {
  */
 export interface ProposalSDKType {
   id: bigint;
-  address: string;
+  group_policy_address: string;
   metadata: string;
   proposers: string[];
   submit_time: Date;
   group_version: bigint;
   group_policy_version: bigint;
   status: ProposalStatus;
-  result: ProposalResult;
   final_tally_result: TallyResultSDKType;
   voting_period_end: Date;
   executor_result: ProposalExecutorResult;
   messages: AnySDKType[];
+  title: string;
+  summary: string;
 }
 /** TallyResult represents the sum of weighted votes for each vote option. */
 export interface TallyResult {
@@ -689,7 +776,7 @@ export interface TallyResult {
   yes_count: string;
   /** abstain_count is the weighted sum of abstainers. */
   abstain_count: string;
-  /** no is the weighted sum of no votes. */
+  /** no_count is the weighted sum of no votes. */
   no_count: string;
   /** no_with_veto_count is the weighted sum of veto. */
   no_with_veto_count: string;
@@ -704,7 +791,7 @@ export interface TallyResultAmino {
   yes_count: string;
   /** abstain_count is the weighted sum of abstainers. */
   abstain_count: string;
-  /** no is the weighted sum of no votes. */
+  /** no_count is the weighted sum of no votes. */
   no_count: string;
   /** no_with_veto_count is the weighted sum of veto. */
   no_with_veto_count: string;
@@ -720,7 +807,7 @@ export interface TallyResultSDKType {
   no_count: string;
   no_with_veto_count: string;
 }
-/** Vote represents a vote for a proposal. */
+/** Vote represents a vote for a proposal.string metadata */
 export interface Vote {
   /** proposal is the unique ID of the proposal. */
   proposal_id: bigint;
@@ -728,7 +815,10 @@ export interface Vote {
   voter: string;
   /** option is the voter's choice on the proposal. */
   option: VoteOption;
-  /** metadata is any arbitrary metadata to attached to the vote. */
+  /**
+   * metadata is any arbitrary metadata attached to the vote.
+   * the recommended format of the metadata is to be found here: https://docs.cosmos.network/v0.47/modules/group#vote-2
+   */
   metadata: string;
   /** submit_time is the timestamp when the vote was submitted. */
   submit_time: Date;
@@ -737,7 +827,7 @@ export interface VoteProtoMsg {
   type_url: "/cosmos.group.v1.Vote";
   value: Uint8Array;
 }
-/** Vote represents a vote for a proposal. */
+/** Vote represents a vote for a proposal.string metadata */
 export interface VoteAmino {
   /** proposal is the unique ID of the proposal. */
   proposal_id: string;
@@ -745,7 +835,10 @@ export interface VoteAmino {
   voter: string;
   /** option is the voter's choice on the proposal. */
   option: VoteOption;
-  /** metadata is any arbitrary metadata to attached to the vote. */
+  /**
+   * metadata is any arbitrary metadata attached to the vote.
+   * the recommended format of the metadata is to be found here: https://docs.cosmos.network/v0.47/modules/group#vote-2
+   */
   metadata: string;
   /** submit_time is the timestamp when the vote was submitted. */
   submit_time?: string;
@@ -754,7 +847,7 @@ export interface VoteAminoMsg {
   type: "cosmos-sdk/Vote";
   value: VoteAmino;
 }
-/** Vote represents a vote for a proposal. */
+/** Vote represents a vote for a proposal.string metadata */
 export interface VoteSDKType {
   proposal_id: bigint;
   voter: string;
@@ -837,22 +930,6 @@ export const Member = {
     message.added_at = object.added_at ?? undefined;
     return message;
   },
-  fromSDK(object: MemberSDKType): Member {
-    return {
-      address: object?.address,
-      weight: object?.weight,
-      metadata: object?.metadata,
-      added_at: object.added_at ? Timestamp.fromSDK(object.added_at) : undefined
-    };
-  },
-  toSDK(message: Member): MemberSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    obj.weight = message.weight;
-    obj.metadata = message.metadata;
-    message.added_at !== undefined && (obj.added_at = message.added_at ? Timestamp.toSDK(message.added_at) : undefined);
-    return obj;
-  },
   fromAmino(object: MemberAmino): Member {
     return {
       address: object.address,
@@ -891,28 +968,42 @@ export const Member = {
     };
   }
 };
-function createBaseMembers(): Members {
+function createBaseMemberRequest(): MemberRequest {
   return {
-    members: []
+    address: "",
+    weight: "",
+    metadata: ""
   };
 }
-export const Members = {
-  typeUrl: "/cosmos.group.v1.Members",
-  encode(message: Members, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    for (const v of message.members) {
-      Member.encode(v!, writer.uint32(10).fork()).ldelim();
+export const MemberRequest = {
+  typeUrl: "/cosmos.group.v1.MemberRequest",
+  encode(message: MemberRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.address !== "") {
+      writer.uint32(10).string(message.address);
+    }
+    if (message.weight !== "") {
+      writer.uint32(18).string(message.weight);
+    }
+    if (message.metadata !== "") {
+      writer.uint32(26).string(message.metadata);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): Members {
+  decode(input: BinaryReader | Uint8Array, length?: number): MemberRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMembers();
+    const message = createBaseMemberRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.members.push(Member.decode(reader, reader.uint32()));
+          message.address = reader.string();
+          break;
+        case 2:
+          message.weight = reader.string();
+          break;
+        case 3:
+          message.metadata = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -921,72 +1012,60 @@ export const Members = {
     }
     return message;
   },
-  fromJSON(object: any): Members {
+  fromJSON(object: any): MemberRequest {
     return {
-      members: Array.isArray(object?.members) ? object.members.map((e: any) => Member.fromJSON(e)) : []
+      address: isSet(object.address) ? String(object.address) : "",
+      weight: isSet(object.weight) ? String(object.weight) : "",
+      metadata: isSet(object.metadata) ? String(object.metadata) : ""
     };
   },
-  toJSON(message: Members): unknown {
+  toJSON(message: MemberRequest): unknown {
     const obj: any = {};
-    if (message.members) {
-      obj.members = message.members.map(e => e ? Member.toJSON(e) : undefined);
-    } else {
-      obj.members = [];
-    }
+    message.address !== undefined && (obj.address = message.address);
+    message.weight !== undefined && (obj.weight = message.weight);
+    message.metadata !== undefined && (obj.metadata = message.metadata);
     return obj;
   },
-  fromPartial(object: Partial<Members>): Members {
-    const message = createBaseMembers();
-    message.members = object.members?.map(e => Member.fromPartial(e)) || [];
+  fromPartial(object: Partial<MemberRequest>): MemberRequest {
+    const message = createBaseMemberRequest();
+    message.address = object.address ?? "";
+    message.weight = object.weight ?? "";
+    message.metadata = object.metadata ?? "";
     return message;
   },
-  fromSDK(object: MembersSDKType): Members {
+  fromAmino(object: MemberRequestAmino): MemberRequest {
     return {
-      members: Array.isArray(object?.members) ? object.members.map((e: any) => Member.fromSDK(e)) : []
+      address: object.address,
+      weight: object.weight,
+      metadata: object.metadata
     };
   },
-  toSDK(message: Members): MembersSDKType {
+  toAmino(message: MemberRequest): MemberRequestAmino {
     const obj: any = {};
-    if (message.members) {
-      obj.members = message.members.map(e => e ? Member.toSDK(e) : undefined);
-    } else {
-      obj.members = [];
-    }
+    obj.address = message.address;
+    obj.weight = message.weight;
+    obj.metadata = message.metadata;
     return obj;
   },
-  fromAmino(object: MembersAmino): Members {
+  fromAminoMsg(object: MemberRequestAminoMsg): MemberRequest {
+    return MemberRequest.fromAmino(object.value);
+  },
+  toAminoMsg(message: MemberRequest): MemberRequestAminoMsg {
     return {
-      members: Array.isArray(object?.members) ? object.members.map((e: any) => Member.fromAmino(e)) : []
+      type: "cosmos-sdk/MemberRequest",
+      value: MemberRequest.toAmino(message)
     };
   },
-  toAmino(message: Members): MembersAmino {
-    const obj: any = {};
-    if (message.members) {
-      obj.members = message.members.map(e => e ? Member.toAmino(e) : undefined);
-    } else {
-      obj.members = [];
-    }
-    return obj;
+  fromProtoMsg(message: MemberRequestProtoMsg): MemberRequest {
+    return MemberRequest.decode(message.value);
   },
-  fromAminoMsg(object: MembersAminoMsg): Members {
-    return Members.fromAmino(object.value);
+  toProto(message: MemberRequest): Uint8Array {
+    return MemberRequest.encode(message).finish();
   },
-  toAminoMsg(message: Members): MembersAminoMsg {
+  toProtoMsg(message: MemberRequest): MemberRequestProtoMsg {
     return {
-      type: "cosmos-sdk/Members",
-      value: Members.toAmino(message)
-    };
-  },
-  fromProtoMsg(message: MembersProtoMsg): Members {
-    return Members.decode(message.value);
-  },
-  toProto(message: Members): Uint8Array {
-    return Members.encode(message).finish();
-  },
-  toProtoMsg(message: Members): MembersProtoMsg {
-    return {
-      typeUrl: "/cosmos.group.v1.Members",
-      value: Members.encode(message).finish()
+      typeUrl: "/cosmos.group.v1.MemberRequest",
+      value: MemberRequest.encode(message).finish()
     };
   }
 };
@@ -1045,18 +1124,6 @@ export const ThresholdDecisionPolicy = {
     message.threshold = object.threshold ?? "";
     message.windows = object.windows !== undefined && object.windows !== null ? DecisionPolicyWindows.fromPartial(object.windows) : undefined;
     return message;
-  },
-  fromSDK(object: ThresholdDecisionPolicySDKType): ThresholdDecisionPolicy {
-    return {
-      threshold: object?.threshold,
-      windows: object.windows ? DecisionPolicyWindows.fromSDK(object.windows) : undefined
-    };
-  },
-  toSDK(message: ThresholdDecisionPolicy): ThresholdDecisionPolicySDKType {
-    const obj: any = {};
-    obj.threshold = message.threshold;
-    message.windows !== undefined && (obj.windows = message.windows ? DecisionPolicyWindows.toSDK(message.windows) : undefined);
-    return obj;
   },
   fromAmino(object: ThresholdDecisionPolicyAmino): ThresholdDecisionPolicy {
     return {
@@ -1148,18 +1215,6 @@ export const PercentageDecisionPolicy = {
     message.windows = object.windows !== undefined && object.windows !== null ? DecisionPolicyWindows.fromPartial(object.windows) : undefined;
     return message;
   },
-  fromSDK(object: PercentageDecisionPolicySDKType): PercentageDecisionPolicy {
-    return {
-      percentage: object?.percentage,
-      windows: object.windows ? DecisionPolicyWindows.fromSDK(object.windows) : undefined
-    };
-  },
-  toSDK(message: PercentageDecisionPolicy): PercentageDecisionPolicySDKType {
-    const obj: any = {};
-    obj.percentage = message.percentage;
-    message.windows !== undefined && (obj.windows = message.windows ? DecisionPolicyWindows.toSDK(message.windows) : undefined);
-    return obj;
-  },
   fromAmino(object: PercentageDecisionPolicyAmino): PercentageDecisionPolicy {
     return {
       percentage: object.percentage,
@@ -1248,18 +1303,6 @@ export const DecisionPolicyWindows = {
     message.voting_period = object.voting_period !== undefined && object.voting_period !== null ? Duration.fromPartial(object.voting_period) : undefined;
     message.min_execution_period = object.min_execution_period !== undefined && object.min_execution_period !== null ? Duration.fromPartial(object.min_execution_period) : undefined;
     return message;
-  },
-  fromSDK(object: DecisionPolicyWindowsSDKType): DecisionPolicyWindows {
-    return {
-      voting_period: object.voting_period ? Duration.fromSDK(object.voting_period) : undefined,
-      min_execution_period: object.min_execution_period ? Duration.fromSDK(object.min_execution_period) : undefined
-    };
-  },
-  toSDK(message: DecisionPolicyWindows): DecisionPolicyWindowsSDKType {
-    const obj: any = {};
-    message.voting_period !== undefined && (obj.voting_period = message.voting_period ? Duration.toSDK(message.voting_period) : undefined);
-    message.min_execution_period !== undefined && (obj.min_execution_period = message.min_execution_period ? Duration.toSDK(message.min_execution_period) : undefined);
-    return obj;
   },
   fromAmino(object: DecisionPolicyWindowsAmino): DecisionPolicyWindows {
     return {
@@ -1390,26 +1433,6 @@ export const GroupInfo = {
     message.created_at = object.created_at ?? undefined;
     return message;
   },
-  fromSDK(object: GroupInfoSDKType): GroupInfo {
-    return {
-      id: object?.id,
-      admin: object?.admin,
-      metadata: object?.metadata,
-      version: object?.version,
-      total_weight: object?.total_weight,
-      created_at: object.created_at ? Timestamp.fromSDK(object.created_at) : undefined
-    };
-  },
-  toSDK(message: GroupInfo): GroupInfoSDKType {
-    const obj: any = {};
-    obj.id = message.id;
-    obj.admin = message.admin;
-    obj.metadata = message.metadata;
-    obj.version = message.version;
-    obj.total_weight = message.total_weight;
-    message.created_at !== undefined && (obj.created_at = message.created_at ? Timestamp.toSDK(message.created_at) : undefined);
-    return obj;
-  },
   fromAmino(object: GroupInfoAmino): GroupInfo {
     return {
       id: BigInt(object.id),
@@ -1507,18 +1530,6 @@ export const GroupMember = {
     message.member = object.member !== undefined && object.member !== null ? Member.fromPartial(object.member) : undefined;
     return message;
   },
-  fromSDK(object: GroupMemberSDKType): GroupMember {
-    return {
-      group_id: object?.group_id,
-      member: object.member ? Member.fromSDK(object.member) : undefined
-    };
-  },
-  toSDK(message: GroupMember): GroupMemberSDKType {
-    const obj: any = {};
-    obj.group_id = message.group_id;
-    message.member !== undefined && (obj.member = message.member ? Member.toSDK(message.member) : undefined);
-    return obj;
-  },
   fromAmino(object: GroupMemberAmino): GroupMember {
     return {
       group_id: BigInt(object.group_id),
@@ -1613,7 +1624,7 @@ export const GroupPolicyInfo = {
           message.version = reader.uint64();
           break;
         case 6:
-          message.decision_policy = (Cosmos_groupDecisionPolicy_InterfaceDecoder(reader) as Any);
+          message.decision_policy = (Cosmos_groupv1DecisionPolicy_InterfaceDecoder(reader) as Any);
           break;
         case 7:
           message.created_at = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
@@ -1658,28 +1669,6 @@ export const GroupPolicyInfo = {
     message.created_at = object.created_at ?? undefined;
     return message;
   },
-  fromSDK(object: GroupPolicyInfoSDKType): GroupPolicyInfo {
-    return {
-      address: object?.address,
-      group_id: object?.group_id,
-      admin: object?.admin,
-      metadata: object?.metadata,
-      version: object?.version,
-      decision_policy: object.decision_policy ? Any.fromSDK(object.decision_policy) : undefined,
-      created_at: object.created_at ? Timestamp.fromSDK(object.created_at) : undefined
-    };
-  },
-  toSDK(message: GroupPolicyInfo): GroupPolicyInfoSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    obj.group_id = message.group_id;
-    obj.admin = message.admin;
-    obj.metadata = message.metadata;
-    obj.version = message.version;
-    message.decision_policy !== undefined && (obj.decision_policy = message.decision_policy ? Any.toSDK(message.decision_policy) : undefined);
-    message.created_at !== undefined && (obj.created_at = message.created_at ? Timestamp.toSDK(message.created_at) : undefined);
-    return obj;
-  },
   fromAmino(object: GroupPolicyInfoAmino): GroupPolicyInfo {
     return {
       address: object.address,
@@ -1687,7 +1676,7 @@ export const GroupPolicyInfo = {
       admin: object.admin,
       metadata: object.metadata,
       version: BigInt(object.version),
-      decision_policy: object?.decision_policy ? Cosmos_groupDecisionPolicy_FromAmino(object.decision_policy) : undefined,
+      decision_policy: object?.decision_policy ? Cosmos_groupv1DecisionPolicy_FromAmino(object.decision_policy) : undefined,
       created_at: object?.created_at ? fromTimestamp(Timestamp.fromAmino(object.created_at)) : undefined
     };
   },
@@ -1698,7 +1687,7 @@ export const GroupPolicyInfo = {
     obj.admin = message.admin;
     obj.metadata = message.metadata;
     obj.version = message.version ? message.version.toString() : undefined;
-    obj.decision_policy = message.decision_policy ? Cosmos_groupDecisionPolicy_ToAmino((message.decision_policy as Any)) : undefined;
+    obj.decision_policy = message.decision_policy ? Cosmos_groupv1DecisionPolicy_ToAmino((message.decision_policy as Any)) : undefined;
     obj.created_at = message.created_at ? Timestamp.toAmino(toTimestamp(message.created_at)) : undefined;
     return obj;
   },
@@ -1727,18 +1716,19 @@ export const GroupPolicyInfo = {
 function createBaseProposal(): Proposal {
   return {
     id: BigInt(0),
-    address: "",
+    group_policy_address: "",
     metadata: "",
     proposers: [],
     submit_time: new Date(),
     group_version: BigInt(0),
     group_policy_version: BigInt(0),
     status: 0,
-    result: 0,
     final_tally_result: TallyResult.fromPartial({}),
     voting_period_end: new Date(),
     executor_result: 0,
-    messages: []
+    messages: [],
+    title: "",
+    summary: ""
   };
 }
 export const Proposal = {
@@ -1747,8 +1737,8 @@ export const Proposal = {
     if (message.id !== BigInt(0)) {
       writer.uint32(8).uint64(message.id);
     }
-    if (message.address !== "") {
-      writer.uint32(18).string(message.address);
+    if (message.group_policy_address !== "") {
+      writer.uint32(18).string(message.group_policy_address);
     }
     if (message.metadata !== "") {
       writer.uint32(26).string(message.metadata);
@@ -1768,20 +1758,23 @@ export const Proposal = {
     if (message.status !== 0) {
       writer.uint32(64).int32(message.status);
     }
-    if (message.result !== 0) {
-      writer.uint32(72).int32(message.result);
-    }
     if (message.final_tally_result !== undefined) {
-      TallyResult.encode(message.final_tally_result, writer.uint32(82).fork()).ldelim();
+      TallyResult.encode(message.final_tally_result, writer.uint32(74).fork()).ldelim();
     }
     if (message.voting_period_end !== undefined) {
-      Timestamp.encode(toTimestamp(message.voting_period_end), writer.uint32(90).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.voting_period_end), writer.uint32(82).fork()).ldelim();
     }
     if (message.executor_result !== 0) {
-      writer.uint32(96).int32(message.executor_result);
+      writer.uint32(88).int32(message.executor_result);
     }
     for (const v of message.messages) {
-      Any.encode(v!, writer.uint32(106).fork()).ldelim();
+      Any.encode(v!, writer.uint32(98).fork()).ldelim();
+    }
+    if (message.title !== "") {
+      writer.uint32(106).string(message.title);
+    }
+    if (message.summary !== "") {
+      writer.uint32(114).string(message.summary);
     }
     return writer;
   },
@@ -1796,7 +1789,7 @@ export const Proposal = {
           message.id = reader.uint64();
           break;
         case 2:
-          message.address = reader.string();
+          message.group_policy_address = reader.string();
           break;
         case 3:
           message.metadata = reader.string();
@@ -1817,19 +1810,22 @@ export const Proposal = {
           message.status = (reader.int32() as any);
           break;
         case 9:
-          message.result = (reader.int32() as any);
-          break;
-        case 10:
           message.final_tally_result = TallyResult.decode(reader, reader.uint32());
           break;
-        case 11:
+        case 10:
           message.voting_period_end = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
-        case 12:
+        case 11:
           message.executor_result = (reader.int32() as any);
           break;
-        case 13:
+        case 12:
           message.messages.push(Any.decode(reader, reader.uint32()));
+          break;
+        case 13:
+          message.title = reader.string();
+          break;
+        case 14:
+          message.summary = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1841,24 +1837,25 @@ export const Proposal = {
   fromJSON(object: any): Proposal {
     return {
       id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0),
-      address: isSet(object.address) ? String(object.address) : "",
+      group_policy_address: isSet(object.group_policy_address) ? String(object.group_policy_address) : "",
       metadata: isSet(object.metadata) ? String(object.metadata) : "",
       proposers: Array.isArray(object?.proposers) ? object.proposers.map((e: any) => String(e)) : [],
       submit_time: isSet(object.submit_time) ? fromJsonTimestamp(object.submit_time) : undefined,
       group_version: isSet(object.group_version) ? BigInt(object.group_version.toString()) : BigInt(0),
       group_policy_version: isSet(object.group_policy_version) ? BigInt(object.group_policy_version.toString()) : BigInt(0),
       status: isSet(object.status) ? proposalStatusFromJSON(object.status) : -1,
-      result: isSet(object.result) ? proposalResultFromJSON(object.result) : -1,
       final_tally_result: isSet(object.final_tally_result) ? TallyResult.fromJSON(object.final_tally_result) : undefined,
       voting_period_end: isSet(object.voting_period_end) ? fromJsonTimestamp(object.voting_period_end) : undefined,
       executor_result: isSet(object.executor_result) ? proposalExecutorResultFromJSON(object.executor_result) : -1,
-      messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromJSON(e)) : []
+      messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromJSON(e)) : [],
+      title: isSet(object.title) ? String(object.title) : "",
+      summary: isSet(object.summary) ? String(object.summary) : ""
     };
   },
   toJSON(message: Proposal): unknown {
     const obj: any = {};
     message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
-    message.address !== undefined && (obj.address = message.address);
+    message.group_policy_address !== undefined && (obj.group_policy_address = message.group_policy_address);
     message.metadata !== undefined && (obj.metadata = message.metadata);
     if (message.proposers) {
       obj.proposers = message.proposers.map(e => e);
@@ -1869,7 +1866,6 @@ export const Proposal = {
     message.group_version !== undefined && (obj.group_version = (message.group_version || BigInt(0)).toString());
     message.group_policy_version !== undefined && (obj.group_policy_version = (message.group_policy_version || BigInt(0)).toString());
     message.status !== undefined && (obj.status = proposalStatusToJSON(message.status));
-    message.result !== undefined && (obj.result = proposalResultToJSON(message.result));
     message.final_tally_result !== undefined && (obj.final_tally_result = message.final_tally_result ? TallyResult.toJSON(message.final_tally_result) : undefined);
     message.voting_period_end !== undefined && (obj.voting_period_end = message.voting_period_end.toISOString());
     message.executor_result !== undefined && (obj.executor_result = proposalExecutorResultToJSON(message.executor_result));
@@ -1878,88 +1874,50 @@ export const Proposal = {
     } else {
       obj.messages = [];
     }
+    message.title !== undefined && (obj.title = message.title);
+    message.summary !== undefined && (obj.summary = message.summary);
     return obj;
   },
   fromPartial(object: Partial<Proposal>): Proposal {
     const message = createBaseProposal();
     message.id = object.id !== undefined && object.id !== null ? BigInt(object.id.toString()) : BigInt(0);
-    message.address = object.address ?? "";
+    message.group_policy_address = object.group_policy_address ?? "";
     message.metadata = object.metadata ?? "";
     message.proposers = object.proposers?.map(e => e) || [];
     message.submit_time = object.submit_time ?? undefined;
     message.group_version = object.group_version !== undefined && object.group_version !== null ? BigInt(object.group_version.toString()) : BigInt(0);
     message.group_policy_version = object.group_policy_version !== undefined && object.group_policy_version !== null ? BigInt(object.group_policy_version.toString()) : BigInt(0);
     message.status = object.status ?? 0;
-    message.result = object.result ?? 0;
     message.final_tally_result = object.final_tally_result !== undefined && object.final_tally_result !== null ? TallyResult.fromPartial(object.final_tally_result) : undefined;
     message.voting_period_end = object.voting_period_end ?? undefined;
     message.executor_result = object.executor_result ?? 0;
     message.messages = object.messages?.map(e => Any.fromPartial(e)) || [];
+    message.title = object.title ?? "";
+    message.summary = object.summary ?? "";
     return message;
-  },
-  fromSDK(object: ProposalSDKType): Proposal {
-    return {
-      id: object?.id,
-      address: object?.address,
-      metadata: object?.metadata,
-      proposers: Array.isArray(object?.proposers) ? object.proposers.map((e: any) => e) : [],
-      submit_time: object.submit_time ? Timestamp.fromSDK(object.submit_time) : undefined,
-      group_version: object?.group_version,
-      group_policy_version: object?.group_policy_version,
-      status: isSet(object.status) ? proposalStatusFromJSON(object.status) : -1,
-      result: isSet(object.result) ? proposalResultFromJSON(object.result) : -1,
-      final_tally_result: object.final_tally_result ? TallyResult.fromSDK(object.final_tally_result) : undefined,
-      voting_period_end: object.voting_period_end ? Timestamp.fromSDK(object.voting_period_end) : undefined,
-      executor_result: isSet(object.executor_result) ? proposalExecutorResultFromJSON(object.executor_result) : -1,
-      messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: Proposal): ProposalSDKType {
-    const obj: any = {};
-    obj.id = message.id;
-    obj.address = message.address;
-    obj.metadata = message.metadata;
-    if (message.proposers) {
-      obj.proposers = message.proposers.map(e => e);
-    } else {
-      obj.proposers = [];
-    }
-    message.submit_time !== undefined && (obj.submit_time = message.submit_time ? Timestamp.toSDK(message.submit_time) : undefined);
-    obj.group_version = message.group_version;
-    obj.group_policy_version = message.group_policy_version;
-    message.status !== undefined && (obj.status = proposalStatusToJSON(message.status));
-    message.result !== undefined && (obj.result = proposalResultToJSON(message.result));
-    message.final_tally_result !== undefined && (obj.final_tally_result = message.final_tally_result ? TallyResult.toSDK(message.final_tally_result) : undefined);
-    message.voting_period_end !== undefined && (obj.voting_period_end = message.voting_period_end ? Timestamp.toSDK(message.voting_period_end) : undefined);
-    message.executor_result !== undefined && (obj.executor_result = proposalExecutorResultToJSON(message.executor_result));
-    if (message.messages) {
-      obj.messages = message.messages.map(e => e ? Any.toSDK(e) : undefined);
-    } else {
-      obj.messages = [];
-    }
-    return obj;
   },
   fromAmino(object: ProposalAmino): Proposal {
     return {
       id: BigInt(object.id),
-      address: object.address,
+      group_policy_address: object.group_policy_address,
       metadata: object.metadata,
       proposers: Array.isArray(object?.proposers) ? object.proposers.map((e: any) => e) : [],
       submit_time: object?.submit_time ? fromTimestamp(Timestamp.fromAmino(object.submit_time)) : undefined,
       group_version: BigInt(object.group_version),
       group_policy_version: BigInt(object.group_policy_version),
       status: isSet(object.status) ? proposalStatusFromJSON(object.status) : -1,
-      result: isSet(object.result) ? proposalResultFromJSON(object.result) : -1,
       final_tally_result: object?.final_tally_result ? TallyResult.fromAmino(object.final_tally_result) : undefined,
       voting_period_end: object?.voting_period_end ? fromTimestamp(Timestamp.fromAmino(object.voting_period_end)) : undefined,
       executor_result: isSet(object.executor_result) ? proposalExecutorResultFromJSON(object.executor_result) : -1,
-      messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromAmino(e)) : []
+      messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromAmino(e)) : [],
+      title: object.title,
+      summary: object.summary
     };
   },
   toAmino(message: Proposal): ProposalAmino {
     const obj: any = {};
     obj.id = message.id ? message.id.toString() : undefined;
-    obj.address = message.address;
+    obj.group_policy_address = message.group_policy_address;
     obj.metadata = message.metadata;
     if (message.proposers) {
       obj.proposers = message.proposers.map(e => e);
@@ -1970,7 +1928,6 @@ export const Proposal = {
     obj.group_version = message.group_version ? message.group_version.toString() : undefined;
     obj.group_policy_version = message.group_policy_version ? message.group_policy_version.toString() : undefined;
     obj.status = message.status;
-    obj.result = message.result;
     obj.final_tally_result = message.final_tally_result ? TallyResult.toAmino(message.final_tally_result) : undefined;
     obj.voting_period_end = message.voting_period_end ? Timestamp.toAmino(toTimestamp(message.voting_period_end)) : undefined;
     obj.executor_result = message.executor_result;
@@ -1979,6 +1936,8 @@ export const Proposal = {
     } else {
       obj.messages = [];
     }
+    obj.title = message.title;
+    obj.summary = message.summary;
     return obj;
   },
   fromAminoMsg(object: ProposalAminoMsg): Proposal {
@@ -2077,22 +2036,6 @@ export const TallyResult = {
     message.no_count = object.no_count ?? "";
     message.no_with_veto_count = object.no_with_veto_count ?? "";
     return message;
-  },
-  fromSDK(object: TallyResultSDKType): TallyResult {
-    return {
-      yes_count: object?.yes_count,
-      abstain_count: object?.abstain_count,
-      no_count: object?.no_count,
-      no_with_veto_count: object?.no_with_veto_count
-    };
-  },
-  toSDK(message: TallyResult): TallyResultSDKType {
-    const obj: any = {};
-    obj.yes_count = message.yes_count;
-    obj.abstain_count = message.abstain_count;
-    obj.no_count = message.no_count;
-    obj.no_with_veto_count = message.no_with_veto_count;
-    return obj;
   },
   fromAmino(object: TallyResultAmino): TallyResult {
     return {
@@ -2217,24 +2160,6 @@ export const Vote = {
     message.submit_time = object.submit_time ?? undefined;
     return message;
   },
-  fromSDK(object: VoteSDKType): Vote {
-    return {
-      proposal_id: object?.proposal_id,
-      voter: object?.voter,
-      option: isSet(object.option) ? voteOptionFromJSON(object.option) : -1,
-      metadata: object?.metadata,
-      submit_time: object.submit_time ? Timestamp.fromSDK(object.submit_time) : undefined
-    };
-  },
-  toSDK(message: Vote): VoteSDKType {
-    const obj: any = {};
-    obj.proposal_id = message.proposal_id;
-    obj.voter = message.voter;
-    message.option !== undefined && (obj.option = voteOptionToJSON(message.option));
-    obj.metadata = message.metadata;
-    message.submit_time !== undefined && (obj.submit_time = message.submit_time ? Timestamp.toSDK(message.submit_time) : undefined);
-    return obj;
-  },
   fromAmino(object: VoteAmino): Vote {
     return {
       proposal_id: BigInt(object.proposal_id),
@@ -2275,7 +2200,7 @@ export const Vote = {
     };
   }
 };
-export const Cosmos_groupDecisionPolicy_InterfaceDecoder = (input: BinaryReader | Uint8Array): ThresholdDecisionPolicy | PercentageDecisionPolicy | Any => {
+export const Cosmos_groupv1DecisionPolicy_InterfaceDecoder = (input: BinaryReader | Uint8Array): ThresholdDecisionPolicy | PercentageDecisionPolicy | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32(), true);
   switch (data.typeUrl) {
@@ -2287,7 +2212,7 @@ export const Cosmos_groupDecisionPolicy_InterfaceDecoder = (input: BinaryReader 
       return data;
   }
 };
-export const Cosmos_groupDecisionPolicy_FromAmino = (content: AnyAmino) => {
+export const Cosmos_groupv1DecisionPolicy_FromAmino = (content: AnyAmino) => {
   switch (content.type) {
     case "cosmos-sdk/ThresholdDecisionPolicy":
       return Any.fromPartial({
@@ -2303,7 +2228,7 @@ export const Cosmos_groupDecisionPolicy_FromAmino = (content: AnyAmino) => {
       return Any.fromAmino(content);
   }
 };
-export const Cosmos_groupDecisionPolicy_ToAmino = (content: Any) => {
+export const Cosmos_groupv1DecisionPolicy_ToAmino = (content: Any) => {
   switch (content.typeUrl) {
     case "/cosmos.group.v1.ThresholdDecisionPolicy":
       return {

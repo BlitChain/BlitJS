@@ -1,6 +1,21 @@
 import { PublicKey, PublicKeyAmino, PublicKeySDKType } from "../crypto/keys";
 import { BinaryReader, BinaryWriter } from "../../binary";
 export declare const protobufPackage = "tendermint.types";
+/** BlockIdFlag indicates which BlockID the signature is for */
+export declare enum BlockIDFlag {
+    /** BLOCK_ID_FLAG_UNKNOWN - indicates an error condition */
+    BLOCK_ID_FLAG_UNKNOWN = 0,
+    /** BLOCK_ID_FLAG_ABSENT - the vote was not received */
+    BLOCK_ID_FLAG_ABSENT = 1,
+    BLOCK_ID_FLAG_COMMIT = 2,
+    /** BLOCK_ID_FLAG_NIL - voted for nil */
+    BLOCK_ID_FLAG_NIL = 3,
+    UNRECOGNIZED = -1
+}
+export declare const BlockIDFlagSDKType: typeof BlockIDFlag;
+export declare const BlockIDFlagAmino: typeof BlockIDFlag;
+export declare function blockIDFlagFromJSON(object: any): BlockIDFlag;
+export declare function blockIDFlagToJSON(object: BlockIDFlag): string;
 export interface ValidatorSet {
     validators: Validator[];
     proposer?: Validator;
@@ -77,8 +92,6 @@ export declare const ValidatorSet: {
     fromJSON(object: any): ValidatorSet;
     toJSON(message: ValidatorSet): unknown;
     fromPartial(object: Partial<ValidatorSet>): ValidatorSet;
-    fromSDK(object: ValidatorSetSDKType): ValidatorSet;
-    toSDK(message: ValidatorSet): ValidatorSetSDKType;
     fromAmino(object: ValidatorSetAmino): ValidatorSet;
     toAmino(message: ValidatorSet): ValidatorSetAmino;
     fromAminoMsg(object: ValidatorSetAminoMsg): ValidatorSet;
@@ -93,8 +106,6 @@ export declare const Validator: {
     fromJSON(object: any): Validator;
     toJSON(message: Validator): unknown;
     fromPartial(object: Partial<Validator>): Validator;
-    fromSDK(object: ValidatorSDKType): Validator;
-    toSDK(message: Validator): ValidatorSDKType;
     fromAmino(object: ValidatorAmino): Validator;
     toAmino(message: Validator): ValidatorAmino;
     fromAminoMsg(object: ValidatorAminoMsg): Validator;
@@ -109,8 +120,6 @@ export declare const SimpleValidator: {
     fromJSON(object: any): SimpleValidator;
     toJSON(message: SimpleValidator): unknown;
     fromPartial(object: Partial<SimpleValidator>): SimpleValidator;
-    fromSDK(object: SimpleValidatorSDKType): SimpleValidator;
-    toSDK(message: SimpleValidator): SimpleValidatorSDKType;
     fromAmino(object: SimpleValidatorAmino): SimpleValidator;
     toAmino(message: SimpleValidator): SimpleValidatorAmino;
     fromAminoMsg(object: SimpleValidatorAminoMsg): SimpleValidator;

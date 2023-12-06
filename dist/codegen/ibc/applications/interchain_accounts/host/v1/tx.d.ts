@@ -60,8 +60,6 @@ export declare const MsgUpdateParams: {
     fromJSON(object: any): MsgUpdateParams;
     toJSON(message: MsgUpdateParams): unknown;
     fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams;
-    fromSDK(object: MsgUpdateParamsSDKType): MsgUpdateParams;
-    toSDK(message: MsgUpdateParams): MsgUpdateParamsSDKType;
     fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams;
     toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino;
     fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams;
@@ -77,8 +75,6 @@ export declare const MsgUpdateParamsResponse: {
     fromJSON(_: any): MsgUpdateParamsResponse;
     toJSON(_: MsgUpdateParamsResponse): unknown;
     fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse;
-    fromSDK(_: MsgUpdateParamsResponseSDKType): MsgUpdateParamsResponse;
-    toSDK(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseSDKType;
     fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse;
     toAmino(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseAmino;
     fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse;

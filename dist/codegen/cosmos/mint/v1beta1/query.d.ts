@@ -152,8 +152,6 @@ export declare const QueryParamsRequest: {
     fromJSON(_: any): QueryParamsRequest;
     toJSON(_: QueryParamsRequest): unknown;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
-    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
-    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
     fromAminoMsg(object: QueryParamsRequestAminoMsg): QueryParamsRequest;
@@ -169,8 +167,6 @@ export declare const QueryParamsResponse: {
     fromJSON(object: any): QueryParamsResponse;
     toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
-    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
-    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
     fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse;
@@ -186,8 +182,6 @@ export declare const QueryInflationRequest: {
     fromJSON(_: any): QueryInflationRequest;
     toJSON(_: QueryInflationRequest): unknown;
     fromPartial(_: Partial<QueryInflationRequest>): QueryInflationRequest;
-    fromSDK(_: QueryInflationRequestSDKType): QueryInflationRequest;
-    toSDK(_: QueryInflationRequest): QueryInflationRequestSDKType;
     fromAmino(_: QueryInflationRequestAmino): QueryInflationRequest;
     toAmino(_: QueryInflationRequest): QueryInflationRequestAmino;
     fromAminoMsg(object: QueryInflationRequestAminoMsg): QueryInflationRequest;
@@ -203,8 +197,6 @@ export declare const QueryInflationResponse: {
     fromJSON(object: any): QueryInflationResponse;
     toJSON(message: QueryInflationResponse): unknown;
     fromPartial(object: Partial<QueryInflationResponse>): QueryInflationResponse;
-    fromSDK(object: QueryInflationResponseSDKType): QueryInflationResponse;
-    toSDK(message: QueryInflationResponse): QueryInflationResponseSDKType;
     fromAmino(object: QueryInflationResponseAmino): QueryInflationResponse;
     toAmino(message: QueryInflationResponse): QueryInflationResponseAmino;
     fromAminoMsg(object: QueryInflationResponseAminoMsg): QueryInflationResponse;
@@ -220,8 +212,6 @@ export declare const QueryAnnualProvisionsRequest: {
     fromJSON(_: any): QueryAnnualProvisionsRequest;
     toJSON(_: QueryAnnualProvisionsRequest): unknown;
     fromPartial(_: Partial<QueryAnnualProvisionsRequest>): QueryAnnualProvisionsRequest;
-    fromSDK(_: QueryAnnualProvisionsRequestSDKType): QueryAnnualProvisionsRequest;
-    toSDK(_: QueryAnnualProvisionsRequest): QueryAnnualProvisionsRequestSDKType;
     fromAmino(_: QueryAnnualProvisionsRequestAmino): QueryAnnualProvisionsRequest;
     toAmino(_: QueryAnnualProvisionsRequest): QueryAnnualProvisionsRequestAmino;
     fromAminoMsg(object: QueryAnnualProvisionsRequestAminoMsg): QueryAnnualProvisionsRequest;
@@ -237,8 +227,6 @@ export declare const QueryAnnualProvisionsResponse: {
     fromJSON(object: any): QueryAnnualProvisionsResponse;
     toJSON(message: QueryAnnualProvisionsResponse): unknown;
     fromPartial(object: Partial<QueryAnnualProvisionsResponse>): QueryAnnualProvisionsResponse;
-    fromSDK(object: QueryAnnualProvisionsResponseSDKType): QueryAnnualProvisionsResponse;
-    toSDK(message: QueryAnnualProvisionsResponse): QueryAnnualProvisionsResponseSDKType;
     fromAmino(object: QueryAnnualProvisionsResponseAmino): QueryAnnualProvisionsResponse;
     toAmino(message: QueryAnnualProvisionsResponse): QueryAnnualProvisionsResponseAmino;
     fromAminoMsg(object: QueryAnnualProvisionsResponseAminoMsg): QueryAnnualProvisionsResponse;

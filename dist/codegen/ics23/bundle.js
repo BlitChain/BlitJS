@@ -25,8 +25,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ics23 = void 0;
 //@ts-nocheck
-const _16 = __importStar(require("../confio/proofs"));
+const _18 = __importStar(require("../confio/proofs"));
 exports.ics23 = {
-    ..._16
+    ..._18
 };
 //# sourceMappingURL=bundle.js.map

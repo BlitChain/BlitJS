@@ -3,7 +3,7 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.staking.v1beta1";
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisState {
-    /** params defines all the paramaters of related to deposit. */
+    /** params defines all the parameters of related to deposit. */
     params: Params;
     /**
      * last_total_power tracks the total amounts of bonded tokens recorded during
@@ -15,7 +15,7 @@ export interface GenesisState {
      * of the last-block's bonded validators.
      */
     last_validator_powers: LastValidatorPower[];
-    /** delegations defines the validator set at genesis. */
+    /** validators defines the validator set at genesis. */
     validators: Validator[];
     /** delegations defines the delegations active at genesis. */
     delegations: Delegation[];
@@ -23,6 +23,7 @@ export interface GenesisState {
     unbonding_delegations: UnbondingDelegation[];
     /** redelegations defines the redelegations active at genesis. */
     redelegations: Redelegation[];
+    /** exported defines a bool to identify whether the chain dealing with exported or initialized genesis. */
     exported: boolean;
 }
 export interface GenesisStateProtoMsg {
@@ -31,7 +32,7 @@ export interface GenesisStateProtoMsg {
 }
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisStateAmino {
-    /** params defines all the paramaters of related to deposit. */
+    /** params defines all the parameters of related to deposit. */
     params?: ParamsAmino;
     /**
      * last_total_power tracks the total amounts of bonded tokens recorded during
@@ -43,7 +44,7 @@ export interface GenesisStateAmino {
      * of the last-block's bonded validators.
      */
     last_validator_powers: LastValidatorPowerAmino[];
-    /** delegations defines the validator set at genesis. */
+    /** validators defines the validator set at genesis. */
     validators: ValidatorAmino[];
     /** delegations defines the delegations active at genesis. */
     delegations: DelegationAmino[];
@@ -51,6 +52,7 @@ export interface GenesisStateAmino {
     unbonding_delegations: UnbondingDelegationAmino[];
     /** redelegations defines the redelegations active at genesis. */
     redelegations: RedelegationAmino[];
+    /** exported defines a bool to identify whether the chain dealing with exported or initialized genesis. */
     exported: boolean;
 }
 export interface GenesisStateAminoMsg {
@@ -102,8 +104,6 @@ export declare const GenesisState: {
     fromJSON(object: any): GenesisState;
     toJSON(message: GenesisState): unknown;
     fromPartial(object: Partial<GenesisState>): GenesisState;
-    fromSDK(object: GenesisStateSDKType): GenesisState;
-    toSDK(message: GenesisState): GenesisStateSDKType;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
     fromAminoMsg(object: GenesisStateAminoMsg): GenesisState;
@@ -119,8 +119,6 @@ export declare const LastValidatorPower: {
     fromJSON(object: any): LastValidatorPower;
     toJSON(message: LastValidatorPower): unknown;
     fromPartial(object: Partial<LastValidatorPower>): LastValidatorPower;
-    fromSDK(object: LastValidatorPowerSDKType): LastValidatorPower;
-    toSDK(message: LastValidatorPower): LastValidatorPowerSDKType;
     fromAmino(object: LastValidatorPowerAmino): LastValidatorPower;
     toAmino(message: LastValidatorPower): LastValidatorPowerAmino;
     fromAminoMsg(object: LastValidatorPowerAminoMsg): LastValidatorPower;

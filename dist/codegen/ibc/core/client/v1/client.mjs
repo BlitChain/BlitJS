@@ -59,18 +59,6 @@ export const IdentifiedClientState = {
         message.client_state = object.client_state !== undefined && object.client_state !== null ? Any.fromPartial(object.client_state) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            client_id: object?.client_id,
-            client_state: object.client_state ? Any.fromSDK(object.client_state) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.client_id = message.client_id;
-        message.client_state !== undefined && (obj.client_state = message.client_state ? Any.toSDK(message.client_state) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             client_id: object.client_id,
@@ -159,18 +147,6 @@ export const ConsensusStateWithHeight = {
         message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
         message.consensus_state = object.consensus_state !== undefined && object.consensus_state !== null ? Any.fromPartial(object.consensus_state) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            height: object.height ? Height.fromSDK(object.height) : undefined,
-            consensus_state: object.consensus_state ? Any.fromSDK(object.consensus_state) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.height !== undefined && (obj.height = message.height ? Height.toSDK(message.height) : undefined);
-        message.consensus_state !== undefined && (obj.consensus_state = message.consensus_state ? Any.toSDK(message.consensus_state) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -266,23 +242,6 @@ export const ClientConsensusStates = {
         message.consensus_states = object.consensus_states?.map(e => ConsensusStateWithHeight.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            client_id: object?.client_id,
-            consensus_states: Array.isArray(object?.consensus_states) ? object.consensus_states.map((e) => ConsensusStateWithHeight.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.client_id = message.client_id;
-        if (message.consensus_states) {
-            obj.consensus_states = message.consensus_states.map(e => e ? ConsensusStateWithHeight.toSDK(e) : undefined);
-        }
-        else {
-            obj.consensus_states = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             client_id: object.client_id,
@@ -377,18 +336,6 @@ export const Height = {
         message.revision_height = object.revision_height !== undefined && object.revision_height !== null ? BigInt(object.revision_height.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            revision_number: object?.revision_number,
-            revision_height: object?.revision_height
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.revision_number = message.revision_number;
-        obj.revision_height = message.revision_height;
-        return obj;
-    },
     fromAmino(object) {
         return {
             revision_number: BigInt(object.revision_number || "0"),
@@ -472,21 +419,6 @@ export const Params = {
         const message = createBaseParams();
         message.allowed_clients = object.allowed_clients?.map(e => e) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            allowed_clients: Array.isArray(object?.allowed_clients) ? object.allowed_clients.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.allowed_clients) {
-            obj.allowed_clients = message.allowed_clients.map(e => e);
-        }
-        else {
-            obj.allowed_clients = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -601,22 +533,6 @@ export const ClientUpdateProposal = {
         message.substitute_client_id = object.substitute_client_id ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            title: object?.title,
-            description: object?.description,
-            subject_client_id: object?.subject_client_id,
-            substitute_client_id: object?.substitute_client_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.title = message.title;
-        obj.description = message.description;
-        obj.subject_client_id = message.subject_client_id;
-        obj.substitute_client_id = message.substitute_client_id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             title: object.title,
@@ -730,22 +646,6 @@ export const UpgradeProposal = {
         message.plan = object.plan !== undefined && object.plan !== null ? Plan.fromPartial(object.plan) : undefined;
         message.upgraded_client_state = object.upgraded_client_state !== undefined && object.upgraded_client_state !== null ? Any.fromPartial(object.upgraded_client_state) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            title: object?.title,
-            description: object?.description,
-            plan: object.plan ? Plan.fromSDK(object.plan) : undefined,
-            upgraded_client_state: object.upgraded_client_state ? Any.fromSDK(object.upgraded_client_state) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.title = message.title;
-        obj.description = message.description;
-        message.plan !== undefined && (obj.plan = message.plan ? Plan.toSDK(message.plan) : undefined);
-        message.upgraded_client_state !== undefined && (obj.upgraded_client_state = message.upgraded_client_state ? Any.toSDK(message.upgraded_client_state) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {

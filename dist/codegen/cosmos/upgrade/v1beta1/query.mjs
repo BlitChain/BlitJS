@@ -36,13 +36,6 @@ export const QueryCurrentPlanRequest = {
         const message = createBaseQueryCurrentPlanRequest();
         return message;
     },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
-    },
     fromAmino(_) {
         return {};
     },
@@ -116,16 +109,6 @@ export const QueryCurrentPlanResponse = {
         const message = createBaseQueryCurrentPlanResponse();
         message.plan = object.plan !== undefined && object.plan !== null ? Plan.fromPartial(object.plan) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            plan: object.plan ? Plan.fromSDK(object.plan) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.plan !== undefined && (obj.plan = message.plan ? Plan.toSDK(message.plan) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -204,16 +187,6 @@ export const QueryAppliedPlanRequest = {
         message.name = object.name ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            name: object?.name
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        return obj;
-    },
     fromAmino(object) {
         return {
             name: object.name
@@ -290,16 +263,6 @@ export const QueryAppliedPlanResponse = {
         const message = createBaseQueryAppliedPlanResponse();
         message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            height: object?.height
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.height = message.height;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -378,16 +341,6 @@ export const QueryUpgradedConsensusStateRequest = {
         message.last_height = object.last_height !== undefined && object.last_height !== null ? BigInt(object.last_height.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            last_height: object?.last_height
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.last_height = message.last_height;
-        return obj;
-    },
     fromAmino(object) {
         return {
             last_height: BigInt(object.last_height)
@@ -465,16 +418,6 @@ export const QueryUpgradedConsensusStateResponse = {
         message.upgraded_consensus_state = object.upgraded_consensus_state ?? new Uint8Array();
         return message;
     },
-    fromSDK(object) {
-        return {
-            upgraded_consensus_state: object?.upgraded_consensus_state
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.upgraded_consensus_state = message.upgraded_consensus_state;
-        return obj;
-    },
     fromAmino(object) {
         return {
             upgraded_consensus_state: object.upgraded_consensus_state
@@ -551,16 +494,6 @@ export const QueryModuleVersionsRequest = {
         const message = createBaseQueryModuleVersionsRequest();
         message.module_name = object.module_name ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            module_name: object?.module_name
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.module_name = message.module_name;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -644,21 +577,6 @@ export const QueryModuleVersionsResponse = {
         message.module_versions = object.module_versions?.map(e => ModuleVersion.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            module_versions: Array.isArray(object?.module_versions) ? object.module_versions.map((e) => ModuleVersion.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.module_versions) {
-            obj.module_versions = message.module_versions.map(e => e ? ModuleVersion.toSDK(e) : undefined);
-        }
-        else {
-            obj.module_versions = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             module_versions: Array.isArray(object?.module_versions) ? object.module_versions.map((e) => ModuleVersion.fromAmino(e)) : []
@@ -728,13 +646,6 @@ export const QueryAuthorityRequest = {
     fromPartial(_) {
         const message = createBaseQueryAuthorityRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -809,16 +720,6 @@ export const QueryAuthorityResponse = {
         const message = createBaseQueryAuthorityResponse();
         message.address = object.address ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            address: object?.address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        return obj;
     },
     fromAmino(object) {
         return {

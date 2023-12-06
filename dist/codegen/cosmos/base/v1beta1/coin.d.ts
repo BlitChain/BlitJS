@@ -76,7 +76,10 @@ export interface DecCoinSDKType {
     denom: string;
     amount: string;
 }
-/** IntProto defines a Protobuf wrapper around an Int object. */
+/**
+ * IntProto defines a Protobuf wrapper around an Int object.
+ * Deprecated: Prefer to use math.Int directly. It supports binary Marshal and Unmarshal.
+ */
 export interface IntProto {
     int: string;
 }
@@ -84,7 +87,10 @@ export interface IntProtoProtoMsg {
     type_url: "/cosmos.base.v1beta1.IntProto";
     value: Uint8Array;
 }
-/** IntProto defines a Protobuf wrapper around an Int object. */
+/**
+ * IntProto defines a Protobuf wrapper around an Int object.
+ * Deprecated: Prefer to use math.Int directly. It supports binary Marshal and Unmarshal.
+ */
 export interface IntProtoAmino {
     int: string;
 }
@@ -92,11 +98,17 @@ export interface IntProtoAminoMsg {
     type: "cosmos-sdk/IntProto";
     value: IntProtoAmino;
 }
-/** IntProto defines a Protobuf wrapper around an Int object. */
+/**
+ * IntProto defines a Protobuf wrapper around an Int object.
+ * Deprecated: Prefer to use math.Int directly. It supports binary Marshal and Unmarshal.
+ */
 export interface IntProtoSDKType {
     int: string;
 }
-/** DecProto defines a Protobuf wrapper around a Dec object. */
+/**
+ * DecProto defines a Protobuf wrapper around a Dec object.
+ * Deprecated: Prefer to use math.LegacyDec directly. It supports binary Marshal and Unmarshal.
+ */
 export interface DecProto {
     dec: string;
 }
@@ -104,7 +116,10 @@ export interface DecProtoProtoMsg {
     type_url: "/cosmos.base.v1beta1.DecProto";
     value: Uint8Array;
 }
-/** DecProto defines a Protobuf wrapper around a Dec object. */
+/**
+ * DecProto defines a Protobuf wrapper around a Dec object.
+ * Deprecated: Prefer to use math.LegacyDec directly. It supports binary Marshal and Unmarshal.
+ */
 export interface DecProtoAmino {
     dec: string;
 }
@@ -112,7 +127,10 @@ export interface DecProtoAminoMsg {
     type: "cosmos-sdk/DecProto";
     value: DecProtoAmino;
 }
-/** DecProto defines a Protobuf wrapper around a Dec object. */
+/**
+ * DecProto defines a Protobuf wrapper around a Dec object.
+ * Deprecated: Prefer to use math.LegacyDec directly. It supports binary Marshal and Unmarshal.
+ */
 export interface DecProtoSDKType {
     dec: string;
 }
@@ -123,8 +141,6 @@ export declare const Coin: {
     fromJSON(object: any): Coin;
     toJSON(message: Coin): unknown;
     fromPartial(object: Partial<Coin>): Coin;
-    fromSDK(object: CoinSDKType): Coin;
-    toSDK(message: Coin): CoinSDKType;
     fromAmino(object: CoinAmino): Coin;
     toAmino(message: Coin): CoinAmino;
     fromAminoMsg(object: CoinAminoMsg): Coin;
@@ -140,8 +156,6 @@ export declare const DecCoin: {
     fromJSON(object: any): DecCoin;
     toJSON(message: DecCoin): unknown;
     fromPartial(object: Partial<DecCoin>): DecCoin;
-    fromSDK(object: DecCoinSDKType): DecCoin;
-    toSDK(message: DecCoin): DecCoinSDKType;
     fromAmino(object: DecCoinAmino): DecCoin;
     toAmino(message: DecCoin): DecCoinAmino;
     fromAminoMsg(object: DecCoinAminoMsg): DecCoin;
@@ -157,8 +171,6 @@ export declare const IntProto: {
     fromJSON(object: any): IntProto;
     toJSON(message: IntProto): unknown;
     fromPartial(object: Partial<IntProto>): IntProto;
-    fromSDK(object: IntProtoSDKType): IntProto;
-    toSDK(message: IntProto): IntProtoSDKType;
     fromAmino(object: IntProtoAmino): IntProto;
     toAmino(message: IntProto): IntProtoAmino;
     fromAminoMsg(object: IntProtoAminoMsg): IntProto;
@@ -174,8 +186,6 @@ export declare const DecProto: {
     fromJSON(object: any): DecProto;
     toJSON(message: DecProto): unknown;
     fromPartial(object: Partial<DecProto>): DecProto;
-    fromSDK(object: DecProtoSDKType): DecProto;
-    toSDK(message: DecProto): DecProtoSDKType;
     fromAmino(object: DecProtoAmino): DecProto;
     toAmino(message: DecProto): DecProtoAmino;
     fromAminoMsg(object: DecProtoAminoMsg): DecProto;

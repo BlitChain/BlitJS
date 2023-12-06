@@ -80,22 +80,6 @@ exports.EventSend = {
         message.receiver = object.receiver ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            class_id: object?.class_id,
-            id: object?.id,
-            sender: object?.sender,
-            receiver: object?.receiver
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.class_id = message.class_id;
-        obj.id = message.id;
-        obj.sender = message.sender;
-        obj.receiver = message.receiver;
-        return obj;
-    },
     fromAmino(object) {
         return {
             class_id: object.class_id,
@@ -199,20 +183,6 @@ exports.EventMint = {
         message.owner = object.owner ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            class_id: object?.class_id,
-            id: object?.id,
-            owner: object?.owner
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.class_id = message.class_id;
-        obj.id = message.id;
-        obj.owner = message.owner;
-        return obj;
-    },
     fromAmino(object) {
         return {
             class_id: object.class_id,
@@ -313,20 +283,6 @@ exports.EventBurn = {
         message.id = object.id ?? "";
         message.owner = object.owner ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            class_id: object?.class_id,
-            id: object?.id,
-            owner: object?.owner
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.class_id = message.class_id;
-        obj.id = message.id;
-        obj.owner = message.owner;
-        return obj;
     },
     fromAmino(object) {
         return {

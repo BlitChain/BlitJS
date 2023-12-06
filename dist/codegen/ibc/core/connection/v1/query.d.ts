@@ -422,8 +422,6 @@ export declare const QueryConnectionRequest: {
     fromJSON(object: any): QueryConnectionRequest;
     toJSON(message: QueryConnectionRequest): unknown;
     fromPartial(object: Partial<QueryConnectionRequest>): QueryConnectionRequest;
-    fromSDK(object: QueryConnectionRequestSDKType): QueryConnectionRequest;
-    toSDK(message: QueryConnectionRequest): QueryConnectionRequestSDKType;
     fromAmino(object: QueryConnectionRequestAmino): QueryConnectionRequest;
     toAmino(message: QueryConnectionRequest): QueryConnectionRequestAmino;
     fromAminoMsg(object: QueryConnectionRequestAminoMsg): QueryConnectionRequest;
@@ -439,8 +437,6 @@ export declare const QueryConnectionResponse: {
     fromJSON(object: any): QueryConnectionResponse;
     toJSON(message: QueryConnectionResponse): unknown;
     fromPartial(object: Partial<QueryConnectionResponse>): QueryConnectionResponse;
-    fromSDK(object: QueryConnectionResponseSDKType): QueryConnectionResponse;
-    toSDK(message: QueryConnectionResponse): QueryConnectionResponseSDKType;
     fromAmino(object: QueryConnectionResponseAmino): QueryConnectionResponse;
     toAmino(message: QueryConnectionResponse): QueryConnectionResponseAmino;
     fromAminoMsg(object: QueryConnectionResponseAminoMsg): QueryConnectionResponse;
@@ -456,8 +452,6 @@ export declare const QueryConnectionsRequest: {
     fromJSON(object: any): QueryConnectionsRequest;
     toJSON(message: QueryConnectionsRequest): unknown;
     fromPartial(object: Partial<QueryConnectionsRequest>): QueryConnectionsRequest;
-    fromSDK(object: QueryConnectionsRequestSDKType): QueryConnectionsRequest;
-    toSDK(message: QueryConnectionsRequest): QueryConnectionsRequestSDKType;
     fromAmino(object: QueryConnectionsRequestAmino): QueryConnectionsRequest;
     toAmino(message: QueryConnectionsRequest): QueryConnectionsRequestAmino;
     fromAminoMsg(object: QueryConnectionsRequestAminoMsg): QueryConnectionsRequest;
@@ -473,8 +467,6 @@ export declare const QueryConnectionsResponse: {
     fromJSON(object: any): QueryConnectionsResponse;
     toJSON(message: QueryConnectionsResponse): unknown;
     fromPartial(object: Partial<QueryConnectionsResponse>): QueryConnectionsResponse;
-    fromSDK(object: QueryConnectionsResponseSDKType): QueryConnectionsResponse;
-    toSDK(message: QueryConnectionsResponse): QueryConnectionsResponseSDKType;
     fromAmino(object: QueryConnectionsResponseAmino): QueryConnectionsResponse;
     toAmino(message: QueryConnectionsResponse): QueryConnectionsResponseAmino;
     fromAminoMsg(object: QueryConnectionsResponseAminoMsg): QueryConnectionsResponse;
@@ -490,8 +482,6 @@ export declare const QueryClientConnectionsRequest: {
     fromJSON(object: any): QueryClientConnectionsRequest;
     toJSON(message: QueryClientConnectionsRequest): unknown;
     fromPartial(object: Partial<QueryClientConnectionsRequest>): QueryClientConnectionsRequest;
-    fromSDK(object: QueryClientConnectionsRequestSDKType): QueryClientConnectionsRequest;
-    toSDK(message: QueryClientConnectionsRequest): QueryClientConnectionsRequestSDKType;
     fromAmino(object: QueryClientConnectionsRequestAmino): QueryClientConnectionsRequest;
     toAmino(message: QueryClientConnectionsRequest): QueryClientConnectionsRequestAmino;
     fromAminoMsg(object: QueryClientConnectionsRequestAminoMsg): QueryClientConnectionsRequest;
@@ -507,8 +497,6 @@ export declare const QueryClientConnectionsResponse: {
     fromJSON(object: any): QueryClientConnectionsResponse;
     toJSON(message: QueryClientConnectionsResponse): unknown;
     fromPartial(object: Partial<QueryClientConnectionsResponse>): QueryClientConnectionsResponse;
-    fromSDK(object: QueryClientConnectionsResponseSDKType): QueryClientConnectionsResponse;
-    toSDK(message: QueryClientConnectionsResponse): QueryClientConnectionsResponseSDKType;
     fromAmino(object: QueryClientConnectionsResponseAmino): QueryClientConnectionsResponse;
     toAmino(message: QueryClientConnectionsResponse): QueryClientConnectionsResponseAmino;
     fromAminoMsg(object: QueryClientConnectionsResponseAminoMsg): QueryClientConnectionsResponse;
@@ -524,8 +512,6 @@ export declare const QueryConnectionClientStateRequest: {
     fromJSON(object: any): QueryConnectionClientStateRequest;
     toJSON(message: QueryConnectionClientStateRequest): unknown;
     fromPartial(object: Partial<QueryConnectionClientStateRequest>): QueryConnectionClientStateRequest;
-    fromSDK(object: QueryConnectionClientStateRequestSDKType): QueryConnectionClientStateRequest;
-    toSDK(message: QueryConnectionClientStateRequest): QueryConnectionClientStateRequestSDKType;
     fromAmino(object: QueryConnectionClientStateRequestAmino): QueryConnectionClientStateRequest;
     toAmino(message: QueryConnectionClientStateRequest): QueryConnectionClientStateRequestAmino;
     fromAminoMsg(object: QueryConnectionClientStateRequestAminoMsg): QueryConnectionClientStateRequest;
@@ -541,8 +527,6 @@ export declare const QueryConnectionClientStateResponse: {
     fromJSON(object: any): QueryConnectionClientStateResponse;
     toJSON(message: QueryConnectionClientStateResponse): unknown;
     fromPartial(object: Partial<QueryConnectionClientStateResponse>): QueryConnectionClientStateResponse;
-    fromSDK(object: QueryConnectionClientStateResponseSDKType): QueryConnectionClientStateResponse;
-    toSDK(message: QueryConnectionClientStateResponse): QueryConnectionClientStateResponseSDKType;
     fromAmino(object: QueryConnectionClientStateResponseAmino): QueryConnectionClientStateResponse;
     toAmino(message: QueryConnectionClientStateResponse): QueryConnectionClientStateResponseAmino;
     fromAminoMsg(object: QueryConnectionClientStateResponseAminoMsg): QueryConnectionClientStateResponse;
@@ -558,8 +542,6 @@ export declare const QueryConnectionConsensusStateRequest: {
     fromJSON(object: any): QueryConnectionConsensusStateRequest;
     toJSON(message: QueryConnectionConsensusStateRequest): unknown;
     fromPartial(object: Partial<QueryConnectionConsensusStateRequest>): QueryConnectionConsensusStateRequest;
-    fromSDK(object: QueryConnectionConsensusStateRequestSDKType): QueryConnectionConsensusStateRequest;
-    toSDK(message: QueryConnectionConsensusStateRequest): QueryConnectionConsensusStateRequestSDKType;
     fromAmino(object: QueryConnectionConsensusStateRequestAmino): QueryConnectionConsensusStateRequest;
     toAmino(message: QueryConnectionConsensusStateRequest): QueryConnectionConsensusStateRequestAmino;
     fromAminoMsg(object: QueryConnectionConsensusStateRequestAminoMsg): QueryConnectionConsensusStateRequest;
@@ -575,8 +557,6 @@ export declare const QueryConnectionConsensusStateResponse: {
     fromJSON(object: any): QueryConnectionConsensusStateResponse;
     toJSON(message: QueryConnectionConsensusStateResponse): unknown;
     fromPartial(object: Partial<QueryConnectionConsensusStateResponse>): QueryConnectionConsensusStateResponse;
-    fromSDK(object: QueryConnectionConsensusStateResponseSDKType): QueryConnectionConsensusStateResponse;
-    toSDK(message: QueryConnectionConsensusStateResponse): QueryConnectionConsensusStateResponseSDKType;
     fromAmino(object: QueryConnectionConsensusStateResponseAmino): QueryConnectionConsensusStateResponse;
     toAmino(message: QueryConnectionConsensusStateResponse): QueryConnectionConsensusStateResponseAmino;
     fromAminoMsg(object: QueryConnectionConsensusStateResponseAminoMsg): QueryConnectionConsensusStateResponse;
@@ -592,8 +572,6 @@ export declare const QueryConnectionParamsRequest: {
     fromJSON(_: any): QueryConnectionParamsRequest;
     toJSON(_: QueryConnectionParamsRequest): unknown;
     fromPartial(_: Partial<QueryConnectionParamsRequest>): QueryConnectionParamsRequest;
-    fromSDK(_: QueryConnectionParamsRequestSDKType): QueryConnectionParamsRequest;
-    toSDK(_: QueryConnectionParamsRequest): QueryConnectionParamsRequestSDKType;
     fromAmino(_: QueryConnectionParamsRequestAmino): QueryConnectionParamsRequest;
     toAmino(_: QueryConnectionParamsRequest): QueryConnectionParamsRequestAmino;
     fromAminoMsg(object: QueryConnectionParamsRequestAminoMsg): QueryConnectionParamsRequest;
@@ -609,8 +587,6 @@ export declare const QueryConnectionParamsResponse: {
     fromJSON(object: any): QueryConnectionParamsResponse;
     toJSON(message: QueryConnectionParamsResponse): unknown;
     fromPartial(object: Partial<QueryConnectionParamsResponse>): QueryConnectionParamsResponse;
-    fromSDK(object: QueryConnectionParamsResponseSDKType): QueryConnectionParamsResponse;
-    toSDK(message: QueryConnectionParamsResponse): QueryConnectionParamsResponseSDKType;
     fromAmino(object: QueryConnectionParamsResponseAmino): QueryConnectionParamsResponse;
     toAmino(message: QueryConnectionParamsResponse): QueryConnectionParamsResponseAmino;
     fromAminoMsg(object: QueryConnectionParamsResponseAminoMsg): QueryConnectionParamsResponse;

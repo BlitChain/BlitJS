@@ -159,26 +159,6 @@ export const Metadata = {
     message.tx_type = object.tx_type ?? "";
     return message;
   },
-  fromSDK(object: MetadataSDKType): Metadata {
-    return {
-      version: object?.version,
-      controller_connection_id: object?.controller_connection_id,
-      host_connection_id: object?.host_connection_id,
-      address: object?.address,
-      encoding: object?.encoding,
-      tx_type: object?.tx_type
-    };
-  },
-  toSDK(message: Metadata): MetadataSDKType {
-    const obj: any = {};
-    obj.version = message.version;
-    obj.controller_connection_id = message.controller_connection_id;
-    obj.host_connection_id = message.host_connection_id;
-    obj.address = message.address;
-    obj.encoding = message.encoding;
-    obj.tx_type = message.tx_type;
-    return obj;
-  },
   fromAmino(object: MetadataAmino): Metadata {
     return {
       version: object.version,

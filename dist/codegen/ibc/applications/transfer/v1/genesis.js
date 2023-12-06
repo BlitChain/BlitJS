@@ -92,32 +92,6 @@ exports.GenesisState = {
         message.total_escrowed = object.total_escrowed?.map(e => coin_1.Coin.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            denom_traces: Array.isArray(object?.denom_traces) ? object.denom_traces.map((e) => transfer_1.DenomTrace.fromSDK(e)) : [],
-            params: object.params ? transfer_1.Params.fromSDK(object.params) : undefined,
-            total_escrowed: Array.isArray(object?.total_escrowed) ? object.total_escrowed.map((e) => coin_1.Coin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        if (message.denom_traces) {
-            obj.denom_traces = message.denom_traces.map(e => e ? transfer_1.DenomTrace.toSDK(e) : undefined);
-        }
-        else {
-            obj.denom_traces = [];
-        }
-        message.params !== undefined && (obj.params = message.params ? transfer_1.Params.toSDK(message.params) : undefined);
-        if (message.total_escrowed) {
-            obj.total_escrowed = message.total_escrowed.map(e => e ? coin_1.Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.total_escrowed = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             port_id: object.port_id,

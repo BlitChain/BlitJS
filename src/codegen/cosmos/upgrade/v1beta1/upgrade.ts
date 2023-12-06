@@ -23,10 +23,7 @@ export interface Plan {
    */
   /** @deprecated */
   time: Date;
-  /**
-   * The height at which the upgrade must be performed.
-   * Only used if Time is not set.
-   */
+  /** The height at which the upgrade must be performed. */
   height: bigint;
   /**
    * Any application specific upgrade info to be included on-chain
@@ -64,10 +61,7 @@ export interface PlanAmino {
    */
   /** @deprecated */
   time?: string;
-  /**
-   * The height at which the upgrade must be performed.
-   * Only used if Time is not set.
-   */
+  /** The height at which the upgrade must be performed. */
   height: string;
   /**
    * Any application specific upgrade info to be included on-chain
@@ -105,8 +99,11 @@ export interface PlanSDKType {
 /** @deprecated */
 export interface SoftwareUpgradeProposal {
   $typeUrl?: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
+  /** title of the proposal */
   title: string;
+  /** description of the proposal */
   description: string;
+  /** plan of the proposal */
   plan: Plan;
 }
 export interface SoftwareUpgradeProposalProtoMsg {
@@ -121,8 +118,11 @@ export interface SoftwareUpgradeProposalProtoMsg {
  */
 /** @deprecated */
 export interface SoftwareUpgradeProposalAmino {
+  /** title of the proposal */
   title: string;
+  /** description of the proposal */
   description: string;
+  /** plan of the proposal */
   plan?: PlanAmino;
 }
 export interface SoftwareUpgradeProposalAminoMsg {
@@ -151,7 +151,9 @@ export interface SoftwareUpgradeProposalSDKType {
 /** @deprecated */
 export interface CancelSoftwareUpgradeProposal {
   $typeUrl?: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
+  /** title of the proposal */
   title: string;
+  /** description of the proposal */
   description: string;
 }
 export interface CancelSoftwareUpgradeProposalProtoMsg {
@@ -166,7 +168,9 @@ export interface CancelSoftwareUpgradeProposalProtoMsg {
  */
 /** @deprecated */
 export interface CancelSoftwareUpgradeProposalAmino {
+  /** title of the proposal */
   title: string;
+  /** description of the proposal */
   description: string;
 }
 export interface CancelSoftwareUpgradeProposalAminoMsg {
@@ -309,24 +313,6 @@ export const Plan = {
     message.upgraded_client_state = object.upgraded_client_state !== undefined && object.upgraded_client_state !== null ? Any.fromPartial(object.upgraded_client_state) : undefined;
     return message;
   },
-  fromSDK(object: PlanSDKType): Plan {
-    return {
-      name: object?.name,
-      time: object.time ? Timestamp.fromSDK(object.time) : undefined,
-      height: object?.height,
-      info: object?.info,
-      upgraded_client_state: object.upgraded_client_state ? Any.fromSDK(object.upgraded_client_state) : undefined
-    };
-  },
-  toSDK(message: Plan): PlanSDKType {
-    const obj: any = {};
-    obj.name = message.name;
-    message.time !== undefined && (obj.time = message.time ? Timestamp.toSDK(message.time) : undefined);
-    obj.height = message.height;
-    obj.info = message.info;
-    message.upgraded_client_state !== undefined && (obj.upgraded_client_state = message.upgraded_client_state ? Any.toSDK(message.upgraded_client_state) : undefined);
-    return obj;
-  },
   fromAmino(object: PlanAmino): Plan {
     return {
       name: object.name,
@@ -433,20 +419,6 @@ export const SoftwareUpgradeProposal = {
     message.plan = object.plan !== undefined && object.plan !== null ? Plan.fromPartial(object.plan) : undefined;
     return message;
   },
-  fromSDK(object: SoftwareUpgradeProposalSDKType): SoftwareUpgradeProposal {
-    return {
-      title: object?.title,
-      description: object?.description,
-      plan: object.plan ? Plan.fromSDK(object.plan) : undefined
-    };
-  },
-  toSDK(message: SoftwareUpgradeProposal): SoftwareUpgradeProposalSDKType {
-    const obj: any = {};
-    obj.title = message.title;
-    obj.description = message.description;
-    message.plan !== undefined && (obj.plan = message.plan ? Plan.toSDK(message.plan) : undefined);
-    return obj;
-  },
   fromAmino(object: SoftwareUpgradeProposalAmino): SoftwareUpgradeProposal {
     return {
       title: object.title,
@@ -539,18 +511,6 @@ export const CancelSoftwareUpgradeProposal = {
     message.description = object.description ?? "";
     return message;
   },
-  fromSDK(object: CancelSoftwareUpgradeProposalSDKType): CancelSoftwareUpgradeProposal {
-    return {
-      title: object?.title,
-      description: object?.description
-    };
-  },
-  toSDK(message: CancelSoftwareUpgradeProposal): CancelSoftwareUpgradeProposalSDKType {
-    const obj: any = {};
-    obj.title = message.title;
-    obj.description = message.description;
-    return obj;
-  },
   fromAmino(object: CancelSoftwareUpgradeProposalAmino): CancelSoftwareUpgradeProposal {
     return {
       title: object.title,
@@ -639,18 +599,6 @@ export const ModuleVersion = {
     message.name = object.name ?? "";
     message.version = object.version !== undefined && object.version !== null ? BigInt(object.version.toString()) : BigInt(0);
     return message;
-  },
-  fromSDK(object: ModuleVersionSDKType): ModuleVersion {
-    return {
-      name: object?.name,
-      version: object?.version
-    };
-  },
-  toSDK(message: ModuleVersion): ModuleVersionSDKType {
-    const obj: any = {};
-    obj.name = message.name;
-    obj.version = message.version;
-    return obj;
   },
   fromAmino(object: ModuleVersionAmino): ModuleVersion {
     return {

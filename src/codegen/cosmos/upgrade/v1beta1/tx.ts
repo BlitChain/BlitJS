@@ -9,7 +9,7 @@ export const protobufPackage = "cosmos.upgrade.v1beta1";
  * Since: cosmos-sdk 0.46
  */
 export interface MsgSoftwareUpgrade {
-  /** authority is the address of the governance account. */
+  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority: string;
   /** plan is the upgrade plan. */
   plan: Plan;
@@ -24,7 +24,7 @@ export interface MsgSoftwareUpgradeProtoMsg {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgSoftwareUpgradeAmino {
-  /** authority is the address of the governance account. */
+  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority: string;
   /** plan is the upgrade plan. */
   plan?: PlanAmino;
@@ -74,7 +74,7 @@ export interface MsgSoftwareUpgradeResponseSDKType {}
  * Since: cosmos-sdk 0.46
  */
 export interface MsgCancelUpgrade {
-  /** authority is the address of the governance account. */
+  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority: string;
 }
 export interface MsgCancelUpgradeProtoMsg {
@@ -87,7 +87,7 @@ export interface MsgCancelUpgradeProtoMsg {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgCancelUpgradeAmino {
-  /** authority is the address of the governance account. */
+  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority: string;
 }
 export interface MsgCancelUpgradeAminoMsg {
@@ -183,18 +183,6 @@ export const MsgSoftwareUpgrade = {
     message.plan = object.plan !== undefined && object.plan !== null ? Plan.fromPartial(object.plan) : undefined;
     return message;
   },
-  fromSDK(object: MsgSoftwareUpgradeSDKType): MsgSoftwareUpgrade {
-    return {
-      authority: object?.authority,
-      plan: object.plan ? Plan.fromSDK(object.plan) : undefined
-    };
-  },
-  toSDK(message: MsgSoftwareUpgrade): MsgSoftwareUpgradeSDKType {
-    const obj: any = {};
-    obj.authority = message.authority;
-    message.plan !== undefined && (obj.plan = message.plan ? Plan.toSDK(message.plan) : undefined);
-    return obj;
-  },
   fromAmino(object: MsgSoftwareUpgradeAmino): MsgSoftwareUpgrade {
     return {
       authority: object.authority,
@@ -261,13 +249,6 @@ export const MsgSoftwareUpgradeResponse = {
   fromPartial(_: Partial<MsgSoftwareUpgradeResponse>): MsgSoftwareUpgradeResponse {
     const message = createBaseMsgSoftwareUpgradeResponse();
     return message;
-  },
-  fromSDK(_: MsgSoftwareUpgradeResponseSDKType): MsgSoftwareUpgradeResponse {
-    return {};
-  },
-  toSDK(_: MsgSoftwareUpgradeResponse): MsgSoftwareUpgradeResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgSoftwareUpgradeResponseAmino): MsgSoftwareUpgradeResponse {
     return {};
@@ -343,16 +324,6 @@ export const MsgCancelUpgrade = {
     message.authority = object.authority ?? "";
     return message;
   },
-  fromSDK(object: MsgCancelUpgradeSDKType): MsgCancelUpgrade {
-    return {
-      authority: object?.authority
-    };
-  },
-  toSDK(message: MsgCancelUpgrade): MsgCancelUpgradeSDKType {
-    const obj: any = {};
-    obj.authority = message.authority;
-    return obj;
-  },
   fromAmino(object: MsgCancelUpgradeAmino): MsgCancelUpgrade {
     return {
       authority: object.authority
@@ -417,13 +388,6 @@ export const MsgCancelUpgradeResponse = {
   fromPartial(_: Partial<MsgCancelUpgradeResponse>): MsgCancelUpgradeResponse {
     const message = createBaseMsgCancelUpgradeResponse();
     return message;
-  },
-  fromSDK(_: MsgCancelUpgradeResponseSDKType): MsgCancelUpgradeResponse {
-    return {};
-  },
-  toSDK(_: MsgCancelUpgradeResponse): MsgCancelUpgradeResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgCancelUpgradeResponseAmino): MsgCancelUpgradeResponse {
     return {};

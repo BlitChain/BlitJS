@@ -50,16 +50,6 @@ exports.PubKey = {
         message.key = object.key ?? new Uint8Array();
         return message;
     },
-    fromSDK(object) {
-        return {
-            key: object?.key
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.key = message.key;
-        return obj;
-    },
     fromAmino(object) {
         return {
             key: object.key
@@ -75,7 +65,7 @@ exports.PubKey = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/PubKey",
+            type: "tendermint/PubKeySecp256k1",
             value: exports.PubKey.toAmino(message)
         };
     },
@@ -137,16 +127,6 @@ exports.PrivKey = {
         message.key = object.key ?? new Uint8Array();
         return message;
     },
-    fromSDK(object) {
-        return {
-            key: object?.key
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.key = message.key;
-        return obj;
-    },
     fromAmino(object) {
         return {
             key: object.key
@@ -162,7 +142,7 @@ exports.PrivKey = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/PrivKey",
+            type: "tendermint/PrivKeySecp256k1",
             value: exports.PrivKey.toAmino(message)
         };
     },

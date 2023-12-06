@@ -79,22 +79,6 @@ export const Block = {
         message.last_commit = object.last_commit !== undefined && object.last_commit !== null ? Commit.fromPartial(object.last_commit) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            header: object.header ? Header.fromSDK(object.header) : undefined,
-            data: object.data ? Data.fromSDK(object.data) : undefined,
-            evidence: object.evidence ? EvidenceList.fromSDK(object.evidence) : undefined,
-            last_commit: object.last_commit ? Commit.fromSDK(object.last_commit) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.header !== undefined && (obj.header = message.header ? Header.toSDK(message.header) : undefined);
-        message.data !== undefined && (obj.data = message.data ? Data.toSDK(message.data) : undefined);
-        message.evidence !== undefined && (obj.evidence = message.evidence ? EvidenceList.toSDK(message.evidence) : undefined);
-        message.last_commit !== undefined && (obj.last_commit = message.last_commit ? Commit.toSDK(message.last_commit) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             header: object?.header ? Header.fromAmino(object.header) : undefined,

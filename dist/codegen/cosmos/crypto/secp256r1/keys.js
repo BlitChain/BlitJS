@@ -50,16 +50,6 @@ exports.PubKey = {
         message.key = object.key ?? new Uint8Array();
         return message;
     },
-    fromSDK(object) {
-        return {
-            key: object?.key
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.key = message.key;
-        return obj;
-    },
     fromAmino(object) {
         return {
             key: object.key
@@ -136,16 +126,6 @@ exports.PrivKey = {
         const message = createBasePrivKey();
         message.secret = object.secret ?? new Uint8Array();
         return message;
-    },
-    fromSDK(object) {
-        return {
-            secret: object?.secret
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.secret = message.secret;
-        return obj;
     },
     fromAmino(object) {
         return {

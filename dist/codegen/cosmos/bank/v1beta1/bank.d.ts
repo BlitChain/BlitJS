@@ -3,6 +3,14 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.bank.v1beta1";
 /** Params defines the parameters for the bank module. */
 export interface Params {
+    /**
+     * Deprecated: Use of SendEnabled in params is deprecated.
+     * For genesis, use the newly added send_enabled field in the genesis object.
+     * Storage, lookup, and manipulation of this information is now in the keeper.
+     *
+     * As of cosmos-sdk 0.47, this only exists for backwards compatibility of genesis files.
+     */
+    /** @deprecated */
     send_enabled: SendEnabled[];
     default_send_enabled: boolean;
 }
@@ -12,15 +20,24 @@ export interface ParamsProtoMsg {
 }
 /** Params defines the parameters for the bank module. */
 export interface ParamsAmino {
+    /**
+     * Deprecated: Use of SendEnabled in params is deprecated.
+     * For genesis, use the newly added send_enabled field in the genesis object.
+     * Storage, lookup, and manipulation of this information is now in the keeper.
+     *
+     * As of cosmos-sdk 0.47, this only exists for backwards compatibility of genesis files.
+     */
+    /** @deprecated */
     send_enabled: SendEnabledAmino[];
     default_send_enabled: boolean;
 }
 export interface ParamsAminoMsg {
-    type: "cosmos-sdk/Params";
+    type: "cosmos-sdk/x/bank/Params";
     value: ParamsAmino;
 }
 /** Params defines the parameters for the bank module. */
 export interface ParamsSDKType {
+    /** @deprecated */
     send_enabled: SendEnabledSDKType[];
     default_send_enabled: boolean;
 }
@@ -305,8 +322,6 @@ export declare const Params: {
     fromJSON(object: any): Params;
     toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
     fromAminoMsg(object: ParamsAminoMsg): Params;
@@ -322,8 +337,6 @@ export declare const SendEnabled: {
     fromJSON(object: any): SendEnabled;
     toJSON(message: SendEnabled): unknown;
     fromPartial(object: Partial<SendEnabled>): SendEnabled;
-    fromSDK(object: SendEnabledSDKType): SendEnabled;
-    toSDK(message: SendEnabled): SendEnabledSDKType;
     fromAmino(object: SendEnabledAmino): SendEnabled;
     toAmino(message: SendEnabled): SendEnabledAmino;
     fromAminoMsg(object: SendEnabledAminoMsg): SendEnabled;
@@ -339,8 +352,6 @@ export declare const Input: {
     fromJSON(object: any): Input;
     toJSON(message: Input): unknown;
     fromPartial(object: Partial<Input>): Input;
-    fromSDK(object: InputSDKType): Input;
-    toSDK(message: Input): InputSDKType;
     fromAmino(object: InputAmino): Input;
     toAmino(message: Input): InputAmino;
     fromAminoMsg(object: InputAminoMsg): Input;
@@ -356,8 +367,6 @@ export declare const Output: {
     fromJSON(object: any): Output;
     toJSON(message: Output): unknown;
     fromPartial(object: Partial<Output>): Output;
-    fromSDK(object: OutputSDKType): Output;
-    toSDK(message: Output): OutputSDKType;
     fromAmino(object: OutputAmino): Output;
     toAmino(message: Output): OutputAmino;
     fromAminoMsg(object: OutputAminoMsg): Output;
@@ -373,8 +382,6 @@ export declare const Supply: {
     fromJSON(object: any): Supply;
     toJSON(message: Supply): unknown;
     fromPartial(object: Partial<Supply>): Supply;
-    fromSDK(object: SupplySDKType): Supply;
-    toSDK(message: Supply): SupplySDKType;
     fromAmino(object: SupplyAmino): Supply;
     toAmino(message: Supply): SupplyAmino;
     fromAminoMsg(object: SupplyAminoMsg): Supply;
@@ -390,8 +397,6 @@ export declare const DenomUnit: {
     fromJSON(object: any): DenomUnit;
     toJSON(message: DenomUnit): unknown;
     fromPartial(object: Partial<DenomUnit>): DenomUnit;
-    fromSDK(object: DenomUnitSDKType): DenomUnit;
-    toSDK(message: DenomUnit): DenomUnitSDKType;
     fromAmino(object: DenomUnitAmino): DenomUnit;
     toAmino(message: DenomUnit): DenomUnitAmino;
     fromAminoMsg(object: DenomUnitAminoMsg): DenomUnit;
@@ -407,8 +412,6 @@ export declare const Metadata: {
     fromJSON(object: any): Metadata;
     toJSON(message: Metadata): unknown;
     fromPartial(object: Partial<Metadata>): Metadata;
-    fromSDK(object: MetadataSDKType): Metadata;
-    toSDK(message: Metadata): MetadataSDKType;
     fromAmino(object: MetadataAmino): Metadata;
     toAmino(message: Metadata): MetadataAmino;
     fromAminoMsg(object: MetadataAminoMsg): Metadata;

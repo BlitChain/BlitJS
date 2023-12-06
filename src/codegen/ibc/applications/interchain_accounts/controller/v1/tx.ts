@@ -224,20 +224,6 @@ export const MsgRegisterInterchainAccount = {
     message.version = object.version ?? "";
     return message;
   },
-  fromSDK(object: MsgRegisterInterchainAccountSDKType): MsgRegisterInterchainAccount {
-    return {
-      owner: object?.owner,
-      connection_id: object?.connection_id,
-      version: object?.version
-    };
-  },
-  toSDK(message: MsgRegisterInterchainAccount): MsgRegisterInterchainAccountSDKType {
-    const obj: any = {};
-    obj.owner = message.owner;
-    obj.connection_id = message.connection_id;
-    obj.version = message.version;
-    return obj;
-  },
   fromAmino(object: MsgRegisterInterchainAccountAmino): MsgRegisterInterchainAccount {
     return {
       owner: object.owner,
@@ -328,18 +314,6 @@ export const MsgRegisterInterchainAccountResponse = {
     message.channel_id = object.channel_id ?? "";
     message.port_id = object.port_id ?? "";
     return message;
-  },
-  fromSDK(object: MsgRegisterInterchainAccountResponseSDKType): MsgRegisterInterchainAccountResponse {
-    return {
-      channel_id: object?.channel_id,
-      port_id: object?.port_id
-    };
-  },
-  toSDK(message: MsgRegisterInterchainAccountResponse): MsgRegisterInterchainAccountResponseSDKType {
-    const obj: any = {};
-    obj.channel_id = message.channel_id;
-    obj.port_id = message.port_id;
-    return obj;
   },
   fromAmino(object: MsgRegisterInterchainAccountResponseAmino): MsgRegisterInterchainAccountResponse {
     return {
@@ -450,22 +424,6 @@ export const MsgSendTx = {
     message.relative_timeout = object.relative_timeout !== undefined && object.relative_timeout !== null ? BigInt(object.relative_timeout.toString()) : BigInt(0);
     return message;
   },
-  fromSDK(object: MsgSendTxSDKType): MsgSendTx {
-    return {
-      owner: object?.owner,
-      connection_id: object?.connection_id,
-      packet_data: object.packet_data ? InterchainAccountPacketData.fromSDK(object.packet_data) : undefined,
-      relative_timeout: object?.relative_timeout
-    };
-  },
-  toSDK(message: MsgSendTx): MsgSendTxSDKType {
-    const obj: any = {};
-    obj.owner = message.owner;
-    obj.connection_id = message.connection_id;
-    message.packet_data !== undefined && (obj.packet_data = message.packet_data ? InterchainAccountPacketData.toSDK(message.packet_data) : undefined);
-    obj.relative_timeout = message.relative_timeout;
-    return obj;
-  },
   fromAmino(object: MsgSendTxAmino): MsgSendTx {
     return {
       owner: object.owner,
@@ -548,16 +506,6 @@ export const MsgSendTxResponse = {
     const message = createBaseMsgSendTxResponse();
     message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt(0);
     return message;
-  },
-  fromSDK(object: MsgSendTxResponseSDKType): MsgSendTxResponse {
-    return {
-      sequence: object?.sequence
-    };
-  },
-  toSDK(message: MsgSendTxResponse): MsgSendTxResponseSDKType {
-    const obj: any = {};
-    obj.sequence = message.sequence;
-    return obj;
   },
   fromAmino(object: MsgSendTxResponseAmino): MsgSendTxResponse {
     return {
@@ -646,18 +594,6 @@ export const MsgUpdateParams = {
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
-  fromSDK(object: MsgUpdateParamsSDKType): MsgUpdateParams {
-    return {
-      signer: object?.signer,
-      params: object.params ? Params.fromSDK(object.params) : undefined
-    };
-  },
-  toSDK(message: MsgUpdateParams): MsgUpdateParamsSDKType {
-    const obj: any = {};
-    obj.signer = message.signer;
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    return obj;
-  },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
     return {
       signer: object.signer,
@@ -724,13 +660,6 @@ export const MsgUpdateParamsResponse = {
   fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse {
     const message = createBaseMsgUpdateParamsResponse();
     return message;
-  },
-  fromSDK(_: MsgUpdateParamsResponseSDKType): MsgUpdateParamsResponse {
-    return {};
-  },
-  toSDK(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse {
     return {};

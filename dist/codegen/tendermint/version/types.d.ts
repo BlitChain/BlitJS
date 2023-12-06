@@ -77,8 +77,6 @@ export declare const App: {
     fromJSON(object: any): App;
     toJSON(message: App): unknown;
     fromPartial(object: Partial<App>): App;
-    fromSDK(object: AppSDKType): App;
-    toSDK(message: App): AppSDKType;
     fromAmino(object: AppAmino): App;
     toAmino(message: App): AppAmino;
     fromAminoMsg(object: AppAminoMsg): App;
@@ -93,8 +91,6 @@ export declare const Consensus: {
     fromJSON(object: any): Consensus;
     toJSON(message: Consensus): unknown;
     fromPartial(object: Partial<Consensus>): Consensus;
-    fromSDK(object: ConsensusSDKType): Consensus;
-    toSDK(message: Consensus): ConsensusSDKType;
     fromAmino(object: ConsensusAmino): Consensus;
     toAmino(message: Consensus): ConsensusAmino;
     fromAminoMsg(object: ConsensusAminoMsg): Consensus;

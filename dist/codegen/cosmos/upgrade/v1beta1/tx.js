@@ -61,18 +61,6 @@ exports.MsgSoftwareUpgrade = {
         message.plan = object.plan !== undefined && object.plan !== null ? upgrade_1.Plan.fromPartial(object.plan) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            authority: object?.authority,
-            plan: object.plan ? upgrade_1.Plan.fromSDK(object.plan) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.authority = message.authority;
-        message.plan !== undefined && (obj.plan = message.plan ? upgrade_1.Plan.toSDK(message.plan) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             authority: object.authority,
@@ -139,13 +127,6 @@ exports.MsgSoftwareUpgradeResponse = {
     fromPartial(_) {
         const message = createBaseMsgSoftwareUpgradeResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -221,16 +202,6 @@ exports.MsgCancelUpgrade = {
         message.authority = object.authority ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            authority: object?.authority
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.authority = message.authority;
-        return obj;
-    },
     fromAmino(object) {
         return {
             authority: object.authority
@@ -295,13 +266,6 @@ exports.MsgCancelUpgradeResponse = {
     fromPartial(_) {
         const message = createBaseMsgCancelUpgradeResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};

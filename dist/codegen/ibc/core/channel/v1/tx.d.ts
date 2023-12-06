@@ -619,8 +619,6 @@ export declare const MsgChannelOpenInit: {
     fromJSON(object: any): MsgChannelOpenInit;
     toJSON(message: MsgChannelOpenInit): unknown;
     fromPartial(object: Partial<MsgChannelOpenInit>): MsgChannelOpenInit;
-    fromSDK(object: MsgChannelOpenInitSDKType): MsgChannelOpenInit;
-    toSDK(message: MsgChannelOpenInit): MsgChannelOpenInitSDKType;
     fromAmino(object: MsgChannelOpenInitAmino): MsgChannelOpenInit;
     toAmino(message: MsgChannelOpenInit): MsgChannelOpenInitAmino;
     fromAminoMsg(object: MsgChannelOpenInitAminoMsg): MsgChannelOpenInit;
@@ -636,8 +634,6 @@ export declare const MsgChannelOpenInitResponse: {
     fromJSON(object: any): MsgChannelOpenInitResponse;
     toJSON(message: MsgChannelOpenInitResponse): unknown;
     fromPartial(object: Partial<MsgChannelOpenInitResponse>): MsgChannelOpenInitResponse;
-    fromSDK(object: MsgChannelOpenInitResponseSDKType): MsgChannelOpenInitResponse;
-    toSDK(message: MsgChannelOpenInitResponse): MsgChannelOpenInitResponseSDKType;
     fromAmino(object: MsgChannelOpenInitResponseAmino): MsgChannelOpenInitResponse;
     toAmino(message: MsgChannelOpenInitResponse): MsgChannelOpenInitResponseAmino;
     fromAminoMsg(object: MsgChannelOpenInitResponseAminoMsg): MsgChannelOpenInitResponse;
@@ -653,8 +649,6 @@ export declare const MsgChannelOpenTry: {
     fromJSON(object: any): MsgChannelOpenTry;
     toJSON(message: MsgChannelOpenTry): unknown;
     fromPartial(object: Partial<MsgChannelOpenTry>): MsgChannelOpenTry;
-    fromSDK(object: MsgChannelOpenTrySDKType): MsgChannelOpenTry;
-    toSDK(message: MsgChannelOpenTry): MsgChannelOpenTrySDKType;
     fromAmino(object: MsgChannelOpenTryAmino): MsgChannelOpenTry;
     toAmino(message: MsgChannelOpenTry): MsgChannelOpenTryAmino;
     fromAminoMsg(object: MsgChannelOpenTryAminoMsg): MsgChannelOpenTry;
@@ -670,8 +664,6 @@ export declare const MsgChannelOpenTryResponse: {
     fromJSON(object: any): MsgChannelOpenTryResponse;
     toJSON(message: MsgChannelOpenTryResponse): unknown;
     fromPartial(object: Partial<MsgChannelOpenTryResponse>): MsgChannelOpenTryResponse;
-    fromSDK(object: MsgChannelOpenTryResponseSDKType): MsgChannelOpenTryResponse;
-    toSDK(message: MsgChannelOpenTryResponse): MsgChannelOpenTryResponseSDKType;
     fromAmino(object: MsgChannelOpenTryResponseAmino): MsgChannelOpenTryResponse;
     toAmino(message: MsgChannelOpenTryResponse): MsgChannelOpenTryResponseAmino;
     fromAminoMsg(object: MsgChannelOpenTryResponseAminoMsg): MsgChannelOpenTryResponse;
@@ -687,8 +679,6 @@ export declare const MsgChannelOpenAck: {
     fromJSON(object: any): MsgChannelOpenAck;
     toJSON(message: MsgChannelOpenAck): unknown;
     fromPartial(object: Partial<MsgChannelOpenAck>): MsgChannelOpenAck;
-    fromSDK(object: MsgChannelOpenAckSDKType): MsgChannelOpenAck;
-    toSDK(message: MsgChannelOpenAck): MsgChannelOpenAckSDKType;
     fromAmino(object: MsgChannelOpenAckAmino): MsgChannelOpenAck;
     toAmino(message: MsgChannelOpenAck): MsgChannelOpenAckAmino;
     fromAminoMsg(object: MsgChannelOpenAckAminoMsg): MsgChannelOpenAck;
@@ -704,8 +694,6 @@ export declare const MsgChannelOpenAckResponse: {
     fromJSON(_: any): MsgChannelOpenAckResponse;
     toJSON(_: MsgChannelOpenAckResponse): unknown;
     fromPartial(_: Partial<MsgChannelOpenAckResponse>): MsgChannelOpenAckResponse;
-    fromSDK(_: MsgChannelOpenAckResponseSDKType): MsgChannelOpenAckResponse;
-    toSDK(_: MsgChannelOpenAckResponse): MsgChannelOpenAckResponseSDKType;
     fromAmino(_: MsgChannelOpenAckResponseAmino): MsgChannelOpenAckResponse;
     toAmino(_: MsgChannelOpenAckResponse): MsgChannelOpenAckResponseAmino;
     fromAminoMsg(object: MsgChannelOpenAckResponseAminoMsg): MsgChannelOpenAckResponse;
@@ -721,8 +709,6 @@ export declare const MsgChannelOpenConfirm: {
     fromJSON(object: any): MsgChannelOpenConfirm;
     toJSON(message: MsgChannelOpenConfirm): unknown;
     fromPartial(object: Partial<MsgChannelOpenConfirm>): MsgChannelOpenConfirm;
-    fromSDK(object: MsgChannelOpenConfirmSDKType): MsgChannelOpenConfirm;
-    toSDK(message: MsgChannelOpenConfirm): MsgChannelOpenConfirmSDKType;
     fromAmino(object: MsgChannelOpenConfirmAmino): MsgChannelOpenConfirm;
     toAmino(message: MsgChannelOpenConfirm): MsgChannelOpenConfirmAmino;
     fromAminoMsg(object: MsgChannelOpenConfirmAminoMsg): MsgChannelOpenConfirm;
@@ -738,8 +724,6 @@ export declare const MsgChannelOpenConfirmResponse: {
     fromJSON(_: any): MsgChannelOpenConfirmResponse;
     toJSON(_: MsgChannelOpenConfirmResponse): unknown;
     fromPartial(_: Partial<MsgChannelOpenConfirmResponse>): MsgChannelOpenConfirmResponse;
-    fromSDK(_: MsgChannelOpenConfirmResponseSDKType): MsgChannelOpenConfirmResponse;
-    toSDK(_: MsgChannelOpenConfirmResponse): MsgChannelOpenConfirmResponseSDKType;
     fromAmino(_: MsgChannelOpenConfirmResponseAmino): MsgChannelOpenConfirmResponse;
     toAmino(_: MsgChannelOpenConfirmResponse): MsgChannelOpenConfirmResponseAmino;
     fromAminoMsg(object: MsgChannelOpenConfirmResponseAminoMsg): MsgChannelOpenConfirmResponse;
@@ -755,8 +739,6 @@ export declare const MsgChannelCloseInit: {
     fromJSON(object: any): MsgChannelCloseInit;
     toJSON(message: MsgChannelCloseInit): unknown;
     fromPartial(object: Partial<MsgChannelCloseInit>): MsgChannelCloseInit;
-    fromSDK(object: MsgChannelCloseInitSDKType): MsgChannelCloseInit;
-    toSDK(message: MsgChannelCloseInit): MsgChannelCloseInitSDKType;
     fromAmino(object: MsgChannelCloseInitAmino): MsgChannelCloseInit;
     toAmino(message: MsgChannelCloseInit): MsgChannelCloseInitAmino;
     fromAminoMsg(object: MsgChannelCloseInitAminoMsg): MsgChannelCloseInit;
@@ -772,8 +754,6 @@ export declare const MsgChannelCloseInitResponse: {
     fromJSON(_: any): MsgChannelCloseInitResponse;
     toJSON(_: MsgChannelCloseInitResponse): unknown;
     fromPartial(_: Partial<MsgChannelCloseInitResponse>): MsgChannelCloseInitResponse;
-    fromSDK(_: MsgChannelCloseInitResponseSDKType): MsgChannelCloseInitResponse;
-    toSDK(_: MsgChannelCloseInitResponse): MsgChannelCloseInitResponseSDKType;
     fromAmino(_: MsgChannelCloseInitResponseAmino): MsgChannelCloseInitResponse;
     toAmino(_: MsgChannelCloseInitResponse): MsgChannelCloseInitResponseAmino;
     fromAminoMsg(object: MsgChannelCloseInitResponseAminoMsg): MsgChannelCloseInitResponse;
@@ -789,8 +769,6 @@ export declare const MsgChannelCloseConfirm: {
     fromJSON(object: any): MsgChannelCloseConfirm;
     toJSON(message: MsgChannelCloseConfirm): unknown;
     fromPartial(object: Partial<MsgChannelCloseConfirm>): MsgChannelCloseConfirm;
-    fromSDK(object: MsgChannelCloseConfirmSDKType): MsgChannelCloseConfirm;
-    toSDK(message: MsgChannelCloseConfirm): MsgChannelCloseConfirmSDKType;
     fromAmino(object: MsgChannelCloseConfirmAmino): MsgChannelCloseConfirm;
     toAmino(message: MsgChannelCloseConfirm): MsgChannelCloseConfirmAmino;
     fromAminoMsg(object: MsgChannelCloseConfirmAminoMsg): MsgChannelCloseConfirm;
@@ -806,8 +784,6 @@ export declare const MsgChannelCloseConfirmResponse: {
     fromJSON(_: any): MsgChannelCloseConfirmResponse;
     toJSON(_: MsgChannelCloseConfirmResponse): unknown;
     fromPartial(_: Partial<MsgChannelCloseConfirmResponse>): MsgChannelCloseConfirmResponse;
-    fromSDK(_: MsgChannelCloseConfirmResponseSDKType): MsgChannelCloseConfirmResponse;
-    toSDK(_: MsgChannelCloseConfirmResponse): MsgChannelCloseConfirmResponseSDKType;
     fromAmino(_: MsgChannelCloseConfirmResponseAmino): MsgChannelCloseConfirmResponse;
     toAmino(_: MsgChannelCloseConfirmResponse): MsgChannelCloseConfirmResponseAmino;
     fromAminoMsg(object: MsgChannelCloseConfirmResponseAminoMsg): MsgChannelCloseConfirmResponse;
@@ -823,8 +799,6 @@ export declare const MsgRecvPacket: {
     fromJSON(object: any): MsgRecvPacket;
     toJSON(message: MsgRecvPacket): unknown;
     fromPartial(object: Partial<MsgRecvPacket>): MsgRecvPacket;
-    fromSDK(object: MsgRecvPacketSDKType): MsgRecvPacket;
-    toSDK(message: MsgRecvPacket): MsgRecvPacketSDKType;
     fromAmino(object: MsgRecvPacketAmino): MsgRecvPacket;
     toAmino(message: MsgRecvPacket): MsgRecvPacketAmino;
     fromAminoMsg(object: MsgRecvPacketAminoMsg): MsgRecvPacket;
@@ -840,8 +814,6 @@ export declare const MsgRecvPacketResponse: {
     fromJSON(object: any): MsgRecvPacketResponse;
     toJSON(message: MsgRecvPacketResponse): unknown;
     fromPartial(object: Partial<MsgRecvPacketResponse>): MsgRecvPacketResponse;
-    fromSDK(object: MsgRecvPacketResponseSDKType): MsgRecvPacketResponse;
-    toSDK(message: MsgRecvPacketResponse): MsgRecvPacketResponseSDKType;
     fromAmino(object: MsgRecvPacketResponseAmino): MsgRecvPacketResponse;
     toAmino(message: MsgRecvPacketResponse): MsgRecvPacketResponseAmino;
     fromAminoMsg(object: MsgRecvPacketResponseAminoMsg): MsgRecvPacketResponse;
@@ -857,8 +829,6 @@ export declare const MsgTimeout: {
     fromJSON(object: any): MsgTimeout;
     toJSON(message: MsgTimeout): unknown;
     fromPartial(object: Partial<MsgTimeout>): MsgTimeout;
-    fromSDK(object: MsgTimeoutSDKType): MsgTimeout;
-    toSDK(message: MsgTimeout): MsgTimeoutSDKType;
     fromAmino(object: MsgTimeoutAmino): MsgTimeout;
     toAmino(message: MsgTimeout): MsgTimeoutAmino;
     fromAminoMsg(object: MsgTimeoutAminoMsg): MsgTimeout;
@@ -874,8 +844,6 @@ export declare const MsgTimeoutResponse: {
     fromJSON(object: any): MsgTimeoutResponse;
     toJSON(message: MsgTimeoutResponse): unknown;
     fromPartial(object: Partial<MsgTimeoutResponse>): MsgTimeoutResponse;
-    fromSDK(object: MsgTimeoutResponseSDKType): MsgTimeoutResponse;
-    toSDK(message: MsgTimeoutResponse): MsgTimeoutResponseSDKType;
     fromAmino(object: MsgTimeoutResponseAmino): MsgTimeoutResponse;
     toAmino(message: MsgTimeoutResponse): MsgTimeoutResponseAmino;
     fromAminoMsg(object: MsgTimeoutResponseAminoMsg): MsgTimeoutResponse;
@@ -891,8 +859,6 @@ export declare const MsgTimeoutOnClose: {
     fromJSON(object: any): MsgTimeoutOnClose;
     toJSON(message: MsgTimeoutOnClose): unknown;
     fromPartial(object: Partial<MsgTimeoutOnClose>): MsgTimeoutOnClose;
-    fromSDK(object: MsgTimeoutOnCloseSDKType): MsgTimeoutOnClose;
-    toSDK(message: MsgTimeoutOnClose): MsgTimeoutOnCloseSDKType;
     fromAmino(object: MsgTimeoutOnCloseAmino): MsgTimeoutOnClose;
     toAmino(message: MsgTimeoutOnClose): MsgTimeoutOnCloseAmino;
     fromAminoMsg(object: MsgTimeoutOnCloseAminoMsg): MsgTimeoutOnClose;
@@ -908,8 +874,6 @@ export declare const MsgTimeoutOnCloseResponse: {
     fromJSON(object: any): MsgTimeoutOnCloseResponse;
     toJSON(message: MsgTimeoutOnCloseResponse): unknown;
     fromPartial(object: Partial<MsgTimeoutOnCloseResponse>): MsgTimeoutOnCloseResponse;
-    fromSDK(object: MsgTimeoutOnCloseResponseSDKType): MsgTimeoutOnCloseResponse;
-    toSDK(message: MsgTimeoutOnCloseResponse): MsgTimeoutOnCloseResponseSDKType;
     fromAmino(object: MsgTimeoutOnCloseResponseAmino): MsgTimeoutOnCloseResponse;
     toAmino(message: MsgTimeoutOnCloseResponse): MsgTimeoutOnCloseResponseAmino;
     fromAminoMsg(object: MsgTimeoutOnCloseResponseAminoMsg): MsgTimeoutOnCloseResponse;
@@ -925,8 +889,6 @@ export declare const MsgAcknowledgement: {
     fromJSON(object: any): MsgAcknowledgement;
     toJSON(message: MsgAcknowledgement): unknown;
     fromPartial(object: Partial<MsgAcknowledgement>): MsgAcknowledgement;
-    fromSDK(object: MsgAcknowledgementSDKType): MsgAcknowledgement;
-    toSDK(message: MsgAcknowledgement): MsgAcknowledgementSDKType;
     fromAmino(object: MsgAcknowledgementAmino): MsgAcknowledgement;
     toAmino(message: MsgAcknowledgement): MsgAcknowledgementAmino;
     fromAminoMsg(object: MsgAcknowledgementAminoMsg): MsgAcknowledgement;
@@ -942,8 +904,6 @@ export declare const MsgAcknowledgementResponse: {
     fromJSON(object: any): MsgAcknowledgementResponse;
     toJSON(message: MsgAcknowledgementResponse): unknown;
     fromPartial(object: Partial<MsgAcknowledgementResponse>): MsgAcknowledgementResponse;
-    fromSDK(object: MsgAcknowledgementResponseSDKType): MsgAcknowledgementResponse;
-    toSDK(message: MsgAcknowledgementResponse): MsgAcknowledgementResponseSDKType;
     fromAmino(object: MsgAcknowledgementResponseAmino): MsgAcknowledgementResponse;
     toAmino(message: MsgAcknowledgementResponse): MsgAcknowledgementResponseAmino;
     fromAminoMsg(object: MsgAcknowledgementResponseAminoMsg): MsgAcknowledgementResponse;

@@ -7,7 +7,17 @@ export const protobufPackage = "cosmos.distribution.v1beta1";
 /** Params defines the set of params for the distribution module. */
 export interface Params {
   community_tax: string;
+  /**
+   * Deprecated: The base_proposer_reward field is deprecated and is no longer used
+   * in the x/distribution module's reward mechanism.
+   */
+  /** @deprecated */
   base_proposer_reward: string;
+  /**
+   * Deprecated: The bonus_proposer_reward field is deprecated and is no longer used
+   * in the x/distribution module's reward mechanism.
+   */
+  /** @deprecated */
   bonus_proposer_reward: string;
   withdraw_addr_enabled: boolean;
 }
@@ -18,18 +28,30 @@ export interface ParamsProtoMsg {
 /** Params defines the set of params for the distribution module. */
 export interface ParamsAmino {
   community_tax: string;
+  /**
+   * Deprecated: The base_proposer_reward field is deprecated and is no longer used
+   * in the x/distribution module's reward mechanism.
+   */
+  /** @deprecated */
   base_proposer_reward: string;
+  /**
+   * Deprecated: The bonus_proposer_reward field is deprecated and is no longer used
+   * in the x/distribution module's reward mechanism.
+   */
+  /** @deprecated */
   bonus_proposer_reward: string;
   withdraw_addr_enabled: boolean;
 }
 export interface ParamsAminoMsg {
-  type: "cosmos-sdk/Params";
+  type: "cosmos-sdk/x/distribution/Params";
   value: ParamsAmino;
 }
 /** Params defines the set of params for the distribution module. */
 export interface ParamsSDKType {
   community_tax: string;
+  /** @deprecated */
   base_proposer_reward: string;
+  /** @deprecated */
   bonus_proposer_reward: string;
   withdraw_addr_enabled: boolean;
 }
@@ -270,7 +292,13 @@ export interface FeePoolSDKType {
  * CommunityPoolSpendProposal details a proposal for use of community funds,
  * together with how many coins are proposed to be spent, and to which
  * recipient account.
+ * 
+ * Deprecated: Do not use. As of the Cosmos SDK release v0.47.x, there is no
+ * longer a need for an explicit CommunityPoolSpendProposal. To spend community
+ * pool funds, a simple MsgCommunityPoolSpend can be invoked from the x/gov
+ * module via a v1 governance proposal.
  */
+/** @deprecated */
 export interface CommunityPoolSpendProposal {
   $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal";
   title: string;
@@ -286,7 +314,13 @@ export interface CommunityPoolSpendProposalProtoMsg {
  * CommunityPoolSpendProposal details a proposal for use of community funds,
  * together with how many coins are proposed to be spent, and to which
  * recipient account.
+ * 
+ * Deprecated: Do not use. As of the Cosmos SDK release v0.47.x, there is no
+ * longer a need for an explicit CommunityPoolSpendProposal. To spend community
+ * pool funds, a simple MsgCommunityPoolSpend can be invoked from the x/gov
+ * module via a v1 governance proposal.
  */
+/** @deprecated */
 export interface CommunityPoolSpendProposalAmino {
   title: string;
   description: string;
@@ -301,7 +335,13 @@ export interface CommunityPoolSpendProposalAminoMsg {
  * CommunityPoolSpendProposal details a proposal for use of community funds,
  * together with how many coins are proposed to be spent, and to which
  * recipient account.
+ * 
+ * Deprecated: Do not use. As of the Cosmos SDK release v0.47.x, there is no
+ * longer a need for an explicit CommunityPoolSpendProposal. To spend community
+ * pool funds, a simple MsgCommunityPoolSpend can be invoked from the x/gov
+ * module via a v1 governance proposal.
  */
+/** @deprecated */
 export interface CommunityPoolSpendProposalSDKType {
   $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal";
   title: string;
@@ -506,22 +546,6 @@ export const Params = {
     message.withdraw_addr_enabled = object.withdraw_addr_enabled ?? false;
     return message;
   },
-  fromSDK(object: ParamsSDKType): Params {
-    return {
-      community_tax: object?.community_tax,
-      base_proposer_reward: object?.base_proposer_reward,
-      bonus_proposer_reward: object?.bonus_proposer_reward,
-      withdraw_addr_enabled: object?.withdraw_addr_enabled
-    };
-  },
-  toSDK(message: Params): ParamsSDKType {
-    const obj: any = {};
-    obj.community_tax = message.community_tax;
-    obj.base_proposer_reward = message.base_proposer_reward;
-    obj.bonus_proposer_reward = message.bonus_proposer_reward;
-    obj.withdraw_addr_enabled = message.withdraw_addr_enabled;
-    return obj;
-  },
   fromAmino(object: ParamsAmino): Params {
     return {
       community_tax: object.community_tax,
@@ -543,7 +567,7 @@ export const Params = {
   },
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
-      type: "cosmos-sdk/Params",
+      type: "cosmos-sdk/x/distribution/Params",
       value: Params.toAmino(message)
     };
   },
@@ -618,22 +642,6 @@ export const ValidatorHistoricalRewards = {
     message.cumulative_reward_ratio = object.cumulative_reward_ratio?.map(e => DecCoin.fromPartial(e)) || [];
     message.reference_count = object.reference_count ?? 0;
     return message;
-  },
-  fromSDK(object: ValidatorHistoricalRewardsSDKType): ValidatorHistoricalRewards {
-    return {
-      cumulative_reward_ratio: Array.isArray(object?.cumulative_reward_ratio) ? object.cumulative_reward_ratio.map((e: any) => DecCoin.fromSDK(e)) : [],
-      reference_count: object?.reference_count
-    };
-  },
-  toSDK(message: ValidatorHistoricalRewards): ValidatorHistoricalRewardsSDKType {
-    const obj: any = {};
-    if (message.cumulative_reward_ratio) {
-      obj.cumulative_reward_ratio = message.cumulative_reward_ratio.map(e => e ? DecCoin.toSDK(e) : undefined);
-    } else {
-      obj.cumulative_reward_ratio = [];
-    }
-    obj.reference_count = message.reference_count;
-    return obj;
   },
   fromAmino(object: ValidatorHistoricalRewardsAmino): ValidatorHistoricalRewards {
     return {
@@ -732,22 +740,6 @@ export const ValidatorCurrentRewards = {
     message.period = object.period !== undefined && object.period !== null ? BigInt(object.period.toString()) : BigInt(0);
     return message;
   },
-  fromSDK(object: ValidatorCurrentRewardsSDKType): ValidatorCurrentRewards {
-    return {
-      rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => DecCoin.fromSDK(e)) : [],
-      period: object?.period
-    };
-  },
-  toSDK(message: ValidatorCurrentRewards): ValidatorCurrentRewardsSDKType {
-    const obj: any = {};
-    if (message.rewards) {
-      obj.rewards = message.rewards.map(e => e ? DecCoin.toSDK(e) : undefined);
-    } else {
-      obj.rewards = [];
-    }
-    obj.period = message.period;
-    return obj;
-  },
   fromAmino(object: ValidatorCurrentRewardsAmino): ValidatorCurrentRewards {
     return {
       rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => DecCoin.fromAmino(e)) : [],
@@ -835,20 +827,6 @@ export const ValidatorAccumulatedCommission = {
     message.commission = object.commission?.map(e => DecCoin.fromPartial(e)) || [];
     return message;
   },
-  fromSDK(object: ValidatorAccumulatedCommissionSDKType): ValidatorAccumulatedCommission {
-    return {
-      commission: Array.isArray(object?.commission) ? object.commission.map((e: any) => DecCoin.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: ValidatorAccumulatedCommission): ValidatorAccumulatedCommissionSDKType {
-    const obj: any = {};
-    if (message.commission) {
-      obj.commission = message.commission.map(e => e ? DecCoin.toSDK(e) : undefined);
-    } else {
-      obj.commission = [];
-    }
-    return obj;
-  },
   fromAmino(object: ValidatorAccumulatedCommissionAmino): ValidatorAccumulatedCommission {
     return {
       commission: Array.isArray(object?.commission) ? object.commission.map((e: any) => DecCoin.fromAmino(e)) : []
@@ -933,20 +911,6 @@ export const ValidatorOutstandingRewards = {
     const message = createBaseValidatorOutstandingRewards();
     message.rewards = object.rewards?.map(e => DecCoin.fromPartial(e)) || [];
     return message;
-  },
-  fromSDK(object: ValidatorOutstandingRewardsSDKType): ValidatorOutstandingRewards {
-    return {
-      rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => DecCoin.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: ValidatorOutstandingRewards): ValidatorOutstandingRewardsSDKType {
-    const obj: any = {};
-    if (message.rewards) {
-      obj.rewards = message.rewards.map(e => e ? DecCoin.toSDK(e) : undefined);
-    } else {
-      obj.rewards = [];
-    }
-    return obj;
   },
   fromAmino(object: ValidatorOutstandingRewardsAmino): ValidatorOutstandingRewards {
     return {
@@ -1039,18 +1003,6 @@ export const ValidatorSlashEvent = {
     message.fraction = object.fraction ?? "";
     return message;
   },
-  fromSDK(object: ValidatorSlashEventSDKType): ValidatorSlashEvent {
-    return {
-      validator_period: object?.validator_period,
-      fraction: object?.fraction
-    };
-  },
-  toSDK(message: ValidatorSlashEvent): ValidatorSlashEventSDKType {
-    const obj: any = {};
-    obj.validator_period = message.validator_period;
-    obj.fraction = message.fraction;
-    return obj;
-  },
   fromAmino(object: ValidatorSlashEventAmino): ValidatorSlashEvent {
     return {
       validator_period: BigInt(object.validator_period),
@@ -1133,20 +1085,6 @@ export const ValidatorSlashEvents = {
     const message = createBaseValidatorSlashEvents();
     message.validator_slash_events = object.validator_slash_events?.map(e => ValidatorSlashEvent.fromPartial(e)) || [];
     return message;
-  },
-  fromSDK(object: ValidatorSlashEventsSDKType): ValidatorSlashEvents {
-    return {
-      validator_slash_events: Array.isArray(object?.validator_slash_events) ? object.validator_slash_events.map((e: any) => ValidatorSlashEvent.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: ValidatorSlashEvents): ValidatorSlashEventsSDKType {
-    const obj: any = {};
-    if (message.validator_slash_events) {
-      obj.validator_slash_events = message.validator_slash_events.map(e => e ? ValidatorSlashEvent.toSDK(e) : undefined);
-    } else {
-      obj.validator_slash_events = [];
-    }
-    return obj;
   },
   fromAmino(object: ValidatorSlashEventsAmino): ValidatorSlashEvents {
     return {
@@ -1232,20 +1170,6 @@ export const FeePool = {
     const message = createBaseFeePool();
     message.community_pool = object.community_pool?.map(e => DecCoin.fromPartial(e)) || [];
     return message;
-  },
-  fromSDK(object: FeePoolSDKType): FeePool {
-    return {
-      community_pool: Array.isArray(object?.community_pool) ? object.community_pool.map((e: any) => DecCoin.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: FeePool): FeePoolSDKType {
-    const obj: any = {};
-    if (message.community_pool) {
-      obj.community_pool = message.community_pool.map(e => e ? DecCoin.toSDK(e) : undefined);
-    } else {
-      obj.community_pool = [];
-    }
-    return obj;
   },
   fromAmino(object: FeePoolAmino): FeePool {
     return {
@@ -1363,26 +1287,6 @@ export const CommunityPoolSpendProposal = {
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
-  fromSDK(object: CommunityPoolSpendProposalSDKType): CommunityPoolSpendProposal {
-    return {
-      title: object?.title,
-      description: object?.description,
-      recipient: object?.recipient,
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: CommunityPoolSpendProposal): CommunityPoolSpendProposalSDKType {
-    const obj: any = {};
-    obj.title = message.title;
-    obj.description = message.description;
-    obj.recipient = message.recipient;
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-    return obj;
-  },
   fromAmino(object: CommunityPoolSpendProposalAmino): CommunityPoolSpendProposal {
     return {
       title: object.title,
@@ -1490,20 +1394,6 @@ export const DelegatorStartingInfo = {
     message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt(0);
     return message;
   },
-  fromSDK(object: DelegatorStartingInfoSDKType): DelegatorStartingInfo {
-    return {
-      previous_period: object?.previous_period,
-      stake: object?.stake,
-      height: object?.height
-    };
-  },
-  toSDK(message: DelegatorStartingInfo): DelegatorStartingInfoSDKType {
-    const obj: any = {};
-    obj.previous_period = message.previous_period;
-    obj.stake = message.stake;
-    obj.height = message.height;
-    return obj;
-  },
   fromAmino(object: DelegatorStartingInfoAmino): DelegatorStartingInfo {
     return {
       previous_period: BigInt(object.previous_period),
@@ -1598,22 +1488,6 @@ export const DelegationDelegatorReward = {
     message.validator_address = object.validator_address ?? "";
     message.reward = object.reward?.map(e => DecCoin.fromPartial(e)) || [];
     return message;
-  },
-  fromSDK(object: DelegationDelegatorRewardSDKType): DelegationDelegatorReward {
-    return {
-      validator_address: object?.validator_address,
-      reward: Array.isArray(object?.reward) ? object.reward.map((e: any) => DecCoin.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: DelegationDelegatorReward): DelegationDelegatorRewardSDKType {
-    const obj: any = {};
-    obj.validator_address = message.validator_address;
-    if (message.reward) {
-      obj.reward = message.reward.map(e => e ? DecCoin.toSDK(e) : undefined);
-    } else {
-      obj.reward = [];
-    }
-    return obj;
   },
   fromAmino(object: DelegationDelegatorRewardAmino): DelegationDelegatorReward {
     return {
@@ -1738,24 +1612,6 @@ export const CommunityPoolSpendProposalWithDeposit = {
     message.amount = object.amount ?? "";
     message.deposit = object.deposit ?? "";
     return message;
-  },
-  fromSDK(object: CommunityPoolSpendProposalWithDepositSDKType): CommunityPoolSpendProposalWithDeposit {
-    return {
-      title: object?.title,
-      description: object?.description,
-      recipient: object?.recipient,
-      amount: object?.amount,
-      deposit: object?.deposit
-    };
-  },
-  toSDK(message: CommunityPoolSpendProposalWithDeposit): CommunityPoolSpendProposalWithDepositSDKType {
-    const obj: any = {};
-    obj.title = message.title;
-    obj.description = message.description;
-    obj.recipient = message.recipient;
-    obj.amount = message.amount;
-    obj.deposit = message.deposit;
-    return obj;
   },
   fromAmino(object: CommunityPoolSpendProposalWithDepositAmino): CommunityPoolSpendProposalWithDeposit {
     return {

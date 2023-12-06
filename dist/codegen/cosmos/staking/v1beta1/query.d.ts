@@ -80,7 +80,7 @@ export interface QueryValidatorRequestSDKType {
 }
 /** QueryValidatorResponse is response type for the Query/Validator RPC method */
 export interface QueryValidatorResponse {
-    /** validator defines the the validator info. */
+    /** validator defines the validator info. */
     validator: Validator;
 }
 export interface QueryValidatorResponseProtoMsg {
@@ -89,7 +89,7 @@ export interface QueryValidatorResponseProtoMsg {
 }
 /** QueryValidatorResponse is response type for the Query/Validator RPC method */
 export interface QueryValidatorResponseAmino {
-    /** validator defines the the validator info. */
+    /** validator defines the validator info. */
     validator?: ValidatorAmino;
 }
 export interface QueryValidatorResponseAminoMsg {
@@ -619,7 +619,7 @@ export interface QueryDelegatorValidatorsRequestSDKType {
  * Query/DelegatorValidators RPC method.
  */
 export interface QueryDelegatorValidatorsResponse {
-    /** validators defines the the validators' info of a delegator. */
+    /** validators defines the validators' info of a delegator. */
     validators: Validator[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
@@ -633,7 +633,7 @@ export interface QueryDelegatorValidatorsResponseProtoMsg {
  * Query/DelegatorValidators RPC method.
  */
 export interface QueryDelegatorValidatorsResponseAmino {
-    /** validators defines the the validators' info of a delegator. */
+    /** validators defines the validators' info of a delegator. */
     validators: ValidatorAmino[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;
@@ -691,7 +691,7 @@ export interface QueryDelegatorValidatorRequestSDKType {
  * Query/DelegatorValidator RPC method.
  */
 export interface QueryDelegatorValidatorResponse {
-    /** validator defines the the validator info. */
+    /** validator defines the validator info. */
     validator: Validator;
 }
 export interface QueryDelegatorValidatorResponseProtoMsg {
@@ -703,7 +703,7 @@ export interface QueryDelegatorValidatorResponseProtoMsg {
  * Query/DelegatorValidator RPC method.
  */
 export interface QueryDelegatorValidatorResponseAmino {
-    /** validator defines the the validator info. */
+    /** validator defines the validator info. */
     validator?: ValidatorAmino;
 }
 export interface QueryDelegatorValidatorResponseAminoMsg {
@@ -864,8 +864,6 @@ export declare const QueryValidatorsRequest: {
     fromJSON(object: any): QueryValidatorsRequest;
     toJSON(message: QueryValidatorsRequest): unknown;
     fromPartial(object: Partial<QueryValidatorsRequest>): QueryValidatorsRequest;
-    fromSDK(object: QueryValidatorsRequestSDKType): QueryValidatorsRequest;
-    toSDK(message: QueryValidatorsRequest): QueryValidatorsRequestSDKType;
     fromAmino(object: QueryValidatorsRequestAmino): QueryValidatorsRequest;
     toAmino(message: QueryValidatorsRequest): QueryValidatorsRequestAmino;
     fromAminoMsg(object: QueryValidatorsRequestAminoMsg): QueryValidatorsRequest;
@@ -881,8 +879,6 @@ export declare const QueryValidatorsResponse: {
     fromJSON(object: any): QueryValidatorsResponse;
     toJSON(message: QueryValidatorsResponse): unknown;
     fromPartial(object: Partial<QueryValidatorsResponse>): QueryValidatorsResponse;
-    fromSDK(object: QueryValidatorsResponseSDKType): QueryValidatorsResponse;
-    toSDK(message: QueryValidatorsResponse): QueryValidatorsResponseSDKType;
     fromAmino(object: QueryValidatorsResponseAmino): QueryValidatorsResponse;
     toAmino(message: QueryValidatorsResponse): QueryValidatorsResponseAmino;
     fromAminoMsg(object: QueryValidatorsResponseAminoMsg): QueryValidatorsResponse;
@@ -898,8 +894,6 @@ export declare const QueryValidatorRequest: {
     fromJSON(object: any): QueryValidatorRequest;
     toJSON(message: QueryValidatorRequest): unknown;
     fromPartial(object: Partial<QueryValidatorRequest>): QueryValidatorRequest;
-    fromSDK(object: QueryValidatorRequestSDKType): QueryValidatorRequest;
-    toSDK(message: QueryValidatorRequest): QueryValidatorRequestSDKType;
     fromAmino(object: QueryValidatorRequestAmino): QueryValidatorRequest;
     toAmino(message: QueryValidatorRequest): QueryValidatorRequestAmino;
     fromAminoMsg(object: QueryValidatorRequestAminoMsg): QueryValidatorRequest;
@@ -915,8 +909,6 @@ export declare const QueryValidatorResponse: {
     fromJSON(object: any): QueryValidatorResponse;
     toJSON(message: QueryValidatorResponse): unknown;
     fromPartial(object: Partial<QueryValidatorResponse>): QueryValidatorResponse;
-    fromSDK(object: QueryValidatorResponseSDKType): QueryValidatorResponse;
-    toSDK(message: QueryValidatorResponse): QueryValidatorResponseSDKType;
     fromAmino(object: QueryValidatorResponseAmino): QueryValidatorResponse;
     toAmino(message: QueryValidatorResponse): QueryValidatorResponseAmino;
     fromAminoMsg(object: QueryValidatorResponseAminoMsg): QueryValidatorResponse;
@@ -932,8 +924,6 @@ export declare const QueryValidatorDelegationsRequest: {
     fromJSON(object: any): QueryValidatorDelegationsRequest;
     toJSON(message: QueryValidatorDelegationsRequest): unknown;
     fromPartial(object: Partial<QueryValidatorDelegationsRequest>): QueryValidatorDelegationsRequest;
-    fromSDK(object: QueryValidatorDelegationsRequestSDKType): QueryValidatorDelegationsRequest;
-    toSDK(message: QueryValidatorDelegationsRequest): QueryValidatorDelegationsRequestSDKType;
     fromAmino(object: QueryValidatorDelegationsRequestAmino): QueryValidatorDelegationsRequest;
     toAmino(message: QueryValidatorDelegationsRequest): QueryValidatorDelegationsRequestAmino;
     fromAminoMsg(object: QueryValidatorDelegationsRequestAminoMsg): QueryValidatorDelegationsRequest;
@@ -949,8 +939,6 @@ export declare const QueryValidatorDelegationsResponse: {
     fromJSON(object: any): QueryValidatorDelegationsResponse;
     toJSON(message: QueryValidatorDelegationsResponse): unknown;
     fromPartial(object: Partial<QueryValidatorDelegationsResponse>): QueryValidatorDelegationsResponse;
-    fromSDK(object: QueryValidatorDelegationsResponseSDKType): QueryValidatorDelegationsResponse;
-    toSDK(message: QueryValidatorDelegationsResponse): QueryValidatorDelegationsResponseSDKType;
     fromAmino(object: QueryValidatorDelegationsResponseAmino): QueryValidatorDelegationsResponse;
     toAmino(message: QueryValidatorDelegationsResponse): QueryValidatorDelegationsResponseAmino;
     fromAminoMsg(object: QueryValidatorDelegationsResponseAminoMsg): QueryValidatorDelegationsResponse;
@@ -966,8 +954,6 @@ export declare const QueryValidatorUnbondingDelegationsRequest: {
     fromJSON(object: any): QueryValidatorUnbondingDelegationsRequest;
     toJSON(message: QueryValidatorUnbondingDelegationsRequest): unknown;
     fromPartial(object: Partial<QueryValidatorUnbondingDelegationsRequest>): QueryValidatorUnbondingDelegationsRequest;
-    fromSDK(object: QueryValidatorUnbondingDelegationsRequestSDKType): QueryValidatorUnbondingDelegationsRequest;
-    toSDK(message: QueryValidatorUnbondingDelegationsRequest): QueryValidatorUnbondingDelegationsRequestSDKType;
     fromAmino(object: QueryValidatorUnbondingDelegationsRequestAmino): QueryValidatorUnbondingDelegationsRequest;
     toAmino(message: QueryValidatorUnbondingDelegationsRequest): QueryValidatorUnbondingDelegationsRequestAmino;
     fromAminoMsg(object: QueryValidatorUnbondingDelegationsRequestAminoMsg): QueryValidatorUnbondingDelegationsRequest;
@@ -983,8 +969,6 @@ export declare const QueryValidatorUnbondingDelegationsResponse: {
     fromJSON(object: any): QueryValidatorUnbondingDelegationsResponse;
     toJSON(message: QueryValidatorUnbondingDelegationsResponse): unknown;
     fromPartial(object: Partial<QueryValidatorUnbondingDelegationsResponse>): QueryValidatorUnbondingDelegationsResponse;
-    fromSDK(object: QueryValidatorUnbondingDelegationsResponseSDKType): QueryValidatorUnbondingDelegationsResponse;
-    toSDK(message: QueryValidatorUnbondingDelegationsResponse): QueryValidatorUnbondingDelegationsResponseSDKType;
     fromAmino(object: QueryValidatorUnbondingDelegationsResponseAmino): QueryValidatorUnbondingDelegationsResponse;
     toAmino(message: QueryValidatorUnbondingDelegationsResponse): QueryValidatorUnbondingDelegationsResponseAmino;
     fromAminoMsg(object: QueryValidatorUnbondingDelegationsResponseAminoMsg): QueryValidatorUnbondingDelegationsResponse;
@@ -1000,8 +984,6 @@ export declare const QueryDelegationRequest: {
     fromJSON(object: any): QueryDelegationRequest;
     toJSON(message: QueryDelegationRequest): unknown;
     fromPartial(object: Partial<QueryDelegationRequest>): QueryDelegationRequest;
-    fromSDK(object: QueryDelegationRequestSDKType): QueryDelegationRequest;
-    toSDK(message: QueryDelegationRequest): QueryDelegationRequestSDKType;
     fromAmino(object: QueryDelegationRequestAmino): QueryDelegationRequest;
     toAmino(message: QueryDelegationRequest): QueryDelegationRequestAmino;
     fromAminoMsg(object: QueryDelegationRequestAminoMsg): QueryDelegationRequest;
@@ -1017,8 +999,6 @@ export declare const QueryDelegationResponse: {
     fromJSON(object: any): QueryDelegationResponse;
     toJSON(message: QueryDelegationResponse): unknown;
     fromPartial(object: Partial<QueryDelegationResponse>): QueryDelegationResponse;
-    fromSDK(object: QueryDelegationResponseSDKType): QueryDelegationResponse;
-    toSDK(message: QueryDelegationResponse): QueryDelegationResponseSDKType;
     fromAmino(object: QueryDelegationResponseAmino): QueryDelegationResponse;
     toAmino(message: QueryDelegationResponse): QueryDelegationResponseAmino;
     fromAminoMsg(object: QueryDelegationResponseAminoMsg): QueryDelegationResponse;
@@ -1034,8 +1014,6 @@ export declare const QueryUnbondingDelegationRequest: {
     fromJSON(object: any): QueryUnbondingDelegationRequest;
     toJSON(message: QueryUnbondingDelegationRequest): unknown;
     fromPartial(object: Partial<QueryUnbondingDelegationRequest>): QueryUnbondingDelegationRequest;
-    fromSDK(object: QueryUnbondingDelegationRequestSDKType): QueryUnbondingDelegationRequest;
-    toSDK(message: QueryUnbondingDelegationRequest): QueryUnbondingDelegationRequestSDKType;
     fromAmino(object: QueryUnbondingDelegationRequestAmino): QueryUnbondingDelegationRequest;
     toAmino(message: QueryUnbondingDelegationRequest): QueryUnbondingDelegationRequestAmino;
     fromAminoMsg(object: QueryUnbondingDelegationRequestAminoMsg): QueryUnbondingDelegationRequest;
@@ -1051,8 +1029,6 @@ export declare const QueryUnbondingDelegationResponse: {
     fromJSON(object: any): QueryUnbondingDelegationResponse;
     toJSON(message: QueryUnbondingDelegationResponse): unknown;
     fromPartial(object: Partial<QueryUnbondingDelegationResponse>): QueryUnbondingDelegationResponse;
-    fromSDK(object: QueryUnbondingDelegationResponseSDKType): QueryUnbondingDelegationResponse;
-    toSDK(message: QueryUnbondingDelegationResponse): QueryUnbondingDelegationResponseSDKType;
     fromAmino(object: QueryUnbondingDelegationResponseAmino): QueryUnbondingDelegationResponse;
     toAmino(message: QueryUnbondingDelegationResponse): QueryUnbondingDelegationResponseAmino;
     fromAminoMsg(object: QueryUnbondingDelegationResponseAminoMsg): QueryUnbondingDelegationResponse;
@@ -1068,8 +1044,6 @@ export declare const QueryDelegatorDelegationsRequest: {
     fromJSON(object: any): QueryDelegatorDelegationsRequest;
     toJSON(message: QueryDelegatorDelegationsRequest): unknown;
     fromPartial(object: Partial<QueryDelegatorDelegationsRequest>): QueryDelegatorDelegationsRequest;
-    fromSDK(object: QueryDelegatorDelegationsRequestSDKType): QueryDelegatorDelegationsRequest;
-    toSDK(message: QueryDelegatorDelegationsRequest): QueryDelegatorDelegationsRequestSDKType;
     fromAmino(object: QueryDelegatorDelegationsRequestAmino): QueryDelegatorDelegationsRequest;
     toAmino(message: QueryDelegatorDelegationsRequest): QueryDelegatorDelegationsRequestAmino;
     fromAminoMsg(object: QueryDelegatorDelegationsRequestAminoMsg): QueryDelegatorDelegationsRequest;
@@ -1085,8 +1059,6 @@ export declare const QueryDelegatorDelegationsResponse: {
     fromJSON(object: any): QueryDelegatorDelegationsResponse;
     toJSON(message: QueryDelegatorDelegationsResponse): unknown;
     fromPartial(object: Partial<QueryDelegatorDelegationsResponse>): QueryDelegatorDelegationsResponse;
-    fromSDK(object: QueryDelegatorDelegationsResponseSDKType): QueryDelegatorDelegationsResponse;
-    toSDK(message: QueryDelegatorDelegationsResponse): QueryDelegatorDelegationsResponseSDKType;
     fromAmino(object: QueryDelegatorDelegationsResponseAmino): QueryDelegatorDelegationsResponse;
     toAmino(message: QueryDelegatorDelegationsResponse): QueryDelegatorDelegationsResponseAmino;
     fromAminoMsg(object: QueryDelegatorDelegationsResponseAminoMsg): QueryDelegatorDelegationsResponse;
@@ -1102,8 +1074,6 @@ export declare const QueryDelegatorUnbondingDelegationsRequest: {
     fromJSON(object: any): QueryDelegatorUnbondingDelegationsRequest;
     toJSON(message: QueryDelegatorUnbondingDelegationsRequest): unknown;
     fromPartial(object: Partial<QueryDelegatorUnbondingDelegationsRequest>): QueryDelegatorUnbondingDelegationsRequest;
-    fromSDK(object: QueryDelegatorUnbondingDelegationsRequestSDKType): QueryDelegatorUnbondingDelegationsRequest;
-    toSDK(message: QueryDelegatorUnbondingDelegationsRequest): QueryDelegatorUnbondingDelegationsRequestSDKType;
     fromAmino(object: QueryDelegatorUnbondingDelegationsRequestAmino): QueryDelegatorUnbondingDelegationsRequest;
     toAmino(message: QueryDelegatorUnbondingDelegationsRequest): QueryDelegatorUnbondingDelegationsRequestAmino;
     fromAminoMsg(object: QueryDelegatorUnbondingDelegationsRequestAminoMsg): QueryDelegatorUnbondingDelegationsRequest;
@@ -1119,8 +1089,6 @@ export declare const QueryDelegatorUnbondingDelegationsResponse: {
     fromJSON(object: any): QueryDelegatorUnbondingDelegationsResponse;
     toJSON(message: QueryDelegatorUnbondingDelegationsResponse): unknown;
     fromPartial(object: Partial<QueryDelegatorUnbondingDelegationsResponse>): QueryDelegatorUnbondingDelegationsResponse;
-    fromSDK(object: QueryDelegatorUnbondingDelegationsResponseSDKType): QueryDelegatorUnbondingDelegationsResponse;
-    toSDK(message: QueryDelegatorUnbondingDelegationsResponse): QueryDelegatorUnbondingDelegationsResponseSDKType;
     fromAmino(object: QueryDelegatorUnbondingDelegationsResponseAmino): QueryDelegatorUnbondingDelegationsResponse;
     toAmino(message: QueryDelegatorUnbondingDelegationsResponse): QueryDelegatorUnbondingDelegationsResponseAmino;
     fromAminoMsg(object: QueryDelegatorUnbondingDelegationsResponseAminoMsg): QueryDelegatorUnbondingDelegationsResponse;
@@ -1136,8 +1104,6 @@ export declare const QueryRedelegationsRequest: {
     fromJSON(object: any): QueryRedelegationsRequest;
     toJSON(message: QueryRedelegationsRequest): unknown;
     fromPartial(object: Partial<QueryRedelegationsRequest>): QueryRedelegationsRequest;
-    fromSDK(object: QueryRedelegationsRequestSDKType): QueryRedelegationsRequest;
-    toSDK(message: QueryRedelegationsRequest): QueryRedelegationsRequestSDKType;
     fromAmino(object: QueryRedelegationsRequestAmino): QueryRedelegationsRequest;
     toAmino(message: QueryRedelegationsRequest): QueryRedelegationsRequestAmino;
     fromAminoMsg(object: QueryRedelegationsRequestAminoMsg): QueryRedelegationsRequest;
@@ -1153,8 +1119,6 @@ export declare const QueryRedelegationsResponse: {
     fromJSON(object: any): QueryRedelegationsResponse;
     toJSON(message: QueryRedelegationsResponse): unknown;
     fromPartial(object: Partial<QueryRedelegationsResponse>): QueryRedelegationsResponse;
-    fromSDK(object: QueryRedelegationsResponseSDKType): QueryRedelegationsResponse;
-    toSDK(message: QueryRedelegationsResponse): QueryRedelegationsResponseSDKType;
     fromAmino(object: QueryRedelegationsResponseAmino): QueryRedelegationsResponse;
     toAmino(message: QueryRedelegationsResponse): QueryRedelegationsResponseAmino;
     fromAminoMsg(object: QueryRedelegationsResponseAminoMsg): QueryRedelegationsResponse;
@@ -1170,8 +1134,6 @@ export declare const QueryDelegatorValidatorsRequest: {
     fromJSON(object: any): QueryDelegatorValidatorsRequest;
     toJSON(message: QueryDelegatorValidatorsRequest): unknown;
     fromPartial(object: Partial<QueryDelegatorValidatorsRequest>): QueryDelegatorValidatorsRequest;
-    fromSDK(object: QueryDelegatorValidatorsRequestSDKType): QueryDelegatorValidatorsRequest;
-    toSDK(message: QueryDelegatorValidatorsRequest): QueryDelegatorValidatorsRequestSDKType;
     fromAmino(object: QueryDelegatorValidatorsRequestAmino): QueryDelegatorValidatorsRequest;
     toAmino(message: QueryDelegatorValidatorsRequest): QueryDelegatorValidatorsRequestAmino;
     fromAminoMsg(object: QueryDelegatorValidatorsRequestAminoMsg): QueryDelegatorValidatorsRequest;
@@ -1187,8 +1149,6 @@ export declare const QueryDelegatorValidatorsResponse: {
     fromJSON(object: any): QueryDelegatorValidatorsResponse;
     toJSON(message: QueryDelegatorValidatorsResponse): unknown;
     fromPartial(object: Partial<QueryDelegatorValidatorsResponse>): QueryDelegatorValidatorsResponse;
-    fromSDK(object: QueryDelegatorValidatorsResponseSDKType): QueryDelegatorValidatorsResponse;
-    toSDK(message: QueryDelegatorValidatorsResponse): QueryDelegatorValidatorsResponseSDKType;
     fromAmino(object: QueryDelegatorValidatorsResponseAmino): QueryDelegatorValidatorsResponse;
     toAmino(message: QueryDelegatorValidatorsResponse): QueryDelegatorValidatorsResponseAmino;
     fromAminoMsg(object: QueryDelegatorValidatorsResponseAminoMsg): QueryDelegatorValidatorsResponse;
@@ -1204,8 +1164,6 @@ export declare const QueryDelegatorValidatorRequest: {
     fromJSON(object: any): QueryDelegatorValidatorRequest;
     toJSON(message: QueryDelegatorValidatorRequest): unknown;
     fromPartial(object: Partial<QueryDelegatorValidatorRequest>): QueryDelegatorValidatorRequest;
-    fromSDK(object: QueryDelegatorValidatorRequestSDKType): QueryDelegatorValidatorRequest;
-    toSDK(message: QueryDelegatorValidatorRequest): QueryDelegatorValidatorRequestSDKType;
     fromAmino(object: QueryDelegatorValidatorRequestAmino): QueryDelegatorValidatorRequest;
     toAmino(message: QueryDelegatorValidatorRequest): QueryDelegatorValidatorRequestAmino;
     fromAminoMsg(object: QueryDelegatorValidatorRequestAminoMsg): QueryDelegatorValidatorRequest;
@@ -1221,8 +1179,6 @@ export declare const QueryDelegatorValidatorResponse: {
     fromJSON(object: any): QueryDelegatorValidatorResponse;
     toJSON(message: QueryDelegatorValidatorResponse): unknown;
     fromPartial(object: Partial<QueryDelegatorValidatorResponse>): QueryDelegatorValidatorResponse;
-    fromSDK(object: QueryDelegatorValidatorResponseSDKType): QueryDelegatorValidatorResponse;
-    toSDK(message: QueryDelegatorValidatorResponse): QueryDelegatorValidatorResponseSDKType;
     fromAmino(object: QueryDelegatorValidatorResponseAmino): QueryDelegatorValidatorResponse;
     toAmino(message: QueryDelegatorValidatorResponse): QueryDelegatorValidatorResponseAmino;
     fromAminoMsg(object: QueryDelegatorValidatorResponseAminoMsg): QueryDelegatorValidatorResponse;
@@ -1238,8 +1194,6 @@ export declare const QueryHistoricalInfoRequest: {
     fromJSON(object: any): QueryHistoricalInfoRequest;
     toJSON(message: QueryHistoricalInfoRequest): unknown;
     fromPartial(object: Partial<QueryHistoricalInfoRequest>): QueryHistoricalInfoRequest;
-    fromSDK(object: QueryHistoricalInfoRequestSDKType): QueryHistoricalInfoRequest;
-    toSDK(message: QueryHistoricalInfoRequest): QueryHistoricalInfoRequestSDKType;
     fromAmino(object: QueryHistoricalInfoRequestAmino): QueryHistoricalInfoRequest;
     toAmino(message: QueryHistoricalInfoRequest): QueryHistoricalInfoRequestAmino;
     fromAminoMsg(object: QueryHistoricalInfoRequestAminoMsg): QueryHistoricalInfoRequest;
@@ -1255,8 +1209,6 @@ export declare const QueryHistoricalInfoResponse: {
     fromJSON(object: any): QueryHistoricalInfoResponse;
     toJSON(message: QueryHistoricalInfoResponse): unknown;
     fromPartial(object: Partial<QueryHistoricalInfoResponse>): QueryHistoricalInfoResponse;
-    fromSDK(object: QueryHistoricalInfoResponseSDKType): QueryHistoricalInfoResponse;
-    toSDK(message: QueryHistoricalInfoResponse): QueryHistoricalInfoResponseSDKType;
     fromAmino(object: QueryHistoricalInfoResponseAmino): QueryHistoricalInfoResponse;
     toAmino(message: QueryHistoricalInfoResponse): QueryHistoricalInfoResponseAmino;
     fromAminoMsg(object: QueryHistoricalInfoResponseAminoMsg): QueryHistoricalInfoResponse;
@@ -1272,8 +1224,6 @@ export declare const QueryPoolRequest: {
     fromJSON(_: any): QueryPoolRequest;
     toJSON(_: QueryPoolRequest): unknown;
     fromPartial(_: Partial<QueryPoolRequest>): QueryPoolRequest;
-    fromSDK(_: QueryPoolRequestSDKType): QueryPoolRequest;
-    toSDK(_: QueryPoolRequest): QueryPoolRequestSDKType;
     fromAmino(_: QueryPoolRequestAmino): QueryPoolRequest;
     toAmino(_: QueryPoolRequest): QueryPoolRequestAmino;
     fromAminoMsg(object: QueryPoolRequestAminoMsg): QueryPoolRequest;
@@ -1289,8 +1239,6 @@ export declare const QueryPoolResponse: {
     fromJSON(object: any): QueryPoolResponse;
     toJSON(message: QueryPoolResponse): unknown;
     fromPartial(object: Partial<QueryPoolResponse>): QueryPoolResponse;
-    fromSDK(object: QueryPoolResponseSDKType): QueryPoolResponse;
-    toSDK(message: QueryPoolResponse): QueryPoolResponseSDKType;
     fromAmino(object: QueryPoolResponseAmino): QueryPoolResponse;
     toAmino(message: QueryPoolResponse): QueryPoolResponseAmino;
     fromAminoMsg(object: QueryPoolResponseAminoMsg): QueryPoolResponse;
@@ -1306,8 +1254,6 @@ export declare const QueryParamsRequest: {
     fromJSON(_: any): QueryParamsRequest;
     toJSON(_: QueryParamsRequest): unknown;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
-    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
-    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
     fromAminoMsg(object: QueryParamsRequestAminoMsg): QueryParamsRequest;
@@ -1323,8 +1269,6 @@ export declare const QueryParamsResponse: {
     fromJSON(object: any): QueryParamsResponse;
     toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
-    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
-    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
     fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse;

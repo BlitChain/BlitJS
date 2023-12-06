@@ -69,8 +69,6 @@ export declare const Metadata: {
     fromJSON(object: any): Metadata;
     toJSON(message: Metadata): unknown;
     fromPartial(object: Partial<Metadata>): Metadata;
-    fromSDK(object: MetadataSDKType): Metadata;
-    toSDK(message: Metadata): MetadataSDKType;
     fromAmino(object: MetadataAmino): Metadata;
     toAmino(message: Metadata): MetadataAmino;
     fromAminoMsg(object: MetadataAminoMsg): Metadata;

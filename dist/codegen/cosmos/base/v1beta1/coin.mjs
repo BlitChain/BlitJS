@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { Decimal } from "@cosmjs/math";
 export const protobufPackage = "cosmos.base.v1beta1";
 function createBaseCoin() {
     return {
@@ -57,18 +58,6 @@ export const Coin = {
         message.amount = object.amount ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            denom: object?.denom,
-            amount: object?.amount
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.denom = message.denom;
-        obj.amount = message.amount;
-        return obj;
-    },
     fromAmino(object) {
         return {
             denom: object.denom,
@@ -116,7 +105,7 @@ export const DecCoin = {
             writer.uint32(10).string(message.denom);
         }
         if (message.amount !== "") {
-            writer.uint32(18).string(message.amount);
+            writer.uint32(18).string(Decimal.fromUserInput(message.amount, 18).atomics);
         }
         return writer;
     },
@@ -131,7 +120,7 @@ export const DecCoin = {
                     message.denom = reader.string();
                     break;
                 case 2:
-                    message.amount = reader.string();
+                    message.amount = Decimal.fromAtomics(reader.string(), 18).toString();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -157,18 +146,6 @@ export const DecCoin = {
         message.denom = object.denom ?? "";
         message.amount = object.amount ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            denom: object?.denom,
-            amount: object?.amount
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.denom = message.denom;
-        obj.amount = message.amount;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -249,16 +226,6 @@ export const IntProto = {
         message.int = object.int ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            int: object?.int
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.int = message.int;
-        return obj;
-    },
     fromAmino(object) {
         return {
             int: object.int
@@ -300,7 +267,7 @@ export const DecProto = {
     typeUrl: "/cosmos.base.v1beta1.DecProto",
     encode(message, writer = BinaryWriter.create()) {
         if (message.dec !== "") {
-            writer.uint32(10).string(message.dec);
+            writer.uint32(10).string(Decimal.fromUserInput(message.dec, 18).atomics);
         }
         return writer;
     },
@@ -312,7 +279,7 @@ export const DecProto = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.dec = reader.string();
+                    message.dec = Decimal.fromAtomics(reader.string(), 18).toString();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -335,16 +302,6 @@ export const DecProto = {
         const message = createBaseDecProto();
         message.dec = object.dec ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            dec: object?.dec
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.dec = message.dec;
-        return obj;
     },
     fromAmino(object) {
         return {

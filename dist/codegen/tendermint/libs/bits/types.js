@@ -75,23 +75,6 @@ exports.BitArray = {
         message.elems = object.elems?.map(e => BigInt(e.toString())) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            bits: object?.bits,
-            elems: Array.isArray(object?.elems) ? object.elems.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.bits = message.bits;
-        if (message.elems) {
-            obj.elems = message.elems.map(e => e);
-        }
-        else {
-            obj.elems = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             bits: BigInt(object.bits),

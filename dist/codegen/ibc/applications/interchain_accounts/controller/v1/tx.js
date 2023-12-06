@@ -72,20 +72,6 @@ exports.MsgRegisterInterchainAccount = {
         message.version = object.version ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            owner: object?.owner,
-            connection_id: object?.connection_id,
-            version: object?.version
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.owner = message.owner;
-        obj.connection_id = message.connection_id;
-        obj.version = message.version;
-        return obj;
-    },
     fromAmino(object) {
         return {
             owner: object.owner,
@@ -176,18 +162,6 @@ exports.MsgRegisterInterchainAccountResponse = {
         message.channel_id = object.channel_id ?? "";
         message.port_id = object.port_id ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            channel_id: object?.channel_id,
-            port_id: object?.port_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.channel_id = message.channel_id;
-        obj.port_id = message.port_id;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -298,22 +272,6 @@ exports.MsgSendTx = {
         message.relative_timeout = object.relative_timeout !== undefined && object.relative_timeout !== null ? BigInt(object.relative_timeout.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            owner: object?.owner,
-            connection_id: object?.connection_id,
-            packet_data: object.packet_data ? packet_1.InterchainAccountPacketData.fromSDK(object.packet_data) : undefined,
-            relative_timeout: object?.relative_timeout
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.owner = message.owner;
-        obj.connection_id = message.connection_id;
-        message.packet_data !== undefined && (obj.packet_data = message.packet_data ? packet_1.InterchainAccountPacketData.toSDK(message.packet_data) : undefined);
-        obj.relative_timeout = message.relative_timeout;
-        return obj;
-    },
     fromAmino(object) {
         return {
             owner: object.owner,
@@ -396,16 +354,6 @@ exports.MsgSendTxResponse = {
         const message = createBaseMsgSendTxResponse();
         message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            sequence: object?.sequence
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.sequence = message.sequence;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -494,18 +442,6 @@ exports.MsgUpdateParams = {
         message.params = object.params !== undefined && object.params !== null ? controller_1.Params.fromPartial(object.params) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            signer: object?.signer,
-            params: object.params ? controller_1.Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.signer = message.signer;
-        message.params !== undefined && (obj.params = message.params ? controller_1.Params.toSDK(message.params) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             signer: object.signer,
@@ -572,13 +508,6 @@ exports.MsgUpdateParamsResponse = {
     fromPartial(_) {
         const message = createBaseMsgUpdateParamsResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};

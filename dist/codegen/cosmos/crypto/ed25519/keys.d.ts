@@ -25,7 +25,7 @@ export interface PubKeyAmino {
     key: Uint8Array;
 }
 export interface PubKeyAminoMsg {
-    type: "cosmos-sdk/PubKey";
+    type: "tendermint/PubKeyEd25519";
     value: PubKeyAmino;
 }
 /**
@@ -39,7 +39,7 @@ export interface PubKeySDKType {
     key: Uint8Array;
 }
 /**
- * Deprecated: PrivKey defines a ed25519 private key.
+ * PrivKey defines a ed25519 private key.
  * NOTE: ed25519 keys must not be used in SDK apps except in a tendermint validator context.
  */
 export interface PrivKey {
@@ -50,18 +50,18 @@ export interface PrivKeyProtoMsg {
     value: Uint8Array;
 }
 /**
- * Deprecated: PrivKey defines a ed25519 private key.
+ * PrivKey defines a ed25519 private key.
  * NOTE: ed25519 keys must not be used in SDK apps except in a tendermint validator context.
  */
 export interface PrivKeyAmino {
     key: Uint8Array;
 }
 export interface PrivKeyAminoMsg {
-    type: "cosmos-sdk/PrivKey";
+    type: "tendermint/PrivKeyEd25519";
     value: PrivKeyAmino;
 }
 /**
- * Deprecated: PrivKey defines a ed25519 private key.
+ * PrivKey defines a ed25519 private key.
  * NOTE: ed25519 keys must not be used in SDK apps except in a tendermint validator context.
  */
 export interface PrivKeySDKType {
@@ -74,8 +74,6 @@ export declare const PubKey: {
     fromJSON(object: any): PubKey;
     toJSON(message: PubKey): unknown;
     fromPartial(object: Partial<PubKey>): PubKey;
-    fromSDK(object: PubKeySDKType): PubKey;
-    toSDK(message: PubKey): PubKeySDKType;
     fromAmino(object: PubKeyAmino): PubKey;
     toAmino(message: PubKey): PubKeyAmino;
     fromAminoMsg(object: PubKeyAminoMsg): PubKey;
@@ -91,8 +89,6 @@ export declare const PrivKey: {
     fromJSON(object: any): PrivKey;
     toJSON(message: PrivKey): unknown;
     fromPartial(object: Partial<PrivKey>): PrivKey;
-    fromSDK(object: PrivKeySDKType): PrivKey;
-    toSDK(message: PrivKey): PrivKeySDKType;
     fromAmino(object: PrivKeyAmino): PrivKey;
     toAmino(message: PrivKey): PrivKeyAmino;
     fromAminoMsg(object: PrivKeyAminoMsg): PrivKey;

@@ -76,7 +76,7 @@ exports.voteOptionToJSON = voteOptionToJSON;
 /** ProposalStatus enumerates the valid statuses of a proposal. */
 var ProposalStatus;
 (function (ProposalStatus) {
-    /** PROPOSAL_STATUS_UNSPECIFIED - PROPOSAL_STATUS_UNSPECIFIED defines the default propopsal status. */
+    /** PROPOSAL_STATUS_UNSPECIFIED - PROPOSAL_STATUS_UNSPECIFIED defines the default proposal status. */
     ProposalStatus[ProposalStatus["PROPOSAL_STATUS_UNSPECIFIED"] = 0] = "PROPOSAL_STATUS_UNSPECIFIED";
     /**
      * PROPOSAL_STATUS_DEPOSIT_PERIOD - PROPOSAL_STATUS_DEPOSIT_PERIOD defines a proposal status during the deposit
@@ -209,18 +209,6 @@ exports.WeightedVoteOption = {
         message.weight = object.weight ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            option: (0, helpers_1.isSet)(object.option) ? voteOptionFromJSON(object.option) : -1,
-            weight: object?.weight
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.option !== undefined && (obj.option = voteOptionToJSON(message.option));
-        obj.weight = message.weight;
-        return obj;
-    },
     fromAmino(object) {
         return {
             option: (0, helpers_1.isSet)(object.option) ? voteOptionFromJSON(object.option) : -1,
@@ -310,18 +298,6 @@ exports.TextProposal = {
         message.title = object.title ?? "";
         message.description = object.description ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            title: object?.title,
-            description: object?.description
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.title = message.title;
-        obj.description = message.description;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -426,25 +402,6 @@ exports.Deposit = {
         message.depositor = object.depositor ?? "";
         message.amount = object.amount?.map(e => coin_1.Coin.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            depositor: object?.depositor,
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        obj.depositor = message.depositor;
-        if (message.amount) {
-            obj.amount = message.amount.map(e => e ? coin_1.Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.amount = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -617,37 +574,6 @@ exports.Proposal = {
         message.voting_end_time = object.voting_end_time ?? undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            content: object.content ? any_1.Any.fromSDK(object.content) : undefined,
-            status: (0, helpers_1.isSet)(object.status) ? proposalStatusFromJSON(object.status) : -1,
-            final_tally_result: object.final_tally_result ? exports.TallyResult.fromSDK(object.final_tally_result) : undefined,
-            submit_time: object.submit_time ? timestamp_1.Timestamp.fromSDK(object.submit_time) : undefined,
-            deposit_end_time: object.deposit_end_time ? timestamp_1.Timestamp.fromSDK(object.deposit_end_time) : undefined,
-            total_deposit: Array.isArray(object?.total_deposit) ? object.total_deposit.map((e) => coin_1.Coin.fromSDK(e)) : [],
-            voting_start_time: object.voting_start_time ? timestamp_1.Timestamp.fromSDK(object.voting_start_time) : undefined,
-            voting_end_time: object.voting_end_time ? timestamp_1.Timestamp.fromSDK(object.voting_end_time) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        message.content !== undefined && (obj.content = message.content ? any_1.Any.toSDK(message.content) : undefined);
-        message.status !== undefined && (obj.status = proposalStatusToJSON(message.status));
-        message.final_tally_result !== undefined && (obj.final_tally_result = message.final_tally_result ? exports.TallyResult.toSDK(message.final_tally_result) : undefined);
-        message.submit_time !== undefined && (obj.submit_time = message.submit_time ? timestamp_1.Timestamp.toSDK(message.submit_time) : undefined);
-        message.deposit_end_time !== undefined && (obj.deposit_end_time = message.deposit_end_time ? timestamp_1.Timestamp.toSDK(message.deposit_end_time) : undefined);
-        if (message.total_deposit) {
-            obj.total_deposit = message.total_deposit.map(e => e ? coin_1.Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.total_deposit = [];
-        }
-        message.voting_start_time !== undefined && (obj.voting_start_time = message.voting_start_time ? timestamp_1.Timestamp.toSDK(message.voting_start_time) : undefined);
-        message.voting_end_time !== undefined && (obj.voting_end_time = message.voting_end_time ? timestamp_1.Timestamp.toSDK(message.voting_end_time) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id),
@@ -776,22 +702,6 @@ exports.TallyResult = {
         message.no_with_veto = object.no_with_veto ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            yes: object?.yes,
-            abstain: object?.abstain,
-            no: object?.no,
-            no_with_veto: object?.no_with_veto
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.yes = message.yes;
-        obj.abstain = message.abstain;
-        obj.no = message.no;
-        obj.no_with_veto = message.no_with_veto;
-        return obj;
-    },
     fromAmino(object) {
         return {
             yes: object.yes,
@@ -910,27 +820,6 @@ exports.Vote = {
         message.options = object.options?.map(e => exports.WeightedVoteOption.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            voter: object?.voter,
-            option: (0, helpers_1.isSet)(object.option) ? voteOptionFromJSON(object.option) : -1,
-            options: Array.isArray(object?.options) ? object.options.map((e) => exports.WeightedVoteOption.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        obj.voter = message.voter;
-        message.option !== undefined && (obj.option = voteOptionToJSON(message.option));
-        if (message.options) {
-            obj.options = message.options.map(e => e ? exports.WeightedVoteOption.toSDK(e) : undefined);
-        }
-        else {
-            obj.options = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id),
@@ -1034,23 +923,6 @@ exports.DepositParams = {
         message.max_deposit_period = object.max_deposit_period !== undefined && object.max_deposit_period !== null ? duration_1.Duration.fromPartial(object.max_deposit_period) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            min_deposit: Array.isArray(object?.min_deposit) ? object.min_deposit.map((e) => coin_1.Coin.fromSDK(e)) : [],
-            max_deposit_period: object.max_deposit_period ? duration_1.Duration.fromSDK(object.max_deposit_period) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.min_deposit) {
-            obj.min_deposit = message.min_deposit.map(e => e ? coin_1.Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.min_deposit = [];
-        }
-        message.max_deposit_period !== undefined && (obj.max_deposit_period = message.max_deposit_period ? duration_1.Duration.toSDK(message.max_deposit_period) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             min_deposit: Array.isArray(object?.min_deposit) ? object.min_deposit.map((e) => coin_1.Coin.fromAmino(e)) : [],
@@ -1134,16 +1006,6 @@ exports.VotingParams = {
         const message = createBaseVotingParams();
         message.voting_period = object.voting_period !== undefined && object.voting_period !== null ? duration_1.Duration.fromPartial(object.voting_period) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            voting_period: object.voting_period ? duration_1.Duration.fromSDK(object.voting_period) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.voting_period !== undefined && (obj.voting_period = message.voting_period ? duration_1.Duration.toSDK(message.voting_period) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1241,20 +1103,6 @@ exports.TallyParams = {
         message.threshold = object.threshold ?? new Uint8Array();
         message.veto_threshold = object.veto_threshold ?? new Uint8Array();
         return message;
-    },
-    fromSDK(object) {
-        return {
-            quorum: object?.quorum,
-            threshold: object?.threshold,
-            veto_threshold: object?.veto_threshold
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.quorum = message.quorum;
-        obj.threshold = message.threshold;
-        obj.veto_threshold = message.veto_threshold;
-        return obj;
     },
     fromAmino(object) {
         return {

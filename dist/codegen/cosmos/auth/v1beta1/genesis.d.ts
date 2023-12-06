@@ -4,7 +4,7 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.auth.v1beta1";
 /** GenesisState defines the auth module's genesis state. */
 export interface GenesisState {
-    /** params defines all the paramaters of the module. */
+    /** params defines all the parameters of the module. */
     params: Params;
     /** accounts are the accounts present at genesis. */
     accounts: Any[];
@@ -15,7 +15,7 @@ export interface GenesisStateProtoMsg {
 }
 /** GenesisState defines the auth module's genesis state. */
 export interface GenesisStateAmino {
-    /** params defines all the paramaters of the module. */
+    /** params defines all the parameters of the module. */
     params?: ParamsAmino;
     /** accounts are the accounts present at genesis. */
     accounts: AnyAmino[];
@@ -36,8 +36,6 @@ export declare const GenesisState: {
     fromJSON(object: any): GenesisState;
     toJSON(message: GenesisState): unknown;
     fromPartial(object: Partial<GenesisState>): GenesisState;
-    fromSDK(object: GenesisStateSDKType): GenesisState;
-    toSDK(message: GenesisState): GenesisStateSDKType;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
     fromAminoMsg(object: GenesisStateAminoMsg): GenesisState;

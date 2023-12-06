@@ -590,8 +590,6 @@ export declare const ClientState: {
     fromJSON(object: any): ClientState;
     toJSON(message: ClientState): unknown;
     fromPartial(object: Partial<ClientState>): ClientState;
-    fromSDK(object: ClientStateSDKType): ClientState;
-    toSDK(message: ClientState): ClientStateSDKType;
     fromAmino(object: ClientStateAmino): ClientState;
     toAmino(message: ClientState): ClientStateAmino;
     fromAminoMsg(object: ClientStateAminoMsg): ClientState;
@@ -607,8 +605,6 @@ export declare const ConsensusState: {
     fromJSON(object: any): ConsensusState;
     toJSON(message: ConsensusState): unknown;
     fromPartial(object: Partial<ConsensusState>): ConsensusState;
-    fromSDK(object: ConsensusStateSDKType): ConsensusState;
-    toSDK(message: ConsensusState): ConsensusStateSDKType;
     fromAmino(object: ConsensusStateAmino): ConsensusState;
     toAmino(message: ConsensusState): ConsensusStateAmino;
     fromAminoMsg(object: ConsensusStateAminoMsg): ConsensusState;
@@ -624,8 +620,6 @@ export declare const Header: {
     fromJSON(object: any): Header;
     toJSON(message: Header): unknown;
     fromPartial(object: Partial<Header>): Header;
-    fromSDK(object: HeaderSDKType): Header;
-    toSDK(message: Header): HeaderSDKType;
     fromAmino(object: HeaderAmino): Header;
     toAmino(message: Header): HeaderAmino;
     fromAminoMsg(object: HeaderAminoMsg): Header;
@@ -641,8 +635,6 @@ export declare const Misbehaviour: {
     fromJSON(object: any): Misbehaviour;
     toJSON(message: Misbehaviour): unknown;
     fromPartial(object: Partial<Misbehaviour>): Misbehaviour;
-    fromSDK(object: MisbehaviourSDKType): Misbehaviour;
-    toSDK(message: Misbehaviour): MisbehaviourSDKType;
     fromAmino(object: MisbehaviourAmino): Misbehaviour;
     toAmino(message: Misbehaviour): MisbehaviourAmino;
     fromAminoMsg(object: MisbehaviourAminoMsg): Misbehaviour;
@@ -658,8 +650,6 @@ export declare const SignatureAndData: {
     fromJSON(object: any): SignatureAndData;
     toJSON(message: SignatureAndData): unknown;
     fromPartial(object: Partial<SignatureAndData>): SignatureAndData;
-    fromSDK(object: SignatureAndDataSDKType): SignatureAndData;
-    toSDK(message: SignatureAndData): SignatureAndDataSDKType;
     fromAmino(object: SignatureAndDataAmino): SignatureAndData;
     toAmino(message: SignatureAndData): SignatureAndDataAmino;
     fromAminoMsg(object: SignatureAndDataAminoMsg): SignatureAndData;
@@ -675,8 +665,6 @@ export declare const TimestampedSignatureData: {
     fromJSON(object: any): TimestampedSignatureData;
     toJSON(message: TimestampedSignatureData): unknown;
     fromPartial(object: Partial<TimestampedSignatureData>): TimestampedSignatureData;
-    fromSDK(object: TimestampedSignatureDataSDKType): TimestampedSignatureData;
-    toSDK(message: TimestampedSignatureData): TimestampedSignatureDataSDKType;
     fromAmino(object: TimestampedSignatureDataAmino): TimestampedSignatureData;
     toAmino(message: TimestampedSignatureData): TimestampedSignatureDataAmino;
     fromAminoMsg(object: TimestampedSignatureDataAminoMsg): TimestampedSignatureData;
@@ -692,8 +680,6 @@ export declare const SignBytes: {
     fromJSON(object: any): SignBytes;
     toJSON(message: SignBytes): unknown;
     fromPartial(object: Partial<SignBytes>): SignBytes;
-    fromSDK(object: SignBytesSDKType): SignBytes;
-    toSDK(message: SignBytes): SignBytesSDKType;
     fromAmino(object: SignBytesAmino): SignBytes;
     toAmino(message: SignBytes): SignBytesAmino;
     fromAminoMsg(object: SignBytesAminoMsg): SignBytes;
@@ -709,8 +695,6 @@ export declare const HeaderData: {
     fromJSON(object: any): HeaderData;
     toJSON(message: HeaderData): unknown;
     fromPartial(object: Partial<HeaderData>): HeaderData;
-    fromSDK(object: HeaderDataSDKType): HeaderData;
-    toSDK(message: HeaderData): HeaderDataSDKType;
     fromAmino(object: HeaderDataAmino): HeaderData;
     toAmino(message: HeaderData): HeaderDataAmino;
     fromAminoMsg(object: HeaderDataAminoMsg): HeaderData;
@@ -726,8 +710,6 @@ export declare const ClientStateData: {
     fromJSON(object: any): ClientStateData;
     toJSON(message: ClientStateData): unknown;
     fromPartial(object: Partial<ClientStateData>): ClientStateData;
-    fromSDK(object: ClientStateDataSDKType): ClientStateData;
-    toSDK(message: ClientStateData): ClientStateDataSDKType;
     fromAmino(object: ClientStateDataAmino): ClientStateData;
     toAmino(message: ClientStateData): ClientStateDataAmino;
     fromAminoMsg(object: ClientStateDataAminoMsg): ClientStateData;
@@ -743,8 +725,6 @@ export declare const ConsensusStateData: {
     fromJSON(object: any): ConsensusStateData;
     toJSON(message: ConsensusStateData): unknown;
     fromPartial(object: Partial<ConsensusStateData>): ConsensusStateData;
-    fromSDK(object: ConsensusStateDataSDKType): ConsensusStateData;
-    toSDK(message: ConsensusStateData): ConsensusStateDataSDKType;
     fromAmino(object: ConsensusStateDataAmino): ConsensusStateData;
     toAmino(message: ConsensusStateData): ConsensusStateDataAmino;
     fromAminoMsg(object: ConsensusStateDataAminoMsg): ConsensusStateData;
@@ -760,8 +740,6 @@ export declare const ConnectionStateData: {
     fromJSON(object: any): ConnectionStateData;
     toJSON(message: ConnectionStateData): unknown;
     fromPartial(object: Partial<ConnectionStateData>): ConnectionStateData;
-    fromSDK(object: ConnectionStateDataSDKType): ConnectionStateData;
-    toSDK(message: ConnectionStateData): ConnectionStateDataSDKType;
     fromAmino(object: ConnectionStateDataAmino): ConnectionStateData;
     toAmino(message: ConnectionStateData): ConnectionStateDataAmino;
     fromAminoMsg(object: ConnectionStateDataAminoMsg): ConnectionStateData;
@@ -777,8 +755,6 @@ export declare const ChannelStateData: {
     fromJSON(object: any): ChannelStateData;
     toJSON(message: ChannelStateData): unknown;
     fromPartial(object: Partial<ChannelStateData>): ChannelStateData;
-    fromSDK(object: ChannelStateDataSDKType): ChannelStateData;
-    toSDK(message: ChannelStateData): ChannelStateDataSDKType;
     fromAmino(object: ChannelStateDataAmino): ChannelStateData;
     toAmino(message: ChannelStateData): ChannelStateDataAmino;
     fromAminoMsg(object: ChannelStateDataAminoMsg): ChannelStateData;
@@ -794,8 +770,6 @@ export declare const PacketCommitmentData: {
     fromJSON(object: any): PacketCommitmentData;
     toJSON(message: PacketCommitmentData): unknown;
     fromPartial(object: Partial<PacketCommitmentData>): PacketCommitmentData;
-    fromSDK(object: PacketCommitmentDataSDKType): PacketCommitmentData;
-    toSDK(message: PacketCommitmentData): PacketCommitmentDataSDKType;
     fromAmino(object: PacketCommitmentDataAmino): PacketCommitmentData;
     toAmino(message: PacketCommitmentData): PacketCommitmentDataAmino;
     fromAminoMsg(object: PacketCommitmentDataAminoMsg): PacketCommitmentData;
@@ -811,8 +785,6 @@ export declare const PacketAcknowledgementData: {
     fromJSON(object: any): PacketAcknowledgementData;
     toJSON(message: PacketAcknowledgementData): unknown;
     fromPartial(object: Partial<PacketAcknowledgementData>): PacketAcknowledgementData;
-    fromSDK(object: PacketAcknowledgementDataSDKType): PacketAcknowledgementData;
-    toSDK(message: PacketAcknowledgementData): PacketAcknowledgementDataSDKType;
     fromAmino(object: PacketAcknowledgementDataAmino): PacketAcknowledgementData;
     toAmino(message: PacketAcknowledgementData): PacketAcknowledgementDataAmino;
     fromAminoMsg(object: PacketAcknowledgementDataAminoMsg): PacketAcknowledgementData;
@@ -828,8 +800,6 @@ export declare const PacketReceiptAbsenceData: {
     fromJSON(object: any): PacketReceiptAbsenceData;
     toJSON(message: PacketReceiptAbsenceData): unknown;
     fromPartial(object: Partial<PacketReceiptAbsenceData>): PacketReceiptAbsenceData;
-    fromSDK(object: PacketReceiptAbsenceDataSDKType): PacketReceiptAbsenceData;
-    toSDK(message: PacketReceiptAbsenceData): PacketReceiptAbsenceDataSDKType;
     fromAmino(object: PacketReceiptAbsenceDataAmino): PacketReceiptAbsenceData;
     toAmino(message: PacketReceiptAbsenceData): PacketReceiptAbsenceDataAmino;
     fromAminoMsg(object: PacketReceiptAbsenceDataAminoMsg): PacketReceiptAbsenceData;
@@ -845,8 +815,6 @@ export declare const NextSequenceRecvData: {
     fromJSON(object: any): NextSequenceRecvData;
     toJSON(message: NextSequenceRecvData): unknown;
     fromPartial(object: Partial<NextSequenceRecvData>): NextSequenceRecvData;
-    fromSDK(object: NextSequenceRecvDataSDKType): NextSequenceRecvData;
-    toSDK(message: NextSequenceRecvData): NextSequenceRecvDataSDKType;
     fromAmino(object: NextSequenceRecvDataAmino): NextSequenceRecvData;
     toAmino(message: NextSequenceRecvData): NextSequenceRecvDataAmino;
     fromAminoMsg(object: NextSequenceRecvDataAminoMsg): NextSequenceRecvData;

@@ -79,22 +79,6 @@ export const Params = {
         message.withdraw_addr_enabled = object.withdraw_addr_enabled ?? false;
         return message;
     },
-    fromSDK(object) {
-        return {
-            community_tax: object?.community_tax,
-            base_proposer_reward: object?.base_proposer_reward,
-            bonus_proposer_reward: object?.bonus_proposer_reward,
-            withdraw_addr_enabled: object?.withdraw_addr_enabled
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.community_tax = message.community_tax;
-        obj.base_proposer_reward = message.base_proposer_reward;
-        obj.bonus_proposer_reward = message.bonus_proposer_reward;
-        obj.withdraw_addr_enabled = message.withdraw_addr_enabled;
-        return obj;
-    },
     fromAmino(object) {
         return {
             community_tax: object.community_tax,
@@ -116,7 +100,7 @@ export const Params = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/Params",
+            type: "cosmos-sdk/x/distribution/Params",
             value: Params.toAmino(message)
         };
     },
@@ -192,23 +176,6 @@ export const ValidatorHistoricalRewards = {
         message.cumulative_reward_ratio = object.cumulative_reward_ratio?.map(e => DecCoin.fromPartial(e)) || [];
         message.reference_count = object.reference_count ?? 0;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            cumulative_reward_ratio: Array.isArray(object?.cumulative_reward_ratio) ? object.cumulative_reward_ratio.map((e) => DecCoin.fromSDK(e)) : [],
-            reference_count: object?.reference_count
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.cumulative_reward_ratio) {
-            obj.cumulative_reward_ratio = message.cumulative_reward_ratio.map(e => e ? DecCoin.toSDK(e) : undefined);
-        }
-        else {
-            obj.cumulative_reward_ratio = [];
-        }
-        obj.reference_count = message.reference_count;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -309,23 +276,6 @@ export const ValidatorCurrentRewards = {
         message.period = object.period !== undefined && object.period !== null ? BigInt(object.period.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            rewards: Array.isArray(object?.rewards) ? object.rewards.map((e) => DecCoin.fromSDK(e)) : [],
-            period: object?.period
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.rewards) {
-            obj.rewards = message.rewards.map(e => e ? DecCoin.toSDK(e) : undefined);
-        }
-        else {
-            obj.rewards = [];
-        }
-        obj.period = message.period;
-        return obj;
-    },
     fromAmino(object) {
         return {
             rewards: Array.isArray(object?.rewards) ? object.rewards.map((e) => DecCoin.fromAmino(e)) : [],
@@ -415,21 +365,6 @@ export const ValidatorAccumulatedCommission = {
         message.commission = object.commission?.map(e => DecCoin.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            commission: Array.isArray(object?.commission) ? object.commission.map((e) => DecCoin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.commission) {
-            obj.commission = message.commission.map(e => e ? DecCoin.toSDK(e) : undefined);
-        }
-        else {
-            obj.commission = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             commission: Array.isArray(object?.commission) ? object.commission.map((e) => DecCoin.fromAmino(e)) : []
@@ -516,21 +451,6 @@ export const ValidatorOutstandingRewards = {
         const message = createBaseValidatorOutstandingRewards();
         message.rewards = object.rewards?.map(e => DecCoin.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            rewards: Array.isArray(object?.rewards) ? object.rewards.map((e) => DecCoin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.rewards) {
-            obj.rewards = message.rewards.map(e => e ? DecCoin.toSDK(e) : undefined);
-        }
-        else {
-            obj.rewards = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -624,18 +544,6 @@ export const ValidatorSlashEvent = {
         message.fraction = object.fraction ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            validator_period: object?.validator_period,
-            fraction: object?.fraction
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.validator_period = message.validator_period;
-        obj.fraction = message.fraction;
-        return obj;
-    },
     fromAmino(object) {
         return {
             validator_period: BigInt(object.validator_period),
@@ -719,21 +627,6 @@ export const ValidatorSlashEvents = {
         const message = createBaseValidatorSlashEvents();
         message.validator_slash_events = object.validator_slash_events?.map(e => ValidatorSlashEvent.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            validator_slash_events: Array.isArray(object?.validator_slash_events) ? object.validator_slash_events.map((e) => ValidatorSlashEvent.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.validator_slash_events) {
-            obj.validator_slash_events = message.validator_slash_events.map(e => e ? ValidatorSlashEvent.toSDK(e) : undefined);
-        }
-        else {
-            obj.validator_slash_events = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -821,21 +714,6 @@ export const FeePool = {
         const message = createBaseFeePool();
         message.community_pool = object.community_pool?.map(e => DecCoin.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            community_pool: Array.isArray(object?.community_pool) ? object.community_pool.map((e) => DecCoin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.community_pool) {
-            obj.community_pool = message.community_pool.map(e => e ? DecCoin.toSDK(e) : undefined);
-        }
-        else {
-            obj.community_pool = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -955,27 +833,6 @@ export const CommunityPoolSpendProposal = {
         message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            title: object?.title,
-            description: object?.description,
-            recipient: object?.recipient,
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => Coin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.title = message.title;
-        obj.description = message.description;
-        obj.recipient = message.recipient;
-        if (message.amount) {
-            obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.amount = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             title: object.title,
@@ -1084,20 +941,6 @@ export const DelegatorStartingInfo = {
         message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            previous_period: object?.previous_period,
-            stake: object?.stake,
-            height: object?.height
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.previous_period = message.previous_period;
-        obj.stake = message.stake;
-        obj.height = message.height;
-        return obj;
-    },
     fromAmino(object) {
         return {
             previous_period: BigInt(object.previous_period),
@@ -1193,23 +1036,6 @@ export const DelegationDelegatorReward = {
         message.validator_address = object.validator_address ?? "";
         message.reward = object.reward?.map(e => DecCoin.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            validator_address: object?.validator_address,
-            reward: Array.isArray(object?.reward) ? object.reward.map((e) => DecCoin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.validator_address = message.validator_address;
-        if (message.reward) {
-            obj.reward = message.reward.map(e => e ? DecCoin.toSDK(e) : undefined);
-        }
-        else {
-            obj.reward = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1335,24 +1161,6 @@ export const CommunityPoolSpendProposalWithDeposit = {
         message.amount = object.amount ?? "";
         message.deposit = object.deposit ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            title: object?.title,
-            description: object?.description,
-            recipient: object?.recipient,
-            amount: object?.amount,
-            deposit: object?.deposit
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.title = message.title;
-        obj.description = message.description;
-        obj.recipient = message.recipient;
-        obj.amount = message.amount;
-        obj.deposit = message.deposit;
-        return obj;
     },
     fromAmino(object) {
         return {

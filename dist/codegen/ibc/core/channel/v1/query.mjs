@@ -61,18 +61,6 @@ export const QueryChannelRequest = {
         message.channel_id = object.channel_id ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             port_id: object.port_id,
@@ -172,20 +160,6 @@ export const QueryChannelResponse = {
         message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            channel: object.channel ? Channel.fromSDK(object.channel) : undefined,
-            proof: object?.proof,
-            proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.channel !== undefined && (obj.channel = message.channel ? Channel.toSDK(message.channel) : undefined);
-        obj.proof = message.proof;
-        message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             channel: object?.channel ? Channel.fromAmino(object.channel) : undefined,
@@ -266,16 +240,6 @@ export const QueryChannelsRequest = {
         const message = createBaseQueryChannelsRequest();
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -379,25 +343,6 @@ export const QueryChannelsResponse = {
         message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            channels: Array.isArray(object?.channels) ? object.channels.map((e) => IdentifiedChannel.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined,
-            height: object.height ? Height.fromSDK(object.height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.channels) {
-            obj.channels = message.channels.map(e => e ? IdentifiedChannel.toSDK(e) : undefined);
-        }
-        else {
-            obj.channels = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        message.height !== undefined && (obj.height = message.height ? Height.toSDK(message.height) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             channels: Array.isArray(object?.channels) ? object.channels.map((e) => IdentifiedChannel.fromAmino(e)) : [],
@@ -493,18 +438,6 @@ export const QueryConnectionChannelsRequest = {
         message.connection = object.connection ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            connection: object?.connection,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.connection = message.connection;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -610,25 +543,6 @@ export const QueryConnectionChannelsResponse = {
         message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            channels: Array.isArray(object?.channels) ? object.channels.map((e) => IdentifiedChannel.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined,
-            height: object.height ? Height.fromSDK(object.height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.channels) {
-            obj.channels = message.channels.map(e => e ? IdentifiedChannel.toSDK(e) : undefined);
-        }
-        else {
-            obj.channels = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        message.height !== undefined && (obj.height = message.height ? Height.toSDK(message.height) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             channels: Array.isArray(object?.channels) ? object.channels.map((e) => IdentifiedChannel.fromAmino(e)) : [],
@@ -724,18 +638,6 @@ export const QueryChannelClientStateRequest = {
         message.port_id = object.port_id ?? "";
         message.channel_id = object.channel_id ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -835,20 +737,6 @@ export const QueryChannelClientStateResponse = {
         message.proof = object.proof ?? new Uint8Array();
         message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            identified_client_state: object.identified_client_state ? IdentifiedClientState.fromSDK(object.identified_client_state) : undefined,
-            proof: object?.proof,
-            proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.identified_client_state !== undefined && (obj.identified_client_state = message.identified_client_state ? IdentifiedClientState.toSDK(message.identified_client_state) : undefined);
-        obj.proof = message.proof;
-        message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -960,22 +848,6 @@ export const QueryChannelConsensusStateRequest = {
         message.revision_number = object.revision_number !== undefined && object.revision_number !== null ? BigInt(object.revision_number.toString()) : BigInt(0);
         message.revision_height = object.revision_height !== undefined && object.revision_height !== null ? BigInt(object.revision_height.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id,
-            revision_number: object?.revision_number,
-            revision_height: object?.revision_height
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        obj.revision_number = message.revision_number;
-        obj.revision_height = message.revision_height;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1090,22 +962,6 @@ export const QueryChannelConsensusStateResponse = {
         message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            consensus_state: object.consensus_state ? Any.fromSDK(object.consensus_state) : undefined,
-            client_id: object?.client_id,
-            proof: object?.proof,
-            proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.consensus_state !== undefined && (obj.consensus_state = message.consensus_state ? Any.toSDK(message.consensus_state) : undefined);
-        obj.client_id = message.client_id;
-        obj.proof = message.proof;
-        message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             consensus_state: object?.consensus_state ? Any.fromAmino(object.consensus_state) : undefined,
@@ -1209,20 +1065,6 @@ export const QueryPacketCommitmentRequest = {
         message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id,
-            sequence: object?.sequence
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        obj.sequence = message.sequence;
-        return obj;
-    },
     fromAmino(object) {
         return {
             port_id: object.port_id,
@@ -1324,20 +1166,6 @@ export const QueryPacketCommitmentResponse = {
         message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            commitment: object?.commitment,
-            proof: object?.proof,
-            proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.commitment = message.commitment;
-        obj.proof = message.proof;
-        message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             commitment: object.commitment,
@@ -1438,20 +1266,6 @@ export const QueryPacketCommitmentsRequest = {
         message.channel_id = object.channel_id ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1559,25 +1373,6 @@ export const QueryPacketCommitmentsResponse = {
         message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            commitments: Array.isArray(object?.commitments) ? object.commitments.map((e) => PacketState.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined,
-            height: object.height ? Height.fromSDK(object.height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.commitments) {
-            obj.commitments = message.commitments.map(e => e ? PacketState.toSDK(e) : undefined);
-        }
-        else {
-            obj.commitments = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        message.height !== undefined && (obj.height = message.height ? Height.toSDK(message.height) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             commitments: Array.isArray(object?.commitments) ? object.commitments.map((e) => PacketState.fromAmino(e)) : [],
@@ -1684,20 +1479,6 @@ export const QueryPacketReceiptRequest = {
         message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id,
-            sequence: object?.sequence
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        obj.sequence = message.sequence;
-        return obj;
-    },
     fromAmino(object) {
         return {
             port_id: object.port_id,
@@ -1798,20 +1579,6 @@ export const QueryPacketReceiptResponse = {
         message.proof = object.proof ?? new Uint8Array();
         message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            received: object?.received,
-            proof: object?.proof,
-            proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.received = message.received;
-        obj.proof = message.proof;
-        message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1914,20 +1681,6 @@ export const QueryPacketAcknowledgementRequest = {
         message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id,
-            sequence: object?.sequence
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        obj.sequence = message.sequence;
-        return obj;
-    },
     fromAmino(object) {
         return {
             port_id: object.port_id,
@@ -2028,20 +1781,6 @@ export const QueryPacketAcknowledgementResponse = {
         message.proof = object.proof ?? new Uint8Array();
         message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            acknowledgement: object?.acknowledgement,
-            proof: object?.proof,
-            proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.acknowledgement = message.acknowledgement;
-        obj.proof = message.proof;
-        message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -2169,27 +1908,6 @@ export const QueryPacketAcknowledgementsRequest = {
         message.packet_commitment_sequences = object.packet_commitment_sequences?.map(e => BigInt(e.toString())) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined,
-            packet_commitment_sequences: Array.isArray(object?.packet_commitment_sequences) ? object.packet_commitment_sequences.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        if (message.packet_commitment_sequences) {
-            obj.packet_commitment_sequences = message.packet_commitment_sequences.map(e => e);
-        }
-        else {
-            obj.packet_commitment_sequences = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             port_id: object.port_id,
@@ -2302,25 +2020,6 @@ export const QueryPacketAcknowledgementsResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            acknowledgements: Array.isArray(object?.acknowledgements) ? object.acknowledgements.map((e) => PacketState.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined,
-            height: object.height ? Height.fromSDK(object.height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.acknowledgements) {
-            obj.acknowledgements = message.acknowledgements.map(e => e ? PacketState.toSDK(e) : undefined);
-        }
-        else {
-            obj.acknowledgements = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        message.height !== undefined && (obj.height = message.height ? Height.toSDK(message.height) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -2443,25 +2142,6 @@ export const QueryUnreceivedPacketsRequest = {
         message.packet_commitment_sequences = object.packet_commitment_sequences?.map(e => BigInt(e.toString())) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id,
-            packet_commitment_sequences: Array.isArray(object?.packet_commitment_sequences) ? object.packet_commitment_sequences.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        if (message.packet_commitment_sequences) {
-            obj.packet_commitment_sequences = message.packet_commitment_sequences.map(e => e);
-        }
-        else {
-            obj.packet_commitment_sequences = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             port_id: object.port_id,
@@ -2572,23 +2252,6 @@ export const QueryUnreceivedPacketsResponse = {
         message.sequences = object.sequences?.map(e => BigInt(e.toString())) || [];
         message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            sequences: Array.isArray(object?.sequences) ? object.sequences.map((e) => e) : [],
-            height: object.height ? Height.fromSDK(object.height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.sequences) {
-            obj.sequences = message.sequences.map(e => e);
-        }
-        else {
-            obj.sequences = [];
-        }
-        message.height !== undefined && (obj.height = message.height ? Height.toSDK(message.height) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -2709,25 +2372,6 @@ export const QueryUnreceivedAcksRequest = {
         message.packet_ack_sequences = object.packet_ack_sequences?.map(e => BigInt(e.toString())) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id,
-            packet_ack_sequences: Array.isArray(object?.packet_ack_sequences) ? object.packet_ack_sequences.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        if (message.packet_ack_sequences) {
-            obj.packet_ack_sequences = message.packet_ack_sequences.map(e => e);
-        }
-        else {
-            obj.packet_ack_sequences = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             port_id: object.port_id,
@@ -2839,23 +2483,6 @@ export const QueryUnreceivedAcksResponse = {
         message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            sequences: Array.isArray(object?.sequences) ? object.sequences.map((e) => e) : [],
-            height: object.height ? Height.fromSDK(object.height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.sequences) {
-            obj.sequences = message.sequences.map(e => e);
-        }
-        else {
-            obj.sequences = [];
-        }
-        message.height !== undefined && (obj.height = message.height ? Height.toSDK(message.height) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             sequences: Array.isArray(object?.sequences) ? object.sequences.map((e) => BigInt(e)) : [],
@@ -2949,18 +2576,6 @@ export const QueryNextSequenceReceiveRequest = {
         message.port_id = object.port_id ?? "";
         message.channel_id = object.channel_id ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -3061,20 +2676,6 @@ export const QueryNextSequenceReceiveResponse = {
         message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            next_sequence_receive: object?.next_sequence_receive,
-            proof: object?.proof,
-            proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.next_sequence_receive = message.next_sequence_receive;
-        obj.proof = message.proof;
-        message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             next_sequence_receive: BigInt(object.next_sequence_receive),
@@ -3165,18 +2766,6 @@ export const QueryNextSequenceSendRequest = {
         message.port_id = object.port_id ?? "";
         message.channel_id = object.channel_id ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -3276,20 +2865,6 @@ export const QueryNextSequenceSendResponse = {
         message.proof = object.proof ?? new Uint8Array();
         message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            next_sequence_send: object?.next_sequence_send,
-            proof: object?.proof,
-            proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.next_sequence_send = message.next_sequence_send;
-        obj.proof = message.proof;
-        message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {

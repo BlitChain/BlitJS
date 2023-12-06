@@ -66,23 +66,6 @@ exports.LegacyAminoPubKey = {
         message.public_keys = object.public_keys?.map(e => any_1.Any.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            threshold: object?.threshold,
-            public_keys: Array.isArray(object?.public_keys) ? object.public_keys.map((e) => any_1.Any.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.threshold = message.threshold;
-        if (message.public_keys) {
-            obj.public_keys = message.public_keys.map(e => e ? any_1.Any.toSDK(e) : undefined);
-        }
-        else {
-            obj.public_keys = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             threshold: object.threshold,
@@ -105,7 +88,7 @@ exports.LegacyAminoPubKey = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/LegacyAminoPubKey",
+            type: "tendermint/PubKeyMultisigThreshold",
             value: exports.LegacyAminoPubKey.toAmino(message)
         };
     },

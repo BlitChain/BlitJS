@@ -1,5 +1,5 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgSubmitProposal, MsgExecLegacyContent, MsgVote, MsgVoteWeighted, MsgDeposit } from "./tx";
+import { MsgSubmitProposal, MsgExecLegacyContent, MsgVote, MsgVoteWeighted, MsgDeposit, MsgUpdateParams, MsgCancelProposal } from "./tx";
 export declare const registry: ReadonlyArray<[string, GeneratedType]>;
 export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
@@ -21,6 +21,14 @@ export declare const MessageComposer: {
             value: Uint8Array;
         };
         deposit(value: MsgDeposit): {
+            typeUrl: string;
+            value: Uint8Array;
+        };
+        updateParams(value: MsgUpdateParams): {
+            typeUrl: string;
+            value: Uint8Array;
+        };
+        cancelProposal(value: MsgCancelProposal): {
             typeUrl: string;
             value: Uint8Array;
         };
@@ -46,6 +54,14 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgDeposit;
         };
+        updateParams(value: MsgUpdateParams): {
+            typeUrl: string;
+            value: MsgUpdateParams;
+        };
+        cancelProposal(value: MsgCancelProposal): {
+            typeUrl: string;
+            value: MsgCancelProposal;
+        };
     };
     toJSON: {
         submitProposal(value: MsgSubmitProposal): {
@@ -65,6 +81,14 @@ export declare const MessageComposer: {
             value: unknown;
         };
         deposit(value: MsgDeposit): {
+            typeUrl: string;
+            value: unknown;
+        };
+        updateParams(value: MsgUpdateParams): {
+            typeUrl: string;
+            value: unknown;
+        };
+        cancelProposal(value: MsgCancelProposal): {
             typeUrl: string;
             value: unknown;
         };
@@ -90,6 +114,14 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgDeposit;
         };
+        updateParams(value: any): {
+            typeUrl: string;
+            value: MsgUpdateParams;
+        };
+        cancelProposal(value: any): {
+            typeUrl: string;
+            value: MsgCancelProposal;
+        };
     };
     fromPartial: {
         submitProposal(value: MsgSubmitProposal): {
@@ -111,6 +143,14 @@ export declare const MessageComposer: {
         deposit(value: MsgDeposit): {
             typeUrl: string;
             value: MsgDeposit;
+        };
+        updateParams(value: MsgUpdateParams): {
+            typeUrl: string;
+            value: MsgUpdateParams;
+        };
+        cancelProposal(value: MsgCancelProposal): {
+            typeUrl: string;
+            value: MsgCancelProposal;
         };
     };
 };

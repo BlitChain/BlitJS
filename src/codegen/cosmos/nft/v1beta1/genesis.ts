@@ -7,6 +7,7 @@ export const protobufPackage = "cosmos.nft.v1beta1";
 export interface GenesisState {
   /** class defines the class of the nft type. */
   classes: Class[];
+  /** entry defines all nft owned by a person. */
   entries: Entry[];
 }
 export interface GenesisStateProtoMsg {
@@ -17,6 +18,7 @@ export interface GenesisStateProtoMsg {
 export interface GenesisStateAmino {
   /** class defines the class of the nft type. */
   classes: ClassAmino[];
+  /** entry defines all nft owned by a person. */
   entries: EntryAmino[];
 }
 export interface GenesisStateAminoMsg {
@@ -118,26 +120,6 @@ export const GenesisState = {
     message.entries = object.entries?.map(e => Entry.fromPartial(e)) || [];
     return message;
   },
-  fromSDK(object: GenesisStateSDKType): GenesisState {
-    return {
-      classes: Array.isArray(object?.classes) ? object.classes.map((e: any) => Class.fromSDK(e)) : [],
-      entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => Entry.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: GenesisState): GenesisStateSDKType {
-    const obj: any = {};
-    if (message.classes) {
-      obj.classes = message.classes.map(e => e ? Class.toSDK(e) : undefined);
-    } else {
-      obj.classes = [];
-    }
-    if (message.entries) {
-      obj.entries = message.entries.map(e => e ? Entry.toSDK(e) : undefined);
-    } else {
-      obj.entries = [];
-    }
-    return obj;
-  },
   fromAmino(object: GenesisStateAmino): GenesisState {
     return {
       classes: Array.isArray(object?.classes) ? object.classes.map((e: any) => Class.fromAmino(e)) : [],
@@ -238,22 +220,6 @@ export const Entry = {
     message.owner = object.owner ?? "";
     message.nfts = object.nfts?.map(e => NFT.fromPartial(e)) || [];
     return message;
-  },
-  fromSDK(object: EntrySDKType): Entry {
-    return {
-      owner: object?.owner,
-      nfts: Array.isArray(object?.nfts) ? object.nfts.map((e: any) => NFT.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: Entry): EntrySDKType {
-    const obj: any = {};
-    obj.owner = message.owner;
-    if (message.nfts) {
-      obj.nfts = message.nfts.map(e => e ? NFT.toSDK(e) : undefined);
-    } else {
-      obj.nfts = [];
-    }
-    return obj;
   },
   fromAmino(object: EntryAmino): Entry {
     return {

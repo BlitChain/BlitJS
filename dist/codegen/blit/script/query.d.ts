@@ -209,8 +209,6 @@ export declare const QueryParamsRequest: {
     fromJSON(_: any): QueryParamsRequest;
     toJSON(_: QueryParamsRequest): unknown;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
-    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
-    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
     fromAminoMsg(object: QueryParamsRequestAminoMsg): QueryParamsRequest;
@@ -225,8 +223,6 @@ export declare const QueryParamsResponse: {
     fromJSON(object: any): QueryParamsResponse;
     toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
-    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
-    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
     fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse;
@@ -241,8 +237,6 @@ export declare const QueryScriptRequest: {
     fromJSON(object: any): QueryScriptRequest;
     toJSON(message: QueryScriptRequest): unknown;
     fromPartial(object: Partial<QueryScriptRequest>): QueryScriptRequest;
-    fromSDK(object: QueryScriptRequestSDKType): QueryScriptRequest;
-    toSDK(message: QueryScriptRequest): QueryScriptRequestSDKType;
     fromAmino(object: QueryScriptRequestAmino): QueryScriptRequest;
     toAmino(message: QueryScriptRequest): QueryScriptRequestAmino;
     fromAminoMsg(object: QueryScriptRequestAminoMsg): QueryScriptRequest;
@@ -257,8 +251,6 @@ export declare const QueryScriptResponse: {
     fromJSON(object: any): QueryScriptResponse;
     toJSON(message: QueryScriptResponse): unknown;
     fromPartial(object: Partial<QueryScriptResponse>): QueryScriptResponse;
-    fromSDK(object: QueryScriptResponseSDKType): QueryScriptResponse;
-    toSDK(message: QueryScriptResponse): QueryScriptResponseSDKType;
     fromAmino(object: QueryScriptResponseAmino): QueryScriptResponse;
     toAmino(message: QueryScriptResponse): QueryScriptResponseAmino;
     fromAminoMsg(object: QueryScriptResponseAminoMsg): QueryScriptResponse;
@@ -273,8 +265,6 @@ export declare const QueryScriptsRequest: {
     fromJSON(object: any): QueryScriptsRequest;
     toJSON(message: QueryScriptsRequest): unknown;
     fromPartial(object: Partial<QueryScriptsRequest>): QueryScriptsRequest;
-    fromSDK(object: QueryScriptsRequestSDKType): QueryScriptsRequest;
-    toSDK(message: QueryScriptsRequest): QueryScriptsRequestSDKType;
     fromAmino(object: QueryScriptsRequestAmino): QueryScriptsRequest;
     toAmino(message: QueryScriptsRequest): QueryScriptsRequestAmino;
     fromAminoMsg(object: QueryScriptsRequestAminoMsg): QueryScriptsRequest;
@@ -289,8 +279,6 @@ export declare const QueryScriptsResponse: {
     fromJSON(object: any): QueryScriptsResponse;
     toJSON(message: QueryScriptsResponse): unknown;
     fromPartial(object: Partial<QueryScriptsResponse>): QueryScriptsResponse;
-    fromSDK(object: QueryScriptsResponseSDKType): QueryScriptsResponse;
-    toSDK(message: QueryScriptsResponse): QueryScriptsResponseSDKType;
     fromAmino(object: QueryScriptsResponseAmino): QueryScriptsResponse;
     toAmino(message: QueryScriptsResponse): QueryScriptsResponseAmino;
     fromAminoMsg(object: QueryScriptsResponseAminoMsg): QueryScriptsResponse;
@@ -305,8 +293,6 @@ export declare const QueryWebRequest: {
     fromJSON(object: any): QueryWebRequest;
     toJSON(message: QueryWebRequest): unknown;
     fromPartial(object: Partial<QueryWebRequest>): QueryWebRequest;
-    fromSDK(object: QueryWebRequestSDKType): QueryWebRequest;
-    toSDK(message: QueryWebRequest): QueryWebRequestSDKType;
     fromAmino(object: QueryWebRequestAmino): QueryWebRequest;
     toAmino(message: QueryWebRequest): QueryWebRequestAmino;
     fromAminoMsg(object: QueryWebRequestAminoMsg): QueryWebRequest;
@@ -321,8 +307,6 @@ export declare const QueryWebResponse: {
     fromJSON(object: any): QueryWebResponse;
     toJSON(message: QueryWebResponse): unknown;
     fromPartial(object: Partial<QueryWebResponse>): QueryWebResponse;
-    fromSDK(object: QueryWebResponseSDKType): QueryWebResponse;
-    toSDK(message: QueryWebResponse): QueryWebResponseSDKType;
     fromAmino(object: QueryWebResponseAmino): QueryWebResponse;
     toAmino(message: QueryWebResponse): QueryWebResponseAmino;
     fromAminoMsg(object: QueryWebResponseAminoMsg): QueryWebResponse;
@@ -337,8 +321,6 @@ export declare const QueryEvalRequest: {
     fromJSON(object: any): QueryEvalRequest;
     toJSON(message: QueryEvalRequest): unknown;
     fromPartial(object: Partial<QueryEvalRequest>): QueryEvalRequest;
-    fromSDK(object: QueryEvalRequestSDKType): QueryEvalRequest;
-    toSDK(message: QueryEvalRequest): QueryEvalRequestSDKType;
     fromAmino(object: QueryEvalRequestAmino): QueryEvalRequest;
     toAmino(message: QueryEvalRequest): QueryEvalRequestAmino;
     fromAminoMsg(object: QueryEvalRequestAminoMsg): QueryEvalRequest;
@@ -353,8 +335,6 @@ export declare const QueryEvalResponse: {
     fromJSON(object: any): QueryEvalResponse;
     toJSON(message: QueryEvalResponse): unknown;
     fromPartial(object: Partial<QueryEvalResponse>): QueryEvalResponse;
-    fromSDK(object: QueryEvalResponseSDKType): QueryEvalResponse;
-    toSDK(message: QueryEvalResponse): QueryEvalResponseSDKType;
     fromAmino(object: QueryEvalResponseAmino): QueryEvalResponse;
     toAmino(message: QueryEvalResponse): QueryEvalResponseAmino;
     fromAminoMsg(object: QueryEvalResponseAminoMsg): QueryEvalResponse;

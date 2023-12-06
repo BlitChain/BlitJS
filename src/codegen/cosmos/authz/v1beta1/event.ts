@@ -131,20 +131,6 @@ export const EventGrant = {
     message.grantee = object.grantee ?? "";
     return message;
   },
-  fromSDK(object: EventGrantSDKType): EventGrant {
-    return {
-      msg_type_url: object?.msg_type_url,
-      granter: object?.granter,
-      grantee: object?.grantee
-    };
-  },
-  toSDK(message: EventGrant): EventGrantSDKType {
-    const obj: any = {};
-    obj.msg_type_url = message.msg_type_url;
-    obj.granter = message.granter;
-    obj.grantee = message.grantee;
-    return obj;
-  },
   fromAmino(object: EventGrantAmino): EventGrant {
     return {
       msg_type_url: object.msg_type_url,
@@ -245,20 +231,6 @@ export const EventRevoke = {
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
     return message;
-  },
-  fromSDK(object: EventRevokeSDKType): EventRevoke {
-    return {
-      msg_type_url: object?.msg_type_url,
-      granter: object?.granter,
-      grantee: object?.grantee
-    };
-  },
-  toSDK(message: EventRevoke): EventRevokeSDKType {
-    const obj: any = {};
-    obj.msg_type_url = message.msg_type_url;
-    obj.granter = message.granter;
-    obj.grantee = message.grantee;
-    return obj;
   },
   fromAmino(object: EventRevokeAmino): EventRevoke {
     return {

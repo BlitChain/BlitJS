@@ -34,13 +34,6 @@ export const Empty = {
         const message = createBaseEmpty();
         return message;
     },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
-    },
     fromAmino(_) {
         return {};
     },

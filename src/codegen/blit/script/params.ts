@@ -48,13 +48,6 @@ export const Params = {
     const message = createBaseParams();
     return message;
   },
-  fromSDK(_: ParamsSDKType): Params {
-    return {};
-  },
-  toSDK(_: Params): ParamsSDKType {
-    const obj: any = {};
-    return obj;
-  },
   fromAmino(_: ParamsAmino): Params {
     return {};
   },

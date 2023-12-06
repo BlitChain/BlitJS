@@ -27,7 +27,7 @@ export interface MinterSDKType {
     inflation: string;
     annual_provisions: string;
 }
-/** Params holds parameters for the mint module. */
+/** Params defines the parameters for the x/mint module. */
 export interface Params {
     /** type of coin to mint */
     mint_denom: string;
@@ -46,7 +46,7 @@ export interface ParamsProtoMsg {
     type_url: "/cosmos.mint.v1beta1.Params";
     value: Uint8Array;
 }
-/** Params holds parameters for the mint module. */
+/** Params defines the parameters for the x/mint module. */
 export interface ParamsAmino {
     /** type of coin to mint */
     mint_denom: string;
@@ -62,10 +62,10 @@ export interface ParamsAmino {
     blocks_per_year: string;
 }
 export interface ParamsAminoMsg {
-    type: "cosmos-sdk/Params";
+    type: "cosmos-sdk/x/mint/Params";
     value: ParamsAmino;
 }
-/** Params holds parameters for the mint module. */
+/** Params defines the parameters for the x/mint module. */
 export interface ParamsSDKType {
     mint_denom: string;
     inflation_rate_change: string;
@@ -81,8 +81,6 @@ export declare const Minter: {
     fromJSON(object: any): Minter;
     toJSON(message: Minter): unknown;
     fromPartial(object: Partial<Minter>): Minter;
-    fromSDK(object: MinterSDKType): Minter;
-    toSDK(message: Minter): MinterSDKType;
     fromAmino(object: MinterAmino): Minter;
     toAmino(message: Minter): MinterAmino;
     fromAminoMsg(object: MinterAminoMsg): Minter;
@@ -98,8 +96,6 @@ export declare const Params: {
     fromJSON(object: any): Params;
     toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
     fromAminoMsg(object: ParamsAminoMsg): Params;

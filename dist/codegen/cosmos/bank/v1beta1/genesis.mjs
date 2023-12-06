@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { Params, Metadata } from "./bank";
+import { Params, Metadata, SendEnabled } from "./bank";
 import { Coin } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
@@ -9,7 +9,8 @@ function createBaseGenesisState() {
         params: Params.fromPartial({}),
         balances: [],
         supply: [],
-        denom_metadata: []
+        denom_metadata: [],
+        send_enabled: []
     };
 }
 export const GenesisState = {
@@ -26,6 +27,9 @@ export const GenesisState = {
         }
         for (const v of message.denom_metadata) {
             Metadata.encode(v, writer.uint32(34).fork()).ldelim();
+        }
+        for (const v of message.send_enabled) {
+            SendEnabled.encode(v, writer.uint32(42).fork()).ldelim();
         }
         return writer;
     },
@@ -48,6 +52,9 @@ export const GenesisState = {
                 case 4:
                     message.denom_metadata.push(Metadata.decode(reader, reader.uint32()));
                     break;
+                case 5:
+                    message.send_enabled.push(SendEnabled.decode(reader, reader.uint32()));
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -60,7 +67,8 @@ export const GenesisState = {
             params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
             balances: Array.isArray(object?.balances) ? object.balances.map((e) => Balance.fromJSON(e)) : [],
             supply: Array.isArray(object?.supply) ? object.supply.map((e) => Coin.fromJSON(e)) : [],
-            denom_metadata: Array.isArray(object?.denom_metadata) ? object.denom_metadata.map((e) => Metadata.fromJSON(e)) : []
+            denom_metadata: Array.isArray(object?.denom_metadata) ? object.denom_metadata.map((e) => Metadata.fromJSON(e)) : [],
+            send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e) => SendEnabled.fromJSON(e)) : []
         };
     },
     toJSON(message) {
@@ -84,6 +92,12 @@ export const GenesisState = {
         else {
             obj.denom_metadata = [];
         }
+        if (message.send_enabled) {
+            obj.send_enabled = message.send_enabled.map(e => e ? SendEnabled.toJSON(e) : undefined);
+        }
+        else {
+            obj.send_enabled = [];
+        }
         return obj;
     },
     fromPartial(object) {
@@ -92,45 +106,16 @@ export const GenesisState = {
         message.balances = object.balances?.map(e => Balance.fromPartial(e)) || [];
         message.supply = object.supply?.map(e => Coin.fromPartial(e)) || [];
         message.denom_metadata = object.denom_metadata?.map(e => Metadata.fromPartial(e)) || [];
+        message.send_enabled = object.send_enabled?.map(e => SendEnabled.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            params: object.params ? Params.fromSDK(object.params) : undefined,
-            balances: Array.isArray(object?.balances) ? object.balances.map((e) => Balance.fromSDK(e)) : [],
-            supply: Array.isArray(object?.supply) ? object.supply.map((e) => Coin.fromSDK(e)) : [],
-            denom_metadata: Array.isArray(object?.denom_metadata) ? object.denom_metadata.map((e) => Metadata.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-        if (message.balances) {
-            obj.balances = message.balances.map(e => e ? Balance.toSDK(e) : undefined);
-        }
-        else {
-            obj.balances = [];
-        }
-        if (message.supply) {
-            obj.supply = message.supply.map(e => e ? Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.supply = [];
-        }
-        if (message.denom_metadata) {
-            obj.denom_metadata = message.denom_metadata.map(e => e ? Metadata.toSDK(e) : undefined);
-        }
-        else {
-            obj.denom_metadata = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
             params: object?.params ? Params.fromAmino(object.params) : undefined,
             balances: Array.isArray(object?.balances) ? object.balances.map((e) => Balance.fromAmino(e)) : [],
             supply: Array.isArray(object?.supply) ? object.supply.map((e) => Coin.fromAmino(e)) : [],
-            denom_metadata: Array.isArray(object?.denom_metadata) ? object.denom_metadata.map((e) => Metadata.fromAmino(e)) : []
+            denom_metadata: Array.isArray(object?.denom_metadata) ? object.denom_metadata.map((e) => Metadata.fromAmino(e)) : [],
+            send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e) => SendEnabled.fromAmino(e)) : []
         };
     },
     toAmino(message) {
@@ -153,6 +138,12 @@ export const GenesisState = {
         }
         else {
             obj.denom_metadata = [];
+        }
+        if (message.send_enabled) {
+            obj.send_enabled = message.send_enabled.map(e => e ? SendEnabled.toAmino(e) : undefined);
+        }
+        else {
+            obj.send_enabled = [];
         }
         return obj;
     },
@@ -237,23 +228,6 @@ export const Balance = {
         message.address = object.address ?? "";
         message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            address: object?.address,
-            coins: Array.isArray(object?.coins) ? object.coins.map((e) => Coin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        if (message.coins) {
-            obj.coins = message.coins.map(e => e ? Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.coins = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {

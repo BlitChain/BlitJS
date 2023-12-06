@@ -90,24 +90,6 @@ exports.FungibleTokenPacketData = {
         message.memo = object.memo ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            denom: object?.denom,
-            amount: object?.amount,
-            sender: object?.sender,
-            receiver: object?.receiver,
-            memo: object?.memo
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.denom = message.denom;
-        obj.amount = message.amount;
-        obj.sender = message.sender;
-        obj.receiver = message.receiver;
-        obj.memo = message.memo;
-        return obj;
-    },
     fromAmino(object) {
         return {
             denom: object.denom,

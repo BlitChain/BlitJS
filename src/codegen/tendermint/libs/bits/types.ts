@@ -90,22 +90,6 @@ export const BitArray = {
     message.elems = object.elems?.map(e => BigInt(e.toString())) || [];
     return message;
   },
-  fromSDK(object: BitArraySDKType): BitArray {
-    return {
-      bits: object?.bits,
-      elems: Array.isArray(object?.elems) ? object.elems.map((e: any) => e) : []
-    };
-  },
-  toSDK(message: BitArray): BitArraySDKType {
-    const obj: any = {};
-    obj.bits = message.bits;
-    if (message.elems) {
-      obj.elems = message.elems.map(e => e);
-    } else {
-      obj.elems = [];
-    }
-    return obj;
-  },
   fromAmino(object: BitArrayAmino): BitArray {
     return {
       bits: BigInt(object.bits),

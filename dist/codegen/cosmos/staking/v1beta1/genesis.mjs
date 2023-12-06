@@ -143,55 +143,6 @@ export const GenesisState = {
         message.exported = object.exported ?? false;
         return message;
     },
-    fromSDK(object) {
-        return {
-            params: object.params ? Params.fromSDK(object.params) : undefined,
-            last_total_power: object?.last_total_power,
-            last_validator_powers: Array.isArray(object?.last_validator_powers) ? object.last_validator_powers.map((e) => LastValidatorPower.fromSDK(e)) : [],
-            validators: Array.isArray(object?.validators) ? object.validators.map((e) => Validator.fromSDK(e)) : [],
-            delegations: Array.isArray(object?.delegations) ? object.delegations.map((e) => Delegation.fromSDK(e)) : [],
-            unbonding_delegations: Array.isArray(object?.unbonding_delegations) ? object.unbonding_delegations.map((e) => UnbondingDelegation.fromSDK(e)) : [],
-            redelegations: Array.isArray(object?.redelegations) ? object.redelegations.map((e) => Redelegation.fromSDK(e)) : [],
-            exported: object?.exported
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-        obj.last_total_power = message.last_total_power;
-        if (message.last_validator_powers) {
-            obj.last_validator_powers = message.last_validator_powers.map(e => e ? LastValidatorPower.toSDK(e) : undefined);
-        }
-        else {
-            obj.last_validator_powers = [];
-        }
-        if (message.validators) {
-            obj.validators = message.validators.map(e => e ? Validator.toSDK(e) : undefined);
-        }
-        else {
-            obj.validators = [];
-        }
-        if (message.delegations) {
-            obj.delegations = message.delegations.map(e => e ? Delegation.toSDK(e) : undefined);
-        }
-        else {
-            obj.delegations = [];
-        }
-        if (message.unbonding_delegations) {
-            obj.unbonding_delegations = message.unbonding_delegations.map(e => e ? UnbondingDelegation.toSDK(e) : undefined);
-        }
-        else {
-            obj.unbonding_delegations = [];
-        }
-        if (message.redelegations) {
-            obj.redelegations = message.redelegations.map(e => e ? Redelegation.toSDK(e) : undefined);
-        }
-        else {
-            obj.redelegations = [];
-        }
-        obj.exported = message.exported;
-        return obj;
-    },
     fromAmino(object) {
         return {
             params: object?.params ? Params.fromAmino(object.params) : undefined,
@@ -317,18 +268,6 @@ export const LastValidatorPower = {
         message.address = object.address ?? "";
         message.power = object.power !== undefined && object.power !== null ? BigInt(object.power.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            address: object?.address,
-            power: object?.power
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        obj.power = message.power;
-        return obj;
     },
     fromAmino(object) {
         return {

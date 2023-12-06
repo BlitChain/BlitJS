@@ -62,18 +62,6 @@ exports.InterchainAccount = {
         message.account_owner = object.account_owner ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            base_account: object.base_account ? auth_1.BaseAccount.fromSDK(object.base_account) : undefined,
-            account_owner: object?.account_owner
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.base_account !== undefined && (obj.base_account = message.base_account ? auth_1.BaseAccount.toSDK(message.base_account) : undefined);
-        obj.account_owner = message.account_owner;
-        return obj;
-    },
     fromAmino(object) {
         return {
             base_account: object?.base_account ? auth_1.BaseAccount.fromAmino(object.base_account) : undefined,

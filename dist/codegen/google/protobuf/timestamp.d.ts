@@ -287,8 +287,6 @@ export declare const Timestamp: {
     fromJSON(object: any): Timestamp;
     toJSON(message: Timestamp): unknown;
     fromPartial(object: Partial<Timestamp>): Timestamp;
-    fromSDK(object: TimestampSDKType): Timestamp;
-    toSDK(message: Timestamp): TimestampSDKType;
     fromAmino(object: TimestampAmino): Timestamp;
     toAmino(message: Timestamp): TimestampAmino;
     fromAminoMsg(object: TimestampAminoMsg): Timestamp;

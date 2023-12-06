@@ -2,9 +2,13 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.nft.v1beta1";
 /** EventSend is emitted on Msg/Send */
 export interface EventSend {
+    /** class_id associated with the nft */
     class_id: string;
+    /** id is a unique identifier of the nft */
     id: string;
+    /** sender is the address of the owner of nft */
     sender: string;
+    /** receiver is the receiver address of nft */
     receiver: string;
 }
 export interface EventSendProtoMsg {
@@ -13,9 +17,13 @@ export interface EventSendProtoMsg {
 }
 /** EventSend is emitted on Msg/Send */
 export interface EventSendAmino {
+    /** class_id associated with the nft */
     class_id: string;
+    /** id is a unique identifier of the nft */
     id: string;
+    /** sender is the address of the owner of nft */
     sender: string;
+    /** receiver is the receiver address of nft */
     receiver: string;
 }
 export interface EventSendAminoMsg {
@@ -31,8 +39,11 @@ export interface EventSendSDKType {
 }
 /** EventMint is emitted on Mint */
 export interface EventMint {
+    /** class_id associated with the nft */
     class_id: string;
+    /** id is a unique identifier of the nft */
     id: string;
+    /** owner is the owner address of the nft */
     owner: string;
 }
 export interface EventMintProtoMsg {
@@ -41,8 +52,11 @@ export interface EventMintProtoMsg {
 }
 /** EventMint is emitted on Mint */
 export interface EventMintAmino {
+    /** class_id associated with the nft */
     class_id: string;
+    /** id is a unique identifier of the nft */
     id: string;
+    /** owner is the owner address of the nft */
     owner: string;
 }
 export interface EventMintAminoMsg {
@@ -57,8 +71,11 @@ export interface EventMintSDKType {
 }
 /** EventBurn is emitted on Burn */
 export interface EventBurn {
+    /** class_id associated with the nft */
     class_id: string;
+    /** id is a unique identifier of the nft */
     id: string;
+    /** owner is the owner address of the nft */
     owner: string;
 }
 export interface EventBurnProtoMsg {
@@ -67,8 +84,11 @@ export interface EventBurnProtoMsg {
 }
 /** EventBurn is emitted on Burn */
 export interface EventBurnAmino {
+    /** class_id associated with the nft */
     class_id: string;
+    /** id is a unique identifier of the nft */
     id: string;
+    /** owner is the owner address of the nft */
     owner: string;
 }
 export interface EventBurnAminoMsg {
@@ -88,8 +108,6 @@ export declare const EventSend: {
     fromJSON(object: any): EventSend;
     toJSON(message: EventSend): unknown;
     fromPartial(object: Partial<EventSend>): EventSend;
-    fromSDK(object: EventSendSDKType): EventSend;
-    toSDK(message: EventSend): EventSendSDKType;
     fromAmino(object: EventSendAmino): EventSend;
     toAmino(message: EventSend): EventSendAmino;
     fromAminoMsg(object: EventSendAminoMsg): EventSend;
@@ -105,8 +123,6 @@ export declare const EventMint: {
     fromJSON(object: any): EventMint;
     toJSON(message: EventMint): unknown;
     fromPartial(object: Partial<EventMint>): EventMint;
-    fromSDK(object: EventMintSDKType): EventMint;
-    toSDK(message: EventMint): EventMintSDKType;
     fromAmino(object: EventMintAmino): EventMint;
     toAmino(message: EventMint): EventMintAmino;
     fromAminoMsg(object: EventMintAminoMsg): EventMint;
@@ -122,8 +138,6 @@ export declare const EventBurn: {
     fromJSON(object: any): EventBurn;
     toJSON(message: EventBurn): unknown;
     fromPartial(object: Partial<EventBurn>): EventBurn;
-    fromSDK(object: EventBurnSDKType): EventBurn;
-    toSDK(message: EventBurn): EventBurnSDKType;
     fromAmino(object: EventBurnAmino): EventBurn;
     toAmino(message: EventBurn): EventBurnAmino;
     fromAminoMsg(object: EventBurnAminoMsg): EventBurn;

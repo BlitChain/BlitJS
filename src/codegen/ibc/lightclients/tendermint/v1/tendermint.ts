@@ -443,44 +443,6 @@ export const ClientState = {
     message.allow_update_after_misbehaviour = object.allow_update_after_misbehaviour ?? false;
     return message;
   },
-  fromSDK(object: ClientStateSDKType): ClientState {
-    return {
-      chain_id: object?.chain_id,
-      trust_level: object.trust_level ? Fraction.fromSDK(object.trust_level) : undefined,
-      trusting_period: object.trusting_period ? Duration.fromSDK(object.trusting_period) : undefined,
-      unbonding_period: object.unbonding_period ? Duration.fromSDK(object.unbonding_period) : undefined,
-      max_clock_drift: object.max_clock_drift ? Duration.fromSDK(object.max_clock_drift) : undefined,
-      frozen_height: object.frozen_height ? Height.fromSDK(object.frozen_height) : undefined,
-      latest_height: object.latest_height ? Height.fromSDK(object.latest_height) : undefined,
-      proof_specs: Array.isArray(object?.proof_specs) ? object.proof_specs.map((e: any) => ProofSpec.fromSDK(e)) : [],
-      upgrade_path: Array.isArray(object?.upgrade_path) ? object.upgrade_path.map((e: any) => e) : [],
-      allow_update_after_expiry: object?.allow_update_after_expiry,
-      allow_update_after_misbehaviour: object?.allow_update_after_misbehaviour
-    };
-  },
-  toSDK(message: ClientState): ClientStateSDKType {
-    const obj: any = {};
-    obj.chain_id = message.chain_id;
-    message.trust_level !== undefined && (obj.trust_level = message.trust_level ? Fraction.toSDK(message.trust_level) : undefined);
-    message.trusting_period !== undefined && (obj.trusting_period = message.trusting_period ? Duration.toSDK(message.trusting_period) : undefined);
-    message.unbonding_period !== undefined && (obj.unbonding_period = message.unbonding_period ? Duration.toSDK(message.unbonding_period) : undefined);
-    message.max_clock_drift !== undefined && (obj.max_clock_drift = message.max_clock_drift ? Duration.toSDK(message.max_clock_drift) : undefined);
-    message.frozen_height !== undefined && (obj.frozen_height = message.frozen_height ? Height.toSDK(message.frozen_height) : undefined);
-    message.latest_height !== undefined && (obj.latest_height = message.latest_height ? Height.toSDK(message.latest_height) : undefined);
-    if (message.proof_specs) {
-      obj.proof_specs = message.proof_specs.map(e => e ? ProofSpec.toSDK(e) : undefined);
-    } else {
-      obj.proof_specs = [];
-    }
-    if (message.upgrade_path) {
-      obj.upgrade_path = message.upgrade_path.map(e => e);
-    } else {
-      obj.upgrade_path = [];
-    }
-    obj.allow_update_after_expiry = message.allow_update_after_expiry;
-    obj.allow_update_after_misbehaviour = message.allow_update_after_misbehaviour;
-    return obj;
-  },
   fromAmino(object: ClientStateAmino): ClientState {
     return {
       chain_id: object.chain_id,
@@ -606,20 +568,6 @@ export const ConsensusState = {
     message.next_validators_hash = object.next_validators_hash ?? new Uint8Array();
     return message;
   },
-  fromSDK(object: ConsensusStateSDKType): ConsensusState {
-    return {
-      timestamp: object.timestamp ? Timestamp.fromSDK(object.timestamp) : undefined,
-      root: object.root ? MerkleRoot.fromSDK(object.root) : undefined,
-      next_validators_hash: object?.next_validators_hash
-    };
-  },
-  toSDK(message: ConsensusState): ConsensusStateSDKType {
-    const obj: any = {};
-    message.timestamp !== undefined && (obj.timestamp = message.timestamp ? Timestamp.toSDK(message.timestamp) : undefined);
-    message.root !== undefined && (obj.root = message.root ? MerkleRoot.toSDK(message.root) : undefined);
-    obj.next_validators_hash = message.next_validators_hash;
-    return obj;
-  },
   fromAmino(object: ConsensusStateAmino): ConsensusState {
     return {
       timestamp: object?.timestamp ? fromTimestamp(Timestamp.fromAmino(object.timestamp)) : undefined,
@@ -720,20 +668,6 @@ export const Misbehaviour = {
     message.header1 = object.header1 !== undefined && object.header1 !== null ? Header.fromPartial(object.header1) : undefined;
     message.header2 = object.header2 !== undefined && object.header2 !== null ? Header.fromPartial(object.header2) : undefined;
     return message;
-  },
-  fromSDK(object: MisbehaviourSDKType): Misbehaviour {
-    return {
-      client_id: object?.client_id,
-      header_1: object.header_1 ? Header.fromSDK(object.header_1) : undefined,
-      header_2: object.header_2 ? Header.fromSDK(object.header_2) : undefined
-    };
-  },
-  toSDK(message: Misbehaviour): MisbehaviourSDKType {
-    const obj: any = {};
-    obj.client_id = message.client_id;
-    message.header_1 !== undefined && (obj.header_1 = message.header_1 ? Header.toSDK(message.header_1) : undefined);
-    message.header_2 !== undefined && (obj.header_2 = message.header_2 ? Header.toSDK(message.header_2) : undefined);
-    return obj;
   },
   fromAmino(object: MisbehaviourAmino): Misbehaviour {
     return {
@@ -846,22 +780,6 @@ export const Header = {
     message.trusted_validators = object.trusted_validators !== undefined && object.trusted_validators !== null ? ValidatorSet.fromPartial(object.trusted_validators) : undefined;
     return message;
   },
-  fromSDK(object: HeaderSDKType): Header {
-    return {
-      signed_header: object.signed_header ? SignedHeader.fromSDK(object.signed_header) : undefined,
-      validator_set: object.validator_set ? ValidatorSet.fromSDK(object.validator_set) : undefined,
-      trusted_height: object.trusted_height ? Height.fromSDK(object.trusted_height) : undefined,
-      trusted_validators: object.trusted_validators ? ValidatorSet.fromSDK(object.trusted_validators) : undefined
-    };
-  },
-  toSDK(message: Header): HeaderSDKType {
-    const obj: any = {};
-    message.signed_header !== undefined && (obj.signed_header = message.signed_header ? SignedHeader.toSDK(message.signed_header) : undefined);
-    message.validator_set !== undefined && (obj.validator_set = message.validator_set ? ValidatorSet.toSDK(message.validator_set) : undefined);
-    message.trusted_height !== undefined && (obj.trusted_height = message.trusted_height ? Height.toSDK(message.trusted_height) : undefined);
-    message.trusted_validators !== undefined && (obj.trusted_validators = message.trusted_validators ? ValidatorSet.toSDK(message.trusted_validators) : undefined);
-    return obj;
-  },
   fromAmino(object: HeaderAmino): Header {
     return {
       signed_header: object?.signed_header ? SignedHeader.fromAmino(object.signed_header) : undefined,
@@ -954,18 +872,6 @@ export const Fraction = {
     message.numerator = object.numerator !== undefined && object.numerator !== null ? BigInt(object.numerator.toString()) : BigInt(0);
     message.denominator = object.denominator !== undefined && object.denominator !== null ? BigInt(object.denominator.toString()) : BigInt(0);
     return message;
-  },
-  fromSDK(object: FractionSDKType): Fraction {
-    return {
-      numerator: object?.numerator,
-      denominator: object?.denominator
-    };
-  },
-  toSDK(message: Fraction): FractionSDKType {
-    const obj: any = {};
-    obj.numerator = message.numerator;
-    obj.denominator = message.denominator;
-    return obj;
   },
   fromAmino(object: FractionAmino): Fraction {
     return {

@@ -69,8 +69,6 @@ export declare const InterchainAccountPacketData: {
     fromJSON(object: any): InterchainAccountPacketData;
     toJSON(message: InterchainAccountPacketData): unknown;
     fromPartial(object: Partial<InterchainAccountPacketData>): InterchainAccountPacketData;
-    fromSDK(object: InterchainAccountPacketDataSDKType): InterchainAccountPacketData;
-    toSDK(message: InterchainAccountPacketData): InterchainAccountPacketDataSDKType;
     fromAmino(object: InterchainAccountPacketDataAmino): InterchainAccountPacketData;
     toAmino(message: InterchainAccountPacketData): InterchainAccountPacketDataAmino;
     fromAminoMsg(object: InterchainAccountPacketDataAminoMsg): InterchainAccountPacketData;
@@ -86,8 +84,6 @@ export declare const CosmosTx: {
     fromJSON(object: any): CosmosTx;
     toJSON(message: CosmosTx): unknown;
     fromPartial(object: Partial<CosmosTx>): CosmosTx;
-    fromSDK(object: CosmosTxSDKType): CosmosTx;
-    toSDK(message: CosmosTx): CosmosTxSDKType;
     fromAmino(object: CosmosTxAmino): CosmosTx;
     toAmino(message: CosmosTx): CosmosTxAmino;
     fromAminoMsg(object: CosmosTxAminoMsg): CosmosTx;

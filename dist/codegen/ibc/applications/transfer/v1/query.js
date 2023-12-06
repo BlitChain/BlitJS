@@ -53,16 +53,6 @@ exports.QueryDenomTraceRequest = {
         message.hash = object.hash ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            hash: object?.hash
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.hash = message.hash;
-        return obj;
-    },
     fromAmino(object) {
         return {
             hash: object.hash
@@ -140,16 +130,6 @@ exports.QueryDenomTraceResponse = {
         message.denom_trace = object.denom_trace !== undefined && object.denom_trace !== null ? transfer_1.DenomTrace.fromPartial(object.denom_trace) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            denom_trace: object.denom_trace ? transfer_1.DenomTrace.fromSDK(object.denom_trace) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.denom_trace !== undefined && (obj.denom_trace = message.denom_trace ? transfer_1.DenomTrace.toSDK(message.denom_trace) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             denom_trace: object?.denom_trace ? transfer_1.DenomTrace.fromAmino(object.denom_trace) : undefined
@@ -226,16 +206,6 @@ exports.QueryDenomTracesRequest = {
         const message = createBaseQueryDenomTracesRequest();
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -329,23 +299,6 @@ exports.QueryDenomTracesResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            denom_traces: Array.isArray(object?.denom_traces) ? object.denom_traces.map((e) => transfer_1.DenomTrace.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.denom_traces) {
-            obj.denom_traces = message.denom_traces.map(e => e ? transfer_1.DenomTrace.toSDK(e) : undefined);
-        }
-        else {
-            obj.denom_traces = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             denom_traces: Array.isArray(object?.denom_traces) ? object.denom_traces.map((e) => transfer_1.DenomTrace.fromAmino(e)) : [],
@@ -417,13 +370,6 @@ exports.QueryParamsRequest = {
     fromPartial(_) {
         const message = createBaseQueryParamsRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -498,16 +444,6 @@ exports.QueryParamsResponse = {
         const message = createBaseQueryParamsResponse();
         message.params = object.params !== undefined && object.params !== null ? transfer_1.Params.fromPartial(object.params) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            params: object.params ? transfer_1.Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? transfer_1.Params.toSDK(message.params) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -586,16 +522,6 @@ exports.QueryDenomHashRequest = {
         message.trace = object.trace ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            trace: object?.trace
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.trace = message.trace;
-        return obj;
-    },
     fromAmino(object) {
         return {
             trace: object.trace
@@ -672,16 +598,6 @@ exports.QueryDenomHashResponse = {
         const message = createBaseQueryDenomHashResponse();
         message.hash = object.hash ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            hash: object?.hash
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.hash = message.hash;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -770,18 +686,6 @@ exports.QueryEscrowAddressRequest = {
         message.channel_id = object.channel_id ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             port_id: object.port_id,
@@ -861,16 +765,6 @@ exports.QueryEscrowAddressResponse = {
         message.escrow_address = object.escrow_address ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            escrow_address: object?.escrow_address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.escrow_address = message.escrow_address;
-        return obj;
-    },
     fromAmino(object) {
         return {
             escrow_address: object.escrow_address
@@ -948,16 +842,6 @@ exports.QueryTotalEscrowForDenomRequest = {
         message.denom = object.denom ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            denom: object?.denom
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.denom = message.denom;
-        return obj;
-    },
     fromAmino(object) {
         return {
             denom: object.denom
@@ -1034,16 +918,6 @@ exports.QueryTotalEscrowForDenomResponse = {
         const message = createBaseQueryTotalEscrowForDenomResponse();
         message.amount = object.amount !== undefined && object.amount !== null ? coin_1.Coin.fromPartial(object.amount) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            amount: object.amount ? coin_1.Coin.fromSDK(object.amount) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.amount !== undefined && (obj.amount = message.amount ? coin_1.Coin.toSDK(message.amount) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {

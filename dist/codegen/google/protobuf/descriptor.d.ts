@@ -1960,8 +1960,6 @@ export declare const FileDescriptorSet: {
     fromJSON(object: any): FileDescriptorSet;
     toJSON(message: FileDescriptorSet): unknown;
     fromPartial(object: Partial<FileDescriptorSet>): FileDescriptorSet;
-    fromSDK(object: FileDescriptorSetSDKType): FileDescriptorSet;
-    toSDK(message: FileDescriptorSet): FileDescriptorSetSDKType;
     fromAmino(object: FileDescriptorSetAmino): FileDescriptorSet;
     toAmino(message: FileDescriptorSet): FileDescriptorSetAmino;
     fromAminoMsg(object: FileDescriptorSetAminoMsg): FileDescriptorSet;
@@ -1976,8 +1974,6 @@ export declare const FileDescriptorProto: {
     fromJSON(object: any): FileDescriptorProto;
     toJSON(message: FileDescriptorProto): unknown;
     fromPartial(object: Partial<FileDescriptorProto>): FileDescriptorProto;
-    fromSDK(object: FileDescriptorProtoSDKType): FileDescriptorProto;
-    toSDK(message: FileDescriptorProto): FileDescriptorProtoSDKType;
     fromAmino(object: FileDescriptorProtoAmino): FileDescriptorProto;
     toAmino(message: FileDescriptorProto): FileDescriptorProtoAmino;
     fromAminoMsg(object: FileDescriptorProtoAminoMsg): FileDescriptorProto;
@@ -1992,8 +1988,6 @@ export declare const DescriptorProto: {
     fromJSON(object: any): DescriptorProto;
     toJSON(message: DescriptorProto): unknown;
     fromPartial(object: Partial<DescriptorProto>): DescriptorProto;
-    fromSDK(object: DescriptorProtoSDKType): DescriptorProto;
-    toSDK(message: DescriptorProto): DescriptorProtoSDKType;
     fromAmino(object: DescriptorProtoAmino): DescriptorProto;
     toAmino(message: DescriptorProto): DescriptorProtoAmino;
     fromAminoMsg(object: DescriptorProtoAminoMsg): DescriptorProto;
@@ -2008,8 +2002,6 @@ export declare const DescriptorProto_ExtensionRange: {
     fromJSON(object: any): DescriptorProto_ExtensionRange;
     toJSON(message: DescriptorProto_ExtensionRange): unknown;
     fromPartial(object: Partial<DescriptorProto_ExtensionRange>): DescriptorProto_ExtensionRange;
-    fromSDK(object: DescriptorProto_ExtensionRangeSDKType): DescriptorProto_ExtensionRange;
-    toSDK(message: DescriptorProto_ExtensionRange): DescriptorProto_ExtensionRangeSDKType;
     fromAmino(object: DescriptorProto_ExtensionRangeAmino): DescriptorProto_ExtensionRange;
     toAmino(message: DescriptorProto_ExtensionRange): DescriptorProto_ExtensionRangeAmino;
     fromAminoMsg(object: DescriptorProto_ExtensionRangeAminoMsg): DescriptorProto_ExtensionRange;
@@ -2024,8 +2016,6 @@ export declare const DescriptorProto_ReservedRange: {
     fromJSON(object: any): DescriptorProto_ReservedRange;
     toJSON(message: DescriptorProto_ReservedRange): unknown;
     fromPartial(object: Partial<DescriptorProto_ReservedRange>): DescriptorProto_ReservedRange;
-    fromSDK(object: DescriptorProto_ReservedRangeSDKType): DescriptorProto_ReservedRange;
-    toSDK(message: DescriptorProto_ReservedRange): DescriptorProto_ReservedRangeSDKType;
     fromAmino(object: DescriptorProto_ReservedRangeAmino): DescriptorProto_ReservedRange;
     toAmino(message: DescriptorProto_ReservedRange): DescriptorProto_ReservedRangeAmino;
     fromAminoMsg(object: DescriptorProto_ReservedRangeAminoMsg): DescriptorProto_ReservedRange;
@@ -2040,8 +2030,6 @@ export declare const ExtensionRangeOptions: {
     fromJSON(object: any): ExtensionRangeOptions;
     toJSON(message: ExtensionRangeOptions): unknown;
     fromPartial(object: Partial<ExtensionRangeOptions>): ExtensionRangeOptions;
-    fromSDK(object: ExtensionRangeOptionsSDKType): ExtensionRangeOptions;
-    toSDK(message: ExtensionRangeOptions): ExtensionRangeOptionsSDKType;
     fromAmino(object: ExtensionRangeOptionsAmino): ExtensionRangeOptions;
     toAmino(message: ExtensionRangeOptions): ExtensionRangeOptionsAmino;
     fromAminoMsg(object: ExtensionRangeOptionsAminoMsg): ExtensionRangeOptions;
@@ -2056,8 +2044,6 @@ export declare const FieldDescriptorProto: {
     fromJSON(object: any): FieldDescriptorProto;
     toJSON(message: FieldDescriptorProto): unknown;
     fromPartial(object: Partial<FieldDescriptorProto>): FieldDescriptorProto;
-    fromSDK(object: FieldDescriptorProtoSDKType): FieldDescriptorProto;
-    toSDK(message: FieldDescriptorProto): FieldDescriptorProtoSDKType;
     fromAmino(object: FieldDescriptorProtoAmino): FieldDescriptorProto;
     toAmino(message: FieldDescriptorProto): FieldDescriptorProtoAmino;
     fromAminoMsg(object: FieldDescriptorProtoAminoMsg): FieldDescriptorProto;
@@ -2072,8 +2058,6 @@ export declare const OneofDescriptorProto: {
     fromJSON(object: any): OneofDescriptorProto;
     toJSON(message: OneofDescriptorProto): unknown;
     fromPartial(object: Partial<OneofDescriptorProto>): OneofDescriptorProto;
-    fromSDK(object: OneofDescriptorProtoSDKType): OneofDescriptorProto;
-    toSDK(message: OneofDescriptorProto): OneofDescriptorProtoSDKType;
     fromAmino(object: OneofDescriptorProtoAmino): OneofDescriptorProto;
     toAmino(message: OneofDescriptorProto): OneofDescriptorProtoAmino;
     fromAminoMsg(object: OneofDescriptorProtoAminoMsg): OneofDescriptorProto;
@@ -2088,8 +2072,6 @@ export declare const EnumDescriptorProto: {
     fromJSON(object: any): EnumDescriptorProto;
     toJSON(message: EnumDescriptorProto): unknown;
     fromPartial(object: Partial<EnumDescriptorProto>): EnumDescriptorProto;
-    fromSDK(object: EnumDescriptorProtoSDKType): EnumDescriptorProto;
-    toSDK(message: EnumDescriptorProto): EnumDescriptorProtoSDKType;
     fromAmino(object: EnumDescriptorProtoAmino): EnumDescriptorProto;
     toAmino(message: EnumDescriptorProto): EnumDescriptorProtoAmino;
     fromAminoMsg(object: EnumDescriptorProtoAminoMsg): EnumDescriptorProto;
@@ -2104,8 +2086,6 @@ export declare const EnumDescriptorProto_EnumReservedRange: {
     fromJSON(object: any): EnumDescriptorProto_EnumReservedRange;
     toJSON(message: EnumDescriptorProto_EnumReservedRange): unknown;
     fromPartial(object: Partial<EnumDescriptorProto_EnumReservedRange>): EnumDescriptorProto_EnumReservedRange;
-    fromSDK(object: EnumDescriptorProto_EnumReservedRangeSDKType): EnumDescriptorProto_EnumReservedRange;
-    toSDK(message: EnumDescriptorProto_EnumReservedRange): EnumDescriptorProto_EnumReservedRangeSDKType;
     fromAmino(object: EnumDescriptorProto_EnumReservedRangeAmino): EnumDescriptorProto_EnumReservedRange;
     toAmino(message: EnumDescriptorProto_EnumReservedRange): EnumDescriptorProto_EnumReservedRangeAmino;
     fromAminoMsg(object: EnumDescriptorProto_EnumReservedRangeAminoMsg): EnumDescriptorProto_EnumReservedRange;
@@ -2120,8 +2100,6 @@ export declare const EnumValueDescriptorProto: {
     fromJSON(object: any): EnumValueDescriptorProto;
     toJSON(message: EnumValueDescriptorProto): unknown;
     fromPartial(object: Partial<EnumValueDescriptorProto>): EnumValueDescriptorProto;
-    fromSDK(object: EnumValueDescriptorProtoSDKType): EnumValueDescriptorProto;
-    toSDK(message: EnumValueDescriptorProto): EnumValueDescriptorProtoSDKType;
     fromAmino(object: EnumValueDescriptorProtoAmino): EnumValueDescriptorProto;
     toAmino(message: EnumValueDescriptorProto): EnumValueDescriptorProtoAmino;
     fromAminoMsg(object: EnumValueDescriptorProtoAminoMsg): EnumValueDescriptorProto;
@@ -2136,8 +2114,6 @@ export declare const ServiceDescriptorProto: {
     fromJSON(object: any): ServiceDescriptorProto;
     toJSON(message: ServiceDescriptorProto): unknown;
     fromPartial(object: Partial<ServiceDescriptorProto>): ServiceDescriptorProto;
-    fromSDK(object: ServiceDescriptorProtoSDKType): ServiceDescriptorProto;
-    toSDK(message: ServiceDescriptorProto): ServiceDescriptorProtoSDKType;
     fromAmino(object: ServiceDescriptorProtoAmino): ServiceDescriptorProto;
     toAmino(message: ServiceDescriptorProto): ServiceDescriptorProtoAmino;
     fromAminoMsg(object: ServiceDescriptorProtoAminoMsg): ServiceDescriptorProto;
@@ -2152,8 +2128,6 @@ export declare const MethodDescriptorProto: {
     fromJSON(object: any): MethodDescriptorProto;
     toJSON(message: MethodDescriptorProto): unknown;
     fromPartial(object: Partial<MethodDescriptorProto>): MethodDescriptorProto;
-    fromSDK(object: MethodDescriptorProtoSDKType): MethodDescriptorProto;
-    toSDK(message: MethodDescriptorProto): MethodDescriptorProtoSDKType;
     fromAmino(object: MethodDescriptorProtoAmino): MethodDescriptorProto;
     toAmino(message: MethodDescriptorProto): MethodDescriptorProtoAmino;
     fromAminoMsg(object: MethodDescriptorProtoAminoMsg): MethodDescriptorProto;
@@ -2168,8 +2142,6 @@ export declare const FileOptions: {
     fromJSON(object: any): FileOptions;
     toJSON(message: FileOptions): unknown;
     fromPartial(object: Partial<FileOptions>): FileOptions;
-    fromSDK(object: FileOptionsSDKType): FileOptions;
-    toSDK(message: FileOptions): FileOptionsSDKType;
     fromAmino(object: FileOptionsAmino): FileOptions;
     toAmino(message: FileOptions): FileOptionsAmino;
     fromAminoMsg(object: FileOptionsAminoMsg): FileOptions;
@@ -2184,8 +2156,6 @@ export declare const MessageOptions: {
     fromJSON(object: any): MessageOptions;
     toJSON(message: MessageOptions): unknown;
     fromPartial(object: Partial<MessageOptions>): MessageOptions;
-    fromSDK(object: MessageOptionsSDKType): MessageOptions;
-    toSDK(message: MessageOptions): MessageOptionsSDKType;
     fromAmino(object: MessageOptionsAmino): MessageOptions;
     toAmino(message: MessageOptions): MessageOptionsAmino;
     fromAminoMsg(object: MessageOptionsAminoMsg): MessageOptions;
@@ -2200,8 +2170,6 @@ export declare const FieldOptions: {
     fromJSON(object: any): FieldOptions;
     toJSON(message: FieldOptions): unknown;
     fromPartial(object: Partial<FieldOptions>): FieldOptions;
-    fromSDK(object: FieldOptionsSDKType): FieldOptions;
-    toSDK(message: FieldOptions): FieldOptionsSDKType;
     fromAmino(object: FieldOptionsAmino): FieldOptions;
     toAmino(message: FieldOptions): FieldOptionsAmino;
     fromAminoMsg(object: FieldOptionsAminoMsg): FieldOptions;
@@ -2216,8 +2184,6 @@ export declare const OneofOptions: {
     fromJSON(object: any): OneofOptions;
     toJSON(message: OneofOptions): unknown;
     fromPartial(object: Partial<OneofOptions>): OneofOptions;
-    fromSDK(object: OneofOptionsSDKType): OneofOptions;
-    toSDK(message: OneofOptions): OneofOptionsSDKType;
     fromAmino(object: OneofOptionsAmino): OneofOptions;
     toAmino(message: OneofOptions): OneofOptionsAmino;
     fromAminoMsg(object: OneofOptionsAminoMsg): OneofOptions;
@@ -2232,8 +2198,6 @@ export declare const EnumOptions: {
     fromJSON(object: any): EnumOptions;
     toJSON(message: EnumOptions): unknown;
     fromPartial(object: Partial<EnumOptions>): EnumOptions;
-    fromSDK(object: EnumOptionsSDKType): EnumOptions;
-    toSDK(message: EnumOptions): EnumOptionsSDKType;
     fromAmino(object: EnumOptionsAmino): EnumOptions;
     toAmino(message: EnumOptions): EnumOptionsAmino;
     fromAminoMsg(object: EnumOptionsAminoMsg): EnumOptions;
@@ -2248,8 +2212,6 @@ export declare const EnumValueOptions: {
     fromJSON(object: any): EnumValueOptions;
     toJSON(message: EnumValueOptions): unknown;
     fromPartial(object: Partial<EnumValueOptions>): EnumValueOptions;
-    fromSDK(object: EnumValueOptionsSDKType): EnumValueOptions;
-    toSDK(message: EnumValueOptions): EnumValueOptionsSDKType;
     fromAmino(object: EnumValueOptionsAmino): EnumValueOptions;
     toAmino(message: EnumValueOptions): EnumValueOptionsAmino;
     fromAminoMsg(object: EnumValueOptionsAminoMsg): EnumValueOptions;
@@ -2264,8 +2226,6 @@ export declare const ServiceOptions: {
     fromJSON(object: any): ServiceOptions;
     toJSON(message: ServiceOptions): unknown;
     fromPartial(object: Partial<ServiceOptions>): ServiceOptions;
-    fromSDK(object: ServiceOptionsSDKType): ServiceOptions;
-    toSDK(message: ServiceOptions): ServiceOptionsSDKType;
     fromAmino(object: ServiceOptionsAmino): ServiceOptions;
     toAmino(message: ServiceOptions): ServiceOptionsAmino;
     fromAminoMsg(object: ServiceOptionsAminoMsg): ServiceOptions;
@@ -2280,8 +2240,6 @@ export declare const MethodOptions: {
     fromJSON(object: any): MethodOptions;
     toJSON(message: MethodOptions): unknown;
     fromPartial(object: Partial<MethodOptions>): MethodOptions;
-    fromSDK(object: MethodOptionsSDKType): MethodOptions;
-    toSDK(message: MethodOptions): MethodOptionsSDKType;
     fromAmino(object: MethodOptionsAmino): MethodOptions;
     toAmino(message: MethodOptions): MethodOptionsAmino;
     fromAminoMsg(object: MethodOptionsAminoMsg): MethodOptions;
@@ -2296,8 +2254,6 @@ export declare const UninterpretedOption: {
     fromJSON(object: any): UninterpretedOption;
     toJSON(message: UninterpretedOption): unknown;
     fromPartial(object: Partial<UninterpretedOption>): UninterpretedOption;
-    fromSDK(object: UninterpretedOptionSDKType): UninterpretedOption;
-    toSDK(message: UninterpretedOption): UninterpretedOptionSDKType;
     fromAmino(object: UninterpretedOptionAmino): UninterpretedOption;
     toAmino(message: UninterpretedOption): UninterpretedOptionAmino;
     fromAminoMsg(object: UninterpretedOptionAminoMsg): UninterpretedOption;
@@ -2312,8 +2268,6 @@ export declare const UninterpretedOption_NamePart: {
     fromJSON(object: any): UninterpretedOption_NamePart;
     toJSON(message: UninterpretedOption_NamePart): unknown;
     fromPartial(object: Partial<UninterpretedOption_NamePart>): UninterpretedOption_NamePart;
-    fromSDK(object: UninterpretedOption_NamePartSDKType): UninterpretedOption_NamePart;
-    toSDK(message: UninterpretedOption_NamePart): UninterpretedOption_NamePartSDKType;
     fromAmino(object: UninterpretedOption_NamePartAmino): UninterpretedOption_NamePart;
     toAmino(message: UninterpretedOption_NamePart): UninterpretedOption_NamePartAmino;
     fromAminoMsg(object: UninterpretedOption_NamePartAminoMsg): UninterpretedOption_NamePart;
@@ -2328,8 +2282,6 @@ export declare const SourceCodeInfo: {
     fromJSON(object: any): SourceCodeInfo;
     toJSON(message: SourceCodeInfo): unknown;
     fromPartial(object: Partial<SourceCodeInfo>): SourceCodeInfo;
-    fromSDK(object: SourceCodeInfoSDKType): SourceCodeInfo;
-    toSDK(message: SourceCodeInfo): SourceCodeInfoSDKType;
     fromAmino(object: SourceCodeInfoAmino): SourceCodeInfo;
     toAmino(message: SourceCodeInfo): SourceCodeInfoAmino;
     fromAminoMsg(object: SourceCodeInfoAminoMsg): SourceCodeInfo;
@@ -2344,8 +2296,6 @@ export declare const SourceCodeInfo_Location: {
     fromJSON(object: any): SourceCodeInfo_Location;
     toJSON(message: SourceCodeInfo_Location): unknown;
     fromPartial(object: Partial<SourceCodeInfo_Location>): SourceCodeInfo_Location;
-    fromSDK(object: SourceCodeInfo_LocationSDKType): SourceCodeInfo_Location;
-    toSDK(message: SourceCodeInfo_Location): SourceCodeInfo_LocationSDKType;
     fromAmino(object: SourceCodeInfo_LocationAmino): SourceCodeInfo_Location;
     toAmino(message: SourceCodeInfo_Location): SourceCodeInfo_LocationAmino;
     fromAminoMsg(object: SourceCodeInfo_LocationAminoMsg): SourceCodeInfo_Location;
@@ -2360,8 +2310,6 @@ export declare const GeneratedCodeInfo: {
     fromJSON(object: any): GeneratedCodeInfo;
     toJSON(message: GeneratedCodeInfo): unknown;
     fromPartial(object: Partial<GeneratedCodeInfo>): GeneratedCodeInfo;
-    fromSDK(object: GeneratedCodeInfoSDKType): GeneratedCodeInfo;
-    toSDK(message: GeneratedCodeInfo): GeneratedCodeInfoSDKType;
     fromAmino(object: GeneratedCodeInfoAmino): GeneratedCodeInfo;
     toAmino(message: GeneratedCodeInfo): GeneratedCodeInfoAmino;
     fromAminoMsg(object: GeneratedCodeInfoAminoMsg): GeneratedCodeInfo;
@@ -2376,8 +2324,6 @@ export declare const GeneratedCodeInfo_Annotation: {
     fromJSON(object: any): GeneratedCodeInfo_Annotation;
     toJSON(message: GeneratedCodeInfo_Annotation): unknown;
     fromPartial(object: Partial<GeneratedCodeInfo_Annotation>): GeneratedCodeInfo_Annotation;
-    fromSDK(object: GeneratedCodeInfo_AnnotationSDKType): GeneratedCodeInfo_Annotation;
-    toSDK(message: GeneratedCodeInfo_Annotation): GeneratedCodeInfo_AnnotationSDKType;
     fromAmino(object: GeneratedCodeInfo_AnnotationAmino): GeneratedCodeInfo_Annotation;
     toAmino(message: GeneratedCodeInfo_Annotation): GeneratedCodeInfo_AnnotationAmino;
     fromAminoMsg(object: GeneratedCodeInfo_AnnotationAminoMsg): GeneratedCodeInfo_Annotation;

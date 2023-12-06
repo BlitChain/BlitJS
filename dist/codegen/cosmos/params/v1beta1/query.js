@@ -61,18 +61,6 @@ exports.QueryParamsRequest = {
         message.key = object.key ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            subspace: object?.subspace,
-            key: object?.key
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.subspace = message.subspace;
-        obj.key = message.key;
-        return obj;
-    },
     fromAmino(object) {
         return {
             subspace: object.subspace,
@@ -152,16 +140,6 @@ exports.QueryParamsResponse = {
         message.param = object.param !== undefined && object.param !== null ? params_1.ParamChange.fromPartial(object.param) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            param: object.param ? params_1.ParamChange.fromSDK(object.param) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.param !== undefined && (obj.param = message.param ? params_1.ParamChange.toSDK(message.param) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             param: object?.param ? params_1.ParamChange.fromAmino(object.param) : undefined
@@ -226,13 +204,6 @@ exports.QuerySubspacesRequest = {
     fromPartial(_) {
         const message = createBaseQuerySubspacesRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -312,21 +283,6 @@ exports.QuerySubspacesResponse = {
         const message = createBaseQuerySubspacesResponse();
         message.subspaces = object.subspaces?.map(e => exports.Subspace.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            subspaces: Array.isArray(object?.subspaces) ? object.subspaces.map((e) => exports.Subspace.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.subspaces) {
-            obj.subspaces = message.subspaces.map(e => e ? exports.Subspace.toSDK(e) : undefined);
-        }
-        else {
-            obj.subspaces = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -424,23 +380,6 @@ exports.Subspace = {
         message.subspace = object.subspace ?? "";
         message.keys = object.keys?.map(e => e) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            subspace: object?.subspace,
-            keys: Array.isArray(object?.keys) ? object.keys.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.subspace = message.subspace;
-        if (message.keys) {
-            obj.keys = message.keys.map(e => e);
-        }
-        else {
-            obj.keys = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {

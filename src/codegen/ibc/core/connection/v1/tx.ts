@@ -451,24 +451,6 @@ export const MsgConnectionOpenInit = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgConnectionOpenInitSDKType): MsgConnectionOpenInit {
-    return {
-      client_id: object?.client_id,
-      counterparty: object.counterparty ? Counterparty.fromSDK(object.counterparty) : undefined,
-      version: object.version ? Version.fromSDK(object.version) : undefined,
-      delay_period: object?.delay_period,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgConnectionOpenInit): MsgConnectionOpenInitSDKType {
-    const obj: any = {};
-    obj.client_id = message.client_id;
-    message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toSDK(message.counterparty) : undefined);
-    message.version !== undefined && (obj.version = message.version ? Version.toSDK(message.version) : undefined);
-    obj.delay_period = message.delay_period;
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgConnectionOpenInitAmino): MsgConnectionOpenInit {
     return {
       client_id: object.client_id,
@@ -541,13 +523,6 @@ export const MsgConnectionOpenInitResponse = {
   fromPartial(_: Partial<MsgConnectionOpenInitResponse>): MsgConnectionOpenInitResponse {
     const message = createBaseMsgConnectionOpenInitResponse();
     return message;
-  },
-  fromSDK(_: MsgConnectionOpenInitResponseSDKType): MsgConnectionOpenInitResponse {
-    return {};
-  },
-  toSDK(_: MsgConnectionOpenInitResponse): MsgConnectionOpenInitResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgConnectionOpenInitResponseAmino): MsgConnectionOpenInitResponse {
     return {};
@@ -747,44 +722,6 @@ export const MsgConnectionOpenTry = {
     message.host_consensus_state_proof = object.host_consensus_state_proof ?? new Uint8Array();
     return message;
   },
-  fromSDK(object: MsgConnectionOpenTrySDKType): MsgConnectionOpenTry {
-    return {
-      client_id: object?.client_id,
-      previous_connection_id: object?.previous_connection_id,
-      client_state: object.client_state ? Any.fromSDK(object.client_state) : undefined,
-      counterparty: object.counterparty ? Counterparty.fromSDK(object.counterparty) : undefined,
-      delay_period: object?.delay_period,
-      counterparty_versions: Array.isArray(object?.counterparty_versions) ? object.counterparty_versions.map((e: any) => Version.fromSDK(e)) : [],
-      proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-      proof_init: object?.proof_init,
-      proof_client: object?.proof_client,
-      proof_consensus: object?.proof_consensus,
-      consensus_height: object.consensus_height ? Height.fromSDK(object.consensus_height) : undefined,
-      signer: object?.signer,
-      host_consensus_state_proof: object?.host_consensus_state_proof
-    };
-  },
-  toSDK(message: MsgConnectionOpenTry): MsgConnectionOpenTrySDKType {
-    const obj: any = {};
-    obj.client_id = message.client_id;
-    obj.previous_connection_id = message.previous_connection_id;
-    message.client_state !== undefined && (obj.client_state = message.client_state ? Any.toSDK(message.client_state) : undefined);
-    message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toSDK(message.counterparty) : undefined);
-    obj.delay_period = message.delay_period;
-    if (message.counterparty_versions) {
-      obj.counterparty_versions = message.counterparty_versions.map(e => e ? Version.toSDK(e) : undefined);
-    } else {
-      obj.counterparty_versions = [];
-    }
-    message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-    obj.proof_init = message.proof_init;
-    obj.proof_client = message.proof_client;
-    obj.proof_consensus = message.proof_consensus;
-    message.consensus_height !== undefined && (obj.consensus_height = message.consensus_height ? Height.toSDK(message.consensus_height) : undefined);
-    obj.signer = message.signer;
-    obj.host_consensus_state_proof = message.host_consensus_state_proof;
-    return obj;
-  },
   fromAmino(object: MsgConnectionOpenTryAmino): MsgConnectionOpenTry {
     return {
       client_id: object.client_id,
@@ -877,13 +814,6 @@ export const MsgConnectionOpenTryResponse = {
   fromPartial(_: Partial<MsgConnectionOpenTryResponse>): MsgConnectionOpenTryResponse {
     const message = createBaseMsgConnectionOpenTryResponse();
     return message;
-  },
-  fromSDK(_: MsgConnectionOpenTryResponseSDKType): MsgConnectionOpenTryResponse {
-    return {};
-  },
-  toSDK(_: MsgConnectionOpenTryResponse): MsgConnectionOpenTryResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgConnectionOpenTryResponseAmino): MsgConnectionOpenTryResponse {
     return {};
@@ -1059,36 +989,6 @@ export const MsgConnectionOpenAck = {
     message.host_consensus_state_proof = object.host_consensus_state_proof ?? new Uint8Array();
     return message;
   },
-  fromSDK(object: MsgConnectionOpenAckSDKType): MsgConnectionOpenAck {
-    return {
-      connection_id: object?.connection_id,
-      counterparty_connection_id: object?.counterparty_connection_id,
-      version: object.version ? Version.fromSDK(object.version) : undefined,
-      client_state: object.client_state ? Any.fromSDK(object.client_state) : undefined,
-      proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-      proof_try: object?.proof_try,
-      proof_client: object?.proof_client,
-      proof_consensus: object?.proof_consensus,
-      consensus_height: object.consensus_height ? Height.fromSDK(object.consensus_height) : undefined,
-      signer: object?.signer,
-      host_consensus_state_proof: object?.host_consensus_state_proof
-    };
-  },
-  toSDK(message: MsgConnectionOpenAck): MsgConnectionOpenAckSDKType {
-    const obj: any = {};
-    obj.connection_id = message.connection_id;
-    obj.counterparty_connection_id = message.counterparty_connection_id;
-    message.version !== undefined && (obj.version = message.version ? Version.toSDK(message.version) : undefined);
-    message.client_state !== undefined && (obj.client_state = message.client_state ? Any.toSDK(message.client_state) : undefined);
-    message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-    obj.proof_try = message.proof_try;
-    obj.proof_client = message.proof_client;
-    obj.proof_consensus = message.proof_consensus;
-    message.consensus_height !== undefined && (obj.consensus_height = message.consensus_height ? Height.toSDK(message.consensus_height) : undefined);
-    obj.signer = message.signer;
-    obj.host_consensus_state_proof = message.host_consensus_state_proof;
-    return obj;
-  },
   fromAmino(object: MsgConnectionOpenAckAmino): MsgConnectionOpenAck {
     return {
       connection_id: object.connection_id,
@@ -1173,13 +1073,6 @@ export const MsgConnectionOpenAckResponse = {
   fromPartial(_: Partial<MsgConnectionOpenAckResponse>): MsgConnectionOpenAckResponse {
     const message = createBaseMsgConnectionOpenAckResponse();
     return message;
-  },
-  fromSDK(_: MsgConnectionOpenAckResponseSDKType): MsgConnectionOpenAckResponse {
-    return {};
-  },
-  toSDK(_: MsgConnectionOpenAckResponse): MsgConnectionOpenAckResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgConnectionOpenAckResponseAmino): MsgConnectionOpenAckResponse {
     return {};
@@ -1285,22 +1178,6 @@ export const MsgConnectionOpenConfirm = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgConnectionOpenConfirmSDKType): MsgConnectionOpenConfirm {
-    return {
-      connection_id: object?.connection_id,
-      proof_ack: object?.proof_ack,
-      proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgConnectionOpenConfirm): MsgConnectionOpenConfirmSDKType {
-    const obj: any = {};
-    obj.connection_id = message.connection_id;
-    obj.proof_ack = message.proof_ack;
-    message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgConnectionOpenConfirmAmino): MsgConnectionOpenConfirm {
     return {
       connection_id: object.connection_id,
@@ -1371,13 +1248,6 @@ export const MsgConnectionOpenConfirmResponse = {
   fromPartial(_: Partial<MsgConnectionOpenConfirmResponse>): MsgConnectionOpenConfirmResponse {
     const message = createBaseMsgConnectionOpenConfirmResponse();
     return message;
-  },
-  fromSDK(_: MsgConnectionOpenConfirmResponseSDKType): MsgConnectionOpenConfirmResponse {
-    return {};
-  },
-  toSDK(_: MsgConnectionOpenConfirmResponse): MsgConnectionOpenConfirmResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgConnectionOpenConfirmResponseAmino): MsgConnectionOpenConfirmResponse {
     return {};
@@ -1463,18 +1333,6 @@ export const MsgUpdateParams = {
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
-  fromSDK(object: MsgUpdateParamsSDKType): MsgUpdateParams {
-    return {
-      signer: object?.signer,
-      params: object.params ? Params.fromSDK(object.params) : undefined
-    };
-  },
-  toSDK(message: MsgUpdateParams): MsgUpdateParamsSDKType {
-    const obj: any = {};
-    obj.signer = message.signer;
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    return obj;
-  },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
     return {
       signer: object.signer,
@@ -1541,13 +1399,6 @@ export const MsgUpdateParamsResponse = {
   fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse {
     const message = createBaseMsgUpdateParamsResponse();
     return message;
-  },
-  fromSDK(_: MsgUpdateParamsResponseSDKType): MsgUpdateParamsResponse {
-    return {};
-  },
-  toSDK(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse {
     return {};

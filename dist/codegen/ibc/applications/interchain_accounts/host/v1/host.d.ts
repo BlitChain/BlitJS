@@ -43,8 +43,6 @@ export declare const Params: {
     fromJSON(object: any): Params;
     toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
     fromAminoMsg(object: ParamsAminoMsg): Params;

@@ -20,10 +20,7 @@ export interface Plan {
      */
     /** @deprecated */
     time: Date;
-    /**
-     * The height at which the upgrade must be performed.
-     * Only used if Time is not set.
-     */
+    /** The height at which the upgrade must be performed. */
     height: bigint;
     /**
      * Any application specific upgrade info to be included on-chain
@@ -61,10 +58,7 @@ export interface PlanAmino {
      */
     /** @deprecated */
     time?: string;
-    /**
-     * The height at which the upgrade must be performed.
-     * Only used if Time is not set.
-     */
+    /** The height at which the upgrade must be performed. */
     height: string;
     /**
      * Any application specific upgrade info to be included on-chain
@@ -102,8 +96,11 @@ export interface PlanSDKType {
 /** @deprecated */
 export interface SoftwareUpgradeProposal {
     $typeUrl?: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
+    /** title of the proposal */
     title: string;
+    /** description of the proposal */
     description: string;
+    /** plan of the proposal */
     plan: Plan;
 }
 export interface SoftwareUpgradeProposalProtoMsg {
@@ -118,8 +115,11 @@ export interface SoftwareUpgradeProposalProtoMsg {
  */
 /** @deprecated */
 export interface SoftwareUpgradeProposalAmino {
+    /** title of the proposal */
     title: string;
+    /** description of the proposal */
     description: string;
+    /** plan of the proposal */
     plan?: PlanAmino;
 }
 export interface SoftwareUpgradeProposalAminoMsg {
@@ -148,7 +148,9 @@ export interface SoftwareUpgradeProposalSDKType {
 /** @deprecated */
 export interface CancelSoftwareUpgradeProposal {
     $typeUrl?: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
+    /** title of the proposal */
     title: string;
+    /** description of the proposal */
     description: string;
 }
 export interface CancelSoftwareUpgradeProposalProtoMsg {
@@ -163,7 +165,9 @@ export interface CancelSoftwareUpgradeProposalProtoMsg {
  */
 /** @deprecated */
 export interface CancelSoftwareUpgradeProposalAmino {
+    /** title of the proposal */
     title: string;
+    /** description of the proposal */
     description: string;
 }
 export interface CancelSoftwareUpgradeProposalAminoMsg {
@@ -228,8 +232,6 @@ export declare const Plan: {
     fromJSON(object: any): Plan;
     toJSON(message: Plan): unknown;
     fromPartial(object: Partial<Plan>): Plan;
-    fromSDK(object: PlanSDKType): Plan;
-    toSDK(message: Plan): PlanSDKType;
     fromAmino(object: PlanAmino): Plan;
     toAmino(message: Plan): PlanAmino;
     fromAminoMsg(object: PlanAminoMsg): Plan;
@@ -245,8 +247,6 @@ export declare const SoftwareUpgradeProposal: {
     fromJSON(object: any): SoftwareUpgradeProposal;
     toJSON(message: SoftwareUpgradeProposal): unknown;
     fromPartial(object: Partial<SoftwareUpgradeProposal>): SoftwareUpgradeProposal;
-    fromSDK(object: SoftwareUpgradeProposalSDKType): SoftwareUpgradeProposal;
-    toSDK(message: SoftwareUpgradeProposal): SoftwareUpgradeProposalSDKType;
     fromAmino(object: SoftwareUpgradeProposalAmino): SoftwareUpgradeProposal;
     toAmino(message: SoftwareUpgradeProposal): SoftwareUpgradeProposalAmino;
     fromAminoMsg(object: SoftwareUpgradeProposalAminoMsg): SoftwareUpgradeProposal;
@@ -262,8 +262,6 @@ export declare const CancelSoftwareUpgradeProposal: {
     fromJSON(object: any): CancelSoftwareUpgradeProposal;
     toJSON(message: CancelSoftwareUpgradeProposal): unknown;
     fromPartial(object: Partial<CancelSoftwareUpgradeProposal>): CancelSoftwareUpgradeProposal;
-    fromSDK(object: CancelSoftwareUpgradeProposalSDKType): CancelSoftwareUpgradeProposal;
-    toSDK(message: CancelSoftwareUpgradeProposal): CancelSoftwareUpgradeProposalSDKType;
     fromAmino(object: CancelSoftwareUpgradeProposalAmino): CancelSoftwareUpgradeProposal;
     toAmino(message: CancelSoftwareUpgradeProposal): CancelSoftwareUpgradeProposalAmino;
     fromAminoMsg(object: CancelSoftwareUpgradeProposalAminoMsg): CancelSoftwareUpgradeProposal;
@@ -279,8 +277,6 @@ export declare const ModuleVersion: {
     fromJSON(object: any): ModuleVersion;
     toJSON(message: ModuleVersion): unknown;
     fromPartial(object: Partial<ModuleVersion>): ModuleVersion;
-    fromSDK(object: ModuleVersionSDKType): ModuleVersion;
-    toSDK(message: ModuleVersion): ModuleVersionSDKType;
     fromAmino(object: ModuleVersionAmino): ModuleVersion;
     toAmino(message: ModuleVersion): ModuleVersionAmino;
     fromAminoMsg(object: ModuleVersionAminoMsg): ModuleVersion;

@@ -26,7 +26,7 @@ export interface QueryGroupInfoRequestSDKType {
 }
 /** QueryGroupInfoResponse is the Query/GroupInfo response type. */
 export interface QueryGroupInfoResponse {
-    /** info is the GroupInfo for the group. */
+    /** info is the GroupInfo of the group. */
     info?: GroupInfo;
 }
 export interface QueryGroupInfoResponseProtoMsg {
@@ -35,7 +35,7 @@ export interface QueryGroupInfoResponseProtoMsg {
 }
 /** QueryGroupInfoResponse is the Query/GroupInfo response type. */
 export interface QueryGroupInfoResponseAmino {
-    /** info is the GroupInfo for the group. */
+    /** info is the GroupInfo of the group. */
     info?: GroupInfoAmino;
 }
 export interface QueryGroupInfoResponseAminoMsg {
@@ -70,7 +70,7 @@ export interface QueryGroupPolicyInfoRequestSDKType {
 }
 /** QueryGroupPolicyInfoResponse is the Query/GroupPolicyInfo response type. */
 export interface QueryGroupPolicyInfoResponse {
-    /** info is the GroupPolicyInfo for the group policy. */
+    /** info is the GroupPolicyInfo of the group policy. */
     info?: GroupPolicyInfo;
 }
 export interface QueryGroupPolicyInfoResponseProtoMsg {
@@ -79,7 +79,7 @@ export interface QueryGroupPolicyInfoResponseProtoMsg {
 }
 /** QueryGroupPolicyInfoResponse is the Query/GroupPolicyInfo response type. */
 export interface QueryGroupPolicyInfoResponseAmino {
-    /** info is the GroupPolicyInfo for the group policy. */
+    /** info is the GroupPolicyInfo of the group policy. */
     info?: GroupPolicyInfoAmino;
 }
 export interface QueryGroupPolicyInfoResponseAminoMsg {
@@ -659,6 +659,79 @@ export interface QueryTallyResultResponseAminoMsg {
 export interface QueryTallyResultResponseSDKType {
     tally: TallyResultSDKType;
 }
+/**
+ * QueryGroupsRequest is the Query/Groups request type.
+ *
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsRequest {
+    /** pagination defines an optional pagination for the request. */
+    pagination?: PageRequest;
+}
+export interface QueryGroupsRequestProtoMsg {
+    type_url: "/cosmos.group.v1.QueryGroupsRequest";
+    value: Uint8Array;
+}
+/**
+ * QueryGroupsRequest is the Query/Groups request type.
+ *
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsRequestAmino {
+    /** pagination defines an optional pagination for the request. */
+    pagination?: PageRequestAmino;
+}
+export interface QueryGroupsRequestAminoMsg {
+    type: "cosmos-sdk/QueryGroupsRequest";
+    value: QueryGroupsRequestAmino;
+}
+/**
+ * QueryGroupsRequest is the Query/Groups request type.
+ *
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsRequestSDKType {
+    pagination?: PageRequestSDKType;
+}
+/**
+ * QueryGroupsResponse is the Query/Groups response type.
+ *
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsResponse {
+    /** `groups` is all the groups present in state. */
+    groups: GroupInfo[];
+    /** pagination defines the pagination in the response. */
+    pagination?: PageResponse;
+}
+export interface QueryGroupsResponseProtoMsg {
+    type_url: "/cosmos.group.v1.QueryGroupsResponse";
+    value: Uint8Array;
+}
+/**
+ * QueryGroupsResponse is the Query/Groups response type.
+ *
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsResponseAmino {
+    /** `groups` is all the groups present in state. */
+    groups: GroupInfoAmino[];
+    /** pagination defines the pagination in the response. */
+    pagination?: PageResponseAmino;
+}
+export interface QueryGroupsResponseAminoMsg {
+    type: "cosmos-sdk/QueryGroupsResponse";
+    value: QueryGroupsResponseAmino;
+}
+/**
+ * QueryGroupsResponse is the Query/Groups response type.
+ *
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsResponseSDKType {
+    groups: GroupInfoSDKType[];
+    pagination?: PageResponseSDKType;
+}
 export declare const QueryGroupInfoRequest: {
     typeUrl: string;
     encode(message: QueryGroupInfoRequest, writer?: BinaryWriter): BinaryWriter;
@@ -666,8 +739,6 @@ export declare const QueryGroupInfoRequest: {
     fromJSON(object: any): QueryGroupInfoRequest;
     toJSON(message: QueryGroupInfoRequest): unknown;
     fromPartial(object: Partial<QueryGroupInfoRequest>): QueryGroupInfoRequest;
-    fromSDK(object: QueryGroupInfoRequestSDKType): QueryGroupInfoRequest;
-    toSDK(message: QueryGroupInfoRequest): QueryGroupInfoRequestSDKType;
     fromAmino(object: QueryGroupInfoRequestAmino): QueryGroupInfoRequest;
     toAmino(message: QueryGroupInfoRequest): QueryGroupInfoRequestAmino;
     fromAminoMsg(object: QueryGroupInfoRequestAminoMsg): QueryGroupInfoRequest;
@@ -683,8 +754,6 @@ export declare const QueryGroupInfoResponse: {
     fromJSON(object: any): QueryGroupInfoResponse;
     toJSON(message: QueryGroupInfoResponse): unknown;
     fromPartial(object: Partial<QueryGroupInfoResponse>): QueryGroupInfoResponse;
-    fromSDK(object: QueryGroupInfoResponseSDKType): QueryGroupInfoResponse;
-    toSDK(message: QueryGroupInfoResponse): QueryGroupInfoResponseSDKType;
     fromAmino(object: QueryGroupInfoResponseAmino): QueryGroupInfoResponse;
     toAmino(message: QueryGroupInfoResponse): QueryGroupInfoResponseAmino;
     fromAminoMsg(object: QueryGroupInfoResponseAminoMsg): QueryGroupInfoResponse;
@@ -700,8 +769,6 @@ export declare const QueryGroupPolicyInfoRequest: {
     fromJSON(object: any): QueryGroupPolicyInfoRequest;
     toJSON(message: QueryGroupPolicyInfoRequest): unknown;
     fromPartial(object: Partial<QueryGroupPolicyInfoRequest>): QueryGroupPolicyInfoRequest;
-    fromSDK(object: QueryGroupPolicyInfoRequestSDKType): QueryGroupPolicyInfoRequest;
-    toSDK(message: QueryGroupPolicyInfoRequest): QueryGroupPolicyInfoRequestSDKType;
     fromAmino(object: QueryGroupPolicyInfoRequestAmino): QueryGroupPolicyInfoRequest;
     toAmino(message: QueryGroupPolicyInfoRequest): QueryGroupPolicyInfoRequestAmino;
     fromAminoMsg(object: QueryGroupPolicyInfoRequestAminoMsg): QueryGroupPolicyInfoRequest;
@@ -717,8 +784,6 @@ export declare const QueryGroupPolicyInfoResponse: {
     fromJSON(object: any): QueryGroupPolicyInfoResponse;
     toJSON(message: QueryGroupPolicyInfoResponse): unknown;
     fromPartial(object: Partial<QueryGroupPolicyInfoResponse>): QueryGroupPolicyInfoResponse;
-    fromSDK(object: QueryGroupPolicyInfoResponseSDKType): QueryGroupPolicyInfoResponse;
-    toSDK(message: QueryGroupPolicyInfoResponse): QueryGroupPolicyInfoResponseSDKType;
     fromAmino(object: QueryGroupPolicyInfoResponseAmino): QueryGroupPolicyInfoResponse;
     toAmino(message: QueryGroupPolicyInfoResponse): QueryGroupPolicyInfoResponseAmino;
     fromAminoMsg(object: QueryGroupPolicyInfoResponseAminoMsg): QueryGroupPolicyInfoResponse;
@@ -734,8 +799,6 @@ export declare const QueryGroupMembersRequest: {
     fromJSON(object: any): QueryGroupMembersRequest;
     toJSON(message: QueryGroupMembersRequest): unknown;
     fromPartial(object: Partial<QueryGroupMembersRequest>): QueryGroupMembersRequest;
-    fromSDK(object: QueryGroupMembersRequestSDKType): QueryGroupMembersRequest;
-    toSDK(message: QueryGroupMembersRequest): QueryGroupMembersRequestSDKType;
     fromAmino(object: QueryGroupMembersRequestAmino): QueryGroupMembersRequest;
     toAmino(message: QueryGroupMembersRequest): QueryGroupMembersRequestAmino;
     fromAminoMsg(object: QueryGroupMembersRequestAminoMsg): QueryGroupMembersRequest;
@@ -751,8 +814,6 @@ export declare const QueryGroupMembersResponse: {
     fromJSON(object: any): QueryGroupMembersResponse;
     toJSON(message: QueryGroupMembersResponse): unknown;
     fromPartial(object: Partial<QueryGroupMembersResponse>): QueryGroupMembersResponse;
-    fromSDK(object: QueryGroupMembersResponseSDKType): QueryGroupMembersResponse;
-    toSDK(message: QueryGroupMembersResponse): QueryGroupMembersResponseSDKType;
     fromAmino(object: QueryGroupMembersResponseAmino): QueryGroupMembersResponse;
     toAmino(message: QueryGroupMembersResponse): QueryGroupMembersResponseAmino;
     fromAminoMsg(object: QueryGroupMembersResponseAminoMsg): QueryGroupMembersResponse;
@@ -768,8 +829,6 @@ export declare const QueryGroupsByAdminRequest: {
     fromJSON(object: any): QueryGroupsByAdminRequest;
     toJSON(message: QueryGroupsByAdminRequest): unknown;
     fromPartial(object: Partial<QueryGroupsByAdminRequest>): QueryGroupsByAdminRequest;
-    fromSDK(object: QueryGroupsByAdminRequestSDKType): QueryGroupsByAdminRequest;
-    toSDK(message: QueryGroupsByAdminRequest): QueryGroupsByAdminRequestSDKType;
     fromAmino(object: QueryGroupsByAdminRequestAmino): QueryGroupsByAdminRequest;
     toAmino(message: QueryGroupsByAdminRequest): QueryGroupsByAdminRequestAmino;
     fromAminoMsg(object: QueryGroupsByAdminRequestAminoMsg): QueryGroupsByAdminRequest;
@@ -785,8 +844,6 @@ export declare const QueryGroupsByAdminResponse: {
     fromJSON(object: any): QueryGroupsByAdminResponse;
     toJSON(message: QueryGroupsByAdminResponse): unknown;
     fromPartial(object: Partial<QueryGroupsByAdminResponse>): QueryGroupsByAdminResponse;
-    fromSDK(object: QueryGroupsByAdminResponseSDKType): QueryGroupsByAdminResponse;
-    toSDK(message: QueryGroupsByAdminResponse): QueryGroupsByAdminResponseSDKType;
     fromAmino(object: QueryGroupsByAdminResponseAmino): QueryGroupsByAdminResponse;
     toAmino(message: QueryGroupsByAdminResponse): QueryGroupsByAdminResponseAmino;
     fromAminoMsg(object: QueryGroupsByAdminResponseAminoMsg): QueryGroupsByAdminResponse;
@@ -802,8 +859,6 @@ export declare const QueryGroupPoliciesByGroupRequest: {
     fromJSON(object: any): QueryGroupPoliciesByGroupRequest;
     toJSON(message: QueryGroupPoliciesByGroupRequest): unknown;
     fromPartial(object: Partial<QueryGroupPoliciesByGroupRequest>): QueryGroupPoliciesByGroupRequest;
-    fromSDK(object: QueryGroupPoliciesByGroupRequestSDKType): QueryGroupPoliciesByGroupRequest;
-    toSDK(message: QueryGroupPoliciesByGroupRequest): QueryGroupPoliciesByGroupRequestSDKType;
     fromAmino(object: QueryGroupPoliciesByGroupRequestAmino): QueryGroupPoliciesByGroupRequest;
     toAmino(message: QueryGroupPoliciesByGroupRequest): QueryGroupPoliciesByGroupRequestAmino;
     fromAminoMsg(object: QueryGroupPoliciesByGroupRequestAminoMsg): QueryGroupPoliciesByGroupRequest;
@@ -819,8 +874,6 @@ export declare const QueryGroupPoliciesByGroupResponse: {
     fromJSON(object: any): QueryGroupPoliciesByGroupResponse;
     toJSON(message: QueryGroupPoliciesByGroupResponse): unknown;
     fromPartial(object: Partial<QueryGroupPoliciesByGroupResponse>): QueryGroupPoliciesByGroupResponse;
-    fromSDK(object: QueryGroupPoliciesByGroupResponseSDKType): QueryGroupPoliciesByGroupResponse;
-    toSDK(message: QueryGroupPoliciesByGroupResponse): QueryGroupPoliciesByGroupResponseSDKType;
     fromAmino(object: QueryGroupPoliciesByGroupResponseAmino): QueryGroupPoliciesByGroupResponse;
     toAmino(message: QueryGroupPoliciesByGroupResponse): QueryGroupPoliciesByGroupResponseAmino;
     fromAminoMsg(object: QueryGroupPoliciesByGroupResponseAminoMsg): QueryGroupPoliciesByGroupResponse;
@@ -836,8 +889,6 @@ export declare const QueryGroupPoliciesByAdminRequest: {
     fromJSON(object: any): QueryGroupPoliciesByAdminRequest;
     toJSON(message: QueryGroupPoliciesByAdminRequest): unknown;
     fromPartial(object: Partial<QueryGroupPoliciesByAdminRequest>): QueryGroupPoliciesByAdminRequest;
-    fromSDK(object: QueryGroupPoliciesByAdminRequestSDKType): QueryGroupPoliciesByAdminRequest;
-    toSDK(message: QueryGroupPoliciesByAdminRequest): QueryGroupPoliciesByAdminRequestSDKType;
     fromAmino(object: QueryGroupPoliciesByAdminRequestAmino): QueryGroupPoliciesByAdminRequest;
     toAmino(message: QueryGroupPoliciesByAdminRequest): QueryGroupPoliciesByAdminRequestAmino;
     fromAminoMsg(object: QueryGroupPoliciesByAdminRequestAminoMsg): QueryGroupPoliciesByAdminRequest;
@@ -853,8 +904,6 @@ export declare const QueryGroupPoliciesByAdminResponse: {
     fromJSON(object: any): QueryGroupPoliciesByAdminResponse;
     toJSON(message: QueryGroupPoliciesByAdminResponse): unknown;
     fromPartial(object: Partial<QueryGroupPoliciesByAdminResponse>): QueryGroupPoliciesByAdminResponse;
-    fromSDK(object: QueryGroupPoliciesByAdminResponseSDKType): QueryGroupPoliciesByAdminResponse;
-    toSDK(message: QueryGroupPoliciesByAdminResponse): QueryGroupPoliciesByAdminResponseSDKType;
     fromAmino(object: QueryGroupPoliciesByAdminResponseAmino): QueryGroupPoliciesByAdminResponse;
     toAmino(message: QueryGroupPoliciesByAdminResponse): QueryGroupPoliciesByAdminResponseAmino;
     fromAminoMsg(object: QueryGroupPoliciesByAdminResponseAminoMsg): QueryGroupPoliciesByAdminResponse;
@@ -870,8 +919,6 @@ export declare const QueryProposalRequest: {
     fromJSON(object: any): QueryProposalRequest;
     toJSON(message: QueryProposalRequest): unknown;
     fromPartial(object: Partial<QueryProposalRequest>): QueryProposalRequest;
-    fromSDK(object: QueryProposalRequestSDKType): QueryProposalRequest;
-    toSDK(message: QueryProposalRequest): QueryProposalRequestSDKType;
     fromAmino(object: QueryProposalRequestAmino): QueryProposalRequest;
     toAmino(message: QueryProposalRequest): QueryProposalRequestAmino;
     fromAminoMsg(object: QueryProposalRequestAminoMsg): QueryProposalRequest;
@@ -887,8 +934,6 @@ export declare const QueryProposalResponse: {
     fromJSON(object: any): QueryProposalResponse;
     toJSON(message: QueryProposalResponse): unknown;
     fromPartial(object: Partial<QueryProposalResponse>): QueryProposalResponse;
-    fromSDK(object: QueryProposalResponseSDKType): QueryProposalResponse;
-    toSDK(message: QueryProposalResponse): QueryProposalResponseSDKType;
     fromAmino(object: QueryProposalResponseAmino): QueryProposalResponse;
     toAmino(message: QueryProposalResponse): QueryProposalResponseAmino;
     fromAminoMsg(object: QueryProposalResponseAminoMsg): QueryProposalResponse;
@@ -904,8 +949,6 @@ export declare const QueryProposalsByGroupPolicyRequest: {
     fromJSON(object: any): QueryProposalsByGroupPolicyRequest;
     toJSON(message: QueryProposalsByGroupPolicyRequest): unknown;
     fromPartial(object: Partial<QueryProposalsByGroupPolicyRequest>): QueryProposalsByGroupPolicyRequest;
-    fromSDK(object: QueryProposalsByGroupPolicyRequestSDKType): QueryProposalsByGroupPolicyRequest;
-    toSDK(message: QueryProposalsByGroupPolicyRequest): QueryProposalsByGroupPolicyRequestSDKType;
     fromAmino(object: QueryProposalsByGroupPolicyRequestAmino): QueryProposalsByGroupPolicyRequest;
     toAmino(message: QueryProposalsByGroupPolicyRequest): QueryProposalsByGroupPolicyRequestAmino;
     fromAminoMsg(object: QueryProposalsByGroupPolicyRequestAminoMsg): QueryProposalsByGroupPolicyRequest;
@@ -921,8 +964,6 @@ export declare const QueryProposalsByGroupPolicyResponse: {
     fromJSON(object: any): QueryProposalsByGroupPolicyResponse;
     toJSON(message: QueryProposalsByGroupPolicyResponse): unknown;
     fromPartial(object: Partial<QueryProposalsByGroupPolicyResponse>): QueryProposalsByGroupPolicyResponse;
-    fromSDK(object: QueryProposalsByGroupPolicyResponseSDKType): QueryProposalsByGroupPolicyResponse;
-    toSDK(message: QueryProposalsByGroupPolicyResponse): QueryProposalsByGroupPolicyResponseSDKType;
     fromAmino(object: QueryProposalsByGroupPolicyResponseAmino): QueryProposalsByGroupPolicyResponse;
     toAmino(message: QueryProposalsByGroupPolicyResponse): QueryProposalsByGroupPolicyResponseAmino;
     fromAminoMsg(object: QueryProposalsByGroupPolicyResponseAminoMsg): QueryProposalsByGroupPolicyResponse;
@@ -938,8 +979,6 @@ export declare const QueryVoteByProposalVoterRequest: {
     fromJSON(object: any): QueryVoteByProposalVoterRequest;
     toJSON(message: QueryVoteByProposalVoterRequest): unknown;
     fromPartial(object: Partial<QueryVoteByProposalVoterRequest>): QueryVoteByProposalVoterRequest;
-    fromSDK(object: QueryVoteByProposalVoterRequestSDKType): QueryVoteByProposalVoterRequest;
-    toSDK(message: QueryVoteByProposalVoterRequest): QueryVoteByProposalVoterRequestSDKType;
     fromAmino(object: QueryVoteByProposalVoterRequestAmino): QueryVoteByProposalVoterRequest;
     toAmino(message: QueryVoteByProposalVoterRequest): QueryVoteByProposalVoterRequestAmino;
     fromAminoMsg(object: QueryVoteByProposalVoterRequestAminoMsg): QueryVoteByProposalVoterRequest;
@@ -955,8 +994,6 @@ export declare const QueryVoteByProposalVoterResponse: {
     fromJSON(object: any): QueryVoteByProposalVoterResponse;
     toJSON(message: QueryVoteByProposalVoterResponse): unknown;
     fromPartial(object: Partial<QueryVoteByProposalVoterResponse>): QueryVoteByProposalVoterResponse;
-    fromSDK(object: QueryVoteByProposalVoterResponseSDKType): QueryVoteByProposalVoterResponse;
-    toSDK(message: QueryVoteByProposalVoterResponse): QueryVoteByProposalVoterResponseSDKType;
     fromAmino(object: QueryVoteByProposalVoterResponseAmino): QueryVoteByProposalVoterResponse;
     toAmino(message: QueryVoteByProposalVoterResponse): QueryVoteByProposalVoterResponseAmino;
     fromAminoMsg(object: QueryVoteByProposalVoterResponseAminoMsg): QueryVoteByProposalVoterResponse;
@@ -972,8 +1009,6 @@ export declare const QueryVotesByProposalRequest: {
     fromJSON(object: any): QueryVotesByProposalRequest;
     toJSON(message: QueryVotesByProposalRequest): unknown;
     fromPartial(object: Partial<QueryVotesByProposalRequest>): QueryVotesByProposalRequest;
-    fromSDK(object: QueryVotesByProposalRequestSDKType): QueryVotesByProposalRequest;
-    toSDK(message: QueryVotesByProposalRequest): QueryVotesByProposalRequestSDKType;
     fromAmino(object: QueryVotesByProposalRequestAmino): QueryVotesByProposalRequest;
     toAmino(message: QueryVotesByProposalRequest): QueryVotesByProposalRequestAmino;
     fromAminoMsg(object: QueryVotesByProposalRequestAminoMsg): QueryVotesByProposalRequest;
@@ -989,8 +1024,6 @@ export declare const QueryVotesByProposalResponse: {
     fromJSON(object: any): QueryVotesByProposalResponse;
     toJSON(message: QueryVotesByProposalResponse): unknown;
     fromPartial(object: Partial<QueryVotesByProposalResponse>): QueryVotesByProposalResponse;
-    fromSDK(object: QueryVotesByProposalResponseSDKType): QueryVotesByProposalResponse;
-    toSDK(message: QueryVotesByProposalResponse): QueryVotesByProposalResponseSDKType;
     fromAmino(object: QueryVotesByProposalResponseAmino): QueryVotesByProposalResponse;
     toAmino(message: QueryVotesByProposalResponse): QueryVotesByProposalResponseAmino;
     fromAminoMsg(object: QueryVotesByProposalResponseAminoMsg): QueryVotesByProposalResponse;
@@ -1006,8 +1039,6 @@ export declare const QueryVotesByVoterRequest: {
     fromJSON(object: any): QueryVotesByVoterRequest;
     toJSON(message: QueryVotesByVoterRequest): unknown;
     fromPartial(object: Partial<QueryVotesByVoterRequest>): QueryVotesByVoterRequest;
-    fromSDK(object: QueryVotesByVoterRequestSDKType): QueryVotesByVoterRequest;
-    toSDK(message: QueryVotesByVoterRequest): QueryVotesByVoterRequestSDKType;
     fromAmino(object: QueryVotesByVoterRequestAmino): QueryVotesByVoterRequest;
     toAmino(message: QueryVotesByVoterRequest): QueryVotesByVoterRequestAmino;
     fromAminoMsg(object: QueryVotesByVoterRequestAminoMsg): QueryVotesByVoterRequest;
@@ -1023,8 +1054,6 @@ export declare const QueryVotesByVoterResponse: {
     fromJSON(object: any): QueryVotesByVoterResponse;
     toJSON(message: QueryVotesByVoterResponse): unknown;
     fromPartial(object: Partial<QueryVotesByVoterResponse>): QueryVotesByVoterResponse;
-    fromSDK(object: QueryVotesByVoterResponseSDKType): QueryVotesByVoterResponse;
-    toSDK(message: QueryVotesByVoterResponse): QueryVotesByVoterResponseSDKType;
     fromAmino(object: QueryVotesByVoterResponseAmino): QueryVotesByVoterResponse;
     toAmino(message: QueryVotesByVoterResponse): QueryVotesByVoterResponseAmino;
     fromAminoMsg(object: QueryVotesByVoterResponseAminoMsg): QueryVotesByVoterResponse;
@@ -1040,8 +1069,6 @@ export declare const QueryGroupsByMemberRequest: {
     fromJSON(object: any): QueryGroupsByMemberRequest;
     toJSON(message: QueryGroupsByMemberRequest): unknown;
     fromPartial(object: Partial<QueryGroupsByMemberRequest>): QueryGroupsByMemberRequest;
-    fromSDK(object: QueryGroupsByMemberRequestSDKType): QueryGroupsByMemberRequest;
-    toSDK(message: QueryGroupsByMemberRequest): QueryGroupsByMemberRequestSDKType;
     fromAmino(object: QueryGroupsByMemberRequestAmino): QueryGroupsByMemberRequest;
     toAmino(message: QueryGroupsByMemberRequest): QueryGroupsByMemberRequestAmino;
     fromAminoMsg(object: QueryGroupsByMemberRequestAminoMsg): QueryGroupsByMemberRequest;
@@ -1057,8 +1084,6 @@ export declare const QueryGroupsByMemberResponse: {
     fromJSON(object: any): QueryGroupsByMemberResponse;
     toJSON(message: QueryGroupsByMemberResponse): unknown;
     fromPartial(object: Partial<QueryGroupsByMemberResponse>): QueryGroupsByMemberResponse;
-    fromSDK(object: QueryGroupsByMemberResponseSDKType): QueryGroupsByMemberResponse;
-    toSDK(message: QueryGroupsByMemberResponse): QueryGroupsByMemberResponseSDKType;
     fromAmino(object: QueryGroupsByMemberResponseAmino): QueryGroupsByMemberResponse;
     toAmino(message: QueryGroupsByMemberResponse): QueryGroupsByMemberResponseAmino;
     fromAminoMsg(object: QueryGroupsByMemberResponseAminoMsg): QueryGroupsByMemberResponse;
@@ -1074,8 +1099,6 @@ export declare const QueryTallyResultRequest: {
     fromJSON(object: any): QueryTallyResultRequest;
     toJSON(message: QueryTallyResultRequest): unknown;
     fromPartial(object: Partial<QueryTallyResultRequest>): QueryTallyResultRequest;
-    fromSDK(object: QueryTallyResultRequestSDKType): QueryTallyResultRequest;
-    toSDK(message: QueryTallyResultRequest): QueryTallyResultRequestSDKType;
     fromAmino(object: QueryTallyResultRequestAmino): QueryTallyResultRequest;
     toAmino(message: QueryTallyResultRequest): QueryTallyResultRequestAmino;
     fromAminoMsg(object: QueryTallyResultRequestAminoMsg): QueryTallyResultRequest;
@@ -1091,8 +1114,6 @@ export declare const QueryTallyResultResponse: {
     fromJSON(object: any): QueryTallyResultResponse;
     toJSON(message: QueryTallyResultResponse): unknown;
     fromPartial(object: Partial<QueryTallyResultResponse>): QueryTallyResultResponse;
-    fromSDK(object: QueryTallyResultResponseSDKType): QueryTallyResultResponse;
-    toSDK(message: QueryTallyResultResponse): QueryTallyResultResponseSDKType;
     fromAmino(object: QueryTallyResultResponseAmino): QueryTallyResultResponse;
     toAmino(message: QueryTallyResultResponse): QueryTallyResultResponseAmino;
     fromAminoMsg(object: QueryTallyResultResponseAminoMsg): QueryTallyResultResponse;
@@ -1100,4 +1121,34 @@ export declare const QueryTallyResultResponse: {
     fromProtoMsg(message: QueryTallyResultResponseProtoMsg): QueryTallyResultResponse;
     toProto(message: QueryTallyResultResponse): Uint8Array;
     toProtoMsg(message: QueryTallyResultResponse): QueryTallyResultResponseProtoMsg;
+};
+export declare const QueryGroupsRequest: {
+    typeUrl: string;
+    encode(message: QueryGroupsRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupsRequest;
+    fromJSON(object: any): QueryGroupsRequest;
+    toJSON(message: QueryGroupsRequest): unknown;
+    fromPartial(object: Partial<QueryGroupsRequest>): QueryGroupsRequest;
+    fromAmino(object: QueryGroupsRequestAmino): QueryGroupsRequest;
+    toAmino(message: QueryGroupsRequest): QueryGroupsRequestAmino;
+    fromAminoMsg(object: QueryGroupsRequestAminoMsg): QueryGroupsRequest;
+    toAminoMsg(message: QueryGroupsRequest): QueryGroupsRequestAminoMsg;
+    fromProtoMsg(message: QueryGroupsRequestProtoMsg): QueryGroupsRequest;
+    toProto(message: QueryGroupsRequest): Uint8Array;
+    toProtoMsg(message: QueryGroupsRequest): QueryGroupsRequestProtoMsg;
+};
+export declare const QueryGroupsResponse: {
+    typeUrl: string;
+    encode(message: QueryGroupsResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupsResponse;
+    fromJSON(object: any): QueryGroupsResponse;
+    toJSON(message: QueryGroupsResponse): unknown;
+    fromPartial(object: Partial<QueryGroupsResponse>): QueryGroupsResponse;
+    fromAmino(object: QueryGroupsResponseAmino): QueryGroupsResponse;
+    toAmino(message: QueryGroupsResponse): QueryGroupsResponseAmino;
+    fromAminoMsg(object: QueryGroupsResponseAminoMsg): QueryGroupsResponse;
+    toAminoMsg(message: QueryGroupsResponse): QueryGroupsResponseAminoMsg;
+    fromProtoMsg(message: QueryGroupsResponseProtoMsg): QueryGroupsResponse;
+    toProto(message: QueryGroupsResponse): Uint8Array;
+    toProtoMsg(message: QueryGroupsResponse): QueryGroupsResponseProtoMsg;
 };

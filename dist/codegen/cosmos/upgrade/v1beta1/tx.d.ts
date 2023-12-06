@@ -7,7 +7,7 @@ export declare const protobufPackage = "cosmos.upgrade.v1beta1";
  * Since: cosmos-sdk 0.46
  */
 export interface MsgSoftwareUpgrade {
-    /** authority is the address of the governance account. */
+    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
     authority: string;
     /** plan is the upgrade plan. */
     plan: Plan;
@@ -22,7 +22,7 @@ export interface MsgSoftwareUpgradeProtoMsg {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgSoftwareUpgradeAmino {
-    /** authority is the address of the governance account. */
+    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
     authority: string;
     /** plan is the upgrade plan. */
     plan?: PlanAmino;
@@ -75,7 +75,7 @@ export interface MsgSoftwareUpgradeResponseSDKType {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgCancelUpgrade {
-    /** authority is the address of the governance account. */
+    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
     authority: string;
 }
 export interface MsgCancelUpgradeProtoMsg {
@@ -88,7 +88,7 @@ export interface MsgCancelUpgradeProtoMsg {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgCancelUpgradeAmino {
-    /** authority is the address of the governance account. */
+    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
     authority: string;
 }
 export interface MsgCancelUpgradeAminoMsg {
@@ -139,8 +139,6 @@ export declare const MsgSoftwareUpgrade: {
     fromJSON(object: any): MsgSoftwareUpgrade;
     toJSON(message: MsgSoftwareUpgrade): unknown;
     fromPartial(object: Partial<MsgSoftwareUpgrade>): MsgSoftwareUpgrade;
-    fromSDK(object: MsgSoftwareUpgradeSDKType): MsgSoftwareUpgrade;
-    toSDK(message: MsgSoftwareUpgrade): MsgSoftwareUpgradeSDKType;
     fromAmino(object: MsgSoftwareUpgradeAmino): MsgSoftwareUpgrade;
     toAmino(message: MsgSoftwareUpgrade): MsgSoftwareUpgradeAmino;
     fromAminoMsg(object: MsgSoftwareUpgradeAminoMsg): MsgSoftwareUpgrade;
@@ -156,8 +154,6 @@ export declare const MsgSoftwareUpgradeResponse: {
     fromJSON(_: any): MsgSoftwareUpgradeResponse;
     toJSON(_: MsgSoftwareUpgradeResponse): unknown;
     fromPartial(_: Partial<MsgSoftwareUpgradeResponse>): MsgSoftwareUpgradeResponse;
-    fromSDK(_: MsgSoftwareUpgradeResponseSDKType): MsgSoftwareUpgradeResponse;
-    toSDK(_: MsgSoftwareUpgradeResponse): MsgSoftwareUpgradeResponseSDKType;
     fromAmino(_: MsgSoftwareUpgradeResponseAmino): MsgSoftwareUpgradeResponse;
     toAmino(_: MsgSoftwareUpgradeResponse): MsgSoftwareUpgradeResponseAmino;
     fromAminoMsg(object: MsgSoftwareUpgradeResponseAminoMsg): MsgSoftwareUpgradeResponse;
@@ -173,8 +169,6 @@ export declare const MsgCancelUpgrade: {
     fromJSON(object: any): MsgCancelUpgrade;
     toJSON(message: MsgCancelUpgrade): unknown;
     fromPartial(object: Partial<MsgCancelUpgrade>): MsgCancelUpgrade;
-    fromSDK(object: MsgCancelUpgradeSDKType): MsgCancelUpgrade;
-    toSDK(message: MsgCancelUpgrade): MsgCancelUpgradeSDKType;
     fromAmino(object: MsgCancelUpgradeAmino): MsgCancelUpgrade;
     toAmino(message: MsgCancelUpgrade): MsgCancelUpgradeAmino;
     fromAminoMsg(object: MsgCancelUpgradeAminoMsg): MsgCancelUpgrade;
@@ -190,8 +184,6 @@ export declare const MsgCancelUpgradeResponse: {
     fromJSON(_: any): MsgCancelUpgradeResponse;
     toJSON(_: MsgCancelUpgradeResponse): unknown;
     fromPartial(_: Partial<MsgCancelUpgradeResponse>): MsgCancelUpgradeResponse;
-    fromSDK(_: MsgCancelUpgradeResponseSDKType): MsgCancelUpgradeResponse;
-    toSDK(_: MsgCancelUpgradeResponse): MsgCancelUpgradeResponseSDKType;
     fromAmino(_: MsgCancelUpgradeResponseAmino): MsgCancelUpgradeResponse;
     toAmino(_: MsgCancelUpgradeResponse): MsgCancelUpgradeResponseAmino;
     fromAminoMsg(object: MsgCancelUpgradeResponseAminoMsg): MsgCancelUpgradeResponse;

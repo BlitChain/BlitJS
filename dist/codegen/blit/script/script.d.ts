@@ -30,8 +30,6 @@ export declare const Script: {
     fromJSON(object: any): Script;
     toJSON(message: Script): unknown;
     fromPartial(object: Partial<Script>): Script;
-    fromSDK(object: ScriptSDKType): Script;
-    toSDK(message: Script): ScriptSDKType;
     fromAmino(object: ScriptAmino): Script;
     toAmino(message: Script): ScriptAmino;
     fromAminoMsg(object: ScriptAminoMsg): Script;

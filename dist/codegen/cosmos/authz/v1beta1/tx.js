@@ -1,11 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cosmos_authzAuthorization_ToAmino = exports.Cosmos_authzAuthorization_FromAmino = exports.Cosmos_authzAuthorization_InterfaceDecoder = exports.Sdk_Msg_ToAmino = exports.Sdk_Msg_FromAmino = exports.Sdk_Msg_InterfaceDecoder = exports.MsgRevokeResponse = exports.MsgRevoke = exports.MsgGrantResponse = exports.MsgExec = exports.MsgExecResponse = exports.MsgGrant = exports.protobufPackage = void 0;
+exports.Cosmos_basev1beta1Msg_ToAmino = exports.Cosmos_basev1beta1Msg_FromAmino = exports.Cosmos_basev1beta1Msg_InterfaceDecoder = exports.MsgRevokeResponse = exports.MsgRevoke = exports.MsgExecResponse = exports.MsgExec = exports.MsgGrantResponse = exports.MsgGrant = exports.protobufPackage = void 0;
 //@ts-nocheck
 const authz_1 = require("./authz");
 const any_1 = require("../../../google/protobuf/any");
-const authz_2 = require("../../bank/v1beta1/authz");
-const authz_3 = require("../../staking/v1beta1/authz");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
 exports.protobufPackage = "cosmos.authz.v1beta1";
@@ -74,20 +72,6 @@ exports.MsgGrant = {
         message.grant = object.grant !== undefined && object.grant !== null ? authz_1.Grant.fromPartial(object.grant) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            granter: object?.granter,
-            grantee: object?.grantee,
-            grant: object.grant ? authz_1.Grant.fromSDK(object.grant) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.granter = message.granter;
-        obj.grantee = message.grantee;
-        message.grant !== undefined && (obj.grant = message.grant ? authz_1.Grant.toSDK(message.grant) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             granter: object.granter,
@@ -124,29 +108,21 @@ exports.MsgGrant = {
         };
     }
 };
-function createBaseMsgExecResponse() {
-    return {
-        results: []
-    };
+function createBaseMsgGrantResponse() {
+    return {};
 }
-exports.MsgExecResponse = {
-    typeUrl: "/cosmos.authz.v1beta1.MsgExecResponse",
-    encode(message, writer = binary_1.BinaryWriter.create()) {
-        for (const v of message.results) {
-            writer.uint32(10).bytes(v);
-        }
+exports.MsgGrantResponse = {
+    typeUrl: "/cosmos.authz.v1beta1.MsgGrantResponse",
+    encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
     decode(input, length) {
         const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseMsgExecResponse();
+        const message = createBaseMsgGrantResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                case 1:
-                    message.results.push(reader.bytes());
-                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -154,75 +130,43 @@ exports.MsgExecResponse = {
         }
         return message;
     },
-    fromJSON(object) {
-        return {
-            results: Array.isArray(object?.results) ? object.results.map((e) => (0, helpers_1.bytesFromBase64)(e)) : []
-        };
+    fromJSON(_) {
+        return {};
     },
-    toJSON(message) {
+    toJSON(_) {
         const obj = {};
-        if (message.results) {
-            obj.results = message.results.map(e => (0, helpers_1.base64FromBytes)(e !== undefined ? e : new Uint8Array()));
-        }
-        else {
-            obj.results = [];
-        }
         return obj;
     },
-    fromPartial(object) {
-        const message = createBaseMsgExecResponse();
-        message.results = object.results?.map(e => e) || [];
+    fromPartial(_) {
+        const message = createBaseMsgGrantResponse();
         return message;
     },
-    fromSDK(object) {
-        return {
-            results: Array.isArray(object?.results) ? object.results.map((e) => e) : []
-        };
+    fromAmino(_) {
+        return {};
     },
-    toSDK(message) {
+    toAmino(_) {
         const obj = {};
-        if (message.results) {
-            obj.results = message.results.map(e => e);
-        }
-        else {
-            obj.results = [];
-        }
-        return obj;
-    },
-    fromAmino(object) {
-        return {
-            results: Array.isArray(object?.results) ? object.results.map((e) => e) : []
-        };
-    },
-    toAmino(message) {
-        const obj = {};
-        if (message.results) {
-            obj.results = message.results.map(e => e);
-        }
-        else {
-            obj.results = [];
-        }
         return obj;
     },
     fromAminoMsg(object) {
-        return exports.MsgExecResponse.fromAmino(object.value);
+        return exports.MsgGrantResponse.fromAmino(object.value);
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/MsgExecResponse",
-            value: exports.MsgExecResponse.toAmino(message)
+            type: "cosmos-sdk/MsgGrantResponse",
+            value: exports.MsgGrantResponse.toAmino(message)
         };
     },
     fromProtoMsg(message) {
-        return exports.MsgExecResponse.decode(message.value);
+        return exports.MsgGrantResponse.decode(message.value);
     },
     toProto(message) {
-        return exports.MsgExecResponse.encode(message).finish();
+        return exports.MsgGrantResponse.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/cosmos.authz.v1beta1.MsgExecResponse",
-            value: exports.MsgExecResponse.encode(message).finish()
+            typeUrl: "/cosmos.authz.v1beta1.MsgGrantResponse",
+            value: exports.MsgGrantResponse.encode(message).finish()
         };
     }
 };
@@ -286,34 +230,17 @@ exports.MsgExec = {
         message.msgs = object.msgs?.map(e => any_1.Any.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            grantee: object?.grantee,
-            msgs: Array.isArray(object?.msgs) ? object.msgs.map((e) => any_1.Any.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.grantee = message.grantee;
-        if (message.msgs) {
-            obj.msgs = message.msgs.map(e => e ? any_1.Any.toSDK(e) : undefined);
-        }
-        else {
-            obj.msgs = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             grantee: object.grantee,
-            msgs: Array.isArray(object?.msgs) ? object.msgs.map((e) => Sdk_MsgcosmosauthzAuthorization_FromAmino(e)) : []
+            msgs: Array.isArray(object?.msgs) ? object.msgs.map((e) => (0, exports.Cosmos_basev1beta1Msg_FromAmino)(e)) : []
         };
     },
     toAmino(message) {
         const obj = {};
         obj.grantee = message.grantee;
         if (message.msgs) {
-            obj.msgs = message.msgs.map(e => e ? Sdk_MsgcosmosauthzAuthorization_ToAmino(e) : undefined);
+            obj.msgs = message.msgs.map(e => e ? (0, exports.Cosmos_basev1beta1Msg_ToAmino)(e) : undefined);
         }
         else {
             obj.msgs = [];
@@ -342,21 +269,29 @@ exports.MsgExec = {
         };
     }
 };
-function createBaseMsgGrantResponse() {
-    return {};
+function createBaseMsgExecResponse() {
+    return {
+        results: []
+    };
 }
-exports.MsgGrantResponse = {
-    typeUrl: "/cosmos.authz.v1beta1.MsgGrantResponse",
-    encode(_, writer = binary_1.BinaryWriter.create()) {
+exports.MsgExecResponse = {
+    typeUrl: "/cosmos.authz.v1beta1.MsgExecResponse",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        for (const v of message.results) {
+            writer.uint32(10).bytes(v);
+        }
         return writer;
     },
     decode(input, length) {
         const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseMsgGrantResponse();
+        const message = createBaseMsgExecResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
+                case 1:
+                    message.results.push(reader.bytes());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -364,50 +299,60 @@ exports.MsgGrantResponse = {
         }
         return message;
     },
-    fromJSON(_) {
-        return {};
+    fromJSON(object) {
+        return {
+            results: Array.isArray(object?.results) ? object.results.map((e) => (0, helpers_1.bytesFromBase64)(e)) : []
+        };
     },
-    toJSON(_) {
+    toJSON(message) {
         const obj = {};
+        if (message.results) {
+            obj.results = message.results.map(e => (0, helpers_1.base64FromBytes)(e !== undefined ? e : new Uint8Array()));
+        }
+        else {
+            obj.results = [];
+        }
         return obj;
     },
-    fromPartial(_) {
-        const message = createBaseMsgGrantResponse();
+    fromPartial(object) {
+        const message = createBaseMsgExecResponse();
+        message.results = object.results?.map(e => e) || [];
         return message;
     },
-    fromSDK(_) {
-        return {};
+    fromAmino(object) {
+        return {
+            results: Array.isArray(object?.results) ? object.results.map((e) => e) : []
+        };
     },
-    toSDK(_) {
+    toAmino(message) {
         const obj = {};
-        return obj;
-    },
-    fromAmino(_) {
-        return {};
-    },
-    toAmino(_) {
-        const obj = {};
+        if (message.results) {
+            obj.results = message.results.map(e => e);
+        }
+        else {
+            obj.results = [];
+        }
         return obj;
     },
     fromAminoMsg(object) {
-        return exports.MsgGrantResponse.fromAmino(object.value);
+        return exports.MsgExecResponse.fromAmino(object.value);
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/MsgGrantResponse",
-            value: exports.MsgGrantResponse.toAmino(message)
+            type: "cosmos-sdk/MsgExecResponse",
+            value: exports.MsgExecResponse.toAmino(message)
         };
     },
     fromProtoMsg(message) {
-        return exports.MsgGrantResponse.decode(message.value);
+        return exports.MsgExecResponse.decode(message.value);
     },
     toProto(message) {
-        return exports.MsgGrantResponse.encode(message).finish();
+        return exports.MsgExecResponse.encode(message).finish();
     },
     toProtoMsg(message) {
         return {
-            typeUrl: "/cosmos.authz.v1beta1.MsgGrantResponse",
-            value: exports.MsgGrantResponse.encode(message).finish()
+            typeUrl: "/cosmos.authz.v1beta1.MsgExecResponse",
+            value: exports.MsgExecResponse.encode(message).finish()
         };
     }
 };
@@ -475,20 +420,6 @@ exports.MsgRevoke = {
         message.grantee = object.grantee ?? "";
         message.msg_type_url = object.msg_type_url ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            granter: object?.granter,
-            grantee: object?.grantee,
-            msg_type_url: object?.msg_type_url
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.granter = message.granter;
-        obj.grantee = message.grantee;
-        obj.msg_type_url = message.msg_type_url;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -559,13 +490,6 @@ exports.MsgRevokeResponse = {
         const message = createBaseMsgRevokeResponse();
         return message;
     },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
-    },
     fromAmino(_) {
         return {};
     },
@@ -595,7 +519,7 @@ exports.MsgRevokeResponse = {
         };
     }
 };
-const Sdk_Msg_InterfaceDecoder = (input) => {
+const Cosmos_basev1beta1Msg_InterfaceDecoder = (input) => {
     const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
     const data = any_1.Any.decode(reader, reader.uint32(), true);
     switch (data.typeUrl) {
@@ -603,72 +527,13 @@ const Sdk_Msg_InterfaceDecoder = (input) => {
             return data;
     }
 };
-exports.Sdk_Msg_InterfaceDecoder = Sdk_Msg_InterfaceDecoder;
-const Sdk_Msg_FromAmino = (content) => {
+exports.Cosmos_basev1beta1Msg_InterfaceDecoder = Cosmos_basev1beta1Msg_InterfaceDecoder;
+const Cosmos_basev1beta1Msg_FromAmino = (content) => {
     return any_1.Any.fromAmino(content);
 };
-exports.Sdk_Msg_FromAmino = Sdk_Msg_FromAmino;
-const Sdk_Msg_ToAmino = (content) => {
+exports.Cosmos_basev1beta1Msg_FromAmino = Cosmos_basev1beta1Msg_FromAmino;
+const Cosmos_basev1beta1Msg_ToAmino = (content) => {
     return any_1.Any.toAmino(content);
 };
-exports.Sdk_Msg_ToAmino = Sdk_Msg_ToAmino;
-const Cosmos_authzAuthorization_InterfaceDecoder = (input) => {
-    const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
-    const data = any_1.Any.decode(reader, reader.uint32(), true);
-    switch (data.typeUrl) {
-        case "/cosmos.authz.v1beta1.GenericAuthorization":
-            return authz_1.GenericAuthorization.decode(data.value, undefined, true);
-        case "/cosmos.bank.v1beta1.SendAuthorization":
-            return authz_2.SendAuthorization.decode(data.value, undefined, true);
-        case "/cosmos.staking.v1beta1.StakeAuthorization":
-            return authz_3.StakeAuthorization.decode(data.value, undefined, true);
-        default:
-            return data;
-    }
-};
-exports.Cosmos_authzAuthorization_InterfaceDecoder = Cosmos_authzAuthorization_InterfaceDecoder;
-const Cosmos_authzAuthorization_FromAmino = (content) => {
-    switch (content.type) {
-        case "cosmos-sdk/GenericAuthorization":
-            return any_1.Any.fromPartial({
-                typeUrl: "/cosmos.authz.v1beta1.GenericAuthorization",
-                value: authz_1.GenericAuthorization.encode(authz_1.GenericAuthorization.fromPartial(authz_1.GenericAuthorization.fromAmino(content.value))).finish()
-            });
-        case "cosmos-sdk/SendAuthorization":
-            return any_1.Any.fromPartial({
-                typeUrl: "/cosmos.bank.v1beta1.SendAuthorization",
-                value: authz_2.SendAuthorization.encode(authz_2.SendAuthorization.fromPartial(authz_2.SendAuthorization.fromAmino(content.value))).finish()
-            });
-        case "cosmos-sdk/StakeAuthorization":
-            return any_1.Any.fromPartial({
-                typeUrl: "/cosmos.staking.v1beta1.StakeAuthorization",
-                value: authz_3.StakeAuthorization.encode(authz_3.StakeAuthorization.fromPartial(authz_3.StakeAuthorization.fromAmino(content.value))).finish()
-            });
-        default:
-            return any_1.Any.fromAmino(content);
-    }
-};
-exports.Cosmos_authzAuthorization_FromAmino = Cosmos_authzAuthorization_FromAmino;
-const Cosmos_authzAuthorization_ToAmino = (content) => {
-    switch (content.typeUrl) {
-        case "/cosmos.authz.v1beta1.GenericAuthorization":
-            return {
-                type: "cosmos-sdk/GenericAuthorization",
-                value: authz_1.GenericAuthorization.toAmino(authz_1.GenericAuthorization.decode(content.value, undefined))
-            };
-        case "/cosmos.bank.v1beta1.SendAuthorization":
-            return {
-                type: "cosmos-sdk/SendAuthorization",
-                value: authz_2.SendAuthorization.toAmino(authz_2.SendAuthorization.decode(content.value, undefined))
-            };
-        case "/cosmos.staking.v1beta1.StakeAuthorization":
-            return {
-                type: "cosmos-sdk/StakeAuthorization",
-                value: authz_3.StakeAuthorization.toAmino(authz_3.StakeAuthorization.decode(content.value, undefined))
-            };
-        default:
-            return any_1.Any.toAmino(content);
-    }
-};
-exports.Cosmos_authzAuthorization_ToAmino = Cosmos_authzAuthorization_ToAmino;
+exports.Cosmos_basev1beta1Msg_ToAmino = Cosmos_basev1beta1Msg_ToAmino;
 //# sourceMappingURL=tx.js.map

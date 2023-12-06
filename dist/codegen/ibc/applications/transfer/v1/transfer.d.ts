@@ -103,8 +103,6 @@ export declare const DenomTrace: {
     fromJSON(object: any): DenomTrace;
     toJSON(message: DenomTrace): unknown;
     fromPartial(object: Partial<DenomTrace>): DenomTrace;
-    fromSDK(object: DenomTraceSDKType): DenomTrace;
-    toSDK(message: DenomTrace): DenomTraceSDKType;
     fromAmino(object: DenomTraceAmino): DenomTrace;
     toAmino(message: DenomTrace): DenomTraceAmino;
     fromAminoMsg(object: DenomTraceAminoMsg): DenomTrace;
@@ -120,8 +118,6 @@ export declare const Params: {
     fromJSON(object: any): Params;
     toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
     fromAminoMsg(object: ParamsAminoMsg): Params;

@@ -107,6 +107,69 @@ export interface MsgRevokeAllowanceResponseAminoMsg {
 /** MsgRevokeAllowanceResponse defines the Msg/RevokeAllowanceResponse response type. */
 export interface MsgRevokeAllowanceResponseSDKType {
 }
+/**
+ * MsgPruneAllowances prunes expired fee allowances.
+ *
+ * Since cosmos-sdk 0.50
+ */
+export interface MsgPruneAllowances {
+    /** pruner is the address of the user pruning expired allowances. */
+    pruner: string;
+}
+export interface MsgPruneAllowancesProtoMsg {
+    type_url: "/cosmos.feegrant.v1beta1.MsgPruneAllowances";
+    value: Uint8Array;
+}
+/**
+ * MsgPruneAllowances prunes expired fee allowances.
+ *
+ * Since cosmos-sdk 0.50
+ */
+export interface MsgPruneAllowancesAmino {
+    /** pruner is the address of the user pruning expired allowances. */
+    pruner: string;
+}
+export interface MsgPruneAllowancesAminoMsg {
+    type: "cosmos-sdk/MsgPruneAllowances";
+    value: MsgPruneAllowancesAmino;
+}
+/**
+ * MsgPruneAllowances prunes expired fee allowances.
+ *
+ * Since cosmos-sdk 0.50
+ */
+export interface MsgPruneAllowancesSDKType {
+    pruner: string;
+}
+/**
+ * MsgPruneAllowancesResponse defines the Msg/PruneAllowancesResponse response type.
+ *
+ * Since cosmos-sdk 0.50
+ */
+export interface MsgPruneAllowancesResponse {
+}
+export interface MsgPruneAllowancesResponseProtoMsg {
+    type_url: "/cosmos.feegrant.v1beta1.MsgPruneAllowancesResponse";
+    value: Uint8Array;
+}
+/**
+ * MsgPruneAllowancesResponse defines the Msg/PruneAllowancesResponse response type.
+ *
+ * Since cosmos-sdk 0.50
+ */
+export interface MsgPruneAllowancesResponseAmino {
+}
+export interface MsgPruneAllowancesResponseAminoMsg {
+    type: "cosmos-sdk/MsgPruneAllowancesResponse";
+    value: MsgPruneAllowancesResponseAmino;
+}
+/**
+ * MsgPruneAllowancesResponse defines the Msg/PruneAllowancesResponse response type.
+ *
+ * Since cosmos-sdk 0.50
+ */
+export interface MsgPruneAllowancesResponseSDKType {
+}
 export declare const MsgGrantAllowance: {
     typeUrl: string;
     encode(message: MsgGrantAllowance, writer?: BinaryWriter): BinaryWriter;
@@ -114,8 +177,6 @@ export declare const MsgGrantAllowance: {
     fromJSON(object: any): MsgGrantAllowance;
     toJSON(message: MsgGrantAllowance): unknown;
     fromPartial(object: Partial<MsgGrantAllowance>): MsgGrantAllowance;
-    fromSDK(object: MsgGrantAllowanceSDKType): MsgGrantAllowance;
-    toSDK(message: MsgGrantAllowance): MsgGrantAllowanceSDKType;
     fromAmino(object: MsgGrantAllowanceAmino): MsgGrantAllowance;
     toAmino(message: MsgGrantAllowance): MsgGrantAllowanceAmino;
     fromAminoMsg(object: MsgGrantAllowanceAminoMsg): MsgGrantAllowance;
@@ -131,8 +192,6 @@ export declare const MsgGrantAllowanceResponse: {
     fromJSON(_: any): MsgGrantAllowanceResponse;
     toJSON(_: MsgGrantAllowanceResponse): unknown;
     fromPartial(_: Partial<MsgGrantAllowanceResponse>): MsgGrantAllowanceResponse;
-    fromSDK(_: MsgGrantAllowanceResponseSDKType): MsgGrantAllowanceResponse;
-    toSDK(_: MsgGrantAllowanceResponse): MsgGrantAllowanceResponseSDKType;
     fromAmino(_: MsgGrantAllowanceResponseAmino): MsgGrantAllowanceResponse;
     toAmino(_: MsgGrantAllowanceResponse): MsgGrantAllowanceResponseAmino;
     fromAminoMsg(object: MsgGrantAllowanceResponseAminoMsg): MsgGrantAllowanceResponse;
@@ -148,8 +207,6 @@ export declare const MsgRevokeAllowance: {
     fromJSON(object: any): MsgRevokeAllowance;
     toJSON(message: MsgRevokeAllowance): unknown;
     fromPartial(object: Partial<MsgRevokeAllowance>): MsgRevokeAllowance;
-    fromSDK(object: MsgRevokeAllowanceSDKType): MsgRevokeAllowance;
-    toSDK(message: MsgRevokeAllowance): MsgRevokeAllowanceSDKType;
     fromAmino(object: MsgRevokeAllowanceAmino): MsgRevokeAllowance;
     toAmino(message: MsgRevokeAllowance): MsgRevokeAllowanceAmino;
     fromAminoMsg(object: MsgRevokeAllowanceAminoMsg): MsgRevokeAllowance;
@@ -165,8 +222,6 @@ export declare const MsgRevokeAllowanceResponse: {
     fromJSON(_: any): MsgRevokeAllowanceResponse;
     toJSON(_: MsgRevokeAllowanceResponse): unknown;
     fromPartial(_: Partial<MsgRevokeAllowanceResponse>): MsgRevokeAllowanceResponse;
-    fromSDK(_: MsgRevokeAllowanceResponseSDKType): MsgRevokeAllowanceResponse;
-    toSDK(_: MsgRevokeAllowanceResponse): MsgRevokeAllowanceResponseSDKType;
     fromAmino(_: MsgRevokeAllowanceResponseAmino): MsgRevokeAllowanceResponse;
     toAmino(_: MsgRevokeAllowanceResponse): MsgRevokeAllowanceResponseAmino;
     fromAminoMsg(object: MsgRevokeAllowanceResponseAminoMsg): MsgRevokeAllowanceResponse;
@@ -175,6 +230,36 @@ export declare const MsgRevokeAllowanceResponse: {
     toProto(message: MsgRevokeAllowanceResponse): Uint8Array;
     toProtoMsg(message: MsgRevokeAllowanceResponse): MsgRevokeAllowanceResponseProtoMsg;
 };
-export declare const Cosmos_feegrantFeeAllowanceI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => BasicAllowance | PeriodicAllowance | AllowedMsgAllowance | Any;
-export declare const Cosmos_feegrantFeeAllowanceI_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_feegrantFeeAllowanceI_ToAmino: (content: Any) => AnyAmino;
+export declare const MsgPruneAllowances: {
+    typeUrl: string;
+    encode(message: MsgPruneAllowances, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgPruneAllowances;
+    fromJSON(object: any): MsgPruneAllowances;
+    toJSON(message: MsgPruneAllowances): unknown;
+    fromPartial(object: Partial<MsgPruneAllowances>): MsgPruneAllowances;
+    fromAmino(object: MsgPruneAllowancesAmino): MsgPruneAllowances;
+    toAmino(message: MsgPruneAllowances): MsgPruneAllowancesAmino;
+    fromAminoMsg(object: MsgPruneAllowancesAminoMsg): MsgPruneAllowances;
+    toAminoMsg(message: MsgPruneAllowances): MsgPruneAllowancesAminoMsg;
+    fromProtoMsg(message: MsgPruneAllowancesProtoMsg): MsgPruneAllowances;
+    toProto(message: MsgPruneAllowances): Uint8Array;
+    toProtoMsg(message: MsgPruneAllowances): MsgPruneAllowancesProtoMsg;
+};
+export declare const MsgPruneAllowancesResponse: {
+    typeUrl: string;
+    encode(_: MsgPruneAllowancesResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgPruneAllowancesResponse;
+    fromJSON(_: any): MsgPruneAllowancesResponse;
+    toJSON(_: MsgPruneAllowancesResponse): unknown;
+    fromPartial(_: Partial<MsgPruneAllowancesResponse>): MsgPruneAllowancesResponse;
+    fromAmino(_: MsgPruneAllowancesResponseAmino): MsgPruneAllowancesResponse;
+    toAmino(_: MsgPruneAllowancesResponse): MsgPruneAllowancesResponseAmino;
+    fromAminoMsg(object: MsgPruneAllowancesResponseAminoMsg): MsgPruneAllowancesResponse;
+    toAminoMsg(message: MsgPruneAllowancesResponse): MsgPruneAllowancesResponseAminoMsg;
+    fromProtoMsg(message: MsgPruneAllowancesResponseProtoMsg): MsgPruneAllowancesResponse;
+    toProto(message: MsgPruneAllowancesResponse): Uint8Array;
+    toProtoMsg(message: MsgPruneAllowancesResponse): MsgPruneAllowancesResponseProtoMsg;
+};
+export declare const Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => BasicAllowance | PeriodicAllowance | AllowedMsgAllowance | Any;
+export declare const Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino: (content: AnyAmino) => Any;
+export declare const Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino: (content: Any) => AnyAmino;

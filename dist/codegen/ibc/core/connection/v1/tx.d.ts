@@ -386,8 +386,6 @@ export declare const MsgConnectionOpenInit: {
     fromJSON(object: any): MsgConnectionOpenInit;
     toJSON(message: MsgConnectionOpenInit): unknown;
     fromPartial(object: Partial<MsgConnectionOpenInit>): MsgConnectionOpenInit;
-    fromSDK(object: MsgConnectionOpenInitSDKType): MsgConnectionOpenInit;
-    toSDK(message: MsgConnectionOpenInit): MsgConnectionOpenInitSDKType;
     fromAmino(object: MsgConnectionOpenInitAmino): MsgConnectionOpenInit;
     toAmino(message: MsgConnectionOpenInit): MsgConnectionOpenInitAmino;
     fromAminoMsg(object: MsgConnectionOpenInitAminoMsg): MsgConnectionOpenInit;
@@ -403,8 +401,6 @@ export declare const MsgConnectionOpenInitResponse: {
     fromJSON(_: any): MsgConnectionOpenInitResponse;
     toJSON(_: MsgConnectionOpenInitResponse): unknown;
     fromPartial(_: Partial<MsgConnectionOpenInitResponse>): MsgConnectionOpenInitResponse;
-    fromSDK(_: MsgConnectionOpenInitResponseSDKType): MsgConnectionOpenInitResponse;
-    toSDK(_: MsgConnectionOpenInitResponse): MsgConnectionOpenInitResponseSDKType;
     fromAmino(_: MsgConnectionOpenInitResponseAmino): MsgConnectionOpenInitResponse;
     toAmino(_: MsgConnectionOpenInitResponse): MsgConnectionOpenInitResponseAmino;
     fromAminoMsg(object: MsgConnectionOpenInitResponseAminoMsg): MsgConnectionOpenInitResponse;
@@ -420,8 +416,6 @@ export declare const MsgConnectionOpenTry: {
     fromJSON(object: any): MsgConnectionOpenTry;
     toJSON(message: MsgConnectionOpenTry): unknown;
     fromPartial(object: Partial<MsgConnectionOpenTry>): MsgConnectionOpenTry;
-    fromSDK(object: MsgConnectionOpenTrySDKType): MsgConnectionOpenTry;
-    toSDK(message: MsgConnectionOpenTry): MsgConnectionOpenTrySDKType;
     fromAmino(object: MsgConnectionOpenTryAmino): MsgConnectionOpenTry;
     toAmino(message: MsgConnectionOpenTry): MsgConnectionOpenTryAmino;
     fromAminoMsg(object: MsgConnectionOpenTryAminoMsg): MsgConnectionOpenTry;
@@ -437,8 +431,6 @@ export declare const MsgConnectionOpenTryResponse: {
     fromJSON(_: any): MsgConnectionOpenTryResponse;
     toJSON(_: MsgConnectionOpenTryResponse): unknown;
     fromPartial(_: Partial<MsgConnectionOpenTryResponse>): MsgConnectionOpenTryResponse;
-    fromSDK(_: MsgConnectionOpenTryResponseSDKType): MsgConnectionOpenTryResponse;
-    toSDK(_: MsgConnectionOpenTryResponse): MsgConnectionOpenTryResponseSDKType;
     fromAmino(_: MsgConnectionOpenTryResponseAmino): MsgConnectionOpenTryResponse;
     toAmino(_: MsgConnectionOpenTryResponse): MsgConnectionOpenTryResponseAmino;
     fromAminoMsg(object: MsgConnectionOpenTryResponseAminoMsg): MsgConnectionOpenTryResponse;
@@ -454,8 +446,6 @@ export declare const MsgConnectionOpenAck: {
     fromJSON(object: any): MsgConnectionOpenAck;
     toJSON(message: MsgConnectionOpenAck): unknown;
     fromPartial(object: Partial<MsgConnectionOpenAck>): MsgConnectionOpenAck;
-    fromSDK(object: MsgConnectionOpenAckSDKType): MsgConnectionOpenAck;
-    toSDK(message: MsgConnectionOpenAck): MsgConnectionOpenAckSDKType;
     fromAmino(object: MsgConnectionOpenAckAmino): MsgConnectionOpenAck;
     toAmino(message: MsgConnectionOpenAck): MsgConnectionOpenAckAmino;
     fromAminoMsg(object: MsgConnectionOpenAckAminoMsg): MsgConnectionOpenAck;
@@ -471,8 +461,6 @@ export declare const MsgConnectionOpenAckResponse: {
     fromJSON(_: any): MsgConnectionOpenAckResponse;
     toJSON(_: MsgConnectionOpenAckResponse): unknown;
     fromPartial(_: Partial<MsgConnectionOpenAckResponse>): MsgConnectionOpenAckResponse;
-    fromSDK(_: MsgConnectionOpenAckResponseSDKType): MsgConnectionOpenAckResponse;
-    toSDK(_: MsgConnectionOpenAckResponse): MsgConnectionOpenAckResponseSDKType;
     fromAmino(_: MsgConnectionOpenAckResponseAmino): MsgConnectionOpenAckResponse;
     toAmino(_: MsgConnectionOpenAckResponse): MsgConnectionOpenAckResponseAmino;
     fromAminoMsg(object: MsgConnectionOpenAckResponseAminoMsg): MsgConnectionOpenAckResponse;
@@ -488,8 +476,6 @@ export declare const MsgConnectionOpenConfirm: {
     fromJSON(object: any): MsgConnectionOpenConfirm;
     toJSON(message: MsgConnectionOpenConfirm): unknown;
     fromPartial(object: Partial<MsgConnectionOpenConfirm>): MsgConnectionOpenConfirm;
-    fromSDK(object: MsgConnectionOpenConfirmSDKType): MsgConnectionOpenConfirm;
-    toSDK(message: MsgConnectionOpenConfirm): MsgConnectionOpenConfirmSDKType;
     fromAmino(object: MsgConnectionOpenConfirmAmino): MsgConnectionOpenConfirm;
     toAmino(message: MsgConnectionOpenConfirm): MsgConnectionOpenConfirmAmino;
     fromAminoMsg(object: MsgConnectionOpenConfirmAminoMsg): MsgConnectionOpenConfirm;
@@ -505,8 +491,6 @@ export declare const MsgConnectionOpenConfirmResponse: {
     fromJSON(_: any): MsgConnectionOpenConfirmResponse;
     toJSON(_: MsgConnectionOpenConfirmResponse): unknown;
     fromPartial(_: Partial<MsgConnectionOpenConfirmResponse>): MsgConnectionOpenConfirmResponse;
-    fromSDK(_: MsgConnectionOpenConfirmResponseSDKType): MsgConnectionOpenConfirmResponse;
-    toSDK(_: MsgConnectionOpenConfirmResponse): MsgConnectionOpenConfirmResponseSDKType;
     fromAmino(_: MsgConnectionOpenConfirmResponseAmino): MsgConnectionOpenConfirmResponse;
     toAmino(_: MsgConnectionOpenConfirmResponse): MsgConnectionOpenConfirmResponseAmino;
     fromAminoMsg(object: MsgConnectionOpenConfirmResponseAminoMsg): MsgConnectionOpenConfirmResponse;
@@ -522,8 +506,6 @@ export declare const MsgUpdateParams: {
     fromJSON(object: any): MsgUpdateParams;
     toJSON(message: MsgUpdateParams): unknown;
     fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams;
-    fromSDK(object: MsgUpdateParamsSDKType): MsgUpdateParams;
-    toSDK(message: MsgUpdateParams): MsgUpdateParamsSDKType;
     fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams;
     toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino;
     fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams;
@@ -539,8 +521,6 @@ export declare const MsgUpdateParamsResponse: {
     fromJSON(_: any): MsgUpdateParamsResponse;
     toJSON(_: MsgUpdateParamsResponse): unknown;
     fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse;
-    fromSDK(_: MsgUpdateParamsResponseSDKType): MsgUpdateParamsResponse;
-    toSDK(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseSDKType;
     fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse;
     toAmino(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseAmino;
     fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse;

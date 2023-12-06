@@ -77,8 +77,6 @@ export declare const MultiSignature: {
     fromJSON(object: any): MultiSignature;
     toJSON(message: MultiSignature): unknown;
     fromPartial(object: Partial<MultiSignature>): MultiSignature;
-    fromSDK(object: MultiSignatureSDKType): MultiSignature;
-    toSDK(message: MultiSignature): MultiSignatureSDKType;
     fromAmino(object: MultiSignatureAmino): MultiSignature;
     toAmino(message: MultiSignature): MultiSignatureAmino;
     fromAminoMsg(object: MultiSignatureAminoMsg): MultiSignature;
@@ -94,8 +92,6 @@ export declare const CompactBitArray: {
     fromJSON(object: any): CompactBitArray;
     toJSON(message: CompactBitArray): unknown;
     fromPartial(object: Partial<CompactBitArray>): CompactBitArray;
-    fromSDK(object: CompactBitArraySDKType): CompactBitArray;
-    toSDK(message: CompactBitArray): CompactBitArraySDKType;
     fromAmino(object: CompactBitArrayAmino): CompactBitArray;
     toAmino(message: CompactBitArray): CompactBitArrayAmino;
     fromAminoMsg(object: CompactBitArrayAminoMsg): CompactBitArray;

@@ -79,25 +79,6 @@ export const MsgSubmitProposal = {
         message.proposer = object.proposer ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            content: object.content ? Any.fromSDK(object.content) : undefined,
-            initial_deposit: Array.isArray(object?.initial_deposit) ? object.initial_deposit.map((e) => Coin.fromSDK(e)) : [],
-            proposer: object?.proposer
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.content !== undefined && (obj.content = message.content ? Any.toSDK(message.content) : undefined);
-        if (message.initial_deposit) {
-            obj.initial_deposit = message.initial_deposit.map(e => e ? Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.initial_deposit = [];
-        }
-        obj.proposer = message.proposer;
-        return obj;
-    },
     fromAmino(object) {
         return {
             content: object?.content ? Cosmos_govv1beta1Content_FromAmino(object.content) : undefined,
@@ -183,16 +164,6 @@ export const MsgSubmitProposalResponse = {
         const message = createBaseMsgSubmitProposalResponse();
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -291,20 +262,6 @@ export const MsgVote = {
         message.option = object.option ?? 0;
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            voter: object?.voter,
-            option: isSet(object.option) ? voteOptionFromJSON(object.option) : -1
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        obj.voter = message.voter;
-        message.option !== undefined && (obj.option = voteOptionToJSON(message.option));
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id),
@@ -373,13 +330,6 @@ export const MsgVoteResponse = {
     fromPartial(_) {
         const message = createBaseMsgVoteResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -480,25 +430,6 @@ export const MsgVoteWeighted = {
         message.options = object.options?.map(e => WeightedVoteOption.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            voter: object?.voter,
-            options: Array.isArray(object?.options) ? object.options.map((e) => WeightedVoteOption.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        obj.voter = message.voter;
-        if (message.options) {
-            obj.options = message.options.map(e => e ? WeightedVoteOption.toSDK(e) : undefined);
-        }
-        else {
-            obj.options = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id),
@@ -572,13 +503,6 @@ export const MsgVoteWeightedResponse = {
     fromPartial(_) {
         const message = createBaseMsgVoteWeightedResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -679,25 +603,6 @@ export const MsgDeposit = {
         message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            depositor: object?.depositor,
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => Coin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        obj.depositor = message.depositor;
-        if (message.amount) {
-            obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.amount = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id),
@@ -771,13 +676,6 @@ export const MsgDepositResponse = {
     fromPartial(_) {
         const message = createBaseMsgDepositResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};

@@ -1,20 +1,8 @@
 import { Proof, ProofAmino, ProofSDKType } from "../crypto/proof";
 import { Consensus, ConsensusAmino, ConsensusSDKType } from "../version/types";
-import { ValidatorSet, ValidatorSetAmino, ValidatorSetSDKType } from "./validator";
+import { BlockIDFlag, ValidatorSet, ValidatorSetAmino, ValidatorSetSDKType } from "./validator";
 import { BinaryReader, BinaryWriter } from "../../binary";
 export declare const protobufPackage = "tendermint.types";
-/** BlockIdFlag indicates which BlcokID the signature is for */
-export declare enum BlockIDFlag {
-    BLOCK_ID_FLAG_UNKNOWN = 0,
-    BLOCK_ID_FLAG_ABSENT = 1,
-    BLOCK_ID_FLAG_COMMIT = 2,
-    BLOCK_ID_FLAG_NIL = 3,
-    UNRECOGNIZED = -1
-}
-export declare const BlockIDFlagSDKType: typeof BlockIDFlag;
-export declare const BlockIDFlagAmino: typeof BlockIDFlag;
-export declare function blockIDFlagFromJSON(object: any): BlockIDFlag;
-export declare function blockIDFlagToJSON(object: BlockIDFlag): string;
 /** SignedMsgType is a type of signed message in the consensus. */
 export declare enum SignedMsgType {
     SIGNED_MSG_TYPE_UNKNOWN = 0,
@@ -98,7 +86,7 @@ export interface BlockIDSDKType {
     hash: Uint8Array;
     part_set_header: PartSetHeaderSDKType;
 }
-/** Header defines the structure of a Tendermint block header. */
+/** Header defines the structure of a block header. */
 export interface Header {
     /** basic block info */
     version: Consensus;
@@ -128,7 +116,7 @@ export interface HeaderProtoMsg {
     type_url: "/tendermint.types.Header";
     value: Uint8Array;
 }
-/** Header defines the structure of a Tendermint block header. */
+/** Header defines the structure of a block header. */
 export interface HeaderAmino {
     /** basic block info */
     version?: ConsensusAmino;
@@ -158,7 +146,7 @@ export interface HeaderAminoMsg {
     type: "/tendermint.types.Header";
     value: HeaderAmino;
 }
-/** Header defines the structure of a Tendermint block header. */
+/** Header defines the structure of a block header. */
 export interface HeaderSDKType {
     version: ConsensusSDKType;
     chain_id: string;
@@ -206,7 +194,7 @@ export interface DataSDKType {
     txs: Uint8Array[];
 }
 /**
- * Vote represents a prevote, precommit, or commit vote from validators for
+ * Vote represents a prevote or precommit vote from validators for
  * consensus.
  */
 export interface Vote {
@@ -218,14 +206,29 @@ export interface Vote {
     timestamp: Date;
     validator_address: Uint8Array;
     validator_index: number;
+    /**
+     * Vote signature by the validator if they participated in consensus for the
+     * associated block.
+     */
     signature: Uint8Array;
+    /**
+     * Vote extension provided by the application. Only valid for precommit
+     * messages.
+     */
+    extension: Uint8Array;
+    /**
+     * Vote extension signature by the validator if they participated in
+     * consensus for the associated block.
+     * Only valid for precommit messages.
+     */
+    extension_signature: Uint8Array;
 }
 export interface VoteProtoMsg {
     type_url: "/tendermint.types.Vote";
     value: Uint8Array;
 }
 /**
- * Vote represents a prevote, precommit, or commit vote from validators for
+ * Vote represents a prevote or precommit vote from validators for
  * consensus.
  */
 export interface VoteAmino {
@@ -237,14 +240,29 @@ export interface VoteAmino {
     timestamp?: string;
     validator_address: Uint8Array;
     validator_index: number;
+    /**
+     * Vote signature by the validator if they participated in consensus for the
+     * associated block.
+     */
     signature: Uint8Array;
+    /**
+     * Vote extension provided by the application. Only valid for precommit
+     * messages.
+     */
+    extension: Uint8Array;
+    /**
+     * Vote extension signature by the validator if they participated in
+     * consensus for the associated block.
+     * Only valid for precommit messages.
+     */
+    extension_signature: Uint8Array;
 }
 export interface VoteAminoMsg {
     type: "/tendermint.types.Vote";
     value: VoteAmino;
 }
 /**
- * Vote represents a prevote, precommit, or commit vote from validators for
+ * Vote represents a prevote or precommit vote from validators for
  * consensus.
  */
 export interface VoteSDKType {
@@ -256,6 +274,8 @@ export interface VoteSDKType {
     validator_address: Uint8Array;
     validator_index: number;
     signature: Uint8Array;
+    extension: Uint8Array;
+    extension_signature: Uint8Array;
 }
 /** Commit contains the evidence that a block was committed by a set of validators. */
 export interface Commit {
@@ -314,6 +334,83 @@ export interface CommitSigSDKType {
     validator_address: Uint8Array;
     timestamp: Date;
     signature: Uint8Array;
+}
+export interface ExtendedCommit {
+    height: bigint;
+    round: number;
+    block_id: BlockID;
+    extended_signatures: ExtendedCommitSig[];
+}
+export interface ExtendedCommitProtoMsg {
+    type_url: "/tendermint.types.ExtendedCommit";
+    value: Uint8Array;
+}
+export interface ExtendedCommitAmino {
+    height: string;
+    round: number;
+    block_id?: BlockIDAmino;
+    extended_signatures: ExtendedCommitSigAmino[];
+}
+export interface ExtendedCommitAminoMsg {
+    type: "/tendermint.types.ExtendedCommit";
+    value: ExtendedCommitAmino;
+}
+export interface ExtendedCommitSDKType {
+    height: bigint;
+    round: number;
+    block_id: BlockIDSDKType;
+    extended_signatures: ExtendedCommitSigSDKType[];
+}
+/**
+ * ExtendedCommitSig retains all the same fields as CommitSig but adds vote
+ * extension-related fields. We use two signatures to ensure backwards compatibility.
+ * That is the digest of the original signature is still the same in prior versions
+ */
+export interface ExtendedCommitSig {
+    block_id_flag: BlockIDFlag;
+    validator_address: Uint8Array;
+    timestamp: Date;
+    signature: Uint8Array;
+    /** Vote extension data */
+    extension: Uint8Array;
+    /** Vote extension signature */
+    extension_signature: Uint8Array;
+}
+export interface ExtendedCommitSigProtoMsg {
+    type_url: "/tendermint.types.ExtendedCommitSig";
+    value: Uint8Array;
+}
+/**
+ * ExtendedCommitSig retains all the same fields as CommitSig but adds vote
+ * extension-related fields. We use two signatures to ensure backwards compatibility.
+ * That is the digest of the original signature is still the same in prior versions
+ */
+export interface ExtendedCommitSigAmino {
+    block_id_flag: BlockIDFlag;
+    validator_address: Uint8Array;
+    timestamp?: string;
+    signature: Uint8Array;
+    /** Vote extension data */
+    extension: Uint8Array;
+    /** Vote extension signature */
+    extension_signature: Uint8Array;
+}
+export interface ExtendedCommitSigAminoMsg {
+    type: "/tendermint.types.ExtendedCommitSig";
+    value: ExtendedCommitSigAmino;
+}
+/**
+ * ExtendedCommitSig retains all the same fields as CommitSig but adds vote
+ * extension-related fields. We use two signatures to ensure backwards compatibility.
+ * That is the digest of the original signature is still the same in prior versions
+ */
+export interface ExtendedCommitSigSDKType {
+    block_id_flag: BlockIDFlag;
+    validator_address: Uint8Array;
+    timestamp: Date;
+    signature: Uint8Array;
+    extension: Uint8Array;
+    extension_signature: Uint8Array;
 }
 export interface Proposal {
     type: SignedMsgType;
@@ -449,8 +546,6 @@ export declare const PartSetHeader: {
     fromJSON(object: any): PartSetHeader;
     toJSON(message: PartSetHeader): unknown;
     fromPartial(object: Partial<PartSetHeader>): PartSetHeader;
-    fromSDK(object: PartSetHeaderSDKType): PartSetHeader;
-    toSDK(message: PartSetHeader): PartSetHeaderSDKType;
     fromAmino(object: PartSetHeaderAmino): PartSetHeader;
     toAmino(message: PartSetHeader): PartSetHeaderAmino;
     fromAminoMsg(object: PartSetHeaderAminoMsg): PartSetHeader;
@@ -465,8 +560,6 @@ export declare const Part: {
     fromJSON(object: any): Part;
     toJSON(message: Part): unknown;
     fromPartial(object: Partial<Part>): Part;
-    fromSDK(object: PartSDKType): Part;
-    toSDK(message: Part): PartSDKType;
     fromAmino(object: PartAmino): Part;
     toAmino(message: Part): PartAmino;
     fromAminoMsg(object: PartAminoMsg): Part;
@@ -481,8 +574,6 @@ export declare const BlockID: {
     fromJSON(object: any): BlockID;
     toJSON(message: BlockID): unknown;
     fromPartial(object: Partial<BlockID>): BlockID;
-    fromSDK(object: BlockIDSDKType): BlockID;
-    toSDK(message: BlockID): BlockIDSDKType;
     fromAmino(object: BlockIDAmino): BlockID;
     toAmino(message: BlockID): BlockIDAmino;
     fromAminoMsg(object: BlockIDAminoMsg): BlockID;
@@ -497,8 +588,6 @@ export declare const Header: {
     fromJSON(object: any): Header;
     toJSON(message: Header): unknown;
     fromPartial(object: Partial<Header>): Header;
-    fromSDK(object: HeaderSDKType): Header;
-    toSDK(message: Header): HeaderSDKType;
     fromAmino(object: HeaderAmino): Header;
     toAmino(message: Header): HeaderAmino;
     fromAminoMsg(object: HeaderAminoMsg): Header;
@@ -513,8 +602,6 @@ export declare const Data: {
     fromJSON(object: any): Data;
     toJSON(message: Data): unknown;
     fromPartial(object: Partial<Data>): Data;
-    fromSDK(object: DataSDKType): Data;
-    toSDK(message: Data): DataSDKType;
     fromAmino(object: DataAmino): Data;
     toAmino(message: Data): DataAmino;
     fromAminoMsg(object: DataAminoMsg): Data;
@@ -529,8 +616,6 @@ export declare const Vote: {
     fromJSON(object: any): Vote;
     toJSON(message: Vote): unknown;
     fromPartial(object: Partial<Vote>): Vote;
-    fromSDK(object: VoteSDKType): Vote;
-    toSDK(message: Vote): VoteSDKType;
     fromAmino(object: VoteAmino): Vote;
     toAmino(message: Vote): VoteAmino;
     fromAminoMsg(object: VoteAminoMsg): Vote;
@@ -545,8 +630,6 @@ export declare const Commit: {
     fromJSON(object: any): Commit;
     toJSON(message: Commit): unknown;
     fromPartial(object: Partial<Commit>): Commit;
-    fromSDK(object: CommitSDKType): Commit;
-    toSDK(message: Commit): CommitSDKType;
     fromAmino(object: CommitAmino): Commit;
     toAmino(message: Commit): CommitAmino;
     fromAminoMsg(object: CommitAminoMsg): Commit;
@@ -561,14 +644,40 @@ export declare const CommitSig: {
     fromJSON(object: any): CommitSig;
     toJSON(message: CommitSig): unknown;
     fromPartial(object: Partial<CommitSig>): CommitSig;
-    fromSDK(object: CommitSigSDKType): CommitSig;
-    toSDK(message: CommitSig): CommitSigSDKType;
     fromAmino(object: CommitSigAmino): CommitSig;
     toAmino(message: CommitSig): CommitSigAmino;
     fromAminoMsg(object: CommitSigAminoMsg): CommitSig;
     fromProtoMsg(message: CommitSigProtoMsg): CommitSig;
     toProto(message: CommitSig): Uint8Array;
     toProtoMsg(message: CommitSig): CommitSigProtoMsg;
+};
+export declare const ExtendedCommit: {
+    typeUrl: string;
+    encode(message: ExtendedCommit, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ExtendedCommit;
+    fromJSON(object: any): ExtendedCommit;
+    toJSON(message: ExtendedCommit): unknown;
+    fromPartial(object: Partial<ExtendedCommit>): ExtendedCommit;
+    fromAmino(object: ExtendedCommitAmino): ExtendedCommit;
+    toAmino(message: ExtendedCommit): ExtendedCommitAmino;
+    fromAminoMsg(object: ExtendedCommitAminoMsg): ExtendedCommit;
+    fromProtoMsg(message: ExtendedCommitProtoMsg): ExtendedCommit;
+    toProto(message: ExtendedCommit): Uint8Array;
+    toProtoMsg(message: ExtendedCommit): ExtendedCommitProtoMsg;
+};
+export declare const ExtendedCommitSig: {
+    typeUrl: string;
+    encode(message: ExtendedCommitSig, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ExtendedCommitSig;
+    fromJSON(object: any): ExtendedCommitSig;
+    toJSON(message: ExtendedCommitSig): unknown;
+    fromPartial(object: Partial<ExtendedCommitSig>): ExtendedCommitSig;
+    fromAmino(object: ExtendedCommitSigAmino): ExtendedCommitSig;
+    toAmino(message: ExtendedCommitSig): ExtendedCommitSigAmino;
+    fromAminoMsg(object: ExtendedCommitSigAminoMsg): ExtendedCommitSig;
+    fromProtoMsg(message: ExtendedCommitSigProtoMsg): ExtendedCommitSig;
+    toProto(message: ExtendedCommitSig): Uint8Array;
+    toProtoMsg(message: ExtendedCommitSig): ExtendedCommitSigProtoMsg;
 };
 export declare const Proposal: {
     typeUrl: string;
@@ -577,8 +686,6 @@ export declare const Proposal: {
     fromJSON(object: any): Proposal;
     toJSON(message: Proposal): unknown;
     fromPartial(object: Partial<Proposal>): Proposal;
-    fromSDK(object: ProposalSDKType): Proposal;
-    toSDK(message: Proposal): ProposalSDKType;
     fromAmino(object: ProposalAmino): Proposal;
     toAmino(message: Proposal): ProposalAmino;
     fromAminoMsg(object: ProposalAminoMsg): Proposal;
@@ -593,8 +700,6 @@ export declare const SignedHeader: {
     fromJSON(object: any): SignedHeader;
     toJSON(message: SignedHeader): unknown;
     fromPartial(object: Partial<SignedHeader>): SignedHeader;
-    fromSDK(object: SignedHeaderSDKType): SignedHeader;
-    toSDK(message: SignedHeader): SignedHeaderSDKType;
     fromAmino(object: SignedHeaderAmino): SignedHeader;
     toAmino(message: SignedHeader): SignedHeaderAmino;
     fromAminoMsg(object: SignedHeaderAminoMsg): SignedHeader;
@@ -609,8 +714,6 @@ export declare const LightBlock: {
     fromJSON(object: any): LightBlock;
     toJSON(message: LightBlock): unknown;
     fromPartial(object: Partial<LightBlock>): LightBlock;
-    fromSDK(object: LightBlockSDKType): LightBlock;
-    toSDK(message: LightBlock): LightBlockSDKType;
     fromAmino(object: LightBlockAmino): LightBlock;
     toAmino(message: LightBlock): LightBlockAmino;
     fromAminoMsg(object: LightBlockAminoMsg): LightBlock;
@@ -625,8 +728,6 @@ export declare const BlockMeta: {
     fromJSON(object: any): BlockMeta;
     toJSON(message: BlockMeta): unknown;
     fromPartial(object: Partial<BlockMeta>): BlockMeta;
-    fromSDK(object: BlockMetaSDKType): BlockMeta;
-    toSDK(message: BlockMeta): BlockMetaSDKType;
     fromAmino(object: BlockMetaAmino): BlockMeta;
     toAmino(message: BlockMeta): BlockMetaAmino;
     fromAminoMsg(object: BlockMetaAminoMsg): BlockMeta;
@@ -641,8 +742,6 @@ export declare const TxProof: {
     fromJSON(object: any): TxProof;
     toJSON(message: TxProof): unknown;
     fromPartial(object: Partial<TxProof>): TxProof;
-    fromSDK(object: TxProofSDKType): TxProof;
-    toSDK(message: TxProof): TxProofSDKType;
     fromAmino(object: TxProofAmino): TxProof;
     toAmino(message: TxProof): TxProofAmino;
     fromAminoMsg(object: TxProofAminoMsg): TxProof;

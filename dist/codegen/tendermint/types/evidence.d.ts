@@ -110,8 +110,6 @@ export declare const Evidence: {
     fromJSON(object: any): Evidence;
     toJSON(message: Evidence): unknown;
     fromPartial(object: Partial<Evidence>): Evidence;
-    fromSDK(object: EvidenceSDKType): Evidence;
-    toSDK(message: Evidence): EvidenceSDKType;
     fromAmino(object: EvidenceAmino): Evidence;
     toAmino(message: Evidence): EvidenceAmino;
     fromAminoMsg(object: EvidenceAminoMsg): Evidence;
@@ -126,8 +124,6 @@ export declare const DuplicateVoteEvidence: {
     fromJSON(object: any): DuplicateVoteEvidence;
     toJSON(message: DuplicateVoteEvidence): unknown;
     fromPartial(object: Partial<DuplicateVoteEvidence>): DuplicateVoteEvidence;
-    fromSDK(object: DuplicateVoteEvidenceSDKType): DuplicateVoteEvidence;
-    toSDK(message: DuplicateVoteEvidence): DuplicateVoteEvidenceSDKType;
     fromAmino(object: DuplicateVoteEvidenceAmino): DuplicateVoteEvidence;
     toAmino(message: DuplicateVoteEvidence): DuplicateVoteEvidenceAmino;
     fromAminoMsg(object: DuplicateVoteEvidenceAminoMsg): DuplicateVoteEvidence;
@@ -142,8 +138,6 @@ export declare const LightClientAttackEvidence: {
     fromJSON(object: any): LightClientAttackEvidence;
     toJSON(message: LightClientAttackEvidence): unknown;
     fromPartial(object: Partial<LightClientAttackEvidence>): LightClientAttackEvidence;
-    fromSDK(object: LightClientAttackEvidenceSDKType): LightClientAttackEvidence;
-    toSDK(message: LightClientAttackEvidence): LightClientAttackEvidenceSDKType;
     fromAmino(object: LightClientAttackEvidenceAmino): LightClientAttackEvidence;
     toAmino(message: LightClientAttackEvidence): LightClientAttackEvidenceAmino;
     fromAminoMsg(object: LightClientAttackEvidenceAminoMsg): LightClientAttackEvidence;
@@ -158,8 +152,6 @@ export declare const EvidenceList: {
     fromJSON(object: any): EvidenceList;
     toJSON(message: EvidenceList): unknown;
     fromPartial(object: Partial<EvidenceList>): EvidenceList;
-    fromSDK(object: EvidenceListSDKType): EvidenceList;
-    toSDK(message: EvidenceList): EvidenceListSDKType;
     fromAmino(object: EvidenceListAmino): EvidenceList;
     toAmino(message: EvidenceList): EvidenceListAmino;
     fromAminoMsg(object: EvidenceListAminoMsg): EvidenceList;

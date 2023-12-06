@@ -1,7 +1,12 @@
 //@ts-nocheck
 import * as fm from "../../../grpc-gateway";
 export class Query {
-    /** Validators queries all validators that match the given status. */
+    /**
+     * Validators queries all validators that match the given status.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     static Validators(request, initRequest) {
         return fm.fetchReq(`/cosmos/staking/v1beta1/validators?${fm.renderURLSearchParams({
             ...request
@@ -19,7 +24,12 @@ export class Query {
             method: "GET"
         });
     }
-    /** ValidatorDelegations queries delegate info for given validator. */
+    /**
+     * ValidatorDelegations queries delegate info for given validator.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     static ValidatorDelegations(request, initRequest) {
         return fm.fetchReq(`/cosmos/staking/v1beta1/validators/${request["validator_addr"]}/delegations?${fm.renderURLSearchParams({
             ...request
@@ -28,7 +38,12 @@ export class Query {
             method: "GET"
         });
     }
-    /** ValidatorUnbondingDelegations queries unbonding delegations of a validator. */
+    /**
+     * ValidatorUnbondingDelegations queries unbonding delegations of a validator.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     static ValidatorUnbondingDelegations(request, initRequest) {
         return fm.fetchReq(`/cosmos/staking/v1beta1/validators/${request["validator_addr"]}/unbonding_delegations?${fm.renderURLSearchParams({
             ...request
@@ -58,7 +73,12 @@ export class Query {
             method: "GET"
         });
     }
-    /** DelegatorDelegations queries all delegations of a given delegator address. */
+    /**
+     * DelegatorDelegations queries all delegations of a given delegator address.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     static DelegatorDelegations(request, initRequest) {
         return fm.fetchReq(`/cosmos/staking/v1beta1/delegations/${request["delegator_addr"]}?${fm.renderURLSearchParams({
             ...request
@@ -70,6 +90,9 @@ export class Query {
     /**
      * DelegatorUnbondingDelegations queries all unbonding delegations of a given
      * delegator address.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
      */
     static DelegatorUnbondingDelegations(request, initRequest) {
         return fm.fetchReq(`/cosmos/staking/v1beta1/delegators/${request["delegator_addr"]}/unbonding_delegations?${fm.renderURLSearchParams({
@@ -79,7 +102,12 @@ export class Query {
             method: "GET"
         });
     }
-    /** Redelegations queries redelegations of given address. */
+    /**
+     * Redelegations queries redelegations of given address.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     static Redelegations(request, initRequest) {
         return fm.fetchReq(`/cosmos/staking/v1beta1/delegators/${request["delegator_addr"]}/redelegations?${fm.renderURLSearchParams({
             ...request
@@ -91,6 +119,9 @@ export class Query {
     /**
      * DelegatorValidators queries all validators info for given delegator
      * address.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
      */
     static DelegatorValidators(request, initRequest) {
         return fm.fetchReq(`/cosmos/staking/v1beta1/delegators/${request["delegator_addr"]}/validators?${fm.renderURLSearchParams({
@@ -145,7 +176,12 @@ export class QueryClientImpl {
     constructor(url) {
         this.url = url;
     }
-    /** Validators queries all validators that match the given status. */
+    /**
+     * Validators queries all validators that match the given status.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     async Validators(req, headers) {
         return Query.Validators(req, {
             headers,
@@ -159,14 +195,24 @@ export class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /** ValidatorDelegations queries delegate info for given validator. */
+    /**
+     * ValidatorDelegations queries delegate info for given validator.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     async ValidatorDelegations(req, headers) {
         return Query.ValidatorDelegations(req, {
             headers,
             pathPrefix: this.url
         });
     }
-    /** ValidatorUnbondingDelegations queries unbonding delegations of a validator. */
+    /**
+     * ValidatorUnbondingDelegations queries unbonding delegations of a validator.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     async ValidatorUnbondingDelegations(req, headers) {
         return Query.ValidatorUnbondingDelegations(req, {
             headers,
@@ -190,7 +236,12 @@ export class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /** DelegatorDelegations queries all delegations of a given delegator address. */
+    /**
+     * DelegatorDelegations queries all delegations of a given delegator address.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     async DelegatorDelegations(req, headers) {
         return Query.DelegatorDelegations(req, {
             headers,
@@ -200,6 +251,9 @@ export class QueryClientImpl {
     /**
      * DelegatorUnbondingDelegations queries all unbonding delegations of a given
      * delegator address.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
      */
     async DelegatorUnbondingDelegations(req, headers) {
         return Query.DelegatorUnbondingDelegations(req, {
@@ -207,7 +261,12 @@ export class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /** Redelegations queries redelegations of given address. */
+    /**
+     * Redelegations queries redelegations of given address.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
+     */
     async Redelegations(req, headers) {
         return Query.Redelegations(req, {
             headers,
@@ -217,6 +276,9 @@ export class QueryClientImpl {
     /**
      * DelegatorValidators queries all validators info for given delegator
      * address.
+     *
+     * When called from another module, this query might consume a high amount of
+     * gas if the pagination field is incorrectly set.
      */
     async DelegatorValidators(req, headers) {
         return Query.DelegatorValidators(req, {

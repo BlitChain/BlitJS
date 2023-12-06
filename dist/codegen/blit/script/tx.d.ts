@@ -164,8 +164,6 @@ export declare const MsgUpdateParams: {
     fromJSON(object: any): MsgUpdateParams;
     toJSON(message: MsgUpdateParams): unknown;
     fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams;
-    fromSDK(object: MsgUpdateParamsSDKType): MsgUpdateParams;
-    toSDK(message: MsgUpdateParams): MsgUpdateParamsSDKType;
     fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams;
     toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino;
     fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams;
@@ -181,8 +179,6 @@ export declare const MsgUpdateParamsResponse: {
     fromJSON(_: any): MsgUpdateParamsResponse;
     toJSON(_: MsgUpdateParamsResponse): unknown;
     fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse;
-    fromSDK(_: MsgUpdateParamsResponseSDKType): MsgUpdateParamsResponse;
-    toSDK(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseSDKType;
     fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse;
     toAmino(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseAmino;
     fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse;
@@ -197,8 +193,6 @@ export declare const MsgCreateScript: {
     fromJSON(object: any): MsgCreateScript;
     toJSON(message: MsgCreateScript): unknown;
     fromPartial(object: Partial<MsgCreateScript>): MsgCreateScript;
-    fromSDK(object: MsgCreateScriptSDKType): MsgCreateScript;
-    toSDK(message: MsgCreateScript): MsgCreateScriptSDKType;
     fromAmino(object: MsgCreateScriptAmino): MsgCreateScript;
     toAmino(message: MsgCreateScript): MsgCreateScriptAmino;
     fromAminoMsg(object: MsgCreateScriptAminoMsg): MsgCreateScript;
@@ -213,8 +207,6 @@ export declare const MsgCreateScriptResponse: {
     fromJSON(object: any): MsgCreateScriptResponse;
     toJSON(message: MsgCreateScriptResponse): unknown;
     fromPartial(object: Partial<MsgCreateScriptResponse>): MsgCreateScriptResponse;
-    fromSDK(object: MsgCreateScriptResponseSDKType): MsgCreateScriptResponse;
-    toSDK(message: MsgCreateScriptResponse): MsgCreateScriptResponseSDKType;
     fromAmino(object: MsgCreateScriptResponseAmino): MsgCreateScriptResponse;
     toAmino(message: MsgCreateScriptResponse): MsgCreateScriptResponseAmino;
     fromAminoMsg(object: MsgCreateScriptResponseAminoMsg): MsgCreateScriptResponse;
@@ -229,8 +221,6 @@ export declare const MsgUpdateScript: {
     fromJSON(object: any): MsgUpdateScript;
     toJSON(message: MsgUpdateScript): unknown;
     fromPartial(object: Partial<MsgUpdateScript>): MsgUpdateScript;
-    fromSDK(object: MsgUpdateScriptSDKType): MsgUpdateScript;
-    toSDK(message: MsgUpdateScript): MsgUpdateScriptSDKType;
     fromAmino(object: MsgUpdateScriptAmino): MsgUpdateScript;
     toAmino(message: MsgUpdateScript): MsgUpdateScriptAmino;
     fromAminoMsg(object: MsgUpdateScriptAminoMsg): MsgUpdateScript;
@@ -245,8 +235,6 @@ export declare const MsgUpdateScriptResponse: {
     fromJSON(object: any): MsgUpdateScriptResponse;
     toJSON(message: MsgUpdateScriptResponse): unknown;
     fromPartial(object: Partial<MsgUpdateScriptResponse>): MsgUpdateScriptResponse;
-    fromSDK(object: MsgUpdateScriptResponseSDKType): MsgUpdateScriptResponse;
-    toSDK(message: MsgUpdateScriptResponse): MsgUpdateScriptResponseSDKType;
     fromAmino(object: MsgUpdateScriptResponseAmino): MsgUpdateScriptResponse;
     toAmino(message: MsgUpdateScriptResponse): MsgUpdateScriptResponseAmino;
     fromAminoMsg(object: MsgUpdateScriptResponseAminoMsg): MsgUpdateScriptResponse;

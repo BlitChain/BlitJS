@@ -337,18 +337,6 @@ export const Timestamp = {
     message.nanos = object.nanos ?? 0;
     return message;
   },
-  fromSDK(object: TimestampSDKType): Timestamp {
-    return {
-      seconds: object?.seconds,
-      nanos: object?.nanos
-    };
-  },
-  toSDK(message: Timestamp): TimestampSDKType {
-    const obj: any = {};
-    obj.seconds = message.seconds;
-    obj.nanos = message.nanos;
-    return obj;
-  },
   fromAmino(object: TimestampAmino): Timestamp {
     return fromJsonTimestamp(object);
   },

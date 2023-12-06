@@ -129,8 +129,6 @@ export declare const QueryParamsRequest: {
     fromJSON(_: any): QueryParamsRequest;
     toJSON(_: QueryParamsRequest): unknown;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
-    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
-    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
     fromAminoMsg(object: QueryParamsRequestAminoMsg): QueryParamsRequest;
@@ -145,8 +143,6 @@ export declare const QueryParamsResponse: {
     fromJSON(object: any): QueryParamsResponse;
     toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
-    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
-    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
     fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse;
@@ -161,8 +157,6 @@ export declare const QueryStorageDetailRequest: {
     fromJSON(object: any): QueryStorageDetailRequest;
     toJSON(message: QueryStorageDetailRequest): unknown;
     fromPartial(object: Partial<QueryStorageDetailRequest>): QueryStorageDetailRequest;
-    fromSDK(object: QueryStorageDetailRequestSDKType): QueryStorageDetailRequest;
-    toSDK(message: QueryStorageDetailRequest): QueryStorageDetailRequestSDKType;
     fromAmino(object: QueryStorageDetailRequestAmino): QueryStorageDetailRequest;
     toAmino(message: QueryStorageDetailRequest): QueryStorageDetailRequestAmino;
     fromAminoMsg(object: QueryStorageDetailRequestAminoMsg): QueryStorageDetailRequest;
@@ -177,8 +171,6 @@ export declare const QueryStorageDetailResponse: {
     fromJSON(object: any): QueryStorageDetailResponse;
     toJSON(message: QueryStorageDetailResponse): unknown;
     fromPartial(object: Partial<QueryStorageDetailResponse>): QueryStorageDetailResponse;
-    fromSDK(object: QueryStorageDetailResponseSDKType): QueryStorageDetailResponse;
-    toSDK(message: QueryStorageDetailResponse): QueryStorageDetailResponseSDKType;
     fromAmino(object: QueryStorageDetailResponseAmino): QueryStorageDetailResponse;
     toAmino(message: QueryStorageDetailResponse): QueryStorageDetailResponseAmino;
     fromAminoMsg(object: QueryStorageDetailResponseAminoMsg): QueryStorageDetailResponse;
@@ -193,8 +185,6 @@ export declare const QueryFilterStorageRequest: {
     fromJSON(object: any): QueryFilterStorageRequest;
     toJSON(message: QueryFilterStorageRequest): unknown;
     fromPartial(object: Partial<QueryFilterStorageRequest>): QueryFilterStorageRequest;
-    fromSDK(object: QueryFilterStorageRequestSDKType): QueryFilterStorageRequest;
-    toSDK(message: QueryFilterStorageRequest): QueryFilterStorageRequestSDKType;
     fromAmino(object: QueryFilterStorageRequestAmino): QueryFilterStorageRequest;
     toAmino(message: QueryFilterStorageRequest): QueryFilterStorageRequestAmino;
     fromAminoMsg(object: QueryFilterStorageRequestAminoMsg): QueryFilterStorageRequest;
@@ -209,8 +199,6 @@ export declare const QueryFilterStorageResponse: {
     fromJSON(object: any): QueryFilterStorageResponse;
     toJSON(message: QueryFilterStorageResponse): unknown;
     fromPartial(object: Partial<QueryFilterStorageResponse>): QueryFilterStorageResponse;
-    fromSDK(object: QueryFilterStorageResponseSDKType): QueryFilterStorageResponse;
-    toSDK(message: QueryFilterStorageResponse): QueryFilterStorageResponseSDKType;
     fromAmino(object: QueryFilterStorageResponseAmino): QueryFilterStorageResponse;
     toAmino(message: QueryFilterStorageResponse): QueryFilterStorageResponseAmino;
     fromAminoMsg(object: QueryFilterStorageResponseAminoMsg): QueryFilterStorageResponse;

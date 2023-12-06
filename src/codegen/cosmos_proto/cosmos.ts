@@ -231,18 +231,6 @@ export const InterfaceDescriptor = {
     message.description = object.description ?? "";
     return message;
   },
-  fromSDK(object: InterfaceDescriptorSDKType): InterfaceDescriptor {
-    return {
-      name: object?.name,
-      description: object?.description
-    };
-  },
-  toSDK(message: InterfaceDescriptor): InterfaceDescriptorSDKType {
-    const obj: any = {};
-    obj.name = message.name;
-    obj.description = message.description;
-    return obj;
-  },
   fromAmino(object: InterfaceDescriptorAmino): InterfaceDescriptor {
     return {
       name: object.name,
@@ -348,24 +336,6 @@ export const ScalarDescriptor = {
     message.description = object.description ?? "";
     message.field_type = object.field_type?.map(e => e) || [];
     return message;
-  },
-  fromSDK(object: ScalarDescriptorSDKType): ScalarDescriptor {
-    return {
-      name: object?.name,
-      description: object?.description,
-      field_type: Array.isArray(object?.field_type) ? object.field_type.map((e: any) => scalarTypeFromJSON(e)) : []
-    };
-  },
-  toSDK(message: ScalarDescriptor): ScalarDescriptorSDKType {
-    const obj: any = {};
-    obj.name = message.name;
-    obj.description = message.description;
-    if (message.field_type) {
-      obj.field_type = message.field_type.map(e => scalarTypeToJSON(e));
-    } else {
-      obj.field_type = [];
-    }
-    return obj;
   },
   fromAmino(object: ScalarDescriptorAmino): ScalarDescriptor {
     return {

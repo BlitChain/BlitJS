@@ -86,8 +86,6 @@ export declare const GenesisState: {
     fromJSON(object: any): GenesisState;
     toJSON(message: GenesisState): unknown;
     fromPartial(object: Partial<GenesisState>): GenesisState;
-    fromSDK(object: GenesisStateSDKType): GenesisState;
-    toSDK(message: GenesisState): GenesisStateSDKType;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
     fromAminoMsg(object: GenesisStateAminoMsg): GenesisState;
@@ -103,8 +101,6 @@ export declare const PacketSequence: {
     fromJSON(object: any): PacketSequence;
     toJSON(message: PacketSequence): unknown;
     fromPartial(object: Partial<PacketSequence>): PacketSequence;
-    fromSDK(object: PacketSequenceSDKType): PacketSequence;
-    toSDK(message: PacketSequence): PacketSequenceSDKType;
     fromAmino(object: PacketSequenceAmino): PacketSequence;
     toAmino(message: PacketSequence): PacketSequenceAmino;
     fromAminoMsg(object: PacketSequenceAminoMsg): PacketSequence;

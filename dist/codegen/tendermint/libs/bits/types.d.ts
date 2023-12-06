@@ -27,8 +27,6 @@ export declare const BitArray: {
     fromJSON(object: any): BitArray;
     toJSON(message: BitArray): unknown;
     fromPartial(object: Partial<BitArray>): BitArray;
-    fromSDK(object: BitArraySDKType): BitArray;
-    toSDK(message: BitArray): BitArraySDKType;
     fromAmino(object: BitArrayAmino): BitArray;
     toAmino(message: BitArray): BitArrayAmino;
     fromAminoMsg(object: BitArrayAminoMsg): BitArray;

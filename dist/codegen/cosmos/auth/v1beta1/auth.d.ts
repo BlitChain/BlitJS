@@ -72,6 +72,51 @@ export interface ModuleAccountSDKType {
     name: string;
     permissions: string[];
 }
+/**
+ * ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
+ *
+ * Since: cosmos-sdk 0.47
+ */
+export interface ModuleCredential {
+    /** module_name is the name of the module used for address derivation (passed into address.Module). */
+    module_name: string;
+    /**
+     * derivation_keys is for deriving a module account address (passed into address.Module)
+     * adding more keys creates sub-account addresses (passed into address.Derive)
+     */
+    derivation_keys: Uint8Array[];
+}
+export interface ModuleCredentialProtoMsg {
+    type_url: "/cosmos.auth.v1beta1.ModuleCredential";
+    value: Uint8Array;
+}
+/**
+ * ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
+ *
+ * Since: cosmos-sdk 0.47
+ */
+export interface ModuleCredentialAmino {
+    /** module_name is the name of the module used for address derivation (passed into address.Module). */
+    module_name: string;
+    /**
+     * derivation_keys is for deriving a module account address (passed into address.Module)
+     * adding more keys creates sub-account addresses (passed into address.Derive)
+     */
+    derivation_keys: Uint8Array[];
+}
+export interface ModuleCredentialAminoMsg {
+    type: "cosmos-sdk/GroupAccountCredential";
+    value: ModuleCredentialAmino;
+}
+/**
+ * ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
+ *
+ * Since: cosmos-sdk 0.47
+ */
+export interface ModuleCredentialSDKType {
+    module_name: string;
+    derivation_keys: Uint8Array[];
+}
 /** Params defines the parameters for the auth module. */
 export interface Params {
     max_memo_characters: bigint;
@@ -93,7 +138,7 @@ export interface ParamsAmino {
     sig_verify_cost_secp256k1: string;
 }
 export interface ParamsAminoMsg {
-    type: "cosmos-sdk/Params";
+    type: "cosmos-sdk/x/auth/Params";
     value: ParamsAmino;
 }
 /** Params defines the parameters for the auth module. */
@@ -111,8 +156,6 @@ export declare const BaseAccount: {
     fromJSON(object: any): BaseAccount;
     toJSON(message: BaseAccount): unknown;
     fromPartial(object: Partial<BaseAccount>): BaseAccount;
-    fromSDK(object: BaseAccountSDKType): BaseAccount;
-    toSDK(message: BaseAccount): BaseAccountSDKType;
     fromAmino(object: BaseAccountAmino): BaseAccount;
     toAmino(message: BaseAccount): BaseAccountAmino;
     fromAminoMsg(object: BaseAccountAminoMsg): BaseAccount;
@@ -128,8 +171,6 @@ export declare const ModuleAccount: {
     fromJSON(object: any): ModuleAccount;
     toJSON(message: ModuleAccount): unknown;
     fromPartial(object: Partial<ModuleAccount>): ModuleAccount;
-    fromSDK(object: ModuleAccountSDKType): ModuleAccount;
-    toSDK(message: ModuleAccount): ModuleAccountSDKType;
     fromAmino(object: ModuleAccountAmino): ModuleAccount;
     toAmino(message: ModuleAccount): ModuleAccountAmino;
     fromAminoMsg(object: ModuleAccountAminoMsg): ModuleAccount;
@@ -138,6 +179,21 @@ export declare const ModuleAccount: {
     toProto(message: ModuleAccount): Uint8Array;
     toProtoMsg(message: ModuleAccount): ModuleAccountProtoMsg;
 };
+export declare const ModuleCredential: {
+    typeUrl: string;
+    encode(message: ModuleCredential, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ModuleCredential;
+    fromJSON(object: any): ModuleCredential;
+    toJSON(message: ModuleCredential): unknown;
+    fromPartial(object: Partial<ModuleCredential>): ModuleCredential;
+    fromAmino(object: ModuleCredentialAmino): ModuleCredential;
+    toAmino(message: ModuleCredential): ModuleCredentialAmino;
+    fromAminoMsg(object: ModuleCredentialAminoMsg): ModuleCredential;
+    toAminoMsg(message: ModuleCredential): ModuleCredentialAminoMsg;
+    fromProtoMsg(message: ModuleCredentialProtoMsg): ModuleCredential;
+    toProto(message: ModuleCredential): Uint8Array;
+    toProtoMsg(message: ModuleCredential): ModuleCredentialProtoMsg;
+};
 export declare const Params: {
     typeUrl: string;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
@@ -145,8 +201,6 @@ export declare const Params: {
     fromJSON(object: any): Params;
     toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
     fromAminoMsg(object: ParamsAminoMsg): Params;

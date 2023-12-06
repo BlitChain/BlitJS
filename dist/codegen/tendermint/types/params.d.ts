@@ -6,10 +6,11 @@ export declare const protobufPackage = "tendermint.types";
  * validity of blocks.
  */
 export interface ConsensusParams {
-    block: BlockParams;
-    evidence: EvidenceParams;
-    validator: ValidatorParams;
-    version: VersionParams;
+    block?: BlockParams;
+    evidence?: EvidenceParams;
+    validator?: ValidatorParams;
+    version?: VersionParams;
+    abci?: ABCIParams;
 }
 export interface ConsensusParamsProtoMsg {
     type_url: "/tendermint.types.ConsensusParams";
@@ -24,6 +25,7 @@ export interface ConsensusParamsAmino {
     evidence?: EvidenceParamsAmino;
     validator?: ValidatorParamsAmino;
     version?: VersionParamsAmino;
+    abci?: ABCIParamsAmino;
 }
 export interface ConsensusParamsAminoMsg {
     type: "/tendermint.types.ConsensusParams";
@@ -34,10 +36,11 @@ export interface ConsensusParamsAminoMsg {
  * validity of blocks.
  */
 export interface ConsensusParamsSDKType {
-    block: BlockParamsSDKType;
-    evidence: EvidenceParamsSDKType;
-    validator: ValidatorParamsSDKType;
-    version: VersionParamsSDKType;
+    block?: BlockParamsSDKType;
+    evidence?: EvidenceParamsSDKType;
+    validator?: ValidatorParamsSDKType;
+    version?: VersionParamsSDKType;
+    abci?: ABCIParamsSDKType;
 }
 /** BlockParams contains limits on the block size. */
 export interface BlockParams {
@@ -51,13 +54,6 @@ export interface BlockParams {
      * Note: must be greater or equal to -1
      */
     max_gas: bigint;
-    /**
-     * Minimum time increment between consecutive blocks (in milliseconds) If the
-     * block header timestamp is ahead of the system clock, decrease this value.
-     *
-     * Not exposed to the application.
-     */
-    time_iota_ms: bigint;
 }
 export interface BlockParamsProtoMsg {
     type_url: "/tendermint.types.BlockParams";
@@ -75,13 +71,6 @@ export interface BlockParamsAmino {
      * Note: must be greater or equal to -1
      */
     max_gas: string;
-    /**
-     * Minimum time increment between consecutive blocks (in milliseconds) If the
-     * block header timestamp is ahead of the system clock, decrease this value.
-     *
-     * Not exposed to the application.
-     */
-    time_iota_ms: string;
 }
 export interface BlockParamsAminoMsg {
     type: "/tendermint.types.BlockParams";
@@ -91,7 +80,6 @@ export interface BlockParamsAminoMsg {
 export interface BlockParamsSDKType {
     max_bytes: bigint;
     max_gas: bigint;
-    time_iota_ms: bigint;
 }
 /** EvidenceParams determine how we handle evidence of malfeasance. */
 export interface EvidenceParams {
@@ -186,7 +174,7 @@ export interface ValidatorParamsSDKType {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParams {
-    app_version: bigint;
+    app: bigint;
 }
 export interface VersionParamsProtoMsg {
     type_url: "/tendermint.types.VersionParams";
@@ -194,7 +182,7 @@ export interface VersionParamsProtoMsg {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParamsAmino {
-    app_version: string;
+    app: string;
 }
 export interface VersionParamsAminoMsg {
     type: "/tendermint.types.VersionParams";
@@ -202,7 +190,7 @@ export interface VersionParamsAminoMsg {
 }
 /** VersionParams contains the ABCI application version. */
 export interface VersionParamsSDKType {
-    app_version: bigint;
+    app: bigint;
 }
 /**
  * HashedParams is a subset of ConsensusParams.
@@ -239,6 +227,48 @@ export interface HashedParamsSDKType {
     block_max_bytes: bigint;
     block_max_gas: bigint;
 }
+/** ABCIParams configure functionality specific to the Application Blockchain Interface. */
+export interface ABCIParams {
+    /**
+     * vote_extensions_enable_height configures the first height during which
+     * vote extensions will be enabled. During this specified height, and for all
+     * subsequent heights, precommit messages that do not contain valid extension data
+     * will be considered invalid. Prior to this height, vote extensions will not
+     * be used or accepted by validators on the network.
+     *
+     * Once enabled, vote extensions will be created by the application in ExtendVote,
+     * passed to the application for validation in VerifyVoteExtension and given
+     * to the application to use when proposing a block during PrepareProposal.
+     */
+    vote_extensions_enable_height: bigint;
+}
+export interface ABCIParamsProtoMsg {
+    type_url: "/tendermint.types.ABCIParams";
+    value: Uint8Array;
+}
+/** ABCIParams configure functionality specific to the Application Blockchain Interface. */
+export interface ABCIParamsAmino {
+    /**
+     * vote_extensions_enable_height configures the first height during which
+     * vote extensions will be enabled. During this specified height, and for all
+     * subsequent heights, precommit messages that do not contain valid extension data
+     * will be considered invalid. Prior to this height, vote extensions will not
+     * be used or accepted by validators on the network.
+     *
+     * Once enabled, vote extensions will be created by the application in ExtendVote,
+     * passed to the application for validation in VerifyVoteExtension and given
+     * to the application to use when proposing a block during PrepareProposal.
+     */
+    vote_extensions_enable_height: string;
+}
+export interface ABCIParamsAminoMsg {
+    type: "/tendermint.types.ABCIParams";
+    value: ABCIParamsAmino;
+}
+/** ABCIParams configure functionality specific to the Application Blockchain Interface. */
+export interface ABCIParamsSDKType {
+    vote_extensions_enable_height: bigint;
+}
 export declare const ConsensusParams: {
     typeUrl: string;
     encode(message: ConsensusParams, writer?: BinaryWriter): BinaryWriter;
@@ -246,8 +276,6 @@ export declare const ConsensusParams: {
     fromJSON(object: any): ConsensusParams;
     toJSON(message: ConsensusParams): unknown;
     fromPartial(object: Partial<ConsensusParams>): ConsensusParams;
-    fromSDK(object: ConsensusParamsSDKType): ConsensusParams;
-    toSDK(message: ConsensusParams): ConsensusParamsSDKType;
     fromAmino(object: ConsensusParamsAmino): ConsensusParams;
     toAmino(message: ConsensusParams): ConsensusParamsAmino;
     fromAminoMsg(object: ConsensusParamsAminoMsg): ConsensusParams;
@@ -262,8 +290,6 @@ export declare const BlockParams: {
     fromJSON(object: any): BlockParams;
     toJSON(message: BlockParams): unknown;
     fromPartial(object: Partial<BlockParams>): BlockParams;
-    fromSDK(object: BlockParamsSDKType): BlockParams;
-    toSDK(message: BlockParams): BlockParamsSDKType;
     fromAmino(object: BlockParamsAmino): BlockParams;
     toAmino(message: BlockParams): BlockParamsAmino;
     fromAminoMsg(object: BlockParamsAminoMsg): BlockParams;
@@ -278,8 +304,6 @@ export declare const EvidenceParams: {
     fromJSON(object: any): EvidenceParams;
     toJSON(message: EvidenceParams): unknown;
     fromPartial(object: Partial<EvidenceParams>): EvidenceParams;
-    fromSDK(object: EvidenceParamsSDKType): EvidenceParams;
-    toSDK(message: EvidenceParams): EvidenceParamsSDKType;
     fromAmino(object: EvidenceParamsAmino): EvidenceParams;
     toAmino(message: EvidenceParams): EvidenceParamsAmino;
     fromAminoMsg(object: EvidenceParamsAminoMsg): EvidenceParams;
@@ -294,8 +318,6 @@ export declare const ValidatorParams: {
     fromJSON(object: any): ValidatorParams;
     toJSON(message: ValidatorParams): unknown;
     fromPartial(object: Partial<ValidatorParams>): ValidatorParams;
-    fromSDK(object: ValidatorParamsSDKType): ValidatorParams;
-    toSDK(message: ValidatorParams): ValidatorParamsSDKType;
     fromAmino(object: ValidatorParamsAmino): ValidatorParams;
     toAmino(message: ValidatorParams): ValidatorParamsAmino;
     fromAminoMsg(object: ValidatorParamsAminoMsg): ValidatorParams;
@@ -310,8 +332,6 @@ export declare const VersionParams: {
     fromJSON(object: any): VersionParams;
     toJSON(message: VersionParams): unknown;
     fromPartial(object: Partial<VersionParams>): VersionParams;
-    fromSDK(object: VersionParamsSDKType): VersionParams;
-    toSDK(message: VersionParams): VersionParamsSDKType;
     fromAmino(object: VersionParamsAmino): VersionParams;
     toAmino(message: VersionParams): VersionParamsAmino;
     fromAminoMsg(object: VersionParamsAminoMsg): VersionParams;
@@ -326,12 +346,24 @@ export declare const HashedParams: {
     fromJSON(object: any): HashedParams;
     toJSON(message: HashedParams): unknown;
     fromPartial(object: Partial<HashedParams>): HashedParams;
-    fromSDK(object: HashedParamsSDKType): HashedParams;
-    toSDK(message: HashedParams): HashedParamsSDKType;
     fromAmino(object: HashedParamsAmino): HashedParams;
     toAmino(message: HashedParams): HashedParamsAmino;
     fromAminoMsg(object: HashedParamsAminoMsg): HashedParams;
     fromProtoMsg(message: HashedParamsProtoMsg): HashedParams;
     toProto(message: HashedParams): Uint8Array;
     toProtoMsg(message: HashedParams): HashedParamsProtoMsg;
+};
+export declare const ABCIParams: {
+    typeUrl: string;
+    encode(message: ABCIParams, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): ABCIParams;
+    fromJSON(object: any): ABCIParams;
+    toJSON(message: ABCIParams): unknown;
+    fromPartial(object: Partial<ABCIParams>): ABCIParams;
+    fromAmino(object: ABCIParamsAmino): ABCIParams;
+    toAmino(message: ABCIParams): ABCIParamsAmino;
+    fromAminoMsg(object: ABCIParamsAminoMsg): ABCIParams;
+    fromProtoMsg(message: ABCIParamsProtoMsg): ABCIParams;
+    toProto(message: ABCIParams): Uint8Array;
+    toProtoMsg(message: ABCIParams): ABCIParamsProtoMsg;
 };

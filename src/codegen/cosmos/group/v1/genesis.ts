@@ -213,50 +213,6 @@ export const GenesisState = {
     message.votes = object.votes?.map(e => Vote.fromPartial(e)) || [];
     return message;
   },
-  fromSDK(object: GenesisStateSDKType): GenesisState {
-    return {
-      group_seq: object?.group_seq,
-      groups: Array.isArray(object?.groups) ? object.groups.map((e: any) => GroupInfo.fromSDK(e)) : [],
-      group_members: Array.isArray(object?.group_members) ? object.group_members.map((e: any) => GroupMember.fromSDK(e)) : [],
-      group_policy_seq: object?.group_policy_seq,
-      group_policies: Array.isArray(object?.group_policies) ? object.group_policies.map((e: any) => GroupPolicyInfo.fromSDK(e)) : [],
-      proposal_seq: object?.proposal_seq,
-      proposals: Array.isArray(object?.proposals) ? object.proposals.map((e: any) => Proposal.fromSDK(e)) : [],
-      votes: Array.isArray(object?.votes) ? object.votes.map((e: any) => Vote.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: GenesisState): GenesisStateSDKType {
-    const obj: any = {};
-    obj.group_seq = message.group_seq;
-    if (message.groups) {
-      obj.groups = message.groups.map(e => e ? GroupInfo.toSDK(e) : undefined);
-    } else {
-      obj.groups = [];
-    }
-    if (message.group_members) {
-      obj.group_members = message.group_members.map(e => e ? GroupMember.toSDK(e) : undefined);
-    } else {
-      obj.group_members = [];
-    }
-    obj.group_policy_seq = message.group_policy_seq;
-    if (message.group_policies) {
-      obj.group_policies = message.group_policies.map(e => e ? GroupPolicyInfo.toSDK(e) : undefined);
-    } else {
-      obj.group_policies = [];
-    }
-    obj.proposal_seq = message.proposal_seq;
-    if (message.proposals) {
-      obj.proposals = message.proposals.map(e => e ? Proposal.toSDK(e) : undefined);
-    } else {
-      obj.proposals = [];
-    }
-    if (message.votes) {
-      obj.votes = message.votes.map(e => e ? Vote.toSDK(e) : undefined);
-    } else {
-      obj.votes = [];
-    }
-    return obj;
-  },
   fromAmino(object: GenesisStateAmino): GenesisState {
     return {
       group_seq: BigInt(object.group_seq),

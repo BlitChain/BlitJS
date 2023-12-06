@@ -1,9 +1,148 @@
 //@ts-nocheck
-import { Proposal, Vote, VotingParams, DepositParams, TallyParams, Deposit, TallyResult, proposalStatusFromJSON, proposalStatusToJSON } from "./gov";
+import { Proposal, Vote, VotingParams, DepositParams, TallyParams, Params, Deposit, TallyResult, proposalStatusFromJSON, proposalStatusToJSON } from "./gov";
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
 export const protobufPackage = "cosmos.gov.v1";
+function createBaseQueryConstitutionRequest() {
+    return {};
+}
+export const QueryConstitutionRequest = {
+    typeUrl: "/cosmos.gov.v1.QueryConstitutionRequest",
+    encode(_, writer = BinaryWriter.create()) {
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryConstitutionRequest();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(_) {
+        return {};
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
+    fromPartial(_) {
+        const message = createBaseQueryConstitutionRequest();
+        return message;
+    },
+    fromAmino(_) {
+        return {};
+    },
+    toAmino(_) {
+        const obj = {};
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryConstitutionRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/v1/QueryConstitutionRequest",
+            value: QueryConstitutionRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryConstitutionRequest.decode(message.value);
+    },
+    toProto(message) {
+        return QueryConstitutionRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1.QueryConstitutionRequest",
+            value: QueryConstitutionRequest.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryConstitutionResponse() {
+    return {
+        constitution: ""
+    };
+}
+export const QueryConstitutionResponse = {
+    typeUrl: "/cosmos.gov.v1.QueryConstitutionResponse",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.constitution !== "") {
+            writer.uint32(10).string(message.constitution);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryConstitutionResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.constitution = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            constitution: isSet(object.constitution) ? String(object.constitution) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.constitution !== undefined && (obj.constitution = message.constitution);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryConstitutionResponse();
+        message.constitution = object.constitution ?? "";
+        return message;
+    },
+    fromAmino(object) {
+        return {
+            constitution: object.constitution
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.constitution = message.constitution;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryConstitutionResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/v1/QueryConstitutionResponse",
+            value: QueryConstitutionResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryConstitutionResponse.decode(message.value);
+    },
+    toProto(message) {
+        return QueryConstitutionResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.gov.v1.QueryConstitutionResponse",
+            value: QueryConstitutionResponse.encode(message).finish()
+        };
+    }
+};
 function createBaseQueryProposalRequest() {
     return {
         proposal_id: BigInt(0)
@@ -48,16 +187,6 @@ export const QueryProposalRequest = {
         const message = createBaseQueryProposalRequest();
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -135,16 +264,6 @@ export const QueryProposalResponse = {
         const message = createBaseQueryProposalResponse();
         message.proposal = object.proposal !== undefined && object.proposal !== null ? Proposal.fromPartial(object.proposal) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal: object.proposal ? Proposal.fromSDK(object.proposal) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.proposal !== undefined && (obj.proposal = message.proposal ? Proposal.toSDK(message.proposal) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -253,22 +372,6 @@ export const QueryProposalsRequest = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_status: isSet(object.proposal_status) ? proposalStatusFromJSON(object.proposal_status) : -1,
-            voter: object?.voter,
-            depositor: object?.depositor,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.proposal_status !== undefined && (obj.proposal_status = proposalStatusToJSON(message.proposal_status));
-        obj.voter = message.voter;
-        obj.depositor = message.depositor;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_status: isSet(object.proposal_status) ? proposalStatusFromJSON(object.proposal_status) : -1,
@@ -367,23 +470,6 @@ export const QueryProposalsResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => Proposal.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.proposals) {
-            obj.proposals = message.proposals.map(e => e ? Proposal.toSDK(e) : undefined);
-        }
-        else {
-            obj.proposals = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => Proposal.fromAmino(e)) : [],
@@ -478,18 +564,6 @@ export const QueryVoteRequest = {
         message.voter = object.voter ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            voter: object?.voter
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        obj.voter = message.voter;
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id),
@@ -568,16 +642,6 @@ export const QueryVoteResponse = {
         const message = createBaseQueryVoteResponse();
         message.vote = object.vote !== undefined && object.vote !== null ? Vote.fromPartial(object.vote) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            vote: object.vote ? Vote.fromSDK(object.vote) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.vote !== undefined && (obj.vote = message.vote ? Vote.toSDK(message.vote) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -665,18 +729,6 @@ export const QueryVotesRequest = {
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -772,23 +824,6 @@ export const QueryVotesResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => Vote.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.votes) {
-            obj.votes = message.votes.map(e => e ? Vote.toSDK(e) : undefined);
-        }
-        else {
-            obj.votes = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             votes: Array.isArray(object?.votes) ? object.votes.map((e) => Vote.fromAmino(e)) : [],
@@ -873,16 +908,6 @@ export const QueryParamsRequest = {
         message.params_type = object.params_type ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            params_type: object?.params_type
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.params_type = message.params_type;
-        return obj;
-    },
     fromAmino(object) {
         return {
             params_type: object.params_type
@@ -919,7 +944,8 @@ function createBaseQueryParamsResponse() {
     return {
         voting_params: undefined,
         deposit_params: undefined,
-        tally_params: undefined
+        tally_params: undefined,
+        params: undefined
     };
 }
 export const QueryParamsResponse = {
@@ -933,6 +959,9 @@ export const QueryParamsResponse = {
         }
         if (message.tally_params !== undefined) {
             TallyParams.encode(message.tally_params, writer.uint32(26).fork()).ldelim();
+        }
+        if (message.params !== undefined) {
+            Params.encode(message.params, writer.uint32(34).fork()).ldelim();
         }
         return writer;
     },
@@ -952,6 +981,9 @@ export const QueryParamsResponse = {
                 case 3:
                     message.tally_params = TallyParams.decode(reader, reader.uint32());
                     break;
+                case 4:
+                    message.params = Params.decode(reader, reader.uint32());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -963,7 +995,8 @@ export const QueryParamsResponse = {
         return {
             voting_params: isSet(object.voting_params) ? VotingParams.fromJSON(object.voting_params) : undefined,
             deposit_params: isSet(object.deposit_params) ? DepositParams.fromJSON(object.deposit_params) : undefined,
-            tally_params: isSet(object.tally_params) ? TallyParams.fromJSON(object.tally_params) : undefined
+            tally_params: isSet(object.tally_params) ? TallyParams.fromJSON(object.tally_params) : undefined,
+            params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
         };
     },
     toJSON(message) {
@@ -971,6 +1004,7 @@ export const QueryParamsResponse = {
         message.voting_params !== undefined && (obj.voting_params = message.voting_params ? VotingParams.toJSON(message.voting_params) : undefined);
         message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? DepositParams.toJSON(message.deposit_params) : undefined);
         message.tally_params !== undefined && (obj.tally_params = message.tally_params ? TallyParams.toJSON(message.tally_params) : undefined);
+        message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -978,27 +1012,15 @@ export const QueryParamsResponse = {
         message.voting_params = object.voting_params !== undefined && object.voting_params !== null ? VotingParams.fromPartial(object.voting_params) : undefined;
         message.deposit_params = object.deposit_params !== undefined && object.deposit_params !== null ? DepositParams.fromPartial(object.deposit_params) : undefined;
         message.tally_params = object.tally_params !== undefined && object.tally_params !== null ? TallyParams.fromPartial(object.tally_params) : undefined;
+        message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            voting_params: object.voting_params ? VotingParams.fromSDK(object.voting_params) : undefined,
-            deposit_params: object.deposit_params ? DepositParams.fromSDK(object.deposit_params) : undefined,
-            tally_params: object.tally_params ? TallyParams.fromSDK(object.tally_params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.voting_params !== undefined && (obj.voting_params = message.voting_params ? VotingParams.toSDK(message.voting_params) : undefined);
-        message.deposit_params !== undefined && (obj.deposit_params = message.deposit_params ? DepositParams.toSDK(message.deposit_params) : undefined);
-        message.tally_params !== undefined && (obj.tally_params = message.tally_params ? TallyParams.toSDK(message.tally_params) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
             voting_params: object?.voting_params ? VotingParams.fromAmino(object.voting_params) : undefined,
             deposit_params: object?.deposit_params ? DepositParams.fromAmino(object.deposit_params) : undefined,
-            tally_params: object?.tally_params ? TallyParams.fromAmino(object.tally_params) : undefined
+            tally_params: object?.tally_params ? TallyParams.fromAmino(object.tally_params) : undefined,
+            params: object?.params ? Params.fromAmino(object.params) : undefined
         };
     },
     toAmino(message) {
@@ -1006,6 +1028,7 @@ export const QueryParamsResponse = {
         obj.voting_params = message.voting_params ? VotingParams.toAmino(message.voting_params) : undefined;
         obj.deposit_params = message.deposit_params ? DepositParams.toAmino(message.deposit_params) : undefined;
         obj.tally_params = message.tally_params ? TallyParams.toAmino(message.tally_params) : undefined;
+        obj.params = message.params ? Params.toAmino(message.params) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1085,18 +1108,6 @@ export const QueryDepositRequest = {
         message.depositor = object.depositor ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            depositor: object?.depositor
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        obj.depositor = message.depositor;
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id),
@@ -1175,16 +1186,6 @@ export const QueryDepositResponse = {
         const message = createBaseQueryDepositResponse();
         message.deposit = object.deposit !== undefined && object.deposit !== null ? Deposit.fromPartial(object.deposit) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            deposit: object.deposit ? Deposit.fromSDK(object.deposit) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.deposit !== undefined && (obj.deposit = message.deposit ? Deposit.toSDK(message.deposit) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1272,18 +1273,6 @@ export const QueryDepositsRequest = {
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1379,23 +1368,6 @@ export const QueryDepositsResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            deposits: Array.isArray(object?.deposits) ? object.deposits.map((e) => Deposit.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.deposits) {
-            obj.deposits = message.deposits.map(e => e ? Deposit.toSDK(e) : undefined);
-        }
-        else {
-            obj.deposits = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             deposits: Array.isArray(object?.deposits) ? object.deposits.map((e) => Deposit.fromAmino(e)) : [],
@@ -1480,16 +1452,6 @@ export const QueryTallyResultRequest = {
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id)
@@ -1566,16 +1528,6 @@ export const QueryTallyResultResponse = {
         const message = createBaseQueryTallyResultResponse();
         message.tally = object.tally !== undefined && object.tally !== null ? TallyResult.fromPartial(object.tally) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            tally: object.tally ? TallyResult.fromSDK(object.tally) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.tally !== undefined && (obj.tally = message.tally ? TallyResult.toSDK(message.tally) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {

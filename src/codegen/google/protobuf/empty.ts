@@ -78,13 +78,6 @@ export const Empty = {
     const message = createBaseEmpty();
     return message;
   },
-  fromSDK(_: EmptySDKType): Empty {
-    return {};
-  },
-  toSDK(_: Empty): EmptySDKType {
-    const obj: any = {};
-    return obj;
-  },
   fromAmino(_: EmptyAmino): Empty {
     return {};
   },

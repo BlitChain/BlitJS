@@ -1032,8 +1032,6 @@ export declare const Http: {
     fromJSON(object: any): Http;
     toJSON(message: Http): unknown;
     fromPartial(object: Partial<Http>): Http;
-    fromSDK(object: HttpSDKType): Http;
-    toSDK(message: Http): HttpSDKType;
     fromAmino(object: HttpAmino): Http;
     toAmino(message: Http): HttpAmino;
     fromAminoMsg(object: HttpAminoMsg): Http;
@@ -1048,8 +1046,6 @@ export declare const HttpRule: {
     fromJSON(object: any): HttpRule;
     toJSON(message: HttpRule): unknown;
     fromPartial(object: Partial<HttpRule>): HttpRule;
-    fromSDK(object: HttpRuleSDKType): HttpRule;
-    toSDK(message: HttpRule): HttpRuleSDKType;
     fromAmino(object: HttpRuleAmino): HttpRule;
     toAmino(message: HttpRule): HttpRuleAmino;
     fromAminoMsg(object: HttpRuleAminoMsg): HttpRule;
@@ -1064,8 +1060,6 @@ export declare const CustomHttpPattern: {
     fromJSON(object: any): CustomHttpPattern;
     toJSON(message: CustomHttpPattern): unknown;
     fromPartial(object: Partial<CustomHttpPattern>): CustomHttpPattern;
-    fromSDK(object: CustomHttpPatternSDKType): CustomHttpPattern;
-    toSDK(message: CustomHttpPattern): CustomHttpPatternSDKType;
     fromAmino(object: CustomHttpPatternAmino): CustomHttpPattern;
     toAmino(message: CustomHttpPattern): CustomHttpPatternAmino;
     fromAminoMsg(object: CustomHttpPatternAminoMsg): CustomHttpPattern;

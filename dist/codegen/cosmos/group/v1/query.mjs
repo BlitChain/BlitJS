@@ -49,16 +49,6 @@ export const QueryGroupInfoRequest = {
         message.group_id = object.group_id !== undefined && object.group_id !== null ? BigInt(object.group_id.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            group_id: object?.group_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.group_id = message.group_id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             group_id: BigInt(object.group_id)
@@ -135,16 +125,6 @@ export const QueryGroupInfoResponse = {
         const message = createBaseQueryGroupInfoResponse();
         message.info = object.info !== undefined && object.info !== null ? GroupInfo.fromPartial(object.info) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            info: object.info ? GroupInfo.fromSDK(object.info) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.info !== undefined && (obj.info = message.info ? GroupInfo.toSDK(message.info) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -223,16 +203,6 @@ export const QueryGroupPolicyInfoRequest = {
         message.address = object.address ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            address: object?.address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        return obj;
-    },
     fromAmino(object) {
         return {
             address: object.address
@@ -309,16 +279,6 @@ export const QueryGroupPolicyInfoResponse = {
         const message = createBaseQueryGroupPolicyInfoResponse();
         message.info = object.info !== undefined && object.info !== null ? GroupPolicyInfo.fromPartial(object.info) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            info: object.info ? GroupPolicyInfo.fromSDK(object.info) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.info !== undefined && (obj.info = message.info ? GroupPolicyInfo.toSDK(message.info) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -406,18 +366,6 @@ export const QueryGroupMembersRequest = {
         message.group_id = object.group_id !== undefined && object.group_id !== null ? BigInt(object.group_id.toString()) : BigInt(0);
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            group_id: object?.group_id,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.group_id = message.group_id;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -513,23 +461,6 @@ export const QueryGroupMembersResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            members: Array.isArray(object?.members) ? object.members.map((e) => GroupMember.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.members) {
-            obj.members = message.members.map(e => e ? GroupMember.toSDK(e) : undefined);
-        }
-        else {
-            obj.members = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             members: Array.isArray(object?.members) ? object.members.map((e) => GroupMember.fromAmino(e)) : [],
@@ -623,18 +554,6 @@ export const QueryGroupsByAdminRequest = {
         message.admin = object.admin ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            admin: object?.admin,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.admin = message.admin;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -730,23 +649,6 @@ export const QueryGroupsByAdminResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            groups: Array.isArray(object?.groups) ? object.groups.map((e) => GroupInfo.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.groups) {
-            obj.groups = message.groups.map(e => e ? GroupInfo.toSDK(e) : undefined);
-        }
-        else {
-            obj.groups = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             groups: Array.isArray(object?.groups) ? object.groups.map((e) => GroupInfo.fromAmino(e)) : [],
@@ -840,18 +742,6 @@ export const QueryGroupPoliciesByGroupRequest = {
         message.group_id = object.group_id !== undefined && object.group_id !== null ? BigInt(object.group_id.toString()) : BigInt(0);
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            group_id: object?.group_id,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.group_id = message.group_id;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -947,23 +837,6 @@ export const QueryGroupPoliciesByGroupResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            group_policies: Array.isArray(object?.group_policies) ? object.group_policies.map((e) => GroupPolicyInfo.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.group_policies) {
-            obj.group_policies = message.group_policies.map(e => e ? GroupPolicyInfo.toSDK(e) : undefined);
-        }
-        else {
-            obj.group_policies = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             group_policies: Array.isArray(object?.group_policies) ? object.group_policies.map((e) => GroupPolicyInfo.fromAmino(e)) : [],
@@ -1057,18 +930,6 @@ export const QueryGroupPoliciesByAdminRequest = {
         message.admin = object.admin ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            admin: object?.admin,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.admin = message.admin;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1164,23 +1025,6 @@ export const QueryGroupPoliciesByAdminResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            group_policies: Array.isArray(object?.group_policies) ? object.group_policies.map((e) => GroupPolicyInfo.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.group_policies) {
-            obj.group_policies = message.group_policies.map(e => e ? GroupPolicyInfo.toSDK(e) : undefined);
-        }
-        else {
-            obj.group_policies = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             group_policies: Array.isArray(object?.group_policies) ? object.group_policies.map((e) => GroupPolicyInfo.fromAmino(e)) : [],
@@ -1265,16 +1109,6 @@ export const QueryProposalRequest = {
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id)
@@ -1351,16 +1185,6 @@ export const QueryProposalResponse = {
         const message = createBaseQueryProposalResponse();
         message.proposal = object.proposal !== undefined && object.proposal !== null ? Proposal.fromPartial(object.proposal) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal: object.proposal ? Proposal.fromSDK(object.proposal) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.proposal !== undefined && (obj.proposal = message.proposal ? Proposal.toSDK(message.proposal) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1448,18 +1272,6 @@ export const QueryProposalsByGroupPolicyRequest = {
         message.address = object.address ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            address: object?.address,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1555,23 +1367,6 @@ export const QueryProposalsByGroupPolicyResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => Proposal.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.proposals) {
-            obj.proposals = message.proposals.map(e => e ? Proposal.toSDK(e) : undefined);
-        }
-        else {
-            obj.proposals = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => Proposal.fromAmino(e)) : [],
@@ -1666,18 +1461,6 @@ export const QueryVoteByProposalVoterRequest = {
         message.voter = object.voter ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            voter: object?.voter
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        obj.voter = message.voter;
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id),
@@ -1756,16 +1539,6 @@ export const QueryVoteByProposalVoterResponse = {
         const message = createBaseQueryVoteByProposalVoterResponse();
         message.vote = object.vote !== undefined && object.vote !== null ? Vote.fromPartial(object.vote) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            vote: object.vote ? Vote.fromSDK(object.vote) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.vote !== undefined && (obj.vote = message.vote ? Vote.toSDK(message.vote) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1853,18 +1626,6 @@ export const QueryVotesByProposalRequest = {
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1960,23 +1721,6 @@ export const QueryVotesByProposalResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => Vote.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.votes) {
-            obj.votes = message.votes.map(e => e ? Vote.toSDK(e) : undefined);
-        }
-        else {
-            obj.votes = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             votes: Array.isArray(object?.votes) ? object.votes.map((e) => Vote.fromAmino(e)) : [],
@@ -2070,18 +1814,6 @@ export const QueryVotesByVoterRequest = {
         message.voter = object.voter ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            voter: object?.voter,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.voter = message.voter;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -2177,23 +1909,6 @@ export const QueryVotesByVoterResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => Vote.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.votes) {
-            obj.votes = message.votes.map(e => e ? Vote.toSDK(e) : undefined);
-        }
-        else {
-            obj.votes = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             votes: Array.isArray(object?.votes) ? object.votes.map((e) => Vote.fromAmino(e)) : [],
@@ -2287,18 +2002,6 @@ export const QueryGroupsByMemberRequest = {
         message.address = object.address ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            address: object?.address,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -2394,23 +2097,6 @@ export const QueryGroupsByMemberResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            groups: Array.isArray(object?.groups) ? object.groups.map((e) => GroupInfo.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.groups) {
-            obj.groups = message.groups.map(e => e ? GroupInfo.toSDK(e) : undefined);
-        }
-        else {
-            obj.groups = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             groups: Array.isArray(object?.groups) ? object.groups.map((e) => GroupInfo.fromAmino(e)) : [],
@@ -2495,16 +2181,6 @@ export const QueryTallyResultRequest = {
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id)
@@ -2582,16 +2258,6 @@ export const QueryTallyResultResponse = {
         message.tally = object.tally !== undefined && object.tally !== null ? TallyResult.fromPartial(object.tally) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            tally: object.tally ? TallyResult.fromSDK(object.tally) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.tally !== undefined && (obj.tally = message.tally ? TallyResult.toSDK(message.tally) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             tally: object?.tally ? TallyResult.fromAmino(object.tally) : undefined
@@ -2621,6 +2287,182 @@ export const QueryTallyResultResponse = {
         return {
             typeUrl: "/cosmos.group.v1.QueryTallyResultResponse",
             value: QueryTallyResultResponse.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryGroupsRequest() {
+    return {
+        pagination: undefined
+    };
+}
+export const QueryGroupsRequest = {
+    typeUrl: "/cosmos.group.v1.QueryGroupsRequest",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.pagination !== undefined) {
+            PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryGroupsRequest();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 2:
+                    message.pagination = PageRequest.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryGroupsRequest();
+        message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+        return message;
+    },
+    fromAmino(object) {
+        return {
+            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryGroupsRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryGroupsRequest",
+            value: QueryGroupsRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryGroupsRequest.decode(message.value);
+    },
+    toProto(message) {
+        return QueryGroupsRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.group.v1.QueryGroupsRequest",
+            value: QueryGroupsRequest.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryGroupsResponse() {
+    return {
+        groups: [],
+        pagination: undefined
+    };
+}
+export const QueryGroupsResponse = {
+    typeUrl: "/cosmos.group.v1.QueryGroupsResponse",
+    encode(message, writer = BinaryWriter.create()) {
+        for (const v of message.groups) {
+            GroupInfo.encode(v, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.pagination !== undefined) {
+            PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryGroupsResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.groups.push(GroupInfo.decode(reader, reader.uint32()));
+                    break;
+                case 2:
+                    message.pagination = PageResponse.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            groups: Array.isArray(object?.groups) ? object.groups.map((e) => GroupInfo.fromJSON(e)) : [],
+            pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.groups) {
+            obj.groups = message.groups.map(e => e ? GroupInfo.toJSON(e) : undefined);
+        }
+        else {
+            obj.groups = [];
+        }
+        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryGroupsResponse();
+        message.groups = object.groups?.map(e => GroupInfo.fromPartial(e)) || [];
+        message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+        return message;
+    },
+    fromAmino(object) {
+        return {
+            groups: Array.isArray(object?.groups) ? object.groups.map((e) => GroupInfo.fromAmino(e)) : [],
+            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        if (message.groups) {
+            obj.groups = message.groups.map(e => e ? GroupInfo.toAmino(e) : undefined);
+        }
+        else {
+            obj.groups = [];
+        }
+        obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return QueryGroupsResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryGroupsResponse",
+            value: QueryGroupsResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return QueryGroupsResponse.decode(message.value);
+    },
+    toProto(message) {
+        return QueryGroupsResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.group.v1.QueryGroupsResponse",
+            value: QueryGroupsResponse.encode(message).finish()
         };
     }
 };

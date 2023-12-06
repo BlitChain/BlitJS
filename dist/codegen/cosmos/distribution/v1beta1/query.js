@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QueryCommunityPoolResponse = exports.QueryCommunityPoolRequest = exports.QueryDelegatorWithdrawAddressResponse = exports.QueryDelegatorWithdrawAddressRequest = exports.QueryDelegatorValidatorsResponse = exports.QueryDelegatorValidatorsRequest = exports.QueryDelegationTotalRewardsResponse = exports.QueryDelegationTotalRewardsRequest = exports.QueryDelegationRewardsResponse = exports.QueryDelegationRewardsRequest = exports.QueryValidatorSlashesResponse = exports.QueryValidatorSlashesRequest = exports.QueryValidatorCommissionResponse = exports.QueryValidatorCommissionRequest = exports.QueryValidatorOutstandingRewardsResponse = exports.QueryValidatorOutstandingRewardsRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.protobufPackage = void 0;
+exports.QueryCommunityPoolResponse = exports.QueryCommunityPoolRequest = exports.QueryDelegatorWithdrawAddressResponse = exports.QueryDelegatorWithdrawAddressRequest = exports.QueryDelegatorValidatorsResponse = exports.QueryDelegatorValidatorsRequest = exports.QueryDelegationTotalRewardsResponse = exports.QueryDelegationTotalRewardsRequest = exports.QueryDelegationRewardsResponse = exports.QueryDelegationRewardsRequest = exports.QueryValidatorSlashesResponse = exports.QueryValidatorSlashesRequest = exports.QueryValidatorCommissionResponse = exports.QueryValidatorCommissionRequest = exports.QueryValidatorOutstandingRewardsResponse = exports.QueryValidatorOutstandingRewardsRequest = exports.QueryValidatorDistributionInfoResponse = exports.QueryValidatorDistributionInfoRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.protobufPackage = void 0;
 //@ts-nocheck
 const pagination_1 = require("../../base/query/v1beta1/pagination");
 const distribution_1 = require("./distribution");
@@ -40,13 +40,6 @@ exports.QueryParamsRequest = {
     fromPartial(_) {
         const message = createBaseQueryParamsRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -122,16 +115,6 @@ exports.QueryParamsResponse = {
         message.params = object.params !== undefined && object.params !== null ? distribution_1.Params.fromPartial(object.params) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            params: object.params ? distribution_1.Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? distribution_1.Params.toSDK(message.params) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             params: object?.params ? distribution_1.Params.fromAmino(object.params) : undefined
@@ -161,6 +144,204 @@ exports.QueryParamsResponse = {
         return {
             typeUrl: "/cosmos.distribution.v1beta1.QueryParamsResponse",
             value: exports.QueryParamsResponse.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryValidatorDistributionInfoRequest() {
+    return {
+        validator_address: ""
+    };
+}
+exports.QueryValidatorDistributionInfoRequest = {
+    typeUrl: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoRequest",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.validator_address !== "") {
+            writer.uint32(10).string(message.validator_address);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryValidatorDistributionInfoRequest();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.validator_address = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            validator_address: (0, helpers_1.isSet)(object.validator_address) ? String(object.validator_address) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.validator_address !== undefined && (obj.validator_address = message.validator_address);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryValidatorDistributionInfoRequest();
+        message.validator_address = object.validator_address ?? "";
+        return message;
+    },
+    fromAmino(object) {
+        return {
+            validator_address: object.validator_address
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.validator_address = message.validator_address;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.QueryValidatorDistributionInfoRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryValidatorDistributionInfoRequest",
+            value: exports.QueryValidatorDistributionInfoRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.QueryValidatorDistributionInfoRequest.decode(message.value);
+    },
+    toProto(message) {
+        return exports.QueryValidatorDistributionInfoRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoRequest",
+            value: exports.QueryValidatorDistributionInfoRequest.encode(message).finish()
+        };
+    }
+};
+function createBaseQueryValidatorDistributionInfoResponse() {
+    return {
+        operator_address: "",
+        self_bond_rewards: [],
+        commission: []
+    };
+}
+exports.QueryValidatorDistributionInfoResponse = {
+    typeUrl: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoResponse",
+    encode(message, writer = binary_1.BinaryWriter.create()) {
+        if (message.operator_address !== "") {
+            writer.uint32(10).string(message.operator_address);
+        }
+        for (const v of message.self_bond_rewards) {
+            coin_1.DecCoin.encode(v, writer.uint32(18).fork()).ldelim();
+        }
+        for (const v of message.commission) {
+            coin_1.DecCoin.encode(v, writer.uint32(26).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseQueryValidatorDistributionInfoResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.operator_address = reader.string();
+                    break;
+                case 2:
+                    message.self_bond_rewards.push(coin_1.DecCoin.decode(reader, reader.uint32()));
+                    break;
+                case 3:
+                    message.commission.push(coin_1.DecCoin.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            operator_address: (0, helpers_1.isSet)(object.operator_address) ? String(object.operator_address) : "",
+            self_bond_rewards: Array.isArray(object?.self_bond_rewards) ? object.self_bond_rewards.map((e) => coin_1.DecCoin.fromJSON(e)) : [],
+            commission: Array.isArray(object?.commission) ? object.commission.map((e) => coin_1.DecCoin.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.operator_address !== undefined && (obj.operator_address = message.operator_address);
+        if (message.self_bond_rewards) {
+            obj.self_bond_rewards = message.self_bond_rewards.map(e => e ? coin_1.DecCoin.toJSON(e) : undefined);
+        }
+        else {
+            obj.self_bond_rewards = [];
+        }
+        if (message.commission) {
+            obj.commission = message.commission.map(e => e ? coin_1.DecCoin.toJSON(e) : undefined);
+        }
+        else {
+            obj.commission = [];
+        }
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseQueryValidatorDistributionInfoResponse();
+        message.operator_address = object.operator_address ?? "";
+        message.self_bond_rewards = object.self_bond_rewards?.map(e => coin_1.DecCoin.fromPartial(e)) || [];
+        message.commission = object.commission?.map(e => coin_1.DecCoin.fromPartial(e)) || [];
+        return message;
+    },
+    fromAmino(object) {
+        return {
+            operator_address: object.operator_address,
+            self_bond_rewards: Array.isArray(object?.self_bond_rewards) ? object.self_bond_rewards.map((e) => coin_1.DecCoin.fromAmino(e)) : [],
+            commission: Array.isArray(object?.commission) ? object.commission.map((e) => coin_1.DecCoin.fromAmino(e)) : []
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.operator_address = message.operator_address;
+        if (message.self_bond_rewards) {
+            obj.self_bond_rewards = message.self_bond_rewards.map(e => e ? coin_1.DecCoin.toAmino(e) : undefined);
+        }
+        else {
+            obj.self_bond_rewards = [];
+        }
+        if (message.commission) {
+            obj.commission = message.commission.map(e => e ? coin_1.DecCoin.toAmino(e) : undefined);
+        }
+        else {
+            obj.commission = [];
+        }
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return exports.QueryValidatorDistributionInfoResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/QueryValidatorDistributionInfoResponse",
+            value: exports.QueryValidatorDistributionInfoResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return exports.QueryValidatorDistributionInfoResponse.decode(message.value);
+    },
+    toProto(message) {
+        return exports.QueryValidatorDistributionInfoResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.distribution.v1beta1.QueryValidatorDistributionInfoResponse",
+            value: exports.QueryValidatorDistributionInfoResponse.encode(message).finish()
         };
     }
 };
@@ -208,16 +389,6 @@ exports.QueryValidatorOutstandingRewardsRequest = {
         const message = createBaseQueryValidatorOutstandingRewardsRequest();
         message.validator_address = object.validator_address ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            validator_address: object?.validator_address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.validator_address = message.validator_address;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -296,16 +467,6 @@ exports.QueryValidatorOutstandingRewardsResponse = {
         message.rewards = object.rewards !== undefined && object.rewards !== null ? distribution_1.ValidatorOutstandingRewards.fromPartial(object.rewards) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            rewards: object.rewards ? distribution_1.ValidatorOutstandingRewards.fromSDK(object.rewards) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.rewards !== undefined && (obj.rewards = message.rewards ? distribution_1.ValidatorOutstandingRewards.toSDK(message.rewards) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             rewards: object?.rewards ? distribution_1.ValidatorOutstandingRewards.fromAmino(object.rewards) : undefined
@@ -383,16 +544,6 @@ exports.QueryValidatorCommissionRequest = {
         message.validator_address = object.validator_address ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            validator_address: object?.validator_address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.validator_address = message.validator_address;
-        return obj;
-    },
     fromAmino(object) {
         return {
             validator_address: object.validator_address
@@ -469,16 +620,6 @@ exports.QueryValidatorCommissionResponse = {
         const message = createBaseQueryValidatorCommissionResponse();
         message.commission = object.commission !== undefined && object.commission !== null ? distribution_1.ValidatorAccumulatedCommission.fromPartial(object.commission) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            commission: object.commission ? distribution_1.ValidatorAccumulatedCommission.fromSDK(object.commission) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.commission !== undefined && (obj.commission = message.commission ? distribution_1.ValidatorAccumulatedCommission.toSDK(message.commission) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -587,22 +728,6 @@ exports.QueryValidatorSlashesRequest = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            validator_address: object?.validator_address,
-            starting_height: object?.starting_height,
-            ending_height: object?.ending_height,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.validator_address = message.validator_address;
-        obj.starting_height = message.starting_height;
-        obj.ending_height = message.ending_height;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             validator_address: object.validator_address,
@@ -701,23 +826,6 @@ exports.QueryValidatorSlashesResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            slashes: Array.isArray(object?.slashes) ? object.slashes.map((e) => distribution_1.ValidatorSlashEvent.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.slashes) {
-            obj.slashes = message.slashes.map(e => e ? distribution_1.ValidatorSlashEvent.toSDK(e) : undefined);
-        }
-        else {
-            obj.slashes = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             slashes: Array.isArray(object?.slashes) ? object.slashes.map((e) => distribution_1.ValidatorSlashEvent.fromAmino(e)) : [],
@@ -812,18 +920,6 @@ exports.QueryDelegationRewardsRequest = {
         message.validator_address = object.validator_address ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            delegator_address: object?.delegator_address,
-            validator_address: object?.validator_address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_address = message.delegator_address;
-        obj.validator_address = message.validator_address;
-        return obj;
-    },
     fromAmino(object) {
         return {
             delegator_address: object.delegator_address,
@@ -908,21 +1004,6 @@ exports.QueryDelegationRewardsResponse = {
         message.rewards = object.rewards?.map(e => coin_1.DecCoin.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            rewards: Array.isArray(object?.rewards) ? object.rewards.map((e) => coin_1.DecCoin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.rewards) {
-            obj.rewards = message.rewards.map(e => e ? coin_1.DecCoin.toSDK(e) : undefined);
-        }
-        else {
-            obj.rewards = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             rewards: Array.isArray(object?.rewards) ? object.rewards.map((e) => coin_1.DecCoin.fromAmino(e)) : []
@@ -1004,16 +1085,6 @@ exports.QueryDelegationTotalRewardsRequest = {
         const message = createBaseQueryDelegationTotalRewardsRequest();
         message.delegator_address = object.delegator_address ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            delegator_address: object?.delegator_address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_address = message.delegator_address;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1112,28 +1183,6 @@ exports.QueryDelegationTotalRewardsResponse = {
         message.total = object.total?.map(e => coin_1.DecCoin.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            rewards: Array.isArray(object?.rewards) ? object.rewards.map((e) => distribution_1.DelegationDelegatorReward.fromSDK(e)) : [],
-            total: Array.isArray(object?.total) ? object.total.map((e) => coin_1.DecCoin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.rewards) {
-            obj.rewards = message.rewards.map(e => e ? distribution_1.DelegationDelegatorReward.toSDK(e) : undefined);
-        }
-        else {
-            obj.rewards = [];
-        }
-        if (message.total) {
-            obj.total = message.total.map(e => e ? coin_1.DecCoin.toSDK(e) : undefined);
-        }
-        else {
-            obj.total = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             rewards: Array.isArray(object?.rewards) ? object.rewards.map((e) => distribution_1.DelegationDelegatorReward.fromAmino(e)) : [],
@@ -1223,16 +1272,6 @@ exports.QueryDelegatorValidatorsRequest = {
         message.delegator_address = object.delegator_address ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            delegator_address: object?.delegator_address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_address = message.delegator_address;
-        return obj;
-    },
     fromAmino(object) {
         return {
             delegator_address: object.delegator_address
@@ -1314,21 +1353,6 @@ exports.QueryDelegatorValidatorsResponse = {
         const message = createBaseQueryDelegatorValidatorsResponse();
         message.validators = object.validators?.map(e => e) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            validators: Array.isArray(object?.validators) ? object.validators.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.validators) {
-            obj.validators = message.validators.map(e => e);
-        }
-        else {
-            obj.validators = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1412,16 +1436,6 @@ exports.QueryDelegatorWithdrawAddressRequest = {
         message.delegator_address = object.delegator_address ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            delegator_address: object?.delegator_address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_address = message.delegator_address;
-        return obj;
-    },
     fromAmino(object) {
         return {
             delegator_address: object.delegator_address
@@ -1499,16 +1513,6 @@ exports.QueryDelegatorWithdrawAddressResponse = {
         message.withdraw_address = object.withdraw_address ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            withdraw_address: object?.withdraw_address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.withdraw_address = message.withdraw_address;
-        return obj;
-    },
     fromAmino(object) {
         return {
             withdraw_address: object.withdraw_address
@@ -1573,13 +1577,6 @@ exports.QueryCommunityPoolRequest = {
     fromPartial(_) {
         const message = createBaseQueryCommunityPoolRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -1659,21 +1656,6 @@ exports.QueryCommunityPoolResponse = {
         const message = createBaseQueryCommunityPoolResponse();
         message.pool = object.pool?.map(e => coin_1.DecCoin.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            pool: Array.isArray(object?.pool) ? object.pool.map((e) => coin_1.DecCoin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.pool) {
-            obj.pool = message.pool.map(e => e ? coin_1.DecCoin.toSDK(e) : undefined);
-        }
-        else {
-            obj.pool = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {

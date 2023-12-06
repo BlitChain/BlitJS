@@ -91,32 +91,6 @@ exports.GenesisState = {
         message.params = object.params !== undefined && object.params !== null ? connection_1.Params.fromPartial(object.params) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            connections: Array.isArray(object?.connections) ? object.connections.map((e) => connection_1.IdentifiedConnection.fromSDK(e)) : [],
-            client_connection_paths: Array.isArray(object?.client_connection_paths) ? object.client_connection_paths.map((e) => connection_1.ConnectionPaths.fromSDK(e)) : [],
-            next_connection_sequence: object?.next_connection_sequence,
-            params: object.params ? connection_1.Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.connections) {
-            obj.connections = message.connections.map(e => e ? connection_1.IdentifiedConnection.toSDK(e) : undefined);
-        }
-        else {
-            obj.connections = [];
-        }
-        if (message.client_connection_paths) {
-            obj.client_connection_paths = message.client_connection_paths.map(e => e ? connection_1.ConnectionPaths.toSDK(e) : undefined);
-        }
-        else {
-            obj.client_connection_paths = [];
-        }
-        obj.next_connection_sequence = message.next_connection_sequence;
-        message.params !== undefined && (obj.params = message.params ? connection_1.Params.toSDK(message.params) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             connections: Array.isArray(object?.connections) ? object.connections.map((e) => connection_1.IdentifiedConnection.fromAmino(e)) : [],

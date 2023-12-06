@@ -1,5 +1,6 @@
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Event, EventAmino, EventSDKType } from "../../../../tendermint/abci/types";
+import { Block, BlockAmino, BlockSDKType } from "../../../../tendermint/types/block";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 export declare const protobufPackage = "cosmos.base.abci.v1beta1";
 /**
@@ -41,7 +42,7 @@ export interface TxResponse {
     /**
      * Events defines all the events emitted by processing a transaction. Note,
      * these events include those emitted by processing all the messages and those
-     * emitted from the ante handler. Whereas Logs contains the events, with
+     * emitted from the ante. Whereas Logs contains the events, with
      * additional metadata, emitted only by processing the messages.
      *
      * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
@@ -91,7 +92,7 @@ export interface TxResponseAmino {
     /**
      * Events defines all the events emitted by processing a transaction. Note,
      * these events include those emitted by processing all the messages and those
-     * emitted from the ante handler. Whereas Logs contains the events, with
+     * emitted from the ante. Whereas Logs contains the events, with
      * additional metadata, emitted only by processing the messages.
      *
      * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
@@ -471,6 +472,53 @@ export interface SearchTxsResultSDKType {
     limit: bigint;
     txs: TxResponseSDKType[];
 }
+/** SearchBlocksResult defines a structure for querying blocks pageable */
+export interface SearchBlocksResult {
+    /** Count of all blocks */
+    total_count: bigint;
+    /** Count of blocks in current page */
+    count: bigint;
+    /** Index of current page, start from 1 */
+    page_number: bigint;
+    /** Count of total pages */
+    page_total: bigint;
+    /** Max count blocks per page */
+    limit: bigint;
+    /** List of blocks in current page */
+    blocks: Block[];
+}
+export interface SearchBlocksResultProtoMsg {
+    type_url: "/cosmos.base.abci.v1beta1.SearchBlocksResult";
+    value: Uint8Array;
+}
+/** SearchBlocksResult defines a structure for querying blocks pageable */
+export interface SearchBlocksResultAmino {
+    /** Count of all blocks */
+    total_count: string;
+    /** Count of blocks in current page */
+    count: string;
+    /** Index of current page, start from 1 */
+    page_number: string;
+    /** Count of total pages */
+    page_total: string;
+    /** Max count blocks per page */
+    limit: string;
+    /** List of blocks in current page */
+    blocks: BlockAmino[];
+}
+export interface SearchBlocksResultAminoMsg {
+    type: "cosmos-sdk/SearchBlocksResult";
+    value: SearchBlocksResultAmino;
+}
+/** SearchBlocksResult defines a structure for querying blocks pageable */
+export interface SearchBlocksResultSDKType {
+    total_count: bigint;
+    count: bigint;
+    page_number: bigint;
+    page_total: bigint;
+    limit: bigint;
+    blocks: BlockSDKType[];
+}
 export declare const TxResponse: {
     typeUrl: string;
     encode(message: TxResponse, writer?: BinaryWriter): BinaryWriter;
@@ -478,8 +526,6 @@ export declare const TxResponse: {
     fromJSON(object: any): TxResponse;
     toJSON(message: TxResponse): unknown;
     fromPartial(object: Partial<TxResponse>): TxResponse;
-    fromSDK(object: TxResponseSDKType): TxResponse;
-    toSDK(message: TxResponse): TxResponseSDKType;
     fromAmino(object: TxResponseAmino): TxResponse;
     toAmino(message: TxResponse): TxResponseAmino;
     fromAminoMsg(object: TxResponseAminoMsg): TxResponse;
@@ -495,8 +541,6 @@ export declare const ABCIMessageLog: {
     fromJSON(object: any): ABCIMessageLog;
     toJSON(message: ABCIMessageLog): unknown;
     fromPartial(object: Partial<ABCIMessageLog>): ABCIMessageLog;
-    fromSDK(object: ABCIMessageLogSDKType): ABCIMessageLog;
-    toSDK(message: ABCIMessageLog): ABCIMessageLogSDKType;
     fromAmino(object: ABCIMessageLogAmino): ABCIMessageLog;
     toAmino(message: ABCIMessageLog): ABCIMessageLogAmino;
     fromAminoMsg(object: ABCIMessageLogAminoMsg): ABCIMessageLog;
@@ -512,8 +556,6 @@ export declare const StringEvent: {
     fromJSON(object: any): StringEvent;
     toJSON(message: StringEvent): unknown;
     fromPartial(object: Partial<StringEvent>): StringEvent;
-    fromSDK(object: StringEventSDKType): StringEvent;
-    toSDK(message: StringEvent): StringEventSDKType;
     fromAmino(object: StringEventAmino): StringEvent;
     toAmino(message: StringEvent): StringEventAmino;
     fromAminoMsg(object: StringEventAminoMsg): StringEvent;
@@ -529,8 +571,6 @@ export declare const Attribute: {
     fromJSON(object: any): Attribute;
     toJSON(message: Attribute): unknown;
     fromPartial(object: Partial<Attribute>): Attribute;
-    fromSDK(object: AttributeSDKType): Attribute;
-    toSDK(message: Attribute): AttributeSDKType;
     fromAmino(object: AttributeAmino): Attribute;
     toAmino(message: Attribute): AttributeAmino;
     fromAminoMsg(object: AttributeAminoMsg): Attribute;
@@ -546,8 +586,6 @@ export declare const GasInfo: {
     fromJSON(object: any): GasInfo;
     toJSON(message: GasInfo): unknown;
     fromPartial(object: Partial<GasInfo>): GasInfo;
-    fromSDK(object: GasInfoSDKType): GasInfo;
-    toSDK(message: GasInfo): GasInfoSDKType;
     fromAmino(object: GasInfoAmino): GasInfo;
     toAmino(message: GasInfo): GasInfoAmino;
     fromAminoMsg(object: GasInfoAminoMsg): GasInfo;
@@ -563,8 +601,6 @@ export declare const Result: {
     fromJSON(object: any): Result;
     toJSON(message: Result): unknown;
     fromPartial(object: Partial<Result>): Result;
-    fromSDK(object: ResultSDKType): Result;
-    toSDK(message: Result): ResultSDKType;
     fromAmino(object: ResultAmino): Result;
     toAmino(message: Result): ResultAmino;
     fromAminoMsg(object: ResultAminoMsg): Result;
@@ -580,8 +616,6 @@ export declare const SimulationResponse: {
     fromJSON(object: any): SimulationResponse;
     toJSON(message: SimulationResponse): unknown;
     fromPartial(object: Partial<SimulationResponse>): SimulationResponse;
-    fromSDK(object: SimulationResponseSDKType): SimulationResponse;
-    toSDK(message: SimulationResponse): SimulationResponseSDKType;
     fromAmino(object: SimulationResponseAmino): SimulationResponse;
     toAmino(message: SimulationResponse): SimulationResponseAmino;
     fromAminoMsg(object: SimulationResponseAminoMsg): SimulationResponse;
@@ -597,8 +631,6 @@ export declare const MsgData: {
     fromJSON(object: any): MsgData;
     toJSON(message: MsgData): unknown;
     fromPartial(object: Partial<MsgData>): MsgData;
-    fromSDK(object: MsgDataSDKType): MsgData;
-    toSDK(message: MsgData): MsgDataSDKType;
     fromAmino(object: MsgDataAmino): MsgData;
     toAmino(message: MsgData): MsgDataAmino;
     fromAminoMsg(object: MsgDataAminoMsg): MsgData;
@@ -614,8 +646,6 @@ export declare const TxMsgData: {
     fromJSON(object: any): TxMsgData;
     toJSON(message: TxMsgData): unknown;
     fromPartial(object: Partial<TxMsgData>): TxMsgData;
-    fromSDK(object: TxMsgDataSDKType): TxMsgData;
-    toSDK(message: TxMsgData): TxMsgDataSDKType;
     fromAmino(object: TxMsgDataAmino): TxMsgData;
     toAmino(message: TxMsgData): TxMsgDataAmino;
     fromAminoMsg(object: TxMsgDataAminoMsg): TxMsgData;
@@ -631,8 +661,6 @@ export declare const SearchTxsResult: {
     fromJSON(object: any): SearchTxsResult;
     toJSON(message: SearchTxsResult): unknown;
     fromPartial(object: Partial<SearchTxsResult>): SearchTxsResult;
-    fromSDK(object: SearchTxsResultSDKType): SearchTxsResult;
-    toSDK(message: SearchTxsResult): SearchTxsResultSDKType;
     fromAmino(object: SearchTxsResultAmino): SearchTxsResult;
     toAmino(message: SearchTxsResult): SearchTxsResultAmino;
     fromAminoMsg(object: SearchTxsResultAminoMsg): SearchTxsResult;
@@ -640,4 +668,19 @@ export declare const SearchTxsResult: {
     fromProtoMsg(message: SearchTxsResultProtoMsg): SearchTxsResult;
     toProto(message: SearchTxsResult): Uint8Array;
     toProtoMsg(message: SearchTxsResult): SearchTxsResultProtoMsg;
+};
+export declare const SearchBlocksResult: {
+    typeUrl: string;
+    encode(message: SearchBlocksResult, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): SearchBlocksResult;
+    fromJSON(object: any): SearchBlocksResult;
+    toJSON(message: SearchBlocksResult): unknown;
+    fromPartial(object: Partial<SearchBlocksResult>): SearchBlocksResult;
+    fromAmino(object: SearchBlocksResultAmino): SearchBlocksResult;
+    toAmino(message: SearchBlocksResult): SearchBlocksResultAmino;
+    fromAminoMsg(object: SearchBlocksResultAminoMsg): SearchBlocksResult;
+    toAminoMsg(message: SearchBlocksResult): SearchBlocksResultAminoMsg;
+    fromProtoMsg(message: SearchBlocksResultProtoMsg): SearchBlocksResult;
+    toProto(message: SearchBlocksResult): Uint8Array;
+    toProtoMsg(message: SearchBlocksResult): SearchBlocksResultProtoMsg;
 };

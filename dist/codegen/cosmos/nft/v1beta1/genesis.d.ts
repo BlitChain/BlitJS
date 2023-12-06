@@ -5,6 +5,7 @@ export declare const protobufPackage = "cosmos.nft.v1beta1";
 export interface GenesisState {
     /** class defines the class of the nft type. */
     classes: Class[];
+    /** entry defines all nft owned by a person. */
     entries: Entry[];
 }
 export interface GenesisStateProtoMsg {
@@ -15,6 +16,7 @@ export interface GenesisStateProtoMsg {
 export interface GenesisStateAmino {
     /** class defines the class of the nft type. */
     classes: ClassAmino[];
+    /** entry defines all nft owned by a person. */
     entries: EntryAmino[];
 }
 export interface GenesisStateAminoMsg {
@@ -60,8 +62,6 @@ export declare const GenesisState: {
     fromJSON(object: any): GenesisState;
     toJSON(message: GenesisState): unknown;
     fromPartial(object: Partial<GenesisState>): GenesisState;
-    fromSDK(object: GenesisStateSDKType): GenesisState;
-    toSDK(message: GenesisState): GenesisStateSDKType;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
     fromAminoMsg(object: GenesisStateAminoMsg): GenesisState;
@@ -77,8 +77,6 @@ export declare const Entry: {
     fromJSON(object: any): Entry;
     toJSON(message: Entry): unknown;
     fromPartial(object: Partial<Entry>): Entry;
-    fromSDK(object: EntrySDKType): Entry;
-    toSDK(message: Entry): EntrySDKType;
     fromAmino(object: EntryAmino): Entry;
     toAmino(message: Entry): EntryAmino;
     fromAminoMsg(object: EntryAminoMsg): Entry;

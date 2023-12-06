@@ -15,6 +15,8 @@ export declare enum AuthorizationType {
     AUTHORIZATION_TYPE_UNDELEGATE = 2,
     /** AUTHORIZATION_TYPE_REDELEGATE - AUTHORIZATION_TYPE_REDELEGATE defines an authorization type for Msg/BeginRedelegate */
     AUTHORIZATION_TYPE_REDELEGATE = 3,
+    /** AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION - AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION defines an authorization type for Msg/MsgCancelUnbondingDelegation */
+    AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION = 4,
     UNRECOGNIZED = -1
 }
 export declare const AuthorizationTypeSDKType: typeof AuthorizationType;
@@ -111,8 +113,6 @@ export declare const StakeAuthorization: {
     fromJSON(object: any): StakeAuthorization;
     toJSON(message: StakeAuthorization): unknown;
     fromPartial(object: Partial<StakeAuthorization>): StakeAuthorization;
-    fromSDK(object: StakeAuthorizationSDKType): StakeAuthorization;
-    toSDK(message: StakeAuthorization): StakeAuthorizationSDKType;
     fromAmino(object: StakeAuthorizationAmino): StakeAuthorization;
     toAmino(message: StakeAuthorization): StakeAuthorizationAmino;
     fromAminoMsg(object: StakeAuthorizationAminoMsg): StakeAuthorization;
@@ -128,8 +128,6 @@ export declare const StakeAuthorization_Validators: {
     fromJSON(object: any): StakeAuthorization_Validators;
     toJSON(message: StakeAuthorization_Validators): unknown;
     fromPartial(object: Partial<StakeAuthorization_Validators>): StakeAuthorization_Validators;
-    fromSDK(object: StakeAuthorization_ValidatorsSDKType): StakeAuthorization_Validators;
-    toSDK(message: StakeAuthorization_Validators): StakeAuthorization_ValidatorsSDKType;
     fromAmino(object: StakeAuthorization_ValidatorsAmino): StakeAuthorization_Validators;
     toAmino(message: StakeAuthorization_Validators): StakeAuthorization_ValidatorsAmino;
     fromAminoMsg(object: StakeAuthorization_ValidatorsAminoMsg): StakeAuthorization_Validators;

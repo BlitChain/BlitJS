@@ -135,24 +135,6 @@ export const ParameterChangeProposal = {
     message.changes = object.changes?.map(e => ParamChange.fromPartial(e)) || [];
     return message;
   },
-  fromSDK(object: ParameterChangeProposalSDKType): ParameterChangeProposal {
-    return {
-      title: object?.title,
-      description: object?.description,
-      changes: Array.isArray(object?.changes) ? object.changes.map((e: any) => ParamChange.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: ParameterChangeProposal): ParameterChangeProposalSDKType {
-    const obj: any = {};
-    obj.title = message.title;
-    obj.description = message.description;
-    if (message.changes) {
-      obj.changes = message.changes.map(e => e ? ParamChange.toSDK(e) : undefined);
-    } else {
-      obj.changes = [];
-    }
-    return obj;
-  },
   fromAmino(object: ParameterChangeProposalAmino): ParameterChangeProposal {
     return {
       title: object.title,
@@ -257,20 +239,6 @@ export const ParamChange = {
     message.key = object.key ?? "";
     message.value = object.value ?? "";
     return message;
-  },
-  fromSDK(object: ParamChangeSDKType): ParamChange {
-    return {
-      subspace: object?.subspace,
-      key: object?.key,
-      value: object?.value
-    };
-  },
-  toSDK(message: ParamChange): ParamChangeSDKType {
-    const obj: any = {};
-    obj.subspace = message.subspace;
-    obj.key = message.key;
-    obj.value = message.value;
-    return obj;
   },
   fromAmino(object: ParamChangeAmino): ParamChange {
     return {

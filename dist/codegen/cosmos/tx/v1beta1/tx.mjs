@@ -76,25 +76,6 @@ export const Tx = {
         message.signatures = object.signatures?.map(e => e) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            body: object.body ? TxBody.fromSDK(object.body) : undefined,
-            auth_info: object.auth_info ? AuthInfo.fromSDK(object.auth_info) : undefined,
-            signatures: Array.isArray(object?.signatures) ? object.signatures.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.body !== undefined && (obj.body = message.body ? TxBody.toSDK(message.body) : undefined);
-        message.auth_info !== undefined && (obj.auth_info = message.auth_info ? AuthInfo.toSDK(message.auth_info) : undefined);
-        if (message.signatures) {
-            obj.signatures = message.signatures.map(e => e);
-        }
-        else {
-            obj.signatures = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             body: object?.body ? TxBody.fromAmino(object.body) : undefined,
@@ -205,25 +186,6 @@ export const TxRaw = {
         message.auth_info_bytes = object.auth_info_bytes ?? new Uint8Array();
         message.signatures = object.signatures?.map(e => e) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            body_bytes: object?.body_bytes,
-            auth_info_bytes: object?.auth_info_bytes,
-            signatures: Array.isArray(object?.signatures) ? object.signatures.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.body_bytes = message.body_bytes;
-        obj.auth_info_bytes = message.auth_info_bytes;
-        if (message.signatures) {
-            obj.signatures = message.signatures.map(e => e);
-        }
-        else {
-            obj.signatures = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -340,22 +302,6 @@ export const SignDoc = {
         message.chain_id = object.chain_id ?? "";
         message.account_number = object.account_number !== undefined && object.account_number !== null ? BigInt(object.account_number.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            body_bytes: object?.body_bytes,
-            auth_info_bytes: object?.auth_info_bytes,
-            chain_id: object?.chain_id,
-            account_number: object?.account_number
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.body_bytes = message.body_bytes;
-        obj.auth_info_bytes = message.auth_info_bytes;
-        obj.chain_id = message.chain_id;
-        obj.account_number = message.account_number;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -489,26 +435,6 @@ export const SignDocDirectAux = {
         message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt(0);
         message.tip = object.tip !== undefined && object.tip !== null ? Tip.fromPartial(object.tip) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            body_bytes: object?.body_bytes,
-            public_key: object.public_key ? Any.fromSDK(object.public_key) : undefined,
-            chain_id: object?.chain_id,
-            account_number: object?.account_number,
-            sequence: object?.sequence,
-            tip: object.tip ? Tip.fromSDK(object.tip) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.body_bytes = message.body_bytes;
-        message.public_key !== undefined && (obj.public_key = message.public_key ? Any.toSDK(message.public_key) : undefined);
-        obj.chain_id = message.chain_id;
-        obj.account_number = message.account_number;
-        obj.sequence = message.sequence;
-        message.tip !== undefined && (obj.tip = message.tip ? Tip.toSDK(message.tip) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -652,39 +578,6 @@ export const TxBody = {
         message.non_critical_extension_options = object.non_critical_extension_options?.map(e => Any.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            messages: Array.isArray(object?.messages) ? object.messages.map((e) => Any.fromSDK(e)) : [],
-            memo: object?.memo,
-            timeout_height: object?.timeout_height,
-            extension_options: Array.isArray(object?.extension_options) ? object.extension_options.map((e) => Any.fromSDK(e)) : [],
-            non_critical_extension_options: Array.isArray(object?.non_critical_extension_options) ? object.non_critical_extension_options.map((e) => Any.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.messages) {
-            obj.messages = message.messages.map(e => e ? Any.toSDK(e) : undefined);
-        }
-        else {
-            obj.messages = [];
-        }
-        obj.memo = message.memo;
-        obj.timeout_height = message.timeout_height;
-        if (message.extension_options) {
-            obj.extension_options = message.extension_options.map(e => e ? Any.toSDK(e) : undefined);
-        }
-        else {
-            obj.extension_options = [];
-        }
-        if (message.non_critical_extension_options) {
-            obj.non_critical_extension_options = message.non_critical_extension_options.map(e => e ? Any.toSDK(e) : undefined);
-        }
-        else {
-            obj.non_critical_extension_options = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             messages: Array.isArray(object?.messages) ? object.messages.map((e) => Any.fromAmino(e)) : [],
@@ -810,25 +703,6 @@ export const AuthInfo = {
         message.tip = object.tip !== undefined && object.tip !== null ? Tip.fromPartial(object.tip) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            signer_infos: Array.isArray(object?.signer_infos) ? object.signer_infos.map((e) => SignerInfo.fromSDK(e)) : [],
-            fee: object.fee ? Fee.fromSDK(object.fee) : undefined,
-            tip: object.tip ? Tip.fromSDK(object.tip) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.signer_infos) {
-            obj.signer_infos = message.signer_infos.map(e => e ? SignerInfo.toSDK(e) : undefined);
-        }
-        else {
-            obj.signer_infos = [];
-        }
-        message.fee !== undefined && (obj.fee = message.fee ? Fee.toSDK(message.fee) : undefined);
-        message.tip !== undefined && (obj.tip = message.tip ? Tip.toSDK(message.tip) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             signer_infos: Array.isArray(object?.signer_infos) ? object.signer_infos.map((e) => SignerInfo.fromAmino(e)) : [],
@@ -935,20 +809,6 @@ export const SignerInfo = {
         message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            public_key: object.public_key ? Any.fromSDK(object.public_key) : undefined,
-            mode_info: object.mode_info ? ModeInfo.fromSDK(object.mode_info) : undefined,
-            sequence: object?.sequence
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.public_key !== undefined && (obj.public_key = message.public_key ? Any.toSDK(message.public_key) : undefined);
-        message.mode_info !== undefined && (obj.mode_info = message.mode_info ? ModeInfo.toSDK(message.mode_info) : undefined);
-        obj.sequence = message.sequence;
-        return obj;
-    },
     fromAmino(object) {
         return {
             public_key: object?.public_key ? Any.fromAmino(object.public_key) : undefined,
@@ -1040,18 +900,6 @@ export const ModeInfo = {
         message.multi = object.multi !== undefined && object.multi !== null ? ModeInfo_Multi.fromPartial(object.multi) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            single: object.single ? ModeInfo_Single.fromSDK(object.single) : undefined,
-            multi: object.multi ? ModeInfo_Multi.fromSDK(object.multi) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.single !== undefined && (obj.single = message.single ? ModeInfo_Single.toSDK(message.single) : undefined);
-        message.multi !== undefined && (obj.multi = message.multi ? ModeInfo_Multi.toSDK(message.multi) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             single: object?.single ? ModeInfo_Single.fromAmino(object.single) : undefined,
@@ -1130,16 +978,6 @@ export const ModeInfo_Single = {
         const message = createBaseModeInfo_Single();
         message.mode = object.mode ?? 0;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            mode: isSet(object.mode) ? signModeFromJSON(object.mode) : -1
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.mode !== undefined && (obj.mode = signModeToJSON(message.mode));
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1232,23 +1070,6 @@ export const ModeInfo_Multi = {
         message.bitarray = object.bitarray !== undefined && object.bitarray !== null ? CompactBitArray.fromPartial(object.bitarray) : undefined;
         message.mode_infos = object.mode_infos?.map(e => ModeInfo.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            bitarray: object.bitarray ? CompactBitArray.fromSDK(object.bitarray) : undefined,
-            mode_infos: Array.isArray(object?.mode_infos) ? object.mode_infos.map((e) => ModeInfo.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.bitarray !== undefined && (obj.bitarray = message.bitarray ? CompactBitArray.toSDK(message.bitarray) : undefined);
-        if (message.mode_infos) {
-            obj.mode_infos = message.mode_infos.map(e => e ? ModeInfo.toSDK(e) : undefined);
-        }
-        else {
-            obj.mode_infos = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1369,27 +1190,6 @@ export const Fee = {
         message.granter = object.granter ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => Coin.fromSDK(e)) : [],
-            gas_limit: object?.gas_limit,
-            payer: object?.payer,
-            granter: object?.granter
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.amount) {
-            obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.amount = [];
-        }
-        obj.gas_limit = message.gas_limit;
-        obj.payer = message.payer;
-        obj.granter = message.granter;
-        return obj;
-    },
     fromAmino(object) {
         return {
             amount: Array.isArray(object?.amount) ? object.amount.map((e) => Coin.fromAmino(e)) : [],
@@ -1492,23 +1292,6 @@ export const Tip = {
         message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
         message.tipper = object.tipper ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => Coin.fromSDK(e)) : [],
-            tipper: object?.tipper
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.amount) {
-            obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.amount = [];
-        }
-        obj.tipper = message.tipper;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1623,22 +1406,6 @@ export const AuxSignerData = {
         message.mode = object.mode ?? 0;
         message.sig = object.sig ?? new Uint8Array();
         return message;
-    },
-    fromSDK(object) {
-        return {
-            address: object?.address,
-            sign_doc: object.sign_doc ? SignDocDirectAux.fromSDK(object.sign_doc) : undefined,
-            mode: isSet(object.mode) ? signModeFromJSON(object.mode) : -1,
-            sig: object?.sig
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        message.sign_doc !== undefined && (obj.sign_doc = message.sign_doc ? SignDocDirectAux.toSDK(message.sign_doc) : undefined);
-        message.mode !== undefined && (obj.mode = signModeToJSON(message.mode));
-        obj.sig = message.sig;
-        return obj;
     },
     fromAmino(object) {
         return {

@@ -366,13 +366,6 @@ export const QueryCurrentPlanRequest = {
     const message = createBaseQueryCurrentPlanRequest();
     return message;
   },
-  fromSDK(_: QueryCurrentPlanRequestSDKType): QueryCurrentPlanRequest {
-    return {};
-  },
-  toSDK(_: QueryCurrentPlanRequest): QueryCurrentPlanRequestSDKType {
-    const obj: any = {};
-    return obj;
-  },
   fromAmino(_: QueryCurrentPlanRequestAmino): QueryCurrentPlanRequest {
     return {};
   },
@@ -446,16 +439,6 @@ export const QueryCurrentPlanResponse = {
     const message = createBaseQueryCurrentPlanResponse();
     message.plan = object.plan !== undefined && object.plan !== null ? Plan.fromPartial(object.plan) : undefined;
     return message;
-  },
-  fromSDK(object: QueryCurrentPlanResponseSDKType): QueryCurrentPlanResponse {
-    return {
-      plan: object.plan ? Plan.fromSDK(object.plan) : undefined
-    };
-  },
-  toSDK(message: QueryCurrentPlanResponse): QueryCurrentPlanResponseSDKType {
-    const obj: any = {};
-    message.plan !== undefined && (obj.plan = message.plan ? Plan.toSDK(message.plan) : undefined);
-    return obj;
   },
   fromAmino(object: QueryCurrentPlanResponseAmino): QueryCurrentPlanResponse {
     return {
@@ -534,16 +517,6 @@ export const QueryAppliedPlanRequest = {
     message.name = object.name ?? "";
     return message;
   },
-  fromSDK(object: QueryAppliedPlanRequestSDKType): QueryAppliedPlanRequest {
-    return {
-      name: object?.name
-    };
-  },
-  toSDK(message: QueryAppliedPlanRequest): QueryAppliedPlanRequestSDKType {
-    const obj: any = {};
-    obj.name = message.name;
-    return obj;
-  },
   fromAmino(object: QueryAppliedPlanRequestAmino): QueryAppliedPlanRequest {
     return {
       name: object.name
@@ -620,16 +593,6 @@ export const QueryAppliedPlanResponse = {
     const message = createBaseQueryAppliedPlanResponse();
     message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt(0);
     return message;
-  },
-  fromSDK(object: QueryAppliedPlanResponseSDKType): QueryAppliedPlanResponse {
-    return {
-      height: object?.height
-    };
-  },
-  toSDK(message: QueryAppliedPlanResponse): QueryAppliedPlanResponseSDKType {
-    const obj: any = {};
-    obj.height = message.height;
-    return obj;
   },
   fromAmino(object: QueryAppliedPlanResponseAmino): QueryAppliedPlanResponse {
     return {
@@ -708,16 +671,6 @@ export const QueryUpgradedConsensusStateRequest = {
     message.last_height = object.last_height !== undefined && object.last_height !== null ? BigInt(object.last_height.toString()) : BigInt(0);
     return message;
   },
-  fromSDK(object: QueryUpgradedConsensusStateRequestSDKType): QueryUpgradedConsensusStateRequest {
-    return {
-      last_height: object?.last_height
-    };
-  },
-  toSDK(message: QueryUpgradedConsensusStateRequest): QueryUpgradedConsensusStateRequestSDKType {
-    const obj: any = {};
-    obj.last_height = message.last_height;
-    return obj;
-  },
   fromAmino(object: QueryUpgradedConsensusStateRequestAmino): QueryUpgradedConsensusStateRequest {
     return {
       last_height: BigInt(object.last_height)
@@ -795,16 +748,6 @@ export const QueryUpgradedConsensusStateResponse = {
     message.upgraded_consensus_state = object.upgraded_consensus_state ?? new Uint8Array();
     return message;
   },
-  fromSDK(object: QueryUpgradedConsensusStateResponseSDKType): QueryUpgradedConsensusStateResponse {
-    return {
-      upgraded_consensus_state: object?.upgraded_consensus_state
-    };
-  },
-  toSDK(message: QueryUpgradedConsensusStateResponse): QueryUpgradedConsensusStateResponseSDKType {
-    const obj: any = {};
-    obj.upgraded_consensus_state = message.upgraded_consensus_state;
-    return obj;
-  },
   fromAmino(object: QueryUpgradedConsensusStateResponseAmino): QueryUpgradedConsensusStateResponse {
     return {
       upgraded_consensus_state: object.upgraded_consensus_state
@@ -881,16 +824,6 @@ export const QueryModuleVersionsRequest = {
     const message = createBaseQueryModuleVersionsRequest();
     message.module_name = object.module_name ?? "";
     return message;
-  },
-  fromSDK(object: QueryModuleVersionsRequestSDKType): QueryModuleVersionsRequest {
-    return {
-      module_name: object?.module_name
-    };
-  },
-  toSDK(message: QueryModuleVersionsRequest): QueryModuleVersionsRequestSDKType {
-    const obj: any = {};
-    obj.module_name = message.module_name;
-    return obj;
   },
   fromAmino(object: QueryModuleVersionsRequestAmino): QueryModuleVersionsRequest {
     return {
@@ -973,20 +906,6 @@ export const QueryModuleVersionsResponse = {
     message.module_versions = object.module_versions?.map(e => ModuleVersion.fromPartial(e)) || [];
     return message;
   },
-  fromSDK(object: QueryModuleVersionsResponseSDKType): QueryModuleVersionsResponse {
-    return {
-      module_versions: Array.isArray(object?.module_versions) ? object.module_versions.map((e: any) => ModuleVersion.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: QueryModuleVersionsResponse): QueryModuleVersionsResponseSDKType {
-    const obj: any = {};
-    if (message.module_versions) {
-      obj.module_versions = message.module_versions.map(e => e ? ModuleVersion.toSDK(e) : undefined);
-    } else {
-      obj.module_versions = [];
-    }
-    return obj;
-  },
   fromAmino(object: QueryModuleVersionsResponseAmino): QueryModuleVersionsResponse {
     return {
       module_versions: Array.isArray(object?.module_versions) ? object.module_versions.map((e: any) => ModuleVersion.fromAmino(e)) : []
@@ -1055,13 +974,6 @@ export const QueryAuthorityRequest = {
   fromPartial(_: Partial<QueryAuthorityRequest>): QueryAuthorityRequest {
     const message = createBaseQueryAuthorityRequest();
     return message;
-  },
-  fromSDK(_: QueryAuthorityRequestSDKType): QueryAuthorityRequest {
-    return {};
-  },
-  toSDK(_: QueryAuthorityRequest): QueryAuthorityRequestSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: QueryAuthorityRequestAmino): QueryAuthorityRequest {
     return {};
@@ -1136,16 +1048,6 @@ export const QueryAuthorityResponse = {
     const message = createBaseQueryAuthorityResponse();
     message.address = object.address ?? "";
     return message;
-  },
-  fromSDK(object: QueryAuthorityResponseSDKType): QueryAuthorityResponse {
-    return {
-      address: object?.address
-    };
-  },
-  toSDK(message: QueryAuthorityResponse): QueryAuthorityResponseSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    return obj;
   },
   fromAmino(object: QueryAuthorityResponseAmino): QueryAuthorityResponse {
     return {

@@ -50,16 +50,6 @@ exports.Params = {
         message.controller_enabled = object.controller_enabled ?? false;
         return message;
     },
-    fromSDK(object) {
-        return {
-            controller_enabled: object?.controller_enabled
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.controller_enabled = message.controller_enabled;
-        return obj;
-    },
     fromAmino(object) {
         return {
             controller_enabled: object.controller_enabled

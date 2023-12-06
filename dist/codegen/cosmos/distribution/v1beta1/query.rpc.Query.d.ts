@@ -1,8 +1,10 @@
 import * as fm from "../../../grpc-gateway";
-import { QueryParamsRequest, QueryParamsResponse, QueryValidatorOutstandingRewardsRequest, QueryValidatorOutstandingRewardsResponse, QueryValidatorCommissionRequest, QueryValidatorCommissionResponse, QueryValidatorSlashesRequest, QueryValidatorSlashesResponse, QueryDelegationRewardsRequest, QueryDelegationRewardsResponse, QueryDelegationTotalRewardsRequest, QueryDelegationTotalRewardsResponse, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponse, QueryDelegatorWithdrawAddressRequest, QueryDelegatorWithdrawAddressResponse, QueryCommunityPoolRequest, QueryCommunityPoolResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryValidatorDistributionInfoRequest, QueryValidatorDistributionInfoResponse, QueryValidatorOutstandingRewardsRequest, QueryValidatorOutstandingRewardsResponse, QueryValidatorCommissionRequest, QueryValidatorCommissionResponse, QueryValidatorSlashesRequest, QueryValidatorSlashesResponse, QueryDelegationRewardsRequest, QueryDelegationRewardsResponse, QueryDelegationTotalRewardsRequest, QueryDelegationTotalRewardsResponse, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponse, QueryDelegatorWithdrawAddressRequest, QueryDelegatorWithdrawAddressResponse, QueryCommunityPoolRequest, QueryCommunityPoolResponse } from "./query";
 export declare class Query {
     /** Params queries params of the distribution module. */
     static Params(request: QueryParamsRequest, initRequest?: fm.InitReq): Promise<QueryParamsResponse>;
+    /** ValidatorDistributionInfo queries validator commission and self-delegation rewards for validator */
+    static ValidatorDistributionInfo(request: QueryValidatorDistributionInfoRequest, initRequest?: fm.InitReq): Promise<QueryValidatorDistributionInfoResponse>;
     /** ValidatorOutstandingRewards queries rewards of a validator address. */
     static ValidatorOutstandingRewards(request: QueryValidatorOutstandingRewardsRequest, initRequest?: fm.InitReq): Promise<QueryValidatorOutstandingRewardsResponse>;
     /** ValidatorCommission queries accumulated commission for a validator. */
@@ -12,7 +14,7 @@ export declare class Query {
     /** DelegationRewards queries the total rewards accrued by a delegation. */
     static DelegationRewards(request: QueryDelegationRewardsRequest, initRequest?: fm.InitReq): Promise<QueryDelegationRewardsResponse>;
     /**
-     * DelegationTotalRewards queries the total rewards accrued by a each
+     * DelegationTotalRewards queries the total rewards accrued by each
      * validator.
      */
     static DelegationTotalRewards(request: QueryDelegationTotalRewardsRequest, initRequest?: fm.InitReq): Promise<QueryDelegationTotalRewardsResponse>;
@@ -28,6 +30,8 @@ export declare class QueryClientImpl {
     constructor(url: string);
     /** Params queries params of the distribution module. */
     Params(req: QueryParamsRequest, headers?: HeadersInit): Promise<QueryParamsResponse>;
+    /** ValidatorDistributionInfo queries validator commission and self-delegation rewards for validator */
+    ValidatorDistributionInfo(req: QueryValidatorDistributionInfoRequest, headers?: HeadersInit): Promise<QueryValidatorDistributionInfoResponse>;
     /** ValidatorOutstandingRewards queries rewards of a validator address. */
     ValidatorOutstandingRewards(req: QueryValidatorOutstandingRewardsRequest, headers?: HeadersInit): Promise<QueryValidatorOutstandingRewardsResponse>;
     /** ValidatorCommission queries accumulated commission for a validator. */
@@ -37,7 +41,7 @@ export declare class QueryClientImpl {
     /** DelegationRewards queries the total rewards accrued by a delegation. */
     DelegationRewards(req: QueryDelegationRewardsRequest, headers?: HeadersInit): Promise<QueryDelegationRewardsResponse>;
     /**
-     * DelegationTotalRewards queries the total rewards accrued by a each
+     * DelegationTotalRewards queries the total rewards accrued by each
      * validator.
      */
     DelegationTotalRewards(req: QueryDelegationTotalRewardsRequest, headers?: HeadersInit): Promise<QueryDelegationTotalRewardsResponse>;

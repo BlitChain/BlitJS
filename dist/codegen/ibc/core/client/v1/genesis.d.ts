@@ -130,8 +130,6 @@ export declare const GenesisState: {
     fromJSON(object: any): GenesisState;
     toJSON(message: GenesisState): unknown;
     fromPartial(object: Partial<GenesisState>): GenesisState;
-    fromSDK(object: GenesisStateSDKType): GenesisState;
-    toSDK(message: GenesisState): GenesisStateSDKType;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
     fromAminoMsg(object: GenesisStateAminoMsg): GenesisState;
@@ -147,8 +145,6 @@ export declare const GenesisMetadata: {
     fromJSON(object: any): GenesisMetadata;
     toJSON(message: GenesisMetadata): unknown;
     fromPartial(object: Partial<GenesisMetadata>): GenesisMetadata;
-    fromSDK(object: GenesisMetadataSDKType): GenesisMetadata;
-    toSDK(message: GenesisMetadata): GenesisMetadataSDKType;
     fromAmino(object: GenesisMetadataAmino): GenesisMetadata;
     toAmino(message: GenesisMetadata): GenesisMetadataAmino;
     fromAminoMsg(object: GenesisMetadataAminoMsg): GenesisMetadata;
@@ -164,8 +160,6 @@ export declare const IdentifiedGenesisMetadata: {
     fromJSON(object: any): IdentifiedGenesisMetadata;
     toJSON(message: IdentifiedGenesisMetadata): unknown;
     fromPartial(object: Partial<IdentifiedGenesisMetadata>): IdentifiedGenesisMetadata;
-    fromSDK(object: IdentifiedGenesisMetadataSDKType): IdentifiedGenesisMetadata;
-    toSDK(message: IdentifiedGenesisMetadata): IdentifiedGenesisMetadataSDKType;
     fromAmino(object: IdentifiedGenesisMetadataAmino): IdentifiedGenesisMetadata;
     toAmino(message: IdentifiedGenesisMetadata): IdentifiedGenesisMetadataAmino;
     fromAminoMsg(object: IdentifiedGenesisMetadataAminoMsg): IdentifiedGenesisMetadata;

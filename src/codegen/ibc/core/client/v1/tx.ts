@@ -486,20 +486,6 @@ export const MsgCreateClient = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgCreateClientSDKType): MsgCreateClient {
-    return {
-      client_state: object.client_state ? Any.fromSDK(object.client_state) : undefined,
-      consensus_state: object.consensus_state ? Any.fromSDK(object.consensus_state) : undefined,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgCreateClient): MsgCreateClientSDKType {
-    const obj: any = {};
-    message.client_state !== undefined && (obj.client_state = message.client_state ? Any.toSDK(message.client_state) : undefined);
-    message.consensus_state !== undefined && (obj.consensus_state = message.consensus_state ? Any.toSDK(message.consensus_state) : undefined);
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgCreateClientAmino): MsgCreateClient {
     return {
       client_state: object?.client_state ? Any.fromAmino(object.client_state) : undefined,
@@ -568,13 +554,6 @@ export const MsgCreateClientResponse = {
   fromPartial(_: Partial<MsgCreateClientResponse>): MsgCreateClientResponse {
     const message = createBaseMsgCreateClientResponse();
     return message;
-  },
-  fromSDK(_: MsgCreateClientResponseSDKType): MsgCreateClientResponse {
-    return {};
-  },
-  toSDK(_: MsgCreateClientResponse): MsgCreateClientResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgCreateClientResponseAmino): MsgCreateClientResponse {
     return {};
@@ -670,20 +649,6 @@ export const MsgUpdateClient = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgUpdateClientSDKType): MsgUpdateClient {
-    return {
-      client_id: object?.client_id,
-      client_message: object.client_message ? Any.fromSDK(object.client_message) : undefined,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgUpdateClient): MsgUpdateClientSDKType {
-    const obj: any = {};
-    obj.client_id = message.client_id;
-    message.client_message !== undefined && (obj.client_message = message.client_message ? Any.toSDK(message.client_message) : undefined);
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgUpdateClientAmino): MsgUpdateClient {
     return {
       client_id: object.client_id,
@@ -752,13 +717,6 @@ export const MsgUpdateClientResponse = {
   fromPartial(_: Partial<MsgUpdateClientResponse>): MsgUpdateClientResponse {
     const message = createBaseMsgUpdateClientResponse();
     return message;
-  },
-  fromSDK(_: MsgUpdateClientResponseSDKType): MsgUpdateClientResponse {
-    return {};
-  },
-  toSDK(_: MsgUpdateClientResponse): MsgUpdateClientResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgUpdateClientResponseAmino): MsgUpdateClientResponse {
     return {};
@@ -884,26 +842,6 @@ export const MsgUpgradeClient = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgUpgradeClientSDKType): MsgUpgradeClient {
-    return {
-      client_id: object?.client_id,
-      client_state: object.client_state ? Any.fromSDK(object.client_state) : undefined,
-      consensus_state: object.consensus_state ? Any.fromSDK(object.consensus_state) : undefined,
-      proof_upgrade_client: object?.proof_upgrade_client,
-      proof_upgrade_consensus_state: object?.proof_upgrade_consensus_state,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgUpgradeClient): MsgUpgradeClientSDKType {
-    const obj: any = {};
-    obj.client_id = message.client_id;
-    message.client_state !== undefined && (obj.client_state = message.client_state ? Any.toSDK(message.client_state) : undefined);
-    message.consensus_state !== undefined && (obj.consensus_state = message.consensus_state ? Any.toSDK(message.consensus_state) : undefined);
-    obj.proof_upgrade_client = message.proof_upgrade_client;
-    obj.proof_upgrade_consensus_state = message.proof_upgrade_consensus_state;
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgUpgradeClientAmino): MsgUpgradeClient {
     return {
       client_id: object.client_id,
@@ -978,13 +916,6 @@ export const MsgUpgradeClientResponse = {
   fromPartial(_: Partial<MsgUpgradeClientResponse>): MsgUpgradeClientResponse {
     const message = createBaseMsgUpgradeClientResponse();
     return message;
-  },
-  fromSDK(_: MsgUpgradeClientResponseSDKType): MsgUpgradeClientResponse {
-    return {};
-  },
-  toSDK(_: MsgUpgradeClientResponse): MsgUpgradeClientResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgUpgradeClientResponseAmino): MsgUpgradeClientResponse {
     return {};
@@ -1080,20 +1011,6 @@ export const MsgSubmitMisbehaviour = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgSubmitMisbehaviourSDKType): MsgSubmitMisbehaviour {
-    return {
-      client_id: object?.client_id,
-      misbehaviour: object.misbehaviour ? Any.fromSDK(object.misbehaviour) : undefined,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgSubmitMisbehaviour): MsgSubmitMisbehaviourSDKType {
-    const obj: any = {};
-    obj.client_id = message.client_id;
-    message.misbehaviour !== undefined && (obj.misbehaviour = message.misbehaviour ? Any.toSDK(message.misbehaviour) : undefined);
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgSubmitMisbehaviourAmino): MsgSubmitMisbehaviour {
     return {
       client_id: object.client_id,
@@ -1162,13 +1079,6 @@ export const MsgSubmitMisbehaviourResponse = {
   fromPartial(_: Partial<MsgSubmitMisbehaviourResponse>): MsgSubmitMisbehaviourResponse {
     const message = createBaseMsgSubmitMisbehaviourResponse();
     return message;
-  },
-  fromSDK(_: MsgSubmitMisbehaviourResponseSDKType): MsgSubmitMisbehaviourResponse {
-    return {};
-  },
-  toSDK(_: MsgSubmitMisbehaviourResponse): MsgSubmitMisbehaviourResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgSubmitMisbehaviourResponseAmino): MsgSubmitMisbehaviourResponse {
     return {};
@@ -1264,20 +1174,6 @@ export const MsgRecoverClient = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgRecoverClientSDKType): MsgRecoverClient {
-    return {
-      subject_client_id: object?.subject_client_id,
-      substitute_client_id: object?.substitute_client_id,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgRecoverClient): MsgRecoverClientSDKType {
-    const obj: any = {};
-    obj.subject_client_id = message.subject_client_id;
-    obj.substitute_client_id = message.substitute_client_id;
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgRecoverClientAmino): MsgRecoverClient {
     return {
       subject_client_id: object.subject_client_id,
@@ -1346,13 +1242,6 @@ export const MsgRecoverClientResponse = {
   fromPartial(_: Partial<MsgRecoverClientResponse>): MsgRecoverClientResponse {
     const message = createBaseMsgRecoverClientResponse();
     return message;
-  },
-  fromSDK(_: MsgRecoverClientResponseSDKType): MsgRecoverClientResponse {
-    return {};
-  },
-  toSDK(_: MsgRecoverClientResponse): MsgRecoverClientResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgRecoverClientResponseAmino): MsgRecoverClientResponse {
     return {};
@@ -1448,20 +1337,6 @@ export const MsgIBCSoftwareUpgrade = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgIBCSoftwareUpgradeSDKType): MsgIBCSoftwareUpgrade {
-    return {
-      plan: object.plan ? Plan.fromSDK(object.plan) : undefined,
-      upgraded_client_state: object.upgraded_client_state ? Any.fromSDK(object.upgraded_client_state) : undefined,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgIBCSoftwareUpgrade): MsgIBCSoftwareUpgradeSDKType {
-    const obj: any = {};
-    message.plan !== undefined && (obj.plan = message.plan ? Plan.toSDK(message.plan) : undefined);
-    message.upgraded_client_state !== undefined && (obj.upgraded_client_state = message.upgraded_client_state ? Any.toSDK(message.upgraded_client_state) : undefined);
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgIBCSoftwareUpgradeAmino): MsgIBCSoftwareUpgrade {
     return {
       plan: object?.plan ? Plan.fromAmino(object.plan) : undefined,
@@ -1530,13 +1405,6 @@ export const MsgIBCSoftwareUpgradeResponse = {
   fromPartial(_: Partial<MsgIBCSoftwareUpgradeResponse>): MsgIBCSoftwareUpgradeResponse {
     const message = createBaseMsgIBCSoftwareUpgradeResponse();
     return message;
-  },
-  fromSDK(_: MsgIBCSoftwareUpgradeResponseSDKType): MsgIBCSoftwareUpgradeResponse {
-    return {};
-  },
-  toSDK(_: MsgIBCSoftwareUpgradeResponse): MsgIBCSoftwareUpgradeResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgIBCSoftwareUpgradeResponseAmino): MsgIBCSoftwareUpgradeResponse {
     return {};
@@ -1622,18 +1490,6 @@ export const MsgUpdateParams = {
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
-  fromSDK(object: MsgUpdateParamsSDKType): MsgUpdateParams {
-    return {
-      signer: object?.signer,
-      params: object.params ? Params.fromSDK(object.params) : undefined
-    };
-  },
-  toSDK(message: MsgUpdateParams): MsgUpdateParamsSDKType {
-    const obj: any = {};
-    obj.signer = message.signer;
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    return obj;
-  },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
     return {
       signer: object.signer,
@@ -1700,13 +1556,6 @@ export const MsgUpdateParamsResponse = {
   fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse {
     const message = createBaseMsgUpdateParamsResponse();
     return message;
-  },
-  fromSDK(_: MsgUpdateParamsResponseSDKType): MsgUpdateParamsResponse {
-    return {};
-  },
-  toSDK(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse {
     return {};

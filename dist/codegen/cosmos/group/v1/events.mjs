@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { proposalExecutorResultFromJSON, proposalExecutorResultToJSON } from "./types";
+import { TallyResult, proposalExecutorResultFromJSON, proposalExecutorResultToJSON, proposalStatusFromJSON, proposalStatusToJSON } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
 export const protobufPackage = "cosmos.group.v1";
@@ -47,16 +47,6 @@ export const EventCreateGroup = {
         const message = createBaseEventCreateGroup();
         message.group_id = object.group_id !== undefined && object.group_id !== null ? BigInt(object.group_id.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            group_id: object?.group_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.group_id = message.group_id;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -135,16 +125,6 @@ export const EventUpdateGroup = {
         message.group_id = object.group_id !== undefined && object.group_id !== null ? BigInt(object.group_id.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            group_id: object?.group_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.group_id = message.group_id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             group_id: BigInt(object.group_id)
@@ -221,16 +201,6 @@ export const EventCreateGroupPolicy = {
         const message = createBaseEventCreateGroupPolicy();
         message.address = object.address ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            address: object?.address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -309,16 +279,6 @@ export const EventUpdateGroupPolicy = {
         message.address = object.address ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            address: object?.address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        return obj;
-    },
     fromAmino(object) {
         return {
             address: object.address
@@ -395,16 +355,6 @@ export const EventSubmitProposal = {
         const message = createBaseEventSubmitProposal();
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -483,16 +433,6 @@ export const EventWithdrawProposal = {
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id)
@@ -570,16 +510,6 @@ export const EventVote = {
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id)
@@ -615,7 +545,8 @@ export const EventVote = {
 function createBaseEventExec() {
     return {
         proposal_id: BigInt(0),
-        result: 0
+        result: 0,
+        logs: ""
     };
 }
 export const EventExec = {
@@ -626,6 +557,9 @@ export const EventExec = {
         }
         if (message.result !== 0) {
             writer.uint32(16).int32(message.result);
+        }
+        if (message.logs !== "") {
+            writer.uint32(26).string(message.logs);
         }
         return writer;
     },
@@ -642,6 +576,9 @@ export const EventExec = {
                 case 2:
                     message.result = reader.int32();
                     break;
+                case 3:
+                    message.logs = reader.string();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -652,43 +589,36 @@ export const EventExec = {
     fromJSON(object) {
         return {
             proposal_id: isSet(object.proposal_id) ? BigInt(object.proposal_id.toString()) : BigInt(0),
-            result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1
+            result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1,
+            logs: isSet(object.logs) ? String(object.logs) : ""
         };
     },
     toJSON(message) {
         const obj = {};
         message.proposal_id !== undefined && (obj.proposal_id = (message.proposal_id || BigInt(0)).toString());
         message.result !== undefined && (obj.result = proposalExecutorResultToJSON(message.result));
+        message.logs !== undefined && (obj.logs = message.logs);
         return obj;
     },
     fromPartial(object) {
         const message = createBaseEventExec();
         message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
         message.result = object.result ?? 0;
+        message.logs = object.logs ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proposal_id: object?.proposal_id,
-            result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.proposal_id = message.proposal_id;
-        message.result !== undefined && (obj.result = proposalExecutorResultToJSON(message.result));
-        return obj;
     },
     fromAmino(object) {
         return {
             proposal_id: BigInt(object.proposal_id),
-            result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1
+            result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : -1,
+            logs: object.logs
         };
     },
     toAmino(message) {
         const obj = {};
         obj.proposal_id = message.proposal_id ? message.proposal_id.toString() : undefined;
         obj.result = message.result;
+        obj.logs = message.logs;
         return obj;
     },
     fromAminoMsg(object) {
@@ -768,18 +698,6 @@ export const EventLeaveGroup = {
         message.address = object.address ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            group_id: object?.group_id,
-            address: object?.address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.group_id = message.group_id;
-        obj.address = message.address;
-        return obj;
-    },
     fromAmino(object) {
         return {
             group_id: BigInt(object.group_id),
@@ -811,6 +729,107 @@ export const EventLeaveGroup = {
         return {
             typeUrl: "/cosmos.group.v1.EventLeaveGroup",
             value: EventLeaveGroup.encode(message).finish()
+        };
+    }
+};
+function createBaseEventProposalPruned() {
+    return {
+        proposal_id: BigInt(0),
+        status: 0,
+        tally_result: undefined
+    };
+}
+export const EventProposalPruned = {
+    typeUrl: "/cosmos.group.v1.EventProposalPruned",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.proposal_id !== BigInt(0)) {
+            writer.uint32(8).uint64(message.proposal_id);
+        }
+        if (message.status !== 0) {
+            writer.uint32(16).int32(message.status);
+        }
+        if (message.tally_result !== undefined) {
+            TallyResult.encode(message.tally_result, writer.uint32(26).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseEventProposalPruned();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.proposal_id = reader.uint64();
+                    break;
+                case 2:
+                    message.status = reader.int32();
+                    break;
+                case 3:
+                    message.tally_result = TallyResult.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            proposal_id: isSet(object.proposal_id) ? BigInt(object.proposal_id.toString()) : BigInt(0),
+            status: isSet(object.status) ? proposalStatusFromJSON(object.status) : -1,
+            tally_result: isSet(object.tally_result) ? TallyResult.fromJSON(object.tally_result) : undefined
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.proposal_id !== undefined && (obj.proposal_id = (message.proposal_id || BigInt(0)).toString());
+        message.status !== undefined && (obj.status = proposalStatusToJSON(message.status));
+        message.tally_result !== undefined && (obj.tally_result = message.tally_result ? TallyResult.toJSON(message.tally_result) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseEventProposalPruned();
+        message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
+        message.status = object.status ?? 0;
+        message.tally_result = object.tally_result !== undefined && object.tally_result !== null ? TallyResult.fromPartial(object.tally_result) : undefined;
+        return message;
+    },
+    fromAmino(object) {
+        return {
+            proposal_id: BigInt(object.proposal_id),
+            status: isSet(object.status) ? proposalStatusFromJSON(object.status) : -1,
+            tally_result: object?.tally_result ? TallyResult.fromAmino(object.tally_result) : undefined
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.proposal_id = message.proposal_id ? message.proposal_id.toString() : undefined;
+        obj.status = message.status;
+        obj.tally_result = message.tally_result ? TallyResult.toAmino(message.tally_result) : undefined;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return EventProposalPruned.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/EventProposalPruned",
+            value: EventProposalPruned.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return EventProposalPruned.decode(message.value);
+    },
+    toProto(message) {
+        return EventProposalPruned.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.group.v1.EventProposalPruned",
+            value: EventProposalPruned.encode(message).finish()
         };
     }
 };

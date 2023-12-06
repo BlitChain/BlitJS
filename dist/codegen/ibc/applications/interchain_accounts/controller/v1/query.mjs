@@ -58,18 +58,6 @@ export const QueryInterchainAccountRequest = {
         message.connection_id = object.connection_id ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            owner: object?.owner,
-            connection_id: object?.connection_id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.owner = message.owner;
-        obj.connection_id = message.connection_id;
-        return obj;
-    },
     fromAmino(object) {
         return {
             owner: object.owner,
@@ -149,16 +137,6 @@ export const QueryInterchainAccountResponse = {
         message.address = object.address ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            address: object?.address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        return obj;
-    },
     fromAmino(object) {
         return {
             address: object.address
@@ -223,13 +201,6 @@ export const QueryParamsRequest = {
     fromPartial(_) {
         const message = createBaseQueryParamsRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -304,16 +275,6 @@ export const QueryParamsResponse = {
         const message = createBaseQueryParamsResponse();
         message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            params: object.params ? Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {

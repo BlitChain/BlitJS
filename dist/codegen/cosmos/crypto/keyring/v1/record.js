@@ -102,26 +102,6 @@ exports.Record = {
         message.offline = object.offline !== undefined && object.offline !== null ? exports.Record_Offline.fromPartial(object.offline) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            pub_key: object.pub_key ? any_1.Any.fromSDK(object.pub_key) : undefined,
-            local: object.local ? exports.Record_Local.fromSDK(object.local) : undefined,
-            ledger: object.ledger ? exports.Record_Ledger.fromSDK(object.ledger) : undefined,
-            multi: object.multi ? exports.Record_Multi.fromSDK(object.multi) : undefined,
-            offline: object.offline ? exports.Record_Offline.fromSDK(object.offline) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        message.pub_key !== undefined && (obj.pub_key = message.pub_key ? any_1.Any.toSDK(message.pub_key) : undefined);
-        message.local !== undefined && (obj.local = message.local ? exports.Record_Local.toSDK(message.local) : undefined);
-        message.ledger !== undefined && (obj.ledger = message.ledger ? exports.Record_Ledger.toSDK(message.ledger) : undefined);
-        message.multi !== undefined && (obj.multi = message.multi ? exports.Record_Multi.toSDK(message.multi) : undefined);
-        message.offline !== undefined && (obj.offline = message.offline ? exports.Record_Offline.toSDK(message.offline) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             name: object.name,
@@ -166,8 +146,7 @@ exports.Record = {
 };
 function createBaseRecord_Local() {
     return {
-        priv_key: undefined,
-        priv_key_type: ""
+        priv_key: undefined
     };
 }
 exports.Record_Local = {
@@ -175,9 +154,6 @@ exports.Record_Local = {
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.priv_key !== undefined) {
             any_1.Any.encode(message.priv_key, writer.uint32(10).fork()).ldelim();
-        }
-        if (message.priv_key_type !== "") {
-            writer.uint32(18).string(message.priv_key_type);
         }
         return writer;
     },
@@ -191,9 +167,6 @@ exports.Record_Local = {
                 case 1:
                     message.priv_key = any_1.Any.decode(reader, reader.uint32());
                     break;
-                case 2:
-                    message.priv_key_type = reader.string();
-                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -203,44 +176,27 @@ exports.Record_Local = {
     },
     fromJSON(object) {
         return {
-            priv_key: (0, helpers_1.isSet)(object.priv_key) ? any_1.Any.fromJSON(object.priv_key) : undefined,
-            priv_key_type: (0, helpers_1.isSet)(object.priv_key_type) ? String(object.priv_key_type) : ""
+            priv_key: (0, helpers_1.isSet)(object.priv_key) ? any_1.Any.fromJSON(object.priv_key) : undefined
         };
     },
     toJSON(message) {
         const obj = {};
         message.priv_key !== undefined && (obj.priv_key = message.priv_key ? any_1.Any.toJSON(message.priv_key) : undefined);
-        message.priv_key_type !== undefined && (obj.priv_key_type = message.priv_key_type);
         return obj;
     },
     fromPartial(object) {
         const message = createBaseRecord_Local();
         message.priv_key = object.priv_key !== undefined && object.priv_key !== null ? any_1.Any.fromPartial(object.priv_key) : undefined;
-        message.priv_key_type = object.priv_key_type ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            priv_key: object.priv_key ? any_1.Any.fromSDK(object.priv_key) : undefined,
-            priv_key_type: object?.priv_key_type
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.priv_key !== undefined && (obj.priv_key = message.priv_key ? any_1.Any.toSDK(message.priv_key) : undefined);
-        obj.priv_key_type = message.priv_key_type;
-        return obj;
     },
     fromAmino(object) {
         return {
-            priv_key: object?.priv_key ? any_1.Any.fromAmino(object.priv_key) : undefined,
-            priv_key_type: object.priv_key_type
+            priv_key: object?.priv_key ? any_1.Any.fromAmino(object.priv_key) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
         obj.priv_key = message.priv_key ? any_1.Any.toAmino(message.priv_key) : undefined;
-        obj.priv_key_type = message.priv_key_type;
         return obj;
     },
     fromAminoMsg(object) {
@@ -310,16 +266,6 @@ exports.Record_Ledger = {
         message.path = object.path !== undefined && object.path !== null ? hd_1.BIP44Params.fromPartial(object.path) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            path: object.path ? hd_1.BIP44Params.fromSDK(object.path) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.path !== undefined && (obj.path = message.path ? hd_1.BIP44Params.toSDK(message.path) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             path: object?.path ? hd_1.BIP44Params.fromAmino(object.path) : undefined
@@ -385,13 +331,6 @@ exports.Record_Multi = {
         const message = createBaseRecord_Multi();
         return message;
     },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
-    },
     fromAmino(_) {
         return {};
     },
@@ -453,13 +392,6 @@ exports.Record_Offline = {
     fromPartial(_) {
         const message = createBaseRecord_Offline();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};

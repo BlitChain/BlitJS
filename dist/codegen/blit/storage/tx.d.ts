@@ -196,8 +196,6 @@ export declare const MsgUpdateParams: {
     fromJSON(object: any): MsgUpdateParams;
     toJSON(message: MsgUpdateParams): unknown;
     fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams;
-    fromSDK(object: MsgUpdateParamsSDKType): MsgUpdateParams;
-    toSDK(message: MsgUpdateParams): MsgUpdateParamsSDKType;
     fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams;
     toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino;
     fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams;
@@ -213,8 +211,6 @@ export declare const MsgUpdateParamsResponse: {
     fromJSON(_: any): MsgUpdateParamsResponse;
     toJSON(_: MsgUpdateParamsResponse): unknown;
     fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse;
-    fromSDK(_: MsgUpdateParamsResponseSDKType): MsgUpdateParamsResponse;
-    toSDK(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseSDKType;
     fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse;
     toAmino(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseAmino;
     fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse;
@@ -229,8 +225,6 @@ export declare const MsgCreateStorage: {
     fromJSON(object: any): MsgCreateStorage;
     toJSON(message: MsgCreateStorage): unknown;
     fromPartial(object: Partial<MsgCreateStorage>): MsgCreateStorage;
-    fromSDK(object: MsgCreateStorageSDKType): MsgCreateStorage;
-    toSDK(message: MsgCreateStorage): MsgCreateStorageSDKType;
     fromAmino(object: MsgCreateStorageAmino): MsgCreateStorage;
     toAmino(message: MsgCreateStorage): MsgCreateStorageAmino;
     fromAminoMsg(object: MsgCreateStorageAminoMsg): MsgCreateStorage;
@@ -245,8 +239,6 @@ export declare const MsgCreateStorageResponse: {
     fromJSON(_: any): MsgCreateStorageResponse;
     toJSON(_: MsgCreateStorageResponse): unknown;
     fromPartial(_: Partial<MsgCreateStorageResponse>): MsgCreateStorageResponse;
-    fromSDK(_: MsgCreateStorageResponseSDKType): MsgCreateStorageResponse;
-    toSDK(_: MsgCreateStorageResponse): MsgCreateStorageResponseSDKType;
     fromAmino(_: MsgCreateStorageResponseAmino): MsgCreateStorageResponse;
     toAmino(_: MsgCreateStorageResponse): MsgCreateStorageResponseAmino;
     fromAminoMsg(object: MsgCreateStorageResponseAminoMsg): MsgCreateStorageResponse;
@@ -261,8 +253,6 @@ export declare const MsgUpdateStorage: {
     fromJSON(object: any): MsgUpdateStorage;
     toJSON(message: MsgUpdateStorage): unknown;
     fromPartial(object: Partial<MsgUpdateStorage>): MsgUpdateStorage;
-    fromSDK(object: MsgUpdateStorageSDKType): MsgUpdateStorage;
-    toSDK(message: MsgUpdateStorage): MsgUpdateStorageSDKType;
     fromAmino(object: MsgUpdateStorageAmino): MsgUpdateStorage;
     toAmino(message: MsgUpdateStorage): MsgUpdateStorageAmino;
     fromAminoMsg(object: MsgUpdateStorageAminoMsg): MsgUpdateStorage;
@@ -277,8 +267,6 @@ export declare const MsgUpdateStorageResponse: {
     fromJSON(_: any): MsgUpdateStorageResponse;
     toJSON(_: MsgUpdateStorageResponse): unknown;
     fromPartial(_: Partial<MsgUpdateStorageResponse>): MsgUpdateStorageResponse;
-    fromSDK(_: MsgUpdateStorageResponseSDKType): MsgUpdateStorageResponse;
-    toSDK(_: MsgUpdateStorageResponse): MsgUpdateStorageResponseSDKType;
     fromAmino(_: MsgUpdateStorageResponseAmino): MsgUpdateStorageResponse;
     toAmino(_: MsgUpdateStorageResponse): MsgUpdateStorageResponseAmino;
     fromAminoMsg(object: MsgUpdateStorageResponseAminoMsg): MsgUpdateStorageResponse;
@@ -293,8 +281,6 @@ export declare const MsgDeleteStorage: {
     fromJSON(object: any): MsgDeleteStorage;
     toJSON(message: MsgDeleteStorage): unknown;
     fromPartial(object: Partial<MsgDeleteStorage>): MsgDeleteStorage;
-    fromSDK(object: MsgDeleteStorageSDKType): MsgDeleteStorage;
-    toSDK(message: MsgDeleteStorage): MsgDeleteStorageSDKType;
     fromAmino(object: MsgDeleteStorageAmino): MsgDeleteStorage;
     toAmino(message: MsgDeleteStorage): MsgDeleteStorageAmino;
     fromAminoMsg(object: MsgDeleteStorageAminoMsg): MsgDeleteStorage;
@@ -309,8 +295,6 @@ export declare const MsgDeleteStorageResponse: {
     fromJSON(_: any): MsgDeleteStorageResponse;
     toJSON(_: MsgDeleteStorageResponse): unknown;
     fromPartial(_: Partial<MsgDeleteStorageResponse>): MsgDeleteStorageResponse;
-    fromSDK(_: MsgDeleteStorageResponseSDKType): MsgDeleteStorageResponse;
-    toSDK(_: MsgDeleteStorageResponse): MsgDeleteStorageResponseSDKType;
     fromAmino(_: MsgDeleteStorageResponseAmino): MsgDeleteStorageResponse;
     toAmino(_: MsgDeleteStorageResponse): MsgDeleteStorageResponseAmino;
     fromAminoMsg(object: MsgDeleteStorageResponseAminoMsg): MsgDeleteStorageResponse;

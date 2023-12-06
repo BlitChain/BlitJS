@@ -453,8 +453,6 @@ export declare const Channel: {
     fromJSON(object: any): Channel;
     toJSON(message: Channel): unknown;
     fromPartial(object: Partial<Channel>): Channel;
-    fromSDK(object: ChannelSDKType): Channel;
-    toSDK(message: Channel): ChannelSDKType;
     fromAmino(object: ChannelAmino): Channel;
     toAmino(message: Channel): ChannelAmino;
     fromAminoMsg(object: ChannelAminoMsg): Channel;
@@ -470,8 +468,6 @@ export declare const IdentifiedChannel: {
     fromJSON(object: any): IdentifiedChannel;
     toJSON(message: IdentifiedChannel): unknown;
     fromPartial(object: Partial<IdentifiedChannel>): IdentifiedChannel;
-    fromSDK(object: IdentifiedChannelSDKType): IdentifiedChannel;
-    toSDK(message: IdentifiedChannel): IdentifiedChannelSDKType;
     fromAmino(object: IdentifiedChannelAmino): IdentifiedChannel;
     toAmino(message: IdentifiedChannel): IdentifiedChannelAmino;
     fromAminoMsg(object: IdentifiedChannelAminoMsg): IdentifiedChannel;
@@ -487,8 +483,6 @@ export declare const Counterparty: {
     fromJSON(object: any): Counterparty;
     toJSON(message: Counterparty): unknown;
     fromPartial(object: Partial<Counterparty>): Counterparty;
-    fromSDK(object: CounterpartySDKType): Counterparty;
-    toSDK(message: Counterparty): CounterpartySDKType;
     fromAmino(object: CounterpartyAmino): Counterparty;
     toAmino(message: Counterparty): CounterpartyAmino;
     fromAminoMsg(object: CounterpartyAminoMsg): Counterparty;
@@ -504,8 +498,6 @@ export declare const Packet: {
     fromJSON(object: any): Packet;
     toJSON(message: Packet): unknown;
     fromPartial(object: Partial<Packet>): Packet;
-    fromSDK(object: PacketSDKType): Packet;
-    toSDK(message: Packet): PacketSDKType;
     fromAmino(object: PacketAmino): Packet;
     toAmino(message: Packet): PacketAmino;
     fromAminoMsg(object: PacketAminoMsg): Packet;
@@ -521,8 +513,6 @@ export declare const PacketState: {
     fromJSON(object: any): PacketState;
     toJSON(message: PacketState): unknown;
     fromPartial(object: Partial<PacketState>): PacketState;
-    fromSDK(object: PacketStateSDKType): PacketState;
-    toSDK(message: PacketState): PacketStateSDKType;
     fromAmino(object: PacketStateAmino): PacketState;
     toAmino(message: PacketState): PacketStateAmino;
     fromAminoMsg(object: PacketStateAminoMsg): PacketState;
@@ -538,8 +528,6 @@ export declare const PacketId: {
     fromJSON(object: any): PacketId;
     toJSON(message: PacketId): unknown;
     fromPartial(object: Partial<PacketId>): PacketId;
-    fromSDK(object: PacketIdSDKType): PacketId;
-    toSDK(message: PacketId): PacketIdSDKType;
     fromAmino(object: PacketIdAmino): PacketId;
     toAmino(message: PacketId): PacketIdAmino;
     fromAminoMsg(object: PacketIdAminoMsg): PacketId;
@@ -555,8 +543,6 @@ export declare const Acknowledgement: {
     fromJSON(object: any): Acknowledgement;
     toJSON(message: Acknowledgement): unknown;
     fromPartial(object: Partial<Acknowledgement>): Acknowledgement;
-    fromSDK(object: AcknowledgementSDKType): Acknowledgement;
-    toSDK(message: Acknowledgement): AcknowledgementSDKType;
     fromAmino(object: AcknowledgementAmino): Acknowledgement;
     toAmino(message: Acknowledgement): AcknowledgementAmino;
     fromAminoMsg(object: AcknowledgementAminoMsg): Acknowledgement;
@@ -572,8 +558,6 @@ export declare const Timeout: {
     fromJSON(object: any): Timeout;
     toJSON(message: Timeout): unknown;
     fromPartial(object: Partial<Timeout>): Timeout;
-    fromSDK(object: TimeoutSDKType): Timeout;
-    toSDK(message: Timeout): TimeoutSDKType;
     fromAmino(object: TimeoutAmino): Timeout;
     toAmino(message: Timeout): TimeoutAmino;
     fromAminoMsg(object: TimeoutAminoMsg): Timeout;

@@ -211,18 +211,6 @@ export const MsgUpdateParams = {
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
-  fromSDK(object: MsgUpdateParamsSDKType): MsgUpdateParams {
-    return {
-      authority: object?.authority,
-      params: object.params ? Params.fromSDK(object.params) : undefined
-    };
-  },
-  toSDK(message: MsgUpdateParams): MsgUpdateParamsSDKType {
-    const obj: any = {};
-    obj.authority = message.authority;
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    return obj;
-  },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
     return {
       authority: object.authority,
@@ -289,13 +277,6 @@ export const MsgUpdateParamsResponse = {
   fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse {
     const message = createBaseMsgUpdateParamsResponse();
     return message;
-  },
-  fromSDK(_: MsgUpdateParamsResponseSDKType): MsgUpdateParamsResponse {
-    return {};
-  },
-  toSDK(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse {
     return {};
@@ -399,26 +380,6 @@ export const MsgCreateScript = {
     message.grantee = object.grantee ?? "";
     return message;
   },
-  fromSDK(object: MsgCreateScriptSDKType): MsgCreateScript {
-    return {
-      creator: object?.creator,
-      code: object?.code,
-      msg_type_permissions: Array.isArray(object?.msg_type_permissions) ? object.msg_type_permissions.map((e: any) => e) : [],
-      grantee: object?.grantee
-    };
-  },
-  toSDK(message: MsgCreateScript): MsgCreateScriptSDKType {
-    const obj: any = {};
-    obj.creator = message.creator;
-    obj.code = message.code;
-    if (message.msg_type_permissions) {
-      obj.msg_type_permissions = message.msg_type_permissions.map(e => e);
-    } else {
-      obj.msg_type_permissions = [];
-    }
-    obj.grantee = message.grantee;
-    return obj;
-  },
   fromAmino(object: MsgCreateScriptAmino): MsgCreateScript {
     return {
       creator: object.creator,
@@ -499,16 +460,6 @@ export const MsgCreateScriptResponse = {
     const message = createBaseMsgCreateScriptResponse();
     message.address = object.address ?? "";
     return message;
-  },
-  fromSDK(object: MsgCreateScriptResponseSDKType): MsgCreateScriptResponse {
-    return {
-      address: object?.address
-    };
-  },
-  toSDK(message: MsgCreateScriptResponse): MsgCreateScriptResponseSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    return obj;
   },
   fromAmino(object: MsgCreateScriptResponseAmino): MsgCreateScriptResponse {
     return {
@@ -601,20 +552,6 @@ export const MsgUpdateScript = {
     message.grantee = object.grantee ?? "";
     return message;
   },
-  fromSDK(object: MsgUpdateScriptSDKType): MsgUpdateScript {
-    return {
-      address: object?.address,
-      code: object?.code,
-      grantee: object?.grantee
-    };
-  },
-  toSDK(message: MsgUpdateScript): MsgUpdateScriptSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    obj.code = message.code;
-    obj.grantee = message.grantee;
-    return obj;
-  },
   fromAmino(object: MsgUpdateScriptAmino): MsgUpdateScript {
     return {
       address: object.address,
@@ -689,16 +626,6 @@ export const MsgUpdateScriptResponse = {
     const message = createBaseMsgUpdateScriptResponse();
     message.version = object.version !== undefined && object.version !== null ? BigInt(object.version.toString()) : BigInt(0);
     return message;
-  },
-  fromSDK(object: MsgUpdateScriptResponseSDKType): MsgUpdateScriptResponse {
-    return {
-      version: object?.version
-    };
-  },
-  toSDK(message: MsgUpdateScriptResponse): MsgUpdateScriptResponseSDKType {
-    const obj: any = {};
-    obj.version = message.version;
-    return obj;
   },
   fromAmino(object: MsgUpdateScriptResponseAmino): MsgUpdateScriptResponse {
     return {

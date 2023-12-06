@@ -267,18 +267,6 @@ export const Duration = {
     message.nanos = object.nanos ?? 0;
     return message;
   },
-  fromSDK(object: DurationSDKType): Duration {
-    return {
-      seconds: object?.seconds,
-      nanos: object?.nanos
-    };
-  },
-  toSDK(message: Duration): DurationSDKType {
-    const obj: any = {};
-    obj.seconds = message.seconds;
-    obj.nanos = message.nanos;
-    return obj;
-  },
   fromAmino(object: DurationAmino): Duration {
     const value = BigInt(object);
     return {

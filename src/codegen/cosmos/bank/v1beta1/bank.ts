@@ -5,6 +5,14 @@ import { isSet } from "../../../helpers";
 export const protobufPackage = "cosmos.bank.v1beta1";
 /** Params defines the parameters for the bank module. */
 export interface Params {
+  /**
+   * Deprecated: Use of SendEnabled in params is deprecated.
+   * For genesis, use the newly added send_enabled field in the genesis object.
+   * Storage, lookup, and manipulation of this information is now in the keeper.
+   * 
+   * As of cosmos-sdk 0.47, this only exists for backwards compatibility of genesis files.
+   */
+  /** @deprecated */
   send_enabled: SendEnabled[];
   default_send_enabled: boolean;
 }
@@ -14,15 +22,24 @@ export interface ParamsProtoMsg {
 }
 /** Params defines the parameters for the bank module. */
 export interface ParamsAmino {
+  /**
+   * Deprecated: Use of SendEnabled in params is deprecated.
+   * For genesis, use the newly added send_enabled field in the genesis object.
+   * Storage, lookup, and manipulation of this information is now in the keeper.
+   * 
+   * As of cosmos-sdk 0.47, this only exists for backwards compatibility of genesis files.
+   */
+  /** @deprecated */
   send_enabled: SendEnabledAmino[];
   default_send_enabled: boolean;
 }
 export interface ParamsAminoMsg {
-  type: "cosmos-sdk/Params";
+  type: "cosmos-sdk/x/bank/Params";
   value: ParamsAmino;
 }
 /** Params defines the parameters for the bank module. */
 export interface ParamsSDKType {
+  /** @deprecated */
   send_enabled: SendEnabledSDKType[];
   default_send_enabled: boolean;
 }
@@ -359,22 +376,6 @@ export const Params = {
     message.default_send_enabled = object.default_send_enabled ?? false;
     return message;
   },
-  fromSDK(object: ParamsSDKType): Params {
-    return {
-      send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e: any) => SendEnabled.fromSDK(e)) : [],
-      default_send_enabled: object?.default_send_enabled
-    };
-  },
-  toSDK(message: Params): ParamsSDKType {
-    const obj: any = {};
-    if (message.send_enabled) {
-      obj.send_enabled = message.send_enabled.map(e => e ? SendEnabled.toSDK(e) : undefined);
-    } else {
-      obj.send_enabled = [];
-    }
-    obj.default_send_enabled = message.default_send_enabled;
-    return obj;
-  },
   fromAmino(object: ParamsAmino): Params {
     return {
       send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e: any) => SendEnabled.fromAmino(e)) : [],
@@ -396,7 +397,7 @@ export const Params = {
   },
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
-      type: "cosmos-sdk/Params",
+      type: "cosmos-sdk/x/bank/Params",
       value: Params.toAmino(message)
     };
   },
@@ -467,18 +468,6 @@ export const SendEnabled = {
     message.denom = object.denom ?? "";
     message.enabled = object.enabled ?? false;
     return message;
-  },
-  fromSDK(object: SendEnabledSDKType): SendEnabled {
-    return {
-      denom: object?.denom,
-      enabled: object?.enabled
-    };
-  },
-  toSDK(message: SendEnabled): SendEnabledSDKType {
-    const obj: any = {};
-    obj.denom = message.denom;
-    obj.enabled = message.enabled;
-    return obj;
   },
   fromAmino(object: SendEnabledAmino): SendEnabled {
     return {
@@ -572,22 +561,6 @@ export const Input = {
     message.address = object.address ?? "";
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
-  },
-  fromSDK(object: InputSDKType): Input {
-    return {
-      address: object?.address,
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: Input): InputSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
-    return obj;
   },
   fromAmino(object: InputAmino): Input {
     return {
@@ -686,22 +659,6 @@ export const Output = {
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
-  fromSDK(object: OutputSDKType): Output {
-    return {
-      address: object?.address,
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: Output): OutputSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
-    return obj;
-  },
   fromAmino(object: OutputAmino): Output {
     return {
       address: object.address,
@@ -789,20 +746,6 @@ export const Supply = {
     const message = createBaseSupply();
     message.total = object.total?.map(e => Coin.fromPartial(e)) || [];
     return message;
-  },
-  fromSDK(object: SupplySDKType): Supply {
-    return {
-      total: Array.isArray(object?.total) ? object.total.map((e: any) => Coin.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: Supply): SupplySDKType {
-    const obj: any = {};
-    if (message.total) {
-      obj.total = message.total.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.total = [];
-    }
-    return obj;
   },
   fromAmino(object: SupplyAmino): Supply {
     return {
@@ -908,24 +851,6 @@ export const DenomUnit = {
     message.exponent = object.exponent ?? 0;
     message.aliases = object.aliases?.map(e => e) || [];
     return message;
-  },
-  fromSDK(object: DenomUnitSDKType): DenomUnit {
-    return {
-      denom: object?.denom,
-      exponent: object?.exponent,
-      aliases: Array.isArray(object?.aliases) ? object.aliases.map((e: any) => e) : []
-    };
-  },
-  toSDK(message: DenomUnit): DenomUnitSDKType {
-    const obj: any = {};
-    obj.denom = message.denom;
-    obj.exponent = message.exponent;
-    if (message.aliases) {
-      obj.aliases = message.aliases.map(e => e);
-    } else {
-      obj.aliases = [];
-    }
-    return obj;
   },
   fromAmino(object: DenomUnitAmino): DenomUnit {
     return {
@@ -1085,34 +1010,6 @@ export const Metadata = {
     message.uri = object.uri ?? "";
     message.uri_hash = object.uri_hash ?? "";
     return message;
-  },
-  fromSDK(object: MetadataSDKType): Metadata {
-    return {
-      description: object?.description,
-      denom_units: Array.isArray(object?.denom_units) ? object.denom_units.map((e: any) => DenomUnit.fromSDK(e)) : [],
-      base: object?.base,
-      display: object?.display,
-      name: object?.name,
-      symbol: object?.symbol,
-      uri: object?.uri,
-      uri_hash: object?.uri_hash
-    };
-  },
-  toSDK(message: Metadata): MetadataSDKType {
-    const obj: any = {};
-    obj.description = message.description;
-    if (message.denom_units) {
-      obj.denom_units = message.denom_units.map(e => e ? DenomUnit.toSDK(e) : undefined);
-    } else {
-      obj.denom_units = [];
-    }
-    obj.base = message.base;
-    obj.display = message.display;
-    obj.name = message.name;
-    obj.symbol = message.symbol;
-    obj.uri = message.uri;
-    obj.uri_hash = message.uri_hash;
-    return obj;
   },
   fromAmino(object: MetadataAmino): Metadata {
     return {

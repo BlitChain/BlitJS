@@ -1110,8 +1110,6 @@ export declare const QueryChannelRequest: {
     fromJSON(object: any): QueryChannelRequest;
     toJSON(message: QueryChannelRequest): unknown;
     fromPartial(object: Partial<QueryChannelRequest>): QueryChannelRequest;
-    fromSDK(object: QueryChannelRequestSDKType): QueryChannelRequest;
-    toSDK(message: QueryChannelRequest): QueryChannelRequestSDKType;
     fromAmino(object: QueryChannelRequestAmino): QueryChannelRequest;
     toAmino(message: QueryChannelRequest): QueryChannelRequestAmino;
     fromAminoMsg(object: QueryChannelRequestAminoMsg): QueryChannelRequest;
@@ -1127,8 +1125,6 @@ export declare const QueryChannelResponse: {
     fromJSON(object: any): QueryChannelResponse;
     toJSON(message: QueryChannelResponse): unknown;
     fromPartial(object: Partial<QueryChannelResponse>): QueryChannelResponse;
-    fromSDK(object: QueryChannelResponseSDKType): QueryChannelResponse;
-    toSDK(message: QueryChannelResponse): QueryChannelResponseSDKType;
     fromAmino(object: QueryChannelResponseAmino): QueryChannelResponse;
     toAmino(message: QueryChannelResponse): QueryChannelResponseAmino;
     fromAminoMsg(object: QueryChannelResponseAminoMsg): QueryChannelResponse;
@@ -1144,8 +1140,6 @@ export declare const QueryChannelsRequest: {
     fromJSON(object: any): QueryChannelsRequest;
     toJSON(message: QueryChannelsRequest): unknown;
     fromPartial(object: Partial<QueryChannelsRequest>): QueryChannelsRequest;
-    fromSDK(object: QueryChannelsRequestSDKType): QueryChannelsRequest;
-    toSDK(message: QueryChannelsRequest): QueryChannelsRequestSDKType;
     fromAmino(object: QueryChannelsRequestAmino): QueryChannelsRequest;
     toAmino(message: QueryChannelsRequest): QueryChannelsRequestAmino;
     fromAminoMsg(object: QueryChannelsRequestAminoMsg): QueryChannelsRequest;
@@ -1161,8 +1155,6 @@ export declare const QueryChannelsResponse: {
     fromJSON(object: any): QueryChannelsResponse;
     toJSON(message: QueryChannelsResponse): unknown;
     fromPartial(object: Partial<QueryChannelsResponse>): QueryChannelsResponse;
-    fromSDK(object: QueryChannelsResponseSDKType): QueryChannelsResponse;
-    toSDK(message: QueryChannelsResponse): QueryChannelsResponseSDKType;
     fromAmino(object: QueryChannelsResponseAmino): QueryChannelsResponse;
     toAmino(message: QueryChannelsResponse): QueryChannelsResponseAmino;
     fromAminoMsg(object: QueryChannelsResponseAminoMsg): QueryChannelsResponse;
@@ -1178,8 +1170,6 @@ export declare const QueryConnectionChannelsRequest: {
     fromJSON(object: any): QueryConnectionChannelsRequest;
     toJSON(message: QueryConnectionChannelsRequest): unknown;
     fromPartial(object: Partial<QueryConnectionChannelsRequest>): QueryConnectionChannelsRequest;
-    fromSDK(object: QueryConnectionChannelsRequestSDKType): QueryConnectionChannelsRequest;
-    toSDK(message: QueryConnectionChannelsRequest): QueryConnectionChannelsRequestSDKType;
     fromAmino(object: QueryConnectionChannelsRequestAmino): QueryConnectionChannelsRequest;
     toAmino(message: QueryConnectionChannelsRequest): QueryConnectionChannelsRequestAmino;
     fromAminoMsg(object: QueryConnectionChannelsRequestAminoMsg): QueryConnectionChannelsRequest;
@@ -1195,8 +1185,6 @@ export declare const QueryConnectionChannelsResponse: {
     fromJSON(object: any): QueryConnectionChannelsResponse;
     toJSON(message: QueryConnectionChannelsResponse): unknown;
     fromPartial(object: Partial<QueryConnectionChannelsResponse>): QueryConnectionChannelsResponse;
-    fromSDK(object: QueryConnectionChannelsResponseSDKType): QueryConnectionChannelsResponse;
-    toSDK(message: QueryConnectionChannelsResponse): QueryConnectionChannelsResponseSDKType;
     fromAmino(object: QueryConnectionChannelsResponseAmino): QueryConnectionChannelsResponse;
     toAmino(message: QueryConnectionChannelsResponse): QueryConnectionChannelsResponseAmino;
     fromAminoMsg(object: QueryConnectionChannelsResponseAminoMsg): QueryConnectionChannelsResponse;
@@ -1212,8 +1200,6 @@ export declare const QueryChannelClientStateRequest: {
     fromJSON(object: any): QueryChannelClientStateRequest;
     toJSON(message: QueryChannelClientStateRequest): unknown;
     fromPartial(object: Partial<QueryChannelClientStateRequest>): QueryChannelClientStateRequest;
-    fromSDK(object: QueryChannelClientStateRequestSDKType): QueryChannelClientStateRequest;
-    toSDK(message: QueryChannelClientStateRequest): QueryChannelClientStateRequestSDKType;
     fromAmino(object: QueryChannelClientStateRequestAmino): QueryChannelClientStateRequest;
     toAmino(message: QueryChannelClientStateRequest): QueryChannelClientStateRequestAmino;
     fromAminoMsg(object: QueryChannelClientStateRequestAminoMsg): QueryChannelClientStateRequest;
@@ -1229,8 +1215,6 @@ export declare const QueryChannelClientStateResponse: {
     fromJSON(object: any): QueryChannelClientStateResponse;
     toJSON(message: QueryChannelClientStateResponse): unknown;
     fromPartial(object: Partial<QueryChannelClientStateResponse>): QueryChannelClientStateResponse;
-    fromSDK(object: QueryChannelClientStateResponseSDKType): QueryChannelClientStateResponse;
-    toSDK(message: QueryChannelClientStateResponse): QueryChannelClientStateResponseSDKType;
     fromAmino(object: QueryChannelClientStateResponseAmino): QueryChannelClientStateResponse;
     toAmino(message: QueryChannelClientStateResponse): QueryChannelClientStateResponseAmino;
     fromAminoMsg(object: QueryChannelClientStateResponseAminoMsg): QueryChannelClientStateResponse;
@@ -1246,8 +1230,6 @@ export declare const QueryChannelConsensusStateRequest: {
     fromJSON(object: any): QueryChannelConsensusStateRequest;
     toJSON(message: QueryChannelConsensusStateRequest): unknown;
     fromPartial(object: Partial<QueryChannelConsensusStateRequest>): QueryChannelConsensusStateRequest;
-    fromSDK(object: QueryChannelConsensusStateRequestSDKType): QueryChannelConsensusStateRequest;
-    toSDK(message: QueryChannelConsensusStateRequest): QueryChannelConsensusStateRequestSDKType;
     fromAmino(object: QueryChannelConsensusStateRequestAmino): QueryChannelConsensusStateRequest;
     toAmino(message: QueryChannelConsensusStateRequest): QueryChannelConsensusStateRequestAmino;
     fromAminoMsg(object: QueryChannelConsensusStateRequestAminoMsg): QueryChannelConsensusStateRequest;
@@ -1263,8 +1245,6 @@ export declare const QueryChannelConsensusStateResponse: {
     fromJSON(object: any): QueryChannelConsensusStateResponse;
     toJSON(message: QueryChannelConsensusStateResponse): unknown;
     fromPartial(object: Partial<QueryChannelConsensusStateResponse>): QueryChannelConsensusStateResponse;
-    fromSDK(object: QueryChannelConsensusStateResponseSDKType): QueryChannelConsensusStateResponse;
-    toSDK(message: QueryChannelConsensusStateResponse): QueryChannelConsensusStateResponseSDKType;
     fromAmino(object: QueryChannelConsensusStateResponseAmino): QueryChannelConsensusStateResponse;
     toAmino(message: QueryChannelConsensusStateResponse): QueryChannelConsensusStateResponseAmino;
     fromAminoMsg(object: QueryChannelConsensusStateResponseAminoMsg): QueryChannelConsensusStateResponse;
@@ -1280,8 +1260,6 @@ export declare const QueryPacketCommitmentRequest: {
     fromJSON(object: any): QueryPacketCommitmentRequest;
     toJSON(message: QueryPacketCommitmentRequest): unknown;
     fromPartial(object: Partial<QueryPacketCommitmentRequest>): QueryPacketCommitmentRequest;
-    fromSDK(object: QueryPacketCommitmentRequestSDKType): QueryPacketCommitmentRequest;
-    toSDK(message: QueryPacketCommitmentRequest): QueryPacketCommitmentRequestSDKType;
     fromAmino(object: QueryPacketCommitmentRequestAmino): QueryPacketCommitmentRequest;
     toAmino(message: QueryPacketCommitmentRequest): QueryPacketCommitmentRequestAmino;
     fromAminoMsg(object: QueryPacketCommitmentRequestAminoMsg): QueryPacketCommitmentRequest;
@@ -1297,8 +1275,6 @@ export declare const QueryPacketCommitmentResponse: {
     fromJSON(object: any): QueryPacketCommitmentResponse;
     toJSON(message: QueryPacketCommitmentResponse): unknown;
     fromPartial(object: Partial<QueryPacketCommitmentResponse>): QueryPacketCommitmentResponse;
-    fromSDK(object: QueryPacketCommitmentResponseSDKType): QueryPacketCommitmentResponse;
-    toSDK(message: QueryPacketCommitmentResponse): QueryPacketCommitmentResponseSDKType;
     fromAmino(object: QueryPacketCommitmentResponseAmino): QueryPacketCommitmentResponse;
     toAmino(message: QueryPacketCommitmentResponse): QueryPacketCommitmentResponseAmino;
     fromAminoMsg(object: QueryPacketCommitmentResponseAminoMsg): QueryPacketCommitmentResponse;
@@ -1314,8 +1290,6 @@ export declare const QueryPacketCommitmentsRequest: {
     fromJSON(object: any): QueryPacketCommitmentsRequest;
     toJSON(message: QueryPacketCommitmentsRequest): unknown;
     fromPartial(object: Partial<QueryPacketCommitmentsRequest>): QueryPacketCommitmentsRequest;
-    fromSDK(object: QueryPacketCommitmentsRequestSDKType): QueryPacketCommitmentsRequest;
-    toSDK(message: QueryPacketCommitmentsRequest): QueryPacketCommitmentsRequestSDKType;
     fromAmino(object: QueryPacketCommitmentsRequestAmino): QueryPacketCommitmentsRequest;
     toAmino(message: QueryPacketCommitmentsRequest): QueryPacketCommitmentsRequestAmino;
     fromAminoMsg(object: QueryPacketCommitmentsRequestAminoMsg): QueryPacketCommitmentsRequest;
@@ -1331,8 +1305,6 @@ export declare const QueryPacketCommitmentsResponse: {
     fromJSON(object: any): QueryPacketCommitmentsResponse;
     toJSON(message: QueryPacketCommitmentsResponse): unknown;
     fromPartial(object: Partial<QueryPacketCommitmentsResponse>): QueryPacketCommitmentsResponse;
-    fromSDK(object: QueryPacketCommitmentsResponseSDKType): QueryPacketCommitmentsResponse;
-    toSDK(message: QueryPacketCommitmentsResponse): QueryPacketCommitmentsResponseSDKType;
     fromAmino(object: QueryPacketCommitmentsResponseAmino): QueryPacketCommitmentsResponse;
     toAmino(message: QueryPacketCommitmentsResponse): QueryPacketCommitmentsResponseAmino;
     fromAminoMsg(object: QueryPacketCommitmentsResponseAminoMsg): QueryPacketCommitmentsResponse;
@@ -1348,8 +1320,6 @@ export declare const QueryPacketReceiptRequest: {
     fromJSON(object: any): QueryPacketReceiptRequest;
     toJSON(message: QueryPacketReceiptRequest): unknown;
     fromPartial(object: Partial<QueryPacketReceiptRequest>): QueryPacketReceiptRequest;
-    fromSDK(object: QueryPacketReceiptRequestSDKType): QueryPacketReceiptRequest;
-    toSDK(message: QueryPacketReceiptRequest): QueryPacketReceiptRequestSDKType;
     fromAmino(object: QueryPacketReceiptRequestAmino): QueryPacketReceiptRequest;
     toAmino(message: QueryPacketReceiptRequest): QueryPacketReceiptRequestAmino;
     fromAminoMsg(object: QueryPacketReceiptRequestAminoMsg): QueryPacketReceiptRequest;
@@ -1365,8 +1335,6 @@ export declare const QueryPacketReceiptResponse: {
     fromJSON(object: any): QueryPacketReceiptResponse;
     toJSON(message: QueryPacketReceiptResponse): unknown;
     fromPartial(object: Partial<QueryPacketReceiptResponse>): QueryPacketReceiptResponse;
-    fromSDK(object: QueryPacketReceiptResponseSDKType): QueryPacketReceiptResponse;
-    toSDK(message: QueryPacketReceiptResponse): QueryPacketReceiptResponseSDKType;
     fromAmino(object: QueryPacketReceiptResponseAmino): QueryPacketReceiptResponse;
     toAmino(message: QueryPacketReceiptResponse): QueryPacketReceiptResponseAmino;
     fromAminoMsg(object: QueryPacketReceiptResponseAminoMsg): QueryPacketReceiptResponse;
@@ -1382,8 +1350,6 @@ export declare const QueryPacketAcknowledgementRequest: {
     fromJSON(object: any): QueryPacketAcknowledgementRequest;
     toJSON(message: QueryPacketAcknowledgementRequest): unknown;
     fromPartial(object: Partial<QueryPacketAcknowledgementRequest>): QueryPacketAcknowledgementRequest;
-    fromSDK(object: QueryPacketAcknowledgementRequestSDKType): QueryPacketAcknowledgementRequest;
-    toSDK(message: QueryPacketAcknowledgementRequest): QueryPacketAcknowledgementRequestSDKType;
     fromAmino(object: QueryPacketAcknowledgementRequestAmino): QueryPacketAcknowledgementRequest;
     toAmino(message: QueryPacketAcknowledgementRequest): QueryPacketAcknowledgementRequestAmino;
     fromAminoMsg(object: QueryPacketAcknowledgementRequestAminoMsg): QueryPacketAcknowledgementRequest;
@@ -1399,8 +1365,6 @@ export declare const QueryPacketAcknowledgementResponse: {
     fromJSON(object: any): QueryPacketAcknowledgementResponse;
     toJSON(message: QueryPacketAcknowledgementResponse): unknown;
     fromPartial(object: Partial<QueryPacketAcknowledgementResponse>): QueryPacketAcknowledgementResponse;
-    fromSDK(object: QueryPacketAcknowledgementResponseSDKType): QueryPacketAcknowledgementResponse;
-    toSDK(message: QueryPacketAcknowledgementResponse): QueryPacketAcknowledgementResponseSDKType;
     fromAmino(object: QueryPacketAcknowledgementResponseAmino): QueryPacketAcknowledgementResponse;
     toAmino(message: QueryPacketAcknowledgementResponse): QueryPacketAcknowledgementResponseAmino;
     fromAminoMsg(object: QueryPacketAcknowledgementResponseAminoMsg): QueryPacketAcknowledgementResponse;
@@ -1416,8 +1380,6 @@ export declare const QueryPacketAcknowledgementsRequest: {
     fromJSON(object: any): QueryPacketAcknowledgementsRequest;
     toJSON(message: QueryPacketAcknowledgementsRequest): unknown;
     fromPartial(object: Partial<QueryPacketAcknowledgementsRequest>): QueryPacketAcknowledgementsRequest;
-    fromSDK(object: QueryPacketAcknowledgementsRequestSDKType): QueryPacketAcknowledgementsRequest;
-    toSDK(message: QueryPacketAcknowledgementsRequest): QueryPacketAcknowledgementsRequestSDKType;
     fromAmino(object: QueryPacketAcknowledgementsRequestAmino): QueryPacketAcknowledgementsRequest;
     toAmino(message: QueryPacketAcknowledgementsRequest): QueryPacketAcknowledgementsRequestAmino;
     fromAminoMsg(object: QueryPacketAcknowledgementsRequestAminoMsg): QueryPacketAcknowledgementsRequest;
@@ -1433,8 +1395,6 @@ export declare const QueryPacketAcknowledgementsResponse: {
     fromJSON(object: any): QueryPacketAcknowledgementsResponse;
     toJSON(message: QueryPacketAcknowledgementsResponse): unknown;
     fromPartial(object: Partial<QueryPacketAcknowledgementsResponse>): QueryPacketAcknowledgementsResponse;
-    fromSDK(object: QueryPacketAcknowledgementsResponseSDKType): QueryPacketAcknowledgementsResponse;
-    toSDK(message: QueryPacketAcknowledgementsResponse): QueryPacketAcknowledgementsResponseSDKType;
     fromAmino(object: QueryPacketAcknowledgementsResponseAmino): QueryPacketAcknowledgementsResponse;
     toAmino(message: QueryPacketAcknowledgementsResponse): QueryPacketAcknowledgementsResponseAmino;
     fromAminoMsg(object: QueryPacketAcknowledgementsResponseAminoMsg): QueryPacketAcknowledgementsResponse;
@@ -1450,8 +1410,6 @@ export declare const QueryUnreceivedPacketsRequest: {
     fromJSON(object: any): QueryUnreceivedPacketsRequest;
     toJSON(message: QueryUnreceivedPacketsRequest): unknown;
     fromPartial(object: Partial<QueryUnreceivedPacketsRequest>): QueryUnreceivedPacketsRequest;
-    fromSDK(object: QueryUnreceivedPacketsRequestSDKType): QueryUnreceivedPacketsRequest;
-    toSDK(message: QueryUnreceivedPacketsRequest): QueryUnreceivedPacketsRequestSDKType;
     fromAmino(object: QueryUnreceivedPacketsRequestAmino): QueryUnreceivedPacketsRequest;
     toAmino(message: QueryUnreceivedPacketsRequest): QueryUnreceivedPacketsRequestAmino;
     fromAminoMsg(object: QueryUnreceivedPacketsRequestAminoMsg): QueryUnreceivedPacketsRequest;
@@ -1467,8 +1425,6 @@ export declare const QueryUnreceivedPacketsResponse: {
     fromJSON(object: any): QueryUnreceivedPacketsResponse;
     toJSON(message: QueryUnreceivedPacketsResponse): unknown;
     fromPartial(object: Partial<QueryUnreceivedPacketsResponse>): QueryUnreceivedPacketsResponse;
-    fromSDK(object: QueryUnreceivedPacketsResponseSDKType): QueryUnreceivedPacketsResponse;
-    toSDK(message: QueryUnreceivedPacketsResponse): QueryUnreceivedPacketsResponseSDKType;
     fromAmino(object: QueryUnreceivedPacketsResponseAmino): QueryUnreceivedPacketsResponse;
     toAmino(message: QueryUnreceivedPacketsResponse): QueryUnreceivedPacketsResponseAmino;
     fromAminoMsg(object: QueryUnreceivedPacketsResponseAminoMsg): QueryUnreceivedPacketsResponse;
@@ -1484,8 +1440,6 @@ export declare const QueryUnreceivedAcksRequest: {
     fromJSON(object: any): QueryUnreceivedAcksRequest;
     toJSON(message: QueryUnreceivedAcksRequest): unknown;
     fromPartial(object: Partial<QueryUnreceivedAcksRequest>): QueryUnreceivedAcksRequest;
-    fromSDK(object: QueryUnreceivedAcksRequestSDKType): QueryUnreceivedAcksRequest;
-    toSDK(message: QueryUnreceivedAcksRequest): QueryUnreceivedAcksRequestSDKType;
     fromAmino(object: QueryUnreceivedAcksRequestAmino): QueryUnreceivedAcksRequest;
     toAmino(message: QueryUnreceivedAcksRequest): QueryUnreceivedAcksRequestAmino;
     fromAminoMsg(object: QueryUnreceivedAcksRequestAminoMsg): QueryUnreceivedAcksRequest;
@@ -1501,8 +1455,6 @@ export declare const QueryUnreceivedAcksResponse: {
     fromJSON(object: any): QueryUnreceivedAcksResponse;
     toJSON(message: QueryUnreceivedAcksResponse): unknown;
     fromPartial(object: Partial<QueryUnreceivedAcksResponse>): QueryUnreceivedAcksResponse;
-    fromSDK(object: QueryUnreceivedAcksResponseSDKType): QueryUnreceivedAcksResponse;
-    toSDK(message: QueryUnreceivedAcksResponse): QueryUnreceivedAcksResponseSDKType;
     fromAmino(object: QueryUnreceivedAcksResponseAmino): QueryUnreceivedAcksResponse;
     toAmino(message: QueryUnreceivedAcksResponse): QueryUnreceivedAcksResponseAmino;
     fromAminoMsg(object: QueryUnreceivedAcksResponseAminoMsg): QueryUnreceivedAcksResponse;
@@ -1518,8 +1470,6 @@ export declare const QueryNextSequenceReceiveRequest: {
     fromJSON(object: any): QueryNextSequenceReceiveRequest;
     toJSON(message: QueryNextSequenceReceiveRequest): unknown;
     fromPartial(object: Partial<QueryNextSequenceReceiveRequest>): QueryNextSequenceReceiveRequest;
-    fromSDK(object: QueryNextSequenceReceiveRequestSDKType): QueryNextSequenceReceiveRequest;
-    toSDK(message: QueryNextSequenceReceiveRequest): QueryNextSequenceReceiveRequestSDKType;
     fromAmino(object: QueryNextSequenceReceiveRequestAmino): QueryNextSequenceReceiveRequest;
     toAmino(message: QueryNextSequenceReceiveRequest): QueryNextSequenceReceiveRequestAmino;
     fromAminoMsg(object: QueryNextSequenceReceiveRequestAminoMsg): QueryNextSequenceReceiveRequest;
@@ -1535,8 +1485,6 @@ export declare const QueryNextSequenceReceiveResponse: {
     fromJSON(object: any): QueryNextSequenceReceiveResponse;
     toJSON(message: QueryNextSequenceReceiveResponse): unknown;
     fromPartial(object: Partial<QueryNextSequenceReceiveResponse>): QueryNextSequenceReceiveResponse;
-    fromSDK(object: QueryNextSequenceReceiveResponseSDKType): QueryNextSequenceReceiveResponse;
-    toSDK(message: QueryNextSequenceReceiveResponse): QueryNextSequenceReceiveResponseSDKType;
     fromAmino(object: QueryNextSequenceReceiveResponseAmino): QueryNextSequenceReceiveResponse;
     toAmino(message: QueryNextSequenceReceiveResponse): QueryNextSequenceReceiveResponseAmino;
     fromAminoMsg(object: QueryNextSequenceReceiveResponseAminoMsg): QueryNextSequenceReceiveResponse;
@@ -1552,8 +1500,6 @@ export declare const QueryNextSequenceSendRequest: {
     fromJSON(object: any): QueryNextSequenceSendRequest;
     toJSON(message: QueryNextSequenceSendRequest): unknown;
     fromPartial(object: Partial<QueryNextSequenceSendRequest>): QueryNextSequenceSendRequest;
-    fromSDK(object: QueryNextSequenceSendRequestSDKType): QueryNextSequenceSendRequest;
-    toSDK(message: QueryNextSequenceSendRequest): QueryNextSequenceSendRequestSDKType;
     fromAmino(object: QueryNextSequenceSendRequestAmino): QueryNextSequenceSendRequest;
     toAmino(message: QueryNextSequenceSendRequest): QueryNextSequenceSendRequestAmino;
     fromAminoMsg(object: QueryNextSequenceSendRequestAminoMsg): QueryNextSequenceSendRequest;
@@ -1569,8 +1515,6 @@ export declare const QueryNextSequenceSendResponse: {
     fromJSON(object: any): QueryNextSequenceSendResponse;
     toJSON(message: QueryNextSequenceSendResponse): unknown;
     fromPartial(object: Partial<QueryNextSequenceSendResponse>): QueryNextSequenceSendResponse;
-    fromSDK(object: QueryNextSequenceSendResponseSDKType): QueryNextSequenceSendResponse;
-    toSDK(message: QueryNextSequenceSendResponse): QueryNextSequenceSendResponseSDKType;
     fromAmino(object: QueryNextSequenceSendResponseAmino): QueryNextSequenceSendResponse;
     toAmino(message: QueryNextSequenceSendResponse): QueryNextSequenceSendResponseAmino;
     fromAminoMsg(object: QueryNextSequenceSendResponseAminoMsg): QueryNextSequenceSendResponse;

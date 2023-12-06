@@ -59,18 +59,6 @@ export const QueryAllowanceRequest = {
         message.grantee = object.grantee ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            granter: object?.granter,
-            grantee: object?.grantee
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.granter = message.granter;
-        obj.grantee = message.grantee;
-        return obj;
-    },
     fromAmino(object) {
         return {
             granter: object.granter,
@@ -149,16 +137,6 @@ export const QueryAllowanceResponse = {
         const message = createBaseQueryAllowanceResponse();
         message.allowance = object.allowance !== undefined && object.allowance !== null ? Grant.fromPartial(object.allowance) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            allowance: object.allowance ? Grant.fromSDK(object.allowance) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.allowance !== undefined && (obj.allowance = message.allowance ? Grant.toSDK(message.allowance) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -246,18 +224,6 @@ export const QueryAllowancesRequest = {
         message.grantee = object.grantee ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            grantee: object?.grantee,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.grantee = message.grantee;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -353,23 +319,6 @@ export const QueryAllowancesResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            allowances: Array.isArray(object?.allowances) ? object.allowances.map((e) => Grant.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.allowances) {
-            obj.allowances = message.allowances.map(e => e ? Grant.toSDK(e) : undefined);
-        }
-        else {
-            obj.allowances = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             allowances: Array.isArray(object?.allowances) ? object.allowances.map((e) => Grant.fromAmino(e)) : [],
@@ -464,18 +413,6 @@ export const QueryAllowancesByGranterRequest = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            granter: object?.granter,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.granter = message.granter;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             granter: object.granter,
@@ -569,23 +506,6 @@ export const QueryAllowancesByGranterResponse = {
         message.allowances = object.allowances?.map(e => Grant.fromPartial(e)) || [];
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            allowances: Array.isArray(object?.allowances) ? object.allowances.map((e) => Grant.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.allowances) {
-            obj.allowances = message.allowances.map(e => e ? Grant.toSDK(e) : undefined);
-        }
-        else {
-            obj.allowances = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {

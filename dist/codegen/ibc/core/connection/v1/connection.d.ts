@@ -322,8 +322,6 @@ export declare const ConnectionEnd: {
     fromJSON(object: any): ConnectionEnd;
     toJSON(message: ConnectionEnd): unknown;
     fromPartial(object: Partial<ConnectionEnd>): ConnectionEnd;
-    fromSDK(object: ConnectionEndSDKType): ConnectionEnd;
-    toSDK(message: ConnectionEnd): ConnectionEndSDKType;
     fromAmino(object: ConnectionEndAmino): ConnectionEnd;
     toAmino(message: ConnectionEnd): ConnectionEndAmino;
     fromAminoMsg(object: ConnectionEndAminoMsg): ConnectionEnd;
@@ -339,8 +337,6 @@ export declare const IdentifiedConnection: {
     fromJSON(object: any): IdentifiedConnection;
     toJSON(message: IdentifiedConnection): unknown;
     fromPartial(object: Partial<IdentifiedConnection>): IdentifiedConnection;
-    fromSDK(object: IdentifiedConnectionSDKType): IdentifiedConnection;
-    toSDK(message: IdentifiedConnection): IdentifiedConnectionSDKType;
     fromAmino(object: IdentifiedConnectionAmino): IdentifiedConnection;
     toAmino(message: IdentifiedConnection): IdentifiedConnectionAmino;
     fromAminoMsg(object: IdentifiedConnectionAminoMsg): IdentifiedConnection;
@@ -356,8 +352,6 @@ export declare const Counterparty: {
     fromJSON(object: any): Counterparty;
     toJSON(message: Counterparty): unknown;
     fromPartial(object: Partial<Counterparty>): Counterparty;
-    fromSDK(object: CounterpartySDKType): Counterparty;
-    toSDK(message: Counterparty): CounterpartySDKType;
     fromAmino(object: CounterpartyAmino): Counterparty;
     toAmino(message: Counterparty): CounterpartyAmino;
     fromAminoMsg(object: CounterpartyAminoMsg): Counterparty;
@@ -373,8 +367,6 @@ export declare const ClientPaths: {
     fromJSON(object: any): ClientPaths;
     toJSON(message: ClientPaths): unknown;
     fromPartial(object: Partial<ClientPaths>): ClientPaths;
-    fromSDK(object: ClientPathsSDKType): ClientPaths;
-    toSDK(message: ClientPaths): ClientPathsSDKType;
     fromAmino(object: ClientPathsAmino): ClientPaths;
     toAmino(message: ClientPaths): ClientPathsAmino;
     fromAminoMsg(object: ClientPathsAminoMsg): ClientPaths;
@@ -390,8 +382,6 @@ export declare const ConnectionPaths: {
     fromJSON(object: any): ConnectionPaths;
     toJSON(message: ConnectionPaths): unknown;
     fromPartial(object: Partial<ConnectionPaths>): ConnectionPaths;
-    fromSDK(object: ConnectionPathsSDKType): ConnectionPaths;
-    toSDK(message: ConnectionPaths): ConnectionPathsSDKType;
     fromAmino(object: ConnectionPathsAmino): ConnectionPaths;
     toAmino(message: ConnectionPaths): ConnectionPathsAmino;
     fromAminoMsg(object: ConnectionPathsAminoMsg): ConnectionPaths;
@@ -407,8 +397,6 @@ export declare const Version: {
     fromJSON(object: any): Version;
     toJSON(message: Version): unknown;
     fromPartial(object: Partial<Version>): Version;
-    fromSDK(object: VersionSDKType): Version;
-    toSDK(message: Version): VersionSDKType;
     fromAmino(object: VersionAmino): Version;
     toAmino(message: Version): VersionAmino;
     fromAminoMsg(object: VersionAminoMsg): Version;
@@ -424,8 +412,6 @@ export declare const Params: {
     fromJSON(object: any): Params;
     toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
     fromAminoMsg(object: ParamsAminoMsg): Params;

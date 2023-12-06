@@ -15,6 +15,8 @@ export class Msg {
     /**
      * CreatePermanentLockedAccount defines a method that enables creating a permanent
      * locked account.
+     *
+     * Since: cosmos-sdk 0.46
      */
     static CreatePermanentLockedAccount(request, initRequest) {
         return fm.fetchReq(`/cosmos.vesting.v1beta1/CreatePermanentLockedAccount`, {
@@ -26,6 +28,8 @@ export class Msg {
     /**
      * CreatePeriodicVestingAccount defines a method that enables creating a
      * periodic vesting account.
+     *
+     * Since: cosmos-sdk 0.46
      */
     static CreatePeriodicVestingAccount(request, initRequest) {
         return fm.fetchReq(`/cosmos.vesting.v1beta1/CreatePeriodicVestingAccount`, {

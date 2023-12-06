@@ -676,8 +676,6 @@ export declare const ExistenceProof: {
     fromJSON(object: any): ExistenceProof;
     toJSON(message: ExistenceProof): unknown;
     fromPartial(object: Partial<ExistenceProof>): ExistenceProof;
-    fromSDK(object: ExistenceProofSDKType): ExistenceProof;
-    toSDK(message: ExistenceProof): ExistenceProofSDKType;
     fromAmino(object: ExistenceProofAmino): ExistenceProof;
     toAmino(message: ExistenceProof): ExistenceProofAmino;
     fromAminoMsg(object: ExistenceProofAminoMsg): ExistenceProof;
@@ -693,8 +691,6 @@ export declare const NonExistenceProof: {
     fromJSON(object: any): NonExistenceProof;
     toJSON(message: NonExistenceProof): unknown;
     fromPartial(object: Partial<NonExistenceProof>): NonExistenceProof;
-    fromSDK(object: NonExistenceProofSDKType): NonExistenceProof;
-    toSDK(message: NonExistenceProof): NonExistenceProofSDKType;
     fromAmino(object: NonExistenceProofAmino): NonExistenceProof;
     toAmino(message: NonExistenceProof): NonExistenceProofAmino;
     fromAminoMsg(object: NonExistenceProofAminoMsg): NonExistenceProof;
@@ -710,8 +706,6 @@ export declare const CommitmentProof: {
     fromJSON(object: any): CommitmentProof;
     toJSON(message: CommitmentProof): unknown;
     fromPartial(object: Partial<CommitmentProof>): CommitmentProof;
-    fromSDK(object: CommitmentProofSDKType): CommitmentProof;
-    toSDK(message: CommitmentProof): CommitmentProofSDKType;
     fromAmino(object: CommitmentProofAmino): CommitmentProof;
     toAmino(message: CommitmentProof): CommitmentProofAmino;
     fromAminoMsg(object: CommitmentProofAminoMsg): CommitmentProof;
@@ -727,8 +721,6 @@ export declare const LeafOp: {
     fromJSON(object: any): LeafOp;
     toJSON(message: LeafOp): unknown;
     fromPartial(object: Partial<LeafOp>): LeafOp;
-    fromSDK(object: LeafOpSDKType): LeafOp;
-    toSDK(message: LeafOp): LeafOpSDKType;
     fromAmino(object: LeafOpAmino): LeafOp;
     toAmino(message: LeafOp): LeafOpAmino;
     fromAminoMsg(object: LeafOpAminoMsg): LeafOp;
@@ -744,8 +736,6 @@ export declare const InnerOp: {
     fromJSON(object: any): InnerOp;
     toJSON(message: InnerOp): unknown;
     fromPartial(object: Partial<InnerOp>): InnerOp;
-    fromSDK(object: InnerOpSDKType): InnerOp;
-    toSDK(message: InnerOp): InnerOpSDKType;
     fromAmino(object: InnerOpAmino): InnerOp;
     toAmino(message: InnerOp): InnerOpAmino;
     fromAminoMsg(object: InnerOpAminoMsg): InnerOp;
@@ -761,8 +751,6 @@ export declare const ProofSpec: {
     fromJSON(object: any): ProofSpec;
     toJSON(message: ProofSpec): unknown;
     fromPartial(object: Partial<ProofSpec>): ProofSpec;
-    fromSDK(object: ProofSpecSDKType): ProofSpec;
-    toSDK(message: ProofSpec): ProofSpecSDKType;
     fromAmino(object: ProofSpecAmino): ProofSpec;
     toAmino(message: ProofSpec): ProofSpecAmino;
     fromAminoMsg(object: ProofSpecAminoMsg): ProofSpec;
@@ -778,8 +766,6 @@ export declare const InnerSpec: {
     fromJSON(object: any): InnerSpec;
     toJSON(message: InnerSpec): unknown;
     fromPartial(object: Partial<InnerSpec>): InnerSpec;
-    fromSDK(object: InnerSpecSDKType): InnerSpec;
-    toSDK(message: InnerSpec): InnerSpecSDKType;
     fromAmino(object: InnerSpecAmino): InnerSpec;
     toAmino(message: InnerSpec): InnerSpecAmino;
     fromAminoMsg(object: InnerSpecAminoMsg): InnerSpec;
@@ -795,8 +781,6 @@ export declare const BatchProof: {
     fromJSON(object: any): BatchProof;
     toJSON(message: BatchProof): unknown;
     fromPartial(object: Partial<BatchProof>): BatchProof;
-    fromSDK(object: BatchProofSDKType): BatchProof;
-    toSDK(message: BatchProof): BatchProofSDKType;
     fromAmino(object: BatchProofAmino): BatchProof;
     toAmino(message: BatchProof): BatchProofAmino;
     fromAminoMsg(object: BatchProofAminoMsg): BatchProof;
@@ -812,8 +796,6 @@ export declare const BatchEntry: {
     fromJSON(object: any): BatchEntry;
     toJSON(message: BatchEntry): unknown;
     fromPartial(object: Partial<BatchEntry>): BatchEntry;
-    fromSDK(object: BatchEntrySDKType): BatchEntry;
-    toSDK(message: BatchEntry): BatchEntrySDKType;
     fromAmino(object: BatchEntryAmino): BatchEntry;
     toAmino(message: BatchEntry): BatchEntryAmino;
     fromAminoMsg(object: BatchEntryAminoMsg): BatchEntry;
@@ -829,8 +811,6 @@ export declare const CompressedBatchProof: {
     fromJSON(object: any): CompressedBatchProof;
     toJSON(message: CompressedBatchProof): unknown;
     fromPartial(object: Partial<CompressedBatchProof>): CompressedBatchProof;
-    fromSDK(object: CompressedBatchProofSDKType): CompressedBatchProof;
-    toSDK(message: CompressedBatchProof): CompressedBatchProofSDKType;
     fromAmino(object: CompressedBatchProofAmino): CompressedBatchProof;
     toAmino(message: CompressedBatchProof): CompressedBatchProofAmino;
     fromAminoMsg(object: CompressedBatchProofAminoMsg): CompressedBatchProof;
@@ -846,8 +826,6 @@ export declare const CompressedBatchEntry: {
     fromJSON(object: any): CompressedBatchEntry;
     toJSON(message: CompressedBatchEntry): unknown;
     fromPartial(object: Partial<CompressedBatchEntry>): CompressedBatchEntry;
-    fromSDK(object: CompressedBatchEntrySDKType): CompressedBatchEntry;
-    toSDK(message: CompressedBatchEntry): CompressedBatchEntrySDKType;
     fromAmino(object: CompressedBatchEntryAmino): CompressedBatchEntry;
     toAmino(message: CompressedBatchEntry): CompressedBatchEntryAmino;
     fromAminoMsg(object: CompressedBatchEntryAminoMsg): CompressedBatchEntry;
@@ -863,8 +841,6 @@ export declare const CompressedExistenceProof: {
     fromJSON(object: any): CompressedExistenceProof;
     toJSON(message: CompressedExistenceProof): unknown;
     fromPartial(object: Partial<CompressedExistenceProof>): CompressedExistenceProof;
-    fromSDK(object: CompressedExistenceProofSDKType): CompressedExistenceProof;
-    toSDK(message: CompressedExistenceProof): CompressedExistenceProofSDKType;
     fromAmino(object: CompressedExistenceProofAmino): CompressedExistenceProof;
     toAmino(message: CompressedExistenceProof): CompressedExistenceProofAmino;
     fromAminoMsg(object: CompressedExistenceProofAminoMsg): CompressedExistenceProof;
@@ -880,8 +856,6 @@ export declare const CompressedNonExistenceProof: {
     fromJSON(object: any): CompressedNonExistenceProof;
     toJSON(message: CompressedNonExistenceProof): unknown;
     fromPartial(object: Partial<CompressedNonExistenceProof>): CompressedNonExistenceProof;
-    fromSDK(object: CompressedNonExistenceProofSDKType): CompressedNonExistenceProof;
-    toSDK(message: CompressedNonExistenceProof): CompressedNonExistenceProofSDKType;
     fromAmino(object: CompressedNonExistenceProofAmino): CompressedNonExistenceProof;
     toAmino(message: CompressedNonExistenceProof): CompressedNonExistenceProofAmino;
     fromAminoMsg(object: CompressedNonExistenceProofAminoMsg): CompressedNonExistenceProof;

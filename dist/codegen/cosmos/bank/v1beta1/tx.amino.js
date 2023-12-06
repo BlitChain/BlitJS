@@ -13,6 +13,16 @@ exports.AminoConverter = {
         aminoType: "cosmos-sdk/MsgMultiSend",
         toAmino: tx_1.MsgMultiSend.toAmino,
         fromAmino: tx_1.MsgMultiSend.fromAmino
+    },
+    "/cosmos.bank.v1beta1.MsgUpdateParams": {
+        aminoType: "cosmos-sdk/x/bank/MsgUpdateParams",
+        toAmino: tx_1.MsgUpdateParams.toAmino,
+        fromAmino: tx_1.MsgUpdateParams.fromAmino
+    },
+    "/cosmos.bank.v1beta1.MsgSetSendEnabled": {
+        aminoType: "cosmos-sdk/MsgSetSendEnabled",
+        toAmino: tx_1.MsgSetSendEnabled.toAmino,
+        fromAmino: tx_1.MsgSetSendEnabled.fromAmino
     }
 };
 //# sourceMappingURL=tx.amino.js.map

@@ -45,7 +45,7 @@ export interface DelegatorWithdrawInfoSDKType {
 export interface ValidatorOutstandingRewardsRecord {
     /** validator_address is the address of the validator. */
     validator_address: string;
-    /** outstanding_rewards represents the oustanding rewards of a validator. */
+    /** outstanding_rewards represents the outstanding rewards of a validator. */
     outstanding_rewards: DecCoin[];
 }
 export interface ValidatorOutstandingRewardsRecordProtoMsg {
@@ -56,7 +56,7 @@ export interface ValidatorOutstandingRewardsRecordProtoMsg {
 export interface ValidatorOutstandingRewardsRecordAmino {
     /** validator_address is the address of the validator. */
     validator_address: string;
-    /** outstanding_rewards represents the oustanding rewards of a validator. */
+    /** outstanding_rewards represents the outstanding rewards of a validator. */
     outstanding_rewards: DecCoinAmino[];
 }
 export interface ValidatorOutstandingRewardsRecordAminoMsg {
@@ -208,7 +208,7 @@ export interface DelegatorStartingInfoRecordSDKType {
 export interface ValidatorSlashEventRecord {
     /** validator_address is the address of the validator. */
     validator_address: string;
-    /** height defines the block height at which the slash event occured. */
+    /** height defines the block height at which the slash event occurred. */
     height: bigint;
     /** period is the period of the slash event. */
     period: bigint;
@@ -223,7 +223,7 @@ export interface ValidatorSlashEventRecordProtoMsg {
 export interface ValidatorSlashEventRecordAmino {
     /** validator_address is the address of the validator. */
     validator_address: string;
-    /** height defines the block height at which the slash event occured. */
+    /** height defines the block height at which the slash event occurred. */
     height: string;
     /** period is the period of the slash event. */
     period: string;
@@ -243,7 +243,7 @@ export interface ValidatorSlashEventRecordSDKType {
 }
 /** GenesisState defines the distribution module's genesis state. */
 export interface GenesisState {
-    /** params defines all the paramaters of the module. */
+    /** params defines all the parameters of the module. */
     params: Params;
     /** fee_pool defines the fee pool at genesis. */
     fee_pool: FeePool;
@@ -253,7 +253,7 @@ export interface GenesisState {
     previous_proposer: string;
     /** fee_pool defines the outstanding rewards of all validators at genesis. */
     outstanding_rewards: ValidatorOutstandingRewardsRecord[];
-    /** fee_pool defines the accumulated commisions of all validators at genesis. */
+    /** fee_pool defines the accumulated commissions of all validators at genesis. */
     validator_accumulated_commissions: ValidatorAccumulatedCommissionRecord[];
     /** fee_pool defines the historical rewards of all validators at genesis. */
     validator_historical_rewards: ValidatorHistoricalRewardsRecord[];
@@ -270,7 +270,7 @@ export interface GenesisStateProtoMsg {
 }
 /** GenesisState defines the distribution module's genesis state. */
 export interface GenesisStateAmino {
-    /** params defines all the paramaters of the module. */
+    /** params defines all the parameters of the module. */
     params?: ParamsAmino;
     /** fee_pool defines the fee pool at genesis. */
     fee_pool?: FeePoolAmino;
@@ -280,7 +280,7 @@ export interface GenesisStateAmino {
     previous_proposer: string;
     /** fee_pool defines the outstanding rewards of all validators at genesis. */
     outstanding_rewards: ValidatorOutstandingRewardsRecordAmino[];
-    /** fee_pool defines the accumulated commisions of all validators at genesis. */
+    /** fee_pool defines the accumulated commissions of all validators at genesis. */
     validator_accumulated_commissions: ValidatorAccumulatedCommissionRecordAmino[];
     /** fee_pool defines the historical rewards of all validators at genesis. */
     validator_historical_rewards: ValidatorHistoricalRewardsRecordAmino[];
@@ -315,8 +315,6 @@ export declare const DelegatorWithdrawInfo: {
     fromJSON(object: any): DelegatorWithdrawInfo;
     toJSON(message: DelegatorWithdrawInfo): unknown;
     fromPartial(object: Partial<DelegatorWithdrawInfo>): DelegatorWithdrawInfo;
-    fromSDK(object: DelegatorWithdrawInfoSDKType): DelegatorWithdrawInfo;
-    toSDK(message: DelegatorWithdrawInfo): DelegatorWithdrawInfoSDKType;
     fromAmino(object: DelegatorWithdrawInfoAmino): DelegatorWithdrawInfo;
     toAmino(message: DelegatorWithdrawInfo): DelegatorWithdrawInfoAmino;
     fromAminoMsg(object: DelegatorWithdrawInfoAminoMsg): DelegatorWithdrawInfo;
@@ -332,8 +330,6 @@ export declare const ValidatorOutstandingRewardsRecord: {
     fromJSON(object: any): ValidatorOutstandingRewardsRecord;
     toJSON(message: ValidatorOutstandingRewardsRecord): unknown;
     fromPartial(object: Partial<ValidatorOutstandingRewardsRecord>): ValidatorOutstandingRewardsRecord;
-    fromSDK(object: ValidatorOutstandingRewardsRecordSDKType): ValidatorOutstandingRewardsRecord;
-    toSDK(message: ValidatorOutstandingRewardsRecord): ValidatorOutstandingRewardsRecordSDKType;
     fromAmino(object: ValidatorOutstandingRewardsRecordAmino): ValidatorOutstandingRewardsRecord;
     toAmino(message: ValidatorOutstandingRewardsRecord): ValidatorOutstandingRewardsRecordAmino;
     fromAminoMsg(object: ValidatorOutstandingRewardsRecordAminoMsg): ValidatorOutstandingRewardsRecord;
@@ -349,8 +345,6 @@ export declare const ValidatorAccumulatedCommissionRecord: {
     fromJSON(object: any): ValidatorAccumulatedCommissionRecord;
     toJSON(message: ValidatorAccumulatedCommissionRecord): unknown;
     fromPartial(object: Partial<ValidatorAccumulatedCommissionRecord>): ValidatorAccumulatedCommissionRecord;
-    fromSDK(object: ValidatorAccumulatedCommissionRecordSDKType): ValidatorAccumulatedCommissionRecord;
-    toSDK(message: ValidatorAccumulatedCommissionRecord): ValidatorAccumulatedCommissionRecordSDKType;
     fromAmino(object: ValidatorAccumulatedCommissionRecordAmino): ValidatorAccumulatedCommissionRecord;
     toAmino(message: ValidatorAccumulatedCommissionRecord): ValidatorAccumulatedCommissionRecordAmino;
     fromAminoMsg(object: ValidatorAccumulatedCommissionRecordAminoMsg): ValidatorAccumulatedCommissionRecord;
@@ -366,8 +360,6 @@ export declare const ValidatorHistoricalRewardsRecord: {
     fromJSON(object: any): ValidatorHistoricalRewardsRecord;
     toJSON(message: ValidatorHistoricalRewardsRecord): unknown;
     fromPartial(object: Partial<ValidatorHistoricalRewardsRecord>): ValidatorHistoricalRewardsRecord;
-    fromSDK(object: ValidatorHistoricalRewardsRecordSDKType): ValidatorHistoricalRewardsRecord;
-    toSDK(message: ValidatorHistoricalRewardsRecord): ValidatorHistoricalRewardsRecordSDKType;
     fromAmino(object: ValidatorHistoricalRewardsRecordAmino): ValidatorHistoricalRewardsRecord;
     toAmino(message: ValidatorHistoricalRewardsRecord): ValidatorHistoricalRewardsRecordAmino;
     fromAminoMsg(object: ValidatorHistoricalRewardsRecordAminoMsg): ValidatorHistoricalRewardsRecord;
@@ -383,8 +375,6 @@ export declare const ValidatorCurrentRewardsRecord: {
     fromJSON(object: any): ValidatorCurrentRewardsRecord;
     toJSON(message: ValidatorCurrentRewardsRecord): unknown;
     fromPartial(object: Partial<ValidatorCurrentRewardsRecord>): ValidatorCurrentRewardsRecord;
-    fromSDK(object: ValidatorCurrentRewardsRecordSDKType): ValidatorCurrentRewardsRecord;
-    toSDK(message: ValidatorCurrentRewardsRecord): ValidatorCurrentRewardsRecordSDKType;
     fromAmino(object: ValidatorCurrentRewardsRecordAmino): ValidatorCurrentRewardsRecord;
     toAmino(message: ValidatorCurrentRewardsRecord): ValidatorCurrentRewardsRecordAmino;
     fromAminoMsg(object: ValidatorCurrentRewardsRecordAminoMsg): ValidatorCurrentRewardsRecord;
@@ -400,8 +390,6 @@ export declare const DelegatorStartingInfoRecord: {
     fromJSON(object: any): DelegatorStartingInfoRecord;
     toJSON(message: DelegatorStartingInfoRecord): unknown;
     fromPartial(object: Partial<DelegatorStartingInfoRecord>): DelegatorStartingInfoRecord;
-    fromSDK(object: DelegatorStartingInfoRecordSDKType): DelegatorStartingInfoRecord;
-    toSDK(message: DelegatorStartingInfoRecord): DelegatorStartingInfoRecordSDKType;
     fromAmino(object: DelegatorStartingInfoRecordAmino): DelegatorStartingInfoRecord;
     toAmino(message: DelegatorStartingInfoRecord): DelegatorStartingInfoRecordAmino;
     fromAminoMsg(object: DelegatorStartingInfoRecordAminoMsg): DelegatorStartingInfoRecord;
@@ -417,8 +405,6 @@ export declare const ValidatorSlashEventRecord: {
     fromJSON(object: any): ValidatorSlashEventRecord;
     toJSON(message: ValidatorSlashEventRecord): unknown;
     fromPartial(object: Partial<ValidatorSlashEventRecord>): ValidatorSlashEventRecord;
-    fromSDK(object: ValidatorSlashEventRecordSDKType): ValidatorSlashEventRecord;
-    toSDK(message: ValidatorSlashEventRecord): ValidatorSlashEventRecordSDKType;
     fromAmino(object: ValidatorSlashEventRecordAmino): ValidatorSlashEventRecord;
     toAmino(message: ValidatorSlashEventRecord): ValidatorSlashEventRecordAmino;
     fromAminoMsg(object: ValidatorSlashEventRecordAminoMsg): ValidatorSlashEventRecord;
@@ -434,8 +420,6 @@ export declare const GenesisState: {
     fromJSON(object: any): GenesisState;
     toJSON(message: GenesisState): unknown;
     fromPartial(object: Partial<GenesisState>): GenesisState;
-    fromSDK(object: GenesisStateSDKType): GenesisState;
-    toSDK(message: GenesisState): GenesisStateSDKType;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
     fromAminoMsg(object: GenesisStateAminoMsg): GenesisState;

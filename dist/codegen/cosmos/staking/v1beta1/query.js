@@ -62,18 +62,6 @@ exports.QueryValidatorsRequest = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            status: object?.status,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.status = message.status;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             status: object.status,
@@ -168,23 +156,6 @@ exports.QueryValidatorsResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            validators: Array.isArray(object?.validators) ? object.validators.map((e) => staking_1.Validator.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.validators) {
-            obj.validators = message.validators.map(e => e ? staking_1.Validator.toSDK(e) : undefined);
-        }
-        else {
-            obj.validators = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             validators: Array.isArray(object?.validators) ? object.validators.map((e) => staking_1.Validator.fromAmino(e)) : [],
@@ -269,16 +240,6 @@ exports.QueryValidatorRequest = {
         message.validator_addr = object.validator_addr ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            validator_addr: object?.validator_addr
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.validator_addr = message.validator_addr;
-        return obj;
-    },
     fromAmino(object) {
         return {
             validator_addr: object.validator_addr
@@ -355,16 +316,6 @@ exports.QueryValidatorResponse = {
         const message = createBaseQueryValidatorResponse();
         message.validator = object.validator !== undefined && object.validator !== null ? staking_1.Validator.fromPartial(object.validator) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            validator: object.validator ? staking_1.Validator.fromSDK(object.validator) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.validator !== undefined && (obj.validator = message.validator ? staking_1.Validator.toSDK(message.validator) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -452,18 +403,6 @@ exports.QueryValidatorDelegationsRequest = {
         message.validator_addr = object.validator_addr ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            validator_addr: object?.validator_addr,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.validator_addr = message.validator_addr;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -559,23 +498,6 @@ exports.QueryValidatorDelegationsResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            delegation_responses: Array.isArray(object?.delegation_responses) ? object.delegation_responses.map((e) => staking_1.DelegationResponse.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.delegation_responses) {
-            obj.delegation_responses = message.delegation_responses.map(e => e ? staking_1.DelegationResponse.toSDK(e) : undefined);
-        }
-        else {
-            obj.delegation_responses = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             delegation_responses: Array.isArray(object?.delegation_responses) ? object.delegation_responses.map((e) => staking_1.DelegationResponse.fromAmino(e)) : [],
@@ -669,18 +591,6 @@ exports.QueryValidatorUnbondingDelegationsRequest = {
         message.validator_addr = object.validator_addr ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            validator_addr: object?.validator_addr,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.validator_addr = message.validator_addr;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -776,23 +686,6 @@ exports.QueryValidatorUnbondingDelegationsResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            unbonding_responses: Array.isArray(object?.unbonding_responses) ? object.unbonding_responses.map((e) => staking_1.UnbondingDelegation.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.unbonding_responses) {
-            obj.unbonding_responses = message.unbonding_responses.map(e => e ? staking_1.UnbondingDelegation.toSDK(e) : undefined);
-        }
-        else {
-            obj.unbonding_responses = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             unbonding_responses: Array.isArray(object?.unbonding_responses) ? object.unbonding_responses.map((e) => staking_1.UnbondingDelegation.fromAmino(e)) : [],
@@ -887,18 +780,6 @@ exports.QueryDelegationRequest = {
         message.validator_addr = object.validator_addr ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            delegator_addr: object?.delegator_addr,
-            validator_addr: object?.validator_addr
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_addr = message.delegator_addr;
-        obj.validator_addr = message.validator_addr;
-        return obj;
-    },
     fromAmino(object) {
         return {
             delegator_addr: object.delegator_addr,
@@ -977,16 +858,6 @@ exports.QueryDelegationResponse = {
         const message = createBaseQueryDelegationResponse();
         message.delegation_response = object.delegation_response !== undefined && object.delegation_response !== null ? staking_1.DelegationResponse.fromPartial(object.delegation_response) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            delegation_response: object.delegation_response ? staking_1.DelegationResponse.fromSDK(object.delegation_response) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.delegation_response !== undefined && (obj.delegation_response = message.delegation_response ? staking_1.DelegationResponse.toSDK(message.delegation_response) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1075,18 +946,6 @@ exports.QueryUnbondingDelegationRequest = {
         message.validator_addr = object.validator_addr ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            delegator_addr: object?.delegator_addr,
-            validator_addr: object?.validator_addr
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_addr = message.delegator_addr;
-        obj.validator_addr = message.validator_addr;
-        return obj;
-    },
     fromAmino(object) {
         return {
             delegator_addr: object.delegator_addr,
@@ -1165,16 +1024,6 @@ exports.QueryUnbondingDelegationResponse = {
         const message = createBaseQueryUnbondingDelegationResponse();
         message.unbond = object.unbond !== undefined && object.unbond !== null ? staking_1.UnbondingDelegation.fromPartial(object.unbond) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            unbond: object.unbond ? staking_1.UnbondingDelegation.fromSDK(object.unbond) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.unbond !== undefined && (obj.unbond = message.unbond ? staking_1.UnbondingDelegation.toSDK(message.unbond) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1262,18 +1111,6 @@ exports.QueryDelegatorDelegationsRequest = {
         message.delegator_addr = object.delegator_addr ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            delegator_addr: object?.delegator_addr,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_addr = message.delegator_addr;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1369,23 +1206,6 @@ exports.QueryDelegatorDelegationsResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            delegation_responses: Array.isArray(object?.delegation_responses) ? object.delegation_responses.map((e) => staking_1.DelegationResponse.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.delegation_responses) {
-            obj.delegation_responses = message.delegation_responses.map(e => e ? staking_1.DelegationResponse.toSDK(e) : undefined);
-        }
-        else {
-            obj.delegation_responses = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             delegation_responses: Array.isArray(object?.delegation_responses) ? object.delegation_responses.map((e) => staking_1.DelegationResponse.fromAmino(e)) : [],
@@ -1480,18 +1300,6 @@ exports.QueryDelegatorUnbondingDelegationsRequest = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            delegator_addr: object?.delegator_addr,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_addr = message.delegator_addr;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             delegator_addr: object.delegator_addr,
@@ -1585,23 +1393,6 @@ exports.QueryDelegatorUnbondingDelegationsResponse = {
         message.unbonding_responses = object.unbonding_responses?.map(e => staking_1.UnbondingDelegation.fromPartial(e)) || [];
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            unbonding_responses: Array.isArray(object?.unbonding_responses) ? object.unbonding_responses.map((e) => staking_1.UnbondingDelegation.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.unbonding_responses) {
-            obj.unbonding_responses = message.unbonding_responses.map(e => e ? staking_1.UnbondingDelegation.toSDK(e) : undefined);
-        }
-        else {
-            obj.unbonding_responses = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1717,22 +1508,6 @@ exports.QueryRedelegationsRequest = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            delegator_addr: object?.delegator_addr,
-            src_validator_addr: object?.src_validator_addr,
-            dst_validator_addr: object?.dst_validator_addr,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_addr = message.delegator_addr;
-        obj.src_validator_addr = message.src_validator_addr;
-        obj.dst_validator_addr = message.dst_validator_addr;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             delegator_addr: object.delegator_addr,
@@ -1831,23 +1606,6 @@ exports.QueryRedelegationsResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            redelegation_responses: Array.isArray(object?.redelegation_responses) ? object.redelegation_responses.map((e) => staking_1.RedelegationResponse.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.redelegation_responses) {
-            obj.redelegation_responses = message.redelegation_responses.map(e => e ? staking_1.RedelegationResponse.toSDK(e) : undefined);
-        }
-        else {
-            obj.redelegation_responses = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             redelegation_responses: Array.isArray(object?.redelegation_responses) ? object.redelegation_responses.map((e) => staking_1.RedelegationResponse.fromAmino(e)) : [],
@@ -1941,18 +1699,6 @@ exports.QueryDelegatorValidatorsRequest = {
         message.delegator_addr = object.delegator_addr ?? "";
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            delegator_addr: object?.delegator_addr,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_addr = message.delegator_addr;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -2048,23 +1794,6 @@ exports.QueryDelegatorValidatorsResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            validators: Array.isArray(object?.validators) ? object.validators.map((e) => staking_1.Validator.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.validators) {
-            obj.validators = message.validators.map(e => e ? staking_1.Validator.toSDK(e) : undefined);
-        }
-        else {
-            obj.validators = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             validators: Array.isArray(object?.validators) ? object.validators.map((e) => staking_1.Validator.fromAmino(e)) : [],
@@ -2159,18 +1888,6 @@ exports.QueryDelegatorValidatorRequest = {
         message.validator_addr = object.validator_addr ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            delegator_addr: object?.delegator_addr,
-            validator_addr: object?.validator_addr
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.delegator_addr = message.delegator_addr;
-        obj.validator_addr = message.validator_addr;
-        return obj;
-    },
     fromAmino(object) {
         return {
             delegator_addr: object.delegator_addr,
@@ -2250,16 +1967,6 @@ exports.QueryDelegatorValidatorResponse = {
         message.validator = object.validator !== undefined && object.validator !== null ? staking_1.Validator.fromPartial(object.validator) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            validator: object.validator ? staking_1.Validator.fromSDK(object.validator) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.validator !== undefined && (obj.validator = message.validator ? staking_1.Validator.toSDK(message.validator) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             validator: object?.validator ? staking_1.Validator.fromAmino(object.validator) : undefined
@@ -2336,16 +2043,6 @@ exports.QueryHistoricalInfoRequest = {
         const message = createBaseQueryHistoricalInfoRequest();
         message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            height: object?.height
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.height = message.height;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -2424,16 +2121,6 @@ exports.QueryHistoricalInfoResponse = {
         message.hist = object.hist !== undefined && object.hist !== null ? staking_1.HistoricalInfo.fromPartial(object.hist) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            hist: object.hist ? staking_1.HistoricalInfo.fromSDK(object.hist) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.hist !== undefined && (obj.hist = message.hist ? staking_1.HistoricalInfo.toSDK(message.hist) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             hist: object?.hist ? staking_1.HistoricalInfo.fromAmino(object.hist) : undefined
@@ -2498,13 +2185,6 @@ exports.QueryPoolRequest = {
     fromPartial(_) {
         const message = createBaseQueryPoolRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -2580,16 +2260,6 @@ exports.QueryPoolResponse = {
         message.pool = object.pool !== undefined && object.pool !== null ? staking_1.Pool.fromPartial(object.pool) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            pool: object.pool ? staking_1.Pool.fromSDK(object.pool) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.pool !== undefined && (obj.pool = message.pool ? staking_1.Pool.toSDK(message.pool) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             pool: object?.pool ? staking_1.Pool.fromAmino(object.pool) : undefined
@@ -2654,13 +2324,6 @@ exports.QueryParamsRequest = {
     fromPartial(_) {
         const message = createBaseQueryParamsRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -2735,16 +2398,6 @@ exports.QueryParamsResponse = {
         const message = createBaseQueryParamsResponse();
         message.params = object.params !== undefined && object.params !== null ? staking_1.Params.fromPartial(object.params) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            params: object.params ? staking_1.Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? staking_1.Params.toSDK(message.params) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {

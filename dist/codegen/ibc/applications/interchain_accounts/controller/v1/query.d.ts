@@ -90,8 +90,6 @@ export declare const QueryInterchainAccountRequest: {
     fromJSON(object: any): QueryInterchainAccountRequest;
     toJSON(message: QueryInterchainAccountRequest): unknown;
     fromPartial(object: Partial<QueryInterchainAccountRequest>): QueryInterchainAccountRequest;
-    fromSDK(object: QueryInterchainAccountRequestSDKType): QueryInterchainAccountRequest;
-    toSDK(message: QueryInterchainAccountRequest): QueryInterchainAccountRequestSDKType;
     fromAmino(object: QueryInterchainAccountRequestAmino): QueryInterchainAccountRequest;
     toAmino(message: QueryInterchainAccountRequest): QueryInterchainAccountRequestAmino;
     fromAminoMsg(object: QueryInterchainAccountRequestAminoMsg): QueryInterchainAccountRequest;
@@ -107,8 +105,6 @@ export declare const QueryInterchainAccountResponse: {
     fromJSON(object: any): QueryInterchainAccountResponse;
     toJSON(message: QueryInterchainAccountResponse): unknown;
     fromPartial(object: Partial<QueryInterchainAccountResponse>): QueryInterchainAccountResponse;
-    fromSDK(object: QueryInterchainAccountResponseSDKType): QueryInterchainAccountResponse;
-    toSDK(message: QueryInterchainAccountResponse): QueryInterchainAccountResponseSDKType;
     fromAmino(object: QueryInterchainAccountResponseAmino): QueryInterchainAccountResponse;
     toAmino(message: QueryInterchainAccountResponse): QueryInterchainAccountResponseAmino;
     fromAminoMsg(object: QueryInterchainAccountResponseAminoMsg): QueryInterchainAccountResponse;
@@ -124,8 +120,6 @@ export declare const QueryParamsRequest: {
     fromJSON(_: any): QueryParamsRequest;
     toJSON(_: QueryParamsRequest): unknown;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
-    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
-    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
     fromAminoMsg(object: QueryParamsRequestAminoMsg): QueryParamsRequest;
@@ -141,8 +135,6 @@ export declare const QueryParamsResponse: {
     fromJSON(object: any): QueryParamsResponse;
     toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
-    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
-    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
     fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse;

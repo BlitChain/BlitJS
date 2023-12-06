@@ -100,26 +100,6 @@ exports.AppDescriptor = {
         message.tx = object.tx !== undefined && object.tx !== null ? exports.TxDescriptor.fromPartial(object.tx) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            authn: object.authn ? exports.AuthnDescriptor.fromSDK(object.authn) : undefined,
-            chain: object.chain ? exports.ChainDescriptor.fromSDK(object.chain) : undefined,
-            codec: object.codec ? exports.CodecDescriptor.fromSDK(object.codec) : undefined,
-            configuration: object.configuration ? exports.ConfigurationDescriptor.fromSDK(object.configuration) : undefined,
-            query_services: object.query_services ? exports.QueryServicesDescriptor.fromSDK(object.query_services) : undefined,
-            tx: object.tx ? exports.TxDescriptor.fromSDK(object.tx) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.authn !== undefined && (obj.authn = message.authn ? exports.AuthnDescriptor.toSDK(message.authn) : undefined);
-        message.chain !== undefined && (obj.chain = message.chain ? exports.ChainDescriptor.toSDK(message.chain) : undefined);
-        message.codec !== undefined && (obj.codec = message.codec ? exports.CodecDescriptor.toSDK(message.codec) : undefined);
-        message.configuration !== undefined && (obj.configuration = message.configuration ? exports.ConfigurationDescriptor.toSDK(message.configuration) : undefined);
-        message.query_services !== undefined && (obj.query_services = message.query_services ? exports.QueryServicesDescriptor.toSDK(message.query_services) : undefined);
-        message.tx !== undefined && (obj.tx = message.tx ? exports.TxDescriptor.toSDK(message.tx) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             authn: object?.authn ? exports.AuthnDescriptor.fromAmino(object.authn) : undefined,
@@ -222,23 +202,6 @@ exports.TxDescriptor = {
         message.msgs = object.msgs?.map(e => exports.MsgDescriptor.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            fullname: object?.fullname,
-            msgs: Array.isArray(object?.msgs) ? object.msgs.map((e) => exports.MsgDescriptor.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.fullname = message.fullname;
-        if (message.msgs) {
-            obj.msgs = message.msgs.map(e => e ? exports.MsgDescriptor.toSDK(e) : undefined);
-        }
-        else {
-            obj.msgs = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             fullname: object.fullname,
@@ -327,21 +290,6 @@ exports.AuthnDescriptor = {
         const message = createBaseAuthnDescriptor();
         message.sign_modes = object.sign_modes?.map(e => exports.SigningModeDescriptor.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            sign_modes: Array.isArray(object?.sign_modes) ? object.sign_modes.map((e) => exports.SigningModeDescriptor.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.sign_modes) {
-            obj.sign_modes = message.sign_modes.map(e => e ? exports.SigningModeDescriptor.toSDK(e) : undefined);
-        }
-        else {
-            obj.sign_modes = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -445,20 +393,6 @@ exports.SigningModeDescriptor = {
         message.authn_info_provider_method_fullname = object.authn_info_provider_method_fullname ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            number: object?.number,
-            authn_info_provider_method_fullname: object?.authn_info_provider_method_fullname
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        obj.number = message.number;
-        obj.authn_info_provider_method_fullname = message.authn_info_provider_method_fullname;
-        return obj;
-    },
     fromAmino(object) {
         return {
             name: object.name,
@@ -539,16 +473,6 @@ exports.ChainDescriptor = {
         const message = createBaseChainDescriptor();
         message.id = object.id ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            id: object?.id
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.id = message.id;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -631,21 +555,6 @@ exports.CodecDescriptor = {
         const message = createBaseCodecDescriptor();
         message.interfaces = object.interfaces?.map(e => exports.InterfaceDescriptor.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            interfaces: Array.isArray(object?.interfaces) ? object.interfaces.map((e) => exports.InterfaceDescriptor.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.interfaces) {
-            obj.interfaces = message.interfaces.map(e => e ? exports.InterfaceDescriptor.toSDK(e) : undefined);
-        }
-        else {
-            obj.interfaces = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -759,30 +668,6 @@ exports.InterfaceDescriptor = {
         message.interface_implementers = object.interface_implementers?.map(e => exports.InterfaceImplementerDescriptor.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            fullname: object?.fullname,
-            interface_accepting_messages: Array.isArray(object?.interface_accepting_messages) ? object.interface_accepting_messages.map((e) => exports.InterfaceAcceptingMessageDescriptor.fromSDK(e)) : [],
-            interface_implementers: Array.isArray(object?.interface_implementers) ? object.interface_implementers.map((e) => exports.InterfaceImplementerDescriptor.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.fullname = message.fullname;
-        if (message.interface_accepting_messages) {
-            obj.interface_accepting_messages = message.interface_accepting_messages.map(e => e ? exports.InterfaceAcceptingMessageDescriptor.toSDK(e) : undefined);
-        }
-        else {
-            obj.interface_accepting_messages = [];
-        }
-        if (message.interface_implementers) {
-            obj.interface_implementers = message.interface_implementers.map(e => e ? exports.InterfaceImplementerDescriptor.toSDK(e) : undefined);
-        }
-        else {
-            obj.interface_implementers = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             fullname: object.fullname,
@@ -884,18 +769,6 @@ exports.InterfaceImplementerDescriptor = {
         message.type_url = object.type_url ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            fullname: object?.fullname,
-            type_url: object?.type_url
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.fullname = message.fullname;
-        obj.type_url = message.type_url;
-        return obj;
-    },
     fromAmino(object) {
         return {
             fullname: object.fullname,
@@ -990,23 +863,6 @@ exports.InterfaceAcceptingMessageDescriptor = {
         message.field_descriptor_names = object.field_descriptor_names?.map(e => e) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            fullname: object?.fullname,
-            field_descriptor_names: Array.isArray(object?.field_descriptor_names) ? object.field_descriptor_names.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.fullname = message.fullname;
-        if (message.field_descriptor_names) {
-            obj.field_descriptor_names = message.field_descriptor_names.map(e => e);
-        }
-        else {
-            obj.field_descriptor_names = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             fullname: object.fullname,
@@ -1091,16 +947,6 @@ exports.ConfigurationDescriptor = {
         message.bech32_account_address_prefix = object.bech32_account_address_prefix ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            bech32_account_address_prefix: object?.bech32_account_address_prefix
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.bech32_account_address_prefix = message.bech32_account_address_prefix;
-        return obj;
-    },
     fromAmino(object) {
         return {
             bech32_account_address_prefix: object.bech32_account_address_prefix
@@ -1178,16 +1024,6 @@ exports.MsgDescriptor = {
         message.msg_type_url = object.msg_type_url ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            msg_type_url: object?.msg_type_url
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.msg_type_url = message.msg_type_url;
-        return obj;
-    },
     fromAmino(object) {
         return {
             msg_type_url: object.msg_type_url
@@ -1252,13 +1088,6 @@ exports.GetAuthnDescriptorRequest = {
     fromPartial(_) {
         const message = createBaseGetAuthnDescriptorRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -1334,16 +1163,6 @@ exports.GetAuthnDescriptorResponse = {
         message.authn = object.authn !== undefined && object.authn !== null ? exports.AuthnDescriptor.fromPartial(object.authn) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            authn: object.authn ? exports.AuthnDescriptor.fromSDK(object.authn) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.authn !== undefined && (obj.authn = message.authn ? exports.AuthnDescriptor.toSDK(message.authn) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             authn: object?.authn ? exports.AuthnDescriptor.fromAmino(object.authn) : undefined
@@ -1408,13 +1227,6 @@ exports.GetChainDescriptorRequest = {
     fromPartial(_) {
         const message = createBaseGetChainDescriptorRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -1490,16 +1302,6 @@ exports.GetChainDescriptorResponse = {
         message.chain = object.chain !== undefined && object.chain !== null ? exports.ChainDescriptor.fromPartial(object.chain) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            chain: object.chain ? exports.ChainDescriptor.fromSDK(object.chain) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.chain !== undefined && (obj.chain = message.chain ? exports.ChainDescriptor.toSDK(message.chain) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             chain: object?.chain ? exports.ChainDescriptor.fromAmino(object.chain) : undefined
@@ -1564,13 +1366,6 @@ exports.GetCodecDescriptorRequest = {
     fromPartial(_) {
         const message = createBaseGetCodecDescriptorRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -1646,16 +1441,6 @@ exports.GetCodecDescriptorResponse = {
         message.codec = object.codec !== undefined && object.codec !== null ? exports.CodecDescriptor.fromPartial(object.codec) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            codec: object.codec ? exports.CodecDescriptor.fromSDK(object.codec) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.codec !== undefined && (obj.codec = message.codec ? exports.CodecDescriptor.toSDK(message.codec) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             codec: object?.codec ? exports.CodecDescriptor.fromAmino(object.codec) : undefined
@@ -1720,13 +1505,6 @@ exports.GetConfigurationDescriptorRequest = {
     fromPartial(_) {
         const message = createBaseGetConfigurationDescriptorRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -1802,16 +1580,6 @@ exports.GetConfigurationDescriptorResponse = {
         message.config = object.config !== undefined && object.config !== null ? exports.ConfigurationDescriptor.fromPartial(object.config) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            config: object.config ? exports.ConfigurationDescriptor.fromSDK(object.config) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.config !== undefined && (obj.config = message.config ? exports.ConfigurationDescriptor.toSDK(message.config) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             config: object?.config ? exports.ConfigurationDescriptor.fromAmino(object.config) : undefined
@@ -1876,13 +1644,6 @@ exports.GetQueryServicesDescriptorRequest = {
     fromPartial(_) {
         const message = createBaseGetQueryServicesDescriptorRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -1958,16 +1719,6 @@ exports.GetQueryServicesDescriptorResponse = {
         message.queries = object.queries !== undefined && object.queries !== null ? exports.QueryServicesDescriptor.fromPartial(object.queries) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            queries: object.queries ? exports.QueryServicesDescriptor.fromSDK(object.queries) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.queries !== undefined && (obj.queries = message.queries ? exports.QueryServicesDescriptor.toSDK(message.queries) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             queries: object?.queries ? exports.QueryServicesDescriptor.fromAmino(object.queries) : undefined
@@ -2032,13 +1783,6 @@ exports.GetTxDescriptorRequest = {
     fromPartial(_) {
         const message = createBaseGetTxDescriptorRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -2113,16 +1857,6 @@ exports.GetTxDescriptorResponse = {
         const message = createBaseGetTxDescriptorResponse();
         message.tx = object.tx !== undefined && object.tx !== null ? exports.TxDescriptor.fromPartial(object.tx) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            tx: object.tx ? exports.TxDescriptor.fromSDK(object.tx) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.tx !== undefined && (obj.tx = message.tx ? exports.TxDescriptor.toSDK(message.tx) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -2205,21 +1939,6 @@ exports.QueryServicesDescriptor = {
         const message = createBaseQueryServicesDescriptor();
         message.query_services = object.query_services?.map(e => exports.QueryServiceDescriptor.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            query_services: Array.isArray(object?.query_services) ? object.query_services.map((e) => exports.QueryServiceDescriptor.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.query_services) {
-            obj.query_services = message.query_services.map(e => e ? exports.QueryServiceDescriptor.toSDK(e) : undefined);
-        }
-        else {
-            obj.query_services = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -2328,25 +2047,6 @@ exports.QueryServiceDescriptor = {
         message.methods = object.methods?.map(e => exports.QueryMethodDescriptor.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            fullname: object?.fullname,
-            is_module: object?.is_module,
-            methods: Array.isArray(object?.methods) ? object.methods.map((e) => exports.QueryMethodDescriptor.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.fullname = message.fullname;
-        obj.is_module = message.is_module;
-        if (message.methods) {
-            obj.methods = message.methods.map(e => e ? exports.QueryMethodDescriptor.toSDK(e) : undefined);
-        }
-        else {
-            obj.methods = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             fullname: object.fullname,
@@ -2442,18 +2142,6 @@ exports.QueryMethodDescriptor = {
         message.name = object.name ?? "";
         message.full_query_path = object.full_query_path ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            full_query_path: object?.full_query_path
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        obj.full_query_path = message.full_query_path;
-        return obj;
     },
     fromAmino(object) {
         return {

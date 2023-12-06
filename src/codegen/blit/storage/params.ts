@@ -67,16 +67,6 @@ export const Params = {
     message.gasPerChar = object.gasPerChar ?? "";
     return message;
   },
-  fromSDK(object: ParamsSDKType): Params {
-    return {
-      gasPerChar: object?.gasPerChar
-    };
-  },
-  toSDK(message: Params): ParamsSDKType {
-    const obj: any = {};
-    obj.gasPerChar = message.gasPerChar;
-    return obj;
-  },
   fromAmino(object: ParamsAmino): Params {
     return {
       gasPerChar: object.gasPerChar

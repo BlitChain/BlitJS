@@ -341,8 +341,6 @@ export declare const IdentifiedClientState: {
     fromJSON(object: any): IdentifiedClientState;
     toJSON(message: IdentifiedClientState): unknown;
     fromPartial(object: Partial<IdentifiedClientState>): IdentifiedClientState;
-    fromSDK(object: IdentifiedClientStateSDKType): IdentifiedClientState;
-    toSDK(message: IdentifiedClientState): IdentifiedClientStateSDKType;
     fromAmino(object: IdentifiedClientStateAmino): IdentifiedClientState;
     toAmino(message: IdentifiedClientState): IdentifiedClientStateAmino;
     fromAminoMsg(object: IdentifiedClientStateAminoMsg): IdentifiedClientState;
@@ -358,8 +356,6 @@ export declare const ConsensusStateWithHeight: {
     fromJSON(object: any): ConsensusStateWithHeight;
     toJSON(message: ConsensusStateWithHeight): unknown;
     fromPartial(object: Partial<ConsensusStateWithHeight>): ConsensusStateWithHeight;
-    fromSDK(object: ConsensusStateWithHeightSDKType): ConsensusStateWithHeight;
-    toSDK(message: ConsensusStateWithHeight): ConsensusStateWithHeightSDKType;
     fromAmino(object: ConsensusStateWithHeightAmino): ConsensusStateWithHeight;
     toAmino(message: ConsensusStateWithHeight): ConsensusStateWithHeightAmino;
     fromAminoMsg(object: ConsensusStateWithHeightAminoMsg): ConsensusStateWithHeight;
@@ -375,8 +371,6 @@ export declare const ClientConsensusStates: {
     fromJSON(object: any): ClientConsensusStates;
     toJSON(message: ClientConsensusStates): unknown;
     fromPartial(object: Partial<ClientConsensusStates>): ClientConsensusStates;
-    fromSDK(object: ClientConsensusStatesSDKType): ClientConsensusStates;
-    toSDK(message: ClientConsensusStates): ClientConsensusStatesSDKType;
     fromAmino(object: ClientConsensusStatesAmino): ClientConsensusStates;
     toAmino(message: ClientConsensusStates): ClientConsensusStatesAmino;
     fromAminoMsg(object: ClientConsensusStatesAminoMsg): ClientConsensusStates;
@@ -392,8 +386,6 @@ export declare const Height: {
     fromJSON(object: any): Height;
     toJSON(message: Height): unknown;
     fromPartial(object: Partial<Height>): Height;
-    fromSDK(object: HeightSDKType): Height;
-    toSDK(message: Height): HeightSDKType;
     fromAmino(object: HeightAmino): Height;
     toAmino(message: Height): HeightAmino;
     fromAminoMsg(object: HeightAminoMsg): Height;
@@ -409,8 +401,6 @@ export declare const Params: {
     fromJSON(object: any): Params;
     toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
     fromAminoMsg(object: ParamsAminoMsg): Params;
@@ -426,8 +416,6 @@ export declare const ClientUpdateProposal: {
     fromJSON(object: any): ClientUpdateProposal;
     toJSON(message: ClientUpdateProposal): unknown;
     fromPartial(object: Partial<ClientUpdateProposal>): ClientUpdateProposal;
-    fromSDK(object: ClientUpdateProposalSDKType): ClientUpdateProposal;
-    toSDK(message: ClientUpdateProposal): ClientUpdateProposalSDKType;
     fromAmino(object: ClientUpdateProposalAmino): ClientUpdateProposal;
     toAmino(message: ClientUpdateProposal): ClientUpdateProposalAmino;
     fromAminoMsg(object: ClientUpdateProposalAminoMsg): ClientUpdateProposal;
@@ -443,8 +431,6 @@ export declare const UpgradeProposal: {
     fromJSON(object: any): UpgradeProposal;
     toJSON(message: UpgradeProposal): unknown;
     fromPartial(object: Partial<UpgradeProposal>): UpgradeProposal;
-    fromSDK(object: UpgradeProposalSDKType): UpgradeProposal;
-    toSDK(message: UpgradeProposal): UpgradeProposalSDKType;
     fromAmino(object: UpgradeProposalAmino): UpgradeProposal;
     toAmino(message: UpgradeProposal): UpgradeProposalAmino;
     fromAminoMsg(object: UpgradeProposalAminoMsg): UpgradeProposal;

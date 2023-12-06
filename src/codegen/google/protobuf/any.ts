@@ -383,18 +383,6 @@ export const Any = {
     message.value = object.value ?? new Uint8Array();
     return message;
   },
-  fromSDK(object: AnySDKType): Any {
-    return {
-      type_url: object?.type_url,
-      value: object?.value
-    };
-  },
-  toSDK(message: Any): AnySDKType {
-    const obj: any = {};
-    obj.type_url = message.type_url;
-    obj.value = message.value;
-    return obj;
-  },
   fromAmino(object: AnyAmino): Any {
     return {
       typeUrl: object.type,

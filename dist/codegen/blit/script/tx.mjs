@@ -58,18 +58,6 @@ export const MsgUpdateParams = {
         message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            authority: object?.authority,
-            params: object.params ? Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.authority = message.authority;
-        message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             authority: object.authority,
@@ -136,13 +124,6 @@ export const MsgUpdateParamsResponse = {
     fromPartial(_) {
         const message = createBaseMsgUpdateParamsResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -247,27 +228,6 @@ export const MsgCreateScript = {
         message.grantee = object.grantee ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            creator: object?.creator,
-            code: object?.code,
-            msg_type_permissions: Array.isArray(object?.msg_type_permissions) ? object.msg_type_permissions.map((e) => e) : [],
-            grantee: object?.grantee
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.creator = message.creator;
-        obj.code = message.code;
-        if (message.msg_type_permissions) {
-            obj.msg_type_permissions = message.msg_type_permissions.map(e => e);
-        }
-        else {
-            obj.msg_type_permissions = [];
-        }
-        obj.grantee = message.grantee;
-        return obj;
-    },
     fromAmino(object) {
         return {
             creator: object.creator,
@@ -349,16 +309,6 @@ export const MsgCreateScriptResponse = {
         const message = createBaseMsgCreateScriptResponse();
         message.address = object.address ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            address: object?.address
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -451,20 +401,6 @@ export const MsgUpdateScript = {
         message.grantee = object.grantee ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            address: object?.address,
-            code: object?.code,
-            grantee: object?.grantee
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        obj.code = message.code;
-        obj.grantee = message.grantee;
-        return obj;
-    },
     fromAmino(object) {
         return {
             address: object.address,
@@ -539,16 +475,6 @@ export const MsgUpdateScriptResponse = {
         const message = createBaseMsgUpdateScriptResponse();
         message.version = object.version !== undefined && object.version !== null ? BigInt(object.version.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            version: object?.version
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.version = message.version;
-        return obj;
     },
     fromAmino(object) {
         return {

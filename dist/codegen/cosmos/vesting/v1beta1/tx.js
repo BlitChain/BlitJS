@@ -97,29 +97,6 @@ exports.MsgCreateVestingAccount = {
         message.delayed = object.delayed ?? false;
         return message;
     },
-    fromSDK(object) {
-        return {
-            from_address: object?.from_address,
-            to_address: object?.to_address,
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromSDK(e)) : [],
-            end_time: object?.end_time,
-            delayed: object?.delayed
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.from_address = message.from_address;
-        obj.to_address = message.to_address;
-        if (message.amount) {
-            obj.amount = message.amount.map(e => e ? coin_1.Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.amount = [];
-        }
-        obj.end_time = message.end_time;
-        obj.delayed = message.delayed;
-        return obj;
-    },
     fromAmino(object) {
         return {
             from_address: object.from_address,
@@ -197,13 +174,6 @@ exports.MsgCreateVestingAccountResponse = {
     fromPartial(_) {
         const message = createBaseMsgCreateVestingAccountResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -304,25 +274,6 @@ exports.MsgCreatePermanentLockedAccount = {
         message.amount = object.amount?.map(e => coin_1.Coin.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            from_address: object?.from_address,
-            to_address: object?.to_address,
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.from_address = message.from_address;
-        obj.to_address = message.to_address;
-        if (message.amount) {
-            obj.amount = message.amount.map(e => e ? coin_1.Coin.toSDK(e) : undefined);
-        }
-        else {
-            obj.amount = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             from_address: object.from_address,
@@ -347,7 +298,7 @@ exports.MsgCreatePermanentLockedAccount = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/MsgCreatePermanentLockedAccount",
+            type: "cosmos-sdk/MsgCreatePermLockedAccount",
             value: exports.MsgCreatePermanentLockedAccount.toAmino(message)
         };
     },
@@ -396,13 +347,6 @@ exports.MsgCreatePermanentLockedAccountResponse = {
     fromPartial(_) {
         const message = createBaseMsgCreatePermanentLockedAccountResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -513,27 +457,6 @@ exports.MsgCreatePeriodicVestingAccount = {
         message.vesting_periods = object.vesting_periods?.map(e => vesting_1.Period.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            from_address: object?.from_address,
-            to_address: object?.to_address,
-            start_time: object?.start_time,
-            vesting_periods: Array.isArray(object?.vesting_periods) ? object.vesting_periods.map((e) => vesting_1.Period.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.from_address = message.from_address;
-        obj.to_address = message.to_address;
-        obj.start_time = message.start_time;
-        if (message.vesting_periods) {
-            obj.vesting_periods = message.vesting_periods.map(e => e ? vesting_1.Period.toSDK(e) : undefined);
-        }
-        else {
-            obj.vesting_periods = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             from_address: object.from_address,
@@ -560,7 +483,7 @@ exports.MsgCreatePeriodicVestingAccount = {
     },
     toAminoMsg(message) {
         return {
-            type: "cosmos-sdk/MsgCreatePeriodicVestingAccount",
+            type: "cosmos-sdk/MsgCreatePeriodVestAccount",
             value: exports.MsgCreatePeriodicVestingAccount.toAmino(message)
         };
     },
@@ -609,13 +532,6 @@ exports.MsgCreatePeriodicVestingAccountResponse = {
     fromPartial(_) {
         const message = createBaseMsgCreatePeriodicVestingAccountResponse();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};

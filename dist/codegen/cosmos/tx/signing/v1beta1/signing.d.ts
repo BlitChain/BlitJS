@@ -26,14 +26,15 @@ export declare enum SignMode {
     /**
      * SIGN_MODE_TEXTUAL - SIGN_MODE_TEXTUAL is a future signing mode that will verify some
      * human-readable textual representation on top of the binary representation
-     * from SIGN_MODE_DIRECT. It is currently not supported.
+     * from SIGN_MODE_DIRECT.
+     *
+     * Since: cosmos-sdk 0.50
      */
     SIGN_MODE_TEXTUAL = 2,
     /**
      * SIGN_MODE_DIRECT_AUX - SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
      * SignDocDirectAux. As opposed to SIGN_MODE_DIRECT, this sign mode does not
-     * require signers signing over other signers' `signer_info`. It also allows
-     * for adding Tips in transactions.
+     * require signers signing over other signers' `signer_info`.
      *
      * Since: cosmos-sdk 0.46
      */
@@ -43,6 +44,19 @@ export declare enum SignMode {
      * Amino JSON and will be removed in the future.
      */
     SIGN_MODE_LEGACY_AMINO_JSON = 127,
+    /**
+     * SIGN_MODE_EIP_191 - SIGN_MODE_EIP_191 specifies the sign mode for EIP 191 signing on the Cosmos
+     * SDK. Ref: https://eips.ethereum.org/EIPS/eip-191
+     *
+     * Currently, SIGN_MODE_EIP_191 is registered as a SignMode enum variant,
+     * but is not implemented on the SDK by default. To enable EIP-191, you need
+     * to pass a custom `TxConfig` that has an implementation of
+     * `SignModeHandler` for EIP-191. The SDK may decide to fully support
+     * EIP-191 in the future.
+     *
+     * Since: cosmos-sdk 0.45.2
+     */
+    SIGN_MODE_EIP_191 = 191,
     UNRECOGNIZED = -1
 }
 export declare const SignModeSDKType: typeof SignMode;
@@ -212,8 +226,6 @@ export declare const SignatureDescriptors: {
     fromJSON(object: any): SignatureDescriptors;
     toJSON(message: SignatureDescriptors): unknown;
     fromPartial(object: Partial<SignatureDescriptors>): SignatureDescriptors;
-    fromSDK(object: SignatureDescriptorsSDKType): SignatureDescriptors;
-    toSDK(message: SignatureDescriptors): SignatureDescriptorsSDKType;
     fromAmino(object: SignatureDescriptorsAmino): SignatureDescriptors;
     toAmino(message: SignatureDescriptors): SignatureDescriptorsAmino;
     fromAminoMsg(object: SignatureDescriptorsAminoMsg): SignatureDescriptors;
@@ -229,8 +241,6 @@ export declare const SignatureDescriptor: {
     fromJSON(object: any): SignatureDescriptor;
     toJSON(message: SignatureDescriptor): unknown;
     fromPartial(object: Partial<SignatureDescriptor>): SignatureDescriptor;
-    fromSDK(object: SignatureDescriptorSDKType): SignatureDescriptor;
-    toSDK(message: SignatureDescriptor): SignatureDescriptorSDKType;
     fromAmino(object: SignatureDescriptorAmino): SignatureDescriptor;
     toAmino(message: SignatureDescriptor): SignatureDescriptorAmino;
     fromAminoMsg(object: SignatureDescriptorAminoMsg): SignatureDescriptor;
@@ -246,8 +256,6 @@ export declare const SignatureDescriptor_Data: {
     fromJSON(object: any): SignatureDescriptor_Data;
     toJSON(message: SignatureDescriptor_Data): unknown;
     fromPartial(object: Partial<SignatureDescriptor_Data>): SignatureDescriptor_Data;
-    fromSDK(object: SignatureDescriptor_DataSDKType): SignatureDescriptor_Data;
-    toSDK(message: SignatureDescriptor_Data): SignatureDescriptor_DataSDKType;
     fromAmino(object: SignatureDescriptor_DataAmino): SignatureDescriptor_Data;
     toAmino(message: SignatureDescriptor_Data): SignatureDescriptor_DataAmino;
     fromAminoMsg(object: SignatureDescriptor_DataAminoMsg): SignatureDescriptor_Data;
@@ -263,8 +271,6 @@ export declare const SignatureDescriptor_Data_Single: {
     fromJSON(object: any): SignatureDescriptor_Data_Single;
     toJSON(message: SignatureDescriptor_Data_Single): unknown;
     fromPartial(object: Partial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single;
-    fromSDK(object: SignatureDescriptor_Data_SingleSDKType): SignatureDescriptor_Data_Single;
-    toSDK(message: SignatureDescriptor_Data_Single): SignatureDescriptor_Data_SingleSDKType;
     fromAmino(object: SignatureDescriptor_Data_SingleAmino): SignatureDescriptor_Data_Single;
     toAmino(message: SignatureDescriptor_Data_Single): SignatureDescriptor_Data_SingleAmino;
     fromAminoMsg(object: SignatureDescriptor_Data_SingleAminoMsg): SignatureDescriptor_Data_Single;
@@ -280,8 +286,6 @@ export declare const SignatureDescriptor_Data_Multi: {
     fromJSON(object: any): SignatureDescriptor_Data_Multi;
     toJSON(message: SignatureDescriptor_Data_Multi): unknown;
     fromPartial(object: Partial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi;
-    fromSDK(object: SignatureDescriptor_Data_MultiSDKType): SignatureDescriptor_Data_Multi;
-    toSDK(message: SignatureDescriptor_Data_Multi): SignatureDescriptor_Data_MultiSDKType;
     fromAmino(object: SignatureDescriptor_Data_MultiAmino): SignatureDescriptor_Data_Multi;
     toAmino(message: SignatureDescriptor_Data_Multi): SignatureDescriptor_Data_MultiAmino;
     fromAminoMsg(object: SignatureDescriptor_Data_MultiAminoMsg): SignatureDescriptor_Data_Multi;

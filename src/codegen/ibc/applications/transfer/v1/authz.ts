@@ -156,30 +156,6 @@ export const Allocation = {
     message.allow_list = object.allow_list?.map(e => e) || [];
     return message;
   },
-  fromSDK(object: AllocationSDKType): Allocation {
-    return {
-      source_port: object?.source_port,
-      source_channel: object?.source_channel,
-      spend_limit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e: any) => Coin.fromSDK(e)) : [],
-      allow_list: Array.isArray(object?.allow_list) ? object.allow_list.map((e: any) => e) : []
-    };
-  },
-  toSDK(message: Allocation): AllocationSDKType {
-    const obj: any = {};
-    obj.source_port = message.source_port;
-    obj.source_channel = message.source_channel;
-    if (message.spend_limit) {
-      obj.spend_limit = message.spend_limit.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.spend_limit = [];
-    }
-    if (message.allow_list) {
-      obj.allow_list = message.allow_list.map(e => e);
-    } else {
-      obj.allow_list = [];
-    }
-    return obj;
-  },
   fromAmino(object: AllocationAmino): Allocation {
     return {
       source_port: object.source_port,
@@ -275,20 +251,6 @@ export const TransferAuthorization = {
     const message = createBaseTransferAuthorization();
     message.allocations = object.allocations?.map(e => Allocation.fromPartial(e)) || [];
     return message;
-  },
-  fromSDK(object: TransferAuthorizationSDKType): TransferAuthorization {
-    return {
-      allocations: Array.isArray(object?.allocations) ? object.allocations.map((e: any) => Allocation.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: TransferAuthorization): TransferAuthorizationSDKType {
-    const obj: any = {};
-    if (message.allocations) {
-      obj.allocations = message.allocations.map(e => e ? Allocation.toSDK(e) : undefined);
-    } else {
-      obj.allocations = [];
-    }
-    return obj;
   },
   fromAmino(object: TransferAuthorizationAmino): TransferAuthorization {
     return {

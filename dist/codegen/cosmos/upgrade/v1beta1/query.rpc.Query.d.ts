@@ -20,7 +20,11 @@ export declare class Query {
      * Since: cosmos-sdk 0.43
      */
     static ModuleVersions(request: QueryModuleVersionsRequest, initRequest?: fm.InitReq): Promise<QueryModuleVersionsResponse>;
-    /** Returns the account with authority to conduct upgrades */
+    /**
+     * Returns the account with authority to conduct upgrades
+     *
+     * Since: cosmos-sdk 0.46
+     */
     static Authority(request: QueryAuthorityRequest, initRequest?: fm.InitReq): Promise<QueryAuthorityResponse>;
 }
 export declare class QueryClientImpl {
@@ -45,6 +49,10 @@ export declare class QueryClientImpl {
      * Since: cosmos-sdk 0.43
      */
     ModuleVersions(req: QueryModuleVersionsRequest, headers?: HeadersInit): Promise<QueryModuleVersionsResponse>;
-    /** Returns the account with authority to conduct upgrades */
+    /**
+     * Returns the account with authority to conduct upgrades
+     *
+     * Since: cosmos-sdk 0.46
+     */
     Authority(req: QueryAuthorityRequest, headers?: HeadersInit): Promise<QueryAuthorityResponse>;
 }

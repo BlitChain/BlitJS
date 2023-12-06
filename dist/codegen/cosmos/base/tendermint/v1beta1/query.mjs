@@ -2,10 +2,11 @@
 import { PageRequest, PageResponse } from "../../query/v1beta1/pagination";
 import { Any } from "../../../../google/protobuf/any";
 import { BlockID } from "../../../../tendermint/types/types";
-import { Block } from "../../../../tendermint/types/block";
-import { NodeInfo } from "../../../../tendermint/p2p/types";
+import { Block as Block1 } from "../../../../tendermint/types/block";
+import { Block as Block2 } from "./types";
+import { DefaultNodeInfo } from "../../../../tendermint/p2p/types";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { isSet } from "../../../../helpers";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
 export const protobufPackage = "cosmos.base.tendermint.v1beta1";
 function createBaseGetValidatorSetByHeightRequest() {
     return {
@@ -61,18 +62,6 @@ export const GetValidatorSetByHeightRequest = {
         message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt(0);
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            height: object?.height,
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.height = message.height;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -178,25 +167,6 @@ export const GetValidatorSetByHeightResponse = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            block_height: object?.block_height,
-            validators: Array.isArray(object?.validators) ? object.validators.map((e) => Validator.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.block_height = message.block_height;
-        if (message.validators) {
-            obj.validators = message.validators.map(e => e ? Validator.toSDK(e) : undefined);
-        }
-        else {
-            obj.validators = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             block_height: BigInt(object.block_height),
@@ -282,16 +252,6 @@ export const GetLatestValidatorSetRequest = {
         const message = createBaseGetLatestValidatorSetRequest();
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            pagination: object.pagination ? PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -394,25 +354,6 @@ export const GetLatestValidatorSetResponse = {
         message.validators = object.validators?.map(e => Validator.fromPartial(e)) || [];
         message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            block_height: object?.block_height,
-            validators: Array.isArray(object?.validators) ? object.validators.map((e) => Validator.fromSDK(e)) : [],
-            pagination: object.pagination ? PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.block_height = message.block_height;
-        if (message.validators) {
-            obj.validators = message.validators.map(e => e ? Validator.toSDK(e) : undefined);
-        }
-        else {
-            obj.validators = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -530,22 +471,6 @@ export const Validator = {
         message.proposer_priority = object.proposer_priority !== undefined && object.proposer_priority !== null ? BigInt(object.proposer_priority.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            address: object?.address,
-            pub_key: object.pub_key ? Any.fromSDK(object.pub_key) : undefined,
-            voting_power: object?.voting_power,
-            proposer_priority: object?.proposer_priority
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        message.pub_key !== undefined && (obj.pub_key = message.pub_key ? Any.toSDK(message.pub_key) : undefined);
-        obj.voting_power = message.voting_power;
-        obj.proposer_priority = message.proposer_priority;
-        return obj;
-    },
     fromAmino(object) {
         return {
             address: object.address,
@@ -629,16 +554,6 @@ export const GetBlockByHeightRequest = {
         message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            height: object?.height
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.height = message.height;
-        return obj;
-    },
     fromAmino(object) {
         return {
             height: BigInt(object.height)
@@ -674,7 +589,8 @@ export const GetBlockByHeightRequest = {
 function createBaseGetBlockByHeightResponse() {
     return {
         block_id: undefined,
-        block: undefined
+        block: undefined,
+        sdk_block: undefined
     };
 }
 export const GetBlockByHeightResponse = {
@@ -684,7 +600,10 @@ export const GetBlockByHeightResponse = {
             BlockID.encode(message.block_id, writer.uint32(10).fork()).ldelim();
         }
         if (message.block !== undefined) {
-            Block.encode(message.block, writer.uint32(18).fork()).ldelim();
+            Block1.encode(message.block, writer.uint32(18).fork()).ldelim();
+        }
+        if (message.sdk_block !== undefined) {
+            Block2.encode(message.sdk_block, writer.uint32(26).fork()).ldelim();
         }
         return writer;
     },
@@ -699,7 +618,10 @@ export const GetBlockByHeightResponse = {
                     message.block_id = BlockID.decode(reader, reader.uint32());
                     break;
                 case 2:
-                    message.block = Block.decode(reader, reader.uint32());
+                    message.block = Block1.decode(reader, reader.uint32());
+                    break;
+                case 3:
+                    message.sdk_block = Block2.decode(reader, reader.uint32());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -711,43 +633,36 @@ export const GetBlockByHeightResponse = {
     fromJSON(object) {
         return {
             block_id: isSet(object.block_id) ? BlockID.fromJSON(object.block_id) : undefined,
-            block: isSet(object.block) ? Block.fromJSON(object.block) : undefined
+            block: isSet(object.block) ? Block1.fromJSON(object.block) : undefined,
+            sdk_block: isSet(object.sdk_block) ? Block2.fromJSON(object.sdk_block) : undefined
         };
     },
     toJSON(message) {
         const obj = {};
         message.block_id !== undefined && (obj.block_id = message.block_id ? BlockID.toJSON(message.block_id) : undefined);
-        message.block !== undefined && (obj.block = message.block ? Block.toJSON(message.block) : undefined);
+        message.block !== undefined && (obj.block = message.block ? Block1.toJSON(message.block) : undefined);
+        message.sdk_block !== undefined && (obj.sdk_block = message.sdk_block ? Block2.toJSON(message.sdk_block) : undefined);
         return obj;
     },
     fromPartial(object) {
         const message = createBaseGetBlockByHeightResponse();
         message.block_id = object.block_id !== undefined && object.block_id !== null ? BlockID.fromPartial(object.block_id) : undefined;
-        message.block = object.block !== undefined && object.block !== null ? Block.fromPartial(object.block) : undefined;
+        message.block = object.block !== undefined && object.block !== null ? Block1.fromPartial(object.block) : undefined;
+        message.sdk_block = object.sdk_block !== undefined && object.sdk_block !== null ? Block2.fromPartial(object.sdk_block) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            block_id: object.block_id ? BlockID.fromSDK(object.block_id) : undefined,
-            block: object.block ? Block.fromSDK(object.block) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.block_id !== undefined && (obj.block_id = message.block_id ? BlockID.toSDK(message.block_id) : undefined);
-        message.block !== undefined && (obj.block = message.block ? Block.toSDK(message.block) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
             block_id: object?.block_id ? BlockID.fromAmino(object.block_id) : undefined,
-            block: object?.block ? Block.fromAmino(object.block) : undefined
+            block: object?.block ? Block1.fromAmino(object.block) : undefined,
+            sdk_block: object?.sdk_block ? Block2.fromAmino(object.sdk_block) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
         obj.block_id = message.block_id ? BlockID.toAmino(message.block_id) : undefined;
-        obj.block = message.block ? Block.toAmino(message.block) : undefined;
+        obj.block = message.block ? Block1.toAmino(message.block) : undefined;
+        obj.sdk_block = message.sdk_block ? Block2.toAmino(message.sdk_block) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -805,13 +720,6 @@ export const GetLatestBlockRequest = {
         const message = createBaseGetLatestBlockRequest();
         return message;
     },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
-    },
     fromAmino(_) {
         return {};
     },
@@ -844,7 +752,8 @@ export const GetLatestBlockRequest = {
 function createBaseGetLatestBlockResponse() {
     return {
         block_id: undefined,
-        block: undefined
+        block: undefined,
+        sdk_block: undefined
     };
 }
 export const GetLatestBlockResponse = {
@@ -854,7 +763,10 @@ export const GetLatestBlockResponse = {
             BlockID.encode(message.block_id, writer.uint32(10).fork()).ldelim();
         }
         if (message.block !== undefined) {
-            Block.encode(message.block, writer.uint32(18).fork()).ldelim();
+            Block1.encode(message.block, writer.uint32(18).fork()).ldelim();
+        }
+        if (message.sdk_block !== undefined) {
+            Block2.encode(message.sdk_block, writer.uint32(26).fork()).ldelim();
         }
         return writer;
     },
@@ -869,7 +781,10 @@ export const GetLatestBlockResponse = {
                     message.block_id = BlockID.decode(reader, reader.uint32());
                     break;
                 case 2:
-                    message.block = Block.decode(reader, reader.uint32());
+                    message.block = Block1.decode(reader, reader.uint32());
+                    break;
+                case 3:
+                    message.sdk_block = Block2.decode(reader, reader.uint32());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -881,43 +796,36 @@ export const GetLatestBlockResponse = {
     fromJSON(object) {
         return {
             block_id: isSet(object.block_id) ? BlockID.fromJSON(object.block_id) : undefined,
-            block: isSet(object.block) ? Block.fromJSON(object.block) : undefined
+            block: isSet(object.block) ? Block1.fromJSON(object.block) : undefined,
+            sdk_block: isSet(object.sdk_block) ? Block2.fromJSON(object.sdk_block) : undefined
         };
     },
     toJSON(message) {
         const obj = {};
         message.block_id !== undefined && (obj.block_id = message.block_id ? BlockID.toJSON(message.block_id) : undefined);
-        message.block !== undefined && (obj.block = message.block ? Block.toJSON(message.block) : undefined);
+        message.block !== undefined && (obj.block = message.block ? Block1.toJSON(message.block) : undefined);
+        message.sdk_block !== undefined && (obj.sdk_block = message.sdk_block ? Block2.toJSON(message.sdk_block) : undefined);
         return obj;
     },
     fromPartial(object) {
         const message = createBaseGetLatestBlockResponse();
         message.block_id = object.block_id !== undefined && object.block_id !== null ? BlockID.fromPartial(object.block_id) : undefined;
-        message.block = object.block !== undefined && object.block !== null ? Block.fromPartial(object.block) : undefined;
+        message.block = object.block !== undefined && object.block !== null ? Block1.fromPartial(object.block) : undefined;
+        message.sdk_block = object.sdk_block !== undefined && object.sdk_block !== null ? Block2.fromPartial(object.sdk_block) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            block_id: object.block_id ? BlockID.fromSDK(object.block_id) : undefined,
-            block: object.block ? Block.fromSDK(object.block) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.block_id !== undefined && (obj.block_id = message.block_id ? BlockID.toSDK(message.block_id) : undefined);
-        message.block !== undefined && (obj.block = message.block ? Block.toSDK(message.block) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
             block_id: object?.block_id ? BlockID.fromAmino(object.block_id) : undefined,
-            block: object?.block ? Block.fromAmino(object.block) : undefined
+            block: object?.block ? Block1.fromAmino(object.block) : undefined,
+            sdk_block: object?.sdk_block ? Block2.fromAmino(object.sdk_block) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
         obj.block_id = message.block_id ? BlockID.toAmino(message.block_id) : undefined;
-        obj.block = message.block ? Block.toAmino(message.block) : undefined;
+        obj.block = message.block ? Block1.toAmino(message.block) : undefined;
+        obj.sdk_block = message.sdk_block ? Block2.toAmino(message.sdk_block) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -974,13 +882,6 @@ export const GetSyncingRequest = {
     fromPartial(_) {
         const message = createBaseGetSyncingRequest();
         return message;
-    },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
     },
     fromAmino(_) {
         return {};
@@ -1056,16 +957,6 @@ export const GetSyncingResponse = {
         message.syncing = object.syncing ?? false;
         return message;
     },
-    fromSDK(object) {
-        return {
-            syncing: object?.syncing
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.syncing = message.syncing;
-        return obj;
-    },
     fromAmino(object) {
         return {
             syncing: object.syncing
@@ -1131,13 +1022,6 @@ export const GetNodeInfoRequest = {
         const message = createBaseGetNodeInfoRequest();
         return message;
     },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
-    },
     fromAmino(_) {
         return {};
     },
@@ -1169,15 +1053,15 @@ export const GetNodeInfoRequest = {
 };
 function createBaseGetNodeInfoResponse() {
     return {
-        node_info: undefined,
+        default_node_info: undefined,
         application_version: undefined
     };
 }
 export const GetNodeInfoResponse = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.GetNodeInfoResponse",
     encode(message, writer = BinaryWriter.create()) {
-        if (message.node_info !== undefined) {
-            NodeInfo.encode(message.node_info, writer.uint32(10).fork()).ldelim();
+        if (message.default_node_info !== undefined) {
+            DefaultNodeInfo.encode(message.default_node_info, writer.uint32(10).fork()).ldelim();
         }
         if (message.application_version !== undefined) {
             VersionInfo.encode(message.application_version, writer.uint32(18).fork()).ldelim();
@@ -1192,7 +1076,7 @@ export const GetNodeInfoResponse = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.node_info = NodeInfo.decode(reader, reader.uint32());
+                    message.default_node_info = DefaultNodeInfo.decode(reader, reader.uint32());
                     break;
                 case 2:
                     message.application_version = VersionInfo.decode(reader, reader.uint32());
@@ -1206,43 +1090,31 @@ export const GetNodeInfoResponse = {
     },
     fromJSON(object) {
         return {
-            node_info: isSet(object.node_info) ? NodeInfo.fromJSON(object.node_info) : undefined,
+            default_node_info: isSet(object.default_node_info) ? DefaultNodeInfo.fromJSON(object.default_node_info) : undefined,
             application_version: isSet(object.application_version) ? VersionInfo.fromJSON(object.application_version) : undefined
         };
     },
     toJSON(message) {
         const obj = {};
-        message.node_info !== undefined && (obj.node_info = message.node_info ? NodeInfo.toJSON(message.node_info) : undefined);
+        message.default_node_info !== undefined && (obj.default_node_info = message.default_node_info ? DefaultNodeInfo.toJSON(message.default_node_info) : undefined);
         message.application_version !== undefined && (obj.application_version = message.application_version ? VersionInfo.toJSON(message.application_version) : undefined);
         return obj;
     },
     fromPartial(object) {
         const message = createBaseGetNodeInfoResponse();
-        message.node_info = object.node_info !== undefined && object.node_info !== null ? NodeInfo.fromPartial(object.node_info) : undefined;
+        message.default_node_info = object.default_node_info !== undefined && object.default_node_info !== null ? DefaultNodeInfo.fromPartial(object.default_node_info) : undefined;
         message.application_version = object.application_version !== undefined && object.application_version !== null ? VersionInfo.fromPartial(object.application_version) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            node_info: object.node_info ? NodeInfo.fromSDK(object.node_info) : undefined,
-            application_version: object.application_version ? VersionInfo.fromSDK(object.application_version) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.node_info !== undefined && (obj.node_info = message.node_info ? NodeInfo.toSDK(message.node_info) : undefined);
-        message.application_version !== undefined && (obj.application_version = message.application_version ? VersionInfo.toSDK(message.application_version) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
-            node_info: object?.node_info ? NodeInfo.fromAmino(object.node_info) : undefined,
+            default_node_info: object?.default_node_info ? DefaultNodeInfo.fromAmino(object.default_node_info) : undefined,
             application_version: object?.application_version ? VersionInfo.fromAmino(object.application_version) : undefined
         };
     },
     toAmino(message) {
         const obj = {};
-        obj.node_info = message.node_info ? NodeInfo.toAmino(message.node_info) : undefined;
+        obj.default_node_info = message.default_node_info ? DefaultNodeInfo.toAmino(message.default_node_info) : undefined;
         obj.application_version = message.application_version ? VersionInfo.toAmino(message.application_version) : undefined;
         return obj;
     },
@@ -1388,35 +1260,6 @@ export const VersionInfo = {
         message.cosmos_sdk_version = object.cosmos_sdk_version ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            app_name: object?.app_name,
-            version: object?.version,
-            git_commit: object?.git_commit,
-            build_tags: object?.build_tags,
-            go_version: object?.go_version,
-            build_deps: Array.isArray(object?.build_deps) ? object.build_deps.map((e) => Module.fromSDK(e)) : [],
-            cosmos_sdk_version: object?.cosmos_sdk_version
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        obj.app_name = message.app_name;
-        obj.version = message.version;
-        obj.git_commit = message.git_commit;
-        obj.build_tags = message.build_tags;
-        obj.go_version = message.go_version;
-        if (message.build_deps) {
-            obj.build_deps = message.build_deps.map(e => e ? Module.toSDK(e) : undefined);
-        }
-        else {
-            obj.build_deps = [];
-        }
-        obj.cosmos_sdk_version = message.cosmos_sdk_version;
-        return obj;
-    },
     fromAmino(object) {
         return {
             name: object.name,
@@ -1533,20 +1376,6 @@ export const Module = {
         message.sum = object.sum ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            path: object?.path,
-            version: object?.version,
-            sum: object?.sum
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.path = message.path;
-        obj.version = message.version;
-        obj.sum = message.sum;
-        return obj;
-    },
     fromAmino(object) {
         return {
             path: object.path,
@@ -1580,6 +1409,480 @@ export const Module = {
         return {
             typeUrl: "/cosmos.base.tendermint.v1beta1.Module",
             value: Module.encode(message).finish()
+        };
+    }
+};
+function createBaseABCIQueryRequest() {
+    return {
+        data: new Uint8Array(),
+        path: "",
+        height: BigInt(0),
+        prove: false
+    };
+}
+export const ABCIQueryRequest = {
+    typeUrl: "/cosmos.base.tendermint.v1beta1.ABCIQueryRequest",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.data.length !== 0) {
+            writer.uint32(10).bytes(message.data);
+        }
+        if (message.path !== "") {
+            writer.uint32(18).string(message.path);
+        }
+        if (message.height !== BigInt(0)) {
+            writer.uint32(24).int64(message.height);
+        }
+        if (message.prove === true) {
+            writer.uint32(32).bool(message.prove);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseABCIQueryRequest();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.data = reader.bytes();
+                    break;
+                case 2:
+                    message.path = reader.string();
+                    break;
+                case 3:
+                    message.height = reader.int64();
+                    break;
+                case 4:
+                    message.prove = reader.bool();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
+            path: isSet(object.path) ? String(object.path) : "",
+            height: isSet(object.height) ? BigInt(object.height.toString()) : BigInt(0),
+            prove: isSet(object.prove) ? Boolean(object.prove) : false
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
+        message.path !== undefined && (obj.path = message.path);
+        message.height !== undefined && (obj.height = (message.height || BigInt(0)).toString());
+        message.prove !== undefined && (obj.prove = message.prove);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseABCIQueryRequest();
+        message.data = object.data ?? new Uint8Array();
+        message.path = object.path ?? "";
+        message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt(0);
+        message.prove = object.prove ?? false;
+        return message;
+    },
+    fromAmino(object) {
+        return {
+            data: object.data,
+            path: object.path,
+            height: BigInt(object.height),
+            prove: object.prove
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.data = message.data;
+        obj.path = message.path;
+        obj.height = message.height ? message.height.toString() : undefined;
+        obj.prove = message.prove;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return ABCIQueryRequest.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/ABCIQueryRequest",
+            value: ABCIQueryRequest.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return ABCIQueryRequest.decode(message.value);
+    },
+    toProto(message) {
+        return ABCIQueryRequest.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.base.tendermint.v1beta1.ABCIQueryRequest",
+            value: ABCIQueryRequest.encode(message).finish()
+        };
+    }
+};
+function createBaseABCIQueryResponse() {
+    return {
+        code: 0,
+        log: "",
+        info: "",
+        index: BigInt(0),
+        key: new Uint8Array(),
+        value: new Uint8Array(),
+        proof_ops: undefined,
+        height: BigInt(0),
+        codespace: ""
+    };
+}
+export const ABCIQueryResponse = {
+    typeUrl: "/cosmos.base.tendermint.v1beta1.ABCIQueryResponse",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.code !== 0) {
+            writer.uint32(8).uint32(message.code);
+        }
+        if (message.log !== "") {
+            writer.uint32(26).string(message.log);
+        }
+        if (message.info !== "") {
+            writer.uint32(34).string(message.info);
+        }
+        if (message.index !== BigInt(0)) {
+            writer.uint32(40).int64(message.index);
+        }
+        if (message.key.length !== 0) {
+            writer.uint32(50).bytes(message.key);
+        }
+        if (message.value.length !== 0) {
+            writer.uint32(58).bytes(message.value);
+        }
+        if (message.proof_ops !== undefined) {
+            ProofOps.encode(message.proof_ops, writer.uint32(66).fork()).ldelim();
+        }
+        if (message.height !== BigInt(0)) {
+            writer.uint32(72).int64(message.height);
+        }
+        if (message.codespace !== "") {
+            writer.uint32(82).string(message.codespace);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseABCIQueryResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.code = reader.uint32();
+                    break;
+                case 3:
+                    message.log = reader.string();
+                    break;
+                case 4:
+                    message.info = reader.string();
+                    break;
+                case 5:
+                    message.index = reader.int64();
+                    break;
+                case 6:
+                    message.key = reader.bytes();
+                    break;
+                case 7:
+                    message.value = reader.bytes();
+                    break;
+                case 8:
+                    message.proof_ops = ProofOps.decode(reader, reader.uint32());
+                    break;
+                case 9:
+                    message.height = reader.int64();
+                    break;
+                case 10:
+                    message.codespace = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            code: isSet(object.code) ? Number(object.code) : 0,
+            log: isSet(object.log) ? String(object.log) : "",
+            info: isSet(object.info) ? String(object.info) : "",
+            index: isSet(object.index) ? BigInt(object.index.toString()) : BigInt(0),
+            key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+            value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array(),
+            proof_ops: isSet(object.proof_ops) ? ProofOps.fromJSON(object.proof_ops) : undefined,
+            height: isSet(object.height) ? BigInt(object.height.toString()) : BigInt(0),
+            codespace: isSet(object.codespace) ? String(object.codespace) : ""
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.code !== undefined && (obj.code = Math.round(message.code));
+        message.log !== undefined && (obj.log = message.log);
+        message.info !== undefined && (obj.info = message.info);
+        message.index !== undefined && (obj.index = (message.index || BigInt(0)).toString());
+        message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
+        message.value !== undefined && (obj.value = base64FromBytes(message.value !== undefined ? message.value : new Uint8Array()));
+        message.proof_ops !== undefined && (obj.proof_ops = message.proof_ops ? ProofOps.toJSON(message.proof_ops) : undefined);
+        message.height !== undefined && (obj.height = (message.height || BigInt(0)).toString());
+        message.codespace !== undefined && (obj.codespace = message.codespace);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseABCIQueryResponse();
+        message.code = object.code ?? 0;
+        message.log = object.log ?? "";
+        message.info = object.info ?? "";
+        message.index = object.index !== undefined && object.index !== null ? BigInt(object.index.toString()) : BigInt(0);
+        message.key = object.key ?? new Uint8Array();
+        message.value = object.value ?? new Uint8Array();
+        message.proof_ops = object.proof_ops !== undefined && object.proof_ops !== null ? ProofOps.fromPartial(object.proof_ops) : undefined;
+        message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt(0);
+        message.codespace = object.codespace ?? "";
+        return message;
+    },
+    fromAmino(object) {
+        return {
+            code: object.code,
+            log: object.log,
+            info: object.info,
+            index: BigInt(object.index),
+            key: object.key,
+            value: object.value,
+            proof_ops: object?.proof_ops ? ProofOps.fromAmino(object.proof_ops) : undefined,
+            height: BigInt(object.height),
+            codespace: object.codespace
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.code = message.code;
+        obj.log = message.log;
+        obj.info = message.info;
+        obj.index = message.index ? message.index.toString() : undefined;
+        obj.key = message.key;
+        obj.value = message.value;
+        obj.proof_ops = message.proof_ops ? ProofOps.toAmino(message.proof_ops) : undefined;
+        obj.height = message.height ? message.height.toString() : undefined;
+        obj.codespace = message.codespace;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return ABCIQueryResponse.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/ABCIQueryResponse",
+            value: ABCIQueryResponse.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return ABCIQueryResponse.decode(message.value);
+    },
+    toProto(message) {
+        return ABCIQueryResponse.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.base.tendermint.v1beta1.ABCIQueryResponse",
+            value: ABCIQueryResponse.encode(message).finish()
+        };
+    }
+};
+function createBaseProofOp() {
+    return {
+        type: "",
+        key: new Uint8Array(),
+        data: new Uint8Array()
+    };
+}
+export const ProofOp = {
+    typeUrl: "/cosmos.base.tendermint.v1beta1.ProofOp",
+    encode(message, writer = BinaryWriter.create()) {
+        if (message.type !== "") {
+            writer.uint32(10).string(message.type);
+        }
+        if (message.key.length !== 0) {
+            writer.uint32(18).bytes(message.key);
+        }
+        if (message.data.length !== 0) {
+            writer.uint32(26).bytes(message.data);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseProofOp();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.type = reader.string();
+                    break;
+                case 2:
+                    message.key = reader.bytes();
+                    break;
+                case 3:
+                    message.data = reader.bytes();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            type: isSet(object.type) ? String(object.type) : "",
+            key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+            data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        message.type !== undefined && (obj.type = message.type);
+        message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
+        message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseProofOp();
+        message.type = object.type ?? "";
+        message.key = object.key ?? new Uint8Array();
+        message.data = object.data ?? new Uint8Array();
+        return message;
+    },
+    fromAmino(object) {
+        return {
+            type: object.type,
+            key: object.key,
+            data: object.data
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        obj.type = message.type;
+        obj.key = message.key;
+        obj.data = message.data;
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return ProofOp.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/ProofOp",
+            value: ProofOp.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return ProofOp.decode(message.value);
+    },
+    toProto(message) {
+        return ProofOp.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.base.tendermint.v1beta1.ProofOp",
+            value: ProofOp.encode(message).finish()
+        };
+    }
+};
+function createBaseProofOps() {
+    return {
+        ops: []
+    };
+}
+export const ProofOps = {
+    typeUrl: "/cosmos.base.tendermint.v1beta1.ProofOps",
+    encode(message, writer = BinaryWriter.create()) {
+        for (const v of message.ops) {
+            ProofOp.encode(v, writer.uint32(10).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseProofOps();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.ops.push(ProofOp.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        return {
+            ops: Array.isArray(object?.ops) ? object.ops.map((e) => ProofOp.fromJSON(e)) : []
+        };
+    },
+    toJSON(message) {
+        const obj = {};
+        if (message.ops) {
+            obj.ops = message.ops.map(e => e ? ProofOp.toJSON(e) : undefined);
+        }
+        else {
+            obj.ops = [];
+        }
+        return obj;
+    },
+    fromPartial(object) {
+        const message = createBaseProofOps();
+        message.ops = object.ops?.map(e => ProofOp.fromPartial(e)) || [];
+        return message;
+    },
+    fromAmino(object) {
+        return {
+            ops: Array.isArray(object?.ops) ? object.ops.map((e) => ProofOp.fromAmino(e)) : []
+        };
+    },
+    toAmino(message) {
+        const obj = {};
+        if (message.ops) {
+            obj.ops = message.ops.map(e => e ? ProofOp.toAmino(e) : undefined);
+        }
+        else {
+            obj.ops = [];
+        }
+        return obj;
+    },
+    fromAminoMsg(object) {
+        return ProofOps.fromAmino(object.value);
+    },
+    toAminoMsg(message) {
+        return {
+            type: "cosmos-sdk/ProofOps",
+            value: ProofOps.toAmino(message)
+        };
+    },
+    fromProtoMsg(message) {
+        return ProofOps.decode(message.value);
+    },
+    toProto(message) {
+        return ProofOps.encode(message).finish();
+    },
+    toProtoMsg(message) {
+        return {
+            typeUrl: "/cosmos.base.tendermint.v1beta1.ProofOps",
+            value: ProofOps.encode(message).finish()
         };
     }
 };

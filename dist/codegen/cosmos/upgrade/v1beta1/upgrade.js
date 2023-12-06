@@ -92,24 +92,6 @@ exports.Plan = {
         message.upgraded_client_state = object.upgraded_client_state !== undefined && object.upgraded_client_state !== null ? any_1.Any.fromPartial(object.upgraded_client_state) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            time: object.time ? timestamp_1.Timestamp.fromSDK(object.time) : undefined,
-            height: object?.height,
-            info: object?.info,
-            upgraded_client_state: object.upgraded_client_state ? any_1.Any.fromSDK(object.upgraded_client_state) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        message.time !== undefined && (obj.time = message.time ? timestamp_1.Timestamp.toSDK(message.time) : undefined);
-        obj.height = message.height;
-        obj.info = message.info;
-        message.upgraded_client_state !== undefined && (obj.upgraded_client_state = message.upgraded_client_state ? any_1.Any.toSDK(message.upgraded_client_state) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             name: object.name,
@@ -216,20 +198,6 @@ exports.SoftwareUpgradeProposal = {
         message.plan = object.plan !== undefined && object.plan !== null ? exports.Plan.fromPartial(object.plan) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            title: object?.title,
-            description: object?.description,
-            plan: object.plan ? exports.Plan.fromSDK(object.plan) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.title = message.title;
-        obj.description = message.description;
-        message.plan !== undefined && (obj.plan = message.plan ? exports.Plan.toSDK(message.plan) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             title: object.title,
@@ -322,18 +290,6 @@ exports.CancelSoftwareUpgradeProposal = {
         message.description = object.description ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            title: object?.title,
-            description: object?.description
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.title = message.title;
-        obj.description = message.description;
-        return obj;
-    },
     fromAmino(object) {
         return {
             title: object.title,
@@ -422,18 +378,6 @@ exports.ModuleVersion = {
         message.name = object.name ?? "";
         message.version = object.version !== undefined && object.version !== null ? BigInt(object.version.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            version: object?.version
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        obj.version = message.version;
-        return obj;
     },
     fromAmino(object) {
         return {

@@ -1,12 +1,21 @@
 //@ts-nocheck
 import * as fm from "../../../grpc-gateway";
-import { QueryParamsRequest, QueryParamsResponse, QueryValidatorOutstandingRewardsRequest, QueryValidatorOutstandingRewardsResponse, QueryValidatorCommissionRequest, QueryValidatorCommissionResponse, QueryValidatorSlashesRequest, QueryValidatorSlashesResponse, QueryDelegationRewardsRequest, QueryDelegationRewardsResponse, QueryDelegationTotalRewardsRequest, QueryDelegationTotalRewardsResponse, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponse, QueryDelegatorWithdrawAddressRequest, QueryDelegatorWithdrawAddressResponse, QueryCommunityPoolRequest, QueryCommunityPoolResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryValidatorDistributionInfoRequest, QueryValidatorDistributionInfoResponse, QueryValidatorOutstandingRewardsRequest, QueryValidatorOutstandingRewardsResponse, QueryValidatorCommissionRequest, QueryValidatorCommissionResponse, QueryValidatorSlashesRequest, QueryValidatorSlashesResponse, QueryDelegationRewardsRequest, QueryDelegationRewardsResponse, QueryDelegationTotalRewardsRequest, QueryDelegationTotalRewardsResponse, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponse, QueryDelegatorWithdrawAddressRequest, QueryDelegatorWithdrawAddressResponse, QueryCommunityPoolRequest, QueryCommunityPoolResponse } from "./query";
 export class Query {
   /** Params queries params of the distribution module. */
   static Params(request: QueryParamsRequest, initRequest?: fm.InitReq): Promise<QueryParamsResponse> {
     return fm.fetchReq(`/cosmos/distribution/v1beta1/params?${fm.renderURLSearchParams({
       ...request
     }, [])}`, {
+      ...initRequest,
+      method: "GET"
+    });
+  }
+  /** ValidatorDistributionInfo queries validator commission and self-delegation rewards for validator */
+  static ValidatorDistributionInfo(request: QueryValidatorDistributionInfoRequest, initRequest?: fm.InitReq): Promise<QueryValidatorDistributionInfoResponse> {
+    return fm.fetchReq(`/cosmos/distribution/v1beta1/validators/${request["validator_address"]}?${fm.renderURLSearchParams({
+      ...request
+    }, ["validator_address"])}`, {
       ...initRequest,
       method: "GET"
     });
@@ -48,7 +57,7 @@ export class Query {
     });
   }
   /**
-   * DelegationTotalRewards queries the total rewards accrued by a each
+   * DelegationTotalRewards queries the total rewards accrued by each
    * validator.
    */
   static DelegationTotalRewards(request: QueryDelegationTotalRewardsRequest, initRequest?: fm.InitReq): Promise<QueryDelegationTotalRewardsResponse> {
@@ -99,6 +108,13 @@ export class QueryClientImpl {
       pathPrefix: this.url
     });
   }
+  /** ValidatorDistributionInfo queries validator commission and self-delegation rewards for validator */
+  async ValidatorDistributionInfo(req: QueryValidatorDistributionInfoRequest, headers?: HeadersInit): Promise<QueryValidatorDistributionInfoResponse> {
+    return Query.ValidatorDistributionInfo(req, {
+      headers,
+      pathPrefix: this.url
+    });
+  }
   /** ValidatorOutstandingRewards queries rewards of a validator address. */
   async ValidatorOutstandingRewards(req: QueryValidatorOutstandingRewardsRequest, headers?: HeadersInit): Promise<QueryValidatorOutstandingRewardsResponse> {
     return Query.ValidatorOutstandingRewards(req, {
@@ -128,7 +144,7 @@ export class QueryClientImpl {
     });
   }
   /**
-   * DelegationTotalRewards queries the total rewards accrued by a each
+   * DelegationTotalRewards queries the total rewards accrued by each
    * validator.
    */
   async DelegationTotalRewards(req: QueryDelegationTotalRewardsRequest, headers?: HeadersInit): Promise<QueryDelegationTotalRewardsResponse> {

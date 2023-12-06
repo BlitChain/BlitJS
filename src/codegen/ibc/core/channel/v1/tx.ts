@@ -695,20 +695,6 @@ export const MsgChannelOpenInit = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgChannelOpenInitSDKType): MsgChannelOpenInit {
-    return {
-      port_id: object?.port_id,
-      channel: object.channel ? Channel.fromSDK(object.channel) : undefined,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgChannelOpenInit): MsgChannelOpenInitSDKType {
-    const obj: any = {};
-    obj.port_id = message.port_id;
-    message.channel !== undefined && (obj.channel = message.channel ? Channel.toSDK(message.channel) : undefined);
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgChannelOpenInitAmino): MsgChannelOpenInit {
     return {
       port_id: object.port_id,
@@ -799,18 +785,6 @@ export const MsgChannelOpenInitResponse = {
     message.channel_id = object.channel_id ?? "";
     message.version = object.version ?? "";
     return message;
-  },
-  fromSDK(object: MsgChannelOpenInitResponseSDKType): MsgChannelOpenInitResponse {
-    return {
-      channel_id: object?.channel_id,
-      version: object?.version
-    };
-  },
-  toSDK(message: MsgChannelOpenInitResponse): MsgChannelOpenInitResponseSDKType {
-    const obj: any = {};
-    obj.channel_id = message.channel_id;
-    obj.version = message.version;
-    return obj;
   },
   fromAmino(object: MsgChannelOpenInitResponseAmino): MsgChannelOpenInitResponse {
     return {
@@ -951,28 +925,6 @@ export const MsgChannelOpenTry = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgChannelOpenTrySDKType): MsgChannelOpenTry {
-    return {
-      port_id: object?.port_id,
-      previous_channel_id: object?.previous_channel_id,
-      channel: object.channel ? Channel.fromSDK(object.channel) : undefined,
-      counterparty_version: object?.counterparty_version,
-      proof_init: object?.proof_init,
-      proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgChannelOpenTry): MsgChannelOpenTrySDKType {
-    const obj: any = {};
-    obj.port_id = message.port_id;
-    obj.previous_channel_id = message.previous_channel_id;
-    message.channel !== undefined && (obj.channel = message.channel ? Channel.toSDK(message.channel) : undefined);
-    obj.counterparty_version = message.counterparty_version;
-    obj.proof_init = message.proof_init;
-    message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgChannelOpenTryAmino): MsgChannelOpenTry {
     return {
       port_id: object.port_id,
@@ -1071,18 +1023,6 @@ export const MsgChannelOpenTryResponse = {
     message.version = object.version ?? "";
     message.channel_id = object.channel_id ?? "";
     return message;
-  },
-  fromSDK(object: MsgChannelOpenTryResponseSDKType): MsgChannelOpenTryResponse {
-    return {
-      version: object?.version,
-      channel_id: object?.channel_id
-    };
-  },
-  toSDK(message: MsgChannelOpenTryResponse): MsgChannelOpenTryResponseSDKType {
-    const obj: any = {};
-    obj.version = message.version;
-    obj.channel_id = message.channel_id;
-    return obj;
   },
   fromAmino(object: MsgChannelOpenTryResponseAmino): MsgChannelOpenTryResponse {
     return {
@@ -1223,28 +1163,6 @@ export const MsgChannelOpenAck = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgChannelOpenAckSDKType): MsgChannelOpenAck {
-    return {
-      port_id: object?.port_id,
-      channel_id: object?.channel_id,
-      counterparty_channel_id: object?.counterparty_channel_id,
-      counterparty_version: object?.counterparty_version,
-      proof_try: object?.proof_try,
-      proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgChannelOpenAck): MsgChannelOpenAckSDKType {
-    const obj: any = {};
-    obj.port_id = message.port_id;
-    obj.channel_id = message.channel_id;
-    obj.counterparty_channel_id = message.counterparty_channel_id;
-    obj.counterparty_version = message.counterparty_version;
-    obj.proof_try = message.proof_try;
-    message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgChannelOpenAckAmino): MsgChannelOpenAck {
     return {
       port_id: object.port_id,
@@ -1321,13 +1239,6 @@ export const MsgChannelOpenAckResponse = {
   fromPartial(_: Partial<MsgChannelOpenAckResponse>): MsgChannelOpenAckResponse {
     const message = createBaseMsgChannelOpenAckResponse();
     return message;
-  },
-  fromSDK(_: MsgChannelOpenAckResponseSDKType): MsgChannelOpenAckResponse {
-    return {};
-  },
-  toSDK(_: MsgChannelOpenAckResponse): MsgChannelOpenAckResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgChannelOpenAckResponseAmino): MsgChannelOpenAckResponse {
     return {};
@@ -1443,24 +1354,6 @@ export const MsgChannelOpenConfirm = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgChannelOpenConfirmSDKType): MsgChannelOpenConfirm {
-    return {
-      port_id: object?.port_id,
-      channel_id: object?.channel_id,
-      proof_ack: object?.proof_ack,
-      proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgChannelOpenConfirm): MsgChannelOpenConfirmSDKType {
-    const obj: any = {};
-    obj.port_id = message.port_id;
-    obj.channel_id = message.channel_id;
-    obj.proof_ack = message.proof_ack;
-    message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgChannelOpenConfirmAmino): MsgChannelOpenConfirm {
     return {
       port_id: object.port_id,
@@ -1533,13 +1426,6 @@ export const MsgChannelOpenConfirmResponse = {
   fromPartial(_: Partial<MsgChannelOpenConfirmResponse>): MsgChannelOpenConfirmResponse {
     const message = createBaseMsgChannelOpenConfirmResponse();
     return message;
-  },
-  fromSDK(_: MsgChannelOpenConfirmResponseSDKType): MsgChannelOpenConfirmResponse {
-    return {};
-  },
-  toSDK(_: MsgChannelOpenConfirmResponse): MsgChannelOpenConfirmResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgChannelOpenConfirmResponseAmino): MsgChannelOpenConfirmResponse {
     return {};
@@ -1635,20 +1521,6 @@ export const MsgChannelCloseInit = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgChannelCloseInitSDKType): MsgChannelCloseInit {
-    return {
-      port_id: object?.port_id,
-      channel_id: object?.channel_id,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgChannelCloseInit): MsgChannelCloseInitSDKType {
-    const obj: any = {};
-    obj.port_id = message.port_id;
-    obj.channel_id = message.channel_id;
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgChannelCloseInitAmino): MsgChannelCloseInit {
     return {
       port_id: object.port_id,
@@ -1717,13 +1589,6 @@ export const MsgChannelCloseInitResponse = {
   fromPartial(_: Partial<MsgChannelCloseInitResponse>): MsgChannelCloseInitResponse {
     const message = createBaseMsgChannelCloseInitResponse();
     return message;
-  },
-  fromSDK(_: MsgChannelCloseInitResponseSDKType): MsgChannelCloseInitResponse {
-    return {};
-  },
-  toSDK(_: MsgChannelCloseInitResponse): MsgChannelCloseInitResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgChannelCloseInitResponseAmino): MsgChannelCloseInitResponse {
     return {};
@@ -1839,24 +1704,6 @@ export const MsgChannelCloseConfirm = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgChannelCloseConfirmSDKType): MsgChannelCloseConfirm {
-    return {
-      port_id: object?.port_id,
-      channel_id: object?.channel_id,
-      proof_init: object?.proof_init,
-      proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgChannelCloseConfirm): MsgChannelCloseConfirmSDKType {
-    const obj: any = {};
-    obj.port_id = message.port_id;
-    obj.channel_id = message.channel_id;
-    obj.proof_init = message.proof_init;
-    message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgChannelCloseConfirmAmino): MsgChannelCloseConfirm {
     return {
       port_id: object.port_id,
@@ -1929,13 +1776,6 @@ export const MsgChannelCloseConfirmResponse = {
   fromPartial(_: Partial<MsgChannelCloseConfirmResponse>): MsgChannelCloseConfirmResponse {
     const message = createBaseMsgChannelCloseConfirmResponse();
     return message;
-  },
-  fromSDK(_: MsgChannelCloseConfirmResponseSDKType): MsgChannelCloseConfirmResponse {
-    return {};
-  },
-  toSDK(_: MsgChannelCloseConfirmResponse): MsgChannelCloseConfirmResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgChannelCloseConfirmResponseAmino): MsgChannelCloseConfirmResponse {
     return {};
@@ -2041,22 +1881,6 @@ export const MsgRecvPacket = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgRecvPacketSDKType): MsgRecvPacket {
-    return {
-      packet: object.packet ? Packet.fromSDK(object.packet) : undefined,
-      proof_commitment: object?.proof_commitment,
-      proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgRecvPacket): MsgRecvPacketSDKType {
-    const obj: any = {};
-    message.packet !== undefined && (obj.packet = message.packet ? Packet.toSDK(message.packet) : undefined);
-    obj.proof_commitment = message.proof_commitment;
-    message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgRecvPacketAmino): MsgRecvPacket {
     return {
       packet: object?.packet ? Packet.fromAmino(object.packet) : undefined,
@@ -2139,16 +1963,6 @@ export const MsgRecvPacketResponse = {
     const message = createBaseMsgRecvPacketResponse();
     message.result = object.result ?? 0;
     return message;
-  },
-  fromSDK(object: MsgRecvPacketResponseSDKType): MsgRecvPacketResponse {
-    return {
-      result: isSet(object.result) ? responseResultTypeFromJSON(object.result) : -1
-    };
-  },
-  toSDK(message: MsgRecvPacketResponse): MsgRecvPacketResponseSDKType {
-    const obj: any = {};
-    message.result !== undefined && (obj.result = responseResultTypeToJSON(message.result));
-    return obj;
   },
   fromAmino(object: MsgRecvPacketResponseAmino): MsgRecvPacketResponse {
     return {
@@ -2267,24 +2081,6 @@ export const MsgTimeout = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgTimeoutSDKType): MsgTimeout {
-    return {
-      packet: object.packet ? Packet.fromSDK(object.packet) : undefined,
-      proof_unreceived: object?.proof_unreceived,
-      proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-      next_sequence_recv: object?.next_sequence_recv,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgTimeout): MsgTimeoutSDKType {
-    const obj: any = {};
-    message.packet !== undefined && (obj.packet = message.packet ? Packet.toSDK(message.packet) : undefined);
-    obj.proof_unreceived = message.proof_unreceived;
-    message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-    obj.next_sequence_recv = message.next_sequence_recv;
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgTimeoutAmino): MsgTimeout {
     return {
       packet: object?.packet ? Packet.fromAmino(object.packet) : undefined,
@@ -2369,16 +2165,6 @@ export const MsgTimeoutResponse = {
     const message = createBaseMsgTimeoutResponse();
     message.result = object.result ?? 0;
     return message;
-  },
-  fromSDK(object: MsgTimeoutResponseSDKType): MsgTimeoutResponse {
-    return {
-      result: isSet(object.result) ? responseResultTypeFromJSON(object.result) : -1
-    };
-  },
-  toSDK(message: MsgTimeoutResponse): MsgTimeoutResponseSDKType {
-    const obj: any = {};
-    message.result !== undefined && (obj.result = responseResultTypeToJSON(message.result));
-    return obj;
   },
   fromAmino(object: MsgTimeoutResponseAmino): MsgTimeoutResponse {
     return {
@@ -2507,26 +2293,6 @@ export const MsgTimeoutOnClose = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgTimeoutOnCloseSDKType): MsgTimeoutOnClose {
-    return {
-      packet: object.packet ? Packet.fromSDK(object.packet) : undefined,
-      proof_unreceived: object?.proof_unreceived,
-      proof_close: object?.proof_close,
-      proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-      next_sequence_recv: object?.next_sequence_recv,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgTimeoutOnClose): MsgTimeoutOnCloseSDKType {
-    const obj: any = {};
-    message.packet !== undefined && (obj.packet = message.packet ? Packet.toSDK(message.packet) : undefined);
-    obj.proof_unreceived = message.proof_unreceived;
-    obj.proof_close = message.proof_close;
-    message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-    obj.next_sequence_recv = message.next_sequence_recv;
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgTimeoutOnCloseAmino): MsgTimeoutOnClose {
     return {
       packet: object?.packet ? Packet.fromAmino(object.packet) : undefined,
@@ -2613,16 +2379,6 @@ export const MsgTimeoutOnCloseResponse = {
     const message = createBaseMsgTimeoutOnCloseResponse();
     message.result = object.result ?? 0;
     return message;
-  },
-  fromSDK(object: MsgTimeoutOnCloseResponseSDKType): MsgTimeoutOnCloseResponse {
-    return {
-      result: isSet(object.result) ? responseResultTypeFromJSON(object.result) : -1
-    };
-  },
-  toSDK(message: MsgTimeoutOnCloseResponse): MsgTimeoutOnCloseResponseSDKType {
-    const obj: any = {};
-    message.result !== undefined && (obj.result = responseResultTypeToJSON(message.result));
-    return obj;
   },
   fromAmino(object: MsgTimeoutOnCloseResponseAmino): MsgTimeoutOnCloseResponse {
     return {
@@ -2741,24 +2497,6 @@ export const MsgAcknowledgement = {
     message.signer = object.signer ?? "";
     return message;
   },
-  fromSDK(object: MsgAcknowledgementSDKType): MsgAcknowledgement {
-    return {
-      packet: object.packet ? Packet.fromSDK(object.packet) : undefined,
-      acknowledgement: object?.acknowledgement,
-      proof_acked: object?.proof_acked,
-      proof_height: object.proof_height ? Height.fromSDK(object.proof_height) : undefined,
-      signer: object?.signer
-    };
-  },
-  toSDK(message: MsgAcknowledgement): MsgAcknowledgementSDKType {
-    const obj: any = {};
-    message.packet !== undefined && (obj.packet = message.packet ? Packet.toSDK(message.packet) : undefined);
-    obj.acknowledgement = message.acknowledgement;
-    obj.proof_acked = message.proof_acked;
-    message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toSDK(message.proof_height) : undefined);
-    obj.signer = message.signer;
-    return obj;
-  },
   fromAmino(object: MsgAcknowledgementAmino): MsgAcknowledgement {
     return {
       packet: object?.packet ? Packet.fromAmino(object.packet) : undefined,
@@ -2843,16 +2581,6 @@ export const MsgAcknowledgementResponse = {
     const message = createBaseMsgAcknowledgementResponse();
     message.result = object.result ?? 0;
     return message;
-  },
-  fromSDK(object: MsgAcknowledgementResponseSDKType): MsgAcknowledgementResponse {
-    return {
-      result: isSet(object.result) ? responseResultTypeFromJSON(object.result) : -1
-    };
-  },
-  toSDK(message: MsgAcknowledgementResponse): MsgAcknowledgementResponseSDKType {
-    const obj: any = {};
-    message.result !== undefined && (obj.result = responseResultTypeToJSON(message.result));
-    return obj;
   },
   fromAmino(object: MsgAcknowledgementResponseAmino): MsgAcknowledgementResponse {
     return {

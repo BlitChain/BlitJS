@@ -70,20 +70,6 @@ exports.EventGrant = {
         message.grantee = object.grantee ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            msg_type_url: object?.msg_type_url,
-            granter: object?.granter,
-            grantee: object?.grantee
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.msg_type_url = message.msg_type_url;
-        obj.granter = message.granter;
-        obj.grantee = message.grantee;
-        return obj;
-    },
     fromAmino(object) {
         return {
             msg_type_url: object.msg_type_url,
@@ -184,20 +170,6 @@ exports.EventRevoke = {
         message.granter = object.granter ?? "";
         message.grantee = object.grantee ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            msg_type_url: object?.msg_type_url,
-            granter: object?.granter,
-            grantee: object?.grantee
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.msg_type_url = message.msg_type_url;
-        obj.granter = message.granter;
-        obj.grantee = message.grantee;
-        return obj;
     },
     fromAmino(object) {
         return {

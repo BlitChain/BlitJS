@@ -447,8 +447,6 @@ export declare const MsgCreateClient: {
     fromJSON(object: any): MsgCreateClient;
     toJSON(message: MsgCreateClient): unknown;
     fromPartial(object: Partial<MsgCreateClient>): MsgCreateClient;
-    fromSDK(object: MsgCreateClientSDKType): MsgCreateClient;
-    toSDK(message: MsgCreateClient): MsgCreateClientSDKType;
     fromAmino(object: MsgCreateClientAmino): MsgCreateClient;
     toAmino(message: MsgCreateClient): MsgCreateClientAmino;
     fromAminoMsg(object: MsgCreateClientAminoMsg): MsgCreateClient;
@@ -464,8 +462,6 @@ export declare const MsgCreateClientResponse: {
     fromJSON(_: any): MsgCreateClientResponse;
     toJSON(_: MsgCreateClientResponse): unknown;
     fromPartial(_: Partial<MsgCreateClientResponse>): MsgCreateClientResponse;
-    fromSDK(_: MsgCreateClientResponseSDKType): MsgCreateClientResponse;
-    toSDK(_: MsgCreateClientResponse): MsgCreateClientResponseSDKType;
     fromAmino(_: MsgCreateClientResponseAmino): MsgCreateClientResponse;
     toAmino(_: MsgCreateClientResponse): MsgCreateClientResponseAmino;
     fromAminoMsg(object: MsgCreateClientResponseAminoMsg): MsgCreateClientResponse;
@@ -481,8 +477,6 @@ export declare const MsgUpdateClient: {
     fromJSON(object: any): MsgUpdateClient;
     toJSON(message: MsgUpdateClient): unknown;
     fromPartial(object: Partial<MsgUpdateClient>): MsgUpdateClient;
-    fromSDK(object: MsgUpdateClientSDKType): MsgUpdateClient;
-    toSDK(message: MsgUpdateClient): MsgUpdateClientSDKType;
     fromAmino(object: MsgUpdateClientAmino): MsgUpdateClient;
     toAmino(message: MsgUpdateClient): MsgUpdateClientAmino;
     fromAminoMsg(object: MsgUpdateClientAminoMsg): MsgUpdateClient;
@@ -498,8 +492,6 @@ export declare const MsgUpdateClientResponse: {
     fromJSON(_: any): MsgUpdateClientResponse;
     toJSON(_: MsgUpdateClientResponse): unknown;
     fromPartial(_: Partial<MsgUpdateClientResponse>): MsgUpdateClientResponse;
-    fromSDK(_: MsgUpdateClientResponseSDKType): MsgUpdateClientResponse;
-    toSDK(_: MsgUpdateClientResponse): MsgUpdateClientResponseSDKType;
     fromAmino(_: MsgUpdateClientResponseAmino): MsgUpdateClientResponse;
     toAmino(_: MsgUpdateClientResponse): MsgUpdateClientResponseAmino;
     fromAminoMsg(object: MsgUpdateClientResponseAminoMsg): MsgUpdateClientResponse;
@@ -515,8 +507,6 @@ export declare const MsgUpgradeClient: {
     fromJSON(object: any): MsgUpgradeClient;
     toJSON(message: MsgUpgradeClient): unknown;
     fromPartial(object: Partial<MsgUpgradeClient>): MsgUpgradeClient;
-    fromSDK(object: MsgUpgradeClientSDKType): MsgUpgradeClient;
-    toSDK(message: MsgUpgradeClient): MsgUpgradeClientSDKType;
     fromAmino(object: MsgUpgradeClientAmino): MsgUpgradeClient;
     toAmino(message: MsgUpgradeClient): MsgUpgradeClientAmino;
     fromAminoMsg(object: MsgUpgradeClientAminoMsg): MsgUpgradeClient;
@@ -532,8 +522,6 @@ export declare const MsgUpgradeClientResponse: {
     fromJSON(_: any): MsgUpgradeClientResponse;
     toJSON(_: MsgUpgradeClientResponse): unknown;
     fromPartial(_: Partial<MsgUpgradeClientResponse>): MsgUpgradeClientResponse;
-    fromSDK(_: MsgUpgradeClientResponseSDKType): MsgUpgradeClientResponse;
-    toSDK(_: MsgUpgradeClientResponse): MsgUpgradeClientResponseSDKType;
     fromAmino(_: MsgUpgradeClientResponseAmino): MsgUpgradeClientResponse;
     toAmino(_: MsgUpgradeClientResponse): MsgUpgradeClientResponseAmino;
     fromAminoMsg(object: MsgUpgradeClientResponseAminoMsg): MsgUpgradeClientResponse;
@@ -549,8 +537,6 @@ export declare const MsgSubmitMisbehaviour: {
     fromJSON(object: any): MsgSubmitMisbehaviour;
     toJSON(message: MsgSubmitMisbehaviour): unknown;
     fromPartial(object: Partial<MsgSubmitMisbehaviour>): MsgSubmitMisbehaviour;
-    fromSDK(object: MsgSubmitMisbehaviourSDKType): MsgSubmitMisbehaviour;
-    toSDK(message: MsgSubmitMisbehaviour): MsgSubmitMisbehaviourSDKType;
     fromAmino(object: MsgSubmitMisbehaviourAmino): MsgSubmitMisbehaviour;
     toAmino(message: MsgSubmitMisbehaviour): MsgSubmitMisbehaviourAmino;
     fromAminoMsg(object: MsgSubmitMisbehaviourAminoMsg): MsgSubmitMisbehaviour;
@@ -566,8 +552,6 @@ export declare const MsgSubmitMisbehaviourResponse: {
     fromJSON(_: any): MsgSubmitMisbehaviourResponse;
     toJSON(_: MsgSubmitMisbehaviourResponse): unknown;
     fromPartial(_: Partial<MsgSubmitMisbehaviourResponse>): MsgSubmitMisbehaviourResponse;
-    fromSDK(_: MsgSubmitMisbehaviourResponseSDKType): MsgSubmitMisbehaviourResponse;
-    toSDK(_: MsgSubmitMisbehaviourResponse): MsgSubmitMisbehaviourResponseSDKType;
     fromAmino(_: MsgSubmitMisbehaviourResponseAmino): MsgSubmitMisbehaviourResponse;
     toAmino(_: MsgSubmitMisbehaviourResponse): MsgSubmitMisbehaviourResponseAmino;
     fromAminoMsg(object: MsgSubmitMisbehaviourResponseAminoMsg): MsgSubmitMisbehaviourResponse;
@@ -583,8 +567,6 @@ export declare const MsgRecoverClient: {
     fromJSON(object: any): MsgRecoverClient;
     toJSON(message: MsgRecoverClient): unknown;
     fromPartial(object: Partial<MsgRecoverClient>): MsgRecoverClient;
-    fromSDK(object: MsgRecoverClientSDKType): MsgRecoverClient;
-    toSDK(message: MsgRecoverClient): MsgRecoverClientSDKType;
     fromAmino(object: MsgRecoverClientAmino): MsgRecoverClient;
     toAmino(message: MsgRecoverClient): MsgRecoverClientAmino;
     fromAminoMsg(object: MsgRecoverClientAminoMsg): MsgRecoverClient;
@@ -600,8 +582,6 @@ export declare const MsgRecoverClientResponse: {
     fromJSON(_: any): MsgRecoverClientResponse;
     toJSON(_: MsgRecoverClientResponse): unknown;
     fromPartial(_: Partial<MsgRecoverClientResponse>): MsgRecoverClientResponse;
-    fromSDK(_: MsgRecoverClientResponseSDKType): MsgRecoverClientResponse;
-    toSDK(_: MsgRecoverClientResponse): MsgRecoverClientResponseSDKType;
     fromAmino(_: MsgRecoverClientResponseAmino): MsgRecoverClientResponse;
     toAmino(_: MsgRecoverClientResponse): MsgRecoverClientResponseAmino;
     fromAminoMsg(object: MsgRecoverClientResponseAminoMsg): MsgRecoverClientResponse;
@@ -617,8 +597,6 @@ export declare const MsgIBCSoftwareUpgrade: {
     fromJSON(object: any): MsgIBCSoftwareUpgrade;
     toJSON(message: MsgIBCSoftwareUpgrade): unknown;
     fromPartial(object: Partial<MsgIBCSoftwareUpgrade>): MsgIBCSoftwareUpgrade;
-    fromSDK(object: MsgIBCSoftwareUpgradeSDKType): MsgIBCSoftwareUpgrade;
-    toSDK(message: MsgIBCSoftwareUpgrade): MsgIBCSoftwareUpgradeSDKType;
     fromAmino(object: MsgIBCSoftwareUpgradeAmino): MsgIBCSoftwareUpgrade;
     toAmino(message: MsgIBCSoftwareUpgrade): MsgIBCSoftwareUpgradeAmino;
     fromAminoMsg(object: MsgIBCSoftwareUpgradeAminoMsg): MsgIBCSoftwareUpgrade;
@@ -634,8 +612,6 @@ export declare const MsgIBCSoftwareUpgradeResponse: {
     fromJSON(_: any): MsgIBCSoftwareUpgradeResponse;
     toJSON(_: MsgIBCSoftwareUpgradeResponse): unknown;
     fromPartial(_: Partial<MsgIBCSoftwareUpgradeResponse>): MsgIBCSoftwareUpgradeResponse;
-    fromSDK(_: MsgIBCSoftwareUpgradeResponseSDKType): MsgIBCSoftwareUpgradeResponse;
-    toSDK(_: MsgIBCSoftwareUpgradeResponse): MsgIBCSoftwareUpgradeResponseSDKType;
     fromAmino(_: MsgIBCSoftwareUpgradeResponseAmino): MsgIBCSoftwareUpgradeResponse;
     toAmino(_: MsgIBCSoftwareUpgradeResponse): MsgIBCSoftwareUpgradeResponseAmino;
     fromAminoMsg(object: MsgIBCSoftwareUpgradeResponseAminoMsg): MsgIBCSoftwareUpgradeResponse;
@@ -651,8 +627,6 @@ export declare const MsgUpdateParams: {
     fromJSON(object: any): MsgUpdateParams;
     toJSON(message: MsgUpdateParams): unknown;
     fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams;
-    fromSDK(object: MsgUpdateParamsSDKType): MsgUpdateParams;
-    toSDK(message: MsgUpdateParams): MsgUpdateParamsSDKType;
     fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams;
     toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino;
     fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams;
@@ -668,8 +642,6 @@ export declare const MsgUpdateParamsResponse: {
     fromJSON(_: any): MsgUpdateParamsResponse;
     toJSON(_: MsgUpdateParamsResponse): unknown;
     fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse;
-    fromSDK(_: MsgUpdateParamsResponseSDKType): MsgUpdateParamsResponse;
-    toSDK(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseSDKType;
     fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse;
     toAmino(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseAmino;
     fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse;

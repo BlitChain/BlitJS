@@ -4,7 +4,17 @@ export declare const protobufPackage = "cosmos.distribution.v1beta1";
 /** Params defines the set of params for the distribution module. */
 export interface Params {
     community_tax: string;
+    /**
+     * Deprecated: The base_proposer_reward field is deprecated and is no longer used
+     * in the x/distribution module's reward mechanism.
+     */
+    /** @deprecated */
     base_proposer_reward: string;
+    /**
+     * Deprecated: The bonus_proposer_reward field is deprecated and is no longer used
+     * in the x/distribution module's reward mechanism.
+     */
+    /** @deprecated */
     bonus_proposer_reward: string;
     withdraw_addr_enabled: boolean;
 }
@@ -15,18 +25,30 @@ export interface ParamsProtoMsg {
 /** Params defines the set of params for the distribution module. */
 export interface ParamsAmino {
     community_tax: string;
+    /**
+     * Deprecated: The base_proposer_reward field is deprecated and is no longer used
+     * in the x/distribution module's reward mechanism.
+     */
+    /** @deprecated */
     base_proposer_reward: string;
+    /**
+     * Deprecated: The bonus_proposer_reward field is deprecated and is no longer used
+     * in the x/distribution module's reward mechanism.
+     */
+    /** @deprecated */
     bonus_proposer_reward: string;
     withdraw_addr_enabled: boolean;
 }
 export interface ParamsAminoMsg {
-    type: "cosmos-sdk/Params";
+    type: "cosmos-sdk/x/distribution/Params";
     value: ParamsAmino;
 }
 /** Params defines the set of params for the distribution module. */
 export interface ParamsSDKType {
     community_tax: string;
+    /** @deprecated */
     base_proposer_reward: string;
+    /** @deprecated */
     bonus_proposer_reward: string;
     withdraw_addr_enabled: boolean;
 }
@@ -267,7 +289,13 @@ export interface FeePoolSDKType {
  * CommunityPoolSpendProposal details a proposal for use of community funds,
  * together with how many coins are proposed to be spent, and to which
  * recipient account.
+ *
+ * Deprecated: Do not use. As of the Cosmos SDK release v0.47.x, there is no
+ * longer a need for an explicit CommunityPoolSpendProposal. To spend community
+ * pool funds, a simple MsgCommunityPoolSpend can be invoked from the x/gov
+ * module via a v1 governance proposal.
  */
+/** @deprecated */
 export interface CommunityPoolSpendProposal {
     $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal";
     title: string;
@@ -283,7 +311,13 @@ export interface CommunityPoolSpendProposalProtoMsg {
  * CommunityPoolSpendProposal details a proposal for use of community funds,
  * together with how many coins are proposed to be spent, and to which
  * recipient account.
+ *
+ * Deprecated: Do not use. As of the Cosmos SDK release v0.47.x, there is no
+ * longer a need for an explicit CommunityPoolSpendProposal. To spend community
+ * pool funds, a simple MsgCommunityPoolSpend can be invoked from the x/gov
+ * module via a v1 governance proposal.
  */
+/** @deprecated */
 export interface CommunityPoolSpendProposalAmino {
     title: string;
     description: string;
@@ -298,7 +332,13 @@ export interface CommunityPoolSpendProposalAminoMsg {
  * CommunityPoolSpendProposal details a proposal for use of community funds,
  * together with how many coins are proposed to be spent, and to which
  * recipient account.
+ *
+ * Deprecated: Do not use. As of the Cosmos SDK release v0.47.x, there is no
+ * longer a need for an explicit CommunityPoolSpendProposal. To spend community
+ * pool funds, a simple MsgCommunityPoolSpend can be invoked from the x/gov
+ * module via a v1 governance proposal.
  */
+/** @deprecated */
 export interface CommunityPoolSpendProposalSDKType {
     $typeUrl?: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal";
     title: string;
@@ -435,8 +475,6 @@ export declare const Params: {
     fromJSON(object: any): Params;
     toJSON(message: Params): unknown;
     fromPartial(object: Partial<Params>): Params;
-    fromSDK(object: ParamsSDKType): Params;
-    toSDK(message: Params): ParamsSDKType;
     fromAmino(object: ParamsAmino): Params;
     toAmino(message: Params): ParamsAmino;
     fromAminoMsg(object: ParamsAminoMsg): Params;
@@ -452,8 +490,6 @@ export declare const ValidatorHistoricalRewards: {
     fromJSON(object: any): ValidatorHistoricalRewards;
     toJSON(message: ValidatorHistoricalRewards): unknown;
     fromPartial(object: Partial<ValidatorHistoricalRewards>): ValidatorHistoricalRewards;
-    fromSDK(object: ValidatorHistoricalRewardsSDKType): ValidatorHistoricalRewards;
-    toSDK(message: ValidatorHistoricalRewards): ValidatorHistoricalRewardsSDKType;
     fromAmino(object: ValidatorHistoricalRewardsAmino): ValidatorHistoricalRewards;
     toAmino(message: ValidatorHistoricalRewards): ValidatorHistoricalRewardsAmino;
     fromAminoMsg(object: ValidatorHistoricalRewardsAminoMsg): ValidatorHistoricalRewards;
@@ -469,8 +505,6 @@ export declare const ValidatorCurrentRewards: {
     fromJSON(object: any): ValidatorCurrentRewards;
     toJSON(message: ValidatorCurrentRewards): unknown;
     fromPartial(object: Partial<ValidatorCurrentRewards>): ValidatorCurrentRewards;
-    fromSDK(object: ValidatorCurrentRewardsSDKType): ValidatorCurrentRewards;
-    toSDK(message: ValidatorCurrentRewards): ValidatorCurrentRewardsSDKType;
     fromAmino(object: ValidatorCurrentRewardsAmino): ValidatorCurrentRewards;
     toAmino(message: ValidatorCurrentRewards): ValidatorCurrentRewardsAmino;
     fromAminoMsg(object: ValidatorCurrentRewardsAminoMsg): ValidatorCurrentRewards;
@@ -486,8 +520,6 @@ export declare const ValidatorAccumulatedCommission: {
     fromJSON(object: any): ValidatorAccumulatedCommission;
     toJSON(message: ValidatorAccumulatedCommission): unknown;
     fromPartial(object: Partial<ValidatorAccumulatedCommission>): ValidatorAccumulatedCommission;
-    fromSDK(object: ValidatorAccumulatedCommissionSDKType): ValidatorAccumulatedCommission;
-    toSDK(message: ValidatorAccumulatedCommission): ValidatorAccumulatedCommissionSDKType;
     fromAmino(object: ValidatorAccumulatedCommissionAmino): ValidatorAccumulatedCommission;
     toAmino(message: ValidatorAccumulatedCommission): ValidatorAccumulatedCommissionAmino;
     fromAminoMsg(object: ValidatorAccumulatedCommissionAminoMsg): ValidatorAccumulatedCommission;
@@ -503,8 +535,6 @@ export declare const ValidatorOutstandingRewards: {
     fromJSON(object: any): ValidatorOutstandingRewards;
     toJSON(message: ValidatorOutstandingRewards): unknown;
     fromPartial(object: Partial<ValidatorOutstandingRewards>): ValidatorOutstandingRewards;
-    fromSDK(object: ValidatorOutstandingRewardsSDKType): ValidatorOutstandingRewards;
-    toSDK(message: ValidatorOutstandingRewards): ValidatorOutstandingRewardsSDKType;
     fromAmino(object: ValidatorOutstandingRewardsAmino): ValidatorOutstandingRewards;
     toAmino(message: ValidatorOutstandingRewards): ValidatorOutstandingRewardsAmino;
     fromAminoMsg(object: ValidatorOutstandingRewardsAminoMsg): ValidatorOutstandingRewards;
@@ -520,8 +550,6 @@ export declare const ValidatorSlashEvent: {
     fromJSON(object: any): ValidatorSlashEvent;
     toJSON(message: ValidatorSlashEvent): unknown;
     fromPartial(object: Partial<ValidatorSlashEvent>): ValidatorSlashEvent;
-    fromSDK(object: ValidatorSlashEventSDKType): ValidatorSlashEvent;
-    toSDK(message: ValidatorSlashEvent): ValidatorSlashEventSDKType;
     fromAmino(object: ValidatorSlashEventAmino): ValidatorSlashEvent;
     toAmino(message: ValidatorSlashEvent): ValidatorSlashEventAmino;
     fromAminoMsg(object: ValidatorSlashEventAminoMsg): ValidatorSlashEvent;
@@ -537,8 +565,6 @@ export declare const ValidatorSlashEvents: {
     fromJSON(object: any): ValidatorSlashEvents;
     toJSON(message: ValidatorSlashEvents): unknown;
     fromPartial(object: Partial<ValidatorSlashEvents>): ValidatorSlashEvents;
-    fromSDK(object: ValidatorSlashEventsSDKType): ValidatorSlashEvents;
-    toSDK(message: ValidatorSlashEvents): ValidatorSlashEventsSDKType;
     fromAmino(object: ValidatorSlashEventsAmino): ValidatorSlashEvents;
     toAmino(message: ValidatorSlashEvents): ValidatorSlashEventsAmino;
     fromAminoMsg(object: ValidatorSlashEventsAminoMsg): ValidatorSlashEvents;
@@ -554,8 +580,6 @@ export declare const FeePool: {
     fromJSON(object: any): FeePool;
     toJSON(message: FeePool): unknown;
     fromPartial(object: Partial<FeePool>): FeePool;
-    fromSDK(object: FeePoolSDKType): FeePool;
-    toSDK(message: FeePool): FeePoolSDKType;
     fromAmino(object: FeePoolAmino): FeePool;
     toAmino(message: FeePool): FeePoolAmino;
     fromAminoMsg(object: FeePoolAminoMsg): FeePool;
@@ -571,8 +595,6 @@ export declare const CommunityPoolSpendProposal: {
     fromJSON(object: any): CommunityPoolSpendProposal;
     toJSON(message: CommunityPoolSpendProposal): unknown;
     fromPartial(object: Partial<CommunityPoolSpendProposal>): CommunityPoolSpendProposal;
-    fromSDK(object: CommunityPoolSpendProposalSDKType): CommunityPoolSpendProposal;
-    toSDK(message: CommunityPoolSpendProposal): CommunityPoolSpendProposalSDKType;
     fromAmino(object: CommunityPoolSpendProposalAmino): CommunityPoolSpendProposal;
     toAmino(message: CommunityPoolSpendProposal): CommunityPoolSpendProposalAmino;
     fromAminoMsg(object: CommunityPoolSpendProposalAminoMsg): CommunityPoolSpendProposal;
@@ -588,8 +610,6 @@ export declare const DelegatorStartingInfo: {
     fromJSON(object: any): DelegatorStartingInfo;
     toJSON(message: DelegatorStartingInfo): unknown;
     fromPartial(object: Partial<DelegatorStartingInfo>): DelegatorStartingInfo;
-    fromSDK(object: DelegatorStartingInfoSDKType): DelegatorStartingInfo;
-    toSDK(message: DelegatorStartingInfo): DelegatorStartingInfoSDKType;
     fromAmino(object: DelegatorStartingInfoAmino): DelegatorStartingInfo;
     toAmino(message: DelegatorStartingInfo): DelegatorStartingInfoAmino;
     fromAminoMsg(object: DelegatorStartingInfoAminoMsg): DelegatorStartingInfo;
@@ -605,8 +625,6 @@ export declare const DelegationDelegatorReward: {
     fromJSON(object: any): DelegationDelegatorReward;
     toJSON(message: DelegationDelegatorReward): unknown;
     fromPartial(object: Partial<DelegationDelegatorReward>): DelegationDelegatorReward;
-    fromSDK(object: DelegationDelegatorRewardSDKType): DelegationDelegatorReward;
-    toSDK(message: DelegationDelegatorReward): DelegationDelegatorRewardSDKType;
     fromAmino(object: DelegationDelegatorRewardAmino): DelegationDelegatorReward;
     toAmino(message: DelegationDelegatorReward): DelegationDelegatorRewardAmino;
     fromAminoMsg(object: DelegationDelegatorRewardAminoMsg): DelegationDelegatorReward;
@@ -622,8 +640,6 @@ export declare const CommunityPoolSpendProposalWithDeposit: {
     fromJSON(object: any): CommunityPoolSpendProposalWithDeposit;
     toJSON(message: CommunityPoolSpendProposalWithDeposit): unknown;
     fromPartial(object: Partial<CommunityPoolSpendProposalWithDeposit>): CommunityPoolSpendProposalWithDeposit;
-    fromSDK(object: CommunityPoolSpendProposalWithDepositSDKType): CommunityPoolSpendProposalWithDeposit;
-    toSDK(message: CommunityPoolSpendProposalWithDeposit): CommunityPoolSpendProposalWithDepositSDKType;
     fromAmino(object: CommunityPoolSpendProposalWithDepositAmino): CommunityPoolSpendProposalWithDeposit;
     toAmino(message: CommunityPoolSpendProposalWithDeposit): CommunityPoolSpendProposalWithDepositAmino;
     fromAminoMsg(object: CommunityPoolSpendProposalWithDepositAminoMsg): CommunityPoolSpendProposalWithDeposit;

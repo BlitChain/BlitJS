@@ -87,24 +87,6 @@ export const PageRequest = {
         message.reverse = object.reverse ?? false;
         return message;
     },
-    fromSDK(object) {
-        return {
-            key: object?.key,
-            offset: object?.offset,
-            limit: object?.limit,
-            count_total: object?.count_total,
-            reverse: object?.reverse
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.key = message.key;
-        obj.offset = message.offset;
-        obj.limit = message.limit;
-        obj.count_total = message.count_total;
-        obj.reverse = message.reverse;
-        return obj;
-    },
     fromAmino(object) {
         return {
             key: object.key,
@@ -199,18 +181,6 @@ export const PageResponse = {
         message.next_key = object.next_key ?? new Uint8Array();
         message.total = object.total !== undefined && object.total !== null ? BigInt(object.total.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            next_key: object?.next_key,
-            total: object?.total
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.next_key = message.next_key;
-        obj.total = message.total;
-        return obj;
     },
     fromAmino(object) {
         return {

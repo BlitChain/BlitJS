@@ -146,55 +146,6 @@ exports.GenesisState = {
         message.votes = object.votes?.map(e => types_1.Vote.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            group_seq: object?.group_seq,
-            groups: Array.isArray(object?.groups) ? object.groups.map((e) => types_1.GroupInfo.fromSDK(e)) : [],
-            group_members: Array.isArray(object?.group_members) ? object.group_members.map((e) => types_1.GroupMember.fromSDK(e)) : [],
-            group_policy_seq: object?.group_policy_seq,
-            group_policies: Array.isArray(object?.group_policies) ? object.group_policies.map((e) => types_1.GroupPolicyInfo.fromSDK(e)) : [],
-            proposal_seq: object?.proposal_seq,
-            proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => types_1.Proposal.fromSDK(e)) : [],
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => types_1.Vote.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.group_seq = message.group_seq;
-        if (message.groups) {
-            obj.groups = message.groups.map(e => e ? types_1.GroupInfo.toSDK(e) : undefined);
-        }
-        else {
-            obj.groups = [];
-        }
-        if (message.group_members) {
-            obj.group_members = message.group_members.map(e => e ? types_1.GroupMember.toSDK(e) : undefined);
-        }
-        else {
-            obj.group_members = [];
-        }
-        obj.group_policy_seq = message.group_policy_seq;
-        if (message.group_policies) {
-            obj.group_policies = message.group_policies.map(e => e ? types_1.GroupPolicyInfo.toSDK(e) : undefined);
-        }
-        else {
-            obj.group_policies = [];
-        }
-        obj.proposal_seq = message.proposal_seq;
-        if (message.proposals) {
-            obj.proposals = message.proposals.map(e => e ? types_1.Proposal.toSDK(e) : undefined);
-        }
-        else {
-            obj.proposals = [];
-        }
-        if (message.votes) {
-            obj.votes = message.votes.map(e => e ? types_1.Vote.toSDK(e) : undefined);
-        }
-        else {
-            obj.votes = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             group_seq: BigInt(object.group_seq),

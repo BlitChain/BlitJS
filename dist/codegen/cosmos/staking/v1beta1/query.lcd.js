@@ -22,7 +22,10 @@ class LCDQueryClient {
         this.pool = this.pool.bind(this);
         this.params = this.params.bind(this);
     }
-    /* Validators queries all validators that match the given status. */
+    /* Validators queries all validators that match the given status.
+    
+     When called from another module, this query might consume a high amount of
+     gas if the pagination field is incorrectly set. */
     async validators(params) {
         const options = {
             params: {}
@@ -41,7 +44,10 @@ class LCDQueryClient {
         const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}`;
         return await this.req.get(endpoint);
     }
-    /* ValidatorDelegations queries delegate info for given validator. */
+    /* ValidatorDelegations queries delegate info for given validator.
+    
+     When called from another module, this query might consume a high amount of
+     gas if the pagination field is incorrectly set. */
     async validatorDelegations(params) {
         const options = {
             params: {}
@@ -52,7 +58,10 @@ class LCDQueryClient {
         const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}/delegations`;
         return await this.req.get(endpoint, options);
     }
-    /* ValidatorUnbondingDelegations queries unbonding delegations of a validator. */
+    /* ValidatorUnbondingDelegations queries unbonding delegations of a validator.
+    
+     When called from another module, this query might consume a high amount of
+     gas if the pagination field is incorrectly set. */
     async validatorUnbondingDelegations(params) {
         const options = {
             params: {}
@@ -74,7 +83,10 @@ class LCDQueryClient {
         const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}/delegations/${params.delegator_addr}/unbonding_delegation`;
         return await this.req.get(endpoint);
     }
-    /* DelegatorDelegations queries all delegations of a given delegator address. */
+    /* DelegatorDelegations queries all delegations of a given delegator address.
+    
+     When called from another module, this query might consume a high amount of
+     gas if the pagination field is incorrectly set. */
     async delegatorDelegations(params) {
         const options = {
             params: {}
@@ -86,7 +98,10 @@ class LCDQueryClient {
         return await this.req.get(endpoint, options);
     }
     /* DelegatorUnbondingDelegations queries all unbonding delegations of a given
-     delegator address. */
+     delegator address.
+    
+     When called from another module, this query might consume a high amount of
+     gas if the pagination field is incorrectly set. */
     async delegatorUnbondingDelegations(params) {
         const options = {
             params: {}
@@ -97,7 +112,10 @@ class LCDQueryClient {
         const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegator_addr}/unbonding_delegations`;
         return await this.req.get(endpoint, options);
     }
-    /* Redelegations queries redelegations of given address. */
+    /* Redelegations queries redelegations of given address.
+    
+     When called from another module, this query might consume a high amount of
+     gas if the pagination field is incorrectly set. */
     async redelegations(params) {
         const options = {
             params: {}
@@ -115,7 +133,10 @@ class LCDQueryClient {
         return await this.req.get(endpoint, options);
     }
     /* DelegatorValidators queries all validators info for given delegator
-     address. */
+     address.
+    
+     When called from another module, this query might consume a high amount of
+     gas if the pagination field is incorrectly set. */
     async delegatorValidators(params) {
         const options = {
             params: {}

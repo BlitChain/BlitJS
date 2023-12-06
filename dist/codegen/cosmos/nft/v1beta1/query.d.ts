@@ -4,7 +4,9 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.nft.v1beta1";
 /** QueryBalanceRequest is the request type for the Query/Balance RPC method */
 export interface QueryBalanceRequest {
+    /** class_id associated with the nft */
     class_id: string;
+    /** owner is the owner address of the nft */
     owner: string;
 }
 export interface QueryBalanceRequestProtoMsg {
@@ -13,7 +15,9 @@ export interface QueryBalanceRequestProtoMsg {
 }
 /** QueryBalanceRequest is the request type for the Query/Balance RPC method */
 export interface QueryBalanceRequestAmino {
+    /** class_id associated with the nft */
     class_id: string;
+    /** owner is the owner address of the nft */
     owner: string;
 }
 export interface QueryBalanceRequestAminoMsg {
@@ -27,6 +31,7 @@ export interface QueryBalanceRequestSDKType {
 }
 /** QueryBalanceResponse is the response type for the Query/Balance RPC method */
 export interface QueryBalanceResponse {
+    /** amount is the number of all NFTs of a given class owned by the owner */
     amount: bigint;
 }
 export interface QueryBalanceResponseProtoMsg {
@@ -35,6 +40,7 @@ export interface QueryBalanceResponseProtoMsg {
 }
 /** QueryBalanceResponse is the response type for the Query/Balance RPC method */
 export interface QueryBalanceResponseAmino {
+    /** amount is the number of all NFTs of a given class owned by the owner */
     amount: string;
 }
 export interface QueryBalanceResponseAminoMsg {
@@ -47,7 +53,9 @@ export interface QueryBalanceResponseSDKType {
 }
 /** QueryOwnerRequest is the request type for the Query/Owner RPC method */
 export interface QueryOwnerRequest {
+    /** class_id associated with the nft */
     class_id: string;
+    /** id is a unique identifier of the NFT */
     id: string;
 }
 export interface QueryOwnerRequestProtoMsg {
@@ -56,7 +64,9 @@ export interface QueryOwnerRequestProtoMsg {
 }
 /** QueryOwnerRequest is the request type for the Query/Owner RPC method */
 export interface QueryOwnerRequestAmino {
+    /** class_id associated with the nft */
     class_id: string;
+    /** id is a unique identifier of the NFT */
     id: string;
 }
 export interface QueryOwnerRequestAminoMsg {
@@ -70,6 +80,7 @@ export interface QueryOwnerRequestSDKType {
 }
 /** QueryOwnerResponse is the response type for the Query/Owner RPC method */
 export interface QueryOwnerResponse {
+    /** owner is the owner address of the nft */
     owner: string;
 }
 export interface QueryOwnerResponseProtoMsg {
@@ -78,6 +89,7 @@ export interface QueryOwnerResponseProtoMsg {
 }
 /** QueryOwnerResponse is the response type for the Query/Owner RPC method */
 export interface QueryOwnerResponseAmino {
+    /** owner is the owner address of the nft */
     owner: string;
 }
 export interface QueryOwnerResponseAminoMsg {
@@ -90,6 +102,7 @@ export interface QueryOwnerResponseSDKType {
 }
 /** QuerySupplyRequest is the request type for the Query/Supply RPC method */
 export interface QuerySupplyRequest {
+    /** class_id associated with the nft */
     class_id: string;
 }
 export interface QuerySupplyRequestProtoMsg {
@@ -98,6 +111,7 @@ export interface QuerySupplyRequestProtoMsg {
 }
 /** QuerySupplyRequest is the request type for the Query/Supply RPC method */
 export interface QuerySupplyRequestAmino {
+    /** class_id associated with the nft */
     class_id: string;
 }
 export interface QuerySupplyRequestAminoMsg {
@@ -110,6 +124,7 @@ export interface QuerySupplyRequestSDKType {
 }
 /** QuerySupplyResponse is the response type for the Query/Supply RPC method */
 export interface QuerySupplyResponse {
+    /** amount is the number of all NFTs from the given class */
     amount: bigint;
 }
 export interface QuerySupplyResponseProtoMsg {
@@ -118,6 +133,7 @@ export interface QuerySupplyResponseProtoMsg {
 }
 /** QuerySupplyResponse is the response type for the Query/Supply RPC method */
 export interface QuerySupplyResponseAmino {
+    /** amount is the number of all NFTs from the given class */
     amount: string;
 }
 export interface QuerySupplyResponseAminoMsg {
@@ -130,8 +146,11 @@ export interface QuerySupplyResponseSDKType {
 }
 /** QueryNFTstRequest is the request type for the Query/NFTs RPC method */
 export interface QueryNFTsRequest {
+    /** class_id associated with the nft */
     class_id: string;
+    /** owner is the owner address of the nft */
     owner: string;
+    /** pagination defines an optional pagination for the request. */
     pagination?: PageRequest;
 }
 export interface QueryNFTsRequestProtoMsg {
@@ -140,8 +159,11 @@ export interface QueryNFTsRequestProtoMsg {
 }
 /** QueryNFTstRequest is the request type for the Query/NFTs RPC method */
 export interface QueryNFTsRequestAmino {
+    /** class_id associated with the nft */
     class_id: string;
+    /** owner is the owner address of the nft */
     owner: string;
+    /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestAmino;
 }
 export interface QueryNFTsRequestAminoMsg {
@@ -156,7 +178,9 @@ export interface QueryNFTsRequestSDKType {
 }
 /** QueryNFTsResponse is the response type for the Query/NFTs RPC methods */
 export interface QueryNFTsResponse {
+    /** NFT defines the NFT */
     nfts: NFT[];
+    /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
 }
 export interface QueryNFTsResponseProtoMsg {
@@ -165,7 +189,9 @@ export interface QueryNFTsResponseProtoMsg {
 }
 /** QueryNFTsResponse is the response type for the Query/NFTs RPC methods */
 export interface QueryNFTsResponseAmino {
+    /** NFT defines the NFT */
     nfts: NFTAmino[];
+    /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;
 }
 export interface QueryNFTsResponseAminoMsg {
@@ -179,7 +205,9 @@ export interface QueryNFTsResponseSDKType {
 }
 /** QueryNFTRequest is the request type for the Query/NFT RPC method */
 export interface QueryNFTRequest {
+    /** class_id associated with the nft */
     class_id: string;
+    /** id is a unique identifier of the NFT */
     id: string;
 }
 export interface QueryNFTRequestProtoMsg {
@@ -188,7 +216,9 @@ export interface QueryNFTRequestProtoMsg {
 }
 /** QueryNFTRequest is the request type for the Query/NFT RPC method */
 export interface QueryNFTRequestAmino {
+    /** class_id associated with the nft */
     class_id: string;
+    /** id is a unique identifier of the NFT */
     id: string;
 }
 export interface QueryNFTRequestAminoMsg {
@@ -202,6 +232,7 @@ export interface QueryNFTRequestSDKType {
 }
 /** QueryNFTResponse is the response type for the Query/NFT RPC method */
 export interface QueryNFTResponse {
+    /** owner is the owner address of the nft */
     nft?: NFT;
 }
 export interface QueryNFTResponseProtoMsg {
@@ -210,6 +241,7 @@ export interface QueryNFTResponseProtoMsg {
 }
 /** QueryNFTResponse is the response type for the Query/NFT RPC method */
 export interface QueryNFTResponseAmino {
+    /** owner is the owner address of the nft */
     nft?: NFTAmino;
 }
 export interface QueryNFTResponseAminoMsg {
@@ -222,6 +254,7 @@ export interface QueryNFTResponseSDKType {
 }
 /** QueryClassRequest is the request type for the Query/Class RPC method */
 export interface QueryClassRequest {
+    /** class_id associated with the nft */
     class_id: string;
 }
 export interface QueryClassRequestProtoMsg {
@@ -230,6 +263,7 @@ export interface QueryClassRequestProtoMsg {
 }
 /** QueryClassRequest is the request type for the Query/Class RPC method */
 export interface QueryClassRequestAmino {
+    /** class_id associated with the nft */
     class_id: string;
 }
 export interface QueryClassRequestAminoMsg {
@@ -242,6 +276,7 @@ export interface QueryClassRequestSDKType {
 }
 /** QueryClassResponse is the response type for the Query/Class RPC method */
 export interface QueryClassResponse {
+    /** class defines the class of the nft type. */
     class?: Class;
 }
 export interface QueryClassResponseProtoMsg {
@@ -250,6 +285,7 @@ export interface QueryClassResponseProtoMsg {
 }
 /** QueryClassResponse is the response type for the Query/Class RPC method */
 export interface QueryClassResponseAmino {
+    /** class defines the class of the nft type. */
     class?: ClassAmino;
 }
 export interface QueryClassResponseAminoMsg {
@@ -284,7 +320,9 @@ export interface QueryClassesRequestSDKType {
 }
 /** QueryClassesResponse is the response type for the Query/Classes RPC method */
 export interface QueryClassesResponse {
+    /** class defines the class of the nft type. */
     classes: Class[];
+    /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
 }
 export interface QueryClassesResponseProtoMsg {
@@ -293,7 +331,9 @@ export interface QueryClassesResponseProtoMsg {
 }
 /** QueryClassesResponse is the response type for the Query/Classes RPC method */
 export interface QueryClassesResponseAmino {
+    /** class defines the class of the nft type. */
     classes: ClassAmino[];
+    /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;
 }
 export interface QueryClassesResponseAminoMsg {
@@ -312,8 +352,6 @@ export declare const QueryBalanceRequest: {
     fromJSON(object: any): QueryBalanceRequest;
     toJSON(message: QueryBalanceRequest): unknown;
     fromPartial(object: Partial<QueryBalanceRequest>): QueryBalanceRequest;
-    fromSDK(object: QueryBalanceRequestSDKType): QueryBalanceRequest;
-    toSDK(message: QueryBalanceRequest): QueryBalanceRequestSDKType;
     fromAmino(object: QueryBalanceRequestAmino): QueryBalanceRequest;
     toAmino(message: QueryBalanceRequest): QueryBalanceRequestAmino;
     fromAminoMsg(object: QueryBalanceRequestAminoMsg): QueryBalanceRequest;
@@ -329,8 +367,6 @@ export declare const QueryBalanceResponse: {
     fromJSON(object: any): QueryBalanceResponse;
     toJSON(message: QueryBalanceResponse): unknown;
     fromPartial(object: Partial<QueryBalanceResponse>): QueryBalanceResponse;
-    fromSDK(object: QueryBalanceResponseSDKType): QueryBalanceResponse;
-    toSDK(message: QueryBalanceResponse): QueryBalanceResponseSDKType;
     fromAmino(object: QueryBalanceResponseAmino): QueryBalanceResponse;
     toAmino(message: QueryBalanceResponse): QueryBalanceResponseAmino;
     fromAminoMsg(object: QueryBalanceResponseAminoMsg): QueryBalanceResponse;
@@ -346,8 +382,6 @@ export declare const QueryOwnerRequest: {
     fromJSON(object: any): QueryOwnerRequest;
     toJSON(message: QueryOwnerRequest): unknown;
     fromPartial(object: Partial<QueryOwnerRequest>): QueryOwnerRequest;
-    fromSDK(object: QueryOwnerRequestSDKType): QueryOwnerRequest;
-    toSDK(message: QueryOwnerRequest): QueryOwnerRequestSDKType;
     fromAmino(object: QueryOwnerRequestAmino): QueryOwnerRequest;
     toAmino(message: QueryOwnerRequest): QueryOwnerRequestAmino;
     fromAminoMsg(object: QueryOwnerRequestAminoMsg): QueryOwnerRequest;
@@ -363,8 +397,6 @@ export declare const QueryOwnerResponse: {
     fromJSON(object: any): QueryOwnerResponse;
     toJSON(message: QueryOwnerResponse): unknown;
     fromPartial(object: Partial<QueryOwnerResponse>): QueryOwnerResponse;
-    fromSDK(object: QueryOwnerResponseSDKType): QueryOwnerResponse;
-    toSDK(message: QueryOwnerResponse): QueryOwnerResponseSDKType;
     fromAmino(object: QueryOwnerResponseAmino): QueryOwnerResponse;
     toAmino(message: QueryOwnerResponse): QueryOwnerResponseAmino;
     fromAminoMsg(object: QueryOwnerResponseAminoMsg): QueryOwnerResponse;
@@ -380,8 +412,6 @@ export declare const QuerySupplyRequest: {
     fromJSON(object: any): QuerySupplyRequest;
     toJSON(message: QuerySupplyRequest): unknown;
     fromPartial(object: Partial<QuerySupplyRequest>): QuerySupplyRequest;
-    fromSDK(object: QuerySupplyRequestSDKType): QuerySupplyRequest;
-    toSDK(message: QuerySupplyRequest): QuerySupplyRequestSDKType;
     fromAmino(object: QuerySupplyRequestAmino): QuerySupplyRequest;
     toAmino(message: QuerySupplyRequest): QuerySupplyRequestAmino;
     fromAminoMsg(object: QuerySupplyRequestAminoMsg): QuerySupplyRequest;
@@ -397,8 +427,6 @@ export declare const QuerySupplyResponse: {
     fromJSON(object: any): QuerySupplyResponse;
     toJSON(message: QuerySupplyResponse): unknown;
     fromPartial(object: Partial<QuerySupplyResponse>): QuerySupplyResponse;
-    fromSDK(object: QuerySupplyResponseSDKType): QuerySupplyResponse;
-    toSDK(message: QuerySupplyResponse): QuerySupplyResponseSDKType;
     fromAmino(object: QuerySupplyResponseAmino): QuerySupplyResponse;
     toAmino(message: QuerySupplyResponse): QuerySupplyResponseAmino;
     fromAminoMsg(object: QuerySupplyResponseAminoMsg): QuerySupplyResponse;
@@ -414,8 +442,6 @@ export declare const QueryNFTsRequest: {
     fromJSON(object: any): QueryNFTsRequest;
     toJSON(message: QueryNFTsRequest): unknown;
     fromPartial(object: Partial<QueryNFTsRequest>): QueryNFTsRequest;
-    fromSDK(object: QueryNFTsRequestSDKType): QueryNFTsRequest;
-    toSDK(message: QueryNFTsRequest): QueryNFTsRequestSDKType;
     fromAmino(object: QueryNFTsRequestAmino): QueryNFTsRequest;
     toAmino(message: QueryNFTsRequest): QueryNFTsRequestAmino;
     fromAminoMsg(object: QueryNFTsRequestAminoMsg): QueryNFTsRequest;
@@ -431,8 +457,6 @@ export declare const QueryNFTsResponse: {
     fromJSON(object: any): QueryNFTsResponse;
     toJSON(message: QueryNFTsResponse): unknown;
     fromPartial(object: Partial<QueryNFTsResponse>): QueryNFTsResponse;
-    fromSDK(object: QueryNFTsResponseSDKType): QueryNFTsResponse;
-    toSDK(message: QueryNFTsResponse): QueryNFTsResponseSDKType;
     fromAmino(object: QueryNFTsResponseAmino): QueryNFTsResponse;
     toAmino(message: QueryNFTsResponse): QueryNFTsResponseAmino;
     fromAminoMsg(object: QueryNFTsResponseAminoMsg): QueryNFTsResponse;
@@ -448,8 +472,6 @@ export declare const QueryNFTRequest: {
     fromJSON(object: any): QueryNFTRequest;
     toJSON(message: QueryNFTRequest): unknown;
     fromPartial(object: Partial<QueryNFTRequest>): QueryNFTRequest;
-    fromSDK(object: QueryNFTRequestSDKType): QueryNFTRequest;
-    toSDK(message: QueryNFTRequest): QueryNFTRequestSDKType;
     fromAmino(object: QueryNFTRequestAmino): QueryNFTRequest;
     toAmino(message: QueryNFTRequest): QueryNFTRequestAmino;
     fromAminoMsg(object: QueryNFTRequestAminoMsg): QueryNFTRequest;
@@ -465,8 +487,6 @@ export declare const QueryNFTResponse: {
     fromJSON(object: any): QueryNFTResponse;
     toJSON(message: QueryNFTResponse): unknown;
     fromPartial(object: Partial<QueryNFTResponse>): QueryNFTResponse;
-    fromSDK(object: QueryNFTResponseSDKType): QueryNFTResponse;
-    toSDK(message: QueryNFTResponse): QueryNFTResponseSDKType;
     fromAmino(object: QueryNFTResponseAmino): QueryNFTResponse;
     toAmino(message: QueryNFTResponse): QueryNFTResponseAmino;
     fromAminoMsg(object: QueryNFTResponseAminoMsg): QueryNFTResponse;
@@ -482,8 +502,6 @@ export declare const QueryClassRequest: {
     fromJSON(object: any): QueryClassRequest;
     toJSON(message: QueryClassRequest): unknown;
     fromPartial(object: Partial<QueryClassRequest>): QueryClassRequest;
-    fromSDK(object: QueryClassRequestSDKType): QueryClassRequest;
-    toSDK(message: QueryClassRequest): QueryClassRequestSDKType;
     fromAmino(object: QueryClassRequestAmino): QueryClassRequest;
     toAmino(message: QueryClassRequest): QueryClassRequestAmino;
     fromAminoMsg(object: QueryClassRequestAminoMsg): QueryClassRequest;
@@ -499,8 +517,6 @@ export declare const QueryClassResponse: {
     fromJSON(object: any): QueryClassResponse;
     toJSON(message: QueryClassResponse): unknown;
     fromPartial(object: Partial<QueryClassResponse>): QueryClassResponse;
-    fromSDK(object: QueryClassResponseSDKType): QueryClassResponse;
-    toSDK(message: QueryClassResponse): QueryClassResponseSDKType;
     fromAmino(object: QueryClassResponseAmino): QueryClassResponse;
     toAmino(message: QueryClassResponse): QueryClassResponseAmino;
     fromAminoMsg(object: QueryClassResponseAminoMsg): QueryClassResponse;
@@ -516,8 +532,6 @@ export declare const QueryClassesRequest: {
     fromJSON(object: any): QueryClassesRequest;
     toJSON(message: QueryClassesRequest): unknown;
     fromPartial(object: Partial<QueryClassesRequest>): QueryClassesRequest;
-    fromSDK(object: QueryClassesRequestSDKType): QueryClassesRequest;
-    toSDK(message: QueryClassesRequest): QueryClassesRequestSDKType;
     fromAmino(object: QueryClassesRequestAmino): QueryClassesRequest;
     toAmino(message: QueryClassesRequest): QueryClassesRequestAmino;
     fromAminoMsg(object: QueryClassesRequestAminoMsg): QueryClassesRequest;
@@ -533,8 +547,6 @@ export declare const QueryClassesResponse: {
     fromJSON(object: any): QueryClassesResponse;
     toJSON(message: QueryClassesResponse): unknown;
     fromPartial(object: Partial<QueryClassesResponse>): QueryClassesResponse;
-    fromSDK(object: QueryClassesResponseSDKType): QueryClassesResponse;
-    toSDK(message: QueryClassesResponse): QueryClassesResponseSDKType;
     fromAmino(object: QueryClassesResponseAmino): QueryClassesResponse;
     toAmino(message: QueryClassesResponse): QueryClassesResponseAmino;
     fromAminoMsg(object: QueryClassesResponseAminoMsg): QueryClassesResponse;

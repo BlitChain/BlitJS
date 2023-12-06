@@ -48,16 +48,6 @@ export const MerkleRoot = {
         message.hash = object.hash ?? new Uint8Array();
         return message;
     },
-    fromSDK(object) {
-        return {
-            hash: object?.hash
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.hash = message.hash;
-        return obj;
-    },
     fromAmino(object) {
         return {
             hash: object.hash
@@ -134,16 +124,6 @@ export const MerklePrefix = {
         const message = createBaseMerklePrefix();
         message.key_prefix = object.key_prefix ?? new Uint8Array();
         return message;
-    },
-    fromSDK(object) {
-        return {
-            key_prefix: object?.key_prefix
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.key_prefix = message.key_prefix;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -226,21 +206,6 @@ export const MerklePath = {
         const message = createBaseMerklePath();
         message.key_path = object.key_path?.map(e => e) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            key_path: Array.isArray(object?.key_path) ? object.key_path.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.key_path) {
-            obj.key_path = message.key_path.map(e => e);
-        }
-        else {
-            obj.key_path = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -328,21 +293,6 @@ export const MerkleProof = {
         const message = createBaseMerkleProof();
         message.proofs = object.proofs?.map(e => CommitmentProof.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            proofs: Array.isArray(object?.proofs) ? object.proofs.map((e) => CommitmentProof.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.proofs) {
-            obj.proofs = message.proofs.map(e => e ? CommitmentProof.toSDK(e) : undefined);
-        }
-        else {
-            obj.proofs = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {

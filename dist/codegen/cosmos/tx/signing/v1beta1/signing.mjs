@@ -29,14 +29,15 @@ export var SignMode;
     /**
      * SIGN_MODE_TEXTUAL - SIGN_MODE_TEXTUAL is a future signing mode that will verify some
      * human-readable textual representation on top of the binary representation
-     * from SIGN_MODE_DIRECT. It is currently not supported.
+     * from SIGN_MODE_DIRECT.
+     *
+     * Since: cosmos-sdk 0.50
      */
     SignMode[SignMode["SIGN_MODE_TEXTUAL"] = 2] = "SIGN_MODE_TEXTUAL";
     /**
      * SIGN_MODE_DIRECT_AUX - SIGN_MODE_DIRECT_AUX specifies a signing mode which uses
      * SignDocDirectAux. As opposed to SIGN_MODE_DIRECT, this sign mode does not
-     * require signers signing over other signers' `signer_info`. It also allows
-     * for adding Tips in transactions.
+     * require signers signing over other signers' `signer_info`.
      *
      * Since: cosmos-sdk 0.46
      */
@@ -46,6 +47,19 @@ export var SignMode;
      * Amino JSON and will be removed in the future.
      */
     SignMode[SignMode["SIGN_MODE_LEGACY_AMINO_JSON"] = 127] = "SIGN_MODE_LEGACY_AMINO_JSON";
+    /**
+     * SIGN_MODE_EIP_191 - SIGN_MODE_EIP_191 specifies the sign mode for EIP 191 signing on the Cosmos
+     * SDK. Ref: https://eips.ethereum.org/EIPS/eip-191
+     *
+     * Currently, SIGN_MODE_EIP_191 is registered as a SignMode enum variant,
+     * but is not implemented on the SDK by default. To enable EIP-191, you need
+     * to pass a custom `TxConfig` that has an implementation of
+     * `SignModeHandler` for EIP-191. The SDK may decide to fully support
+     * EIP-191 in the future.
+     *
+     * Since: cosmos-sdk 0.45.2
+     */
+    SignMode[SignMode["SIGN_MODE_EIP_191"] = 191] = "SIGN_MODE_EIP_191";
     SignMode[SignMode["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
 })(SignMode || (SignMode = {}));
 export const SignModeSDKType = SignMode;
@@ -67,6 +81,9 @@ export function signModeFromJSON(object) {
         case 127:
         case "SIGN_MODE_LEGACY_AMINO_JSON":
             return SignMode.SIGN_MODE_LEGACY_AMINO_JSON;
+        case 191:
+        case "SIGN_MODE_EIP_191":
+            return SignMode.SIGN_MODE_EIP_191;
         case -1:
         case "UNRECOGNIZED":
         default:
@@ -85,6 +102,8 @@ export function signModeToJSON(object) {
             return "SIGN_MODE_DIRECT_AUX";
         case SignMode.SIGN_MODE_LEGACY_AMINO_JSON:
             return "SIGN_MODE_LEGACY_AMINO_JSON";
+        case SignMode.SIGN_MODE_EIP_191:
+            return "SIGN_MODE_EIP_191";
         case SignMode.UNRECOGNIZED:
         default:
             return "UNRECOGNIZED";
@@ -139,21 +158,6 @@ export const SignatureDescriptors = {
         const message = createBaseSignatureDescriptors();
         message.signatures = object.signatures?.map(e => SignatureDescriptor.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            signatures: Array.isArray(object?.signatures) ? object.signatures.map((e) => SignatureDescriptor.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.signatures) {
-            obj.signatures = message.signatures.map(e => e ? SignatureDescriptor.toSDK(e) : undefined);
-        }
-        else {
-            obj.signatures = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -257,20 +261,6 @@ export const SignatureDescriptor = {
         message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            public_key: object.public_key ? Any.fromSDK(object.public_key) : undefined,
-            data: object.data ? SignatureDescriptor_Data.fromSDK(object.data) : undefined,
-            sequence: object?.sequence
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.public_key !== undefined && (obj.public_key = message.public_key ? Any.toSDK(message.public_key) : undefined);
-        message.data !== undefined && (obj.data = message.data ? SignatureDescriptor_Data.toSDK(message.data) : undefined);
-        obj.sequence = message.sequence;
-        return obj;
-    },
     fromAmino(object) {
         return {
             public_key: object?.public_key ? Any.fromAmino(object.public_key) : undefined,
@@ -362,18 +352,6 @@ export const SignatureDescriptor_Data = {
         message.multi = object.multi !== undefined && object.multi !== null ? SignatureDescriptor_Data_Multi.fromPartial(object.multi) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            single: object.single ? SignatureDescriptor_Data_Single.fromSDK(object.single) : undefined,
-            multi: object.multi ? SignatureDescriptor_Data_Multi.fromSDK(object.multi) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.single !== undefined && (obj.single = message.single ? SignatureDescriptor_Data_Single.toSDK(message.single) : undefined);
-        message.multi !== undefined && (obj.multi = message.multi ? SignatureDescriptor_Data_Multi.toSDK(message.multi) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             single: object?.single ? SignatureDescriptor_Data_Single.fromAmino(object.single) : undefined,
@@ -462,18 +440,6 @@ export const SignatureDescriptor_Data_Single = {
         message.mode = object.mode ?? 0;
         message.signature = object.signature ?? new Uint8Array();
         return message;
-    },
-    fromSDK(object) {
-        return {
-            mode: isSet(object.mode) ? signModeFromJSON(object.mode) : -1,
-            signature: object?.signature
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.mode !== undefined && (obj.mode = signModeToJSON(message.mode));
-        obj.signature = message.signature;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -568,23 +534,6 @@ export const SignatureDescriptor_Data_Multi = {
         message.bitarray = object.bitarray !== undefined && object.bitarray !== null ? CompactBitArray.fromPartial(object.bitarray) : undefined;
         message.signatures = object.signatures?.map(e => SignatureDescriptor_Data.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            bitarray: object.bitarray ? CompactBitArray.fromSDK(object.bitarray) : undefined,
-            signatures: Array.isArray(object?.signatures) ? object.signatures.map((e) => SignatureDescriptor_Data.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.bitarray !== undefined && (obj.bitarray = message.bitarray ? CompactBitArray.toSDK(message.bitarray) : undefined);
-        if (message.signatures) {
-            obj.signatures = message.signatures.map(e => e ? SignatureDescriptor_Data.toSDK(e) : undefined);
-        }
-        else {
-            obj.signatures = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {

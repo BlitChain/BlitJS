@@ -7,7 +7,7 @@ export const protobufPackage = "cosmos.mint.v1beta1";
 export interface GenesisState {
   /** minter is a space for holding current inflation information. */
   minter: Minter;
-  /** params defines all the paramaters of the module. */
+  /** params defines all the parameters of the module. */
   params: Params;
 }
 export interface GenesisStateProtoMsg {
@@ -18,7 +18,7 @@ export interface GenesisStateProtoMsg {
 export interface GenesisStateAmino {
   /** minter is a space for holding current inflation information. */
   minter?: MinterAmino;
-  /** params defines all the paramaters of the module. */
+  /** params defines all the parameters of the module. */
   params?: ParamsAmino;
 }
 export interface GenesisStateAminoMsg {
@@ -84,18 +84,6 @@ export const GenesisState = {
     message.minter = object.minter !== undefined && object.minter !== null ? Minter.fromPartial(object.minter) : undefined;
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
-  },
-  fromSDK(object: GenesisStateSDKType): GenesisState {
-    return {
-      minter: object.minter ? Minter.fromSDK(object.minter) : undefined,
-      params: object.params ? Params.fromSDK(object.params) : undefined
-    };
-  },
-  toSDK(message: GenesisState): GenesisStateSDKType {
-    const obj: any = {};
-    message.minter !== undefined && (obj.minter = message.minter ? Minter.toSDK(message.minter) : undefined);
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    return obj;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
     return {

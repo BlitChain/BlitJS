@@ -17,9 +17,18 @@ export const createGrpcGateWayClient = async ({
         v1beta1: new (await import("../cosmos/bank/v1beta1/query.rpc.Query")).QueryClientImpl(endpoint)
       },
       base: {
+        node: {
+          v1beta1: new (await import("../cosmos/base/node/v1beta1/query.rpc.Service")).ServiceClientImpl(endpoint)
+        },
         tendermint: {
           v1beta1: new (await import("../cosmos/base/tendermint/v1beta1/query.rpc.Service")).ServiceClientImpl(endpoint)
         }
+      },
+      circuit: {
+        v1: new (await import("../cosmos/circuit/v1/query.rpc.Query")).QueryClientImpl(endpoint)
+      },
+      consensus: {
+        v1: new (await import("../cosmos/consensus/v1/query.rpc.Query")).QueryClientImpl(endpoint)
       },
       distribution: {
         v1beta1: new (await import("../cosmos/distribution/v1beta1/query.rpc.Query")).QueryClientImpl(endpoint)
@@ -39,6 +48,11 @@ export const createGrpcGateWayClient = async ({
       },
       nft: {
         v1beta1: new (await import("../cosmos/nft/v1beta1/query.rpc.Query")).QueryClientImpl(endpoint)
+      },
+      orm: {
+        query: {
+          v1alpha1: new (await import("../cosmos/orm/query/v1alpha1/query.rpc.Query")).QueryClientImpl(endpoint)
+        }
       },
       params: {
         v1beta1: new (await import("../cosmos/params/v1beta1/query.rpc.Query")).QueryClientImpl(endpoint)

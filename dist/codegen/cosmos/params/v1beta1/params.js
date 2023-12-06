@@ -76,25 +76,6 @@ exports.ParameterChangeProposal = {
         message.changes = object.changes?.map(e => exports.ParamChange.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            title: object?.title,
-            description: object?.description,
-            changes: Array.isArray(object?.changes) ? object.changes.map((e) => exports.ParamChange.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.title = message.title;
-        obj.description = message.description;
-        if (message.changes) {
-            obj.changes = message.changes.map(e => e ? exports.ParamChange.toSDK(e) : undefined);
-        }
-        else {
-            obj.changes = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             title: object.title,
@@ -200,20 +181,6 @@ exports.ParamChange = {
         message.key = object.key ?? "";
         message.value = object.value ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            subspace: object?.subspace,
-            key: object?.key,
-            value: object?.value
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.subspace = message.subspace;
-        obj.key = message.key;
-        obj.value = message.value;
-        return obj;
     },
     fromAmino(object) {
         return {

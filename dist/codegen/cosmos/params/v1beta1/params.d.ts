@@ -70,8 +70,6 @@ export declare const ParameterChangeProposal: {
     fromJSON(object: any): ParameterChangeProposal;
     toJSON(message: ParameterChangeProposal): unknown;
     fromPartial(object: Partial<ParameterChangeProposal>): ParameterChangeProposal;
-    fromSDK(object: ParameterChangeProposalSDKType): ParameterChangeProposal;
-    toSDK(message: ParameterChangeProposal): ParameterChangeProposalSDKType;
     fromAmino(object: ParameterChangeProposalAmino): ParameterChangeProposal;
     toAmino(message: ParameterChangeProposal): ParameterChangeProposalAmino;
     fromAminoMsg(object: ParameterChangeProposalAminoMsg): ParameterChangeProposal;
@@ -87,8 +85,6 @@ export declare const ParamChange: {
     fromJSON(object: any): ParamChange;
     toJSON(message: ParamChange): unknown;
     fromPartial(object: Partial<ParamChange>): ParamChange;
-    fromSDK(object: ParamChangeSDKType): ParamChange;
-    toSDK(message: ParamChange): ParamChangeSDKType;
     fromAmino(object: ParamChangeAmino): ParamChange;
     toAmino(message: ParamChange): ParamChangeAmino;
     fromAminoMsg(object: ParamChangeAminoMsg): ParamChange;

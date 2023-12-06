@@ -329,8 +329,6 @@ export declare const QueryDenomTraceRequest: {
     fromJSON(object: any): QueryDenomTraceRequest;
     toJSON(message: QueryDenomTraceRequest): unknown;
     fromPartial(object: Partial<QueryDenomTraceRequest>): QueryDenomTraceRequest;
-    fromSDK(object: QueryDenomTraceRequestSDKType): QueryDenomTraceRequest;
-    toSDK(message: QueryDenomTraceRequest): QueryDenomTraceRequestSDKType;
     fromAmino(object: QueryDenomTraceRequestAmino): QueryDenomTraceRequest;
     toAmino(message: QueryDenomTraceRequest): QueryDenomTraceRequestAmino;
     fromAminoMsg(object: QueryDenomTraceRequestAminoMsg): QueryDenomTraceRequest;
@@ -346,8 +344,6 @@ export declare const QueryDenomTraceResponse: {
     fromJSON(object: any): QueryDenomTraceResponse;
     toJSON(message: QueryDenomTraceResponse): unknown;
     fromPartial(object: Partial<QueryDenomTraceResponse>): QueryDenomTraceResponse;
-    fromSDK(object: QueryDenomTraceResponseSDKType): QueryDenomTraceResponse;
-    toSDK(message: QueryDenomTraceResponse): QueryDenomTraceResponseSDKType;
     fromAmino(object: QueryDenomTraceResponseAmino): QueryDenomTraceResponse;
     toAmino(message: QueryDenomTraceResponse): QueryDenomTraceResponseAmino;
     fromAminoMsg(object: QueryDenomTraceResponseAminoMsg): QueryDenomTraceResponse;
@@ -363,8 +359,6 @@ export declare const QueryDenomTracesRequest: {
     fromJSON(object: any): QueryDenomTracesRequest;
     toJSON(message: QueryDenomTracesRequest): unknown;
     fromPartial(object: Partial<QueryDenomTracesRequest>): QueryDenomTracesRequest;
-    fromSDK(object: QueryDenomTracesRequestSDKType): QueryDenomTracesRequest;
-    toSDK(message: QueryDenomTracesRequest): QueryDenomTracesRequestSDKType;
     fromAmino(object: QueryDenomTracesRequestAmino): QueryDenomTracesRequest;
     toAmino(message: QueryDenomTracesRequest): QueryDenomTracesRequestAmino;
     fromAminoMsg(object: QueryDenomTracesRequestAminoMsg): QueryDenomTracesRequest;
@@ -380,8 +374,6 @@ export declare const QueryDenomTracesResponse: {
     fromJSON(object: any): QueryDenomTracesResponse;
     toJSON(message: QueryDenomTracesResponse): unknown;
     fromPartial(object: Partial<QueryDenomTracesResponse>): QueryDenomTracesResponse;
-    fromSDK(object: QueryDenomTracesResponseSDKType): QueryDenomTracesResponse;
-    toSDK(message: QueryDenomTracesResponse): QueryDenomTracesResponseSDKType;
     fromAmino(object: QueryDenomTracesResponseAmino): QueryDenomTracesResponse;
     toAmino(message: QueryDenomTracesResponse): QueryDenomTracesResponseAmino;
     fromAminoMsg(object: QueryDenomTracesResponseAminoMsg): QueryDenomTracesResponse;
@@ -397,8 +389,6 @@ export declare const QueryParamsRequest: {
     fromJSON(_: any): QueryParamsRequest;
     toJSON(_: QueryParamsRequest): unknown;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
-    fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest;
-    toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType;
     fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(_: QueryParamsRequest): QueryParamsRequestAmino;
     fromAminoMsg(object: QueryParamsRequestAminoMsg): QueryParamsRequest;
@@ -414,8 +404,6 @@ export declare const QueryParamsResponse: {
     fromJSON(object: any): QueryParamsResponse;
     toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
-    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
-    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
     fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse;
@@ -431,8 +419,6 @@ export declare const QueryDenomHashRequest: {
     fromJSON(object: any): QueryDenomHashRequest;
     toJSON(message: QueryDenomHashRequest): unknown;
     fromPartial(object: Partial<QueryDenomHashRequest>): QueryDenomHashRequest;
-    fromSDK(object: QueryDenomHashRequestSDKType): QueryDenomHashRequest;
-    toSDK(message: QueryDenomHashRequest): QueryDenomHashRequestSDKType;
     fromAmino(object: QueryDenomHashRequestAmino): QueryDenomHashRequest;
     toAmino(message: QueryDenomHashRequest): QueryDenomHashRequestAmino;
     fromAminoMsg(object: QueryDenomHashRequestAminoMsg): QueryDenomHashRequest;
@@ -448,8 +434,6 @@ export declare const QueryDenomHashResponse: {
     fromJSON(object: any): QueryDenomHashResponse;
     toJSON(message: QueryDenomHashResponse): unknown;
     fromPartial(object: Partial<QueryDenomHashResponse>): QueryDenomHashResponse;
-    fromSDK(object: QueryDenomHashResponseSDKType): QueryDenomHashResponse;
-    toSDK(message: QueryDenomHashResponse): QueryDenomHashResponseSDKType;
     fromAmino(object: QueryDenomHashResponseAmino): QueryDenomHashResponse;
     toAmino(message: QueryDenomHashResponse): QueryDenomHashResponseAmino;
     fromAminoMsg(object: QueryDenomHashResponseAminoMsg): QueryDenomHashResponse;
@@ -465,8 +449,6 @@ export declare const QueryEscrowAddressRequest: {
     fromJSON(object: any): QueryEscrowAddressRequest;
     toJSON(message: QueryEscrowAddressRequest): unknown;
     fromPartial(object: Partial<QueryEscrowAddressRequest>): QueryEscrowAddressRequest;
-    fromSDK(object: QueryEscrowAddressRequestSDKType): QueryEscrowAddressRequest;
-    toSDK(message: QueryEscrowAddressRequest): QueryEscrowAddressRequestSDKType;
     fromAmino(object: QueryEscrowAddressRequestAmino): QueryEscrowAddressRequest;
     toAmino(message: QueryEscrowAddressRequest): QueryEscrowAddressRequestAmino;
     fromAminoMsg(object: QueryEscrowAddressRequestAminoMsg): QueryEscrowAddressRequest;
@@ -482,8 +464,6 @@ export declare const QueryEscrowAddressResponse: {
     fromJSON(object: any): QueryEscrowAddressResponse;
     toJSON(message: QueryEscrowAddressResponse): unknown;
     fromPartial(object: Partial<QueryEscrowAddressResponse>): QueryEscrowAddressResponse;
-    fromSDK(object: QueryEscrowAddressResponseSDKType): QueryEscrowAddressResponse;
-    toSDK(message: QueryEscrowAddressResponse): QueryEscrowAddressResponseSDKType;
     fromAmino(object: QueryEscrowAddressResponseAmino): QueryEscrowAddressResponse;
     toAmino(message: QueryEscrowAddressResponse): QueryEscrowAddressResponseAmino;
     fromAminoMsg(object: QueryEscrowAddressResponseAminoMsg): QueryEscrowAddressResponse;
@@ -499,8 +479,6 @@ export declare const QueryTotalEscrowForDenomRequest: {
     fromJSON(object: any): QueryTotalEscrowForDenomRequest;
     toJSON(message: QueryTotalEscrowForDenomRequest): unknown;
     fromPartial(object: Partial<QueryTotalEscrowForDenomRequest>): QueryTotalEscrowForDenomRequest;
-    fromSDK(object: QueryTotalEscrowForDenomRequestSDKType): QueryTotalEscrowForDenomRequest;
-    toSDK(message: QueryTotalEscrowForDenomRequest): QueryTotalEscrowForDenomRequestSDKType;
     fromAmino(object: QueryTotalEscrowForDenomRequestAmino): QueryTotalEscrowForDenomRequest;
     toAmino(message: QueryTotalEscrowForDenomRequest): QueryTotalEscrowForDenomRequestAmino;
     fromAminoMsg(object: QueryTotalEscrowForDenomRequestAminoMsg): QueryTotalEscrowForDenomRequest;
@@ -516,8 +494,6 @@ export declare const QueryTotalEscrowForDenomResponse: {
     fromJSON(object: any): QueryTotalEscrowForDenomResponse;
     toJSON(message: QueryTotalEscrowForDenomResponse): unknown;
     fromPartial(object: Partial<QueryTotalEscrowForDenomResponse>): QueryTotalEscrowForDenomResponse;
-    fromSDK(object: QueryTotalEscrowForDenomResponseSDKType): QueryTotalEscrowForDenomResponse;
-    toSDK(message: QueryTotalEscrowForDenomResponse): QueryTotalEscrowForDenomResponseSDKType;
     fromAmino(object: QueryTotalEscrowForDenomResponseAmino): QueryTotalEscrowForDenomResponse;
     toAmino(message: QueryTotalEscrowForDenomResponse): QueryTotalEscrowForDenomResponseAmino;
     fromAminoMsg(object: QueryTotalEscrowForDenomResponseAminoMsg): QueryTotalEscrowForDenomResponse;

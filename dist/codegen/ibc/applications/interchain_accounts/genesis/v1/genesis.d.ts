@@ -158,8 +158,6 @@ export declare const GenesisState: {
     fromJSON(object: any): GenesisState;
     toJSON(message: GenesisState): unknown;
     fromPartial(object: Partial<GenesisState>): GenesisState;
-    fromSDK(object: GenesisStateSDKType): GenesisState;
-    toSDK(message: GenesisState): GenesisStateSDKType;
     fromAmino(object: GenesisStateAmino): GenesisState;
     toAmino(message: GenesisState): GenesisStateAmino;
     fromAminoMsg(object: GenesisStateAminoMsg): GenesisState;
@@ -175,8 +173,6 @@ export declare const ControllerGenesisState: {
     fromJSON(object: any): ControllerGenesisState;
     toJSON(message: ControllerGenesisState): unknown;
     fromPartial(object: Partial<ControllerGenesisState>): ControllerGenesisState;
-    fromSDK(object: ControllerGenesisStateSDKType): ControllerGenesisState;
-    toSDK(message: ControllerGenesisState): ControllerGenesisStateSDKType;
     fromAmino(object: ControllerGenesisStateAmino): ControllerGenesisState;
     toAmino(message: ControllerGenesisState): ControllerGenesisStateAmino;
     fromAminoMsg(object: ControllerGenesisStateAminoMsg): ControllerGenesisState;
@@ -192,8 +188,6 @@ export declare const HostGenesisState: {
     fromJSON(object: any): HostGenesisState;
     toJSON(message: HostGenesisState): unknown;
     fromPartial(object: Partial<HostGenesisState>): HostGenesisState;
-    fromSDK(object: HostGenesisStateSDKType): HostGenesisState;
-    toSDK(message: HostGenesisState): HostGenesisStateSDKType;
     fromAmino(object: HostGenesisStateAmino): HostGenesisState;
     toAmino(message: HostGenesisState): HostGenesisStateAmino;
     fromAminoMsg(object: HostGenesisStateAminoMsg): HostGenesisState;
@@ -209,8 +203,6 @@ export declare const ActiveChannel: {
     fromJSON(object: any): ActiveChannel;
     toJSON(message: ActiveChannel): unknown;
     fromPartial(object: Partial<ActiveChannel>): ActiveChannel;
-    fromSDK(object: ActiveChannelSDKType): ActiveChannel;
-    toSDK(message: ActiveChannel): ActiveChannelSDKType;
     fromAmino(object: ActiveChannelAmino): ActiveChannel;
     toAmino(message: ActiveChannel): ActiveChannelAmino;
     fromAminoMsg(object: ActiveChannelAminoMsg): ActiveChannel;
@@ -226,8 +218,6 @@ export declare const RegisteredInterchainAccount: {
     fromJSON(object: any): RegisteredInterchainAccount;
     toJSON(message: RegisteredInterchainAccount): unknown;
     fromPartial(object: Partial<RegisteredInterchainAccount>): RegisteredInterchainAccount;
-    fromSDK(object: RegisteredInterchainAccountSDKType): RegisteredInterchainAccount;
-    toSDK(message: RegisteredInterchainAccount): RegisteredInterchainAccountSDKType;
     fromAmino(object: RegisteredInterchainAccountAmino): RegisteredInterchainAccount;
     toAmino(message: RegisteredInterchainAccount): RegisteredInterchainAccountAmino;
     fromAminoMsg(object: RegisteredInterchainAccountAminoMsg): RegisteredInterchainAccount;

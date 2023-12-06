@@ -234,18 +234,6 @@ export const MsgUpdateParams = {
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
-  fromSDK(object: MsgUpdateParamsSDKType): MsgUpdateParams {
-    return {
-      authority: object?.authority,
-      params: object.params ? Params.fromSDK(object.params) : undefined
-    };
-  },
-  toSDK(message: MsgUpdateParams): MsgUpdateParamsSDKType {
-    const obj: any = {};
-    obj.authority = message.authority;
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    return obj;
-  },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
     return {
       authority: object.authority,
@@ -312,13 +300,6 @@ export const MsgUpdateParamsResponse = {
   fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse {
     const message = createBaseMsgUpdateParamsResponse();
     return message;
-  },
-  fromSDK(_: MsgUpdateParamsResponseSDKType): MsgUpdateParamsResponse {
-    return {};
-  },
-  toSDK(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse {
     return {};
@@ -418,22 +399,6 @@ export const MsgCreateStorage = {
     message.grantee = object.grantee ?? "";
     return message;
   },
-  fromSDK(object: MsgCreateStorageSDKType): MsgCreateStorage {
-    return {
-      address: object?.address,
-      index: object?.index,
-      data: object?.data,
-      grantee: object?.grantee
-    };
-  },
-  toSDK(message: MsgCreateStorage): MsgCreateStorageSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    obj.index = message.index;
-    obj.data = message.data;
-    obj.grantee = message.grantee;
-    return obj;
-  },
   fromAmino(object: MsgCreateStorageAmino): MsgCreateStorage {
     return {
       address: object.address,
@@ -498,13 +463,6 @@ export const MsgCreateStorageResponse = {
   fromPartial(_: Partial<MsgCreateStorageResponse>): MsgCreateStorageResponse {
     const message = createBaseMsgCreateStorageResponse();
     return message;
-  },
-  fromSDK(_: MsgCreateStorageResponseSDKType): MsgCreateStorageResponse {
-    return {};
-  },
-  toSDK(_: MsgCreateStorageResponse): MsgCreateStorageResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgCreateStorageResponseAmino): MsgCreateStorageResponse {
     return {};
@@ -604,22 +562,6 @@ export const MsgUpdateStorage = {
     message.grantee = object.grantee ?? "";
     return message;
   },
-  fromSDK(object: MsgUpdateStorageSDKType): MsgUpdateStorage {
-    return {
-      address: object?.address,
-      index: object?.index,
-      data: object?.data,
-      grantee: object?.grantee
-    };
-  },
-  toSDK(message: MsgUpdateStorage): MsgUpdateStorageSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    obj.index = message.index;
-    obj.data = message.data;
-    obj.grantee = message.grantee;
-    return obj;
-  },
   fromAmino(object: MsgUpdateStorageAmino): MsgUpdateStorage {
     return {
       address: object.address,
@@ -684,13 +626,6 @@ export const MsgUpdateStorageResponse = {
   fromPartial(_: Partial<MsgUpdateStorageResponse>): MsgUpdateStorageResponse {
     const message = createBaseMsgUpdateStorageResponse();
     return message;
-  },
-  fromSDK(_: MsgUpdateStorageResponseSDKType): MsgUpdateStorageResponse {
-    return {};
-  },
-  toSDK(_: MsgUpdateStorageResponse): MsgUpdateStorageResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgUpdateStorageResponseAmino): MsgUpdateStorageResponse {
     return {};
@@ -780,20 +715,6 @@ export const MsgDeleteStorage = {
     message.grantee = object.grantee ?? "";
     return message;
   },
-  fromSDK(object: MsgDeleteStorageSDKType): MsgDeleteStorage {
-    return {
-      address: object?.address,
-      index: object?.index,
-      grantee: object?.grantee
-    };
-  },
-  toSDK(message: MsgDeleteStorage): MsgDeleteStorageSDKType {
-    const obj: any = {};
-    obj.address = message.address;
-    obj.index = message.index;
-    obj.grantee = message.grantee;
-    return obj;
-  },
   fromAmino(object: MsgDeleteStorageAmino): MsgDeleteStorage {
     return {
       address: object.address,
@@ -856,13 +777,6 @@ export const MsgDeleteStorageResponse = {
   fromPartial(_: Partial<MsgDeleteStorageResponse>): MsgDeleteStorageResponse {
     const message = createBaseMsgDeleteStorageResponse();
     return message;
-  },
-  fromSDK(_: MsgDeleteStorageResponseSDKType): MsgDeleteStorageResponse {
-    return {};
-  },
-  toSDK(_: MsgDeleteStorageResponse): MsgDeleteStorageResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgDeleteStorageResponseAmino): MsgDeleteStorageResponse {
     return {};

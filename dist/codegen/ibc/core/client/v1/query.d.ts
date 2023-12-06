@@ -623,8 +623,6 @@ export declare const QueryClientStateRequest: {
     fromJSON(object: any): QueryClientStateRequest;
     toJSON(message: QueryClientStateRequest): unknown;
     fromPartial(object: Partial<QueryClientStateRequest>): QueryClientStateRequest;
-    fromSDK(object: QueryClientStateRequestSDKType): QueryClientStateRequest;
-    toSDK(message: QueryClientStateRequest): QueryClientStateRequestSDKType;
     fromAmino(object: QueryClientStateRequestAmino): QueryClientStateRequest;
     toAmino(message: QueryClientStateRequest): QueryClientStateRequestAmino;
     fromAminoMsg(object: QueryClientStateRequestAminoMsg): QueryClientStateRequest;
@@ -640,8 +638,6 @@ export declare const QueryClientStateResponse: {
     fromJSON(object: any): QueryClientStateResponse;
     toJSON(message: QueryClientStateResponse): unknown;
     fromPartial(object: Partial<QueryClientStateResponse>): QueryClientStateResponse;
-    fromSDK(object: QueryClientStateResponseSDKType): QueryClientStateResponse;
-    toSDK(message: QueryClientStateResponse): QueryClientStateResponseSDKType;
     fromAmino(object: QueryClientStateResponseAmino): QueryClientStateResponse;
     toAmino(message: QueryClientStateResponse): QueryClientStateResponseAmino;
     fromAminoMsg(object: QueryClientStateResponseAminoMsg): QueryClientStateResponse;
@@ -657,8 +653,6 @@ export declare const QueryClientStatesRequest: {
     fromJSON(object: any): QueryClientStatesRequest;
     toJSON(message: QueryClientStatesRequest): unknown;
     fromPartial(object: Partial<QueryClientStatesRequest>): QueryClientStatesRequest;
-    fromSDK(object: QueryClientStatesRequestSDKType): QueryClientStatesRequest;
-    toSDK(message: QueryClientStatesRequest): QueryClientStatesRequestSDKType;
     fromAmino(object: QueryClientStatesRequestAmino): QueryClientStatesRequest;
     toAmino(message: QueryClientStatesRequest): QueryClientStatesRequestAmino;
     fromAminoMsg(object: QueryClientStatesRequestAminoMsg): QueryClientStatesRequest;
@@ -674,8 +668,6 @@ export declare const QueryClientStatesResponse: {
     fromJSON(object: any): QueryClientStatesResponse;
     toJSON(message: QueryClientStatesResponse): unknown;
     fromPartial(object: Partial<QueryClientStatesResponse>): QueryClientStatesResponse;
-    fromSDK(object: QueryClientStatesResponseSDKType): QueryClientStatesResponse;
-    toSDK(message: QueryClientStatesResponse): QueryClientStatesResponseSDKType;
     fromAmino(object: QueryClientStatesResponseAmino): QueryClientStatesResponse;
     toAmino(message: QueryClientStatesResponse): QueryClientStatesResponseAmino;
     fromAminoMsg(object: QueryClientStatesResponseAminoMsg): QueryClientStatesResponse;
@@ -691,8 +683,6 @@ export declare const QueryConsensusStateRequest: {
     fromJSON(object: any): QueryConsensusStateRequest;
     toJSON(message: QueryConsensusStateRequest): unknown;
     fromPartial(object: Partial<QueryConsensusStateRequest>): QueryConsensusStateRequest;
-    fromSDK(object: QueryConsensusStateRequestSDKType): QueryConsensusStateRequest;
-    toSDK(message: QueryConsensusStateRequest): QueryConsensusStateRequestSDKType;
     fromAmino(object: QueryConsensusStateRequestAmino): QueryConsensusStateRequest;
     toAmino(message: QueryConsensusStateRequest): QueryConsensusStateRequestAmino;
     fromAminoMsg(object: QueryConsensusStateRequestAminoMsg): QueryConsensusStateRequest;
@@ -708,8 +698,6 @@ export declare const QueryConsensusStateResponse: {
     fromJSON(object: any): QueryConsensusStateResponse;
     toJSON(message: QueryConsensusStateResponse): unknown;
     fromPartial(object: Partial<QueryConsensusStateResponse>): QueryConsensusStateResponse;
-    fromSDK(object: QueryConsensusStateResponseSDKType): QueryConsensusStateResponse;
-    toSDK(message: QueryConsensusStateResponse): QueryConsensusStateResponseSDKType;
     fromAmino(object: QueryConsensusStateResponseAmino): QueryConsensusStateResponse;
     toAmino(message: QueryConsensusStateResponse): QueryConsensusStateResponseAmino;
     fromAminoMsg(object: QueryConsensusStateResponseAminoMsg): QueryConsensusStateResponse;
@@ -725,8 +713,6 @@ export declare const QueryConsensusStatesRequest: {
     fromJSON(object: any): QueryConsensusStatesRequest;
     toJSON(message: QueryConsensusStatesRequest): unknown;
     fromPartial(object: Partial<QueryConsensusStatesRequest>): QueryConsensusStatesRequest;
-    fromSDK(object: QueryConsensusStatesRequestSDKType): QueryConsensusStatesRequest;
-    toSDK(message: QueryConsensusStatesRequest): QueryConsensusStatesRequestSDKType;
     fromAmino(object: QueryConsensusStatesRequestAmino): QueryConsensusStatesRequest;
     toAmino(message: QueryConsensusStatesRequest): QueryConsensusStatesRequestAmino;
     fromAminoMsg(object: QueryConsensusStatesRequestAminoMsg): QueryConsensusStatesRequest;
@@ -742,8 +728,6 @@ export declare const QueryConsensusStatesResponse: {
     fromJSON(object: any): QueryConsensusStatesResponse;
     toJSON(message: QueryConsensusStatesResponse): unknown;
     fromPartial(object: Partial<QueryConsensusStatesResponse>): QueryConsensusStatesResponse;
-    fromSDK(object: QueryConsensusStatesResponseSDKType): QueryConsensusStatesResponse;
-    toSDK(message: QueryConsensusStatesResponse): QueryConsensusStatesResponseSDKType;
     fromAmino(object: QueryConsensusStatesResponseAmino): QueryConsensusStatesResponse;
     toAmino(message: QueryConsensusStatesResponse): QueryConsensusStatesResponseAmino;
     fromAminoMsg(object: QueryConsensusStatesResponseAminoMsg): QueryConsensusStatesResponse;
@@ -759,8 +743,6 @@ export declare const QueryConsensusStateHeightsRequest: {
     fromJSON(object: any): QueryConsensusStateHeightsRequest;
     toJSON(message: QueryConsensusStateHeightsRequest): unknown;
     fromPartial(object: Partial<QueryConsensusStateHeightsRequest>): QueryConsensusStateHeightsRequest;
-    fromSDK(object: QueryConsensusStateHeightsRequestSDKType): QueryConsensusStateHeightsRequest;
-    toSDK(message: QueryConsensusStateHeightsRequest): QueryConsensusStateHeightsRequestSDKType;
     fromAmino(object: QueryConsensusStateHeightsRequestAmino): QueryConsensusStateHeightsRequest;
     toAmino(message: QueryConsensusStateHeightsRequest): QueryConsensusStateHeightsRequestAmino;
     fromAminoMsg(object: QueryConsensusStateHeightsRequestAminoMsg): QueryConsensusStateHeightsRequest;
@@ -776,8 +758,6 @@ export declare const QueryConsensusStateHeightsResponse: {
     fromJSON(object: any): QueryConsensusStateHeightsResponse;
     toJSON(message: QueryConsensusStateHeightsResponse): unknown;
     fromPartial(object: Partial<QueryConsensusStateHeightsResponse>): QueryConsensusStateHeightsResponse;
-    fromSDK(object: QueryConsensusStateHeightsResponseSDKType): QueryConsensusStateHeightsResponse;
-    toSDK(message: QueryConsensusStateHeightsResponse): QueryConsensusStateHeightsResponseSDKType;
     fromAmino(object: QueryConsensusStateHeightsResponseAmino): QueryConsensusStateHeightsResponse;
     toAmino(message: QueryConsensusStateHeightsResponse): QueryConsensusStateHeightsResponseAmino;
     fromAminoMsg(object: QueryConsensusStateHeightsResponseAminoMsg): QueryConsensusStateHeightsResponse;
@@ -793,8 +773,6 @@ export declare const QueryClientStatusRequest: {
     fromJSON(object: any): QueryClientStatusRequest;
     toJSON(message: QueryClientStatusRequest): unknown;
     fromPartial(object: Partial<QueryClientStatusRequest>): QueryClientStatusRequest;
-    fromSDK(object: QueryClientStatusRequestSDKType): QueryClientStatusRequest;
-    toSDK(message: QueryClientStatusRequest): QueryClientStatusRequestSDKType;
     fromAmino(object: QueryClientStatusRequestAmino): QueryClientStatusRequest;
     toAmino(message: QueryClientStatusRequest): QueryClientStatusRequestAmino;
     fromAminoMsg(object: QueryClientStatusRequestAminoMsg): QueryClientStatusRequest;
@@ -810,8 +788,6 @@ export declare const QueryClientStatusResponse: {
     fromJSON(object: any): QueryClientStatusResponse;
     toJSON(message: QueryClientStatusResponse): unknown;
     fromPartial(object: Partial<QueryClientStatusResponse>): QueryClientStatusResponse;
-    fromSDK(object: QueryClientStatusResponseSDKType): QueryClientStatusResponse;
-    toSDK(message: QueryClientStatusResponse): QueryClientStatusResponseSDKType;
     fromAmino(object: QueryClientStatusResponseAmino): QueryClientStatusResponse;
     toAmino(message: QueryClientStatusResponse): QueryClientStatusResponseAmino;
     fromAminoMsg(object: QueryClientStatusResponseAminoMsg): QueryClientStatusResponse;
@@ -827,8 +803,6 @@ export declare const QueryClientParamsRequest: {
     fromJSON(_: any): QueryClientParamsRequest;
     toJSON(_: QueryClientParamsRequest): unknown;
     fromPartial(_: Partial<QueryClientParamsRequest>): QueryClientParamsRequest;
-    fromSDK(_: QueryClientParamsRequestSDKType): QueryClientParamsRequest;
-    toSDK(_: QueryClientParamsRequest): QueryClientParamsRequestSDKType;
     fromAmino(_: QueryClientParamsRequestAmino): QueryClientParamsRequest;
     toAmino(_: QueryClientParamsRequest): QueryClientParamsRequestAmino;
     fromAminoMsg(object: QueryClientParamsRequestAminoMsg): QueryClientParamsRequest;
@@ -844,8 +818,6 @@ export declare const QueryClientParamsResponse: {
     fromJSON(object: any): QueryClientParamsResponse;
     toJSON(message: QueryClientParamsResponse): unknown;
     fromPartial(object: Partial<QueryClientParamsResponse>): QueryClientParamsResponse;
-    fromSDK(object: QueryClientParamsResponseSDKType): QueryClientParamsResponse;
-    toSDK(message: QueryClientParamsResponse): QueryClientParamsResponseSDKType;
     fromAmino(object: QueryClientParamsResponseAmino): QueryClientParamsResponse;
     toAmino(message: QueryClientParamsResponse): QueryClientParamsResponseAmino;
     fromAminoMsg(object: QueryClientParamsResponseAminoMsg): QueryClientParamsResponse;
@@ -861,8 +833,6 @@ export declare const QueryUpgradedClientStateRequest: {
     fromJSON(_: any): QueryUpgradedClientStateRequest;
     toJSON(_: QueryUpgradedClientStateRequest): unknown;
     fromPartial(_: Partial<QueryUpgradedClientStateRequest>): QueryUpgradedClientStateRequest;
-    fromSDK(_: QueryUpgradedClientStateRequestSDKType): QueryUpgradedClientStateRequest;
-    toSDK(_: QueryUpgradedClientStateRequest): QueryUpgradedClientStateRequestSDKType;
     fromAmino(_: QueryUpgradedClientStateRequestAmino): QueryUpgradedClientStateRequest;
     toAmino(_: QueryUpgradedClientStateRequest): QueryUpgradedClientStateRequestAmino;
     fromAminoMsg(object: QueryUpgradedClientStateRequestAminoMsg): QueryUpgradedClientStateRequest;
@@ -878,8 +848,6 @@ export declare const QueryUpgradedClientStateResponse: {
     fromJSON(object: any): QueryUpgradedClientStateResponse;
     toJSON(message: QueryUpgradedClientStateResponse): unknown;
     fromPartial(object: Partial<QueryUpgradedClientStateResponse>): QueryUpgradedClientStateResponse;
-    fromSDK(object: QueryUpgradedClientStateResponseSDKType): QueryUpgradedClientStateResponse;
-    toSDK(message: QueryUpgradedClientStateResponse): QueryUpgradedClientStateResponseSDKType;
     fromAmino(object: QueryUpgradedClientStateResponseAmino): QueryUpgradedClientStateResponse;
     toAmino(message: QueryUpgradedClientStateResponse): QueryUpgradedClientStateResponseAmino;
     fromAminoMsg(object: QueryUpgradedClientStateResponseAminoMsg): QueryUpgradedClientStateResponse;
@@ -895,8 +863,6 @@ export declare const QueryUpgradedConsensusStateRequest: {
     fromJSON(_: any): QueryUpgradedConsensusStateRequest;
     toJSON(_: QueryUpgradedConsensusStateRequest): unknown;
     fromPartial(_: Partial<QueryUpgradedConsensusStateRequest>): QueryUpgradedConsensusStateRequest;
-    fromSDK(_: QueryUpgradedConsensusStateRequestSDKType): QueryUpgradedConsensusStateRequest;
-    toSDK(_: QueryUpgradedConsensusStateRequest): QueryUpgradedConsensusStateRequestSDKType;
     fromAmino(_: QueryUpgradedConsensusStateRequestAmino): QueryUpgradedConsensusStateRequest;
     toAmino(_: QueryUpgradedConsensusStateRequest): QueryUpgradedConsensusStateRequestAmino;
     fromAminoMsg(object: QueryUpgradedConsensusStateRequestAminoMsg): QueryUpgradedConsensusStateRequest;
@@ -912,8 +878,6 @@ export declare const QueryUpgradedConsensusStateResponse: {
     fromJSON(object: any): QueryUpgradedConsensusStateResponse;
     toJSON(message: QueryUpgradedConsensusStateResponse): unknown;
     fromPartial(object: Partial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse;
-    fromSDK(object: QueryUpgradedConsensusStateResponseSDKType): QueryUpgradedConsensusStateResponse;
-    toSDK(message: QueryUpgradedConsensusStateResponse): QueryUpgradedConsensusStateResponseSDKType;
     fromAmino(object: QueryUpgradedConsensusStateResponseAmino): QueryUpgradedConsensusStateResponse;
     toAmino(message: QueryUpgradedConsensusStateResponse): QueryUpgradedConsensusStateResponseAmino;
     fromAminoMsg(object: QueryUpgradedConsensusStateResponseAminoMsg): QueryUpgradedConsensusStateResponse;

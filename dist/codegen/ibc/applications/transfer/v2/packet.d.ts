@@ -61,8 +61,6 @@ export declare const FungibleTokenPacketData: {
     fromJSON(object: any): FungibleTokenPacketData;
     toJSON(message: FungibleTokenPacketData): unknown;
     fromPartial(object: Partial<FungibleTokenPacketData>): FungibleTokenPacketData;
-    fromSDK(object: FungibleTokenPacketDataSDKType): FungibleTokenPacketData;
-    toSDK(message: FungibleTokenPacketData): FungibleTokenPacketDataSDKType;
     fromAmino(object: FungibleTokenPacketDataAmino): FungibleTokenPacketData;
     toAmino(message: FungibleTokenPacketData): FungibleTokenPacketDataAmino;
     fromAminoMsg(object: FungibleTokenPacketDataAminoMsg): FungibleTokenPacketData;

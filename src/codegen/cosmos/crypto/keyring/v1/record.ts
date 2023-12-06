@@ -10,13 +10,13 @@ export interface Record {
   name: string;
   /** pub_key represents a public key in any format */
   pub_key?: Any;
-  /** local stores the public information about a locally stored key */
+  /** local stores the private key locally. */
   local?: Record_Local;
-  /** ledger stores the public information about a Ledger key */
+  /** ledger stores the information about a Ledger key. */
   ledger?: Record_Ledger;
-  /** Multi does not store any information. */
+  /** Multi does not store any other information. */
   multi?: Record_Multi;
-  /** Offline does not store any information. */
+  /** Offline does not store any other information. */
   offline?: Record_Offline;
 }
 export interface RecordProtoMsg {
@@ -29,13 +29,13 @@ export interface RecordAmino {
   name: string;
   /** pub_key represents a public key in any format */
   pub_key?: AnyAmino;
-  /** local stores the public information about a locally stored key */
+  /** local stores the private key locally. */
   local?: Record_LocalAmino;
-  /** ledger stores the public information about a Ledger key */
+  /** ledger stores the information about a Ledger key. */
   ledger?: Record_LedgerAmino;
-  /** Multi does not store any information. */
+  /** Multi does not store any other information. */
   multi?: Record_MultiAmino;
-  /** Offline does not store any information. */
+  /** Offline does not store any other information. */
   offline?: Record_OfflineAmino;
 }
 export interface RecordAminoMsg {
@@ -57,7 +57,6 @@ export interface RecordSDKType {
  */
 export interface Record_Local {
   priv_key?: Any;
-  priv_key_type: string;
 }
 export interface Record_LocalProtoMsg {
   type_url: "/cosmos.crypto.keyring.v1.Local";
@@ -69,7 +68,6 @@ export interface Record_LocalProtoMsg {
  */
 export interface Record_LocalAmino {
   priv_key?: AnyAmino;
-  priv_key_type: string;
 }
 export interface Record_LocalAminoMsg {
   type: "cosmos-sdk/Local";
@@ -81,7 +79,6 @@ export interface Record_LocalAminoMsg {
  */
 export interface Record_LocalSDKType {
   priv_key?: AnySDKType;
-  priv_key_type: string;
 }
 /** Ledger item */
 export interface Record_Ledger {
@@ -226,26 +223,6 @@ export const Record = {
     message.offline = object.offline !== undefined && object.offline !== null ? Record_Offline.fromPartial(object.offline) : undefined;
     return message;
   },
-  fromSDK(object: RecordSDKType): Record {
-    return {
-      name: object?.name,
-      pub_key: object.pub_key ? Any.fromSDK(object.pub_key) : undefined,
-      local: object.local ? Record_Local.fromSDK(object.local) : undefined,
-      ledger: object.ledger ? Record_Ledger.fromSDK(object.ledger) : undefined,
-      multi: object.multi ? Record_Multi.fromSDK(object.multi) : undefined,
-      offline: object.offline ? Record_Offline.fromSDK(object.offline) : undefined
-    };
-  },
-  toSDK(message: Record): RecordSDKType {
-    const obj: any = {};
-    obj.name = message.name;
-    message.pub_key !== undefined && (obj.pub_key = message.pub_key ? Any.toSDK(message.pub_key) : undefined);
-    message.local !== undefined && (obj.local = message.local ? Record_Local.toSDK(message.local) : undefined);
-    message.ledger !== undefined && (obj.ledger = message.ledger ? Record_Ledger.toSDK(message.ledger) : undefined);
-    message.multi !== undefined && (obj.multi = message.multi ? Record_Multi.toSDK(message.multi) : undefined);
-    message.offline !== undefined && (obj.offline = message.offline ? Record_Offline.toSDK(message.offline) : undefined);
-    return obj;
-  },
   fromAmino(object: RecordAmino): Record {
     return {
       name: object.name,
@@ -290,8 +267,7 @@ export const Record = {
 };
 function createBaseRecord_Local(): Record_Local {
   return {
-    priv_key: undefined,
-    priv_key_type: ""
+    priv_key: undefined
   };
 }
 export const Record_Local = {
@@ -299,9 +275,6 @@ export const Record_Local = {
   encode(message: Record_Local, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.priv_key !== undefined) {
       Any.encode(message.priv_key, writer.uint32(10).fork()).ldelim();
-    }
-    if (message.priv_key_type !== "") {
-      writer.uint32(18).string(message.priv_key_type);
     }
     return writer;
   },
@@ -315,9 +288,6 @@ export const Record_Local = {
         case 1:
           message.priv_key = Any.decode(reader, reader.uint32());
           break;
-        case 2:
-          message.priv_key_type = reader.string();
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -327,44 +297,27 @@ export const Record_Local = {
   },
   fromJSON(object: any): Record_Local {
     return {
-      priv_key: isSet(object.priv_key) ? Any.fromJSON(object.priv_key) : undefined,
-      priv_key_type: isSet(object.priv_key_type) ? String(object.priv_key_type) : ""
+      priv_key: isSet(object.priv_key) ? Any.fromJSON(object.priv_key) : undefined
     };
   },
   toJSON(message: Record_Local): unknown {
     const obj: any = {};
     message.priv_key !== undefined && (obj.priv_key = message.priv_key ? Any.toJSON(message.priv_key) : undefined);
-    message.priv_key_type !== undefined && (obj.priv_key_type = message.priv_key_type);
     return obj;
   },
   fromPartial(object: Partial<Record_Local>): Record_Local {
     const message = createBaseRecord_Local();
     message.priv_key = object.priv_key !== undefined && object.priv_key !== null ? Any.fromPartial(object.priv_key) : undefined;
-    message.priv_key_type = object.priv_key_type ?? "";
     return message;
-  },
-  fromSDK(object: Record_LocalSDKType): Record_Local {
-    return {
-      priv_key: object.priv_key ? Any.fromSDK(object.priv_key) : undefined,
-      priv_key_type: object?.priv_key_type
-    };
-  },
-  toSDK(message: Record_Local): Record_LocalSDKType {
-    const obj: any = {};
-    message.priv_key !== undefined && (obj.priv_key = message.priv_key ? Any.toSDK(message.priv_key) : undefined);
-    obj.priv_key_type = message.priv_key_type;
-    return obj;
   },
   fromAmino(object: Record_LocalAmino): Record_Local {
     return {
-      priv_key: object?.priv_key ? Any.fromAmino(object.priv_key) : undefined,
-      priv_key_type: object.priv_key_type
+      priv_key: object?.priv_key ? Any.fromAmino(object.priv_key) : undefined
     };
   },
   toAmino(message: Record_Local): Record_LocalAmino {
     const obj: any = {};
     obj.priv_key = message.priv_key ? Any.toAmino(message.priv_key) : undefined;
-    obj.priv_key_type = message.priv_key_type;
     return obj;
   },
   fromAminoMsg(object: Record_LocalAminoMsg): Record_Local {
@@ -434,16 +387,6 @@ export const Record_Ledger = {
     message.path = object.path !== undefined && object.path !== null ? BIP44Params.fromPartial(object.path) : undefined;
     return message;
   },
-  fromSDK(object: Record_LedgerSDKType): Record_Ledger {
-    return {
-      path: object.path ? BIP44Params.fromSDK(object.path) : undefined
-    };
-  },
-  toSDK(message: Record_Ledger): Record_LedgerSDKType {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = message.path ? BIP44Params.toSDK(message.path) : undefined);
-    return obj;
-  },
   fromAmino(object: Record_LedgerAmino): Record_Ledger {
     return {
       path: object?.path ? BIP44Params.fromAmino(object.path) : undefined
@@ -509,13 +452,6 @@ export const Record_Multi = {
     const message = createBaseRecord_Multi();
     return message;
   },
-  fromSDK(_: Record_MultiSDKType): Record_Multi {
-    return {};
-  },
-  toSDK(_: Record_Multi): Record_MultiSDKType {
-    const obj: any = {};
-    return obj;
-  },
   fromAmino(_: Record_MultiAmino): Record_Multi {
     return {};
   },
@@ -577,13 +513,6 @@ export const Record_Offline = {
   fromPartial(_: Partial<Record_Offline>): Record_Offline {
     const message = createBaseRecord_Offline();
     return message;
-  },
-  fromSDK(_: Record_OfflineSDKType): Record_Offline {
-    return {};
-  },
-  toSDK(_: Record_Offline): Record_OfflineSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: Record_OfflineAmino): Record_Offline {
     return {};

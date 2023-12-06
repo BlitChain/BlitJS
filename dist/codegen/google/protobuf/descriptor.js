@@ -432,21 +432,6 @@ exports.FileDescriptorSet = {
         message.file = object.file?.map(e => exports.FileDescriptorProto.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            file: Array.isArray(object?.file) ? object.file.map((e) => exports.FileDescriptorProto.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.file) {
-            obj.file = message.file.map(e => e ? exports.FileDescriptorProto.toSDK(e) : undefined);
-        }
-        else {
-            obj.file = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             file: Array.isArray(object?.file) ? object.file.map((e) => exports.FileDescriptorProto.fromAmino(e)) : []
@@ -687,73 +672,6 @@ exports.FileDescriptorProto = {
         message.source_code_info = object.source_code_info !== undefined && object.source_code_info !== null ? exports.SourceCodeInfo.fromPartial(object.source_code_info) : undefined;
         message.syntax = object.syntax ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            package: object?.package,
-            dependency: Array.isArray(object?.dependency) ? object.dependency.map((e) => e) : [],
-            public_dependency: Array.isArray(object?.public_dependency) ? object.public_dependency.map((e) => e) : [],
-            weak_dependency: Array.isArray(object?.weak_dependency) ? object.weak_dependency.map((e) => e) : [],
-            message_type: Array.isArray(object?.message_type) ? object.message_type.map((e) => exports.DescriptorProto.fromSDK(e)) : [],
-            enum_type: Array.isArray(object?.enum_type) ? object.enum_type.map((e) => exports.EnumDescriptorProto.fromSDK(e)) : [],
-            service: Array.isArray(object?.service) ? object.service.map((e) => exports.ServiceDescriptorProto.fromSDK(e)) : [],
-            extension: Array.isArray(object?.extension) ? object.extension.map((e) => exports.FieldDescriptorProto.fromSDK(e)) : [],
-            options: object.options ? exports.FileOptions.fromSDK(object.options) : undefined,
-            source_code_info: object.source_code_info ? exports.SourceCodeInfo.fromSDK(object.source_code_info) : undefined,
-            syntax: object?.syntax
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        obj.package = message.package;
-        if (message.dependency) {
-            obj.dependency = message.dependency.map(e => e);
-        }
-        else {
-            obj.dependency = [];
-        }
-        if (message.public_dependency) {
-            obj.public_dependency = message.public_dependency.map(e => e);
-        }
-        else {
-            obj.public_dependency = [];
-        }
-        if (message.weak_dependency) {
-            obj.weak_dependency = message.weak_dependency.map(e => e);
-        }
-        else {
-            obj.weak_dependency = [];
-        }
-        if (message.message_type) {
-            obj.message_type = message.message_type.map(e => e ? exports.DescriptorProto.toSDK(e) : undefined);
-        }
-        else {
-            obj.message_type = [];
-        }
-        if (message.enum_type) {
-            obj.enum_type = message.enum_type.map(e => e ? exports.EnumDescriptorProto.toSDK(e) : undefined);
-        }
-        else {
-            obj.enum_type = [];
-        }
-        if (message.service) {
-            obj.service = message.service.map(e => e ? exports.ServiceDescriptorProto.toSDK(e) : undefined);
-        }
-        else {
-            obj.service = [];
-        }
-        if (message.extension) {
-            obj.extension = message.extension.map(e => e ? exports.FieldDescriptorProto.toSDK(e) : undefined);
-        }
-        else {
-            obj.extension = [];
-        }
-        message.options !== undefined && (obj.options = message.options ? exports.FileOptions.toSDK(message.options) : undefined);
-        message.source_code_info !== undefined && (obj.source_code_info = message.source_code_info ? exports.SourceCodeInfo.toSDK(message.source_code_info) : undefined);
-        obj.syntax = message.syntax;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1013,74 +931,6 @@ exports.DescriptorProto = {
         message.reserved_name = object.reserved_name?.map(e => e) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            field: Array.isArray(object?.field) ? object.field.map((e) => exports.FieldDescriptorProto.fromSDK(e)) : [],
-            extension: Array.isArray(object?.extension) ? object.extension.map((e) => exports.FieldDescriptorProto.fromSDK(e)) : [],
-            nested_type: Array.isArray(object?.nested_type) ? object.nested_type.map((e) => exports.DescriptorProto.fromSDK(e)) : [],
-            enum_type: Array.isArray(object?.enum_type) ? object.enum_type.map((e) => exports.EnumDescriptorProto.fromSDK(e)) : [],
-            extension_range: Array.isArray(object?.extension_range) ? object.extension_range.map((e) => exports.DescriptorProto_ExtensionRange.fromSDK(e)) : [],
-            oneof_decl: Array.isArray(object?.oneof_decl) ? object.oneof_decl.map((e) => exports.OneofDescriptorProto.fromSDK(e)) : [],
-            options: object.options ? exports.MessageOptions.fromSDK(object.options) : undefined,
-            reserved_range: Array.isArray(object?.reserved_range) ? object.reserved_range.map((e) => exports.DescriptorProto_ReservedRange.fromSDK(e)) : [],
-            reserved_name: Array.isArray(object?.reserved_name) ? object.reserved_name.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        if (message.field) {
-            obj.field = message.field.map(e => e ? exports.FieldDescriptorProto.toSDK(e) : undefined);
-        }
-        else {
-            obj.field = [];
-        }
-        if (message.extension) {
-            obj.extension = message.extension.map(e => e ? exports.FieldDescriptorProto.toSDK(e) : undefined);
-        }
-        else {
-            obj.extension = [];
-        }
-        if (message.nested_type) {
-            obj.nested_type = message.nested_type.map(e => e ? exports.DescriptorProto.toSDK(e) : undefined);
-        }
-        else {
-            obj.nested_type = [];
-        }
-        if (message.enum_type) {
-            obj.enum_type = message.enum_type.map(e => e ? exports.EnumDescriptorProto.toSDK(e) : undefined);
-        }
-        else {
-            obj.enum_type = [];
-        }
-        if (message.extension_range) {
-            obj.extension_range = message.extension_range.map(e => e ? exports.DescriptorProto_ExtensionRange.toSDK(e) : undefined);
-        }
-        else {
-            obj.extension_range = [];
-        }
-        if (message.oneof_decl) {
-            obj.oneof_decl = message.oneof_decl.map(e => e ? exports.OneofDescriptorProto.toSDK(e) : undefined);
-        }
-        else {
-            obj.oneof_decl = [];
-        }
-        message.options !== undefined && (obj.options = message.options ? exports.MessageOptions.toSDK(message.options) : undefined);
-        if (message.reserved_range) {
-            obj.reserved_range = message.reserved_range.map(e => e ? exports.DescriptorProto_ReservedRange.toSDK(e) : undefined);
-        }
-        else {
-            obj.reserved_range = [];
-        }
-        if (message.reserved_name) {
-            obj.reserved_name = message.reserved_name.map(e => e);
-        }
-        else {
-            obj.reserved_name = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             name: object.name,
@@ -1230,20 +1080,6 @@ exports.DescriptorProto_ExtensionRange = {
         message.options = object.options !== undefined && object.options !== null ? exports.ExtensionRangeOptions.fromPartial(object.options) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            start: object?.start,
-            end: object?.end,
-            options: object.options ? exports.ExtensionRangeOptions.fromSDK(object.options) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.start = message.start;
-        obj.end = message.end;
-        message.options !== undefined && (obj.options = message.options ? exports.ExtensionRangeOptions.toSDK(message.options) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             start: object.start,
@@ -1329,18 +1165,6 @@ exports.DescriptorProto_ReservedRange = {
         message.end = object.end ?? 0;
         return message;
     },
-    fromSDK(object) {
-        return {
-            start: object?.start,
-            end: object?.end
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.start = message.start;
-        obj.end = message.end;
-        return obj;
-    },
     fromAmino(object) {
         return {
             start: object.start,
@@ -1418,21 +1242,6 @@ exports.ExtensionRangeOptions = {
         const message = createBaseExtensionRangeOptions();
         message.uninterpreted_option = object.uninterpreted_option?.map(e => exports.UninterpretedOption.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            uninterpreted_option: Array.isArray(object?.uninterpreted_option) ? object.uninterpreted_option.map((e) => exports.UninterpretedOption.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.uninterpreted_option) {
-            obj.uninterpreted_option = message.uninterpreted_option.map(e => e ? exports.UninterpretedOption.toSDK(e) : undefined);
-        }
-        else {
-            obj.uninterpreted_option = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1600,34 +1409,6 @@ exports.FieldDescriptorProto = {
         message.options = object.options !== undefined && object.options !== null ? exports.FieldOptions.fromPartial(object.options) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            number: object?.number,
-            label: (0, helpers_1.isSet)(object.label) ? fieldDescriptorProto_LabelFromJSON(object.label) : -1,
-            type: (0, helpers_1.isSet)(object.type) ? fieldDescriptorProto_TypeFromJSON(object.type) : -1,
-            type_name: object?.type_name,
-            extendee: object?.extendee,
-            default_value: object?.default_value,
-            oneof_index: object?.oneof_index,
-            json_name: object?.json_name,
-            options: object.options ? exports.FieldOptions.fromSDK(object.options) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        obj.number = message.number;
-        message.label !== undefined && (obj.label = fieldDescriptorProto_LabelToJSON(message.label));
-        message.type !== undefined && (obj.type = fieldDescriptorProto_TypeToJSON(message.type));
-        obj.type_name = message.type_name;
-        obj.extendee = message.extendee;
-        obj.default_value = message.default_value;
-        obj.oneof_index = message.oneof_index;
-        obj.json_name = message.json_name;
-        message.options !== undefined && (obj.options = message.options ? exports.FieldOptions.toSDK(message.options) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             name: object.name,
@@ -1726,18 +1507,6 @@ exports.OneofDescriptorProto = {
         message.name = object.name ?? "";
         message.options = object.options !== undefined && object.options !== null ? exports.OneofOptions.fromPartial(object.options) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            options: object.options ? exports.OneofOptions.fromSDK(object.options) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        message.options !== undefined && (obj.options = message.options ? exports.OneofOptions.toSDK(message.options) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1867,39 +1636,6 @@ exports.EnumDescriptorProto = {
         message.reserved_name = object.reserved_name?.map(e => e) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            value: Array.isArray(object?.value) ? object.value.map((e) => exports.EnumValueDescriptorProto.fromSDK(e)) : [],
-            options: object.options ? exports.EnumOptions.fromSDK(object.options) : undefined,
-            reserved_range: Array.isArray(object?.reserved_range) ? object.reserved_range.map((e) => exports.EnumDescriptorProto_EnumReservedRange.fromSDK(e)) : [],
-            reserved_name: Array.isArray(object?.reserved_name) ? object.reserved_name.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        if (message.value) {
-            obj.value = message.value.map(e => e ? exports.EnumValueDescriptorProto.toSDK(e) : undefined);
-        }
-        else {
-            obj.value = [];
-        }
-        message.options !== undefined && (obj.options = message.options ? exports.EnumOptions.toSDK(message.options) : undefined);
-        if (message.reserved_range) {
-            obj.reserved_range = message.reserved_range.map(e => e ? exports.EnumDescriptorProto_EnumReservedRange.toSDK(e) : undefined);
-        }
-        else {
-            obj.reserved_range = [];
-        }
-        if (message.reserved_name) {
-            obj.reserved_name = message.reserved_name.map(e => e);
-        }
-        else {
-            obj.reserved_name = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             name: object.name,
@@ -2004,18 +1740,6 @@ exports.EnumDescriptorProto_EnumReservedRange = {
         message.end = object.end ?? 0;
         return message;
     },
-    fromSDK(object) {
-        return {
-            start: object?.start,
-            end: object?.end
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.start = message.start;
-        obj.end = message.end;
-        return obj;
-    },
     fromAmino(object) {
         return {
             start: object.start,
@@ -2108,20 +1832,6 @@ exports.EnumValueDescriptorProto = {
         message.number = object.number ?? 0;
         message.options = object.options !== undefined && object.options !== null ? exports.EnumValueOptions.fromPartial(object.options) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            number: object?.number,
-            options: object.options ? exports.EnumValueOptions.fromSDK(object.options) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        obj.number = message.number;
-        message.options !== undefined && (obj.options = message.options ? exports.EnumValueOptions.toSDK(message.options) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -2222,25 +1932,6 @@ exports.ServiceDescriptorProto = {
         message.method = object.method?.map(e => exports.MethodDescriptorProto.fromPartial(e)) || [];
         message.options = object.options !== undefined && object.options !== null ? exports.ServiceOptions.fromPartial(object.options) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            method: Array.isArray(object?.method) ? object.method.map((e) => exports.MethodDescriptorProto.fromSDK(e)) : [],
-            options: object.options ? exports.ServiceOptions.fromSDK(object.options) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        if (message.method) {
-            obj.method = message.method.map(e => e ? exports.MethodDescriptorProto.toSDK(e) : undefined);
-        }
-        else {
-            obj.method = [];
-        }
-        message.options !== undefined && (obj.options = message.options ? exports.ServiceOptions.toSDK(message.options) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -2371,26 +2062,6 @@ exports.MethodDescriptorProto = {
         message.client_streaming = object.client_streaming ?? false;
         message.server_streaming = object.server_streaming ?? false;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            input_type: object?.input_type,
-            output_type: object?.output_type,
-            options: object.options ? exports.MethodOptions.fromSDK(object.options) : undefined,
-            client_streaming: object?.client_streaming,
-            server_streaming: object?.server_streaming
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        obj.input_type = message.input_type;
-        obj.output_type = message.output_type;
-        message.options !== undefined && (obj.options = message.options ? exports.MethodOptions.toSDK(message.options) : undefined);
-        obj.client_streaming = message.client_streaming;
-        obj.server_streaming = message.server_streaming;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -2678,61 +2349,6 @@ exports.FileOptions = {
         message.uninterpreted_option = object.uninterpreted_option?.map(e => exports.UninterpretedOption.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            java_package: object?.java_package,
-            java_outer_classname: object?.java_outer_classname,
-            java_multiple_files: object?.java_multiple_files,
-            java_generate_equals_and_hash: object?.java_generate_equals_and_hash,
-            java_string_check_utf8: object?.java_string_check_utf8,
-            optimize_for: (0, helpers_1.isSet)(object.optimize_for) ? fileOptions_OptimizeModeFromJSON(object.optimize_for) : -1,
-            go_package: object?.go_package,
-            cc_generic_services: object?.cc_generic_services,
-            java_generic_services: object?.java_generic_services,
-            py_generic_services: object?.py_generic_services,
-            php_generic_services: object?.php_generic_services,
-            deprecated: object?.deprecated,
-            cc_enable_arenas: object?.cc_enable_arenas,
-            objc_class_prefix: object?.objc_class_prefix,
-            csharp_namespace: object?.csharp_namespace,
-            swift_prefix: object?.swift_prefix,
-            php_class_prefix: object?.php_class_prefix,
-            php_namespace: object?.php_namespace,
-            php_metadata_namespace: object?.php_metadata_namespace,
-            ruby_package: object?.ruby_package,
-            uninterpreted_option: Array.isArray(object?.uninterpreted_option) ? object.uninterpreted_option.map((e) => exports.UninterpretedOption.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.java_package = message.java_package;
-        obj.java_outer_classname = message.java_outer_classname;
-        obj.java_multiple_files = message.java_multiple_files;
-        obj.java_generate_equals_and_hash = message.java_generate_equals_and_hash;
-        obj.java_string_check_utf8 = message.java_string_check_utf8;
-        message.optimize_for !== undefined && (obj.optimize_for = fileOptions_OptimizeModeToJSON(message.optimize_for));
-        obj.go_package = message.go_package;
-        obj.cc_generic_services = message.cc_generic_services;
-        obj.java_generic_services = message.java_generic_services;
-        obj.py_generic_services = message.py_generic_services;
-        obj.php_generic_services = message.php_generic_services;
-        obj.deprecated = message.deprecated;
-        obj.cc_enable_arenas = message.cc_enable_arenas;
-        obj.objc_class_prefix = message.objc_class_prefix;
-        obj.csharp_namespace = message.csharp_namespace;
-        obj.swift_prefix = message.swift_prefix;
-        obj.php_class_prefix = message.php_class_prefix;
-        obj.php_namespace = message.php_namespace;
-        obj.php_metadata_namespace = message.php_metadata_namespace;
-        obj.ruby_package = message.ruby_package;
-        if (message.uninterpreted_option) {
-            obj.uninterpreted_option = message.uninterpreted_option.map(e => e ? exports.UninterpretedOption.toSDK(e) : undefined);
-        }
-        else {
-            obj.uninterpreted_option = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             java_package: object.java_package,
@@ -2894,29 +2510,6 @@ exports.MessageOptions = {
         message.uninterpreted_option = object.uninterpreted_option?.map(e => exports.UninterpretedOption.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            message_set_wire_format: object?.message_set_wire_format,
-            no_standard_descriptor_accessor: object?.no_standard_descriptor_accessor,
-            deprecated: object?.deprecated,
-            map_entry: object?.map_entry,
-            uninterpreted_option: Array.isArray(object?.uninterpreted_option) ? object.uninterpreted_option.map((e) => exports.UninterpretedOption.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.message_set_wire_format = message.message_set_wire_format;
-        obj.no_standard_descriptor_accessor = message.no_standard_descriptor_accessor;
-        obj.deprecated = message.deprecated;
-        obj.map_entry = message.map_entry;
-        if (message.uninterpreted_option) {
-            obj.uninterpreted_option = message.uninterpreted_option.map(e => e ? exports.UninterpretedOption.toSDK(e) : undefined);
-        }
-        else {
-            obj.uninterpreted_option = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             message_set_wire_format: object.message_set_wire_format,
@@ -3066,33 +2659,6 @@ exports.FieldOptions = {
         message.uninterpreted_option = object.uninterpreted_option?.map(e => exports.UninterpretedOption.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            ctype: (0, helpers_1.isSet)(object.ctype) ? fieldOptions_CTypeFromJSON(object.ctype) : -1,
-            packed: object?.packed,
-            jstype: (0, helpers_1.isSet)(object.jstype) ? fieldOptions_JSTypeFromJSON(object.jstype) : -1,
-            lazy: object?.lazy,
-            deprecated: object?.deprecated,
-            weak: object?.weak,
-            uninterpreted_option: Array.isArray(object?.uninterpreted_option) ? object.uninterpreted_option.map((e) => exports.UninterpretedOption.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.ctype !== undefined && (obj.ctype = fieldOptions_CTypeToJSON(message.ctype));
-        obj.packed = message.packed;
-        message.jstype !== undefined && (obj.jstype = fieldOptions_JSTypeToJSON(message.jstype));
-        obj.lazy = message.lazy;
-        obj.deprecated = message.deprecated;
-        obj.weak = message.weak;
-        if (message.uninterpreted_option) {
-            obj.uninterpreted_option = message.uninterpreted_option.map(e => e ? exports.UninterpretedOption.toSDK(e) : undefined);
-        }
-        else {
-            obj.uninterpreted_option = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             ctype: (0, helpers_1.isSet)(object.ctype) ? fieldOptions_CTypeFromJSON(object.ctype) : -1,
@@ -3185,21 +2751,6 @@ exports.OneofOptions = {
         const message = createBaseOneofOptions();
         message.uninterpreted_option = object.uninterpreted_option?.map(e => exports.UninterpretedOption.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            uninterpreted_option: Array.isArray(object?.uninterpreted_option) ? object.uninterpreted_option.map((e) => exports.UninterpretedOption.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.uninterpreted_option) {
-            obj.uninterpreted_option = message.uninterpreted_option.map(e => e ? exports.UninterpretedOption.toSDK(e) : undefined);
-        }
-        else {
-            obj.uninterpreted_option = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -3302,25 +2853,6 @@ exports.EnumOptions = {
         message.uninterpreted_option = object.uninterpreted_option?.map(e => exports.UninterpretedOption.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            allow_alias: object?.allow_alias,
-            deprecated: object?.deprecated,
-            uninterpreted_option: Array.isArray(object?.uninterpreted_option) ? object.uninterpreted_option.map((e) => exports.UninterpretedOption.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.allow_alias = message.allow_alias;
-        obj.deprecated = message.deprecated;
-        if (message.uninterpreted_option) {
-            obj.uninterpreted_option = message.uninterpreted_option.map(e => e ? exports.UninterpretedOption.toSDK(e) : undefined);
-        }
-        else {
-            obj.uninterpreted_option = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             allow_alias: object.allow_alias,
@@ -3416,23 +2948,6 @@ exports.EnumValueOptions = {
         message.uninterpreted_option = object.uninterpreted_option?.map(e => exports.UninterpretedOption.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            deprecated: object?.deprecated,
-            uninterpreted_option: Array.isArray(object?.uninterpreted_option) ? object.uninterpreted_option.map((e) => exports.UninterpretedOption.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.deprecated = message.deprecated;
-        if (message.uninterpreted_option) {
-            obj.uninterpreted_option = message.uninterpreted_option.map(e => e ? exports.UninterpretedOption.toSDK(e) : undefined);
-        }
-        else {
-            obj.uninterpreted_option = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             deprecated: object.deprecated,
@@ -3525,23 +3040,6 @@ exports.ServiceOptions = {
         message.deprecated = object.deprecated ?? false;
         message.uninterpreted_option = object.uninterpreted_option?.map(e => exports.UninterpretedOption.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            deprecated: object?.deprecated,
-            uninterpreted_option: Array.isArray(object?.uninterpreted_option) ? object.uninterpreted_option.map((e) => exports.UninterpretedOption.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.deprecated = message.deprecated;
-        if (message.uninterpreted_option) {
-            obj.uninterpreted_option = message.uninterpreted_option.map(e => e ? exports.UninterpretedOption.toSDK(e) : undefined);
-        }
-        else {
-            obj.uninterpreted_option = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -3645,25 +3143,6 @@ exports.MethodOptions = {
         message.idempotency_level = object.idempotency_level ?? 1;
         message.uninterpreted_option = object.uninterpreted_option?.map(e => exports.UninterpretedOption.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            deprecated: object?.deprecated,
-            idempotency_level: (0, helpers_1.isSet)(object.idempotency_level) ? methodOptions_IdempotencyLevelFromJSON(object.idempotency_level) : -1,
-            uninterpreted_option: Array.isArray(object?.uninterpreted_option) ? object.uninterpreted_option.map((e) => exports.UninterpretedOption.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.deprecated = message.deprecated;
-        message.idempotency_level !== undefined && (obj.idempotency_level = methodOptions_IdempotencyLevelToJSON(message.idempotency_level));
-        if (message.uninterpreted_option) {
-            obj.uninterpreted_option = message.uninterpreted_option.map(e => e ? exports.UninterpretedOption.toSDK(e) : undefined);
-        }
-        else {
-            obj.uninterpreted_option = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -3810,33 +3289,6 @@ exports.UninterpretedOption = {
         message.aggregate_value = object.aggregate_value ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            name: Array.isArray(object?.name) ? object.name.map((e) => exports.UninterpretedOption_NamePart.fromSDK(e)) : [],
-            identifier_value: object?.identifier_value,
-            positive_int_value: object?.positive_int_value,
-            negative_int_value: object?.negative_int_value,
-            double_value: object?.double_value,
-            string_value: object?.string_value,
-            aggregate_value: object?.aggregate_value
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.name) {
-            obj.name = message.name.map(e => e ? exports.UninterpretedOption_NamePart.toSDK(e) : undefined);
-        }
-        else {
-            obj.name = [];
-        }
-        obj.identifier_value = message.identifier_value;
-        obj.positive_int_value = message.positive_int_value;
-        obj.negative_int_value = message.negative_int_value;
-        obj.double_value = message.double_value;
-        obj.string_value = message.string_value;
-        obj.aggregate_value = message.aggregate_value;
-        return obj;
-    },
     fromAmino(object) {
         return {
             name: Array.isArray(object?.name) ? object.name.map((e) => exports.UninterpretedOption_NamePart.fromAmino(e)) : [],
@@ -3935,18 +3387,6 @@ exports.UninterpretedOption_NamePart = {
         message.is_extension = object.is_extension ?? false;
         return message;
     },
-    fromSDK(object) {
-        return {
-            name_part: object?.name_part,
-            is_extension: object?.is_extension
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name_part = message.name_part;
-        obj.is_extension = message.is_extension;
-        return obj;
-    },
     fromAmino(object) {
         return {
             name_part: object.name_part,
@@ -4024,21 +3464,6 @@ exports.SourceCodeInfo = {
         const message = createBaseSourceCodeInfo();
         message.location = object.location?.map(e => exports.SourceCodeInfo_Location.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            location: Array.isArray(object?.location) ? object.location.map((e) => exports.SourceCodeInfo_Location.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.location) {
-            obj.location = message.location.map(e => e ? exports.SourceCodeInfo_Location.toSDK(e) : undefined);
-        }
-        else {
-            obj.location = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -4191,39 +3616,6 @@ exports.SourceCodeInfo_Location = {
         message.leading_detached_comments = object.leading_detached_comments?.map(e => e) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            path: Array.isArray(object?.path) ? object.path.map((e) => e) : [],
-            span: Array.isArray(object?.span) ? object.span.map((e) => e) : [],
-            leading_comments: object?.leading_comments,
-            trailing_comments: object?.trailing_comments,
-            leading_detached_comments: Array.isArray(object?.leading_detached_comments) ? object.leading_detached_comments.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.path) {
-            obj.path = message.path.map(e => e);
-        }
-        else {
-            obj.path = [];
-        }
-        if (message.span) {
-            obj.span = message.span.map(e => e);
-        }
-        else {
-            obj.span = [];
-        }
-        obj.leading_comments = message.leading_comments;
-        obj.trailing_comments = message.trailing_comments;
-        if (message.leading_detached_comments) {
-            obj.leading_detached_comments = message.leading_detached_comments.map(e => e);
-        }
-        else {
-            obj.leading_detached_comments = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             path: Array.isArray(object?.path) ? object.path.map((e) => e) : [],
@@ -4322,21 +3714,6 @@ exports.GeneratedCodeInfo = {
         const message = createBaseGeneratedCodeInfo();
         message.annotation = object.annotation?.map(e => exports.GeneratedCodeInfo_Annotation.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            annotation: Array.isArray(object?.annotation) ? object.annotation.map((e) => exports.GeneratedCodeInfo_Annotation.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.annotation) {
-            obj.annotation = message.annotation.map(e => e ? exports.GeneratedCodeInfo_Annotation.toSDK(e) : undefined);
-        }
-        else {
-            obj.annotation = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -4458,27 +3835,6 @@ exports.GeneratedCodeInfo_Annotation = {
         message.begin = object.begin ?? 0;
         message.end = object.end ?? 0;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            path: Array.isArray(object?.path) ? object.path.map((e) => e) : [],
-            source_file: object?.source_file,
-            begin: object?.begin,
-            end: object?.end
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.path) {
-            obj.path = message.path.map(e => e);
-        }
-        else {
-            obj.path = [];
-        }
-        obj.source_file = message.source_file;
-        obj.begin = message.begin;
-        obj.end = message.end;
-        return obj;
     },
     fromAmino(object) {
         return {

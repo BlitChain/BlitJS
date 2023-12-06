@@ -48,11 +48,26 @@ const createLCDClient = async ({ restEndpoint }) => {
                 })
             },
             base: {
+                node: {
+                    v1beta1: new (await Promise.resolve().then(() => __importStar(require("./base/node/v1beta1/query.lcd")))).LCDQueryClient({
+                        requestClient
+                    })
+                },
                 tendermint: {
                     v1beta1: new (await Promise.resolve().then(() => __importStar(require("./base/tendermint/v1beta1/query.lcd")))).LCDQueryClient({
                         requestClient
                     })
                 }
+            },
+            circuit: {
+                v1: new (await Promise.resolve().then(() => __importStar(require("./circuit/v1/query.lcd")))).LCDQueryClient({
+                    requestClient
+                })
+            },
+            consensus: {
+                v1: new (await Promise.resolve().then(() => __importStar(require("./consensus/v1/query.lcd")))).LCDQueryClient({
+                    requestClient
+                })
             },
             distribution: {
                 v1beta1: new (await Promise.resolve().then(() => __importStar(require("./distribution/v1beta1/query.lcd")))).LCDQueryClient({

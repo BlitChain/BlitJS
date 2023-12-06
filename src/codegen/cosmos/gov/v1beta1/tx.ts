@@ -14,8 +14,11 @@ export const protobufPackage = "cosmos.gov.v1beta1";
  * proposal Content.
  */
 export interface MsgSubmitProposal {
+  /** content is the proposal's content. */
   content?: (CommunityPoolSpendProposal & CommunityPoolSpendProposalWithDeposit & TextProposal & ParameterChangeProposal & SoftwareUpgradeProposal & CancelSoftwareUpgradeProposal & ClientUpdateProposal & UpgradeProposal & Any) | undefined;
+  /** initial_deposit is the deposit value that must be paid at proposal submission. */
   initial_deposit: Coin[];
+  /** proposer is the account address of the proposer. */
   proposer: string;
 }
 export interface MsgSubmitProposalProtoMsg {
@@ -23,15 +26,18 @@ export interface MsgSubmitProposalProtoMsg {
   value: Uint8Array;
 }
 export type MsgSubmitProposalEncoded = Omit<MsgSubmitProposal, "content"> & {
-  content?: CommunityPoolSpendProposalProtoMsg | CommunityPoolSpendProposalWithDepositProtoMsg | TextProposalProtoMsg | ParameterChangeProposalProtoMsg | SoftwareUpgradeProposalProtoMsg | CancelSoftwareUpgradeProposalProtoMsg | ClientUpdateProposalProtoMsg | UpgradeProposalProtoMsg | AnyProtoMsg | undefined;
+  /** content is the proposal's content. */content?: CommunityPoolSpendProposalProtoMsg | CommunityPoolSpendProposalWithDepositProtoMsg | TextProposalProtoMsg | ParameterChangeProposalProtoMsg | SoftwareUpgradeProposalProtoMsg | CancelSoftwareUpgradeProposalProtoMsg | ClientUpdateProposalProtoMsg | UpgradeProposalProtoMsg | AnyProtoMsg | undefined;
 };
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
  * proposal Content.
  */
 export interface MsgSubmitProposalAmino {
+  /** content is the proposal's content. */
   content?: AnyAmino;
+  /** initial_deposit is the deposit value that must be paid at proposal submission. */
   initial_deposit: CoinAmino[];
+  /** proposer is the account address of the proposer. */
   proposer: string;
 }
 export interface MsgSubmitProposalAminoMsg {
@@ -49,6 +55,7 @@ export interface MsgSubmitProposalSDKType {
 }
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
 export interface MsgSubmitProposalResponse {
+  /** proposal_id defines the unique id of the proposal. */
   proposal_id: bigint;
 }
 export interface MsgSubmitProposalResponseProtoMsg {
@@ -57,6 +64,7 @@ export interface MsgSubmitProposalResponseProtoMsg {
 }
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
 export interface MsgSubmitProposalResponseAmino {
+  /** proposal_id defines the unique id of the proposal. */
   proposal_id: string;
 }
 export interface MsgSubmitProposalResponseAminoMsg {
@@ -69,8 +77,11 @@ export interface MsgSubmitProposalResponseSDKType {
 }
 /** MsgVote defines a message to cast a vote. */
 export interface MsgVote {
+  /** proposal_id defines the unique id of the proposal. */
   proposal_id: bigint;
+  /** voter is the voter address for the proposal. */
   voter: string;
+  /** option defines the vote option. */
   option: VoteOption;
 }
 export interface MsgVoteProtoMsg {
@@ -79,8 +90,11 @@ export interface MsgVoteProtoMsg {
 }
 /** MsgVote defines a message to cast a vote. */
 export interface MsgVoteAmino {
+  /** proposal_id defines the unique id of the proposal. */
   proposal_id: string;
+  /** voter is the voter address for the proposal. */
   voter: string;
+  /** option defines the vote option. */
   option: VoteOption;
 }
 export interface MsgVoteAminoMsg {
@@ -113,8 +127,11 @@ export interface MsgVoteResponseSDKType {}
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeighted {
+  /** proposal_id defines the unique id of the proposal. */
   proposal_id: bigint;
+  /** voter is the voter address for the proposal. */
   voter: string;
+  /** options defines the weighted vote options. */
   options: WeightedVoteOption[];
 }
 export interface MsgVoteWeightedProtoMsg {
@@ -127,8 +144,11 @@ export interface MsgVoteWeightedProtoMsg {
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeightedAmino {
+  /** proposal_id defines the unique id of the proposal. */
   proposal_id: string;
+  /** voter is the voter address for the proposal. */
   voter: string;
+  /** options defines the weighted vote options. */
   options: WeightedVoteOptionAmino[];
 }
 export interface MsgVoteWeightedAminoMsg {
@@ -173,8 +193,11 @@ export interface MsgVoteWeightedResponseAminoMsg {
 export interface MsgVoteWeightedResponseSDKType {}
 /** MsgDeposit defines a message to submit a deposit to an existing proposal. */
 export interface MsgDeposit {
+  /** proposal_id defines the unique id of the proposal. */
   proposal_id: bigint;
+  /** depositor defines the deposit addresses from the proposals. */
   depositor: string;
+  /** amount to be deposited by depositor. */
   amount: Coin[];
 }
 export interface MsgDepositProtoMsg {
@@ -183,8 +206,11 @@ export interface MsgDepositProtoMsg {
 }
 /** MsgDeposit defines a message to submit a deposit to an existing proposal. */
 export interface MsgDepositAmino {
+  /** proposal_id defines the unique id of the proposal. */
   proposal_id: string;
+  /** depositor defines the deposit addresses from the proposals. */
   depositor: string;
+  /** amount to be deposited by depositor. */
   amount: CoinAmino[];
 }
 export interface MsgDepositAminoMsg {
@@ -280,24 +306,6 @@ export const MsgSubmitProposal = {
     message.proposer = object.proposer ?? "";
     return message;
   },
-  fromSDK(object: MsgSubmitProposalSDKType): MsgSubmitProposal {
-    return {
-      content: object.content ? Any.fromSDK(object.content) : undefined,
-      initial_deposit: Array.isArray(object?.initial_deposit) ? object.initial_deposit.map((e: any) => Coin.fromSDK(e)) : [],
-      proposer: object?.proposer
-    };
-  },
-  toSDK(message: MsgSubmitProposal): MsgSubmitProposalSDKType {
-    const obj: any = {};
-    message.content !== undefined && (obj.content = message.content ? Any.toSDK(message.content) : undefined);
-    if (message.initial_deposit) {
-      obj.initial_deposit = message.initial_deposit.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.initial_deposit = [];
-    }
-    obj.proposer = message.proposer;
-    return obj;
-  },
   fromAmino(object: MsgSubmitProposalAmino): MsgSubmitProposal {
     return {
       content: object?.content ? Cosmos_govv1beta1Content_FromAmino(object.content) : undefined,
@@ -382,16 +390,6 @@ export const MsgSubmitProposalResponse = {
     const message = createBaseMsgSubmitProposalResponse();
     message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? BigInt(object.proposal_id.toString()) : BigInt(0);
     return message;
-  },
-  fromSDK(object: MsgSubmitProposalResponseSDKType): MsgSubmitProposalResponse {
-    return {
-      proposal_id: object?.proposal_id
-    };
-  },
-  toSDK(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseSDKType {
-    const obj: any = {};
-    obj.proposal_id = message.proposal_id;
-    return obj;
   },
   fromAmino(object: MsgSubmitProposalResponseAmino): MsgSubmitProposalResponse {
     return {
@@ -490,20 +488,6 @@ export const MsgVote = {
     message.option = object.option ?? 0;
     return message;
   },
-  fromSDK(object: MsgVoteSDKType): MsgVote {
-    return {
-      proposal_id: object?.proposal_id,
-      voter: object?.voter,
-      option: isSet(object.option) ? voteOptionFromJSON(object.option) : -1
-    };
-  },
-  toSDK(message: MsgVote): MsgVoteSDKType {
-    const obj: any = {};
-    obj.proposal_id = message.proposal_id;
-    obj.voter = message.voter;
-    message.option !== undefined && (obj.option = voteOptionToJSON(message.option));
-    return obj;
-  },
   fromAmino(object: MsgVoteAmino): MsgVote {
     return {
       proposal_id: BigInt(object.proposal_id),
@@ -572,13 +556,6 @@ export const MsgVoteResponse = {
   fromPartial(_: Partial<MsgVoteResponse>): MsgVoteResponse {
     const message = createBaseMsgVoteResponse();
     return message;
-  },
-  fromSDK(_: MsgVoteResponseSDKType): MsgVoteResponse {
-    return {};
-  },
-  toSDK(_: MsgVoteResponse): MsgVoteResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgVoteResponseAmino): MsgVoteResponse {
     return {};
@@ -678,24 +655,6 @@ export const MsgVoteWeighted = {
     message.options = object.options?.map(e => WeightedVoteOption.fromPartial(e)) || [];
     return message;
   },
-  fromSDK(object: MsgVoteWeightedSDKType): MsgVoteWeighted {
-    return {
-      proposal_id: object?.proposal_id,
-      voter: object?.voter,
-      options: Array.isArray(object?.options) ? object.options.map((e: any) => WeightedVoteOption.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: MsgVoteWeighted): MsgVoteWeightedSDKType {
-    const obj: any = {};
-    obj.proposal_id = message.proposal_id;
-    obj.voter = message.voter;
-    if (message.options) {
-      obj.options = message.options.map(e => e ? WeightedVoteOption.toSDK(e) : undefined);
-    } else {
-      obj.options = [];
-    }
-    return obj;
-  },
   fromAmino(object: MsgVoteWeightedAmino): MsgVoteWeighted {
     return {
       proposal_id: BigInt(object.proposal_id),
@@ -768,13 +727,6 @@ export const MsgVoteWeightedResponse = {
   fromPartial(_: Partial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse {
     const message = createBaseMsgVoteWeightedResponse();
     return message;
-  },
-  fromSDK(_: MsgVoteWeightedResponseSDKType): MsgVoteWeightedResponse {
-    return {};
-  },
-  toSDK(_: MsgVoteWeightedResponse): MsgVoteWeightedResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgVoteWeightedResponseAmino): MsgVoteWeightedResponse {
     return {};
@@ -874,24 +826,6 @@ export const MsgDeposit = {
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
-  fromSDK(object: MsgDepositSDKType): MsgDeposit {
-    return {
-      proposal_id: object?.proposal_id,
-      depositor: object?.depositor,
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromSDK(e)) : []
-    };
-  },
-  toSDK(message: MsgDeposit): MsgDepositSDKType {
-    const obj: any = {};
-    obj.proposal_id = message.proposal_id;
-    obj.depositor = message.depositor;
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toSDK(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-    return obj;
-  },
   fromAmino(object: MsgDepositAmino): MsgDeposit {
     return {
       proposal_id: BigInt(object.proposal_id),
@@ -964,13 +898,6 @@ export const MsgDepositResponse = {
   fromPartial(_: Partial<MsgDepositResponse>): MsgDepositResponse {
     const message = createBaseMsgDepositResponse();
     return message;
-  },
-  fromSDK(_: MsgDepositResponseSDKType): MsgDepositResponse {
-    return {};
-  },
-  toSDK(_: MsgDepositResponse): MsgDepositResponseSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: MsgDepositResponseAmino): MsgDepositResponse {
     return {};

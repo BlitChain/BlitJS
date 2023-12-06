@@ -35,8 +35,6 @@ export declare const Block: {
     fromJSON(object: any): Block;
     toJSON(message: Block): unknown;
     fromPartial(object: Partial<Block>): Block;
-    fromSDK(object: BlockSDKType): Block;
-    toSDK(message: Block): BlockSDKType;
     fromAmino(object: BlockAmino): Block;
     toAmino(message: Block): BlockAmino;
     fromAminoMsg(object: BlockAminoMsg): Block;

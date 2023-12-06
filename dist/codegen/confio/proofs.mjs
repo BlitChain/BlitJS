@@ -231,27 +231,6 @@ export const ExistenceProof = {
         message.path = object.path?.map(e => InnerOp.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            key: object?.key,
-            value: object?.value,
-            leaf: object.leaf ? LeafOp.fromSDK(object.leaf) : undefined,
-            path: Array.isArray(object?.path) ? object.path.map((e) => InnerOp.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.key = message.key;
-        obj.value = message.value;
-        message.leaf !== undefined && (obj.leaf = message.leaf ? LeafOp.toSDK(message.leaf) : undefined);
-        if (message.path) {
-            obj.path = message.path.map(e => e ? InnerOp.toSDK(e) : undefined);
-        }
-        else {
-            obj.path = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             key: object.key,
@@ -353,20 +332,6 @@ export const NonExistenceProof = {
         message.left = object.left !== undefined && object.left !== null ? ExistenceProof.fromPartial(object.left) : undefined;
         message.right = object.right !== undefined && object.right !== null ? ExistenceProof.fromPartial(object.right) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            key: object?.key,
-            left: object.left ? ExistenceProof.fromSDK(object.left) : undefined,
-            right: object.right ? ExistenceProof.fromSDK(object.right) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.key = message.key;
-        message.left !== undefined && (obj.left = message.left ? ExistenceProof.toSDK(message.left) : undefined);
-        message.right !== undefined && (obj.right = message.right ? ExistenceProof.toSDK(message.right) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -472,22 +437,6 @@ export const CommitmentProof = {
         message.batch = object.batch !== undefined && object.batch !== null ? BatchProof.fromPartial(object.batch) : undefined;
         message.compressed = object.compressed !== undefined && object.compressed !== null ? CompressedBatchProof.fromPartial(object.compressed) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            exist: object.exist ? ExistenceProof.fromSDK(object.exist) : undefined,
-            nonexist: object.nonexist ? NonExistenceProof.fromSDK(object.nonexist) : undefined,
-            batch: object.batch ? BatchProof.fromSDK(object.batch) : undefined,
-            compressed: object.compressed ? CompressedBatchProof.fromSDK(object.compressed) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.exist !== undefined && (obj.exist = message.exist ? ExistenceProof.toSDK(message.exist) : undefined);
-        message.nonexist !== undefined && (obj.nonexist = message.nonexist ? NonExistenceProof.toSDK(message.nonexist) : undefined);
-        message.batch !== undefined && (obj.batch = message.batch ? BatchProof.toSDK(message.batch) : undefined);
-        message.compressed !== undefined && (obj.compressed = message.compressed ? CompressedBatchProof.toSDK(message.compressed) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -606,24 +555,6 @@ export const LeafOp = {
         message.prefix = object.prefix ?? new Uint8Array();
         return message;
     },
-    fromSDK(object) {
-        return {
-            hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : -1,
-            prehash_key: isSet(object.prehash_key) ? hashOpFromJSON(object.prehash_key) : -1,
-            prehash_value: isSet(object.prehash_value) ? hashOpFromJSON(object.prehash_value) : -1,
-            length: isSet(object.length) ? lengthOpFromJSON(object.length) : -1,
-            prefix: object?.prefix
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
-        message.prehash_key !== undefined && (obj.prehash_key = hashOpToJSON(message.prehash_key));
-        message.prehash_value !== undefined && (obj.prehash_value = hashOpToJSON(message.prehash_value));
-        message.length !== undefined && (obj.length = lengthOpToJSON(message.length));
-        obj.prefix = message.prefix;
-        return obj;
-    },
     fromAmino(object) {
         return {
             hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : -1,
@@ -722,20 +653,6 @@ export const InnerOp = {
         message.prefix = object.prefix ?? new Uint8Array();
         message.suffix = object.suffix ?? new Uint8Array();
         return message;
-    },
-    fromSDK(object) {
-        return {
-            hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : -1,
-            prefix: object?.prefix,
-            suffix: object?.suffix
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
-        obj.prefix = message.prefix;
-        obj.suffix = message.suffix;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -841,22 +758,6 @@ export const ProofSpec = {
         message.max_depth = object.max_depth ?? 0;
         message.min_depth = object.min_depth ?? 0;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            leaf_spec: object.leaf_spec ? LeafOp.fromSDK(object.leaf_spec) : undefined,
-            inner_spec: object.inner_spec ? InnerSpec.fromSDK(object.inner_spec) : undefined,
-            max_depth: object?.max_depth,
-            min_depth: object?.min_depth
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.leaf_spec !== undefined && (obj.leaf_spec = message.leaf_spec ? LeafOp.toSDK(message.leaf_spec) : undefined);
-        message.inner_spec !== undefined && (obj.inner_spec = message.inner_spec ? InnerSpec.toSDK(message.inner_spec) : undefined);
-        obj.max_depth = message.max_depth;
-        obj.min_depth = message.min_depth;
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1000,31 +901,6 @@ export const InnerSpec = {
         message.hash = object.hash ?? 0;
         return message;
     },
-    fromSDK(object) {
-        return {
-            child_order: Array.isArray(object?.child_order) ? object.child_order.map((e) => e) : [],
-            child_size: object?.child_size,
-            min_prefix_length: object?.min_prefix_length,
-            max_prefix_length: object?.max_prefix_length,
-            empty_child: object?.empty_child,
-            hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : -1
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.child_order) {
-            obj.child_order = message.child_order.map(e => e);
-        }
-        else {
-            obj.child_order = [];
-        }
-        obj.child_size = message.child_size;
-        obj.min_prefix_length = message.min_prefix_length;
-        obj.max_prefix_length = message.max_prefix_length;
-        obj.empty_child = message.empty_child;
-        message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
-        return obj;
-    },
     fromAmino(object) {
         return {
             child_order: Array.isArray(object?.child_order) ? object.child_order.map((e) => e) : [],
@@ -1116,21 +992,6 @@ export const BatchProof = {
         message.entries = object.entries?.map(e => BatchEntry.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            entries: Array.isArray(object?.entries) ? object.entries.map((e) => BatchEntry.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.entries) {
-            obj.entries = message.entries.map(e => e ? BatchEntry.toSDK(e) : undefined);
-        }
-        else {
-            obj.entries = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             entries: Array.isArray(object?.entries) ? object.entries.map((e) => BatchEntry.fromAmino(e)) : []
@@ -1216,18 +1077,6 @@ export const BatchEntry = {
         message.exist = object.exist !== undefined && object.exist !== null ? ExistenceProof.fromPartial(object.exist) : undefined;
         message.nonexist = object.nonexist !== undefined && object.nonexist !== null ? NonExistenceProof.fromPartial(object.nonexist) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            exist: object.exist ? ExistenceProof.fromSDK(object.exist) : undefined,
-            nonexist: object.nonexist ? NonExistenceProof.fromSDK(object.nonexist) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.exist !== undefined && (obj.exist = message.exist ? ExistenceProof.toSDK(message.exist) : undefined);
-        message.nonexist !== undefined && (obj.nonexist = message.nonexist ? NonExistenceProof.toSDK(message.nonexist) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1322,28 +1171,6 @@ export const CompressedBatchProof = {
         message.lookup_inners = object.lookup_inners?.map(e => InnerOp.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            entries: Array.isArray(object?.entries) ? object.entries.map((e) => CompressedBatchEntry.fromSDK(e)) : [],
-            lookup_inners: Array.isArray(object?.lookup_inners) ? object.lookup_inners.map((e) => InnerOp.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.entries) {
-            obj.entries = message.entries.map(e => e ? CompressedBatchEntry.toSDK(e) : undefined);
-        }
-        else {
-            obj.entries = [];
-        }
-        if (message.lookup_inners) {
-            obj.lookup_inners = message.lookup_inners.map(e => e ? InnerOp.toSDK(e) : undefined);
-        }
-        else {
-            obj.lookup_inners = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             entries: Array.isArray(object?.entries) ? object.entries.map((e) => CompressedBatchEntry.fromAmino(e)) : [],
@@ -1436,18 +1263,6 @@ export const CompressedBatchEntry = {
         message.exist = object.exist !== undefined && object.exist !== null ? CompressedExistenceProof.fromPartial(object.exist) : undefined;
         message.nonexist = object.nonexist !== undefined && object.nonexist !== null ? CompressedNonExistenceProof.fromPartial(object.nonexist) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            exist: object.exist ? CompressedExistenceProof.fromSDK(object.exist) : undefined,
-            nonexist: object.nonexist ? CompressedNonExistenceProof.fromSDK(object.nonexist) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.exist !== undefined && (obj.exist = message.exist ? CompressedExistenceProof.toSDK(message.exist) : undefined);
-        message.nonexist !== undefined && (obj.nonexist = message.nonexist ? CompressedNonExistenceProof.toSDK(message.nonexist) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -1567,27 +1382,6 @@ export const CompressedExistenceProof = {
         message.path = object.path?.map(e => e) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            key: object?.key,
-            value: object?.value,
-            leaf: object.leaf ? LeafOp.fromSDK(object.leaf) : undefined,
-            path: Array.isArray(object?.path) ? object.path.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.key = message.key;
-        obj.value = message.value;
-        message.leaf !== undefined && (obj.leaf = message.leaf ? LeafOp.toSDK(message.leaf) : undefined);
-        if (message.path) {
-            obj.path = message.path.map(e => e);
-        }
-        else {
-            obj.path = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             key: object.key,
@@ -1689,20 +1483,6 @@ export const CompressedNonExistenceProof = {
         message.left = object.left !== undefined && object.left !== null ? CompressedExistenceProof.fromPartial(object.left) : undefined;
         message.right = object.right !== undefined && object.right !== null ? CompressedExistenceProof.fromPartial(object.right) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            key: object?.key,
-            left: object.left ? CompressedExistenceProof.fromSDK(object.left) : undefined,
-            right: object.right ? CompressedExistenceProof.fromSDK(object.right) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.key = message.key;
-        message.left !== undefined && (obj.left = message.left ? CompressedExistenceProof.toSDK(message.left) : undefined);
-        message.right !== undefined && (obj.right = message.right ? CompressedExistenceProof.toSDK(message.right) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {

@@ -171,13 +171,6 @@ export const QueryParamsRequest = {
     const message = createBaseQueryParamsRequest();
     return message;
   },
-  fromSDK(_: QueryParamsRequestSDKType): QueryParamsRequest {
-    return {};
-  },
-  toSDK(_: QueryParamsRequest): QueryParamsRequestSDKType {
-    const obj: any = {};
-    return obj;
-  },
   fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest {
     return {};
   },
@@ -252,16 +245,6 @@ export const QueryParamsResponse = {
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
-  fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse {
-    return {
-      params: object.params ? Params.fromSDK(object.params) : undefined
-    };
-  },
-  toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toSDK(message.params) : undefined);
-    return obj;
-  },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
     return {
       params: object?.params ? Params.fromAmino(object.params) : undefined
@@ -326,13 +309,6 @@ export const QueryInflationRequest = {
   fromPartial(_: Partial<QueryInflationRequest>): QueryInflationRequest {
     const message = createBaseQueryInflationRequest();
     return message;
-  },
-  fromSDK(_: QueryInflationRequestSDKType): QueryInflationRequest {
-    return {};
-  },
-  toSDK(_: QueryInflationRequest): QueryInflationRequestSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: QueryInflationRequestAmino): QueryInflationRequest {
     return {};
@@ -408,16 +384,6 @@ export const QueryInflationResponse = {
     message.inflation = object.inflation ?? new Uint8Array();
     return message;
   },
-  fromSDK(object: QueryInflationResponseSDKType): QueryInflationResponse {
-    return {
-      inflation: object?.inflation
-    };
-  },
-  toSDK(message: QueryInflationResponse): QueryInflationResponseSDKType {
-    const obj: any = {};
-    obj.inflation = message.inflation;
-    return obj;
-  },
   fromAmino(object: QueryInflationResponseAmino): QueryInflationResponse {
     return {
       inflation: object.inflation
@@ -482,13 +448,6 @@ export const QueryAnnualProvisionsRequest = {
   fromPartial(_: Partial<QueryAnnualProvisionsRequest>): QueryAnnualProvisionsRequest {
     const message = createBaseQueryAnnualProvisionsRequest();
     return message;
-  },
-  fromSDK(_: QueryAnnualProvisionsRequestSDKType): QueryAnnualProvisionsRequest {
-    return {};
-  },
-  toSDK(_: QueryAnnualProvisionsRequest): QueryAnnualProvisionsRequestSDKType {
-    const obj: any = {};
-    return obj;
   },
   fromAmino(_: QueryAnnualProvisionsRequestAmino): QueryAnnualProvisionsRequest {
     return {};
@@ -563,16 +522,6 @@ export const QueryAnnualProvisionsResponse = {
     const message = createBaseQueryAnnualProvisionsResponse();
     message.annual_provisions = object.annual_provisions ?? new Uint8Array();
     return message;
-  },
-  fromSDK(object: QueryAnnualProvisionsResponseSDKType): QueryAnnualProvisionsResponse {
-    return {
-      annual_provisions: object?.annual_provisions
-    };
-  },
-  toSDK(message: QueryAnnualProvisionsResponse): QueryAnnualProvisionsResponseSDKType {
-    const obj: any = {};
-    obj.annual_provisions = message.annual_provisions;
-    return obj;
   },
   fromAmino(object: QueryAnnualProvisionsResponseAmino): QueryAnnualProvisionsResponse {
     return {

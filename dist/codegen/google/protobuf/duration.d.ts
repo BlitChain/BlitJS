@@ -217,8 +217,6 @@ export declare const Duration: {
     fromJSON(object: any): Duration;
     toJSON(message: Duration): unknown;
     fromPartial(object: Partial<Duration>): Duration;
-    fromSDK(object: DurationSDKType): Duration;
-    toSDK(message: Duration): DurationSDKType;
     fromAmino(object: DurationAmino): Duration;
     toAmino(message: Duration): DurationAmino;
     fromAminoMsg(object: DurationAminoMsg): Duration;

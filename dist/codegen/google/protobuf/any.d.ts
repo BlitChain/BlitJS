@@ -332,8 +332,6 @@ export declare const Any: {
     fromJSON(object: any): Any;
     toJSON(message: Any): unknown;
     fromPartial(object: Partial<Any>): Any;
-    fromSDK(object: AnySDKType): Any;
-    toSDK(message: Any): AnySDKType;
     fromAmino(object: AnyAmino): Any;
     toAmino(message: Any): AnyAmino;
     fromAminoMsg(object: AnyAminoMsg): Any;

@@ -61,8 +61,6 @@ export declare const MsgSend: {
     fromJSON(object: any): MsgSend;
     toJSON(message: MsgSend): unknown;
     fromPartial(object: Partial<MsgSend>): MsgSend;
-    fromSDK(object: MsgSendSDKType): MsgSend;
-    toSDK(message: MsgSend): MsgSendSDKType;
     fromAmino(object: MsgSendAmino): MsgSend;
     toAmino(message: MsgSend): MsgSendAmino;
     fromAminoMsg(object: MsgSendAminoMsg): MsgSend;
@@ -78,8 +76,6 @@ export declare const MsgSendResponse: {
     fromJSON(_: any): MsgSendResponse;
     toJSON(_: MsgSendResponse): unknown;
     fromPartial(_: Partial<MsgSendResponse>): MsgSendResponse;
-    fromSDK(_: MsgSendResponseSDKType): MsgSendResponse;
-    toSDK(_: MsgSendResponse): MsgSendResponseSDKType;
     fromAmino(_: MsgSendResponseAmino): MsgSendResponse;
     toAmino(_: MsgSendResponse): MsgSendResponseAmino;
     fromAminoMsg(object: MsgSendResponseAminoMsg): MsgSendResponse;

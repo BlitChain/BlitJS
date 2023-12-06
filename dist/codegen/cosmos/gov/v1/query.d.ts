@@ -1,7 +1,44 @@
-import { ProposalStatus, Proposal, ProposalAmino, ProposalSDKType, Vote, VoteAmino, VoteSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType, Deposit, DepositAmino, DepositSDKType, TallyResult, TallyResultAmino, TallyResultSDKType } from "./gov";
+import { ProposalStatus, Proposal, ProposalAmino, ProposalSDKType, Vote, VoteAmino, VoteSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType, Params, ParamsAmino, ParamsSDKType, Deposit, DepositAmino, DepositSDKType, TallyResult, TallyResultAmino, TallyResultSDKType } from "./gov";
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 export declare const protobufPackage = "cosmos.gov.v1";
+/** QueryConstitutionRequest is the request type for the Query/Constitution RPC method */
+export interface QueryConstitutionRequest {
+}
+export interface QueryConstitutionRequestProtoMsg {
+    type_url: "/cosmos.gov.v1.QueryConstitutionRequest";
+    value: Uint8Array;
+}
+/** QueryConstitutionRequest is the request type for the Query/Constitution RPC method */
+export interface QueryConstitutionRequestAmino {
+}
+export interface QueryConstitutionRequestAminoMsg {
+    type: "cosmos-sdk/v1/QueryConstitutionRequest";
+    value: QueryConstitutionRequestAmino;
+}
+/** QueryConstitutionRequest is the request type for the Query/Constitution RPC method */
+export interface QueryConstitutionRequestSDKType {
+}
+/** QueryConstitutionResponse is the response type for the Query/Constitution RPC method */
+export interface QueryConstitutionResponse {
+    constitution: string;
+}
+export interface QueryConstitutionResponseProtoMsg {
+    type_url: "/cosmos.gov.v1.QueryConstitutionResponse";
+    value: Uint8Array;
+}
+/** QueryConstitutionResponse is the response type for the Query/Constitution RPC method */
+export interface QueryConstitutionResponseAmino {
+    constitution: string;
+}
+export interface QueryConstitutionResponseAminoMsg {
+    type: "cosmos-sdk/v1/QueryConstitutionResponse";
+    value: QueryConstitutionResponseAmino;
+}
+/** QueryConstitutionResponse is the response type for the Query/Constitution RPC method */
+export interface QueryConstitutionResponseSDKType {
+    constitution: string;
+}
 /** QueryProposalRequest is the request type for the Query/Proposal RPC method. */
 export interface QueryProposalRequest {
     /** proposal_id defines the unique id of the proposal. */
@@ -26,6 +63,7 @@ export interface QueryProposalRequestSDKType {
 }
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
 export interface QueryProposalResponse {
+    /** proposal is the requested governance proposal. */
     proposal?: Proposal;
 }
 export interface QueryProposalResponseProtoMsg {
@@ -34,6 +72,7 @@ export interface QueryProposalResponseProtoMsg {
 }
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
 export interface QueryProposalResponseAmino {
+    /** proposal is the requested governance proposal. */
     proposal?: ProposalAmino;
 }
 export interface QueryProposalResponseAminoMsg {
@@ -86,6 +125,7 @@ export interface QueryProposalsRequestSDKType {
  * method.
  */
 export interface QueryProposalsResponse {
+    /** proposals defines all the requested governance proposals. */
     proposals: Proposal[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
@@ -99,6 +139,7 @@ export interface QueryProposalsResponseProtoMsg {
  * method.
  */
 export interface QueryProposalsResponseAmino {
+    /** proposals defines all the requested governance proposals. */
     proposals: ProposalAmino[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;
@@ -119,7 +160,7 @@ export interface QueryProposalsResponseSDKType {
 export interface QueryVoteRequest {
     /** proposal_id defines the unique id of the proposal. */
     proposal_id: bigint;
-    /** voter defines the oter address for the proposals. */
+    /** voter defines the voter address for the proposals. */
     voter: string;
 }
 export interface QueryVoteRequestProtoMsg {
@@ -130,7 +171,7 @@ export interface QueryVoteRequestProtoMsg {
 export interface QueryVoteRequestAmino {
     /** proposal_id defines the unique id of the proposal. */
     proposal_id: string;
-    /** voter defines the oter address for the proposals. */
+    /** voter defines the voter address for the proposals. */
     voter: string;
 }
 export interface QueryVoteRequestAminoMsg {
@@ -144,7 +185,7 @@ export interface QueryVoteRequestSDKType {
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponse {
-    /** vote defined the queried vote. */
+    /** vote defines the queried vote. */
     vote?: Vote;
 }
 export interface QueryVoteResponseProtoMsg {
@@ -153,7 +194,7 @@ export interface QueryVoteResponseProtoMsg {
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponseAmino {
-    /** vote defined the queried vote. */
+    /** vote defines the queried vote. */
     vote?: VoteAmino;
 }
 export interface QueryVoteResponseAminoMsg {
@@ -193,7 +234,7 @@ export interface QueryVotesRequestSDKType {
 }
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponse {
-    /** votes defined the queried votes. */
+    /** votes defines the queried votes. */
     votes: Vote[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
@@ -204,7 +245,7 @@ export interface QueryVotesResponseProtoMsg {
 }
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponseAmino {
-    /** votes defined the queried votes. */
+    /** votes defines the queried votes. */
     votes: VoteAmino[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;
@@ -248,12 +289,30 @@ export interface QueryParamsRequestSDKType {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
-    /** voting_params defines the parameters related to voting. */
+    /**
+     * Deprecated: Prefer to use `params` instead.
+     * voting_params defines the parameters related to voting.
+     */
+    /** @deprecated */
     voting_params?: VotingParams;
-    /** deposit_params defines the parameters related to deposit. */
+    /**
+     * Deprecated: Prefer to use `params` instead.
+     * deposit_params defines the parameters related to deposit.
+     */
+    /** @deprecated */
     deposit_params?: DepositParams;
-    /** tally_params defines the parameters related to tally. */
+    /**
+     * Deprecated: Prefer to use `params` instead.
+     * tally_params defines the parameters related to tally.
+     */
+    /** @deprecated */
     tally_params?: TallyParams;
+    /**
+     * params defines all the paramaters of x/gov module.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    params?: Params;
 }
 export interface QueryParamsResponseProtoMsg {
     type_url: "/cosmos.gov.v1.QueryParamsResponse";
@@ -261,12 +320,30 @@ export interface QueryParamsResponseProtoMsg {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseAmino {
-    /** voting_params defines the parameters related to voting. */
+    /**
+     * Deprecated: Prefer to use `params` instead.
+     * voting_params defines the parameters related to voting.
+     */
+    /** @deprecated */
     voting_params?: VotingParamsAmino;
-    /** deposit_params defines the parameters related to deposit. */
+    /**
+     * Deprecated: Prefer to use `params` instead.
+     * deposit_params defines the parameters related to deposit.
+     */
+    /** @deprecated */
     deposit_params?: DepositParamsAmino;
-    /** tally_params defines the parameters related to tally. */
+    /**
+     * Deprecated: Prefer to use `params` instead.
+     * tally_params defines the parameters related to tally.
+     */
+    /** @deprecated */
     tally_params?: TallyParamsAmino;
+    /**
+     * params defines all the paramaters of x/gov module.
+     *
+     * Since: cosmos-sdk 0.47
+     */
+    params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
     type: "cosmos-sdk/v1/QueryParamsResponse";
@@ -274,9 +351,13 @@ export interface QueryParamsResponseAminoMsg {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
+    /** @deprecated */
     voting_params?: VotingParamsSDKType;
+    /** @deprecated */
     deposit_params?: DepositParamsSDKType;
+    /** @deprecated */
     tally_params?: TallyParamsSDKType;
+    params?: ParamsSDKType;
 }
 /** QueryDepositRequest is the request type for the Query/Deposit RPC method. */
 export interface QueryDepositRequest {
@@ -356,6 +437,7 @@ export interface QueryDepositsRequestSDKType {
 }
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponse {
+    /** deposits defines the requested deposits. */
     deposits: Deposit[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
@@ -366,6 +448,7 @@ export interface QueryDepositsResponseProtoMsg {
 }
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponseAmino {
+    /** deposits defines the requested deposits. */
     deposits: DepositAmino[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;
@@ -423,6 +506,36 @@ export interface QueryTallyResultResponseAminoMsg {
 export interface QueryTallyResultResponseSDKType {
     tally?: TallyResultSDKType;
 }
+export declare const QueryConstitutionRequest: {
+    typeUrl: string;
+    encode(_: QueryConstitutionRequest, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryConstitutionRequest;
+    fromJSON(_: any): QueryConstitutionRequest;
+    toJSON(_: QueryConstitutionRequest): unknown;
+    fromPartial(_: Partial<QueryConstitutionRequest>): QueryConstitutionRequest;
+    fromAmino(_: QueryConstitutionRequestAmino): QueryConstitutionRequest;
+    toAmino(_: QueryConstitutionRequest): QueryConstitutionRequestAmino;
+    fromAminoMsg(object: QueryConstitutionRequestAminoMsg): QueryConstitutionRequest;
+    toAminoMsg(message: QueryConstitutionRequest): QueryConstitutionRequestAminoMsg;
+    fromProtoMsg(message: QueryConstitutionRequestProtoMsg): QueryConstitutionRequest;
+    toProto(message: QueryConstitutionRequest): Uint8Array;
+    toProtoMsg(message: QueryConstitutionRequest): QueryConstitutionRequestProtoMsg;
+};
+export declare const QueryConstitutionResponse: {
+    typeUrl: string;
+    encode(message: QueryConstitutionResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): QueryConstitutionResponse;
+    fromJSON(object: any): QueryConstitutionResponse;
+    toJSON(message: QueryConstitutionResponse): unknown;
+    fromPartial(object: Partial<QueryConstitutionResponse>): QueryConstitutionResponse;
+    fromAmino(object: QueryConstitutionResponseAmino): QueryConstitutionResponse;
+    toAmino(message: QueryConstitutionResponse): QueryConstitutionResponseAmino;
+    fromAminoMsg(object: QueryConstitutionResponseAminoMsg): QueryConstitutionResponse;
+    toAminoMsg(message: QueryConstitutionResponse): QueryConstitutionResponseAminoMsg;
+    fromProtoMsg(message: QueryConstitutionResponseProtoMsg): QueryConstitutionResponse;
+    toProto(message: QueryConstitutionResponse): Uint8Array;
+    toProtoMsg(message: QueryConstitutionResponse): QueryConstitutionResponseProtoMsg;
+};
 export declare const QueryProposalRequest: {
     typeUrl: string;
     encode(message: QueryProposalRequest, writer?: BinaryWriter): BinaryWriter;
@@ -430,8 +543,6 @@ export declare const QueryProposalRequest: {
     fromJSON(object: any): QueryProposalRequest;
     toJSON(message: QueryProposalRequest): unknown;
     fromPartial(object: Partial<QueryProposalRequest>): QueryProposalRequest;
-    fromSDK(object: QueryProposalRequestSDKType): QueryProposalRequest;
-    toSDK(message: QueryProposalRequest): QueryProposalRequestSDKType;
     fromAmino(object: QueryProposalRequestAmino): QueryProposalRequest;
     toAmino(message: QueryProposalRequest): QueryProposalRequestAmino;
     fromAminoMsg(object: QueryProposalRequestAminoMsg): QueryProposalRequest;
@@ -447,8 +558,6 @@ export declare const QueryProposalResponse: {
     fromJSON(object: any): QueryProposalResponse;
     toJSON(message: QueryProposalResponse): unknown;
     fromPartial(object: Partial<QueryProposalResponse>): QueryProposalResponse;
-    fromSDK(object: QueryProposalResponseSDKType): QueryProposalResponse;
-    toSDK(message: QueryProposalResponse): QueryProposalResponseSDKType;
     fromAmino(object: QueryProposalResponseAmino): QueryProposalResponse;
     toAmino(message: QueryProposalResponse): QueryProposalResponseAmino;
     fromAminoMsg(object: QueryProposalResponseAminoMsg): QueryProposalResponse;
@@ -464,8 +573,6 @@ export declare const QueryProposalsRequest: {
     fromJSON(object: any): QueryProposalsRequest;
     toJSON(message: QueryProposalsRequest): unknown;
     fromPartial(object: Partial<QueryProposalsRequest>): QueryProposalsRequest;
-    fromSDK(object: QueryProposalsRequestSDKType): QueryProposalsRequest;
-    toSDK(message: QueryProposalsRequest): QueryProposalsRequestSDKType;
     fromAmino(object: QueryProposalsRequestAmino): QueryProposalsRequest;
     toAmino(message: QueryProposalsRequest): QueryProposalsRequestAmino;
     fromAminoMsg(object: QueryProposalsRequestAminoMsg): QueryProposalsRequest;
@@ -481,8 +588,6 @@ export declare const QueryProposalsResponse: {
     fromJSON(object: any): QueryProposalsResponse;
     toJSON(message: QueryProposalsResponse): unknown;
     fromPartial(object: Partial<QueryProposalsResponse>): QueryProposalsResponse;
-    fromSDK(object: QueryProposalsResponseSDKType): QueryProposalsResponse;
-    toSDK(message: QueryProposalsResponse): QueryProposalsResponseSDKType;
     fromAmino(object: QueryProposalsResponseAmino): QueryProposalsResponse;
     toAmino(message: QueryProposalsResponse): QueryProposalsResponseAmino;
     fromAminoMsg(object: QueryProposalsResponseAminoMsg): QueryProposalsResponse;
@@ -498,8 +603,6 @@ export declare const QueryVoteRequest: {
     fromJSON(object: any): QueryVoteRequest;
     toJSON(message: QueryVoteRequest): unknown;
     fromPartial(object: Partial<QueryVoteRequest>): QueryVoteRequest;
-    fromSDK(object: QueryVoteRequestSDKType): QueryVoteRequest;
-    toSDK(message: QueryVoteRequest): QueryVoteRequestSDKType;
     fromAmino(object: QueryVoteRequestAmino): QueryVoteRequest;
     toAmino(message: QueryVoteRequest): QueryVoteRequestAmino;
     fromAminoMsg(object: QueryVoteRequestAminoMsg): QueryVoteRequest;
@@ -515,8 +618,6 @@ export declare const QueryVoteResponse: {
     fromJSON(object: any): QueryVoteResponse;
     toJSON(message: QueryVoteResponse): unknown;
     fromPartial(object: Partial<QueryVoteResponse>): QueryVoteResponse;
-    fromSDK(object: QueryVoteResponseSDKType): QueryVoteResponse;
-    toSDK(message: QueryVoteResponse): QueryVoteResponseSDKType;
     fromAmino(object: QueryVoteResponseAmino): QueryVoteResponse;
     toAmino(message: QueryVoteResponse): QueryVoteResponseAmino;
     fromAminoMsg(object: QueryVoteResponseAminoMsg): QueryVoteResponse;
@@ -532,8 +633,6 @@ export declare const QueryVotesRequest: {
     fromJSON(object: any): QueryVotesRequest;
     toJSON(message: QueryVotesRequest): unknown;
     fromPartial(object: Partial<QueryVotesRequest>): QueryVotesRequest;
-    fromSDK(object: QueryVotesRequestSDKType): QueryVotesRequest;
-    toSDK(message: QueryVotesRequest): QueryVotesRequestSDKType;
     fromAmino(object: QueryVotesRequestAmino): QueryVotesRequest;
     toAmino(message: QueryVotesRequest): QueryVotesRequestAmino;
     fromAminoMsg(object: QueryVotesRequestAminoMsg): QueryVotesRequest;
@@ -549,8 +648,6 @@ export declare const QueryVotesResponse: {
     fromJSON(object: any): QueryVotesResponse;
     toJSON(message: QueryVotesResponse): unknown;
     fromPartial(object: Partial<QueryVotesResponse>): QueryVotesResponse;
-    fromSDK(object: QueryVotesResponseSDKType): QueryVotesResponse;
-    toSDK(message: QueryVotesResponse): QueryVotesResponseSDKType;
     fromAmino(object: QueryVotesResponseAmino): QueryVotesResponse;
     toAmino(message: QueryVotesResponse): QueryVotesResponseAmino;
     fromAminoMsg(object: QueryVotesResponseAminoMsg): QueryVotesResponse;
@@ -566,8 +663,6 @@ export declare const QueryParamsRequest: {
     fromJSON(object: any): QueryParamsRequest;
     toJSON(message: QueryParamsRequest): unknown;
     fromPartial(object: Partial<QueryParamsRequest>): QueryParamsRequest;
-    fromSDK(object: QueryParamsRequestSDKType): QueryParamsRequest;
-    toSDK(message: QueryParamsRequest): QueryParamsRequestSDKType;
     fromAmino(object: QueryParamsRequestAmino): QueryParamsRequest;
     toAmino(message: QueryParamsRequest): QueryParamsRequestAmino;
     fromAminoMsg(object: QueryParamsRequestAminoMsg): QueryParamsRequest;
@@ -583,8 +678,6 @@ export declare const QueryParamsResponse: {
     fromJSON(object: any): QueryParamsResponse;
     toJSON(message: QueryParamsResponse): unknown;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
-    fromSDK(object: QueryParamsResponseSDKType): QueryParamsResponse;
-    toSDK(message: QueryParamsResponse): QueryParamsResponseSDKType;
     fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse;
     toAmino(message: QueryParamsResponse): QueryParamsResponseAmino;
     fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse;
@@ -600,8 +693,6 @@ export declare const QueryDepositRequest: {
     fromJSON(object: any): QueryDepositRequest;
     toJSON(message: QueryDepositRequest): unknown;
     fromPartial(object: Partial<QueryDepositRequest>): QueryDepositRequest;
-    fromSDK(object: QueryDepositRequestSDKType): QueryDepositRequest;
-    toSDK(message: QueryDepositRequest): QueryDepositRequestSDKType;
     fromAmino(object: QueryDepositRequestAmino): QueryDepositRequest;
     toAmino(message: QueryDepositRequest): QueryDepositRequestAmino;
     fromAminoMsg(object: QueryDepositRequestAminoMsg): QueryDepositRequest;
@@ -617,8 +708,6 @@ export declare const QueryDepositResponse: {
     fromJSON(object: any): QueryDepositResponse;
     toJSON(message: QueryDepositResponse): unknown;
     fromPartial(object: Partial<QueryDepositResponse>): QueryDepositResponse;
-    fromSDK(object: QueryDepositResponseSDKType): QueryDepositResponse;
-    toSDK(message: QueryDepositResponse): QueryDepositResponseSDKType;
     fromAmino(object: QueryDepositResponseAmino): QueryDepositResponse;
     toAmino(message: QueryDepositResponse): QueryDepositResponseAmino;
     fromAminoMsg(object: QueryDepositResponseAminoMsg): QueryDepositResponse;
@@ -634,8 +723,6 @@ export declare const QueryDepositsRequest: {
     fromJSON(object: any): QueryDepositsRequest;
     toJSON(message: QueryDepositsRequest): unknown;
     fromPartial(object: Partial<QueryDepositsRequest>): QueryDepositsRequest;
-    fromSDK(object: QueryDepositsRequestSDKType): QueryDepositsRequest;
-    toSDK(message: QueryDepositsRequest): QueryDepositsRequestSDKType;
     fromAmino(object: QueryDepositsRequestAmino): QueryDepositsRequest;
     toAmino(message: QueryDepositsRequest): QueryDepositsRequestAmino;
     fromAminoMsg(object: QueryDepositsRequestAminoMsg): QueryDepositsRequest;
@@ -651,8 +738,6 @@ export declare const QueryDepositsResponse: {
     fromJSON(object: any): QueryDepositsResponse;
     toJSON(message: QueryDepositsResponse): unknown;
     fromPartial(object: Partial<QueryDepositsResponse>): QueryDepositsResponse;
-    fromSDK(object: QueryDepositsResponseSDKType): QueryDepositsResponse;
-    toSDK(message: QueryDepositsResponse): QueryDepositsResponseSDKType;
     fromAmino(object: QueryDepositsResponseAmino): QueryDepositsResponse;
     toAmino(message: QueryDepositsResponse): QueryDepositsResponseAmino;
     fromAminoMsg(object: QueryDepositsResponseAminoMsg): QueryDepositsResponse;
@@ -668,8 +753,6 @@ export declare const QueryTallyResultRequest: {
     fromJSON(object: any): QueryTallyResultRequest;
     toJSON(message: QueryTallyResultRequest): unknown;
     fromPartial(object: Partial<QueryTallyResultRequest>): QueryTallyResultRequest;
-    fromSDK(object: QueryTallyResultRequestSDKType): QueryTallyResultRequest;
-    toSDK(message: QueryTallyResultRequest): QueryTallyResultRequestSDKType;
     fromAmino(object: QueryTallyResultRequestAmino): QueryTallyResultRequest;
     toAmino(message: QueryTallyResultRequest): QueryTallyResultRequestAmino;
     fromAminoMsg(object: QueryTallyResultRequestAminoMsg): QueryTallyResultRequest;
@@ -685,8 +768,6 @@ export declare const QueryTallyResultResponse: {
     fromJSON(object: any): QueryTallyResultResponse;
     toJSON(message: QueryTallyResultResponse): unknown;
     fromPartial(object: Partial<QueryTallyResultResponse>): QueryTallyResultResponse;
-    fromSDK(object: QueryTallyResultResponseSDKType): QueryTallyResultResponse;
-    toSDK(message: QueryTallyResultResponse): QueryTallyResultResponseSDKType;
     fromAmino(object: QueryTallyResultResponseAmino): QueryTallyResultResponse;
     toAmino(message: QueryTallyResultResponse): QueryTallyResultResponseAmino;
     fromAminoMsg(object: QueryTallyResultResponseAminoMsg): QueryTallyResultResponse;

@@ -33,8 +33,6 @@ export declare const InterchainAccount: {
     fromJSON(object: any): InterchainAccount;
     toJSON(message: InterchainAccount): unknown;
     fromPartial(object: Partial<InterchainAccount>): InterchainAccount;
-    fromSDK(object: InterchainAccountSDKType): InterchainAccount;
-    toSDK(message: InterchainAccount): InterchainAccountSDKType;
     fromAmino(object: InterchainAccountAmino): InterchainAccount;
     toAmino(message: InterchainAccount): InterchainAccountAmino;
     fromAminoMsg(object: InterchainAccountAminoMsg): InterchainAccount;

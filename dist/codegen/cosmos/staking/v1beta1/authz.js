@@ -21,6 +21,8 @@ var AuthorizationType;
     AuthorizationType[AuthorizationType["AUTHORIZATION_TYPE_UNDELEGATE"] = 2] = "AUTHORIZATION_TYPE_UNDELEGATE";
     /** AUTHORIZATION_TYPE_REDELEGATE - AUTHORIZATION_TYPE_REDELEGATE defines an authorization type for Msg/BeginRedelegate */
     AuthorizationType[AuthorizationType["AUTHORIZATION_TYPE_REDELEGATE"] = 3] = "AUTHORIZATION_TYPE_REDELEGATE";
+    /** AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION - AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION defines an authorization type for Msg/MsgCancelUnbondingDelegation */
+    AuthorizationType[AuthorizationType["AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION"] = 4] = "AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION";
     AuthorizationType[AuthorizationType["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
 })(AuthorizationType || (exports.AuthorizationType = AuthorizationType = {}));
 exports.AuthorizationTypeSDKType = AuthorizationType;
@@ -39,6 +41,9 @@ function authorizationTypeFromJSON(object) {
         case 3:
         case "AUTHORIZATION_TYPE_REDELEGATE":
             return AuthorizationType.AUTHORIZATION_TYPE_REDELEGATE;
+        case 4:
+        case "AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION":
+            return AuthorizationType.AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION;
         case -1:
         case "UNRECOGNIZED":
         default:
@@ -56,6 +61,8 @@ function authorizationTypeToJSON(object) {
             return "AUTHORIZATION_TYPE_UNDELEGATE";
         case AuthorizationType.AUTHORIZATION_TYPE_REDELEGATE:
             return "AUTHORIZATION_TYPE_REDELEGATE";
+        case AuthorizationType.AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION:
+            return "AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION";
         case AuthorizationType.UNRECOGNIZED:
         default:
             return "UNRECOGNIZED";
@@ -137,22 +144,6 @@ exports.StakeAuthorization = {
         message.deny_list = object.deny_list !== undefined && object.deny_list !== null ? exports.StakeAuthorization_Validators.fromPartial(object.deny_list) : undefined;
         message.authorization_type = object.authorization_type ?? 0;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            max_tokens: object.max_tokens ? coin_1.Coin.fromSDK(object.max_tokens) : undefined,
-            allow_list: object.allow_list ? exports.StakeAuthorization_Validators.fromSDK(object.allow_list) : undefined,
-            deny_list: object.deny_list ? exports.StakeAuthorization_Validators.fromSDK(object.deny_list) : undefined,
-            authorization_type: (0, helpers_1.isSet)(object.authorization_type) ? authorizationTypeFromJSON(object.authorization_type) : -1
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.max_tokens !== undefined && (obj.max_tokens = message.max_tokens ? coin_1.Coin.toSDK(message.max_tokens) : undefined);
-        message.allow_list !== undefined && (obj.allow_list = message.allow_list ? exports.StakeAuthorization_Validators.toSDK(message.allow_list) : undefined);
-        message.deny_list !== undefined && (obj.deny_list = message.deny_list ? exports.StakeAuthorization_Validators.toSDK(message.deny_list) : undefined);
-        message.authorization_type !== undefined && (obj.authorization_type = authorizationTypeToJSON(message.authorization_type));
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -241,21 +232,6 @@ exports.StakeAuthorization_Validators = {
         const message = createBaseStakeAuthorization_Validators();
         message.address = object.address?.map(e => e) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            address: Array.isArray(object?.address) ? object.address.map((e) => e) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.address) {
-            obj.address = message.address.map(e => e);
-        }
-        else {
-            obj.address = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {

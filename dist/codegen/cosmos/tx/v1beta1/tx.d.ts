@@ -201,10 +201,8 @@ export interface SignDocDirectAux {
     account_number: bigint;
     /** sequence is the sequence number of the signing account. */
     sequence: bigint;
-    /**
-     * Tip is the optional tip used for meta-transactions. It should be left
-     * empty if the signer is not the tipper for this transaction.
-     */
+    /** tips have been depreacted and should not be used */
+    /** @deprecated */
     tip?: Tip;
 }
 export interface SignDocDirectAuxProtoMsg {
@@ -235,10 +233,8 @@ export interface SignDocDirectAuxAmino {
     account_number: string;
     /** sequence is the sequence number of the signing account. */
     sequence: string;
-    /**
-     * Tip is the optional tip used for meta-transactions. It should be left
-     * empty if the signer is not the tipper for this transaction.
-     */
+    /** tips have been depreacted and should not be used */
+    /** @deprecated */
     tip?: TipAmino;
 }
 export interface SignDocDirectAuxAminoMsg {
@@ -257,6 +253,7 @@ export interface SignDocDirectAuxSDKType {
     chain_id: string;
     account_number: bigint;
     sequence: bigint;
+    /** @deprecated */
     tip?: TipSDKType;
 }
 /** TxBody is the body of a transaction that all signers sign over. */
@@ -367,10 +364,14 @@ export interface AuthInfo {
      */
     fee?: Fee;
     /**
-     * Tip is the optional tip used for meta-transactions.
+     * Tip is the optional tip used for transactions fees paid in another denom.
+     *
+     * This field is ignored if the chain didn't enable tips, i.e. didn't add the
+     * `TipDecorator` in its posthandler.
      *
      * Since: cosmos-sdk 0.46
      */
+    /** @deprecated */
     tip?: Tip;
 }
 export interface AuthInfoProtoMsg {
@@ -397,10 +398,14 @@ export interface AuthInfoAmino {
      */
     fee?: FeeAmino;
     /**
-     * Tip is the optional tip used for meta-transactions.
+     * Tip is the optional tip used for transactions fees paid in another denom.
+     *
+     * This field is ignored if the chain didn't enable tips, i.e. didn't add the
+     * `TipDecorator` in its posthandler.
      *
      * Since: cosmos-sdk 0.46
      */
+    /** @deprecated */
     tip?: TipAmino;
 }
 export interface AuthInfoAminoMsg {
@@ -414,6 +419,7 @@ export interface AuthInfoAminoMsg {
 export interface AuthInfoSDKType {
     signer_infos: SignerInfoSDKType[];
     fee?: FeeSDKType;
+    /** @deprecated */
     tip?: TipSDKType;
 }
 /**
@@ -649,6 +655,7 @@ export interface FeeSDKType {
  *
  * Since: cosmos-sdk 0.46
  */
+/** @deprecated */
 export interface Tip {
     /** amount is the amount of the tip */
     amount: Coin[];
@@ -664,6 +671,7 @@ export interface TipProtoMsg {
  *
  * Since: cosmos-sdk 0.46
  */
+/** @deprecated */
 export interface TipAmino {
     /** amount is the amount of the tip */
     amount: CoinAmino[];
@@ -679,6 +687,7 @@ export interface TipAminoMsg {
  *
  * Since: cosmos-sdk 0.46
  */
+/** @deprecated */
 export interface TipSDKType {
     amount: CoinSDKType[];
     tipper: string;
@@ -699,12 +708,12 @@ export interface AuxSignerData {
      */
     address: string;
     /**
-     * sign_doc is the SIGN_MOD_DIRECT_AUX sign doc that the auxiliary signer
+     * sign_doc is the SIGN_MODE_DIRECT_AUX sign doc that the auxiliary signer
      * signs. Note: we use the same sign doc even if we're signing with
      * LEGACY_AMINO_JSON.
      */
     sign_doc?: SignDocDirectAux;
-    /** mode is the signing mode of the single signer */
+    /** mode is the signing mode of the single signer. */
     mode: SignMode;
     /** sig is the signature of the sign doc. */
     sig: Uint8Array;
@@ -729,12 +738,12 @@ export interface AuxSignerDataAmino {
      */
     address: string;
     /**
-     * sign_doc is the SIGN_MOD_DIRECT_AUX sign doc that the auxiliary signer
+     * sign_doc is the SIGN_MODE_DIRECT_AUX sign doc that the auxiliary signer
      * signs. Note: we use the same sign doc even if we're signing with
      * LEGACY_AMINO_JSON.
      */
     sign_doc?: SignDocDirectAuxAmino;
-    /** mode is the signing mode of the single signer */
+    /** mode is the signing mode of the single signer. */
     mode: SignMode;
     /** sig is the signature of the sign doc. */
     sig: Uint8Array;
@@ -764,8 +773,6 @@ export declare const Tx: {
     fromJSON(object: any): Tx;
     toJSON(message: Tx): unknown;
     fromPartial(object: Partial<Tx>): Tx;
-    fromSDK(object: TxSDKType): Tx;
-    toSDK(message: Tx): TxSDKType;
     fromAmino(object: TxAmino): Tx;
     toAmino(message: Tx): TxAmino;
     fromAminoMsg(object: TxAminoMsg): Tx;
@@ -781,8 +788,6 @@ export declare const TxRaw: {
     fromJSON(object: any): TxRaw;
     toJSON(message: TxRaw): unknown;
     fromPartial(object: Partial<TxRaw>): TxRaw;
-    fromSDK(object: TxRawSDKType): TxRaw;
-    toSDK(message: TxRaw): TxRawSDKType;
     fromAmino(object: TxRawAmino): TxRaw;
     toAmino(message: TxRaw): TxRawAmino;
     fromAminoMsg(object: TxRawAminoMsg): TxRaw;
@@ -798,8 +803,6 @@ export declare const SignDoc: {
     fromJSON(object: any): SignDoc;
     toJSON(message: SignDoc): unknown;
     fromPartial(object: Partial<SignDoc>): SignDoc;
-    fromSDK(object: SignDocSDKType): SignDoc;
-    toSDK(message: SignDoc): SignDocSDKType;
     fromAmino(object: SignDocAmino): SignDoc;
     toAmino(message: SignDoc): SignDocAmino;
     fromAminoMsg(object: SignDocAminoMsg): SignDoc;
@@ -815,8 +818,6 @@ export declare const SignDocDirectAux: {
     fromJSON(object: any): SignDocDirectAux;
     toJSON(message: SignDocDirectAux): unknown;
     fromPartial(object: Partial<SignDocDirectAux>): SignDocDirectAux;
-    fromSDK(object: SignDocDirectAuxSDKType): SignDocDirectAux;
-    toSDK(message: SignDocDirectAux): SignDocDirectAuxSDKType;
     fromAmino(object: SignDocDirectAuxAmino): SignDocDirectAux;
     toAmino(message: SignDocDirectAux): SignDocDirectAuxAmino;
     fromAminoMsg(object: SignDocDirectAuxAminoMsg): SignDocDirectAux;
@@ -832,8 +833,6 @@ export declare const TxBody: {
     fromJSON(object: any): TxBody;
     toJSON(message: TxBody): unknown;
     fromPartial(object: Partial<TxBody>): TxBody;
-    fromSDK(object: TxBodySDKType): TxBody;
-    toSDK(message: TxBody): TxBodySDKType;
     fromAmino(object: TxBodyAmino): TxBody;
     toAmino(message: TxBody): TxBodyAmino;
     fromAminoMsg(object: TxBodyAminoMsg): TxBody;
@@ -849,8 +848,6 @@ export declare const AuthInfo: {
     fromJSON(object: any): AuthInfo;
     toJSON(message: AuthInfo): unknown;
     fromPartial(object: Partial<AuthInfo>): AuthInfo;
-    fromSDK(object: AuthInfoSDKType): AuthInfo;
-    toSDK(message: AuthInfo): AuthInfoSDKType;
     fromAmino(object: AuthInfoAmino): AuthInfo;
     toAmino(message: AuthInfo): AuthInfoAmino;
     fromAminoMsg(object: AuthInfoAminoMsg): AuthInfo;
@@ -866,8 +863,6 @@ export declare const SignerInfo: {
     fromJSON(object: any): SignerInfo;
     toJSON(message: SignerInfo): unknown;
     fromPartial(object: Partial<SignerInfo>): SignerInfo;
-    fromSDK(object: SignerInfoSDKType): SignerInfo;
-    toSDK(message: SignerInfo): SignerInfoSDKType;
     fromAmino(object: SignerInfoAmino): SignerInfo;
     toAmino(message: SignerInfo): SignerInfoAmino;
     fromAminoMsg(object: SignerInfoAminoMsg): SignerInfo;
@@ -883,8 +878,6 @@ export declare const ModeInfo: {
     fromJSON(object: any): ModeInfo;
     toJSON(message: ModeInfo): unknown;
     fromPartial(object: Partial<ModeInfo>): ModeInfo;
-    fromSDK(object: ModeInfoSDKType): ModeInfo;
-    toSDK(message: ModeInfo): ModeInfoSDKType;
     fromAmino(object: ModeInfoAmino): ModeInfo;
     toAmino(message: ModeInfo): ModeInfoAmino;
     fromAminoMsg(object: ModeInfoAminoMsg): ModeInfo;
@@ -900,8 +893,6 @@ export declare const ModeInfo_Single: {
     fromJSON(object: any): ModeInfo_Single;
     toJSON(message: ModeInfo_Single): unknown;
     fromPartial(object: Partial<ModeInfo_Single>): ModeInfo_Single;
-    fromSDK(object: ModeInfo_SingleSDKType): ModeInfo_Single;
-    toSDK(message: ModeInfo_Single): ModeInfo_SingleSDKType;
     fromAmino(object: ModeInfo_SingleAmino): ModeInfo_Single;
     toAmino(message: ModeInfo_Single): ModeInfo_SingleAmino;
     fromAminoMsg(object: ModeInfo_SingleAminoMsg): ModeInfo_Single;
@@ -917,8 +908,6 @@ export declare const ModeInfo_Multi: {
     fromJSON(object: any): ModeInfo_Multi;
     toJSON(message: ModeInfo_Multi): unknown;
     fromPartial(object: Partial<ModeInfo_Multi>): ModeInfo_Multi;
-    fromSDK(object: ModeInfo_MultiSDKType): ModeInfo_Multi;
-    toSDK(message: ModeInfo_Multi): ModeInfo_MultiSDKType;
     fromAmino(object: ModeInfo_MultiAmino): ModeInfo_Multi;
     toAmino(message: ModeInfo_Multi): ModeInfo_MultiAmino;
     fromAminoMsg(object: ModeInfo_MultiAminoMsg): ModeInfo_Multi;
@@ -934,8 +923,6 @@ export declare const Fee: {
     fromJSON(object: any): Fee;
     toJSON(message: Fee): unknown;
     fromPartial(object: Partial<Fee>): Fee;
-    fromSDK(object: FeeSDKType): Fee;
-    toSDK(message: Fee): FeeSDKType;
     fromAmino(object: FeeAmino): Fee;
     toAmino(message: Fee): FeeAmino;
     fromAminoMsg(object: FeeAminoMsg): Fee;
@@ -951,8 +938,6 @@ export declare const Tip: {
     fromJSON(object: any): Tip;
     toJSON(message: Tip): unknown;
     fromPartial(object: Partial<Tip>): Tip;
-    fromSDK(object: TipSDKType): Tip;
-    toSDK(message: Tip): TipSDKType;
     fromAmino(object: TipAmino): Tip;
     toAmino(message: Tip): TipAmino;
     fromAminoMsg(object: TipAminoMsg): Tip;
@@ -968,8 +953,6 @@ export declare const AuxSignerData: {
     fromJSON(object: any): AuxSignerData;
     toJSON(message: AuxSignerData): unknown;
     fromPartial(object: Partial<AuxSignerData>): AuxSignerData;
-    fromSDK(object: AuxSignerDataSDKType): AuxSignerData;
-    toSDK(message: AuxSignerData): AuxSignerDataSDKType;
     fromAmino(object: AuxSignerDataAmino): AuxSignerData;
     toAmino(message: AuxSignerData): AuxSignerDataAmino;
     fromAminoMsg(object: AuxSignerDataAminoMsg): AuxSignerData;

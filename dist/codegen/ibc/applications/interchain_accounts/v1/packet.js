@@ -112,20 +112,6 @@ exports.InterchainAccountPacketData = {
         message.memo = object.memo ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            type: (0, helpers_1.isSet)(object.type) ? typeFromJSON(object.type) : -1,
-            data: object?.data,
-            memo: object?.memo
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.type !== undefined && (obj.type = typeToJSON(message.type));
-        obj.data = message.data;
-        obj.memo = message.memo;
-        return obj;
-    },
     fromAmino(object) {
         return {
             type: (0, helpers_1.isSet)(object.type) ? typeFromJSON(object.type) : -1,
@@ -211,21 +197,6 @@ exports.CosmosTx = {
         const message = createBaseCosmosTx();
         message.messages = object.messages?.map(e => any_1.Any.fromPartial(e)) || [];
         return message;
-    },
-    fromSDK(object) {
-        return {
-            messages: Array.isArray(object?.messages) ? object.messages.map((e) => any_1.Any.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.messages) {
-            obj.messages = message.messages.map(e => e ? any_1.Any.toSDK(e) : undefined);
-        }
-        else {
-            obj.messages = [];
-        }
-        return obj;
     },
     fromAmino(object) {
         return {

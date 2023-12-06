@@ -127,18 +127,6 @@ export const App = {
     message.software = object.software ?? "";
     return message;
   },
-  fromSDK(object: AppSDKType): App {
-    return {
-      protocol: object?.protocol,
-      software: object?.software
-    };
-  },
-  toSDK(message: App): AppSDKType {
-    const obj: any = {};
-    obj.protocol = message.protocol;
-    obj.software = message.software;
-    return obj;
-  },
   fromAmino(object: AppAmino): App {
     return {
       protocol: BigInt(object.protocol),
@@ -221,18 +209,6 @@ export const Consensus = {
     message.block = object.block !== undefined && object.block !== null ? BigInt(object.block.toString()) : BigInt(0);
     message.app = object.app !== undefined && object.app !== null ? BigInt(object.app.toString()) : BigInt(0);
     return message;
-  },
-  fromSDK(object: ConsensusSDKType): Consensus {
-    return {
-      block: object?.block,
-      app: object?.app
-    };
-  },
-  toSDK(message: Consensus): ConsensusSDKType {
-    const obj: any = {};
-    obj.block = message.block;
-    obj.app = message.app;
-    return obj;
   },
   fromAmino(object: ConsensusAmino): Consensus {
     return {

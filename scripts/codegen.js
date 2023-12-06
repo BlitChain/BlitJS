@@ -12,6 +12,15 @@ telescope({
   outPath,
   options: {
     includeExternalHelpers: true,
+    reactQuery: {
+      enabled: false
+    },
+    mbox: {
+      enabled: false
+    },
+    pinia: {
+      enabled: false
+    },
     tsDisable: {
       disableAll: true
     },
@@ -52,15 +61,9 @@ telescope({
       methods: {
         fromJSON: true,
         toJSON: true,
-        encode: true,
-        decode: true,
         fromPartial: true,
-        toAmino: true,
-        fromAmino: true,
         fromProto: true,
-        toProto: true,
-        fromSDK: true,
-        toSDK: true
+        toProto: true
       },
       parser: {
         keepCase: true

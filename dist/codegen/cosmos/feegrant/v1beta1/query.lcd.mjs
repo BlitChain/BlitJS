@@ -8,12 +8,12 @@ export class LCDQueryClient {
         this.allowances = this.allowances.bind(this);
         this.allowancesByGranter = this.allowancesByGranter.bind(this);
     }
-    /* Allowance returns fee granted to the grantee by the granter. */
+    /* Allowance returns granted allwance to the grantee by the granter. */
     async allowance(params) {
         const endpoint = `cosmos/feegrant/v1beta1/allowance/${params.granter}/${params.grantee}`;
         return await this.req.get(endpoint);
     }
-    /* Allowances returns all the grants for address. */
+    /* Allowances returns all the grants for the given grantee address. */
     async allowances(params) {
         const options = {
             params: {}
@@ -25,7 +25,8 @@ export class LCDQueryClient {
         return await this.req.get(endpoint, options);
     }
     /* AllowancesByGranter returns all the grants given by an address
-     Since v0.46 */
+    
+     Since: cosmos-sdk 0.46 */
     async allowancesByGranter(params) {
         const options = {
             params: {}

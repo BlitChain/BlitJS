@@ -156,65 +156,6 @@ exports.GenesisState = {
         message.next_channel_sequence = object.next_channel_sequence !== undefined && object.next_channel_sequence !== null ? BigInt(object.next_channel_sequence.toString()) : BigInt(0);
         return message;
     },
-    fromSDK(object) {
-        return {
-            channels: Array.isArray(object?.channels) ? object.channels.map((e) => channel_1.IdentifiedChannel.fromSDK(e)) : [],
-            acknowledgements: Array.isArray(object?.acknowledgements) ? object.acknowledgements.map((e) => channel_1.PacketState.fromSDK(e)) : [],
-            commitments: Array.isArray(object?.commitments) ? object.commitments.map((e) => channel_1.PacketState.fromSDK(e)) : [],
-            receipts: Array.isArray(object?.receipts) ? object.receipts.map((e) => channel_1.PacketState.fromSDK(e)) : [],
-            send_sequences: Array.isArray(object?.send_sequences) ? object.send_sequences.map((e) => exports.PacketSequence.fromSDK(e)) : [],
-            recv_sequences: Array.isArray(object?.recv_sequences) ? object.recv_sequences.map((e) => exports.PacketSequence.fromSDK(e)) : [],
-            ack_sequences: Array.isArray(object?.ack_sequences) ? object.ack_sequences.map((e) => exports.PacketSequence.fromSDK(e)) : [],
-            next_channel_sequence: object?.next_channel_sequence
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.channels) {
-            obj.channels = message.channels.map(e => e ? channel_1.IdentifiedChannel.toSDK(e) : undefined);
-        }
-        else {
-            obj.channels = [];
-        }
-        if (message.acknowledgements) {
-            obj.acknowledgements = message.acknowledgements.map(e => e ? channel_1.PacketState.toSDK(e) : undefined);
-        }
-        else {
-            obj.acknowledgements = [];
-        }
-        if (message.commitments) {
-            obj.commitments = message.commitments.map(e => e ? channel_1.PacketState.toSDK(e) : undefined);
-        }
-        else {
-            obj.commitments = [];
-        }
-        if (message.receipts) {
-            obj.receipts = message.receipts.map(e => e ? channel_1.PacketState.toSDK(e) : undefined);
-        }
-        else {
-            obj.receipts = [];
-        }
-        if (message.send_sequences) {
-            obj.send_sequences = message.send_sequences.map(e => e ? exports.PacketSequence.toSDK(e) : undefined);
-        }
-        else {
-            obj.send_sequences = [];
-        }
-        if (message.recv_sequences) {
-            obj.recv_sequences = message.recv_sequences.map(e => e ? exports.PacketSequence.toSDK(e) : undefined);
-        }
-        else {
-            obj.recv_sequences = [];
-        }
-        if (message.ack_sequences) {
-            obj.ack_sequences = message.ack_sequences.map(e => e ? exports.PacketSequence.toSDK(e) : undefined);
-        }
-        else {
-            obj.ack_sequences = [];
-        }
-        obj.next_channel_sequence = message.next_channel_sequence;
-        return obj;
-    },
     fromAmino(object) {
         return {
             channels: Array.isArray(object?.channels) ? object.channels.map((e) => channel_1.IdentifiedChannel.fromAmino(e)) : [],
@@ -360,20 +301,6 @@ exports.PacketSequence = {
         message.channel_id = object.channel_id ?? "";
         message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt(0);
         return message;
-    },
-    fromSDK(object) {
-        return {
-            port_id: object?.port_id,
-            channel_id: object?.channel_id,
-            sequence: object?.sequence
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.port_id = message.port_id;
-        obj.channel_id = message.channel_id;
-        obj.sequence = message.sequence;
-        return obj;
     },
     fromAmino(object) {
         return {

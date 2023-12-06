@@ -167,8 +167,6 @@ export declare const MsgRegisterInterchainAccount: {
     fromJSON(object: any): MsgRegisterInterchainAccount;
     toJSON(message: MsgRegisterInterchainAccount): unknown;
     fromPartial(object: Partial<MsgRegisterInterchainAccount>): MsgRegisterInterchainAccount;
-    fromSDK(object: MsgRegisterInterchainAccountSDKType): MsgRegisterInterchainAccount;
-    toSDK(message: MsgRegisterInterchainAccount): MsgRegisterInterchainAccountSDKType;
     fromAmino(object: MsgRegisterInterchainAccountAmino): MsgRegisterInterchainAccount;
     toAmino(message: MsgRegisterInterchainAccount): MsgRegisterInterchainAccountAmino;
     fromAminoMsg(object: MsgRegisterInterchainAccountAminoMsg): MsgRegisterInterchainAccount;
@@ -184,8 +182,6 @@ export declare const MsgRegisterInterchainAccountResponse: {
     fromJSON(object: any): MsgRegisterInterchainAccountResponse;
     toJSON(message: MsgRegisterInterchainAccountResponse): unknown;
     fromPartial(object: Partial<MsgRegisterInterchainAccountResponse>): MsgRegisterInterchainAccountResponse;
-    fromSDK(object: MsgRegisterInterchainAccountResponseSDKType): MsgRegisterInterchainAccountResponse;
-    toSDK(message: MsgRegisterInterchainAccountResponse): MsgRegisterInterchainAccountResponseSDKType;
     fromAmino(object: MsgRegisterInterchainAccountResponseAmino): MsgRegisterInterchainAccountResponse;
     toAmino(message: MsgRegisterInterchainAccountResponse): MsgRegisterInterchainAccountResponseAmino;
     fromAminoMsg(object: MsgRegisterInterchainAccountResponseAminoMsg): MsgRegisterInterchainAccountResponse;
@@ -201,8 +197,6 @@ export declare const MsgSendTx: {
     fromJSON(object: any): MsgSendTx;
     toJSON(message: MsgSendTx): unknown;
     fromPartial(object: Partial<MsgSendTx>): MsgSendTx;
-    fromSDK(object: MsgSendTxSDKType): MsgSendTx;
-    toSDK(message: MsgSendTx): MsgSendTxSDKType;
     fromAmino(object: MsgSendTxAmino): MsgSendTx;
     toAmino(message: MsgSendTx): MsgSendTxAmino;
     fromAminoMsg(object: MsgSendTxAminoMsg): MsgSendTx;
@@ -218,8 +212,6 @@ export declare const MsgSendTxResponse: {
     fromJSON(object: any): MsgSendTxResponse;
     toJSON(message: MsgSendTxResponse): unknown;
     fromPartial(object: Partial<MsgSendTxResponse>): MsgSendTxResponse;
-    fromSDK(object: MsgSendTxResponseSDKType): MsgSendTxResponse;
-    toSDK(message: MsgSendTxResponse): MsgSendTxResponseSDKType;
     fromAmino(object: MsgSendTxResponseAmino): MsgSendTxResponse;
     toAmino(message: MsgSendTxResponse): MsgSendTxResponseAmino;
     fromAminoMsg(object: MsgSendTxResponseAminoMsg): MsgSendTxResponse;
@@ -235,8 +227,6 @@ export declare const MsgUpdateParams: {
     fromJSON(object: any): MsgUpdateParams;
     toJSON(message: MsgUpdateParams): unknown;
     fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams;
-    fromSDK(object: MsgUpdateParamsSDKType): MsgUpdateParams;
-    toSDK(message: MsgUpdateParams): MsgUpdateParamsSDKType;
     fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams;
     toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino;
     fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams;
@@ -252,8 +242,6 @@ export declare const MsgUpdateParamsResponse: {
     fromJSON(_: any): MsgUpdateParamsResponse;
     toJSON(_: MsgUpdateParamsResponse): unknown;
     fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse;
-    fromSDK(_: MsgUpdateParamsResponseSDKType): MsgUpdateParamsResponse;
-    toSDK(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseSDKType;
     fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse;
     toAmino(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseAmino;
     fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse;

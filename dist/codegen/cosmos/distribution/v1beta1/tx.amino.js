@@ -23,6 +23,21 @@ exports.AminoConverter = {
         aminoType: "cosmos-sdk/MsgFundCommunityPool",
         toAmino: tx_1.MsgFundCommunityPool.toAmino,
         fromAmino: tx_1.MsgFundCommunityPool.fromAmino
+    },
+    "/cosmos.distribution.v1beta1.MsgUpdateParams": {
+        aminoType: "cosmos-sdk/distribution/MsgUpdateParams",
+        toAmino: tx_1.MsgUpdateParams.toAmino,
+        fromAmino: tx_1.MsgUpdateParams.fromAmino
+    },
+    "/cosmos.distribution.v1beta1.MsgCommunityPoolSpend": {
+        aminoType: "cosmos-sdk/distr/MsgCommunityPoolSpend",
+        toAmino: tx_1.MsgCommunityPoolSpend.toAmino,
+        fromAmino: tx_1.MsgCommunityPoolSpend.fromAmino
+    },
+    "/cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPool": {
+        aminoType: "cosmos-sdk/distr/MsgDepositValRewards",
+        toAmino: tx_1.MsgDepositValidatorRewardsPool.toAmino,
+        fromAmino: tx_1.MsgDepositValidatorRewardsPool.fromAmino
     }
 };
 //# sourceMappingURL=tx.amino.js.map

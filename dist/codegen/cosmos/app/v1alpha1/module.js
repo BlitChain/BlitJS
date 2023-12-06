@@ -80,30 +80,6 @@ exports.ModuleDescriptor = {
         message.can_migrate_from = object.can_migrate_from?.map(e => exports.MigrateFromInfo.fromPartial(e)) || [];
         return message;
     },
-    fromSDK(object) {
-        return {
-            go_import: object?.go_import,
-            use_package: Array.isArray(object?.use_package) ? object.use_package.map((e) => exports.PackageReference.fromSDK(e)) : [],
-            can_migrate_from: Array.isArray(object?.can_migrate_from) ? object.can_migrate_from.map((e) => exports.MigrateFromInfo.fromSDK(e)) : []
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.go_import = message.go_import;
-        if (message.use_package) {
-            obj.use_package = message.use_package.map(e => e ? exports.PackageReference.toSDK(e) : undefined);
-        }
-        else {
-            obj.use_package = [];
-        }
-        if (message.can_migrate_from) {
-            obj.can_migrate_from = message.can_migrate_from.map(e => e ? exports.MigrateFromInfo.toSDK(e) : undefined);
-        }
-        else {
-            obj.can_migrate_from = [];
-        }
-        return obj;
-    },
     fromAmino(object) {
         return {
             go_import: object.go_import,
@@ -205,18 +181,6 @@ exports.PackageReference = {
         message.revision = object.revision ?? 0;
         return message;
     },
-    fromSDK(object) {
-        return {
-            name: object?.name,
-            revision: object?.revision
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.name = message.name;
-        obj.revision = message.revision;
-        return obj;
-    },
     fromAmino(object) {
         return {
             name: object.name,
@@ -295,16 +259,6 @@ exports.MigrateFromInfo = {
         const message = createBaseMigrateFromInfo();
         message.module = object.module ?? "";
         return message;
-    },
-    fromSDK(object) {
-        return {
-            module: object?.module
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.module = message.module;
-        return obj;
     },
     fromAmino(object) {
         return {

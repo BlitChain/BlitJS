@@ -78,8 +78,6 @@ export declare const Allocation: {
     fromJSON(object: any): Allocation;
     toJSON(message: Allocation): unknown;
     fromPartial(object: Partial<Allocation>): Allocation;
-    fromSDK(object: AllocationSDKType): Allocation;
-    toSDK(message: Allocation): AllocationSDKType;
     fromAmino(object: AllocationAmino): Allocation;
     toAmino(message: Allocation): AllocationAmino;
     fromAminoMsg(object: AllocationAminoMsg): Allocation;
@@ -95,8 +93,6 @@ export declare const TransferAuthorization: {
     fromJSON(object: any): TransferAuthorization;
     toJSON(message: TransferAuthorization): unknown;
     fromPartial(object: Partial<TransferAuthorization>): TransferAuthorization;
-    fromSDK(object: TransferAuthorizationSDKType): TransferAuthorization;
-    toSDK(message: TransferAuthorization): TransferAuthorizationSDKType;
     fromAmino(object: TransferAuthorizationAmino): TransferAuthorization;
     toAmino(message: TransferAuthorization): TransferAuthorizationAmino;
     fromAminoMsg(object: TransferAuthorizationAminoMsg): TransferAuthorization;

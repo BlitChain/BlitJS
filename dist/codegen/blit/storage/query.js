@@ -41,13 +41,6 @@ exports.QueryParamsRequest = {
         const message = createBaseQueryParamsRequest();
         return message;
     },
-    fromSDK(_) {
-        return {};
-    },
-    toSDK(_) {
-        const obj = {};
-        return obj;
-    },
     fromAmino(_) {
         return {};
     },
@@ -115,16 +108,6 @@ exports.QueryParamsResponse = {
         const message = createBaseQueryParamsResponse();
         message.params = object.params !== undefined && object.params !== null ? params_1.Params.fromPartial(object.params) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            params: object.params ? params_1.Params.fromSDK(object.params) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.params !== undefined && (obj.params = message.params ? params_1.Params.toSDK(message.params) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -207,18 +190,6 @@ exports.QueryStorageDetailRequest = {
         message.index = object.index ?? "";
         return message;
     },
-    fromSDK(object) {
-        return {
-            address: object?.address,
-            index: object?.index
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.address = message.address;
-        obj.index = message.index;
-        return obj;
-    },
     fromAmino(object) {
         return {
             address: object.address,
@@ -291,16 +262,6 @@ exports.QueryStorageDetailResponse = {
         const message = createBaseQueryStorageDetailResponse();
         message.storage = object.storage !== undefined && object.storage !== null ? storage_1.Storage.fromPartial(object.storage) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            storage: object.storage ? storage_1.Storage.fromSDK(object.storage) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        message.storage !== undefined && (obj.storage = message.storage ? storage_1.Storage.toSDK(message.storage) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {
@@ -393,20 +354,6 @@ exports.QueryFilterStorageRequest = {
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageRequest.fromPartial(object.pagination) : undefined;
         return message;
     },
-    fromSDK(object) {
-        return {
-            filter_address: object?.filter_address,
-            filter_index_prefix: object?.filter_index_prefix,
-            pagination: object.pagination ? pagination_1.PageRequest.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        obj.filter_address = message.filter_address;
-        obj.filter_index_prefix = message.filter_index_prefix;
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageRequest.toSDK(message.pagination) : undefined);
-        return obj;
-    },
     fromAmino(object) {
         return {
             filter_address: object.filter_address,
@@ -496,23 +443,6 @@ exports.QueryFilterStorageResponse = {
         message.storage = object.storage?.map(e => storage_1.Storage.fromPartial(e)) || [];
         message.pagination = object.pagination !== undefined && object.pagination !== null ? pagination_1.PageResponse.fromPartial(object.pagination) : undefined;
         return message;
-    },
-    fromSDK(object) {
-        return {
-            storage: Array.isArray(object?.storage) ? object.storage.map((e) => storage_1.Storage.fromSDK(e)) : [],
-            pagination: object.pagination ? pagination_1.PageResponse.fromSDK(object.pagination) : undefined
-        };
-    },
-    toSDK(message) {
-        const obj = {};
-        if (message.storage) {
-            obj.storage = message.storage.map(e => e ? storage_1.Storage.toSDK(e) : undefined);
-        }
-        else {
-            obj.storage = [];
-        }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? pagination_1.PageResponse.toSDK(message.pagination) : undefined);
-        return obj;
     },
     fromAmino(object) {
         return {

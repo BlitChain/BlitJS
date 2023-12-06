@@ -37,7 +37,7 @@ export interface BIP44ParamsAmino {
     address_index: number;
 }
 export interface BIP44ParamsAminoMsg {
-    type: "cosmos-sdk/BIP44Params";
+    type: "crypto/keys/hd/BIP44Params";
     value: BIP44ParamsAmino;
 }
 /** BIP44Params is used as path field in ledger item in Record. */
@@ -55,8 +55,6 @@ export declare const BIP44Params: {
     fromJSON(object: any): BIP44Params;
     toJSON(message: BIP44Params): unknown;
     fromPartial(object: Partial<BIP44Params>): BIP44Params;
-    fromSDK(object: BIP44ParamsSDKType): BIP44Params;
-    toSDK(message: BIP44Params): BIP44ParamsSDKType;
     fromAmino(object: BIP44ParamsAmino): BIP44Params;
     toAmino(message: BIP44Params): BIP44ParamsAmino;
     fromAminoMsg(object: BIP44ParamsAminoMsg): BIP44Params;
