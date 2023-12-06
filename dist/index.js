@@ -174,6 +174,16 @@ const makeJsClient = async ({ mnemonic, rpcEndpoint, restEndpoint }) => {
         signer
     });
     client.gasPrice = '1ublit';
+    const ibcClient = await blitjs.getSigningIbcClient({
+        rpcEndpoint,
+        signer
+    });
+    ibcClient.registry.types.forEach((value, key) => {
+        // add the ibc types to the blit client if they don't exist
+        if (!client.registry.types.has(key)) {
+            client.registry.types.set(key, value);
+        }
+    });
     return client;
 };
 const queryFunction = async ({ attached_messages = [], queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }) => {
