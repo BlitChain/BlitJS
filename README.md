@@ -369,6 +369,8 @@ await msgClient.signAndBroadcast(address, [message2], "auto")
 
 Here are a list of available Msgs and their useage.
 
+
+
 ## /blit.blit.MsgUpdateParams 
 
 ```js
@@ -414,7 +416,8 @@ let msg = {
     "extra_code": "",
     "function_name": "",
     "kwargs": "",
-    "grantee": ""
+    "grantee": "",
+    "attached_messages": ""
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
@@ -732,7 +735,8 @@ let msg = {
     "proposer": "",
     "metadata": "",
     "title": "",
-    "summary": ""
+    "summary": "",
+    "expedited": false
   }
 }
 let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
@@ -1216,6 +1220,111 @@ let decodedResponse = blitjs.cosmos.vesting.v1beta1.MsgCreateVestingAccountRespo
 console.log(decodedResponse);
 ```
 
+## /ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccount 
+
+```js
+let msg = {
+  "typeUrl": "/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccount",
+  "value": {
+    "owner": "",
+    "connection_id": "",
+    "version": ""
+  }
+}
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccountResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
+
+## /ibc.applications.interchain_accounts.controller.v1.MsgSendTx 
+
+```js
+let msg = {
+  "typeUrl": "/ibc.applications.interchain_accounts.controller.v1.MsgSendTx",
+  "value": {
+    "owner": "",
+    "connection_id": "",
+    "packet_data": null,
+    "relative_timeout": "0"
+  }
+}
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.ibc.applications.interchain_accounts.controller.v1.MsgSendTxResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
+
+## /ibc.applications.interchain_accounts.controller.v1.MsgUpdateParams 
+
+```js
+let msg = {
+  "typeUrl": "/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParams",
+  "value": {
+    "signer": "",
+    "params": null
+  }
+}
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.ibc.applications.interchain_accounts.controller.v1.MsgUpdateParamsResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
+
+## /ibc.applications.interchain_accounts.host.v1.MsgUpdateParams 
+
+```js
+let msg = {
+  "typeUrl": "/ibc.applications.interchain_accounts.host.v1.MsgUpdateParams",
+  "value": {
+    "signer": "",
+    "params": null
+  }
+}
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.ibc.applications.interchain_accounts.host.v1.MsgUpdateParamsResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
+
+## /ibc.applications.transfer.v1.MsgTransfer 
+
+```js
+let msg = {
+  "typeUrl": "/ibc.applications.transfer.v1.MsgTransfer",
+  "value": {
+    "source_port": "",
+    "source_channel": "",
+    "token": null,
+    "sender": "",
+    "receiver": "",
+    "timeout_height": null,
+    "timeout_timestamp": "0",
+    "memo": ""
+  }
+}
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.ibc.applications.transfer.v1.MsgTransferResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
+
+## /ibc.applications.transfer.v1.MsgUpdateParams 
+
+```js
+let msg = {
+  "typeUrl": "/ibc.applications.transfer.v1.MsgUpdateParams",
+  "value": {
+    "signer": "",
+    "params": null
+  }
+}
+let tx = (await msgClient.signAndBroadcast(address, [msg], "auto"));
+if (tx.code !== 0) throw new Error("Oh no! " + tx.rawLog)
+let decodedResponse = blitjs.ibc.applications.transfer.v1.MsgUpdateParamsResponse.fromProtoMsg(tx.msgResponses[0]);
+console.log(decodedResponse);
+```
+
 
 ## Documentation helper
 <details>
@@ -1255,6 +1364,21 @@ let params = {}
 await queryClient.blit.blit.params(params)
 ```
 
+##  /blit.script.Query/Eval
+
+```js
+let params = {
+  "caller_address": "",
+  "script_address": "",
+  "extra_code": "",
+  "function_name": "",
+  "kwargs": "",
+  "grantee": "",
+  "attached_messages": ""
+}
+await queryClient.blit.script.eval(params)
+```
+
 ##  /blit.script.Query/Params
 
 ```js
@@ -1288,18 +1412,14 @@ let params = {
 await queryClient.blit.script.web(params)
 ```
 
-##  /blit.script.Query/Eval
+##  /blit.storage.Query/FilterStorage
 
 ```js
 let params = {
-  "caller_address": "",
-  "script_address": "",
-  "extra_code": "",
-  "function_name": "",
-  "kwargs": "",
-  "grantee": ""
+  "filter_address": "",
+  "filter_index_prefix": ""
 }
-await queryClient.blit.script.eval(params)
+await queryClient.blit.storage.filterStorage(params)
 ```
 
 ##  /blit.storage.Query/Params
@@ -1317,55 +1437,6 @@ let params = {
   "index": ""
 }
 await queryClient.blit.storage.storageDetail(params)
-```
-
-##  /blit.storage.Query/FilterStorage
-
-```js
-let params = {
-  "filter_address": "",
-  "filter_index_prefix": ""
-}
-await queryClient.blit.storage.filterStorage(params)
-```
-
-##  /cosmos.auth.v1beta1.Query/Accounts
-
-```js
-let params = {}
-await queryClient.cosmos.auth.v1beta1.accounts(params)
-```
-
-##  /cosmos.auth.v1beta1.Query/Account
-
-```js
-let params = {
-  "address": ""
-}
-await queryClient.cosmos.auth.v1beta1.account(params)
-```
-
-##  /cosmos.auth.v1beta1.Query/Params
-
-```js
-let params = {}
-await queryClient.cosmos.auth.v1beta1.params(params)
-```
-
-##  /cosmos.auth.v1beta1.Query/ModuleAccounts
-
-```js
-let params = {}
-await queryClient.cosmos.auth.v1beta1.moduleAccounts(params)
-```
-
-##  /cosmos.auth.v1beta1.Query/ModuleAccountByName
-
-```js
-let params = {
-  "name": ""
-}
-await queryClient.cosmos.auth.v1beta1.moduleAccountByName(params)
 ```
 
 ##  /cosmos.auth.v1beta1.Query/AccountAddressByID
@@ -1387,15 +1458,52 @@ let params = {
 await queryClient.cosmos.auth.v1beta1.accountInfo(params)
 ```
 
-##  /cosmos.authz.v1beta1.Query/Grants
+##  /cosmos.auth.v1beta1.Query/Account
 
 ```js
 let params = {
-  "granter": "",
-  "grantee": "",
-  "msg_type_url": ""
+  "address": ""
 }
-await queryClient.cosmos.authz.v1beta1.grants(params)
+await queryClient.cosmos.auth.v1beta1.account(params)
+```
+
+##  /cosmos.auth.v1beta1.Query/Accounts
+
+```js
+let params = {}
+await queryClient.cosmos.auth.v1beta1.accounts(params)
+```
+
+##  /cosmos.auth.v1beta1.Query/ModuleAccountByName
+
+```js
+let params = {
+  "name": ""
+}
+await queryClient.cosmos.auth.v1beta1.moduleAccountByName(params)
+```
+
+##  /cosmos.auth.v1beta1.Query/ModuleAccounts
+
+```js
+let params = {}
+await queryClient.cosmos.auth.v1beta1.moduleAccounts(params)
+```
+
+##  /cosmos.auth.v1beta1.Query/Params
+
+```js
+let params = {}
+await queryClient.cosmos.auth.v1beta1.params(params)
+```
+
+##  /cosmos.authz.v1beta1.Query/GranteeGrants
+
+```js
+let params = {
+  "grantee": ""
+}
+await queryClient.cosmos.authz.v1beta1.granteeGrants(params)
 ```
 
 ##  /cosmos.authz.v1beta1.Query/GranterGrants
@@ -1407,13 +1515,25 @@ let params = {
 await queryClient.cosmos.authz.v1beta1.granterGrants(params)
 ```
 
-##  /cosmos.authz.v1beta1.Query/GranteeGrants
+##  /cosmos.authz.v1beta1.Query/Grants
 
 ```js
 let params = {
-  "grantee": ""
+  "granter": "",
+  "grantee": "",
+  "msg_type_url": ""
 }
-await queryClient.cosmos.authz.v1beta1.granteeGrants(params)
+await queryClient.cosmos.authz.v1beta1.grants(params)
+```
+
+##  /cosmos.bank.v1beta1.Query/AllBalances
+
+```js
+let params = {
+  "address": "",
+  "resolve_denom": false
+}
+await queryClient.cosmos.bank.v1beta1.allBalances(params)
 ```
 
 ##  /cosmos.bank.v1beta1.Query/Balance
@@ -1426,62 +1546,13 @@ let params = {
 await queryClient.cosmos.bank.v1beta1.balance(params)
 ```
 
-##  /cosmos.bank.v1beta1.Query/AllBalances
-
-```js
-let params = {
-  "address": ""
-}
-await queryClient.cosmos.bank.v1beta1.allBalances(params)
-```
-
-##  /cosmos.bank.v1beta1.Query/SpendableBalances
-
-```js
-let params = {
-  "address": ""
-}
-await queryClient.cosmos.bank.v1beta1.spendableBalances(params)
-```
-
-##  /cosmos.bank.v1beta1.Query/SpendableBalanceByDenom
-
-```js
-let params = {
-  "address": "",
-  "denom": ""
-}
-await queryClient.cosmos.bank.v1beta1.spendableBalanceByDenom(params)
-```
-
-##  /cosmos.bank.v1beta1.Query/TotalSupply
-
-```js
-let params = {}
-await queryClient.cosmos.bank.v1beta1.totalSupply(params)
-```
-
-##  /cosmos.bank.v1beta1.Query/SupplyOf
+##  /cosmos.bank.v1beta1.Query/DenomMetadataByQueryString
 
 ```js
 let params = {
   "denom": ""
 }
-await queryClient.cosmos.bank.v1beta1.supplyOf(params)
-```
-
-##  /cosmos.bank.v1beta1.Query/Params
-
-```js
-let params = {}
-await queryClient.cosmos.bank.v1beta1.params(params)
-```
-
-##  /cosmos.bank.v1beta1.Query/DenomsMetadata
-
-```js
-let params = {}
-await queryClient.cosmos.bank.v1beta1.denomsMetadata(params)
+await queryClient.cosmos.bank.v1beta1.denomMetadataByQueryString(params)
 ```
 
 ##  /cosmos.bank.v1beta1.Query/DenomMetadata
@@ -1500,6 +1571,55 @@ let params = {
   "denom": ""
 }
 await queryClient.cosmos.bank.v1beta1.denomOwners(params)
+```
+
+##  /cosmos.bank.v1beta1.Query/DenomsMetadata
+
+```js
+let params = {}
+await queryClient.cosmos.bank.v1beta1.denomsMetadata(params)
+```
+
+##  /cosmos.bank.v1beta1.Query/Params
+
+```js
+let params = {}
+await queryClient.cosmos.bank.v1beta1.params(params)
+```
+
+##  /cosmos.bank.v1beta1.Query/SpendableBalanceByDenom
+
+```js
+let params = {
+  "address": "",
+  "denom": ""
+}
+await queryClient.cosmos.bank.v1beta1.spendableBalanceByDenom(params)
+```
+
+##  /cosmos.bank.v1beta1.Query/SpendableBalances
+
+```js
+let params = {
+  "address": ""
+}
+await queryClient.cosmos.bank.v1beta1.spendableBalances(params)
+```
+
+##  /cosmos.bank.v1beta1.Query/SupplyOf
+
+```js
+let params = {
+  "denom": ""
+}
+await queryClient.cosmos.bank.v1beta1.supplyOf(params)
+```
+
+##  /cosmos.bank.v1beta1.Query/TotalSupply
+
+```js
+let params = {}
+await queryClient.cosmos.bank.v1beta1.totalSupply(params)
 ```
 
 ##  /cosmos.base.reflection.v2alpha1.GetQuery/ServicesDescriptor
@@ -1521,6 +1641,29 @@ let params = {
 await queryClient.cosmos.base.tendermint.v1beta1.aBCI(params)
 ```
 
+##  /cosmos.circuit.v1.Query/Account
+
+```js
+let params = {
+  "address": ""
+}
+await queryClient.cosmos.circuit.v1.account(params)
+```
+
+##  /cosmos.circuit.v1.Query/Accounts
+
+```js
+let params = {}
+await queryClient.cosmos.circuit.v1.accounts(params)
+```
+
+##  /cosmos.circuit.v1.Query/DisabledList
+
+```js
+let params = {}
+await queryClient.cosmos.circuit.v1.disabledList(params)
+```
+
 ##  /cosmos.consensus.v1.Query/Params
 
 ```js
@@ -1528,49 +1671,11 @@ let params = {}
 await queryClient.cosmos.consensus.v1.params(params)
 ```
 
-##  /cosmos.distribution.v1beta1.Query/Params
+##  /cosmos.distribution.v1beta1.Query/CommunityPool
 
 ```js
 let params = {}
-await queryClient.cosmos.distribution.v1beta1.params(params)
-```
-
-##  /cosmos.distribution.v1beta1.Query/ValidatorDistributionInfo
-
-```js
-let params = {
-  "validator_address": ""
-}
-await queryClient.cosmos.distribution.v1beta1.validatorDistributionInfo(params)
-```
-
-##  /cosmos.distribution.v1beta1.Query/ValidatorOutstandingRewards
-
-```js
-let params = {
-  "validator_address": ""
-}
-await queryClient.cosmos.distribution.v1beta1.validatorOutstandingRewards(params)
-```
-
-##  /cosmos.distribution.v1beta1.Query/ValidatorCommission
-
-```js
-let params = {
-  "validator_address": ""
-}
-await queryClient.cosmos.distribution.v1beta1.validatorCommission(params)
-```
-
-##  /cosmos.distribution.v1beta1.Query/ValidatorSlashes
-
-```js
-let params = {
-  "validator_address": "",
-  "starting_height": "0",
-  "ending_height": "0"
-}
-await queryClient.cosmos.distribution.v1beta1.validatorSlashes(params)
+await queryClient.cosmos.distribution.v1beta1.communityPool(params)
 ```
 
 ##  /cosmos.distribution.v1beta1.Query/DelegationRewards
@@ -1610,11 +1715,49 @@ let params = {
 await queryClient.cosmos.distribution.v1beta1.delegatorWithdrawAddress(params)
 ```
 
-##  /cosmos.distribution.v1beta1.Query/CommunityPool
+##  /cosmos.distribution.v1beta1.Query/Params
 
 ```js
 let params = {}
-await queryClient.cosmos.distribution.v1beta1.communityPool(params)
+await queryClient.cosmos.distribution.v1beta1.params(params)
+```
+
+##  /cosmos.distribution.v1beta1.Query/ValidatorCommission
+
+```js
+let params = {
+  "validator_address": ""
+}
+await queryClient.cosmos.distribution.v1beta1.validatorCommission(params)
+```
+
+##  /cosmos.distribution.v1beta1.Query/ValidatorDistributionInfo
+
+```js
+let params = {
+  "validator_address": ""
+}
+await queryClient.cosmos.distribution.v1beta1.validatorDistributionInfo(params)
+```
+
+##  /cosmos.distribution.v1beta1.Query/ValidatorOutstandingRewards
+
+```js
+let params = {
+  "validator_address": ""
+}
+await queryClient.cosmos.distribution.v1beta1.validatorOutstandingRewards(params)
+```
+
+##  /cosmos.distribution.v1beta1.Query/ValidatorSlashes
+
+```js
+let params = {
+  "validator_address": "",
+  "starting_height": "0",
+  "ending_height": "0"
+}
+await queryClient.cosmos.distribution.v1beta1.validatorSlashes(params)
 ```
 
 ##  /cosmos.feegrant.v1beta1.Query/Allowance
@@ -1627,6 +1770,15 @@ let params = {
 await queryClient.cosmos.feegrant.v1beta1.allowance(params)
 ```
 
+##  /cosmos.feegrant.v1beta1.Query/AllowancesByGranter
+
+```js
+let params = {
+  "granter": ""
+}
+await queryClient.cosmos.feegrant.v1beta1.allowancesByGranter(params)
+```
+
 ##  /cosmos.feegrant.v1beta1.Query/Allowances
 
 ```js
@@ -1636,13 +1788,39 @@ let params = {
 await queryClient.cosmos.feegrant.v1beta1.allowances(params)
 ```
 
-##  /cosmos.feegrant.v1beta1.Query/AllowancesByGranter
+##  /cosmos.gov.v1.Query/Constitution
+
+```js
+let params = {}
+await queryClient.cosmos.gov.v1.constitution(params)
+```
+
+##  /cosmos.gov.v1.Query/Deposit
 
 ```js
 let params = {
-  "granter": ""
+  "proposal_id": "0",
+  "depositor": ""
 }
-await queryClient.cosmos.feegrant.v1beta1.allowancesByGranter(params)
+await queryClient.cosmos.gov.v1.deposit(params)
+```
+
+##  /cosmos.gov.v1.Query/Deposits
+
+```js
+let params = {
+  "proposal_id": "0"
+}
+await queryClient.cosmos.gov.v1.deposits(params)
+```
+
+##  /cosmos.gov.v1.Query/Params
+
+```js
+let params = {
+  "params_type": ""
+}
+await queryClient.cosmos.gov.v1.params(params)
 ```
 
 ##  /cosmos.gov.v1.Query/Proposal
@@ -1665,6 +1843,15 @@ let params = {
 await queryClient.cosmos.gov.v1.proposals(params)
 ```
 
+##  /cosmos.gov.v1.Query/TallyResult
+
+```js
+let params = {
+  "proposal_id": "0"
+}
+await queryClient.cosmos.gov.v1.tallyResult(params)
+```
+
 ##  /cosmos.gov.v1.Query/Vote
 
 ```js
@@ -1684,41 +1871,32 @@ let params = {
 await queryClient.cosmos.gov.v1.votes(params)
 ```
 
-##  /cosmos.gov.v1.Query/Params
-
-```js
-let params = {
-  "params_type": ""
-}
-await queryClient.cosmos.gov.v1.params(params)
-```
-
-##  /cosmos.gov.v1.Query/Deposit
+##  /cosmos.gov.v1beta1.Query/Deposit
 
 ```js
 let params = {
   "proposal_id": "0",
   "depositor": ""
 }
-await queryClient.cosmos.gov.v1.deposit(params)
+await queryClient.cosmos.gov.v1beta1.deposit(params)
 ```
 
-##  /cosmos.gov.v1.Query/Deposits
+##  /cosmos.gov.v1beta1.Query/Deposits
 
 ```js
 let params = {
   "proposal_id": "0"
 }
-await queryClient.cosmos.gov.v1.deposits(params)
+await queryClient.cosmos.gov.v1beta1.deposits(params)
 ```
 
-##  /cosmos.gov.v1.Query/TallyResult
+##  /cosmos.gov.v1beta1.Query/Params
 
 ```js
 let params = {
-  "proposal_id": "0"
+  "params_type": ""
 }
-await queryClient.cosmos.gov.v1.tallyResult(params)
+await queryClient.cosmos.gov.v1beta1.params(params)
 ```
 
 ##  /cosmos.gov.v1beta1.Query/Proposal
@@ -1741,6 +1919,15 @@ let params = {
 await queryClient.cosmos.gov.v1beta1.proposals(params)
 ```
 
+##  /cosmos.gov.v1beta1.Query/TallyResult
+
+```js
+let params = {
+  "proposal_id": "0"
+}
+await queryClient.cosmos.gov.v1beta1.tallyResult(params)
+```
+
 ##  /cosmos.gov.v1beta1.Query/Vote
 
 ```js
@@ -1760,43 +1947,6 @@ let params = {
 await queryClient.cosmos.gov.v1beta1.votes(params)
 ```
 
-##  /cosmos.gov.v1beta1.Query/Params
-
-```js
-let params = {
-  "params_type": ""
-}
-await queryClient.cosmos.gov.v1beta1.params(params)
-```
-
-##  /cosmos.gov.v1beta1.Query/Deposit
-
-```js
-let params = {
-  "proposal_id": "0",
-  "depositor": ""
-}
-await queryClient.cosmos.gov.v1beta1.deposit(params)
-```
-
-##  /cosmos.gov.v1beta1.Query/Deposits
-
-```js
-let params = {
-  "proposal_id": "0"
-}
-await queryClient.cosmos.gov.v1beta1.deposits(params)
-```
-
-##  /cosmos.gov.v1beta1.Query/TallyResult
-
-```js
-let params = {
-  "proposal_id": "0"
-}
-await queryClient.cosmos.gov.v1beta1.tallyResult(params)
-```
-
 ##  /cosmos.group.v1.Query/GroupInfo
 
 ```js
@@ -1804,15 +1954,6 @@ let params = {
   "group_id": "0"
 }
 await queryClient.cosmos.group.v1.groupInfo(params)
-```
-
-##  /cosmos.group.v1.Query/GroupPolicyInfo
-
-```js
-let params = {
-  "address": ""
-}
-await queryClient.cosmos.group.v1.groupPolicyInfo(params)
 ```
 
 ##  /cosmos.group.v1.Query/GroupMembers
@@ -1824,13 +1965,13 @@ let params = {
 await queryClient.cosmos.group.v1.groupMembers(params)
 ```
 
-##  /cosmos.group.v1.Query/GroupsByAdmin
+##  /cosmos.group.v1.Query/GroupPoliciesByAdmin
 
 ```js
 let params = {
   "admin": ""
 }
-await queryClient.cosmos.group.v1.groupsByAdmin(params)
+await queryClient.cosmos.group.v1.groupPoliciesByAdmin(params)
 ```
 
 ##  /cosmos.group.v1.Query/GroupPoliciesByGroup
@@ -1842,13 +1983,38 @@ let params = {
 await queryClient.cosmos.group.v1.groupPoliciesByGroup(params)
 ```
 
-##  /cosmos.group.v1.Query/GroupPoliciesByAdmin
+##  /cosmos.group.v1.Query/GroupPolicyInfo
+
+```js
+let params = {
+  "address": ""
+}
+await queryClient.cosmos.group.v1.groupPolicyInfo(params)
+```
+
+##  /cosmos.group.v1.Query/GroupsByAdmin
 
 ```js
 let params = {
   "admin": ""
 }
-await queryClient.cosmos.group.v1.groupPoliciesByAdmin(params)
+await queryClient.cosmos.group.v1.groupsByAdmin(params)
+```
+
+##  /cosmos.group.v1.Query/GroupsByMember
+
+```js
+let params = {
+  "address": ""
+}
+await queryClient.cosmos.group.v1.groupsByMember(params)
+```
+
+##  /cosmos.group.v1.Query/Groups
+
+```js
+let params = {}
+await queryClient.cosmos.group.v1.groups(params)
 ```
 
 ##  /cosmos.group.v1.Query/Proposal
@@ -1867,6 +2033,15 @@ let params = {
   "address": ""
 }
 await queryClient.cosmos.group.v1.proposalsByGroupPolicy(params)
+```
+
+##  /cosmos.group.v1.Query/TallyResult
+
+```js
+let params = {
+  "proposal_id": "0"
+}
+await queryClient.cosmos.group.v1.tallyResult(params)
 ```
 
 ##  /cosmos.group.v1.Query/VoteByProposalVoter
@@ -1897,36 +2072,11 @@ let params = {
 await queryClient.cosmos.group.v1.votesByVoter(params)
 ```
 
-##  /cosmos.group.v1.Query/GroupsByMember
-
-```js
-let params = {
-  "address": ""
-}
-await queryClient.cosmos.group.v1.groupsByMember(params)
-```
-
-##  /cosmos.group.v1.Query/TallyResult
-
-```js
-let params = {
-  "proposal_id": "0"
-}
-await queryClient.cosmos.group.v1.tallyResult(params)
-```
-
-##  /cosmos.group.v1.Query/Groups
+##  /cosmos.mint.v1beta1.Query/AnnualProvisions
 
 ```js
 let params = {}
-await queryClient.cosmos.group.v1.groups(params)
-```
-
-##  /cosmos.mint.v1beta1.Query/Params
-
-```js
-let params = {}
-await queryClient.cosmos.mint.v1beta1.params(params)
+await queryClient.cosmos.mint.v1beta1.annualProvisions(params)
 ```
 
 ##  /cosmos.mint.v1beta1.Query/Inflation
@@ -1936,11 +2086,11 @@ let params = {}
 await queryClient.cosmos.mint.v1beta1.inflation(params)
 ```
 
-##  /cosmos.mint.v1beta1.Query/AnnualProvisions
+##  /cosmos.mint.v1beta1.Query/Params
 
 ```js
 let params = {}
-await queryClient.cosmos.mint.v1beta1.annualProvisions(params)
+await queryClient.cosmos.mint.v1beta1.params(params)
 ```
 
 ##  /cosmos.nft.v1beta1.Query/Balance
@@ -1951,6 +2101,42 @@ let params = {
   "owner": ""
 }
 await queryClient.cosmos.nft.v1beta1.balance(params)
+```
+
+##  /cosmos.nft.v1beta1.Query/Class
+
+```js
+let params = {
+  "class_id": ""
+}
+await queryClient.cosmos.nft.v1beta1.class(params)
+```
+
+##  /cosmos.nft.v1beta1.Query/Classes
+
+```js
+let params = {}
+await queryClient.cosmos.nft.v1beta1.classes(params)
+```
+
+##  /cosmos.nft.v1beta1.Query/NFT
+
+```js
+let params = {
+  "class_id": "",
+  "id": ""
+}
+await queryClient.cosmos.nft.v1beta1.nFT(params)
+```
+
+##  /cosmos.nft.v1beta1.Query/NFTs
+
+```js
+let params = {
+  "class_id": "",
+  "owner": ""
+}
+await queryClient.cosmos.nft.v1beta1.nFTs(params)
 ```
 
 ##  /cosmos.nft.v1beta1.Query/Owner
@@ -1972,42 +2158,6 @@ let params = {
 await queryClient.cosmos.nft.v1beta1.supply(params)
 ```
 
-##  /cosmos.nft.v1beta1.Query/NFTs
-
-```js
-let params = {
-  "class_id": "",
-  "owner": ""
-}
-await queryClient.cosmos.nft.v1beta1.nFTs(params)
-```
-
-##  /cosmos.nft.v1beta1.Query/NFT
-
-```js
-let params = {
-  "class_id": "",
-  "id": ""
-}
-await queryClient.cosmos.nft.v1beta1.nFT(params)
-```
-
-##  /cosmos.nft.v1beta1.Query/Class
-
-```js
-let params = {
-  "class_id": ""
-}
-await queryClient.cosmos.nft.v1beta1.class(params)
-```
-
-##  /cosmos.nft.v1beta1.Query/Classes
-
-```js
-let params = {}
-await queryClient.cosmos.nft.v1beta1.classes(params)
-```
-
 ##  /cosmos.params.v1beta1.Query/Params
 
 ```js
@@ -2025,42 +2175,6 @@ let params = {}
 await queryClient.cosmos.params.v1beta1.subspaces(params)
 ```
 
-##  /cosmos.staking.v1beta1.Query/Validators
-
-```js
-let params = {
-  "status": ""
-}
-await queryClient.cosmos.staking.v1beta1.validators(params)
-```
-
-##  /cosmos.staking.v1beta1.Query/Validator
-
-```js
-let params = {
-  "validator_addr": ""
-}
-await queryClient.cosmos.staking.v1beta1.validator(params)
-```
-
-##  /cosmos.staking.v1beta1.Query/ValidatorDelegations
-
-```js
-let params = {
-  "validator_addr": ""
-}
-await queryClient.cosmos.staking.v1beta1.validatorDelegations(params)
-```
-
-##  /cosmos.staking.v1beta1.Query/ValidatorUnbondingDelegations
-
-```js
-let params = {
-  "validator_addr": ""
-}
-await queryClient.cosmos.staking.v1beta1.validatorUnbondingDelegations(params)
-```
-
 ##  /cosmos.staking.v1beta1.Query/Delegation
 
 ```js
@@ -2069,16 +2183,6 @@ let params = {
   "validator_addr": ""
 }
 await queryClient.cosmos.staking.v1beta1.delegation(params)
-```
-
-##  /cosmos.staking.v1beta1.Query/UnbondingDelegation
-
-```js
-let params = {
-  "delegator_addr": "",
-  "validator_addr": ""
-}
-await queryClient.cosmos.staking.v1beta1.unbondingDelegation(params)
 ```
 
 ##  /cosmos.staking.v1beta1.Query/DelegatorDelegations
@@ -2099,15 +2203,14 @@ let params = {
 await queryClient.cosmos.staking.v1beta1.delegatorUnbondingDelegations(params)
 ```
 
-##  /cosmos.staking.v1beta1.Query/Redelegations
+##  /cosmos.staking.v1beta1.Query/DelegatorValidator
 
 ```js
 let params = {
   "delegator_addr": "",
-  "src_validator_addr": "",
-  "dst_validator_addr": ""
+  "validator_addr": ""
 }
-await queryClient.cosmos.staking.v1beta1.redelegations(params)
+await queryClient.cosmos.staking.v1beta1.delegatorValidator(params)
 ```
 
 ##  /cosmos.staking.v1beta1.Query/DelegatorValidators
@@ -2119,16 +2222,6 @@ let params = {
 await queryClient.cosmos.staking.v1beta1.delegatorValidators(params)
 ```
 
-##  /cosmos.staking.v1beta1.Query/DelegatorValidator
-
-```js
-let params = {
-  "delegator_addr": "",
-  "validator_addr": ""
-}
-await queryClient.cosmos.staking.v1beta1.delegatorValidator(params)
-```
-
 ##  /cosmos.staking.v1beta1.Query/HistoricalInfo
 
 ```js
@@ -2138,13 +2231,6 @@ let params = {
 await queryClient.cosmos.staking.v1beta1.historicalInfo(params)
 ```
 
-##  /cosmos.staking.v1beta1.Query/Pool
-
-```js
-let params = {}
-await queryClient.cosmos.staking.v1beta1.pool(params)
-```
-
 ##  /cosmos.staking.v1beta1.Query/Params
 
 ```js
@@ -2152,11 +2238,68 @@ let params = {}
 await queryClient.cosmos.staking.v1beta1.params(params)
 ```
 
-##  /cosmos.upgrade.v1beta1.Query/CurrentPlan
+##  /cosmos.staking.v1beta1.Query/Pool
 
 ```js
 let params = {}
-await queryClient.cosmos.upgrade.v1beta1.currentPlan(params)
+await queryClient.cosmos.staking.v1beta1.pool(params)
+```
+
+##  /cosmos.staking.v1beta1.Query/Redelegations
+
+```js
+let params = {
+  "delegator_addr": "",
+  "src_validator_addr": "",
+  "dst_validator_addr": ""
+}
+await queryClient.cosmos.staking.v1beta1.redelegations(params)
+```
+
+##  /cosmos.staking.v1beta1.Query/UnbondingDelegation
+
+```js
+let params = {
+  "delegator_addr": "",
+  "validator_addr": ""
+}
+await queryClient.cosmos.staking.v1beta1.unbondingDelegation(params)
+```
+
+##  /cosmos.staking.v1beta1.Query/ValidatorDelegations
+
+```js
+let params = {
+  "validator_addr": ""
+}
+await queryClient.cosmos.staking.v1beta1.validatorDelegations(params)
+```
+
+##  /cosmos.staking.v1beta1.Query/Validator
+
+```js
+let params = {
+  "validator_addr": ""
+}
+await queryClient.cosmos.staking.v1beta1.validator(params)
+```
+
+##  /cosmos.staking.v1beta1.Query/ValidatorUnbondingDelegations
+
+```js
+let params = {
+  "validator_addr": ""
+}
+await queryClient.cosmos.staking.v1beta1.validatorUnbondingDelegations(params)
+```
+
+##  /cosmos.staking.v1beta1.Query/Validators
+
+```js
+let params = {
+  "status": ""
+}
+await queryClient.cosmos.staking.v1beta1.validators(params)
 ```
 
 ##  /cosmos.upgrade.v1beta1.Query/AppliedPlan
@@ -2168,13 +2311,18 @@ let params = {
 await queryClient.cosmos.upgrade.v1beta1.appliedPlan(params)
 ```
 
-##  /cosmos.upgrade.v1beta1.Query/UpgradedConsensusState
+##  /cosmos.upgrade.v1beta1.Query/Authority
 
 ```js
-let params = {
-  "last_height": "0"
-}
-await queryClient.cosmos.upgrade.v1beta1.upgradedConsensusState(params)
+let params = {}
+await queryClient.cosmos.upgrade.v1beta1.authority(params)
+```
+
+##  /cosmos.upgrade.v1beta1.Query/CurrentPlan
+
+```js
+let params = {}
+await queryClient.cosmos.upgrade.v1beta1.currentPlan(params)
 ```
 
 ##  /cosmos.upgrade.v1beta1.Query/ModuleVersions
@@ -2186,12 +2334,329 @@ let params = {
 await queryClient.cosmos.upgrade.v1beta1.moduleVersions(params)
 ```
 
-##  /cosmos.upgrade.v1beta1.Query/Authority
+##  /cosmos.upgrade.v1beta1.Query/UpgradedConsensusState
+
+```js
+let params = {
+  "last_height": "0"
+}
+await queryClient.cosmos.upgrade.v1beta1.upgradedConsensusState(params)
+```
+
+##  /ibc.applications.interchain_accounts.controller.v1.Query/InterchainAccount
+
+```js
+let params = {
+  "owner": "",
+  "connection_id": ""
+}
+await queryClient.ibc.applications.interchain_accounts.controller.v1.interchainAccount(params)
+```
+
+##  /ibc.applications.interchain_accounts.controller.v1.Query/Params
 
 ```js
 let params = {}
-await queryClient.cosmos.upgrade.v1beta1.authority(params)
+await queryClient.ibc.applications.interchain_accounts.controller.v1.params(params)
 ```
+
+##  /ibc.applications.interchain_accounts.host.v1.Query/Params
+
+```js
+let params = {}
+await queryClient.ibc.applications.interchain_accounts.host.v1.params(params)
+```
+
+##  /ibc.applications.transfer.v1.Query/DenomHash
+
+```js
+let params = {
+  "trace": ""
+}
+await queryClient.ibc.applications.transfer.v1.denomHash(params)
+```
+
+##  /ibc.applications.transfer.v1.Query/DenomTrace
+
+```js
+let params = {
+  "hash": ""
+}
+await queryClient.ibc.applications.transfer.v1.denomTrace(params)
+```
+
+##  /ibc.applications.transfer.v1.Query/DenomTraces
+
+```js
+let params = {}
+await queryClient.ibc.applications.transfer.v1.denomTraces(params)
+```
+
+##  /ibc.applications.transfer.v1.Query/EscrowAddress
+
+```js
+let params = {
+  "port_id": "",
+  "channel_id": ""
+}
+await queryClient.ibc.applications.transfer.v1.escrowAddress(params)
+```
+
+##  /ibc.applications.transfer.v1.Query/Params
+
+```js
+let params = {}
+await queryClient.ibc.applications.transfer.v1.params(params)
+```
+
+##  /ibc.applications.transfer.v1.Query/TotalEscrowForDenom
+
+```js
+let params = {
+  "denom": ""
+}
+await queryClient.ibc.applications.transfer.v1.totalEscrowForDenom(params)
+```
+
+##  /ibc.core.channel.v1.Query/ChannelClientState
+
+```js
+let params = {
+  "port_id": "",
+  "channel_id": ""
+}
+await queryClient.ibc.core.channel.v1.channelClientState(params)
+```
+
+##  /ibc.core.channel.v1.Query/ChannelConsensusState
+
+```js
+let params = {
+  "port_id": "",
+  "channel_id": "",
+  "revision_number": "0",
+  "revision_height": "0"
+}
+await queryClient.ibc.core.channel.v1.channelConsensusState(params)
+```
+
+##  /ibc.core.channel.v1.Query/Channel
+
+```js
+let params = {
+  "port_id": "",
+  "channel_id": ""
+}
+await queryClient.ibc.core.channel.v1.channel(params)
+```
+
+##  /ibc.core.channel.v1.Query/Channels
+
+```js
+let params = {}
+await queryClient.ibc.core.channel.v1.channels(params)
+```
+
+##  /ibc.core.channel.v1.Query/ConnectionChannels
+
+```js
+let params = {
+  "connection": ""
+}
+await queryClient.ibc.core.channel.v1.connectionChannels(params)
+```
+
+##  /ibc.core.channel.v1.Query/NextSequenceReceive
+
+```js
+let params = {
+  "port_id": "",
+  "channel_id": ""
+}
+await queryClient.ibc.core.channel.v1.nextSequenceReceive(params)
+```
+
+##  /ibc.core.channel.v1.Query/NextSequenceSend
+
+```js
+let params = {
+  "port_id": "",
+  "channel_id": ""
+}
+await queryClient.ibc.core.channel.v1.nextSequenceSend(params)
+```
+
+##  /ibc.core.channel.v1.Query/PacketAcknowledgement
+
+```js
+let params = {
+  "port_id": "",
+  "channel_id": "",
+  "sequence": "0"
+}
+await queryClient.ibc.core.channel.v1.packetAcknowledgement(params)
+```
+
+##  /ibc.core.channel.v1.Query/PacketCommitment
+
+```js
+let params = {
+  "port_id": "",
+  "channel_id": "",
+  "sequence": "0"
+}
+await queryClient.ibc.core.channel.v1.packetCommitment(params)
+```
+
+##  /ibc.core.channel.v1.Query/PacketCommitments
+
+```js
+let params = {
+  "port_id": "",
+  "channel_id": ""
+}
+await queryClient.ibc.core.channel.v1.packetCommitments(params)
+```
+
+##  /ibc.core.channel.v1.Query/PacketReceipt
+
+```js
+let params = {
+  "port_id": "",
+  "channel_id": "",
+  "sequence": "0"
+}
+await queryClient.ibc.core.channel.v1.packetReceipt(params)
+```
+
+##  /ibc.core.client.v1.Query/ClientParams
+
+```js
+let params = {}
+await queryClient.ibc.core.client.v1.clientParams(params)
+```
+
+##  /ibc.core.client.v1.Query/ClientState
+
+```js
+let params = {
+  "client_id": ""
+}
+await queryClient.ibc.core.client.v1.clientState(params)
+```
+
+##  /ibc.core.client.v1.Query/ClientStates
+
+```js
+let params = {}
+await queryClient.ibc.core.client.v1.clientStates(params)
+```
+
+##  /ibc.core.client.v1.Query/ClientStatus
+
+```js
+let params = {
+  "client_id": ""
+}
+await queryClient.ibc.core.client.v1.clientStatus(params)
+```
+
+##  /ibc.core.client.v1.Query/ConsensusStateHeights
+
+```js
+let params = {
+  "client_id": ""
+}
+await queryClient.ibc.core.client.v1.consensusStateHeights(params)
+```
+
+##  /ibc.core.client.v1.Query/ConsensusState
+
+```js
+let params = {
+  "client_id": "",
+  "revision_number": "0",
+  "revision_height": "0",
+  "latest_height": false
+}
+await queryClient.ibc.core.client.v1.consensusState(params)
+```
+
+##  /ibc.core.client.v1.Query/ConsensusStates
+
+```js
+let params = {
+  "client_id": ""
+}
+await queryClient.ibc.core.client.v1.consensusStates(params)
+```
+
+##  /ibc.core.client.v1.Query/UpgradedClientState
+
+```js
+let params = {}
+await queryClient.ibc.core.client.v1.upgradedClientState(params)
+```
+
+##  /ibc.core.client.v1.Query/UpgradedConsensusState
+
+```js
+let params = {}
+await queryClient.ibc.core.client.v1.upgradedConsensusState(params)
+```
+
+##  /ibc.core.connection.v1.Query/ClientConnections
+
+```js
+let params = {
+  "client_id": ""
+}
+await queryClient.ibc.core.connection.v1.clientConnections(params)
+```
+
+##  /ibc.core.connection.v1.Query/ConnectionClientState
+
+```js
+let params = {
+  "connection_id": ""
+}
+await queryClient.ibc.core.connection.v1.connectionClientState(params)
+```
+
+##  /ibc.core.connection.v1.Query/ConnectionConsensusState
+
+```js
+let params = {
+  "connection_id": "",
+  "revision_number": "0",
+  "revision_height": "0"
+}
+await queryClient.ibc.core.connection.v1.connectionConsensusState(params)
+```
+
+##  /ibc.core.connection.v1.Query/ConnectionParams
+
+```js
+let params = {}
+await queryClient.ibc.core.connection.v1.connectionParams(params)
+```
+
+##  /ibc.core.connection.v1.Query/Connection
+
+```js
+let params = {
+  "connection_id": ""
+}
+await queryClient.ibc.core.connection.v1.connection(params)
+```
+
+##  /ibc.core.connection.v1.Query/Connections
+
+```js
+let params = {}
+await queryClient.ibc.core.connection.v1.connections(params)
+```
+
 
 # Query doc helper
 <details>
