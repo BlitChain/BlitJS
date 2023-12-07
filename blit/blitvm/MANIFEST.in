@@ -1,4 +1,0 @@
-include README.rst
-include test_blit.py
-requirements.txt
-dev-requirements.txt
