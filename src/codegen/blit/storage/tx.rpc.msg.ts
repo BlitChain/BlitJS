@@ -2,7 +2,10 @@
 import * as fm from "../../grpc-gateway";
 import { MsgUpdateParams, MsgUpdateParamsResponse, MsgCreateStorage, MsgCreateStorageResponse, MsgUpdateStorage, MsgUpdateStorageResponse, MsgDeleteStorage, MsgDeleteStorageResponse } from "./tx";
 export class Msg {
-  /** Since: cosmos-sdk 0.47 */
+  /**
+   * UpdateParams defines a (governance) operation for updating the module
+   * parameters. The authority defaults to the x/gov module account.
+   */
   static UpdateParams(request: MsgUpdateParams, initRequest?: fm.InitReq): Promise<MsgUpdateParamsResponse> {
     return fm.fetchReq(`/blit.storage/UpdateParams`, {
       ...initRequest,

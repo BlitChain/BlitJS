@@ -11,17 +11,18 @@ export class Query {
       method: "GET"
     });
   }
+  /** Get a specific Storage by addres and index */
   static StorageDetail(request: QueryStorageDetailRequest, initRequest?: fm.InitReq): Promise<QueryStorageDetailResponse> {
-    return fm.fetchReq(`/blit/storage/storage/${request["address"]}/${request["index"]}?${fm.renderURLSearchParams({
+    return fm.fetchReq(`/blit/storage/storage?${fm.renderURLSearchParams({
       ...request
-    }, ["address", "index"])}`, {
+    }, [])}`, {
       ...initRequest,
       method: "GET"
     });
   }
-  /** Queries a list of Storage items. */
+  /** Filters by address and index prefix. */
   static FilterStorage(request: QueryFilterStorageRequest, initRequest?: fm.InitReq): Promise<QueryFilterStorageResponse> {
-    return fm.fetchReq(`/blit/storage/storage?${fm.renderURLSearchParams({
+    return fm.fetchReq(`/blit/storage/filter?${fm.renderURLSearchParams({
       ...request
     }, [])}`, {
       ...initRequest,
@@ -41,13 +42,14 @@ export class QueryClientImpl {
       pathPrefix: this.url
     });
   }
+  /** Get a specific Storage by addres and index */
   async StorageDetail(req: QueryStorageDetailRequest, headers?: HeadersInit): Promise<QueryStorageDetailResponse> {
     return Query.StorageDetail(req, {
       headers,
       pathPrefix: this.url
     });
   }
-  /** Queries a list of Storage items. */
+  /** Filters by address and index prefix. */
   async FilterStorage(req: QueryFilterStorageRequest, headers?: HeadersInit): Promise<QueryFilterStorageResponse> {
     return Query.FilterStorage(req, {
       headers,

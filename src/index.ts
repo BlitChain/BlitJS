@@ -82,7 +82,7 @@ const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
     }
   });
 
-  client.gasPrice = '0.000001blit';
+  client.gasPrice = '0ublit';
   return client;
 };
 
@@ -153,7 +153,7 @@ const makeJsClient = async ({ mnemonic, rpcEndpoint, restEndpoint }) => {
     rpcEndpoint,
     signer
   });
-  client.gasPrice = '1ublit';
+  client.gasPrice = '0ublit';
 
   const ibcClient = await blitjs.getSigningIbcClient({
     rpcEndpoint,

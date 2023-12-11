@@ -2,8 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageComposer = exports.load = exports.registry = void 0;
 const tx_1 = require("./tx");
-const msgrun_1 = require("./msgrun");
-exports.registry = [["/blit.script.MsgUpdateParams", tx_1.MsgUpdateParams], ["/blit.script.MsgCreateScript", tx_1.MsgCreateScript], ["/blit.script.MsgUpdateScript", tx_1.MsgUpdateScript], ["/blit.script.MsgRun", msgrun_1.MsgRun]];
+exports.registry = [["/blit.script.MsgUpdateParams", tx_1.MsgUpdateParams], ["/blit.script.MsgCreateScript", tx_1.MsgCreateScript], ["/blit.script.MsgUpdateScript", tx_1.MsgUpdateScript], ["/blit.script.MsgRun", tx_1.MsgRun]];
 const load = (protoRegistry) => {
     exports.registry.forEach(([typeUrl, mod]) => {
         protoRegistry.register(typeUrl, mod);
@@ -33,7 +32,7 @@ exports.MessageComposer = {
         run(value) {
             return {
                 typeUrl: "/blit.script.MsgRun",
-                value: msgrun_1.MsgRun.encode(value).finish()
+                value: tx_1.MsgRun.encode(value).finish()
             };
         }
     },
@@ -85,7 +84,7 @@ exports.MessageComposer = {
         run(value) {
             return {
                 typeUrl: "/blit.script.MsgRun",
-                value: msgrun_1.MsgRun.toJSON(value)
+                value: tx_1.MsgRun.toJSON(value)
             };
         }
     },
@@ -111,7 +110,7 @@ exports.MessageComposer = {
         run(value) {
             return {
                 typeUrl: "/blit.script.MsgRun",
-                value: msgrun_1.MsgRun.fromJSON(value)
+                value: tx_1.MsgRun.fromJSON(value)
             };
         }
     },
@@ -137,7 +136,7 @@ exports.MessageComposer = {
         run(value) {
             return {
                 typeUrl: "/blit.script.MsgRun",
-                value: msgrun_1.MsgRun.fromPartial(value)
+                value: tx_1.MsgRun.fromPartial(value)
             };
         }
     }

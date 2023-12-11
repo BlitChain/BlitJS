@@ -36,7 +36,7 @@ class Query {
             method: "GET"
         });
     }
-    /** Queries a list of Script items. */
+    /** Queries a specific Script item. */
     static Script(request, initRequest) {
         return fm.fetchReq(`/blit/script/script/${request["address"]}?${fm.renderURLSearchParams({
             ...request
@@ -45,6 +45,7 @@ class Query {
             method: "GET"
         });
     }
+    /** Queries a list of Script items. */
     static Scripts(request, initRequest) {
         return fm.fetchReq(`/blit/script/scripts?${fm.renderURLSearchParams({
             ...request
@@ -85,13 +86,14 @@ class QueryClientImpl {
             pathPrefix: this.url
         });
     }
-    /** Queries a list of Script items. */
+    /** Queries a specific Script item. */
     async Script(req, headers) {
         return Query.Script(req, {
             headers,
             pathPrefix: this.url
         });
     }
+    /** Queries a list of Script items. */
     async Scripts(req, headers) {
         return Query.Scripts(req, {
             headers,

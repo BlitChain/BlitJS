@@ -75,7 +75,7 @@ const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
             client.registry.types.set(key, value);
         }
     });
-    client.gasPrice = '0.000001blit';
+    client.gasPrice = '0ublit';
     return client;
 };
 const runFunction = async ({ msgClient, attached_messages = [], caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple = 1.5 }) => {
@@ -147,7 +147,7 @@ const makeJsClient = async ({ mnemonic, rpcEndpoint, restEndpoint }) => {
         rpcEndpoint,
         signer
     });
-    client.gasPrice = '1ublit';
+    client.gasPrice = '0ublit';
     const ibcClient = await blitjs.getSigningIbcClient({
         rpcEndpoint,
         signer

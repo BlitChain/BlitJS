@@ -3,8 +3,9 @@ import { QueryParamsRequest, QueryParamsResponse, QueryStorageDetailRequest, Que
 export declare class Query {
     /** Parameters queries the parameters of the module. */
     static Params(request: QueryParamsRequest, initRequest?: fm.InitReq): Promise<QueryParamsResponse>;
+    /** Get a specific Storage by addres and index */
     static StorageDetail(request: QueryStorageDetailRequest, initRequest?: fm.InitReq): Promise<QueryStorageDetailResponse>;
-    /** Queries a list of Storage items. */
+    /** Filters by address and index prefix. */
     static FilterStorage(request: QueryFilterStorageRequest, initRequest?: fm.InitReq): Promise<QueryFilterStorageResponse>;
 }
 export declare class QueryClientImpl {
@@ -12,7 +13,8 @@ export declare class QueryClientImpl {
     constructor(url: string);
     /** Parameters queries the parameters of the module. */
     Params(req: QueryParamsRequest, headers?: HeadersInit): Promise<QueryParamsResponse>;
+    /** Get a specific Storage by addres and index */
     StorageDetail(req: QueryStorageDetailRequest, headers?: HeadersInit): Promise<QueryStorageDetailResponse>;
-    /** Queries a list of Storage items. */
+    /** Filters by address and index prefix. */
     FilterStorage(req: QueryFilterStorageRequest, headers?: HeadersInit): Promise<QueryFilterStorageResponse>;
 }

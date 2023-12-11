@@ -1,5 +1,5 @@
-import { MsgUpdateParams } from "./tx";
-export const registry = [["/blit.blit.MsgUpdateParams", MsgUpdateParams]];
+import { MsgUpdateParams, MsgMintCoins, MsgBurnCoins, MsgForceTransferCoins, MsgSetDenomMetadata } from "./tx";
+export const registry = [["/blit.blit.MsgUpdateParams", MsgUpdateParams], ["/blit.blit.MsgMintCoins", MsgMintCoins], ["/blit.blit.MsgBurnCoins", MsgBurnCoins], ["/blit.blit.MsgForceTransferCoins", MsgForceTransferCoins], ["/blit.blit.MsgSetDenomMetadata", MsgSetDenomMetadata]];
 export const load = (protoRegistry) => {
     registry.forEach(([typeUrl, mod]) => {
         protoRegistry.register(typeUrl, mod);
@@ -12,12 +12,60 @@ export const MessageComposer = {
                 typeUrl: "/blit.blit.MsgUpdateParams",
                 value: MsgUpdateParams.encode(value).finish()
             };
+        },
+        mintCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgMintCoins",
+                value: MsgMintCoins.encode(value).finish()
+            };
+        },
+        burnCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgBurnCoins",
+                value: MsgBurnCoins.encode(value).finish()
+            };
+        },
+        forceTransferCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgForceTransferCoins",
+                value: MsgForceTransferCoins.encode(value).finish()
+            };
+        },
+        setDenomMetadata(value) {
+            return {
+                typeUrl: "/blit.blit.MsgSetDenomMetadata",
+                value: MsgSetDenomMetadata.encode(value).finish()
+            };
         }
     },
     withTypeUrl: {
         updateParams(value) {
             return {
                 typeUrl: "/blit.blit.MsgUpdateParams",
+                value
+            };
+        },
+        mintCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgMintCoins",
+                value
+            };
+        },
+        burnCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgBurnCoins",
+                value
+            };
+        },
+        forceTransferCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgForceTransferCoins",
+                value
+            };
+        },
+        setDenomMetadata(value) {
+            return {
+                typeUrl: "/blit.blit.MsgSetDenomMetadata",
                 value
             };
         }
@@ -28,6 +76,30 @@ export const MessageComposer = {
                 typeUrl: "/blit.blit.MsgUpdateParams",
                 value: MsgUpdateParams.toJSON(value)
             };
+        },
+        mintCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgMintCoins",
+                value: MsgMintCoins.toJSON(value)
+            };
+        },
+        burnCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgBurnCoins",
+                value: MsgBurnCoins.toJSON(value)
+            };
+        },
+        forceTransferCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgForceTransferCoins",
+                value: MsgForceTransferCoins.toJSON(value)
+            };
+        },
+        setDenomMetadata(value) {
+            return {
+                typeUrl: "/blit.blit.MsgSetDenomMetadata",
+                value: MsgSetDenomMetadata.toJSON(value)
+            };
         }
     },
     fromJSON: {
@@ -36,6 +108,30 @@ export const MessageComposer = {
                 typeUrl: "/blit.blit.MsgUpdateParams",
                 value: MsgUpdateParams.fromJSON(value)
             };
+        },
+        mintCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgMintCoins",
+                value: MsgMintCoins.fromJSON(value)
+            };
+        },
+        burnCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgBurnCoins",
+                value: MsgBurnCoins.fromJSON(value)
+            };
+        },
+        forceTransferCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgForceTransferCoins",
+                value: MsgForceTransferCoins.fromJSON(value)
+            };
+        },
+        setDenomMetadata(value) {
+            return {
+                typeUrl: "/blit.blit.MsgSetDenomMetadata",
+                value: MsgSetDenomMetadata.fromJSON(value)
+            };
         }
     },
     fromPartial: {
@@ -43,6 +139,30 @@ export const MessageComposer = {
             return {
                 typeUrl: "/blit.blit.MsgUpdateParams",
                 value: MsgUpdateParams.fromPartial(value)
+            };
+        },
+        mintCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgMintCoins",
+                value: MsgMintCoins.fromPartial(value)
+            };
+        },
+        burnCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgBurnCoins",
+                value: MsgBurnCoins.fromPartial(value)
+            };
+        },
+        forceTransferCoins(value) {
+            return {
+                typeUrl: "/blit.blit.MsgForceTransferCoins",
+                value: MsgForceTransferCoins.fromPartial(value)
+            };
+        },
+        setDenomMetadata(value) {
+            return {
+                typeUrl: "/blit.blit.MsgSetDenomMetadata",
+                value: MsgSetDenomMetadata.fromPartial(value)
             };
         }
     }

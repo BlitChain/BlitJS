@@ -1,11 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../binary";
 export declare const protobufPackage = "blit.storage";
-/**
- * MsgUpdateParams is the Msg/UpdateParams request type.
- *
- * Since: cosmos-sdk 0.47
- */
+/** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParams {
     /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
     authority: string;
@@ -16,11 +12,7 @@ export interface MsgUpdateParamsProtoMsg {
     type_url: "/blit.storage.MsgUpdateParams";
     value: Uint8Array;
 }
-/**
- * MsgUpdateParams is the Msg/UpdateParams request type.
- *
- * Since: cosmos-sdk 0.47
- */
+/** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParamsAmino {
     /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
     authority: string;
@@ -31,11 +23,7 @@ export interface MsgUpdateParamsAminoMsg {
     type: "blit/x/storage/MsgUpdateParams";
     value: MsgUpdateParamsAmino;
 }
-/**
- * MsgUpdateParams is the Msg/UpdateParams request type.
- *
- * Since: cosmos-sdk 0.47
- */
+/** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParamsSDKType {
     authority: string;
     params: ParamsSDKType;
@@ -43,8 +31,6 @@ export interface MsgUpdateParamsSDKType {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
- *
- * Since: cosmos-sdk 0.47
  */
 export interface MsgUpdateParamsResponse {
 }
@@ -55,8 +41,6 @@ export interface MsgUpdateParamsResponseProtoMsg {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
- *
- * Since: cosmos-sdk 0.47
  */
 export interface MsgUpdateParamsResponseAmino {
 }
@@ -67,8 +51,6 @@ export interface MsgUpdateParamsResponseAminoMsg {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
- *
- * Since: cosmos-sdk 0.47
  */
 export interface MsgUpdateParamsResponseSDKType {
 }

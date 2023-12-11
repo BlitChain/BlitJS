@@ -13,12 +13,21 @@ export class LCDQueryClient {
         const endpoint = `blit/storage/params`;
         return await this.req.get(endpoint);
     }
-    /* StorageDetail */
+    /* Get a specific Storage by addres and index */
     async storageDetail(params) {
-        const endpoint = `blit/storage/storage/${params.address}/${params.index}`;
-        return await this.req.get(endpoint);
+        const options = {
+            params: {}
+        };
+        if (typeof params?.address !== "undefined") {
+            options.params.address = params.address;
+        }
+        if (typeof params?.index !== "undefined") {
+            options.params.index = params.index;
+        }
+        const endpoint = `blit/storage/storage`;
+        return await this.req.get(endpoint, options);
     }
-    /* Queries a list of Storage items. */
+    /* Filters by address and index prefix. */
     async filterStorage(params) {
         const options = {
             params: {}
@@ -32,7 +41,7 @@ export class LCDQueryClient {
         if (typeof params?.pagination !== "undefined") {
             setPaginationParams(options, params.pagination);
         }
-        const endpoint = `blit/storage/storage`;
+        const endpoint = `blit/storage/filter`;
         return await this.req.get(endpoint, options);
     }
 }

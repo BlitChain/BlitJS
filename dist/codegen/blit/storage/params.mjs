@@ -1,18 +1,12 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
-import { isSet } from "../../helpers";
 export const protobufPackage = "blit.storage";
 function createBaseParams() {
-    return {
-        gasPerChar: ""
-    };
+    return {};
 }
 export const Params = {
     typeUrl: "/blit.storage.Params",
-    encode(message, writer = BinaryWriter.create()) {
-        if (message.gasPerChar !== "") {
-            writer.uint32(10).string(message.gasPerChar);
-        }
+    encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
     decode(input, length) {
@@ -22,9 +16,6 @@ export const Params = {
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                case 1:
-                    message.gasPerChar = reader.string();
-                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -32,29 +23,22 @@ export const Params = {
         }
         return message;
     },
-    fromJSON(object) {
-        return {
-            gasPerChar: isSet(object.gasPerChar) ? String(object.gasPerChar) : ""
-        };
+    fromJSON(_) {
+        return {};
     },
-    toJSON(message) {
+    toJSON(_) {
         const obj = {};
-        message.gasPerChar !== undefined && (obj.gasPerChar = message.gasPerChar);
         return obj;
     },
-    fromPartial(object) {
+    fromPartial(_) {
         const message = createBaseParams();
-        message.gasPerChar = object.gasPerChar ?? "";
         return message;
     },
-    fromAmino(object) {
-        return {
-            gasPerChar: object.gasPerChar
-        };
+    fromAmino(_) {
+        return {};
     },
-    toAmino(message) {
+    toAmino(_) {
         const obj = {};
-        obj.gasPerChar = message.gasPerChar;
         return obj;
     },
     fromAminoMsg(object) {

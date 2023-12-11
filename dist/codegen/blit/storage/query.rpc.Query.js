@@ -36,17 +36,18 @@ class Query {
             method: "GET"
         });
     }
+    /** Get a specific Storage by addres and index */
     static StorageDetail(request, initRequest) {
-        return fm.fetchReq(`/blit/storage/storage/${request["address"]}/${request["index"]}?${fm.renderURLSearchParams({
+        return fm.fetchReq(`/blit/storage/storage?${fm.renderURLSearchParams({
             ...request
-        }, ["address", "index"])}`, {
+        }, [])}`, {
             ...initRequest,
             method: "GET"
         });
     }
-    /** Queries a list of Storage items. */
+    /** Filters by address and index prefix. */
     static FilterStorage(request, initRequest) {
-        return fm.fetchReq(`/blit/storage/storage?${fm.renderURLSearchParams({
+        return fm.fetchReq(`/blit/storage/filter?${fm.renderURLSearchParams({
             ...request
         }, [])}`, {
             ...initRequest,
@@ -67,13 +68,14 @@ class QueryClientImpl {
             pathPrefix: this.url
         });
     }
+    /** Get a specific Storage by addres and index */
     async StorageDetail(req, headers) {
         return Query.StorageDetail(req, {
             headers,
             pathPrefix: this.url
         });
     }
-    /** Queries a list of Storage items. */
+    /** Filters by address and index prefix. */
     async FilterStorage(req, headers) {
         return Query.FilterStorage(req, {
             headers,

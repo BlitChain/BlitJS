@@ -1,5 +1,4 @@
-import { MsgUpdateParams, MsgCreateScript, MsgUpdateScript } from "./tx";
-import { MsgRun } from "./msgrun";
+import { MsgUpdateParams, MsgCreateScript, MsgUpdateScript, MsgRun } from "./tx";
 export declare const AminoConverter: {
     "/blit.script.MsgUpdateParams": {
         aminoType: string;
@@ -18,7 +17,7 @@ export declare const AminoConverter: {
     };
     "/blit.script.MsgRun": {
         aminoType: string;
-        toAmino: (message: MsgRun) => import("./msgrun").MsgRunAmino;
-        fromAmino: (object: import("./msgrun").MsgRunAmino) => MsgRun;
+        toAmino: (message: MsgRun) => import("./tx").MsgRunAmino;
+        fromAmino: (object: import("./tx").MsgRunAmino) => MsgRun;
     };
 };

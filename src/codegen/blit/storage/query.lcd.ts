@@ -19,12 +19,21 @@ export class LCDQueryClient {
     const endpoint = `blit/storage/params`;
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
   }
-  /* StorageDetail */
+  /* Get a specific Storage by addres and index */
   async storageDetail(params: QueryStorageDetailRequest): Promise<QueryStorageDetailResponseSDKType> {
-    const endpoint = `blit/storage/storage/${params.address}/${params.index}`;
-    return await this.req.get<QueryStorageDetailResponseSDKType>(endpoint);
+    const options: any = {
+      params: {}
+    };
+    if (typeof params?.address !== "undefined") {
+      options.params.address = params.address;
+    }
+    if (typeof params?.index !== "undefined") {
+      options.params.index = params.index;
+    }
+    const endpoint = `blit/storage/storage`;
+    return await this.req.get<QueryStorageDetailResponseSDKType>(endpoint, options);
   }
-  /* Queries a list of Storage items. */
+  /* Filters by address and index prefix. */
   async filterStorage(params: QueryFilterStorageRequest): Promise<QueryFilterStorageResponseSDKType> {
     const options: any = {
       params: {}
@@ -38,7 +47,7 @@ export class LCDQueryClient {
     if (typeof params?.pagination !== "undefined") {
       setPaginationParams(options, params.pagination);
     }
-    const endpoint = `blit/storage/storage`;
+    const endpoint = `blit/storage/filter`;
     return await this.req.get<QueryFilterStorageResponseSDKType>(endpoint, options);
   }
 }

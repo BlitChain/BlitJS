@@ -1,7 +1,6 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgUpdateParams, MsgCreateScript, MsgUpdateScript } from "./tx";
-import { MsgRun } from "./msgrun";
+import { MsgUpdateParams, MsgCreateScript, MsgUpdateScript, MsgRun } from "./tx";
 export const registry: ReadonlyArray<[string, GeneratedType]> = [["/blit.script.MsgUpdateParams", MsgUpdateParams], ["/blit.script.MsgCreateScript", MsgCreateScript], ["/blit.script.MsgUpdateScript", MsgUpdateScript], ["/blit.script.MsgRun", MsgRun]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {

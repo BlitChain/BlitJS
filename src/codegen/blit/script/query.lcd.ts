@@ -21,12 +21,12 @@ export class LCDQueryClient {
     const endpoint = `blit/script/params`;
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
   }
-  /* Queries a list of Script items. */
+  /* Queries a specific Script item. */
   async script(params: QueryScriptRequest): Promise<QueryScriptResponseSDKType> {
     const endpoint = `blit/script/script/${params.address}`;
     return await this.req.get<QueryScriptResponseSDKType>(endpoint);
   }
-  /* Scripts */
+  /* Queries a list of Script items. */
   async scripts(params: QueryScriptsRequest = {
     pagination: undefined
   }): Promise<QueryScriptsResponseSDKType> {

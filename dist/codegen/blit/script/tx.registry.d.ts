@@ -1,6 +1,5 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgUpdateParams, MsgCreateScript, MsgUpdateScript } from "./tx";
-import { MsgRun } from "./msgrun";
+import { MsgUpdateParams, MsgCreateScript, MsgUpdateScript, MsgRun } from "./tx";
 export declare const registry: ReadonlyArray<[string, GeneratedType]>;
 export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {

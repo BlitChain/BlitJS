@@ -3,8 +3,9 @@ import { QueryParamsRequest, QueryParamsResponse, QueryScriptRequest, QueryScrip
 export declare class Query {
     /** Parameters queries the parameters of the module. */
     static Params(request: QueryParamsRequest, initRequest?: fm.InitReq): Promise<QueryParamsResponse>;
-    /** Queries a list of Script items. */
+    /** Queries a specific Script item. */
     static Script(request: QueryScriptRequest, initRequest?: fm.InitReq): Promise<QueryScriptResponse>;
+    /** Queries a list of Script items. */
     static Scripts(request: QueryScriptsRequest, initRequest?: fm.InitReq): Promise<QueryScriptsResponse>;
     /** Runs the function and returns the result. */
     static Eval(request: QueryEvalRequest, initRequest?: fm.InitReq): Promise<QueryEvalResponse>;
@@ -16,8 +17,9 @@ export declare class QueryClientImpl {
     constructor(url: string);
     /** Parameters queries the parameters of the module. */
     Params(req: QueryParamsRequest, headers?: HeadersInit): Promise<QueryParamsResponse>;
-    /** Queries a list of Script items. */
+    /** Queries a specific Script item. */
     Script(req: QueryScriptRequest, headers?: HeadersInit): Promise<QueryScriptResponse>;
+    /** Queries a list of Script items. */
     Scripts(req: QueryScriptsRequest, headers?: HeadersInit): Promise<QueryScriptsResponse>;
     /** Runs the function and returns the result. */
     Eval(req: QueryEvalRequest, headers?: HeadersInit): Promise<QueryEvalResponse>;

@@ -27,7 +27,10 @@ exports.Msg = void 0;
 //@ts-nocheck
 const fm = __importStar(require("../../grpc-gateway"));
 class Msg {
-    /** Since: cosmos-sdk 0.47 */
+    /**
+     * UpdateParams defines a (governance) operation for updating the module
+     * parameters. The authority defaults to the x/gov module account.
+     */
     static UpdateParams(request, initRequest) {
         return fm.fetchReq(`/blit.storage/UpdateParams`, {
             ...initRequest,

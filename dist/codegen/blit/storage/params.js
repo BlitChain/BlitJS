@@ -3,19 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Params = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
-const helpers_1 = require("../../helpers");
 exports.protobufPackage = "blit.storage";
 function createBaseParams() {
-    return {
-        gasPerChar: ""
-    };
+    return {};
 }
 exports.Params = {
     typeUrl: "/blit.storage.Params",
-    encode(message, writer = binary_1.BinaryWriter.create()) {
-        if (message.gasPerChar !== "") {
-            writer.uint32(10).string(message.gasPerChar);
-        }
+    encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
     decode(input, length) {
@@ -25,9 +19,6 @@ exports.Params = {
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                case 1:
-                    message.gasPerChar = reader.string();
-                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -35,29 +26,22 @@ exports.Params = {
         }
         return message;
     },
-    fromJSON(object) {
-        return {
-            gasPerChar: (0, helpers_1.isSet)(object.gasPerChar) ? String(object.gasPerChar) : ""
-        };
+    fromJSON(_) {
+        return {};
     },
-    toJSON(message) {
+    toJSON(_) {
         const obj = {};
-        message.gasPerChar !== undefined && (obj.gasPerChar = message.gasPerChar);
         return obj;
     },
-    fromPartial(object) {
+    fromPartial(_) {
         const message = createBaseParams();
-        message.gasPerChar = object.gasPerChar ?? "";
         return message;
     },
-    fromAmino(object) {
-        return {
-            gasPerChar: object.gasPerChar
-        };
+    fromAmino(_) {
+        return {};
     },
-    toAmino(message) {
+    toAmino(_) {
         const obj = {};
-        obj.gasPerChar = message.gasPerChar;
         return obj;
     },
     fromAminoMsg(object) {

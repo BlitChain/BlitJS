@@ -1,11 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../binary";
 export declare const protobufPackage = "blit.script";
-/**
- * MsgUpdateParams is the Msg/UpdateParams request type.
- *
- * Since: cosmos-sdk 0.47
- */
+/** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParams {
     /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
     authority: string;
@@ -16,11 +12,7 @@ export interface MsgUpdateParamsProtoMsg {
     type_url: "/blit.script.MsgUpdateParams";
     value: Uint8Array;
 }
-/**
- * MsgUpdateParams is the Msg/UpdateParams request type.
- *
- * Since: cosmos-sdk 0.47
- */
+/** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParamsAmino {
     /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
     authority: string;
@@ -31,11 +23,7 @@ export interface MsgUpdateParamsAminoMsg {
     type: "blit/x/script/MsgUpdateParams";
     value: MsgUpdateParamsAmino;
 }
-/**
- * MsgUpdateParams is the Msg/UpdateParams request type.
- *
- * Since: cosmos-sdk 0.47
- */
+/** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParamsSDKType {
     authority: string;
     params: ParamsSDKType;
@@ -43,8 +31,6 @@ export interface MsgUpdateParamsSDKType {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
- *
- * Since: cosmos-sdk 0.47
  */
 export interface MsgUpdateParamsResponse {
 }
@@ -55,8 +41,6 @@ export interface MsgUpdateParamsResponseProtoMsg {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
- *
- * Since: cosmos-sdk 0.47
  */
 export interface MsgUpdateParamsResponseAmino {
 }
@@ -67,8 +51,6 @@ export interface MsgUpdateParamsResponseAminoMsg {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
- *
- * Since: cosmos-sdk 0.47
  */
 export interface MsgUpdateParamsResponseSDKType {
 }
@@ -157,6 +139,95 @@ export interface MsgUpdateScriptResponseAminoMsg {
 export interface MsgUpdateScriptResponseSDKType {
     version: bigint;
 }
+export interface MsgDeleteScript {
+    address: string;
+    index: string;
+}
+export interface MsgDeleteScriptProtoMsg {
+    type_url: "/blit.script.MsgDeleteScript";
+    value: Uint8Array;
+}
+export interface MsgDeleteScriptAmino {
+    address: string;
+    index: string;
+}
+export interface MsgDeleteScriptAminoMsg {
+    type: "/blit.script.MsgDeleteScript";
+    value: MsgDeleteScriptAmino;
+}
+export interface MsgDeleteScriptSDKType {
+    address: string;
+    index: string;
+}
+export interface MsgDeleteScriptResponse {
+}
+export interface MsgDeleteScriptResponseProtoMsg {
+    type_url: "/blit.script.MsgDeleteScriptResponse";
+    value: Uint8Array;
+}
+export interface MsgDeleteScriptResponseAmino {
+}
+export interface MsgDeleteScriptResponseAminoMsg {
+    type: "/blit.script.MsgDeleteScriptResponse";
+    value: MsgDeleteScriptResponseAmino;
+}
+export interface MsgDeleteScriptResponseSDKType {
+}
+/** MsgRun runs a script at a specific address */
+export interface MsgRun {
+    caller_address: string;
+    script_address: string;
+    extra_code: string;
+    function_name: string;
+    kwargs: string;
+    grantee: string;
+    attached_messages: string;
+}
+export interface MsgRunProtoMsg {
+    type_url: "/blit.script.MsgRun";
+    value: Uint8Array;
+}
+/** MsgRun runs a script at a specific address */
+export interface MsgRunAmino {
+    caller_address: string;
+    script_address: string;
+    extra_code: string;
+    function_name: string;
+    kwargs: string;
+    grantee: string;
+    attached_messages: string;
+}
+export interface MsgRunAminoMsg {
+    type: "/blit.script.MsgRun";
+    value: MsgRunAmino;
+}
+/** MsgRun runs a script at a specific address */
+export interface MsgRunSDKType {
+    caller_address: string;
+    script_address: string;
+    extra_code: string;
+    function_name: string;
+    kwargs: string;
+    grantee: string;
+    attached_messages: string;
+}
+export interface MsgRunResponse {
+    response: string;
+}
+export interface MsgRunResponseProtoMsg {
+    type_url: "/blit.script.MsgRunResponse";
+    value: Uint8Array;
+}
+export interface MsgRunResponseAmino {
+    response: string;
+}
+export interface MsgRunResponseAminoMsg {
+    type: "/blit.script.MsgRunResponse";
+    value: MsgRunResponseAmino;
+}
+export interface MsgRunResponseSDKType {
+    response: string;
+}
 export declare const MsgUpdateParams: {
     typeUrl: string;
     encode(message: MsgUpdateParams, writer?: BinaryWriter): BinaryWriter;
@@ -241,4 +312,60 @@ export declare const MsgUpdateScriptResponse: {
     fromProtoMsg(message: MsgUpdateScriptResponseProtoMsg): MsgUpdateScriptResponse;
     toProto(message: MsgUpdateScriptResponse): Uint8Array;
     toProtoMsg(message: MsgUpdateScriptResponse): MsgUpdateScriptResponseProtoMsg;
+};
+export declare const MsgDeleteScript: {
+    typeUrl: string;
+    encode(message: MsgDeleteScript, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteScript;
+    fromJSON(object: any): MsgDeleteScript;
+    toJSON(message: MsgDeleteScript): unknown;
+    fromPartial(object: Partial<MsgDeleteScript>): MsgDeleteScript;
+    fromAmino(object: MsgDeleteScriptAmino): MsgDeleteScript;
+    toAmino(message: MsgDeleteScript): MsgDeleteScriptAmino;
+    fromAminoMsg(object: MsgDeleteScriptAminoMsg): MsgDeleteScript;
+    fromProtoMsg(message: MsgDeleteScriptProtoMsg): MsgDeleteScript;
+    toProto(message: MsgDeleteScript): Uint8Array;
+    toProtoMsg(message: MsgDeleteScript): MsgDeleteScriptProtoMsg;
+};
+export declare const MsgDeleteScriptResponse: {
+    typeUrl: string;
+    encode(_: MsgDeleteScriptResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteScriptResponse;
+    fromJSON(_: any): MsgDeleteScriptResponse;
+    toJSON(_: MsgDeleteScriptResponse): unknown;
+    fromPartial(_: Partial<MsgDeleteScriptResponse>): MsgDeleteScriptResponse;
+    fromAmino(_: MsgDeleteScriptResponseAmino): MsgDeleteScriptResponse;
+    toAmino(_: MsgDeleteScriptResponse): MsgDeleteScriptResponseAmino;
+    fromAminoMsg(object: MsgDeleteScriptResponseAminoMsg): MsgDeleteScriptResponse;
+    fromProtoMsg(message: MsgDeleteScriptResponseProtoMsg): MsgDeleteScriptResponse;
+    toProto(message: MsgDeleteScriptResponse): Uint8Array;
+    toProtoMsg(message: MsgDeleteScriptResponse): MsgDeleteScriptResponseProtoMsg;
+};
+export declare const MsgRun: {
+    typeUrl: string;
+    encode(message: MsgRun, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgRun;
+    fromJSON(object: any): MsgRun;
+    toJSON(message: MsgRun): unknown;
+    fromPartial(object: Partial<MsgRun>): MsgRun;
+    fromAmino(object: MsgRunAmino): MsgRun;
+    toAmino(message: MsgRun): MsgRunAmino;
+    fromAminoMsg(object: MsgRunAminoMsg): MsgRun;
+    fromProtoMsg(message: MsgRunProtoMsg): MsgRun;
+    toProto(message: MsgRun): Uint8Array;
+    toProtoMsg(message: MsgRun): MsgRunProtoMsg;
+};
+export declare const MsgRunResponse: {
+    typeUrl: string;
+    encode(message: MsgRunResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgRunResponse;
+    fromJSON(object: any): MsgRunResponse;
+    toJSON(message: MsgRunResponse): unknown;
+    fromPartial(object: Partial<MsgRunResponse>): MsgRunResponse;
+    fromAmino(object: MsgRunResponseAmino): MsgRunResponse;
+    toAmino(message: MsgRunResponse): MsgRunResponseAmino;
+    fromAminoMsg(object: MsgRunResponseAminoMsg): MsgRunResponse;
+    fromProtoMsg(message: MsgRunResponseProtoMsg): MsgRunResponse;
+    toProto(message: MsgRunResponse): Uint8Array;
+    toProtoMsg(message: MsgRunResponse): MsgRunResponseProtoMsg;
 };

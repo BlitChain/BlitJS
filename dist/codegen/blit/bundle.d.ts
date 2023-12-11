@@ -3,7 +3,6 @@ import * as _2 from "./blit/params";
 import * as _3 from "./blit/query";
 import * as _4 from "./blit/tx";
 import * as _5 from "./script/genesis";
-import * as _6 from "./script/msgrun";
 import * as _7 from "./script/params";
 import * as _8 from "./script/query";
 import * as _9 from "./script/script";
@@ -36,15 +35,63 @@ export declare namespace blit {
                     typeUrl: string;
                     value: Uint8Array;
                 };
+                mintCoins(value: _4.MsgMintCoins): {
+                    typeUrl: string;
+                    value: Uint8Array;
+                };
+                burnCoins(value: _4.MsgBurnCoins): {
+                    typeUrl: string;
+                    value: Uint8Array;
+                };
+                forceTransferCoins(value: _4.MsgForceTransferCoins): {
+                    typeUrl: string;
+                    value: Uint8Array;
+                };
+                setDenomMetadata(value: _4.MsgSetDenomMetadata): {
+                    typeUrl: string;
+                    value: Uint8Array;
+                };
             };
             withTypeUrl: {
                 updateParams(value: _4.MsgUpdateParams): {
                     typeUrl: string;
                     value: _4.MsgUpdateParams;
                 };
+                mintCoins(value: _4.MsgMintCoins): {
+                    typeUrl: string;
+                    value: _4.MsgMintCoins;
+                };
+                burnCoins(value: _4.MsgBurnCoins): {
+                    typeUrl: string;
+                    value: _4.MsgBurnCoins;
+                };
+                forceTransferCoins(value: _4.MsgForceTransferCoins): {
+                    typeUrl: string;
+                    value: _4.MsgForceTransferCoins;
+                };
+                setDenomMetadata(value: _4.MsgSetDenomMetadata): {
+                    typeUrl: string;
+                    value: _4.MsgSetDenomMetadata;
+                };
             };
             toJSON: {
                 updateParams(value: _4.MsgUpdateParams): {
+                    typeUrl: string;
+                    value: unknown;
+                };
+                mintCoins(value: _4.MsgMintCoins): {
+                    typeUrl: string;
+                    value: unknown;
+                };
+                burnCoins(value: _4.MsgBurnCoins): {
+                    typeUrl: string;
+                    value: unknown;
+                };
+                forceTransferCoins(value: _4.MsgForceTransferCoins): {
+                    typeUrl: string;
+                    value: unknown;
+                };
+                setDenomMetadata(value: _4.MsgSetDenomMetadata): {
                     typeUrl: string;
                     value: unknown;
                 };
@@ -54,11 +101,43 @@ export declare namespace blit {
                     typeUrl: string;
                     value: _4.MsgUpdateParams;
                 };
+                mintCoins(value: any): {
+                    typeUrl: string;
+                    value: _4.MsgMintCoins;
+                };
+                burnCoins(value: any): {
+                    typeUrl: string;
+                    value: _4.MsgBurnCoins;
+                };
+                forceTransferCoins(value: any): {
+                    typeUrl: string;
+                    value: _4.MsgForceTransferCoins;
+                };
+                setDenomMetadata(value: any): {
+                    typeUrl: string;
+                    value: _4.MsgSetDenomMetadata;
+                };
             };
             fromPartial: {
                 updateParams(value: _4.MsgUpdateParams): {
                     typeUrl: string;
                     value: _4.MsgUpdateParams;
+                };
+                mintCoins(value: _4.MsgMintCoins): {
+                    typeUrl: string;
+                    value: _4.MsgMintCoins;
+                };
+                burnCoins(value: _4.MsgBurnCoins): {
+                    typeUrl: string;
+                    value: _4.MsgBurnCoins;
+                };
+                forceTransferCoins(value: _4.MsgForceTransferCoins): {
+                    typeUrl: string;
+                    value: _4.MsgForceTransferCoins;
+                };
+                setDenomMetadata(value: _4.MsgSetDenomMetadata): {
+                    typeUrl: string;
+                    value: _4.MsgSetDenomMetadata;
                 };
             };
         };
@@ -67,6 +146,26 @@ export declare namespace blit {
                 aminoType: string;
                 toAmino: (message: _4.MsgUpdateParams) => _4.MsgUpdateParamsAmino;
                 fromAmino: (object: _4.MsgUpdateParamsAmino) => _4.MsgUpdateParams;
+            };
+            "/blit.blit.MsgMintCoins": {
+                aminoType: string;
+                toAmino: (message: _4.MsgMintCoins) => _4.MsgMintCoinsAmino;
+                fromAmino: (object: _4.MsgMintCoinsAmino) => _4.MsgMintCoins;
+            };
+            "/blit.blit.MsgBurnCoins": {
+                aminoType: string;
+                toAmino: (message: _4.MsgBurnCoins) => _4.MsgBurnCoinsAmino;
+                fromAmino: (object: _4.MsgBurnCoinsAmino) => _4.MsgBurnCoins;
+            };
+            "/blit.blit.MsgForceTransferCoins": {
+                aminoType: string;
+                toAmino: (message: _4.MsgForceTransferCoins) => _4.MsgForceTransferCoinsAmino;
+                fromAmino: (object: _4.MsgForceTransferCoinsAmino) => _4.MsgForceTransferCoins;
+            };
+            "/blit.blit.MsgSetDenomMetadata": {
+                aminoType: string;
+                toAmino: (message: _4.MsgSetDenomMetadata) => _4.MsgSetDenomMetadataAmino;
+                fromAmino: (object: _4.MsgSetDenomMetadataAmino) => _4.MsgSetDenomMetadata;
             };
         };
         protobufPackage: "blit.blit";
@@ -98,6 +197,118 @@ export declare namespace blit {
             fromProtoMsg(message: _4.MsgUpdateParamsResponseProtoMsg): _4.MsgUpdateParamsResponse;
             toProto(message: _4.MsgUpdateParamsResponse): Uint8Array;
             toProtoMsg(message: _4.MsgUpdateParamsResponse): _4.MsgUpdateParamsResponseProtoMsg;
+        };
+        MsgMintCoins: {
+            typeUrl: string;
+            encode(message: _4.MsgMintCoins, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgMintCoins;
+            fromJSON(object: any): _4.MsgMintCoins;
+            toJSON(message: _4.MsgMintCoins): unknown;
+            fromPartial(object: Partial<_4.MsgMintCoins>): _4.MsgMintCoins;
+            fromAmino(object: _4.MsgMintCoinsAmino): _4.MsgMintCoins;
+            toAmino(message: _4.MsgMintCoins): _4.MsgMintCoinsAmino;
+            fromAminoMsg(object: _4.MsgMintCoinsAminoMsg): _4.MsgMintCoins;
+            fromProtoMsg(message: _4.MsgMintCoinsProtoMsg): _4.MsgMintCoins;
+            toProto(message: _4.MsgMintCoins): Uint8Array;
+            toProtoMsg(message: _4.MsgMintCoins): _4.MsgMintCoinsProtoMsg;
+        };
+        MsgMintCoinsResponse: {
+            typeUrl: string;
+            encode(_: _4.MsgMintCoinsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgMintCoinsResponse;
+            fromJSON(_: any): _4.MsgMintCoinsResponse;
+            toJSON(_: _4.MsgMintCoinsResponse): unknown;
+            fromPartial(_: Partial<_4.MsgMintCoinsResponse>): _4.MsgMintCoinsResponse;
+            fromAmino(_: _4.MsgMintCoinsResponseAmino): _4.MsgMintCoinsResponse;
+            toAmino(_: _4.MsgMintCoinsResponse): _4.MsgMintCoinsResponseAmino;
+            fromAminoMsg(object: _4.MsgMintCoinsResponseAminoMsg): _4.MsgMintCoinsResponse;
+            fromProtoMsg(message: _4.MsgMintCoinsResponseProtoMsg): _4.MsgMintCoinsResponse;
+            toProto(message: _4.MsgMintCoinsResponse): Uint8Array;
+            toProtoMsg(message: _4.MsgMintCoinsResponse): _4.MsgMintCoinsResponseProtoMsg;
+        };
+        MsgBurnCoins: {
+            typeUrl: string;
+            encode(message: _4.MsgBurnCoins, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgBurnCoins;
+            fromJSON(object: any): _4.MsgBurnCoins;
+            toJSON(message: _4.MsgBurnCoins): unknown;
+            fromPartial(object: Partial<_4.MsgBurnCoins>): _4.MsgBurnCoins;
+            fromAmino(object: _4.MsgBurnCoinsAmino): _4.MsgBurnCoins;
+            toAmino(message: _4.MsgBurnCoins): _4.MsgBurnCoinsAmino;
+            fromAminoMsg(object: _4.MsgBurnCoinsAminoMsg): _4.MsgBurnCoins;
+            fromProtoMsg(message: _4.MsgBurnCoinsProtoMsg): _4.MsgBurnCoins;
+            toProto(message: _4.MsgBurnCoins): Uint8Array;
+            toProtoMsg(message: _4.MsgBurnCoins): _4.MsgBurnCoinsProtoMsg;
+        };
+        MsgBurnCoinsResponse: {
+            typeUrl: string;
+            encode(_: _4.MsgBurnCoinsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgBurnCoinsResponse;
+            fromJSON(_: any): _4.MsgBurnCoinsResponse;
+            toJSON(_: _4.MsgBurnCoinsResponse): unknown;
+            fromPartial(_: Partial<_4.MsgBurnCoinsResponse>): _4.MsgBurnCoinsResponse;
+            fromAmino(_: _4.MsgBurnCoinsResponseAmino): _4.MsgBurnCoinsResponse;
+            toAmino(_: _4.MsgBurnCoinsResponse): _4.MsgBurnCoinsResponseAmino;
+            fromAminoMsg(object: _4.MsgBurnCoinsResponseAminoMsg): _4.MsgBurnCoinsResponse;
+            fromProtoMsg(message: _4.MsgBurnCoinsResponseProtoMsg): _4.MsgBurnCoinsResponse;
+            toProto(message: _4.MsgBurnCoinsResponse): Uint8Array;
+            toProtoMsg(message: _4.MsgBurnCoinsResponse): _4.MsgBurnCoinsResponseProtoMsg;
+        };
+        MsgForceTransferCoins: {
+            typeUrl: string;
+            encode(message: _4.MsgForceTransferCoins, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgForceTransferCoins;
+            fromJSON(object: any): _4.MsgForceTransferCoins;
+            toJSON(message: _4.MsgForceTransferCoins): unknown;
+            fromPartial(object: Partial<_4.MsgForceTransferCoins>): _4.MsgForceTransferCoins;
+            fromAmino(object: _4.MsgForceTransferCoinsAmino): _4.MsgForceTransferCoins;
+            toAmino(message: _4.MsgForceTransferCoins): _4.MsgForceTransferCoinsAmino;
+            fromAminoMsg(object: _4.MsgForceTransferCoinsAminoMsg): _4.MsgForceTransferCoins;
+            fromProtoMsg(message: _4.MsgForceTransferCoinsProtoMsg): _4.MsgForceTransferCoins;
+            toProto(message: _4.MsgForceTransferCoins): Uint8Array;
+            toProtoMsg(message: _4.MsgForceTransferCoins): _4.MsgForceTransferCoinsProtoMsg;
+        };
+        MsgForceTransferCoinsResponse: {
+            typeUrl: string;
+            encode(_: _4.MsgForceTransferCoinsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgForceTransferCoinsResponse;
+            fromJSON(_: any): _4.MsgForceTransferCoinsResponse;
+            toJSON(_: _4.MsgForceTransferCoinsResponse): unknown;
+            fromPartial(_: Partial<_4.MsgForceTransferCoinsResponse>): _4.MsgForceTransferCoinsResponse;
+            fromAmino(_: _4.MsgForceTransferCoinsResponseAmino): _4.MsgForceTransferCoinsResponse;
+            toAmino(_: _4.MsgForceTransferCoinsResponse): _4.MsgForceTransferCoinsResponseAmino;
+            fromAminoMsg(object: _4.MsgForceTransferCoinsResponseAminoMsg): _4.MsgForceTransferCoinsResponse;
+            fromProtoMsg(message: _4.MsgForceTransferCoinsResponseProtoMsg): _4.MsgForceTransferCoinsResponse;
+            toProto(message: _4.MsgForceTransferCoinsResponse): Uint8Array;
+            toProtoMsg(message: _4.MsgForceTransferCoinsResponse): _4.MsgForceTransferCoinsResponseProtoMsg;
+        };
+        MsgSetDenomMetadata: {
+            typeUrl: string;
+            encode(message: _4.MsgSetDenomMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgSetDenomMetadata;
+            fromJSON(object: any): _4.MsgSetDenomMetadata;
+            toJSON(message: _4.MsgSetDenomMetadata): unknown;
+            fromPartial(object: Partial<_4.MsgSetDenomMetadata>): _4.MsgSetDenomMetadata;
+            fromAmino(object: _4.MsgSetDenomMetadataAmino): _4.MsgSetDenomMetadata;
+            toAmino(message: _4.MsgSetDenomMetadata): _4.MsgSetDenomMetadataAmino;
+            fromAminoMsg(object: _4.MsgSetDenomMetadataAminoMsg): _4.MsgSetDenomMetadata;
+            fromProtoMsg(message: _4.MsgSetDenomMetadataProtoMsg): _4.MsgSetDenomMetadata;
+            toProto(message: _4.MsgSetDenomMetadata): Uint8Array;
+            toProtoMsg(message: _4.MsgSetDenomMetadata): _4.MsgSetDenomMetadataProtoMsg;
+        };
+        MsgSetDenomMetadataResponse: {
+            typeUrl: string;
+            encode(_: _4.MsgSetDenomMetadataResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgSetDenomMetadataResponse;
+            fromJSON(_: any): _4.MsgSetDenomMetadataResponse;
+            toJSON(_: _4.MsgSetDenomMetadataResponse): unknown;
+            fromPartial(_: Partial<_4.MsgSetDenomMetadataResponse>): _4.MsgSetDenomMetadataResponse;
+            fromAmino(_: _4.MsgSetDenomMetadataResponseAmino): _4.MsgSetDenomMetadataResponse;
+            toAmino(_: _4.MsgSetDenomMetadataResponse): _4.MsgSetDenomMetadataResponseAmino;
+            fromAminoMsg(object: _4.MsgSetDenomMetadataResponseAminoMsg): _4.MsgSetDenomMetadataResponse;
+            fromProtoMsg(message: _4.MsgSetDenomMetadataResponseProtoMsg): _4.MsgSetDenomMetadataResponse;
+            toProto(message: _4.MsgSetDenomMetadataResponse): Uint8Array;
+            toProtoMsg(message: _4.MsgSetDenomMetadataResponse): _4.MsgSetDenomMetadataResponseProtoMsg;
         };
         QueryParamsRequest: {
             typeUrl: string;
@@ -178,7 +389,7 @@ export declare namespace blit {
                     typeUrl: string;
                     value: Uint8Array;
                 };
-                run(value: _6.MsgRun): {
+                run(value: _10.MsgRun): {
                     typeUrl: string;
                     value: Uint8Array;
                 };
@@ -196,9 +407,9 @@ export declare namespace blit {
                     typeUrl: string;
                     value: _10.MsgUpdateScript;
                 };
-                run(value: _6.MsgRun): {
+                run(value: _10.MsgRun): {
                     typeUrl: string;
-                    value: _6.MsgRun;
+                    value: _10.MsgRun;
                 };
             };
             toJSON: {
@@ -214,7 +425,7 @@ export declare namespace blit {
                     typeUrl: string;
                     value: unknown;
                 };
-                run(value: _6.MsgRun): {
+                run(value: _10.MsgRun): {
                     typeUrl: string;
                     value: unknown;
                 };
@@ -234,7 +445,7 @@ export declare namespace blit {
                 };
                 run(value: any): {
                     typeUrl: string;
-                    value: _6.MsgRun;
+                    value: _10.MsgRun;
                 };
             };
             fromPartial: {
@@ -250,9 +461,9 @@ export declare namespace blit {
                     typeUrl: string;
                     value: _10.MsgUpdateScript;
                 };
-                run(value: _6.MsgRun): {
+                run(value: _10.MsgRun): {
                     typeUrl: string;
-                    value: _6.MsgRun;
+                    value: _10.MsgRun;
                 };
             };
         };
@@ -274,8 +485,8 @@ export declare namespace blit {
             };
             "/blit.script.MsgRun": {
                 aminoType: string;
-                toAmino: (message: _6.MsgRun) => _6.MsgRunAmino;
-                fromAmino: (object: _6.MsgRunAmino) => _6.MsgRun;
+                toAmino: (message: _10.MsgRun) => _10.MsgRunAmino;
+                fromAmino: (object: _10.MsgRunAmino) => _10.MsgRun;
             };
         };
         protobufPackage: "blit.script";
@@ -363,6 +574,62 @@ export declare namespace blit {
             fromProtoMsg(message: _10.MsgUpdateScriptResponseProtoMsg): _10.MsgUpdateScriptResponse;
             toProto(message: _10.MsgUpdateScriptResponse): Uint8Array;
             toProtoMsg(message: _10.MsgUpdateScriptResponse): _10.MsgUpdateScriptResponseProtoMsg;
+        };
+        MsgDeleteScript: {
+            typeUrl: string;
+            encode(message: _10.MsgDeleteScript, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgDeleteScript;
+            fromJSON(object: any): _10.MsgDeleteScript;
+            toJSON(message: _10.MsgDeleteScript): unknown;
+            fromPartial(object: Partial<_10.MsgDeleteScript>): _10.MsgDeleteScript;
+            fromAmino(object: _10.MsgDeleteScriptAmino): _10.MsgDeleteScript;
+            toAmino(message: _10.MsgDeleteScript): _10.MsgDeleteScriptAmino;
+            fromAminoMsg(object: _10.MsgDeleteScriptAminoMsg): _10.MsgDeleteScript;
+            fromProtoMsg(message: _10.MsgDeleteScriptProtoMsg): _10.MsgDeleteScript;
+            toProto(message: _10.MsgDeleteScript): Uint8Array;
+            toProtoMsg(message: _10.MsgDeleteScript): _10.MsgDeleteScriptProtoMsg;
+        };
+        MsgDeleteScriptResponse: {
+            typeUrl: string;
+            encode(_: _10.MsgDeleteScriptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgDeleteScriptResponse;
+            fromJSON(_: any): _10.MsgDeleteScriptResponse;
+            toJSON(_: _10.MsgDeleteScriptResponse): unknown;
+            fromPartial(_: Partial<_10.MsgDeleteScriptResponse>): _10.MsgDeleteScriptResponse;
+            fromAmino(_: _10.MsgDeleteScriptResponseAmino): _10.MsgDeleteScriptResponse;
+            toAmino(_: _10.MsgDeleteScriptResponse): _10.MsgDeleteScriptResponseAmino;
+            fromAminoMsg(object: _10.MsgDeleteScriptResponseAminoMsg): _10.MsgDeleteScriptResponse;
+            fromProtoMsg(message: _10.MsgDeleteScriptResponseProtoMsg): _10.MsgDeleteScriptResponse;
+            toProto(message: _10.MsgDeleteScriptResponse): Uint8Array;
+            toProtoMsg(message: _10.MsgDeleteScriptResponse): _10.MsgDeleteScriptResponseProtoMsg;
+        };
+        MsgRun: {
+            typeUrl: string;
+            encode(message: _10.MsgRun, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgRun;
+            fromJSON(object: any): _10.MsgRun;
+            toJSON(message: _10.MsgRun): unknown;
+            fromPartial(object: Partial<_10.MsgRun>): _10.MsgRun;
+            fromAmino(object: _10.MsgRunAmino): _10.MsgRun;
+            toAmino(message: _10.MsgRun): _10.MsgRunAmino;
+            fromAminoMsg(object: _10.MsgRunAminoMsg): _10.MsgRun;
+            fromProtoMsg(message: _10.MsgRunProtoMsg): _10.MsgRun;
+            toProto(message: _10.MsgRun): Uint8Array;
+            toProtoMsg(message: _10.MsgRun): _10.MsgRunProtoMsg;
+        };
+        MsgRunResponse: {
+            typeUrl: string;
+            encode(message: _10.MsgRunResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgRunResponse;
+            fromJSON(object: any): _10.MsgRunResponse;
+            toJSON(message: _10.MsgRunResponse): unknown;
+            fromPartial(object: Partial<_10.MsgRunResponse>): _10.MsgRunResponse;
+            fromAmino(object: _10.MsgRunResponseAmino): _10.MsgRunResponse;
+            toAmino(message: _10.MsgRunResponse): _10.MsgRunResponseAmino;
+            fromAminoMsg(object: _10.MsgRunResponseAminoMsg): _10.MsgRunResponse;
+            fromProtoMsg(message: _10.MsgRunResponseProtoMsg): _10.MsgRunResponse;
+            toProto(message: _10.MsgRunResponse): Uint8Array;
+            toProtoMsg(message: _10.MsgRunResponse): _10.MsgRunResponseProtoMsg;
         };
         Script: {
             typeUrl: string;
@@ -532,34 +799,6 @@ export declare namespace blit {
             fromProtoMsg(message: _7.ParamsProtoMsg): _7.Params;
             toProto(message: _7.Params): Uint8Array;
             toProtoMsg(message: _7.Params): _7.ParamsProtoMsg;
-        };
-        MsgRun: {
-            typeUrl: string;
-            encode(message: _6.MsgRun, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _6.MsgRun;
-            fromJSON(object: any): _6.MsgRun;
-            toJSON(message: _6.MsgRun): unknown;
-            fromPartial(object: Partial<_6.MsgRun>): _6.MsgRun;
-            fromAmino(object: _6.MsgRunAmino): _6.MsgRun;
-            toAmino(message: _6.MsgRun): _6.MsgRunAmino;
-            fromAminoMsg(object: _6.MsgRunAminoMsg): _6.MsgRun;
-            fromProtoMsg(message: _6.MsgRunProtoMsg): _6.MsgRun;
-            toProto(message: _6.MsgRun): Uint8Array;
-            toProtoMsg(message: _6.MsgRun): _6.MsgRunProtoMsg;
-        };
-        MsgRunResponse: {
-            typeUrl: string;
-            encode(message: _6.MsgRunResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _6.MsgRunResponse;
-            fromJSON(object: any): _6.MsgRunResponse;
-            toJSON(message: _6.MsgRunResponse): unknown;
-            fromPartial(object: Partial<_6.MsgRunResponse>): _6.MsgRunResponse;
-            fromAmino(object: _6.MsgRunResponseAmino): _6.MsgRunResponse;
-            toAmino(message: _6.MsgRunResponse): _6.MsgRunResponseAmino;
-            fromAminoMsg(object: _6.MsgRunResponseAminoMsg): _6.MsgRunResponse;
-            fromProtoMsg(message: _6.MsgRunResponseProtoMsg): _6.MsgRunResponse;
-            toProto(message: _6.MsgRunResponse): Uint8Array;
-            toProtoMsg(message: _6.MsgRunResponse): _6.MsgRunResponseProtoMsg;
         };
         GenesisState: {
             typeUrl: string;
@@ -911,13 +1150,13 @@ export declare namespace blit {
         };
         Params: {
             typeUrl: string;
-            encode(message: _12.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            encode(_: _12.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
             decode(input: import("..").BinaryReader | Uint8Array, length?: number): _12.Params;
-            fromJSON(object: any): _12.Params;
-            toJSON(message: _12.Params): unknown;
-            fromPartial(object: Partial<_12.Params>): _12.Params;
-            fromAmino(object: _12.ParamsAmino): _12.Params;
-            toAmino(message: _12.Params): _12.ParamsAmino;
+            fromJSON(_: any): _12.Params;
+            toJSON(_: _12.Params): unknown;
+            fromPartial(_: Partial<_12.Params>): _12.Params;
+            fromAmino(_: _12.ParamsAmino): _12.Params;
+            toAmino(_: _12.Params): _12.ParamsAmino;
             fromAminoMsg(object: _12.ParamsAminoMsg): _12.Params;
             toAminoMsg(message: _12.Params): _12.ParamsAminoMsg;
             fromProtoMsg(message: _12.ParamsProtoMsg): _12.Params;

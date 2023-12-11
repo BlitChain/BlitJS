@@ -1,38 +1,26 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
-import { isSet } from "../../helpers";
 export const protobufPackage = "blit.storage";
 /** Params defines the parameters for the module. */
-export interface Params {
-  gasPerChar: string;
-}
+export interface Params {}
 export interface ParamsProtoMsg {
   type_url: "/blit.storage.Params";
   value: Uint8Array;
 }
 /** Params defines the parameters for the module. */
-export interface ParamsAmino {
-  gasPerChar: string;
-}
+export interface ParamsAmino {}
 export interface ParamsAminoMsg {
   type: "blit/x/storage/Params";
   value: ParamsAmino;
 }
 /** Params defines the parameters for the module. */
-export interface ParamsSDKType {
-  gasPerChar: string;
-}
+export interface ParamsSDKType {}
 function createBaseParams(): Params {
-  return {
-    gasPerChar: ""
-  };
+  return {};
 }
 export const Params = {
   typeUrl: "/blit.storage.Params",
-  encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.gasPerChar !== "") {
-      writer.uint32(10).string(message.gasPerChar);
-    }
+  encode(_: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Params {
@@ -42,9 +30,6 @@ export const Params = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.gasPerChar = reader.string();
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -52,29 +37,22 @@ export const Params = {
     }
     return message;
   },
-  fromJSON(object: any): Params {
-    return {
-      gasPerChar: isSet(object.gasPerChar) ? String(object.gasPerChar) : ""
-    };
+  fromJSON(_: any): Params {
+    return {};
   },
-  toJSON(message: Params): unknown {
+  toJSON(_: Params): unknown {
     const obj: any = {};
-    message.gasPerChar !== undefined && (obj.gasPerChar = message.gasPerChar);
     return obj;
   },
-  fromPartial(object: Partial<Params>): Params {
+  fromPartial(_: Partial<Params>): Params {
     const message = createBaseParams();
-    message.gasPerChar = object.gasPerChar ?? "";
     return message;
   },
-  fromAmino(object: ParamsAmino): Params {
-    return {
-      gasPerChar: object.gasPerChar
-    };
+  fromAmino(_: ParamsAmino): Params {
+    return {};
   },
-  toAmino(message: Params): ParamsAmino {
+  toAmino(_: Params): ParamsAmino {
     const obj: any = {};
-    obj.gasPerChar = message.gasPerChar;
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {

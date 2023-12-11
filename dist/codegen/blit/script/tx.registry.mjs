@@ -1,5 +1,4 @@
-import { MsgUpdateParams, MsgCreateScript, MsgUpdateScript } from "./tx";
-import { MsgRun } from "./msgrun";
+import { MsgUpdateParams, MsgCreateScript, MsgUpdateScript, MsgRun } from "./tx";
 export const registry = [["/blit.script.MsgUpdateParams", MsgUpdateParams], ["/blit.script.MsgCreateScript", MsgCreateScript], ["/blit.script.MsgUpdateScript", MsgUpdateScript], ["/blit.script.MsgRun", MsgRun]];
 export const load = (protoRegistry) => {
     registry.forEach(([typeUrl, mod]) => {

@@ -11,7 +11,7 @@ export class Query {
       method: "GET"
     });
   }
-  /** Queries a list of Script items. */
+  /** Queries a specific Script item. */
   static Script(request: QueryScriptRequest, initRequest?: fm.InitReq): Promise<QueryScriptResponse> {
     return fm.fetchReq(`/blit/script/script/${request["address"]}?${fm.renderURLSearchParams({
       ...request
@@ -20,6 +20,7 @@ export class Query {
       method: "GET"
     });
   }
+  /** Queries a list of Script items. */
   static Scripts(request: QueryScriptsRequest, initRequest?: fm.InitReq): Promise<QueryScriptsResponse> {
     return fm.fetchReq(`/blit/script/scripts?${fm.renderURLSearchParams({
       ...request
@@ -59,13 +60,14 @@ export class QueryClientImpl {
       pathPrefix: this.url
     });
   }
-  /** Queries a list of Script items. */
+  /** Queries a specific Script item. */
   async Script(req: QueryScriptRequest, headers?: HeadersInit): Promise<QueryScriptResponse> {
     return Query.Script(req, {
       headers,
       pathPrefix: this.url
     });
   }
+  /** Queries a list of Script items. */
   async Scripts(req: QueryScriptsRequest, headers?: HeadersInit): Promise<QueryScriptsResponse> {
     return Query.Scripts(req, {
       headers,

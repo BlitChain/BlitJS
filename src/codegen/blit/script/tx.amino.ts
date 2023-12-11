@@ -1,6 +1,5 @@
 //@ts-nocheck
-import { MsgUpdateParams, MsgCreateScript, MsgUpdateScript } from "./tx";
-import { MsgRun } from "./msgrun";
+import { MsgUpdateParams, MsgCreateScript, MsgUpdateScript, MsgRun } from "./tx";
 export const AminoConverter = {
   "/blit.script.MsgUpdateParams": {
     aminoType: "blit/x/script/MsgUpdateParams",

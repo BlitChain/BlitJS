@@ -2,7 +2,6 @@ import { BinaryReader, BinaryWriter } from "../../binary";
 export declare const protobufPackage = "blit.storage";
 /** Params defines the parameters for the module. */
 export interface Params {
-    gasPerChar: string;
 }
 export interface ParamsProtoMsg {
     type_url: "/blit.storage.Params";
@@ -10,7 +9,6 @@ export interface ParamsProtoMsg {
 }
 /** Params defines the parameters for the module. */
 export interface ParamsAmino {
-    gasPerChar: string;
 }
 export interface ParamsAminoMsg {
     type: "blit/x/storage/Params";
@@ -18,17 +16,16 @@ export interface ParamsAminoMsg {
 }
 /** Params defines the parameters for the module. */
 export interface ParamsSDKType {
-    gasPerChar: string;
 }
 export declare const Params: {
     typeUrl: string;
-    encode(message: Params, writer?: BinaryWriter): BinaryWriter;
+    encode(_: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
-    fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
-    fromPartial(object: Partial<Params>): Params;
-    fromAmino(object: ParamsAmino): Params;
-    toAmino(message: Params): ParamsAmino;
+    fromJSON(_: any): Params;
+    toJSON(_: Params): unknown;
+    fromPartial(_: Partial<Params>): Params;
+    fromAmino(_: ParamsAmino): Params;
+    toAmino(_: Params): ParamsAmino;
     fromAminoMsg(object: ParamsAminoMsg): Params;
     toAminoMsg(message: Params): ParamsAminoMsg;
     fromProtoMsg(message: ParamsProtoMsg): Params;

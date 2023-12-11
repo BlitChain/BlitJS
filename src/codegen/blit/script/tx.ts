@@ -3,11 +3,7 @@ import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
 export const protobufPackage = "blit.script";
-/**
- * MsgUpdateParams is the Msg/UpdateParams request type.
- * 
- * Since: cosmos-sdk 0.47
- */
+/** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParams {
   /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority: string;
@@ -18,11 +14,7 @@ export interface MsgUpdateParamsProtoMsg {
   type_url: "/blit.script.MsgUpdateParams";
   value: Uint8Array;
 }
-/**
- * MsgUpdateParams is the Msg/UpdateParams request type.
- * 
- * Since: cosmos-sdk 0.47
- */
+/** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParamsAmino {
   /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority: string;
@@ -33,11 +25,7 @@ export interface MsgUpdateParamsAminoMsg {
   type: "blit/x/script/MsgUpdateParams";
   value: MsgUpdateParamsAmino;
 }
-/**
- * MsgUpdateParams is the Msg/UpdateParams request type.
- * 
- * Since: cosmos-sdk 0.47
- */
+/** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParamsSDKType {
   authority: string;
   params: ParamsSDKType;
@@ -45,8 +33,6 @@ export interface MsgUpdateParamsSDKType {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
- * 
- * Since: cosmos-sdk 0.47
  */
 export interface MsgUpdateParamsResponse {}
 export interface MsgUpdateParamsResponseProtoMsg {
@@ -56,8 +42,6 @@ export interface MsgUpdateParamsResponseProtoMsg {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
- * 
- * Since: cosmos-sdk 0.47
  */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {
@@ -67,8 +51,6 @@ export interface MsgUpdateParamsResponseAminoMsg {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
- * 
- * Since: cosmos-sdk 0.47
  */
 export interface MsgUpdateParamsResponseSDKType {}
 export interface MsgCreateScript {
@@ -155,6 +137,92 @@ export interface MsgUpdateScriptResponseAminoMsg {
 }
 export interface MsgUpdateScriptResponseSDKType {
   version: bigint;
+}
+export interface MsgDeleteScript {
+  address: string;
+  index: string;
+}
+export interface MsgDeleteScriptProtoMsg {
+  type_url: "/blit.script.MsgDeleteScript";
+  value: Uint8Array;
+}
+export interface MsgDeleteScriptAmino {
+  address: string;
+  index: string;
+}
+export interface MsgDeleteScriptAminoMsg {
+  type: "/blit.script.MsgDeleteScript";
+  value: MsgDeleteScriptAmino;
+}
+export interface MsgDeleteScriptSDKType {
+  address: string;
+  index: string;
+}
+export interface MsgDeleteScriptResponse {}
+export interface MsgDeleteScriptResponseProtoMsg {
+  type_url: "/blit.script.MsgDeleteScriptResponse";
+  value: Uint8Array;
+}
+export interface MsgDeleteScriptResponseAmino {}
+export interface MsgDeleteScriptResponseAminoMsg {
+  type: "/blit.script.MsgDeleteScriptResponse";
+  value: MsgDeleteScriptResponseAmino;
+}
+export interface MsgDeleteScriptResponseSDKType {}
+/** MsgRun runs a script at a specific address */
+export interface MsgRun {
+  caller_address: string;
+  script_address: string;
+  extra_code: string;
+  function_name: string;
+  kwargs: string;
+  grantee: string;
+  attached_messages: string;
+}
+export interface MsgRunProtoMsg {
+  type_url: "/blit.script.MsgRun";
+  value: Uint8Array;
+}
+/** MsgRun runs a script at a specific address */
+export interface MsgRunAmino {
+  caller_address: string;
+  script_address: string;
+  extra_code: string;
+  function_name: string;
+  kwargs: string;
+  grantee: string;
+  attached_messages: string;
+}
+export interface MsgRunAminoMsg {
+  type: "/blit.script.MsgRun";
+  value: MsgRunAmino;
+}
+/** MsgRun runs a script at a specific address */
+export interface MsgRunSDKType {
+  caller_address: string;
+  script_address: string;
+  extra_code: string;
+  function_name: string;
+  kwargs: string;
+  grantee: string;
+  attached_messages: string;
+}
+export interface MsgRunResponse {
+  response: string;
+}
+export interface MsgRunResponseProtoMsg {
+  type_url: "/blit.script.MsgRunResponse";
+  value: Uint8Array;
+}
+export interface MsgRunResponseAmino {
+  response: string;
+}
+export interface MsgRunResponseAminoMsg {
+  type: "/blit.script.MsgRunResponse";
+  value: MsgRunResponseAmino;
+}
+export interface MsgRunResponseSDKType {
+  response: string;
 }
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
@@ -650,6 +718,359 @@ export const MsgUpdateScriptResponse = {
     return {
       typeUrl: "/blit.script.MsgUpdateScriptResponse",
       value: MsgUpdateScriptResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgDeleteScript(): MsgDeleteScript {
+  return {
+    address: "",
+    index: ""
+  };
+}
+export const MsgDeleteScript = {
+  typeUrl: "/blit.script.MsgDeleteScript",
+  encode(message: MsgDeleteScript, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.address !== "") {
+      writer.uint32(10).string(message.address);
+    }
+    if (message.index !== "") {
+      writer.uint32(18).string(message.index);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteScript {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDeleteScript();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.address = reader.string();
+          break;
+        case 2:
+          message.index = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): MsgDeleteScript {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      index: isSet(object.index) ? String(object.index) : ""
+    };
+  },
+  toJSON(message: MsgDeleteScript): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.index !== undefined && (obj.index = message.index);
+    return obj;
+  },
+  fromPartial(object: Partial<MsgDeleteScript>): MsgDeleteScript {
+    const message = createBaseMsgDeleteScript();
+    message.address = object.address ?? "";
+    message.index = object.index ?? "";
+    return message;
+  },
+  fromAmino(object: MsgDeleteScriptAmino): MsgDeleteScript {
+    return {
+      address: object.address,
+      index: object.index
+    };
+  },
+  toAmino(message: MsgDeleteScript): MsgDeleteScriptAmino {
+    const obj: any = {};
+    obj.address = message.address;
+    obj.index = message.index;
+    return obj;
+  },
+  fromAminoMsg(object: MsgDeleteScriptAminoMsg): MsgDeleteScript {
+    return MsgDeleteScript.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgDeleteScriptProtoMsg): MsgDeleteScript {
+    return MsgDeleteScript.decode(message.value);
+  },
+  toProto(message: MsgDeleteScript): Uint8Array {
+    return MsgDeleteScript.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDeleteScript): MsgDeleteScriptProtoMsg {
+    return {
+      typeUrl: "/blit.script.MsgDeleteScript",
+      value: MsgDeleteScript.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgDeleteScriptResponse(): MsgDeleteScriptResponse {
+  return {};
+}
+export const MsgDeleteScriptResponse = {
+  typeUrl: "/blit.script.MsgDeleteScriptResponse",
+  encode(_: MsgDeleteScriptResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteScriptResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDeleteScriptResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(_: any): MsgDeleteScriptResponse {
+    return {};
+  },
+  toJSON(_: MsgDeleteScriptResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+  fromPartial(_: Partial<MsgDeleteScriptResponse>): MsgDeleteScriptResponse {
+    const message = createBaseMsgDeleteScriptResponse();
+    return message;
+  },
+  fromAmino(_: MsgDeleteScriptResponseAmino): MsgDeleteScriptResponse {
+    return {};
+  },
+  toAmino(_: MsgDeleteScriptResponse): MsgDeleteScriptResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgDeleteScriptResponseAminoMsg): MsgDeleteScriptResponse {
+    return MsgDeleteScriptResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgDeleteScriptResponseProtoMsg): MsgDeleteScriptResponse {
+    return MsgDeleteScriptResponse.decode(message.value);
+  },
+  toProto(message: MsgDeleteScriptResponse): Uint8Array {
+    return MsgDeleteScriptResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDeleteScriptResponse): MsgDeleteScriptResponseProtoMsg {
+    return {
+      typeUrl: "/blit.script.MsgDeleteScriptResponse",
+      value: MsgDeleteScriptResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgRun(): MsgRun {
+  return {
+    caller_address: "",
+    script_address: "",
+    extra_code: "",
+    function_name: "",
+    kwargs: "",
+    grantee: "",
+    attached_messages: ""
+  };
+}
+export const MsgRun = {
+  typeUrl: "/blit.script.MsgRun",
+  encode(message: MsgRun, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.caller_address !== "") {
+      writer.uint32(18).string(message.caller_address);
+    }
+    if (message.script_address !== "") {
+      writer.uint32(26).string(message.script_address);
+    }
+    if (message.extra_code !== "") {
+      writer.uint32(34).string(message.extra_code);
+    }
+    if (message.function_name !== "") {
+      writer.uint32(42).string(message.function_name);
+    }
+    if (message.kwargs !== "") {
+      writer.uint32(50).string(message.kwargs);
+    }
+    if (message.grantee !== "") {
+      writer.uint32(58).string(message.grantee);
+    }
+    if (message.attached_messages !== "") {
+      writer.uint32(10).string(message.attached_messages);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgRun {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgRun();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 2:
+          message.caller_address = reader.string();
+          break;
+        case 3:
+          message.script_address = reader.string();
+          break;
+        case 4:
+          message.extra_code = reader.string();
+          break;
+        case 5:
+          message.function_name = reader.string();
+          break;
+        case 6:
+          message.kwargs = reader.string();
+          break;
+        case 7:
+          message.grantee = reader.string();
+          break;
+        case 1:
+          message.attached_messages = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): MsgRun {
+    return {
+      caller_address: isSet(object.caller_address) ? String(object.caller_address) : "",
+      script_address: isSet(object.script_address) ? String(object.script_address) : "",
+      extra_code: isSet(object.extra_code) ? String(object.extra_code) : "",
+      function_name: isSet(object.function_name) ? String(object.function_name) : "",
+      kwargs: isSet(object.kwargs) ? String(object.kwargs) : "",
+      grantee: isSet(object.grantee) ? String(object.grantee) : "",
+      attached_messages: isSet(object.attached_messages) ? String(object.attached_messages) : ""
+    };
+  },
+  toJSON(message: MsgRun): unknown {
+    const obj: any = {};
+    message.caller_address !== undefined && (obj.caller_address = message.caller_address);
+    message.script_address !== undefined && (obj.script_address = message.script_address);
+    message.extra_code !== undefined && (obj.extra_code = message.extra_code);
+    message.function_name !== undefined && (obj.function_name = message.function_name);
+    message.kwargs !== undefined && (obj.kwargs = message.kwargs);
+    message.grantee !== undefined && (obj.grantee = message.grantee);
+    message.attached_messages !== undefined && (obj.attached_messages = message.attached_messages);
+    return obj;
+  },
+  fromPartial(object: Partial<MsgRun>): MsgRun {
+    const message = createBaseMsgRun();
+    message.caller_address = object.caller_address ?? "";
+    message.script_address = object.script_address ?? "";
+    message.extra_code = object.extra_code ?? "";
+    message.function_name = object.function_name ?? "";
+    message.kwargs = object.kwargs ?? "";
+    message.grantee = object.grantee ?? "";
+    message.attached_messages = object.attached_messages ?? "";
+    return message;
+  },
+  fromAmino(object: MsgRunAmino): MsgRun {
+    return {
+      caller_address: object.caller_address,
+      script_address: object.script_address,
+      extra_code: object.extra_code,
+      function_name: object.function_name,
+      kwargs: object.kwargs,
+      grantee: object.grantee,
+      attached_messages: object.attached_messages
+    };
+  },
+  toAmino(message: MsgRun): MsgRunAmino {
+    const obj: any = {};
+    obj.caller_address = message.caller_address;
+    obj.script_address = message.script_address;
+    obj.extra_code = message.extra_code;
+    obj.function_name = message.function_name;
+    obj.kwargs = message.kwargs;
+    obj.grantee = message.grantee;
+    obj.attached_messages = message.attached_messages;
+    return obj;
+  },
+  fromAminoMsg(object: MsgRunAminoMsg): MsgRun {
+    return MsgRun.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgRunProtoMsg): MsgRun {
+    return MsgRun.decode(message.value);
+  },
+  toProto(message: MsgRun): Uint8Array {
+    return MsgRun.encode(message).finish();
+  },
+  toProtoMsg(message: MsgRun): MsgRunProtoMsg {
+    return {
+      typeUrl: "/blit.script.MsgRun",
+      value: MsgRun.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgRunResponse(): MsgRunResponse {
+  return {
+    response: ""
+  };
+}
+export const MsgRunResponse = {
+  typeUrl: "/blit.script.MsgRunResponse",
+  encode(message: MsgRunResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.response !== "") {
+      writer.uint32(10).string(message.response);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgRunResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgRunResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.response = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): MsgRunResponse {
+    return {
+      response: isSet(object.response) ? String(object.response) : ""
+    };
+  },
+  toJSON(message: MsgRunResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined && (obj.response = message.response);
+    return obj;
+  },
+  fromPartial(object: Partial<MsgRunResponse>): MsgRunResponse {
+    const message = createBaseMsgRunResponse();
+    message.response = object.response ?? "";
+    return message;
+  },
+  fromAmino(object: MsgRunResponseAmino): MsgRunResponse {
+    return {
+      response: object.response
+    };
+  },
+  toAmino(message: MsgRunResponse): MsgRunResponseAmino {
+    const obj: any = {};
+    obj.response = message.response;
+    return obj;
+  },
+  fromAminoMsg(object: MsgRunResponseAminoMsg): MsgRunResponse {
+    return MsgRunResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgRunResponseProtoMsg): MsgRunResponse {
+    return MsgRunResponse.decode(message.value);
+  },
+  toProto(message: MsgRunResponse): Uint8Array {
+    return MsgRunResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgRunResponse): MsgRunResponseProtoMsg {
+    return {
+      typeUrl: "/blit.script.MsgRunResponse",
+      value: MsgRunResponse.encode(message).finish()
     };
   }
 };

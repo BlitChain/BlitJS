@@ -39,13 +39,33 @@ export declare const blitAminoConverters: {
     };
     "/blit.script.MsgRun": {
         aminoType: string;
-        toAmino: (message: import("./script/msgrun").MsgRun) => import("./script/msgrun").MsgRunAmino;
-        fromAmino: (object: import("./script/msgrun").MsgRunAmino) => import("./script/msgrun").MsgRun;
+        toAmino: (message: import("./script/tx").MsgRun) => import("./script/tx").MsgRunAmino;
+        fromAmino: (object: import("./script/tx").MsgRunAmino) => import("./script/tx").MsgRun;
     };
     "/blit.blit.MsgUpdateParams": {
         aminoType: string;
         toAmino: (message: import("./blit/tx").MsgUpdateParams) => import("./blit/tx").MsgUpdateParamsAmino;
         fromAmino: (object: import("./blit/tx").MsgUpdateParamsAmino) => import("./blit/tx").MsgUpdateParams;
+    };
+    "/blit.blit.MsgMintCoins": {
+        aminoType: string;
+        toAmino: (message: import("./blit/tx").MsgMintCoins) => import("./blit/tx").MsgMintCoinsAmino;
+        fromAmino: (object: import("./blit/tx").MsgMintCoinsAmino) => import("./blit/tx").MsgMintCoins;
+    };
+    "/blit.blit.MsgBurnCoins": {
+        aminoType: string;
+        toAmino: (message: import("./blit/tx").MsgBurnCoins) => import("./blit/tx").MsgBurnCoinsAmino;
+        fromAmino: (object: import("./blit/tx").MsgBurnCoinsAmino) => import("./blit/tx").MsgBurnCoins;
+    };
+    "/blit.blit.MsgForceTransferCoins": {
+        aminoType: string;
+        toAmino: (message: import("./blit/tx").MsgForceTransferCoins) => import("./blit/tx").MsgForceTransferCoinsAmino;
+        fromAmino: (object: import("./blit/tx").MsgForceTransferCoinsAmino) => import("./blit/tx").MsgForceTransferCoins;
+    };
+    "/blit.blit.MsgSetDenomMetadata": {
+        aminoType: string;
+        toAmino: (message: import("./blit/tx").MsgSetDenomMetadata) => import("./blit/tx").MsgSetDenomMetadataAmino;
+        fromAmino: (object: import("./blit/tx").MsgSetDenomMetadataAmino) => import("./blit/tx").MsgSetDenomMetadata;
     };
 };
 export declare const blitProtoRegistry: ReadonlyArray<[string, GeneratedType]>;
