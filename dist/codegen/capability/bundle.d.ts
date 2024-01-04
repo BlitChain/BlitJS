@@ -6,7 +6,7 @@ export declare namespace capability {
         GenesisOwners: {
             typeUrl: string;
             encode(message: _17.GenesisOwners, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _17.GenesisOwners;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _17.GenesisOwners;
             fromJSON(object: any): _17.GenesisOwners;
             toJSON(message: _17.GenesisOwners): unknown;
             fromPartial(object: Partial<_17.GenesisOwners>): _17.GenesisOwners;
@@ -20,7 +20,7 @@ export declare namespace capability {
         GenesisState: {
             typeUrl: string;
             encode(message: _17.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _17.GenesisState;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _17.GenesisState;
             fromJSON(object: any): _17.GenesisState;
             toJSON(message: _17.GenesisState): unknown;
             fromPartial(object: Partial<_17.GenesisState>): _17.GenesisState;
@@ -34,7 +34,7 @@ export declare namespace capability {
         Capability: {
             typeUrl: string;
             encode(message: _16.Capability, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.Capability;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _16.Capability;
             fromJSON(object: any): _16.Capability;
             toJSON(message: _16.Capability): unknown;
             fromPartial(object: Partial<_16.Capability>): _16.Capability;
@@ -48,7 +48,7 @@ export declare namespace capability {
         Owner: {
             typeUrl: string;
             encode(message: _16.Owner, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.Owner;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _16.Owner;
             fromJSON(object: any): _16.Owner;
             toJSON(message: _16.Owner): unknown;
             fromPartial(object: Partial<_16.Owner>): _16.Owner;
@@ -62,7 +62,7 @@ export declare namespace capability {
         CapabilityOwners: {
             typeUrl: string;
             encode(message: _16.CapabilityOwners, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _16.CapabilityOwners;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _16.CapabilityOwners;
             fromJSON(object: any): _16.CapabilityOwners;
             toJSON(message: _16.CapabilityOwners): unknown;
             fromPartial(object: Partial<_16.CapabilityOwners>): _16.CapabilityOwners;

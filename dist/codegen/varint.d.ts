@@ -99,7 +99,7 @@ export declare function writeVarint64(val: {
     lo: number;
     hi: number;
 }, buf: Uint8Array | number[], pos: number): void;
-export declare function int64Length(lo: number, hi: number): 1 | 2 | 4 | 3 | 6 | 7 | 10 | 8 | 9 | 5;
+export declare function int64Length(lo: number, hi: number): 6 | 1 | 2 | 4 | 3 | 7 | 10 | 8 | 9 | 5;
 export declare function writeFixed32(val: number, buf: Uint8Array | number[], pos: number): void;
 export declare function writeByte(val: number, buf: Uint8Array | number[], pos: number): void;
 export {};
