@@ -21,7 +21,8 @@ Include BlitJS in your project by adding the following script tag in your HTML f
     fetchPublicEndpoints
   } = experimentalHelpers;
 
-  { rpcEndpoint, restEndpoint } = fetchPublicEndpoints() // Defaults to the current host
+  let { rpcEndpoint, restEndpoint } = await fetchPublicEndpoints() // Defaults to the current host
+
   
   let msgClient = await makeKeplrClient({ rpcEndpoint, restEndpoint });
   let queryClient = await blitjs.blit.ClientFactory.createLCDClient({ restEndpoint });
