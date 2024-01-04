@@ -153,7 +153,7 @@ export declare namespace ibc {
                     MsgRegisterInterchainAccount: {
                         typeUrl: string;
                         encode(message: _137.MsgRegisterInterchainAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _137.MsgRegisterInterchainAccount;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.MsgRegisterInterchainAccount;
                         fromJSON(object: any): _137.MsgRegisterInterchainAccount;
                         toJSON(message: _137.MsgRegisterInterchainAccount): unknown;
                         fromPartial(object: Partial<_137.MsgRegisterInterchainAccount>): _137.MsgRegisterInterchainAccount;
@@ -168,7 +168,7 @@ export declare namespace ibc {
                     MsgRegisterInterchainAccountResponse: {
                         typeUrl: string;
                         encode(message: _137.MsgRegisterInterchainAccountResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _137.MsgRegisterInterchainAccountResponse;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.MsgRegisterInterchainAccountResponse;
                         fromJSON(object: any): _137.MsgRegisterInterchainAccountResponse;
                         toJSON(message: _137.MsgRegisterInterchainAccountResponse): unknown;
                         fromPartial(object: Partial<_137.MsgRegisterInterchainAccountResponse>): _137.MsgRegisterInterchainAccountResponse;
@@ -183,7 +183,7 @@ export declare namespace ibc {
                     MsgSendTx: {
                         typeUrl: string;
                         encode(message: _137.MsgSendTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _137.MsgSendTx;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.MsgSendTx;
                         fromJSON(object: any): _137.MsgSendTx;
                         toJSON(message: _137.MsgSendTx): unknown;
                         fromPartial(object: Partial<_137.MsgSendTx>): _137.MsgSendTx;
@@ -198,7 +198,7 @@ export declare namespace ibc {
                     MsgSendTxResponse: {
                         typeUrl: string;
                         encode(message: _137.MsgSendTxResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _137.MsgSendTxResponse;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.MsgSendTxResponse;
                         fromJSON(object: any): _137.MsgSendTxResponse;
                         toJSON(message: _137.MsgSendTxResponse): unknown;
                         fromPartial(object: Partial<_137.MsgSendTxResponse>): _137.MsgSendTxResponse;
@@ -213,7 +213,7 @@ export declare namespace ibc {
                     MsgUpdateParams: {
                         typeUrl: string;
                         encode(message: _137.MsgUpdateParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _137.MsgUpdateParams;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.MsgUpdateParams;
                         fromJSON(object: any): _137.MsgUpdateParams;
                         toJSON(message: _137.MsgUpdateParams): unknown;
                         fromPartial(object: Partial<_137.MsgUpdateParams>): _137.MsgUpdateParams;
@@ -228,7 +228,7 @@ export declare namespace ibc {
                     MsgUpdateParamsResponse: {
                         typeUrl: string;
                         encode(_: _137.MsgUpdateParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _137.MsgUpdateParamsResponse;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _137.MsgUpdateParamsResponse;
                         fromJSON(_: any): _137.MsgUpdateParamsResponse;
                         toJSON(_: _137.MsgUpdateParamsResponse): unknown;
                         fromPartial(_: Partial<_137.MsgUpdateParamsResponse>): _137.MsgUpdateParamsResponse;
@@ -243,7 +243,7 @@ export declare namespace ibc {
                     QueryInterchainAccountRequest: {
                         typeUrl: string;
                         encode(message: _136.QueryInterchainAccountRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _136.QueryInterchainAccountRequest;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _136.QueryInterchainAccountRequest;
                         fromJSON(object: any): _136.QueryInterchainAccountRequest;
                         toJSON(message: _136.QueryInterchainAccountRequest): unknown;
                         fromPartial(object: Partial<_136.QueryInterchainAccountRequest>): _136.QueryInterchainAccountRequest;
@@ -258,7 +258,7 @@ export declare namespace ibc {
                     QueryInterchainAccountResponse: {
                         typeUrl: string;
                         encode(message: _136.QueryInterchainAccountResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _136.QueryInterchainAccountResponse;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _136.QueryInterchainAccountResponse;
                         fromJSON(object: any): _136.QueryInterchainAccountResponse;
                         toJSON(message: _136.QueryInterchainAccountResponse): unknown;
                         fromPartial(object: Partial<_136.QueryInterchainAccountResponse>): _136.QueryInterchainAccountResponse;
@@ -273,7 +273,7 @@ export declare namespace ibc {
                     QueryParamsRequest: {
                         typeUrl: string;
                         encode(_: _136.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _136.QueryParamsRequest;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _136.QueryParamsRequest;
                         fromJSON(_: any): _136.QueryParamsRequest;
                         toJSON(_: _136.QueryParamsRequest): unknown;
                         fromPartial(_: Partial<_136.QueryParamsRequest>): _136.QueryParamsRequest;
@@ -288,7 +288,7 @@ export declare namespace ibc {
                     QueryParamsResponse: {
                         typeUrl: string;
                         encode(message: _136.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _136.QueryParamsResponse;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _136.QueryParamsResponse;
                         fromJSON(object: any): _136.QueryParamsResponse;
                         toJSON(message: _136.QueryParamsResponse): unknown;
                         fromPartial(object: Partial<_136.QueryParamsResponse>): _136.QueryParamsResponse;
@@ -303,7 +303,7 @@ export declare namespace ibc {
                     Params: {
                         typeUrl: string;
                         encode(message: _135.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _135.Params;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _135.Params;
                         fromJSON(object: any): _135.Params;
                         toJSON(message: _135.Params): unknown;
                         fromPartial(object: Partial<_135.Params>): _135.Params;
@@ -323,7 +323,7 @@ export declare namespace ibc {
                     GenesisState: {
                         typeUrl: string;
                         encode(message: _138.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _138.GenesisState;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _138.GenesisState;
                         fromJSON(object: any): _138.GenesisState;
                         toJSON(message: _138.GenesisState): unknown;
                         fromPartial(object: Partial<_138.GenesisState>): _138.GenesisState;
@@ -338,7 +338,7 @@ export declare namespace ibc {
                     ControllerGenesisState: {
                         typeUrl: string;
                         encode(message: _138.ControllerGenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _138.ControllerGenesisState;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _138.ControllerGenesisState;
                         fromJSON(object: any): _138.ControllerGenesisState;
                         toJSON(message: _138.ControllerGenesisState): unknown;
                         fromPartial(object: Partial<_138.ControllerGenesisState>): _138.ControllerGenesisState;
@@ -353,7 +353,7 @@ export declare namespace ibc {
                     HostGenesisState: {
                         typeUrl: string;
                         encode(message: _138.HostGenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _138.HostGenesisState;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _138.HostGenesisState;
                         fromJSON(object: any): _138.HostGenesisState;
                         toJSON(message: _138.HostGenesisState): unknown;
                         fromPartial(object: Partial<_138.HostGenesisState>): _138.HostGenesisState;
@@ -368,7 +368,7 @@ export declare namespace ibc {
                     ActiveChannel: {
                         typeUrl: string;
                         encode(message: _138.ActiveChannel, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _138.ActiveChannel;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _138.ActiveChannel;
                         fromJSON(object: any): _138.ActiveChannel;
                         toJSON(message: _138.ActiveChannel): unknown;
                         fromPartial(object: Partial<_138.ActiveChannel>): _138.ActiveChannel;
@@ -383,7 +383,7 @@ export declare namespace ibc {
                     RegisteredInterchainAccount: {
                         typeUrl: string;
                         encode(message: _138.RegisteredInterchainAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _138.RegisteredInterchainAccount;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _138.RegisteredInterchainAccount;
                         fromJSON(object: any): _138.RegisteredInterchainAccount;
                         toJSON(message: _138.RegisteredInterchainAccount): unknown;
                         fromPartial(object: Partial<_138.RegisteredInterchainAccount>): _138.RegisteredInterchainAccount;
@@ -448,7 +448,7 @@ export declare namespace ibc {
                     MsgUpdateParams: {
                         typeUrl: string;
                         encode(message: _141.MsgUpdateParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _141.MsgUpdateParams;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.MsgUpdateParams;
                         fromJSON(object: any): _141.MsgUpdateParams;
                         toJSON(message: _141.MsgUpdateParams): unknown;
                         fromPartial(object: Partial<_141.MsgUpdateParams>): _141.MsgUpdateParams;
@@ -463,7 +463,7 @@ export declare namespace ibc {
                     MsgUpdateParamsResponse: {
                         typeUrl: string;
                         encode(_: _141.MsgUpdateParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _141.MsgUpdateParamsResponse;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _141.MsgUpdateParamsResponse;
                         fromJSON(_: any): _141.MsgUpdateParamsResponse;
                         toJSON(_: _141.MsgUpdateParamsResponse): unknown;
                         fromPartial(_: Partial<_141.MsgUpdateParamsResponse>): _141.MsgUpdateParamsResponse;
@@ -478,7 +478,7 @@ export declare namespace ibc {
                     QueryParamsRequest: {
                         typeUrl: string;
                         encode(_: _140.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _140.QueryParamsRequest;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _140.QueryParamsRequest;
                         fromJSON(_: any): _140.QueryParamsRequest;
                         toJSON(_: _140.QueryParamsRequest): unknown;
                         fromPartial(_: Partial<_140.QueryParamsRequest>): _140.QueryParamsRequest;
@@ -493,7 +493,7 @@ export declare namespace ibc {
                     QueryParamsResponse: {
                         typeUrl: string;
                         encode(message: _140.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _140.QueryParamsResponse;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _140.QueryParamsResponse;
                         fromJSON(object: any): _140.QueryParamsResponse;
                         toJSON(message: _140.QueryParamsResponse): unknown;
                         fromPartial(object: Partial<_140.QueryParamsResponse>): _140.QueryParamsResponse;
@@ -508,7 +508,7 @@ export declare namespace ibc {
                     Params: {
                         typeUrl: string;
                         encode(message: _139.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _139.Params;
+                        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _139.Params;
                         fromJSON(object: any): _139.Params;
                         toJSON(message: _139.Params): unknown;
                         fromPartial(object: Partial<_139.Params>): _139.Params;
@@ -532,7 +532,7 @@ export declare namespace ibc {
                 InterchainAccountPacketData: {
                     typeUrl: string;
                     encode(message: _144.InterchainAccountPacketData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _144.InterchainAccountPacketData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _144.InterchainAccountPacketData;
                     fromJSON(object: any): _144.InterchainAccountPacketData;
                     toJSON(message: _144.InterchainAccountPacketData): unknown;
                     fromPartial(object: Partial<_144.InterchainAccountPacketData>): _144.InterchainAccountPacketData;
@@ -547,7 +547,7 @@ export declare namespace ibc {
                 CosmosTx: {
                     typeUrl: string;
                     encode(message: _144.CosmosTx, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _144.CosmosTx;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _144.CosmosTx;
                     fromJSON(object: any): _144.CosmosTx;
                     toJSON(message: _144.CosmosTx): unknown;
                     fromPartial(object: Partial<_144.CosmosTx>): _144.CosmosTx;
@@ -562,7 +562,7 @@ export declare namespace ibc {
                 Metadata: {
                     typeUrl: string;
                     encode(message: _143.Metadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _143.Metadata;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _143.Metadata;
                     fromJSON(object: any): _143.Metadata;
                     toJSON(message: _143.Metadata): unknown;
                     fromPartial(object: Partial<_143.Metadata>): _143.Metadata;
@@ -577,7 +577,7 @@ export declare namespace ibc {
                 InterchainAccount: {
                     typeUrl: string;
                     encode(message: _142.InterchainAccount, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _142.InterchainAccount;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _142.InterchainAccount;
                     fromJSON(object: any): _142.InterchainAccount;
                     toJSON(message: _142.InterchainAccount): unknown;
                     fromPartial(object: Partial<_142.InterchainAccount>): _142.InterchainAccount;
@@ -667,7 +667,7 @@ export declare namespace ibc {
                 MsgTransfer: {
                     typeUrl: string;
                     encode(message: _149.MsgTransfer, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _149.MsgTransfer;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgTransfer;
                     fromJSON(object: any): _149.MsgTransfer;
                     toJSON(message: _149.MsgTransfer): unknown;
                     fromPartial(object: Partial<_149.MsgTransfer>): _149.MsgTransfer;
@@ -682,7 +682,7 @@ export declare namespace ibc {
                 MsgTransferResponse: {
                     typeUrl: string;
                     encode(message: _149.MsgTransferResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _149.MsgTransferResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgTransferResponse;
                     fromJSON(object: any): _149.MsgTransferResponse;
                     toJSON(message: _149.MsgTransferResponse): unknown;
                     fromPartial(object: Partial<_149.MsgTransferResponse>): _149.MsgTransferResponse;
@@ -697,7 +697,7 @@ export declare namespace ibc {
                 MsgUpdateParams: {
                     typeUrl: string;
                     encode(message: _149.MsgUpdateParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _149.MsgUpdateParams;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgUpdateParams;
                     fromJSON(object: any): _149.MsgUpdateParams;
                     toJSON(message: _149.MsgUpdateParams): unknown;
                     fromPartial(object: Partial<_149.MsgUpdateParams>): _149.MsgUpdateParams;
@@ -712,7 +712,7 @@ export declare namespace ibc {
                 MsgUpdateParamsResponse: {
                     typeUrl: string;
                     encode(_: _149.MsgUpdateParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _149.MsgUpdateParamsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _149.MsgUpdateParamsResponse;
                     fromJSON(_: any): _149.MsgUpdateParamsResponse;
                     toJSON(_: _149.MsgUpdateParamsResponse): unknown;
                     fromPartial(_: Partial<_149.MsgUpdateParamsResponse>): _149.MsgUpdateParamsResponse;
@@ -727,7 +727,7 @@ export declare namespace ibc {
                 DenomTrace: {
                     typeUrl: string;
                     encode(message: _148.DenomTrace, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _148.DenomTrace;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.DenomTrace;
                     fromJSON(object: any): _148.DenomTrace;
                     toJSON(message: _148.DenomTrace): unknown;
                     fromPartial(object: Partial<_148.DenomTrace>): _148.DenomTrace;
@@ -742,7 +742,7 @@ export declare namespace ibc {
                 Params: {
                     typeUrl: string;
                     encode(message: _148.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _148.Params;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _148.Params;
                     fromJSON(object: any): _148.Params;
                     toJSON(message: _148.Params): unknown;
                     fromPartial(object: Partial<_148.Params>): _148.Params;
@@ -757,7 +757,7 @@ export declare namespace ibc {
                 QueryDenomTraceRequest: {
                     typeUrl: string;
                     encode(message: _147.QueryDenomTraceRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _147.QueryDenomTraceRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.QueryDenomTraceRequest;
                     fromJSON(object: any): _147.QueryDenomTraceRequest;
                     toJSON(message: _147.QueryDenomTraceRequest): unknown;
                     fromPartial(object: Partial<_147.QueryDenomTraceRequest>): _147.QueryDenomTraceRequest;
@@ -772,7 +772,7 @@ export declare namespace ibc {
                 QueryDenomTraceResponse: {
                     typeUrl: string;
                     encode(message: _147.QueryDenomTraceResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _147.QueryDenomTraceResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.QueryDenomTraceResponse;
                     fromJSON(object: any): _147.QueryDenomTraceResponse;
                     toJSON(message: _147.QueryDenomTraceResponse): unknown;
                     fromPartial(object: Partial<_147.QueryDenomTraceResponse>): _147.QueryDenomTraceResponse;
@@ -787,7 +787,7 @@ export declare namespace ibc {
                 QueryDenomTracesRequest: {
                     typeUrl: string;
                     encode(message: _147.QueryDenomTracesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _147.QueryDenomTracesRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.QueryDenomTracesRequest;
                     fromJSON(object: any): _147.QueryDenomTracesRequest;
                     toJSON(message: _147.QueryDenomTracesRequest): unknown;
                     fromPartial(object: Partial<_147.QueryDenomTracesRequest>): _147.QueryDenomTracesRequest;
@@ -802,7 +802,7 @@ export declare namespace ibc {
                 QueryDenomTracesResponse: {
                     typeUrl: string;
                     encode(message: _147.QueryDenomTracesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _147.QueryDenomTracesResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.QueryDenomTracesResponse;
                     fromJSON(object: any): _147.QueryDenomTracesResponse;
                     toJSON(message: _147.QueryDenomTracesResponse): unknown;
                     fromPartial(object: Partial<_147.QueryDenomTracesResponse>): _147.QueryDenomTracesResponse;
@@ -817,7 +817,7 @@ export declare namespace ibc {
                 QueryParamsRequest: {
                     typeUrl: string;
                     encode(_: _147.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _147.QueryParamsRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.QueryParamsRequest;
                     fromJSON(_: any): _147.QueryParamsRequest;
                     toJSON(_: _147.QueryParamsRequest): unknown;
                     fromPartial(_: Partial<_147.QueryParamsRequest>): _147.QueryParamsRequest;
@@ -832,7 +832,7 @@ export declare namespace ibc {
                 QueryParamsResponse: {
                     typeUrl: string;
                     encode(message: _147.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _147.QueryParamsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.QueryParamsResponse;
                     fromJSON(object: any): _147.QueryParamsResponse;
                     toJSON(message: _147.QueryParamsResponse): unknown;
                     fromPartial(object: Partial<_147.QueryParamsResponse>): _147.QueryParamsResponse;
@@ -847,7 +847,7 @@ export declare namespace ibc {
                 QueryDenomHashRequest: {
                     typeUrl: string;
                     encode(message: _147.QueryDenomHashRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _147.QueryDenomHashRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.QueryDenomHashRequest;
                     fromJSON(object: any): _147.QueryDenomHashRequest;
                     toJSON(message: _147.QueryDenomHashRequest): unknown;
                     fromPartial(object: Partial<_147.QueryDenomHashRequest>): _147.QueryDenomHashRequest;
@@ -862,7 +862,7 @@ export declare namespace ibc {
                 QueryDenomHashResponse: {
                     typeUrl: string;
                     encode(message: _147.QueryDenomHashResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _147.QueryDenomHashResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.QueryDenomHashResponse;
                     fromJSON(object: any): _147.QueryDenomHashResponse;
                     toJSON(message: _147.QueryDenomHashResponse): unknown;
                     fromPartial(object: Partial<_147.QueryDenomHashResponse>): _147.QueryDenomHashResponse;
@@ -877,7 +877,7 @@ export declare namespace ibc {
                 QueryEscrowAddressRequest: {
                     typeUrl: string;
                     encode(message: _147.QueryEscrowAddressRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _147.QueryEscrowAddressRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.QueryEscrowAddressRequest;
                     fromJSON(object: any): _147.QueryEscrowAddressRequest;
                     toJSON(message: _147.QueryEscrowAddressRequest): unknown;
                     fromPartial(object: Partial<_147.QueryEscrowAddressRequest>): _147.QueryEscrowAddressRequest;
@@ -892,7 +892,7 @@ export declare namespace ibc {
                 QueryEscrowAddressResponse: {
                     typeUrl: string;
                     encode(message: _147.QueryEscrowAddressResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _147.QueryEscrowAddressResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.QueryEscrowAddressResponse;
                     fromJSON(object: any): _147.QueryEscrowAddressResponse;
                     toJSON(message: _147.QueryEscrowAddressResponse): unknown;
                     fromPartial(object: Partial<_147.QueryEscrowAddressResponse>): _147.QueryEscrowAddressResponse;
@@ -907,7 +907,7 @@ export declare namespace ibc {
                 QueryTotalEscrowForDenomRequest: {
                     typeUrl: string;
                     encode(message: _147.QueryTotalEscrowForDenomRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _147.QueryTotalEscrowForDenomRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.QueryTotalEscrowForDenomRequest;
                     fromJSON(object: any): _147.QueryTotalEscrowForDenomRequest;
                     toJSON(message: _147.QueryTotalEscrowForDenomRequest): unknown;
                     fromPartial(object: Partial<_147.QueryTotalEscrowForDenomRequest>): _147.QueryTotalEscrowForDenomRequest;
@@ -922,7 +922,7 @@ export declare namespace ibc {
                 QueryTotalEscrowForDenomResponse: {
                     typeUrl: string;
                     encode(message: _147.QueryTotalEscrowForDenomResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _147.QueryTotalEscrowForDenomResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _147.QueryTotalEscrowForDenomResponse;
                     fromJSON(object: any): _147.QueryTotalEscrowForDenomResponse;
                     toJSON(message: _147.QueryTotalEscrowForDenomResponse): unknown;
                     fromPartial(object: Partial<_147.QueryTotalEscrowForDenomResponse>): _147.QueryTotalEscrowForDenomResponse;
@@ -937,7 +937,7 @@ export declare namespace ibc {
                 GenesisState: {
                     typeUrl: string;
                     encode(message: _146.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _146.GenesisState;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _146.GenesisState;
                     fromJSON(object: any): _146.GenesisState;
                     toJSON(message: _146.GenesisState): unknown;
                     fromPartial(object: Partial<_146.GenesisState>): _146.GenesisState;
@@ -952,7 +952,7 @@ export declare namespace ibc {
                 Allocation: {
                     typeUrl: string;
                     encode(message: _145.Allocation, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _145.Allocation;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _145.Allocation;
                     fromJSON(object: any): _145.Allocation;
                     toJSON(message: _145.Allocation): unknown;
                     fromPartial(object: Partial<_145.Allocation>): _145.Allocation;
@@ -967,7 +967,7 @@ export declare namespace ibc {
                 TransferAuthorization: {
                     typeUrl: string;
                     encode(message: _145.TransferAuthorization, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _145.TransferAuthorization;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _145.TransferAuthorization;
                     fromJSON(object: any): _145.TransferAuthorization;
                     toJSON(message: _145.TransferAuthorization): unknown;
                     fromPartial(object: Partial<_145.TransferAuthorization>): _145.TransferAuthorization;
@@ -985,7 +985,7 @@ export declare namespace ibc {
                 FungibleTokenPacketData: {
                     typeUrl: string;
                     encode(message: _150.FungibleTokenPacketData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _150.FungibleTokenPacketData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _150.FungibleTokenPacketData;
                     fromJSON(object: any): _150.FungibleTokenPacketData;
                     toJSON(message: _150.FungibleTokenPacketData): unknown;
                     fromPartial(object: Partial<_150.FungibleTokenPacketData>): _150.FungibleTokenPacketData;
@@ -1282,7 +1282,7 @@ export declare namespace ibc {
                 MsgChannelOpenInit: {
                     typeUrl: string;
                     encode(message: _154.MsgChannelOpenInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgChannelOpenInit;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgChannelOpenInit;
                     fromJSON(object: any): _154.MsgChannelOpenInit;
                     toJSON(message: _154.MsgChannelOpenInit): unknown;
                     fromPartial(object: Partial<_154.MsgChannelOpenInit>): _154.MsgChannelOpenInit;
@@ -1297,7 +1297,7 @@ export declare namespace ibc {
                 MsgChannelOpenInitResponse: {
                     typeUrl: string;
                     encode(message: _154.MsgChannelOpenInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgChannelOpenInitResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgChannelOpenInitResponse;
                     fromJSON(object: any): _154.MsgChannelOpenInitResponse;
                     toJSON(message: _154.MsgChannelOpenInitResponse): unknown;
                     fromPartial(object: Partial<_154.MsgChannelOpenInitResponse>): _154.MsgChannelOpenInitResponse;
@@ -1312,7 +1312,7 @@ export declare namespace ibc {
                 MsgChannelOpenTry: {
                     typeUrl: string;
                     encode(message: _154.MsgChannelOpenTry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgChannelOpenTry;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgChannelOpenTry;
                     fromJSON(object: any): _154.MsgChannelOpenTry;
                     toJSON(message: _154.MsgChannelOpenTry): unknown;
                     fromPartial(object: Partial<_154.MsgChannelOpenTry>): _154.MsgChannelOpenTry;
@@ -1327,7 +1327,7 @@ export declare namespace ibc {
                 MsgChannelOpenTryResponse: {
                     typeUrl: string;
                     encode(message: _154.MsgChannelOpenTryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgChannelOpenTryResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgChannelOpenTryResponse;
                     fromJSON(object: any): _154.MsgChannelOpenTryResponse;
                     toJSON(message: _154.MsgChannelOpenTryResponse): unknown;
                     fromPartial(object: Partial<_154.MsgChannelOpenTryResponse>): _154.MsgChannelOpenTryResponse;
@@ -1342,7 +1342,7 @@ export declare namespace ibc {
                 MsgChannelOpenAck: {
                     typeUrl: string;
                     encode(message: _154.MsgChannelOpenAck, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgChannelOpenAck;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgChannelOpenAck;
                     fromJSON(object: any): _154.MsgChannelOpenAck;
                     toJSON(message: _154.MsgChannelOpenAck): unknown;
                     fromPartial(object: Partial<_154.MsgChannelOpenAck>): _154.MsgChannelOpenAck;
@@ -1357,7 +1357,7 @@ export declare namespace ibc {
                 MsgChannelOpenAckResponse: {
                     typeUrl: string;
                     encode(_: _154.MsgChannelOpenAckResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgChannelOpenAckResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgChannelOpenAckResponse;
                     fromJSON(_: any): _154.MsgChannelOpenAckResponse;
                     toJSON(_: _154.MsgChannelOpenAckResponse): unknown;
                     fromPartial(_: Partial<_154.MsgChannelOpenAckResponse>): _154.MsgChannelOpenAckResponse;
@@ -1372,7 +1372,7 @@ export declare namespace ibc {
                 MsgChannelOpenConfirm: {
                     typeUrl: string;
                     encode(message: _154.MsgChannelOpenConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgChannelOpenConfirm;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgChannelOpenConfirm;
                     fromJSON(object: any): _154.MsgChannelOpenConfirm;
                     toJSON(message: _154.MsgChannelOpenConfirm): unknown;
                     fromPartial(object: Partial<_154.MsgChannelOpenConfirm>): _154.MsgChannelOpenConfirm;
@@ -1387,7 +1387,7 @@ export declare namespace ibc {
                 MsgChannelOpenConfirmResponse: {
                     typeUrl: string;
                     encode(_: _154.MsgChannelOpenConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgChannelOpenConfirmResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgChannelOpenConfirmResponse;
                     fromJSON(_: any): _154.MsgChannelOpenConfirmResponse;
                     toJSON(_: _154.MsgChannelOpenConfirmResponse): unknown;
                     fromPartial(_: Partial<_154.MsgChannelOpenConfirmResponse>): _154.MsgChannelOpenConfirmResponse;
@@ -1402,7 +1402,7 @@ export declare namespace ibc {
                 MsgChannelCloseInit: {
                     typeUrl: string;
                     encode(message: _154.MsgChannelCloseInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgChannelCloseInit;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgChannelCloseInit;
                     fromJSON(object: any): _154.MsgChannelCloseInit;
                     toJSON(message: _154.MsgChannelCloseInit): unknown;
                     fromPartial(object: Partial<_154.MsgChannelCloseInit>): _154.MsgChannelCloseInit;
@@ -1417,7 +1417,7 @@ export declare namespace ibc {
                 MsgChannelCloseInitResponse: {
                     typeUrl: string;
                     encode(_: _154.MsgChannelCloseInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgChannelCloseInitResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgChannelCloseInitResponse;
                     fromJSON(_: any): _154.MsgChannelCloseInitResponse;
                     toJSON(_: _154.MsgChannelCloseInitResponse): unknown;
                     fromPartial(_: Partial<_154.MsgChannelCloseInitResponse>): _154.MsgChannelCloseInitResponse;
@@ -1432,7 +1432,7 @@ export declare namespace ibc {
                 MsgChannelCloseConfirm: {
                     typeUrl: string;
                     encode(message: _154.MsgChannelCloseConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgChannelCloseConfirm;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgChannelCloseConfirm;
                     fromJSON(object: any): _154.MsgChannelCloseConfirm;
                     toJSON(message: _154.MsgChannelCloseConfirm): unknown;
                     fromPartial(object: Partial<_154.MsgChannelCloseConfirm>): _154.MsgChannelCloseConfirm;
@@ -1447,7 +1447,7 @@ export declare namespace ibc {
                 MsgChannelCloseConfirmResponse: {
                     typeUrl: string;
                     encode(_: _154.MsgChannelCloseConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgChannelCloseConfirmResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgChannelCloseConfirmResponse;
                     fromJSON(_: any): _154.MsgChannelCloseConfirmResponse;
                     toJSON(_: _154.MsgChannelCloseConfirmResponse): unknown;
                     fromPartial(_: Partial<_154.MsgChannelCloseConfirmResponse>): _154.MsgChannelCloseConfirmResponse;
@@ -1462,7 +1462,7 @@ export declare namespace ibc {
                 MsgRecvPacket: {
                     typeUrl: string;
                     encode(message: _154.MsgRecvPacket, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgRecvPacket;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgRecvPacket;
                     fromJSON(object: any): _154.MsgRecvPacket;
                     toJSON(message: _154.MsgRecvPacket): unknown;
                     fromPartial(object: Partial<_154.MsgRecvPacket>): _154.MsgRecvPacket;
@@ -1477,7 +1477,7 @@ export declare namespace ibc {
                 MsgRecvPacketResponse: {
                     typeUrl: string;
                     encode(message: _154.MsgRecvPacketResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgRecvPacketResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgRecvPacketResponse;
                     fromJSON(object: any): _154.MsgRecvPacketResponse;
                     toJSON(message: _154.MsgRecvPacketResponse): unknown;
                     fromPartial(object: Partial<_154.MsgRecvPacketResponse>): _154.MsgRecvPacketResponse;
@@ -1492,7 +1492,7 @@ export declare namespace ibc {
                 MsgTimeout: {
                     typeUrl: string;
                     encode(message: _154.MsgTimeout, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgTimeout;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgTimeout;
                     fromJSON(object: any): _154.MsgTimeout;
                     toJSON(message: _154.MsgTimeout): unknown;
                     fromPartial(object: Partial<_154.MsgTimeout>): _154.MsgTimeout;
@@ -1507,7 +1507,7 @@ export declare namespace ibc {
                 MsgTimeoutResponse: {
                     typeUrl: string;
                     encode(message: _154.MsgTimeoutResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgTimeoutResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgTimeoutResponse;
                     fromJSON(object: any): _154.MsgTimeoutResponse;
                     toJSON(message: _154.MsgTimeoutResponse): unknown;
                     fromPartial(object: Partial<_154.MsgTimeoutResponse>): _154.MsgTimeoutResponse;
@@ -1522,7 +1522,7 @@ export declare namespace ibc {
                 MsgTimeoutOnClose: {
                     typeUrl: string;
                     encode(message: _154.MsgTimeoutOnClose, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgTimeoutOnClose;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgTimeoutOnClose;
                     fromJSON(object: any): _154.MsgTimeoutOnClose;
                     toJSON(message: _154.MsgTimeoutOnClose): unknown;
                     fromPartial(object: Partial<_154.MsgTimeoutOnClose>): _154.MsgTimeoutOnClose;
@@ -1537,7 +1537,7 @@ export declare namespace ibc {
                 MsgTimeoutOnCloseResponse: {
                     typeUrl: string;
                     encode(message: _154.MsgTimeoutOnCloseResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgTimeoutOnCloseResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgTimeoutOnCloseResponse;
                     fromJSON(object: any): _154.MsgTimeoutOnCloseResponse;
                     toJSON(message: _154.MsgTimeoutOnCloseResponse): unknown;
                     fromPartial(object: Partial<_154.MsgTimeoutOnCloseResponse>): _154.MsgTimeoutOnCloseResponse;
@@ -1552,7 +1552,7 @@ export declare namespace ibc {
                 MsgAcknowledgement: {
                     typeUrl: string;
                     encode(message: _154.MsgAcknowledgement, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgAcknowledgement;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgAcknowledgement;
                     fromJSON(object: any): _154.MsgAcknowledgement;
                     toJSON(message: _154.MsgAcknowledgement): unknown;
                     fromPartial(object: Partial<_154.MsgAcknowledgement>): _154.MsgAcknowledgement;
@@ -1567,7 +1567,7 @@ export declare namespace ibc {
                 MsgAcknowledgementResponse: {
                     typeUrl: string;
                     encode(message: _154.MsgAcknowledgementResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _154.MsgAcknowledgementResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _154.MsgAcknowledgementResponse;
                     fromJSON(object: any): _154.MsgAcknowledgementResponse;
                     toJSON(message: _154.MsgAcknowledgementResponse): unknown;
                     fromPartial(object: Partial<_154.MsgAcknowledgementResponse>): _154.MsgAcknowledgementResponse;
@@ -1582,7 +1582,7 @@ export declare namespace ibc {
                 QueryChannelRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryChannelRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryChannelRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryChannelRequest;
                     fromJSON(object: any): _153.QueryChannelRequest;
                     toJSON(message: _153.QueryChannelRequest): unknown;
                     fromPartial(object: Partial<_153.QueryChannelRequest>): _153.QueryChannelRequest;
@@ -1597,7 +1597,7 @@ export declare namespace ibc {
                 QueryChannelResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryChannelResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryChannelResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryChannelResponse;
                     fromJSON(object: any): _153.QueryChannelResponse;
                     toJSON(message: _153.QueryChannelResponse): unknown;
                     fromPartial(object: Partial<_153.QueryChannelResponse>): _153.QueryChannelResponse;
@@ -1612,7 +1612,7 @@ export declare namespace ibc {
                 QueryChannelsRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryChannelsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryChannelsRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryChannelsRequest;
                     fromJSON(object: any): _153.QueryChannelsRequest;
                     toJSON(message: _153.QueryChannelsRequest): unknown;
                     fromPartial(object: Partial<_153.QueryChannelsRequest>): _153.QueryChannelsRequest;
@@ -1627,7 +1627,7 @@ export declare namespace ibc {
                 QueryChannelsResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryChannelsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryChannelsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryChannelsResponse;
                     fromJSON(object: any): _153.QueryChannelsResponse;
                     toJSON(message: _153.QueryChannelsResponse): unknown;
                     fromPartial(object: Partial<_153.QueryChannelsResponse>): _153.QueryChannelsResponse;
@@ -1642,7 +1642,7 @@ export declare namespace ibc {
                 QueryConnectionChannelsRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryConnectionChannelsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryConnectionChannelsRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryConnectionChannelsRequest;
                     fromJSON(object: any): _153.QueryConnectionChannelsRequest;
                     toJSON(message: _153.QueryConnectionChannelsRequest): unknown;
                     fromPartial(object: Partial<_153.QueryConnectionChannelsRequest>): _153.QueryConnectionChannelsRequest;
@@ -1657,7 +1657,7 @@ export declare namespace ibc {
                 QueryConnectionChannelsResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryConnectionChannelsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryConnectionChannelsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryConnectionChannelsResponse;
                     fromJSON(object: any): _153.QueryConnectionChannelsResponse;
                     toJSON(message: _153.QueryConnectionChannelsResponse): unknown;
                     fromPartial(object: Partial<_153.QueryConnectionChannelsResponse>): _153.QueryConnectionChannelsResponse;
@@ -1672,7 +1672,7 @@ export declare namespace ibc {
                 QueryChannelClientStateRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryChannelClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryChannelClientStateRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryChannelClientStateRequest;
                     fromJSON(object: any): _153.QueryChannelClientStateRequest;
                     toJSON(message: _153.QueryChannelClientStateRequest): unknown;
                     fromPartial(object: Partial<_153.QueryChannelClientStateRequest>): _153.QueryChannelClientStateRequest;
@@ -1687,7 +1687,7 @@ export declare namespace ibc {
                 QueryChannelClientStateResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryChannelClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryChannelClientStateResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryChannelClientStateResponse;
                     fromJSON(object: any): _153.QueryChannelClientStateResponse;
                     toJSON(message: _153.QueryChannelClientStateResponse): unknown;
                     fromPartial(object: Partial<_153.QueryChannelClientStateResponse>): _153.QueryChannelClientStateResponse;
@@ -1702,7 +1702,7 @@ export declare namespace ibc {
                 QueryChannelConsensusStateRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryChannelConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryChannelConsensusStateRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryChannelConsensusStateRequest;
                     fromJSON(object: any): _153.QueryChannelConsensusStateRequest;
                     toJSON(message: _153.QueryChannelConsensusStateRequest): unknown;
                     fromPartial(object: Partial<_153.QueryChannelConsensusStateRequest>): _153.QueryChannelConsensusStateRequest;
@@ -1717,7 +1717,7 @@ export declare namespace ibc {
                 QueryChannelConsensusStateResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryChannelConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryChannelConsensusStateResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryChannelConsensusStateResponse;
                     fromJSON(object: any): _153.QueryChannelConsensusStateResponse;
                     toJSON(message: _153.QueryChannelConsensusStateResponse): unknown;
                     fromPartial(object: Partial<_153.QueryChannelConsensusStateResponse>): _153.QueryChannelConsensusStateResponse;
@@ -1732,7 +1732,7 @@ export declare namespace ibc {
                 QueryPacketCommitmentRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryPacketCommitmentRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryPacketCommitmentRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryPacketCommitmentRequest;
                     fromJSON(object: any): _153.QueryPacketCommitmentRequest;
                     toJSON(message: _153.QueryPacketCommitmentRequest): unknown;
                     fromPartial(object: Partial<_153.QueryPacketCommitmentRequest>): _153.QueryPacketCommitmentRequest;
@@ -1747,7 +1747,7 @@ export declare namespace ibc {
                 QueryPacketCommitmentResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryPacketCommitmentResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryPacketCommitmentResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryPacketCommitmentResponse;
                     fromJSON(object: any): _153.QueryPacketCommitmentResponse;
                     toJSON(message: _153.QueryPacketCommitmentResponse): unknown;
                     fromPartial(object: Partial<_153.QueryPacketCommitmentResponse>): _153.QueryPacketCommitmentResponse;
@@ -1762,7 +1762,7 @@ export declare namespace ibc {
                 QueryPacketCommitmentsRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryPacketCommitmentsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryPacketCommitmentsRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryPacketCommitmentsRequest;
                     fromJSON(object: any): _153.QueryPacketCommitmentsRequest;
                     toJSON(message: _153.QueryPacketCommitmentsRequest): unknown;
                     fromPartial(object: Partial<_153.QueryPacketCommitmentsRequest>): _153.QueryPacketCommitmentsRequest;
@@ -1777,7 +1777,7 @@ export declare namespace ibc {
                 QueryPacketCommitmentsResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryPacketCommitmentsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryPacketCommitmentsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryPacketCommitmentsResponse;
                     fromJSON(object: any): _153.QueryPacketCommitmentsResponse;
                     toJSON(message: _153.QueryPacketCommitmentsResponse): unknown;
                     fromPartial(object: Partial<_153.QueryPacketCommitmentsResponse>): _153.QueryPacketCommitmentsResponse;
@@ -1792,7 +1792,7 @@ export declare namespace ibc {
                 QueryPacketReceiptRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryPacketReceiptRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryPacketReceiptRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryPacketReceiptRequest;
                     fromJSON(object: any): _153.QueryPacketReceiptRequest;
                     toJSON(message: _153.QueryPacketReceiptRequest): unknown;
                     fromPartial(object: Partial<_153.QueryPacketReceiptRequest>): _153.QueryPacketReceiptRequest;
@@ -1807,7 +1807,7 @@ export declare namespace ibc {
                 QueryPacketReceiptResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryPacketReceiptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryPacketReceiptResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryPacketReceiptResponse;
                     fromJSON(object: any): _153.QueryPacketReceiptResponse;
                     toJSON(message: _153.QueryPacketReceiptResponse): unknown;
                     fromPartial(object: Partial<_153.QueryPacketReceiptResponse>): _153.QueryPacketReceiptResponse;
@@ -1822,7 +1822,7 @@ export declare namespace ibc {
                 QueryPacketAcknowledgementRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryPacketAcknowledgementRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryPacketAcknowledgementRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryPacketAcknowledgementRequest;
                     fromJSON(object: any): _153.QueryPacketAcknowledgementRequest;
                     toJSON(message: _153.QueryPacketAcknowledgementRequest): unknown;
                     fromPartial(object: Partial<_153.QueryPacketAcknowledgementRequest>): _153.QueryPacketAcknowledgementRequest;
@@ -1837,7 +1837,7 @@ export declare namespace ibc {
                 QueryPacketAcknowledgementResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryPacketAcknowledgementResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryPacketAcknowledgementResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryPacketAcknowledgementResponse;
                     fromJSON(object: any): _153.QueryPacketAcknowledgementResponse;
                     toJSON(message: _153.QueryPacketAcknowledgementResponse): unknown;
                     fromPartial(object: Partial<_153.QueryPacketAcknowledgementResponse>): _153.QueryPacketAcknowledgementResponse;
@@ -1852,7 +1852,7 @@ export declare namespace ibc {
                 QueryPacketAcknowledgementsRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryPacketAcknowledgementsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryPacketAcknowledgementsRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryPacketAcknowledgementsRequest;
                     fromJSON(object: any): _153.QueryPacketAcknowledgementsRequest;
                     toJSON(message: _153.QueryPacketAcknowledgementsRequest): unknown;
                     fromPartial(object: Partial<_153.QueryPacketAcknowledgementsRequest>): _153.QueryPacketAcknowledgementsRequest;
@@ -1867,7 +1867,7 @@ export declare namespace ibc {
                 QueryPacketAcknowledgementsResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryPacketAcknowledgementsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryPacketAcknowledgementsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryPacketAcknowledgementsResponse;
                     fromJSON(object: any): _153.QueryPacketAcknowledgementsResponse;
                     toJSON(message: _153.QueryPacketAcknowledgementsResponse): unknown;
                     fromPartial(object: Partial<_153.QueryPacketAcknowledgementsResponse>): _153.QueryPacketAcknowledgementsResponse;
@@ -1882,7 +1882,7 @@ export declare namespace ibc {
                 QueryUnreceivedPacketsRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryUnreceivedPacketsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryUnreceivedPacketsRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryUnreceivedPacketsRequest;
                     fromJSON(object: any): _153.QueryUnreceivedPacketsRequest;
                     toJSON(message: _153.QueryUnreceivedPacketsRequest): unknown;
                     fromPartial(object: Partial<_153.QueryUnreceivedPacketsRequest>): _153.QueryUnreceivedPacketsRequest;
@@ -1897,7 +1897,7 @@ export declare namespace ibc {
                 QueryUnreceivedPacketsResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryUnreceivedPacketsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryUnreceivedPacketsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryUnreceivedPacketsResponse;
                     fromJSON(object: any): _153.QueryUnreceivedPacketsResponse;
                     toJSON(message: _153.QueryUnreceivedPacketsResponse): unknown;
                     fromPartial(object: Partial<_153.QueryUnreceivedPacketsResponse>): _153.QueryUnreceivedPacketsResponse;
@@ -1912,7 +1912,7 @@ export declare namespace ibc {
                 QueryUnreceivedAcksRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryUnreceivedAcksRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryUnreceivedAcksRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryUnreceivedAcksRequest;
                     fromJSON(object: any): _153.QueryUnreceivedAcksRequest;
                     toJSON(message: _153.QueryUnreceivedAcksRequest): unknown;
                     fromPartial(object: Partial<_153.QueryUnreceivedAcksRequest>): _153.QueryUnreceivedAcksRequest;
@@ -1927,7 +1927,7 @@ export declare namespace ibc {
                 QueryUnreceivedAcksResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryUnreceivedAcksResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryUnreceivedAcksResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryUnreceivedAcksResponse;
                     fromJSON(object: any): _153.QueryUnreceivedAcksResponse;
                     toJSON(message: _153.QueryUnreceivedAcksResponse): unknown;
                     fromPartial(object: Partial<_153.QueryUnreceivedAcksResponse>): _153.QueryUnreceivedAcksResponse;
@@ -1942,7 +1942,7 @@ export declare namespace ibc {
                 QueryNextSequenceReceiveRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryNextSequenceReceiveRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryNextSequenceReceiveRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryNextSequenceReceiveRequest;
                     fromJSON(object: any): _153.QueryNextSequenceReceiveRequest;
                     toJSON(message: _153.QueryNextSequenceReceiveRequest): unknown;
                     fromPartial(object: Partial<_153.QueryNextSequenceReceiveRequest>): _153.QueryNextSequenceReceiveRequest;
@@ -1957,7 +1957,7 @@ export declare namespace ibc {
                 QueryNextSequenceReceiveResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryNextSequenceReceiveResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryNextSequenceReceiveResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryNextSequenceReceiveResponse;
                     fromJSON(object: any): _153.QueryNextSequenceReceiveResponse;
                     toJSON(message: _153.QueryNextSequenceReceiveResponse): unknown;
                     fromPartial(object: Partial<_153.QueryNextSequenceReceiveResponse>): _153.QueryNextSequenceReceiveResponse;
@@ -1972,7 +1972,7 @@ export declare namespace ibc {
                 QueryNextSequenceSendRequest: {
                     typeUrl: string;
                     encode(message: _153.QueryNextSequenceSendRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryNextSequenceSendRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryNextSequenceSendRequest;
                     fromJSON(object: any): _153.QueryNextSequenceSendRequest;
                     toJSON(message: _153.QueryNextSequenceSendRequest): unknown;
                     fromPartial(object: Partial<_153.QueryNextSequenceSendRequest>): _153.QueryNextSequenceSendRequest;
@@ -1987,7 +1987,7 @@ export declare namespace ibc {
                 QueryNextSequenceSendResponse: {
                     typeUrl: string;
                     encode(message: _153.QueryNextSequenceSendResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _153.QueryNextSequenceSendResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _153.QueryNextSequenceSendResponse;
                     fromJSON(object: any): _153.QueryNextSequenceSendResponse;
                     toJSON(message: _153.QueryNextSequenceSendResponse): unknown;
                     fromPartial(object: Partial<_153.QueryNextSequenceSendResponse>): _153.QueryNextSequenceSendResponse;
@@ -2002,7 +2002,7 @@ export declare namespace ibc {
                 GenesisState: {
                     typeUrl: string;
                     encode(message: _152.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _152.GenesisState;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _152.GenesisState;
                     fromJSON(object: any): _152.GenesisState;
                     toJSON(message: _152.GenesisState): unknown;
                     fromPartial(object: Partial<_152.GenesisState>): _152.GenesisState;
@@ -2017,7 +2017,7 @@ export declare namespace ibc {
                 PacketSequence: {
                     typeUrl: string;
                     encode(message: _152.PacketSequence, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _152.PacketSequence;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _152.PacketSequence;
                     fromJSON(object: any): _152.PacketSequence;
                     toJSON(message: _152.PacketSequence): unknown;
                     fromPartial(object: Partial<_152.PacketSequence>): _152.PacketSequence;
@@ -2042,7 +2042,7 @@ export declare namespace ibc {
                 Channel: {
                     typeUrl: string;
                     encode(message: _151.Channel, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _151.Channel;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _151.Channel;
                     fromJSON(object: any): _151.Channel;
                     toJSON(message: _151.Channel): unknown;
                     fromPartial(object: Partial<_151.Channel>): _151.Channel;
@@ -2057,7 +2057,7 @@ export declare namespace ibc {
                 IdentifiedChannel: {
                     typeUrl: string;
                     encode(message: _151.IdentifiedChannel, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _151.IdentifiedChannel;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _151.IdentifiedChannel;
                     fromJSON(object: any): _151.IdentifiedChannel;
                     toJSON(message: _151.IdentifiedChannel): unknown;
                     fromPartial(object: Partial<_151.IdentifiedChannel>): _151.IdentifiedChannel;
@@ -2072,7 +2072,7 @@ export declare namespace ibc {
                 Counterparty: {
                     typeUrl: string;
                     encode(message: _151.Counterparty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _151.Counterparty;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _151.Counterparty;
                     fromJSON(object: any): _151.Counterparty;
                     toJSON(message: _151.Counterparty): unknown;
                     fromPartial(object: Partial<_151.Counterparty>): _151.Counterparty;
@@ -2087,7 +2087,7 @@ export declare namespace ibc {
                 Packet: {
                     typeUrl: string;
                     encode(message: _151.Packet, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _151.Packet;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _151.Packet;
                     fromJSON(object: any): _151.Packet;
                     toJSON(message: _151.Packet): unknown;
                     fromPartial(object: Partial<_151.Packet>): _151.Packet;
@@ -2102,7 +2102,7 @@ export declare namespace ibc {
                 PacketState: {
                     typeUrl: string;
                     encode(message: _151.PacketState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _151.PacketState;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _151.PacketState;
                     fromJSON(object: any): _151.PacketState;
                     toJSON(message: _151.PacketState): unknown;
                     fromPartial(object: Partial<_151.PacketState>): _151.PacketState;
@@ -2117,7 +2117,7 @@ export declare namespace ibc {
                 PacketId: {
                     typeUrl: string;
                     encode(message: _151.PacketId, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _151.PacketId;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _151.PacketId;
                     fromJSON(object: any): _151.PacketId;
                     toJSON(message: _151.PacketId): unknown;
                     fromPartial(object: Partial<_151.PacketId>): _151.PacketId;
@@ -2132,7 +2132,7 @@ export declare namespace ibc {
                 Acknowledgement: {
                     typeUrl: string;
                     encode(message: _151.Acknowledgement, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _151.Acknowledgement;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _151.Acknowledgement;
                     fromJSON(object: any): _151.Acknowledgement;
                     toJSON(message: _151.Acknowledgement): unknown;
                     fromPartial(object: Partial<_151.Acknowledgement>): _151.Acknowledgement;
@@ -2147,7 +2147,7 @@ export declare namespace ibc {
                 Timeout: {
                     typeUrl: string;
                     encode(message: _151.Timeout, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _151.Timeout;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _151.Timeout;
                     fromJSON(object: any): _151.Timeout;
                     toJSON(message: _151.Timeout): unknown;
                     fromPartial(object: Partial<_151.Timeout>): _151.Timeout;
@@ -2362,7 +2362,7 @@ export declare namespace ibc {
                 MsgCreateClient: {
                     typeUrl: string;
                     encode(message: _158.MsgCreateClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgCreateClient;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgCreateClient;
                     fromJSON(object: any): _158.MsgCreateClient;
                     toJSON(message: _158.MsgCreateClient): unknown;
                     fromPartial(object: Partial<_158.MsgCreateClient>): _158.MsgCreateClient;
@@ -2377,7 +2377,7 @@ export declare namespace ibc {
                 MsgCreateClientResponse: {
                     typeUrl: string;
                     encode(_: _158.MsgCreateClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgCreateClientResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgCreateClientResponse;
                     fromJSON(_: any): _158.MsgCreateClientResponse;
                     toJSON(_: _158.MsgCreateClientResponse): unknown;
                     fromPartial(_: Partial<_158.MsgCreateClientResponse>): _158.MsgCreateClientResponse;
@@ -2392,7 +2392,7 @@ export declare namespace ibc {
                 MsgUpdateClient: {
                     typeUrl: string;
                     encode(message: _158.MsgUpdateClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgUpdateClient;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgUpdateClient;
                     fromJSON(object: any): _158.MsgUpdateClient;
                     toJSON(message: _158.MsgUpdateClient): unknown;
                     fromPartial(object: Partial<_158.MsgUpdateClient>): _158.MsgUpdateClient;
@@ -2407,7 +2407,7 @@ export declare namespace ibc {
                 MsgUpdateClientResponse: {
                     typeUrl: string;
                     encode(_: _158.MsgUpdateClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgUpdateClientResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgUpdateClientResponse;
                     fromJSON(_: any): _158.MsgUpdateClientResponse;
                     toJSON(_: _158.MsgUpdateClientResponse): unknown;
                     fromPartial(_: Partial<_158.MsgUpdateClientResponse>): _158.MsgUpdateClientResponse;
@@ -2422,7 +2422,7 @@ export declare namespace ibc {
                 MsgUpgradeClient: {
                     typeUrl: string;
                     encode(message: _158.MsgUpgradeClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgUpgradeClient;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgUpgradeClient;
                     fromJSON(object: any): _158.MsgUpgradeClient;
                     toJSON(message: _158.MsgUpgradeClient): unknown;
                     fromPartial(object: Partial<_158.MsgUpgradeClient>): _158.MsgUpgradeClient;
@@ -2437,7 +2437,7 @@ export declare namespace ibc {
                 MsgUpgradeClientResponse: {
                     typeUrl: string;
                     encode(_: _158.MsgUpgradeClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgUpgradeClientResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgUpgradeClientResponse;
                     fromJSON(_: any): _158.MsgUpgradeClientResponse;
                     toJSON(_: _158.MsgUpgradeClientResponse): unknown;
                     fromPartial(_: Partial<_158.MsgUpgradeClientResponse>): _158.MsgUpgradeClientResponse;
@@ -2452,7 +2452,7 @@ export declare namespace ibc {
                 MsgSubmitMisbehaviour: {
                     typeUrl: string;
                     encode(message: _158.MsgSubmitMisbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgSubmitMisbehaviour;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgSubmitMisbehaviour;
                     fromJSON(object: any): _158.MsgSubmitMisbehaviour;
                     toJSON(message: _158.MsgSubmitMisbehaviour): unknown;
                     fromPartial(object: Partial<_158.MsgSubmitMisbehaviour>): _158.MsgSubmitMisbehaviour;
@@ -2467,7 +2467,7 @@ export declare namespace ibc {
                 MsgSubmitMisbehaviourResponse: {
                     typeUrl: string;
                     encode(_: _158.MsgSubmitMisbehaviourResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgSubmitMisbehaviourResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgSubmitMisbehaviourResponse;
                     fromJSON(_: any): _158.MsgSubmitMisbehaviourResponse;
                     toJSON(_: _158.MsgSubmitMisbehaviourResponse): unknown;
                     fromPartial(_: Partial<_158.MsgSubmitMisbehaviourResponse>): _158.MsgSubmitMisbehaviourResponse;
@@ -2482,7 +2482,7 @@ export declare namespace ibc {
                 MsgRecoverClient: {
                     typeUrl: string;
                     encode(message: _158.MsgRecoverClient, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgRecoverClient;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgRecoverClient;
                     fromJSON(object: any): _158.MsgRecoverClient;
                     toJSON(message: _158.MsgRecoverClient): unknown;
                     fromPartial(object: Partial<_158.MsgRecoverClient>): _158.MsgRecoverClient;
@@ -2497,7 +2497,7 @@ export declare namespace ibc {
                 MsgRecoverClientResponse: {
                     typeUrl: string;
                     encode(_: _158.MsgRecoverClientResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgRecoverClientResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgRecoverClientResponse;
                     fromJSON(_: any): _158.MsgRecoverClientResponse;
                     toJSON(_: _158.MsgRecoverClientResponse): unknown;
                     fromPartial(_: Partial<_158.MsgRecoverClientResponse>): _158.MsgRecoverClientResponse;
@@ -2512,7 +2512,7 @@ export declare namespace ibc {
                 MsgIBCSoftwareUpgrade: {
                     typeUrl: string;
                     encode(message: _158.MsgIBCSoftwareUpgrade, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgIBCSoftwareUpgrade;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgIBCSoftwareUpgrade;
                     fromJSON(object: any): _158.MsgIBCSoftwareUpgrade;
                     toJSON(message: _158.MsgIBCSoftwareUpgrade): unknown;
                     fromPartial(object: Partial<_158.MsgIBCSoftwareUpgrade>): _158.MsgIBCSoftwareUpgrade;
@@ -2527,7 +2527,7 @@ export declare namespace ibc {
                 MsgIBCSoftwareUpgradeResponse: {
                     typeUrl: string;
                     encode(_: _158.MsgIBCSoftwareUpgradeResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgIBCSoftwareUpgradeResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgIBCSoftwareUpgradeResponse;
                     fromJSON(_: any): _158.MsgIBCSoftwareUpgradeResponse;
                     toJSON(_: _158.MsgIBCSoftwareUpgradeResponse): unknown;
                     fromPartial(_: Partial<_158.MsgIBCSoftwareUpgradeResponse>): _158.MsgIBCSoftwareUpgradeResponse;
@@ -2542,7 +2542,7 @@ export declare namespace ibc {
                 MsgUpdateParams: {
                     typeUrl: string;
                     encode(message: _158.MsgUpdateParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgUpdateParams;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgUpdateParams;
                     fromJSON(object: any): _158.MsgUpdateParams;
                     toJSON(message: _158.MsgUpdateParams): unknown;
                     fromPartial(object: Partial<_158.MsgUpdateParams>): _158.MsgUpdateParams;
@@ -2557,7 +2557,7 @@ export declare namespace ibc {
                 MsgUpdateParamsResponse: {
                     typeUrl: string;
                     encode(_: _158.MsgUpdateParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _158.MsgUpdateParamsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _158.MsgUpdateParamsResponse;
                     fromJSON(_: any): _158.MsgUpdateParamsResponse;
                     toJSON(_: _158.MsgUpdateParamsResponse): unknown;
                     fromPartial(_: Partial<_158.MsgUpdateParamsResponse>): _158.MsgUpdateParamsResponse;
@@ -2572,7 +2572,7 @@ export declare namespace ibc {
                 QueryClientStateRequest: {
                     typeUrl: string;
                     encode(message: _157.QueryClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryClientStateRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryClientStateRequest;
                     fromJSON(object: any): _157.QueryClientStateRequest;
                     toJSON(message: _157.QueryClientStateRequest): unknown;
                     fromPartial(object: Partial<_157.QueryClientStateRequest>): _157.QueryClientStateRequest;
@@ -2587,7 +2587,7 @@ export declare namespace ibc {
                 QueryClientStateResponse: {
                     typeUrl: string;
                     encode(message: _157.QueryClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryClientStateResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryClientStateResponse;
                     fromJSON(object: any): _157.QueryClientStateResponse;
                     toJSON(message: _157.QueryClientStateResponse): unknown;
                     fromPartial(object: Partial<_157.QueryClientStateResponse>): _157.QueryClientStateResponse;
@@ -2602,7 +2602,7 @@ export declare namespace ibc {
                 QueryClientStatesRequest: {
                     typeUrl: string;
                     encode(message: _157.QueryClientStatesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryClientStatesRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryClientStatesRequest;
                     fromJSON(object: any): _157.QueryClientStatesRequest;
                     toJSON(message: _157.QueryClientStatesRequest): unknown;
                     fromPartial(object: Partial<_157.QueryClientStatesRequest>): _157.QueryClientStatesRequest;
@@ -2617,7 +2617,7 @@ export declare namespace ibc {
                 QueryClientStatesResponse: {
                     typeUrl: string;
                     encode(message: _157.QueryClientStatesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryClientStatesResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryClientStatesResponse;
                     fromJSON(object: any): _157.QueryClientStatesResponse;
                     toJSON(message: _157.QueryClientStatesResponse): unknown;
                     fromPartial(object: Partial<_157.QueryClientStatesResponse>): _157.QueryClientStatesResponse;
@@ -2632,7 +2632,7 @@ export declare namespace ibc {
                 QueryConsensusStateRequest: {
                     typeUrl: string;
                     encode(message: _157.QueryConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryConsensusStateRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryConsensusStateRequest;
                     fromJSON(object: any): _157.QueryConsensusStateRequest;
                     toJSON(message: _157.QueryConsensusStateRequest): unknown;
                     fromPartial(object: Partial<_157.QueryConsensusStateRequest>): _157.QueryConsensusStateRequest;
@@ -2647,7 +2647,7 @@ export declare namespace ibc {
                 QueryConsensusStateResponse: {
                     typeUrl: string;
                     encode(message: _157.QueryConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryConsensusStateResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryConsensusStateResponse;
                     fromJSON(object: any): _157.QueryConsensusStateResponse;
                     toJSON(message: _157.QueryConsensusStateResponse): unknown;
                     fromPartial(object: Partial<_157.QueryConsensusStateResponse>): _157.QueryConsensusStateResponse;
@@ -2662,7 +2662,7 @@ export declare namespace ibc {
                 QueryConsensusStatesRequest: {
                     typeUrl: string;
                     encode(message: _157.QueryConsensusStatesRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryConsensusStatesRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryConsensusStatesRequest;
                     fromJSON(object: any): _157.QueryConsensusStatesRequest;
                     toJSON(message: _157.QueryConsensusStatesRequest): unknown;
                     fromPartial(object: Partial<_157.QueryConsensusStatesRequest>): _157.QueryConsensusStatesRequest;
@@ -2677,7 +2677,7 @@ export declare namespace ibc {
                 QueryConsensusStatesResponse: {
                     typeUrl: string;
                     encode(message: _157.QueryConsensusStatesResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryConsensusStatesResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryConsensusStatesResponse;
                     fromJSON(object: any): _157.QueryConsensusStatesResponse;
                     toJSON(message: _157.QueryConsensusStatesResponse): unknown;
                     fromPartial(object: Partial<_157.QueryConsensusStatesResponse>): _157.QueryConsensusStatesResponse;
@@ -2692,7 +2692,7 @@ export declare namespace ibc {
                 QueryConsensusStateHeightsRequest: {
                     typeUrl: string;
                     encode(message: _157.QueryConsensusStateHeightsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryConsensusStateHeightsRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryConsensusStateHeightsRequest;
                     fromJSON(object: any): _157.QueryConsensusStateHeightsRequest;
                     toJSON(message: _157.QueryConsensusStateHeightsRequest): unknown;
                     fromPartial(object: Partial<_157.QueryConsensusStateHeightsRequest>): _157.QueryConsensusStateHeightsRequest;
@@ -2707,7 +2707,7 @@ export declare namespace ibc {
                 QueryConsensusStateHeightsResponse: {
                     typeUrl: string;
                     encode(message: _157.QueryConsensusStateHeightsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryConsensusStateHeightsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryConsensusStateHeightsResponse;
                     fromJSON(object: any): _157.QueryConsensusStateHeightsResponse;
                     toJSON(message: _157.QueryConsensusStateHeightsResponse): unknown;
                     fromPartial(object: Partial<_157.QueryConsensusStateHeightsResponse>): _157.QueryConsensusStateHeightsResponse;
@@ -2722,7 +2722,7 @@ export declare namespace ibc {
                 QueryClientStatusRequest: {
                     typeUrl: string;
                     encode(message: _157.QueryClientStatusRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryClientStatusRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryClientStatusRequest;
                     fromJSON(object: any): _157.QueryClientStatusRequest;
                     toJSON(message: _157.QueryClientStatusRequest): unknown;
                     fromPartial(object: Partial<_157.QueryClientStatusRequest>): _157.QueryClientStatusRequest;
@@ -2737,7 +2737,7 @@ export declare namespace ibc {
                 QueryClientStatusResponse: {
                     typeUrl: string;
                     encode(message: _157.QueryClientStatusResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryClientStatusResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryClientStatusResponse;
                     fromJSON(object: any): _157.QueryClientStatusResponse;
                     toJSON(message: _157.QueryClientStatusResponse): unknown;
                     fromPartial(object: Partial<_157.QueryClientStatusResponse>): _157.QueryClientStatusResponse;
@@ -2752,7 +2752,7 @@ export declare namespace ibc {
                 QueryClientParamsRequest: {
                     typeUrl: string;
                     encode(_: _157.QueryClientParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryClientParamsRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryClientParamsRequest;
                     fromJSON(_: any): _157.QueryClientParamsRequest;
                     toJSON(_: _157.QueryClientParamsRequest): unknown;
                     fromPartial(_: Partial<_157.QueryClientParamsRequest>): _157.QueryClientParamsRequest;
@@ -2767,7 +2767,7 @@ export declare namespace ibc {
                 QueryClientParamsResponse: {
                     typeUrl: string;
                     encode(message: _157.QueryClientParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryClientParamsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryClientParamsResponse;
                     fromJSON(object: any): _157.QueryClientParamsResponse;
                     toJSON(message: _157.QueryClientParamsResponse): unknown;
                     fromPartial(object: Partial<_157.QueryClientParamsResponse>): _157.QueryClientParamsResponse;
@@ -2782,7 +2782,7 @@ export declare namespace ibc {
                 QueryUpgradedClientStateRequest: {
                     typeUrl: string;
                     encode(_: _157.QueryUpgradedClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryUpgradedClientStateRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryUpgradedClientStateRequest;
                     fromJSON(_: any): _157.QueryUpgradedClientStateRequest;
                     toJSON(_: _157.QueryUpgradedClientStateRequest): unknown;
                     fromPartial(_: Partial<_157.QueryUpgradedClientStateRequest>): _157.QueryUpgradedClientStateRequest;
@@ -2797,7 +2797,7 @@ export declare namespace ibc {
                 QueryUpgradedClientStateResponse: {
                     typeUrl: string;
                     encode(message: _157.QueryUpgradedClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryUpgradedClientStateResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryUpgradedClientStateResponse;
                     fromJSON(object: any): _157.QueryUpgradedClientStateResponse;
                     toJSON(message: _157.QueryUpgradedClientStateResponse): unknown;
                     fromPartial(object: Partial<_157.QueryUpgradedClientStateResponse>): _157.QueryUpgradedClientStateResponse;
@@ -2812,7 +2812,7 @@ export declare namespace ibc {
                 QueryUpgradedConsensusStateRequest: {
                     typeUrl: string;
                     encode(_: _157.QueryUpgradedConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryUpgradedConsensusStateRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryUpgradedConsensusStateRequest;
                     fromJSON(_: any): _157.QueryUpgradedConsensusStateRequest;
                     toJSON(_: _157.QueryUpgradedConsensusStateRequest): unknown;
                     fromPartial(_: Partial<_157.QueryUpgradedConsensusStateRequest>): _157.QueryUpgradedConsensusStateRequest;
@@ -2827,7 +2827,7 @@ export declare namespace ibc {
                 QueryUpgradedConsensusStateResponse: {
                     typeUrl: string;
                     encode(message: _157.QueryUpgradedConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _157.QueryUpgradedConsensusStateResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _157.QueryUpgradedConsensusStateResponse;
                     fromJSON(object: any): _157.QueryUpgradedConsensusStateResponse;
                     toJSON(message: _157.QueryUpgradedConsensusStateResponse): unknown;
                     fromPartial(object: Partial<_157.QueryUpgradedConsensusStateResponse>): _157.QueryUpgradedConsensusStateResponse;
@@ -2842,7 +2842,7 @@ export declare namespace ibc {
                 GenesisState: {
                     typeUrl: string;
                     encode(message: _156.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _156.GenesisState;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _156.GenesisState;
                     fromJSON(object: any): _156.GenesisState;
                     toJSON(message: _156.GenesisState): unknown;
                     fromPartial(object: Partial<_156.GenesisState>): _156.GenesisState;
@@ -2857,7 +2857,7 @@ export declare namespace ibc {
                 GenesisMetadata: {
                     typeUrl: string;
                     encode(message: _156.GenesisMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _156.GenesisMetadata;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _156.GenesisMetadata;
                     fromJSON(object: any): _156.GenesisMetadata;
                     toJSON(message: _156.GenesisMetadata): unknown;
                     fromPartial(object: Partial<_156.GenesisMetadata>): _156.GenesisMetadata;
@@ -2872,7 +2872,7 @@ export declare namespace ibc {
                 IdentifiedGenesisMetadata: {
                     typeUrl: string;
                     encode(message: _156.IdentifiedGenesisMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _156.IdentifiedGenesisMetadata;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _156.IdentifiedGenesisMetadata;
                     fromJSON(object: any): _156.IdentifiedGenesisMetadata;
                     toJSON(message: _156.IdentifiedGenesisMetadata): unknown;
                     fromPartial(object: Partial<_156.IdentifiedGenesisMetadata>): _156.IdentifiedGenesisMetadata;
@@ -2887,7 +2887,7 @@ export declare namespace ibc {
                 IdentifiedClientState: {
                     typeUrl: string;
                     encode(message: _155.IdentifiedClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _155.IdentifiedClientState;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.IdentifiedClientState;
                     fromJSON(object: any): _155.IdentifiedClientState;
                     toJSON(message: _155.IdentifiedClientState): unknown;
                     fromPartial(object: Partial<_155.IdentifiedClientState>): _155.IdentifiedClientState;
@@ -2902,7 +2902,7 @@ export declare namespace ibc {
                 ConsensusStateWithHeight: {
                     typeUrl: string;
                     encode(message: _155.ConsensusStateWithHeight, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _155.ConsensusStateWithHeight;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.ConsensusStateWithHeight;
                     fromJSON(object: any): _155.ConsensusStateWithHeight;
                     toJSON(message: _155.ConsensusStateWithHeight): unknown;
                     fromPartial(object: Partial<_155.ConsensusStateWithHeight>): _155.ConsensusStateWithHeight;
@@ -2917,7 +2917,7 @@ export declare namespace ibc {
                 ClientConsensusStates: {
                     typeUrl: string;
                     encode(message: _155.ClientConsensusStates, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _155.ClientConsensusStates;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.ClientConsensusStates;
                     fromJSON(object: any): _155.ClientConsensusStates;
                     toJSON(message: _155.ClientConsensusStates): unknown;
                     fromPartial(object: Partial<_155.ClientConsensusStates>): _155.ClientConsensusStates;
@@ -2932,7 +2932,7 @@ export declare namespace ibc {
                 Height: {
                     typeUrl: string;
                     encode(message: _155.Height, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _155.Height;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.Height;
                     fromJSON(object: any): _155.Height;
                     toJSON(message: _155.Height): unknown;
                     fromPartial(object: Partial<_155.Height>): _155.Height;
@@ -2947,7 +2947,7 @@ export declare namespace ibc {
                 Params: {
                     typeUrl: string;
                     encode(message: _155.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _155.Params;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.Params;
                     fromJSON(object: any): _155.Params;
                     toJSON(message: _155.Params): unknown;
                     fromPartial(object: Partial<_155.Params>): _155.Params;
@@ -2962,7 +2962,7 @@ export declare namespace ibc {
                 ClientUpdateProposal: {
                     typeUrl: string;
                     encode(message: _155.ClientUpdateProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _155.ClientUpdateProposal;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.ClientUpdateProposal;
                     fromJSON(object: any): _155.ClientUpdateProposal;
                     toJSON(message: _155.ClientUpdateProposal): unknown;
                     fromPartial(object: Partial<_155.ClientUpdateProposal>): _155.ClientUpdateProposal;
@@ -2977,7 +2977,7 @@ export declare namespace ibc {
                 UpgradeProposal: {
                     typeUrl: string;
                     encode(message: _155.UpgradeProposal, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _155.UpgradeProposal;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _155.UpgradeProposal;
                     fromJSON(object: any): _155.UpgradeProposal;
                     toJSON(message: _155.UpgradeProposal): unknown;
                     fromPartial(object: Partial<_155.UpgradeProposal>): _155.UpgradeProposal;
@@ -2997,7 +2997,7 @@ export declare namespace ibc {
                 MerkleRoot: {
                     typeUrl: string;
                     encode(message: _159.MerkleRoot, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _159.MerkleRoot;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _159.MerkleRoot;
                     fromJSON(object: any): _159.MerkleRoot;
                     toJSON(message: _159.MerkleRoot): unknown;
                     fromPartial(object: Partial<_159.MerkleRoot>): _159.MerkleRoot;
@@ -3012,7 +3012,7 @@ export declare namespace ibc {
                 MerklePrefix: {
                     typeUrl: string;
                     encode(message: _159.MerklePrefix, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _159.MerklePrefix;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _159.MerklePrefix;
                     fromJSON(object: any): _159.MerklePrefix;
                     toJSON(message: _159.MerklePrefix): unknown;
                     fromPartial(object: Partial<_159.MerklePrefix>): _159.MerklePrefix;
@@ -3027,7 +3027,7 @@ export declare namespace ibc {
                 MerklePath: {
                     typeUrl: string;
                     encode(message: _159.MerklePath, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _159.MerklePath;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _159.MerklePath;
                     fromJSON(object: any): _159.MerklePath;
                     toJSON(message: _159.MerklePath): unknown;
                     fromPartial(object: Partial<_159.MerklePath>): _159.MerklePath;
@@ -3042,7 +3042,7 @@ export declare namespace ibc {
                 MerkleProof: {
                     typeUrl: string;
                     encode(message: _159.MerkleProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _159.MerkleProof;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _159.MerkleProof;
                     fromJSON(object: any): _159.MerkleProof;
                     toJSON(message: _159.MerkleProof): unknown;
                     fromPartial(object: Partial<_159.MerkleProof>): _159.MerkleProof;
@@ -3207,7 +3207,7 @@ export declare namespace ibc {
                 MsgConnectionOpenInit: {
                     typeUrl: string;
                     encode(message: _163.MsgConnectionOpenInit, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _163.MsgConnectionOpenInit;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _163.MsgConnectionOpenInit;
                     fromJSON(object: any): _163.MsgConnectionOpenInit;
                     toJSON(message: _163.MsgConnectionOpenInit): unknown;
                     fromPartial(object: Partial<_163.MsgConnectionOpenInit>): _163.MsgConnectionOpenInit;
@@ -3222,7 +3222,7 @@ export declare namespace ibc {
                 MsgConnectionOpenInitResponse: {
                     typeUrl: string;
                     encode(_: _163.MsgConnectionOpenInitResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _163.MsgConnectionOpenInitResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _163.MsgConnectionOpenInitResponse;
                     fromJSON(_: any): _163.MsgConnectionOpenInitResponse;
                     toJSON(_: _163.MsgConnectionOpenInitResponse): unknown;
                     fromPartial(_: Partial<_163.MsgConnectionOpenInitResponse>): _163.MsgConnectionOpenInitResponse;
@@ -3237,7 +3237,7 @@ export declare namespace ibc {
                 MsgConnectionOpenTry: {
                     typeUrl: string;
                     encode(message: _163.MsgConnectionOpenTry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _163.MsgConnectionOpenTry;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _163.MsgConnectionOpenTry;
                     fromJSON(object: any): _163.MsgConnectionOpenTry;
                     toJSON(message: _163.MsgConnectionOpenTry): unknown;
                     fromPartial(object: Partial<_163.MsgConnectionOpenTry>): _163.MsgConnectionOpenTry;
@@ -3252,7 +3252,7 @@ export declare namespace ibc {
                 MsgConnectionOpenTryResponse: {
                     typeUrl: string;
                     encode(_: _163.MsgConnectionOpenTryResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _163.MsgConnectionOpenTryResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _163.MsgConnectionOpenTryResponse;
                     fromJSON(_: any): _163.MsgConnectionOpenTryResponse;
                     toJSON(_: _163.MsgConnectionOpenTryResponse): unknown;
                     fromPartial(_: Partial<_163.MsgConnectionOpenTryResponse>): _163.MsgConnectionOpenTryResponse;
@@ -3267,7 +3267,7 @@ export declare namespace ibc {
                 MsgConnectionOpenAck: {
                     typeUrl: string;
                     encode(message: _163.MsgConnectionOpenAck, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _163.MsgConnectionOpenAck;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _163.MsgConnectionOpenAck;
                     fromJSON(object: any): _163.MsgConnectionOpenAck;
                     toJSON(message: _163.MsgConnectionOpenAck): unknown;
                     fromPartial(object: Partial<_163.MsgConnectionOpenAck>): _163.MsgConnectionOpenAck;
@@ -3282,7 +3282,7 @@ export declare namespace ibc {
                 MsgConnectionOpenAckResponse: {
                     typeUrl: string;
                     encode(_: _163.MsgConnectionOpenAckResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _163.MsgConnectionOpenAckResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _163.MsgConnectionOpenAckResponse;
                     fromJSON(_: any): _163.MsgConnectionOpenAckResponse;
                     toJSON(_: _163.MsgConnectionOpenAckResponse): unknown;
                     fromPartial(_: Partial<_163.MsgConnectionOpenAckResponse>): _163.MsgConnectionOpenAckResponse;
@@ -3297,7 +3297,7 @@ export declare namespace ibc {
                 MsgConnectionOpenConfirm: {
                     typeUrl: string;
                     encode(message: _163.MsgConnectionOpenConfirm, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _163.MsgConnectionOpenConfirm;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _163.MsgConnectionOpenConfirm;
                     fromJSON(object: any): _163.MsgConnectionOpenConfirm;
                     toJSON(message: _163.MsgConnectionOpenConfirm): unknown;
                     fromPartial(object: Partial<_163.MsgConnectionOpenConfirm>): _163.MsgConnectionOpenConfirm;
@@ -3312,7 +3312,7 @@ export declare namespace ibc {
                 MsgConnectionOpenConfirmResponse: {
                     typeUrl: string;
                     encode(_: _163.MsgConnectionOpenConfirmResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _163.MsgConnectionOpenConfirmResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _163.MsgConnectionOpenConfirmResponse;
                     fromJSON(_: any): _163.MsgConnectionOpenConfirmResponse;
                     toJSON(_: _163.MsgConnectionOpenConfirmResponse): unknown;
                     fromPartial(_: Partial<_163.MsgConnectionOpenConfirmResponse>): _163.MsgConnectionOpenConfirmResponse;
@@ -3327,7 +3327,7 @@ export declare namespace ibc {
                 MsgUpdateParams: {
                     typeUrl: string;
                     encode(message: _163.MsgUpdateParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _163.MsgUpdateParams;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _163.MsgUpdateParams;
                     fromJSON(object: any): _163.MsgUpdateParams;
                     toJSON(message: _163.MsgUpdateParams): unknown;
                     fromPartial(object: Partial<_163.MsgUpdateParams>): _163.MsgUpdateParams;
@@ -3342,7 +3342,7 @@ export declare namespace ibc {
                 MsgUpdateParamsResponse: {
                     typeUrl: string;
                     encode(_: _163.MsgUpdateParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _163.MsgUpdateParamsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _163.MsgUpdateParamsResponse;
                     fromJSON(_: any): _163.MsgUpdateParamsResponse;
                     toJSON(_: _163.MsgUpdateParamsResponse): unknown;
                     fromPartial(_: Partial<_163.MsgUpdateParamsResponse>): _163.MsgUpdateParamsResponse;
@@ -3357,7 +3357,7 @@ export declare namespace ibc {
                 QueryConnectionRequest: {
                     typeUrl: string;
                     encode(message: _162.QueryConnectionRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _162.QueryConnectionRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.QueryConnectionRequest;
                     fromJSON(object: any): _162.QueryConnectionRequest;
                     toJSON(message: _162.QueryConnectionRequest): unknown;
                     fromPartial(object: Partial<_162.QueryConnectionRequest>): _162.QueryConnectionRequest;
@@ -3372,7 +3372,7 @@ export declare namespace ibc {
                 QueryConnectionResponse: {
                     typeUrl: string;
                     encode(message: _162.QueryConnectionResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _162.QueryConnectionResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.QueryConnectionResponse;
                     fromJSON(object: any): _162.QueryConnectionResponse;
                     toJSON(message: _162.QueryConnectionResponse): unknown;
                     fromPartial(object: Partial<_162.QueryConnectionResponse>): _162.QueryConnectionResponse;
@@ -3387,7 +3387,7 @@ export declare namespace ibc {
                 QueryConnectionsRequest: {
                     typeUrl: string;
                     encode(message: _162.QueryConnectionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _162.QueryConnectionsRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.QueryConnectionsRequest;
                     fromJSON(object: any): _162.QueryConnectionsRequest;
                     toJSON(message: _162.QueryConnectionsRequest): unknown;
                     fromPartial(object: Partial<_162.QueryConnectionsRequest>): _162.QueryConnectionsRequest;
@@ -3402,7 +3402,7 @@ export declare namespace ibc {
                 QueryConnectionsResponse: {
                     typeUrl: string;
                     encode(message: _162.QueryConnectionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _162.QueryConnectionsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.QueryConnectionsResponse;
                     fromJSON(object: any): _162.QueryConnectionsResponse;
                     toJSON(message: _162.QueryConnectionsResponse): unknown;
                     fromPartial(object: Partial<_162.QueryConnectionsResponse>): _162.QueryConnectionsResponse;
@@ -3417,7 +3417,7 @@ export declare namespace ibc {
                 QueryClientConnectionsRequest: {
                     typeUrl: string;
                     encode(message: _162.QueryClientConnectionsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _162.QueryClientConnectionsRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.QueryClientConnectionsRequest;
                     fromJSON(object: any): _162.QueryClientConnectionsRequest;
                     toJSON(message: _162.QueryClientConnectionsRequest): unknown;
                     fromPartial(object: Partial<_162.QueryClientConnectionsRequest>): _162.QueryClientConnectionsRequest;
@@ -3432,7 +3432,7 @@ export declare namespace ibc {
                 QueryClientConnectionsResponse: {
                     typeUrl: string;
                     encode(message: _162.QueryClientConnectionsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _162.QueryClientConnectionsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.QueryClientConnectionsResponse;
                     fromJSON(object: any): _162.QueryClientConnectionsResponse;
                     toJSON(message: _162.QueryClientConnectionsResponse): unknown;
                     fromPartial(object: Partial<_162.QueryClientConnectionsResponse>): _162.QueryClientConnectionsResponse;
@@ -3447,7 +3447,7 @@ export declare namespace ibc {
                 QueryConnectionClientStateRequest: {
                     typeUrl: string;
                     encode(message: _162.QueryConnectionClientStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _162.QueryConnectionClientStateRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.QueryConnectionClientStateRequest;
                     fromJSON(object: any): _162.QueryConnectionClientStateRequest;
                     toJSON(message: _162.QueryConnectionClientStateRequest): unknown;
                     fromPartial(object: Partial<_162.QueryConnectionClientStateRequest>): _162.QueryConnectionClientStateRequest;
@@ -3462,7 +3462,7 @@ export declare namespace ibc {
                 QueryConnectionClientStateResponse: {
                     typeUrl: string;
                     encode(message: _162.QueryConnectionClientStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _162.QueryConnectionClientStateResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.QueryConnectionClientStateResponse;
                     fromJSON(object: any): _162.QueryConnectionClientStateResponse;
                     toJSON(message: _162.QueryConnectionClientStateResponse): unknown;
                     fromPartial(object: Partial<_162.QueryConnectionClientStateResponse>): _162.QueryConnectionClientStateResponse;
@@ -3477,7 +3477,7 @@ export declare namespace ibc {
                 QueryConnectionConsensusStateRequest: {
                     typeUrl: string;
                     encode(message: _162.QueryConnectionConsensusStateRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _162.QueryConnectionConsensusStateRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.QueryConnectionConsensusStateRequest;
                     fromJSON(object: any): _162.QueryConnectionConsensusStateRequest;
                     toJSON(message: _162.QueryConnectionConsensusStateRequest): unknown;
                     fromPartial(object: Partial<_162.QueryConnectionConsensusStateRequest>): _162.QueryConnectionConsensusStateRequest;
@@ -3492,7 +3492,7 @@ export declare namespace ibc {
                 QueryConnectionConsensusStateResponse: {
                     typeUrl: string;
                     encode(message: _162.QueryConnectionConsensusStateResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _162.QueryConnectionConsensusStateResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.QueryConnectionConsensusStateResponse;
                     fromJSON(object: any): _162.QueryConnectionConsensusStateResponse;
                     toJSON(message: _162.QueryConnectionConsensusStateResponse): unknown;
                     fromPartial(object: Partial<_162.QueryConnectionConsensusStateResponse>): _162.QueryConnectionConsensusStateResponse;
@@ -3507,7 +3507,7 @@ export declare namespace ibc {
                 QueryConnectionParamsRequest: {
                     typeUrl: string;
                     encode(_: _162.QueryConnectionParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _162.QueryConnectionParamsRequest;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.QueryConnectionParamsRequest;
                     fromJSON(_: any): _162.QueryConnectionParamsRequest;
                     toJSON(_: _162.QueryConnectionParamsRequest): unknown;
                     fromPartial(_: Partial<_162.QueryConnectionParamsRequest>): _162.QueryConnectionParamsRequest;
@@ -3522,7 +3522,7 @@ export declare namespace ibc {
                 QueryConnectionParamsResponse: {
                     typeUrl: string;
                     encode(message: _162.QueryConnectionParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _162.QueryConnectionParamsResponse;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _162.QueryConnectionParamsResponse;
                     fromJSON(object: any): _162.QueryConnectionParamsResponse;
                     toJSON(message: _162.QueryConnectionParamsResponse): unknown;
                     fromPartial(object: Partial<_162.QueryConnectionParamsResponse>): _162.QueryConnectionParamsResponse;
@@ -3537,7 +3537,7 @@ export declare namespace ibc {
                 GenesisState: {
                     typeUrl: string;
                     encode(message: _161.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _161.GenesisState;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _161.GenesisState;
                     fromJSON(object: any): _161.GenesisState;
                     toJSON(message: _161.GenesisState): unknown;
                     fromPartial(object: Partial<_161.GenesisState>): _161.GenesisState;
@@ -3557,7 +3557,7 @@ export declare namespace ibc {
                 ConnectionEnd: {
                     typeUrl: string;
                     encode(message: _160.ConnectionEnd, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _160.ConnectionEnd;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.ConnectionEnd;
                     fromJSON(object: any): _160.ConnectionEnd;
                     toJSON(message: _160.ConnectionEnd): unknown;
                     fromPartial(object: Partial<_160.ConnectionEnd>): _160.ConnectionEnd;
@@ -3572,7 +3572,7 @@ export declare namespace ibc {
                 IdentifiedConnection: {
                     typeUrl: string;
                     encode(message: _160.IdentifiedConnection, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _160.IdentifiedConnection;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.IdentifiedConnection;
                     fromJSON(object: any): _160.IdentifiedConnection;
                     toJSON(message: _160.IdentifiedConnection): unknown;
                     fromPartial(object: Partial<_160.IdentifiedConnection>): _160.IdentifiedConnection;
@@ -3587,7 +3587,7 @@ export declare namespace ibc {
                 Counterparty: {
                     typeUrl: string;
                     encode(message: _160.Counterparty, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _160.Counterparty;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.Counterparty;
                     fromJSON(object: any): _160.Counterparty;
                     toJSON(message: _160.Counterparty): unknown;
                     fromPartial(object: Partial<_160.Counterparty>): _160.Counterparty;
@@ -3602,7 +3602,7 @@ export declare namespace ibc {
                 ClientPaths: {
                     typeUrl: string;
                     encode(message: _160.ClientPaths, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _160.ClientPaths;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.ClientPaths;
                     fromJSON(object: any): _160.ClientPaths;
                     toJSON(message: _160.ClientPaths): unknown;
                     fromPartial(object: Partial<_160.ClientPaths>): _160.ClientPaths;
@@ -3617,7 +3617,7 @@ export declare namespace ibc {
                 ConnectionPaths: {
                     typeUrl: string;
                     encode(message: _160.ConnectionPaths, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _160.ConnectionPaths;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.ConnectionPaths;
                     fromJSON(object: any): _160.ConnectionPaths;
                     toJSON(message: _160.ConnectionPaths): unknown;
                     fromPartial(object: Partial<_160.ConnectionPaths>): _160.ConnectionPaths;
@@ -3632,7 +3632,7 @@ export declare namespace ibc {
                 Version: {
                     typeUrl: string;
                     encode(message: _160.Version, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _160.Version;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.Version;
                     fromJSON(object: any): _160.Version;
                     toJSON(message: _160.Version): unknown;
                     fromPartial(object: Partial<_160.Version>): _160.Version;
@@ -3647,7 +3647,7 @@ export declare namespace ibc {
                 Params: {
                     typeUrl: string;
                     encode(message: _160.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _160.Params;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _160.Params;
                     fromJSON(object: any): _160.Params;
                     toJSON(message: _160.Params): unknown;
                     fromPartial(object: Partial<_160.Params>): _160.Params;
@@ -3669,7 +3669,7 @@ export declare namespace ibc {
                 ClientState: {
                     typeUrl: string;
                     encode(message: _164.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _164.ClientState;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _164.ClientState;
                     fromJSON(object: any): _164.ClientState;
                     toJSON(message: _164.ClientState): unknown;
                     fromPartial(object: Partial<_164.ClientState>): _164.ClientState;
@@ -3694,7 +3694,7 @@ export declare namespace ibc {
                 ClientState: {
                     typeUrl: string;
                     encode(message: _165.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.ClientState;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.ClientState;
                     fromJSON(object: any): _165.ClientState;
                     toJSON(message: _165.ClientState): unknown;
                     fromPartial(object: Partial<_165.ClientState>): _165.ClientState;
@@ -3709,7 +3709,7 @@ export declare namespace ibc {
                 ConsensusState: {
                     typeUrl: string;
                     encode(message: _165.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.ConsensusState;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.ConsensusState;
                     fromJSON(object: any): _165.ConsensusState;
                     toJSON(message: _165.ConsensusState): unknown;
                     fromPartial(object: Partial<_165.ConsensusState>): _165.ConsensusState;
@@ -3724,7 +3724,7 @@ export declare namespace ibc {
                 Header: {
                     typeUrl: string;
                     encode(message: _165.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.Header;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.Header;
                     fromJSON(object: any): _165.Header;
                     toJSON(message: _165.Header): unknown;
                     fromPartial(object: Partial<_165.Header>): _165.Header;
@@ -3739,7 +3739,7 @@ export declare namespace ibc {
                 Misbehaviour: {
                     typeUrl: string;
                     encode(message: _165.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.Misbehaviour;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.Misbehaviour;
                     fromJSON(object: any): _165.Misbehaviour;
                     toJSON(message: _165.Misbehaviour): unknown;
                     fromPartial(object: Partial<_165.Misbehaviour>): _165.Misbehaviour;
@@ -3754,7 +3754,7 @@ export declare namespace ibc {
                 SignatureAndData: {
                     typeUrl: string;
                     encode(message: _165.SignatureAndData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.SignatureAndData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.SignatureAndData;
                     fromJSON(object: any): _165.SignatureAndData;
                     toJSON(message: _165.SignatureAndData): unknown;
                     fromPartial(object: Partial<_165.SignatureAndData>): _165.SignatureAndData;
@@ -3769,7 +3769,7 @@ export declare namespace ibc {
                 TimestampedSignatureData: {
                     typeUrl: string;
                     encode(message: _165.TimestampedSignatureData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.TimestampedSignatureData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.TimestampedSignatureData;
                     fromJSON(object: any): _165.TimestampedSignatureData;
                     toJSON(message: _165.TimestampedSignatureData): unknown;
                     fromPartial(object: Partial<_165.TimestampedSignatureData>): _165.TimestampedSignatureData;
@@ -3784,7 +3784,7 @@ export declare namespace ibc {
                 SignBytes: {
                     typeUrl: string;
                     encode(message: _165.SignBytes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.SignBytes;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.SignBytes;
                     fromJSON(object: any): _165.SignBytes;
                     toJSON(message: _165.SignBytes): unknown;
                     fromPartial(object: Partial<_165.SignBytes>): _165.SignBytes;
@@ -3799,7 +3799,7 @@ export declare namespace ibc {
                 HeaderData: {
                     typeUrl: string;
                     encode(message: _165.HeaderData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.HeaderData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.HeaderData;
                     fromJSON(object: any): _165.HeaderData;
                     toJSON(message: _165.HeaderData): unknown;
                     fromPartial(object: Partial<_165.HeaderData>): _165.HeaderData;
@@ -3814,7 +3814,7 @@ export declare namespace ibc {
                 ClientStateData: {
                     typeUrl: string;
                     encode(message: _165.ClientStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.ClientStateData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.ClientStateData;
                     fromJSON(object: any): _165.ClientStateData;
                     toJSON(message: _165.ClientStateData): unknown;
                     fromPartial(object: Partial<_165.ClientStateData>): _165.ClientStateData;
@@ -3829,7 +3829,7 @@ export declare namespace ibc {
                 ConsensusStateData: {
                     typeUrl: string;
                     encode(message: _165.ConsensusStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.ConsensusStateData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.ConsensusStateData;
                     fromJSON(object: any): _165.ConsensusStateData;
                     toJSON(message: _165.ConsensusStateData): unknown;
                     fromPartial(object: Partial<_165.ConsensusStateData>): _165.ConsensusStateData;
@@ -3844,7 +3844,7 @@ export declare namespace ibc {
                 ConnectionStateData: {
                     typeUrl: string;
                     encode(message: _165.ConnectionStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.ConnectionStateData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.ConnectionStateData;
                     fromJSON(object: any): _165.ConnectionStateData;
                     toJSON(message: _165.ConnectionStateData): unknown;
                     fromPartial(object: Partial<_165.ConnectionStateData>): _165.ConnectionStateData;
@@ -3859,7 +3859,7 @@ export declare namespace ibc {
                 ChannelStateData: {
                     typeUrl: string;
                     encode(message: _165.ChannelStateData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.ChannelStateData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.ChannelStateData;
                     fromJSON(object: any): _165.ChannelStateData;
                     toJSON(message: _165.ChannelStateData): unknown;
                     fromPartial(object: Partial<_165.ChannelStateData>): _165.ChannelStateData;
@@ -3874,7 +3874,7 @@ export declare namespace ibc {
                 PacketCommitmentData: {
                     typeUrl: string;
                     encode(message: _165.PacketCommitmentData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.PacketCommitmentData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.PacketCommitmentData;
                     fromJSON(object: any): _165.PacketCommitmentData;
                     toJSON(message: _165.PacketCommitmentData): unknown;
                     fromPartial(object: Partial<_165.PacketCommitmentData>): _165.PacketCommitmentData;
@@ -3889,7 +3889,7 @@ export declare namespace ibc {
                 PacketAcknowledgementData: {
                     typeUrl: string;
                     encode(message: _165.PacketAcknowledgementData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.PacketAcknowledgementData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.PacketAcknowledgementData;
                     fromJSON(object: any): _165.PacketAcknowledgementData;
                     toJSON(message: _165.PacketAcknowledgementData): unknown;
                     fromPartial(object: Partial<_165.PacketAcknowledgementData>): _165.PacketAcknowledgementData;
@@ -3904,7 +3904,7 @@ export declare namespace ibc {
                 PacketReceiptAbsenceData: {
                     typeUrl: string;
                     encode(message: _165.PacketReceiptAbsenceData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.PacketReceiptAbsenceData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.PacketReceiptAbsenceData;
                     fromJSON(object: any): _165.PacketReceiptAbsenceData;
                     toJSON(message: _165.PacketReceiptAbsenceData): unknown;
                     fromPartial(object: Partial<_165.PacketReceiptAbsenceData>): _165.PacketReceiptAbsenceData;
@@ -3919,7 +3919,7 @@ export declare namespace ibc {
                 NextSequenceRecvData: {
                     typeUrl: string;
                     encode(message: _165.NextSequenceRecvData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _165.NextSequenceRecvData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _165.NextSequenceRecvData;
                     fromJSON(object: any): _165.NextSequenceRecvData;
                     toJSON(message: _165.NextSequenceRecvData): unknown;
                     fromPartial(object: Partial<_165.NextSequenceRecvData>): _165.NextSequenceRecvData;
@@ -3937,7 +3937,7 @@ export declare namespace ibc {
                 ClientState: {
                     typeUrl: string;
                     encode(message: _166.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _166.ClientState;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _166.ClientState;
                     fromJSON(object: any): _166.ClientState;
                     toJSON(message: _166.ClientState): unknown;
                     fromPartial(object: Partial<_166.ClientState>): _166.ClientState;
@@ -3952,7 +3952,7 @@ export declare namespace ibc {
                 ConsensusState: {
                     typeUrl: string;
                     encode(message: _166.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _166.ConsensusState;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _166.ConsensusState;
                     fromJSON(object: any): _166.ConsensusState;
                     toJSON(message: _166.ConsensusState): unknown;
                     fromPartial(object: Partial<_166.ConsensusState>): _166.ConsensusState;
@@ -3967,7 +3967,7 @@ export declare namespace ibc {
                 Header: {
                     typeUrl: string;
                     encode(message: _166.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _166.Header;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _166.Header;
                     fromJSON(object: any): _166.Header;
                     toJSON(message: _166.Header): unknown;
                     fromPartial(object: Partial<_166.Header>): _166.Header;
@@ -3982,7 +3982,7 @@ export declare namespace ibc {
                 Misbehaviour: {
                     typeUrl: string;
                     encode(message: _166.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _166.Misbehaviour;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _166.Misbehaviour;
                     fromJSON(object: any): _166.Misbehaviour;
                     toJSON(message: _166.Misbehaviour): unknown;
                     fromPartial(object: Partial<_166.Misbehaviour>): _166.Misbehaviour;
@@ -3997,7 +3997,7 @@ export declare namespace ibc {
                 SignatureAndData: {
                     typeUrl: string;
                     encode(message: _166.SignatureAndData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _166.SignatureAndData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _166.SignatureAndData;
                     fromJSON(object: any): _166.SignatureAndData;
                     toJSON(message: _166.SignatureAndData): unknown;
                     fromPartial(object: Partial<_166.SignatureAndData>): _166.SignatureAndData;
@@ -4012,7 +4012,7 @@ export declare namespace ibc {
                 TimestampedSignatureData: {
                     typeUrl: string;
                     encode(message: _166.TimestampedSignatureData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _166.TimestampedSignatureData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _166.TimestampedSignatureData;
                     fromJSON(object: any): _166.TimestampedSignatureData;
                     toJSON(message: _166.TimestampedSignatureData): unknown;
                     fromPartial(object: Partial<_166.TimestampedSignatureData>): _166.TimestampedSignatureData;
@@ -4027,7 +4027,7 @@ export declare namespace ibc {
                 SignBytes: {
                     typeUrl: string;
                     encode(message: _166.SignBytes, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _166.SignBytes;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _166.SignBytes;
                     fromJSON(object: any): _166.SignBytes;
                     toJSON(message: _166.SignBytes): unknown;
                     fromPartial(object: Partial<_166.SignBytes>): _166.SignBytes;
@@ -4042,7 +4042,7 @@ export declare namespace ibc {
                 HeaderData: {
                     typeUrl: string;
                     encode(message: _166.HeaderData, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _166.HeaderData;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _166.HeaderData;
                     fromJSON(object: any): _166.HeaderData;
                     toJSON(message: _166.HeaderData): unknown;
                     fromPartial(object: Partial<_166.HeaderData>): _166.HeaderData;
@@ -4062,7 +4062,7 @@ export declare namespace ibc {
                 ClientState: {
                     typeUrl: string;
                     encode(message: _167.ClientState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _167.ClientState;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _167.ClientState;
                     fromJSON(object: any): _167.ClientState;
                     toJSON(message: _167.ClientState): unknown;
                     fromPartial(object: Partial<_167.ClientState>): _167.ClientState;
@@ -4077,7 +4077,7 @@ export declare namespace ibc {
                 ConsensusState: {
                     typeUrl: string;
                     encode(message: _167.ConsensusState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _167.ConsensusState;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _167.ConsensusState;
                     fromJSON(object: any): _167.ConsensusState;
                     toJSON(message: _167.ConsensusState): unknown;
                     fromPartial(object: Partial<_167.ConsensusState>): _167.ConsensusState;
@@ -4092,7 +4092,7 @@ export declare namespace ibc {
                 Misbehaviour: {
                     typeUrl: string;
                     encode(message: _167.Misbehaviour, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _167.Misbehaviour;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _167.Misbehaviour;
                     fromJSON(object: any): _167.Misbehaviour;
                     toJSON(message: _167.Misbehaviour): unknown;
                     fromPartial(object: Partial<_167.Misbehaviour>): _167.Misbehaviour;
@@ -4107,7 +4107,7 @@ export declare namespace ibc {
                 Header: {
                     typeUrl: string;
                     encode(message: _167.Header, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _167.Header;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _167.Header;
                     fromJSON(object: any): _167.Header;
                     toJSON(message: _167.Header): unknown;
                     fromPartial(object: Partial<_167.Header>): _167.Header;
@@ -4122,7 +4122,7 @@ export declare namespace ibc {
                 Fraction: {
                     typeUrl: string;
                     encode(message: _167.Fraction, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-                    decode(input: import("..").BinaryReader | Uint8Array, length?: number): _167.Fraction;
+                    decode(input: Uint8Array | import("..").BinaryReader, length?: number): _167.Fraction;
                     fromJSON(object: any): _167.Fraction;
                     toJSON(message: _167.Fraction): unknown;
                     fromPartial(object: Partial<_167.Fraction>): _167.Fraction;

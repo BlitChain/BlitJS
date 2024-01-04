@@ -1,65 +1,75 @@
 module.exports = {
-  plugins: ['prettier'],
-  extends: ['eslint:recommended', 'prettier'],
+  plugins: ["prettier"],
+  extends: [
+    "eslint:recommended",
+    "prettier",
+  ],
+  parser: "@typescript-eslint/parser", // Use the TypeScript parser
   parserOptions: {
-    ecmaVersion: 11,
-    requireConfigFile: false,
-    sourceType: 'module',
+    ecmaVersion: 2020, // Update to the latest version or the one you're using
+    sourceType: "module",
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
+    project: "./tsconfig.json", // Point to your tsconfig.json file
   },
   env: {
     es6: true,
     browser: true,
     node: true,
-    jest: true
+    jest: true,
   },
   rules: {
-    'no-debugger': 2,
-    'no-alert': 2,
-    'no-await-in-loop': 0,
-    'no-prototype-builtins': 0,
-    'no-return-assign': ['error', 'except-parens'],
-    'no-restricted-syntax': [2, 'ForInStatement', 'LabeledStatement', 'WithStatement'],
+    "no-debugger": 2,
+    "no-alert": 2,
+    "no-await-in-loop": 0,
+    "no-prototype-builtins": 0,
+    "no-return-assign": ["error", "except-parens"],
+    "no-restricted-syntax": [
+      2,
+      "ForInStatement",
+      "LabeledStatement",
+      "WithStatement",
+    ],
     'no-unused-vars': [
       0,
       {
         ignoreSiblings: true,
         argsIgnorePattern: 'React|res|next|^_'
-      }
-    ],
-    'prefer-const': [
-      'error',
+      },
+
+    "@typescript-eslint/no-explicit-any": 0,
+    "prefer-const": [
+      "error",
       {
-        destructuring: 'all'
-      }
+        destructuring: "all",
+      },
     ],
-    'no-unused-expressions': [
+    "no-unused-expressions": [
       2,
       {
-        allowTaggedTemplates: true
-      }
+        allowTaggedTemplates: true,
+      },
     ],
-    'no-console': 1,
-    'comma-dangle': 2,
-    'jsx-quotes': [2, 'prefer-double'],
-    'linebreak-style': ['error', 'unix'],
+    "no-console": 1,
+    "comma-dangle": 2,
+    "jsx-quotes": [2, "prefer-double"],
+    "linebreak-style": ["error", "unix"],
     quotes: [
       2,
-      'single',
+      "single",
       {
         avoidEscape: true,
-        allowTemplateLiterals: true
-      }
+        allowTemplateLiterals: true,
+      },
     ],
-    'prettier/prettier': [
-      'error',
+    "prettier/prettier": [
+      "error",
       {
-        trailingComma: 'none',
+        trailingComma: "none",
         singleQuote: true,
-        printWidth: 180
-      }
-    ]
-  }
+        printWidth: 180,
+      },
+    ],
+  },
 };

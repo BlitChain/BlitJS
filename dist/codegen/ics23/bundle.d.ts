@@ -14,7 +14,7 @@ export declare const ics23: {
     ExistenceProof: {
         typeUrl: string;
         encode(message: _18.ExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.ExistenceProof;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.ExistenceProof;
         fromJSON(object: any): _18.ExistenceProof;
         toJSON(message: _18.ExistenceProof): unknown;
         fromPartial(object: Partial<_18.ExistenceProof>): _18.ExistenceProof;
@@ -28,7 +28,7 @@ export declare const ics23: {
     NonExistenceProof: {
         typeUrl: string;
         encode(message: _18.NonExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.NonExistenceProof;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.NonExistenceProof;
         fromJSON(object: any): _18.NonExistenceProof;
         toJSON(message: _18.NonExistenceProof): unknown;
         fromPartial(object: Partial<_18.NonExistenceProof>): _18.NonExistenceProof;
@@ -42,7 +42,7 @@ export declare const ics23: {
     CommitmentProof: {
         typeUrl: string;
         encode(message: _18.CommitmentProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.CommitmentProof;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.CommitmentProof;
         fromJSON(object: any): _18.CommitmentProof;
         toJSON(message: _18.CommitmentProof): unknown;
         fromPartial(object: Partial<_18.CommitmentProof>): _18.CommitmentProof;
@@ -56,7 +56,7 @@ export declare const ics23: {
     LeafOp: {
         typeUrl: string;
         encode(message: _18.LeafOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.LeafOp;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.LeafOp;
         fromJSON(object: any): _18.LeafOp;
         toJSON(message: _18.LeafOp): unknown;
         fromPartial(object: Partial<_18.LeafOp>): _18.LeafOp;
@@ -70,7 +70,7 @@ export declare const ics23: {
     InnerOp: {
         typeUrl: string;
         encode(message: _18.InnerOp, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.InnerOp;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.InnerOp;
         fromJSON(object: any): _18.InnerOp;
         toJSON(message: _18.InnerOp): unknown;
         fromPartial(object: Partial<_18.InnerOp>): _18.InnerOp;
@@ -84,7 +84,7 @@ export declare const ics23: {
     ProofSpec: {
         typeUrl: string;
         encode(message: _18.ProofSpec, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.ProofSpec;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.ProofSpec;
         fromJSON(object: any): _18.ProofSpec;
         toJSON(message: _18.ProofSpec): unknown;
         fromPartial(object: Partial<_18.ProofSpec>): _18.ProofSpec;
@@ -98,7 +98,7 @@ export declare const ics23: {
     InnerSpec: {
         typeUrl: string;
         encode(message: _18.InnerSpec, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.InnerSpec;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.InnerSpec;
         fromJSON(object: any): _18.InnerSpec;
         toJSON(message: _18.InnerSpec): unknown;
         fromPartial(object: Partial<_18.InnerSpec>): _18.InnerSpec;
@@ -112,7 +112,7 @@ export declare const ics23: {
     BatchProof: {
         typeUrl: string;
         encode(message: _18.BatchProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.BatchProof;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.BatchProof;
         fromJSON(object: any): _18.BatchProof;
         toJSON(message: _18.BatchProof): unknown;
         fromPartial(object: Partial<_18.BatchProof>): _18.BatchProof;
@@ -126,7 +126,7 @@ export declare const ics23: {
     BatchEntry: {
         typeUrl: string;
         encode(message: _18.BatchEntry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.BatchEntry;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.BatchEntry;
         fromJSON(object: any): _18.BatchEntry;
         toJSON(message: _18.BatchEntry): unknown;
         fromPartial(object: Partial<_18.BatchEntry>): _18.BatchEntry;
@@ -140,7 +140,7 @@ export declare const ics23: {
     CompressedBatchProof: {
         typeUrl: string;
         encode(message: _18.CompressedBatchProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.CompressedBatchProof;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.CompressedBatchProof;
         fromJSON(object: any): _18.CompressedBatchProof;
         toJSON(message: _18.CompressedBatchProof): unknown;
         fromPartial(object: Partial<_18.CompressedBatchProof>): _18.CompressedBatchProof;
@@ -154,7 +154,7 @@ export declare const ics23: {
     CompressedBatchEntry: {
         typeUrl: string;
         encode(message: _18.CompressedBatchEntry, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.CompressedBatchEntry;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.CompressedBatchEntry;
         fromJSON(object: any): _18.CompressedBatchEntry;
         toJSON(message: _18.CompressedBatchEntry): unknown;
         fromPartial(object: Partial<_18.CompressedBatchEntry>): _18.CompressedBatchEntry;
@@ -168,7 +168,7 @@ export declare const ics23: {
     CompressedExistenceProof: {
         typeUrl: string;
         encode(message: _18.CompressedExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.CompressedExistenceProof;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.CompressedExistenceProof;
         fromJSON(object: any): _18.CompressedExistenceProof;
         toJSON(message: _18.CompressedExistenceProof): unknown;
         fromPartial(object: Partial<_18.CompressedExistenceProof>): _18.CompressedExistenceProof;
@@ -182,7 +182,7 @@ export declare const ics23: {
     CompressedNonExistenceProof: {
         typeUrl: string;
         encode(message: _18.CompressedNonExistenceProof, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-        decode(input: import("..").BinaryReader | Uint8Array, length?: number): _18.CompressedNonExistenceProof;
+        decode(input: Uint8Array | import("..").BinaryReader, length?: number): _18.CompressedNonExistenceProof;
         fromJSON(object: any): _18.CompressedNonExistenceProof;
         toJSON(message: _18.CompressedNonExistenceProof): unknown;
         fromPartial(object: Partial<_18.CompressedNonExistenceProof>): _18.CompressedNonExistenceProof;

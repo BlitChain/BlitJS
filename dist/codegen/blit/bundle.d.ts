@@ -172,7 +172,7 @@ export declare namespace blit {
         MsgUpdateParams: {
             typeUrl: string;
             encode(message: _4.MsgUpdateParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgUpdateParams;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _4.MsgUpdateParams;
             fromJSON(object: any): _4.MsgUpdateParams;
             toJSON(message: _4.MsgUpdateParams): unknown;
             fromPartial(object: Partial<_4.MsgUpdateParams>): _4.MsgUpdateParams;
@@ -187,7 +187,7 @@ export declare namespace blit {
         MsgUpdateParamsResponse: {
             typeUrl: string;
             encode(_: _4.MsgUpdateParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgUpdateParamsResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _4.MsgUpdateParamsResponse;
             fromJSON(_: any): _4.MsgUpdateParamsResponse;
             toJSON(_: _4.MsgUpdateParamsResponse): unknown;
             fromPartial(_: Partial<_4.MsgUpdateParamsResponse>): _4.MsgUpdateParamsResponse;
@@ -201,7 +201,7 @@ export declare namespace blit {
         MsgMintCoins: {
             typeUrl: string;
             encode(message: _4.MsgMintCoins, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgMintCoins;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _4.MsgMintCoins;
             fromJSON(object: any): _4.MsgMintCoins;
             toJSON(message: _4.MsgMintCoins): unknown;
             fromPartial(object: Partial<_4.MsgMintCoins>): _4.MsgMintCoins;
@@ -215,7 +215,7 @@ export declare namespace blit {
         MsgMintCoinsResponse: {
             typeUrl: string;
             encode(_: _4.MsgMintCoinsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgMintCoinsResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _4.MsgMintCoinsResponse;
             fromJSON(_: any): _4.MsgMintCoinsResponse;
             toJSON(_: _4.MsgMintCoinsResponse): unknown;
             fromPartial(_: Partial<_4.MsgMintCoinsResponse>): _4.MsgMintCoinsResponse;
@@ -229,7 +229,7 @@ export declare namespace blit {
         MsgBurnCoins: {
             typeUrl: string;
             encode(message: _4.MsgBurnCoins, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgBurnCoins;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _4.MsgBurnCoins;
             fromJSON(object: any): _4.MsgBurnCoins;
             toJSON(message: _4.MsgBurnCoins): unknown;
             fromPartial(object: Partial<_4.MsgBurnCoins>): _4.MsgBurnCoins;
@@ -243,7 +243,7 @@ export declare namespace blit {
         MsgBurnCoinsResponse: {
             typeUrl: string;
             encode(_: _4.MsgBurnCoinsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgBurnCoinsResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _4.MsgBurnCoinsResponse;
             fromJSON(_: any): _4.MsgBurnCoinsResponse;
             toJSON(_: _4.MsgBurnCoinsResponse): unknown;
             fromPartial(_: Partial<_4.MsgBurnCoinsResponse>): _4.MsgBurnCoinsResponse;
@@ -257,7 +257,7 @@ export declare namespace blit {
         MsgForceTransferCoins: {
             typeUrl: string;
             encode(message: _4.MsgForceTransferCoins, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgForceTransferCoins;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _4.MsgForceTransferCoins;
             fromJSON(object: any): _4.MsgForceTransferCoins;
             toJSON(message: _4.MsgForceTransferCoins): unknown;
             fromPartial(object: Partial<_4.MsgForceTransferCoins>): _4.MsgForceTransferCoins;
@@ -271,7 +271,7 @@ export declare namespace blit {
         MsgForceTransferCoinsResponse: {
             typeUrl: string;
             encode(_: _4.MsgForceTransferCoinsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgForceTransferCoinsResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _4.MsgForceTransferCoinsResponse;
             fromJSON(_: any): _4.MsgForceTransferCoinsResponse;
             toJSON(_: _4.MsgForceTransferCoinsResponse): unknown;
             fromPartial(_: Partial<_4.MsgForceTransferCoinsResponse>): _4.MsgForceTransferCoinsResponse;
@@ -285,7 +285,7 @@ export declare namespace blit {
         MsgSetDenomMetadata: {
             typeUrl: string;
             encode(message: _4.MsgSetDenomMetadata, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgSetDenomMetadata;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _4.MsgSetDenomMetadata;
             fromJSON(object: any): _4.MsgSetDenomMetadata;
             toJSON(message: _4.MsgSetDenomMetadata): unknown;
             fromPartial(object: Partial<_4.MsgSetDenomMetadata>): _4.MsgSetDenomMetadata;
@@ -299,7 +299,7 @@ export declare namespace blit {
         MsgSetDenomMetadataResponse: {
             typeUrl: string;
             encode(_: _4.MsgSetDenomMetadataResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _4.MsgSetDenomMetadataResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _4.MsgSetDenomMetadataResponse;
             fromJSON(_: any): _4.MsgSetDenomMetadataResponse;
             toJSON(_: _4.MsgSetDenomMetadataResponse): unknown;
             fromPartial(_: Partial<_4.MsgSetDenomMetadataResponse>): _4.MsgSetDenomMetadataResponse;
@@ -313,7 +313,7 @@ export declare namespace blit {
         QueryParamsRequest: {
             typeUrl: string;
             encode(_: _3.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _3.QueryParamsRequest;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _3.QueryParamsRequest;
             fromJSON(_: any): _3.QueryParamsRequest;
             toJSON(_: _3.QueryParamsRequest): unknown;
             fromPartial(_: Partial<_3.QueryParamsRequest>): _3.QueryParamsRequest;
@@ -327,7 +327,7 @@ export declare namespace blit {
         QueryParamsResponse: {
             typeUrl: string;
             encode(message: _3.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _3.QueryParamsResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _3.QueryParamsResponse;
             fromJSON(object: any): _3.QueryParamsResponse;
             toJSON(message: _3.QueryParamsResponse): unknown;
             fromPartial(object: Partial<_3.QueryParamsResponse>): _3.QueryParamsResponse;
@@ -341,7 +341,7 @@ export declare namespace blit {
         Params: {
             typeUrl: string;
             encode(_: _2.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _2.Params;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _2.Params;
             fromJSON(_: any): _2.Params;
             toJSON(_: _2.Params): unknown;
             fromPartial(_: Partial<_2.Params>): _2.Params;
@@ -356,7 +356,7 @@ export declare namespace blit {
         GenesisState: {
             typeUrl: string;
             encode(message: _1.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _1.GenesisState;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _1.GenesisState;
             fromJSON(object: any): _1.GenesisState;
             toJSON(message: _1.GenesisState): unknown;
             fromPartial(object: Partial<_1.GenesisState>): _1.GenesisState;
@@ -493,7 +493,7 @@ export declare namespace blit {
         MsgUpdateParams: {
             typeUrl: string;
             encode(message: _10.MsgUpdateParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgUpdateParams;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgUpdateParams;
             fromJSON(object: any): _10.MsgUpdateParams;
             toJSON(message: _10.MsgUpdateParams): unknown;
             fromPartial(object: Partial<_10.MsgUpdateParams>): _10.MsgUpdateParams;
@@ -508,7 +508,7 @@ export declare namespace blit {
         MsgUpdateParamsResponse: {
             typeUrl: string;
             encode(_: _10.MsgUpdateParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgUpdateParamsResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgUpdateParamsResponse;
             fromJSON(_: any): _10.MsgUpdateParamsResponse;
             toJSON(_: _10.MsgUpdateParamsResponse): unknown;
             fromPartial(_: Partial<_10.MsgUpdateParamsResponse>): _10.MsgUpdateParamsResponse;
@@ -522,7 +522,7 @@ export declare namespace blit {
         MsgCreateScript: {
             typeUrl: string;
             encode(message: _10.MsgCreateScript, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgCreateScript;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgCreateScript;
             fromJSON(object: any): _10.MsgCreateScript;
             toJSON(message: _10.MsgCreateScript): unknown;
             fromPartial(object: Partial<_10.MsgCreateScript>): _10.MsgCreateScript;
@@ -536,7 +536,7 @@ export declare namespace blit {
         MsgCreateScriptResponse: {
             typeUrl: string;
             encode(message: _10.MsgCreateScriptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgCreateScriptResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgCreateScriptResponse;
             fromJSON(object: any): _10.MsgCreateScriptResponse;
             toJSON(message: _10.MsgCreateScriptResponse): unknown;
             fromPartial(object: Partial<_10.MsgCreateScriptResponse>): _10.MsgCreateScriptResponse;
@@ -550,7 +550,7 @@ export declare namespace blit {
         MsgUpdateScript: {
             typeUrl: string;
             encode(message: _10.MsgUpdateScript, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgUpdateScript;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgUpdateScript;
             fromJSON(object: any): _10.MsgUpdateScript;
             toJSON(message: _10.MsgUpdateScript): unknown;
             fromPartial(object: Partial<_10.MsgUpdateScript>): _10.MsgUpdateScript;
@@ -564,7 +564,7 @@ export declare namespace blit {
         MsgUpdateScriptResponse: {
             typeUrl: string;
             encode(message: _10.MsgUpdateScriptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgUpdateScriptResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgUpdateScriptResponse;
             fromJSON(object: any): _10.MsgUpdateScriptResponse;
             toJSON(message: _10.MsgUpdateScriptResponse): unknown;
             fromPartial(object: Partial<_10.MsgUpdateScriptResponse>): _10.MsgUpdateScriptResponse;
@@ -578,7 +578,7 @@ export declare namespace blit {
         MsgDeleteScript: {
             typeUrl: string;
             encode(message: _10.MsgDeleteScript, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgDeleteScript;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgDeleteScript;
             fromJSON(object: any): _10.MsgDeleteScript;
             toJSON(message: _10.MsgDeleteScript): unknown;
             fromPartial(object: Partial<_10.MsgDeleteScript>): _10.MsgDeleteScript;
@@ -592,7 +592,7 @@ export declare namespace blit {
         MsgDeleteScriptResponse: {
             typeUrl: string;
             encode(_: _10.MsgDeleteScriptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgDeleteScriptResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgDeleteScriptResponse;
             fromJSON(_: any): _10.MsgDeleteScriptResponse;
             toJSON(_: _10.MsgDeleteScriptResponse): unknown;
             fromPartial(_: Partial<_10.MsgDeleteScriptResponse>): _10.MsgDeleteScriptResponse;
@@ -606,7 +606,7 @@ export declare namespace blit {
         MsgRun: {
             typeUrl: string;
             encode(message: _10.MsgRun, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgRun;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgRun;
             fromJSON(object: any): _10.MsgRun;
             toJSON(message: _10.MsgRun): unknown;
             fromPartial(object: Partial<_10.MsgRun>): _10.MsgRun;
@@ -620,7 +620,7 @@ export declare namespace blit {
         MsgRunResponse: {
             typeUrl: string;
             encode(message: _10.MsgRunResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _10.MsgRunResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _10.MsgRunResponse;
             fromJSON(object: any): _10.MsgRunResponse;
             toJSON(message: _10.MsgRunResponse): unknown;
             fromPartial(object: Partial<_10.MsgRunResponse>): _10.MsgRunResponse;
@@ -634,7 +634,7 @@ export declare namespace blit {
         Script: {
             typeUrl: string;
             encode(message: _9.Script, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _9.Script;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _9.Script;
             fromJSON(object: any): _9.Script;
             toJSON(message: _9.Script): unknown;
             fromPartial(object: Partial<_9.Script>): _9.Script;
@@ -648,7 +648,7 @@ export declare namespace blit {
         QueryParamsRequest: {
             typeUrl: string;
             encode(_: _8.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _8.QueryParamsRequest;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _8.QueryParamsRequest;
             fromJSON(_: any): _8.QueryParamsRequest;
             toJSON(_: _8.QueryParamsRequest): unknown;
             fromPartial(_: Partial<_8.QueryParamsRequest>): _8.QueryParamsRequest;
@@ -662,7 +662,7 @@ export declare namespace blit {
         QueryParamsResponse: {
             typeUrl: string;
             encode(message: _8.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _8.QueryParamsResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _8.QueryParamsResponse;
             fromJSON(object: any): _8.QueryParamsResponse;
             toJSON(message: _8.QueryParamsResponse): unknown;
             fromPartial(object: Partial<_8.QueryParamsResponse>): _8.QueryParamsResponse;
@@ -676,7 +676,7 @@ export declare namespace blit {
         QueryScriptRequest: {
             typeUrl: string;
             encode(message: _8.QueryScriptRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _8.QueryScriptRequest;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _8.QueryScriptRequest;
             fromJSON(object: any): _8.QueryScriptRequest;
             toJSON(message: _8.QueryScriptRequest): unknown;
             fromPartial(object: Partial<_8.QueryScriptRequest>): _8.QueryScriptRequest;
@@ -690,7 +690,7 @@ export declare namespace blit {
         QueryScriptResponse: {
             typeUrl: string;
             encode(message: _8.QueryScriptResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _8.QueryScriptResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _8.QueryScriptResponse;
             fromJSON(object: any): _8.QueryScriptResponse;
             toJSON(message: _8.QueryScriptResponse): unknown;
             fromPartial(object: Partial<_8.QueryScriptResponse>): _8.QueryScriptResponse;
@@ -704,7 +704,7 @@ export declare namespace blit {
         QueryScriptsRequest: {
             typeUrl: string;
             encode(message: _8.QueryScriptsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _8.QueryScriptsRequest;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _8.QueryScriptsRequest;
             fromJSON(object: any): _8.QueryScriptsRequest;
             toJSON(message: _8.QueryScriptsRequest): unknown;
             fromPartial(object: Partial<_8.QueryScriptsRequest>): _8.QueryScriptsRequest;
@@ -718,7 +718,7 @@ export declare namespace blit {
         QueryScriptsResponse: {
             typeUrl: string;
             encode(message: _8.QueryScriptsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _8.QueryScriptsResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _8.QueryScriptsResponse;
             fromJSON(object: any): _8.QueryScriptsResponse;
             toJSON(message: _8.QueryScriptsResponse): unknown;
             fromPartial(object: Partial<_8.QueryScriptsResponse>): _8.QueryScriptsResponse;
@@ -732,7 +732,7 @@ export declare namespace blit {
         QueryWebRequest: {
             typeUrl: string;
             encode(message: _8.QueryWebRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _8.QueryWebRequest;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _8.QueryWebRequest;
             fromJSON(object: any): _8.QueryWebRequest;
             toJSON(message: _8.QueryWebRequest): unknown;
             fromPartial(object: Partial<_8.QueryWebRequest>): _8.QueryWebRequest;
@@ -746,7 +746,7 @@ export declare namespace blit {
         QueryWebResponse: {
             typeUrl: string;
             encode(message: _8.QueryWebResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _8.QueryWebResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _8.QueryWebResponse;
             fromJSON(object: any): _8.QueryWebResponse;
             toJSON(message: _8.QueryWebResponse): unknown;
             fromPartial(object: Partial<_8.QueryWebResponse>): _8.QueryWebResponse;
@@ -760,7 +760,7 @@ export declare namespace blit {
         QueryEvalRequest: {
             typeUrl: string;
             encode(message: _8.QueryEvalRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _8.QueryEvalRequest;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _8.QueryEvalRequest;
             fromJSON(object: any): _8.QueryEvalRequest;
             toJSON(message: _8.QueryEvalRequest): unknown;
             fromPartial(object: Partial<_8.QueryEvalRequest>): _8.QueryEvalRequest;
@@ -774,7 +774,7 @@ export declare namespace blit {
         QueryEvalResponse: {
             typeUrl: string;
             encode(message: _8.QueryEvalResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _8.QueryEvalResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _8.QueryEvalResponse;
             fromJSON(object: any): _8.QueryEvalResponse;
             toJSON(message: _8.QueryEvalResponse): unknown;
             fromPartial(object: Partial<_8.QueryEvalResponse>): _8.QueryEvalResponse;
@@ -788,7 +788,7 @@ export declare namespace blit {
         Params: {
             typeUrl: string;
             encode(_: _7.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _7.Params;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _7.Params;
             fromJSON(_: any): _7.Params;
             toJSON(_: _7.Params): unknown;
             fromPartial(_: Partial<_7.Params>): _7.Params;
@@ -803,7 +803,7 @@ export declare namespace blit {
         GenesisState: {
             typeUrl: string;
             encode(message: _5.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _5.GenesisState;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _5.GenesisState;
             fromJSON(object: any): _5.GenesisState;
             toJSON(message: _5.GenesisState): unknown;
             fromPartial(object: Partial<_5.GenesisState>): _5.GenesisState;
@@ -940,7 +940,7 @@ export declare namespace blit {
         MsgUpdateParams: {
             typeUrl: string;
             encode(message: _15.MsgUpdateParams, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _15.MsgUpdateParams;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _15.MsgUpdateParams;
             fromJSON(object: any): _15.MsgUpdateParams;
             toJSON(message: _15.MsgUpdateParams): unknown;
             fromPartial(object: Partial<_15.MsgUpdateParams>): _15.MsgUpdateParams;
@@ -955,7 +955,7 @@ export declare namespace blit {
         MsgUpdateParamsResponse: {
             typeUrl: string;
             encode(_: _15.MsgUpdateParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _15.MsgUpdateParamsResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _15.MsgUpdateParamsResponse;
             fromJSON(_: any): _15.MsgUpdateParamsResponse;
             toJSON(_: _15.MsgUpdateParamsResponse): unknown;
             fromPartial(_: Partial<_15.MsgUpdateParamsResponse>): _15.MsgUpdateParamsResponse;
@@ -969,7 +969,7 @@ export declare namespace blit {
         MsgCreateStorage: {
             typeUrl: string;
             encode(message: _15.MsgCreateStorage, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _15.MsgCreateStorage;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _15.MsgCreateStorage;
             fromJSON(object: any): _15.MsgCreateStorage;
             toJSON(message: _15.MsgCreateStorage): unknown;
             fromPartial(object: Partial<_15.MsgCreateStorage>): _15.MsgCreateStorage;
@@ -983,7 +983,7 @@ export declare namespace blit {
         MsgCreateStorageResponse: {
             typeUrl: string;
             encode(_: _15.MsgCreateStorageResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _15.MsgCreateStorageResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _15.MsgCreateStorageResponse;
             fromJSON(_: any): _15.MsgCreateStorageResponse;
             toJSON(_: _15.MsgCreateStorageResponse): unknown;
             fromPartial(_: Partial<_15.MsgCreateStorageResponse>): _15.MsgCreateStorageResponse;
@@ -997,7 +997,7 @@ export declare namespace blit {
         MsgUpdateStorage: {
             typeUrl: string;
             encode(message: _15.MsgUpdateStorage, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _15.MsgUpdateStorage;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _15.MsgUpdateStorage;
             fromJSON(object: any): _15.MsgUpdateStorage;
             toJSON(message: _15.MsgUpdateStorage): unknown;
             fromPartial(object: Partial<_15.MsgUpdateStorage>): _15.MsgUpdateStorage;
@@ -1011,7 +1011,7 @@ export declare namespace blit {
         MsgUpdateStorageResponse: {
             typeUrl: string;
             encode(_: _15.MsgUpdateStorageResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _15.MsgUpdateStorageResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _15.MsgUpdateStorageResponse;
             fromJSON(_: any): _15.MsgUpdateStorageResponse;
             toJSON(_: _15.MsgUpdateStorageResponse): unknown;
             fromPartial(_: Partial<_15.MsgUpdateStorageResponse>): _15.MsgUpdateStorageResponse;
@@ -1025,7 +1025,7 @@ export declare namespace blit {
         MsgDeleteStorage: {
             typeUrl: string;
             encode(message: _15.MsgDeleteStorage, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _15.MsgDeleteStorage;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _15.MsgDeleteStorage;
             fromJSON(object: any): _15.MsgDeleteStorage;
             toJSON(message: _15.MsgDeleteStorage): unknown;
             fromPartial(object: Partial<_15.MsgDeleteStorage>): _15.MsgDeleteStorage;
@@ -1039,7 +1039,7 @@ export declare namespace blit {
         MsgDeleteStorageResponse: {
             typeUrl: string;
             encode(_: _15.MsgDeleteStorageResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _15.MsgDeleteStorageResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _15.MsgDeleteStorageResponse;
             fromJSON(_: any): _15.MsgDeleteStorageResponse;
             toJSON(_: _15.MsgDeleteStorageResponse): unknown;
             fromPartial(_: Partial<_15.MsgDeleteStorageResponse>): _15.MsgDeleteStorageResponse;
@@ -1053,7 +1053,7 @@ export declare namespace blit {
         Storage: {
             typeUrl: string;
             encode(message: _14.Storage, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _14.Storage;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _14.Storage;
             fromJSON(object: any): _14.Storage;
             toJSON(message: _14.Storage): unknown;
             fromPartial(object: Partial<_14.Storage>): _14.Storage;
@@ -1067,7 +1067,7 @@ export declare namespace blit {
         QueryParamsRequest: {
             typeUrl: string;
             encode(_: _13.QueryParamsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _13.QueryParamsRequest;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _13.QueryParamsRequest;
             fromJSON(_: any): _13.QueryParamsRequest;
             toJSON(_: _13.QueryParamsRequest): unknown;
             fromPartial(_: Partial<_13.QueryParamsRequest>): _13.QueryParamsRequest;
@@ -1081,7 +1081,7 @@ export declare namespace blit {
         QueryParamsResponse: {
             typeUrl: string;
             encode(message: _13.QueryParamsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _13.QueryParamsResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _13.QueryParamsResponse;
             fromJSON(object: any): _13.QueryParamsResponse;
             toJSON(message: _13.QueryParamsResponse): unknown;
             fromPartial(object: Partial<_13.QueryParamsResponse>): _13.QueryParamsResponse;
@@ -1095,7 +1095,7 @@ export declare namespace blit {
         QueryStorageDetailRequest: {
             typeUrl: string;
             encode(message: _13.QueryStorageDetailRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _13.QueryStorageDetailRequest;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _13.QueryStorageDetailRequest;
             fromJSON(object: any): _13.QueryStorageDetailRequest;
             toJSON(message: _13.QueryStorageDetailRequest): unknown;
             fromPartial(object: Partial<_13.QueryStorageDetailRequest>): _13.QueryStorageDetailRequest;
@@ -1109,7 +1109,7 @@ export declare namespace blit {
         QueryStorageDetailResponse: {
             typeUrl: string;
             encode(message: _13.QueryStorageDetailResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _13.QueryStorageDetailResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _13.QueryStorageDetailResponse;
             fromJSON(object: any): _13.QueryStorageDetailResponse;
             toJSON(message: _13.QueryStorageDetailResponse): unknown;
             fromPartial(object: Partial<_13.QueryStorageDetailResponse>): _13.QueryStorageDetailResponse;
@@ -1123,7 +1123,7 @@ export declare namespace blit {
         QueryFilterStorageRequest: {
             typeUrl: string;
             encode(message: _13.QueryFilterStorageRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _13.QueryFilterStorageRequest;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _13.QueryFilterStorageRequest;
             fromJSON(object: any): _13.QueryFilterStorageRequest;
             toJSON(message: _13.QueryFilterStorageRequest): unknown;
             fromPartial(object: Partial<_13.QueryFilterStorageRequest>): _13.QueryFilterStorageRequest;
@@ -1137,7 +1137,7 @@ export declare namespace blit {
         QueryFilterStorageResponse: {
             typeUrl: string;
             encode(message: _13.QueryFilterStorageResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _13.QueryFilterStorageResponse;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _13.QueryFilterStorageResponse;
             fromJSON(object: any): _13.QueryFilterStorageResponse;
             toJSON(message: _13.QueryFilterStorageResponse): unknown;
             fromPartial(object: Partial<_13.QueryFilterStorageResponse>): _13.QueryFilterStorageResponse;
@@ -1151,7 +1151,7 @@ export declare namespace blit {
         Params: {
             typeUrl: string;
             encode(_: _12.Params, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _12.Params;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _12.Params;
             fromJSON(_: any): _12.Params;
             toJSON(_: _12.Params): unknown;
             fromPartial(_: Partial<_12.Params>): _12.Params;
@@ -1166,7 +1166,7 @@ export declare namespace blit {
         GenesisState: {
             typeUrl: string;
             encode(message: _11.GenesisState, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
-            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _11.GenesisState;
+            decode(input: Uint8Array | import("..").BinaryReader, length?: number): _11.GenesisState;
             fromJSON(object: any): _11.GenesisState;
             toJSON(message: _11.GenesisState): unknown;
             fromPartial(object: Partial<_11.GenesisState>): _11.GenesisState;
