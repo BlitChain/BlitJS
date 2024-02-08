@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { Params } from "./params";
+import { Any } from "../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
 export const protobufPackage = "blit.script";
@@ -649,7 +650,7 @@ function createBaseMsgRun() {
         function_name: "",
         kwargs: "",
         grantee: "",
-        attached_messages: ""
+        attached_messages: []
     };
 }
 export const MsgRun = {
@@ -673,8 +674,8 @@ export const MsgRun = {
         if (message.grantee !== "") {
             writer.uint32(58).string(message.grantee);
         }
-        if (message.attached_messages !== "") {
-            writer.uint32(10).string(message.attached_messages);
+        for (const v of message.attached_messages) {
+            Any.encode(v, writer.uint32(10).fork()).ldelim();
         }
         return writer;
     },
@@ -704,7 +705,7 @@ export const MsgRun = {
                     message.grantee = reader.string();
                     break;
                 case 1:
-                    message.attached_messages = reader.string();
+                    message.attached_messages.push(Any(reader));
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -721,7 +722,7 @@ export const MsgRun = {
             function_name: isSet(object.function_name) ? String(object.function_name) : "",
             kwargs: isSet(object.kwargs) ? String(object.kwargs) : "",
             grantee: isSet(object.grantee) ? String(object.grantee) : "",
-            attached_messages: isSet(object.attached_messages) ? String(object.attached_messages) : ""
+            attached_messages: Array.isArray(object?.attached_messages) ? object.attached_messages.map((e) => Any.fromJSON(e)) : []
         };
     },
     toJSON(message) {
@@ -732,7 +733,12 @@ export const MsgRun = {
         message.function_name !== undefined && (obj.function_name = message.function_name);
         message.kwargs !== undefined && (obj.kwargs = message.kwargs);
         message.grantee !== undefined && (obj.grantee = message.grantee);
-        message.attached_messages !== undefined && (obj.attached_messages = message.attached_messages);
+        if (message.attached_messages) {
+            obj.attached_messages = message.attached_messages.map(e => e ? Any.toJSON(e) : undefined);
+        }
+        else {
+            obj.attached_messages = [];
+        }
         return obj;
     },
     fromPartial(object) {
@@ -743,7 +749,7 @@ export const MsgRun = {
         message.function_name = object.function_name ?? "";
         message.kwargs = object.kwargs ?? "";
         message.grantee = object.grantee ?? "";
-        message.attached_messages = object.attached_messages ?? "";
+        message.attached_messages = object.attached_messages?.map(e => Any.fromPartial(e)) || [];
         return message;
     },
     fromAmino(object) {
@@ -754,7 +760,7 @@ export const MsgRun = {
             function_name: object.function_name,
             kwargs: object.kwargs,
             grantee: object.grantee,
-            attached_messages: object.attached_messages
+            attached_messages: Array.isArray(object?.attached_messages) ? object.attached_messages.map((e) => Cosmos_basev1beta1Msg_FromAmino(e)) : []
         };
     },
     toAmino(message) {
@@ -765,7 +771,12 @@ export const MsgRun = {
         obj.function_name = message.function_name;
         obj.kwargs = message.kwargs;
         obj.grantee = message.grantee;
-        obj.attached_messages = message.attached_messages;
+        if (message.attached_messages) {
+            obj.attached_messages = message.attached_messages.map(e => e ? Cosmos_basev1beta1Msg_ToAmino(e) : undefined);
+        }
+        else {
+            obj.attached_messages = [];
+        }
         return obj;
     },
     fromAminoMsg(object) {
@@ -854,5 +865,19 @@ export const MsgRunResponse = {
             value: MsgRunResponse.encode(message).finish()
         };
     }
+};
+export const Cosmos_basev1beta1Msg_InterfaceDecoder = (input) => {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const data = Any.decode(reader, reader.uint32(), true);
+    switch (data.typeUrl) {
+        default:
+            return data;
+    }
+};
+export const Cosmos_basev1beta1Msg_FromAmino = (content) => {
+    return Any.fromAmino(content);
+};
+export const Cosmos_basev1beta1Msg_ToAmino = (content) => {
+    return Any.toAmino(content);
 };
 //# sourceMappingURL=tx.js.map

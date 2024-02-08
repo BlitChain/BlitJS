@@ -156,7 +156,8 @@ function createBaseMsgCreateStorage() {
         address: "",
         index: "",
         data: "",
-        grantee: ""
+        grantee: "",
+        force: false
     };
 }
 exports.MsgCreateStorage = {
@@ -173,6 +174,9 @@ exports.MsgCreateStorage = {
         }
         if (message.grantee !== "") {
             writer.uint32(34).string(message.grantee);
+        }
+        if (message.force === true) {
+            writer.uint32(40).bool(message.force);
         }
         return writer;
     },
@@ -195,6 +199,9 @@ exports.MsgCreateStorage = {
                 case 4:
                     message.grantee = reader.string();
                     break;
+                case 5:
+                    message.force = reader.bool();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -207,7 +214,8 @@ exports.MsgCreateStorage = {
             address: (0, helpers_1.isSet)(object.address) ? String(object.address) : "",
             index: (0, helpers_1.isSet)(object.index) ? String(object.index) : "",
             data: (0, helpers_1.isSet)(object.data) ? String(object.data) : "",
-            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : ""
+            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : "",
+            force: (0, helpers_1.isSet)(object.force) ? Boolean(object.force) : false
         };
     },
     toJSON(message) {
@@ -216,6 +224,7 @@ exports.MsgCreateStorage = {
         message.index !== undefined && (obj.index = message.index);
         message.data !== undefined && (obj.data = message.data);
         message.grantee !== undefined && (obj.grantee = message.grantee);
+        message.force !== undefined && (obj.force = message.force);
         return obj;
     },
     fromPartial(object) {
@@ -224,6 +233,7 @@ exports.MsgCreateStorage = {
         message.index = object.index ?? "";
         message.data = object.data ?? "";
         message.grantee = object.grantee ?? "";
+        message.force = object.force ?? false;
         return message;
     },
     fromAmino(object) {
@@ -231,7 +241,8 @@ exports.MsgCreateStorage = {
             address: object.address,
             index: object.index,
             data: object.data,
-            grantee: object.grantee
+            grantee: object.grantee,
+            force: object.force
         };
     },
     toAmino(message) {
@@ -240,6 +251,7 @@ exports.MsgCreateStorage = {
         obj.index = message.index;
         obj.data = message.data;
         obj.grantee = message.grantee;
+        obj.force = message.force;
         return obj;
     },
     fromAminoMsg(object) {
@@ -319,7 +331,8 @@ function createBaseMsgUpdateStorage() {
         address: "",
         index: "",
         data: "",
-        grantee: ""
+        grantee: "",
+        force: false
     };
 }
 exports.MsgUpdateStorage = {
@@ -336,6 +349,9 @@ exports.MsgUpdateStorage = {
         }
         if (message.grantee !== "") {
             writer.uint32(34).string(message.grantee);
+        }
+        if (message.force === true) {
+            writer.uint32(40).bool(message.force);
         }
         return writer;
     },
@@ -358,6 +374,9 @@ exports.MsgUpdateStorage = {
                 case 4:
                     message.grantee = reader.string();
                     break;
+                case 5:
+                    message.force = reader.bool();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -370,7 +389,8 @@ exports.MsgUpdateStorage = {
             address: (0, helpers_1.isSet)(object.address) ? String(object.address) : "",
             index: (0, helpers_1.isSet)(object.index) ? String(object.index) : "",
             data: (0, helpers_1.isSet)(object.data) ? String(object.data) : "",
-            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : ""
+            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : "",
+            force: (0, helpers_1.isSet)(object.force) ? Boolean(object.force) : false
         };
     },
     toJSON(message) {
@@ -379,6 +399,7 @@ exports.MsgUpdateStorage = {
         message.index !== undefined && (obj.index = message.index);
         message.data !== undefined && (obj.data = message.data);
         message.grantee !== undefined && (obj.grantee = message.grantee);
+        message.force !== undefined && (obj.force = message.force);
         return obj;
     },
     fromPartial(object) {
@@ -387,6 +408,7 @@ exports.MsgUpdateStorage = {
         message.index = object.index ?? "";
         message.data = object.data ?? "";
         message.grantee = object.grantee ?? "";
+        message.force = object.force ?? false;
         return message;
     },
     fromAmino(object) {
@@ -394,7 +416,8 @@ exports.MsgUpdateStorage = {
             address: object.address,
             index: object.index,
             data: object.data,
-            grantee: object.grantee
+            grantee: object.grantee,
+            force: object.force
         };
     },
     toAmino(message) {
@@ -403,6 +426,7 @@ exports.MsgUpdateStorage = {
         obj.index = message.index;
         obj.data = message.data;
         obj.grantee = message.grantee;
+        obj.force = message.force;
         return obj;
     },
     fromAminoMsg(object) {
@@ -481,7 +505,8 @@ function createBaseMsgDeleteStorage() {
     return {
         address: "",
         index: "",
-        grantee: ""
+        grantee: "",
+        force: false
     };
 }
 exports.MsgDeleteStorage = {
@@ -495,6 +520,9 @@ exports.MsgDeleteStorage = {
         }
         if (message.grantee !== "") {
             writer.uint32(26).string(message.grantee);
+        }
+        if (message.force === true) {
+            writer.uint32(40).bool(message.force);
         }
         return writer;
     },
@@ -514,6 +542,9 @@ exports.MsgDeleteStorage = {
                 case 3:
                     message.grantee = reader.string();
                     break;
+                case 5:
+                    message.force = reader.bool();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -525,7 +556,8 @@ exports.MsgDeleteStorage = {
         return {
             address: (0, helpers_1.isSet)(object.address) ? String(object.address) : "",
             index: (0, helpers_1.isSet)(object.index) ? String(object.index) : "",
-            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : ""
+            grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : "",
+            force: (0, helpers_1.isSet)(object.force) ? Boolean(object.force) : false
         };
     },
     toJSON(message) {
@@ -533,6 +565,7 @@ exports.MsgDeleteStorage = {
         message.address !== undefined && (obj.address = message.address);
         message.index !== undefined && (obj.index = message.index);
         message.grantee !== undefined && (obj.grantee = message.grantee);
+        message.force !== undefined && (obj.force = message.force);
         return obj;
     },
     fromPartial(object) {
@@ -540,13 +573,15 @@ exports.MsgDeleteStorage = {
         message.address = object.address ?? "";
         message.index = object.index ?? "";
         message.grantee = object.grantee ?? "";
+        message.force = object.force ?? false;
         return message;
     },
     fromAmino(object) {
         return {
             address: object.address,
             index: object.index,
-            grantee: object.grantee
+            grantee: object.grantee,
+            force: object.force
         };
     },
     toAmino(message) {
@@ -554,6 +589,7 @@ exports.MsgDeleteStorage = {
         obj.address = message.address;
         obj.index = message.index;
         obj.grantee = message.grantee;
+        obj.force = message.force;
         return obj;
     },
     fromAminoMsg(object) {

@@ -1,4 +1,5 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
 export declare const protobufPackage = "blit.script";
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
@@ -181,12 +182,15 @@ export interface MsgRun {
     function_name: string;
     kwargs: string;
     grantee: string;
-    attached_messages: string;
+    attached_messages: (Any)[] | Any[];
 }
 export interface MsgRunProtoMsg {
     type_url: "/blit.script.MsgRun";
     value: Uint8Array;
 }
+export type MsgRunEncoded = Omit<MsgRun, "attached_messages"> & {
+    attached_messages: (AnyProtoMsg)[];
+};
 /** MsgRun runs a script at a specific address */
 export interface MsgRunAmino {
     caller_address: string;
@@ -195,7 +199,7 @@ export interface MsgRunAmino {
     function_name: string;
     kwargs: string;
     grantee: string;
-    attached_messages: string;
+    attached_messages: AnyAmino[];
 }
 export interface MsgRunAminoMsg {
     type: "/blit.script.MsgRun";
@@ -209,7 +213,7 @@ export interface MsgRunSDKType {
     function_name: string;
     kwargs: string;
     grantee: string;
-    attached_messages: string;
+    attached_messages: (AnySDKType)[];
 }
 export interface MsgRunResponse {
     response: string;
@@ -369,3 +373,6 @@ export declare const MsgRunResponse: {
     toProto(message: MsgRunResponse): Uint8Array;
     toProtoMsg(message: MsgRunResponse): MsgRunResponseProtoMsg;
 };
+export declare const Cosmos_basev1beta1Msg_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
+export declare const Cosmos_basev1beta1Msg_FromAmino: (content: AnyAmino) => Any;
+export declare const Cosmos_basev1beta1Msg_ToAmino: (content: Any) => AnyAmino;

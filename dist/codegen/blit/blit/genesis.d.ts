@@ -1,10 +1,15 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Task, TaskAmino, TaskSDKType } from "./task";
+import { FutureTask, FutureTaskAmino, FutureTaskSDKType } from "./future_task";
 import { BinaryReader, BinaryWriter } from "../../binary";
 export declare const protobufPackage = "blit.blit";
 /** GenesisState defines the blit module's genesis state. */
 export interface GenesisState {
     /** params defines all the parameters of the module. */
     params: Params;
+    task_list: Task[];
+    future_task_list: FutureTask[];
+    starting_task_id: bigint;
 }
 export interface GenesisStateProtoMsg {
     type_url: "/blit.blit.GenesisState";
@@ -14,6 +19,9 @@ export interface GenesisStateProtoMsg {
 export interface GenesisStateAmino {
     /** params defines all the parameters of the module. */
     params?: ParamsAmino;
+    task_list: TaskAmino[];
+    future_task_list: FutureTaskAmino[];
+    starting_task_id: string;
 }
 export interface GenesisStateAminoMsg {
     type: "/blit.blit.GenesisState";
@@ -22,6 +30,9 @@ export interface GenesisStateAminoMsg {
 /** GenesisState defines the blit module's genesis state. */
 export interface GenesisStateSDKType {
     params: ParamsSDKType;
+    task_list: TaskSDKType[];
+    future_task_list: FutureTaskSDKType[];
+    starting_task_id: bigint;
 }
 export declare const GenesisState: {
     typeUrl: string;

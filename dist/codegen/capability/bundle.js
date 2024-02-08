@@ -25,13 +25,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.capability = void 0;
 //@ts-nocheck
-const _16 = __importStar(require("./v1/capability"));
-const _17 = __importStar(require("./v1/genesis"));
+const _18 = __importStar(require("./v1/capability"));
+const _19 = __importStar(require("./v1/genesis"));
 var capability;
 (function (capability) {
     capability.v1 = {
-        ..._16,
-        ..._17
+        ..._18,
+        ..._19
     };
 })(capability || (exports.capability = capability = {}));
 //# sourceMappingURL=bundle.js.map

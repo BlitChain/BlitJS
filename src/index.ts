@@ -130,7 +130,7 @@ const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
 
 const runFunction = async ({ msgClient, attached_messages = [], caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple = 1.5 }) => {
   const message = blitjs.blit.script.MessageComposer.withTypeUrl.run({
-    attached_messages: JSON.stringify(attached_messages),
+    attached_messages: attached_messages,
     caller_address,
     script_address,
     function_name,

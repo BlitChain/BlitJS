@@ -1,5 +1,5 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgUpdateParams, MsgMintCoins, MsgBurnCoins, MsgForceTransferCoins, MsgSetDenomMetadata } from "./tx";
+import { MsgUpdateParams, MsgMintCoins, MsgBurnCoins, MsgForceTransferCoins, MsgSetDenomMetadata, MsgCreateTask, MsgDeleteTask } from "./tx";
 export declare const registry: ReadonlyArray<[string, GeneratedType]>;
 export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
@@ -21,6 +21,14 @@ export declare const MessageComposer: {
             value: Uint8Array;
         };
         setDenomMetadata(value: MsgSetDenomMetadata): {
+            typeUrl: string;
+            value: Uint8Array;
+        };
+        createTask(value: MsgCreateTask): {
+            typeUrl: string;
+            value: Uint8Array;
+        };
+        deleteTask(value: MsgDeleteTask): {
             typeUrl: string;
             value: Uint8Array;
         };
@@ -46,6 +54,14 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgSetDenomMetadata;
         };
+        createTask(value: MsgCreateTask): {
+            typeUrl: string;
+            value: MsgCreateTask;
+        };
+        deleteTask(value: MsgDeleteTask): {
+            typeUrl: string;
+            value: MsgDeleteTask;
+        };
     };
     toJSON: {
         updateParams(value: MsgUpdateParams): {
@@ -65,6 +81,14 @@ export declare const MessageComposer: {
             value: unknown;
         };
         setDenomMetadata(value: MsgSetDenomMetadata): {
+            typeUrl: string;
+            value: unknown;
+        };
+        createTask(value: MsgCreateTask): {
+            typeUrl: string;
+            value: unknown;
+        };
+        deleteTask(value: MsgDeleteTask): {
             typeUrl: string;
             value: unknown;
         };
@@ -90,6 +114,14 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgSetDenomMetadata;
         };
+        createTask(value: any): {
+            typeUrl: string;
+            value: MsgCreateTask;
+        };
+        deleteTask(value: any): {
+            typeUrl: string;
+            value: MsgDeleteTask;
+        };
     };
     fromPartial: {
         updateParams(value: MsgUpdateParams): {
@@ -111,6 +143,14 @@ export declare const MessageComposer: {
         setDenomMetadata(value: MsgSetDenomMetadata): {
             typeUrl: string;
             value: MsgSetDenomMetadata;
+        };
+        createTask(value: MsgCreateTask): {
+            typeUrl: string;
+            value: MsgCreateTask;
+        };
+        deleteTask(value: MsgDeleteTask): {
+            typeUrl: string;
+            value: MsgDeleteTask;
         };
     };
 };

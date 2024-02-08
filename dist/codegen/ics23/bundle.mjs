@@ -1,6 +1,6 @@
 //@ts-nocheck
-import * as _18 from "../confio/proofs";
+import * as _20 from "../confio/proofs";
 export const ics23 = {
-    ..._18
+    ..._20
 };
 //# sourceMappingURL=bundle.js.map

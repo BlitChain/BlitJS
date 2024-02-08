@@ -1,10 +1,15 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
+import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
 export declare const protobufPackage = "blit.blit";
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParams {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+    /**
+     * authority is the address that controls the module (defaults to x/gov unless
+     * overwritten).
+     */
     authority: string;
     /** NOTE: All parameters must be supplied. */
     params: Params;
@@ -15,7 +20,10 @@ export interface MsgUpdateParamsProtoMsg {
 }
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParamsAmino {
-    /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+    /**
+     * authority is the address that controls the module (defaults to x/gov unless
+     * overwritten).
+     */
     authority: string;
     /** NOTE: All parameters must be supplied. */
     params?: ParamsAmino;
@@ -218,6 +226,104 @@ export interface MsgSetDenomMetadataResponseAminoMsg {
 }
 export interface MsgSetDenomMetadataResponseSDKType {
 }
+export interface MsgCreateTask {
+    creator: string;
+    activate_after: Date;
+    expire_after: Date;
+    minimum_interval?: Duration;
+    max_runs: bigint;
+    disable_on_error: boolean;
+    enabled: boolean;
+    task_gas_limit: bigint;
+    task_gas_fee: Coin;
+    messages: (Any)[] | Any[];
+}
+export interface MsgCreateTaskProtoMsg {
+    type_url: "/blit.blit.MsgCreateTask";
+    value: Uint8Array;
+}
+export type MsgCreateTaskEncoded = Omit<MsgCreateTask, "messages"> & {
+    messages: (AnyProtoMsg)[];
+};
+export interface MsgCreateTaskAmino {
+    creator: string;
+    activate_after?: string;
+    expire_after?: string;
+    minimum_interval?: DurationAmino;
+    max_runs: string;
+    disable_on_error: boolean;
+    enabled: boolean;
+    task_gas_limit: string;
+    task_gas_fee?: CoinAmino;
+    messages: AnyAmino[];
+}
+export interface MsgCreateTaskAminoMsg {
+    type: "/blit.blit.MsgCreateTask";
+    value: MsgCreateTaskAmino;
+}
+export interface MsgCreateTaskSDKType {
+    creator: string;
+    activate_after: Date;
+    expire_after: Date;
+    minimum_interval?: DurationSDKType;
+    max_runs: bigint;
+    disable_on_error: boolean;
+    enabled: boolean;
+    task_gas_limit: bigint;
+    task_gas_fee: CoinSDKType;
+    messages: (AnySDKType)[];
+}
+export interface MsgCreateTaskResponse {
+    id: bigint;
+}
+export interface MsgCreateTaskResponseProtoMsg {
+    type_url: "/blit.blit.MsgCreateTaskResponse";
+    value: Uint8Array;
+}
+export interface MsgCreateTaskResponseAmino {
+    id: string;
+}
+export interface MsgCreateTaskResponseAminoMsg {
+    type: "/blit.blit.MsgCreateTaskResponse";
+    value: MsgCreateTaskResponseAmino;
+}
+export interface MsgCreateTaskResponseSDKType {
+    id: bigint;
+}
+export interface MsgDeleteTask {
+    creator: string;
+    id: bigint;
+}
+export interface MsgDeleteTaskProtoMsg {
+    type_url: "/blit.blit.MsgDeleteTask";
+    value: Uint8Array;
+}
+export interface MsgDeleteTaskAmino {
+    creator: string;
+    id: string;
+}
+export interface MsgDeleteTaskAminoMsg {
+    type: "/blit.blit.MsgDeleteTask";
+    value: MsgDeleteTaskAmino;
+}
+export interface MsgDeleteTaskSDKType {
+    creator: string;
+    id: bigint;
+}
+export interface MsgDeleteTaskResponse {
+}
+export interface MsgDeleteTaskResponseProtoMsg {
+    type_url: "/blit.blit.MsgDeleteTaskResponse";
+    value: Uint8Array;
+}
+export interface MsgDeleteTaskResponseAmino {
+}
+export interface MsgDeleteTaskResponseAminoMsg {
+    type: "/blit.blit.MsgDeleteTaskResponse";
+    value: MsgDeleteTaskResponseAmino;
+}
+export interface MsgDeleteTaskResponseSDKType {
+}
 export declare const MsgUpdateParams: {
     typeUrl: string;
     encode(message: MsgUpdateParams, writer?: BinaryWriter): BinaryWriter;
@@ -359,3 +465,62 @@ export declare const MsgSetDenomMetadataResponse: {
     toProto(message: MsgSetDenomMetadataResponse): Uint8Array;
     toProtoMsg(message: MsgSetDenomMetadataResponse): MsgSetDenomMetadataResponseProtoMsg;
 };
+export declare const MsgCreateTask: {
+    typeUrl: string;
+    encode(message: MsgCreateTask, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateTask;
+    fromJSON(object: any): MsgCreateTask;
+    toJSON(message: MsgCreateTask): unknown;
+    fromPartial(object: Partial<MsgCreateTask>): MsgCreateTask;
+    fromAmino(object: MsgCreateTaskAmino): MsgCreateTask;
+    toAmino(message: MsgCreateTask): MsgCreateTaskAmino;
+    fromAminoMsg(object: MsgCreateTaskAminoMsg): MsgCreateTask;
+    fromProtoMsg(message: MsgCreateTaskProtoMsg): MsgCreateTask;
+    toProto(message: MsgCreateTask): Uint8Array;
+    toProtoMsg(message: MsgCreateTask): MsgCreateTaskProtoMsg;
+};
+export declare const MsgCreateTaskResponse: {
+    typeUrl: string;
+    encode(message: MsgCreateTaskResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateTaskResponse;
+    fromJSON(object: any): MsgCreateTaskResponse;
+    toJSON(message: MsgCreateTaskResponse): unknown;
+    fromPartial(object: Partial<MsgCreateTaskResponse>): MsgCreateTaskResponse;
+    fromAmino(object: MsgCreateTaskResponseAmino): MsgCreateTaskResponse;
+    toAmino(message: MsgCreateTaskResponse): MsgCreateTaskResponseAmino;
+    fromAminoMsg(object: MsgCreateTaskResponseAminoMsg): MsgCreateTaskResponse;
+    fromProtoMsg(message: MsgCreateTaskResponseProtoMsg): MsgCreateTaskResponse;
+    toProto(message: MsgCreateTaskResponse): Uint8Array;
+    toProtoMsg(message: MsgCreateTaskResponse): MsgCreateTaskResponseProtoMsg;
+};
+export declare const MsgDeleteTask: {
+    typeUrl: string;
+    encode(message: MsgDeleteTask, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteTask;
+    fromJSON(object: any): MsgDeleteTask;
+    toJSON(message: MsgDeleteTask): unknown;
+    fromPartial(object: Partial<MsgDeleteTask>): MsgDeleteTask;
+    fromAmino(object: MsgDeleteTaskAmino): MsgDeleteTask;
+    toAmino(message: MsgDeleteTask): MsgDeleteTaskAmino;
+    fromAminoMsg(object: MsgDeleteTaskAminoMsg): MsgDeleteTask;
+    fromProtoMsg(message: MsgDeleteTaskProtoMsg): MsgDeleteTask;
+    toProto(message: MsgDeleteTask): Uint8Array;
+    toProtoMsg(message: MsgDeleteTask): MsgDeleteTaskProtoMsg;
+};
+export declare const MsgDeleteTaskResponse: {
+    typeUrl: string;
+    encode(_: MsgDeleteTaskResponse, writer?: BinaryWriter): BinaryWriter;
+    decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteTaskResponse;
+    fromJSON(_: any): MsgDeleteTaskResponse;
+    toJSON(_: MsgDeleteTaskResponse): unknown;
+    fromPartial(_: Partial<MsgDeleteTaskResponse>): MsgDeleteTaskResponse;
+    fromAmino(_: MsgDeleteTaskResponseAmino): MsgDeleteTaskResponse;
+    toAmino(_: MsgDeleteTaskResponse): MsgDeleteTaskResponseAmino;
+    fromAminoMsg(object: MsgDeleteTaskResponseAminoMsg): MsgDeleteTaskResponse;
+    fromProtoMsg(message: MsgDeleteTaskResponseProtoMsg): MsgDeleteTaskResponse;
+    toProto(message: MsgDeleteTaskResponse): Uint8Array;
+    toProtoMsg(message: MsgDeleteTaskResponse): MsgDeleteTaskResponseProtoMsg;
+};
+export declare const Cosmos_basev1beta1Msg_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
+export declare const Cosmos_basev1beta1Msg_FromAmino: (content: AnyAmino) => Any;
+export declare const Cosmos_basev1beta1Msg_ToAmino: (content: Any) => AnyAmino;

@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MsgRunResponse = exports.MsgRun = exports.MsgDeleteScriptResponse = exports.MsgDeleteScript = exports.MsgUpdateScriptResponse = exports.MsgUpdateScript = exports.MsgCreateScriptResponse = exports.MsgCreateScript = exports.MsgUpdateParamsResponse = exports.MsgUpdateParams = exports.protobufPackage = void 0;
+exports.Cosmos_basev1beta1Msg_ToAmino = exports.Cosmos_basev1beta1Msg_FromAmino = exports.Cosmos_basev1beta1Msg_InterfaceDecoder = exports.MsgRunResponse = exports.MsgRun = exports.MsgDeleteScriptResponse = exports.MsgDeleteScript = exports.MsgUpdateScriptResponse = exports.MsgUpdateScript = exports.MsgCreateScriptResponse = exports.MsgCreateScript = exports.MsgUpdateParamsResponse = exports.MsgUpdateParams = exports.protobufPackage = void 0;
 //@ts-nocheck
 const params_1 = require("./params");
+const any_1 = require("../../google/protobuf/any");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
 exports.protobufPackage = "blit.script";
@@ -652,7 +653,7 @@ function createBaseMsgRun() {
         function_name: "",
         kwargs: "",
         grantee: "",
-        attached_messages: ""
+        attached_messages: []
     };
 }
 exports.MsgRun = {
@@ -676,8 +677,8 @@ exports.MsgRun = {
         if (message.grantee !== "") {
             writer.uint32(58).string(message.grantee);
         }
-        if (message.attached_messages !== "") {
-            writer.uint32(10).string(message.attached_messages);
+        for (const v of message.attached_messages) {
+            any_1.Any.encode(v, writer.uint32(10).fork()).ldelim();
         }
         return writer;
     },
@@ -707,7 +708,7 @@ exports.MsgRun = {
                     message.grantee = reader.string();
                     break;
                 case 1:
-                    message.attached_messages = reader.string();
+                    message.attached_messages.push((0, any_1.Any)(reader));
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -724,7 +725,7 @@ exports.MsgRun = {
             function_name: (0, helpers_1.isSet)(object.function_name) ? String(object.function_name) : "",
             kwargs: (0, helpers_1.isSet)(object.kwargs) ? String(object.kwargs) : "",
             grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : "",
-            attached_messages: (0, helpers_1.isSet)(object.attached_messages) ? String(object.attached_messages) : ""
+            attached_messages: Array.isArray(object?.attached_messages) ? object.attached_messages.map((e) => any_1.Any.fromJSON(e)) : []
         };
     },
     toJSON(message) {
@@ -735,7 +736,12 @@ exports.MsgRun = {
         message.function_name !== undefined && (obj.function_name = message.function_name);
         message.kwargs !== undefined && (obj.kwargs = message.kwargs);
         message.grantee !== undefined && (obj.grantee = message.grantee);
-        message.attached_messages !== undefined && (obj.attached_messages = message.attached_messages);
+        if (message.attached_messages) {
+            obj.attached_messages = message.attached_messages.map(e => e ? any_1.Any.toJSON(e) : undefined);
+        }
+        else {
+            obj.attached_messages = [];
+        }
         return obj;
     },
     fromPartial(object) {
@@ -746,7 +752,7 @@ exports.MsgRun = {
         message.function_name = object.function_name ?? "";
         message.kwargs = object.kwargs ?? "";
         message.grantee = object.grantee ?? "";
-        message.attached_messages = object.attached_messages ?? "";
+        message.attached_messages = object.attached_messages?.map(e => any_1.Any.fromPartial(e)) || [];
         return message;
     },
     fromAmino(object) {
@@ -757,7 +763,7 @@ exports.MsgRun = {
             function_name: object.function_name,
             kwargs: object.kwargs,
             grantee: object.grantee,
-            attached_messages: object.attached_messages
+            attached_messages: Array.isArray(object?.attached_messages) ? object.attached_messages.map((e) => (0, exports.Cosmos_basev1beta1Msg_FromAmino)(e)) : []
         };
     },
     toAmino(message) {
@@ -768,7 +774,12 @@ exports.MsgRun = {
         obj.function_name = message.function_name;
         obj.kwargs = message.kwargs;
         obj.grantee = message.grantee;
-        obj.attached_messages = message.attached_messages;
+        if (message.attached_messages) {
+            obj.attached_messages = message.attached_messages.map(e => e ? (0, exports.Cosmos_basev1beta1Msg_ToAmino)(e) : undefined);
+        }
+        else {
+            obj.attached_messages = [];
+        }
         return obj;
     },
     fromAminoMsg(object) {
@@ -858,4 +869,21 @@ exports.MsgRunResponse = {
         };
     }
 };
+const Cosmos_basev1beta1Msg_InterfaceDecoder = (input) => {
+    const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
+    const data = any_1.Any.decode(reader, reader.uint32(), true);
+    switch (data.typeUrl) {
+        default:
+            return data;
+    }
+};
+exports.Cosmos_basev1beta1Msg_InterfaceDecoder = Cosmos_basev1beta1Msg_InterfaceDecoder;
+const Cosmos_basev1beta1Msg_FromAmino = (content) => {
+    return any_1.Any.fromAmino(content);
+};
+exports.Cosmos_basev1beta1Msg_FromAmino = Cosmos_basev1beta1Msg_FromAmino;
+const Cosmos_basev1beta1Msg_ToAmino = (content) => {
+    return any_1.Any.toAmino(content);
+};
+exports.Cosmos_basev1beta1Msg_ToAmino = Cosmos_basev1beta1Msg_ToAmino;
 //# sourceMappingURL=tx.js.map

@@ -1,5 +1,5 @@
 import * as fm from "../../grpc-gateway";
-import { MsgUpdateParams, MsgUpdateParamsResponse, MsgMintCoins, MsgMintCoinsResponse, MsgBurnCoins, MsgBurnCoinsResponse, MsgForceTransferCoins, MsgForceTransferCoinsResponse, MsgSetDenomMetadata, MsgSetDenomMetadataResponse } from "./tx";
+import { MsgUpdateParams, MsgUpdateParamsResponse, MsgMintCoins, MsgMintCoinsResponse, MsgBurnCoins, MsgBurnCoinsResponse, MsgForceTransferCoins, MsgForceTransferCoinsResponse, MsgSetDenomMetadata, MsgSetDenomMetadataResponse, MsgCreateTask, MsgCreateTaskResponse, MsgDeleteTask, MsgDeleteTaskResponse } from "./tx";
 export declare class Msg {
     /**
      * UpdateParams defines a (governance) operation for updating the module
@@ -10,4 +10,6 @@ export declare class Msg {
     static BurnCoins(request: MsgBurnCoins, initRequest?: fm.InitReq): Promise<MsgBurnCoinsResponse>;
     static ForceTransferCoins(request: MsgForceTransferCoins, initRequest?: fm.InitReq): Promise<MsgForceTransferCoinsResponse>;
     static SetDenomMetadata(request: MsgSetDenomMetadata, initRequest?: fm.InitReq): Promise<MsgSetDenomMetadataResponse>;
+    static CreateTask(request: MsgCreateTask, initRequest?: fm.InitReq): Promise<MsgCreateTaskResponse>;
+    static DeleteTask(request: MsgDeleteTask, initRequest?: fm.InitReq): Promise<MsgDeleteTaskResponse>;
 }
