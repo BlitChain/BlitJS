@@ -26,14 +26,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.experimentalHelpers = void 0;
 const blitjs = __importStar(require("./codegen"));
 const proto_signing_1 = require("@cosmjs/proto-signing");
+BigInt.prototype.toJSON = function () {
+    return this.toString();
+};
 exports.default = blitjs;
+const fetchPublicEndpoints = async (restEndpoint = '') => {
+    try {
+        const response = await fetch(restEndpoint + '/blit/services/endpoints');
+        const endpoints = await response.json();
+        return { rpcEndpoint: endpoints.rpc_url, restEndpoint: endpoints.api_url };
+    }
+    catch (e) {
+        if (e instanceof TypeError) {
+            throw new Error('Please provide a valid restEndpoint');
+        }
+        else {
+            throw e;
+        }
+    }
+};
 const makeChainInfo = async ({ rpcEndpoint, restEndpoint }) => {
     const queryClient = await blitjs.blit.ClientFactory.createLCDClient({
         restEndpoint
     });
     const nodeInfo = await queryClient.cosmos.base.tendermint.v1beta1.getNodeInfo();
     const chainId = nodeInfo.default_node_info.network;
-    let chainName = 'Blit';
+    let chainName = 'Blitchain';
     if (chainId.includes('test')) {
         chainName = `${chainName} Testnet (${chainId})`;
     }
@@ -95,18 +113,22 @@ const makeKeplrClient = async ({ rpcEndpoint, restEndpoint }) => {
         rpcEndpoint,
         signer: offlineSigner
     });
+    //@ts-ignore
     ibcClient.registry.types.forEach((value, key) => {
         // add the ibc types to the blit client if they don't exist
+        //@ts-ignore
         if (!client.registry.types.has(key)) {
+            //@ts-ignore
             client.registry.types.set(key, value);
         }
     });
+    //@ts-ignore
     client.gasPrice = '0ublit';
     return client;
 };
 const runFunction = async ({ msgClient, attached_messages = [], caller_address, script_address, function_name, kwargs, extra_code, grantee, gasMultiple = 1.5 }) => {
     const message = blitjs.blit.script.MessageComposer.withTypeUrl.run({
-        attached_messages: JSON.stringify(attached_messages),
+        attached_messages: attached_messages,
         caller_address,
         script_address,
         function_name,
@@ -164,7 +186,7 @@ const runFunction = async ({ msgClient, attached_messages = [], caller_address, 
 };
 const makeJsClient = async ({ mnemonic, rpcEndpoint, restEndpoint }) => {
     if (!mnemonic) {
-        mnemonic = (await proto_signing_1.DirectSecp256k1HdWallet.generate(24)).secret.data;
+        mnemonic = (await proto_signing_1.DirectSecp256k1HdWallet.generate(24)).mnemonic;
     }
     const signer = await proto_signing_1.DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
         prefix: 'blit'
@@ -173,17 +195,19 @@ const makeJsClient = async ({ mnemonic, rpcEndpoint, restEndpoint }) => {
         rpcEndpoint,
         signer
     });
-    client.gasPrice = '0ublit';
     const ibcClient = await blitjs.getSigningIbcClient({
         rpcEndpoint,
         signer
     });
+    //@ts-ignore
     ibcClient.registry.types.forEach((value, key) => {
         // add the ibc types to the blit client if they don't exist
-        if (!client.registry.types.has(key)) {
-            client.registry.types.set(key, value);
+        if (!client.registry.lookupType(key)) {
+            client.registry.register(key, value);
         }
     });
+    //@ts-ignore
+    client.gasPrice = '0ublit';
     return client;
 };
 const queryFunction = async ({ attached_messages = [], queryClient, script_address, caller_address, function_name, kwargs, extra_code, grantee }) => {
@@ -208,6 +232,7 @@ exports.experimentalHelpers = {
     makeJsClient,
     runFunction,
     queryFunction,
-    makeChainInfo
+    makeChainInfo,
+    fetchPublicEndpoints,
 };
 //# sourceMappingURL=index.js.map

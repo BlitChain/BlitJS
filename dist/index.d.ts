@@ -1,4 +1,20 @@
 import * as blitjs from './codegen';
+declare global {
+    interface BigInt {
+        toJSON(): string;
+    }
+    interface Window {
+        keplr: any;
+        getOfflineSigner: any;
+    }
+    interface Registry {
+        types: Map<string, any>;
+    }
+    interface BlitClient {
+        registry: Registry;
+        gasPrice: string;
+    }
+}
 export default blitjs;
 export declare const experimentalHelpers: {
     makeKeplrClient: ({ rpcEndpoint, restEndpoint }: {
@@ -74,5 +90,9 @@ export declare const experimentalHelpers: {
                 high: number;
             };
         }[];
+    }>;
+    fetchPublicEndpoints: (restEndpoint?: string) => Promise<{
+        rpcEndpoint: any;
+        restEndpoint: any;
     }>;
 };
