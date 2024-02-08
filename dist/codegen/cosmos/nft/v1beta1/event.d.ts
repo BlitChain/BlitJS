@@ -103,6 +103,10 @@ export interface EventBurnSDKType {
 }
 export declare const EventSend: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventSend;
+    isSDK(o: any): o is EventSendSDKType;
+    isAmino(o: any): o is EventSendAmino;
     encode(message: EventSend, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventSend;
     fromJSON(object: any): EventSend;
@@ -118,6 +122,10 @@ export declare const EventSend: {
 };
 export declare const EventMint: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventMint;
+    isSDK(o: any): o is EventMintSDKType;
+    isAmino(o: any): o is EventMintAmino;
     encode(message: EventMint, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventMint;
     fromJSON(object: any): EventMint;
@@ -133,6 +141,10 @@ export declare const EventMint: {
 };
 export declare const EventBurn: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventBurn;
+    isSDK(o: any): o is EventBurnSDKType;
+    isAmino(o: any): o is EventBurnAmino;
     encode(message: EventBurn, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventBurn;
     fromJSON(object: any): EventBurn;

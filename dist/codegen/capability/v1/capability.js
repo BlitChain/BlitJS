@@ -4,6 +4,7 @@ exports.CapabilityOwners = exports.Owner = exports.Capability = exports.protobuf
 //@ts-nocheck
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "capability.v1";
 function createBaseCapability() {
     return {
@@ -12,6 +13,15 @@ function createBaseCapability() {
 }
 exports.Capability = {
     typeUrl: "/capability.v1.Capability",
+    is(o) {
+        return o && (o.$typeUrl === exports.Capability.typeUrl || typeof o.index === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Capability.typeUrl || typeof o.index === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Capability.typeUrl || typeof o.index === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.index !== BigInt(0)) {
             writer.uint32(8).uint64(message.index);
@@ -78,6 +88,7 @@ exports.Capability = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Capability.typeUrl, exports.Capability);
 function createBaseOwner() {
     return {
         module: "",
@@ -86,6 +97,15 @@ function createBaseOwner() {
 }
 exports.Owner = {
     typeUrl: "/capability.v1.Owner",
+    is(o) {
+        return o && (o.$typeUrl === exports.Owner.typeUrl || typeof o.module === "string" && typeof o.name === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Owner.typeUrl || typeof o.module === "string" && typeof o.name === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Owner.typeUrl || typeof o.module === "string" && typeof o.name === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.module !== "") {
             writer.uint32(10).string(message.module);
@@ -165,6 +185,7 @@ exports.Owner = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Owner.typeUrl, exports.Owner);
 function createBaseCapabilityOwners() {
     return {
         owners: []
@@ -172,6 +193,15 @@ function createBaseCapabilityOwners() {
 }
 exports.CapabilityOwners = {
     typeUrl: "/capability.v1.CapabilityOwners",
+    is(o) {
+        return o && (o.$typeUrl === exports.CapabilityOwners.typeUrl || Array.isArray(o.owners) && (!o.owners.length || exports.Owner.is(o.owners[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.CapabilityOwners.typeUrl || Array.isArray(o.owners) && (!o.owners.length || exports.Owner.isSDK(o.owners[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.CapabilityOwners.typeUrl || Array.isArray(o.owners) && (!o.owners.length || exports.Owner.isAmino(o.owners[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.owners) {
             exports.Owner.encode(v, writer.uint32(10).fork()).ldelim();
@@ -246,4 +276,5 @@ exports.CapabilityOwners = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.CapabilityOwners.typeUrl, exports.CapabilityOwners);
 //# sourceMappingURL=capability.js.map

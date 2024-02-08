@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Params = exports.Version = exports.ConnectionPaths = exports.ClientPaths = exports.Counterparty = exports.IdentifiedConnection = exports.ConnectionEnd = exports.stateToJSON = exports.stateFromJSON = exports.StateAmino = exports.StateSDKType = exports.State = exports.protobufPackage = void 0;
 //@ts-nocheck
 const commitment_1 = require("../../commitment/v1/commitment");
-const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const binary_1 = require("../../../../binary");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "ibc.core.connection.v1";
 /**
  * State defines if a connection is in one of the following states:
@@ -75,6 +76,16 @@ function createBaseConnectionEnd() {
 }
 exports.ConnectionEnd = {
     typeUrl: "/ibc.core.connection.v1.ConnectionEnd",
+    aminoType: "cosmos-sdk/ConnectionEnd",
+    is(o) {
+        return o && (o.$typeUrl === exports.ConnectionEnd.typeUrl || typeof o.client_id === "string" && Array.isArray(o.versions) && (!o.versions.length || exports.Version.is(o.versions[0])) && (0, helpers_1.isSet)(o.state) && exports.Counterparty.is(o.counterparty) && typeof o.delay_period === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ConnectionEnd.typeUrl || typeof o.client_id === "string" && Array.isArray(o.versions) && (!o.versions.length || exports.Version.isSDK(o.versions[0])) && (0, helpers_1.isSet)(o.state) && exports.Counterparty.isSDK(o.counterparty) && typeof o.delay_period === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ConnectionEnd.typeUrl || typeof o.client_id === "string" && Array.isArray(o.versions) && (!o.versions.length || exports.Version.isAmino(o.versions[0])) && (0, helpers_1.isSet)(o.state) && exports.Counterparty.isAmino(o.counterparty) && typeof o.delay_period === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.client_id !== "") {
             writer.uint32(10).string(message.client_id);
@@ -207,6 +218,8 @@ exports.ConnectionEnd = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ConnectionEnd.typeUrl, exports.ConnectionEnd);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ConnectionEnd.aminoType, exports.ConnectionEnd.typeUrl);
 function createBaseIdentifiedConnection() {
     return {
         id: "",
@@ -219,6 +232,16 @@ function createBaseIdentifiedConnection() {
 }
 exports.IdentifiedConnection = {
     typeUrl: "/ibc.core.connection.v1.IdentifiedConnection",
+    aminoType: "cosmos-sdk/IdentifiedConnection",
+    is(o) {
+        return o && (o.$typeUrl === exports.IdentifiedConnection.typeUrl || typeof o.id === "string" && typeof o.client_id === "string" && Array.isArray(o.versions) && (!o.versions.length || exports.Version.is(o.versions[0])) && (0, helpers_1.isSet)(o.state) && exports.Counterparty.is(o.counterparty) && typeof o.delay_period === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.IdentifiedConnection.typeUrl || typeof o.id === "string" && typeof o.client_id === "string" && Array.isArray(o.versions) && (!o.versions.length || exports.Version.isSDK(o.versions[0])) && (0, helpers_1.isSet)(o.state) && exports.Counterparty.isSDK(o.counterparty) && typeof o.delay_period === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.IdentifiedConnection.typeUrl || typeof o.id === "string" && typeof o.client_id === "string" && Array.isArray(o.versions) && (!o.versions.length || exports.Version.isAmino(o.versions[0])) && (0, helpers_1.isSet)(o.state) && exports.Counterparty.isAmino(o.counterparty) && typeof o.delay_period === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.id !== "") {
             writer.uint32(10).string(message.id);
@@ -364,6 +387,8 @@ exports.IdentifiedConnection = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.IdentifiedConnection.typeUrl, exports.IdentifiedConnection);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.IdentifiedConnection.aminoType, exports.IdentifiedConnection.typeUrl);
 function createBaseCounterparty() {
     return {
         client_id: "",
@@ -373,6 +398,16 @@ function createBaseCounterparty() {
 }
 exports.Counterparty = {
     typeUrl: "/ibc.core.connection.v1.Counterparty",
+    aminoType: "cosmos-sdk/Counterparty",
+    is(o) {
+        return o && (o.$typeUrl === exports.Counterparty.typeUrl || typeof o.client_id === "string" && typeof o.connection_id === "string" && commitment_1.MerklePrefix.is(o.prefix));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Counterparty.typeUrl || typeof o.client_id === "string" && typeof o.connection_id === "string" && commitment_1.MerklePrefix.isSDK(o.prefix));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Counterparty.typeUrl || typeof o.client_id === "string" && typeof o.connection_id === "string" && commitment_1.MerklePrefix.isAmino(o.prefix));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.client_id !== "") {
             writer.uint32(10).string(message.client_id);
@@ -471,6 +506,8 @@ exports.Counterparty = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Counterparty.typeUrl, exports.Counterparty);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Counterparty.aminoType, exports.Counterparty.typeUrl);
 function createBaseClientPaths() {
     return {
         paths: []
@@ -478,6 +515,16 @@ function createBaseClientPaths() {
 }
 exports.ClientPaths = {
     typeUrl: "/ibc.core.connection.v1.ClientPaths",
+    aminoType: "cosmos-sdk/ClientPaths",
+    is(o) {
+        return o && (o.$typeUrl === exports.ClientPaths.typeUrl || Array.isArray(o.paths) && (!o.paths.length || typeof o.paths[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ClientPaths.typeUrl || Array.isArray(o.paths) && (!o.paths.length || typeof o.paths[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ClientPaths.typeUrl || Array.isArray(o.paths) && (!o.paths.length || typeof o.paths[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.paths) {
             writer.uint32(10).string(v);
@@ -558,6 +605,8 @@ exports.ClientPaths = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ClientPaths.typeUrl, exports.ClientPaths);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ClientPaths.aminoType, exports.ClientPaths.typeUrl);
 function createBaseConnectionPaths() {
     return {
         client_id: "",
@@ -566,6 +615,16 @@ function createBaseConnectionPaths() {
 }
 exports.ConnectionPaths = {
     typeUrl: "/ibc.core.connection.v1.ConnectionPaths",
+    aminoType: "cosmos-sdk/ConnectionPaths",
+    is(o) {
+        return o && (o.$typeUrl === exports.ConnectionPaths.typeUrl || typeof o.client_id === "string" && Array.isArray(o.paths) && (!o.paths.length || typeof o.paths[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ConnectionPaths.typeUrl || typeof o.client_id === "string" && Array.isArray(o.paths) && (!o.paths.length || typeof o.paths[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ConnectionPaths.typeUrl || typeof o.client_id === "string" && Array.isArray(o.paths) && (!o.paths.length || typeof o.paths[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.client_id !== "") {
             writer.uint32(10).string(message.client_id);
@@ -659,6 +718,8 @@ exports.ConnectionPaths = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ConnectionPaths.typeUrl, exports.ConnectionPaths);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ConnectionPaths.aminoType, exports.ConnectionPaths.typeUrl);
 function createBaseVersion() {
     return {
         identifier: "",
@@ -667,6 +728,16 @@ function createBaseVersion() {
 }
 exports.Version = {
     typeUrl: "/ibc.core.connection.v1.Version",
+    aminoType: "cosmos-sdk/Version",
+    is(o) {
+        return o && (o.$typeUrl === exports.Version.typeUrl || typeof o.identifier === "string" && Array.isArray(o.features) && (!o.features.length || typeof o.features[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Version.typeUrl || typeof o.identifier === "string" && Array.isArray(o.features) && (!o.features.length || typeof o.features[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Version.typeUrl || typeof o.identifier === "string" && Array.isArray(o.features) && (!o.features.length || typeof o.features[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.identifier !== "") {
             writer.uint32(10).string(message.identifier);
@@ -760,6 +831,8 @@ exports.Version = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Version.typeUrl, exports.Version);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Version.aminoType, exports.Version.typeUrl);
 function createBaseParams() {
     return {
         max_expected_time_per_block: BigInt(0)
@@ -767,6 +840,16 @@ function createBaseParams() {
 }
 exports.Params = {
     typeUrl: "/ibc.core.connection.v1.Params",
+    aminoType: "cosmos-sdk/Params",
+    is(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.max_expected_time_per_block === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.max_expected_time_per_block === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.max_expected_time_per_block === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.max_expected_time_per_block !== BigInt(0)) {
             writer.uint32(8).uint64(message.max_expected_time_per_block);
@@ -839,4 +922,6 @@ exports.Params = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Params.typeUrl, exports.Params);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Params.aminoType, exports.Params.typeUrl);
 //# sourceMappingURL=connection.js.map

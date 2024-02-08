@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.blit";
 /** Params defines the parameters for the module. */
 export interface Params {}
@@ -20,6 +21,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/blit.blit.Params",
+  aminoType: "blit/x/blit/Params",
+  is(o: any): o is Params {
+    return o && o.$typeUrl === Params.typeUrl;
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && o.$typeUrl === Params.typeUrl;
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && o.$typeUrl === Params.typeUrl;
+  },
   encode(_: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -78,3 +89,5 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);

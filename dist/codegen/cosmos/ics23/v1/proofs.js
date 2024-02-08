@@ -4,6 +4,7 @@ exports.CompressedNonExistenceProof = exports.CompressedExistenceProof = exports
 //@ts-nocheck
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.ics23.v1";
 var HashOp;
 (function (HashOp) {
@@ -192,6 +193,16 @@ function createBaseExistenceProof() {
 }
 exports.ExistenceProof = {
     typeUrl: "/cosmos.ics23.v1.ExistenceProof",
+    aminoType: "cosmos-sdk/ExistenceProof",
+    is(o) {
+        return o && (o.$typeUrl === exports.ExistenceProof.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && Array.isArray(o.path) && (!o.path.length || exports.InnerOp.is(o.path[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ExistenceProof.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && Array.isArray(o.path) && (!o.path.length || exports.InnerOp.isSDK(o.path[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ExistenceProof.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && Array.isArray(o.path) && (!o.path.length || exports.InnerOp.isAmino(o.path[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.key.length !== 0) {
             writer.uint32(10).bytes(message.key);
@@ -311,6 +322,8 @@ exports.ExistenceProof = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ExistenceProof.typeUrl, exports.ExistenceProof);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ExistenceProof.aminoType, exports.ExistenceProof.typeUrl);
 function createBaseNonExistenceProof() {
     return {
         key: new Uint8Array(),
@@ -320,6 +333,16 @@ function createBaseNonExistenceProof() {
 }
 exports.NonExistenceProof = {
     typeUrl: "/cosmos.ics23.v1.NonExistenceProof",
+    aminoType: "cosmos-sdk/NonExistenceProof",
+    is(o) {
+        return o && (o.$typeUrl === exports.NonExistenceProof.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.NonExistenceProof.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.NonExistenceProof.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.key.length !== 0) {
             writer.uint32(10).bytes(message.key);
@@ -418,6 +441,8 @@ exports.NonExistenceProof = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.NonExistenceProof.typeUrl, exports.NonExistenceProof);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.NonExistenceProof.aminoType, exports.NonExistenceProof.typeUrl);
 function createBaseCommitmentProof() {
     return {
         exist: undefined,
@@ -428,6 +453,16 @@ function createBaseCommitmentProof() {
 }
 exports.CommitmentProof = {
     typeUrl: "/cosmos.ics23.v1.CommitmentProof",
+    aminoType: "cosmos-sdk/CommitmentProof",
+    is(o) {
+        return o && o.$typeUrl === exports.CommitmentProof.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.CommitmentProof.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.CommitmentProof.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.exist !== undefined) {
             exports.ExistenceProof.encode(message.exist, writer.uint32(10).fork()).ldelim();
@@ -539,6 +574,8 @@ exports.CommitmentProof = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.CommitmentProof.typeUrl, exports.CommitmentProof);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.CommitmentProof.aminoType, exports.CommitmentProof.typeUrl);
 function createBaseLeafOp() {
     return {
         hash: 0,
@@ -550,6 +587,16 @@ function createBaseLeafOp() {
 }
 exports.LeafOp = {
     typeUrl: "/cosmos.ics23.v1.LeafOp",
+    aminoType: "cosmos-sdk/LeafOp",
+    is(o) {
+        return o && (o.$typeUrl === exports.LeafOp.typeUrl || (0, helpers_1.isSet)(o.hash) && (0, helpers_1.isSet)(o.prehash_key) && (0, helpers_1.isSet)(o.prehash_value) && (0, helpers_1.isSet)(o.length) && (o.prefix instanceof Uint8Array || typeof o.prefix === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.LeafOp.typeUrl || (0, helpers_1.isSet)(o.hash) && (0, helpers_1.isSet)(o.prehash_key) && (0, helpers_1.isSet)(o.prehash_value) && (0, helpers_1.isSet)(o.length) && (o.prefix instanceof Uint8Array || typeof o.prefix === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.LeafOp.typeUrl || (0, helpers_1.isSet)(o.hash) && (0, helpers_1.isSet)(o.prehash_key) && (0, helpers_1.isSet)(o.prehash_value) && (0, helpers_1.isSet)(o.length) && (o.prefix instanceof Uint8Array || typeof o.prefix === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.hash !== 0) {
             writer.uint32(8).int32(message.hash);
@@ -674,6 +721,8 @@ exports.LeafOp = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.LeafOp.typeUrl, exports.LeafOp);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.LeafOp.aminoType, exports.LeafOp.typeUrl);
 function createBaseInnerOp() {
     return {
         hash: 0,
@@ -683,6 +732,16 @@ function createBaseInnerOp() {
 }
 exports.InnerOp = {
     typeUrl: "/cosmos.ics23.v1.InnerOp",
+    aminoType: "cosmos-sdk/InnerOp",
+    is(o) {
+        return o && (o.$typeUrl === exports.InnerOp.typeUrl || (0, helpers_1.isSet)(o.hash) && (o.prefix instanceof Uint8Array || typeof o.prefix === "string") && (o.suffix instanceof Uint8Array || typeof o.suffix === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.InnerOp.typeUrl || (0, helpers_1.isSet)(o.hash) && (o.prefix instanceof Uint8Array || typeof o.prefix === "string") && (o.suffix instanceof Uint8Array || typeof o.suffix === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.InnerOp.typeUrl || (0, helpers_1.isSet)(o.hash) && (o.prefix instanceof Uint8Array || typeof o.prefix === "string") && (o.suffix instanceof Uint8Array || typeof o.suffix === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.hash !== 0) {
             writer.uint32(8).int32(message.hash);
@@ -781,6 +840,8 @@ exports.InnerOp = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.InnerOp.typeUrl, exports.InnerOp);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.InnerOp.aminoType, exports.InnerOp.typeUrl);
 function createBaseProofSpec() {
     return {
         leaf_spec: undefined,
@@ -792,6 +853,16 @@ function createBaseProofSpec() {
 }
 exports.ProofSpec = {
     typeUrl: "/cosmos.ics23.v1.ProofSpec",
+    aminoType: "cosmos-sdk/ProofSpec",
+    is(o) {
+        return o && (o.$typeUrl === exports.ProofSpec.typeUrl || typeof o.max_depth === "number" && typeof o.min_depth === "number" && typeof o.prehash_key_before_comparison === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ProofSpec.typeUrl || typeof o.max_depth === "number" && typeof o.min_depth === "number" && typeof o.prehash_key_before_comparison === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ProofSpec.typeUrl || typeof o.max_depth === "number" && typeof o.min_depth === "number" && typeof o.prehash_key_before_comparison === "boolean");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.leaf_spec !== undefined) {
             exports.LeafOp.encode(message.leaf_spec, writer.uint32(10).fork()).ldelim();
@@ -916,6 +987,8 @@ exports.ProofSpec = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ProofSpec.typeUrl, exports.ProofSpec);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ProofSpec.aminoType, exports.ProofSpec.typeUrl);
 function createBaseInnerSpec() {
     return {
         child_order: [],
@@ -928,6 +1001,16 @@ function createBaseInnerSpec() {
 }
 exports.InnerSpec = {
     typeUrl: "/cosmos.ics23.v1.InnerSpec",
+    aminoType: "cosmos-sdk/InnerSpec",
+    is(o) {
+        return o && (o.$typeUrl === exports.InnerSpec.typeUrl || Array.isArray(o.child_order) && (!o.child_order.length || typeof o.child_order[0] === "number") && typeof o.child_size === "number" && typeof o.min_prefix_length === "number" && typeof o.max_prefix_length === "number" && (o.empty_child instanceof Uint8Array || typeof o.empty_child === "string") && (0, helpers_1.isSet)(o.hash));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.InnerSpec.typeUrl || Array.isArray(o.child_order) && (!o.child_order.length || typeof o.child_order[0] === "number") && typeof o.child_size === "number" && typeof o.min_prefix_length === "number" && typeof o.max_prefix_length === "number" && (o.empty_child instanceof Uint8Array || typeof o.empty_child === "string") && (0, helpers_1.isSet)(o.hash));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.InnerSpec.typeUrl || Array.isArray(o.child_order) && (!o.child_order.length || typeof o.child_order[0] === "number") && typeof o.child_size === "number" && typeof o.min_prefix_length === "number" && typeof o.max_prefix_length === "number" && (o.empty_child instanceof Uint8Array || typeof o.empty_child === "string") && (0, helpers_1.isSet)(o.hash));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         writer.uint32(10).fork();
         for (const v of message.child_order) {
@@ -1083,6 +1166,8 @@ exports.InnerSpec = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.InnerSpec.typeUrl, exports.InnerSpec);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.InnerSpec.aminoType, exports.InnerSpec.typeUrl);
 function createBaseBatchProof() {
     return {
         entries: []
@@ -1090,6 +1175,16 @@ function createBaseBatchProof() {
 }
 exports.BatchProof = {
     typeUrl: "/cosmos.ics23.v1.BatchProof",
+    aminoType: "cosmos-sdk/BatchProof",
+    is(o) {
+        return o && (o.$typeUrl === exports.BatchProof.typeUrl || Array.isArray(o.entries) && (!o.entries.length || exports.BatchEntry.is(o.entries[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.BatchProof.typeUrl || Array.isArray(o.entries) && (!o.entries.length || exports.BatchEntry.isSDK(o.entries[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.BatchProof.typeUrl || Array.isArray(o.entries) && (!o.entries.length || exports.BatchEntry.isAmino(o.entries[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.entries) {
             exports.BatchEntry.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1170,6 +1265,8 @@ exports.BatchProof = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.BatchProof.typeUrl, exports.BatchProof);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.BatchProof.aminoType, exports.BatchProof.typeUrl);
 function createBaseBatchEntry() {
     return {
         exist: undefined,
@@ -1178,6 +1275,16 @@ function createBaseBatchEntry() {
 }
 exports.BatchEntry = {
     typeUrl: "/cosmos.ics23.v1.BatchEntry",
+    aminoType: "cosmos-sdk/BatchEntry",
+    is(o) {
+        return o && o.$typeUrl === exports.BatchEntry.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.BatchEntry.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.BatchEntry.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.exist !== undefined) {
             exports.ExistenceProof.encode(message.exist, writer.uint32(10).fork()).ldelim();
@@ -1263,6 +1370,8 @@ exports.BatchEntry = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.BatchEntry.typeUrl, exports.BatchEntry);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.BatchEntry.aminoType, exports.BatchEntry.typeUrl);
 function createBaseCompressedBatchProof() {
     return {
         entries: [],
@@ -1271,6 +1380,16 @@ function createBaseCompressedBatchProof() {
 }
 exports.CompressedBatchProof = {
     typeUrl: "/cosmos.ics23.v1.CompressedBatchProof",
+    aminoType: "cosmos-sdk/CompressedBatchProof",
+    is(o) {
+        return o && (o.$typeUrl === exports.CompressedBatchProof.typeUrl || Array.isArray(o.entries) && (!o.entries.length || exports.CompressedBatchEntry.is(o.entries[0])) && Array.isArray(o.lookup_inners) && (!o.lookup_inners.length || exports.InnerOp.is(o.lookup_inners[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.CompressedBatchProof.typeUrl || Array.isArray(o.entries) && (!o.entries.length || exports.CompressedBatchEntry.isSDK(o.entries[0])) && Array.isArray(o.lookup_inners) && (!o.lookup_inners.length || exports.InnerOp.isSDK(o.lookup_inners[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.CompressedBatchProof.typeUrl || Array.isArray(o.entries) && (!o.entries.length || exports.CompressedBatchEntry.isAmino(o.entries[0])) && Array.isArray(o.lookup_inners) && (!o.lookup_inners.length || exports.InnerOp.isAmino(o.lookup_inners[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.entries) {
             exports.CompressedBatchEntry.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1372,6 +1491,8 @@ exports.CompressedBatchProof = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.CompressedBatchProof.typeUrl, exports.CompressedBatchProof);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.CompressedBatchProof.aminoType, exports.CompressedBatchProof.typeUrl);
 function createBaseCompressedBatchEntry() {
     return {
         exist: undefined,
@@ -1380,6 +1501,16 @@ function createBaseCompressedBatchEntry() {
 }
 exports.CompressedBatchEntry = {
     typeUrl: "/cosmos.ics23.v1.CompressedBatchEntry",
+    aminoType: "cosmos-sdk/CompressedBatchEntry",
+    is(o) {
+        return o && o.$typeUrl === exports.CompressedBatchEntry.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.CompressedBatchEntry.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.CompressedBatchEntry.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.exist !== undefined) {
             exports.CompressedExistenceProof.encode(message.exist, writer.uint32(10).fork()).ldelim();
@@ -1465,6 +1596,8 @@ exports.CompressedBatchEntry = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.CompressedBatchEntry.typeUrl, exports.CompressedBatchEntry);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.CompressedBatchEntry.aminoType, exports.CompressedBatchEntry.typeUrl);
 function createBaseCompressedExistenceProof() {
     return {
         key: new Uint8Array(),
@@ -1475,6 +1608,16 @@ function createBaseCompressedExistenceProof() {
 }
 exports.CompressedExistenceProof = {
     typeUrl: "/cosmos.ics23.v1.CompressedExistenceProof",
+    aminoType: "cosmos-sdk/CompressedExistenceProof",
+    is(o) {
+        return o && (o.$typeUrl === exports.CompressedExistenceProof.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && Array.isArray(o.path) && (!o.path.length || typeof o.path[0] === "number"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.CompressedExistenceProof.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && Array.isArray(o.path) && (!o.path.length || typeof o.path[0] === "number"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.CompressedExistenceProof.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && Array.isArray(o.path) && (!o.path.length || typeof o.path[0] === "number"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.key.length !== 0) {
             writer.uint32(10).bytes(message.key);
@@ -1604,6 +1747,8 @@ exports.CompressedExistenceProof = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.CompressedExistenceProof.typeUrl, exports.CompressedExistenceProof);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.CompressedExistenceProof.aminoType, exports.CompressedExistenceProof.typeUrl);
 function createBaseCompressedNonExistenceProof() {
     return {
         key: new Uint8Array(),
@@ -1613,6 +1758,16 @@ function createBaseCompressedNonExistenceProof() {
 }
 exports.CompressedNonExistenceProof = {
     typeUrl: "/cosmos.ics23.v1.CompressedNonExistenceProof",
+    aminoType: "cosmos-sdk/CompressedNonExistenceProof",
+    is(o) {
+        return o && (o.$typeUrl === exports.CompressedNonExistenceProof.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.CompressedNonExistenceProof.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.CompressedNonExistenceProof.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.key.length !== 0) {
             writer.uint32(10).bytes(message.key);
@@ -1711,4 +1866,6 @@ exports.CompressedNonExistenceProof = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.CompressedNonExistenceProof.typeUrl, exports.CompressedNonExistenceProof);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.CompressedNonExistenceProof.aminoType, exports.CompressedNonExistenceProof.typeUrl);
 //# sourceMappingURL=proofs.js.map

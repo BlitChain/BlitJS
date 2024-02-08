@@ -720,6 +720,10 @@ export interface QueryMethodDescriptorSDKType {
 }
 export declare const AppDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is AppDescriptor;
+    isSDK(o: any): o is AppDescriptorSDKType;
+    isAmino(o: any): o is AppDescriptorAmino;
     encode(message: AppDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AppDescriptor;
     fromJSON(object: any): AppDescriptor;
@@ -735,6 +739,10 @@ export declare const AppDescriptor: {
 };
 export declare const TxDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TxDescriptor;
+    isSDK(o: any): o is TxDescriptorSDKType;
+    isAmino(o: any): o is TxDescriptorAmino;
     encode(message: TxDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxDescriptor;
     fromJSON(object: any): TxDescriptor;
@@ -750,6 +758,10 @@ export declare const TxDescriptor: {
 };
 export declare const AuthnDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is AuthnDescriptor;
+    isSDK(o: any): o is AuthnDescriptorSDKType;
+    isAmino(o: any): o is AuthnDescriptorAmino;
     encode(message: AuthnDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AuthnDescriptor;
     fromJSON(object: any): AuthnDescriptor;
@@ -765,6 +777,10 @@ export declare const AuthnDescriptor: {
 };
 export declare const SigningModeDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SigningModeDescriptor;
+    isSDK(o: any): o is SigningModeDescriptorSDKType;
+    isAmino(o: any): o is SigningModeDescriptorAmino;
     encode(message: SigningModeDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SigningModeDescriptor;
     fromJSON(object: any): SigningModeDescriptor;
@@ -780,6 +796,10 @@ export declare const SigningModeDescriptor: {
 };
 export declare const ChainDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ChainDescriptor;
+    isSDK(o: any): o is ChainDescriptorSDKType;
+    isAmino(o: any): o is ChainDescriptorAmino;
     encode(message: ChainDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ChainDescriptor;
     fromJSON(object: any): ChainDescriptor;
@@ -795,6 +815,10 @@ export declare const ChainDescriptor: {
 };
 export declare const CodecDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CodecDescriptor;
+    isSDK(o: any): o is CodecDescriptorSDKType;
+    isAmino(o: any): o is CodecDescriptorAmino;
     encode(message: CodecDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CodecDescriptor;
     fromJSON(object: any): CodecDescriptor;
@@ -810,6 +834,10 @@ export declare const CodecDescriptor: {
 };
 export declare const InterfaceDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is InterfaceDescriptor;
+    isSDK(o: any): o is InterfaceDescriptorSDKType;
+    isAmino(o: any): o is InterfaceDescriptorAmino;
     encode(message: InterfaceDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InterfaceDescriptor;
     fromJSON(object: any): InterfaceDescriptor;
@@ -825,6 +853,10 @@ export declare const InterfaceDescriptor: {
 };
 export declare const InterfaceImplementerDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is InterfaceImplementerDescriptor;
+    isSDK(o: any): o is InterfaceImplementerDescriptorSDKType;
+    isAmino(o: any): o is InterfaceImplementerDescriptorAmino;
     encode(message: InterfaceImplementerDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InterfaceImplementerDescriptor;
     fromJSON(object: any): InterfaceImplementerDescriptor;
@@ -840,6 +872,10 @@ export declare const InterfaceImplementerDescriptor: {
 };
 export declare const InterfaceAcceptingMessageDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is InterfaceAcceptingMessageDescriptor;
+    isSDK(o: any): o is InterfaceAcceptingMessageDescriptorSDKType;
+    isAmino(o: any): o is InterfaceAcceptingMessageDescriptorAmino;
     encode(message: InterfaceAcceptingMessageDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InterfaceAcceptingMessageDescriptor;
     fromJSON(object: any): InterfaceAcceptingMessageDescriptor;
@@ -855,6 +891,10 @@ export declare const InterfaceAcceptingMessageDescriptor: {
 };
 export declare const ConfigurationDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ConfigurationDescriptor;
+    isSDK(o: any): o is ConfigurationDescriptorSDKType;
+    isAmino(o: any): o is ConfigurationDescriptorAmino;
     encode(message: ConfigurationDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConfigurationDescriptor;
     fromJSON(object: any): ConfigurationDescriptor;
@@ -870,6 +910,10 @@ export declare const ConfigurationDescriptor: {
 };
 export declare const MsgDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgDescriptor;
+    isSDK(o: any): o is MsgDescriptorSDKType;
+    isAmino(o: any): o is MsgDescriptorAmino;
     encode(message: MsgDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDescriptor;
     fromJSON(object: any): MsgDescriptor;
@@ -885,6 +929,10 @@ export declare const MsgDescriptor: {
 };
 export declare const GetAuthnDescriptorRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetAuthnDescriptorRequest;
+    isSDK(o: any): o is GetAuthnDescriptorRequestSDKType;
+    isAmino(o: any): o is GetAuthnDescriptorRequestAmino;
     encode(_: GetAuthnDescriptorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetAuthnDescriptorRequest;
     fromJSON(_: any): GetAuthnDescriptorRequest;
@@ -900,6 +948,10 @@ export declare const GetAuthnDescriptorRequest: {
 };
 export declare const GetAuthnDescriptorResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetAuthnDescriptorResponse;
+    isSDK(o: any): o is GetAuthnDescriptorResponseSDKType;
+    isAmino(o: any): o is GetAuthnDescriptorResponseAmino;
     encode(message: GetAuthnDescriptorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetAuthnDescriptorResponse;
     fromJSON(object: any): GetAuthnDescriptorResponse;
@@ -915,6 +967,10 @@ export declare const GetAuthnDescriptorResponse: {
 };
 export declare const GetChainDescriptorRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetChainDescriptorRequest;
+    isSDK(o: any): o is GetChainDescriptorRequestSDKType;
+    isAmino(o: any): o is GetChainDescriptorRequestAmino;
     encode(_: GetChainDescriptorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetChainDescriptorRequest;
     fromJSON(_: any): GetChainDescriptorRequest;
@@ -930,6 +986,10 @@ export declare const GetChainDescriptorRequest: {
 };
 export declare const GetChainDescriptorResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetChainDescriptorResponse;
+    isSDK(o: any): o is GetChainDescriptorResponseSDKType;
+    isAmino(o: any): o is GetChainDescriptorResponseAmino;
     encode(message: GetChainDescriptorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetChainDescriptorResponse;
     fromJSON(object: any): GetChainDescriptorResponse;
@@ -945,6 +1005,10 @@ export declare const GetChainDescriptorResponse: {
 };
 export declare const GetCodecDescriptorRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetCodecDescriptorRequest;
+    isSDK(o: any): o is GetCodecDescriptorRequestSDKType;
+    isAmino(o: any): o is GetCodecDescriptorRequestAmino;
     encode(_: GetCodecDescriptorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetCodecDescriptorRequest;
     fromJSON(_: any): GetCodecDescriptorRequest;
@@ -960,6 +1024,10 @@ export declare const GetCodecDescriptorRequest: {
 };
 export declare const GetCodecDescriptorResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetCodecDescriptorResponse;
+    isSDK(o: any): o is GetCodecDescriptorResponseSDKType;
+    isAmino(o: any): o is GetCodecDescriptorResponseAmino;
     encode(message: GetCodecDescriptorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetCodecDescriptorResponse;
     fromJSON(object: any): GetCodecDescriptorResponse;
@@ -975,6 +1043,10 @@ export declare const GetCodecDescriptorResponse: {
 };
 export declare const GetConfigurationDescriptorRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetConfigurationDescriptorRequest;
+    isSDK(o: any): o is GetConfigurationDescriptorRequestSDKType;
+    isAmino(o: any): o is GetConfigurationDescriptorRequestAmino;
     encode(_: GetConfigurationDescriptorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetConfigurationDescriptorRequest;
     fromJSON(_: any): GetConfigurationDescriptorRequest;
@@ -990,6 +1062,10 @@ export declare const GetConfigurationDescriptorRequest: {
 };
 export declare const GetConfigurationDescriptorResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetConfigurationDescriptorResponse;
+    isSDK(o: any): o is GetConfigurationDescriptorResponseSDKType;
+    isAmino(o: any): o is GetConfigurationDescriptorResponseAmino;
     encode(message: GetConfigurationDescriptorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetConfigurationDescriptorResponse;
     fromJSON(object: any): GetConfigurationDescriptorResponse;
@@ -1005,6 +1081,10 @@ export declare const GetConfigurationDescriptorResponse: {
 };
 export declare const GetQueryServicesDescriptorRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetQueryServicesDescriptorRequest;
+    isSDK(o: any): o is GetQueryServicesDescriptorRequestSDKType;
+    isAmino(o: any): o is GetQueryServicesDescriptorRequestAmino;
     encode(_: GetQueryServicesDescriptorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetQueryServicesDescriptorRequest;
     fromJSON(_: any): GetQueryServicesDescriptorRequest;
@@ -1020,6 +1100,10 @@ export declare const GetQueryServicesDescriptorRequest: {
 };
 export declare const GetQueryServicesDescriptorResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetQueryServicesDescriptorResponse;
+    isSDK(o: any): o is GetQueryServicesDescriptorResponseSDKType;
+    isAmino(o: any): o is GetQueryServicesDescriptorResponseAmino;
     encode(message: GetQueryServicesDescriptorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetQueryServicesDescriptorResponse;
     fromJSON(object: any): GetQueryServicesDescriptorResponse;
@@ -1035,6 +1119,10 @@ export declare const GetQueryServicesDescriptorResponse: {
 };
 export declare const GetTxDescriptorRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetTxDescriptorRequest;
+    isSDK(o: any): o is GetTxDescriptorRequestSDKType;
+    isAmino(o: any): o is GetTxDescriptorRequestAmino;
     encode(_: GetTxDescriptorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxDescriptorRequest;
     fromJSON(_: any): GetTxDescriptorRequest;
@@ -1050,6 +1138,10 @@ export declare const GetTxDescriptorRequest: {
 };
 export declare const GetTxDescriptorResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetTxDescriptorResponse;
+    isSDK(o: any): o is GetTxDescriptorResponseSDKType;
+    isAmino(o: any): o is GetTxDescriptorResponseAmino;
     encode(message: GetTxDescriptorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxDescriptorResponse;
     fromJSON(object: any): GetTxDescriptorResponse;
@@ -1065,6 +1157,10 @@ export declare const GetTxDescriptorResponse: {
 };
 export declare const QueryServicesDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryServicesDescriptor;
+    isSDK(o: any): o is QueryServicesDescriptorSDKType;
+    isAmino(o: any): o is QueryServicesDescriptorAmino;
     encode(message: QueryServicesDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryServicesDescriptor;
     fromJSON(object: any): QueryServicesDescriptor;
@@ -1080,6 +1176,10 @@ export declare const QueryServicesDescriptor: {
 };
 export declare const QueryServiceDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryServiceDescriptor;
+    isSDK(o: any): o is QueryServiceDescriptorSDKType;
+    isAmino(o: any): o is QueryServiceDescriptorAmino;
     encode(message: QueryServiceDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryServiceDescriptor;
     fromJSON(object: any): QueryServiceDescriptor;
@@ -1095,6 +1195,10 @@ export declare const QueryServiceDescriptor: {
 };
 export declare const QueryMethodDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryMethodDescriptor;
+    isSDK(o: any): o is QueryMethodDescriptorSDKType;
+    isAmino(o: any): o is QueryMethodDescriptorAmino;
     encode(message: QueryMethodDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryMethodDescriptor;
     fromJSON(object: any): QueryMethodDescriptor;

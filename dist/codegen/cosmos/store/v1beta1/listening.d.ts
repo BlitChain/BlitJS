@@ -91,6 +91,10 @@ export interface BlockMetadataSDKType {
 }
 export declare const StoreKVPair: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is StoreKVPair;
+    isSDK(o: any): o is StoreKVPairSDKType;
+    isAmino(o: any): o is StoreKVPairAmino;
     encode(message: StoreKVPair, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): StoreKVPair;
     fromJSON(object: any): StoreKVPair;
@@ -106,6 +110,10 @@ export declare const StoreKVPair: {
 };
 export declare const BlockMetadata: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is BlockMetadata;
+    isSDK(o: any): o is BlockMetadataSDKType;
+    isAmino(o: any): o is BlockMetadataAmino;
     encode(message: BlockMetadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BlockMetadata;
     fromJSON(object: any): BlockMetadata;

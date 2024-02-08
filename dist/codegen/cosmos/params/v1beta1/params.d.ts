@@ -65,6 +65,10 @@ export interface ParamChangeSDKType {
 }
 export declare const ParameterChangeProposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ParameterChangeProposal;
+    isSDK(o: any): o is ParameterChangeProposalSDKType;
+    isAmino(o: any): o is ParameterChangeProposalAmino;
     encode(message: ParameterChangeProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ParameterChangeProposal;
     fromJSON(object: any): ParameterChangeProposal;
@@ -80,6 +84,10 @@ export declare const ParameterChangeProposal: {
 };
 export declare const ParamChange: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ParamChange;
+    isSDK(o: any): o is ParamChangeSDKType;
+    isAmino(o: any): o is ParamChangeAmino;
     encode(message: ParamChange, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ParamChange;
     fromJSON(object: any): ParamChange;

@@ -4,6 +4,7 @@ import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Task, TaskAmino, TaskSDKType } from "./task";
 import { FutureTask, FutureTaskAmino, FutureTaskSDKType } from "./future_task";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { GlobalDecoderRegistry } from "../../registry";
 import { isSet } from "../../helpers";
 export const protobufPackage = "blit.blit";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
@@ -41,47 +42,6 @@ export interface QueryParamsResponseAminoMsg {
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
   params: ParamsSDKType;
-}
-/** ConfigRequest defines the request structure for the Config gRPC query. */
-export interface EndpointsRequest {}
-export interface EndpointsRequestProtoMsg {
-  type_url: "/blit.blit.EndpointsRequest";
-  value: Uint8Array;
-}
-/** ConfigRequest defines the request structure for the Config gRPC query. */
-export interface EndpointsRequestAmino {}
-export interface EndpointsRequestAminoMsg {
-  type: "/blit.blit.EndpointsRequest";
-  value: EndpointsRequestAmino;
-}
-/** ConfigRequest defines the request structure for the Config gRPC query. */
-export interface EndpointsRequestSDKType {}
-/** ConfigResponse defines the response structure for the Config gRPC query. */
-export interface EndpointsResponse {
-  /** api_url is the url of the api service. It can be set with the ENV variable BLIT_PUBLIC_API_URL. */
-  api_url: string;
-  /** rpc_url is the url of the rpc service. It can be set with the ENV variable BLIT_PUBLIC_RPC_URL. */
-  rpc_url: string;
-}
-export interface EndpointsResponseProtoMsg {
-  type_url: "/blit.blit.EndpointsResponse";
-  value: Uint8Array;
-}
-/** ConfigResponse defines the response structure for the Config gRPC query. */
-export interface EndpointsResponseAmino {
-  /** api_url is the url of the api service. It can be set with the ENV variable BLIT_PUBLIC_API_URL. */
-  api_url?: string;
-  /** rpc_url is the url of the rpc service. It can be set with the ENV variable BLIT_PUBLIC_RPC_URL. */
-  rpc_url?: string;
-}
-export interface EndpointsResponseAminoMsg {
-  type: "/blit.blit.EndpointsResponse";
-  value: EndpointsResponseAmino;
-}
-/** ConfigResponse defines the response structure for the Config gRPC query. */
-export interface EndpointsResponseSDKType {
-  api_url: string;
-  rpc_url: string;
 }
 export interface QueryGetTaskRequest {
   id: bigint;
@@ -238,6 +198,15 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 export const QueryParamsRequest = {
   typeUrl: "/blit.blit.QueryParamsRequest",
+  is(o: any): o is QueryParamsRequest {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryParamsRequestSDKType {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryParamsRequestAmino {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
   encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -290,6 +259,7 @@ export const QueryParamsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     params: Params.fromPartial({})
@@ -297,6 +267,15 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 export const QueryParamsResponse = {
   typeUrl: "/blit.blit.QueryParamsResponse",
+  is(o: any): o is QueryParamsResponse {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.is(o.params));
+  },
+  isSDK(o: any): o is QueryParamsResponseSDKType {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is QueryParamsResponseAmino {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isAmino(o.params));
+  },
   encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -363,150 +342,7 @@ export const QueryParamsResponse = {
     };
   }
 };
-function createBaseEndpointsRequest(): EndpointsRequest {
-  return {};
-}
-export const EndpointsRequest = {
-  typeUrl: "/blit.blit.EndpointsRequest",
-  encode(_: EndpointsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): EndpointsRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseEndpointsRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromJSON(_: any): EndpointsRequest {
-    return {};
-  },
-  toJSON(_: EndpointsRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-  fromPartial(_: Partial<EndpointsRequest>): EndpointsRequest {
-    const message = createBaseEndpointsRequest();
-    return message;
-  },
-  fromAmino(_: EndpointsRequestAmino): EndpointsRequest {
-    const message = createBaseEndpointsRequest();
-    return message;
-  },
-  toAmino(_: EndpointsRequest): EndpointsRequestAmino {
-    const obj: any = {};
-    return obj;
-  },
-  fromAminoMsg(object: EndpointsRequestAminoMsg): EndpointsRequest {
-    return EndpointsRequest.fromAmino(object.value);
-  },
-  fromProtoMsg(message: EndpointsRequestProtoMsg): EndpointsRequest {
-    return EndpointsRequest.decode(message.value);
-  },
-  toProto(message: EndpointsRequest): Uint8Array {
-    return EndpointsRequest.encode(message).finish();
-  },
-  toProtoMsg(message: EndpointsRequest): EndpointsRequestProtoMsg {
-    return {
-      typeUrl: "/blit.blit.EndpointsRequest",
-      value: EndpointsRequest.encode(message).finish()
-    };
-  }
-};
-function createBaseEndpointsResponse(): EndpointsResponse {
-  return {
-    api_url: "",
-    rpc_url: ""
-  };
-}
-export const EndpointsResponse = {
-  typeUrl: "/blit.blit.EndpointsResponse",
-  encode(message: EndpointsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.api_url !== "") {
-      writer.uint32(10).string(message.api_url);
-    }
-    if (message.rpc_url !== "") {
-      writer.uint32(18).string(message.rpc_url);
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): EndpointsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseEndpointsResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.api_url = reader.string();
-          break;
-        case 2:
-          message.rpc_url = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromJSON(object: any): EndpointsResponse {
-    return {
-      api_url: isSet(object.api_url) ? String(object.api_url) : "",
-      rpc_url: isSet(object.rpc_url) ? String(object.rpc_url) : ""
-    };
-  },
-  toJSON(message: EndpointsResponse): unknown {
-    const obj: any = {};
-    message.api_url !== undefined && (obj.api_url = message.api_url);
-    message.rpc_url !== undefined && (obj.rpc_url = message.rpc_url);
-    return obj;
-  },
-  fromPartial(object: Partial<EndpointsResponse>): EndpointsResponse {
-    const message = createBaseEndpointsResponse();
-    message.api_url = object.api_url ?? "";
-    message.rpc_url = object.rpc_url ?? "";
-    return message;
-  },
-  fromAmino(object: EndpointsResponseAmino): EndpointsResponse {
-    const message = createBaseEndpointsResponse();
-    if (object.api_url !== undefined && object.api_url !== null) {
-      message.api_url = object.api_url;
-    }
-    if (object.rpc_url !== undefined && object.rpc_url !== null) {
-      message.rpc_url = object.rpc_url;
-    }
-    return message;
-  },
-  toAmino(message: EndpointsResponse): EndpointsResponseAmino {
-    const obj: any = {};
-    obj.api_url = message.api_url;
-    obj.rpc_url = message.rpc_url;
-    return obj;
-  },
-  fromAminoMsg(object: EndpointsResponseAminoMsg): EndpointsResponse {
-    return EndpointsResponse.fromAmino(object.value);
-  },
-  fromProtoMsg(message: EndpointsResponseProtoMsg): EndpointsResponse {
-    return EndpointsResponse.decode(message.value);
-  },
-  toProto(message: EndpointsResponse): Uint8Array {
-    return EndpointsResponse.encode(message).finish();
-  },
-  toProtoMsg(message: EndpointsResponse): EndpointsResponseProtoMsg {
-    return {
-      typeUrl: "/blit.blit.EndpointsResponse",
-      value: EndpointsResponse.encode(message).finish()
-    };
-  }
-};
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
 function createBaseQueryGetTaskRequest(): QueryGetTaskRequest {
   return {
     id: BigInt(0)
@@ -514,6 +350,15 @@ function createBaseQueryGetTaskRequest(): QueryGetTaskRequest {
 }
 export const QueryGetTaskRequest = {
   typeUrl: "/blit.blit.QueryGetTaskRequest",
+  is(o: any): o is QueryGetTaskRequest {
+    return o && (o.$typeUrl === QueryGetTaskRequest.typeUrl || typeof o.id === "bigint");
+  },
+  isSDK(o: any): o is QueryGetTaskRequestSDKType {
+    return o && (o.$typeUrl === QueryGetTaskRequest.typeUrl || typeof o.id === "bigint");
+  },
+  isAmino(o: any): o is QueryGetTaskRequestAmino {
+    return o && (o.$typeUrl === QueryGetTaskRequest.typeUrl || typeof o.id === "bigint");
+  },
   encode(message: QueryGetTaskRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== BigInt(0)) {
       writer.uint32(8).uint64(message.id);
@@ -580,6 +425,7 @@ export const QueryGetTaskRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryGetTaskRequest.typeUrl, QueryGetTaskRequest);
 function createBaseQueryGetTaskResponse(): QueryGetTaskResponse {
   return {
     task: Task.fromPartial({})
@@ -587,6 +433,15 @@ function createBaseQueryGetTaskResponse(): QueryGetTaskResponse {
 }
 export const QueryGetTaskResponse = {
   typeUrl: "/blit.blit.QueryGetTaskResponse",
+  is(o: any): o is QueryGetTaskResponse {
+    return o && (o.$typeUrl === QueryGetTaskResponse.typeUrl || Task.is(o.task));
+  },
+  isSDK(o: any): o is QueryGetTaskResponseSDKType {
+    return o && (o.$typeUrl === QueryGetTaskResponse.typeUrl || Task.isSDK(o.task));
+  },
+  isAmino(o: any): o is QueryGetTaskResponseAmino {
+    return o && (o.$typeUrl === QueryGetTaskResponse.typeUrl || Task.isAmino(o.task));
+  },
   encode(message: QueryGetTaskResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.task !== undefined) {
       Task.encode(message.task, writer.uint32(10).fork()).ldelim();
@@ -653,6 +508,7 @@ export const QueryGetTaskResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryGetTaskResponse.typeUrl, QueryGetTaskResponse);
 function createBaseQueryAllTaskRequest(): QueryAllTaskRequest {
   return {
     address: "",
@@ -661,6 +517,15 @@ function createBaseQueryAllTaskRequest(): QueryAllTaskRequest {
 }
 export const QueryAllTaskRequest = {
   typeUrl: "/blit.blit.QueryAllTaskRequest",
+  is(o: any): o is QueryAllTaskRequest {
+    return o && (o.$typeUrl === QueryAllTaskRequest.typeUrl || typeof o.address === "string");
+  },
+  isSDK(o: any): o is QueryAllTaskRequestSDKType {
+    return o && (o.$typeUrl === QueryAllTaskRequest.typeUrl || typeof o.address === "string");
+  },
+  isAmino(o: any): o is QueryAllTaskRequestAmino {
+    return o && (o.$typeUrl === QueryAllTaskRequest.typeUrl || typeof o.address === "string");
+  },
   encode(message: QueryAllTaskRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -740,6 +605,7 @@ export const QueryAllTaskRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAllTaskRequest.typeUrl, QueryAllTaskRequest);
 function createBaseQueryAllTaskResponse(): QueryAllTaskResponse {
   return {
     task: [],
@@ -748,6 +614,15 @@ function createBaseQueryAllTaskResponse(): QueryAllTaskResponse {
 }
 export const QueryAllTaskResponse = {
   typeUrl: "/blit.blit.QueryAllTaskResponse",
+  is(o: any): o is QueryAllTaskResponse {
+    return o && (o.$typeUrl === QueryAllTaskResponse.typeUrl || Array.isArray(o.task) && (!o.task.length || Task.is(o.task[0])));
+  },
+  isSDK(o: any): o is QueryAllTaskResponseSDKType {
+    return o && (o.$typeUrl === QueryAllTaskResponse.typeUrl || Array.isArray(o.task) && (!o.task.length || Task.isSDK(o.task[0])));
+  },
+  isAmino(o: any): o is QueryAllTaskResponseAmino {
+    return o && (o.$typeUrl === QueryAllTaskResponse.typeUrl || Array.isArray(o.task) && (!o.task.length || Task.isAmino(o.task[0])));
+  },
   encode(message: QueryAllTaskResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.task) {
       Task.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -833,6 +708,7 @@ export const QueryAllTaskResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAllTaskResponse.typeUrl, QueryAllTaskResponse);
 function createBaseQueryGetFutureTaskRequest(): QueryGetFutureTaskRequest {
   return {
     index: ""
@@ -840,6 +716,15 @@ function createBaseQueryGetFutureTaskRequest(): QueryGetFutureTaskRequest {
 }
 export const QueryGetFutureTaskRequest = {
   typeUrl: "/blit.blit.QueryGetFutureTaskRequest",
+  is(o: any): o is QueryGetFutureTaskRequest {
+    return o && (o.$typeUrl === QueryGetFutureTaskRequest.typeUrl || typeof o.index === "string");
+  },
+  isSDK(o: any): o is QueryGetFutureTaskRequestSDKType {
+    return o && (o.$typeUrl === QueryGetFutureTaskRequest.typeUrl || typeof o.index === "string");
+  },
+  isAmino(o: any): o is QueryGetFutureTaskRequestAmino {
+    return o && (o.$typeUrl === QueryGetFutureTaskRequest.typeUrl || typeof o.index === "string");
+  },
   encode(message: QueryGetFutureTaskRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.index !== "") {
       writer.uint32(10).string(message.index);
@@ -906,6 +791,7 @@ export const QueryGetFutureTaskRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryGetFutureTaskRequest.typeUrl, QueryGetFutureTaskRequest);
 function createBaseQueryGetFutureTaskResponse(): QueryGetFutureTaskResponse {
   return {
     futureTask: FutureTask.fromPartial({})
@@ -913,6 +799,15 @@ function createBaseQueryGetFutureTaskResponse(): QueryGetFutureTaskResponse {
 }
 export const QueryGetFutureTaskResponse = {
   typeUrl: "/blit.blit.QueryGetFutureTaskResponse",
+  is(o: any): o is QueryGetFutureTaskResponse {
+    return o && (o.$typeUrl === QueryGetFutureTaskResponse.typeUrl || FutureTask.is(o.futureTask));
+  },
+  isSDK(o: any): o is QueryGetFutureTaskResponseSDKType {
+    return o && (o.$typeUrl === QueryGetFutureTaskResponse.typeUrl || FutureTask.isSDK(o.futureTask));
+  },
+  isAmino(o: any): o is QueryGetFutureTaskResponseAmino {
+    return o && (o.$typeUrl === QueryGetFutureTaskResponse.typeUrl || FutureTask.isAmino(o.futureTask));
+  },
   encode(message: QueryGetFutureTaskResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.futureTask !== undefined) {
       FutureTask.encode(message.futureTask, writer.uint32(10).fork()).ldelim();
@@ -979,6 +874,7 @@ export const QueryGetFutureTaskResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryGetFutureTaskResponse.typeUrl, QueryGetFutureTaskResponse);
 function createBaseQueryAllFutureTaskRequest(): QueryAllFutureTaskRequest {
   return {
     prefix: "",
@@ -987,6 +883,15 @@ function createBaseQueryAllFutureTaskRequest(): QueryAllFutureTaskRequest {
 }
 export const QueryAllFutureTaskRequest = {
   typeUrl: "/blit.blit.QueryAllFutureTaskRequest",
+  is(o: any): o is QueryAllFutureTaskRequest {
+    return o && (o.$typeUrl === QueryAllFutureTaskRequest.typeUrl || typeof o.prefix === "string");
+  },
+  isSDK(o: any): o is QueryAllFutureTaskRequestSDKType {
+    return o && (o.$typeUrl === QueryAllFutureTaskRequest.typeUrl || typeof o.prefix === "string");
+  },
+  isAmino(o: any): o is QueryAllFutureTaskRequestAmino {
+    return o && (o.$typeUrl === QueryAllFutureTaskRequest.typeUrl || typeof o.prefix === "string");
+  },
   encode(message: QueryAllFutureTaskRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.prefix !== "") {
       writer.uint32(10).string(message.prefix);
@@ -1066,6 +971,7 @@ export const QueryAllFutureTaskRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAllFutureTaskRequest.typeUrl, QueryAllFutureTaskRequest);
 function createBaseQueryAllFutureTaskResponse(): QueryAllFutureTaskResponse {
   return {
     futureTask: [],
@@ -1074,6 +980,15 @@ function createBaseQueryAllFutureTaskResponse(): QueryAllFutureTaskResponse {
 }
 export const QueryAllFutureTaskResponse = {
   typeUrl: "/blit.blit.QueryAllFutureTaskResponse",
+  is(o: any): o is QueryAllFutureTaskResponse {
+    return o && (o.$typeUrl === QueryAllFutureTaskResponse.typeUrl || Array.isArray(o.futureTask) && (!o.futureTask.length || FutureTask.is(o.futureTask[0])));
+  },
+  isSDK(o: any): o is QueryAllFutureTaskResponseSDKType {
+    return o && (o.$typeUrl === QueryAllFutureTaskResponse.typeUrl || Array.isArray(o.futureTask) && (!o.futureTask.length || FutureTask.isSDK(o.futureTask[0])));
+  },
+  isAmino(o: any): o is QueryAllFutureTaskResponseAmino {
+    return o && (o.$typeUrl === QueryAllFutureTaskResponse.typeUrl || Array.isArray(o.futureTask) && (!o.futureTask.length || FutureTask.isAmino(o.futureTask[0])));
+  },
   encode(message: QueryAllFutureTaskResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.futureTask) {
       FutureTask.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1159,3 +1074,4 @@ export const QueryAllFutureTaskResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAllFutureTaskResponse.typeUrl, QueryAllFutureTaskResponse);

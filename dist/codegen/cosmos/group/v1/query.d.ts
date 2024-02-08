@@ -734,6 +734,10 @@ export interface QueryGroupsResponseSDKType {
 }
 export declare const QueryGroupInfoRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupInfoRequest;
+    isSDK(o: any): o is QueryGroupInfoRequestSDKType;
+    isAmino(o: any): o is QueryGroupInfoRequestAmino;
     encode(message: QueryGroupInfoRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupInfoRequest;
     fromJSON(object: any): QueryGroupInfoRequest;
@@ -749,6 +753,10 @@ export declare const QueryGroupInfoRequest: {
 };
 export declare const QueryGroupInfoResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupInfoResponse;
+    isSDK(o: any): o is QueryGroupInfoResponseSDKType;
+    isAmino(o: any): o is QueryGroupInfoResponseAmino;
     encode(message: QueryGroupInfoResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupInfoResponse;
     fromJSON(object: any): QueryGroupInfoResponse;
@@ -764,6 +772,10 @@ export declare const QueryGroupInfoResponse: {
 };
 export declare const QueryGroupPolicyInfoRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupPolicyInfoRequest;
+    isSDK(o: any): o is QueryGroupPolicyInfoRequestSDKType;
+    isAmino(o: any): o is QueryGroupPolicyInfoRequestAmino;
     encode(message: QueryGroupPolicyInfoRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupPolicyInfoRequest;
     fromJSON(object: any): QueryGroupPolicyInfoRequest;
@@ -779,6 +791,10 @@ export declare const QueryGroupPolicyInfoRequest: {
 };
 export declare const QueryGroupPolicyInfoResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupPolicyInfoResponse;
+    isSDK(o: any): o is QueryGroupPolicyInfoResponseSDKType;
+    isAmino(o: any): o is QueryGroupPolicyInfoResponseAmino;
     encode(message: QueryGroupPolicyInfoResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupPolicyInfoResponse;
     fromJSON(object: any): QueryGroupPolicyInfoResponse;
@@ -794,6 +810,10 @@ export declare const QueryGroupPolicyInfoResponse: {
 };
 export declare const QueryGroupMembersRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupMembersRequest;
+    isSDK(o: any): o is QueryGroupMembersRequestSDKType;
+    isAmino(o: any): o is QueryGroupMembersRequestAmino;
     encode(message: QueryGroupMembersRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupMembersRequest;
     fromJSON(object: any): QueryGroupMembersRequest;
@@ -809,6 +829,10 @@ export declare const QueryGroupMembersRequest: {
 };
 export declare const QueryGroupMembersResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupMembersResponse;
+    isSDK(o: any): o is QueryGroupMembersResponseSDKType;
+    isAmino(o: any): o is QueryGroupMembersResponseAmino;
     encode(message: QueryGroupMembersResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupMembersResponse;
     fromJSON(object: any): QueryGroupMembersResponse;
@@ -824,6 +848,10 @@ export declare const QueryGroupMembersResponse: {
 };
 export declare const QueryGroupsByAdminRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupsByAdminRequest;
+    isSDK(o: any): o is QueryGroupsByAdminRequestSDKType;
+    isAmino(o: any): o is QueryGroupsByAdminRequestAmino;
     encode(message: QueryGroupsByAdminRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupsByAdminRequest;
     fromJSON(object: any): QueryGroupsByAdminRequest;
@@ -839,6 +867,10 @@ export declare const QueryGroupsByAdminRequest: {
 };
 export declare const QueryGroupsByAdminResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupsByAdminResponse;
+    isSDK(o: any): o is QueryGroupsByAdminResponseSDKType;
+    isAmino(o: any): o is QueryGroupsByAdminResponseAmino;
     encode(message: QueryGroupsByAdminResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupsByAdminResponse;
     fromJSON(object: any): QueryGroupsByAdminResponse;
@@ -854,6 +886,10 @@ export declare const QueryGroupsByAdminResponse: {
 };
 export declare const QueryGroupPoliciesByGroupRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupPoliciesByGroupRequest;
+    isSDK(o: any): o is QueryGroupPoliciesByGroupRequestSDKType;
+    isAmino(o: any): o is QueryGroupPoliciesByGroupRequestAmino;
     encode(message: QueryGroupPoliciesByGroupRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupPoliciesByGroupRequest;
     fromJSON(object: any): QueryGroupPoliciesByGroupRequest;
@@ -869,6 +905,10 @@ export declare const QueryGroupPoliciesByGroupRequest: {
 };
 export declare const QueryGroupPoliciesByGroupResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupPoliciesByGroupResponse;
+    isSDK(o: any): o is QueryGroupPoliciesByGroupResponseSDKType;
+    isAmino(o: any): o is QueryGroupPoliciesByGroupResponseAmino;
     encode(message: QueryGroupPoliciesByGroupResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupPoliciesByGroupResponse;
     fromJSON(object: any): QueryGroupPoliciesByGroupResponse;
@@ -884,6 +924,10 @@ export declare const QueryGroupPoliciesByGroupResponse: {
 };
 export declare const QueryGroupPoliciesByAdminRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupPoliciesByAdminRequest;
+    isSDK(o: any): o is QueryGroupPoliciesByAdminRequestSDKType;
+    isAmino(o: any): o is QueryGroupPoliciesByAdminRequestAmino;
     encode(message: QueryGroupPoliciesByAdminRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupPoliciesByAdminRequest;
     fromJSON(object: any): QueryGroupPoliciesByAdminRequest;
@@ -899,6 +943,10 @@ export declare const QueryGroupPoliciesByAdminRequest: {
 };
 export declare const QueryGroupPoliciesByAdminResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupPoliciesByAdminResponse;
+    isSDK(o: any): o is QueryGroupPoliciesByAdminResponseSDKType;
+    isAmino(o: any): o is QueryGroupPoliciesByAdminResponseAmino;
     encode(message: QueryGroupPoliciesByAdminResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupPoliciesByAdminResponse;
     fromJSON(object: any): QueryGroupPoliciesByAdminResponse;
@@ -914,6 +962,10 @@ export declare const QueryGroupPoliciesByAdminResponse: {
 };
 export declare const QueryProposalRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryProposalRequest;
+    isSDK(o: any): o is QueryProposalRequestSDKType;
+    isAmino(o: any): o is QueryProposalRequestAmino;
     encode(message: QueryProposalRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryProposalRequest;
     fromJSON(object: any): QueryProposalRequest;
@@ -929,6 +981,10 @@ export declare const QueryProposalRequest: {
 };
 export declare const QueryProposalResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryProposalResponse;
+    isSDK(o: any): o is QueryProposalResponseSDKType;
+    isAmino(o: any): o is QueryProposalResponseAmino;
     encode(message: QueryProposalResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryProposalResponse;
     fromJSON(object: any): QueryProposalResponse;
@@ -944,6 +1000,10 @@ export declare const QueryProposalResponse: {
 };
 export declare const QueryProposalsByGroupPolicyRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryProposalsByGroupPolicyRequest;
+    isSDK(o: any): o is QueryProposalsByGroupPolicyRequestSDKType;
+    isAmino(o: any): o is QueryProposalsByGroupPolicyRequestAmino;
     encode(message: QueryProposalsByGroupPolicyRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryProposalsByGroupPolicyRequest;
     fromJSON(object: any): QueryProposalsByGroupPolicyRequest;
@@ -959,6 +1019,10 @@ export declare const QueryProposalsByGroupPolicyRequest: {
 };
 export declare const QueryProposalsByGroupPolicyResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryProposalsByGroupPolicyResponse;
+    isSDK(o: any): o is QueryProposalsByGroupPolicyResponseSDKType;
+    isAmino(o: any): o is QueryProposalsByGroupPolicyResponseAmino;
     encode(message: QueryProposalsByGroupPolicyResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryProposalsByGroupPolicyResponse;
     fromJSON(object: any): QueryProposalsByGroupPolicyResponse;
@@ -974,6 +1038,10 @@ export declare const QueryProposalsByGroupPolicyResponse: {
 };
 export declare const QueryVoteByProposalVoterRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryVoteByProposalVoterRequest;
+    isSDK(o: any): o is QueryVoteByProposalVoterRequestSDKType;
+    isAmino(o: any): o is QueryVoteByProposalVoterRequestAmino;
     encode(message: QueryVoteByProposalVoterRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryVoteByProposalVoterRequest;
     fromJSON(object: any): QueryVoteByProposalVoterRequest;
@@ -989,6 +1057,10 @@ export declare const QueryVoteByProposalVoterRequest: {
 };
 export declare const QueryVoteByProposalVoterResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryVoteByProposalVoterResponse;
+    isSDK(o: any): o is QueryVoteByProposalVoterResponseSDKType;
+    isAmino(o: any): o is QueryVoteByProposalVoterResponseAmino;
     encode(message: QueryVoteByProposalVoterResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryVoteByProposalVoterResponse;
     fromJSON(object: any): QueryVoteByProposalVoterResponse;
@@ -1004,6 +1076,10 @@ export declare const QueryVoteByProposalVoterResponse: {
 };
 export declare const QueryVotesByProposalRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryVotesByProposalRequest;
+    isSDK(o: any): o is QueryVotesByProposalRequestSDKType;
+    isAmino(o: any): o is QueryVotesByProposalRequestAmino;
     encode(message: QueryVotesByProposalRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryVotesByProposalRequest;
     fromJSON(object: any): QueryVotesByProposalRequest;
@@ -1019,6 +1095,10 @@ export declare const QueryVotesByProposalRequest: {
 };
 export declare const QueryVotesByProposalResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryVotesByProposalResponse;
+    isSDK(o: any): o is QueryVotesByProposalResponseSDKType;
+    isAmino(o: any): o is QueryVotesByProposalResponseAmino;
     encode(message: QueryVotesByProposalResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryVotesByProposalResponse;
     fromJSON(object: any): QueryVotesByProposalResponse;
@@ -1034,6 +1114,10 @@ export declare const QueryVotesByProposalResponse: {
 };
 export declare const QueryVotesByVoterRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryVotesByVoterRequest;
+    isSDK(o: any): o is QueryVotesByVoterRequestSDKType;
+    isAmino(o: any): o is QueryVotesByVoterRequestAmino;
     encode(message: QueryVotesByVoterRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryVotesByVoterRequest;
     fromJSON(object: any): QueryVotesByVoterRequest;
@@ -1049,6 +1133,10 @@ export declare const QueryVotesByVoterRequest: {
 };
 export declare const QueryVotesByVoterResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryVotesByVoterResponse;
+    isSDK(o: any): o is QueryVotesByVoterResponseSDKType;
+    isAmino(o: any): o is QueryVotesByVoterResponseAmino;
     encode(message: QueryVotesByVoterResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryVotesByVoterResponse;
     fromJSON(object: any): QueryVotesByVoterResponse;
@@ -1064,6 +1152,10 @@ export declare const QueryVotesByVoterResponse: {
 };
 export declare const QueryGroupsByMemberRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupsByMemberRequest;
+    isSDK(o: any): o is QueryGroupsByMemberRequestSDKType;
+    isAmino(o: any): o is QueryGroupsByMemberRequestAmino;
     encode(message: QueryGroupsByMemberRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupsByMemberRequest;
     fromJSON(object: any): QueryGroupsByMemberRequest;
@@ -1079,6 +1171,10 @@ export declare const QueryGroupsByMemberRequest: {
 };
 export declare const QueryGroupsByMemberResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupsByMemberResponse;
+    isSDK(o: any): o is QueryGroupsByMemberResponseSDKType;
+    isAmino(o: any): o is QueryGroupsByMemberResponseAmino;
     encode(message: QueryGroupsByMemberResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupsByMemberResponse;
     fromJSON(object: any): QueryGroupsByMemberResponse;
@@ -1094,6 +1190,10 @@ export declare const QueryGroupsByMemberResponse: {
 };
 export declare const QueryTallyResultRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryTallyResultRequest;
+    isSDK(o: any): o is QueryTallyResultRequestSDKType;
+    isAmino(o: any): o is QueryTallyResultRequestAmino;
     encode(message: QueryTallyResultRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryTallyResultRequest;
     fromJSON(object: any): QueryTallyResultRequest;
@@ -1109,6 +1209,10 @@ export declare const QueryTallyResultRequest: {
 };
 export declare const QueryTallyResultResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryTallyResultResponse;
+    isSDK(o: any): o is QueryTallyResultResponseSDKType;
+    isAmino(o: any): o is QueryTallyResultResponseAmino;
     encode(message: QueryTallyResultResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryTallyResultResponse;
     fromJSON(object: any): QueryTallyResultResponse;
@@ -1124,6 +1228,10 @@ export declare const QueryTallyResultResponse: {
 };
 export declare const QueryGroupsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupsRequest;
+    isSDK(o: any): o is QueryGroupsRequestSDKType;
+    isAmino(o: any): o is QueryGroupsRequestAmino;
     encode(message: QueryGroupsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupsRequest;
     fromJSON(object: any): QueryGroupsRequest;
@@ -1139,6 +1247,10 @@ export declare const QueryGroupsRequest: {
 };
 export declare const QueryGroupsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGroupsResponse;
+    isSDK(o: any): o is QueryGroupsResponseSDKType;
+    isAmino(o: any): o is QueryGroupsResponseAmino;
     encode(message: QueryGroupsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupsResponse;
     fromJSON(object: any): QueryGroupsResponse;

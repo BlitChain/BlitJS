@@ -8,6 +8,7 @@ const types_2 = require("../../../../tendermint/version/types");
 const timestamp_1 = require("../../../../google/protobuf/timestamp");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "cosmos.base.tendermint.v1beta1";
 function createBaseBlock() {
     return {
@@ -19,6 +20,16 @@ function createBaseBlock() {
 }
 exports.Block = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.Block",
+    aminoType: "cosmos-sdk/Block",
+    is(o) {
+        return o && (o.$typeUrl === exports.Block.typeUrl || exports.Header.is(o.header) && types_1.Data.is(o.data) && evidence_1.EvidenceList.is(o.evidence));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Block.typeUrl || exports.Header.isSDK(o.header) && types_1.Data.isSDK(o.data) && evidence_1.EvidenceList.isSDK(o.evidence));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Block.typeUrl || exports.Header.isAmino(o.header) && types_1.Data.isAmino(o.data) && evidence_1.EvidenceList.isAmino(o.evidence));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.header !== undefined) {
             exports.Header.encode(message.header, writer.uint32(10).fork()).ldelim();
@@ -130,6 +141,8 @@ exports.Block = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Block.typeUrl, exports.Block);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Block.aminoType, exports.Block.typeUrl);
 function createBaseHeader() {
     return {
         version: types_2.Consensus.fromPartial({}),
@@ -150,6 +163,16 @@ function createBaseHeader() {
 }
 exports.Header = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.Header",
+    aminoType: "cosmos-sdk/Header",
+    is(o) {
+        return o && (o.$typeUrl === exports.Header.typeUrl || types_2.Consensus.is(o.version) && typeof o.chain_id === "string" && typeof o.height === "bigint" && timestamp_1.Timestamp.is(o.time) && types_1.BlockID.is(o.last_block_id) && (o.last_commit_hash instanceof Uint8Array || typeof o.last_commit_hash === "string") && (o.data_hash instanceof Uint8Array || typeof o.data_hash === "string") && (o.validators_hash instanceof Uint8Array || typeof o.validators_hash === "string") && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.consensus_hash instanceof Uint8Array || typeof o.consensus_hash === "string") && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string") && (o.last_results_hash instanceof Uint8Array || typeof o.last_results_hash === "string") && (o.evidence_hash instanceof Uint8Array || typeof o.evidence_hash === "string") && typeof o.proposer_address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Header.typeUrl || types_2.Consensus.isSDK(o.version) && typeof o.chain_id === "string" && typeof o.height === "bigint" && timestamp_1.Timestamp.isSDK(o.time) && types_1.BlockID.isSDK(o.last_block_id) && (o.last_commit_hash instanceof Uint8Array || typeof o.last_commit_hash === "string") && (o.data_hash instanceof Uint8Array || typeof o.data_hash === "string") && (o.validators_hash instanceof Uint8Array || typeof o.validators_hash === "string") && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.consensus_hash instanceof Uint8Array || typeof o.consensus_hash === "string") && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string") && (o.last_results_hash instanceof Uint8Array || typeof o.last_results_hash === "string") && (o.evidence_hash instanceof Uint8Array || typeof o.evidence_hash === "string") && typeof o.proposer_address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Header.typeUrl || types_2.Consensus.isAmino(o.version) && typeof o.chain_id === "string" && typeof o.height === "bigint" && timestamp_1.Timestamp.isAmino(o.time) && types_1.BlockID.isAmino(o.last_block_id) && (o.last_commit_hash instanceof Uint8Array || typeof o.last_commit_hash === "string") && (o.data_hash instanceof Uint8Array || typeof o.data_hash === "string") && (o.validators_hash instanceof Uint8Array || typeof o.validators_hash === "string") && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.consensus_hash instanceof Uint8Array || typeof o.consensus_hash === "string") && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string") && (o.last_results_hash instanceof Uint8Array || typeof o.last_results_hash === "string") && (o.evidence_hash instanceof Uint8Array || typeof o.evidence_hash === "string") && typeof o.proposer_address === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.version !== undefined) {
             types_2.Consensus.encode(message.version, writer.uint32(10).fork()).ldelim();
@@ -391,4 +414,6 @@ exports.Header = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Header.typeUrl, exports.Header);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Header.aminoType, exports.Header.typeUrl);
 //# sourceMappingURL=types.js.map

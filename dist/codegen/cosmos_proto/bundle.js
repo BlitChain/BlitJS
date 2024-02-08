@@ -25,8 +25,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cosmos_proto = void 0;
 //@ts-nocheck
-const _21 = __importStar(require("./cosmos"));
+const _22 = __importStar(require("./cosmos"));
 exports.cosmos_proto = {
-    ..._21
+    ..._22
 };
 //# sourceMappingURL=bundle.js.map

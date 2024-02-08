@@ -89,6 +89,10 @@ export interface ListenCommitResponseSDKType {
 }
 export declare const ListenFinalizeBlockRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ListenFinalizeBlockRequest;
+    isSDK(o: any): o is ListenFinalizeBlockRequestSDKType;
+    isAmino(o: any): o is ListenFinalizeBlockRequestAmino;
     encode(message: ListenFinalizeBlockRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ListenFinalizeBlockRequest;
     fromJSON(object: any): ListenFinalizeBlockRequest;
@@ -104,6 +108,10 @@ export declare const ListenFinalizeBlockRequest: {
 };
 export declare const ListenFinalizeBlockResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ListenFinalizeBlockResponse;
+    isSDK(o: any): o is ListenFinalizeBlockResponseSDKType;
+    isAmino(o: any): o is ListenFinalizeBlockResponseAmino;
     encode(_: ListenFinalizeBlockResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ListenFinalizeBlockResponse;
     fromJSON(_: any): ListenFinalizeBlockResponse;
@@ -119,6 +127,10 @@ export declare const ListenFinalizeBlockResponse: {
 };
 export declare const ListenCommitRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ListenCommitRequest;
+    isSDK(o: any): o is ListenCommitRequestSDKType;
+    isAmino(o: any): o is ListenCommitRequestAmino;
     encode(message: ListenCommitRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ListenCommitRequest;
     fromJSON(object: any): ListenCommitRequest;
@@ -134,6 +146,10 @@ export declare const ListenCommitRequest: {
 };
 export declare const ListenCommitResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ListenCommitResponse;
+    isSDK(o: any): o is ListenCommitResponseSDKType;
+    isAmino(o: any): o is ListenCommitResponseAmino;
     encode(_: ListenCommitResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ListenCommitResponse;
     fromJSON(_: any): ListenCommitResponse;

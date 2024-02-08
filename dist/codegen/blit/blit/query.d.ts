@@ -43,50 +43,6 @@ export interface QueryParamsResponseAminoMsg {
 export interface QueryParamsResponseSDKType {
     params: ParamsSDKType;
 }
-/** ConfigRequest defines the request structure for the Config gRPC query. */
-export interface EndpointsRequest {
-}
-export interface EndpointsRequestProtoMsg {
-    type_url: "/blit.blit.EndpointsRequest";
-    value: Uint8Array;
-}
-/** ConfigRequest defines the request structure for the Config gRPC query. */
-export interface EndpointsRequestAmino {
-}
-export interface EndpointsRequestAminoMsg {
-    type: "/blit.blit.EndpointsRequest";
-    value: EndpointsRequestAmino;
-}
-/** ConfigRequest defines the request structure for the Config gRPC query. */
-export interface EndpointsRequestSDKType {
-}
-/** ConfigResponse defines the response structure for the Config gRPC query. */
-export interface EndpointsResponse {
-    /** api_url is the url of the api service. It can be set with the ENV variable BLIT_PUBLIC_API_URL. */
-    api_url: string;
-    /** rpc_url is the url of the rpc service. It can be set with the ENV variable BLIT_PUBLIC_RPC_URL. */
-    rpc_url: string;
-}
-export interface EndpointsResponseProtoMsg {
-    type_url: "/blit.blit.EndpointsResponse";
-    value: Uint8Array;
-}
-/** ConfigResponse defines the response structure for the Config gRPC query. */
-export interface EndpointsResponseAmino {
-    /** api_url is the url of the api service. It can be set with the ENV variable BLIT_PUBLIC_API_URL. */
-    api_url?: string;
-    /** rpc_url is the url of the rpc service. It can be set with the ENV variable BLIT_PUBLIC_RPC_URL. */
-    rpc_url?: string;
-}
-export interface EndpointsResponseAminoMsg {
-    type: "/blit.blit.EndpointsResponse";
-    value: EndpointsResponseAmino;
-}
-/** ConfigResponse defines the response structure for the Config gRPC query. */
-export interface EndpointsResponseSDKType {
-    api_url: string;
-    rpc_url: string;
-}
 export interface QueryGetTaskRequest {
     id: bigint;
 }
@@ -239,6 +195,9 @@ export interface QueryAllFutureTaskResponseSDKType {
 }
 export declare const QueryParamsRequest: {
     typeUrl: string;
+    is(o: any): o is QueryParamsRequest;
+    isSDK(o: any): o is QueryParamsRequestSDKType;
+    isAmino(o: any): o is QueryParamsRequestAmino;
     encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromJSON(_: any): QueryParamsRequest;
@@ -253,6 +212,9 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
+    is(o: any): o is QueryParamsResponse;
+    isSDK(o: any): o is QueryParamsResponseSDKType;
+    isAmino(o: any): o is QueryParamsResponseAmino;
     encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromJSON(object: any): QueryParamsResponse;
@@ -265,36 +227,11 @@ export declare const QueryParamsResponse: {
     toProto(message: QueryParamsResponse): Uint8Array;
     toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg;
 };
-export declare const EndpointsRequest: {
-    typeUrl: string;
-    encode(_: EndpointsRequest, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): EndpointsRequest;
-    fromJSON(_: any): EndpointsRequest;
-    toJSON(_: EndpointsRequest): unknown;
-    fromPartial(_: Partial<EndpointsRequest>): EndpointsRequest;
-    fromAmino(_: EndpointsRequestAmino): EndpointsRequest;
-    toAmino(_: EndpointsRequest): EndpointsRequestAmino;
-    fromAminoMsg(object: EndpointsRequestAminoMsg): EndpointsRequest;
-    fromProtoMsg(message: EndpointsRequestProtoMsg): EndpointsRequest;
-    toProto(message: EndpointsRequest): Uint8Array;
-    toProtoMsg(message: EndpointsRequest): EndpointsRequestProtoMsg;
-};
-export declare const EndpointsResponse: {
-    typeUrl: string;
-    encode(message: EndpointsResponse, writer?: BinaryWriter): BinaryWriter;
-    decode(input: BinaryReader | Uint8Array, length?: number): EndpointsResponse;
-    fromJSON(object: any): EndpointsResponse;
-    toJSON(message: EndpointsResponse): unknown;
-    fromPartial(object: Partial<EndpointsResponse>): EndpointsResponse;
-    fromAmino(object: EndpointsResponseAmino): EndpointsResponse;
-    toAmino(message: EndpointsResponse): EndpointsResponseAmino;
-    fromAminoMsg(object: EndpointsResponseAminoMsg): EndpointsResponse;
-    fromProtoMsg(message: EndpointsResponseProtoMsg): EndpointsResponse;
-    toProto(message: EndpointsResponse): Uint8Array;
-    toProtoMsg(message: EndpointsResponse): EndpointsResponseProtoMsg;
-};
 export declare const QueryGetTaskRequest: {
     typeUrl: string;
+    is(o: any): o is QueryGetTaskRequest;
+    isSDK(o: any): o is QueryGetTaskRequestSDKType;
+    isAmino(o: any): o is QueryGetTaskRequestAmino;
     encode(message: QueryGetTaskRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGetTaskRequest;
     fromJSON(object: any): QueryGetTaskRequest;
@@ -309,6 +246,9 @@ export declare const QueryGetTaskRequest: {
 };
 export declare const QueryGetTaskResponse: {
     typeUrl: string;
+    is(o: any): o is QueryGetTaskResponse;
+    isSDK(o: any): o is QueryGetTaskResponseSDKType;
+    isAmino(o: any): o is QueryGetTaskResponseAmino;
     encode(message: QueryGetTaskResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGetTaskResponse;
     fromJSON(object: any): QueryGetTaskResponse;
@@ -323,6 +263,9 @@ export declare const QueryGetTaskResponse: {
 };
 export declare const QueryAllTaskRequest: {
     typeUrl: string;
+    is(o: any): o is QueryAllTaskRequest;
+    isSDK(o: any): o is QueryAllTaskRequestSDKType;
+    isAmino(o: any): o is QueryAllTaskRequestAmino;
     encode(message: QueryAllTaskRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAllTaskRequest;
     fromJSON(object: any): QueryAllTaskRequest;
@@ -337,6 +280,9 @@ export declare const QueryAllTaskRequest: {
 };
 export declare const QueryAllTaskResponse: {
     typeUrl: string;
+    is(o: any): o is QueryAllTaskResponse;
+    isSDK(o: any): o is QueryAllTaskResponseSDKType;
+    isAmino(o: any): o is QueryAllTaskResponseAmino;
     encode(message: QueryAllTaskResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAllTaskResponse;
     fromJSON(object: any): QueryAllTaskResponse;
@@ -351,6 +297,9 @@ export declare const QueryAllTaskResponse: {
 };
 export declare const QueryGetFutureTaskRequest: {
     typeUrl: string;
+    is(o: any): o is QueryGetFutureTaskRequest;
+    isSDK(o: any): o is QueryGetFutureTaskRequestSDKType;
+    isAmino(o: any): o is QueryGetFutureTaskRequestAmino;
     encode(message: QueryGetFutureTaskRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGetFutureTaskRequest;
     fromJSON(object: any): QueryGetFutureTaskRequest;
@@ -365,6 +314,9 @@ export declare const QueryGetFutureTaskRequest: {
 };
 export declare const QueryGetFutureTaskResponse: {
     typeUrl: string;
+    is(o: any): o is QueryGetFutureTaskResponse;
+    isSDK(o: any): o is QueryGetFutureTaskResponseSDKType;
+    isAmino(o: any): o is QueryGetFutureTaskResponseAmino;
     encode(message: QueryGetFutureTaskResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGetFutureTaskResponse;
     fromJSON(object: any): QueryGetFutureTaskResponse;
@@ -379,6 +331,9 @@ export declare const QueryGetFutureTaskResponse: {
 };
 export declare const QueryAllFutureTaskRequest: {
     typeUrl: string;
+    is(o: any): o is QueryAllFutureTaskRequest;
+    isSDK(o: any): o is QueryAllFutureTaskRequestSDKType;
+    isAmino(o: any): o is QueryAllFutureTaskRequestAmino;
     encode(message: QueryAllFutureTaskRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAllFutureTaskRequest;
     fromJSON(object: any): QueryAllFutureTaskRequest;
@@ -393,6 +348,9 @@ export declare const QueryAllFutureTaskRequest: {
 };
 export declare const QueryAllFutureTaskResponse: {
     typeUrl: string;
+    is(o: any): o is QueryAllFutureTaskResponse;
+    isSDK(o: any): o is QueryAllFutureTaskResponseSDKType;
+    isAmino(o: any): o is QueryAllFutureTaskResponseAmino;
     encode(message: QueryAllFutureTaskResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAllFutureTaskResponse;
     fromJSON(object: any): QueryAllFutureTaskResponse;

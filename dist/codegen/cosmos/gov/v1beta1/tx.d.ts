@@ -246,6 +246,10 @@ export interface MsgDepositResponseSDKType {
 }
 export declare const MsgSubmitProposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSubmitProposal;
+    isSDK(o: any): o is MsgSubmitProposalSDKType;
+    isAmino(o: any): o is MsgSubmitProposalAmino;
     encode(message: MsgSubmitProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitProposal;
     fromJSON(object: any): MsgSubmitProposal;
@@ -261,6 +265,10 @@ export declare const MsgSubmitProposal: {
 };
 export declare const MsgSubmitProposalResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSubmitProposalResponse;
+    isSDK(o: any): o is MsgSubmitProposalResponseSDKType;
+    isAmino(o: any): o is MsgSubmitProposalResponseAmino;
     encode(message: MsgSubmitProposalResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitProposalResponse;
     fromJSON(object: any): MsgSubmitProposalResponse;
@@ -276,6 +284,10 @@ export declare const MsgSubmitProposalResponse: {
 };
 export declare const MsgVote: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgVote;
+    isSDK(o: any): o is MsgVoteSDKType;
+    isAmino(o: any): o is MsgVoteAmino;
     encode(message: MsgVote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVote;
     fromJSON(object: any): MsgVote;
@@ -291,6 +303,10 @@ export declare const MsgVote: {
 };
 export declare const MsgVoteResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgVoteResponse;
+    isSDK(o: any): o is MsgVoteResponseSDKType;
+    isAmino(o: any): o is MsgVoteResponseAmino;
     encode(_: MsgVoteResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteResponse;
     fromJSON(_: any): MsgVoteResponse;
@@ -306,6 +322,10 @@ export declare const MsgVoteResponse: {
 };
 export declare const MsgVoteWeighted: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgVoteWeighted;
+    isSDK(o: any): o is MsgVoteWeightedSDKType;
+    isAmino(o: any): o is MsgVoteWeightedAmino;
     encode(message: MsgVoteWeighted, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteWeighted;
     fromJSON(object: any): MsgVoteWeighted;
@@ -321,6 +341,10 @@ export declare const MsgVoteWeighted: {
 };
 export declare const MsgVoteWeightedResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgVoteWeightedResponse;
+    isSDK(o: any): o is MsgVoteWeightedResponseSDKType;
+    isAmino(o: any): o is MsgVoteWeightedResponseAmino;
     encode(_: MsgVoteWeightedResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteWeightedResponse;
     fromJSON(_: any): MsgVoteWeightedResponse;
@@ -336,6 +360,10 @@ export declare const MsgVoteWeightedResponse: {
 };
 export declare const MsgDeposit: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgDeposit;
+    isSDK(o: any): o is MsgDepositSDKType;
+    isAmino(o: any): o is MsgDepositAmino;
     encode(message: MsgDeposit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDeposit;
     fromJSON(object: any): MsgDeposit;
@@ -351,6 +379,10 @@ export declare const MsgDeposit: {
 };
 export declare const MsgDepositResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgDepositResponse;
+    isSDK(o: any): o is MsgDepositResponseSDKType;
+    isAmino(o: any): o is MsgDepositResponseAmino;
     encode(_: MsgDepositResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDepositResponse;
     fromJSON(_: any): MsgDepositResponse;
@@ -364,6 +396,3 @@ export declare const MsgDepositResponse: {
     toProto(message: MsgDepositResponse): Uint8Array;
     toProtoMsg(message: MsgDepositResponse): MsgDepositResponseProtoMsg;
 };
-export declare const Cosmos_govv1beta1Content_InterfaceDecoder: (input: BinaryReader | Uint8Array) => CommunityPoolSpendProposal | CommunityPoolSpendProposalWithDeposit | TextProposal | ParameterChangeProposal | SoftwareUpgradeProposal | CancelSoftwareUpgradeProposal | ClientUpdateProposal | UpgradeProposal | Any;
-export declare const Cosmos_govv1beta1Content_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_govv1beta1Content_ToAmino: (content: Any) => AnyAmino;

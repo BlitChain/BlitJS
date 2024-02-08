@@ -136,6 +136,10 @@ export interface DecProtoSDKType {
 }
 export declare const Coin: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Coin;
+    isSDK(o: any): o is CoinSDKType;
+    isAmino(o: any): o is CoinAmino;
     encode(message: Coin, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Coin;
     fromJSON(object: any): Coin;
@@ -151,6 +155,10 @@ export declare const Coin: {
 };
 export declare const DecCoin: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DecCoin;
+    isSDK(o: any): o is DecCoinSDKType;
+    isAmino(o: any): o is DecCoinAmino;
     encode(message: DecCoin, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DecCoin;
     fromJSON(object: any): DecCoin;
@@ -166,6 +174,10 @@ export declare const DecCoin: {
 };
 export declare const IntProto: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is IntProto;
+    isSDK(o: any): o is IntProtoSDKType;
+    isAmino(o: any): o is IntProtoAmino;
     encode(message: IntProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IntProto;
     fromJSON(object: any): IntProto;
@@ -181,6 +193,10 @@ export declare const IntProto: {
 };
 export declare const DecProto: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DecProto;
+    isSDK(o: any): o is DecProtoSDKType;
+    isAmino(o: any): o is DecProtoAmino;
     encode(message: DecProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DecProto;
     fromJSON(object: any): DecProto;

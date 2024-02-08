@@ -1,7 +1,8 @@
 //@ts-nocheck
 import { Any } from "../../../../google/protobuf/any";
-import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { GlobalDecoderRegistry } from "../../../../registry";
 export const protobufPackage = "ibc.applications.interchain_accounts.v1";
 /**
  * Type defines a classification of message issued from a controller chain to its associated interchain accounts
@@ -51,6 +52,16 @@ function createBaseInterchainAccountPacketData() {
 }
 export const InterchainAccountPacketData = {
     typeUrl: "/ibc.applications.interchain_accounts.v1.InterchainAccountPacketData",
+    aminoType: "cosmos-sdk/InterchainAccountPacketData",
+    is(o) {
+        return o && (o.$typeUrl === InterchainAccountPacketData.typeUrl || isSet(o.type) && (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.memo === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === InterchainAccountPacketData.typeUrl || isSet(o.type) && (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.memo === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === InterchainAccountPacketData.typeUrl || isSet(o.type) && (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.memo === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.type !== 0) {
             writer.uint32(8).int32(message.type);
@@ -149,6 +160,8 @@ export const InterchainAccountPacketData = {
         };
     }
 };
+GlobalDecoderRegistry.register(InterchainAccountPacketData.typeUrl, InterchainAccountPacketData);
+GlobalDecoderRegistry.registerAminoProtoMapping(InterchainAccountPacketData.aminoType, InterchainAccountPacketData.typeUrl);
 function createBaseCosmosTx() {
     return {
         messages: []
@@ -156,6 +169,16 @@ function createBaseCosmosTx() {
 }
 export const CosmosTx = {
     typeUrl: "/ibc.applications.interchain_accounts.v1.CosmosTx",
+    aminoType: "cosmos-sdk/CosmosTx",
+    is(o) {
+        return o && (o.$typeUrl === CosmosTx.typeUrl || Array.isArray(o.messages) && (!o.messages.length || Any.is(o.messages[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === CosmosTx.typeUrl || Array.isArray(o.messages) && (!o.messages.length || Any.isSDK(o.messages[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === CosmosTx.typeUrl || Array.isArray(o.messages) && (!o.messages.length || Any.isAmino(o.messages[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.messages) {
             Any.encode(v, writer.uint32(10).fork()).ldelim();
@@ -236,4 +259,6 @@ export const CosmosTx = {
         };
     }
 };
+GlobalDecoderRegistry.register(CosmosTx.typeUrl, CosmosTx);
+GlobalDecoderRegistry.registerAminoProtoMapping(CosmosTx.aminoType, CosmosTx.typeUrl);
 //# sourceMappingURL=packet.js.map

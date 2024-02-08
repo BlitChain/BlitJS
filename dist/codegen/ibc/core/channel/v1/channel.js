@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Timeout = exports.Acknowledgement = exports.PacketId = exports.PacketState = exports.Packet = exports.Counterparty = exports.IdentifiedChannel = exports.Channel = exports.orderToJSON = exports.orderFromJSON = exports.OrderAmino = exports.OrderSDKType = exports.Order = exports.stateToJSON = exports.stateFromJSON = exports.StateAmino = exports.StateSDKType = exports.State = exports.protobufPackage = void 0;
 //@ts-nocheck
 const client_1 = require("../../client/v1/client");
-const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const binary_1 = require("../../../../binary");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "ibc.core.channel.v1";
 /**
  * State defines if a channel is in one of the following states:
@@ -133,6 +134,16 @@ function createBaseChannel() {
 }
 exports.Channel = {
     typeUrl: "/ibc.core.channel.v1.Channel",
+    aminoType: "cosmos-sdk/Channel",
+    is(o) {
+        return o && (o.$typeUrl === exports.Channel.typeUrl || (0, helpers_1.isSet)(o.state) && (0, helpers_1.isSet)(o.ordering) && exports.Counterparty.is(o.counterparty) && Array.isArray(o.connection_hops) && (!o.connection_hops.length || typeof o.connection_hops[0] === "string") && typeof o.version === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Channel.typeUrl || (0, helpers_1.isSet)(o.state) && (0, helpers_1.isSet)(o.ordering) && exports.Counterparty.isSDK(o.counterparty) && Array.isArray(o.connection_hops) && (!o.connection_hops.length || typeof o.connection_hops[0] === "string") && typeof o.version === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Channel.typeUrl || (0, helpers_1.isSet)(o.state) && (0, helpers_1.isSet)(o.ordering) && exports.Counterparty.isAmino(o.counterparty) && Array.isArray(o.connection_hops) && (!o.connection_hops.length || typeof o.connection_hops[0] === "string") && typeof o.version === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.state !== 0) {
             writer.uint32(8).int32(message.state);
@@ -265,6 +276,8 @@ exports.Channel = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Channel.typeUrl, exports.Channel);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Channel.aminoType, exports.Channel.typeUrl);
 function createBaseIdentifiedChannel() {
     return {
         state: 0,
@@ -278,6 +291,16 @@ function createBaseIdentifiedChannel() {
 }
 exports.IdentifiedChannel = {
     typeUrl: "/ibc.core.channel.v1.IdentifiedChannel",
+    aminoType: "cosmos-sdk/IdentifiedChannel",
+    is(o) {
+        return o && (o.$typeUrl === exports.IdentifiedChannel.typeUrl || (0, helpers_1.isSet)(o.state) && (0, helpers_1.isSet)(o.ordering) && exports.Counterparty.is(o.counterparty) && Array.isArray(o.connection_hops) && (!o.connection_hops.length || typeof o.connection_hops[0] === "string") && typeof o.version === "string" && typeof o.port_id === "string" && typeof o.channel_id === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.IdentifiedChannel.typeUrl || (0, helpers_1.isSet)(o.state) && (0, helpers_1.isSet)(o.ordering) && exports.Counterparty.isSDK(o.counterparty) && Array.isArray(o.connection_hops) && (!o.connection_hops.length || typeof o.connection_hops[0] === "string") && typeof o.version === "string" && typeof o.port_id === "string" && typeof o.channel_id === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.IdentifiedChannel.typeUrl || (0, helpers_1.isSet)(o.state) && (0, helpers_1.isSet)(o.ordering) && exports.Counterparty.isAmino(o.counterparty) && Array.isArray(o.connection_hops) && (!o.connection_hops.length || typeof o.connection_hops[0] === "string") && typeof o.version === "string" && typeof o.port_id === "string" && typeof o.channel_id === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.state !== 0) {
             writer.uint32(8).int32(message.state);
@@ -436,6 +459,8 @@ exports.IdentifiedChannel = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.IdentifiedChannel.typeUrl, exports.IdentifiedChannel);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.IdentifiedChannel.aminoType, exports.IdentifiedChannel.typeUrl);
 function createBaseCounterparty() {
     return {
         port_id: "",
@@ -444,6 +469,16 @@ function createBaseCounterparty() {
 }
 exports.Counterparty = {
     typeUrl: "/ibc.core.channel.v1.Counterparty",
+    aminoType: "cosmos-sdk/Counterparty",
+    is(o) {
+        return o && (o.$typeUrl === exports.Counterparty.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Counterparty.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Counterparty.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.port_id !== "") {
             writer.uint32(10).string(message.port_id);
@@ -529,6 +564,8 @@ exports.Counterparty = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Counterparty.typeUrl, exports.Counterparty);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Counterparty.aminoType, exports.Counterparty.typeUrl);
 function createBasePacket() {
     return {
         sequence: BigInt(0),
@@ -543,6 +580,16 @@ function createBasePacket() {
 }
 exports.Packet = {
     typeUrl: "/ibc.core.channel.v1.Packet",
+    aminoType: "cosmos-sdk/Packet",
+    is(o) {
+        return o && (o.$typeUrl === exports.Packet.typeUrl || typeof o.sequence === "bigint" && typeof o.source_port === "string" && typeof o.source_channel === "string" && typeof o.destination_port === "string" && typeof o.destination_channel === "string" && (o.data instanceof Uint8Array || typeof o.data === "string") && client_1.Height.is(o.timeout_height) && typeof o.timeout_timestamp === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Packet.typeUrl || typeof o.sequence === "bigint" && typeof o.source_port === "string" && typeof o.source_channel === "string" && typeof o.destination_port === "string" && typeof o.destination_channel === "string" && (o.data instanceof Uint8Array || typeof o.data === "string") && client_1.Height.isSDK(o.timeout_height) && typeof o.timeout_timestamp === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Packet.typeUrl || typeof o.sequence === "bigint" && typeof o.source_port === "string" && typeof o.source_channel === "string" && typeof o.destination_port === "string" && typeof o.destination_channel === "string" && (o.data instanceof Uint8Array || typeof o.data === "string") && client_1.Height.isAmino(o.timeout_height) && typeof o.timeout_timestamp === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.sequence !== BigInt(0)) {
             writer.uint32(8).uint64(message.sequence);
@@ -706,6 +753,8 @@ exports.Packet = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Packet.typeUrl, exports.Packet);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Packet.aminoType, exports.Packet.typeUrl);
 function createBasePacketState() {
     return {
         port_id: "",
@@ -716,6 +765,16 @@ function createBasePacketState() {
 }
 exports.PacketState = {
     typeUrl: "/ibc.core.channel.v1.PacketState",
+    aminoType: "cosmos-sdk/PacketState",
+    is(o) {
+        return o && (o.$typeUrl === exports.PacketState.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.sequence === "bigint" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.PacketState.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.sequence === "bigint" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.PacketState.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.sequence === "bigint" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.port_id !== "") {
             writer.uint32(10).string(message.port_id);
@@ -827,6 +886,8 @@ exports.PacketState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.PacketState.typeUrl, exports.PacketState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.PacketState.aminoType, exports.PacketState.typeUrl);
 function createBasePacketId() {
     return {
         port_id: "",
@@ -836,6 +897,16 @@ function createBasePacketId() {
 }
 exports.PacketId = {
     typeUrl: "/ibc.core.channel.v1.PacketId",
+    aminoType: "cosmos-sdk/PacketId",
+    is(o) {
+        return o && (o.$typeUrl === exports.PacketId.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.sequence === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.PacketId.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.sequence === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.PacketId.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.sequence === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.port_id !== "") {
             writer.uint32(10).string(message.port_id);
@@ -934,6 +1005,8 @@ exports.PacketId = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.PacketId.typeUrl, exports.PacketId);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.PacketId.aminoType, exports.PacketId.typeUrl);
 function createBaseAcknowledgement() {
     return {
         result: undefined,
@@ -942,6 +1015,16 @@ function createBaseAcknowledgement() {
 }
 exports.Acknowledgement = {
     typeUrl: "/ibc.core.channel.v1.Acknowledgement",
+    aminoType: "cosmos-sdk/Acknowledgement",
+    is(o) {
+        return o && o.$typeUrl === exports.Acknowledgement.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.Acknowledgement.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.Acknowledgement.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.result !== undefined) {
             writer.uint32(170).bytes(message.result);
@@ -1027,6 +1110,8 @@ exports.Acknowledgement = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Acknowledgement.typeUrl, exports.Acknowledgement);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Acknowledgement.aminoType, exports.Acknowledgement.typeUrl);
 function createBaseTimeout() {
     return {
         height: client_1.Height.fromPartial({}),
@@ -1035,6 +1120,16 @@ function createBaseTimeout() {
 }
 exports.Timeout = {
     typeUrl: "/ibc.core.channel.v1.Timeout",
+    aminoType: "cosmos-sdk/Timeout",
+    is(o) {
+        return o && (o.$typeUrl === exports.Timeout.typeUrl || client_1.Height.is(o.height) && typeof o.timestamp === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Timeout.typeUrl || client_1.Height.isSDK(o.height) && typeof o.timestamp === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Timeout.typeUrl || client_1.Height.isAmino(o.height) && typeof o.timestamp === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.height !== undefined) {
             client_1.Height.encode(message.height, writer.uint32(10).fork()).ldelim();
@@ -1120,4 +1215,6 @@ exports.Timeout = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Timeout.typeUrl, exports.Timeout);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Timeout.aminoType, exports.Timeout.typeUrl);
 //# sourceMappingURL=channel.js.map

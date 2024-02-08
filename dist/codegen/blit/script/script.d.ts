@@ -25,6 +25,9 @@ export interface ScriptSDKType {
 }
 export declare const Script: {
     typeUrl: string;
+    is(o: any): o is Script;
+    isSDK(o: any): o is ScriptSDKType;
+    isAmino(o: any): o is ScriptAmino;
     encode(message: Script, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Script;
     fromJSON(object: any): Script;

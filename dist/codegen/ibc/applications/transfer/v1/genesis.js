@@ -6,6 +6,7 @@ const transfer_1 = require("./transfer");
 const coin_1 = require("../../../../cosmos/base/v1beta1/coin");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "ibc.applications.transfer.v1";
 function createBaseGenesisState() {
     return {
@@ -17,6 +18,16 @@ function createBaseGenesisState() {
 }
 exports.GenesisState = {
     typeUrl: "/ibc.applications.transfer.v1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.port_id === "string" && Array.isArray(o.denom_traces) && (!o.denom_traces.length || transfer_1.DenomTrace.is(o.denom_traces[0])) && transfer_1.Params.is(o.params) && Array.isArray(o.total_escrowed) && (!o.total_escrowed.length || coin_1.Coin.is(o.total_escrowed[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.port_id === "string" && Array.isArray(o.denom_traces) && (!o.denom_traces.length || transfer_1.DenomTrace.isSDK(o.denom_traces[0])) && transfer_1.Params.isSDK(o.params) && Array.isArray(o.total_escrowed) && (!o.total_escrowed.length || coin_1.Coin.isSDK(o.total_escrowed[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.port_id === "string" && Array.isArray(o.denom_traces) && (!o.denom_traces.length || transfer_1.DenomTrace.isAmino(o.denom_traces[0])) && transfer_1.Params.isAmino(o.params) && Array.isArray(o.total_escrowed) && (!o.total_escrowed.length || coin_1.Coin.isAmino(o.total_escrowed[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.port_id !== "") {
             writer.uint32(10).string(message.port_id);
@@ -144,4 +155,6 @@ exports.GenesisState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GenesisState.aminoType, exports.GenesisState.typeUrl);
 //# sourceMappingURL=genesis.js.map

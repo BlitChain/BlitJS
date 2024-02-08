@@ -80,6 +80,9 @@ export interface TaskSDKType {
 }
 export declare const Task: {
     typeUrl: string;
+    is(o: any): o is Task;
+    isSDK(o: any): o is TaskSDKType;
+    isAmino(o: any): o is TaskAmino;
     encode(message: Task, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Task;
     fromJSON(object: any): Task;

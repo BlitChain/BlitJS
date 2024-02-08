@@ -2,7 +2,7 @@ export declare const createLCDClient: ({ restEndpoint }: {
     restEndpoint: string;
 }) => Promise<{
     blit: {
-        blit: import("./blit/query.lcd").LCDQueryClient;
+        blit: import("./blit/service.lcd").LCDQueryClient;
         script: import("./script/query.lcd").LCDQueryClient;
         storage: import("./storage/query.lcd").LCDQueryClient;
     };

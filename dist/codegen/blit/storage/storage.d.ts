@@ -25,6 +25,9 @@ export interface StorageSDKType {
 }
 export declare const Storage: {
     typeUrl: string;
+    is(o: any): o is Storage;
+    isSDK(o: any): o is StorageSDKType;
+    isAmino(o: any): o is StorageAmino;
     encode(message: Storage, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Storage;
     fromJSON(object: any): Storage;

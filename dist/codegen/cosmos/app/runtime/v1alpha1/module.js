@@ -4,6 +4,7 @@ exports.StoreKeyConfig = exports.Module = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "cosmos.app.runtime.v1alpha1";
 function createBaseModule() {
     return {
@@ -20,6 +21,16 @@ function createBaseModule() {
 }
 exports.Module = {
     typeUrl: "/cosmos.app.runtime.v1alpha1.Module",
+    aminoType: "cosmos-sdk/Module",
+    is(o) {
+        return o && (o.$typeUrl === exports.Module.typeUrl || typeof o.app_name === "string" && Array.isArray(o.begin_blockers) && (!o.begin_blockers.length || typeof o.begin_blockers[0] === "string") && Array.isArray(o.end_blockers) && (!o.end_blockers.length || typeof o.end_blockers[0] === "string") && Array.isArray(o.init_genesis) && (!o.init_genesis.length || typeof o.init_genesis[0] === "string") && Array.isArray(o.export_genesis) && (!o.export_genesis.length || typeof o.export_genesis[0] === "string") && Array.isArray(o.override_store_keys) && (!o.override_store_keys.length || exports.StoreKeyConfig.is(o.override_store_keys[0])) && Array.isArray(o.order_migrations) && (!o.order_migrations.length || typeof o.order_migrations[0] === "string") && Array.isArray(o.precommiters) && (!o.precommiters.length || typeof o.precommiters[0] === "string") && Array.isArray(o.prepare_check_staters) && (!o.prepare_check_staters.length || typeof o.prepare_check_staters[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Module.typeUrl || typeof o.app_name === "string" && Array.isArray(o.begin_blockers) && (!o.begin_blockers.length || typeof o.begin_blockers[0] === "string") && Array.isArray(o.end_blockers) && (!o.end_blockers.length || typeof o.end_blockers[0] === "string") && Array.isArray(o.init_genesis) && (!o.init_genesis.length || typeof o.init_genesis[0] === "string") && Array.isArray(o.export_genesis) && (!o.export_genesis.length || typeof o.export_genesis[0] === "string") && Array.isArray(o.override_store_keys) && (!o.override_store_keys.length || exports.StoreKeyConfig.isSDK(o.override_store_keys[0])) && Array.isArray(o.order_migrations) && (!o.order_migrations.length || typeof o.order_migrations[0] === "string") && Array.isArray(o.precommiters) && (!o.precommiters.length || typeof o.precommiters[0] === "string") && Array.isArray(o.prepare_check_staters) && (!o.prepare_check_staters.length || typeof o.prepare_check_staters[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Module.typeUrl || typeof o.app_name === "string" && Array.isArray(o.begin_blockers) && (!o.begin_blockers.length || typeof o.begin_blockers[0] === "string") && Array.isArray(o.end_blockers) && (!o.end_blockers.length || typeof o.end_blockers[0] === "string") && Array.isArray(o.init_genesis) && (!o.init_genesis.length || typeof o.init_genesis[0] === "string") && Array.isArray(o.export_genesis) && (!o.export_genesis.length || typeof o.export_genesis[0] === "string") && Array.isArray(o.override_store_keys) && (!o.override_store_keys.length || exports.StoreKeyConfig.isAmino(o.override_store_keys[0])) && Array.isArray(o.order_migrations) && (!o.order_migrations.length || typeof o.order_migrations[0] === "string") && Array.isArray(o.precommiters) && (!o.precommiters.length || typeof o.precommiters[0] === "string") && Array.isArray(o.prepare_check_staters) && (!o.prepare_check_staters.length || typeof o.prepare_check_staters[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.app_name !== "") {
             writer.uint32(10).string(message.app_name);
@@ -260,6 +271,8 @@ exports.Module = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Module.typeUrl, exports.Module);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Module.aminoType, exports.Module.typeUrl);
 function createBaseStoreKeyConfig() {
     return {
         module_name: "",
@@ -268,6 +281,16 @@ function createBaseStoreKeyConfig() {
 }
 exports.StoreKeyConfig = {
     typeUrl: "/cosmos.app.runtime.v1alpha1.StoreKeyConfig",
+    aminoType: "cosmos-sdk/StoreKeyConfig",
+    is(o) {
+        return o && (o.$typeUrl === exports.StoreKeyConfig.typeUrl || typeof o.module_name === "string" && typeof o.kv_store_key === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.StoreKeyConfig.typeUrl || typeof o.module_name === "string" && typeof o.kv_store_key === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.StoreKeyConfig.typeUrl || typeof o.module_name === "string" && typeof o.kv_store_key === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.module_name !== "") {
             writer.uint32(10).string(message.module_name);
@@ -353,4 +376,6 @@ exports.StoreKeyConfig = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.StoreKeyConfig.typeUrl, exports.StoreKeyConfig);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.StoreKeyConfig.aminoType, exports.StoreKeyConfig.typeUrl);
 //# sourceMappingURL=module.js.map

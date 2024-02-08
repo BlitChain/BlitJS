@@ -2,6 +2,7 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.store.v1beta1";
 function createBaseCommitInfo() {
     return {
@@ -12,6 +13,16 @@ function createBaseCommitInfo() {
 }
 export const CommitInfo = {
     typeUrl: "/cosmos.store.v1beta1.CommitInfo",
+    aminoType: "cosmos-sdk/CommitInfo",
+    is(o) {
+        return o && (o.$typeUrl === CommitInfo.typeUrl || typeof o.version === "bigint" && Array.isArray(o.store_infos) && (!o.store_infos.length || StoreInfo.is(o.store_infos[0])) && Timestamp.is(o.timestamp));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === CommitInfo.typeUrl || typeof o.version === "bigint" && Array.isArray(o.store_infos) && (!o.store_infos.length || StoreInfo.isSDK(o.store_infos[0])) && Timestamp.isSDK(o.timestamp));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === CommitInfo.typeUrl || typeof o.version === "bigint" && Array.isArray(o.store_infos) && (!o.store_infos.length || StoreInfo.isAmino(o.store_infos[0])) && Timestamp.isAmino(o.timestamp));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.version !== BigInt(0)) {
             writer.uint32(8).int64(message.version);
@@ -118,6 +129,8 @@ export const CommitInfo = {
         };
     }
 };
+GlobalDecoderRegistry.register(CommitInfo.typeUrl, CommitInfo);
+GlobalDecoderRegistry.registerAminoProtoMapping(CommitInfo.aminoType, CommitInfo.typeUrl);
 function createBaseStoreInfo() {
     return {
         name: "",
@@ -126,6 +139,16 @@ function createBaseStoreInfo() {
 }
 export const StoreInfo = {
     typeUrl: "/cosmos.store.v1beta1.StoreInfo",
+    aminoType: "cosmos-sdk/StoreInfo",
+    is(o) {
+        return o && (o.$typeUrl === StoreInfo.typeUrl || typeof o.name === "string" && CommitID.is(o.commit_id));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === StoreInfo.typeUrl || typeof o.name === "string" && CommitID.isSDK(o.commit_id));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === StoreInfo.typeUrl || typeof o.name === "string" && CommitID.isAmino(o.commit_id));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -211,6 +234,8 @@ export const StoreInfo = {
         };
     }
 };
+GlobalDecoderRegistry.register(StoreInfo.typeUrl, StoreInfo);
+GlobalDecoderRegistry.registerAminoProtoMapping(StoreInfo.aminoType, StoreInfo.typeUrl);
 function createBaseCommitID() {
     return {
         version: BigInt(0),
@@ -219,6 +244,16 @@ function createBaseCommitID() {
 }
 export const CommitID = {
     typeUrl: "/cosmos.store.v1beta1.CommitID",
+    aminoType: "cosmos-sdk/CommitID",
+    is(o) {
+        return o && (o.$typeUrl === CommitID.typeUrl || typeof o.version === "bigint" && (o.hash instanceof Uint8Array || typeof o.hash === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === CommitID.typeUrl || typeof o.version === "bigint" && (o.hash instanceof Uint8Array || typeof o.hash === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === CommitID.typeUrl || typeof o.version === "bigint" && (o.hash instanceof Uint8Array || typeof o.hash === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.version !== BigInt(0)) {
             writer.uint32(8).int64(message.version);
@@ -304,4 +339,6 @@ export const CommitID = {
         };
     }
 };
+GlobalDecoderRegistry.register(CommitID.typeUrl, CommitID);
+GlobalDecoderRegistry.registerAminoProtoMapping(CommitID.aminoType, CommitID.typeUrl);
 //# sourceMappingURL=commit_info.js.map

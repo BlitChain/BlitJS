@@ -2,6 +2,7 @@
 import { Deposit, Vote, Proposal, DepositParams, VotingParams, TallyParams } from "./gov";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.gov.v1beta1";
 function createBaseGenesisState() {
     return {
@@ -16,6 +17,16 @@ function createBaseGenesisState() {
 }
 export const GenesisState = {
     typeUrl: "/cosmos.gov.v1beta1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.starting_proposal_id === "bigint" && Array.isArray(o.deposits) && (!o.deposits.length || Deposit.is(o.deposits[0])) && Array.isArray(o.votes) && (!o.votes.length || Vote.is(o.votes[0])) && Array.isArray(o.proposals) && (!o.proposals.length || Proposal.is(o.proposals[0])) && DepositParams.is(o.deposit_params) && VotingParams.is(o.voting_params) && TallyParams.is(o.tally_params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.starting_proposal_id === "bigint" && Array.isArray(o.deposits) && (!o.deposits.length || Deposit.isSDK(o.deposits[0])) && Array.isArray(o.votes) && (!o.votes.length || Vote.isSDK(o.votes[0])) && Array.isArray(o.proposals) && (!o.proposals.length || Proposal.isSDK(o.proposals[0])) && DepositParams.isSDK(o.deposit_params) && VotingParams.isSDK(o.voting_params) && TallyParams.isSDK(o.tally_params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.starting_proposal_id === "bigint" && Array.isArray(o.deposits) && (!o.deposits.length || Deposit.isAmino(o.deposits[0])) && Array.isArray(o.votes) && (!o.votes.length || Vote.isAmino(o.votes[0])) && Array.isArray(o.proposals) && (!o.proposals.length || Proposal.isAmino(o.proposals[0])) && DepositParams.isAmino(o.deposit_params) && VotingParams.isAmino(o.voting_params) && TallyParams.isAmino(o.tally_params));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.starting_proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.starting_proposal_id);
@@ -190,4 +201,6 @@ export const GenesisState = {
         };
     }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 //# sourceMappingURL=genesis.js.map

@@ -128,6 +128,10 @@ export interface DisabledListResponseSDKType {
 }
 export declare const QueryAccountRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAccountRequest;
+    isSDK(o: any): o is QueryAccountRequestSDKType;
+    isAmino(o: any): o is QueryAccountRequestAmino;
     encode(message: QueryAccountRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountRequest;
     fromJSON(object: any): QueryAccountRequest;
@@ -143,6 +147,10 @@ export declare const QueryAccountRequest: {
 };
 export declare const AccountResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is AccountResponse;
+    isSDK(o: any): o is AccountResponseSDKType;
+    isAmino(o: any): o is AccountResponseAmino;
     encode(message: AccountResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AccountResponse;
     fromJSON(object: any): AccountResponse;
@@ -158,6 +166,10 @@ export declare const AccountResponse: {
 };
 export declare const QueryAccountsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAccountsRequest;
+    isSDK(o: any): o is QueryAccountsRequestSDKType;
+    isAmino(o: any): o is QueryAccountsRequestAmino;
     encode(message: QueryAccountsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountsRequest;
     fromJSON(object: any): QueryAccountsRequest;
@@ -173,6 +185,10 @@ export declare const QueryAccountsRequest: {
 };
 export declare const AccountsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is AccountsResponse;
+    isSDK(o: any): o is AccountsResponseSDKType;
+    isAmino(o: any): o is AccountsResponseAmino;
     encode(message: AccountsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AccountsResponse;
     fromJSON(object: any): AccountsResponse;
@@ -188,6 +204,10 @@ export declare const AccountsResponse: {
 };
 export declare const QueryDisabledListRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDisabledListRequest;
+    isSDK(o: any): o is QueryDisabledListRequestSDKType;
+    isAmino(o: any): o is QueryDisabledListRequestAmino;
     encode(_: QueryDisabledListRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDisabledListRequest;
     fromJSON(_: any): QueryDisabledListRequest;
@@ -203,6 +223,10 @@ export declare const QueryDisabledListRequest: {
 };
 export declare const DisabledListResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DisabledListResponse;
+    isSDK(o: any): o is DisabledListResponseSDKType;
+    isAmino(o: any): o is DisabledListResponseAmino;
     encode(message: DisabledListResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DisabledListResponse;
     fromJSON(object: any): DisabledListResponse;

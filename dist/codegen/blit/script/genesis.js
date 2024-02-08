@@ -6,6 +6,7 @@ const params_1 = require("./params");
 const script_1 = require("./script");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "blit.script";
 function createBaseGenesisState() {
     return {
@@ -15,6 +16,15 @@ function createBaseGenesisState() {
 }
 exports.GenesisState = {
     typeUrl: "/blit.script.GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || params_1.Params.is(o.params) && Array.isArray(o.scriptList) && (!o.scriptList.length || script_1.Script.is(o.scriptList[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || params_1.Params.isSDK(o.params) && Array.isArray(o.scriptList) && (!o.scriptList.length || script_1.Script.isSDK(o.scriptList[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || params_1.Params.isAmino(o.params) && Array.isArray(o.scriptList) && (!o.scriptList.length || script_1.Script.isAmino(o.scriptList[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.params !== undefined) {
             params_1.Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -102,4 +112,5 @@ exports.GenesisState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
 //# sourceMappingURL=genesis.js.map

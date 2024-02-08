@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino = exports.Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino = exports.Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder = exports.MsgPruneAllowancesResponse = exports.MsgPruneAllowances = exports.MsgRevokeAllowanceResponse = exports.MsgRevokeAllowance = exports.MsgGrantAllowanceResponse = exports.MsgGrantAllowance = exports.protobufPackage = void 0;
+exports.MsgPruneAllowancesResponse = exports.MsgPruneAllowances = exports.MsgRevokeAllowanceResponse = exports.MsgRevokeAllowance = exports.MsgGrantAllowanceResponse = exports.MsgGrantAllowance = exports.protobufPackage = void 0;
 //@ts-nocheck
 const any_1 = require("../../../google/protobuf/any");
-const feegrant_1 = require("./feegrant");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.feegrant.v1beta1";
 function createBaseMsgGrantAllowance() {
     return {
@@ -16,6 +16,16 @@ function createBaseMsgGrantAllowance() {
 }
 exports.MsgGrantAllowance = {
     typeUrl: "/cosmos.feegrant.v1beta1.MsgGrantAllowance",
+    aminoType: "cosmos-sdk/MsgGrantAllowance",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgGrantAllowance.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgGrantAllowance.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgGrantAllowance.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.granter !== "") {
             writer.uint32(10).string(message.granter);
@@ -24,7 +34,7 @@ exports.MsgGrantAllowance = {
             writer.uint32(18).string(message.grantee);
         }
         if (message.allowance !== undefined) {
-            any_1.Any.encode(message.allowance, writer.uint32(26).fork()).ldelim();
+            any_1.Any.encode(registry_1.GlobalDecoderRegistry.wrapAny(message.allowance), writer.uint32(26).fork()).ldelim();
         }
         return writer;
     },
@@ -42,7 +52,7 @@ exports.MsgGrantAllowance = {
                     message.grantee = reader.string();
                     break;
                 case 3:
-                    message.allowance = (0, exports.Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder)(reader);
+                    message.allowance = registry_1.GlobalDecoderRegistry.unwrapAny(reader);
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -55,21 +65,21 @@ exports.MsgGrantAllowance = {
         return {
             granter: (0, helpers_1.isSet)(object.granter) ? String(object.granter) : "",
             grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : "",
-            allowance: (0, helpers_1.isSet)(object.allowance) ? any_1.Any.fromJSON(object.allowance) : undefined
+            allowance: (0, helpers_1.isSet)(object.allowance) ? registry_1.GlobalDecoderRegistry.fromJSON(object.allowance) : undefined
         };
     },
     toJSON(message) {
         const obj = {};
         message.granter !== undefined && (obj.granter = message.granter);
         message.grantee !== undefined && (obj.grantee = message.grantee);
-        message.allowance !== undefined && (obj.allowance = message.allowance ? any_1.Any.toJSON(message.allowance) : undefined);
+        message.allowance !== undefined && (obj.allowance = message.allowance ? registry_1.GlobalDecoderRegistry.toJSON(message.allowance) : undefined);
         return obj;
     },
     fromPartial(object) {
         const message = createBaseMsgGrantAllowance();
         message.granter = object.granter ?? "";
         message.grantee = object.grantee ?? "";
-        message.allowance = object.allowance !== undefined && object.allowance !== null ? any_1.Any.fromPartial(object.allowance) : undefined;
+        message.allowance = object.allowance !== undefined && object.allowance !== null ? registry_1.GlobalDecoderRegistry.fromPartial(object.allowance) : undefined;
         return message;
     },
     fromAmino(object) {
@@ -81,7 +91,7 @@ exports.MsgGrantAllowance = {
             message.grantee = object.grantee;
         }
         if (object.allowance !== undefined && object.allowance !== null) {
-            message.allowance = (0, exports.Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino)(object.allowance);
+            message.allowance = registry_1.GlobalDecoderRegistry.fromAminoMsg(object.allowance);
         }
         return message;
     },
@@ -89,7 +99,7 @@ exports.MsgGrantAllowance = {
         const obj = {};
         obj.granter = message.granter;
         obj.grantee = message.grantee;
-        obj.allowance = message.allowance ? (0, exports.Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino)(message.allowance) : undefined;
+        obj.allowance = message.allowance ? registry_1.GlobalDecoderRegistry.toAminoMsg(message.allowance) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -114,11 +124,23 @@ exports.MsgGrantAllowance = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgGrantAllowance.typeUrl, exports.MsgGrantAllowance);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgGrantAllowance.aminoType, exports.MsgGrantAllowance.typeUrl);
 function createBaseMsgGrantAllowanceResponse() {
     return {};
 }
 exports.MsgGrantAllowanceResponse = {
     typeUrl: "/cosmos.feegrant.v1beta1.MsgGrantAllowanceResponse",
+    aminoType: "cosmos-sdk/MsgGrantAllowanceResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgGrantAllowanceResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgGrantAllowanceResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgGrantAllowanceResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -177,6 +199,8 @@ exports.MsgGrantAllowanceResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgGrantAllowanceResponse.typeUrl, exports.MsgGrantAllowanceResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgGrantAllowanceResponse.aminoType, exports.MsgGrantAllowanceResponse.typeUrl);
 function createBaseMsgRevokeAllowance() {
     return {
         granter: "",
@@ -185,6 +209,16 @@ function createBaseMsgRevokeAllowance() {
 }
 exports.MsgRevokeAllowance = {
     typeUrl: "/cosmos.feegrant.v1beta1.MsgRevokeAllowance",
+    aminoType: "cosmos-sdk/MsgRevokeAllowance",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgRevokeAllowance.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgRevokeAllowance.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgRevokeAllowance.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.granter !== "") {
             writer.uint32(10).string(message.granter);
@@ -270,11 +304,23 @@ exports.MsgRevokeAllowance = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgRevokeAllowance.typeUrl, exports.MsgRevokeAllowance);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgRevokeAllowance.aminoType, exports.MsgRevokeAllowance.typeUrl);
 function createBaseMsgRevokeAllowanceResponse() {
     return {};
 }
 exports.MsgRevokeAllowanceResponse = {
     typeUrl: "/cosmos.feegrant.v1beta1.MsgRevokeAllowanceResponse",
+    aminoType: "cosmos-sdk/MsgRevokeAllowanceResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgRevokeAllowanceResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgRevokeAllowanceResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgRevokeAllowanceResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -333,6 +379,8 @@ exports.MsgRevokeAllowanceResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgRevokeAllowanceResponse.typeUrl, exports.MsgRevokeAllowanceResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgRevokeAllowanceResponse.aminoType, exports.MsgRevokeAllowanceResponse.typeUrl);
 function createBaseMsgPruneAllowances() {
     return {
         pruner: ""
@@ -340,6 +388,16 @@ function createBaseMsgPruneAllowances() {
 }
 exports.MsgPruneAllowances = {
     typeUrl: "/cosmos.feegrant.v1beta1.MsgPruneAllowances",
+    aminoType: "cosmos-sdk/MsgPruneAllowances",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgPruneAllowances.typeUrl || typeof o.pruner === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgPruneAllowances.typeUrl || typeof o.pruner === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgPruneAllowances.typeUrl || typeof o.pruner === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.pruner !== "") {
             writer.uint32(10).string(message.pruner);
@@ -412,11 +470,23 @@ exports.MsgPruneAllowances = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgPruneAllowances.typeUrl, exports.MsgPruneAllowances);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgPruneAllowances.aminoType, exports.MsgPruneAllowances.typeUrl);
 function createBaseMsgPruneAllowancesResponse() {
     return {};
 }
 exports.MsgPruneAllowancesResponse = {
     typeUrl: "/cosmos.feegrant.v1beta1.MsgPruneAllowancesResponse",
+    aminoType: "cosmos-sdk/MsgPruneAllowancesResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgPruneAllowancesResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgPruneAllowancesResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgPruneAllowancesResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -475,63 +545,6 @@ exports.MsgPruneAllowancesResponse = {
         };
     }
 };
-const Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder = (input) => {
-    const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
-    const data = any_1.Any.decode(reader, reader.uint32());
-    switch (data.typeUrl) {
-        case "/cosmos.feegrant.v1beta1.BasicAllowance":
-            return feegrant_1.BasicAllowance.decode(data.value);
-        case "/cosmos.feegrant.v1beta1.PeriodicAllowance":
-            return feegrant_1.PeriodicAllowance.decode(data.value);
-        case "/cosmos.feegrant.v1beta1.AllowedMsgAllowance":
-            return feegrant_1.AllowedMsgAllowance.decode(data.value);
-        default:
-            return data;
-    }
-};
-exports.Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder = Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder;
-const Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino = (content) => {
-    switch (content.type) {
-        case "cosmos-sdk/BasicAllowance":
-            return any_1.Any.fromPartial({
-                typeUrl: "/cosmos.feegrant.v1beta1.BasicAllowance",
-                value: feegrant_1.BasicAllowance.encode(feegrant_1.BasicAllowance.fromPartial(feegrant_1.BasicAllowance.fromAmino(content.value))).finish()
-            });
-        case "cosmos-sdk/PeriodicAllowance":
-            return any_1.Any.fromPartial({
-                typeUrl: "/cosmos.feegrant.v1beta1.PeriodicAllowance",
-                value: feegrant_1.PeriodicAllowance.encode(feegrant_1.PeriodicAllowance.fromPartial(feegrant_1.PeriodicAllowance.fromAmino(content.value))).finish()
-            });
-        case "cosmos-sdk/AllowedMsgAllowance":
-            return any_1.Any.fromPartial({
-                typeUrl: "/cosmos.feegrant.v1beta1.AllowedMsgAllowance",
-                value: feegrant_1.AllowedMsgAllowance.encode(feegrant_1.AllowedMsgAllowance.fromPartial(feegrant_1.AllowedMsgAllowance.fromAmino(content.value))).finish()
-            });
-        default:
-            return any_1.Any.fromAmino(content);
-    }
-};
-exports.Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino = Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino;
-const Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino = (content) => {
-    switch (content.typeUrl) {
-        case "/cosmos.feegrant.v1beta1.BasicAllowance":
-            return {
-                type: "cosmos-sdk/BasicAllowance",
-                value: feegrant_1.BasicAllowance.toAmino(feegrant_1.BasicAllowance.decode(content.value, undefined))
-            };
-        case "/cosmos.feegrant.v1beta1.PeriodicAllowance":
-            return {
-                type: "cosmos-sdk/PeriodicAllowance",
-                value: feegrant_1.PeriodicAllowance.toAmino(feegrant_1.PeriodicAllowance.decode(content.value, undefined))
-            };
-        case "/cosmos.feegrant.v1beta1.AllowedMsgAllowance":
-            return {
-                type: "cosmos-sdk/AllowedMsgAllowance",
-                value: feegrant_1.AllowedMsgAllowance.toAmino(feegrant_1.AllowedMsgAllowance.decode(content.value, undefined))
-            };
-        default:
-            return any_1.Any.toAmino(content);
-    }
-};
-exports.Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino = Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino;
+registry_1.GlobalDecoderRegistry.register(exports.MsgPruneAllowancesResponse.typeUrl, exports.MsgPruneAllowancesResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgPruneAllowancesResponse.aminoType, exports.MsgPruneAllowancesResponse.typeUrl);
 //# sourceMappingURL=tx.js.map

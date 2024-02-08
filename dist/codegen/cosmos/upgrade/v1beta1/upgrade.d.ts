@@ -227,6 +227,10 @@ export interface ModuleVersionSDKType {
 }
 export declare const Plan: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Plan;
+    isSDK(o: any): o is PlanSDKType;
+    isAmino(o: any): o is PlanAmino;
     encode(message: Plan, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Plan;
     fromJSON(object: any): Plan;
@@ -242,6 +246,10 @@ export declare const Plan: {
 };
 export declare const SoftwareUpgradeProposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SoftwareUpgradeProposal;
+    isSDK(o: any): o is SoftwareUpgradeProposalSDKType;
+    isAmino(o: any): o is SoftwareUpgradeProposalAmino;
     encode(message: SoftwareUpgradeProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SoftwareUpgradeProposal;
     fromJSON(object: any): SoftwareUpgradeProposal;
@@ -257,6 +265,10 @@ export declare const SoftwareUpgradeProposal: {
 };
 export declare const CancelSoftwareUpgradeProposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CancelSoftwareUpgradeProposal;
+    isSDK(o: any): o is CancelSoftwareUpgradeProposalSDKType;
+    isAmino(o: any): o is CancelSoftwareUpgradeProposalAmino;
     encode(message: CancelSoftwareUpgradeProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CancelSoftwareUpgradeProposal;
     fromJSON(object: any): CancelSoftwareUpgradeProposal;
@@ -272,6 +284,10 @@ export declare const CancelSoftwareUpgradeProposal: {
 };
 export declare const ModuleVersion: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ModuleVersion;
+    isSDK(o: any): o is ModuleVersionSDKType;
+    isAmino(o: any): o is ModuleVersionAmino;
     encode(message: ModuleVersion, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModuleVersion;
     fromJSON(object: any): ModuleVersion;

@@ -327,6 +327,9 @@ export interface AnySDKType {
 }
 export declare const Any: {
     typeUrl: string;
+    is(o: any): o is Any;
+    isSDK(o: any): o is AnySDKType;
+    isAmino(o: any): o is AnyAmino;
     encode(message: Any, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Any;
     fromJSON(object: any): Any;

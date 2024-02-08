@@ -6,6 +6,7 @@ const pagination_1 = require("../../base/query/v1beta1/pagination");
 const feegrant_1 = require("./feegrant");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.feegrant.v1beta1";
 function createBaseQueryAllowanceRequest() {
     return {
@@ -15,6 +16,16 @@ function createBaseQueryAllowanceRequest() {
 }
 exports.QueryAllowanceRequest = {
     typeUrl: "/cosmos.feegrant.v1beta1.QueryAllowanceRequest",
+    aminoType: "cosmos-sdk/QueryAllowanceRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryAllowanceRequest.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryAllowanceRequest.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryAllowanceRequest.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.granter !== "") {
             writer.uint32(10).string(message.granter);
@@ -100,6 +111,8 @@ exports.QueryAllowanceRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryAllowanceRequest.typeUrl, exports.QueryAllowanceRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryAllowanceRequest.aminoType, exports.QueryAllowanceRequest.typeUrl);
 function createBaseQueryAllowanceResponse() {
     return {
         allowance: undefined
@@ -107,6 +120,16 @@ function createBaseQueryAllowanceResponse() {
 }
 exports.QueryAllowanceResponse = {
     typeUrl: "/cosmos.feegrant.v1beta1.QueryAllowanceResponse",
+    aminoType: "cosmos-sdk/QueryAllowanceResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.QueryAllowanceResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.QueryAllowanceResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.QueryAllowanceResponse.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.allowance !== undefined) {
             feegrant_1.Grant.encode(message.allowance, writer.uint32(10).fork()).ldelim();
@@ -179,6 +202,8 @@ exports.QueryAllowanceResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryAllowanceResponse.typeUrl, exports.QueryAllowanceResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryAllowanceResponse.aminoType, exports.QueryAllowanceResponse.typeUrl);
 function createBaseQueryAllowancesRequest() {
     return {
         grantee: "",
@@ -187,6 +212,16 @@ function createBaseQueryAllowancesRequest() {
 }
 exports.QueryAllowancesRequest = {
     typeUrl: "/cosmos.feegrant.v1beta1.QueryAllowancesRequest",
+    aminoType: "cosmos-sdk/QueryAllowancesRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryAllowancesRequest.typeUrl || typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryAllowancesRequest.typeUrl || typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryAllowancesRequest.typeUrl || typeof o.grantee === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.grantee !== "") {
             writer.uint32(10).string(message.grantee);
@@ -272,6 +307,8 @@ exports.QueryAllowancesRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryAllowancesRequest.typeUrl, exports.QueryAllowancesRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryAllowancesRequest.aminoType, exports.QueryAllowancesRequest.typeUrl);
 function createBaseQueryAllowancesResponse() {
     return {
         allowances: [],
@@ -280,6 +317,16 @@ function createBaseQueryAllowancesResponse() {
 }
 exports.QueryAllowancesResponse = {
     typeUrl: "/cosmos.feegrant.v1beta1.QueryAllowancesResponse",
+    aminoType: "cosmos-sdk/QueryAllowancesResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryAllowancesResponse.typeUrl || Array.isArray(o.allowances) && (!o.allowances.length || feegrant_1.Grant.is(o.allowances[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryAllowancesResponse.typeUrl || Array.isArray(o.allowances) && (!o.allowances.length || feegrant_1.Grant.isSDK(o.allowances[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryAllowancesResponse.typeUrl || Array.isArray(o.allowances) && (!o.allowances.length || feegrant_1.Grant.isAmino(o.allowances[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.allowances) {
             feegrant_1.Grant.encode(v, writer.uint32(10).fork()).ldelim();
@@ -373,6 +420,8 @@ exports.QueryAllowancesResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryAllowancesResponse.typeUrl, exports.QueryAllowancesResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryAllowancesResponse.aminoType, exports.QueryAllowancesResponse.typeUrl);
 function createBaseQueryAllowancesByGranterRequest() {
     return {
         granter: "",
@@ -381,6 +430,16 @@ function createBaseQueryAllowancesByGranterRequest() {
 }
 exports.QueryAllowancesByGranterRequest = {
     typeUrl: "/cosmos.feegrant.v1beta1.QueryAllowancesByGranterRequest",
+    aminoType: "cosmos-sdk/QueryAllowancesByGranterRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryAllowancesByGranterRequest.typeUrl || typeof o.granter === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryAllowancesByGranterRequest.typeUrl || typeof o.granter === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryAllowancesByGranterRequest.typeUrl || typeof o.granter === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.granter !== "") {
             writer.uint32(10).string(message.granter);
@@ -466,6 +525,8 @@ exports.QueryAllowancesByGranterRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryAllowancesByGranterRequest.typeUrl, exports.QueryAllowancesByGranterRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryAllowancesByGranterRequest.aminoType, exports.QueryAllowancesByGranterRequest.typeUrl);
 function createBaseQueryAllowancesByGranterResponse() {
     return {
         allowances: [],
@@ -474,6 +535,16 @@ function createBaseQueryAllowancesByGranterResponse() {
 }
 exports.QueryAllowancesByGranterResponse = {
     typeUrl: "/cosmos.feegrant.v1beta1.QueryAllowancesByGranterResponse",
+    aminoType: "cosmos-sdk/QueryAllowancesByGranterResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryAllowancesByGranterResponse.typeUrl || Array.isArray(o.allowances) && (!o.allowances.length || feegrant_1.Grant.is(o.allowances[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryAllowancesByGranterResponse.typeUrl || Array.isArray(o.allowances) && (!o.allowances.length || feegrant_1.Grant.isSDK(o.allowances[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryAllowancesByGranterResponse.typeUrl || Array.isArray(o.allowances) && (!o.allowances.length || feegrant_1.Grant.isAmino(o.allowances[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.allowances) {
             feegrant_1.Grant.encode(v, writer.uint32(10).fork()).ldelim();
@@ -567,4 +638,6 @@ exports.QueryAllowancesByGranterResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryAllowancesByGranterResponse.typeUrl, exports.QueryAllowancesByGranterResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryAllowancesByGranterResponse.aminoType, exports.QueryAllowancesByGranterResponse.typeUrl);
 //# sourceMappingURL=query.js.map

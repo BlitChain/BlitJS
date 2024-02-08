@@ -212,6 +212,9 @@ export interface DurationSDKType {
 }
 export declare const Duration: {
     typeUrl: string;
+    is(o: any): o is Duration;
+    isSDK(o: any): o is DurationSDKType;
+    isAmino(o: any): o is string;
     encode(message: Duration, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Duration;
     fromJSON(object: any): Duration;

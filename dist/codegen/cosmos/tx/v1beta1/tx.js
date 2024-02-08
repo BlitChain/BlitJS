@@ -8,6 +8,7 @@ const multisig_1 = require("../../crypto/multisig/v1beta1/multisig");
 const coin_1 = require("../../base/v1beta1/coin");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.tx.v1beta1";
 function createBaseTx() {
     return {
@@ -18,6 +19,16 @@ function createBaseTx() {
 }
 exports.Tx = {
     typeUrl: "/cosmos.tx.v1beta1.Tx",
+    aminoType: "cosmos-sdk/Tx",
+    is(o) {
+        return o && (o.$typeUrl === exports.Tx.typeUrl || Array.isArray(o.signatures) && (!o.signatures.length || o.signatures[0] instanceof Uint8Array || typeof o.signatures[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Tx.typeUrl || Array.isArray(o.signatures) && (!o.signatures.length || o.signatures[0] instanceof Uint8Array || typeof o.signatures[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Tx.typeUrl || Array.isArray(o.signatures) && (!o.signatures.length || o.signatures[0] instanceof Uint8Array || typeof o.signatures[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.body !== undefined) {
             exports.TxBody.encode(message.body, writer.uint32(10).fork()).ldelim();
@@ -124,6 +135,8 @@ exports.Tx = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Tx.typeUrl, exports.Tx);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Tx.aminoType, exports.Tx.typeUrl);
 function createBaseTxRaw() {
     return {
         body_bytes: new Uint8Array(),
@@ -133,6 +146,16 @@ function createBaseTxRaw() {
 }
 exports.TxRaw = {
     typeUrl: "/cosmos.tx.v1beta1.TxRaw",
+    aminoType: "cosmos-sdk/TxRaw",
+    is(o) {
+        return o && (o.$typeUrl === exports.TxRaw.typeUrl || (o.body_bytes instanceof Uint8Array || typeof o.body_bytes === "string") && (o.auth_info_bytes instanceof Uint8Array || typeof o.auth_info_bytes === "string") && Array.isArray(o.signatures) && (!o.signatures.length || o.signatures[0] instanceof Uint8Array || typeof o.signatures[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.TxRaw.typeUrl || (o.body_bytes instanceof Uint8Array || typeof o.body_bytes === "string") && (o.auth_info_bytes instanceof Uint8Array || typeof o.auth_info_bytes === "string") && Array.isArray(o.signatures) && (!o.signatures.length || o.signatures[0] instanceof Uint8Array || typeof o.signatures[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.TxRaw.typeUrl || (o.body_bytes instanceof Uint8Array || typeof o.body_bytes === "string") && (o.auth_info_bytes instanceof Uint8Array || typeof o.auth_info_bytes === "string") && Array.isArray(o.signatures) && (!o.signatures.length || o.signatures[0] instanceof Uint8Array || typeof o.signatures[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.body_bytes.length !== 0) {
             writer.uint32(10).bytes(message.body_bytes);
@@ -239,6 +262,8 @@ exports.TxRaw = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.TxRaw.typeUrl, exports.TxRaw);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.TxRaw.aminoType, exports.TxRaw.typeUrl);
 function createBaseSignDoc() {
     return {
         body_bytes: new Uint8Array(),
@@ -249,6 +274,16 @@ function createBaseSignDoc() {
 }
 exports.SignDoc = {
     typeUrl: "/cosmos.tx.v1beta1.SignDoc",
+    aminoType: "cosmos-sdk/SignDoc",
+    is(o) {
+        return o && (o.$typeUrl === exports.SignDoc.typeUrl || (o.body_bytes instanceof Uint8Array || typeof o.body_bytes === "string") && (o.auth_info_bytes instanceof Uint8Array || typeof o.auth_info_bytes === "string") && typeof o.chain_id === "string" && typeof o.account_number === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.SignDoc.typeUrl || (o.body_bytes instanceof Uint8Array || typeof o.body_bytes === "string") && (o.auth_info_bytes instanceof Uint8Array || typeof o.auth_info_bytes === "string") && typeof o.chain_id === "string" && typeof o.account_number === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.SignDoc.typeUrl || (o.body_bytes instanceof Uint8Array || typeof o.body_bytes === "string") && (o.auth_info_bytes instanceof Uint8Array || typeof o.auth_info_bytes === "string") && typeof o.chain_id === "string" && typeof o.account_number === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.body_bytes.length !== 0) {
             writer.uint32(10).bytes(message.body_bytes);
@@ -360,6 +395,8 @@ exports.SignDoc = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SignDoc.typeUrl, exports.SignDoc);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.SignDoc.aminoType, exports.SignDoc.typeUrl);
 function createBaseSignDocDirectAux() {
     return {
         body_bytes: new Uint8Array(),
@@ -372,6 +409,16 @@ function createBaseSignDocDirectAux() {
 }
 exports.SignDocDirectAux = {
     typeUrl: "/cosmos.tx.v1beta1.SignDocDirectAux",
+    aminoType: "cosmos-sdk/SignDocDirectAux",
+    is(o) {
+        return o && (o.$typeUrl === exports.SignDocDirectAux.typeUrl || (o.body_bytes instanceof Uint8Array || typeof o.body_bytes === "string") && typeof o.chain_id === "string" && typeof o.account_number === "bigint" && typeof o.sequence === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.SignDocDirectAux.typeUrl || (o.body_bytes instanceof Uint8Array || typeof o.body_bytes === "string") && typeof o.chain_id === "string" && typeof o.account_number === "bigint" && typeof o.sequence === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.SignDocDirectAux.typeUrl || (o.body_bytes instanceof Uint8Array || typeof o.body_bytes === "string") && typeof o.chain_id === "string" && typeof o.account_number === "bigint" && typeof o.sequence === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.body_bytes.length !== 0) {
             writer.uint32(10).bytes(message.body_bytes);
@@ -509,6 +556,8 @@ exports.SignDocDirectAux = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SignDocDirectAux.typeUrl, exports.SignDocDirectAux);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.SignDocDirectAux.aminoType, exports.SignDocDirectAux.typeUrl);
 function createBaseTxBody() {
     return {
         messages: [],
@@ -520,6 +569,16 @@ function createBaseTxBody() {
 }
 exports.TxBody = {
     typeUrl: "/cosmos.tx.v1beta1.TxBody",
+    aminoType: "cosmos-sdk/TxBody",
+    is(o) {
+        return o && (o.$typeUrl === exports.TxBody.typeUrl || Array.isArray(o.messages) && (!o.messages.length || any_1.Any.is(o.messages[0])) && typeof o.memo === "string" && typeof o.timeout_height === "bigint" && Array.isArray(o.extension_options) && (!o.extension_options.length || any_1.Any.is(o.extension_options[0])) && Array.isArray(o.non_critical_extension_options) && (!o.non_critical_extension_options.length || any_1.Any.is(o.non_critical_extension_options[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.TxBody.typeUrl || Array.isArray(o.messages) && (!o.messages.length || any_1.Any.isSDK(o.messages[0])) && typeof o.memo === "string" && typeof o.timeout_height === "bigint" && Array.isArray(o.extension_options) && (!o.extension_options.length || any_1.Any.isSDK(o.extension_options[0])) && Array.isArray(o.non_critical_extension_options) && (!o.non_critical_extension_options.length || any_1.Any.isSDK(o.non_critical_extension_options[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.TxBody.typeUrl || Array.isArray(o.messages) && (!o.messages.length || any_1.Any.isAmino(o.messages[0])) && typeof o.memo === "string" && typeof o.timeout_height === "bigint" && Array.isArray(o.extension_options) && (!o.extension_options.length || any_1.Any.isAmino(o.extension_options[0])) && Array.isArray(o.non_critical_extension_options) && (!o.non_critical_extension_options.length || any_1.Any.isAmino(o.non_critical_extension_options[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.messages) {
             any_1.Any.encode(v, writer.uint32(10).fork()).ldelim();
@@ -668,6 +727,8 @@ exports.TxBody = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.TxBody.typeUrl, exports.TxBody);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.TxBody.aminoType, exports.TxBody.typeUrl);
 function createBaseAuthInfo() {
     return {
         signer_infos: [],
@@ -677,6 +738,16 @@ function createBaseAuthInfo() {
 }
 exports.AuthInfo = {
     typeUrl: "/cosmos.tx.v1beta1.AuthInfo",
+    aminoType: "cosmos-sdk/AuthInfo",
+    is(o) {
+        return o && (o.$typeUrl === exports.AuthInfo.typeUrl || Array.isArray(o.signer_infos) && (!o.signer_infos.length || exports.SignerInfo.is(o.signer_infos[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.AuthInfo.typeUrl || Array.isArray(o.signer_infos) && (!o.signer_infos.length || exports.SignerInfo.isSDK(o.signer_infos[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.AuthInfo.typeUrl || Array.isArray(o.signer_infos) && (!o.signer_infos.length || exports.SignerInfo.isAmino(o.signer_infos[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.signer_infos) {
             exports.SignerInfo.encode(v, writer.uint32(10).fork()).ldelim();
@@ -783,6 +854,8 @@ exports.AuthInfo = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.AuthInfo.typeUrl, exports.AuthInfo);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.AuthInfo.aminoType, exports.AuthInfo.typeUrl);
 function createBaseSignerInfo() {
     return {
         public_key: undefined,
@@ -792,6 +865,16 @@ function createBaseSignerInfo() {
 }
 exports.SignerInfo = {
     typeUrl: "/cosmos.tx.v1beta1.SignerInfo",
+    aminoType: "cosmos-sdk/SignerInfo",
+    is(o) {
+        return o && (o.$typeUrl === exports.SignerInfo.typeUrl || typeof o.sequence === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.SignerInfo.typeUrl || typeof o.sequence === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.SignerInfo.typeUrl || typeof o.sequence === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.public_key !== undefined) {
             any_1.Any.encode(message.public_key, writer.uint32(10).fork()).ldelim();
@@ -890,6 +973,8 @@ exports.SignerInfo = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SignerInfo.typeUrl, exports.SignerInfo);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.SignerInfo.aminoType, exports.SignerInfo.typeUrl);
 function createBaseModeInfo() {
     return {
         single: undefined,
@@ -898,6 +983,16 @@ function createBaseModeInfo() {
 }
 exports.ModeInfo = {
     typeUrl: "/cosmos.tx.v1beta1.ModeInfo",
+    aminoType: "cosmos-sdk/ModeInfo",
+    is(o) {
+        return o && o.$typeUrl === exports.ModeInfo.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.ModeInfo.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.ModeInfo.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.single !== undefined) {
             exports.ModeInfo_Single.encode(message.single, writer.uint32(10).fork()).ldelim();
@@ -983,6 +1078,8 @@ exports.ModeInfo = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ModeInfo.typeUrl, exports.ModeInfo);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ModeInfo.aminoType, exports.ModeInfo.typeUrl);
 function createBaseModeInfo_Single() {
     return {
         mode: 0
@@ -990,6 +1087,16 @@ function createBaseModeInfo_Single() {
 }
 exports.ModeInfo_Single = {
     typeUrl: "/cosmos.tx.v1beta1.Single",
+    aminoType: "cosmos-sdk/Single",
+    is(o) {
+        return o && (o.$typeUrl === exports.ModeInfo_Single.typeUrl || (0, helpers_1.isSet)(o.mode));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ModeInfo_Single.typeUrl || (0, helpers_1.isSet)(o.mode));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ModeInfo_Single.typeUrl || (0, helpers_1.isSet)(o.mode));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.mode !== 0) {
             writer.uint32(8).int32(message.mode);
@@ -1062,6 +1169,8 @@ exports.ModeInfo_Single = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ModeInfo_Single.typeUrl, exports.ModeInfo_Single);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ModeInfo_Single.aminoType, exports.ModeInfo_Single.typeUrl);
 function createBaseModeInfo_Multi() {
     return {
         bitarray: undefined,
@@ -1070,6 +1179,16 @@ function createBaseModeInfo_Multi() {
 }
 exports.ModeInfo_Multi = {
     typeUrl: "/cosmos.tx.v1beta1.Multi",
+    aminoType: "cosmos-sdk/Multi",
+    is(o) {
+        return o && (o.$typeUrl === exports.ModeInfo_Multi.typeUrl || Array.isArray(o.mode_infos) && (!o.mode_infos.length || exports.ModeInfo.is(o.mode_infos[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ModeInfo_Multi.typeUrl || Array.isArray(o.mode_infos) && (!o.mode_infos.length || exports.ModeInfo.isSDK(o.mode_infos[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ModeInfo_Multi.typeUrl || Array.isArray(o.mode_infos) && (!o.mode_infos.length || exports.ModeInfo.isAmino(o.mode_infos[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.bitarray !== undefined) {
             multisig_1.CompactBitArray.encode(message.bitarray, writer.uint32(10).fork()).ldelim();
@@ -1163,6 +1282,8 @@ exports.ModeInfo_Multi = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ModeInfo_Multi.typeUrl, exports.ModeInfo_Multi);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ModeInfo_Multi.aminoType, exports.ModeInfo_Multi.typeUrl);
 function createBaseFee() {
     return {
         amount: [],
@@ -1173,6 +1294,16 @@ function createBaseFee() {
 }
 exports.Fee = {
     typeUrl: "/cosmos.tx.v1beta1.Fee",
+    aminoType: "cosmos-sdk/Fee",
+    is(o) {
+        return o && (o.$typeUrl === exports.Fee.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.is(o.amount[0])) && typeof o.gas_limit === "bigint" && typeof o.payer === "string" && typeof o.granter === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Fee.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isSDK(o.amount[0])) && typeof o.gas_limit === "bigint" && typeof o.payer === "string" && typeof o.granter === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Fee.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isAmino(o.amount[0])) && typeof o.gas_limit === "bigint" && typeof o.payer === "string" && typeof o.granter === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.amount) {
             coin_1.Coin.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1292,6 +1423,8 @@ exports.Fee = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Fee.typeUrl, exports.Fee);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Fee.aminoType, exports.Fee.typeUrl);
 function createBaseTip() {
     return {
         amount: [],
@@ -1300,6 +1433,16 @@ function createBaseTip() {
 }
 exports.Tip = {
     typeUrl: "/cosmos.tx.v1beta1.Tip",
+    aminoType: "cosmos-sdk/Tip",
+    is(o) {
+        return o && (o.$typeUrl === exports.Tip.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.is(o.amount[0])) && typeof o.tipper === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Tip.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isSDK(o.amount[0])) && typeof o.tipper === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Tip.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isAmino(o.amount[0])) && typeof o.tipper === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.amount) {
             coin_1.Coin.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1393,6 +1536,8 @@ exports.Tip = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Tip.typeUrl, exports.Tip);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Tip.aminoType, exports.Tip.typeUrl);
 function createBaseAuxSignerData() {
     return {
         address: "",
@@ -1403,6 +1548,16 @@ function createBaseAuxSignerData() {
 }
 exports.AuxSignerData = {
     typeUrl: "/cosmos.tx.v1beta1.AuxSignerData",
+    aminoType: "cosmos-sdk/AuxSignerData",
+    is(o) {
+        return o && (o.$typeUrl === exports.AuxSignerData.typeUrl || typeof o.address === "string" && (0, helpers_1.isSet)(o.mode) && (o.sig instanceof Uint8Array || typeof o.sig === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.AuxSignerData.typeUrl || typeof o.address === "string" && (0, helpers_1.isSet)(o.mode) && (o.sig instanceof Uint8Array || typeof o.sig === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.AuxSignerData.typeUrl || typeof o.address === "string" && (0, helpers_1.isSet)(o.mode) && (o.sig instanceof Uint8Array || typeof o.sig === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -1514,4 +1669,6 @@ exports.AuxSignerData = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.AuxSignerData.typeUrl, exports.AuxSignerData);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.AuxSignerData.aminoType, exports.AuxSignerData.typeUrl);
 //# sourceMappingURL=tx.js.map

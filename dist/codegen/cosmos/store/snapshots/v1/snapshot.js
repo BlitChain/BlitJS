@@ -4,6 +4,7 @@ exports.SnapshotExtensionPayload = exports.SnapshotExtensionMeta = exports.Snaps
 //@ts-nocheck
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "cosmos.store.snapshots.v1";
 function createBaseSnapshot() {
     return {
@@ -16,6 +17,16 @@ function createBaseSnapshot() {
 }
 exports.Snapshot = {
     typeUrl: "/cosmos.store.snapshots.v1.Snapshot",
+    aminoType: "cosmos-sdk/Snapshot",
+    is(o) {
+        return o && (o.$typeUrl === exports.Snapshot.typeUrl || typeof o.height === "bigint" && typeof o.format === "number" && typeof o.chunks === "number" && (o.hash instanceof Uint8Array || typeof o.hash === "string") && exports.Metadata.is(o.metadata));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Snapshot.typeUrl || typeof o.height === "bigint" && typeof o.format === "number" && typeof o.chunks === "number" && (o.hash instanceof Uint8Array || typeof o.hash === "string") && exports.Metadata.isSDK(o.metadata));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Snapshot.typeUrl || typeof o.height === "bigint" && typeof o.format === "number" && typeof o.chunks === "number" && (o.hash instanceof Uint8Array || typeof o.hash === "string") && exports.Metadata.isAmino(o.metadata));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.height !== BigInt(0)) {
             writer.uint32(8).uint64(message.height);
@@ -140,6 +151,8 @@ exports.Snapshot = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Snapshot.typeUrl, exports.Snapshot);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Snapshot.aminoType, exports.Snapshot.typeUrl);
 function createBaseMetadata() {
     return {
         chunk_hashes: []
@@ -147,6 +160,16 @@ function createBaseMetadata() {
 }
 exports.Metadata = {
     typeUrl: "/cosmos.store.snapshots.v1.Metadata",
+    aminoType: "cosmos-sdk/Metadata",
+    is(o) {
+        return o && (o.$typeUrl === exports.Metadata.typeUrl || Array.isArray(o.chunk_hashes) && (!o.chunk_hashes.length || o.chunk_hashes[0] instanceof Uint8Array || typeof o.chunk_hashes[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Metadata.typeUrl || Array.isArray(o.chunk_hashes) && (!o.chunk_hashes.length || o.chunk_hashes[0] instanceof Uint8Array || typeof o.chunk_hashes[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Metadata.typeUrl || Array.isArray(o.chunk_hashes) && (!o.chunk_hashes.length || o.chunk_hashes[0] instanceof Uint8Array || typeof o.chunk_hashes[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.chunk_hashes) {
             writer.uint32(10).bytes(v);
@@ -227,6 +250,8 @@ exports.Metadata = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Metadata.typeUrl, exports.Metadata);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Metadata.aminoType, exports.Metadata.typeUrl);
 function createBaseSnapshotItem() {
     return {
         store: undefined,
@@ -237,6 +262,16 @@ function createBaseSnapshotItem() {
 }
 exports.SnapshotItem = {
     typeUrl: "/cosmos.store.snapshots.v1.SnapshotItem",
+    aminoType: "cosmos-sdk/SnapshotItem",
+    is(o) {
+        return o && o.$typeUrl === exports.SnapshotItem.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.SnapshotItem.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.SnapshotItem.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.store !== undefined) {
             exports.SnapshotStoreItem.encode(message.store, writer.uint32(10).fork()).ldelim();
@@ -348,6 +383,8 @@ exports.SnapshotItem = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SnapshotItem.typeUrl, exports.SnapshotItem);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.SnapshotItem.aminoType, exports.SnapshotItem.typeUrl);
 function createBaseSnapshotStoreItem() {
     return {
         name: ""
@@ -355,6 +392,16 @@ function createBaseSnapshotStoreItem() {
 }
 exports.SnapshotStoreItem = {
     typeUrl: "/cosmos.store.snapshots.v1.SnapshotStoreItem",
+    aminoType: "cosmos-sdk/SnapshotStoreItem",
+    is(o) {
+        return o && (o.$typeUrl === exports.SnapshotStoreItem.typeUrl || typeof o.name === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.SnapshotStoreItem.typeUrl || typeof o.name === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.SnapshotStoreItem.typeUrl || typeof o.name === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -427,6 +474,8 @@ exports.SnapshotStoreItem = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SnapshotStoreItem.typeUrl, exports.SnapshotStoreItem);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.SnapshotStoreItem.aminoType, exports.SnapshotStoreItem.typeUrl);
 function createBaseSnapshotIAVLItem() {
     return {
         key: new Uint8Array(),
@@ -437,6 +486,16 @@ function createBaseSnapshotIAVLItem() {
 }
 exports.SnapshotIAVLItem = {
     typeUrl: "/cosmos.store.snapshots.v1.SnapshotIAVLItem",
+    aminoType: "cosmos-sdk/SnapshotIAVLItem",
+    is(o) {
+        return o && (o.$typeUrl === exports.SnapshotIAVLItem.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && typeof o.version === "bigint" && typeof o.height === "number");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.SnapshotIAVLItem.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && typeof o.version === "bigint" && typeof o.height === "number");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.SnapshotIAVLItem.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && typeof o.version === "bigint" && typeof o.height === "number");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.key.length !== 0) {
             writer.uint32(10).bytes(message.key);
@@ -548,6 +607,8 @@ exports.SnapshotIAVLItem = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SnapshotIAVLItem.typeUrl, exports.SnapshotIAVLItem);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.SnapshotIAVLItem.aminoType, exports.SnapshotIAVLItem.typeUrl);
 function createBaseSnapshotExtensionMeta() {
     return {
         name: "",
@@ -556,6 +617,16 @@ function createBaseSnapshotExtensionMeta() {
 }
 exports.SnapshotExtensionMeta = {
     typeUrl: "/cosmos.store.snapshots.v1.SnapshotExtensionMeta",
+    aminoType: "cosmos-sdk/SnapshotExtensionMeta",
+    is(o) {
+        return o && (o.$typeUrl === exports.SnapshotExtensionMeta.typeUrl || typeof o.name === "string" && typeof o.format === "number");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.SnapshotExtensionMeta.typeUrl || typeof o.name === "string" && typeof o.format === "number");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.SnapshotExtensionMeta.typeUrl || typeof o.name === "string" && typeof o.format === "number");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -641,6 +712,8 @@ exports.SnapshotExtensionMeta = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SnapshotExtensionMeta.typeUrl, exports.SnapshotExtensionMeta);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.SnapshotExtensionMeta.aminoType, exports.SnapshotExtensionMeta.typeUrl);
 function createBaseSnapshotExtensionPayload() {
     return {
         payload: new Uint8Array()
@@ -648,6 +721,16 @@ function createBaseSnapshotExtensionPayload() {
 }
 exports.SnapshotExtensionPayload = {
     typeUrl: "/cosmos.store.snapshots.v1.SnapshotExtensionPayload",
+    aminoType: "cosmos-sdk/SnapshotExtensionPayload",
+    is(o) {
+        return o && (o.$typeUrl === exports.SnapshotExtensionPayload.typeUrl || o.payload instanceof Uint8Array || typeof o.payload === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.SnapshotExtensionPayload.typeUrl || o.payload instanceof Uint8Array || typeof o.payload === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.SnapshotExtensionPayload.typeUrl || o.payload instanceof Uint8Array || typeof o.payload === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.payload.length !== 0) {
             writer.uint32(10).bytes(message.payload);
@@ -720,4 +803,6 @@ exports.SnapshotExtensionPayload = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SnapshotExtensionPayload.typeUrl, exports.SnapshotExtensionPayload);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.SnapshotExtensionPayload.aminoType, exports.SnapshotExtensionPayload.typeUrl);
 //# sourceMappingURL=snapshot.js.map

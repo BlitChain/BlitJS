@@ -6,6 +6,7 @@ const pagination_1 = require("../../base/query/v1beta1/pagination");
 const types_1 = require("./types");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.group.v1";
 function createBaseQueryGroupInfoRequest() {
     return {
@@ -14,6 +15,16 @@ function createBaseQueryGroupInfoRequest() {
 }
 exports.QueryGroupInfoRequest = {
     typeUrl: "/cosmos.group.v1.QueryGroupInfoRequest",
+    aminoType: "cosmos-sdk/QueryGroupInfoRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGroupInfoRequest.typeUrl || typeof o.group_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGroupInfoRequest.typeUrl || typeof o.group_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGroupInfoRequest.typeUrl || typeof o.group_id === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.group_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.group_id);
@@ -86,6 +97,8 @@ exports.QueryGroupInfoRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupInfoRequest.typeUrl, exports.QueryGroupInfoRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupInfoRequest.aminoType, exports.QueryGroupInfoRequest.typeUrl);
 function createBaseQueryGroupInfoResponse() {
     return {
         info: undefined
@@ -93,6 +106,16 @@ function createBaseQueryGroupInfoResponse() {
 }
 exports.QueryGroupInfoResponse = {
     typeUrl: "/cosmos.group.v1.QueryGroupInfoResponse",
+    aminoType: "cosmos-sdk/QueryGroupInfoResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.QueryGroupInfoResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.QueryGroupInfoResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.QueryGroupInfoResponse.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.info !== undefined) {
             types_1.GroupInfo.encode(message.info, writer.uint32(10).fork()).ldelim();
@@ -165,6 +188,8 @@ exports.QueryGroupInfoResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupInfoResponse.typeUrl, exports.QueryGroupInfoResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupInfoResponse.aminoType, exports.QueryGroupInfoResponse.typeUrl);
 function createBaseQueryGroupPolicyInfoRequest() {
     return {
         address: ""
@@ -172,6 +197,16 @@ function createBaseQueryGroupPolicyInfoRequest() {
 }
 exports.QueryGroupPolicyInfoRequest = {
     typeUrl: "/cosmos.group.v1.QueryGroupPolicyInfoRequest",
+    aminoType: "cosmos-sdk/QueryGroupPolicyInfoRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPolicyInfoRequest.typeUrl || typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPolicyInfoRequest.typeUrl || typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPolicyInfoRequest.typeUrl || typeof o.address === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -244,6 +279,8 @@ exports.QueryGroupPolicyInfoRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupPolicyInfoRequest.typeUrl, exports.QueryGroupPolicyInfoRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupPolicyInfoRequest.aminoType, exports.QueryGroupPolicyInfoRequest.typeUrl);
 function createBaseQueryGroupPolicyInfoResponse() {
     return {
         info: undefined
@@ -251,6 +288,16 @@ function createBaseQueryGroupPolicyInfoResponse() {
 }
 exports.QueryGroupPolicyInfoResponse = {
     typeUrl: "/cosmos.group.v1.QueryGroupPolicyInfoResponse",
+    aminoType: "cosmos-sdk/QueryGroupPolicyInfoResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.QueryGroupPolicyInfoResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.QueryGroupPolicyInfoResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.QueryGroupPolicyInfoResponse.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.info !== undefined) {
             types_1.GroupPolicyInfo.encode(message.info, writer.uint32(10).fork()).ldelim();
@@ -323,6 +370,8 @@ exports.QueryGroupPolicyInfoResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupPolicyInfoResponse.typeUrl, exports.QueryGroupPolicyInfoResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupPolicyInfoResponse.aminoType, exports.QueryGroupPolicyInfoResponse.typeUrl);
 function createBaseQueryGroupMembersRequest() {
     return {
         group_id: BigInt(0),
@@ -331,6 +380,16 @@ function createBaseQueryGroupMembersRequest() {
 }
 exports.QueryGroupMembersRequest = {
     typeUrl: "/cosmos.group.v1.QueryGroupMembersRequest",
+    aminoType: "cosmos-sdk/QueryGroupMembersRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGroupMembersRequest.typeUrl || typeof o.group_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGroupMembersRequest.typeUrl || typeof o.group_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGroupMembersRequest.typeUrl || typeof o.group_id === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.group_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.group_id);
@@ -416,6 +475,8 @@ exports.QueryGroupMembersRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupMembersRequest.typeUrl, exports.QueryGroupMembersRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupMembersRequest.aminoType, exports.QueryGroupMembersRequest.typeUrl);
 function createBaseQueryGroupMembersResponse() {
     return {
         members: [],
@@ -424,6 +485,16 @@ function createBaseQueryGroupMembersResponse() {
 }
 exports.QueryGroupMembersResponse = {
     typeUrl: "/cosmos.group.v1.QueryGroupMembersResponse",
+    aminoType: "cosmos-sdk/QueryGroupMembersResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGroupMembersResponse.typeUrl || Array.isArray(o.members) && (!o.members.length || types_1.GroupMember.is(o.members[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGroupMembersResponse.typeUrl || Array.isArray(o.members) && (!o.members.length || types_1.GroupMember.isSDK(o.members[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGroupMembersResponse.typeUrl || Array.isArray(o.members) && (!o.members.length || types_1.GroupMember.isAmino(o.members[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.members) {
             types_1.GroupMember.encode(v, writer.uint32(10).fork()).ldelim();
@@ -517,6 +588,8 @@ exports.QueryGroupMembersResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupMembersResponse.typeUrl, exports.QueryGroupMembersResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupMembersResponse.aminoType, exports.QueryGroupMembersResponse.typeUrl);
 function createBaseQueryGroupsByAdminRequest() {
     return {
         admin: "",
@@ -525,6 +598,16 @@ function createBaseQueryGroupsByAdminRequest() {
 }
 exports.QueryGroupsByAdminRequest = {
     typeUrl: "/cosmos.group.v1.QueryGroupsByAdminRequest",
+    aminoType: "cosmos-sdk/QueryGroupsByAdminRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsByAdminRequest.typeUrl || typeof o.admin === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsByAdminRequest.typeUrl || typeof o.admin === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsByAdminRequest.typeUrl || typeof o.admin === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.admin !== "") {
             writer.uint32(10).string(message.admin);
@@ -610,6 +693,8 @@ exports.QueryGroupsByAdminRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupsByAdminRequest.typeUrl, exports.QueryGroupsByAdminRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupsByAdminRequest.aminoType, exports.QueryGroupsByAdminRequest.typeUrl);
 function createBaseQueryGroupsByAdminResponse() {
     return {
         groups: [],
@@ -618,6 +703,16 @@ function createBaseQueryGroupsByAdminResponse() {
 }
 exports.QueryGroupsByAdminResponse = {
     typeUrl: "/cosmos.group.v1.QueryGroupsByAdminResponse",
+    aminoType: "cosmos-sdk/QueryGroupsByAdminResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsByAdminResponse.typeUrl || Array.isArray(o.groups) && (!o.groups.length || types_1.GroupInfo.is(o.groups[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsByAdminResponse.typeUrl || Array.isArray(o.groups) && (!o.groups.length || types_1.GroupInfo.isSDK(o.groups[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsByAdminResponse.typeUrl || Array.isArray(o.groups) && (!o.groups.length || types_1.GroupInfo.isAmino(o.groups[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.groups) {
             types_1.GroupInfo.encode(v, writer.uint32(10).fork()).ldelim();
@@ -711,6 +806,8 @@ exports.QueryGroupsByAdminResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupsByAdminResponse.typeUrl, exports.QueryGroupsByAdminResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupsByAdminResponse.aminoType, exports.QueryGroupsByAdminResponse.typeUrl);
 function createBaseQueryGroupPoliciesByGroupRequest() {
     return {
         group_id: BigInt(0),
@@ -719,6 +816,16 @@ function createBaseQueryGroupPoliciesByGroupRequest() {
 }
 exports.QueryGroupPoliciesByGroupRequest = {
     typeUrl: "/cosmos.group.v1.QueryGroupPoliciesByGroupRequest",
+    aminoType: "cosmos-sdk/QueryGroupPoliciesByGroupRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPoliciesByGroupRequest.typeUrl || typeof o.group_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPoliciesByGroupRequest.typeUrl || typeof o.group_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPoliciesByGroupRequest.typeUrl || typeof o.group_id === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.group_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.group_id);
@@ -804,6 +911,8 @@ exports.QueryGroupPoliciesByGroupRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupPoliciesByGroupRequest.typeUrl, exports.QueryGroupPoliciesByGroupRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupPoliciesByGroupRequest.aminoType, exports.QueryGroupPoliciesByGroupRequest.typeUrl);
 function createBaseQueryGroupPoliciesByGroupResponse() {
     return {
         group_policies: [],
@@ -812,6 +921,16 @@ function createBaseQueryGroupPoliciesByGroupResponse() {
 }
 exports.QueryGroupPoliciesByGroupResponse = {
     typeUrl: "/cosmos.group.v1.QueryGroupPoliciesByGroupResponse",
+    aminoType: "cosmos-sdk/QueryGroupPoliciesByGroupResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPoliciesByGroupResponse.typeUrl || Array.isArray(o.group_policies) && (!o.group_policies.length || types_1.GroupPolicyInfo.is(o.group_policies[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPoliciesByGroupResponse.typeUrl || Array.isArray(o.group_policies) && (!o.group_policies.length || types_1.GroupPolicyInfo.isSDK(o.group_policies[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPoliciesByGroupResponse.typeUrl || Array.isArray(o.group_policies) && (!o.group_policies.length || types_1.GroupPolicyInfo.isAmino(o.group_policies[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.group_policies) {
             types_1.GroupPolicyInfo.encode(v, writer.uint32(10).fork()).ldelim();
@@ -905,6 +1024,8 @@ exports.QueryGroupPoliciesByGroupResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupPoliciesByGroupResponse.typeUrl, exports.QueryGroupPoliciesByGroupResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupPoliciesByGroupResponse.aminoType, exports.QueryGroupPoliciesByGroupResponse.typeUrl);
 function createBaseQueryGroupPoliciesByAdminRequest() {
     return {
         admin: "",
@@ -913,6 +1034,16 @@ function createBaseQueryGroupPoliciesByAdminRequest() {
 }
 exports.QueryGroupPoliciesByAdminRequest = {
     typeUrl: "/cosmos.group.v1.QueryGroupPoliciesByAdminRequest",
+    aminoType: "cosmos-sdk/QueryGroupPoliciesByAdminRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPoliciesByAdminRequest.typeUrl || typeof o.admin === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPoliciesByAdminRequest.typeUrl || typeof o.admin === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPoliciesByAdminRequest.typeUrl || typeof o.admin === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.admin !== "") {
             writer.uint32(10).string(message.admin);
@@ -998,6 +1129,8 @@ exports.QueryGroupPoliciesByAdminRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupPoliciesByAdminRequest.typeUrl, exports.QueryGroupPoliciesByAdminRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupPoliciesByAdminRequest.aminoType, exports.QueryGroupPoliciesByAdminRequest.typeUrl);
 function createBaseQueryGroupPoliciesByAdminResponse() {
     return {
         group_policies: [],
@@ -1006,6 +1139,16 @@ function createBaseQueryGroupPoliciesByAdminResponse() {
 }
 exports.QueryGroupPoliciesByAdminResponse = {
     typeUrl: "/cosmos.group.v1.QueryGroupPoliciesByAdminResponse",
+    aminoType: "cosmos-sdk/QueryGroupPoliciesByAdminResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPoliciesByAdminResponse.typeUrl || Array.isArray(o.group_policies) && (!o.group_policies.length || types_1.GroupPolicyInfo.is(o.group_policies[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPoliciesByAdminResponse.typeUrl || Array.isArray(o.group_policies) && (!o.group_policies.length || types_1.GroupPolicyInfo.isSDK(o.group_policies[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGroupPoliciesByAdminResponse.typeUrl || Array.isArray(o.group_policies) && (!o.group_policies.length || types_1.GroupPolicyInfo.isAmino(o.group_policies[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.group_policies) {
             types_1.GroupPolicyInfo.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1099,6 +1242,8 @@ exports.QueryGroupPoliciesByAdminResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupPoliciesByAdminResponse.typeUrl, exports.QueryGroupPoliciesByAdminResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupPoliciesByAdminResponse.aminoType, exports.QueryGroupPoliciesByAdminResponse.typeUrl);
 function createBaseQueryProposalRequest() {
     return {
         proposal_id: BigInt(0)
@@ -1106,6 +1251,16 @@ function createBaseQueryProposalRequest() {
 }
 exports.QueryProposalRequest = {
     typeUrl: "/cosmos.group.v1.QueryProposalRequest",
+    aminoType: "cosmos-sdk/QueryProposalRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryProposalRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryProposalRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryProposalRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -1178,6 +1333,8 @@ exports.QueryProposalRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryProposalRequest.typeUrl, exports.QueryProposalRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryProposalRequest.aminoType, exports.QueryProposalRequest.typeUrl);
 function createBaseQueryProposalResponse() {
     return {
         proposal: undefined
@@ -1185,6 +1342,16 @@ function createBaseQueryProposalResponse() {
 }
 exports.QueryProposalResponse = {
     typeUrl: "/cosmos.group.v1.QueryProposalResponse",
+    aminoType: "cosmos-sdk/QueryProposalResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.QueryProposalResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.QueryProposalResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.QueryProposalResponse.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.proposal !== undefined) {
             types_1.Proposal.encode(message.proposal, writer.uint32(10).fork()).ldelim();
@@ -1257,6 +1424,8 @@ exports.QueryProposalResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryProposalResponse.typeUrl, exports.QueryProposalResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryProposalResponse.aminoType, exports.QueryProposalResponse.typeUrl);
 function createBaseQueryProposalsByGroupPolicyRequest() {
     return {
         address: "",
@@ -1265,6 +1434,16 @@ function createBaseQueryProposalsByGroupPolicyRequest() {
 }
 exports.QueryProposalsByGroupPolicyRequest = {
     typeUrl: "/cosmos.group.v1.QueryProposalsByGroupPolicyRequest",
+    aminoType: "cosmos-sdk/QueryProposalsByGroupPolicyRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryProposalsByGroupPolicyRequest.typeUrl || typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryProposalsByGroupPolicyRequest.typeUrl || typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryProposalsByGroupPolicyRequest.typeUrl || typeof o.address === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -1350,6 +1529,8 @@ exports.QueryProposalsByGroupPolicyRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryProposalsByGroupPolicyRequest.typeUrl, exports.QueryProposalsByGroupPolicyRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryProposalsByGroupPolicyRequest.aminoType, exports.QueryProposalsByGroupPolicyRequest.typeUrl);
 function createBaseQueryProposalsByGroupPolicyResponse() {
     return {
         proposals: [],
@@ -1358,6 +1539,16 @@ function createBaseQueryProposalsByGroupPolicyResponse() {
 }
 exports.QueryProposalsByGroupPolicyResponse = {
     typeUrl: "/cosmos.group.v1.QueryProposalsByGroupPolicyResponse",
+    aminoType: "cosmos-sdk/QueryProposalsByGroupPolicyResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryProposalsByGroupPolicyResponse.typeUrl || Array.isArray(o.proposals) && (!o.proposals.length || types_1.Proposal.is(o.proposals[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryProposalsByGroupPolicyResponse.typeUrl || Array.isArray(o.proposals) && (!o.proposals.length || types_1.Proposal.isSDK(o.proposals[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryProposalsByGroupPolicyResponse.typeUrl || Array.isArray(o.proposals) && (!o.proposals.length || types_1.Proposal.isAmino(o.proposals[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.proposals) {
             types_1.Proposal.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1451,6 +1642,8 @@ exports.QueryProposalsByGroupPolicyResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryProposalsByGroupPolicyResponse.typeUrl, exports.QueryProposalsByGroupPolicyResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryProposalsByGroupPolicyResponse.aminoType, exports.QueryProposalsByGroupPolicyResponse.typeUrl);
 function createBaseQueryVoteByProposalVoterRequest() {
     return {
         proposal_id: BigInt(0),
@@ -1459,6 +1652,16 @@ function createBaseQueryVoteByProposalVoterRequest() {
 }
 exports.QueryVoteByProposalVoterRequest = {
     typeUrl: "/cosmos.group.v1.QueryVoteByProposalVoterRequest",
+    aminoType: "cosmos-sdk/QueryVoteByProposalVoterRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryVoteByProposalVoterRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryVoteByProposalVoterRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryVoteByProposalVoterRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -1544,6 +1747,8 @@ exports.QueryVoteByProposalVoterRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryVoteByProposalVoterRequest.typeUrl, exports.QueryVoteByProposalVoterRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryVoteByProposalVoterRequest.aminoType, exports.QueryVoteByProposalVoterRequest.typeUrl);
 function createBaseQueryVoteByProposalVoterResponse() {
     return {
         vote: undefined
@@ -1551,6 +1756,16 @@ function createBaseQueryVoteByProposalVoterResponse() {
 }
 exports.QueryVoteByProposalVoterResponse = {
     typeUrl: "/cosmos.group.v1.QueryVoteByProposalVoterResponse",
+    aminoType: "cosmos-sdk/QueryVoteByProposalVoterResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.QueryVoteByProposalVoterResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.QueryVoteByProposalVoterResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.QueryVoteByProposalVoterResponse.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.vote !== undefined) {
             types_1.Vote.encode(message.vote, writer.uint32(10).fork()).ldelim();
@@ -1623,6 +1838,8 @@ exports.QueryVoteByProposalVoterResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryVoteByProposalVoterResponse.typeUrl, exports.QueryVoteByProposalVoterResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryVoteByProposalVoterResponse.aminoType, exports.QueryVoteByProposalVoterResponse.typeUrl);
 function createBaseQueryVotesByProposalRequest() {
     return {
         proposal_id: BigInt(0),
@@ -1631,6 +1848,16 @@ function createBaseQueryVotesByProposalRequest() {
 }
 exports.QueryVotesByProposalRequest = {
     typeUrl: "/cosmos.group.v1.QueryVotesByProposalRequest",
+    aminoType: "cosmos-sdk/QueryVotesByProposalRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryVotesByProposalRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryVotesByProposalRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryVotesByProposalRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -1716,6 +1943,8 @@ exports.QueryVotesByProposalRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryVotesByProposalRequest.typeUrl, exports.QueryVotesByProposalRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryVotesByProposalRequest.aminoType, exports.QueryVotesByProposalRequest.typeUrl);
 function createBaseQueryVotesByProposalResponse() {
     return {
         votes: [],
@@ -1724,6 +1953,16 @@ function createBaseQueryVotesByProposalResponse() {
 }
 exports.QueryVotesByProposalResponse = {
     typeUrl: "/cosmos.group.v1.QueryVotesByProposalResponse",
+    aminoType: "cosmos-sdk/QueryVotesByProposalResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryVotesByProposalResponse.typeUrl || Array.isArray(o.votes) && (!o.votes.length || types_1.Vote.is(o.votes[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryVotesByProposalResponse.typeUrl || Array.isArray(o.votes) && (!o.votes.length || types_1.Vote.isSDK(o.votes[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryVotesByProposalResponse.typeUrl || Array.isArray(o.votes) && (!o.votes.length || types_1.Vote.isAmino(o.votes[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.votes) {
             types_1.Vote.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1817,6 +2056,8 @@ exports.QueryVotesByProposalResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryVotesByProposalResponse.typeUrl, exports.QueryVotesByProposalResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryVotesByProposalResponse.aminoType, exports.QueryVotesByProposalResponse.typeUrl);
 function createBaseQueryVotesByVoterRequest() {
     return {
         voter: "",
@@ -1825,6 +2066,16 @@ function createBaseQueryVotesByVoterRequest() {
 }
 exports.QueryVotesByVoterRequest = {
     typeUrl: "/cosmos.group.v1.QueryVotesByVoterRequest",
+    aminoType: "cosmos-sdk/QueryVotesByVoterRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryVotesByVoterRequest.typeUrl || typeof o.voter === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryVotesByVoterRequest.typeUrl || typeof o.voter === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryVotesByVoterRequest.typeUrl || typeof o.voter === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.voter !== "") {
             writer.uint32(10).string(message.voter);
@@ -1910,6 +2161,8 @@ exports.QueryVotesByVoterRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryVotesByVoterRequest.typeUrl, exports.QueryVotesByVoterRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryVotesByVoterRequest.aminoType, exports.QueryVotesByVoterRequest.typeUrl);
 function createBaseQueryVotesByVoterResponse() {
     return {
         votes: [],
@@ -1918,6 +2171,16 @@ function createBaseQueryVotesByVoterResponse() {
 }
 exports.QueryVotesByVoterResponse = {
     typeUrl: "/cosmos.group.v1.QueryVotesByVoterResponse",
+    aminoType: "cosmos-sdk/QueryVotesByVoterResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryVotesByVoterResponse.typeUrl || Array.isArray(o.votes) && (!o.votes.length || types_1.Vote.is(o.votes[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryVotesByVoterResponse.typeUrl || Array.isArray(o.votes) && (!o.votes.length || types_1.Vote.isSDK(o.votes[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryVotesByVoterResponse.typeUrl || Array.isArray(o.votes) && (!o.votes.length || types_1.Vote.isAmino(o.votes[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.votes) {
             types_1.Vote.encode(v, writer.uint32(10).fork()).ldelim();
@@ -2011,6 +2274,8 @@ exports.QueryVotesByVoterResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryVotesByVoterResponse.typeUrl, exports.QueryVotesByVoterResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryVotesByVoterResponse.aminoType, exports.QueryVotesByVoterResponse.typeUrl);
 function createBaseQueryGroupsByMemberRequest() {
     return {
         address: "",
@@ -2019,6 +2284,16 @@ function createBaseQueryGroupsByMemberRequest() {
 }
 exports.QueryGroupsByMemberRequest = {
     typeUrl: "/cosmos.group.v1.QueryGroupsByMemberRequest",
+    aminoType: "cosmos-sdk/QueryGroupsByMemberRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsByMemberRequest.typeUrl || typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsByMemberRequest.typeUrl || typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsByMemberRequest.typeUrl || typeof o.address === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -2104,6 +2379,8 @@ exports.QueryGroupsByMemberRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupsByMemberRequest.typeUrl, exports.QueryGroupsByMemberRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupsByMemberRequest.aminoType, exports.QueryGroupsByMemberRequest.typeUrl);
 function createBaseQueryGroupsByMemberResponse() {
     return {
         groups: [],
@@ -2112,6 +2389,16 @@ function createBaseQueryGroupsByMemberResponse() {
 }
 exports.QueryGroupsByMemberResponse = {
     typeUrl: "/cosmos.group.v1.QueryGroupsByMemberResponse",
+    aminoType: "cosmos-sdk/QueryGroupsByMemberResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsByMemberResponse.typeUrl || Array.isArray(o.groups) && (!o.groups.length || types_1.GroupInfo.is(o.groups[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsByMemberResponse.typeUrl || Array.isArray(o.groups) && (!o.groups.length || types_1.GroupInfo.isSDK(o.groups[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsByMemberResponse.typeUrl || Array.isArray(o.groups) && (!o.groups.length || types_1.GroupInfo.isAmino(o.groups[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.groups) {
             types_1.GroupInfo.encode(v, writer.uint32(10).fork()).ldelim();
@@ -2205,6 +2492,8 @@ exports.QueryGroupsByMemberResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupsByMemberResponse.typeUrl, exports.QueryGroupsByMemberResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupsByMemberResponse.aminoType, exports.QueryGroupsByMemberResponse.typeUrl);
 function createBaseQueryTallyResultRequest() {
     return {
         proposal_id: BigInt(0)
@@ -2212,6 +2501,16 @@ function createBaseQueryTallyResultRequest() {
 }
 exports.QueryTallyResultRequest = {
     typeUrl: "/cosmos.group.v1.QueryTallyResultRequest",
+    aminoType: "cosmos-sdk/QueryTallyResultRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryTallyResultRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryTallyResultRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryTallyResultRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -2284,6 +2583,8 @@ exports.QueryTallyResultRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryTallyResultRequest.typeUrl, exports.QueryTallyResultRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryTallyResultRequest.aminoType, exports.QueryTallyResultRequest.typeUrl);
 function createBaseQueryTallyResultResponse() {
     return {
         tally: types_1.TallyResult.fromPartial({})
@@ -2291,6 +2592,16 @@ function createBaseQueryTallyResultResponse() {
 }
 exports.QueryTallyResultResponse = {
     typeUrl: "/cosmos.group.v1.QueryTallyResultResponse",
+    aminoType: "cosmos-sdk/QueryTallyResultResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryTallyResultResponse.typeUrl || types_1.TallyResult.is(o.tally));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryTallyResultResponse.typeUrl || types_1.TallyResult.isSDK(o.tally));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryTallyResultResponse.typeUrl || types_1.TallyResult.isAmino(o.tally));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.tally !== undefined) {
             types_1.TallyResult.encode(message.tally, writer.uint32(10).fork()).ldelim();
@@ -2363,6 +2674,8 @@ exports.QueryTallyResultResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryTallyResultResponse.typeUrl, exports.QueryTallyResultResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryTallyResultResponse.aminoType, exports.QueryTallyResultResponse.typeUrl);
 function createBaseQueryGroupsRequest() {
     return {
         pagination: undefined
@@ -2370,6 +2683,16 @@ function createBaseQueryGroupsRequest() {
 }
 exports.QueryGroupsRequest = {
     typeUrl: "/cosmos.group.v1.QueryGroupsRequest",
+    aminoType: "cosmos-sdk/QueryGroupsRequest",
+    is(o) {
+        return o && o.$typeUrl === exports.QueryGroupsRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.QueryGroupsRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.QueryGroupsRequest.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.pagination !== undefined) {
             pagination_1.PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
@@ -2442,6 +2765,8 @@ exports.QueryGroupsRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupsRequest.typeUrl, exports.QueryGroupsRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupsRequest.aminoType, exports.QueryGroupsRequest.typeUrl);
 function createBaseQueryGroupsResponse() {
     return {
         groups: [],
@@ -2450,6 +2775,16 @@ function createBaseQueryGroupsResponse() {
 }
 exports.QueryGroupsResponse = {
     typeUrl: "/cosmos.group.v1.QueryGroupsResponse",
+    aminoType: "cosmos-sdk/QueryGroupsResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsResponse.typeUrl || Array.isArray(o.groups) && (!o.groups.length || types_1.GroupInfo.is(o.groups[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsResponse.typeUrl || Array.isArray(o.groups) && (!o.groups.length || types_1.GroupInfo.isSDK(o.groups[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGroupsResponse.typeUrl || Array.isArray(o.groups) && (!o.groups.length || types_1.GroupInfo.isAmino(o.groups[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.groups) {
             types_1.GroupInfo.encode(v, writer.uint32(10).fork()).ldelim();
@@ -2543,4 +2878,6 @@ exports.QueryGroupsResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGroupsResponse.typeUrl, exports.QueryGroupsResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryGroupsResponse.aminoType, exports.QueryGroupsResponse.typeUrl);
 //# sourceMappingURL=query.js.map

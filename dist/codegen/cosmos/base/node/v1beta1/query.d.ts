@@ -106,6 +106,10 @@ export interface StatusResponseSDKType {
 }
 export declare const ConfigRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ConfigRequest;
+    isSDK(o: any): o is ConfigRequestSDKType;
+    isAmino(o: any): o is ConfigRequestAmino;
     encode(_: ConfigRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConfigRequest;
     fromJSON(_: any): ConfigRequest;
@@ -121,6 +125,10 @@ export declare const ConfigRequest: {
 };
 export declare const ConfigResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ConfigResponse;
+    isSDK(o: any): o is ConfigResponseSDKType;
+    isAmino(o: any): o is ConfigResponseAmino;
     encode(message: ConfigResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConfigResponse;
     fromJSON(object: any): ConfigResponse;
@@ -136,6 +144,10 @@ export declare const ConfigResponse: {
 };
 export declare const StatusRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is StatusRequest;
+    isSDK(o: any): o is StatusRequestSDKType;
+    isAmino(o: any): o is StatusRequestAmino;
     encode(_: StatusRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): StatusRequest;
     fromJSON(_: any): StatusRequest;
@@ -151,6 +163,10 @@ export declare const StatusRequest: {
 };
 export declare const StatusResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is StatusResponse;
+    isSDK(o: any): o is StatusResponseSDKType;
+    isAmino(o: any): o is StatusResponseAmino;
     encode(message: StatusResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): StatusResponse;
     fromJSON(object: any): StatusResponse;

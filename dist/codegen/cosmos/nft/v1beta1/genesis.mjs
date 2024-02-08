@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { Class, NFT } from "./nft";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { isSet } from "../../../helpers";
 export const protobufPackage = "cosmos.nft.v1beta1";
 function createBaseGenesisState() {
@@ -11,6 +12,16 @@ function createBaseGenesisState() {
 }
 export const GenesisState = {
     typeUrl: "/cosmos.nft.v1beta1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.classes) && (!o.classes.length || Class.is(o.classes[0])) && Array.isArray(o.entries) && (!o.entries.length || Entry.is(o.entries[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.classes) && (!o.classes.length || Class.isSDK(o.classes[0])) && Array.isArray(o.entries) && (!o.entries.length || Entry.isSDK(o.entries[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.classes) && (!o.classes.length || Class.isAmino(o.classes[0])) && Array.isArray(o.entries) && (!o.entries.length || Entry.isAmino(o.entries[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.classes) {
             Class.encode(v, writer.uint32(10).fork()).ldelim();
@@ -112,6 +123,8 @@ export const GenesisState = {
         };
     }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 function createBaseEntry() {
     return {
         owner: "",
@@ -120,6 +133,16 @@ function createBaseEntry() {
 }
 export const Entry = {
     typeUrl: "/cosmos.nft.v1beta1.Entry",
+    aminoType: "cosmos-sdk/Entry",
+    is(o) {
+        return o && (o.$typeUrl === Entry.typeUrl || typeof o.owner === "string" && Array.isArray(o.nfts) && (!o.nfts.length || NFT.is(o.nfts[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Entry.typeUrl || typeof o.owner === "string" && Array.isArray(o.nfts) && (!o.nfts.length || NFT.isSDK(o.nfts[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Entry.typeUrl || typeof o.owner === "string" && Array.isArray(o.nfts) && (!o.nfts.length || NFT.isAmino(o.nfts[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.owner !== "") {
             writer.uint32(10).string(message.owner);
@@ -213,4 +236,6 @@ export const Entry = {
         };
     }
 };
+GlobalDecoderRegistry.register(Entry.typeUrl, Entry);
+GlobalDecoderRegistry.registerAminoProtoMapping(Entry.aminoType, Entry.typeUrl);
 //# sourceMappingURL=genesis.js.map

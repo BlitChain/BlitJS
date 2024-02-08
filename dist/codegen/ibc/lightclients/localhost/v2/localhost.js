@@ -5,6 +5,7 @@ exports.ClientState = exports.protobufPackage = void 0;
 const client_1 = require("../../../core/client/v1/client");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "ibc.lightclients.localhost.v2";
 function createBaseClientState() {
     return {
@@ -13,6 +14,16 @@ function createBaseClientState() {
 }
 exports.ClientState = {
     typeUrl: "/ibc.lightclients.localhost.v2.ClientState",
+    aminoType: "cosmos-sdk/ClientState",
+    is(o) {
+        return o && (o.$typeUrl === exports.ClientState.typeUrl || client_1.Height.is(o.latest_height));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ClientState.typeUrl || client_1.Height.isSDK(o.latest_height));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ClientState.typeUrl || client_1.Height.isAmino(o.latest_height));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.latest_height !== undefined) {
             client_1.Height.encode(message.latest_height, writer.uint32(10).fork()).ldelim();
@@ -85,4 +96,6 @@ exports.ClientState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ClientState.typeUrl, exports.ClientState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ClientState.aminoType, exports.ClientState.typeUrl);
 //# sourceMappingURL=localhost.js.map

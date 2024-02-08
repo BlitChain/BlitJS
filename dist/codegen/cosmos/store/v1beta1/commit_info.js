@@ -5,6 +5,7 @@ exports.CommitID = exports.StoreInfo = exports.CommitInfo = exports.protobufPack
 const timestamp_1 = require("../../../google/protobuf/timestamp");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.store.v1beta1";
 function createBaseCommitInfo() {
     return {
@@ -15,6 +16,16 @@ function createBaseCommitInfo() {
 }
 exports.CommitInfo = {
     typeUrl: "/cosmos.store.v1beta1.CommitInfo",
+    aminoType: "cosmos-sdk/CommitInfo",
+    is(o) {
+        return o && (o.$typeUrl === exports.CommitInfo.typeUrl || typeof o.version === "bigint" && Array.isArray(o.store_infos) && (!o.store_infos.length || exports.StoreInfo.is(o.store_infos[0])) && timestamp_1.Timestamp.is(o.timestamp));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.CommitInfo.typeUrl || typeof o.version === "bigint" && Array.isArray(o.store_infos) && (!o.store_infos.length || exports.StoreInfo.isSDK(o.store_infos[0])) && timestamp_1.Timestamp.isSDK(o.timestamp));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.CommitInfo.typeUrl || typeof o.version === "bigint" && Array.isArray(o.store_infos) && (!o.store_infos.length || exports.StoreInfo.isAmino(o.store_infos[0])) && timestamp_1.Timestamp.isAmino(o.timestamp));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.version !== BigInt(0)) {
             writer.uint32(8).int64(message.version);
@@ -121,6 +132,8 @@ exports.CommitInfo = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.CommitInfo.typeUrl, exports.CommitInfo);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.CommitInfo.aminoType, exports.CommitInfo.typeUrl);
 function createBaseStoreInfo() {
     return {
         name: "",
@@ -129,6 +142,16 @@ function createBaseStoreInfo() {
 }
 exports.StoreInfo = {
     typeUrl: "/cosmos.store.v1beta1.StoreInfo",
+    aminoType: "cosmos-sdk/StoreInfo",
+    is(o) {
+        return o && (o.$typeUrl === exports.StoreInfo.typeUrl || typeof o.name === "string" && exports.CommitID.is(o.commit_id));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.StoreInfo.typeUrl || typeof o.name === "string" && exports.CommitID.isSDK(o.commit_id));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.StoreInfo.typeUrl || typeof o.name === "string" && exports.CommitID.isAmino(o.commit_id));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -214,6 +237,8 @@ exports.StoreInfo = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.StoreInfo.typeUrl, exports.StoreInfo);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.StoreInfo.aminoType, exports.StoreInfo.typeUrl);
 function createBaseCommitID() {
     return {
         version: BigInt(0),
@@ -222,6 +247,16 @@ function createBaseCommitID() {
 }
 exports.CommitID = {
     typeUrl: "/cosmos.store.v1beta1.CommitID",
+    aminoType: "cosmos-sdk/CommitID",
+    is(o) {
+        return o && (o.$typeUrl === exports.CommitID.typeUrl || typeof o.version === "bigint" && (o.hash instanceof Uint8Array || typeof o.hash === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.CommitID.typeUrl || typeof o.version === "bigint" && (o.hash instanceof Uint8Array || typeof o.hash === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.CommitID.typeUrl || typeof o.version === "bigint" && (o.hash instanceof Uint8Array || typeof o.hash === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.version !== BigInt(0)) {
             writer.uint32(8).int64(message.version);
@@ -307,4 +342,6 @@ exports.CommitID = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.CommitID.typeUrl, exports.CommitID);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.CommitID.aminoType, exports.CommitID.typeUrl);
 //# sourceMappingURL=commit_info.js.map

@@ -134,6 +134,10 @@ export interface MerkleProofSDKType {
 }
 export declare const MerkleRoot: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MerkleRoot;
+    isSDK(o: any): o is MerkleRootSDKType;
+    isAmino(o: any): o is MerkleRootAmino;
     encode(message: MerkleRoot, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MerkleRoot;
     fromJSON(object: any): MerkleRoot;
@@ -149,6 +153,10 @@ export declare const MerkleRoot: {
 };
 export declare const MerklePrefix: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MerklePrefix;
+    isSDK(o: any): o is MerklePrefixSDKType;
+    isAmino(o: any): o is MerklePrefixAmino;
     encode(message: MerklePrefix, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MerklePrefix;
     fromJSON(object: any): MerklePrefix;
@@ -164,6 +172,10 @@ export declare const MerklePrefix: {
 };
 export declare const MerklePath: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MerklePath;
+    isSDK(o: any): o is MerklePathSDKType;
+    isAmino(o: any): o is MerklePathAmino;
     encode(message: MerklePath, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MerklePath;
     fromJSON(object: any): MerklePath;
@@ -179,6 +191,10 @@ export declare const MerklePath: {
 };
 export declare const MerkleProof: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MerkleProof;
+    isSDK(o: any): o is MerkleProofSDKType;
+    isAmino(o: any): o is MerkleProofAmino;
     encode(message: MerkleProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MerkleProof;
     fromJSON(object: any): MerkleProof;

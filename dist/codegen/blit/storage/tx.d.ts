@@ -182,6 +182,10 @@ export interface MsgDeleteStorageResponseSDKType {
 }
 export declare const MsgUpdateParams: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParams;
+    isSDK(o: any): o is MsgUpdateParamsSDKType;
+    isAmino(o: any): o is MsgUpdateParamsAmino;
     encode(message: MsgUpdateParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParams;
     fromJSON(object: any): MsgUpdateParams;
@@ -197,6 +201,9 @@ export declare const MsgUpdateParams: {
 };
 export declare const MsgUpdateParamsResponse: {
     typeUrl: string;
+    is(o: any): o is MsgUpdateParamsResponse;
+    isSDK(o: any): o is MsgUpdateParamsResponseSDKType;
+    isAmino(o: any): o is MsgUpdateParamsResponseAmino;
     encode(_: MsgUpdateParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParamsResponse;
     fromJSON(_: any): MsgUpdateParamsResponse;
@@ -211,6 +218,9 @@ export declare const MsgUpdateParamsResponse: {
 };
 export declare const MsgCreateStorage: {
     typeUrl: string;
+    is(o: any): o is MsgCreateStorage;
+    isSDK(o: any): o is MsgCreateStorageSDKType;
+    isAmino(o: any): o is MsgCreateStorageAmino;
     encode(message: MsgCreateStorage, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateStorage;
     fromJSON(object: any): MsgCreateStorage;
@@ -225,6 +235,9 @@ export declare const MsgCreateStorage: {
 };
 export declare const MsgCreateStorageResponse: {
     typeUrl: string;
+    is(o: any): o is MsgCreateStorageResponse;
+    isSDK(o: any): o is MsgCreateStorageResponseSDKType;
+    isAmino(o: any): o is MsgCreateStorageResponseAmino;
     encode(_: MsgCreateStorageResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateStorageResponse;
     fromJSON(_: any): MsgCreateStorageResponse;
@@ -239,6 +252,9 @@ export declare const MsgCreateStorageResponse: {
 };
 export declare const MsgUpdateStorage: {
     typeUrl: string;
+    is(o: any): o is MsgUpdateStorage;
+    isSDK(o: any): o is MsgUpdateStorageSDKType;
+    isAmino(o: any): o is MsgUpdateStorageAmino;
     encode(message: MsgUpdateStorage, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateStorage;
     fromJSON(object: any): MsgUpdateStorage;
@@ -253,6 +269,9 @@ export declare const MsgUpdateStorage: {
 };
 export declare const MsgUpdateStorageResponse: {
     typeUrl: string;
+    is(o: any): o is MsgUpdateStorageResponse;
+    isSDK(o: any): o is MsgUpdateStorageResponseSDKType;
+    isAmino(o: any): o is MsgUpdateStorageResponseAmino;
     encode(_: MsgUpdateStorageResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateStorageResponse;
     fromJSON(_: any): MsgUpdateStorageResponse;
@@ -267,6 +286,9 @@ export declare const MsgUpdateStorageResponse: {
 };
 export declare const MsgDeleteStorage: {
     typeUrl: string;
+    is(o: any): o is MsgDeleteStorage;
+    isSDK(o: any): o is MsgDeleteStorageSDKType;
+    isAmino(o: any): o is MsgDeleteStorageAmino;
     encode(message: MsgDeleteStorage, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteStorage;
     fromJSON(object: any): MsgDeleteStorage;
@@ -281,6 +303,9 @@ export declare const MsgDeleteStorage: {
 };
 export declare const MsgDeleteStorageResponse: {
     typeUrl: string;
+    is(o: any): o is MsgDeleteStorageResponse;
+    isSDK(o: any): o is MsgDeleteStorageResponseSDKType;
+    isAmino(o: any): o is MsgDeleteStorageResponseAmino;
     encode(_: MsgDeleteStorageResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteStorageResponse;
     fromJSON(_: any): MsgDeleteStorageResponse;

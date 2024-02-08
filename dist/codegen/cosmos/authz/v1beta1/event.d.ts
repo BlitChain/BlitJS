@@ -66,6 +66,10 @@ export interface EventRevokeSDKType {
 }
 export declare const EventGrant: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventGrant;
+    isSDK(o: any): o is EventGrantSDKType;
+    isAmino(o: any): o is EventGrantAmino;
     encode(message: EventGrant, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventGrant;
     fromJSON(object: any): EventGrant;
@@ -81,6 +85,10 @@ export declare const EventGrant: {
 };
 export declare const EventRevoke: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventRevoke;
+    isSDK(o: any): o is EventRevokeSDKType;
+    isAmino(o: any): o is EventRevokeAmino;
     encode(message: EventRevoke, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventRevoke;
     fromJSON(object: any): EventRevoke;

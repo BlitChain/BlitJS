@@ -1,8 +1,9 @@
 //@ts-nocheck
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
 import { BinaryReader, BinaryWriter } from "../../binary";
-import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.blit";
 export enum FutureTaskStatus {
   NONE = 0,
@@ -82,6 +83,15 @@ function createBaseFutureTask(): FutureTask {
 }
 export const FutureTask = {
   typeUrl: "/blit.blit.FutureTask",
+  is(o: any): o is FutureTask {
+    return o && (o.$typeUrl === FutureTask.typeUrl || typeof o.index === "string" && Timestamp.is(o.scheduled_on) && typeof o.task_id === "bigint" && isSet(o.status));
+  },
+  isSDK(o: any): o is FutureTaskSDKType {
+    return o && (o.$typeUrl === FutureTask.typeUrl || typeof o.index === "string" && Timestamp.isSDK(o.scheduled_on) && typeof o.task_id === "bigint" && isSet(o.status));
+  },
+  isAmino(o: any): o is FutureTaskAmino {
+    return o && (o.$typeUrl === FutureTask.typeUrl || typeof o.index === "string" && Timestamp.isAmino(o.scheduled_on) && typeof o.task_id === "bigint" && isSet(o.status));
+  },
   encode(message: FutureTask, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.index !== "") {
       writer.uint32(10).string(message.index);
@@ -200,3 +210,4 @@ export const FutureTask = {
     };
   }
 };
+GlobalDecoderRegistry.register(FutureTask.typeUrl, FutureTask);

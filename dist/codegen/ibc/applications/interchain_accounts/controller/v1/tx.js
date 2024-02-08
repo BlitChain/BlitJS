@@ -6,6 +6,7 @@ const packet_1 = require("../../v1/packet");
 const controller_1 = require("./controller");
 const binary_1 = require("../../../../../binary");
 const helpers_1 = require("../../../../../helpers");
+const registry_1 = require("../../../../../registry");
 exports.protobufPackage = "ibc.applications.interchain_accounts.controller.v1";
 function createBaseMsgRegisterInterchainAccount() {
     return {
@@ -16,6 +17,16 @@ function createBaseMsgRegisterInterchainAccount() {
 }
 exports.MsgRegisterInterchainAccount = {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccount",
+    aminoType: "cosmos-sdk/MsgRegisterInterchainAccount",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgRegisterInterchainAccount.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string" && typeof o.version === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgRegisterInterchainAccount.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string" && typeof o.version === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgRegisterInterchainAccount.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string" && typeof o.version === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.owner !== "") {
             writer.uint32(10).string(message.owner);
@@ -114,6 +125,8 @@ exports.MsgRegisterInterchainAccount = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgRegisterInterchainAccount.typeUrl, exports.MsgRegisterInterchainAccount);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgRegisterInterchainAccount.aminoType, exports.MsgRegisterInterchainAccount.typeUrl);
 function createBaseMsgRegisterInterchainAccountResponse() {
     return {
         channel_id: "",
@@ -122,6 +135,16 @@ function createBaseMsgRegisterInterchainAccountResponse() {
 }
 exports.MsgRegisterInterchainAccountResponse = {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccountResponse",
+    aminoType: "cosmos-sdk/MsgRegisterInterchainAccountResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgRegisterInterchainAccountResponse.typeUrl || typeof o.channel_id === "string" && typeof o.port_id === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgRegisterInterchainAccountResponse.typeUrl || typeof o.channel_id === "string" && typeof o.port_id === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgRegisterInterchainAccountResponse.typeUrl || typeof o.channel_id === "string" && typeof o.port_id === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.channel_id !== "") {
             writer.uint32(10).string(message.channel_id);
@@ -207,6 +230,8 @@ exports.MsgRegisterInterchainAccountResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgRegisterInterchainAccountResponse.typeUrl, exports.MsgRegisterInterchainAccountResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgRegisterInterchainAccountResponse.aminoType, exports.MsgRegisterInterchainAccountResponse.typeUrl);
 function createBaseMsgSendTx() {
     return {
         owner: "",
@@ -217,6 +242,16 @@ function createBaseMsgSendTx() {
 }
 exports.MsgSendTx = {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTx",
+    aminoType: "cosmos-sdk/MsgSendTx",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgSendTx.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string" && packet_1.InterchainAccountPacketData.is(o.packet_data) && typeof o.relative_timeout === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgSendTx.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string" && packet_1.InterchainAccountPacketData.isSDK(o.packet_data) && typeof o.relative_timeout === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgSendTx.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string" && packet_1.InterchainAccountPacketData.isAmino(o.packet_data) && typeof o.relative_timeout === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.owner !== "") {
             writer.uint32(10).string(message.owner);
@@ -328,6 +363,8 @@ exports.MsgSendTx = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgSendTx.typeUrl, exports.MsgSendTx);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgSendTx.aminoType, exports.MsgSendTx.typeUrl);
 function createBaseMsgSendTxResponse() {
     return {
         sequence: BigInt(0)
@@ -335,6 +372,16 @@ function createBaseMsgSendTxResponse() {
 }
 exports.MsgSendTxResponse = {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTxResponse",
+    aminoType: "cosmos-sdk/MsgSendTxResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgSendTxResponse.typeUrl || typeof o.sequence === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgSendTxResponse.typeUrl || typeof o.sequence === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgSendTxResponse.typeUrl || typeof o.sequence === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.sequence !== BigInt(0)) {
             writer.uint32(8).uint64(message.sequence);
@@ -407,6 +454,8 @@ exports.MsgSendTxResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgSendTxResponse.typeUrl, exports.MsgSendTxResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgSendTxResponse.aminoType, exports.MsgSendTxResponse.typeUrl);
 function createBaseMsgUpdateParams() {
     return {
         signer: "",
@@ -415,6 +464,16 @@ function createBaseMsgUpdateParams() {
 }
 exports.MsgUpdateParams = {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParams",
+    aminoType: "cosmos-sdk/MsgUpdateParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateParams.typeUrl || typeof o.signer === "string" && controller_1.Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateParams.typeUrl || typeof o.signer === "string" && controller_1.Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateParams.typeUrl || typeof o.signer === "string" && controller_1.Params.isAmino(o.params));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.signer !== "") {
             writer.uint32(10).string(message.signer);
@@ -500,11 +559,23 @@ exports.MsgUpdateParams = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgUpdateParams.typeUrl, exports.MsgUpdateParams);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgUpdateParams.aminoType, exports.MsgUpdateParams.typeUrl);
 function createBaseMsgUpdateParamsResponse() {
     return {};
 }
 exports.MsgUpdateParamsResponse = {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParamsResponse",
+    aminoType: "cosmos-sdk/MsgUpdateParamsResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgUpdateParamsResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgUpdateParamsResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgUpdateParamsResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -563,4 +634,6 @@ exports.MsgUpdateParamsResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgUpdateParamsResponse.typeUrl, exports.MsgUpdateParamsResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgUpdateParamsResponse.aminoType, exports.MsgUpdateParamsResponse.typeUrl);
 //# sourceMappingURL=tx.js.map

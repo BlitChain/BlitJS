@@ -3,6 +3,7 @@ import { Params } from "./params";
 import { Script } from "./script";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.script";
 function createBaseGenesisState() {
     return {
@@ -12,6 +13,15 @@ function createBaseGenesisState() {
 }
 export const GenesisState = {
     typeUrl: "/blit.script.GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.scriptList) && (!o.scriptList.length || Script.is(o.scriptList[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.scriptList) && (!o.scriptList.length || Script.isSDK(o.scriptList[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.scriptList) && (!o.scriptList.length || Script.isAmino(o.scriptList[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.params !== undefined) {
             Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -99,4 +109,5 @@ export const GenesisState = {
         };
     }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
 //# sourceMappingURL=genesis.js.map

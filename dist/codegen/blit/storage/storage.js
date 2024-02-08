@@ -4,6 +4,7 @@ exports.Storage = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "blit.storage";
 function createBaseStorage() {
     return {
@@ -14,6 +15,15 @@ function createBaseStorage() {
 }
 exports.Storage = {
     typeUrl: "/blit.storage.Storage",
+    is(o) {
+        return o && (o.$typeUrl === exports.Storage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Storage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Storage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -106,4 +116,5 @@ exports.Storage = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Storage.typeUrl, exports.Storage);
 //# sourceMappingURL=storage.js.map

@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.StakeAuthorization_Validators = exports.StakeAuthorization = exports.authorizationTypeToJSON = exports.authorizationTypeFromJSON = exports.AuthorizationTypeAmino = exports.AuthorizationTypeSDKType = exports.AuthorizationType = exports.protobufPackage = void 0;
 //@ts-nocheck
 const coin_1 = require("../../base/v1beta1/coin");
-const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const binary_1 = require("../../../binary");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.staking.v1beta1";
 /**
  * AuthorizationType defines the type of staking module authorization type
@@ -80,6 +81,16 @@ function createBaseStakeAuthorization() {
 }
 exports.StakeAuthorization = {
     typeUrl: "/cosmos.staking.v1beta1.StakeAuthorization",
+    aminoType: "cosmos-sdk/StakeAuthorization",
+    is(o) {
+        return o && (o.$typeUrl === exports.StakeAuthorization.typeUrl || (0, helpers_1.isSet)(o.authorization_type));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.StakeAuthorization.typeUrl || (0, helpers_1.isSet)(o.authorization_type));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.StakeAuthorization.typeUrl || (0, helpers_1.isSet)(o.authorization_type));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.max_tokens !== undefined) {
             coin_1.Coin.encode(message.max_tokens, writer.uint32(10).fork()).ldelim();
@@ -191,6 +202,8 @@ exports.StakeAuthorization = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.StakeAuthorization.typeUrl, exports.StakeAuthorization);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.StakeAuthorization.aminoType, exports.StakeAuthorization.typeUrl);
 function createBaseStakeAuthorization_Validators() {
     return {
         address: []
@@ -198,6 +211,16 @@ function createBaseStakeAuthorization_Validators() {
 }
 exports.StakeAuthorization_Validators = {
     typeUrl: "/cosmos.staking.v1beta1.Validators",
+    aminoType: "cosmos-sdk/Validators",
+    is(o) {
+        return o && (o.$typeUrl === exports.StakeAuthorization_Validators.typeUrl || Array.isArray(o.address) && (!o.address.length || typeof o.address[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.StakeAuthorization_Validators.typeUrl || Array.isArray(o.address) && (!o.address.length || typeof o.address[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.StakeAuthorization_Validators.typeUrl || Array.isArray(o.address) && (!o.address.length || typeof o.address[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.address) {
             writer.uint32(10).string(v);
@@ -278,4 +301,6 @@ exports.StakeAuthorization_Validators = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.StakeAuthorization_Validators.typeUrl, exports.StakeAuthorization_Validators);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.StakeAuthorization_Validators.aminoType, exports.StakeAuthorization_Validators.typeUrl);
 //# sourceMappingURL=authz.js.map

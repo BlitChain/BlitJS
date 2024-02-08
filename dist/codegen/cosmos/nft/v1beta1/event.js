@@ -4,6 +4,7 @@ exports.EventBurn = exports.EventMint = exports.EventSend = exports.protobufPack
 //@ts-nocheck
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.nft.v1beta1";
 function createBaseEventSend() {
     return {
@@ -15,6 +16,16 @@ function createBaseEventSend() {
 }
 exports.EventSend = {
     typeUrl: "/cosmos.nft.v1beta1.EventSend",
+    aminoType: "cosmos-sdk/EventSend",
+    is(o) {
+        return o && (o.$typeUrl === exports.EventSend.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.EventSend.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.EventSend.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.class_id !== "") {
             writer.uint32(10).string(message.class_id);
@@ -126,6 +137,8 @@ exports.EventSend = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.EventSend.typeUrl, exports.EventSend);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.EventSend.aminoType, exports.EventSend.typeUrl);
 function createBaseEventMint() {
     return {
         class_id: "",
@@ -135,6 +148,16 @@ function createBaseEventMint() {
 }
 exports.EventMint = {
     typeUrl: "/cosmos.nft.v1beta1.EventMint",
+    aminoType: "cosmos-sdk/EventMint",
+    is(o) {
+        return o && (o.$typeUrl === exports.EventMint.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.owner === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.EventMint.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.owner === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.EventMint.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.owner === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.class_id !== "") {
             writer.uint32(10).string(message.class_id);
@@ -233,6 +256,8 @@ exports.EventMint = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.EventMint.typeUrl, exports.EventMint);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.EventMint.aminoType, exports.EventMint.typeUrl);
 function createBaseEventBurn() {
     return {
         class_id: "",
@@ -242,6 +267,16 @@ function createBaseEventBurn() {
 }
 exports.EventBurn = {
     typeUrl: "/cosmos.nft.v1beta1.EventBurn",
+    aminoType: "cosmos-sdk/EventBurn",
+    is(o) {
+        return o && (o.$typeUrl === exports.EventBurn.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.owner === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.EventBurn.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.owner === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.EventBurn.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.owner === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.class_id !== "") {
             writer.uint32(10).string(message.class_id);
@@ -340,4 +375,6 @@ exports.EventBurn = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.EventBurn.typeUrl, exports.EventBurn);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.EventBurn.aminoType, exports.EventBurn.typeUrl);
 //# sourceMappingURL=event.js.map

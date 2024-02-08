@@ -5,6 +5,7 @@ exports.HeaderData = exports.SignBytes = exports.TimestampedSignatureData = expo
 const any_1 = require("../../../../google/protobuf/any");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "ibc.lightclients.solomachine.v3";
 function createBaseClientState() {
     return {
@@ -15,6 +16,16 @@ function createBaseClientState() {
 }
 exports.ClientState = {
     typeUrl: "/ibc.lightclients.solomachine.v3.ClientState",
+    aminoType: "cosmos-sdk/ClientState",
+    is(o) {
+        return o && (o.$typeUrl === exports.ClientState.typeUrl || typeof o.sequence === "bigint" && typeof o.is_frozen === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ClientState.typeUrl || typeof o.sequence === "bigint" && typeof o.is_frozen === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ClientState.typeUrl || typeof o.sequence === "bigint" && typeof o.is_frozen === "boolean");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.sequence !== BigInt(0)) {
             writer.uint32(8).uint64(message.sequence);
@@ -113,6 +124,8 @@ exports.ClientState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ClientState.typeUrl, exports.ClientState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ClientState.aminoType, exports.ClientState.typeUrl);
 function createBaseConsensusState() {
     return {
         public_key: undefined,
@@ -122,6 +135,16 @@ function createBaseConsensusState() {
 }
 exports.ConsensusState = {
     typeUrl: "/ibc.lightclients.solomachine.v3.ConsensusState",
+    aminoType: "cosmos-sdk/ConsensusState",
+    is(o) {
+        return o && (o.$typeUrl === exports.ConsensusState.typeUrl || typeof o.diversifier === "string" && typeof o.timestamp === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ConsensusState.typeUrl || typeof o.diversifier === "string" && typeof o.timestamp === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ConsensusState.typeUrl || typeof o.diversifier === "string" && typeof o.timestamp === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.public_key !== undefined) {
             any_1.Any.encode(message.public_key, writer.uint32(10).fork()).ldelim();
@@ -220,6 +243,8 @@ exports.ConsensusState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ConsensusState.typeUrl, exports.ConsensusState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ConsensusState.aminoType, exports.ConsensusState.typeUrl);
 function createBaseHeader() {
     return {
         timestamp: BigInt(0),
@@ -230,6 +255,16 @@ function createBaseHeader() {
 }
 exports.Header = {
     typeUrl: "/ibc.lightclients.solomachine.v3.Header",
+    aminoType: "cosmos-sdk/Header",
+    is(o) {
+        return o && (o.$typeUrl === exports.Header.typeUrl || typeof o.timestamp === "bigint" && (o.signature instanceof Uint8Array || typeof o.signature === "string") && typeof o.new_diversifier === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Header.typeUrl || typeof o.timestamp === "bigint" && (o.signature instanceof Uint8Array || typeof o.signature === "string") && typeof o.new_diversifier === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Header.typeUrl || typeof o.timestamp === "bigint" && (o.signature instanceof Uint8Array || typeof o.signature === "string") && typeof o.new_diversifier === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.timestamp !== BigInt(0)) {
             writer.uint32(8).uint64(message.timestamp);
@@ -341,6 +376,8 @@ exports.Header = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Header.typeUrl, exports.Header);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Header.aminoType, exports.Header.typeUrl);
 function createBaseMisbehaviour() {
     return {
         sequence: BigInt(0),
@@ -350,6 +387,16 @@ function createBaseMisbehaviour() {
 }
 exports.Misbehaviour = {
     typeUrl: "/ibc.lightclients.solomachine.v3.Misbehaviour",
+    aminoType: "cosmos-sdk/Misbehaviour",
+    is(o) {
+        return o && (o.$typeUrl === exports.Misbehaviour.typeUrl || typeof o.sequence === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Misbehaviour.typeUrl || typeof o.sequence === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Misbehaviour.typeUrl || typeof o.sequence === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.sequence !== BigInt(0)) {
             writer.uint32(8).uint64(message.sequence);
@@ -448,6 +495,8 @@ exports.Misbehaviour = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Misbehaviour.typeUrl, exports.Misbehaviour);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Misbehaviour.aminoType, exports.Misbehaviour.typeUrl);
 function createBaseSignatureAndData() {
     return {
         signature: new Uint8Array(),
@@ -458,6 +507,16 @@ function createBaseSignatureAndData() {
 }
 exports.SignatureAndData = {
     typeUrl: "/ibc.lightclients.solomachine.v3.SignatureAndData",
+    aminoType: "cosmos-sdk/SignatureAndData",
+    is(o) {
+        return o && (o.$typeUrl === exports.SignatureAndData.typeUrl || (o.signature instanceof Uint8Array || typeof o.signature === "string") && (o.path instanceof Uint8Array || typeof o.path === "string") && (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.timestamp === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.SignatureAndData.typeUrl || (o.signature instanceof Uint8Array || typeof o.signature === "string") && (o.path instanceof Uint8Array || typeof o.path === "string") && (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.timestamp === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.SignatureAndData.typeUrl || (o.signature instanceof Uint8Array || typeof o.signature === "string") && (o.path instanceof Uint8Array || typeof o.path === "string") && (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.timestamp === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.signature.length !== 0) {
             writer.uint32(10).bytes(message.signature);
@@ -569,6 +628,8 @@ exports.SignatureAndData = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SignatureAndData.typeUrl, exports.SignatureAndData);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.SignatureAndData.aminoType, exports.SignatureAndData.typeUrl);
 function createBaseTimestampedSignatureData() {
     return {
         signature_data: new Uint8Array(),
@@ -577,6 +638,16 @@ function createBaseTimestampedSignatureData() {
 }
 exports.TimestampedSignatureData = {
     typeUrl: "/ibc.lightclients.solomachine.v3.TimestampedSignatureData",
+    aminoType: "cosmos-sdk/TimestampedSignatureData",
+    is(o) {
+        return o && (o.$typeUrl === exports.TimestampedSignatureData.typeUrl || (o.signature_data instanceof Uint8Array || typeof o.signature_data === "string") && typeof o.timestamp === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.TimestampedSignatureData.typeUrl || (o.signature_data instanceof Uint8Array || typeof o.signature_data === "string") && typeof o.timestamp === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.TimestampedSignatureData.typeUrl || (o.signature_data instanceof Uint8Array || typeof o.signature_data === "string") && typeof o.timestamp === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.signature_data.length !== 0) {
             writer.uint32(10).bytes(message.signature_data);
@@ -662,6 +733,8 @@ exports.TimestampedSignatureData = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.TimestampedSignatureData.typeUrl, exports.TimestampedSignatureData);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.TimestampedSignatureData.aminoType, exports.TimestampedSignatureData.typeUrl);
 function createBaseSignBytes() {
     return {
         sequence: BigInt(0),
@@ -673,6 +746,16 @@ function createBaseSignBytes() {
 }
 exports.SignBytes = {
     typeUrl: "/ibc.lightclients.solomachine.v3.SignBytes",
+    aminoType: "cosmos-sdk/SignBytes",
+    is(o) {
+        return o && (o.$typeUrl === exports.SignBytes.typeUrl || typeof o.sequence === "bigint" && typeof o.timestamp === "bigint" && typeof o.diversifier === "string" && (o.path instanceof Uint8Array || typeof o.path === "string") && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.SignBytes.typeUrl || typeof o.sequence === "bigint" && typeof o.timestamp === "bigint" && typeof o.diversifier === "string" && (o.path instanceof Uint8Array || typeof o.path === "string") && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.SignBytes.typeUrl || typeof o.sequence === "bigint" && typeof o.timestamp === "bigint" && typeof o.diversifier === "string" && (o.path instanceof Uint8Array || typeof o.path === "string") && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.sequence !== BigInt(0)) {
             writer.uint32(8).uint64(message.sequence);
@@ -797,6 +880,8 @@ exports.SignBytes = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SignBytes.typeUrl, exports.SignBytes);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.SignBytes.aminoType, exports.SignBytes.typeUrl);
 function createBaseHeaderData() {
     return {
         new_pub_key: undefined,
@@ -805,6 +890,16 @@ function createBaseHeaderData() {
 }
 exports.HeaderData = {
     typeUrl: "/ibc.lightclients.solomachine.v3.HeaderData",
+    aminoType: "cosmos-sdk/HeaderData",
+    is(o) {
+        return o && (o.$typeUrl === exports.HeaderData.typeUrl || typeof o.new_diversifier === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.HeaderData.typeUrl || typeof o.new_diversifier === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.HeaderData.typeUrl || typeof o.new_diversifier === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.new_pub_key !== undefined) {
             any_1.Any.encode(message.new_pub_key, writer.uint32(10).fork()).ldelim();
@@ -890,4 +985,6 @@ exports.HeaderData = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.HeaderData.typeUrl, exports.HeaderData);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.HeaderData.aminoType, exports.HeaderData.typeUrl);
 //# sourceMappingURL=solomachine.js.map

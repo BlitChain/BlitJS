@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.nft.v1beta1";
 function createBaseMsgSend() {
     return {
@@ -12,6 +13,16 @@ function createBaseMsgSend() {
 }
 export const MsgSend = {
     typeUrl: "/cosmos.nft.v1beta1.MsgSend",
+    aminoType: "cosmos-sdk/MsgNFTSend",
+    is(o) {
+        return o && (o.$typeUrl === MsgSend.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgSend.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgSend.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.class_id !== "") {
             writer.uint32(10).string(message.class_id);
@@ -123,11 +134,23 @@ export const MsgSend = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgSend.typeUrl, MsgSend);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSend.aminoType, MsgSend.typeUrl);
 function createBaseMsgSendResponse() {
     return {};
 }
 export const MsgSendResponse = {
     typeUrl: "/cosmos.nft.v1beta1.MsgSendResponse",
+    aminoType: "cosmos-sdk/MsgSendResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgSendResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgSendResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgSendResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -186,4 +209,6 @@ export const MsgSendResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgSendResponse.typeUrl, MsgSendResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSendResponse.aminoType, MsgSendResponse.typeUrl);
 //# sourceMappingURL=tx.js.map

@@ -614,6 +614,10 @@ export interface MsgAcknowledgementResponseSDKType {
 }
 export declare const MsgChannelOpenInit: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgChannelOpenInit;
+    isSDK(o: any): o is MsgChannelOpenInitSDKType;
+    isAmino(o: any): o is MsgChannelOpenInitAmino;
     encode(message: MsgChannelOpenInit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenInit;
     fromJSON(object: any): MsgChannelOpenInit;
@@ -629,6 +633,10 @@ export declare const MsgChannelOpenInit: {
 };
 export declare const MsgChannelOpenInitResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgChannelOpenInitResponse;
+    isSDK(o: any): o is MsgChannelOpenInitResponseSDKType;
+    isAmino(o: any): o is MsgChannelOpenInitResponseAmino;
     encode(message: MsgChannelOpenInitResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenInitResponse;
     fromJSON(object: any): MsgChannelOpenInitResponse;
@@ -644,6 +652,10 @@ export declare const MsgChannelOpenInitResponse: {
 };
 export declare const MsgChannelOpenTry: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgChannelOpenTry;
+    isSDK(o: any): o is MsgChannelOpenTrySDKType;
+    isAmino(o: any): o is MsgChannelOpenTryAmino;
     encode(message: MsgChannelOpenTry, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenTry;
     fromJSON(object: any): MsgChannelOpenTry;
@@ -659,6 +671,10 @@ export declare const MsgChannelOpenTry: {
 };
 export declare const MsgChannelOpenTryResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgChannelOpenTryResponse;
+    isSDK(o: any): o is MsgChannelOpenTryResponseSDKType;
+    isAmino(o: any): o is MsgChannelOpenTryResponseAmino;
     encode(message: MsgChannelOpenTryResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenTryResponse;
     fromJSON(object: any): MsgChannelOpenTryResponse;
@@ -674,6 +690,10 @@ export declare const MsgChannelOpenTryResponse: {
 };
 export declare const MsgChannelOpenAck: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgChannelOpenAck;
+    isSDK(o: any): o is MsgChannelOpenAckSDKType;
+    isAmino(o: any): o is MsgChannelOpenAckAmino;
     encode(message: MsgChannelOpenAck, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenAck;
     fromJSON(object: any): MsgChannelOpenAck;
@@ -689,6 +709,10 @@ export declare const MsgChannelOpenAck: {
 };
 export declare const MsgChannelOpenAckResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgChannelOpenAckResponse;
+    isSDK(o: any): o is MsgChannelOpenAckResponseSDKType;
+    isAmino(o: any): o is MsgChannelOpenAckResponseAmino;
     encode(_: MsgChannelOpenAckResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenAckResponse;
     fromJSON(_: any): MsgChannelOpenAckResponse;
@@ -704,6 +728,10 @@ export declare const MsgChannelOpenAckResponse: {
 };
 export declare const MsgChannelOpenConfirm: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgChannelOpenConfirm;
+    isSDK(o: any): o is MsgChannelOpenConfirmSDKType;
+    isAmino(o: any): o is MsgChannelOpenConfirmAmino;
     encode(message: MsgChannelOpenConfirm, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenConfirm;
     fromJSON(object: any): MsgChannelOpenConfirm;
@@ -719,6 +747,10 @@ export declare const MsgChannelOpenConfirm: {
 };
 export declare const MsgChannelOpenConfirmResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgChannelOpenConfirmResponse;
+    isSDK(o: any): o is MsgChannelOpenConfirmResponseSDKType;
+    isAmino(o: any): o is MsgChannelOpenConfirmResponseAmino;
     encode(_: MsgChannelOpenConfirmResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelOpenConfirmResponse;
     fromJSON(_: any): MsgChannelOpenConfirmResponse;
@@ -734,6 +766,10 @@ export declare const MsgChannelOpenConfirmResponse: {
 };
 export declare const MsgChannelCloseInit: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgChannelCloseInit;
+    isSDK(o: any): o is MsgChannelCloseInitSDKType;
+    isAmino(o: any): o is MsgChannelCloseInitAmino;
     encode(message: MsgChannelCloseInit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelCloseInit;
     fromJSON(object: any): MsgChannelCloseInit;
@@ -749,6 +785,10 @@ export declare const MsgChannelCloseInit: {
 };
 export declare const MsgChannelCloseInitResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgChannelCloseInitResponse;
+    isSDK(o: any): o is MsgChannelCloseInitResponseSDKType;
+    isAmino(o: any): o is MsgChannelCloseInitResponseAmino;
     encode(_: MsgChannelCloseInitResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelCloseInitResponse;
     fromJSON(_: any): MsgChannelCloseInitResponse;
@@ -764,6 +804,10 @@ export declare const MsgChannelCloseInitResponse: {
 };
 export declare const MsgChannelCloseConfirm: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgChannelCloseConfirm;
+    isSDK(o: any): o is MsgChannelCloseConfirmSDKType;
+    isAmino(o: any): o is MsgChannelCloseConfirmAmino;
     encode(message: MsgChannelCloseConfirm, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelCloseConfirm;
     fromJSON(object: any): MsgChannelCloseConfirm;
@@ -779,6 +823,10 @@ export declare const MsgChannelCloseConfirm: {
 };
 export declare const MsgChannelCloseConfirmResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgChannelCloseConfirmResponse;
+    isSDK(o: any): o is MsgChannelCloseConfirmResponseSDKType;
+    isAmino(o: any): o is MsgChannelCloseConfirmResponseAmino;
     encode(_: MsgChannelCloseConfirmResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgChannelCloseConfirmResponse;
     fromJSON(_: any): MsgChannelCloseConfirmResponse;
@@ -794,6 +842,10 @@ export declare const MsgChannelCloseConfirmResponse: {
 };
 export declare const MsgRecvPacket: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgRecvPacket;
+    isSDK(o: any): o is MsgRecvPacketSDKType;
+    isAmino(o: any): o is MsgRecvPacketAmino;
     encode(message: MsgRecvPacket, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRecvPacket;
     fromJSON(object: any): MsgRecvPacket;
@@ -809,6 +861,10 @@ export declare const MsgRecvPacket: {
 };
 export declare const MsgRecvPacketResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgRecvPacketResponse;
+    isSDK(o: any): o is MsgRecvPacketResponseSDKType;
+    isAmino(o: any): o is MsgRecvPacketResponseAmino;
     encode(message: MsgRecvPacketResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRecvPacketResponse;
     fromJSON(object: any): MsgRecvPacketResponse;
@@ -824,6 +880,10 @@ export declare const MsgRecvPacketResponse: {
 };
 export declare const MsgTimeout: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgTimeout;
+    isSDK(o: any): o is MsgTimeoutSDKType;
+    isAmino(o: any): o is MsgTimeoutAmino;
     encode(message: MsgTimeout, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTimeout;
     fromJSON(object: any): MsgTimeout;
@@ -839,6 +899,10 @@ export declare const MsgTimeout: {
 };
 export declare const MsgTimeoutResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgTimeoutResponse;
+    isSDK(o: any): o is MsgTimeoutResponseSDKType;
+    isAmino(o: any): o is MsgTimeoutResponseAmino;
     encode(message: MsgTimeoutResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTimeoutResponse;
     fromJSON(object: any): MsgTimeoutResponse;
@@ -854,6 +918,10 @@ export declare const MsgTimeoutResponse: {
 };
 export declare const MsgTimeoutOnClose: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgTimeoutOnClose;
+    isSDK(o: any): o is MsgTimeoutOnCloseSDKType;
+    isAmino(o: any): o is MsgTimeoutOnCloseAmino;
     encode(message: MsgTimeoutOnClose, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTimeoutOnClose;
     fromJSON(object: any): MsgTimeoutOnClose;
@@ -869,6 +937,10 @@ export declare const MsgTimeoutOnClose: {
 };
 export declare const MsgTimeoutOnCloseResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgTimeoutOnCloseResponse;
+    isSDK(o: any): o is MsgTimeoutOnCloseResponseSDKType;
+    isAmino(o: any): o is MsgTimeoutOnCloseResponseAmino;
     encode(message: MsgTimeoutOnCloseResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTimeoutOnCloseResponse;
     fromJSON(object: any): MsgTimeoutOnCloseResponse;
@@ -884,6 +956,10 @@ export declare const MsgTimeoutOnCloseResponse: {
 };
 export declare const MsgAcknowledgement: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgAcknowledgement;
+    isSDK(o: any): o is MsgAcknowledgementSDKType;
+    isAmino(o: any): o is MsgAcknowledgementAmino;
     encode(message: MsgAcknowledgement, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgAcknowledgement;
     fromJSON(object: any): MsgAcknowledgement;
@@ -899,6 +975,10 @@ export declare const MsgAcknowledgement: {
 };
 export declare const MsgAcknowledgementResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgAcknowledgementResponse;
+    isSDK(o: any): o is MsgAcknowledgementResponseSDKType;
+    isAmino(o: any): o is MsgAcknowledgementResponseAmino;
     encode(message: MsgAcknowledgementResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgAcknowledgementResponse;
     fromJSON(object: any): MsgAcknowledgementResponse;

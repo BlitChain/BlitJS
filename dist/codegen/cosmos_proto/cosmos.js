@@ -4,6 +4,7 @@ exports.ScalarDescriptor = exports.InterfaceDescriptor = exports.scalarTypeToJSO
 //@ts-nocheck
 const binary_1 = require("../binary");
 const helpers_1 = require("../helpers");
+const registry_1 = require("../registry");
 exports.protobufPackage = "cosmos_proto";
 var ScalarType;
 (function (ScalarType) {
@@ -54,6 +55,15 @@ function createBaseInterfaceDescriptor() {
 }
 exports.InterfaceDescriptor = {
     typeUrl: "/cosmos_proto.InterfaceDescriptor",
+    is(o) {
+        return o && (o.$typeUrl === exports.InterfaceDescriptor.typeUrl || typeof o.name === "string" && typeof o.description === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.InterfaceDescriptor.typeUrl || typeof o.name === "string" && typeof o.description === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.InterfaceDescriptor.typeUrl || typeof o.name === "string" && typeof o.description === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -133,6 +143,7 @@ exports.InterfaceDescriptor = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.InterfaceDescriptor.typeUrl, exports.InterfaceDescriptor);
 function createBaseScalarDescriptor() {
     return {
         name: "",
@@ -142,6 +153,15 @@ function createBaseScalarDescriptor() {
 }
 exports.ScalarDescriptor = {
     typeUrl: "/cosmos_proto.ScalarDescriptor",
+    is(o) {
+        return o && (o.$typeUrl === exports.ScalarDescriptor.typeUrl || typeof o.name === "string" && typeof o.description === "string" && Array.isArray(o.field_type));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ScalarDescriptor.typeUrl || typeof o.name === "string" && typeof o.description === "string" && Array.isArray(o.field_type));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ScalarDescriptor.typeUrl || typeof o.name === "string" && typeof o.description === "string" && Array.isArray(o.field_type));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -252,4 +272,5 @@ exports.ScalarDescriptor = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ScalarDescriptor.typeUrl, exports.ScalarDescriptor);
 //# sourceMappingURL=cosmos.js.map

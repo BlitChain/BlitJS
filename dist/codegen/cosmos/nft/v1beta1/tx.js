@@ -4,6 +4,7 @@ exports.MsgSendResponse = exports.MsgSend = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.nft.v1beta1";
 function createBaseMsgSend() {
     return {
@@ -15,6 +16,16 @@ function createBaseMsgSend() {
 }
 exports.MsgSend = {
     typeUrl: "/cosmos.nft.v1beta1.MsgSend",
+    aminoType: "cosmos-sdk/MsgNFTSend",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgSend.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgSend.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgSend.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.class_id !== "") {
             writer.uint32(10).string(message.class_id);
@@ -126,11 +137,23 @@ exports.MsgSend = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgSend.typeUrl, exports.MsgSend);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgSend.aminoType, exports.MsgSend.typeUrl);
 function createBaseMsgSendResponse() {
     return {};
 }
 exports.MsgSendResponse = {
     typeUrl: "/cosmos.nft.v1beta1.MsgSendResponse",
+    aminoType: "cosmos-sdk/MsgSendResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgSendResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgSendResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgSendResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -189,4 +212,6 @@ exports.MsgSendResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgSendResponse.typeUrl, exports.MsgSendResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgSendResponse.aminoType, exports.MsgSendResponse.typeUrl);
 //# sourceMappingURL=tx.js.map

@@ -124,6 +124,9 @@ export interface QueryFilterStorageResponseSDKType {
 }
 export declare const QueryParamsRequest: {
     typeUrl: string;
+    is(o: any): o is QueryParamsRequest;
+    isSDK(o: any): o is QueryParamsRequestSDKType;
+    isAmino(o: any): o is QueryParamsRequestAmino;
     encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromJSON(_: any): QueryParamsRequest;
@@ -138,6 +141,9 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
+    is(o: any): o is QueryParamsResponse;
+    isSDK(o: any): o is QueryParamsResponseSDKType;
+    isAmino(o: any): o is QueryParamsResponseAmino;
     encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromJSON(object: any): QueryParamsResponse;
@@ -152,6 +158,9 @@ export declare const QueryParamsResponse: {
 };
 export declare const QueryStorageDetailRequest: {
     typeUrl: string;
+    is(o: any): o is QueryStorageDetailRequest;
+    isSDK(o: any): o is QueryStorageDetailRequestSDKType;
+    isAmino(o: any): o is QueryStorageDetailRequestAmino;
     encode(message: QueryStorageDetailRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryStorageDetailRequest;
     fromJSON(object: any): QueryStorageDetailRequest;
@@ -166,6 +175,9 @@ export declare const QueryStorageDetailRequest: {
 };
 export declare const QueryStorageDetailResponse: {
     typeUrl: string;
+    is(o: any): o is QueryStorageDetailResponse;
+    isSDK(o: any): o is QueryStorageDetailResponseSDKType;
+    isAmino(o: any): o is QueryStorageDetailResponseAmino;
     encode(message: QueryStorageDetailResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryStorageDetailResponse;
     fromJSON(object: any): QueryStorageDetailResponse;
@@ -180,6 +192,9 @@ export declare const QueryStorageDetailResponse: {
 };
 export declare const QueryFilterStorageRequest: {
     typeUrl: string;
+    is(o: any): o is QueryFilterStorageRequest;
+    isSDK(o: any): o is QueryFilterStorageRequestSDKType;
+    isAmino(o: any): o is QueryFilterStorageRequestAmino;
     encode(message: QueryFilterStorageRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryFilterStorageRequest;
     fromJSON(object: any): QueryFilterStorageRequest;
@@ -194,6 +209,9 @@ export declare const QueryFilterStorageRequest: {
 };
 export declare const QueryFilterStorageResponse: {
     typeUrl: string;
+    is(o: any): o is QueryFilterStorageResponse;
+    isSDK(o: any): o is QueryFilterStorageResponseSDKType;
+    isAmino(o: any): o is QueryFilterStorageResponseAmino;
     encode(message: QueryFilterStorageResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryFilterStorageResponse;
     fromJSON(object: any): QueryFilterStorageResponse;

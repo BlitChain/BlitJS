@@ -454,6 +454,10 @@ export interface TallyParamsSDKType {
 }
 export declare const WeightedVoteOption: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is WeightedVoteOption;
+    isSDK(o: any): o is WeightedVoteOptionSDKType;
+    isAmino(o: any): o is WeightedVoteOptionAmino;
     encode(message: WeightedVoteOption, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): WeightedVoteOption;
     fromJSON(object: any): WeightedVoteOption;
@@ -469,6 +473,10 @@ export declare const WeightedVoteOption: {
 };
 export declare const TextProposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TextProposal;
+    isSDK(o: any): o is TextProposalSDKType;
+    isAmino(o: any): o is TextProposalAmino;
     encode(message: TextProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TextProposal;
     fromJSON(object: any): TextProposal;
@@ -484,6 +492,10 @@ export declare const TextProposal: {
 };
 export declare const Deposit: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Deposit;
+    isSDK(o: any): o is DepositSDKType;
+    isAmino(o: any): o is DepositAmino;
     encode(message: Deposit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Deposit;
     fromJSON(object: any): Deposit;
@@ -499,6 +511,10 @@ export declare const Deposit: {
 };
 export declare const Proposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Proposal;
+    isSDK(o: any): o is ProposalSDKType;
+    isAmino(o: any): o is ProposalAmino;
     encode(message: Proposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Proposal;
     fromJSON(object: any): Proposal;
@@ -514,6 +530,10 @@ export declare const Proposal: {
 };
 export declare const TallyResult: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TallyResult;
+    isSDK(o: any): o is TallyResultSDKType;
+    isAmino(o: any): o is TallyResultAmino;
     encode(message: TallyResult, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TallyResult;
     fromJSON(object: any): TallyResult;
@@ -529,6 +549,10 @@ export declare const TallyResult: {
 };
 export declare const Vote: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Vote;
+    isSDK(o: any): o is VoteSDKType;
+    isAmino(o: any): o is VoteAmino;
     encode(message: Vote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Vote;
     fromJSON(object: any): Vote;
@@ -544,6 +568,10 @@ export declare const Vote: {
 };
 export declare const DepositParams: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DepositParams;
+    isSDK(o: any): o is DepositParamsSDKType;
+    isAmino(o: any): o is DepositParamsAmino;
     encode(message: DepositParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DepositParams;
     fromJSON(object: any): DepositParams;
@@ -559,6 +587,10 @@ export declare const DepositParams: {
 };
 export declare const VotingParams: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is VotingParams;
+    isSDK(o: any): o is VotingParamsSDKType;
+    isAmino(o: any): o is VotingParamsAmino;
     encode(message: VotingParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): VotingParams;
     fromJSON(object: any): VotingParams;
@@ -574,6 +606,10 @@ export declare const VotingParams: {
 };
 export declare const TallyParams: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TallyParams;
+    isSDK(o: any): o is TallyParamsSDKType;
+    isAmino(o: any): o is TallyParamsAmino;
     encode(message: TallyParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TallyParams;
     fromJSON(object: any): TallyParams;
@@ -587,6 +623,3 @@ export declare const TallyParams: {
     toProto(message: TallyParams): Uint8Array;
     toProtoMsg(message: TallyParams): TallyParamsProtoMsg;
 };
-export declare const Cosmos_govv1beta1Content_InterfaceDecoder: (input: BinaryReader | Uint8Array) => CommunityPoolSpendProposal | CommunityPoolSpendProposalWithDeposit | TextProposal | ParameterChangeProposal | SoftwareUpgradeProposal | CancelSoftwareUpgradeProposal | ClientUpdateProposal | UpgradeProposal | Any;
-export declare const Cosmos_govv1beta1Content_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_govv1beta1Content_ToAmino: (content: Any) => AnyAmino;

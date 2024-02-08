@@ -4,6 +4,7 @@ exports.FungibleTokenPacketData = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "ibc.applications.transfer.v2";
 function createBaseFungibleTokenPacketData() {
     return {
@@ -16,6 +17,16 @@ function createBaseFungibleTokenPacketData() {
 }
 exports.FungibleTokenPacketData = {
     typeUrl: "/ibc.applications.transfer.v2.FungibleTokenPacketData",
+    aminoType: "cosmos-sdk/FungibleTokenPacketData",
+    is(o) {
+        return o && (o.$typeUrl === exports.FungibleTokenPacketData.typeUrl || typeof o.denom === "string" && typeof o.amount === "string" && typeof o.sender === "string" && typeof o.receiver === "string" && typeof o.memo === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.FungibleTokenPacketData.typeUrl || typeof o.denom === "string" && typeof o.amount === "string" && typeof o.sender === "string" && typeof o.receiver === "string" && typeof o.memo === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.FungibleTokenPacketData.typeUrl || typeof o.denom === "string" && typeof o.amount === "string" && typeof o.sender === "string" && typeof o.receiver === "string" && typeof o.memo === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.denom !== "") {
             writer.uint32(10).string(message.denom);
@@ -140,4 +151,6 @@ exports.FungibleTokenPacketData = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.FungibleTokenPacketData.typeUrl, exports.FungibleTokenPacketData);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.FungibleTokenPacketData.aminoType, exports.FungibleTokenPacketData.typeUrl);
 //# sourceMappingURL=packet.js.map

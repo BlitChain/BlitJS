@@ -1497,6 +1497,9 @@ export interface SnapshotSDKType {
 }
 export declare const Request: {
     typeUrl: string;
+    is(o: any): o is Request;
+    isSDK(o: any): o is RequestSDKType;
+    isAmino(o: any): o is RequestAmino;
     encode(message: Request, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Request;
     fromJSON(object: any): Request;
@@ -1511,6 +1514,9 @@ export declare const Request: {
 };
 export declare const RequestEcho: {
     typeUrl: string;
+    is(o: any): o is RequestEcho;
+    isSDK(o: any): o is RequestEchoSDKType;
+    isAmino(o: any): o is RequestEchoAmino;
     encode(message: RequestEcho, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestEcho;
     fromJSON(object: any): RequestEcho;
@@ -1525,6 +1531,9 @@ export declare const RequestEcho: {
 };
 export declare const RequestFlush: {
     typeUrl: string;
+    is(o: any): o is RequestFlush;
+    isSDK(o: any): o is RequestFlushSDKType;
+    isAmino(o: any): o is RequestFlushAmino;
     encode(_: RequestFlush, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestFlush;
     fromJSON(_: any): RequestFlush;
@@ -1539,6 +1548,9 @@ export declare const RequestFlush: {
 };
 export declare const RequestInfo: {
     typeUrl: string;
+    is(o: any): o is RequestInfo;
+    isSDK(o: any): o is RequestInfoSDKType;
+    isAmino(o: any): o is RequestInfoAmino;
     encode(message: RequestInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestInfo;
     fromJSON(object: any): RequestInfo;
@@ -1553,6 +1565,9 @@ export declare const RequestInfo: {
 };
 export declare const RequestInitChain: {
     typeUrl: string;
+    is(o: any): o is RequestInitChain;
+    isSDK(o: any): o is RequestInitChainSDKType;
+    isAmino(o: any): o is RequestInitChainAmino;
     encode(message: RequestInitChain, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestInitChain;
     fromJSON(object: any): RequestInitChain;
@@ -1567,6 +1582,9 @@ export declare const RequestInitChain: {
 };
 export declare const RequestQuery: {
     typeUrl: string;
+    is(o: any): o is RequestQuery;
+    isSDK(o: any): o is RequestQuerySDKType;
+    isAmino(o: any): o is RequestQueryAmino;
     encode(message: RequestQuery, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestQuery;
     fromJSON(object: any): RequestQuery;
@@ -1581,6 +1599,9 @@ export declare const RequestQuery: {
 };
 export declare const RequestCheckTx: {
     typeUrl: string;
+    is(o: any): o is RequestCheckTx;
+    isSDK(o: any): o is RequestCheckTxSDKType;
+    isAmino(o: any): o is RequestCheckTxAmino;
     encode(message: RequestCheckTx, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestCheckTx;
     fromJSON(object: any): RequestCheckTx;
@@ -1595,6 +1616,9 @@ export declare const RequestCheckTx: {
 };
 export declare const RequestCommit: {
     typeUrl: string;
+    is(o: any): o is RequestCommit;
+    isSDK(o: any): o is RequestCommitSDKType;
+    isAmino(o: any): o is RequestCommitAmino;
     encode(_: RequestCommit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestCommit;
     fromJSON(_: any): RequestCommit;
@@ -1609,6 +1633,9 @@ export declare const RequestCommit: {
 };
 export declare const RequestListSnapshots: {
     typeUrl: string;
+    is(o: any): o is RequestListSnapshots;
+    isSDK(o: any): o is RequestListSnapshotsSDKType;
+    isAmino(o: any): o is RequestListSnapshotsAmino;
     encode(_: RequestListSnapshots, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestListSnapshots;
     fromJSON(_: any): RequestListSnapshots;
@@ -1623,6 +1650,9 @@ export declare const RequestListSnapshots: {
 };
 export declare const RequestOfferSnapshot: {
     typeUrl: string;
+    is(o: any): o is RequestOfferSnapshot;
+    isSDK(o: any): o is RequestOfferSnapshotSDKType;
+    isAmino(o: any): o is RequestOfferSnapshotAmino;
     encode(message: RequestOfferSnapshot, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestOfferSnapshot;
     fromJSON(object: any): RequestOfferSnapshot;
@@ -1637,6 +1667,9 @@ export declare const RequestOfferSnapshot: {
 };
 export declare const RequestLoadSnapshotChunk: {
     typeUrl: string;
+    is(o: any): o is RequestLoadSnapshotChunk;
+    isSDK(o: any): o is RequestLoadSnapshotChunkSDKType;
+    isAmino(o: any): o is RequestLoadSnapshotChunkAmino;
     encode(message: RequestLoadSnapshotChunk, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestLoadSnapshotChunk;
     fromJSON(object: any): RequestLoadSnapshotChunk;
@@ -1651,6 +1684,9 @@ export declare const RequestLoadSnapshotChunk: {
 };
 export declare const RequestApplySnapshotChunk: {
     typeUrl: string;
+    is(o: any): o is RequestApplySnapshotChunk;
+    isSDK(o: any): o is RequestApplySnapshotChunkSDKType;
+    isAmino(o: any): o is RequestApplySnapshotChunkAmino;
     encode(message: RequestApplySnapshotChunk, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestApplySnapshotChunk;
     fromJSON(object: any): RequestApplySnapshotChunk;
@@ -1665,6 +1701,9 @@ export declare const RequestApplySnapshotChunk: {
 };
 export declare const RequestPrepareProposal: {
     typeUrl: string;
+    is(o: any): o is RequestPrepareProposal;
+    isSDK(o: any): o is RequestPrepareProposalSDKType;
+    isAmino(o: any): o is RequestPrepareProposalAmino;
     encode(message: RequestPrepareProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestPrepareProposal;
     fromJSON(object: any): RequestPrepareProposal;
@@ -1679,6 +1718,9 @@ export declare const RequestPrepareProposal: {
 };
 export declare const RequestProcessProposal: {
     typeUrl: string;
+    is(o: any): o is RequestProcessProposal;
+    isSDK(o: any): o is RequestProcessProposalSDKType;
+    isAmino(o: any): o is RequestProcessProposalAmino;
     encode(message: RequestProcessProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestProcessProposal;
     fromJSON(object: any): RequestProcessProposal;
@@ -1693,6 +1735,9 @@ export declare const RequestProcessProposal: {
 };
 export declare const RequestExtendVote: {
     typeUrl: string;
+    is(o: any): o is RequestExtendVote;
+    isSDK(o: any): o is RequestExtendVoteSDKType;
+    isAmino(o: any): o is RequestExtendVoteAmino;
     encode(message: RequestExtendVote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestExtendVote;
     fromJSON(object: any): RequestExtendVote;
@@ -1707,6 +1752,9 @@ export declare const RequestExtendVote: {
 };
 export declare const RequestVerifyVoteExtension: {
     typeUrl: string;
+    is(o: any): o is RequestVerifyVoteExtension;
+    isSDK(o: any): o is RequestVerifyVoteExtensionSDKType;
+    isAmino(o: any): o is RequestVerifyVoteExtensionAmino;
     encode(message: RequestVerifyVoteExtension, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestVerifyVoteExtension;
     fromJSON(object: any): RequestVerifyVoteExtension;
@@ -1721,6 +1769,9 @@ export declare const RequestVerifyVoteExtension: {
 };
 export declare const RequestFinalizeBlock: {
     typeUrl: string;
+    is(o: any): o is RequestFinalizeBlock;
+    isSDK(o: any): o is RequestFinalizeBlockSDKType;
+    isAmino(o: any): o is RequestFinalizeBlockAmino;
     encode(message: RequestFinalizeBlock, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RequestFinalizeBlock;
     fromJSON(object: any): RequestFinalizeBlock;
@@ -1735,6 +1786,9 @@ export declare const RequestFinalizeBlock: {
 };
 export declare const Response: {
     typeUrl: string;
+    is(o: any): o is Response;
+    isSDK(o: any): o is ResponseSDKType;
+    isAmino(o: any): o is ResponseAmino;
     encode(message: Response, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Response;
     fromJSON(object: any): Response;
@@ -1749,6 +1803,9 @@ export declare const Response: {
 };
 export declare const ResponseException: {
     typeUrl: string;
+    is(o: any): o is ResponseException;
+    isSDK(o: any): o is ResponseExceptionSDKType;
+    isAmino(o: any): o is ResponseExceptionAmino;
     encode(message: ResponseException, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseException;
     fromJSON(object: any): ResponseException;
@@ -1763,6 +1820,9 @@ export declare const ResponseException: {
 };
 export declare const ResponseEcho: {
     typeUrl: string;
+    is(o: any): o is ResponseEcho;
+    isSDK(o: any): o is ResponseEchoSDKType;
+    isAmino(o: any): o is ResponseEchoAmino;
     encode(message: ResponseEcho, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseEcho;
     fromJSON(object: any): ResponseEcho;
@@ -1777,6 +1837,9 @@ export declare const ResponseEcho: {
 };
 export declare const ResponseFlush: {
     typeUrl: string;
+    is(o: any): o is ResponseFlush;
+    isSDK(o: any): o is ResponseFlushSDKType;
+    isAmino(o: any): o is ResponseFlushAmino;
     encode(_: ResponseFlush, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseFlush;
     fromJSON(_: any): ResponseFlush;
@@ -1791,6 +1854,9 @@ export declare const ResponseFlush: {
 };
 export declare const ResponseInfo: {
     typeUrl: string;
+    is(o: any): o is ResponseInfo;
+    isSDK(o: any): o is ResponseInfoSDKType;
+    isAmino(o: any): o is ResponseInfoAmino;
     encode(message: ResponseInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseInfo;
     fromJSON(object: any): ResponseInfo;
@@ -1805,6 +1871,9 @@ export declare const ResponseInfo: {
 };
 export declare const ResponseInitChain: {
     typeUrl: string;
+    is(o: any): o is ResponseInitChain;
+    isSDK(o: any): o is ResponseInitChainSDKType;
+    isAmino(o: any): o is ResponseInitChainAmino;
     encode(message: ResponseInitChain, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseInitChain;
     fromJSON(object: any): ResponseInitChain;
@@ -1819,6 +1888,9 @@ export declare const ResponseInitChain: {
 };
 export declare const ResponseQuery: {
     typeUrl: string;
+    is(o: any): o is ResponseQuery;
+    isSDK(o: any): o is ResponseQuerySDKType;
+    isAmino(o: any): o is ResponseQueryAmino;
     encode(message: ResponseQuery, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseQuery;
     fromJSON(object: any): ResponseQuery;
@@ -1833,6 +1905,9 @@ export declare const ResponseQuery: {
 };
 export declare const ResponseCheckTx: {
     typeUrl: string;
+    is(o: any): o is ResponseCheckTx;
+    isSDK(o: any): o is ResponseCheckTxSDKType;
+    isAmino(o: any): o is ResponseCheckTxAmino;
     encode(message: ResponseCheckTx, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseCheckTx;
     fromJSON(object: any): ResponseCheckTx;
@@ -1847,6 +1922,9 @@ export declare const ResponseCheckTx: {
 };
 export declare const ResponseCommit: {
     typeUrl: string;
+    is(o: any): o is ResponseCommit;
+    isSDK(o: any): o is ResponseCommitSDKType;
+    isAmino(o: any): o is ResponseCommitAmino;
     encode(message: ResponseCommit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseCommit;
     fromJSON(object: any): ResponseCommit;
@@ -1861,6 +1939,9 @@ export declare const ResponseCommit: {
 };
 export declare const ResponseListSnapshots: {
     typeUrl: string;
+    is(o: any): o is ResponseListSnapshots;
+    isSDK(o: any): o is ResponseListSnapshotsSDKType;
+    isAmino(o: any): o is ResponseListSnapshotsAmino;
     encode(message: ResponseListSnapshots, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseListSnapshots;
     fromJSON(object: any): ResponseListSnapshots;
@@ -1875,6 +1956,9 @@ export declare const ResponseListSnapshots: {
 };
 export declare const ResponseOfferSnapshot: {
     typeUrl: string;
+    is(o: any): o is ResponseOfferSnapshot;
+    isSDK(o: any): o is ResponseOfferSnapshotSDKType;
+    isAmino(o: any): o is ResponseOfferSnapshotAmino;
     encode(message: ResponseOfferSnapshot, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseOfferSnapshot;
     fromJSON(object: any): ResponseOfferSnapshot;
@@ -1889,6 +1973,9 @@ export declare const ResponseOfferSnapshot: {
 };
 export declare const ResponseLoadSnapshotChunk: {
     typeUrl: string;
+    is(o: any): o is ResponseLoadSnapshotChunk;
+    isSDK(o: any): o is ResponseLoadSnapshotChunkSDKType;
+    isAmino(o: any): o is ResponseLoadSnapshotChunkAmino;
     encode(message: ResponseLoadSnapshotChunk, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseLoadSnapshotChunk;
     fromJSON(object: any): ResponseLoadSnapshotChunk;
@@ -1903,6 +1990,9 @@ export declare const ResponseLoadSnapshotChunk: {
 };
 export declare const ResponseApplySnapshotChunk: {
     typeUrl: string;
+    is(o: any): o is ResponseApplySnapshotChunk;
+    isSDK(o: any): o is ResponseApplySnapshotChunkSDKType;
+    isAmino(o: any): o is ResponseApplySnapshotChunkAmino;
     encode(message: ResponseApplySnapshotChunk, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseApplySnapshotChunk;
     fromJSON(object: any): ResponseApplySnapshotChunk;
@@ -1917,6 +2007,9 @@ export declare const ResponseApplySnapshotChunk: {
 };
 export declare const ResponsePrepareProposal: {
     typeUrl: string;
+    is(o: any): o is ResponsePrepareProposal;
+    isSDK(o: any): o is ResponsePrepareProposalSDKType;
+    isAmino(o: any): o is ResponsePrepareProposalAmino;
     encode(message: ResponsePrepareProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponsePrepareProposal;
     fromJSON(object: any): ResponsePrepareProposal;
@@ -1931,6 +2024,9 @@ export declare const ResponsePrepareProposal: {
 };
 export declare const ResponseProcessProposal: {
     typeUrl: string;
+    is(o: any): o is ResponseProcessProposal;
+    isSDK(o: any): o is ResponseProcessProposalSDKType;
+    isAmino(o: any): o is ResponseProcessProposalAmino;
     encode(message: ResponseProcessProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseProcessProposal;
     fromJSON(object: any): ResponseProcessProposal;
@@ -1945,6 +2041,9 @@ export declare const ResponseProcessProposal: {
 };
 export declare const ResponseExtendVote: {
     typeUrl: string;
+    is(o: any): o is ResponseExtendVote;
+    isSDK(o: any): o is ResponseExtendVoteSDKType;
+    isAmino(o: any): o is ResponseExtendVoteAmino;
     encode(message: ResponseExtendVote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseExtendVote;
     fromJSON(object: any): ResponseExtendVote;
@@ -1959,6 +2058,9 @@ export declare const ResponseExtendVote: {
 };
 export declare const ResponseVerifyVoteExtension: {
     typeUrl: string;
+    is(o: any): o is ResponseVerifyVoteExtension;
+    isSDK(o: any): o is ResponseVerifyVoteExtensionSDKType;
+    isAmino(o: any): o is ResponseVerifyVoteExtensionAmino;
     encode(message: ResponseVerifyVoteExtension, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseVerifyVoteExtension;
     fromJSON(object: any): ResponseVerifyVoteExtension;
@@ -1973,6 +2075,9 @@ export declare const ResponseVerifyVoteExtension: {
 };
 export declare const ResponseFinalizeBlock: {
     typeUrl: string;
+    is(o: any): o is ResponseFinalizeBlock;
+    isSDK(o: any): o is ResponseFinalizeBlockSDKType;
+    isAmino(o: any): o is ResponseFinalizeBlockAmino;
     encode(message: ResponseFinalizeBlock, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ResponseFinalizeBlock;
     fromJSON(object: any): ResponseFinalizeBlock;
@@ -1987,6 +2092,9 @@ export declare const ResponseFinalizeBlock: {
 };
 export declare const CommitInfo: {
     typeUrl: string;
+    is(o: any): o is CommitInfo;
+    isSDK(o: any): o is CommitInfoSDKType;
+    isAmino(o: any): o is CommitInfoAmino;
     encode(message: CommitInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommitInfo;
     fromJSON(object: any): CommitInfo;
@@ -2001,6 +2109,9 @@ export declare const CommitInfo: {
 };
 export declare const ExtendedCommitInfo: {
     typeUrl: string;
+    is(o: any): o is ExtendedCommitInfo;
+    isSDK(o: any): o is ExtendedCommitInfoSDKType;
+    isAmino(o: any): o is ExtendedCommitInfoAmino;
     encode(message: ExtendedCommitInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ExtendedCommitInfo;
     fromJSON(object: any): ExtendedCommitInfo;
@@ -2015,6 +2126,9 @@ export declare const ExtendedCommitInfo: {
 };
 export declare const Event: {
     typeUrl: string;
+    is(o: any): o is Event;
+    isSDK(o: any): o is EventSDKType;
+    isAmino(o: any): o is EventAmino;
     encode(message: Event, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Event;
     fromJSON(object: any): Event;
@@ -2029,6 +2143,9 @@ export declare const Event: {
 };
 export declare const EventAttribute: {
     typeUrl: string;
+    is(o: any): o is EventAttribute;
+    isSDK(o: any): o is EventAttributeSDKType;
+    isAmino(o: any): o is EventAttributeAmino;
     encode(message: EventAttribute, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventAttribute;
     fromJSON(object: any): EventAttribute;
@@ -2043,6 +2160,9 @@ export declare const EventAttribute: {
 };
 export declare const ExecTxResult: {
     typeUrl: string;
+    is(o: any): o is ExecTxResult;
+    isSDK(o: any): o is ExecTxResultSDKType;
+    isAmino(o: any): o is ExecTxResultAmino;
     encode(message: ExecTxResult, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ExecTxResult;
     fromJSON(object: any): ExecTxResult;
@@ -2057,6 +2177,9 @@ export declare const ExecTxResult: {
 };
 export declare const TxResult: {
     typeUrl: string;
+    is(o: any): o is TxResult;
+    isSDK(o: any): o is TxResultSDKType;
+    isAmino(o: any): o is TxResultAmino;
     encode(message: TxResult, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxResult;
     fromJSON(object: any): TxResult;
@@ -2071,6 +2194,9 @@ export declare const TxResult: {
 };
 export declare const Validator: {
     typeUrl: string;
+    is(o: any): o is Validator;
+    isSDK(o: any): o is ValidatorSDKType;
+    isAmino(o: any): o is ValidatorAmino;
     encode(message: Validator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Validator;
     fromJSON(object: any): Validator;
@@ -2085,6 +2211,9 @@ export declare const Validator: {
 };
 export declare const ValidatorUpdate: {
     typeUrl: string;
+    is(o: any): o is ValidatorUpdate;
+    isSDK(o: any): o is ValidatorUpdateSDKType;
+    isAmino(o: any): o is ValidatorUpdateAmino;
     encode(message: ValidatorUpdate, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorUpdate;
     fromJSON(object: any): ValidatorUpdate;
@@ -2099,6 +2228,9 @@ export declare const ValidatorUpdate: {
 };
 export declare const VoteInfo: {
     typeUrl: string;
+    is(o: any): o is VoteInfo;
+    isSDK(o: any): o is VoteInfoSDKType;
+    isAmino(o: any): o is VoteInfoAmino;
     encode(message: VoteInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): VoteInfo;
     fromJSON(object: any): VoteInfo;
@@ -2113,6 +2245,9 @@ export declare const VoteInfo: {
 };
 export declare const ExtendedVoteInfo: {
     typeUrl: string;
+    is(o: any): o is ExtendedVoteInfo;
+    isSDK(o: any): o is ExtendedVoteInfoSDKType;
+    isAmino(o: any): o is ExtendedVoteInfoAmino;
     encode(message: ExtendedVoteInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ExtendedVoteInfo;
     fromJSON(object: any): ExtendedVoteInfo;
@@ -2127,6 +2262,9 @@ export declare const ExtendedVoteInfo: {
 };
 export declare const Misbehavior: {
     typeUrl: string;
+    is(o: any): o is Misbehavior;
+    isSDK(o: any): o is MisbehaviorSDKType;
+    isAmino(o: any): o is MisbehaviorAmino;
     encode(message: Misbehavior, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Misbehavior;
     fromJSON(object: any): Misbehavior;
@@ -2141,6 +2279,9 @@ export declare const Misbehavior: {
 };
 export declare const Snapshot: {
     typeUrl: string;
+    is(o: any): o is Snapshot;
+    isSDK(o: any): o is SnapshotSDKType;
+    isAmino(o: any): o is SnapshotAmino;
     encode(message: Snapshot, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Snapshot;
     fromJSON(object: any): Snapshot;

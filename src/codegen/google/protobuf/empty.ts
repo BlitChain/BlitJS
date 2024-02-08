@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "google.protobuf";
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
@@ -50,6 +51,15 @@ function createBaseEmpty(): Empty {
 }
 export const Empty = {
   typeUrl: "/google.protobuf.Empty",
+  is(o: any): o is Empty {
+    return o && o.$typeUrl === Empty.typeUrl;
+  },
+  isSDK(o: any): o is EmptySDKType {
+    return o && o.$typeUrl === Empty.typeUrl;
+  },
+  isAmino(o: any): o is EmptyAmino {
+    return o && o.$typeUrl === Empty.typeUrl;
+  },
   encode(_: Empty, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -102,3 +112,4 @@ export const Empty = {
     };
   }
 };
+GlobalDecoderRegistry.register(Empty.typeUrl, Empty);

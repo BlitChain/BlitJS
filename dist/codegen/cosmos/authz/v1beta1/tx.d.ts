@@ -181,6 +181,10 @@ export interface MsgRevokeResponseSDKType {
 }
 export declare const MsgGrant: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgGrant;
+    isSDK(o: any): o is MsgGrantSDKType;
+    isAmino(o: any): o is MsgGrantAmino;
     encode(message: MsgGrant, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgGrant;
     fromJSON(object: any): MsgGrant;
@@ -196,6 +200,10 @@ export declare const MsgGrant: {
 };
 export declare const MsgGrantResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgGrantResponse;
+    isSDK(o: any): o is MsgGrantResponseSDKType;
+    isAmino(o: any): o is MsgGrantResponseAmino;
     encode(_: MsgGrantResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgGrantResponse;
     fromJSON(_: any): MsgGrantResponse;
@@ -211,6 +219,10 @@ export declare const MsgGrantResponse: {
 };
 export declare const MsgExec: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgExec;
+    isSDK(o: any): o is MsgExecSDKType;
+    isAmino(o: any): o is MsgExecAmino;
     encode(message: MsgExec, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgExec;
     fromJSON(object: any): MsgExec;
@@ -226,6 +238,10 @@ export declare const MsgExec: {
 };
 export declare const MsgExecResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgExecResponse;
+    isSDK(o: any): o is MsgExecResponseSDKType;
+    isAmino(o: any): o is MsgExecResponseAmino;
     encode(message: MsgExecResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgExecResponse;
     fromJSON(object: any): MsgExecResponse;
@@ -241,6 +257,10 @@ export declare const MsgExecResponse: {
 };
 export declare const MsgRevoke: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgRevoke;
+    isSDK(o: any): o is MsgRevokeSDKType;
+    isAmino(o: any): o is MsgRevokeAmino;
     encode(message: MsgRevoke, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRevoke;
     fromJSON(object: any): MsgRevoke;
@@ -256,6 +276,10 @@ export declare const MsgRevoke: {
 };
 export declare const MsgRevokeResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgRevokeResponse;
+    isSDK(o: any): o is MsgRevokeResponseSDKType;
+    isAmino(o: any): o is MsgRevokeResponseAmino;
     encode(_: MsgRevokeResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRevokeResponse;
     fromJSON(_: any): MsgRevokeResponse;
@@ -269,6 +293,3 @@ export declare const MsgRevokeResponse: {
     toProto(message: MsgRevokeResponse): Uint8Array;
     toProtoMsg(message: MsgRevokeResponse): MsgRevokeResponseProtoMsg;
 };
-export declare const Cosmos_basev1beta1Msg_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
-export declare const Cosmos_basev1beta1Msg_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_basev1beta1Msg_ToAmino: (content: Any) => AnyAmino;

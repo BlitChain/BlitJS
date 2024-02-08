@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.authz.v1beta1";
 /** EventGrant is emitted on Msg/Grant */
 export interface EventGrant {
@@ -75,6 +76,16 @@ function createBaseEventGrant(): EventGrant {
 }
 export const EventGrant = {
   typeUrl: "/cosmos.authz.v1beta1.EventGrant",
+  aminoType: "cosmos-sdk/EventGrant",
+  is(o: any): o is EventGrant {
+    return o && (o.$typeUrl === EventGrant.typeUrl || typeof o.msg_type_url === "string" && typeof o.granter === "string" && typeof o.grantee === "string");
+  },
+  isSDK(o: any): o is EventGrantSDKType {
+    return o && (o.$typeUrl === EventGrant.typeUrl || typeof o.msg_type_url === "string" && typeof o.granter === "string" && typeof o.grantee === "string");
+  },
+  isAmino(o: any): o is EventGrantAmino {
+    return o && (o.$typeUrl === EventGrant.typeUrl || typeof o.msg_type_url === "string" && typeof o.granter === "string" && typeof o.grantee === "string");
+  },
   encode(message: EventGrant, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.msg_type_url !== "") {
       writer.uint32(18).string(message.msg_type_url);
@@ -173,6 +184,8 @@ export const EventGrant = {
     };
   }
 };
+GlobalDecoderRegistry.register(EventGrant.typeUrl, EventGrant);
+GlobalDecoderRegistry.registerAminoProtoMapping(EventGrant.aminoType, EventGrant.typeUrl);
 function createBaseEventRevoke(): EventRevoke {
   return {
     msg_type_url: "",
@@ -182,6 +195,16 @@ function createBaseEventRevoke(): EventRevoke {
 }
 export const EventRevoke = {
   typeUrl: "/cosmos.authz.v1beta1.EventRevoke",
+  aminoType: "cosmos-sdk/EventRevoke",
+  is(o: any): o is EventRevoke {
+    return o && (o.$typeUrl === EventRevoke.typeUrl || typeof o.msg_type_url === "string" && typeof o.granter === "string" && typeof o.grantee === "string");
+  },
+  isSDK(o: any): o is EventRevokeSDKType {
+    return o && (o.$typeUrl === EventRevoke.typeUrl || typeof o.msg_type_url === "string" && typeof o.granter === "string" && typeof o.grantee === "string");
+  },
+  isAmino(o: any): o is EventRevokeAmino {
+    return o && (o.$typeUrl === EventRevoke.typeUrl || typeof o.msg_type_url === "string" && typeof o.granter === "string" && typeof o.grantee === "string");
+  },
   encode(message: EventRevoke, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.msg_type_url !== "") {
       writer.uint32(18).string(message.msg_type_url);
@@ -280,3 +303,5 @@ export const EventRevoke = {
     };
   }
 };
+GlobalDecoderRegistry.register(EventRevoke.typeUrl, EventRevoke);
+GlobalDecoderRegistry.registerAminoProtoMapping(EventRevoke.aminoType, EventRevoke.typeUrl);

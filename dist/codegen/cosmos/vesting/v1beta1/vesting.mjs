@@ -3,6 +3,7 @@ import { BaseAccount } from "../../auth/v1beta1/auth";
 import { Coin } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.vesting.v1beta1";
 function createBaseBaseVestingAccount() {
     return {
@@ -15,6 +16,16 @@ function createBaseBaseVestingAccount() {
 }
 export const BaseVestingAccount = {
     typeUrl: "/cosmos.vesting.v1beta1.BaseVestingAccount",
+    aminoType: "cosmos-sdk/BaseVestingAccount",
+    is(o) {
+        return o && (o.$typeUrl === BaseVestingAccount.typeUrl || Array.isArray(o.original_vesting) && (!o.original_vesting.length || Coin.is(o.original_vesting[0])) && Array.isArray(o.delegated_free) && (!o.delegated_free.length || Coin.is(o.delegated_free[0])) && Array.isArray(o.delegated_vesting) && (!o.delegated_vesting.length || Coin.is(o.delegated_vesting[0])) && typeof o.end_time === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === BaseVestingAccount.typeUrl || Array.isArray(o.original_vesting) && (!o.original_vesting.length || Coin.isSDK(o.original_vesting[0])) && Array.isArray(o.delegated_free) && (!o.delegated_free.length || Coin.isSDK(o.delegated_free[0])) && Array.isArray(o.delegated_vesting) && (!o.delegated_vesting.length || Coin.isSDK(o.delegated_vesting[0])) && typeof o.end_time === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === BaseVestingAccount.typeUrl || Array.isArray(o.original_vesting) && (!o.original_vesting.length || Coin.isAmino(o.original_vesting[0])) && Array.isArray(o.delegated_free) && (!o.delegated_free.length || Coin.isAmino(o.delegated_free[0])) && Array.isArray(o.delegated_vesting) && (!o.delegated_vesting.length || Coin.isAmino(o.delegated_vesting[0])) && typeof o.end_time === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.base_account !== undefined) {
             BaseAccount.encode(message.base_account, writer.uint32(10).fork()).ldelim();
@@ -163,6 +174,8 @@ export const BaseVestingAccount = {
         };
     }
 };
+GlobalDecoderRegistry.register(BaseVestingAccount.typeUrl, BaseVestingAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(BaseVestingAccount.aminoType, BaseVestingAccount.typeUrl);
 function createBaseContinuousVestingAccount() {
     return {
         base_vesting_account: undefined,
@@ -171,6 +184,16 @@ function createBaseContinuousVestingAccount() {
 }
 export const ContinuousVestingAccount = {
     typeUrl: "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
+    aminoType: "cosmos-sdk/ContinuousVestingAccount",
+    is(o) {
+        return o && (o.$typeUrl === ContinuousVestingAccount.typeUrl || typeof o.start_time === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === ContinuousVestingAccount.typeUrl || typeof o.start_time === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === ContinuousVestingAccount.typeUrl || typeof o.start_time === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.base_vesting_account !== undefined) {
             BaseVestingAccount.encode(message.base_vesting_account, writer.uint32(10).fork()).ldelim();
@@ -256,6 +279,8 @@ export const ContinuousVestingAccount = {
         };
     }
 };
+GlobalDecoderRegistry.register(ContinuousVestingAccount.typeUrl, ContinuousVestingAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(ContinuousVestingAccount.aminoType, ContinuousVestingAccount.typeUrl);
 function createBaseDelayedVestingAccount() {
     return {
         base_vesting_account: undefined
@@ -263,6 +288,16 @@ function createBaseDelayedVestingAccount() {
 }
 export const DelayedVestingAccount = {
     typeUrl: "/cosmos.vesting.v1beta1.DelayedVestingAccount",
+    aminoType: "cosmos-sdk/DelayedVestingAccount",
+    is(o) {
+        return o && o.$typeUrl === DelayedVestingAccount.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === DelayedVestingAccount.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === DelayedVestingAccount.typeUrl;
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.base_vesting_account !== undefined) {
             BaseVestingAccount.encode(message.base_vesting_account, writer.uint32(10).fork()).ldelim();
@@ -335,6 +370,8 @@ export const DelayedVestingAccount = {
         };
     }
 };
+GlobalDecoderRegistry.register(DelayedVestingAccount.typeUrl, DelayedVestingAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(DelayedVestingAccount.aminoType, DelayedVestingAccount.typeUrl);
 function createBasePeriod() {
     return {
         length: BigInt(0),
@@ -343,6 +380,16 @@ function createBasePeriod() {
 }
 export const Period = {
     typeUrl: "/cosmos.vesting.v1beta1.Period",
+    aminoType: "cosmos-sdk/Period",
+    is(o) {
+        return o && (o.$typeUrl === Period.typeUrl || typeof o.length === "bigint" && Array.isArray(o.amount) && (!o.amount.length || Coin.is(o.amount[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Period.typeUrl || typeof o.length === "bigint" && Array.isArray(o.amount) && (!o.amount.length || Coin.isSDK(o.amount[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Period.typeUrl || typeof o.length === "bigint" && Array.isArray(o.amount) && (!o.amount.length || Coin.isAmino(o.amount[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.length !== BigInt(0)) {
             writer.uint32(8).int64(message.length);
@@ -436,6 +483,8 @@ export const Period = {
         };
     }
 };
+GlobalDecoderRegistry.register(Period.typeUrl, Period);
+GlobalDecoderRegistry.registerAminoProtoMapping(Period.aminoType, Period.typeUrl);
 function createBasePeriodicVestingAccount() {
     return {
         base_vesting_account: undefined,
@@ -445,6 +494,16 @@ function createBasePeriodicVestingAccount() {
 }
 export const PeriodicVestingAccount = {
     typeUrl: "/cosmos.vesting.v1beta1.PeriodicVestingAccount",
+    aminoType: "cosmos-sdk/PeriodicVestingAccount",
+    is(o) {
+        return o && (o.$typeUrl === PeriodicVestingAccount.typeUrl || typeof o.start_time === "bigint" && Array.isArray(o.vesting_periods) && (!o.vesting_periods.length || Period.is(o.vesting_periods[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === PeriodicVestingAccount.typeUrl || typeof o.start_time === "bigint" && Array.isArray(o.vesting_periods) && (!o.vesting_periods.length || Period.isSDK(o.vesting_periods[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === PeriodicVestingAccount.typeUrl || typeof o.start_time === "bigint" && Array.isArray(o.vesting_periods) && (!o.vesting_periods.length || Period.isAmino(o.vesting_periods[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.base_vesting_account !== undefined) {
             BaseVestingAccount.encode(message.base_vesting_account, writer.uint32(10).fork()).ldelim();
@@ -551,6 +610,8 @@ export const PeriodicVestingAccount = {
         };
     }
 };
+GlobalDecoderRegistry.register(PeriodicVestingAccount.typeUrl, PeriodicVestingAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(PeriodicVestingAccount.aminoType, PeriodicVestingAccount.typeUrl);
 function createBasePermanentLockedAccount() {
     return {
         base_vesting_account: undefined
@@ -558,6 +619,16 @@ function createBasePermanentLockedAccount() {
 }
 export const PermanentLockedAccount = {
     typeUrl: "/cosmos.vesting.v1beta1.PermanentLockedAccount",
+    aminoType: "cosmos-sdk/PermanentLockedAccount",
+    is(o) {
+        return o && o.$typeUrl === PermanentLockedAccount.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === PermanentLockedAccount.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === PermanentLockedAccount.typeUrl;
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.base_vesting_account !== undefined) {
             BaseVestingAccount.encode(message.base_vesting_account, writer.uint32(10).fork()).ldelim();
@@ -630,4 +701,6 @@ export const PermanentLockedAccount = {
         };
     }
 };
+GlobalDecoderRegistry.register(PermanentLockedAccount.typeUrl, PermanentLockedAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(PermanentLockedAccount.aminoType, PermanentLockedAccount.typeUrl);
 //# sourceMappingURL=vesting.js.map

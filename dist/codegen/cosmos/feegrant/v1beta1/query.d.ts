@@ -181,6 +181,10 @@ export interface QueryAllowancesByGranterResponseSDKType {
 }
 export declare const QueryAllowanceRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAllowanceRequest;
+    isSDK(o: any): o is QueryAllowanceRequestSDKType;
+    isAmino(o: any): o is QueryAllowanceRequestAmino;
     encode(message: QueryAllowanceRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAllowanceRequest;
     fromJSON(object: any): QueryAllowanceRequest;
@@ -196,6 +200,10 @@ export declare const QueryAllowanceRequest: {
 };
 export declare const QueryAllowanceResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAllowanceResponse;
+    isSDK(o: any): o is QueryAllowanceResponseSDKType;
+    isAmino(o: any): o is QueryAllowanceResponseAmino;
     encode(message: QueryAllowanceResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAllowanceResponse;
     fromJSON(object: any): QueryAllowanceResponse;
@@ -211,6 +219,10 @@ export declare const QueryAllowanceResponse: {
 };
 export declare const QueryAllowancesRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAllowancesRequest;
+    isSDK(o: any): o is QueryAllowancesRequestSDKType;
+    isAmino(o: any): o is QueryAllowancesRequestAmino;
     encode(message: QueryAllowancesRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAllowancesRequest;
     fromJSON(object: any): QueryAllowancesRequest;
@@ -226,6 +238,10 @@ export declare const QueryAllowancesRequest: {
 };
 export declare const QueryAllowancesResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAllowancesResponse;
+    isSDK(o: any): o is QueryAllowancesResponseSDKType;
+    isAmino(o: any): o is QueryAllowancesResponseAmino;
     encode(message: QueryAllowancesResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAllowancesResponse;
     fromJSON(object: any): QueryAllowancesResponse;
@@ -241,6 +257,10 @@ export declare const QueryAllowancesResponse: {
 };
 export declare const QueryAllowancesByGranterRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAllowancesByGranterRequest;
+    isSDK(o: any): o is QueryAllowancesByGranterRequestSDKType;
+    isAmino(o: any): o is QueryAllowancesByGranterRequestAmino;
     encode(message: QueryAllowancesByGranterRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAllowancesByGranterRequest;
     fromJSON(object: any): QueryAllowancesByGranterRequest;
@@ -256,6 +276,10 @@ export declare const QueryAllowancesByGranterRequest: {
 };
 export declare const QueryAllowancesByGranterResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAllowancesByGranterResponse;
+    isSDK(o: any): o is QueryAllowancesByGranterResponseSDKType;
+    isAmino(o: any): o is QueryAllowancesByGranterResponseAmino;
     encode(message: QueryAllowancesByGranterResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAllowancesByGranterResponse;
     fromJSON(object: any): QueryAllowancesByGranterResponse;

@@ -151,6 +151,10 @@ export interface ParamsSDKType {
 }
 export declare const BaseAccount: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is BaseAccount;
+    isSDK(o: any): o is BaseAccountSDKType;
+    isAmino(o: any): o is BaseAccountAmino;
     encode(message: BaseAccount, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BaseAccount;
     fromJSON(object: any): BaseAccount;
@@ -166,6 +170,10 @@ export declare const BaseAccount: {
 };
 export declare const ModuleAccount: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ModuleAccount;
+    isSDK(o: any): o is ModuleAccountSDKType;
+    isAmino(o: any): o is ModuleAccountAmino;
     encode(message: ModuleAccount, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModuleAccount;
     fromJSON(object: any): ModuleAccount;
@@ -181,6 +189,10 @@ export declare const ModuleAccount: {
 };
 export declare const ModuleCredential: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ModuleCredential;
+    isSDK(o: any): o is ModuleCredentialSDKType;
+    isAmino(o: any): o is ModuleCredentialAmino;
     encode(message: ModuleCredential, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModuleCredential;
     fromJSON(object: any): ModuleCredential;
@@ -196,6 +208,10 @@ export declare const ModuleCredential: {
 };
 export declare const Params: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Params;
+    isSDK(o: any): o is ParamsSDKType;
+    isAmino(o: any): o is ParamsAmino;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromJSON(object: any): Params;

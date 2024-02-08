@@ -72,6 +72,10 @@ export interface CompactBitArraySDKType {
 }
 export declare const MultiSignature: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MultiSignature;
+    isSDK(o: any): o is MultiSignatureSDKType;
+    isAmino(o: any): o is MultiSignatureAmino;
     encode(message: MultiSignature, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MultiSignature;
     fromJSON(object: any): MultiSignature;
@@ -87,6 +91,10 @@ export declare const MultiSignature: {
 };
 export declare const CompactBitArray: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CompactBitArray;
+    isSDK(o: any): o is CompactBitArraySDKType;
+    isAmino(o: any): o is CompactBitArrayAmino;
     encode(message: CompactBitArray, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CompactBitArray;
     fromJSON(object: any): CompactBitArray;

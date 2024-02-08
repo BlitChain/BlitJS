@@ -6,8 +6,9 @@ const coin_1 = require("../../base/v1beta1/coin");
 const any_1 = require("../../../google/protobuf/any");
 const timestamp_1 = require("../../../google/protobuf/timestamp");
 const duration_1 = require("../../../google/protobuf/duration");
-const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const binary_1 = require("../../../binary");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.gov.v1";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 var VoteOption;
@@ -157,6 +158,16 @@ function createBaseWeightedVoteOption() {
 }
 exports.WeightedVoteOption = {
     typeUrl: "/cosmos.gov.v1.WeightedVoteOption",
+    aminoType: "cosmos-sdk/v1/WeightedVoteOption",
+    is(o) {
+        return o && (o.$typeUrl === exports.WeightedVoteOption.typeUrl || (0, helpers_1.isSet)(o.option) && typeof o.weight === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.WeightedVoteOption.typeUrl || (0, helpers_1.isSet)(o.option) && typeof o.weight === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.WeightedVoteOption.typeUrl || (0, helpers_1.isSet)(o.option) && typeof o.weight === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.option !== 0) {
             writer.uint32(8).int32(message.option);
@@ -242,6 +253,8 @@ exports.WeightedVoteOption = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.WeightedVoteOption.typeUrl, exports.WeightedVoteOption);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.WeightedVoteOption.aminoType, exports.WeightedVoteOption.typeUrl);
 function createBaseDeposit() {
     return {
         proposal_id: BigInt(0),
@@ -251,6 +264,16 @@ function createBaseDeposit() {
 }
 exports.Deposit = {
     typeUrl: "/cosmos.gov.v1.Deposit",
+    aminoType: "cosmos-sdk/v1/Deposit",
+    is(o) {
+        return o && (o.$typeUrl === exports.Deposit.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.is(o.amount[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Deposit.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isSDK(o.amount[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Deposit.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isAmino(o.amount[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -357,6 +380,8 @@ exports.Deposit = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Deposit.typeUrl, exports.Deposit);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Deposit.aminoType, exports.Deposit.typeUrl);
 function createBaseProposal() {
     return {
         id: BigInt(0),
@@ -378,6 +403,16 @@ function createBaseProposal() {
 }
 exports.Proposal = {
     typeUrl: "/cosmos.gov.v1.Proposal",
+    aminoType: "cosmos-sdk/v1/Proposal",
+    is(o) {
+        return o && (o.$typeUrl === exports.Proposal.typeUrl || typeof o.id === "bigint" && Array.isArray(o.messages) && (!o.messages.length || any_1.Any.is(o.messages[0])) && (0, helpers_1.isSet)(o.status) && Array.isArray(o.total_deposit) && (!o.total_deposit.length || coin_1.Coin.is(o.total_deposit[0])) && typeof o.metadata === "string" && typeof o.title === "string" && typeof o.summary === "string" && typeof o.proposer === "string" && typeof o.expedited === "boolean" && typeof o.failed_reason === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Proposal.typeUrl || typeof o.id === "bigint" && Array.isArray(o.messages) && (!o.messages.length || any_1.Any.isSDK(o.messages[0])) && (0, helpers_1.isSet)(o.status) && Array.isArray(o.total_deposit) && (!o.total_deposit.length || coin_1.Coin.isSDK(o.total_deposit[0])) && typeof o.metadata === "string" && typeof o.title === "string" && typeof o.summary === "string" && typeof o.proposer === "string" && typeof o.expedited === "boolean" && typeof o.failed_reason === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Proposal.typeUrl || typeof o.id === "bigint" && Array.isArray(o.messages) && (!o.messages.length || any_1.Any.isAmino(o.messages[0])) && (0, helpers_1.isSet)(o.status) && Array.isArray(o.total_deposit) && (!o.total_deposit.length || coin_1.Coin.isAmino(o.total_deposit[0])) && typeof o.metadata === "string" && typeof o.title === "string" && typeof o.summary === "string" && typeof o.proposer === "string" && typeof o.expedited === "boolean" && typeof o.failed_reason === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.id !== BigInt(0)) {
             writer.uint32(8).uint64(message.id);
@@ -648,6 +683,8 @@ exports.Proposal = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Proposal.typeUrl, exports.Proposal);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Proposal.aminoType, exports.Proposal.typeUrl);
 function createBaseTallyResult() {
     return {
         yes_count: "",
@@ -658,6 +695,16 @@ function createBaseTallyResult() {
 }
 exports.TallyResult = {
     typeUrl: "/cosmos.gov.v1.TallyResult",
+    aminoType: "cosmos-sdk/v1/TallyResult",
+    is(o) {
+        return o && (o.$typeUrl === exports.TallyResult.typeUrl || typeof o.yes_count === "string" && typeof o.abstain_count === "string" && typeof o.no_count === "string" && typeof o.no_with_veto_count === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.TallyResult.typeUrl || typeof o.yes_count === "string" && typeof o.abstain_count === "string" && typeof o.no_count === "string" && typeof o.no_with_veto_count === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.TallyResult.typeUrl || typeof o.yes_count === "string" && typeof o.abstain_count === "string" && typeof o.no_count === "string" && typeof o.no_with_veto_count === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.yes_count !== "") {
             writer.uint32(10).string(message.yes_count);
@@ -769,6 +816,8 @@ exports.TallyResult = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.TallyResult.typeUrl, exports.TallyResult);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.TallyResult.aminoType, exports.TallyResult.typeUrl);
 function createBaseVote() {
     return {
         proposal_id: BigInt(0),
@@ -779,6 +828,16 @@ function createBaseVote() {
 }
 exports.Vote = {
     typeUrl: "/cosmos.gov.v1.Vote",
+    aminoType: "cosmos-sdk/v1/Vote",
+    is(o) {
+        return o && (o.$typeUrl === exports.Vote.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string" && Array.isArray(o.options) && (!o.options.length || exports.WeightedVoteOption.is(o.options[0])) && typeof o.metadata === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Vote.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string" && Array.isArray(o.options) && (!o.options.length || exports.WeightedVoteOption.isSDK(o.options[0])) && typeof o.metadata === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Vote.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string" && Array.isArray(o.options) && (!o.options.length || exports.WeightedVoteOption.isAmino(o.options[0])) && typeof o.metadata === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -898,6 +957,8 @@ exports.Vote = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Vote.typeUrl, exports.Vote);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Vote.aminoType, exports.Vote.typeUrl);
 function createBaseDepositParams() {
     return {
         min_deposit: [],
@@ -906,6 +967,16 @@ function createBaseDepositParams() {
 }
 exports.DepositParams = {
     typeUrl: "/cosmos.gov.v1.DepositParams",
+    aminoType: "cosmos-sdk/v1/DepositParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.DepositParams.typeUrl || Array.isArray(o.min_deposit) && (!o.min_deposit.length || coin_1.Coin.is(o.min_deposit[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.DepositParams.typeUrl || Array.isArray(o.min_deposit) && (!o.min_deposit.length || coin_1.Coin.isSDK(o.min_deposit[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.DepositParams.typeUrl || Array.isArray(o.min_deposit) && (!o.min_deposit.length || coin_1.Coin.isAmino(o.min_deposit[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.min_deposit) {
             coin_1.Coin.encode(v, writer.uint32(10).fork()).ldelim();
@@ -999,6 +1070,8 @@ exports.DepositParams = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.DepositParams.typeUrl, exports.DepositParams);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.DepositParams.aminoType, exports.DepositParams.typeUrl);
 function createBaseVotingParams() {
     return {
         voting_period: undefined
@@ -1006,6 +1079,16 @@ function createBaseVotingParams() {
 }
 exports.VotingParams = {
     typeUrl: "/cosmos.gov.v1.VotingParams",
+    aminoType: "cosmos-sdk/v1/VotingParams",
+    is(o) {
+        return o && o.$typeUrl === exports.VotingParams.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.VotingParams.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.VotingParams.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.voting_period !== undefined) {
             duration_1.Duration.encode(message.voting_period, writer.uint32(10).fork()).ldelim();
@@ -1078,6 +1161,8 @@ exports.VotingParams = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.VotingParams.typeUrl, exports.VotingParams);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.VotingParams.aminoType, exports.VotingParams.typeUrl);
 function createBaseTallyParams() {
     return {
         quorum: "",
@@ -1087,6 +1172,16 @@ function createBaseTallyParams() {
 }
 exports.TallyParams = {
     typeUrl: "/cosmos.gov.v1.TallyParams",
+    aminoType: "cosmos-sdk/v1/TallyParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.TallyParams.typeUrl || typeof o.quorum === "string" && typeof o.threshold === "string" && typeof o.veto_threshold === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.TallyParams.typeUrl || typeof o.quorum === "string" && typeof o.threshold === "string" && typeof o.veto_threshold === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.TallyParams.typeUrl || typeof o.quorum === "string" && typeof o.threshold === "string" && typeof o.veto_threshold === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.quorum !== "") {
             writer.uint32(10).string(message.quorum);
@@ -1185,6 +1280,8 @@ exports.TallyParams = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.TallyParams.typeUrl, exports.TallyParams);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.TallyParams.aminoType, exports.TallyParams.typeUrl);
 function createBaseParams() {
     return {
         min_deposit: [],
@@ -1207,6 +1304,16 @@ function createBaseParams() {
 }
 exports.Params = {
     typeUrl: "/cosmos.gov.v1.Params",
+    aminoType: "cosmos-sdk/v1/Params",
+    is(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || Array.isArray(o.min_deposit) && (!o.min_deposit.length || coin_1.Coin.is(o.min_deposit[0])) && typeof o.quorum === "string" && typeof o.threshold === "string" && typeof o.veto_threshold === "string" && typeof o.min_initial_deposit_ratio === "string" && typeof o.proposal_cancel_ratio === "string" && typeof o.proposal_cancel_dest === "string" && typeof o.expedited_threshold === "string" && Array.isArray(o.expedited_min_deposit) && (!o.expedited_min_deposit.length || coin_1.Coin.is(o.expedited_min_deposit[0])) && typeof o.burn_vote_quorum === "boolean" && typeof o.burn_proposal_deposit_prevote === "boolean" && typeof o.burn_vote_veto === "boolean" && typeof o.min_deposit_ratio === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || Array.isArray(o.min_deposit) && (!o.min_deposit.length || coin_1.Coin.isSDK(o.min_deposit[0])) && typeof o.quorum === "string" && typeof o.threshold === "string" && typeof o.veto_threshold === "string" && typeof o.min_initial_deposit_ratio === "string" && typeof o.proposal_cancel_ratio === "string" && typeof o.proposal_cancel_dest === "string" && typeof o.expedited_threshold === "string" && Array.isArray(o.expedited_min_deposit) && (!o.expedited_min_deposit.length || coin_1.Coin.isSDK(o.expedited_min_deposit[0])) && typeof o.burn_vote_quorum === "boolean" && typeof o.burn_proposal_deposit_prevote === "boolean" && typeof o.burn_vote_veto === "boolean" && typeof o.min_deposit_ratio === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || Array.isArray(o.min_deposit) && (!o.min_deposit.length || coin_1.Coin.isAmino(o.min_deposit[0])) && typeof o.quorum === "string" && typeof o.threshold === "string" && typeof o.veto_threshold === "string" && typeof o.min_initial_deposit_ratio === "string" && typeof o.proposal_cancel_ratio === "string" && typeof o.proposal_cancel_dest === "string" && typeof o.expedited_threshold === "string" && Array.isArray(o.expedited_min_deposit) && (!o.expedited_min_deposit.length || coin_1.Coin.isAmino(o.expedited_min_deposit[0])) && typeof o.burn_vote_quorum === "boolean" && typeof o.burn_proposal_deposit_prevote === "boolean" && typeof o.burn_vote_veto === "boolean" && typeof o.min_deposit_ratio === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.min_deposit) {
             coin_1.Coin.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1490,4 +1597,6 @@ exports.Params = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Params.typeUrl, exports.Params);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Params.aminoType, exports.Params.typeUrl);
 //# sourceMappingURL=gov.js.map

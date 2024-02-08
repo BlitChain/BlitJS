@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.nft.v1beta1";
 /** MsgSend represents a message to send a nft from one account to another account. */
 export interface MsgSend {
@@ -63,6 +64,16 @@ function createBaseMsgSend(): MsgSend {
 }
 export const MsgSend = {
   typeUrl: "/cosmos.nft.v1beta1.MsgSend",
+  aminoType: "cosmos-sdk/MsgNFTSend",
+  is(o: any): o is MsgSend {
+    return o && (o.$typeUrl === MsgSend.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+  },
+  isSDK(o: any): o is MsgSendSDKType {
+    return o && (o.$typeUrl === MsgSend.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+  },
+  isAmino(o: any): o is MsgSendAmino {
+    return o && (o.$typeUrl === MsgSend.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.sender === "string" && typeof o.receiver === "string");
+  },
   encode(message: MsgSend, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.class_id !== "") {
       writer.uint32(10).string(message.class_id);
@@ -174,11 +185,23 @@ export const MsgSend = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSend.typeUrl, MsgSend);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSend.aminoType, MsgSend.typeUrl);
 function createBaseMsgSendResponse(): MsgSendResponse {
   return {};
 }
 export const MsgSendResponse = {
   typeUrl: "/cosmos.nft.v1beta1.MsgSendResponse",
+  aminoType: "cosmos-sdk/MsgSendResponse",
+  is(o: any): o is MsgSendResponse {
+    return o && o.$typeUrl === MsgSendResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSendResponseSDKType {
+    return o && o.$typeUrl === MsgSendResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSendResponseAmino {
+    return o && o.$typeUrl === MsgSendResponse.typeUrl;
+  },
   encode(_: MsgSendResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -237,3 +260,5 @@ export const MsgSendResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSendResponse.typeUrl, MsgSendResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSendResponse.aminoType, MsgSendResponse.typeUrl);

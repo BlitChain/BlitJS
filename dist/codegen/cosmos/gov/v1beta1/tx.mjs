@@ -1,13 +1,10 @@
 //@ts-nocheck
 import { Any } from "../../../google/protobuf/any";
 import { Coin } from "../../base/v1beta1/coin";
-import { WeightedVoteOption, TextProposal, voteOptionFromJSON, voteOptionToJSON } from "./gov";
-import { CommunityPoolSpendProposal, CommunityPoolSpendProposalWithDeposit } from "../../distribution/v1beta1/distribution";
-import { ParameterChangeProposal } from "../../params/v1beta1/params";
-import { SoftwareUpgradeProposal, CancelSoftwareUpgradeProposal } from "../../upgrade/v1beta1/upgrade";
-import { ClientUpdateProposal, UpgradeProposal } from "../../../ibc/core/client/v1/client";
+import { WeightedVoteOption, voteOptionFromJSON, voteOptionToJSON } from "./gov";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.gov.v1beta1";
 function createBaseMsgSubmitProposal() {
     return {
@@ -18,9 +15,19 @@ function createBaseMsgSubmitProposal() {
 }
 export const MsgSubmitProposal = {
     typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal",
+    aminoType: "cosmos-sdk/MsgSubmitProposal",
+    is(o) {
+        return o && (o.$typeUrl === MsgSubmitProposal.typeUrl || Array.isArray(o.initial_deposit) && (!o.initial_deposit.length || Coin.is(o.initial_deposit[0])) && typeof o.proposer === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgSubmitProposal.typeUrl || Array.isArray(o.initial_deposit) && (!o.initial_deposit.length || Coin.isSDK(o.initial_deposit[0])) && typeof o.proposer === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgSubmitProposal.typeUrl || Array.isArray(o.initial_deposit) && (!o.initial_deposit.length || Coin.isAmino(o.initial_deposit[0])) && typeof o.proposer === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.content !== undefined) {
-            Any.encode(message.content, writer.uint32(10).fork()).ldelim();
+            Any.encode(GlobalDecoderRegistry.wrapAny(message.content), writer.uint32(10).fork()).ldelim();
         }
         for (const v of message.initial_deposit) {
             Coin.encode(v, writer.uint32(18).fork()).ldelim();
@@ -38,7 +45,7 @@ export const MsgSubmitProposal = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.content = Cosmos_govv1beta1Content_InterfaceDecoder(reader);
+                    message.content = GlobalDecoderRegistry.unwrapAny(reader);
                     break;
                 case 2:
                     message.initial_deposit.push(Coin.decode(reader, reader.uint32()));
@@ -55,14 +62,14 @@ export const MsgSubmitProposal = {
     },
     fromJSON(object) {
         return {
-            content: isSet(object.content) ? Any.fromJSON(object.content) : undefined,
+            content: isSet(object.content) ? GlobalDecoderRegistry.fromJSON(object.content) : undefined,
             initial_deposit: Array.isArray(object?.initial_deposit) ? object.initial_deposit.map((e) => Coin.fromJSON(e)) : [],
             proposer: isSet(object.proposer) ? String(object.proposer) : ""
         };
     },
     toJSON(message) {
         const obj = {};
-        message.content !== undefined && (obj.content = message.content ? Any.toJSON(message.content) : undefined);
+        message.content !== undefined && (obj.content = message.content ? GlobalDecoderRegistry.toJSON(message.content) : undefined);
         if (message.initial_deposit) {
             obj.initial_deposit = message.initial_deposit.map(e => e ? Coin.toJSON(e) : undefined);
         }
@@ -74,7 +81,7 @@ export const MsgSubmitProposal = {
     },
     fromPartial(object) {
         const message = createBaseMsgSubmitProposal();
-        message.content = object.content !== undefined && object.content !== null ? Any.fromPartial(object.content) : undefined;
+        message.content = object.content !== undefined && object.content !== null ? GlobalDecoderRegistry.fromPartial(object.content) : undefined;
         message.initial_deposit = object.initial_deposit?.map(e => Coin.fromPartial(e)) || [];
         message.proposer = object.proposer ?? "";
         return message;
@@ -82,7 +89,7 @@ export const MsgSubmitProposal = {
     fromAmino(object) {
         const message = createBaseMsgSubmitProposal();
         if (object.content !== undefined && object.content !== null) {
-            message.content = Cosmos_govv1beta1Content_FromAmino(object.content);
+            message.content = GlobalDecoderRegistry.fromAminoMsg(object.content);
         }
         message.initial_deposit = object.initial_deposit?.map(e => Coin.fromAmino(e)) || [];
         if (object.proposer !== undefined && object.proposer !== null) {
@@ -92,7 +99,7 @@ export const MsgSubmitProposal = {
     },
     toAmino(message) {
         const obj = {};
-        obj.content = message.content ? Cosmos_govv1beta1Content_ToAmino(message.content) : undefined;
+        obj.content = message.content ? GlobalDecoderRegistry.toAminoMsg(message.content) : undefined;
         if (message.initial_deposit) {
             obj.initial_deposit = message.initial_deposit.map(e => e ? Coin.toAmino(e) : undefined);
         }
@@ -124,6 +131,8 @@ export const MsgSubmitProposal = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgSubmitProposal.typeUrl, MsgSubmitProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSubmitProposal.aminoType, MsgSubmitProposal.typeUrl);
 function createBaseMsgSubmitProposalResponse() {
     return {
         proposal_id: BigInt(0)
@@ -131,6 +140,16 @@ function createBaseMsgSubmitProposalResponse() {
 }
 export const MsgSubmitProposalResponse = {
     typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposalResponse",
+    aminoType: "cosmos-sdk/MsgSubmitProposalResponse",
+    is(o) {
+        return o && (o.$typeUrl === MsgSubmitProposalResponse.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgSubmitProposalResponse.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgSubmitProposalResponse.typeUrl || typeof o.proposal_id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -203,6 +222,8 @@ export const MsgSubmitProposalResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgSubmitProposalResponse.typeUrl, MsgSubmitProposalResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSubmitProposalResponse.aminoType, MsgSubmitProposalResponse.typeUrl);
 function createBaseMsgVote() {
     return {
         proposal_id: BigInt(0),
@@ -212,6 +233,16 @@ function createBaseMsgVote() {
 }
 export const MsgVote = {
     typeUrl: "/cosmos.gov.v1beta1.MsgVote",
+    aminoType: "cosmos-sdk/MsgVote",
+    is(o) {
+        return o && (o.$typeUrl === MsgVote.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string" && isSet(o.option));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgVote.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string" && isSet(o.option));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgVote.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string" && isSet(o.option));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -310,11 +341,23 @@ export const MsgVote = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgVote.typeUrl, MsgVote);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgVote.aminoType, MsgVote.typeUrl);
 function createBaseMsgVoteResponse() {
     return {};
 }
 export const MsgVoteResponse = {
     typeUrl: "/cosmos.gov.v1beta1.MsgVoteResponse",
+    aminoType: "cosmos-sdk/MsgVoteResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgVoteResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgVoteResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgVoteResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -373,6 +416,8 @@ export const MsgVoteResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgVoteResponse.typeUrl, MsgVoteResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgVoteResponse.aminoType, MsgVoteResponse.typeUrl);
 function createBaseMsgVoteWeighted() {
     return {
         proposal_id: BigInt(0),
@@ -382,6 +427,16 @@ function createBaseMsgVoteWeighted() {
 }
 export const MsgVoteWeighted = {
     typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeighted",
+    aminoType: "cosmos-sdk/MsgVoteWeighted",
+    is(o) {
+        return o && (o.$typeUrl === MsgVoteWeighted.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string" && Array.isArray(o.options) && (!o.options.length || WeightedVoteOption.is(o.options[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgVoteWeighted.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string" && Array.isArray(o.options) && (!o.options.length || WeightedVoteOption.isSDK(o.options[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgVoteWeighted.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string" && Array.isArray(o.options) && (!o.options.length || WeightedVoteOption.isAmino(o.options[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -488,11 +543,23 @@ export const MsgVoteWeighted = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgVoteWeighted.typeUrl, MsgVoteWeighted);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgVoteWeighted.aminoType, MsgVoteWeighted.typeUrl);
 function createBaseMsgVoteWeightedResponse() {
     return {};
 }
 export const MsgVoteWeightedResponse = {
     typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeightedResponse",
+    aminoType: "cosmos-sdk/MsgVoteWeightedResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgVoteWeightedResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgVoteWeightedResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgVoteWeightedResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -551,6 +618,8 @@ export const MsgVoteWeightedResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgVoteWeightedResponse.typeUrl, MsgVoteWeightedResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgVoteWeightedResponse.aminoType, MsgVoteWeightedResponse.typeUrl);
 function createBaseMsgDeposit() {
     return {
         proposal_id: BigInt(0),
@@ -560,6 +629,16 @@ function createBaseMsgDeposit() {
 }
 export const MsgDeposit = {
     typeUrl: "/cosmos.gov.v1beta1.MsgDeposit",
+    aminoType: "cosmos-sdk/MsgDeposit",
+    is(o) {
+        return o && (o.$typeUrl === MsgDeposit.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.is(o.amount[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgDeposit.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.isSDK(o.amount[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgDeposit.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.isAmino(o.amount[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -666,11 +745,23 @@ export const MsgDeposit = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgDeposit.typeUrl, MsgDeposit);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgDeposit.aminoType, MsgDeposit.typeUrl);
 function createBaseMsgDepositResponse() {
     return {};
 }
 export const MsgDepositResponse = {
     typeUrl: "/cosmos.gov.v1beta1.MsgDepositResponse",
+    aminoType: "cosmos-sdk/MsgDepositResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgDepositResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgDepositResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgDepositResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -729,120 +820,6 @@ export const MsgDepositResponse = {
         };
     }
 };
-export const Cosmos_govv1beta1Content_InterfaceDecoder = (input) => {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    const data = Any.decode(reader, reader.uint32());
-    switch (data.typeUrl) {
-        case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal":
-            return CommunityPoolSpendProposal.decode(data.value);
-        case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit":
-            return CommunityPoolSpendProposalWithDeposit.decode(data.value);
-        case "/cosmos.gov.v1beta1.TextProposal":
-            return TextProposal.decode(data.value);
-        case "/cosmos.params.v1beta1.ParameterChangeProposal":
-            return ParameterChangeProposal.decode(data.value);
-        case "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal":
-            return SoftwareUpgradeProposal.decode(data.value);
-        case "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal":
-            return CancelSoftwareUpgradeProposal.decode(data.value);
-        case "/ibc.core.client.v1.ClientUpdateProposal":
-            return ClientUpdateProposal.decode(data.value);
-        case "/ibc.core.client.v1.UpgradeProposal":
-            return UpgradeProposal.decode(data.value);
-        default:
-            return data;
-    }
-};
-export const Cosmos_govv1beta1Content_FromAmino = (content) => {
-    switch (content.type) {
-        case "cosmos-sdk/CommunityPoolSpendProposal":
-            return Any.fromPartial({
-                typeUrl: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal",
-                value: CommunityPoolSpendProposal.encode(CommunityPoolSpendProposal.fromPartial(CommunityPoolSpendProposal.fromAmino(content.value))).finish()
-            });
-        case "cosmos-sdk/CommunityPoolSpendProposalWithDeposit":
-            return Any.fromPartial({
-                typeUrl: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit",
-                value: CommunityPoolSpendProposalWithDeposit.encode(CommunityPoolSpendProposalWithDeposit.fromPartial(CommunityPoolSpendProposalWithDeposit.fromAmino(content.value))).finish()
-            });
-        case "cosmos-sdk/TextProposal":
-            return Any.fromPartial({
-                typeUrl: "/cosmos.gov.v1beta1.TextProposal",
-                value: TextProposal.encode(TextProposal.fromPartial(TextProposal.fromAmino(content.value))).finish()
-            });
-        case "cosmos-sdk/ParameterChangeProposal":
-            return Any.fromPartial({
-                typeUrl: "/cosmos.params.v1beta1.ParameterChangeProposal",
-                value: ParameterChangeProposal.encode(ParameterChangeProposal.fromPartial(ParameterChangeProposal.fromAmino(content.value))).finish()
-            });
-        case "cosmos-sdk/SoftwareUpgradeProposal":
-            return Any.fromPartial({
-                typeUrl: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
-                value: SoftwareUpgradeProposal.encode(SoftwareUpgradeProposal.fromPartial(SoftwareUpgradeProposal.fromAmino(content.value))).finish()
-            });
-        case "cosmos-sdk/CancelSoftwareUpgradeProposal":
-            return Any.fromPartial({
-                typeUrl: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal",
-                value: CancelSoftwareUpgradeProposal.encode(CancelSoftwareUpgradeProposal.fromPartial(CancelSoftwareUpgradeProposal.fromAmino(content.value))).finish()
-            });
-        case "cosmos-sdk/ClientUpdateProposal":
-            return Any.fromPartial({
-                typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
-                value: ClientUpdateProposal.encode(ClientUpdateProposal.fromPartial(ClientUpdateProposal.fromAmino(content.value))).finish()
-            });
-        case "cosmos-sdk/UpgradeProposal":
-            return Any.fromPartial({
-                typeUrl: "/ibc.core.client.v1.UpgradeProposal",
-                value: UpgradeProposal.encode(UpgradeProposal.fromPartial(UpgradeProposal.fromAmino(content.value))).finish()
-            });
-        default:
-            return Any.fromAmino(content);
-    }
-};
-export const Cosmos_govv1beta1Content_ToAmino = (content) => {
-    switch (content.typeUrl) {
-        case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal":
-            return {
-                type: "cosmos-sdk/CommunityPoolSpendProposal",
-                value: CommunityPoolSpendProposal.toAmino(CommunityPoolSpendProposal.decode(content.value, undefined))
-            };
-        case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit":
-            return {
-                type: "cosmos-sdk/CommunityPoolSpendProposalWithDeposit",
-                value: CommunityPoolSpendProposalWithDeposit.toAmino(CommunityPoolSpendProposalWithDeposit.decode(content.value, undefined))
-            };
-        case "/cosmos.gov.v1beta1.TextProposal":
-            return {
-                type: "cosmos-sdk/TextProposal",
-                value: TextProposal.toAmino(TextProposal.decode(content.value, undefined))
-            };
-        case "/cosmos.params.v1beta1.ParameterChangeProposal":
-            return {
-                type: "cosmos-sdk/ParameterChangeProposal",
-                value: ParameterChangeProposal.toAmino(ParameterChangeProposal.decode(content.value, undefined))
-            };
-        case "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal":
-            return {
-                type: "cosmos-sdk/SoftwareUpgradeProposal",
-                value: SoftwareUpgradeProposal.toAmino(SoftwareUpgradeProposal.decode(content.value, undefined))
-            };
-        case "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal":
-            return {
-                type: "cosmos-sdk/CancelSoftwareUpgradeProposal",
-                value: CancelSoftwareUpgradeProposal.toAmino(CancelSoftwareUpgradeProposal.decode(content.value, undefined))
-            };
-        case "/ibc.core.client.v1.ClientUpdateProposal":
-            return {
-                type: "cosmos-sdk/ClientUpdateProposal",
-                value: ClientUpdateProposal.toAmino(ClientUpdateProposal.decode(content.value, undefined))
-            };
-        case "/ibc.core.client.v1.UpgradeProposal":
-            return {
-                type: "cosmos-sdk/UpgradeProposal",
-                value: UpgradeProposal.toAmino(UpgradeProposal.decode(content.value, undefined))
-            };
-        default:
-            return Any.toAmino(content);
-    }
-};
+GlobalDecoderRegistry.register(MsgDepositResponse.typeUrl, MsgDepositResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgDepositResponse.aminoType, MsgDepositResponse.typeUrl);
 //# sourceMappingURL=tx.js.map

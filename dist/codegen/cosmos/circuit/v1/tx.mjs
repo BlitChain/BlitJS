@@ -2,6 +2,7 @@
 import { Permissions } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.circuit.v1";
 function createBaseMsgAuthorizeCircuitBreaker() {
     return {
@@ -12,6 +13,16 @@ function createBaseMsgAuthorizeCircuitBreaker() {
 }
 export const MsgAuthorizeCircuitBreaker = {
     typeUrl: "/cosmos.circuit.v1.MsgAuthorizeCircuitBreaker",
+    aminoType: "cosmos-sdk/MsgAuthorizeCircuitBreaker",
+    is(o) {
+        return o && (o.$typeUrl === MsgAuthorizeCircuitBreaker.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgAuthorizeCircuitBreaker.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgAuthorizeCircuitBreaker.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.granter !== "") {
             writer.uint32(10).string(message.granter);
@@ -110,6 +121,8 @@ export const MsgAuthorizeCircuitBreaker = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgAuthorizeCircuitBreaker.typeUrl, MsgAuthorizeCircuitBreaker);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgAuthorizeCircuitBreaker.aminoType, MsgAuthorizeCircuitBreaker.typeUrl);
 function createBaseMsgAuthorizeCircuitBreakerResponse() {
     return {
         success: false
@@ -117,6 +130,16 @@ function createBaseMsgAuthorizeCircuitBreakerResponse() {
 }
 export const MsgAuthorizeCircuitBreakerResponse = {
     typeUrl: "/cosmos.circuit.v1.MsgAuthorizeCircuitBreakerResponse",
+    aminoType: "cosmos-sdk/MsgAuthorizeCircuitBreakerResponse",
+    is(o) {
+        return o && (o.$typeUrl === MsgAuthorizeCircuitBreakerResponse.typeUrl || typeof o.success === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgAuthorizeCircuitBreakerResponse.typeUrl || typeof o.success === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgAuthorizeCircuitBreakerResponse.typeUrl || typeof o.success === "boolean");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.success === true) {
             writer.uint32(8).bool(message.success);
@@ -189,6 +212,8 @@ export const MsgAuthorizeCircuitBreakerResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgAuthorizeCircuitBreakerResponse.typeUrl, MsgAuthorizeCircuitBreakerResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgAuthorizeCircuitBreakerResponse.aminoType, MsgAuthorizeCircuitBreakerResponse.typeUrl);
 function createBaseMsgTripCircuitBreaker() {
     return {
         authority: "",
@@ -197,6 +222,16 @@ function createBaseMsgTripCircuitBreaker() {
 }
 export const MsgTripCircuitBreaker = {
     typeUrl: "/cosmos.circuit.v1.MsgTripCircuitBreaker",
+    aminoType: "cosmos-sdk/MsgTripCircuitBreaker",
+    is(o) {
+        return o && (o.$typeUrl === MsgTripCircuitBreaker.typeUrl || typeof o.authority === "string" && Array.isArray(o.msg_type_urls) && (!o.msg_type_urls.length || typeof o.msg_type_urls[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgTripCircuitBreaker.typeUrl || typeof o.authority === "string" && Array.isArray(o.msg_type_urls) && (!o.msg_type_urls.length || typeof o.msg_type_urls[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgTripCircuitBreaker.typeUrl || typeof o.authority === "string" && Array.isArray(o.msg_type_urls) && (!o.msg_type_urls.length || typeof o.msg_type_urls[0] === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.authority !== "") {
             writer.uint32(10).string(message.authority);
@@ -290,6 +325,8 @@ export const MsgTripCircuitBreaker = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgTripCircuitBreaker.typeUrl, MsgTripCircuitBreaker);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgTripCircuitBreaker.aminoType, MsgTripCircuitBreaker.typeUrl);
 function createBaseMsgTripCircuitBreakerResponse() {
     return {
         success: false
@@ -297,6 +334,16 @@ function createBaseMsgTripCircuitBreakerResponse() {
 }
 export const MsgTripCircuitBreakerResponse = {
     typeUrl: "/cosmos.circuit.v1.MsgTripCircuitBreakerResponse",
+    aminoType: "cosmos-sdk/MsgTripCircuitBreakerResponse",
+    is(o) {
+        return o && (o.$typeUrl === MsgTripCircuitBreakerResponse.typeUrl || typeof o.success === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgTripCircuitBreakerResponse.typeUrl || typeof o.success === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgTripCircuitBreakerResponse.typeUrl || typeof o.success === "boolean");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.success === true) {
             writer.uint32(8).bool(message.success);
@@ -369,6 +416,8 @@ export const MsgTripCircuitBreakerResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgTripCircuitBreakerResponse.typeUrl, MsgTripCircuitBreakerResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgTripCircuitBreakerResponse.aminoType, MsgTripCircuitBreakerResponse.typeUrl);
 function createBaseMsgResetCircuitBreaker() {
     return {
         authority: "",
@@ -377,6 +426,16 @@ function createBaseMsgResetCircuitBreaker() {
 }
 export const MsgResetCircuitBreaker = {
     typeUrl: "/cosmos.circuit.v1.MsgResetCircuitBreaker",
+    aminoType: "cosmos-sdk/MsgResetCircuitBreaker",
+    is(o) {
+        return o && (o.$typeUrl === MsgResetCircuitBreaker.typeUrl || typeof o.authority === "string" && Array.isArray(o.msg_type_urls) && (!o.msg_type_urls.length || typeof o.msg_type_urls[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgResetCircuitBreaker.typeUrl || typeof o.authority === "string" && Array.isArray(o.msg_type_urls) && (!o.msg_type_urls.length || typeof o.msg_type_urls[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgResetCircuitBreaker.typeUrl || typeof o.authority === "string" && Array.isArray(o.msg_type_urls) && (!o.msg_type_urls.length || typeof o.msg_type_urls[0] === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.authority !== "") {
             writer.uint32(10).string(message.authority);
@@ -470,6 +529,8 @@ export const MsgResetCircuitBreaker = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgResetCircuitBreaker.typeUrl, MsgResetCircuitBreaker);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgResetCircuitBreaker.aminoType, MsgResetCircuitBreaker.typeUrl);
 function createBaseMsgResetCircuitBreakerResponse() {
     return {
         success: false
@@ -477,6 +538,16 @@ function createBaseMsgResetCircuitBreakerResponse() {
 }
 export const MsgResetCircuitBreakerResponse = {
     typeUrl: "/cosmos.circuit.v1.MsgResetCircuitBreakerResponse",
+    aminoType: "cosmos-sdk/MsgResetCircuitBreakerResponse",
+    is(o) {
+        return o && (o.$typeUrl === MsgResetCircuitBreakerResponse.typeUrl || typeof o.success === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgResetCircuitBreakerResponse.typeUrl || typeof o.success === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgResetCircuitBreakerResponse.typeUrl || typeof o.success === "boolean");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.success === true) {
             writer.uint32(8).bool(message.success);
@@ -549,4 +620,6 @@ export const MsgResetCircuitBreakerResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgResetCircuitBreakerResponse.typeUrl, MsgResetCircuitBreakerResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgResetCircuitBreakerResponse.aminoType, MsgResetCircuitBreakerResponse.typeUrl);
 //# sourceMappingURL=tx.js.map

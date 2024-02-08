@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { Decimal } from "@cosmjs/math";
 export const protobufPackage = "cosmos.base.v1beta1";
 function createBaseCoin() {
@@ -11,6 +12,16 @@ function createBaseCoin() {
 }
 export const Coin = {
     typeUrl: "/cosmos.base.v1beta1.Coin",
+    aminoType: "cosmos-sdk/Coin",
+    is(o) {
+        return o && (o.$typeUrl === Coin.typeUrl || typeof o.denom === "string" && typeof o.amount === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Coin.typeUrl || typeof o.denom === "string" && typeof o.amount === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Coin.typeUrl || typeof o.denom === "string" && typeof o.amount === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.denom !== "") {
             writer.uint32(10).string(message.denom);
@@ -96,6 +107,8 @@ export const Coin = {
         };
     }
 };
+GlobalDecoderRegistry.register(Coin.typeUrl, Coin);
+GlobalDecoderRegistry.registerAminoProtoMapping(Coin.aminoType, Coin.typeUrl);
 function createBaseDecCoin() {
     return {
         denom: "",
@@ -104,6 +117,16 @@ function createBaseDecCoin() {
 }
 export const DecCoin = {
     typeUrl: "/cosmos.base.v1beta1.DecCoin",
+    aminoType: "cosmos-sdk/DecCoin",
+    is(o) {
+        return o && (o.$typeUrl === DecCoin.typeUrl || typeof o.denom === "string" && typeof o.amount === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === DecCoin.typeUrl || typeof o.denom === "string" && typeof o.amount === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === DecCoin.typeUrl || typeof o.denom === "string" && typeof o.amount === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.denom !== "") {
             writer.uint32(10).string(message.denom);
@@ -189,6 +212,8 @@ export const DecCoin = {
         };
     }
 };
+GlobalDecoderRegistry.register(DecCoin.typeUrl, DecCoin);
+GlobalDecoderRegistry.registerAminoProtoMapping(DecCoin.aminoType, DecCoin.typeUrl);
 function createBaseIntProto() {
     return {
         int: ""
@@ -196,6 +221,16 @@ function createBaseIntProto() {
 }
 export const IntProto = {
     typeUrl: "/cosmos.base.v1beta1.IntProto",
+    aminoType: "cosmos-sdk/IntProto",
+    is(o) {
+        return o && (o.$typeUrl === IntProto.typeUrl || typeof o.int === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === IntProto.typeUrl || typeof o.int === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === IntProto.typeUrl || typeof o.int === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.int !== "") {
             writer.uint32(10).string(message.int);
@@ -268,6 +303,8 @@ export const IntProto = {
         };
     }
 };
+GlobalDecoderRegistry.register(IntProto.typeUrl, IntProto);
+GlobalDecoderRegistry.registerAminoProtoMapping(IntProto.aminoType, IntProto.typeUrl);
 function createBaseDecProto() {
     return {
         dec: ""
@@ -275,6 +312,16 @@ function createBaseDecProto() {
 }
 export const DecProto = {
     typeUrl: "/cosmos.base.v1beta1.DecProto",
+    aminoType: "cosmos-sdk/DecProto",
+    is(o) {
+        return o && (o.$typeUrl === DecProto.typeUrl || typeof o.dec === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === DecProto.typeUrl || typeof o.dec === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === DecProto.typeUrl || typeof o.dec === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.dec !== "") {
             writer.uint32(10).string(Decimal.fromUserInput(message.dec, 18).atomics);
@@ -347,4 +394,6 @@ export const DecProto = {
         };
     }
 };
+GlobalDecoderRegistry.register(DecProto.typeUrl, DecProto);
+GlobalDecoderRegistry.registerAminoProtoMapping(DecProto.aminoType, DecProto.typeUrl);
 //# sourceMappingURL=coin.js.map

@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 export const protobufPackage = "ibc.applications.transfer.v1";
 function createBaseDenomTrace() {
     return {
@@ -10,6 +11,16 @@ function createBaseDenomTrace() {
 }
 export const DenomTrace = {
     typeUrl: "/ibc.applications.transfer.v1.DenomTrace",
+    aminoType: "cosmos-sdk/DenomTrace",
+    is(o) {
+        return o && (o.$typeUrl === DenomTrace.typeUrl || typeof o.path === "string" && typeof o.base_denom === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === DenomTrace.typeUrl || typeof o.path === "string" && typeof o.base_denom === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === DenomTrace.typeUrl || typeof o.path === "string" && typeof o.base_denom === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.path !== "") {
             writer.uint32(10).string(message.path);
@@ -95,6 +106,8 @@ export const DenomTrace = {
         };
     }
 };
+GlobalDecoderRegistry.register(DenomTrace.typeUrl, DenomTrace);
+GlobalDecoderRegistry.registerAminoProtoMapping(DenomTrace.aminoType, DenomTrace.typeUrl);
 function createBaseParams() {
     return {
         send_enabled: false,
@@ -103,6 +116,16 @@ function createBaseParams() {
 }
 export const Params = {
     typeUrl: "/ibc.applications.transfer.v1.Params",
+    aminoType: "cosmos-sdk/Params",
+    is(o) {
+        return o && (o.$typeUrl === Params.typeUrl || typeof o.send_enabled === "boolean" && typeof o.receive_enabled === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Params.typeUrl || typeof o.send_enabled === "boolean" && typeof o.receive_enabled === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Params.typeUrl || typeof o.send_enabled === "boolean" && typeof o.receive_enabled === "boolean");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.send_enabled === true) {
             writer.uint32(8).bool(message.send_enabled);
@@ -188,4 +211,6 @@ export const Params = {
         };
     }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);
 //# sourceMappingURL=transfer.js.map

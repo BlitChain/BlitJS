@@ -101,6 +101,10 @@ export interface CommitIDSDKType {
 }
 export declare const CommitInfo: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CommitInfo;
+    isSDK(o: any): o is CommitInfoSDKType;
+    isAmino(o: any): o is CommitInfoAmino;
     encode(message: CommitInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommitInfo;
     fromJSON(object: any): CommitInfo;
@@ -116,6 +120,10 @@ export declare const CommitInfo: {
 };
 export declare const StoreInfo: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is StoreInfo;
+    isSDK(o: any): o is StoreInfoSDKType;
+    isAmino(o: any): o is StoreInfoAmino;
     encode(message: StoreInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): StoreInfo;
     fromJSON(object: any): StoreInfo;
@@ -131,6 +139,10 @@ export declare const StoreInfo: {
 };
 export declare const CommitID: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CommitID;
+    isSDK(o: any): o is CommitIDSDKType;
+    isAmino(o: any): o is CommitIDAmino;
     encode(message: CommitID, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommitID;
     fromJSON(object: any): CommitID;

@@ -133,6 +133,9 @@ export interface ProofOpsSDKType {
 }
 export declare const Proof: {
     typeUrl: string;
+    is(o: any): o is Proof;
+    isSDK(o: any): o is ProofSDKType;
+    isAmino(o: any): o is ProofAmino;
     encode(message: Proof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Proof;
     fromJSON(object: any): Proof;
@@ -147,6 +150,9 @@ export declare const Proof: {
 };
 export declare const ValueOp: {
     typeUrl: string;
+    is(o: any): o is ValueOp;
+    isSDK(o: any): o is ValueOpSDKType;
+    isAmino(o: any): o is ValueOpAmino;
     encode(message: ValueOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValueOp;
     fromJSON(object: any): ValueOp;
@@ -161,6 +167,9 @@ export declare const ValueOp: {
 };
 export declare const DominoOp: {
     typeUrl: string;
+    is(o: any): o is DominoOp;
+    isSDK(o: any): o is DominoOpSDKType;
+    isAmino(o: any): o is DominoOpAmino;
     encode(message: DominoOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DominoOp;
     fromJSON(object: any): DominoOp;
@@ -175,6 +184,9 @@ export declare const DominoOp: {
 };
 export declare const ProofOp: {
     typeUrl: string;
+    is(o: any): o is ProofOp;
+    isSDK(o: any): o is ProofOpSDKType;
+    isAmino(o: any): o is ProofOpAmino;
     encode(message: ProofOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ProofOp;
     fromJSON(object: any): ProofOp;
@@ -189,6 +201,9 @@ export declare const ProofOp: {
 };
 export declare const ProofOps: {
     typeUrl: string;
+    is(o: any): o is ProofOps;
+    isSDK(o: any): o is ProofOpsSDKType;
+    isAmino(o: any): o is ProofOpsAmino;
     encode(message: ProofOps, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ProofOps;
     fromJSON(object: any): ProofOps;

@@ -2,6 +2,7 @@
 import { IdentifiedConnection, ConnectionPaths, Params } from "./connection";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 export const protobufPackage = "ibc.core.connection.v1";
 function createBaseGenesisState() {
     return {
@@ -13,6 +14,16 @@ function createBaseGenesisState() {
 }
 export const GenesisState = {
     typeUrl: "/ibc.core.connection.v1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.connections) && (!o.connections.length || IdentifiedConnection.is(o.connections[0])) && Array.isArray(o.client_connection_paths) && (!o.client_connection_paths.length || ConnectionPaths.is(o.client_connection_paths[0])) && typeof o.next_connection_sequence === "bigint" && Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.connections) && (!o.connections.length || IdentifiedConnection.isSDK(o.connections[0])) && Array.isArray(o.client_connection_paths) && (!o.client_connection_paths.length || ConnectionPaths.isSDK(o.client_connection_paths[0])) && typeof o.next_connection_sequence === "bigint" && Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.connections) && (!o.connections.length || IdentifiedConnection.isAmino(o.connections[0])) && Array.isArray(o.client_connection_paths) && (!o.client_connection_paths.length || ConnectionPaths.isAmino(o.client_connection_paths[0])) && typeof o.next_connection_sequence === "bigint" && Params.isAmino(o.params));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.connections) {
             IdentifiedConnection.encode(v, writer.uint32(10).fork()).ldelim();
@@ -140,4 +151,6 @@ export const GenesisState = {
         };
     }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 //# sourceMappingURL=genesis.js.map

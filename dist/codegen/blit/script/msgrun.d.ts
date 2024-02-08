@@ -57,6 +57,9 @@ export interface MsgRunResponseSDKType {
 }
 export declare const MsgRun: {
     typeUrl: string;
+    is(o: any): o is MsgRun;
+    isSDK(o: any): o is MsgRunSDKType;
+    isAmino(o: any): o is MsgRunAmino;
     encode(message: MsgRun, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRun;
     fromJSON(object: any): MsgRun;
@@ -71,6 +74,9 @@ export declare const MsgRun: {
 };
 export declare const MsgRunResponse: {
     typeUrl: string;
+    is(o: any): o is MsgRunResponse;
+    isSDK(o: any): o is MsgRunResponseSDKType;
+    isAmino(o: any): o is MsgRunResponseAmino;
     encode(message: MsgRunResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRunResponse;
     fromJSON(object: any): MsgRunResponse;

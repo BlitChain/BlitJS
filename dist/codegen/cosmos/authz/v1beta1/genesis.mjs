@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { GrantAuthorization } from "./authz";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.authz.v1beta1";
 function createBaseGenesisState() {
     return {
@@ -9,6 +10,16 @@ function createBaseGenesisState() {
 }
 export const GenesisState = {
     typeUrl: "/cosmos.authz.v1beta1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.authorization) && (!o.authorization.length || GrantAuthorization.is(o.authorization[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.authorization) && (!o.authorization.length || GrantAuthorization.isSDK(o.authorization[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.authorization) && (!o.authorization.length || GrantAuthorization.isAmino(o.authorization[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.authorization) {
             GrantAuthorization.encode(v, writer.uint32(10).fork()).ldelim();
@@ -89,4 +100,6 @@ export const GenesisState = {
         };
     }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 //# sourceMappingURL=genesis.js.map

@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { ConsensusParams } from "../../../tendermint/types/params";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { isSet } from "../../../helpers";
 export const protobufPackage = "cosmos.consensus.v1";
 function createBaseQueryParamsRequest() {
@@ -8,6 +9,16 @@ function createBaseQueryParamsRequest() {
 }
 export const QueryParamsRequest = {
     typeUrl: "/cosmos.consensus.v1.QueryParamsRequest",
+    aminoType: "cosmos-sdk/QueryParamsRequest",
+    is(o) {
+        return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -66,6 +77,8 @@ export const QueryParamsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsRequest.aminoType, QueryParamsRequest.typeUrl);
 function createBaseQueryParamsResponse() {
     return {
         params: undefined
@@ -73,6 +86,16 @@ function createBaseQueryParamsResponse() {
 }
 export const QueryParamsResponse = {
     typeUrl: "/cosmos.consensus.v1.QueryParamsResponse",
+    aminoType: "cosmos-sdk/QueryParamsResponse",
+    is(o) {
+        return o && o.$typeUrl === QueryParamsResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === QueryParamsResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === QueryParamsResponse.typeUrl;
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.params !== undefined) {
             ConsensusParams.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -145,4 +168,6 @@ export const QueryParamsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsResponse.aminoType, QueryParamsResponse.typeUrl);
 //# sourceMappingURL=query.js.map

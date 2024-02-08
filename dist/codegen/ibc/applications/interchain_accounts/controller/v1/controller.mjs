@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../../../binary";
 import { isSet } from "../../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../../registry";
 export const protobufPackage = "ibc.applications.interchain_accounts.controller.v1";
 function createBaseParams() {
     return {
@@ -9,6 +10,16 @@ function createBaseParams() {
 }
 export const Params = {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.Params",
+    aminoType: "cosmos-sdk/Params",
+    is(o) {
+        return o && (o.$typeUrl === Params.typeUrl || typeof o.controller_enabled === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Params.typeUrl || typeof o.controller_enabled === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Params.typeUrl || typeof o.controller_enabled === "boolean");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.controller_enabled === true) {
             writer.uint32(8).bool(message.controller_enabled);
@@ -81,4 +92,6 @@ export const Params = {
         };
     }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);
 //# sourceMappingURL=controller.js.map

@@ -60,6 +60,10 @@ export interface PrivKeySDKType {
 }
 export declare const PubKey: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PubKey;
+    isSDK(o: any): o is PubKeySDKType;
+    isAmino(o: any): o is PubKeyAmino;
     encode(message: PubKey, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PubKey;
     fromJSON(object: any): PubKey;
@@ -75,6 +79,10 @@ export declare const PubKey: {
 };
 export declare const PrivKey: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PrivKey;
+    isSDK(o: any): o is PrivKeySDKType;
+    isAmino(o: any): o is PrivKeyAmino;
     encode(message: PrivKey, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PrivKey;
     fromJSON(object: any): PrivKey;

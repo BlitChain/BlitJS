@@ -162,6 +162,10 @@ export interface StoreKeyConfigSDKType {
 }
 export declare const Module: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Module;
+    isSDK(o: any): o is ModuleSDKType;
+    isAmino(o: any): o is ModuleAmino;
     encode(message: Module, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Module;
     fromJSON(object: any): Module;
@@ -177,6 +181,10 @@ export declare const Module: {
 };
 export declare const StoreKeyConfig: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is StoreKeyConfig;
+    isSDK(o: any): o is StoreKeyConfigSDKType;
+    isAmino(o: any): o is StoreKeyConfigAmino;
     encode(message: StoreKeyConfig, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): StoreKeyConfig;
     fromJSON(object: any): StoreKeyConfig;

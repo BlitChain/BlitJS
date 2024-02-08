@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 export const protobufPackage = "cosmos.tx.config.v1";
 function createBaseConfig() {
     return {
@@ -10,6 +11,16 @@ function createBaseConfig() {
 }
 export const Config = {
     typeUrl: "/cosmos.tx.config.v1.Config",
+    aminoType: "cosmos-sdk/Config",
+    is(o) {
+        return o && (o.$typeUrl === Config.typeUrl || typeof o.skip_ante_handler === "boolean" && typeof o.skip_post_handler === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Config.typeUrl || typeof o.skip_ante_handler === "boolean" && typeof o.skip_post_handler === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Config.typeUrl || typeof o.skip_ante_handler === "boolean" && typeof o.skip_post_handler === "boolean");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.skip_ante_handler === true) {
             writer.uint32(8).bool(message.skip_ante_handler);
@@ -95,4 +106,6 @@ export const Config = {
         };
     }
 };
+GlobalDecoderRegistry.register(Config.typeUrl, Config);
+GlobalDecoderRegistry.registerAminoProtoMapping(Config.aminoType, Config.typeUrl);
 //# sourceMappingURL=config.js.map

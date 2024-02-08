@@ -148,6 +148,9 @@ export interface ScalarDescriptorSDKType {
 }
 export declare const InterfaceDescriptor: {
     typeUrl: string;
+    is(o: any): o is InterfaceDescriptor;
+    isSDK(o: any): o is InterfaceDescriptorSDKType;
+    isAmino(o: any): o is InterfaceDescriptorAmino;
     encode(message: InterfaceDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InterfaceDescriptor;
     fromJSON(object: any): InterfaceDescriptor;
@@ -162,6 +165,9 @@ export declare const InterfaceDescriptor: {
 };
 export declare const ScalarDescriptor: {
     typeUrl: string;
+    is(o: any): o is ScalarDescriptor;
+    isSDK(o: any): o is ScalarDescriptorSDKType;
+    isAmino(o: any): o is ScalarDescriptorAmino;
     encode(message: ScalarDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ScalarDescriptor;
     fromJSON(object: any): ScalarDescriptor;

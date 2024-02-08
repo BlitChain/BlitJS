@@ -282,6 +282,9 @@ export interface TimestampSDKType {
 }
 export declare const Timestamp: {
     typeUrl: string;
+    is(o: any): o is Timestamp;
+    isSDK(o: any): o is TimestampSDKType;
+    isAmino(o: any): o is string;
     encode(message: Timestamp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Timestamp;
     fromJSON(object: any): Timestamp;

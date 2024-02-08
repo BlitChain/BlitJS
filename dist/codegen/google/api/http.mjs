@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "google.api";
 function createBaseHttp() {
     return {
@@ -10,6 +11,15 @@ function createBaseHttp() {
 }
 export const Http = {
     typeUrl: "/google.api.Http",
+    is(o) {
+        return o && (o.$typeUrl === Http.typeUrl || Array.isArray(o.rules) && (!o.rules.length || HttpRule.is(o.rules[0])) && typeof o.fully_decode_reserved_expansion === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Http.typeUrl || Array.isArray(o.rules) && (!o.rules.length || HttpRule.isSDK(o.rules[0])) && typeof o.fully_decode_reserved_expansion === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Http.typeUrl || Array.isArray(o.rules) && (!o.rules.length || HttpRule.isAmino(o.rules[0])) && typeof o.fully_decode_reserved_expansion === "boolean");
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.rules) {
             HttpRule.encode(v, writer.uint32(10).fork()).ldelim();
@@ -97,6 +107,7 @@ export const Http = {
         };
     }
 };
+GlobalDecoderRegistry.register(Http.typeUrl, Http);
 function createBaseHttpRule() {
     return {
         selector: "",
@@ -113,6 +124,15 @@ function createBaseHttpRule() {
 }
 export const HttpRule = {
     typeUrl: "/google.api.HttpRule",
+    is(o) {
+        return o && (o.$typeUrl === HttpRule.typeUrl || typeof o.selector === "string" && typeof o.body === "string" && typeof o.response_body === "string" && Array.isArray(o.additional_bindings) && (!o.additional_bindings.length || HttpRule.is(o.additional_bindings[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === HttpRule.typeUrl || typeof o.selector === "string" && typeof o.body === "string" && typeof o.response_body === "string" && Array.isArray(o.additional_bindings) && (!o.additional_bindings.length || HttpRule.isSDK(o.additional_bindings[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === HttpRule.typeUrl || typeof o.selector === "string" && typeof o.body === "string" && typeof o.response_body === "string" && Array.isArray(o.additional_bindings) && (!o.additional_bindings.length || HttpRule.isAmino(o.additional_bindings[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.selector !== "") {
             writer.uint32(10).string(message.selector);
@@ -304,6 +324,7 @@ export const HttpRule = {
         };
     }
 };
+GlobalDecoderRegistry.register(HttpRule.typeUrl, HttpRule);
 function createBaseCustomHttpPattern() {
     return {
         kind: "",
@@ -312,6 +333,15 @@ function createBaseCustomHttpPattern() {
 }
 export const CustomHttpPattern = {
     typeUrl: "/google.api.CustomHttpPattern",
+    is(o) {
+        return o && (o.$typeUrl === CustomHttpPattern.typeUrl || typeof o.kind === "string" && typeof o.path === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === CustomHttpPattern.typeUrl || typeof o.kind === "string" && typeof o.path === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === CustomHttpPattern.typeUrl || typeof o.kind === "string" && typeof o.path === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.kind !== "") {
             writer.uint32(10).string(message.kind);
@@ -391,4 +421,5 @@ export const CustomHttpPattern = {
         };
     }
 };
+GlobalDecoderRegistry.register(CustomHttpPattern.typeUrl, CustomHttpPattern);
 //# sourceMappingURL=http.js.map

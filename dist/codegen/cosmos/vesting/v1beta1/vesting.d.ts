@@ -211,6 +211,10 @@ export interface PermanentLockedAccountSDKType {
 }
 export declare const BaseVestingAccount: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is BaseVestingAccount;
+    isSDK(o: any): o is BaseVestingAccountSDKType;
+    isAmino(o: any): o is BaseVestingAccountAmino;
     encode(message: BaseVestingAccount, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BaseVestingAccount;
     fromJSON(object: any): BaseVestingAccount;
@@ -226,6 +230,10 @@ export declare const BaseVestingAccount: {
 };
 export declare const ContinuousVestingAccount: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ContinuousVestingAccount;
+    isSDK(o: any): o is ContinuousVestingAccountSDKType;
+    isAmino(o: any): o is ContinuousVestingAccountAmino;
     encode(message: ContinuousVestingAccount, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ContinuousVestingAccount;
     fromJSON(object: any): ContinuousVestingAccount;
@@ -241,6 +249,10 @@ export declare const ContinuousVestingAccount: {
 };
 export declare const DelayedVestingAccount: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DelayedVestingAccount;
+    isSDK(o: any): o is DelayedVestingAccountSDKType;
+    isAmino(o: any): o is DelayedVestingAccountAmino;
     encode(message: DelayedVestingAccount, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DelayedVestingAccount;
     fromJSON(object: any): DelayedVestingAccount;
@@ -256,6 +268,10 @@ export declare const DelayedVestingAccount: {
 };
 export declare const Period: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Period;
+    isSDK(o: any): o is PeriodSDKType;
+    isAmino(o: any): o is PeriodAmino;
     encode(message: Period, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Period;
     fromJSON(object: any): Period;
@@ -271,6 +287,10 @@ export declare const Period: {
 };
 export declare const PeriodicVestingAccount: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PeriodicVestingAccount;
+    isSDK(o: any): o is PeriodicVestingAccountSDKType;
+    isAmino(o: any): o is PeriodicVestingAccountAmino;
     encode(message: PeriodicVestingAccount, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PeriodicVestingAccount;
     fromJSON(object: any): PeriodicVestingAccount;
@@ -286,6 +306,10 @@ export declare const PeriodicVestingAccount: {
 };
 export declare const PermanentLockedAccount: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PermanentLockedAccount;
+    isSDK(o: any): o is PermanentLockedAccountSDKType;
+    isAmino(o: any): o is PermanentLockedAccountAmino;
     encode(message: PermanentLockedAccount, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PermanentLockedAccount;
     fromJSON(object: any): PermanentLockedAccount;

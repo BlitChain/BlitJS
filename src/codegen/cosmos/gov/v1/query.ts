@@ -2,6 +2,7 @@
 import { ProposalStatus, Proposal, ProposalAmino, ProposalSDKType, Vote, VoteAmino, VoteSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType, Params, ParamsAmino, ParamsSDKType, Deposit, DepositAmino, DepositSDKType, TallyResult, TallyResultAmino, TallyResultSDKType, proposalStatusFromJSON, proposalStatusToJSON } from "./gov";
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { isSet } from "../../../helpers";
 export const protobufPackage = "cosmos.gov.v1";
 /** QueryConstitutionRequest is the request type for the Query/Constitution RPC method */
@@ -510,6 +511,16 @@ function createBaseQueryConstitutionRequest(): QueryConstitutionRequest {
 }
 export const QueryConstitutionRequest = {
   typeUrl: "/cosmos.gov.v1.QueryConstitutionRequest",
+  aminoType: "cosmos-sdk/v1/QueryConstitutionRequest",
+  is(o: any): o is QueryConstitutionRequest {
+    return o && o.$typeUrl === QueryConstitutionRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryConstitutionRequestSDKType {
+    return o && o.$typeUrl === QueryConstitutionRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryConstitutionRequestAmino {
+    return o && o.$typeUrl === QueryConstitutionRequest.typeUrl;
+  },
   encode(_: QueryConstitutionRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -568,6 +579,8 @@ export const QueryConstitutionRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryConstitutionRequest.typeUrl, QueryConstitutionRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryConstitutionRequest.aminoType, QueryConstitutionRequest.typeUrl);
 function createBaseQueryConstitutionResponse(): QueryConstitutionResponse {
   return {
     constitution: ""
@@ -575,6 +588,16 @@ function createBaseQueryConstitutionResponse(): QueryConstitutionResponse {
 }
 export const QueryConstitutionResponse = {
   typeUrl: "/cosmos.gov.v1.QueryConstitutionResponse",
+  aminoType: "cosmos-sdk/v1/QueryConstitutionResponse",
+  is(o: any): o is QueryConstitutionResponse {
+    return o && (o.$typeUrl === QueryConstitutionResponse.typeUrl || typeof o.constitution === "string");
+  },
+  isSDK(o: any): o is QueryConstitutionResponseSDKType {
+    return o && (o.$typeUrl === QueryConstitutionResponse.typeUrl || typeof o.constitution === "string");
+  },
+  isAmino(o: any): o is QueryConstitutionResponseAmino {
+    return o && (o.$typeUrl === QueryConstitutionResponse.typeUrl || typeof o.constitution === "string");
+  },
   encode(message: QueryConstitutionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.constitution !== "") {
       writer.uint32(10).string(message.constitution);
@@ -647,6 +670,8 @@ export const QueryConstitutionResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryConstitutionResponse.typeUrl, QueryConstitutionResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryConstitutionResponse.aminoType, QueryConstitutionResponse.typeUrl);
 function createBaseQueryProposalRequest(): QueryProposalRequest {
   return {
     proposal_id: BigInt(0)
@@ -654,6 +679,16 @@ function createBaseQueryProposalRequest(): QueryProposalRequest {
 }
 export const QueryProposalRequest = {
   typeUrl: "/cosmos.gov.v1.QueryProposalRequest",
+  aminoType: "cosmos-sdk/v1/QueryProposalRequest",
+  is(o: any): o is QueryProposalRequest {
+    return o && (o.$typeUrl === QueryProposalRequest.typeUrl || typeof o.proposal_id === "bigint");
+  },
+  isSDK(o: any): o is QueryProposalRequestSDKType {
+    return o && (o.$typeUrl === QueryProposalRequest.typeUrl || typeof o.proposal_id === "bigint");
+  },
+  isAmino(o: any): o is QueryProposalRequestAmino {
+    return o && (o.$typeUrl === QueryProposalRequest.typeUrl || typeof o.proposal_id === "bigint");
+  },
   encode(message: QueryProposalRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.proposal_id !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposal_id);
@@ -726,6 +761,8 @@ export const QueryProposalRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryProposalRequest.typeUrl, QueryProposalRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryProposalRequest.aminoType, QueryProposalRequest.typeUrl);
 function createBaseQueryProposalResponse(): QueryProposalResponse {
   return {
     proposal: undefined
@@ -733,6 +770,16 @@ function createBaseQueryProposalResponse(): QueryProposalResponse {
 }
 export const QueryProposalResponse = {
   typeUrl: "/cosmos.gov.v1.QueryProposalResponse",
+  aminoType: "cosmos-sdk/v1/QueryProposalResponse",
+  is(o: any): o is QueryProposalResponse {
+    return o && o.$typeUrl === QueryProposalResponse.typeUrl;
+  },
+  isSDK(o: any): o is QueryProposalResponseSDKType {
+    return o && o.$typeUrl === QueryProposalResponse.typeUrl;
+  },
+  isAmino(o: any): o is QueryProposalResponseAmino {
+    return o && o.$typeUrl === QueryProposalResponse.typeUrl;
+  },
   encode(message: QueryProposalResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.proposal !== undefined) {
       Proposal.encode(message.proposal, writer.uint32(10).fork()).ldelim();
@@ -805,6 +852,8 @@ export const QueryProposalResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryProposalResponse.typeUrl, QueryProposalResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryProposalResponse.aminoType, QueryProposalResponse.typeUrl);
 function createBaseQueryProposalsRequest(): QueryProposalsRequest {
   return {
     proposal_status: 0,
@@ -815,6 +864,16 @@ function createBaseQueryProposalsRequest(): QueryProposalsRequest {
 }
 export const QueryProposalsRequest = {
   typeUrl: "/cosmos.gov.v1.QueryProposalsRequest",
+  aminoType: "cosmos-sdk/v1/QueryProposalsRequest",
+  is(o: any): o is QueryProposalsRequest {
+    return o && (o.$typeUrl === QueryProposalsRequest.typeUrl || isSet(o.proposal_status) && typeof o.voter === "string" && typeof o.depositor === "string");
+  },
+  isSDK(o: any): o is QueryProposalsRequestSDKType {
+    return o && (o.$typeUrl === QueryProposalsRequest.typeUrl || isSet(o.proposal_status) && typeof o.voter === "string" && typeof o.depositor === "string");
+  },
+  isAmino(o: any): o is QueryProposalsRequestAmino {
+    return o && (o.$typeUrl === QueryProposalsRequest.typeUrl || isSet(o.proposal_status) && typeof o.voter === "string" && typeof o.depositor === "string");
+  },
   encode(message: QueryProposalsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.proposal_status !== 0) {
       writer.uint32(8).int32(message.proposal_status);
@@ -926,6 +985,8 @@ export const QueryProposalsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryProposalsRequest.typeUrl, QueryProposalsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryProposalsRequest.aminoType, QueryProposalsRequest.typeUrl);
 function createBaseQueryProposalsResponse(): QueryProposalsResponse {
   return {
     proposals: [],
@@ -934,6 +995,16 @@ function createBaseQueryProposalsResponse(): QueryProposalsResponse {
 }
 export const QueryProposalsResponse = {
   typeUrl: "/cosmos.gov.v1.QueryProposalsResponse",
+  aminoType: "cosmos-sdk/v1/QueryProposalsResponse",
+  is(o: any): o is QueryProposalsResponse {
+    return o && (o.$typeUrl === QueryProposalsResponse.typeUrl || Array.isArray(o.proposals) && (!o.proposals.length || Proposal.is(o.proposals[0])));
+  },
+  isSDK(o: any): o is QueryProposalsResponseSDKType {
+    return o && (o.$typeUrl === QueryProposalsResponse.typeUrl || Array.isArray(o.proposals) && (!o.proposals.length || Proposal.isSDK(o.proposals[0])));
+  },
+  isAmino(o: any): o is QueryProposalsResponseAmino {
+    return o && (o.$typeUrl === QueryProposalsResponse.typeUrl || Array.isArray(o.proposals) && (!o.proposals.length || Proposal.isAmino(o.proposals[0])));
+  },
   encode(message: QueryProposalsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.proposals) {
       Proposal.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1025,6 +1096,8 @@ export const QueryProposalsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryProposalsResponse.typeUrl, QueryProposalsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryProposalsResponse.aminoType, QueryProposalsResponse.typeUrl);
 function createBaseQueryVoteRequest(): QueryVoteRequest {
   return {
     proposal_id: BigInt(0),
@@ -1033,6 +1106,16 @@ function createBaseQueryVoteRequest(): QueryVoteRequest {
 }
 export const QueryVoteRequest = {
   typeUrl: "/cosmos.gov.v1.QueryVoteRequest",
+  aminoType: "cosmos-sdk/v1/QueryVoteRequest",
+  is(o: any): o is QueryVoteRequest {
+    return o && (o.$typeUrl === QueryVoteRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string");
+  },
+  isSDK(o: any): o is QueryVoteRequestSDKType {
+    return o && (o.$typeUrl === QueryVoteRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string");
+  },
+  isAmino(o: any): o is QueryVoteRequestAmino {
+    return o && (o.$typeUrl === QueryVoteRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string");
+  },
   encode(message: QueryVoteRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.proposal_id !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposal_id);
@@ -1118,6 +1201,8 @@ export const QueryVoteRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryVoteRequest.typeUrl, QueryVoteRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryVoteRequest.aminoType, QueryVoteRequest.typeUrl);
 function createBaseQueryVoteResponse(): QueryVoteResponse {
   return {
     vote: undefined
@@ -1125,6 +1210,16 @@ function createBaseQueryVoteResponse(): QueryVoteResponse {
 }
 export const QueryVoteResponse = {
   typeUrl: "/cosmos.gov.v1.QueryVoteResponse",
+  aminoType: "cosmos-sdk/v1/QueryVoteResponse",
+  is(o: any): o is QueryVoteResponse {
+    return o && o.$typeUrl === QueryVoteResponse.typeUrl;
+  },
+  isSDK(o: any): o is QueryVoteResponseSDKType {
+    return o && o.$typeUrl === QueryVoteResponse.typeUrl;
+  },
+  isAmino(o: any): o is QueryVoteResponseAmino {
+    return o && o.$typeUrl === QueryVoteResponse.typeUrl;
+  },
   encode(message: QueryVoteResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.vote !== undefined) {
       Vote.encode(message.vote, writer.uint32(10).fork()).ldelim();
@@ -1197,6 +1292,8 @@ export const QueryVoteResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryVoteResponse.typeUrl, QueryVoteResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryVoteResponse.aminoType, QueryVoteResponse.typeUrl);
 function createBaseQueryVotesRequest(): QueryVotesRequest {
   return {
     proposal_id: BigInt(0),
@@ -1205,6 +1302,16 @@ function createBaseQueryVotesRequest(): QueryVotesRequest {
 }
 export const QueryVotesRequest = {
   typeUrl: "/cosmos.gov.v1.QueryVotesRequest",
+  aminoType: "cosmos-sdk/v1/QueryVotesRequest",
+  is(o: any): o is QueryVotesRequest {
+    return o && (o.$typeUrl === QueryVotesRequest.typeUrl || typeof o.proposal_id === "bigint");
+  },
+  isSDK(o: any): o is QueryVotesRequestSDKType {
+    return o && (o.$typeUrl === QueryVotesRequest.typeUrl || typeof o.proposal_id === "bigint");
+  },
+  isAmino(o: any): o is QueryVotesRequestAmino {
+    return o && (o.$typeUrl === QueryVotesRequest.typeUrl || typeof o.proposal_id === "bigint");
+  },
   encode(message: QueryVotesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.proposal_id !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposal_id);
@@ -1290,6 +1397,8 @@ export const QueryVotesRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryVotesRequest.typeUrl, QueryVotesRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryVotesRequest.aminoType, QueryVotesRequest.typeUrl);
 function createBaseQueryVotesResponse(): QueryVotesResponse {
   return {
     votes: [],
@@ -1298,6 +1407,16 @@ function createBaseQueryVotesResponse(): QueryVotesResponse {
 }
 export const QueryVotesResponse = {
   typeUrl: "/cosmos.gov.v1.QueryVotesResponse",
+  aminoType: "cosmos-sdk/v1/QueryVotesResponse",
+  is(o: any): o is QueryVotesResponse {
+    return o && (o.$typeUrl === QueryVotesResponse.typeUrl || Array.isArray(o.votes) && (!o.votes.length || Vote.is(o.votes[0])));
+  },
+  isSDK(o: any): o is QueryVotesResponseSDKType {
+    return o && (o.$typeUrl === QueryVotesResponse.typeUrl || Array.isArray(o.votes) && (!o.votes.length || Vote.isSDK(o.votes[0])));
+  },
+  isAmino(o: any): o is QueryVotesResponseAmino {
+    return o && (o.$typeUrl === QueryVotesResponse.typeUrl || Array.isArray(o.votes) && (!o.votes.length || Vote.isAmino(o.votes[0])));
+  },
   encode(message: QueryVotesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.votes) {
       Vote.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1389,6 +1508,8 @@ export const QueryVotesResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryVotesResponse.typeUrl, QueryVotesResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryVotesResponse.aminoType, QueryVotesResponse.typeUrl);
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {
     params_type: ""
@@ -1396,6 +1517,16 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 export const QueryParamsRequest = {
   typeUrl: "/cosmos.gov.v1.QueryParamsRequest",
+  aminoType: "cosmos-sdk/v1/QueryParamsRequest",
+  is(o: any): o is QueryParamsRequest {
+    return o && (o.$typeUrl === QueryParamsRequest.typeUrl || typeof o.params_type === "string");
+  },
+  isSDK(o: any): o is QueryParamsRequestSDKType {
+    return o && (o.$typeUrl === QueryParamsRequest.typeUrl || typeof o.params_type === "string");
+  },
+  isAmino(o: any): o is QueryParamsRequestAmino {
+    return o && (o.$typeUrl === QueryParamsRequest.typeUrl || typeof o.params_type === "string");
+  },
   encode(message: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params_type !== "") {
       writer.uint32(10).string(message.params_type);
@@ -1468,6 +1599,8 @@ export const QueryParamsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsRequest.aminoType, QueryParamsRequest.typeUrl);
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     voting_params: undefined,
@@ -1478,6 +1611,16 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 export const QueryParamsResponse = {
   typeUrl: "/cosmos.gov.v1.QueryParamsResponse",
+  aminoType: "cosmos-sdk/v1/QueryParamsResponse",
+  is(o: any): o is QueryParamsResponse {
+    return o && o.$typeUrl === QueryParamsResponse.typeUrl;
+  },
+  isSDK(o: any): o is QueryParamsResponseSDKType {
+    return o && o.$typeUrl === QueryParamsResponse.typeUrl;
+  },
+  isAmino(o: any): o is QueryParamsResponseAmino {
+    return o && o.$typeUrl === QueryParamsResponse.typeUrl;
+  },
   encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.voting_params !== undefined) {
       VotingParams.encode(message.voting_params, writer.uint32(10).fork()).ldelim();
@@ -1589,6 +1732,8 @@ export const QueryParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsResponse.aminoType, QueryParamsResponse.typeUrl);
 function createBaseQueryDepositRequest(): QueryDepositRequest {
   return {
     proposal_id: BigInt(0),
@@ -1597,6 +1742,16 @@ function createBaseQueryDepositRequest(): QueryDepositRequest {
 }
 export const QueryDepositRequest = {
   typeUrl: "/cosmos.gov.v1.QueryDepositRequest",
+  aminoType: "cosmos-sdk/v1/QueryDepositRequest",
+  is(o: any): o is QueryDepositRequest {
+    return o && (o.$typeUrl === QueryDepositRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string");
+  },
+  isSDK(o: any): o is QueryDepositRequestSDKType {
+    return o && (o.$typeUrl === QueryDepositRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string");
+  },
+  isAmino(o: any): o is QueryDepositRequestAmino {
+    return o && (o.$typeUrl === QueryDepositRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string");
+  },
   encode(message: QueryDepositRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.proposal_id !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposal_id);
@@ -1682,6 +1837,8 @@ export const QueryDepositRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryDepositRequest.typeUrl, QueryDepositRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDepositRequest.aminoType, QueryDepositRequest.typeUrl);
 function createBaseQueryDepositResponse(): QueryDepositResponse {
   return {
     deposit: undefined
@@ -1689,6 +1846,16 @@ function createBaseQueryDepositResponse(): QueryDepositResponse {
 }
 export const QueryDepositResponse = {
   typeUrl: "/cosmos.gov.v1.QueryDepositResponse",
+  aminoType: "cosmos-sdk/v1/QueryDepositResponse",
+  is(o: any): o is QueryDepositResponse {
+    return o && o.$typeUrl === QueryDepositResponse.typeUrl;
+  },
+  isSDK(o: any): o is QueryDepositResponseSDKType {
+    return o && o.$typeUrl === QueryDepositResponse.typeUrl;
+  },
+  isAmino(o: any): o is QueryDepositResponseAmino {
+    return o && o.$typeUrl === QueryDepositResponse.typeUrl;
+  },
   encode(message: QueryDepositResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.deposit !== undefined) {
       Deposit.encode(message.deposit, writer.uint32(10).fork()).ldelim();
@@ -1761,6 +1928,8 @@ export const QueryDepositResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryDepositResponse.typeUrl, QueryDepositResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDepositResponse.aminoType, QueryDepositResponse.typeUrl);
 function createBaseQueryDepositsRequest(): QueryDepositsRequest {
   return {
     proposal_id: BigInt(0),
@@ -1769,6 +1938,16 @@ function createBaseQueryDepositsRequest(): QueryDepositsRequest {
 }
 export const QueryDepositsRequest = {
   typeUrl: "/cosmos.gov.v1.QueryDepositsRequest",
+  aminoType: "cosmos-sdk/v1/QueryDepositsRequest",
+  is(o: any): o is QueryDepositsRequest {
+    return o && (o.$typeUrl === QueryDepositsRequest.typeUrl || typeof o.proposal_id === "bigint");
+  },
+  isSDK(o: any): o is QueryDepositsRequestSDKType {
+    return o && (o.$typeUrl === QueryDepositsRequest.typeUrl || typeof o.proposal_id === "bigint");
+  },
+  isAmino(o: any): o is QueryDepositsRequestAmino {
+    return o && (o.$typeUrl === QueryDepositsRequest.typeUrl || typeof o.proposal_id === "bigint");
+  },
   encode(message: QueryDepositsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.proposal_id !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposal_id);
@@ -1854,6 +2033,8 @@ export const QueryDepositsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryDepositsRequest.typeUrl, QueryDepositsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDepositsRequest.aminoType, QueryDepositsRequest.typeUrl);
 function createBaseQueryDepositsResponse(): QueryDepositsResponse {
   return {
     deposits: [],
@@ -1862,6 +2043,16 @@ function createBaseQueryDepositsResponse(): QueryDepositsResponse {
 }
 export const QueryDepositsResponse = {
   typeUrl: "/cosmos.gov.v1.QueryDepositsResponse",
+  aminoType: "cosmos-sdk/v1/QueryDepositsResponse",
+  is(o: any): o is QueryDepositsResponse {
+    return o && (o.$typeUrl === QueryDepositsResponse.typeUrl || Array.isArray(o.deposits) && (!o.deposits.length || Deposit.is(o.deposits[0])));
+  },
+  isSDK(o: any): o is QueryDepositsResponseSDKType {
+    return o && (o.$typeUrl === QueryDepositsResponse.typeUrl || Array.isArray(o.deposits) && (!o.deposits.length || Deposit.isSDK(o.deposits[0])));
+  },
+  isAmino(o: any): o is QueryDepositsResponseAmino {
+    return o && (o.$typeUrl === QueryDepositsResponse.typeUrl || Array.isArray(o.deposits) && (!o.deposits.length || Deposit.isAmino(o.deposits[0])));
+  },
   encode(message: QueryDepositsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.deposits) {
       Deposit.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1953,6 +2144,8 @@ export const QueryDepositsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryDepositsResponse.typeUrl, QueryDepositsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDepositsResponse.aminoType, QueryDepositsResponse.typeUrl);
 function createBaseQueryTallyResultRequest(): QueryTallyResultRequest {
   return {
     proposal_id: BigInt(0)
@@ -1960,6 +2153,16 @@ function createBaseQueryTallyResultRequest(): QueryTallyResultRequest {
 }
 export const QueryTallyResultRequest = {
   typeUrl: "/cosmos.gov.v1.QueryTallyResultRequest",
+  aminoType: "cosmos-sdk/v1/QueryTallyResultRequest",
+  is(o: any): o is QueryTallyResultRequest {
+    return o && (o.$typeUrl === QueryTallyResultRequest.typeUrl || typeof o.proposal_id === "bigint");
+  },
+  isSDK(o: any): o is QueryTallyResultRequestSDKType {
+    return o && (o.$typeUrl === QueryTallyResultRequest.typeUrl || typeof o.proposal_id === "bigint");
+  },
+  isAmino(o: any): o is QueryTallyResultRequestAmino {
+    return o && (o.$typeUrl === QueryTallyResultRequest.typeUrl || typeof o.proposal_id === "bigint");
+  },
   encode(message: QueryTallyResultRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.proposal_id !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposal_id);
@@ -2032,6 +2235,8 @@ export const QueryTallyResultRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryTallyResultRequest.typeUrl, QueryTallyResultRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryTallyResultRequest.aminoType, QueryTallyResultRequest.typeUrl);
 function createBaseQueryTallyResultResponse(): QueryTallyResultResponse {
   return {
     tally: undefined
@@ -2039,6 +2244,16 @@ function createBaseQueryTallyResultResponse(): QueryTallyResultResponse {
 }
 export const QueryTallyResultResponse = {
   typeUrl: "/cosmos.gov.v1.QueryTallyResultResponse",
+  aminoType: "cosmos-sdk/v1/QueryTallyResultResponse",
+  is(o: any): o is QueryTallyResultResponse {
+    return o && o.$typeUrl === QueryTallyResultResponse.typeUrl;
+  },
+  isSDK(o: any): o is QueryTallyResultResponseSDKType {
+    return o && o.$typeUrl === QueryTallyResultResponse.typeUrl;
+  },
+  isAmino(o: any): o is QueryTallyResultResponseAmino {
+    return o && o.$typeUrl === QueryTallyResultResponse.typeUrl;
+  },
   encode(message: QueryTallyResultResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tally !== undefined) {
       TallyResult.encode(message.tally, writer.uint32(10).fork()).ldelim();
@@ -2111,3 +2326,5 @@ export const QueryTallyResultResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryTallyResultResponse.typeUrl, QueryTallyResultResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryTallyResultResponse.aminoType, QueryTallyResultResponse.typeUrl);

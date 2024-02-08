@@ -168,6 +168,10 @@ export interface QueryGranteeGrantsResponseSDKType {
 }
 export declare const QueryGrantsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGrantsRequest;
+    isSDK(o: any): o is QueryGrantsRequestSDKType;
+    isAmino(o: any): o is QueryGrantsRequestAmino;
     encode(message: QueryGrantsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGrantsRequest;
     fromJSON(object: any): QueryGrantsRequest;
@@ -183,6 +187,10 @@ export declare const QueryGrantsRequest: {
 };
 export declare const QueryGrantsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGrantsResponse;
+    isSDK(o: any): o is QueryGrantsResponseSDKType;
+    isAmino(o: any): o is QueryGrantsResponseAmino;
     encode(message: QueryGrantsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGrantsResponse;
     fromJSON(object: any): QueryGrantsResponse;
@@ -198,6 +206,10 @@ export declare const QueryGrantsResponse: {
 };
 export declare const QueryGranterGrantsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGranterGrantsRequest;
+    isSDK(o: any): o is QueryGranterGrantsRequestSDKType;
+    isAmino(o: any): o is QueryGranterGrantsRequestAmino;
     encode(message: QueryGranterGrantsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGranterGrantsRequest;
     fromJSON(object: any): QueryGranterGrantsRequest;
@@ -213,6 +225,10 @@ export declare const QueryGranterGrantsRequest: {
 };
 export declare const QueryGranterGrantsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGranterGrantsResponse;
+    isSDK(o: any): o is QueryGranterGrantsResponseSDKType;
+    isAmino(o: any): o is QueryGranterGrantsResponseAmino;
     encode(message: QueryGranterGrantsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGranterGrantsResponse;
     fromJSON(object: any): QueryGranterGrantsResponse;
@@ -228,6 +244,10 @@ export declare const QueryGranterGrantsResponse: {
 };
 export declare const QueryGranteeGrantsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGranteeGrantsRequest;
+    isSDK(o: any): o is QueryGranteeGrantsRequestSDKType;
+    isAmino(o: any): o is QueryGranteeGrantsRequestAmino;
     encode(message: QueryGranteeGrantsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGranteeGrantsRequest;
     fromJSON(object: any): QueryGranteeGrantsRequest;
@@ -243,6 +263,10 @@ export declare const QueryGranteeGrantsRequest: {
 };
 export declare const QueryGranteeGrantsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryGranteeGrantsResponse;
+    isSDK(o: any): o is QueryGranteeGrantsResponseSDKType;
+    isAmino(o: any): o is QueryGranteeGrantsResponseAmino;
     encode(message: QueryGranteeGrantsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryGranteeGrantsResponse;
     fromJSON(object: any): QueryGranteeGrantsResponse;

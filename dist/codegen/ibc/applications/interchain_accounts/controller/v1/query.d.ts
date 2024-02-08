@@ -85,6 +85,10 @@ export interface QueryParamsResponseSDKType {
 }
 export declare const QueryInterchainAccountRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryInterchainAccountRequest;
+    isSDK(o: any): o is QueryInterchainAccountRequestSDKType;
+    isAmino(o: any): o is QueryInterchainAccountRequestAmino;
     encode(message: QueryInterchainAccountRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryInterchainAccountRequest;
     fromJSON(object: any): QueryInterchainAccountRequest;
@@ -100,6 +104,10 @@ export declare const QueryInterchainAccountRequest: {
 };
 export declare const QueryInterchainAccountResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryInterchainAccountResponse;
+    isSDK(o: any): o is QueryInterchainAccountResponseSDKType;
+    isAmino(o: any): o is QueryInterchainAccountResponseAmino;
     encode(message: QueryInterchainAccountResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryInterchainAccountResponse;
     fromJSON(object: any): QueryInterchainAccountResponse;
@@ -115,6 +123,10 @@ export declare const QueryInterchainAccountResponse: {
 };
 export declare const QueryParamsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryParamsRequest;
+    isSDK(o: any): o is QueryParamsRequestSDKType;
+    isAmino(o: any): o is QueryParamsRequestAmino;
     encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromJSON(_: any): QueryParamsRequest;
@@ -130,6 +142,10 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryParamsResponse;
+    isSDK(o: any): o is QueryParamsResponseSDKType;
+    isAmino(o: any): o is QueryParamsResponseAmino;
     encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromJSON(object: any): QueryParamsResponse;

@@ -4,6 +4,7 @@ import { Params } from "./params";
 import { Task } from "./task";
 import { FutureTask } from "./future_task";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { GlobalDecoderRegistry } from "../../registry";
 import { isSet } from "../../helpers";
 export const protobufPackage = "blit.blit";
 function createBaseQueryParamsRequest() {
@@ -11,6 +12,15 @@ function createBaseQueryParamsRequest() {
 }
 export const QueryParamsRequest = {
     typeUrl: "/blit.blit.QueryParamsRequest",
+    is(o) {
+        return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -63,6 +73,7 @@ export const QueryParamsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
 function createBaseQueryParamsResponse() {
     return {
         params: Params.fromPartial({})
@@ -70,6 +81,15 @@ function createBaseQueryParamsResponse() {
 }
 export const QueryParamsResponse = {
     typeUrl: "/blit.blit.QueryParamsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isAmino(o.params));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.params !== undefined) {
             Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -136,150 +156,7 @@ export const QueryParamsResponse = {
         };
     }
 };
-function createBaseEndpointsRequest() {
-    return {};
-}
-export const EndpointsRequest = {
-    typeUrl: "/blit.blit.EndpointsRequest",
-    encode(_, writer = BinaryWriter.create()) {
-        return writer;
-    },
-    decode(input, length) {
-        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseEndpointsRequest();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-            }
-        }
-        return message;
-    },
-    fromJSON(_) {
-        return {};
-    },
-    toJSON(_) {
-        const obj = {};
-        return obj;
-    },
-    fromPartial(_) {
-        const message = createBaseEndpointsRequest();
-        return message;
-    },
-    fromAmino(_) {
-        const message = createBaseEndpointsRequest();
-        return message;
-    },
-    toAmino(_) {
-        const obj = {};
-        return obj;
-    },
-    fromAminoMsg(object) {
-        return EndpointsRequest.fromAmino(object.value);
-    },
-    fromProtoMsg(message) {
-        return EndpointsRequest.decode(message.value);
-    },
-    toProto(message) {
-        return EndpointsRequest.encode(message).finish();
-    },
-    toProtoMsg(message) {
-        return {
-            typeUrl: "/blit.blit.EndpointsRequest",
-            value: EndpointsRequest.encode(message).finish()
-        };
-    }
-};
-function createBaseEndpointsResponse() {
-    return {
-        api_url: "",
-        rpc_url: ""
-    };
-}
-export const EndpointsResponse = {
-    typeUrl: "/blit.blit.EndpointsResponse",
-    encode(message, writer = BinaryWriter.create()) {
-        if (message.api_url !== "") {
-            writer.uint32(10).string(message.api_url);
-        }
-        if (message.rpc_url !== "") {
-            writer.uint32(18).string(message.rpc_url);
-        }
-        return writer;
-    },
-    decode(input, length) {
-        const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseEndpointsResponse();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    message.api_url = reader.string();
-                    break;
-                case 2:
-                    message.rpc_url = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-            }
-        }
-        return message;
-    },
-    fromJSON(object) {
-        return {
-            api_url: isSet(object.api_url) ? String(object.api_url) : "",
-            rpc_url: isSet(object.rpc_url) ? String(object.rpc_url) : ""
-        };
-    },
-    toJSON(message) {
-        const obj = {};
-        message.api_url !== undefined && (obj.api_url = message.api_url);
-        message.rpc_url !== undefined && (obj.rpc_url = message.rpc_url);
-        return obj;
-    },
-    fromPartial(object) {
-        const message = createBaseEndpointsResponse();
-        message.api_url = object.api_url ?? "";
-        message.rpc_url = object.rpc_url ?? "";
-        return message;
-    },
-    fromAmino(object) {
-        const message = createBaseEndpointsResponse();
-        if (object.api_url !== undefined && object.api_url !== null) {
-            message.api_url = object.api_url;
-        }
-        if (object.rpc_url !== undefined && object.rpc_url !== null) {
-            message.rpc_url = object.rpc_url;
-        }
-        return message;
-    },
-    toAmino(message) {
-        const obj = {};
-        obj.api_url = message.api_url;
-        obj.rpc_url = message.rpc_url;
-        return obj;
-    },
-    fromAminoMsg(object) {
-        return EndpointsResponse.fromAmino(object.value);
-    },
-    fromProtoMsg(message) {
-        return EndpointsResponse.decode(message.value);
-    },
-    toProto(message) {
-        return EndpointsResponse.encode(message).finish();
-    },
-    toProtoMsg(message) {
-        return {
-            typeUrl: "/blit.blit.EndpointsResponse",
-            value: EndpointsResponse.encode(message).finish()
-        };
-    }
-};
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
 function createBaseQueryGetTaskRequest() {
     return {
         id: BigInt(0)
@@ -287,6 +164,15 @@ function createBaseQueryGetTaskRequest() {
 }
 export const QueryGetTaskRequest = {
     typeUrl: "/blit.blit.QueryGetTaskRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryGetTaskRequest.typeUrl || typeof o.id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryGetTaskRequest.typeUrl || typeof o.id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryGetTaskRequest.typeUrl || typeof o.id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.id !== BigInt(0)) {
             writer.uint32(8).uint64(message.id);
@@ -353,6 +239,7 @@ export const QueryGetTaskRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryGetTaskRequest.typeUrl, QueryGetTaskRequest);
 function createBaseQueryGetTaskResponse() {
     return {
         task: Task.fromPartial({})
@@ -360,6 +247,15 @@ function createBaseQueryGetTaskResponse() {
 }
 export const QueryGetTaskResponse = {
     typeUrl: "/blit.blit.QueryGetTaskResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryGetTaskResponse.typeUrl || Task.is(o.task));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryGetTaskResponse.typeUrl || Task.isSDK(o.task));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryGetTaskResponse.typeUrl || Task.isAmino(o.task));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.task !== undefined) {
             Task.encode(message.task, writer.uint32(10).fork()).ldelim();
@@ -426,6 +322,7 @@ export const QueryGetTaskResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryGetTaskResponse.typeUrl, QueryGetTaskResponse);
 function createBaseQueryAllTaskRequest() {
     return {
         address: "",
@@ -434,6 +331,15 @@ function createBaseQueryAllTaskRequest() {
 }
 export const QueryAllTaskRequest = {
     typeUrl: "/blit.blit.QueryAllTaskRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryAllTaskRequest.typeUrl || typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryAllTaskRequest.typeUrl || typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryAllTaskRequest.typeUrl || typeof o.address === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -513,6 +419,7 @@ export const QueryAllTaskRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAllTaskRequest.typeUrl, QueryAllTaskRequest);
 function createBaseQueryAllTaskResponse() {
     return {
         task: [],
@@ -521,6 +428,15 @@ function createBaseQueryAllTaskResponse() {
 }
 export const QueryAllTaskResponse = {
     typeUrl: "/blit.blit.QueryAllTaskResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryAllTaskResponse.typeUrl || Array.isArray(o.task) && (!o.task.length || Task.is(o.task[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryAllTaskResponse.typeUrl || Array.isArray(o.task) && (!o.task.length || Task.isSDK(o.task[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryAllTaskResponse.typeUrl || Array.isArray(o.task) && (!o.task.length || Task.isAmino(o.task[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.task) {
             Task.encode(v, writer.uint32(10).fork()).ldelim();
@@ -608,6 +524,7 @@ export const QueryAllTaskResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAllTaskResponse.typeUrl, QueryAllTaskResponse);
 function createBaseQueryGetFutureTaskRequest() {
     return {
         index: ""
@@ -615,6 +532,15 @@ function createBaseQueryGetFutureTaskRequest() {
 }
 export const QueryGetFutureTaskRequest = {
     typeUrl: "/blit.blit.QueryGetFutureTaskRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryGetFutureTaskRequest.typeUrl || typeof o.index === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryGetFutureTaskRequest.typeUrl || typeof o.index === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryGetFutureTaskRequest.typeUrl || typeof o.index === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.index !== "") {
             writer.uint32(10).string(message.index);
@@ -681,6 +607,7 @@ export const QueryGetFutureTaskRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryGetFutureTaskRequest.typeUrl, QueryGetFutureTaskRequest);
 function createBaseQueryGetFutureTaskResponse() {
     return {
         futureTask: FutureTask.fromPartial({})
@@ -688,6 +615,15 @@ function createBaseQueryGetFutureTaskResponse() {
 }
 export const QueryGetFutureTaskResponse = {
     typeUrl: "/blit.blit.QueryGetFutureTaskResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryGetFutureTaskResponse.typeUrl || FutureTask.is(o.futureTask));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryGetFutureTaskResponse.typeUrl || FutureTask.isSDK(o.futureTask));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryGetFutureTaskResponse.typeUrl || FutureTask.isAmino(o.futureTask));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.futureTask !== undefined) {
             FutureTask.encode(message.futureTask, writer.uint32(10).fork()).ldelim();
@@ -754,6 +690,7 @@ export const QueryGetFutureTaskResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryGetFutureTaskResponse.typeUrl, QueryGetFutureTaskResponse);
 function createBaseQueryAllFutureTaskRequest() {
     return {
         prefix: "",
@@ -762,6 +699,15 @@ function createBaseQueryAllFutureTaskRequest() {
 }
 export const QueryAllFutureTaskRequest = {
     typeUrl: "/blit.blit.QueryAllFutureTaskRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryAllFutureTaskRequest.typeUrl || typeof o.prefix === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryAllFutureTaskRequest.typeUrl || typeof o.prefix === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryAllFutureTaskRequest.typeUrl || typeof o.prefix === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.prefix !== "") {
             writer.uint32(10).string(message.prefix);
@@ -841,6 +787,7 @@ export const QueryAllFutureTaskRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAllFutureTaskRequest.typeUrl, QueryAllFutureTaskRequest);
 function createBaseQueryAllFutureTaskResponse() {
     return {
         futureTask: [],
@@ -849,6 +796,15 @@ function createBaseQueryAllFutureTaskResponse() {
 }
 export const QueryAllFutureTaskResponse = {
     typeUrl: "/blit.blit.QueryAllFutureTaskResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryAllFutureTaskResponse.typeUrl || Array.isArray(o.futureTask) && (!o.futureTask.length || FutureTask.is(o.futureTask[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryAllFutureTaskResponse.typeUrl || Array.isArray(o.futureTask) && (!o.futureTask.length || FutureTask.isSDK(o.futureTask[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryAllFutureTaskResponse.typeUrl || Array.isArray(o.futureTask) && (!o.futureTask.length || FutureTask.isAmino(o.futureTask[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.futureTask) {
             FutureTask.encode(v, writer.uint32(10).fork()).ldelim();
@@ -936,4 +892,5 @@ export const QueryAllFutureTaskResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAllFutureTaskResponse.typeUrl, QueryAllFutureTaskResponse);
 //# sourceMappingURL=query.js.map

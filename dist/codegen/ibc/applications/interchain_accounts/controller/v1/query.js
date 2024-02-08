@@ -5,6 +5,7 @@ exports.QueryParamsResponse = exports.QueryParamsRequest = exports.QueryIntercha
 const controller_1 = require("./controller");
 const binary_1 = require("../../../../../binary");
 const helpers_1 = require("../../../../../helpers");
+const registry_1 = require("../../../../../registry");
 exports.protobufPackage = "ibc.applications.interchain_accounts.controller.v1";
 function createBaseQueryInterchainAccountRequest() {
     return {
@@ -14,6 +15,16 @@ function createBaseQueryInterchainAccountRequest() {
 }
 exports.QueryInterchainAccountRequest = {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.QueryInterchainAccountRequest",
+    aminoType: "cosmos-sdk/QueryInterchainAccountRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryInterchainAccountRequest.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryInterchainAccountRequest.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryInterchainAccountRequest.typeUrl || typeof o.owner === "string" && typeof o.connection_id === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.owner !== "") {
             writer.uint32(10).string(message.owner);
@@ -99,6 +110,8 @@ exports.QueryInterchainAccountRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryInterchainAccountRequest.typeUrl, exports.QueryInterchainAccountRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryInterchainAccountRequest.aminoType, exports.QueryInterchainAccountRequest.typeUrl);
 function createBaseQueryInterchainAccountResponse() {
     return {
         address: ""
@@ -106,6 +119,16 @@ function createBaseQueryInterchainAccountResponse() {
 }
 exports.QueryInterchainAccountResponse = {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.QueryInterchainAccountResponse",
+    aminoType: "cosmos-sdk/QueryInterchainAccountResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryInterchainAccountResponse.typeUrl || typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryInterchainAccountResponse.typeUrl || typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryInterchainAccountResponse.typeUrl || typeof o.address === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -178,11 +201,23 @@ exports.QueryInterchainAccountResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryInterchainAccountResponse.typeUrl, exports.QueryInterchainAccountResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryInterchainAccountResponse.aminoType, exports.QueryInterchainAccountResponse.typeUrl);
 function createBaseQueryParamsRequest() {
     return {};
 }
 exports.QueryParamsRequest = {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.QueryParamsRequest",
+    aminoType: "cosmos-sdk/QueryParamsRequest",
+    is(o) {
+        return o && o.$typeUrl === exports.QueryParamsRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.QueryParamsRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.QueryParamsRequest.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -241,6 +276,8 @@ exports.QueryParamsRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryParamsRequest.typeUrl, exports.QueryParamsRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryParamsRequest.aminoType, exports.QueryParamsRequest.typeUrl);
 function createBaseQueryParamsResponse() {
     return {
         params: undefined
@@ -248,6 +285,16 @@ function createBaseQueryParamsResponse() {
 }
 exports.QueryParamsResponse = {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.QueryParamsResponse",
+    aminoType: "cosmos-sdk/QueryParamsResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.QueryParamsResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.QueryParamsResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.QueryParamsResponse.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.params !== undefined) {
             controller_1.Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -320,4 +367,6 @@ exports.QueryParamsResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryParamsResponse.typeUrl, exports.QueryParamsResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryParamsResponse.aminoType, exports.QueryParamsResponse.typeUrl);
 //# sourceMappingURL=query.js.map

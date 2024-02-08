@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 export const protobufPackage = "cosmos.tx.config.v1";
 /** Config is the config object of the x/auth/tx package. */
 export interface Config {
@@ -49,6 +50,16 @@ function createBaseConfig(): Config {
 }
 export const Config = {
   typeUrl: "/cosmos.tx.config.v1.Config",
+  aminoType: "cosmos-sdk/Config",
+  is(o: any): o is Config {
+    return o && (o.$typeUrl === Config.typeUrl || typeof o.skip_ante_handler === "boolean" && typeof o.skip_post_handler === "boolean");
+  },
+  isSDK(o: any): o is ConfigSDKType {
+    return o && (o.$typeUrl === Config.typeUrl || typeof o.skip_ante_handler === "boolean" && typeof o.skip_post_handler === "boolean");
+  },
+  isAmino(o: any): o is ConfigAmino {
+    return o && (o.$typeUrl === Config.typeUrl || typeof o.skip_ante_handler === "boolean" && typeof o.skip_post_handler === "boolean");
+  },
   encode(message: Config, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.skip_ante_handler === true) {
       writer.uint32(8).bool(message.skip_ante_handler);
@@ -134,3 +145,5 @@ export const Config = {
     };
   }
 };
+GlobalDecoderRegistry.register(Config.typeUrl, Config);
+GlobalDecoderRegistry.registerAminoProtoMapping(Config.aminoType, Config.typeUrl);

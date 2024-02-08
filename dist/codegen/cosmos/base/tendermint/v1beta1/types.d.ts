@@ -128,6 +128,10 @@ export interface HeaderSDKType {
 }
 export declare const Block: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Block;
+    isSDK(o: any): o is BlockSDKType;
+    isAmino(o: any): o is BlockAmino;
     encode(message: Block, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Block;
     fromJSON(object: any): Block;
@@ -143,6 +147,10 @@ export declare const Block: {
 };
 export declare const Header: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Header;
+    isSDK(o: any): o is HeaderSDKType;
+    isAmino(o: any): o is HeaderAmino;
     encode(message: Header, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Header;
     fromJSON(object: any): Header;

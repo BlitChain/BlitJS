@@ -134,6 +134,10 @@ export interface MsgCancelUpgradeResponseSDKType {
 }
 export declare const MsgSoftwareUpgrade: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSoftwareUpgrade;
+    isSDK(o: any): o is MsgSoftwareUpgradeSDKType;
+    isAmino(o: any): o is MsgSoftwareUpgradeAmino;
     encode(message: MsgSoftwareUpgrade, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSoftwareUpgrade;
     fromJSON(object: any): MsgSoftwareUpgrade;
@@ -149,6 +153,10 @@ export declare const MsgSoftwareUpgrade: {
 };
 export declare const MsgSoftwareUpgradeResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSoftwareUpgradeResponse;
+    isSDK(o: any): o is MsgSoftwareUpgradeResponseSDKType;
+    isAmino(o: any): o is MsgSoftwareUpgradeResponseAmino;
     encode(_: MsgSoftwareUpgradeResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSoftwareUpgradeResponse;
     fromJSON(_: any): MsgSoftwareUpgradeResponse;
@@ -164,6 +172,10 @@ export declare const MsgSoftwareUpgradeResponse: {
 };
 export declare const MsgCancelUpgrade: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCancelUpgrade;
+    isSDK(o: any): o is MsgCancelUpgradeSDKType;
+    isAmino(o: any): o is MsgCancelUpgradeAmino;
     encode(message: MsgCancelUpgrade, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCancelUpgrade;
     fromJSON(object: any): MsgCancelUpgrade;
@@ -179,6 +191,10 @@ export declare const MsgCancelUpgrade: {
 };
 export declare const MsgCancelUpgradeResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCancelUpgradeResponse;
+    isSDK(o: any): o is MsgCancelUpgradeResponseSDKType;
+    isAmino(o: any): o is MsgCancelUpgradeResponseAmino;
     encode(_: MsgCancelUpgradeResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCancelUpgradeResponse;
     fromJSON(_: any): MsgCancelUpgradeResponse;

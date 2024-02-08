@@ -4,6 +4,7 @@ exports.MigrateFromInfo = exports.PackageReference = exports.ModuleDescriptor = 
 //@ts-nocheck
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.app.v1alpha1";
 function createBaseModuleDescriptor() {
     return {
@@ -14,6 +15,16 @@ function createBaseModuleDescriptor() {
 }
 exports.ModuleDescriptor = {
     typeUrl: "/cosmos.app.v1alpha1.ModuleDescriptor",
+    aminoType: "cosmos-sdk/ModuleDescriptor",
+    is(o) {
+        return o && (o.$typeUrl === exports.ModuleDescriptor.typeUrl || typeof o.go_import === "string" && Array.isArray(o.use_package) && (!o.use_package.length || exports.PackageReference.is(o.use_package[0])) && Array.isArray(o.can_migrate_from) && (!o.can_migrate_from.length || exports.MigrateFromInfo.is(o.can_migrate_from[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ModuleDescriptor.typeUrl || typeof o.go_import === "string" && Array.isArray(o.use_package) && (!o.use_package.length || exports.PackageReference.isSDK(o.use_package[0])) && Array.isArray(o.can_migrate_from) && (!o.can_migrate_from.length || exports.MigrateFromInfo.isSDK(o.can_migrate_from[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ModuleDescriptor.typeUrl || typeof o.go_import === "string" && Array.isArray(o.use_package) && (!o.use_package.length || exports.PackageReference.isAmino(o.use_package[0])) && Array.isArray(o.can_migrate_from) && (!o.can_migrate_from.length || exports.MigrateFromInfo.isAmino(o.can_migrate_from[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.go_import !== "") {
             writer.uint32(10).string(message.go_import);
@@ -128,6 +139,8 @@ exports.ModuleDescriptor = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ModuleDescriptor.typeUrl, exports.ModuleDescriptor);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ModuleDescriptor.aminoType, exports.ModuleDescriptor.typeUrl);
 function createBasePackageReference() {
     return {
         name: "",
@@ -136,6 +149,16 @@ function createBasePackageReference() {
 }
 exports.PackageReference = {
     typeUrl: "/cosmos.app.v1alpha1.PackageReference",
+    aminoType: "cosmos-sdk/PackageReference",
+    is(o) {
+        return o && (o.$typeUrl === exports.PackageReference.typeUrl || typeof o.name === "string" && typeof o.revision === "number");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.PackageReference.typeUrl || typeof o.name === "string" && typeof o.revision === "number");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.PackageReference.typeUrl || typeof o.name === "string" && typeof o.revision === "number");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -221,6 +244,8 @@ exports.PackageReference = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.PackageReference.typeUrl, exports.PackageReference);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.PackageReference.aminoType, exports.PackageReference.typeUrl);
 function createBaseMigrateFromInfo() {
     return {
         module: ""
@@ -228,6 +253,16 @@ function createBaseMigrateFromInfo() {
 }
 exports.MigrateFromInfo = {
     typeUrl: "/cosmos.app.v1alpha1.MigrateFromInfo",
+    aminoType: "cosmos-sdk/MigrateFromInfo",
+    is(o) {
+        return o && (o.$typeUrl === exports.MigrateFromInfo.typeUrl || typeof o.module === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MigrateFromInfo.typeUrl || typeof o.module === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MigrateFromInfo.typeUrl || typeof o.module === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.module !== "") {
             writer.uint32(10).string(message.module);
@@ -300,4 +335,6 @@ exports.MigrateFromInfo = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MigrateFromInfo.typeUrl, exports.MigrateFromInfo);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MigrateFromInfo.aminoType, exports.MigrateFromInfo.typeUrl);
 //# sourceMappingURL=module.js.map

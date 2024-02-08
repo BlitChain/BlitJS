@@ -4,6 +4,7 @@ exports.Consensus = exports.App = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "tendermint.version";
 function createBaseApp() {
     return {
@@ -13,6 +14,15 @@ function createBaseApp() {
 }
 exports.App = {
     typeUrl: "/tendermint.version.App",
+    is(o) {
+        return o && (o.$typeUrl === exports.App.typeUrl || typeof o.protocol === "bigint" && typeof o.software === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.App.typeUrl || typeof o.protocol === "bigint" && typeof o.software === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.App.typeUrl || typeof o.protocol === "bigint" && typeof o.software === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.protocol !== BigInt(0)) {
             writer.uint32(8).uint64(message.protocol);
@@ -92,6 +102,7 @@ exports.App = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.App.typeUrl, exports.App);
 function createBaseConsensus() {
     return {
         block: BigInt(0),
@@ -100,6 +111,15 @@ function createBaseConsensus() {
 }
 exports.Consensus = {
     typeUrl: "/tendermint.version.Consensus",
+    is(o) {
+        return o && (o.$typeUrl === exports.Consensus.typeUrl || typeof o.block === "bigint" && typeof o.app === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Consensus.typeUrl || typeof o.block === "bigint" && typeof o.app === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Consensus.typeUrl || typeof o.block === "bigint" && typeof o.app === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.block !== BigInt(0)) {
             writer.uint32(8).uint64(message.block);
@@ -179,4 +199,5 @@ exports.Consensus = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Consensus.typeUrl, exports.Consensus);
 //# sourceMappingURL=types.js.map

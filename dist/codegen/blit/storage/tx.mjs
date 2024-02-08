@@ -2,6 +2,7 @@
 import { Params } from "./params";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.storage";
 function createBaseMsgUpdateParams() {
     return {
@@ -11,6 +12,16 @@ function createBaseMsgUpdateParams() {
 }
 export const MsgUpdateParams = {
     typeUrl: "/blit.storage.MsgUpdateParams",
+    aminoType: "blit/x/storage/MsgUpdateParams",
+    is(o) {
+        return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.isAmino(o.params));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.authority !== "") {
             writer.uint32(10).string(message.authority);
@@ -96,11 +107,22 @@ export const MsgUpdateParams = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgUpdateParams.typeUrl, MsgUpdateParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUpdateParams.aminoType, MsgUpdateParams.typeUrl);
 function createBaseMsgUpdateParamsResponse() {
     return {};
 }
 export const MsgUpdateParamsResponse = {
     typeUrl: "/blit.storage.MsgUpdateParamsResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -153,6 +175,7 @@ export const MsgUpdateParamsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgUpdateParamsResponse.typeUrl, MsgUpdateParamsResponse);
 function createBaseMsgCreateStorage() {
     return {
         address: "",
@@ -164,6 +187,15 @@ function createBaseMsgCreateStorage() {
 }
 export const MsgCreateStorage = {
     typeUrl: "/blit.storage.MsgCreateStorage",
+    is(o) {
+        return o && (o.$typeUrl === MsgCreateStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgCreateStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgCreateStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -282,11 +314,21 @@ export const MsgCreateStorage = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgCreateStorage.typeUrl, MsgCreateStorage);
 function createBaseMsgCreateStorageResponse() {
     return {};
 }
 export const MsgCreateStorageResponse = {
     typeUrl: "/blit.storage.MsgCreateStorageResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgCreateStorageResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgCreateStorageResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgCreateStorageResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -339,6 +381,7 @@ export const MsgCreateStorageResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgCreateStorageResponse.typeUrl, MsgCreateStorageResponse);
 function createBaseMsgUpdateStorage() {
     return {
         address: "",
@@ -350,6 +393,15 @@ function createBaseMsgUpdateStorage() {
 }
 export const MsgUpdateStorage = {
     typeUrl: "/blit.storage.MsgUpdateStorage",
+    is(o) {
+        return o && (o.$typeUrl === MsgUpdateStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgUpdateStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgUpdateStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -468,11 +520,21 @@ export const MsgUpdateStorage = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgUpdateStorage.typeUrl, MsgUpdateStorage);
 function createBaseMsgUpdateStorageResponse() {
     return {};
 }
 export const MsgUpdateStorageResponse = {
     typeUrl: "/blit.storage.MsgUpdateStorageResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgUpdateStorageResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgUpdateStorageResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgUpdateStorageResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -525,6 +587,7 @@ export const MsgUpdateStorageResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgUpdateStorageResponse.typeUrl, MsgUpdateStorageResponse);
 function createBaseMsgDeleteStorage() {
     return {
         address: "",
@@ -535,6 +598,15 @@ function createBaseMsgDeleteStorage() {
 }
 export const MsgDeleteStorage = {
     typeUrl: "/blit.storage.MsgDeleteStorage",
+    is(o) {
+        return o && (o.$typeUrl === MsgDeleteStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgDeleteStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgDeleteStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -640,11 +712,21 @@ export const MsgDeleteStorage = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgDeleteStorage.typeUrl, MsgDeleteStorage);
 function createBaseMsgDeleteStorageResponse() {
     return {};
 }
 export const MsgDeleteStorageResponse = {
     typeUrl: "/blit.storage.MsgDeleteStorageResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgDeleteStorageResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgDeleteStorageResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgDeleteStorageResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -697,4 +779,5 @@ export const MsgDeleteStorageResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgDeleteStorageResponse.typeUrl, MsgDeleteStorageResponse);
 //# sourceMappingURL=tx.js.map

@@ -6,6 +6,7 @@ import { Any } from "../../google/protobuf/any";
 import { Result } from "../../cosmos/base/abci/v1beta1/abci";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.blit";
 function createBaseTask() {
     return {
@@ -29,6 +30,15 @@ function createBaseTask() {
 }
 export const Task = {
     typeUrl: "/blit.blit.Task",
+    is(o) {
+        return o && (o.$typeUrl === Task.typeUrl || typeof o.creator === "string" && typeof o.id === "bigint" && Timestamp.is(o.activate_after) && Timestamp.is(o.expire_after) && typeof o.max_runs === "bigint" && typeof o.disable_on_error === "boolean" && typeof o.enabled === "boolean" && typeof o.task_gas_limit === "bigint" && Coin.is(o.task_gas_fee) && Array.isArray(o.messages) && (!o.messages.length || Any.is(o.messages[0])) && Array.isArray(o.results) && (!o.results.length || Result.is(o.results[0])) && typeof o.error_log === "string" && typeof o.future_task_index === "string" && typeof o.total_runs === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Task.typeUrl || typeof o.creator === "string" && typeof o.id === "bigint" && Timestamp.isSDK(o.activate_after) && Timestamp.isSDK(o.expire_after) && typeof o.max_runs === "bigint" && typeof o.disable_on_error === "boolean" && typeof o.enabled === "boolean" && typeof o.task_gas_limit === "bigint" && Coin.isSDK(o.task_gas_fee) && Array.isArray(o.messages) && (!o.messages.length || Any.isSDK(o.messages[0])) && Array.isArray(o.results) && (!o.results.length || Result.isSDK(o.results[0])) && typeof o.error_log === "string" && typeof o.future_task_index === "string" && typeof o.total_runs === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Task.typeUrl || typeof o.creator === "string" && typeof o.id === "bigint" && Timestamp.isAmino(o.activate_after) && Timestamp.isAmino(o.expire_after) && typeof o.max_runs === "bigint" && typeof o.disable_on_error === "boolean" && typeof o.enabled === "boolean" && typeof o.task_gas_limit === "bigint" && Coin.isAmino(o.task_gas_fee) && Array.isArray(o.messages) && (!o.messages.length || Any.isAmino(o.messages[0])) && Array.isArray(o.results) && (!o.results.length || Result.isAmino(o.results[0])) && typeof o.error_log === "string" && typeof o.future_task_index === "string" && typeof o.total_runs === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.creator !== "") {
             writer.uint32(10).string(message.creator);
@@ -306,4 +316,5 @@ export const Task = {
         };
     }
 };
+GlobalDecoderRegistry.register(Task.typeUrl, Task);
 //# sourceMappingURL=task.js.map

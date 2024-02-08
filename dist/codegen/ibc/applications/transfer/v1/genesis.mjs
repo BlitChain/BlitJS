@@ -3,6 +3,7 @@ import { DenomTrace, Params } from "./transfer";
 import { Coin } from "../../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 export const protobufPackage = "ibc.applications.transfer.v1";
 function createBaseGenesisState() {
     return {
@@ -14,6 +15,16 @@ function createBaseGenesisState() {
 }
 export const GenesisState = {
     typeUrl: "/ibc.applications.transfer.v1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.port_id === "string" && Array.isArray(o.denom_traces) && (!o.denom_traces.length || DenomTrace.is(o.denom_traces[0])) && Params.is(o.params) && Array.isArray(o.total_escrowed) && (!o.total_escrowed.length || Coin.is(o.total_escrowed[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.port_id === "string" && Array.isArray(o.denom_traces) && (!o.denom_traces.length || DenomTrace.isSDK(o.denom_traces[0])) && Params.isSDK(o.params) && Array.isArray(o.total_escrowed) && (!o.total_escrowed.length || Coin.isSDK(o.total_escrowed[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.port_id === "string" && Array.isArray(o.denom_traces) && (!o.denom_traces.length || DenomTrace.isAmino(o.denom_traces[0])) && Params.isAmino(o.params) && Array.isArray(o.total_escrowed) && (!o.total_escrowed.length || Coin.isAmino(o.total_escrowed[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.port_id !== "") {
             writer.uint32(10).string(message.port_id);
@@ -141,4 +152,6 @@ export const GenesisState = {
         };
     }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 //# sourceMappingURL=genesis.js.map

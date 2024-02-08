@@ -25,6 +25,9 @@ export interface PublicKeySDKType {
 }
 export declare const PublicKey: {
     typeUrl: string;
+    is(o: any): o is PublicKey;
+    isSDK(o: any): o is PublicKeySDKType;
+    isAmino(o: any): o is PublicKeyAmino;
     encode(message: PublicKey, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PublicKey;
     fromJSON(object: any): PublicKey;

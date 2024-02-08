@@ -336,6 +336,10 @@ export interface UpgradeProposalSDKType {
 }
 export declare const IdentifiedClientState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is IdentifiedClientState;
+    isSDK(o: any): o is IdentifiedClientStateSDKType;
+    isAmino(o: any): o is IdentifiedClientStateAmino;
     encode(message: IdentifiedClientState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedClientState;
     fromJSON(object: any): IdentifiedClientState;
@@ -351,6 +355,10 @@ export declare const IdentifiedClientState: {
 };
 export declare const ConsensusStateWithHeight: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ConsensusStateWithHeight;
+    isSDK(o: any): o is ConsensusStateWithHeightSDKType;
+    isAmino(o: any): o is ConsensusStateWithHeightAmino;
     encode(message: ConsensusStateWithHeight, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConsensusStateWithHeight;
     fromJSON(object: any): ConsensusStateWithHeight;
@@ -366,6 +374,10 @@ export declare const ConsensusStateWithHeight: {
 };
 export declare const ClientConsensusStates: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ClientConsensusStates;
+    isSDK(o: any): o is ClientConsensusStatesSDKType;
+    isAmino(o: any): o is ClientConsensusStatesAmino;
     encode(message: ClientConsensusStates, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientConsensusStates;
     fromJSON(object: any): ClientConsensusStates;
@@ -381,6 +393,10 @@ export declare const ClientConsensusStates: {
 };
 export declare const Height: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Height;
+    isSDK(o: any): o is HeightSDKType;
+    isAmino(o: any): o is HeightAmino;
     encode(message: Height, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Height;
     fromJSON(object: any): Height;
@@ -396,6 +412,10 @@ export declare const Height: {
 };
 export declare const Params: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Params;
+    isSDK(o: any): o is ParamsSDKType;
+    isAmino(o: any): o is ParamsAmino;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromJSON(object: any): Params;
@@ -411,6 +431,10 @@ export declare const Params: {
 };
 export declare const ClientUpdateProposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ClientUpdateProposal;
+    isSDK(o: any): o is ClientUpdateProposalSDKType;
+    isAmino(o: any): o is ClientUpdateProposalAmino;
     encode(message: ClientUpdateProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientUpdateProposal;
     fromJSON(object: any): ClientUpdateProposal;
@@ -426,6 +450,10 @@ export declare const ClientUpdateProposal: {
 };
 export declare const UpgradeProposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is UpgradeProposal;
+    isSDK(o: any): o is UpgradeProposalSDKType;
+    isAmino(o: any): o is UpgradeProposalAmino;
     encode(message: UpgradeProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): UpgradeProposal;
     fromJSON(object: any): UpgradeProposal;

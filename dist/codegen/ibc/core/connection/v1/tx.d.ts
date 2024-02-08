@@ -381,6 +381,10 @@ export interface MsgUpdateParamsResponseSDKType {
 }
 export declare const MsgConnectionOpenInit: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgConnectionOpenInit;
+    isSDK(o: any): o is MsgConnectionOpenInitSDKType;
+    isAmino(o: any): o is MsgConnectionOpenInitAmino;
     encode(message: MsgConnectionOpenInit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenInit;
     fromJSON(object: any): MsgConnectionOpenInit;
@@ -396,6 +400,10 @@ export declare const MsgConnectionOpenInit: {
 };
 export declare const MsgConnectionOpenInitResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgConnectionOpenInitResponse;
+    isSDK(o: any): o is MsgConnectionOpenInitResponseSDKType;
+    isAmino(o: any): o is MsgConnectionOpenInitResponseAmino;
     encode(_: MsgConnectionOpenInitResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenInitResponse;
     fromJSON(_: any): MsgConnectionOpenInitResponse;
@@ -411,6 +419,10 @@ export declare const MsgConnectionOpenInitResponse: {
 };
 export declare const MsgConnectionOpenTry: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgConnectionOpenTry;
+    isSDK(o: any): o is MsgConnectionOpenTrySDKType;
+    isAmino(o: any): o is MsgConnectionOpenTryAmino;
     encode(message: MsgConnectionOpenTry, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenTry;
     fromJSON(object: any): MsgConnectionOpenTry;
@@ -426,6 +438,10 @@ export declare const MsgConnectionOpenTry: {
 };
 export declare const MsgConnectionOpenTryResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgConnectionOpenTryResponse;
+    isSDK(o: any): o is MsgConnectionOpenTryResponseSDKType;
+    isAmino(o: any): o is MsgConnectionOpenTryResponseAmino;
     encode(_: MsgConnectionOpenTryResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenTryResponse;
     fromJSON(_: any): MsgConnectionOpenTryResponse;
@@ -441,6 +457,10 @@ export declare const MsgConnectionOpenTryResponse: {
 };
 export declare const MsgConnectionOpenAck: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgConnectionOpenAck;
+    isSDK(o: any): o is MsgConnectionOpenAckSDKType;
+    isAmino(o: any): o is MsgConnectionOpenAckAmino;
     encode(message: MsgConnectionOpenAck, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenAck;
     fromJSON(object: any): MsgConnectionOpenAck;
@@ -456,6 +476,10 @@ export declare const MsgConnectionOpenAck: {
 };
 export declare const MsgConnectionOpenAckResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgConnectionOpenAckResponse;
+    isSDK(o: any): o is MsgConnectionOpenAckResponseSDKType;
+    isAmino(o: any): o is MsgConnectionOpenAckResponseAmino;
     encode(_: MsgConnectionOpenAckResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenAckResponse;
     fromJSON(_: any): MsgConnectionOpenAckResponse;
@@ -471,6 +495,10 @@ export declare const MsgConnectionOpenAckResponse: {
 };
 export declare const MsgConnectionOpenConfirm: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgConnectionOpenConfirm;
+    isSDK(o: any): o is MsgConnectionOpenConfirmSDKType;
+    isAmino(o: any): o is MsgConnectionOpenConfirmAmino;
     encode(message: MsgConnectionOpenConfirm, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenConfirm;
     fromJSON(object: any): MsgConnectionOpenConfirm;
@@ -486,6 +514,10 @@ export declare const MsgConnectionOpenConfirm: {
 };
 export declare const MsgConnectionOpenConfirmResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgConnectionOpenConfirmResponse;
+    isSDK(o: any): o is MsgConnectionOpenConfirmResponseSDKType;
+    isAmino(o: any): o is MsgConnectionOpenConfirmResponseAmino;
     encode(_: MsgConnectionOpenConfirmResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgConnectionOpenConfirmResponse;
     fromJSON(_: any): MsgConnectionOpenConfirmResponse;
@@ -501,6 +533,10 @@ export declare const MsgConnectionOpenConfirmResponse: {
 };
 export declare const MsgUpdateParams: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParams;
+    isSDK(o: any): o is MsgUpdateParamsSDKType;
+    isAmino(o: any): o is MsgUpdateParamsAmino;
     encode(message: MsgUpdateParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParams;
     fromJSON(object: any): MsgUpdateParams;
@@ -516,6 +552,10 @@ export declare const MsgUpdateParams: {
 };
 export declare const MsgUpdateParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParamsResponse;
+    isSDK(o: any): o is MsgUpdateParamsResponseSDKType;
+    isAmino(o: any): o is MsgUpdateParamsResponseAmino;
     encode(_: MsgUpdateParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParamsResponse;
     fromJSON(_: any): MsgUpdateParamsResponse;

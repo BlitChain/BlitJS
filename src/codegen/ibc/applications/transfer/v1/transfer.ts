@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 export const protobufPackage = "ibc.applications.transfer.v1";
 /**
  * DenomTrace contains the base denomination for ICS20 fungible tokens and the
@@ -106,6 +107,16 @@ function createBaseDenomTrace(): DenomTrace {
 }
 export const DenomTrace = {
   typeUrl: "/ibc.applications.transfer.v1.DenomTrace",
+  aminoType: "cosmos-sdk/DenomTrace",
+  is(o: any): o is DenomTrace {
+    return o && (o.$typeUrl === DenomTrace.typeUrl || typeof o.path === "string" && typeof o.base_denom === "string");
+  },
+  isSDK(o: any): o is DenomTraceSDKType {
+    return o && (o.$typeUrl === DenomTrace.typeUrl || typeof o.path === "string" && typeof o.base_denom === "string");
+  },
+  isAmino(o: any): o is DenomTraceAmino {
+    return o && (o.$typeUrl === DenomTrace.typeUrl || typeof o.path === "string" && typeof o.base_denom === "string");
+  },
   encode(message: DenomTrace, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.path !== "") {
       writer.uint32(10).string(message.path);
@@ -191,6 +202,8 @@ export const DenomTrace = {
     };
   }
 };
+GlobalDecoderRegistry.register(DenomTrace.typeUrl, DenomTrace);
+GlobalDecoderRegistry.registerAminoProtoMapping(DenomTrace.aminoType, DenomTrace.typeUrl);
 function createBaseParams(): Params {
   return {
     send_enabled: false,
@@ -199,6 +212,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/ibc.applications.transfer.v1.Params",
+  aminoType: "cosmos-sdk/Params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.send_enabled === "boolean" && typeof o.receive_enabled === "boolean");
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.send_enabled === "boolean" && typeof o.receive_enabled === "boolean");
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.send_enabled === "boolean" && typeof o.receive_enabled === "boolean");
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.send_enabled === true) {
       writer.uint32(8).bool(message.send_enabled);
@@ -284,3 +307,5 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);

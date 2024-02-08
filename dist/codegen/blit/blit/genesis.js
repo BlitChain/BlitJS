@@ -7,6 +7,7 @@ const task_1 = require("./task");
 const future_task_1 = require("./future_task");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "blit.blit";
 function createBaseGenesisState() {
     return {
@@ -18,6 +19,15 @@ function createBaseGenesisState() {
 }
 exports.GenesisState = {
     typeUrl: "/blit.blit.GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || params_1.Params.is(o.params) && Array.isArray(o.task_list) && (!o.task_list.length || task_1.Task.is(o.task_list[0])) && Array.isArray(o.future_task_list) && (!o.future_task_list.length || future_task_1.FutureTask.is(o.future_task_list[0])) && typeof o.starting_task_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || params_1.Params.isSDK(o.params) && Array.isArray(o.task_list) && (!o.task_list.length || task_1.Task.isSDK(o.task_list[0])) && Array.isArray(o.future_task_list) && (!o.future_task_list.length || future_task_1.FutureTask.isSDK(o.future_task_list[0])) && typeof o.starting_task_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || params_1.Params.isAmino(o.params) && Array.isArray(o.task_list) && (!o.task_list.length || task_1.Task.isAmino(o.task_list[0])) && Array.isArray(o.future_task_list) && (!o.future_task_list.length || future_task_1.FutureTask.isAmino(o.future_task_list[0])) && typeof o.starting_task_id === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.params !== undefined) {
             params_1.Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -139,4 +149,5 @@ exports.GenesisState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
 //# sourceMappingURL=genesis.js.map

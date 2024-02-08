@@ -173,6 +173,10 @@ export interface PageResponseSDKType {
 }
 export declare const PageRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PageRequest;
+    isSDK(o: any): o is PageRequestSDKType;
+    isAmino(o: any): o is PageRequestAmino;
     encode(message: PageRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PageRequest;
     fromJSON(object: any): PageRequest;
@@ -188,6 +192,10 @@ export declare const PageRequest: {
 };
 export declare const PageResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PageResponse;
+    isSDK(o: any): o is PageResponseSDKType;
+    isAmino(o: any): o is PageResponseAmino;
     encode(message: PageResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PageResponse;
     fromJSON(object: any): PageResponse;

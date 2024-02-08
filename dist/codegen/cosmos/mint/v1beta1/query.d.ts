@@ -147,6 +147,10 @@ export interface QueryAnnualProvisionsResponseSDKType {
 }
 export declare const QueryParamsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryParamsRequest;
+    isSDK(o: any): o is QueryParamsRequestSDKType;
+    isAmino(o: any): o is QueryParamsRequestAmino;
     encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromJSON(_: any): QueryParamsRequest;
@@ -162,6 +166,10 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryParamsResponse;
+    isSDK(o: any): o is QueryParamsResponseSDKType;
+    isAmino(o: any): o is QueryParamsResponseAmino;
     encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromJSON(object: any): QueryParamsResponse;
@@ -177,6 +185,10 @@ export declare const QueryParamsResponse: {
 };
 export declare const QueryInflationRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryInflationRequest;
+    isSDK(o: any): o is QueryInflationRequestSDKType;
+    isAmino(o: any): o is QueryInflationRequestAmino;
     encode(_: QueryInflationRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryInflationRequest;
     fromJSON(_: any): QueryInflationRequest;
@@ -192,6 +204,10 @@ export declare const QueryInflationRequest: {
 };
 export declare const QueryInflationResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryInflationResponse;
+    isSDK(o: any): o is QueryInflationResponseSDKType;
+    isAmino(o: any): o is QueryInflationResponseAmino;
     encode(message: QueryInflationResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryInflationResponse;
     fromJSON(object: any): QueryInflationResponse;
@@ -207,6 +223,10 @@ export declare const QueryInflationResponse: {
 };
 export declare const QueryAnnualProvisionsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAnnualProvisionsRequest;
+    isSDK(o: any): o is QueryAnnualProvisionsRequestSDKType;
+    isAmino(o: any): o is QueryAnnualProvisionsRequestAmino;
     encode(_: QueryAnnualProvisionsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAnnualProvisionsRequest;
     fromJSON(_: any): QueryAnnualProvisionsRequest;
@@ -222,6 +242,10 @@ export declare const QueryAnnualProvisionsRequest: {
 };
 export declare const QueryAnnualProvisionsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAnnualProvisionsResponse;
+    isSDK(o: any): o is QueryAnnualProvisionsResponseSDKType;
+    isAmino(o: any): o is QueryAnnualProvisionsResponseAmino;
     encode(message: QueryAnnualProvisionsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAnnualProvisionsResponse;
     fromJSON(object: any): QueryAnnualProvisionsResponse;

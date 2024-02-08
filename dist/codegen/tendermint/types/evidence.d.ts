@@ -105,6 +105,9 @@ export interface EvidenceListSDKType {
 }
 export declare const Evidence: {
     typeUrl: string;
+    is(o: any): o is Evidence;
+    isSDK(o: any): o is EvidenceSDKType;
+    isAmino(o: any): o is EvidenceAmino;
     encode(message: Evidence, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Evidence;
     fromJSON(object: any): Evidence;
@@ -119,6 +122,9 @@ export declare const Evidence: {
 };
 export declare const DuplicateVoteEvidence: {
     typeUrl: string;
+    is(o: any): o is DuplicateVoteEvidence;
+    isSDK(o: any): o is DuplicateVoteEvidenceSDKType;
+    isAmino(o: any): o is DuplicateVoteEvidenceAmino;
     encode(message: DuplicateVoteEvidence, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DuplicateVoteEvidence;
     fromJSON(object: any): DuplicateVoteEvidence;
@@ -133,6 +139,9 @@ export declare const DuplicateVoteEvidence: {
 };
 export declare const LightClientAttackEvidence: {
     typeUrl: string;
+    is(o: any): o is LightClientAttackEvidence;
+    isSDK(o: any): o is LightClientAttackEvidenceSDKType;
+    isAmino(o: any): o is LightClientAttackEvidenceAmino;
     encode(message: LightClientAttackEvidence, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LightClientAttackEvidence;
     fromJSON(object: any): LightClientAttackEvidence;
@@ -147,6 +156,9 @@ export declare const LightClientAttackEvidence: {
 };
 export declare const EvidenceList: {
     typeUrl: string;
+    is(o: any): o is EvidenceList;
+    isSDK(o: any): o is EvidenceListSDKType;
+    isAmino(o: any): o is EvidenceListAmino;
     encode(message: EvidenceList, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EvidenceList;
     fromJSON(object: any): EvidenceList;

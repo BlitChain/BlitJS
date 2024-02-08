@@ -25,6 +25,10 @@ export interface ClientStateSDKType {
 }
 export declare const ClientState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ClientState;
+    isSDK(o: any): o is ClientStateSDKType;
+    isAmino(o: any): o is ClientStateAmino;
     encode(message: ClientState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientState;
     fromJSON(object: any): ClientState;

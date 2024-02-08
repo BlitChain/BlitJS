@@ -147,6 +147,10 @@ export interface GrantQueueItemSDKType {
 }
 export declare const GenericAuthorization: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GenericAuthorization;
+    isSDK(o: any): o is GenericAuthorizationSDKType;
+    isAmino(o: any): o is GenericAuthorizationAmino;
     encode(message: GenericAuthorization, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenericAuthorization;
     fromJSON(object: any): GenericAuthorization;
@@ -162,6 +166,10 @@ export declare const GenericAuthorization: {
 };
 export declare const Grant: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Grant;
+    isSDK(o: any): o is GrantSDKType;
+    isAmino(o: any): o is GrantAmino;
     encode(message: Grant, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Grant;
     fromJSON(object: any): Grant;
@@ -177,6 +185,10 @@ export declare const Grant: {
 };
 export declare const GrantAuthorization: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GrantAuthorization;
+    isSDK(o: any): o is GrantAuthorizationSDKType;
+    isAmino(o: any): o is GrantAuthorizationAmino;
     encode(message: GrantAuthorization, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GrantAuthorization;
     fromJSON(object: any): GrantAuthorization;
@@ -192,6 +204,10 @@ export declare const GrantAuthorization: {
 };
 export declare const GrantQueueItem: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GrantQueueItem;
+    isSDK(o: any): o is GrantQueueItemSDKType;
+    isAmino(o: any): o is GrantQueueItemAmino;
     encode(message: GrantQueueItem, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GrantQueueItem;
     fromJSON(object: any): GrantQueueItem;
@@ -205,6 +221,3 @@ export declare const GrantQueueItem: {
     toProto(message: GrantQueueItem): Uint8Array;
     toProtoMsg(message: GrantQueueItem): GrantQueueItemProtoMsg;
 };
-export declare const Cosmos_authzv1beta1Authorization_InterfaceDecoder: (input: BinaryReader | Uint8Array) => GenericAuthorization | SendAuthorization | StakeAuthorization | TransferAuthorization | Any;
-export declare const Cosmos_authzv1beta1Authorization_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_authzv1beta1Authorization_ToAmino: (content: Any) => AnyAmino;

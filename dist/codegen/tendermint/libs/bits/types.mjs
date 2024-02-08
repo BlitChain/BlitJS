@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "tendermint.libs.bits";
 function createBaseBitArray() {
     return {
@@ -10,6 +11,15 @@ function createBaseBitArray() {
 }
 export const BitArray = {
     typeUrl: "/tendermint.libs.bits.BitArray",
+    is(o) {
+        return o && (o.$typeUrl === BitArray.typeUrl || typeof o.bits === "bigint" && Array.isArray(o.elems) && (!o.elems.length || typeof o.elems[0] === "bigint"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === BitArray.typeUrl || typeof o.bits === "bigint" && Array.isArray(o.elems) && (!o.elems.length || typeof o.elems[0] === "bigint"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === BitArray.typeUrl || typeof o.bits === "bigint" && Array.isArray(o.elems) && (!o.elems.length || typeof o.elems[0] === "bigint"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.bits !== BigInt(0)) {
             writer.uint32(8).int64(message.bits);
@@ -107,4 +117,5 @@ export const BitArray = {
         };
     }
 };
+GlobalDecoderRegistry.register(BitArray.typeUrl, BitArray);
 //# sourceMappingURL=types.js.map

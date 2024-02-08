@@ -2,7 +2,6 @@ import { Description, DescriptionAmino, DescriptionSDKType, CommissionRates, Com
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { Pubkey } from "@cosmjs/amino";
 export declare const protobufPackage = "cosmos.staking.v1beta1";
 /** MsgCreateValidator defines a SDK message for creating a new validator. */
 export interface MsgCreateValidator {
@@ -466,6 +465,10 @@ export interface MsgUpdateParamsResponseSDKType {
 }
 export declare const MsgCreateValidator: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreateValidator;
+    isSDK(o: any): o is MsgCreateValidatorSDKType;
+    isAmino(o: any): o is MsgCreateValidatorAmino;
     encode(message: MsgCreateValidator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateValidator;
     fromJSON(object: any): MsgCreateValidator;
@@ -481,6 +484,10 @@ export declare const MsgCreateValidator: {
 };
 export declare const MsgCreateValidatorResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreateValidatorResponse;
+    isSDK(o: any): o is MsgCreateValidatorResponseSDKType;
+    isAmino(o: any): o is MsgCreateValidatorResponseAmino;
     encode(_: MsgCreateValidatorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateValidatorResponse;
     fromJSON(_: any): MsgCreateValidatorResponse;
@@ -496,6 +503,10 @@ export declare const MsgCreateValidatorResponse: {
 };
 export declare const MsgEditValidator: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgEditValidator;
+    isSDK(o: any): o is MsgEditValidatorSDKType;
+    isAmino(o: any): o is MsgEditValidatorAmino;
     encode(message: MsgEditValidator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgEditValidator;
     fromJSON(object: any): MsgEditValidator;
@@ -511,6 +522,10 @@ export declare const MsgEditValidator: {
 };
 export declare const MsgEditValidatorResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgEditValidatorResponse;
+    isSDK(o: any): o is MsgEditValidatorResponseSDKType;
+    isAmino(o: any): o is MsgEditValidatorResponseAmino;
     encode(_: MsgEditValidatorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgEditValidatorResponse;
     fromJSON(_: any): MsgEditValidatorResponse;
@@ -526,6 +541,10 @@ export declare const MsgEditValidatorResponse: {
 };
 export declare const MsgDelegate: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgDelegate;
+    isSDK(o: any): o is MsgDelegateSDKType;
+    isAmino(o: any): o is MsgDelegateAmino;
     encode(message: MsgDelegate, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegate;
     fromJSON(object: any): MsgDelegate;
@@ -541,6 +560,10 @@ export declare const MsgDelegate: {
 };
 export declare const MsgDelegateResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgDelegateResponse;
+    isSDK(o: any): o is MsgDelegateResponseSDKType;
+    isAmino(o: any): o is MsgDelegateResponseAmino;
     encode(_: MsgDelegateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDelegateResponse;
     fromJSON(_: any): MsgDelegateResponse;
@@ -556,6 +579,10 @@ export declare const MsgDelegateResponse: {
 };
 export declare const MsgBeginRedelegate: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgBeginRedelegate;
+    isSDK(o: any): o is MsgBeginRedelegateSDKType;
+    isAmino(o: any): o is MsgBeginRedelegateAmino;
     encode(message: MsgBeginRedelegate, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginRedelegate;
     fromJSON(object: any): MsgBeginRedelegate;
@@ -571,6 +598,10 @@ export declare const MsgBeginRedelegate: {
 };
 export declare const MsgBeginRedelegateResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgBeginRedelegateResponse;
+    isSDK(o: any): o is MsgBeginRedelegateResponseSDKType;
+    isAmino(o: any): o is MsgBeginRedelegateResponseAmino;
     encode(message: MsgBeginRedelegateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgBeginRedelegateResponse;
     fromJSON(object: any): MsgBeginRedelegateResponse;
@@ -586,6 +617,10 @@ export declare const MsgBeginRedelegateResponse: {
 };
 export declare const MsgUndelegate: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUndelegate;
+    isSDK(o: any): o is MsgUndelegateSDKType;
+    isAmino(o: any): o is MsgUndelegateAmino;
     encode(message: MsgUndelegate, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUndelegate;
     fromJSON(object: any): MsgUndelegate;
@@ -601,6 +636,10 @@ export declare const MsgUndelegate: {
 };
 export declare const MsgUndelegateResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUndelegateResponse;
+    isSDK(o: any): o is MsgUndelegateResponseSDKType;
+    isAmino(o: any): o is MsgUndelegateResponseAmino;
     encode(message: MsgUndelegateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUndelegateResponse;
     fromJSON(object: any): MsgUndelegateResponse;
@@ -616,6 +655,10 @@ export declare const MsgUndelegateResponse: {
 };
 export declare const MsgCancelUnbondingDelegation: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCancelUnbondingDelegation;
+    isSDK(o: any): o is MsgCancelUnbondingDelegationSDKType;
+    isAmino(o: any): o is MsgCancelUnbondingDelegationAmino;
     encode(message: MsgCancelUnbondingDelegation, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCancelUnbondingDelegation;
     fromJSON(object: any): MsgCancelUnbondingDelegation;
@@ -631,6 +674,10 @@ export declare const MsgCancelUnbondingDelegation: {
 };
 export declare const MsgCancelUnbondingDelegationResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCancelUnbondingDelegationResponse;
+    isSDK(o: any): o is MsgCancelUnbondingDelegationResponseSDKType;
+    isAmino(o: any): o is MsgCancelUnbondingDelegationResponseAmino;
     encode(_: MsgCancelUnbondingDelegationResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCancelUnbondingDelegationResponse;
     fromJSON(_: any): MsgCancelUnbondingDelegationResponse;
@@ -646,6 +693,10 @@ export declare const MsgCancelUnbondingDelegationResponse: {
 };
 export declare const MsgUpdateParams: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParams;
+    isSDK(o: any): o is MsgUpdateParamsSDKType;
+    isAmino(o: any): o is MsgUpdateParamsAmino;
     encode(message: MsgUpdateParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParams;
     fromJSON(object: any): MsgUpdateParams;
@@ -661,6 +712,10 @@ export declare const MsgUpdateParams: {
 };
 export declare const MsgUpdateParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParamsResponse;
+    isSDK(o: any): o is MsgUpdateParamsResponseSDKType;
+    isAmino(o: any): o is MsgUpdateParamsResponseAmino;
     encode(_: MsgUpdateParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParamsResponse;
     fromJSON(_: any): MsgUpdateParamsResponse;
@@ -674,6 +729,3 @@ export declare const MsgUpdateParamsResponse: {
     toProto(message: MsgUpdateParamsResponse): Uint8Array;
     toProtoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseProtoMsg;
 };
-export declare const Cosmos_cryptoPubKey_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
-export declare const Cosmos_cryptoPubKey_FromAmino: (content: AnyAmino) => import("cosmjs-types/google/protobuf/any").Any;
-export declare const Cosmos_cryptoPubKey_ToAmino: (content: Any) => Pubkey | null;

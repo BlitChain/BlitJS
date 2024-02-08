@@ -793,6 +793,10 @@ export interface TxDecodeAminoResponseSDKType {
 }
 export declare const GetTxsEventRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetTxsEventRequest;
+    isSDK(o: any): o is GetTxsEventRequestSDKType;
+    isAmino(o: any): o is GetTxsEventRequestAmino;
     encode(message: GetTxsEventRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxsEventRequest;
     fromJSON(object: any): GetTxsEventRequest;
@@ -808,6 +812,10 @@ export declare const GetTxsEventRequest: {
 };
 export declare const GetTxsEventResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetTxsEventResponse;
+    isSDK(o: any): o is GetTxsEventResponseSDKType;
+    isAmino(o: any): o is GetTxsEventResponseAmino;
     encode(message: GetTxsEventResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxsEventResponse;
     fromJSON(object: any): GetTxsEventResponse;
@@ -823,6 +831,10 @@ export declare const GetTxsEventResponse: {
 };
 export declare const BroadcastTxRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is BroadcastTxRequest;
+    isSDK(o: any): o is BroadcastTxRequestSDKType;
+    isAmino(o: any): o is BroadcastTxRequestAmino;
     encode(message: BroadcastTxRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BroadcastTxRequest;
     fromJSON(object: any): BroadcastTxRequest;
@@ -838,6 +850,10 @@ export declare const BroadcastTxRequest: {
 };
 export declare const BroadcastTxResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is BroadcastTxResponse;
+    isSDK(o: any): o is BroadcastTxResponseSDKType;
+    isAmino(o: any): o is BroadcastTxResponseAmino;
     encode(message: BroadcastTxResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BroadcastTxResponse;
     fromJSON(object: any): BroadcastTxResponse;
@@ -853,6 +869,10 @@ export declare const BroadcastTxResponse: {
 };
 export declare const SimulateRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SimulateRequest;
+    isSDK(o: any): o is SimulateRequestSDKType;
+    isAmino(o: any): o is SimulateRequestAmino;
     encode(message: SimulateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SimulateRequest;
     fromJSON(object: any): SimulateRequest;
@@ -868,6 +888,10 @@ export declare const SimulateRequest: {
 };
 export declare const SimulateResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SimulateResponse;
+    isSDK(o: any): o is SimulateResponseSDKType;
+    isAmino(o: any): o is SimulateResponseAmino;
     encode(message: SimulateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SimulateResponse;
     fromJSON(object: any): SimulateResponse;
@@ -883,6 +907,10 @@ export declare const SimulateResponse: {
 };
 export declare const GetTxRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetTxRequest;
+    isSDK(o: any): o is GetTxRequestSDKType;
+    isAmino(o: any): o is GetTxRequestAmino;
     encode(message: GetTxRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxRequest;
     fromJSON(object: any): GetTxRequest;
@@ -898,6 +926,10 @@ export declare const GetTxRequest: {
 };
 export declare const GetTxResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetTxResponse;
+    isSDK(o: any): o is GetTxResponseSDKType;
+    isAmino(o: any): o is GetTxResponseAmino;
     encode(message: GetTxResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetTxResponse;
     fromJSON(object: any): GetTxResponse;
@@ -913,6 +945,10 @@ export declare const GetTxResponse: {
 };
 export declare const GetBlockWithTxsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetBlockWithTxsRequest;
+    isSDK(o: any): o is GetBlockWithTxsRequestSDKType;
+    isAmino(o: any): o is GetBlockWithTxsRequestAmino;
     encode(message: GetBlockWithTxsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetBlockWithTxsRequest;
     fromJSON(object: any): GetBlockWithTxsRequest;
@@ -928,6 +964,10 @@ export declare const GetBlockWithTxsRequest: {
 };
 export declare const GetBlockWithTxsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetBlockWithTxsResponse;
+    isSDK(o: any): o is GetBlockWithTxsResponseSDKType;
+    isAmino(o: any): o is GetBlockWithTxsResponseAmino;
     encode(message: GetBlockWithTxsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetBlockWithTxsResponse;
     fromJSON(object: any): GetBlockWithTxsResponse;
@@ -943,6 +983,10 @@ export declare const GetBlockWithTxsResponse: {
 };
 export declare const TxDecodeRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TxDecodeRequest;
+    isSDK(o: any): o is TxDecodeRequestSDKType;
+    isAmino(o: any): o is TxDecodeRequestAmino;
     encode(message: TxDecodeRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxDecodeRequest;
     fromJSON(object: any): TxDecodeRequest;
@@ -958,6 +1002,10 @@ export declare const TxDecodeRequest: {
 };
 export declare const TxDecodeResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TxDecodeResponse;
+    isSDK(o: any): o is TxDecodeResponseSDKType;
+    isAmino(o: any): o is TxDecodeResponseAmino;
     encode(message: TxDecodeResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxDecodeResponse;
     fromJSON(object: any): TxDecodeResponse;
@@ -973,6 +1021,10 @@ export declare const TxDecodeResponse: {
 };
 export declare const TxEncodeRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TxEncodeRequest;
+    isSDK(o: any): o is TxEncodeRequestSDKType;
+    isAmino(o: any): o is TxEncodeRequestAmino;
     encode(message: TxEncodeRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxEncodeRequest;
     fromJSON(object: any): TxEncodeRequest;
@@ -988,6 +1040,10 @@ export declare const TxEncodeRequest: {
 };
 export declare const TxEncodeResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TxEncodeResponse;
+    isSDK(o: any): o is TxEncodeResponseSDKType;
+    isAmino(o: any): o is TxEncodeResponseAmino;
     encode(message: TxEncodeResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxEncodeResponse;
     fromJSON(object: any): TxEncodeResponse;
@@ -1003,6 +1059,10 @@ export declare const TxEncodeResponse: {
 };
 export declare const TxEncodeAminoRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TxEncodeAminoRequest;
+    isSDK(o: any): o is TxEncodeAminoRequestSDKType;
+    isAmino(o: any): o is TxEncodeAminoRequestAmino;
     encode(message: TxEncodeAminoRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxEncodeAminoRequest;
     fromJSON(object: any): TxEncodeAminoRequest;
@@ -1018,6 +1078,10 @@ export declare const TxEncodeAminoRequest: {
 };
 export declare const TxEncodeAminoResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TxEncodeAminoResponse;
+    isSDK(o: any): o is TxEncodeAminoResponseSDKType;
+    isAmino(o: any): o is TxEncodeAminoResponseAmino;
     encode(message: TxEncodeAminoResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxEncodeAminoResponse;
     fromJSON(object: any): TxEncodeAminoResponse;
@@ -1033,6 +1097,10 @@ export declare const TxEncodeAminoResponse: {
 };
 export declare const TxDecodeAminoRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TxDecodeAminoRequest;
+    isSDK(o: any): o is TxDecodeAminoRequestSDKType;
+    isAmino(o: any): o is TxDecodeAminoRequestAmino;
     encode(message: TxDecodeAminoRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxDecodeAminoRequest;
     fromJSON(object: any): TxDecodeAminoRequest;
@@ -1048,6 +1116,10 @@ export declare const TxDecodeAminoRequest: {
 };
 export declare const TxDecodeAminoResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TxDecodeAminoResponse;
+    isSDK(o: any): o is TxDecodeAminoResponseSDKType;
+    isAmino(o: any): o is TxDecodeAminoResponseAmino;
     encode(message: TxDecodeAminoResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxDecodeAminoResponse;
     fromJSON(object: any): TxDecodeAminoResponse;

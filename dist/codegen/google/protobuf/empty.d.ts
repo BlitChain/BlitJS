@@ -49,6 +49,9 @@ export interface EmptySDKType {
 }
 export declare const Empty: {
     typeUrl: string;
+    is(o: any): o is Empty;
+    isSDK(o: any): o is EmptySDKType;
+    isAmino(o: any): o is EmptyAmino;
     encode(_: Empty, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Empty;
     fromJSON(_: any): Empty;

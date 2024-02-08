@@ -4,6 +4,7 @@ exports.QueryAnnualProvisionsResponse = exports.QueryAnnualProvisionsRequest = e
 //@ts-nocheck
 const mint_1 = require("./mint");
 const binary_1 = require("../../../binary");
+const registry_1 = require("../../../registry");
 const helpers_1 = require("../../../helpers");
 exports.protobufPackage = "cosmos.mint.v1beta1";
 function createBaseQueryParamsRequest() {
@@ -11,6 +12,16 @@ function createBaseQueryParamsRequest() {
 }
 exports.QueryParamsRequest = {
     typeUrl: "/cosmos.mint.v1beta1.QueryParamsRequest",
+    aminoType: "cosmos-sdk/QueryParamsRequest",
+    is(o) {
+        return o && o.$typeUrl === exports.QueryParamsRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.QueryParamsRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.QueryParamsRequest.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -69,6 +80,8 @@ exports.QueryParamsRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryParamsRequest.typeUrl, exports.QueryParamsRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryParamsRequest.aminoType, exports.QueryParamsRequest.typeUrl);
 function createBaseQueryParamsResponse() {
     return {
         params: mint_1.Params.fromPartial({})
@@ -76,6 +89,16 @@ function createBaseQueryParamsResponse() {
 }
 exports.QueryParamsResponse = {
     typeUrl: "/cosmos.mint.v1beta1.QueryParamsResponse",
+    aminoType: "cosmos-sdk/QueryParamsResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryParamsResponse.typeUrl || mint_1.Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryParamsResponse.typeUrl || mint_1.Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryParamsResponse.typeUrl || mint_1.Params.isAmino(o.params));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.params !== undefined) {
             mint_1.Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -148,11 +171,23 @@ exports.QueryParamsResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryParamsResponse.typeUrl, exports.QueryParamsResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryParamsResponse.aminoType, exports.QueryParamsResponse.typeUrl);
 function createBaseQueryInflationRequest() {
     return {};
 }
 exports.QueryInflationRequest = {
     typeUrl: "/cosmos.mint.v1beta1.QueryInflationRequest",
+    aminoType: "cosmos-sdk/QueryInflationRequest",
+    is(o) {
+        return o && o.$typeUrl === exports.QueryInflationRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.QueryInflationRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.QueryInflationRequest.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -211,6 +246,8 @@ exports.QueryInflationRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryInflationRequest.typeUrl, exports.QueryInflationRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryInflationRequest.aminoType, exports.QueryInflationRequest.typeUrl);
 function createBaseQueryInflationResponse() {
     return {
         inflation: new Uint8Array()
@@ -218,6 +255,16 @@ function createBaseQueryInflationResponse() {
 }
 exports.QueryInflationResponse = {
     typeUrl: "/cosmos.mint.v1beta1.QueryInflationResponse",
+    aminoType: "cosmos-sdk/QueryInflationResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryInflationResponse.typeUrl || o.inflation instanceof Uint8Array || typeof o.inflation === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryInflationResponse.typeUrl || o.inflation instanceof Uint8Array || typeof o.inflation === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryInflationResponse.typeUrl || o.inflation instanceof Uint8Array || typeof o.inflation === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.inflation.length !== 0) {
             writer.uint32(10).bytes(message.inflation);
@@ -290,11 +337,23 @@ exports.QueryInflationResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryInflationResponse.typeUrl, exports.QueryInflationResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryInflationResponse.aminoType, exports.QueryInflationResponse.typeUrl);
 function createBaseQueryAnnualProvisionsRequest() {
     return {};
 }
 exports.QueryAnnualProvisionsRequest = {
     typeUrl: "/cosmos.mint.v1beta1.QueryAnnualProvisionsRequest",
+    aminoType: "cosmos-sdk/QueryAnnualProvisionsRequest",
+    is(o) {
+        return o && o.$typeUrl === exports.QueryAnnualProvisionsRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.QueryAnnualProvisionsRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.QueryAnnualProvisionsRequest.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -353,6 +412,8 @@ exports.QueryAnnualProvisionsRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryAnnualProvisionsRequest.typeUrl, exports.QueryAnnualProvisionsRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryAnnualProvisionsRequest.aminoType, exports.QueryAnnualProvisionsRequest.typeUrl);
 function createBaseQueryAnnualProvisionsResponse() {
     return {
         annual_provisions: new Uint8Array()
@@ -360,6 +421,16 @@ function createBaseQueryAnnualProvisionsResponse() {
 }
 exports.QueryAnnualProvisionsResponse = {
     typeUrl: "/cosmos.mint.v1beta1.QueryAnnualProvisionsResponse",
+    aminoType: "cosmos-sdk/QueryAnnualProvisionsResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryAnnualProvisionsResponse.typeUrl || o.annual_provisions instanceof Uint8Array || typeof o.annual_provisions === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryAnnualProvisionsResponse.typeUrl || o.annual_provisions instanceof Uint8Array || typeof o.annual_provisions === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryAnnualProvisionsResponse.typeUrl || o.annual_provisions instanceof Uint8Array || typeof o.annual_provisions === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.annual_provisions.length !== 0) {
             writer.uint32(10).bytes(message.annual_provisions);
@@ -432,4 +503,6 @@ exports.QueryAnnualProvisionsResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryAnnualProvisionsResponse.typeUrl, exports.QueryAnnualProvisionsResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.QueryAnnualProvisionsResponse.aminoType, exports.QueryAnnualProvisionsResponse.typeUrl);
 //# sourceMappingURL=query.js.map

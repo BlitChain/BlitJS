@@ -64,6 +64,10 @@ export interface CosmosTxSDKType {
 }
 export declare const InterchainAccountPacketData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is InterchainAccountPacketData;
+    isSDK(o: any): o is InterchainAccountPacketDataSDKType;
+    isAmino(o: any): o is InterchainAccountPacketDataAmino;
     encode(message: InterchainAccountPacketData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InterchainAccountPacketData;
     fromJSON(object: any): InterchainAccountPacketData;
@@ -79,6 +83,10 @@ export declare const InterchainAccountPacketData: {
 };
 export declare const CosmosTx: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CosmosTx;
+    isSDK(o: any): o is CosmosTxSDKType;
+    isAmino(o: any): o is CosmosTxAmino;
     encode(message: CosmosTx, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CosmosTx;
     fromJSON(object: any): CosmosTx;

@@ -442,6 +442,10 @@ export interface MsgUpdateParamsResponseSDKType {
 }
 export declare const MsgCreateClient: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreateClient;
+    isSDK(o: any): o is MsgCreateClientSDKType;
+    isAmino(o: any): o is MsgCreateClientAmino;
     encode(message: MsgCreateClient, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateClient;
     fromJSON(object: any): MsgCreateClient;
@@ -457,6 +461,10 @@ export declare const MsgCreateClient: {
 };
 export declare const MsgCreateClientResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreateClientResponse;
+    isSDK(o: any): o is MsgCreateClientResponseSDKType;
+    isAmino(o: any): o is MsgCreateClientResponseAmino;
     encode(_: MsgCreateClientResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateClientResponse;
     fromJSON(_: any): MsgCreateClientResponse;
@@ -472,6 +480,10 @@ export declare const MsgCreateClientResponse: {
 };
 export declare const MsgUpdateClient: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateClient;
+    isSDK(o: any): o is MsgUpdateClientSDKType;
+    isAmino(o: any): o is MsgUpdateClientAmino;
     encode(message: MsgUpdateClient, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateClient;
     fromJSON(object: any): MsgUpdateClient;
@@ -487,6 +499,10 @@ export declare const MsgUpdateClient: {
 };
 export declare const MsgUpdateClientResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateClientResponse;
+    isSDK(o: any): o is MsgUpdateClientResponseSDKType;
+    isAmino(o: any): o is MsgUpdateClientResponseAmino;
     encode(_: MsgUpdateClientResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateClientResponse;
     fromJSON(_: any): MsgUpdateClientResponse;
@@ -502,6 +518,10 @@ export declare const MsgUpdateClientResponse: {
 };
 export declare const MsgUpgradeClient: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpgradeClient;
+    isSDK(o: any): o is MsgUpgradeClientSDKType;
+    isAmino(o: any): o is MsgUpgradeClientAmino;
     encode(message: MsgUpgradeClient, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpgradeClient;
     fromJSON(object: any): MsgUpgradeClient;
@@ -517,6 +537,10 @@ export declare const MsgUpgradeClient: {
 };
 export declare const MsgUpgradeClientResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpgradeClientResponse;
+    isSDK(o: any): o is MsgUpgradeClientResponseSDKType;
+    isAmino(o: any): o is MsgUpgradeClientResponseAmino;
     encode(_: MsgUpgradeClientResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpgradeClientResponse;
     fromJSON(_: any): MsgUpgradeClientResponse;
@@ -532,6 +556,10 @@ export declare const MsgUpgradeClientResponse: {
 };
 export declare const MsgSubmitMisbehaviour: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSubmitMisbehaviour;
+    isSDK(o: any): o is MsgSubmitMisbehaviourSDKType;
+    isAmino(o: any): o is MsgSubmitMisbehaviourAmino;
     encode(message: MsgSubmitMisbehaviour, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitMisbehaviour;
     fromJSON(object: any): MsgSubmitMisbehaviour;
@@ -547,6 +575,10 @@ export declare const MsgSubmitMisbehaviour: {
 };
 export declare const MsgSubmitMisbehaviourResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSubmitMisbehaviourResponse;
+    isSDK(o: any): o is MsgSubmitMisbehaviourResponseSDKType;
+    isAmino(o: any): o is MsgSubmitMisbehaviourResponseAmino;
     encode(_: MsgSubmitMisbehaviourResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitMisbehaviourResponse;
     fromJSON(_: any): MsgSubmitMisbehaviourResponse;
@@ -562,6 +594,10 @@ export declare const MsgSubmitMisbehaviourResponse: {
 };
 export declare const MsgRecoverClient: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgRecoverClient;
+    isSDK(o: any): o is MsgRecoverClientSDKType;
+    isAmino(o: any): o is MsgRecoverClientAmino;
     encode(message: MsgRecoverClient, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRecoverClient;
     fromJSON(object: any): MsgRecoverClient;
@@ -577,6 +613,10 @@ export declare const MsgRecoverClient: {
 };
 export declare const MsgRecoverClientResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgRecoverClientResponse;
+    isSDK(o: any): o is MsgRecoverClientResponseSDKType;
+    isAmino(o: any): o is MsgRecoverClientResponseAmino;
     encode(_: MsgRecoverClientResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRecoverClientResponse;
     fromJSON(_: any): MsgRecoverClientResponse;
@@ -592,6 +632,10 @@ export declare const MsgRecoverClientResponse: {
 };
 export declare const MsgIBCSoftwareUpgrade: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgIBCSoftwareUpgrade;
+    isSDK(o: any): o is MsgIBCSoftwareUpgradeSDKType;
+    isAmino(o: any): o is MsgIBCSoftwareUpgradeAmino;
     encode(message: MsgIBCSoftwareUpgrade, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgIBCSoftwareUpgrade;
     fromJSON(object: any): MsgIBCSoftwareUpgrade;
@@ -607,6 +651,10 @@ export declare const MsgIBCSoftwareUpgrade: {
 };
 export declare const MsgIBCSoftwareUpgradeResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgIBCSoftwareUpgradeResponse;
+    isSDK(o: any): o is MsgIBCSoftwareUpgradeResponseSDKType;
+    isAmino(o: any): o is MsgIBCSoftwareUpgradeResponseAmino;
     encode(_: MsgIBCSoftwareUpgradeResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgIBCSoftwareUpgradeResponse;
     fromJSON(_: any): MsgIBCSoftwareUpgradeResponse;
@@ -622,6 +670,10 @@ export declare const MsgIBCSoftwareUpgradeResponse: {
 };
 export declare const MsgUpdateParams: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParams;
+    isSDK(o: any): o is MsgUpdateParamsSDKType;
+    isAmino(o: any): o is MsgUpdateParamsAmino;
     encode(message: MsgUpdateParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParams;
     fromJSON(object: any): MsgUpdateParams;
@@ -637,6 +689,10 @@ export declare const MsgUpdateParams: {
 };
 export declare const MsgUpdateParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParamsResponse;
+    isSDK(o: any): o is MsgUpdateParamsResponseSDKType;
+    isAmino(o: any): o is MsgUpdateParamsResponseAmino;
     encode(_: MsgUpdateParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParamsResponse;
     fromJSON(_: any): MsgUpdateParamsResponse;

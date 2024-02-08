@@ -5,6 +5,7 @@ import { Timestamp } from "../../google/protobuf/timestamp";
 import { ValidatorSet, blockIDFlagFromJSON, blockIDFlagToJSON } from "./validator";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, bytesFromBase64, base64FromBytes, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "tendermint.types";
 /** SignedMsgType is a type of signed message in the consensus. */
 export var SignedMsgType;
@@ -62,6 +63,15 @@ function createBasePartSetHeader() {
 }
 export const PartSetHeader = {
     typeUrl: "/tendermint.types.PartSetHeader",
+    is(o) {
+        return o && (o.$typeUrl === PartSetHeader.typeUrl || typeof o.total === "number" && (o.hash instanceof Uint8Array || typeof o.hash === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === PartSetHeader.typeUrl || typeof o.total === "number" && (o.hash instanceof Uint8Array || typeof o.hash === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === PartSetHeader.typeUrl || typeof o.total === "number" && (o.hash instanceof Uint8Array || typeof o.hash === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.total !== 0) {
             writer.uint32(8).uint32(message.total);
@@ -141,6 +151,7 @@ export const PartSetHeader = {
         };
     }
 };
+GlobalDecoderRegistry.register(PartSetHeader.typeUrl, PartSetHeader);
 function createBasePart() {
     return {
         index: 0,
@@ -150,6 +161,15 @@ function createBasePart() {
 }
 export const Part = {
     typeUrl: "/tendermint.types.Part",
+    is(o) {
+        return o && (o.$typeUrl === Part.typeUrl || typeof o.index === "number" && (o.bytes instanceof Uint8Array || typeof o.bytes === "string") && Proof.is(o.proof));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Part.typeUrl || typeof o.index === "number" && (o.bytes instanceof Uint8Array || typeof o.bytes === "string") && Proof.isSDK(o.proof));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Part.typeUrl || typeof o.index === "number" && (o.bytes instanceof Uint8Array || typeof o.bytes === "string") && Proof.isAmino(o.proof));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.index !== 0) {
             writer.uint32(8).uint32(message.index);
@@ -242,6 +262,7 @@ export const Part = {
         };
     }
 };
+GlobalDecoderRegistry.register(Part.typeUrl, Part);
 function createBaseBlockID() {
     return {
         hash: new Uint8Array(),
@@ -250,6 +271,15 @@ function createBaseBlockID() {
 }
 export const BlockID = {
     typeUrl: "/tendermint.types.BlockID",
+    is(o) {
+        return o && (o.$typeUrl === BlockID.typeUrl || (o.hash instanceof Uint8Array || typeof o.hash === "string") && PartSetHeader.is(o.part_set_header));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === BlockID.typeUrl || (o.hash instanceof Uint8Array || typeof o.hash === "string") && PartSetHeader.isSDK(o.part_set_header));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === BlockID.typeUrl || (o.hash instanceof Uint8Array || typeof o.hash === "string") && PartSetHeader.isAmino(o.part_set_header));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.hash.length !== 0) {
             writer.uint32(10).bytes(message.hash);
@@ -329,6 +359,7 @@ export const BlockID = {
         };
     }
 };
+GlobalDecoderRegistry.register(BlockID.typeUrl, BlockID);
 function createBaseHeader() {
     return {
         version: Consensus.fromPartial({}),
@@ -349,6 +380,15 @@ function createBaseHeader() {
 }
 export const Header = {
     typeUrl: "/tendermint.types.Header",
+    is(o) {
+        return o && (o.$typeUrl === Header.typeUrl || Consensus.is(o.version) && typeof o.chain_id === "string" && typeof o.height === "bigint" && Timestamp.is(o.time) && BlockID.is(o.last_block_id) && (o.last_commit_hash instanceof Uint8Array || typeof o.last_commit_hash === "string") && (o.data_hash instanceof Uint8Array || typeof o.data_hash === "string") && (o.validators_hash instanceof Uint8Array || typeof o.validators_hash === "string") && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.consensus_hash instanceof Uint8Array || typeof o.consensus_hash === "string") && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string") && (o.last_results_hash instanceof Uint8Array || typeof o.last_results_hash === "string") && (o.evidence_hash instanceof Uint8Array || typeof o.evidence_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Header.typeUrl || Consensus.isSDK(o.version) && typeof o.chain_id === "string" && typeof o.height === "bigint" && Timestamp.isSDK(o.time) && BlockID.isSDK(o.last_block_id) && (o.last_commit_hash instanceof Uint8Array || typeof o.last_commit_hash === "string") && (o.data_hash instanceof Uint8Array || typeof o.data_hash === "string") && (o.validators_hash instanceof Uint8Array || typeof o.validators_hash === "string") && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.consensus_hash instanceof Uint8Array || typeof o.consensus_hash === "string") && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string") && (o.last_results_hash instanceof Uint8Array || typeof o.last_results_hash === "string") && (o.evidence_hash instanceof Uint8Array || typeof o.evidence_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Header.typeUrl || Consensus.isAmino(o.version) && typeof o.chain_id === "string" && typeof o.height === "bigint" && Timestamp.isAmino(o.time) && BlockID.isAmino(o.last_block_id) && (o.last_commit_hash instanceof Uint8Array || typeof o.last_commit_hash === "string") && (o.data_hash instanceof Uint8Array || typeof o.data_hash === "string") && (o.validators_hash instanceof Uint8Array || typeof o.validators_hash === "string") && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.consensus_hash instanceof Uint8Array || typeof o.consensus_hash === "string") && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string") && (o.last_results_hash instanceof Uint8Array || typeof o.last_results_hash === "string") && (o.evidence_hash instanceof Uint8Array || typeof o.evidence_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.version !== undefined) {
             Consensus.encode(message.version, writer.uint32(10).fork()).ldelim();
@@ -584,6 +624,7 @@ export const Header = {
         };
     }
 };
+GlobalDecoderRegistry.register(Header.typeUrl, Header);
 function createBaseData() {
     return {
         txs: []
@@ -591,6 +632,15 @@ function createBaseData() {
 }
 export const Data = {
     typeUrl: "/tendermint.types.Data",
+    is(o) {
+        return o && (o.$typeUrl === Data.typeUrl || Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Data.typeUrl || Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Data.typeUrl || Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.txs) {
             writer.uint32(10).bytes(v);
@@ -665,6 +715,7 @@ export const Data = {
         };
     }
 };
+GlobalDecoderRegistry.register(Data.typeUrl, Data);
 function createBaseVote() {
     return {
         type: 0,
@@ -681,6 +732,15 @@ function createBaseVote() {
 }
 export const Vote = {
     typeUrl: "/tendermint.types.Vote",
+    is(o) {
+        return o && (o.$typeUrl === Vote.typeUrl || isSet(o.type) && typeof o.height === "bigint" && typeof o.round === "number" && BlockID.is(o.block_id) && Timestamp.is(o.timestamp) && (o.validator_address instanceof Uint8Array || typeof o.validator_address === "string") && typeof o.validator_index === "number" && (o.signature instanceof Uint8Array || typeof o.signature === "string") && (o.extension instanceof Uint8Array || typeof o.extension === "string") && (o.extension_signature instanceof Uint8Array || typeof o.extension_signature === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Vote.typeUrl || isSet(o.type) && typeof o.height === "bigint" && typeof o.round === "number" && BlockID.isSDK(o.block_id) && Timestamp.isSDK(o.timestamp) && (o.validator_address instanceof Uint8Array || typeof o.validator_address === "string") && typeof o.validator_index === "number" && (o.signature instanceof Uint8Array || typeof o.signature === "string") && (o.extension instanceof Uint8Array || typeof o.extension === "string") && (o.extension_signature instanceof Uint8Array || typeof o.extension_signature === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Vote.typeUrl || isSet(o.type) && typeof o.height === "bigint" && typeof o.round === "number" && BlockID.isAmino(o.block_id) && Timestamp.isAmino(o.timestamp) && (o.validator_address instanceof Uint8Array || typeof o.validator_address === "string") && typeof o.validator_index === "number" && (o.signature instanceof Uint8Array || typeof o.signature === "string") && (o.extension instanceof Uint8Array || typeof o.extension === "string") && (o.extension_signature instanceof Uint8Array || typeof o.extension_signature === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.type !== 0) {
             writer.uint32(8).int32(message.type);
@@ -864,6 +924,7 @@ export const Vote = {
         };
     }
 };
+GlobalDecoderRegistry.register(Vote.typeUrl, Vote);
 function createBaseCommit() {
     return {
         height: BigInt(0),
@@ -874,6 +935,15 @@ function createBaseCommit() {
 }
 export const Commit = {
     typeUrl: "/tendermint.types.Commit",
+    is(o) {
+        return o && (o.$typeUrl === Commit.typeUrl || typeof o.height === "bigint" && typeof o.round === "number" && BlockID.is(o.block_id) && Array.isArray(o.signatures) && (!o.signatures.length || CommitSig.is(o.signatures[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Commit.typeUrl || typeof o.height === "bigint" && typeof o.round === "number" && BlockID.isSDK(o.block_id) && Array.isArray(o.signatures) && (!o.signatures.length || CommitSig.isSDK(o.signatures[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Commit.typeUrl || typeof o.height === "bigint" && typeof o.round === "number" && BlockID.isAmino(o.block_id) && Array.isArray(o.signatures) && (!o.signatures.length || CommitSig.isAmino(o.signatures[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.height !== BigInt(0)) {
             writer.uint32(8).int64(message.height);
@@ -987,6 +1057,7 @@ export const Commit = {
         };
     }
 };
+GlobalDecoderRegistry.register(Commit.typeUrl, Commit);
 function createBaseCommitSig() {
     return {
         block_id_flag: 0,
@@ -997,6 +1068,15 @@ function createBaseCommitSig() {
 }
 export const CommitSig = {
     typeUrl: "/tendermint.types.CommitSig",
+    is(o) {
+        return o && (o.$typeUrl === CommitSig.typeUrl || isSet(o.block_id_flag) && (o.validator_address instanceof Uint8Array || typeof o.validator_address === "string") && Timestamp.is(o.timestamp) && (o.signature instanceof Uint8Array || typeof o.signature === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === CommitSig.typeUrl || isSet(o.block_id_flag) && (o.validator_address instanceof Uint8Array || typeof o.validator_address === "string") && Timestamp.isSDK(o.timestamp) && (o.signature instanceof Uint8Array || typeof o.signature === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === CommitSig.typeUrl || isSet(o.block_id_flag) && (o.validator_address instanceof Uint8Array || typeof o.validator_address === "string") && Timestamp.isAmino(o.timestamp) && (o.signature instanceof Uint8Array || typeof o.signature === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.block_id_flag !== 0) {
             writer.uint32(8).int32(message.block_id_flag);
@@ -1102,6 +1182,7 @@ export const CommitSig = {
         };
     }
 };
+GlobalDecoderRegistry.register(CommitSig.typeUrl, CommitSig);
 function createBaseExtendedCommit() {
     return {
         height: BigInt(0),
@@ -1112,6 +1193,15 @@ function createBaseExtendedCommit() {
 }
 export const ExtendedCommit = {
     typeUrl: "/tendermint.types.ExtendedCommit",
+    is(o) {
+        return o && (o.$typeUrl === ExtendedCommit.typeUrl || typeof o.height === "bigint" && typeof o.round === "number" && BlockID.is(o.block_id) && Array.isArray(o.extended_signatures) && (!o.extended_signatures.length || ExtendedCommitSig.is(o.extended_signatures[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === ExtendedCommit.typeUrl || typeof o.height === "bigint" && typeof o.round === "number" && BlockID.isSDK(o.block_id) && Array.isArray(o.extended_signatures) && (!o.extended_signatures.length || ExtendedCommitSig.isSDK(o.extended_signatures[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === ExtendedCommit.typeUrl || typeof o.height === "bigint" && typeof o.round === "number" && BlockID.isAmino(o.block_id) && Array.isArray(o.extended_signatures) && (!o.extended_signatures.length || ExtendedCommitSig.isAmino(o.extended_signatures[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.height !== BigInt(0)) {
             writer.uint32(8).int64(message.height);
@@ -1225,6 +1315,7 @@ export const ExtendedCommit = {
         };
     }
 };
+GlobalDecoderRegistry.register(ExtendedCommit.typeUrl, ExtendedCommit);
 function createBaseExtendedCommitSig() {
     return {
         block_id_flag: 0,
@@ -1237,6 +1328,15 @@ function createBaseExtendedCommitSig() {
 }
 export const ExtendedCommitSig = {
     typeUrl: "/tendermint.types.ExtendedCommitSig",
+    is(o) {
+        return o && (o.$typeUrl === ExtendedCommitSig.typeUrl || isSet(o.block_id_flag) && (o.validator_address instanceof Uint8Array || typeof o.validator_address === "string") && Timestamp.is(o.timestamp) && (o.signature instanceof Uint8Array || typeof o.signature === "string") && (o.extension instanceof Uint8Array || typeof o.extension === "string") && (o.extension_signature instanceof Uint8Array || typeof o.extension_signature === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === ExtendedCommitSig.typeUrl || isSet(o.block_id_flag) && (o.validator_address instanceof Uint8Array || typeof o.validator_address === "string") && Timestamp.isSDK(o.timestamp) && (o.signature instanceof Uint8Array || typeof o.signature === "string") && (o.extension instanceof Uint8Array || typeof o.extension === "string") && (o.extension_signature instanceof Uint8Array || typeof o.extension_signature === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === ExtendedCommitSig.typeUrl || isSet(o.block_id_flag) && (o.validator_address instanceof Uint8Array || typeof o.validator_address === "string") && Timestamp.isAmino(o.timestamp) && (o.signature instanceof Uint8Array || typeof o.signature === "string") && (o.extension instanceof Uint8Array || typeof o.extension === "string") && (o.extension_signature instanceof Uint8Array || typeof o.extension_signature === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.block_id_flag !== 0) {
             writer.uint32(8).int32(message.block_id_flag);
@@ -1368,6 +1468,7 @@ export const ExtendedCommitSig = {
         };
     }
 };
+GlobalDecoderRegistry.register(ExtendedCommitSig.typeUrl, ExtendedCommitSig);
 function createBaseProposal() {
     return {
         type: 0,
@@ -1381,6 +1482,15 @@ function createBaseProposal() {
 }
 export const Proposal = {
     typeUrl: "/tendermint.types.Proposal",
+    is(o) {
+        return o && (o.$typeUrl === Proposal.typeUrl || isSet(o.type) && typeof o.height === "bigint" && typeof o.round === "number" && typeof o.pol_round === "number" && BlockID.is(o.block_id) && Timestamp.is(o.timestamp) && (o.signature instanceof Uint8Array || typeof o.signature === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Proposal.typeUrl || isSet(o.type) && typeof o.height === "bigint" && typeof o.round === "number" && typeof o.pol_round === "number" && BlockID.isSDK(o.block_id) && Timestamp.isSDK(o.timestamp) && (o.signature instanceof Uint8Array || typeof o.signature === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Proposal.typeUrl || isSet(o.type) && typeof o.height === "bigint" && typeof o.round === "number" && typeof o.pol_round === "number" && BlockID.isAmino(o.block_id) && Timestamp.isAmino(o.timestamp) && (o.signature instanceof Uint8Array || typeof o.signature === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.type !== 0) {
             writer.uint32(8).int32(message.type);
@@ -1525,6 +1635,7 @@ export const Proposal = {
         };
     }
 };
+GlobalDecoderRegistry.register(Proposal.typeUrl, Proposal);
 function createBaseSignedHeader() {
     return {
         header: undefined,
@@ -1533,6 +1644,15 @@ function createBaseSignedHeader() {
 }
 export const SignedHeader = {
     typeUrl: "/tendermint.types.SignedHeader",
+    is(o) {
+        return o && o.$typeUrl === SignedHeader.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === SignedHeader.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === SignedHeader.typeUrl;
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.header !== undefined) {
             Header.encode(message.header, writer.uint32(10).fork()).ldelim();
@@ -1612,6 +1732,7 @@ export const SignedHeader = {
         };
     }
 };
+GlobalDecoderRegistry.register(SignedHeader.typeUrl, SignedHeader);
 function createBaseLightBlock() {
     return {
         signed_header: undefined,
@@ -1620,6 +1741,15 @@ function createBaseLightBlock() {
 }
 export const LightBlock = {
     typeUrl: "/tendermint.types.LightBlock",
+    is(o) {
+        return o && o.$typeUrl === LightBlock.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === LightBlock.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === LightBlock.typeUrl;
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.signed_header !== undefined) {
             SignedHeader.encode(message.signed_header, writer.uint32(10).fork()).ldelim();
@@ -1699,6 +1829,7 @@ export const LightBlock = {
         };
     }
 };
+GlobalDecoderRegistry.register(LightBlock.typeUrl, LightBlock);
 function createBaseBlockMeta() {
     return {
         block_id: BlockID.fromPartial({}),
@@ -1709,6 +1840,15 @@ function createBaseBlockMeta() {
 }
 export const BlockMeta = {
     typeUrl: "/tendermint.types.BlockMeta",
+    is(o) {
+        return o && (o.$typeUrl === BlockMeta.typeUrl || BlockID.is(o.block_id) && typeof o.block_size === "bigint" && Header.is(o.header) && typeof o.num_txs === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === BlockMeta.typeUrl || BlockID.isSDK(o.block_id) && typeof o.block_size === "bigint" && Header.isSDK(o.header) && typeof o.num_txs === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === BlockMeta.typeUrl || BlockID.isAmino(o.block_id) && typeof o.block_size === "bigint" && Header.isAmino(o.header) && typeof o.num_txs === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.block_id !== undefined) {
             BlockID.encode(message.block_id, writer.uint32(10).fork()).ldelim();
@@ -1814,6 +1954,7 @@ export const BlockMeta = {
         };
     }
 };
+GlobalDecoderRegistry.register(BlockMeta.typeUrl, BlockMeta);
 function createBaseTxProof() {
     return {
         root_hash: new Uint8Array(),
@@ -1823,6 +1964,15 @@ function createBaseTxProof() {
 }
 export const TxProof = {
     typeUrl: "/tendermint.types.TxProof",
+    is(o) {
+        return o && (o.$typeUrl === TxProof.typeUrl || (o.root_hash instanceof Uint8Array || typeof o.root_hash === "string") && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === TxProof.typeUrl || (o.root_hash instanceof Uint8Array || typeof o.root_hash === "string") && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === TxProof.typeUrl || (o.root_hash instanceof Uint8Array || typeof o.root_hash === "string") && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.root_hash.length !== 0) {
             writer.uint32(10).bytes(message.root_hash);
@@ -1915,4 +2065,5 @@ export const TxProof = {
         };
     }
 };
+GlobalDecoderRegistry.register(TxProof.typeUrl, TxProof);
 //# sourceMappingURL=types.js.map

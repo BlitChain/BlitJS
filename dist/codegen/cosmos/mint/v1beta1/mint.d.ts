@@ -76,6 +76,10 @@ export interface ParamsSDKType {
 }
 export declare const Minter: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Minter;
+    isSDK(o: any): o is MinterSDKType;
+    isAmino(o: any): o is MinterAmino;
     encode(message: Minter, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Minter;
     fromJSON(object: any): Minter;
@@ -91,6 +95,10 @@ export declare const Minter: {
 };
 export declare const Params: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Params;
+    isSDK(o: any): o is ParamsSDKType;
+    isAmino(o: any): o is ParamsAmino;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromJSON(object: any): Params;

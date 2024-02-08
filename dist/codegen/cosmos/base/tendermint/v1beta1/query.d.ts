@@ -561,6 +561,10 @@ export interface ProofOpsSDKType {
 }
 export declare const GetValidatorSetByHeightRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetValidatorSetByHeightRequest;
+    isSDK(o: any): o is GetValidatorSetByHeightRequestSDKType;
+    isAmino(o: any): o is GetValidatorSetByHeightRequestAmino;
     encode(message: GetValidatorSetByHeightRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetValidatorSetByHeightRequest;
     fromJSON(object: any): GetValidatorSetByHeightRequest;
@@ -576,6 +580,10 @@ export declare const GetValidatorSetByHeightRequest: {
 };
 export declare const GetValidatorSetByHeightResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetValidatorSetByHeightResponse;
+    isSDK(o: any): o is GetValidatorSetByHeightResponseSDKType;
+    isAmino(o: any): o is GetValidatorSetByHeightResponseAmino;
     encode(message: GetValidatorSetByHeightResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetValidatorSetByHeightResponse;
     fromJSON(object: any): GetValidatorSetByHeightResponse;
@@ -591,6 +599,10 @@ export declare const GetValidatorSetByHeightResponse: {
 };
 export declare const GetLatestValidatorSetRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetLatestValidatorSetRequest;
+    isSDK(o: any): o is GetLatestValidatorSetRequestSDKType;
+    isAmino(o: any): o is GetLatestValidatorSetRequestAmino;
     encode(message: GetLatestValidatorSetRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetLatestValidatorSetRequest;
     fromJSON(object: any): GetLatestValidatorSetRequest;
@@ -606,6 +618,10 @@ export declare const GetLatestValidatorSetRequest: {
 };
 export declare const GetLatestValidatorSetResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetLatestValidatorSetResponse;
+    isSDK(o: any): o is GetLatestValidatorSetResponseSDKType;
+    isAmino(o: any): o is GetLatestValidatorSetResponseAmino;
     encode(message: GetLatestValidatorSetResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetLatestValidatorSetResponse;
     fromJSON(object: any): GetLatestValidatorSetResponse;
@@ -621,6 +637,10 @@ export declare const GetLatestValidatorSetResponse: {
 };
 export declare const Validator: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Validator;
+    isSDK(o: any): o is ValidatorSDKType;
+    isAmino(o: any): o is ValidatorAmino;
     encode(message: Validator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Validator;
     fromJSON(object: any): Validator;
@@ -636,6 +656,10 @@ export declare const Validator: {
 };
 export declare const GetBlockByHeightRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetBlockByHeightRequest;
+    isSDK(o: any): o is GetBlockByHeightRequestSDKType;
+    isAmino(o: any): o is GetBlockByHeightRequestAmino;
     encode(message: GetBlockByHeightRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetBlockByHeightRequest;
     fromJSON(object: any): GetBlockByHeightRequest;
@@ -651,6 +675,10 @@ export declare const GetBlockByHeightRequest: {
 };
 export declare const GetBlockByHeightResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetBlockByHeightResponse;
+    isSDK(o: any): o is GetBlockByHeightResponseSDKType;
+    isAmino(o: any): o is GetBlockByHeightResponseAmino;
     encode(message: GetBlockByHeightResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetBlockByHeightResponse;
     fromJSON(object: any): GetBlockByHeightResponse;
@@ -666,6 +694,10 @@ export declare const GetBlockByHeightResponse: {
 };
 export declare const GetLatestBlockRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetLatestBlockRequest;
+    isSDK(o: any): o is GetLatestBlockRequestSDKType;
+    isAmino(o: any): o is GetLatestBlockRequestAmino;
     encode(_: GetLatestBlockRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetLatestBlockRequest;
     fromJSON(_: any): GetLatestBlockRequest;
@@ -681,6 +713,10 @@ export declare const GetLatestBlockRequest: {
 };
 export declare const GetLatestBlockResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetLatestBlockResponse;
+    isSDK(o: any): o is GetLatestBlockResponseSDKType;
+    isAmino(o: any): o is GetLatestBlockResponseAmino;
     encode(message: GetLatestBlockResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetLatestBlockResponse;
     fromJSON(object: any): GetLatestBlockResponse;
@@ -696,6 +732,10 @@ export declare const GetLatestBlockResponse: {
 };
 export declare const GetSyncingRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetSyncingRequest;
+    isSDK(o: any): o is GetSyncingRequestSDKType;
+    isAmino(o: any): o is GetSyncingRequestAmino;
     encode(_: GetSyncingRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetSyncingRequest;
     fromJSON(_: any): GetSyncingRequest;
@@ -711,6 +751,10 @@ export declare const GetSyncingRequest: {
 };
 export declare const GetSyncingResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetSyncingResponse;
+    isSDK(o: any): o is GetSyncingResponseSDKType;
+    isAmino(o: any): o is GetSyncingResponseAmino;
     encode(message: GetSyncingResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetSyncingResponse;
     fromJSON(object: any): GetSyncingResponse;
@@ -726,6 +770,10 @@ export declare const GetSyncingResponse: {
 };
 export declare const GetNodeInfoRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetNodeInfoRequest;
+    isSDK(o: any): o is GetNodeInfoRequestSDKType;
+    isAmino(o: any): o is GetNodeInfoRequestAmino;
     encode(_: GetNodeInfoRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetNodeInfoRequest;
     fromJSON(_: any): GetNodeInfoRequest;
@@ -741,6 +789,10 @@ export declare const GetNodeInfoRequest: {
 };
 export declare const GetNodeInfoResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetNodeInfoResponse;
+    isSDK(o: any): o is GetNodeInfoResponseSDKType;
+    isAmino(o: any): o is GetNodeInfoResponseAmino;
     encode(message: GetNodeInfoResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetNodeInfoResponse;
     fromJSON(object: any): GetNodeInfoResponse;
@@ -756,6 +808,10 @@ export declare const GetNodeInfoResponse: {
 };
 export declare const VersionInfo: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is VersionInfo;
+    isSDK(o: any): o is VersionInfoSDKType;
+    isAmino(o: any): o is VersionInfoAmino;
     encode(message: VersionInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): VersionInfo;
     fromJSON(object: any): VersionInfo;
@@ -771,6 +827,10 @@ export declare const VersionInfo: {
 };
 export declare const Module: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Module;
+    isSDK(o: any): o is ModuleSDKType;
+    isAmino(o: any): o is ModuleAmino;
     encode(message: Module, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Module;
     fromJSON(object: any): Module;
@@ -786,6 +846,10 @@ export declare const Module: {
 };
 export declare const ABCIQueryRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ABCIQueryRequest;
+    isSDK(o: any): o is ABCIQueryRequestSDKType;
+    isAmino(o: any): o is ABCIQueryRequestAmino;
     encode(message: ABCIQueryRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ABCIQueryRequest;
     fromJSON(object: any): ABCIQueryRequest;
@@ -801,6 +865,10 @@ export declare const ABCIQueryRequest: {
 };
 export declare const ABCIQueryResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ABCIQueryResponse;
+    isSDK(o: any): o is ABCIQueryResponseSDKType;
+    isAmino(o: any): o is ABCIQueryResponseAmino;
     encode(message: ABCIQueryResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ABCIQueryResponse;
     fromJSON(object: any): ABCIQueryResponse;
@@ -816,6 +884,10 @@ export declare const ABCIQueryResponse: {
 };
 export declare const ProofOp: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ProofOp;
+    isSDK(o: any): o is ProofOpSDKType;
+    isAmino(o: any): o is ProofOpAmino;
     encode(message: ProofOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ProofOp;
     fromJSON(object: any): ProofOp;
@@ -831,6 +903,10 @@ export declare const ProofOp: {
 };
 export declare const ProofOps: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ProofOps;
+    isSDK(o: any): o is ProofOpsSDKType;
+    isAmino(o: any): o is ProofOpsAmino;
     encode(message: ProofOps, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ProofOps;
     fromJSON(object: any): ProofOps;

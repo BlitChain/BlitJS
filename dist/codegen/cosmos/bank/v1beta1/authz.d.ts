@@ -55,6 +55,10 @@ export interface SendAuthorizationSDKType {
 }
 export declare const SendAuthorization: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SendAuthorization;
+    isSDK(o: any): o is SendAuthorizationSDKType;
+    isAmino(o: any): o is SendAuthorizationAmino;
     encode(message: SendAuthorization, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SendAuthorization;
     fromJSON(object: any): SendAuthorization;

@@ -832,6 +832,10 @@ export interface MsgLeaveGroupResponseSDKType {
 }
 export declare const MsgCreateGroup: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreateGroup;
+    isSDK(o: any): o is MsgCreateGroupSDKType;
+    isAmino(o: any): o is MsgCreateGroupAmino;
     encode(message: MsgCreateGroup, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateGroup;
     fromJSON(object: any): MsgCreateGroup;
@@ -847,6 +851,10 @@ export declare const MsgCreateGroup: {
 };
 export declare const MsgCreateGroupResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreateGroupResponse;
+    isSDK(o: any): o is MsgCreateGroupResponseSDKType;
+    isAmino(o: any): o is MsgCreateGroupResponseAmino;
     encode(message: MsgCreateGroupResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateGroupResponse;
     fromJSON(object: any): MsgCreateGroupResponse;
@@ -862,6 +870,10 @@ export declare const MsgCreateGroupResponse: {
 };
 export declare const MsgUpdateGroupMembers: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateGroupMembers;
+    isSDK(o: any): o is MsgUpdateGroupMembersSDKType;
+    isAmino(o: any): o is MsgUpdateGroupMembersAmino;
     encode(message: MsgUpdateGroupMembers, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupMembers;
     fromJSON(object: any): MsgUpdateGroupMembers;
@@ -877,6 +889,10 @@ export declare const MsgUpdateGroupMembers: {
 };
 export declare const MsgUpdateGroupMembersResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateGroupMembersResponse;
+    isSDK(o: any): o is MsgUpdateGroupMembersResponseSDKType;
+    isAmino(o: any): o is MsgUpdateGroupMembersResponseAmino;
     encode(_: MsgUpdateGroupMembersResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupMembersResponse;
     fromJSON(_: any): MsgUpdateGroupMembersResponse;
@@ -892,6 +908,10 @@ export declare const MsgUpdateGroupMembersResponse: {
 };
 export declare const MsgUpdateGroupAdmin: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateGroupAdmin;
+    isSDK(o: any): o is MsgUpdateGroupAdminSDKType;
+    isAmino(o: any): o is MsgUpdateGroupAdminAmino;
     encode(message: MsgUpdateGroupAdmin, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupAdmin;
     fromJSON(object: any): MsgUpdateGroupAdmin;
@@ -907,6 +927,10 @@ export declare const MsgUpdateGroupAdmin: {
 };
 export declare const MsgUpdateGroupAdminResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateGroupAdminResponse;
+    isSDK(o: any): o is MsgUpdateGroupAdminResponseSDKType;
+    isAmino(o: any): o is MsgUpdateGroupAdminResponseAmino;
     encode(_: MsgUpdateGroupAdminResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupAdminResponse;
     fromJSON(_: any): MsgUpdateGroupAdminResponse;
@@ -922,6 +946,10 @@ export declare const MsgUpdateGroupAdminResponse: {
 };
 export declare const MsgUpdateGroupMetadata: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateGroupMetadata;
+    isSDK(o: any): o is MsgUpdateGroupMetadataSDKType;
+    isAmino(o: any): o is MsgUpdateGroupMetadataAmino;
     encode(message: MsgUpdateGroupMetadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupMetadata;
     fromJSON(object: any): MsgUpdateGroupMetadata;
@@ -937,6 +965,10 @@ export declare const MsgUpdateGroupMetadata: {
 };
 export declare const MsgUpdateGroupMetadataResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateGroupMetadataResponse;
+    isSDK(o: any): o is MsgUpdateGroupMetadataResponseSDKType;
+    isAmino(o: any): o is MsgUpdateGroupMetadataResponseAmino;
     encode(_: MsgUpdateGroupMetadataResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupMetadataResponse;
     fromJSON(_: any): MsgUpdateGroupMetadataResponse;
@@ -952,6 +984,10 @@ export declare const MsgUpdateGroupMetadataResponse: {
 };
 export declare const MsgCreateGroupPolicy: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreateGroupPolicy;
+    isSDK(o: any): o is MsgCreateGroupPolicySDKType;
+    isAmino(o: any): o is MsgCreateGroupPolicyAmino;
     encode(message: MsgCreateGroupPolicy, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateGroupPolicy;
     fromJSON(object: any): MsgCreateGroupPolicy;
@@ -967,6 +1003,10 @@ export declare const MsgCreateGroupPolicy: {
 };
 export declare const MsgCreateGroupPolicyResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreateGroupPolicyResponse;
+    isSDK(o: any): o is MsgCreateGroupPolicyResponseSDKType;
+    isAmino(o: any): o is MsgCreateGroupPolicyResponseAmino;
     encode(message: MsgCreateGroupPolicyResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateGroupPolicyResponse;
     fromJSON(object: any): MsgCreateGroupPolicyResponse;
@@ -982,6 +1022,10 @@ export declare const MsgCreateGroupPolicyResponse: {
 };
 export declare const MsgUpdateGroupPolicyAdmin: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateGroupPolicyAdmin;
+    isSDK(o: any): o is MsgUpdateGroupPolicyAdminSDKType;
+    isAmino(o: any): o is MsgUpdateGroupPolicyAdminAmino;
     encode(message: MsgUpdateGroupPolicyAdmin, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupPolicyAdmin;
     fromJSON(object: any): MsgUpdateGroupPolicyAdmin;
@@ -997,6 +1041,10 @@ export declare const MsgUpdateGroupPolicyAdmin: {
 };
 export declare const MsgUpdateGroupPolicyAdminResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateGroupPolicyAdminResponse;
+    isSDK(o: any): o is MsgUpdateGroupPolicyAdminResponseSDKType;
+    isAmino(o: any): o is MsgUpdateGroupPolicyAdminResponseAmino;
     encode(_: MsgUpdateGroupPolicyAdminResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupPolicyAdminResponse;
     fromJSON(_: any): MsgUpdateGroupPolicyAdminResponse;
@@ -1012,6 +1060,10 @@ export declare const MsgUpdateGroupPolicyAdminResponse: {
 };
 export declare const MsgCreateGroupWithPolicy: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreateGroupWithPolicy;
+    isSDK(o: any): o is MsgCreateGroupWithPolicySDKType;
+    isAmino(o: any): o is MsgCreateGroupWithPolicyAmino;
     encode(message: MsgCreateGroupWithPolicy, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateGroupWithPolicy;
     fromJSON(object: any): MsgCreateGroupWithPolicy;
@@ -1027,6 +1079,10 @@ export declare const MsgCreateGroupWithPolicy: {
 };
 export declare const MsgCreateGroupWithPolicyResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreateGroupWithPolicyResponse;
+    isSDK(o: any): o is MsgCreateGroupWithPolicyResponseSDKType;
+    isAmino(o: any): o is MsgCreateGroupWithPolicyResponseAmino;
     encode(message: MsgCreateGroupWithPolicyResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateGroupWithPolicyResponse;
     fromJSON(object: any): MsgCreateGroupWithPolicyResponse;
@@ -1042,6 +1098,10 @@ export declare const MsgCreateGroupWithPolicyResponse: {
 };
 export declare const MsgUpdateGroupPolicyDecisionPolicy: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateGroupPolicyDecisionPolicy;
+    isSDK(o: any): o is MsgUpdateGroupPolicyDecisionPolicySDKType;
+    isAmino(o: any): o is MsgUpdateGroupPolicyDecisionPolicyAmino;
     encode(message: MsgUpdateGroupPolicyDecisionPolicy, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupPolicyDecisionPolicy;
     fromJSON(object: any): MsgUpdateGroupPolicyDecisionPolicy;
@@ -1057,6 +1117,10 @@ export declare const MsgUpdateGroupPolicyDecisionPolicy: {
 };
 export declare const MsgUpdateGroupPolicyDecisionPolicyResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateGroupPolicyDecisionPolicyResponse;
+    isSDK(o: any): o is MsgUpdateGroupPolicyDecisionPolicyResponseSDKType;
+    isAmino(o: any): o is MsgUpdateGroupPolicyDecisionPolicyResponseAmino;
     encode(_: MsgUpdateGroupPolicyDecisionPolicyResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupPolicyDecisionPolicyResponse;
     fromJSON(_: any): MsgUpdateGroupPolicyDecisionPolicyResponse;
@@ -1072,6 +1136,10 @@ export declare const MsgUpdateGroupPolicyDecisionPolicyResponse: {
 };
 export declare const MsgUpdateGroupPolicyMetadata: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateGroupPolicyMetadata;
+    isSDK(o: any): o is MsgUpdateGroupPolicyMetadataSDKType;
+    isAmino(o: any): o is MsgUpdateGroupPolicyMetadataAmino;
     encode(message: MsgUpdateGroupPolicyMetadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupPolicyMetadata;
     fromJSON(object: any): MsgUpdateGroupPolicyMetadata;
@@ -1087,6 +1155,10 @@ export declare const MsgUpdateGroupPolicyMetadata: {
 };
 export declare const MsgUpdateGroupPolicyMetadataResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateGroupPolicyMetadataResponse;
+    isSDK(o: any): o is MsgUpdateGroupPolicyMetadataResponseSDKType;
+    isAmino(o: any): o is MsgUpdateGroupPolicyMetadataResponseAmino;
     encode(_: MsgUpdateGroupPolicyMetadataResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateGroupPolicyMetadataResponse;
     fromJSON(_: any): MsgUpdateGroupPolicyMetadataResponse;
@@ -1102,6 +1174,10 @@ export declare const MsgUpdateGroupPolicyMetadataResponse: {
 };
 export declare const MsgSubmitProposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSubmitProposal;
+    isSDK(o: any): o is MsgSubmitProposalSDKType;
+    isAmino(o: any): o is MsgSubmitProposalAmino;
     encode(message: MsgSubmitProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitProposal;
     fromJSON(object: any): MsgSubmitProposal;
@@ -1117,6 +1193,10 @@ export declare const MsgSubmitProposal: {
 };
 export declare const MsgSubmitProposalResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSubmitProposalResponse;
+    isSDK(o: any): o is MsgSubmitProposalResponseSDKType;
+    isAmino(o: any): o is MsgSubmitProposalResponseAmino;
     encode(message: MsgSubmitProposalResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitProposalResponse;
     fromJSON(object: any): MsgSubmitProposalResponse;
@@ -1132,6 +1212,10 @@ export declare const MsgSubmitProposalResponse: {
 };
 export declare const MsgWithdrawProposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgWithdrawProposal;
+    isSDK(o: any): o is MsgWithdrawProposalSDKType;
+    isAmino(o: any): o is MsgWithdrawProposalAmino;
     encode(message: MsgWithdrawProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawProposal;
     fromJSON(object: any): MsgWithdrawProposal;
@@ -1147,6 +1231,10 @@ export declare const MsgWithdrawProposal: {
 };
 export declare const MsgWithdrawProposalResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgWithdrawProposalResponse;
+    isSDK(o: any): o is MsgWithdrawProposalResponseSDKType;
+    isAmino(o: any): o is MsgWithdrawProposalResponseAmino;
     encode(_: MsgWithdrawProposalResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawProposalResponse;
     fromJSON(_: any): MsgWithdrawProposalResponse;
@@ -1162,6 +1250,10 @@ export declare const MsgWithdrawProposalResponse: {
 };
 export declare const MsgVote: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgVote;
+    isSDK(o: any): o is MsgVoteSDKType;
+    isAmino(o: any): o is MsgVoteAmino;
     encode(message: MsgVote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVote;
     fromJSON(object: any): MsgVote;
@@ -1177,6 +1269,10 @@ export declare const MsgVote: {
 };
 export declare const MsgVoteResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgVoteResponse;
+    isSDK(o: any): o is MsgVoteResponseSDKType;
+    isAmino(o: any): o is MsgVoteResponseAmino;
     encode(_: MsgVoteResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteResponse;
     fromJSON(_: any): MsgVoteResponse;
@@ -1192,6 +1288,10 @@ export declare const MsgVoteResponse: {
 };
 export declare const MsgExec: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgExec;
+    isSDK(o: any): o is MsgExecSDKType;
+    isAmino(o: any): o is MsgExecAmino;
     encode(message: MsgExec, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgExec;
     fromJSON(object: any): MsgExec;
@@ -1207,6 +1307,10 @@ export declare const MsgExec: {
 };
 export declare const MsgExecResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgExecResponse;
+    isSDK(o: any): o is MsgExecResponseSDKType;
+    isAmino(o: any): o is MsgExecResponseAmino;
     encode(message: MsgExecResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgExecResponse;
     fromJSON(object: any): MsgExecResponse;
@@ -1222,6 +1326,10 @@ export declare const MsgExecResponse: {
 };
 export declare const MsgLeaveGroup: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgLeaveGroup;
+    isSDK(o: any): o is MsgLeaveGroupSDKType;
+    isAmino(o: any): o is MsgLeaveGroupAmino;
     encode(message: MsgLeaveGroup, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgLeaveGroup;
     fromJSON(object: any): MsgLeaveGroup;
@@ -1237,6 +1345,10 @@ export declare const MsgLeaveGroup: {
 };
 export declare const MsgLeaveGroupResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgLeaveGroupResponse;
+    isSDK(o: any): o is MsgLeaveGroupResponseSDKType;
+    isAmino(o: any): o is MsgLeaveGroupResponseAmino;
     encode(_: MsgLeaveGroupResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgLeaveGroupResponse;
     fromJSON(_: any): MsgLeaveGroupResponse;
@@ -1250,6 +1362,3 @@ export declare const MsgLeaveGroupResponse: {
     toProto(message: MsgLeaveGroupResponse): Uint8Array;
     toProtoMsg(message: MsgLeaveGroupResponse): MsgLeaveGroupResponseProtoMsg;
 };
-export declare const Cosmos_groupv1DecisionPolicy_InterfaceDecoder: (input: BinaryReader | Uint8Array) => ThresholdDecisionPolicy | PercentageDecisionPolicy | Any;
-export declare const Cosmos_groupv1DecisionPolicy_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_groupv1DecisionPolicy_ToAmino: (content: Any) => AnyAmino;

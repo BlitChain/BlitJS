@@ -310,6 +310,10 @@ export interface GenesisStateSDKType {
 }
 export declare const DelegatorWithdrawInfo: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DelegatorWithdrawInfo;
+    isSDK(o: any): o is DelegatorWithdrawInfoSDKType;
+    isAmino(o: any): o is DelegatorWithdrawInfoAmino;
     encode(message: DelegatorWithdrawInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DelegatorWithdrawInfo;
     fromJSON(object: any): DelegatorWithdrawInfo;
@@ -325,6 +329,10 @@ export declare const DelegatorWithdrawInfo: {
 };
 export declare const ValidatorOutstandingRewardsRecord: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ValidatorOutstandingRewardsRecord;
+    isSDK(o: any): o is ValidatorOutstandingRewardsRecordSDKType;
+    isAmino(o: any): o is ValidatorOutstandingRewardsRecordAmino;
     encode(message: ValidatorOutstandingRewardsRecord, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorOutstandingRewardsRecord;
     fromJSON(object: any): ValidatorOutstandingRewardsRecord;
@@ -340,6 +348,10 @@ export declare const ValidatorOutstandingRewardsRecord: {
 };
 export declare const ValidatorAccumulatedCommissionRecord: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ValidatorAccumulatedCommissionRecord;
+    isSDK(o: any): o is ValidatorAccumulatedCommissionRecordSDKType;
+    isAmino(o: any): o is ValidatorAccumulatedCommissionRecordAmino;
     encode(message: ValidatorAccumulatedCommissionRecord, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorAccumulatedCommissionRecord;
     fromJSON(object: any): ValidatorAccumulatedCommissionRecord;
@@ -355,6 +367,10 @@ export declare const ValidatorAccumulatedCommissionRecord: {
 };
 export declare const ValidatorHistoricalRewardsRecord: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ValidatorHistoricalRewardsRecord;
+    isSDK(o: any): o is ValidatorHistoricalRewardsRecordSDKType;
+    isAmino(o: any): o is ValidatorHistoricalRewardsRecordAmino;
     encode(message: ValidatorHistoricalRewardsRecord, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorHistoricalRewardsRecord;
     fromJSON(object: any): ValidatorHistoricalRewardsRecord;
@@ -370,6 +386,10 @@ export declare const ValidatorHistoricalRewardsRecord: {
 };
 export declare const ValidatorCurrentRewardsRecord: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ValidatorCurrentRewardsRecord;
+    isSDK(o: any): o is ValidatorCurrentRewardsRecordSDKType;
+    isAmino(o: any): o is ValidatorCurrentRewardsRecordAmino;
     encode(message: ValidatorCurrentRewardsRecord, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorCurrentRewardsRecord;
     fromJSON(object: any): ValidatorCurrentRewardsRecord;
@@ -385,6 +405,10 @@ export declare const ValidatorCurrentRewardsRecord: {
 };
 export declare const DelegatorStartingInfoRecord: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DelegatorStartingInfoRecord;
+    isSDK(o: any): o is DelegatorStartingInfoRecordSDKType;
+    isAmino(o: any): o is DelegatorStartingInfoRecordAmino;
     encode(message: DelegatorStartingInfoRecord, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DelegatorStartingInfoRecord;
     fromJSON(object: any): DelegatorStartingInfoRecord;
@@ -400,6 +424,10 @@ export declare const DelegatorStartingInfoRecord: {
 };
 export declare const ValidatorSlashEventRecord: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ValidatorSlashEventRecord;
+    isSDK(o: any): o is ValidatorSlashEventRecordSDKType;
+    isAmino(o: any): o is ValidatorSlashEventRecordAmino;
     encode(message: ValidatorSlashEventRecord, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSlashEventRecord;
     fromJSON(object: any): ValidatorSlashEventRecord;
@@ -415,6 +443,10 @@ export declare const ValidatorSlashEventRecord: {
 };
 export declare const GenesisState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GenesisState;
+    isSDK(o: any): o is GenesisStateSDKType;
+    isAmino(o: any): o is GenesisStateAmino;
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;

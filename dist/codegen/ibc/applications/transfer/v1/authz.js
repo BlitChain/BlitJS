@@ -5,6 +5,7 @@ exports.TransferAuthorization = exports.Allocation = exports.protobufPackage = v
 const coin_1 = require("../../../../cosmos/base/v1beta1/coin");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "ibc.applications.transfer.v1";
 function createBaseAllocation() {
     return {
@@ -16,6 +17,16 @@ function createBaseAllocation() {
 }
 exports.Allocation = {
     typeUrl: "/ibc.applications.transfer.v1.Allocation",
+    aminoType: "cosmos-sdk/Allocation",
+    is(o) {
+        return o && (o.$typeUrl === exports.Allocation.typeUrl || typeof o.source_port === "string" && typeof o.source_channel === "string" && Array.isArray(o.spend_limit) && (!o.spend_limit.length || coin_1.Coin.is(o.spend_limit[0])) && Array.isArray(o.allow_list) && (!o.allow_list.length || typeof o.allow_list[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Allocation.typeUrl || typeof o.source_port === "string" && typeof o.source_channel === "string" && Array.isArray(o.spend_limit) && (!o.spend_limit.length || coin_1.Coin.isSDK(o.spend_limit[0])) && Array.isArray(o.allow_list) && (!o.allow_list.length || typeof o.allow_list[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Allocation.typeUrl || typeof o.source_port === "string" && typeof o.source_channel === "string" && Array.isArray(o.spend_limit) && (!o.spend_limit.length || coin_1.Coin.isAmino(o.spend_limit[0])) && Array.isArray(o.allow_list) && (!o.allow_list.length || typeof o.allow_list[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.source_port !== "") {
             writer.uint32(10).string(message.source_port);
@@ -143,6 +154,8 @@ exports.Allocation = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Allocation.typeUrl, exports.Allocation);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Allocation.aminoType, exports.Allocation.typeUrl);
 function createBaseTransferAuthorization() {
     return {
         $typeUrl: "/ibc.applications.transfer.v1.TransferAuthorization",
@@ -151,6 +164,16 @@ function createBaseTransferAuthorization() {
 }
 exports.TransferAuthorization = {
     typeUrl: "/ibc.applications.transfer.v1.TransferAuthorization",
+    aminoType: "cosmos-sdk/TransferAuthorization",
+    is(o) {
+        return o && (o.$typeUrl === exports.TransferAuthorization.typeUrl || Array.isArray(o.allocations) && (!o.allocations.length || exports.Allocation.is(o.allocations[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.TransferAuthorization.typeUrl || Array.isArray(o.allocations) && (!o.allocations.length || exports.Allocation.isSDK(o.allocations[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.TransferAuthorization.typeUrl || Array.isArray(o.allocations) && (!o.allocations.length || exports.Allocation.isAmino(o.allocations[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.allocations) {
             exports.Allocation.encode(v, writer.uint32(10).fork()).ldelim();
@@ -231,4 +254,6 @@ exports.TransferAuthorization = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.TransferAuthorization.typeUrl, exports.TransferAuthorization);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.TransferAuthorization.aminoType, exports.TransferAuthorization.typeUrl);
 //# sourceMappingURL=authz.js.map

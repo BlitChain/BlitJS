@@ -4,6 +4,7 @@ exports.Config = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "cosmos.tx.config.v1";
 function createBaseConfig() {
     return {
@@ -13,6 +14,16 @@ function createBaseConfig() {
 }
 exports.Config = {
     typeUrl: "/cosmos.tx.config.v1.Config",
+    aminoType: "cosmos-sdk/Config",
+    is(o) {
+        return o && (o.$typeUrl === exports.Config.typeUrl || typeof o.skip_ante_handler === "boolean" && typeof o.skip_post_handler === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Config.typeUrl || typeof o.skip_ante_handler === "boolean" && typeof o.skip_post_handler === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Config.typeUrl || typeof o.skip_ante_handler === "boolean" && typeof o.skip_post_handler === "boolean");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.skip_ante_handler === true) {
             writer.uint32(8).bool(message.skip_ante_handler);
@@ -98,4 +109,6 @@ exports.Config = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Config.typeUrl, exports.Config);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Config.aminoType, exports.Config.typeUrl);
 //# sourceMappingURL=config.js.map

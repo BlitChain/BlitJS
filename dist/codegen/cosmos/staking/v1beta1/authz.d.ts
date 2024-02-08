@@ -108,6 +108,10 @@ export interface StakeAuthorization_ValidatorsSDKType {
 }
 export declare const StakeAuthorization: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is StakeAuthorization;
+    isSDK(o: any): o is StakeAuthorizationSDKType;
+    isAmino(o: any): o is StakeAuthorizationAmino;
     encode(message: StakeAuthorization, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): StakeAuthorization;
     fromJSON(object: any): StakeAuthorization;
@@ -123,6 +127,10 @@ export declare const StakeAuthorization: {
 };
 export declare const StakeAuthorization_Validators: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is StakeAuthorization_Validators;
+    isSDK(o: any): o is StakeAuthorization_ValidatorsSDKType;
+    isAmino(o: any): o is StakeAuthorization_ValidatorsAmino;
     encode(message: StakeAuthorization_Validators, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): StakeAuthorization_Validators;
     fromJSON(object: any): StakeAuthorization_Validators;

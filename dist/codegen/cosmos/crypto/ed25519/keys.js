@@ -4,6 +4,7 @@ exports.PrivKey = exports.PubKey = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.crypto.ed25519";
 function createBasePubKey() {
     return {
@@ -12,6 +13,16 @@ function createBasePubKey() {
 }
 exports.PubKey = {
     typeUrl: "/cosmos.crypto.ed25519.PubKey",
+    aminoType: "tendermint/PubKeyEd25519",
+    is(o) {
+        return o && (o.$typeUrl === exports.PubKey.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.PubKey.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.PubKey.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.key.length !== 0) {
             writer.uint32(10).bytes(message.key);
@@ -84,6 +95,8 @@ exports.PubKey = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.PubKey.typeUrl, exports.PubKey);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.PubKey.aminoType, exports.PubKey.typeUrl);
 function createBasePrivKey() {
     return {
         key: new Uint8Array()
@@ -91,6 +104,16 @@ function createBasePrivKey() {
 }
 exports.PrivKey = {
     typeUrl: "/cosmos.crypto.ed25519.PrivKey",
+    aminoType: "tendermint/PrivKeyEd25519",
+    is(o) {
+        return o && (o.$typeUrl === exports.PrivKey.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.PrivKey.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.PrivKey.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.key.length !== 0) {
             writer.uint32(10).bytes(message.key);
@@ -163,4 +186,6 @@ exports.PrivKey = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.PrivKey.typeUrl, exports.PrivKey);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.PrivKey.aminoType, exports.PrivKey.typeUrl);
 //# sourceMappingURL=keys.js.map

@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../../../binary";
+import { GlobalDecoderRegistry } from "../../../../../registry";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../../../helpers";
 export const protobufPackage = "cosmos.store.internal.kv.v1beta1";
 function createBasePairs() {
@@ -9,6 +10,16 @@ function createBasePairs() {
 }
 export const Pairs = {
     typeUrl: "/cosmos.store.internal.kv.v1beta1.Pairs",
+    aminoType: "cosmos-sdk/Pairs",
+    is(o) {
+        return o && (o.$typeUrl === Pairs.typeUrl || Array.isArray(o.pairs) && (!o.pairs.length || Pair.is(o.pairs[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Pairs.typeUrl || Array.isArray(o.pairs) && (!o.pairs.length || Pair.isSDK(o.pairs[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Pairs.typeUrl || Array.isArray(o.pairs) && (!o.pairs.length || Pair.isAmino(o.pairs[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.pairs) {
             Pair.encode(v, writer.uint32(10).fork()).ldelim();
@@ -89,6 +100,8 @@ export const Pairs = {
         };
     }
 };
+GlobalDecoderRegistry.register(Pairs.typeUrl, Pairs);
+GlobalDecoderRegistry.registerAminoProtoMapping(Pairs.aminoType, Pairs.typeUrl);
 function createBasePair() {
     return {
         key: new Uint8Array(),
@@ -97,6 +110,16 @@ function createBasePair() {
 }
 export const Pair = {
     typeUrl: "/cosmos.store.internal.kv.v1beta1.Pair",
+    aminoType: "cosmos-sdk/Pair",
+    is(o) {
+        return o && (o.$typeUrl === Pair.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Pair.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Pair.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.key.length !== 0) {
             writer.uint32(10).bytes(message.key);
@@ -182,4 +205,6 @@ export const Pair = {
         };
     }
 };
+GlobalDecoderRegistry.register(Pair.typeUrl, Pair);
+GlobalDecoderRegistry.registerAminoProtoMapping(Pair.aminoType, Pair.typeUrl);
 //# sourceMappingURL=kv.js.map

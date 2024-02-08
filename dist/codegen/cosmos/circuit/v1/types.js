@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GenesisState = exports.GenesisAccountPermissions = exports.Permissions = exports.permissions_LevelToJSON = exports.permissions_LevelFromJSON = exports.Permissions_LevelAmino = exports.Permissions_LevelSDKType = exports.Permissions_Level = exports.protobufPackage = void 0;
 //@ts-nocheck
-const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const binary_1 = require("../../../binary");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.circuit.v1";
 /** Level is the permission level. */
 var Permissions_Level;
@@ -79,6 +80,16 @@ function createBasePermissions() {
 }
 exports.Permissions = {
     typeUrl: "/cosmos.circuit.v1.Permissions",
+    aminoType: "cosmos-sdk/Permissions",
+    is(o) {
+        return o && (o.$typeUrl === exports.Permissions.typeUrl || (0, helpers_1.isSet)(o.level) && Array.isArray(o.limit_type_urls) && (!o.limit_type_urls.length || typeof o.limit_type_urls[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Permissions.typeUrl || (0, helpers_1.isSet)(o.level) && Array.isArray(o.limit_type_urls) && (!o.limit_type_urls.length || typeof o.limit_type_urls[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Permissions.typeUrl || (0, helpers_1.isSet)(o.level) && Array.isArray(o.limit_type_urls) && (!o.limit_type_urls.length || typeof o.limit_type_urls[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.level !== 0) {
             writer.uint32(8).int32(message.level);
@@ -172,6 +183,8 @@ exports.Permissions = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Permissions.typeUrl, exports.Permissions);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Permissions.aminoType, exports.Permissions.typeUrl);
 function createBaseGenesisAccountPermissions() {
     return {
         address: "",
@@ -180,6 +193,16 @@ function createBaseGenesisAccountPermissions() {
 }
 exports.GenesisAccountPermissions = {
     typeUrl: "/cosmos.circuit.v1.GenesisAccountPermissions",
+    aminoType: "cosmos-sdk/GenesisAccountPermissions",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisAccountPermissions.typeUrl || typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisAccountPermissions.typeUrl || typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisAccountPermissions.typeUrl || typeof o.address === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -265,6 +288,8 @@ exports.GenesisAccountPermissions = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisAccountPermissions.typeUrl, exports.GenesisAccountPermissions);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GenesisAccountPermissions.aminoType, exports.GenesisAccountPermissions.typeUrl);
 function createBaseGenesisState() {
     return {
         account_permissions: [],
@@ -273,6 +298,16 @@ function createBaseGenesisState() {
 }
 exports.GenesisState = {
     typeUrl: "/cosmos.circuit.v1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || Array.isArray(o.account_permissions) && (!o.account_permissions.length || exports.GenesisAccountPermissions.is(o.account_permissions[0])) && Array.isArray(o.disabled_type_urls) && (!o.disabled_type_urls.length || typeof o.disabled_type_urls[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || Array.isArray(o.account_permissions) && (!o.account_permissions.length || exports.GenesisAccountPermissions.isSDK(o.account_permissions[0])) && Array.isArray(o.disabled_type_urls) && (!o.disabled_type_urls.length || typeof o.disabled_type_urls[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || Array.isArray(o.account_permissions) && (!o.account_permissions.length || exports.GenesisAccountPermissions.isAmino(o.account_permissions[0])) && Array.isArray(o.disabled_type_urls) && (!o.disabled_type_urls.length || typeof o.disabled_type_urls[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.account_permissions) {
             exports.GenesisAccountPermissions.encode(v, writer.uint32(10).fork()).ldelim();
@@ -374,4 +409,6 @@ exports.GenesisState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GenesisState.aminoType, exports.GenesisState.typeUrl);
 //# sourceMappingURL=types.js.map

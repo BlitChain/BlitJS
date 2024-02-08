@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.app.v1alpha1";
 function createBaseModuleDescriptor() {
     return {
@@ -11,6 +12,16 @@ function createBaseModuleDescriptor() {
 }
 export const ModuleDescriptor = {
     typeUrl: "/cosmos.app.v1alpha1.ModuleDescriptor",
+    aminoType: "cosmos-sdk/ModuleDescriptor",
+    is(o) {
+        return o && (o.$typeUrl === ModuleDescriptor.typeUrl || typeof o.go_import === "string" && Array.isArray(o.use_package) && (!o.use_package.length || PackageReference.is(o.use_package[0])) && Array.isArray(o.can_migrate_from) && (!o.can_migrate_from.length || MigrateFromInfo.is(o.can_migrate_from[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === ModuleDescriptor.typeUrl || typeof o.go_import === "string" && Array.isArray(o.use_package) && (!o.use_package.length || PackageReference.isSDK(o.use_package[0])) && Array.isArray(o.can_migrate_from) && (!o.can_migrate_from.length || MigrateFromInfo.isSDK(o.can_migrate_from[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === ModuleDescriptor.typeUrl || typeof o.go_import === "string" && Array.isArray(o.use_package) && (!o.use_package.length || PackageReference.isAmino(o.use_package[0])) && Array.isArray(o.can_migrate_from) && (!o.can_migrate_from.length || MigrateFromInfo.isAmino(o.can_migrate_from[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.go_import !== "") {
             writer.uint32(10).string(message.go_import);
@@ -125,6 +136,8 @@ export const ModuleDescriptor = {
         };
     }
 };
+GlobalDecoderRegistry.register(ModuleDescriptor.typeUrl, ModuleDescriptor);
+GlobalDecoderRegistry.registerAminoProtoMapping(ModuleDescriptor.aminoType, ModuleDescriptor.typeUrl);
 function createBasePackageReference() {
     return {
         name: "",
@@ -133,6 +146,16 @@ function createBasePackageReference() {
 }
 export const PackageReference = {
     typeUrl: "/cosmos.app.v1alpha1.PackageReference",
+    aminoType: "cosmos-sdk/PackageReference",
+    is(o) {
+        return o && (o.$typeUrl === PackageReference.typeUrl || typeof o.name === "string" && typeof o.revision === "number");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === PackageReference.typeUrl || typeof o.name === "string" && typeof o.revision === "number");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === PackageReference.typeUrl || typeof o.name === "string" && typeof o.revision === "number");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -218,6 +241,8 @@ export const PackageReference = {
         };
     }
 };
+GlobalDecoderRegistry.register(PackageReference.typeUrl, PackageReference);
+GlobalDecoderRegistry.registerAminoProtoMapping(PackageReference.aminoType, PackageReference.typeUrl);
 function createBaseMigrateFromInfo() {
     return {
         module: ""
@@ -225,6 +250,16 @@ function createBaseMigrateFromInfo() {
 }
 export const MigrateFromInfo = {
     typeUrl: "/cosmos.app.v1alpha1.MigrateFromInfo",
+    aminoType: "cosmos-sdk/MigrateFromInfo",
+    is(o) {
+        return o && (o.$typeUrl === MigrateFromInfo.typeUrl || typeof o.module === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MigrateFromInfo.typeUrl || typeof o.module === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MigrateFromInfo.typeUrl || typeof o.module === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.module !== "") {
             writer.uint32(10).string(message.module);
@@ -297,4 +332,6 @@ export const MigrateFromInfo = {
         };
     }
 };
+GlobalDecoderRegistry.register(MigrateFromInfo.typeUrl, MigrateFromInfo);
+GlobalDecoderRegistry.registerAminoProtoMapping(MigrateFromInfo.aminoType, MigrateFromInfo.typeUrl);
 //# sourceMappingURL=module.js.map

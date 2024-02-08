@@ -56,6 +56,10 @@ export interface FungibleTokenPacketDataSDKType {
 }
 export declare const FungibleTokenPacketData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is FungibleTokenPacketData;
+    isSDK(o: any): o is FungibleTokenPacketDataSDKType;
+    isAmino(o: any): o is FungibleTokenPacketDataAmino;
     encode(message: FungibleTokenPacketData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FungibleTokenPacketData;
     fromJSON(object: any): FungibleTokenPacketData;

@@ -768,6 +768,10 @@ export interface AuxSignerDataSDKType {
 }
 export declare const Tx: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Tx;
+    isSDK(o: any): o is TxSDKType;
+    isAmino(o: any): o is TxAmino;
     encode(message: Tx, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Tx;
     fromJSON(object: any): Tx;
@@ -783,6 +787,10 @@ export declare const Tx: {
 };
 export declare const TxRaw: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TxRaw;
+    isSDK(o: any): o is TxRawSDKType;
+    isAmino(o: any): o is TxRawAmino;
     encode(message: TxRaw, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxRaw;
     fromJSON(object: any): TxRaw;
@@ -798,6 +806,10 @@ export declare const TxRaw: {
 };
 export declare const SignDoc: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SignDoc;
+    isSDK(o: any): o is SignDocSDKType;
+    isAmino(o: any): o is SignDocAmino;
     encode(message: SignDoc, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignDoc;
     fromJSON(object: any): SignDoc;
@@ -813,6 +825,10 @@ export declare const SignDoc: {
 };
 export declare const SignDocDirectAux: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SignDocDirectAux;
+    isSDK(o: any): o is SignDocDirectAuxSDKType;
+    isAmino(o: any): o is SignDocDirectAuxAmino;
     encode(message: SignDocDirectAux, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignDocDirectAux;
     fromJSON(object: any): SignDocDirectAux;
@@ -828,6 +844,10 @@ export declare const SignDocDirectAux: {
 };
 export declare const TxBody: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TxBody;
+    isSDK(o: any): o is TxBodySDKType;
+    isAmino(o: any): o is TxBodyAmino;
     encode(message: TxBody, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxBody;
     fromJSON(object: any): TxBody;
@@ -843,6 +863,10 @@ export declare const TxBody: {
 };
 export declare const AuthInfo: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is AuthInfo;
+    isSDK(o: any): o is AuthInfoSDKType;
+    isAmino(o: any): o is AuthInfoAmino;
     encode(message: AuthInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AuthInfo;
     fromJSON(object: any): AuthInfo;
@@ -858,6 +882,10 @@ export declare const AuthInfo: {
 };
 export declare const SignerInfo: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SignerInfo;
+    isSDK(o: any): o is SignerInfoSDKType;
+    isAmino(o: any): o is SignerInfoAmino;
     encode(message: SignerInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignerInfo;
     fromJSON(object: any): SignerInfo;
@@ -873,6 +901,10 @@ export declare const SignerInfo: {
 };
 export declare const ModeInfo: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ModeInfo;
+    isSDK(o: any): o is ModeInfoSDKType;
+    isAmino(o: any): o is ModeInfoAmino;
     encode(message: ModeInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModeInfo;
     fromJSON(object: any): ModeInfo;
@@ -888,6 +920,10 @@ export declare const ModeInfo: {
 };
 export declare const ModeInfo_Single: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ModeInfo_Single;
+    isSDK(o: any): o is ModeInfo_SingleSDKType;
+    isAmino(o: any): o is ModeInfo_SingleAmino;
     encode(message: ModeInfo_Single, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModeInfo_Single;
     fromJSON(object: any): ModeInfo_Single;
@@ -903,6 +939,10 @@ export declare const ModeInfo_Single: {
 };
 export declare const ModeInfo_Multi: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ModeInfo_Multi;
+    isSDK(o: any): o is ModeInfo_MultiSDKType;
+    isAmino(o: any): o is ModeInfo_MultiAmino;
     encode(message: ModeInfo_Multi, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModeInfo_Multi;
     fromJSON(object: any): ModeInfo_Multi;
@@ -918,6 +958,10 @@ export declare const ModeInfo_Multi: {
 };
 export declare const Fee: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Fee;
+    isSDK(o: any): o is FeeSDKType;
+    isAmino(o: any): o is FeeAmino;
     encode(message: Fee, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Fee;
     fromJSON(object: any): Fee;
@@ -933,6 +977,10 @@ export declare const Fee: {
 };
 export declare const Tip: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Tip;
+    isSDK(o: any): o is TipSDKType;
+    isAmino(o: any): o is TipAmino;
     encode(message: Tip, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Tip;
     fromJSON(object: any): Tip;
@@ -948,6 +996,10 @@ export declare const Tip: {
 };
 export declare const AuxSignerData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is AuxSignerData;
+    isSDK(o: any): o is AuxSignerDataSDKType;
+    isAmino(o: any): o is AuxSignerDataAmino;
     encode(message: AuxSignerData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AuxSignerData;
     fromJSON(object: any): AuxSignerData;

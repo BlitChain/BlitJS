@@ -1105,6 +1105,10 @@ export interface QueryNextSequenceSendResponseSDKType {
 }
 export declare const QueryChannelRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryChannelRequest;
+    isSDK(o: any): o is QueryChannelRequestSDKType;
+    isAmino(o: any): o is QueryChannelRequestAmino;
     encode(message: QueryChannelRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelRequest;
     fromJSON(object: any): QueryChannelRequest;
@@ -1120,6 +1124,10 @@ export declare const QueryChannelRequest: {
 };
 export declare const QueryChannelResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryChannelResponse;
+    isSDK(o: any): o is QueryChannelResponseSDKType;
+    isAmino(o: any): o is QueryChannelResponseAmino;
     encode(message: QueryChannelResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelResponse;
     fromJSON(object: any): QueryChannelResponse;
@@ -1135,6 +1143,10 @@ export declare const QueryChannelResponse: {
 };
 export declare const QueryChannelsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryChannelsRequest;
+    isSDK(o: any): o is QueryChannelsRequestSDKType;
+    isAmino(o: any): o is QueryChannelsRequestAmino;
     encode(message: QueryChannelsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelsRequest;
     fromJSON(object: any): QueryChannelsRequest;
@@ -1150,6 +1162,10 @@ export declare const QueryChannelsRequest: {
 };
 export declare const QueryChannelsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryChannelsResponse;
+    isSDK(o: any): o is QueryChannelsResponseSDKType;
+    isAmino(o: any): o is QueryChannelsResponseAmino;
     encode(message: QueryChannelsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelsResponse;
     fromJSON(object: any): QueryChannelsResponse;
@@ -1165,6 +1181,10 @@ export declare const QueryChannelsResponse: {
 };
 export declare const QueryConnectionChannelsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConnectionChannelsRequest;
+    isSDK(o: any): o is QueryConnectionChannelsRequestSDKType;
+    isAmino(o: any): o is QueryConnectionChannelsRequestAmino;
     encode(message: QueryConnectionChannelsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionChannelsRequest;
     fromJSON(object: any): QueryConnectionChannelsRequest;
@@ -1180,6 +1200,10 @@ export declare const QueryConnectionChannelsRequest: {
 };
 export declare const QueryConnectionChannelsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConnectionChannelsResponse;
+    isSDK(o: any): o is QueryConnectionChannelsResponseSDKType;
+    isAmino(o: any): o is QueryConnectionChannelsResponseAmino;
     encode(message: QueryConnectionChannelsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionChannelsResponse;
     fromJSON(object: any): QueryConnectionChannelsResponse;
@@ -1195,6 +1219,10 @@ export declare const QueryConnectionChannelsResponse: {
 };
 export declare const QueryChannelClientStateRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryChannelClientStateRequest;
+    isSDK(o: any): o is QueryChannelClientStateRequestSDKType;
+    isAmino(o: any): o is QueryChannelClientStateRequestAmino;
     encode(message: QueryChannelClientStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelClientStateRequest;
     fromJSON(object: any): QueryChannelClientStateRequest;
@@ -1210,6 +1238,10 @@ export declare const QueryChannelClientStateRequest: {
 };
 export declare const QueryChannelClientStateResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryChannelClientStateResponse;
+    isSDK(o: any): o is QueryChannelClientStateResponseSDKType;
+    isAmino(o: any): o is QueryChannelClientStateResponseAmino;
     encode(message: QueryChannelClientStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelClientStateResponse;
     fromJSON(object: any): QueryChannelClientStateResponse;
@@ -1225,6 +1257,10 @@ export declare const QueryChannelClientStateResponse: {
 };
 export declare const QueryChannelConsensusStateRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryChannelConsensusStateRequest;
+    isSDK(o: any): o is QueryChannelConsensusStateRequestSDKType;
+    isAmino(o: any): o is QueryChannelConsensusStateRequestAmino;
     encode(message: QueryChannelConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelConsensusStateRequest;
     fromJSON(object: any): QueryChannelConsensusStateRequest;
@@ -1240,6 +1276,10 @@ export declare const QueryChannelConsensusStateRequest: {
 };
 export declare const QueryChannelConsensusStateResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryChannelConsensusStateResponse;
+    isSDK(o: any): o is QueryChannelConsensusStateResponseSDKType;
+    isAmino(o: any): o is QueryChannelConsensusStateResponseAmino;
     encode(message: QueryChannelConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryChannelConsensusStateResponse;
     fromJSON(object: any): QueryChannelConsensusStateResponse;
@@ -1255,6 +1295,10 @@ export declare const QueryChannelConsensusStateResponse: {
 };
 export declare const QueryPacketCommitmentRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryPacketCommitmentRequest;
+    isSDK(o: any): o is QueryPacketCommitmentRequestSDKType;
+    isAmino(o: any): o is QueryPacketCommitmentRequestAmino;
     encode(message: QueryPacketCommitmentRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketCommitmentRequest;
     fromJSON(object: any): QueryPacketCommitmentRequest;
@@ -1270,6 +1314,10 @@ export declare const QueryPacketCommitmentRequest: {
 };
 export declare const QueryPacketCommitmentResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryPacketCommitmentResponse;
+    isSDK(o: any): o is QueryPacketCommitmentResponseSDKType;
+    isAmino(o: any): o is QueryPacketCommitmentResponseAmino;
     encode(message: QueryPacketCommitmentResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketCommitmentResponse;
     fromJSON(object: any): QueryPacketCommitmentResponse;
@@ -1285,6 +1333,10 @@ export declare const QueryPacketCommitmentResponse: {
 };
 export declare const QueryPacketCommitmentsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryPacketCommitmentsRequest;
+    isSDK(o: any): o is QueryPacketCommitmentsRequestSDKType;
+    isAmino(o: any): o is QueryPacketCommitmentsRequestAmino;
     encode(message: QueryPacketCommitmentsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketCommitmentsRequest;
     fromJSON(object: any): QueryPacketCommitmentsRequest;
@@ -1300,6 +1352,10 @@ export declare const QueryPacketCommitmentsRequest: {
 };
 export declare const QueryPacketCommitmentsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryPacketCommitmentsResponse;
+    isSDK(o: any): o is QueryPacketCommitmentsResponseSDKType;
+    isAmino(o: any): o is QueryPacketCommitmentsResponseAmino;
     encode(message: QueryPacketCommitmentsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketCommitmentsResponse;
     fromJSON(object: any): QueryPacketCommitmentsResponse;
@@ -1315,6 +1371,10 @@ export declare const QueryPacketCommitmentsResponse: {
 };
 export declare const QueryPacketReceiptRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryPacketReceiptRequest;
+    isSDK(o: any): o is QueryPacketReceiptRequestSDKType;
+    isAmino(o: any): o is QueryPacketReceiptRequestAmino;
     encode(message: QueryPacketReceiptRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketReceiptRequest;
     fromJSON(object: any): QueryPacketReceiptRequest;
@@ -1330,6 +1390,10 @@ export declare const QueryPacketReceiptRequest: {
 };
 export declare const QueryPacketReceiptResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryPacketReceiptResponse;
+    isSDK(o: any): o is QueryPacketReceiptResponseSDKType;
+    isAmino(o: any): o is QueryPacketReceiptResponseAmino;
     encode(message: QueryPacketReceiptResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketReceiptResponse;
     fromJSON(object: any): QueryPacketReceiptResponse;
@@ -1345,6 +1409,10 @@ export declare const QueryPacketReceiptResponse: {
 };
 export declare const QueryPacketAcknowledgementRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryPacketAcknowledgementRequest;
+    isSDK(o: any): o is QueryPacketAcknowledgementRequestSDKType;
+    isAmino(o: any): o is QueryPacketAcknowledgementRequestAmino;
     encode(message: QueryPacketAcknowledgementRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketAcknowledgementRequest;
     fromJSON(object: any): QueryPacketAcknowledgementRequest;
@@ -1360,6 +1428,10 @@ export declare const QueryPacketAcknowledgementRequest: {
 };
 export declare const QueryPacketAcknowledgementResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryPacketAcknowledgementResponse;
+    isSDK(o: any): o is QueryPacketAcknowledgementResponseSDKType;
+    isAmino(o: any): o is QueryPacketAcknowledgementResponseAmino;
     encode(message: QueryPacketAcknowledgementResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketAcknowledgementResponse;
     fromJSON(object: any): QueryPacketAcknowledgementResponse;
@@ -1375,6 +1447,10 @@ export declare const QueryPacketAcknowledgementResponse: {
 };
 export declare const QueryPacketAcknowledgementsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryPacketAcknowledgementsRequest;
+    isSDK(o: any): o is QueryPacketAcknowledgementsRequestSDKType;
+    isAmino(o: any): o is QueryPacketAcknowledgementsRequestAmino;
     encode(message: QueryPacketAcknowledgementsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketAcknowledgementsRequest;
     fromJSON(object: any): QueryPacketAcknowledgementsRequest;
@@ -1390,6 +1466,10 @@ export declare const QueryPacketAcknowledgementsRequest: {
 };
 export declare const QueryPacketAcknowledgementsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryPacketAcknowledgementsResponse;
+    isSDK(o: any): o is QueryPacketAcknowledgementsResponseSDKType;
+    isAmino(o: any): o is QueryPacketAcknowledgementsResponseAmino;
     encode(message: QueryPacketAcknowledgementsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPacketAcknowledgementsResponse;
     fromJSON(object: any): QueryPacketAcknowledgementsResponse;
@@ -1405,6 +1485,10 @@ export declare const QueryPacketAcknowledgementsResponse: {
 };
 export declare const QueryUnreceivedPacketsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryUnreceivedPacketsRequest;
+    isSDK(o: any): o is QueryUnreceivedPacketsRequestSDKType;
+    isAmino(o: any): o is QueryUnreceivedPacketsRequestAmino;
     encode(message: QueryUnreceivedPacketsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUnreceivedPacketsRequest;
     fromJSON(object: any): QueryUnreceivedPacketsRequest;
@@ -1420,6 +1504,10 @@ export declare const QueryUnreceivedPacketsRequest: {
 };
 export declare const QueryUnreceivedPacketsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryUnreceivedPacketsResponse;
+    isSDK(o: any): o is QueryUnreceivedPacketsResponseSDKType;
+    isAmino(o: any): o is QueryUnreceivedPacketsResponseAmino;
     encode(message: QueryUnreceivedPacketsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUnreceivedPacketsResponse;
     fromJSON(object: any): QueryUnreceivedPacketsResponse;
@@ -1435,6 +1523,10 @@ export declare const QueryUnreceivedPacketsResponse: {
 };
 export declare const QueryUnreceivedAcksRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryUnreceivedAcksRequest;
+    isSDK(o: any): o is QueryUnreceivedAcksRequestSDKType;
+    isAmino(o: any): o is QueryUnreceivedAcksRequestAmino;
     encode(message: QueryUnreceivedAcksRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUnreceivedAcksRequest;
     fromJSON(object: any): QueryUnreceivedAcksRequest;
@@ -1450,6 +1542,10 @@ export declare const QueryUnreceivedAcksRequest: {
 };
 export declare const QueryUnreceivedAcksResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryUnreceivedAcksResponse;
+    isSDK(o: any): o is QueryUnreceivedAcksResponseSDKType;
+    isAmino(o: any): o is QueryUnreceivedAcksResponseAmino;
     encode(message: QueryUnreceivedAcksResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUnreceivedAcksResponse;
     fromJSON(object: any): QueryUnreceivedAcksResponse;
@@ -1465,6 +1561,10 @@ export declare const QueryUnreceivedAcksResponse: {
 };
 export declare const QueryNextSequenceReceiveRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryNextSequenceReceiveRequest;
+    isSDK(o: any): o is QueryNextSequenceReceiveRequestSDKType;
+    isAmino(o: any): o is QueryNextSequenceReceiveRequestAmino;
     encode(message: QueryNextSequenceReceiveRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryNextSequenceReceiveRequest;
     fromJSON(object: any): QueryNextSequenceReceiveRequest;
@@ -1480,6 +1580,10 @@ export declare const QueryNextSequenceReceiveRequest: {
 };
 export declare const QueryNextSequenceReceiveResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryNextSequenceReceiveResponse;
+    isSDK(o: any): o is QueryNextSequenceReceiveResponseSDKType;
+    isAmino(o: any): o is QueryNextSequenceReceiveResponseAmino;
     encode(message: QueryNextSequenceReceiveResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryNextSequenceReceiveResponse;
     fromJSON(object: any): QueryNextSequenceReceiveResponse;
@@ -1495,6 +1599,10 @@ export declare const QueryNextSequenceReceiveResponse: {
 };
 export declare const QueryNextSequenceSendRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryNextSequenceSendRequest;
+    isSDK(o: any): o is QueryNextSequenceSendRequestSDKType;
+    isAmino(o: any): o is QueryNextSequenceSendRequestAmino;
     encode(message: QueryNextSequenceSendRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryNextSequenceSendRequest;
     fromJSON(object: any): QueryNextSequenceSendRequest;
@@ -1510,6 +1618,10 @@ export declare const QueryNextSequenceSendRequest: {
 };
 export declare const QueryNextSequenceSendResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryNextSequenceSendResponse;
+    isSDK(o: any): o is QueryNextSequenceSendResponseSDKType;
+    isAmino(o: any): o is QueryNextSequenceSendResponseAmino;
     encode(message: QueryNextSequenceSendResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryNextSequenceSendResponse;
     fromJSON(object: any): QueryNextSequenceSendResponse;

@@ -2,6 +2,7 @@
 import { ResponseCommit, ResponseCommitAmino, ResponseCommitSDKType, RequestFinalizeBlock, RequestFinalizeBlockAmino, RequestFinalizeBlockSDKType, ResponseFinalizeBlock, ResponseFinalizeBlockAmino, ResponseFinalizeBlockSDKType } from "../../../tendermint/abci/types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.store.v1beta1";
 /**
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
@@ -101,6 +102,16 @@ function createBaseStoreKVPair(): StoreKVPair {
 }
 export const StoreKVPair = {
   typeUrl: "/cosmos.store.v1beta1.StoreKVPair",
+  aminoType: "cosmos-sdk/StoreKVPair",
+  is(o: any): o is StoreKVPair {
+    return o && (o.$typeUrl === StoreKVPair.typeUrl || typeof o.store_key === "string" && typeof o.delete === "boolean" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+  },
+  isSDK(o: any): o is StoreKVPairSDKType {
+    return o && (o.$typeUrl === StoreKVPair.typeUrl || typeof o.store_key === "string" && typeof o.delete === "boolean" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+  },
+  isAmino(o: any): o is StoreKVPairAmino {
+    return o && (o.$typeUrl === StoreKVPair.typeUrl || typeof o.store_key === "string" && typeof o.delete === "boolean" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+  },
   encode(message: StoreKVPair, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.store_key !== "") {
       writer.uint32(10).string(message.store_key);
@@ -212,6 +223,8 @@ export const StoreKVPair = {
     };
   }
 };
+GlobalDecoderRegistry.register(StoreKVPair.typeUrl, StoreKVPair);
+GlobalDecoderRegistry.registerAminoProtoMapping(StoreKVPair.aminoType, StoreKVPair.typeUrl);
 function createBaseBlockMetadata(): BlockMetadata {
   return {
     response_commit: undefined,
@@ -221,6 +234,16 @@ function createBaseBlockMetadata(): BlockMetadata {
 }
 export const BlockMetadata = {
   typeUrl: "/cosmos.store.v1beta1.BlockMetadata",
+  aminoType: "cosmos-sdk/BlockMetadata",
+  is(o: any): o is BlockMetadata {
+    return o && o.$typeUrl === BlockMetadata.typeUrl;
+  },
+  isSDK(o: any): o is BlockMetadataSDKType {
+    return o && o.$typeUrl === BlockMetadata.typeUrl;
+  },
+  isAmino(o: any): o is BlockMetadataAmino {
+    return o && o.$typeUrl === BlockMetadata.typeUrl;
+  },
   encode(message: BlockMetadata, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.response_commit !== undefined) {
       ResponseCommit.encode(message.response_commit, writer.uint32(50).fork()).ldelim();
@@ -319,3 +342,5 @@ export const BlockMetadata = {
     };
   }
 };
+GlobalDecoderRegistry.register(BlockMetadata.typeUrl, BlockMetadata);
+GlobalDecoderRegistry.registerAminoProtoMapping(BlockMetadata.aminoType, BlockMetadata.typeUrl);

@@ -22,6 +22,9 @@ export interface BitArraySDKType {
 }
 export declare const BitArray: {
     typeUrl: string;
+    is(o: any): o is BitArray;
+    isSDK(o: any): o is BitArraySDKType;
+    isAmino(o: any): o is BitArrayAmino;
     encode(message: BitArray, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BitArray;
     fromJSON(object: any): BitArray;

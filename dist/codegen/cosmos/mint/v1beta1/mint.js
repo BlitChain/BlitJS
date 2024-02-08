@@ -5,6 +5,7 @@ exports.Params = exports.Minter = exports.protobufPackage = void 0;
 const binary_1 = require("../../../binary");
 const math_1 = require("@cosmjs/math");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.mint.v1beta1";
 function createBaseMinter() {
     return {
@@ -14,6 +15,16 @@ function createBaseMinter() {
 }
 exports.Minter = {
     typeUrl: "/cosmos.mint.v1beta1.Minter",
+    aminoType: "cosmos-sdk/Minter",
+    is(o) {
+        return o && (o.$typeUrl === exports.Minter.typeUrl || typeof o.inflation === "string" && typeof o.annual_provisions === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Minter.typeUrl || typeof o.inflation === "string" && typeof o.annual_provisions === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Minter.typeUrl || typeof o.inflation === "string" && typeof o.annual_provisions === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.inflation !== "") {
             writer.uint32(10).string(math_1.Decimal.fromUserInput(message.inflation, 18).atomics);
@@ -99,6 +110,8 @@ exports.Minter = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Minter.typeUrl, exports.Minter);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Minter.aminoType, exports.Minter.typeUrl);
 function createBaseParams() {
     return {
         mint_denom: "",
@@ -111,6 +124,16 @@ function createBaseParams() {
 }
 exports.Params = {
     typeUrl: "/cosmos.mint.v1beta1.Params",
+    aminoType: "cosmos-sdk/x/mint/Params",
+    is(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.mint_denom === "string" && typeof o.inflation_rate_change === "string" && typeof o.inflation_max === "string" && typeof o.inflation_min === "string" && typeof o.goal_bonded === "string" && typeof o.blocks_per_year === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.mint_denom === "string" && typeof o.inflation_rate_change === "string" && typeof o.inflation_max === "string" && typeof o.inflation_min === "string" && typeof o.goal_bonded === "string" && typeof o.blocks_per_year === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.mint_denom === "string" && typeof o.inflation_rate_change === "string" && typeof o.inflation_max === "string" && typeof o.inflation_min === "string" && typeof o.goal_bonded === "string" && typeof o.blocks_per_year === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.mint_denom !== "") {
             writer.uint32(10).string(message.mint_denom);
@@ -248,4 +271,6 @@ exports.Params = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Params.typeUrl, exports.Params);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Params.aminoType, exports.Params.typeUrl);
 //# sourceMappingURL=mint.js.map

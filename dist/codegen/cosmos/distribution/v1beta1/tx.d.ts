@@ -464,6 +464,10 @@ export interface MsgDepositValidatorRewardsPoolResponseSDKType {
 }
 export declare const MsgSetWithdrawAddress: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSetWithdrawAddress;
+    isSDK(o: any): o is MsgSetWithdrawAddressSDKType;
+    isAmino(o: any): o is MsgSetWithdrawAddressAmino;
     encode(message: MsgSetWithdrawAddress, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSetWithdrawAddress;
     fromJSON(object: any): MsgSetWithdrawAddress;
@@ -479,6 +483,10 @@ export declare const MsgSetWithdrawAddress: {
 };
 export declare const MsgSetWithdrawAddressResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSetWithdrawAddressResponse;
+    isSDK(o: any): o is MsgSetWithdrawAddressResponseSDKType;
+    isAmino(o: any): o is MsgSetWithdrawAddressResponseAmino;
     encode(_: MsgSetWithdrawAddressResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSetWithdrawAddressResponse;
     fromJSON(_: any): MsgSetWithdrawAddressResponse;
@@ -494,6 +502,10 @@ export declare const MsgSetWithdrawAddressResponse: {
 };
 export declare const MsgWithdrawDelegatorReward: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgWithdrawDelegatorReward;
+    isSDK(o: any): o is MsgWithdrawDelegatorRewardSDKType;
+    isAmino(o: any): o is MsgWithdrawDelegatorRewardAmino;
     encode(message: MsgWithdrawDelegatorReward, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawDelegatorReward;
     fromJSON(object: any): MsgWithdrawDelegatorReward;
@@ -509,6 +521,10 @@ export declare const MsgWithdrawDelegatorReward: {
 };
 export declare const MsgWithdrawDelegatorRewardResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgWithdrawDelegatorRewardResponse;
+    isSDK(o: any): o is MsgWithdrawDelegatorRewardResponseSDKType;
+    isAmino(o: any): o is MsgWithdrawDelegatorRewardResponseAmino;
     encode(message: MsgWithdrawDelegatorRewardResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawDelegatorRewardResponse;
     fromJSON(object: any): MsgWithdrawDelegatorRewardResponse;
@@ -524,6 +540,10 @@ export declare const MsgWithdrawDelegatorRewardResponse: {
 };
 export declare const MsgWithdrawValidatorCommission: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgWithdrawValidatorCommission;
+    isSDK(o: any): o is MsgWithdrawValidatorCommissionSDKType;
+    isAmino(o: any): o is MsgWithdrawValidatorCommissionAmino;
     encode(message: MsgWithdrawValidatorCommission, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawValidatorCommission;
     fromJSON(object: any): MsgWithdrawValidatorCommission;
@@ -539,6 +559,10 @@ export declare const MsgWithdrawValidatorCommission: {
 };
 export declare const MsgWithdrawValidatorCommissionResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgWithdrawValidatorCommissionResponse;
+    isSDK(o: any): o is MsgWithdrawValidatorCommissionResponseSDKType;
+    isAmino(o: any): o is MsgWithdrawValidatorCommissionResponseAmino;
     encode(message: MsgWithdrawValidatorCommissionResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawValidatorCommissionResponse;
     fromJSON(object: any): MsgWithdrawValidatorCommissionResponse;
@@ -554,6 +578,10 @@ export declare const MsgWithdrawValidatorCommissionResponse: {
 };
 export declare const MsgFundCommunityPool: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgFundCommunityPool;
+    isSDK(o: any): o is MsgFundCommunityPoolSDKType;
+    isAmino(o: any): o is MsgFundCommunityPoolAmino;
     encode(message: MsgFundCommunityPool, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgFundCommunityPool;
     fromJSON(object: any): MsgFundCommunityPool;
@@ -569,6 +597,10 @@ export declare const MsgFundCommunityPool: {
 };
 export declare const MsgFundCommunityPoolResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgFundCommunityPoolResponse;
+    isSDK(o: any): o is MsgFundCommunityPoolResponseSDKType;
+    isAmino(o: any): o is MsgFundCommunityPoolResponseAmino;
     encode(_: MsgFundCommunityPoolResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgFundCommunityPoolResponse;
     fromJSON(_: any): MsgFundCommunityPoolResponse;
@@ -584,6 +616,10 @@ export declare const MsgFundCommunityPoolResponse: {
 };
 export declare const MsgUpdateParams: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParams;
+    isSDK(o: any): o is MsgUpdateParamsSDKType;
+    isAmino(o: any): o is MsgUpdateParamsAmino;
     encode(message: MsgUpdateParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParams;
     fromJSON(object: any): MsgUpdateParams;
@@ -599,6 +635,10 @@ export declare const MsgUpdateParams: {
 };
 export declare const MsgUpdateParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParamsResponse;
+    isSDK(o: any): o is MsgUpdateParamsResponseSDKType;
+    isAmino(o: any): o is MsgUpdateParamsResponseAmino;
     encode(_: MsgUpdateParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParamsResponse;
     fromJSON(_: any): MsgUpdateParamsResponse;
@@ -614,6 +654,10 @@ export declare const MsgUpdateParamsResponse: {
 };
 export declare const MsgCommunityPoolSpend: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCommunityPoolSpend;
+    isSDK(o: any): o is MsgCommunityPoolSpendSDKType;
+    isAmino(o: any): o is MsgCommunityPoolSpendAmino;
     encode(message: MsgCommunityPoolSpend, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCommunityPoolSpend;
     fromJSON(object: any): MsgCommunityPoolSpend;
@@ -629,6 +673,10 @@ export declare const MsgCommunityPoolSpend: {
 };
 export declare const MsgCommunityPoolSpendResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCommunityPoolSpendResponse;
+    isSDK(o: any): o is MsgCommunityPoolSpendResponseSDKType;
+    isAmino(o: any): o is MsgCommunityPoolSpendResponseAmino;
     encode(_: MsgCommunityPoolSpendResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCommunityPoolSpendResponse;
     fromJSON(_: any): MsgCommunityPoolSpendResponse;
@@ -644,6 +692,10 @@ export declare const MsgCommunityPoolSpendResponse: {
 };
 export declare const MsgDepositValidatorRewardsPool: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgDepositValidatorRewardsPool;
+    isSDK(o: any): o is MsgDepositValidatorRewardsPoolSDKType;
+    isAmino(o: any): o is MsgDepositValidatorRewardsPoolAmino;
     encode(message: MsgDepositValidatorRewardsPool, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDepositValidatorRewardsPool;
     fromJSON(object: any): MsgDepositValidatorRewardsPool;
@@ -659,6 +711,10 @@ export declare const MsgDepositValidatorRewardsPool: {
 };
 export declare const MsgDepositValidatorRewardsPoolResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgDepositValidatorRewardsPoolResponse;
+    isSDK(o: any): o is MsgDepositValidatorRewardsPoolResponseSDKType;
+    isAmino(o: any): o is MsgDepositValidatorRewardsPoolResponseAmino;
     encode(_: MsgDepositValidatorRewardsPoolResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDepositValidatorRewardsPoolResponse;
     fromJSON(_: any): MsgDepositValidatorRewardsPoolResponse;

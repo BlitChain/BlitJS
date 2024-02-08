@@ -470,6 +470,10 @@ export interface CommunityPoolSpendProposalWithDepositSDKType {
 }
 export declare const Params: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Params;
+    isSDK(o: any): o is ParamsSDKType;
+    isAmino(o: any): o is ParamsAmino;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromJSON(object: any): Params;
@@ -485,6 +489,10 @@ export declare const Params: {
 };
 export declare const ValidatorHistoricalRewards: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ValidatorHistoricalRewards;
+    isSDK(o: any): o is ValidatorHistoricalRewardsSDKType;
+    isAmino(o: any): o is ValidatorHistoricalRewardsAmino;
     encode(message: ValidatorHistoricalRewards, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorHistoricalRewards;
     fromJSON(object: any): ValidatorHistoricalRewards;
@@ -500,6 +508,10 @@ export declare const ValidatorHistoricalRewards: {
 };
 export declare const ValidatorCurrentRewards: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ValidatorCurrentRewards;
+    isSDK(o: any): o is ValidatorCurrentRewardsSDKType;
+    isAmino(o: any): o is ValidatorCurrentRewardsAmino;
     encode(message: ValidatorCurrentRewards, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorCurrentRewards;
     fromJSON(object: any): ValidatorCurrentRewards;
@@ -515,6 +527,10 @@ export declare const ValidatorCurrentRewards: {
 };
 export declare const ValidatorAccumulatedCommission: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ValidatorAccumulatedCommission;
+    isSDK(o: any): o is ValidatorAccumulatedCommissionSDKType;
+    isAmino(o: any): o is ValidatorAccumulatedCommissionAmino;
     encode(message: ValidatorAccumulatedCommission, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorAccumulatedCommission;
     fromJSON(object: any): ValidatorAccumulatedCommission;
@@ -530,6 +546,10 @@ export declare const ValidatorAccumulatedCommission: {
 };
 export declare const ValidatorOutstandingRewards: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ValidatorOutstandingRewards;
+    isSDK(o: any): o is ValidatorOutstandingRewardsSDKType;
+    isAmino(o: any): o is ValidatorOutstandingRewardsAmino;
     encode(message: ValidatorOutstandingRewards, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorOutstandingRewards;
     fromJSON(object: any): ValidatorOutstandingRewards;
@@ -545,6 +565,10 @@ export declare const ValidatorOutstandingRewards: {
 };
 export declare const ValidatorSlashEvent: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ValidatorSlashEvent;
+    isSDK(o: any): o is ValidatorSlashEventSDKType;
+    isAmino(o: any): o is ValidatorSlashEventAmino;
     encode(message: ValidatorSlashEvent, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSlashEvent;
     fromJSON(object: any): ValidatorSlashEvent;
@@ -560,6 +584,10 @@ export declare const ValidatorSlashEvent: {
 };
 export declare const ValidatorSlashEvents: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ValidatorSlashEvents;
+    isSDK(o: any): o is ValidatorSlashEventsSDKType;
+    isAmino(o: any): o is ValidatorSlashEventsAmino;
     encode(message: ValidatorSlashEvents, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSlashEvents;
     fromJSON(object: any): ValidatorSlashEvents;
@@ -575,6 +603,10 @@ export declare const ValidatorSlashEvents: {
 };
 export declare const FeePool: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is FeePool;
+    isSDK(o: any): o is FeePoolSDKType;
+    isAmino(o: any): o is FeePoolAmino;
     encode(message: FeePool, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FeePool;
     fromJSON(object: any): FeePool;
@@ -590,6 +622,10 @@ export declare const FeePool: {
 };
 export declare const CommunityPoolSpendProposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CommunityPoolSpendProposal;
+    isSDK(o: any): o is CommunityPoolSpendProposalSDKType;
+    isAmino(o: any): o is CommunityPoolSpendProposalAmino;
     encode(message: CommunityPoolSpendProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommunityPoolSpendProposal;
     fromJSON(object: any): CommunityPoolSpendProposal;
@@ -605,6 +641,10 @@ export declare const CommunityPoolSpendProposal: {
 };
 export declare const DelegatorStartingInfo: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DelegatorStartingInfo;
+    isSDK(o: any): o is DelegatorStartingInfoSDKType;
+    isAmino(o: any): o is DelegatorStartingInfoAmino;
     encode(message: DelegatorStartingInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DelegatorStartingInfo;
     fromJSON(object: any): DelegatorStartingInfo;
@@ -620,6 +660,10 @@ export declare const DelegatorStartingInfo: {
 };
 export declare const DelegationDelegatorReward: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DelegationDelegatorReward;
+    isSDK(o: any): o is DelegationDelegatorRewardSDKType;
+    isAmino(o: any): o is DelegationDelegatorRewardAmino;
     encode(message: DelegationDelegatorReward, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DelegationDelegatorReward;
     fromJSON(object: any): DelegationDelegatorReward;
@@ -635,6 +679,10 @@ export declare const DelegationDelegatorReward: {
 };
 export declare const CommunityPoolSpendProposalWithDeposit: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CommunityPoolSpendProposalWithDeposit;
+    isSDK(o: any): o is CommunityPoolSpendProposalWithDepositSDKType;
+    isAmino(o: any): o is CommunityPoolSpendProposalWithDepositAmino;
     encode(message: CommunityPoolSpendProposalWithDeposit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommunityPoolSpendProposalWithDeposit;
     fromJSON(object: any): CommunityPoolSpendProposalWithDeposit;

@@ -72,6 +72,9 @@ export interface ConsensusSDKType {
 }
 export declare const App: {
     typeUrl: string;
+    is(o: any): o is App;
+    isSDK(o: any): o is AppSDKType;
+    isAmino(o: any): o is AppAmino;
     encode(message: App, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): App;
     fromJSON(object: any): App;
@@ -86,6 +89,9 @@ export declare const App: {
 };
 export declare const Consensus: {
     typeUrl: string;
+    is(o: any): o is Consensus;
+    isSDK(o: any): o is ConsensusSDKType;
+    isAmino(o: any): o is ConsensusAmino;
     encode(message: Consensus, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Consensus;
     fromJSON(object: any): Consensus;

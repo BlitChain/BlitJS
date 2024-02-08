@@ -4,6 +4,7 @@ exports.Script = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "blit.script";
 function createBaseScript() {
     return {
@@ -14,6 +15,15 @@ function createBaseScript() {
 }
 exports.Script = {
     typeUrl: "/blit.script.Script",
+    is(o) {
+        return o && (o.$typeUrl === exports.Script.typeUrl || typeof o.address === "string" && typeof o.code === "string" && typeof o.version === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Script.typeUrl || typeof o.address === "string" && typeof o.code === "string" && typeof o.version === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Script.typeUrl || typeof o.address === "string" && typeof o.code === "string" && typeof o.version === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -106,4 +116,5 @@ exports.Script = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Script.typeUrl, exports.Script);
 //# sourceMappingURL=script.js.map

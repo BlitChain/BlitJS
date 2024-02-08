@@ -122,6 +122,10 @@ export interface GenesisStateSDKType {
 }
 export declare const Permissions: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Permissions;
+    isSDK(o: any): o is PermissionsSDKType;
+    isAmino(o: any): o is PermissionsAmino;
     encode(message: Permissions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Permissions;
     fromJSON(object: any): Permissions;
@@ -137,6 +141,10 @@ export declare const Permissions: {
 };
 export declare const GenesisAccountPermissions: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GenesisAccountPermissions;
+    isSDK(o: any): o is GenesisAccountPermissionsSDKType;
+    isAmino(o: any): o is GenesisAccountPermissionsAmino;
     encode(message: GenesisAccountPermissions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisAccountPermissions;
     fromJSON(object: any): GenesisAccountPermissions;
@@ -152,6 +160,10 @@ export declare const GenesisAccountPermissions: {
 };
 export declare const GenesisState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GenesisState;
+    isSDK(o: any): o is GenesisStateSDKType;
+    isAmino(o: any): o is GenesisStateAmino;
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;

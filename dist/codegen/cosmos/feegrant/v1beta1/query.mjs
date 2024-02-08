@@ -3,6 +3,7 @@ import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { Grant } from "./feegrant";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.feegrant.v1beta1";
 function createBaseQueryAllowanceRequest() {
     return {
@@ -12,6 +13,16 @@ function createBaseQueryAllowanceRequest() {
 }
 export const QueryAllowanceRequest = {
     typeUrl: "/cosmos.feegrant.v1beta1.QueryAllowanceRequest",
+    aminoType: "cosmos-sdk/QueryAllowanceRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryAllowanceRequest.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryAllowanceRequest.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryAllowanceRequest.typeUrl || typeof o.granter === "string" && typeof o.grantee === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.granter !== "") {
             writer.uint32(10).string(message.granter);
@@ -97,6 +108,8 @@ export const QueryAllowanceRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAllowanceRequest.typeUrl, QueryAllowanceRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAllowanceRequest.aminoType, QueryAllowanceRequest.typeUrl);
 function createBaseQueryAllowanceResponse() {
     return {
         allowance: undefined
@@ -104,6 +117,16 @@ function createBaseQueryAllowanceResponse() {
 }
 export const QueryAllowanceResponse = {
     typeUrl: "/cosmos.feegrant.v1beta1.QueryAllowanceResponse",
+    aminoType: "cosmos-sdk/QueryAllowanceResponse",
+    is(o) {
+        return o && o.$typeUrl === QueryAllowanceResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === QueryAllowanceResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === QueryAllowanceResponse.typeUrl;
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.allowance !== undefined) {
             Grant.encode(message.allowance, writer.uint32(10).fork()).ldelim();
@@ -176,6 +199,8 @@ export const QueryAllowanceResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAllowanceResponse.typeUrl, QueryAllowanceResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAllowanceResponse.aminoType, QueryAllowanceResponse.typeUrl);
 function createBaseQueryAllowancesRequest() {
     return {
         grantee: "",
@@ -184,6 +209,16 @@ function createBaseQueryAllowancesRequest() {
 }
 export const QueryAllowancesRequest = {
     typeUrl: "/cosmos.feegrant.v1beta1.QueryAllowancesRequest",
+    aminoType: "cosmos-sdk/QueryAllowancesRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryAllowancesRequest.typeUrl || typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryAllowancesRequest.typeUrl || typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryAllowancesRequest.typeUrl || typeof o.grantee === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.grantee !== "") {
             writer.uint32(10).string(message.grantee);
@@ -269,6 +304,8 @@ export const QueryAllowancesRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAllowancesRequest.typeUrl, QueryAllowancesRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAllowancesRequest.aminoType, QueryAllowancesRequest.typeUrl);
 function createBaseQueryAllowancesResponse() {
     return {
         allowances: [],
@@ -277,6 +314,16 @@ function createBaseQueryAllowancesResponse() {
 }
 export const QueryAllowancesResponse = {
     typeUrl: "/cosmos.feegrant.v1beta1.QueryAllowancesResponse",
+    aminoType: "cosmos-sdk/QueryAllowancesResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryAllowancesResponse.typeUrl || Array.isArray(o.allowances) && (!o.allowances.length || Grant.is(o.allowances[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryAllowancesResponse.typeUrl || Array.isArray(o.allowances) && (!o.allowances.length || Grant.isSDK(o.allowances[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryAllowancesResponse.typeUrl || Array.isArray(o.allowances) && (!o.allowances.length || Grant.isAmino(o.allowances[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.allowances) {
             Grant.encode(v, writer.uint32(10).fork()).ldelim();
@@ -370,6 +417,8 @@ export const QueryAllowancesResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAllowancesResponse.typeUrl, QueryAllowancesResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAllowancesResponse.aminoType, QueryAllowancesResponse.typeUrl);
 function createBaseQueryAllowancesByGranterRequest() {
     return {
         granter: "",
@@ -378,6 +427,16 @@ function createBaseQueryAllowancesByGranterRequest() {
 }
 export const QueryAllowancesByGranterRequest = {
     typeUrl: "/cosmos.feegrant.v1beta1.QueryAllowancesByGranterRequest",
+    aminoType: "cosmos-sdk/QueryAllowancesByGranterRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryAllowancesByGranterRequest.typeUrl || typeof o.granter === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryAllowancesByGranterRequest.typeUrl || typeof o.granter === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryAllowancesByGranterRequest.typeUrl || typeof o.granter === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.granter !== "") {
             writer.uint32(10).string(message.granter);
@@ -463,6 +522,8 @@ export const QueryAllowancesByGranterRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAllowancesByGranterRequest.typeUrl, QueryAllowancesByGranterRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAllowancesByGranterRequest.aminoType, QueryAllowancesByGranterRequest.typeUrl);
 function createBaseQueryAllowancesByGranterResponse() {
     return {
         allowances: [],
@@ -471,6 +532,16 @@ function createBaseQueryAllowancesByGranterResponse() {
 }
 export const QueryAllowancesByGranterResponse = {
     typeUrl: "/cosmos.feegrant.v1beta1.QueryAllowancesByGranterResponse",
+    aminoType: "cosmos-sdk/QueryAllowancesByGranterResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryAllowancesByGranterResponse.typeUrl || Array.isArray(o.allowances) && (!o.allowances.length || Grant.is(o.allowances[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryAllowancesByGranterResponse.typeUrl || Array.isArray(o.allowances) && (!o.allowances.length || Grant.isSDK(o.allowances[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryAllowancesByGranterResponse.typeUrl || Array.isArray(o.allowances) && (!o.allowances.length || Grant.isAmino(o.allowances[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.allowances) {
             Grant.encode(v, writer.uint32(10).fork()).ldelim();
@@ -564,4 +635,6 @@ export const QueryAllowancesByGranterResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAllowancesByGranterResponse.typeUrl, QueryAllowancesByGranterResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAllowancesByGranterResponse.aminoType, QueryAllowancesByGranterResponse.typeUrl);
 //# sourceMappingURL=query.js.map

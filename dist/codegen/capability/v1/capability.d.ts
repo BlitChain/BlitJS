@@ -92,6 +92,9 @@ export interface CapabilityOwnersSDKType {
 }
 export declare const Capability: {
     typeUrl: string;
+    is(o: any): o is Capability;
+    isSDK(o: any): o is CapabilitySDKType;
+    isAmino(o: any): o is CapabilityAmino;
     encode(message: Capability, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Capability;
     fromJSON(object: any): Capability;
@@ -106,6 +109,9 @@ export declare const Capability: {
 };
 export declare const Owner: {
     typeUrl: string;
+    is(o: any): o is Owner;
+    isSDK(o: any): o is OwnerSDKType;
+    isAmino(o: any): o is OwnerAmino;
     encode(message: Owner, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Owner;
     fromJSON(object: any): Owner;
@@ -120,6 +126,9 @@ export declare const Owner: {
 };
 export declare const CapabilityOwners: {
     typeUrl: string;
+    is(o: any): o is CapabilityOwners;
+    isSDK(o: any): o is CapabilityOwnersSDKType;
+    isAmino(o: any): o is CapabilityOwnersAmino;
     encode(message: CapabilityOwners, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CapabilityOwners;
     fromJSON(object: any): CapabilityOwners;

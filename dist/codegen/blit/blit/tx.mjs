@@ -6,6 +6,7 @@ import { Duration } from "../../google/protobuf/duration";
 import { Any } from "../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.blit";
 function createBaseMsgUpdateParams() {
     return {
@@ -15,6 +16,16 @@ function createBaseMsgUpdateParams() {
 }
 export const MsgUpdateParams = {
     typeUrl: "/blit.blit.MsgUpdateParams",
+    aminoType: "blit/x/blit/MsgUpdateParams",
+    is(o) {
+        return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.isAmino(o.params));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.authority !== "") {
             writer.uint32(10).string(message.authority);
@@ -100,11 +111,22 @@ export const MsgUpdateParams = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgUpdateParams.typeUrl, MsgUpdateParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUpdateParams.aminoType, MsgUpdateParams.typeUrl);
 function createBaseMsgUpdateParamsResponse() {
     return {};
 }
 export const MsgUpdateParamsResponse = {
     typeUrl: "/blit.blit.MsgUpdateParamsResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -157,6 +179,7 @@ export const MsgUpdateParamsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgUpdateParamsResponse.typeUrl, MsgUpdateParamsResponse);
 function createBaseMsgMintCoins() {
     return {
         amount: Coin.fromPartial({}),
@@ -165,6 +188,15 @@ function createBaseMsgMintCoins() {
 }
 export const MsgMintCoins = {
     typeUrl: "/blit.blit.MsgMintCoins",
+    is(o) {
+        return o && (o.$typeUrl === MsgMintCoins.typeUrl || Coin.is(o.amount) && typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgMintCoins.typeUrl || Coin.isSDK(o.amount) && typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgMintCoins.typeUrl || Coin.isAmino(o.amount) && typeof o.grantee === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.amount !== undefined) {
             Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
@@ -244,11 +276,21 @@ export const MsgMintCoins = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgMintCoins.typeUrl, MsgMintCoins);
 function createBaseMsgMintCoinsResponse() {
     return {};
 }
 export const MsgMintCoinsResponse = {
     typeUrl: "/blit.blit.MsgMintCoinsResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgMintCoinsResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgMintCoinsResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgMintCoinsResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -301,6 +343,7 @@ export const MsgMintCoinsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgMintCoinsResponse.typeUrl, MsgMintCoinsResponse);
 function createBaseMsgBurnCoins() {
     return {
         amount: Coin.fromPartial({}),
@@ -309,6 +352,15 @@ function createBaseMsgBurnCoins() {
 }
 export const MsgBurnCoins = {
     typeUrl: "/blit.blit.MsgBurnCoins",
+    is(o) {
+        return o && (o.$typeUrl === MsgBurnCoins.typeUrl || Coin.is(o.amount) && typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgBurnCoins.typeUrl || Coin.isSDK(o.amount) && typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgBurnCoins.typeUrl || Coin.isAmino(o.amount) && typeof o.grantee === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.amount !== undefined) {
             Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
@@ -388,11 +440,21 @@ export const MsgBurnCoins = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgBurnCoins.typeUrl, MsgBurnCoins);
 function createBaseMsgBurnCoinsResponse() {
     return {};
 }
 export const MsgBurnCoinsResponse = {
     typeUrl: "/blit.blit.MsgBurnCoinsResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgBurnCoinsResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgBurnCoinsResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgBurnCoinsResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -445,6 +507,7 @@ export const MsgBurnCoinsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgBurnCoinsResponse.typeUrl, MsgBurnCoinsResponse);
 function createBaseMsgForceTransferCoins() {
     return {
         amount: Coin.fromPartial({}),
@@ -455,6 +518,15 @@ function createBaseMsgForceTransferCoins() {
 }
 export const MsgForceTransferCoins = {
     typeUrl: "/blit.blit.MsgForceTransferCoins",
+    is(o) {
+        return o && (o.$typeUrl === MsgForceTransferCoins.typeUrl || Coin.is(o.amount) && typeof o.from_address === "string" && typeof o.to_address === "string" && typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgForceTransferCoins.typeUrl || Coin.isSDK(o.amount) && typeof o.from_address === "string" && typeof o.to_address === "string" && typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgForceTransferCoins.typeUrl || Coin.isAmino(o.amount) && typeof o.from_address === "string" && typeof o.to_address === "string" && typeof o.grantee === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.amount !== undefined) {
             Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
@@ -560,11 +632,21 @@ export const MsgForceTransferCoins = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgForceTransferCoins.typeUrl, MsgForceTransferCoins);
 function createBaseMsgForceTransferCoinsResponse() {
     return {};
 }
 export const MsgForceTransferCoinsResponse = {
     typeUrl: "/blit.blit.MsgForceTransferCoinsResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgForceTransferCoinsResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgForceTransferCoinsResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgForceTransferCoinsResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -617,6 +699,7 @@ export const MsgForceTransferCoinsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgForceTransferCoinsResponse.typeUrl, MsgForceTransferCoinsResponse);
 function createBaseMsgSetDenomMetadata() {
     return {
         authority: "",
@@ -632,6 +715,15 @@ function createBaseMsgSetDenomMetadata() {
 }
 export const MsgSetDenomMetadata = {
     typeUrl: "/blit.blit.MsgSetDenomMetadata",
+    is(o) {
+        return o && (o.$typeUrl === MsgSetDenomMetadata.typeUrl || typeof o.authority === "string" && typeof o.base === "string" && typeof o.display === "string" && typeof o.name === "string" && typeof o.symbol === "string" && typeof o.uri === "string" && typeof o.uri_hash === "string" && typeof o.exponent === "number" && typeof o.description === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgSetDenomMetadata.typeUrl || typeof o.authority === "string" && typeof o.base === "string" && typeof o.display === "string" && typeof o.name === "string" && typeof o.symbol === "string" && typeof o.uri === "string" && typeof o.uri_hash === "string" && typeof o.exponent === "number" && typeof o.description === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgSetDenomMetadata.typeUrl || typeof o.authority === "string" && typeof o.base === "string" && typeof o.display === "string" && typeof o.name === "string" && typeof o.symbol === "string" && typeof o.uri === "string" && typeof o.uri_hash === "string" && typeof o.exponent === "number" && typeof o.description === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.authority !== "") {
             writer.uint32(10).string(message.authority);
@@ -802,11 +894,21 @@ export const MsgSetDenomMetadata = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgSetDenomMetadata.typeUrl, MsgSetDenomMetadata);
 function createBaseMsgSetDenomMetadataResponse() {
     return {};
 }
 export const MsgSetDenomMetadataResponse = {
     typeUrl: "/blit.blit.MsgSetDenomMetadataResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgSetDenomMetadataResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgSetDenomMetadataResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgSetDenomMetadataResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -859,6 +961,7 @@ export const MsgSetDenomMetadataResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgSetDenomMetadataResponse.typeUrl, MsgSetDenomMetadataResponse);
 function createBaseMsgCreateTask() {
     return {
         creator: "",
@@ -875,6 +978,15 @@ function createBaseMsgCreateTask() {
 }
 export const MsgCreateTask = {
     typeUrl: "/blit.blit.MsgCreateTask",
+    is(o) {
+        return o && (o.$typeUrl === MsgCreateTask.typeUrl || typeof o.creator === "string" && Timestamp.is(o.activate_after) && Timestamp.is(o.expire_after) && typeof o.max_runs === "bigint" && typeof o.disable_on_error === "boolean" && typeof o.enabled === "boolean" && typeof o.task_gas_limit === "bigint" && Coin.is(o.task_gas_fee) && Array.isArray(o.messages) && (!o.messages.length || Any.is(o.messages[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgCreateTask.typeUrl || typeof o.creator === "string" && Timestamp.isSDK(o.activate_after) && Timestamp.isSDK(o.expire_after) && typeof o.max_runs === "bigint" && typeof o.disable_on_error === "boolean" && typeof o.enabled === "boolean" && typeof o.task_gas_limit === "bigint" && Coin.isSDK(o.task_gas_fee) && Array.isArray(o.messages) && (!o.messages.length || Any.isSDK(o.messages[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgCreateTask.typeUrl || typeof o.creator === "string" && Timestamp.isAmino(o.activate_after) && Timestamp.isAmino(o.expire_after) && typeof o.max_runs === "bigint" && typeof o.disable_on_error === "boolean" && typeof o.enabled === "boolean" && typeof o.task_gas_limit === "bigint" && Coin.isAmino(o.task_gas_fee) && Array.isArray(o.messages) && (!o.messages.length || Any.isAmino(o.messages[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.creator !== "") {
             writer.uint32(10).string(message.creator);
@@ -904,7 +1016,7 @@ export const MsgCreateTask = {
             Coin.encode(message.task_gas_fee, writer.uint32(82).fork()).ldelim();
         }
         for (const v of message.messages) {
-            Any.encode(v, writer.uint32(90).fork()).ldelim();
+            Any.encode(GlobalDecoderRegistry.wrapAny(v), writer.uint32(90).fork()).ldelim();
         }
         return writer;
     },
@@ -943,7 +1055,7 @@ export const MsgCreateTask = {
                     message.task_gas_fee = Coin.decode(reader, reader.uint32());
                     break;
                 case 11:
-                    message.messages.push(Any.decode(reader, reader.uint32()));
+                    message.messages.push(GlobalDecoderRegistry.unwrapAny(reader));
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -963,7 +1075,7 @@ export const MsgCreateTask = {
             enabled: isSet(object.enabled) ? Boolean(object.enabled) : false,
             task_gas_limit: isSet(object.task_gas_limit) ? BigInt(object.task_gas_limit.toString()) : BigInt(0),
             task_gas_fee: isSet(object.task_gas_fee) ? Coin.fromJSON(object.task_gas_fee) : undefined,
-            messages: Array.isArray(object?.messages) ? object.messages.map((e) => Any.fromJSON(e)) : []
+            messages: Array.isArray(object?.messages) ? object.messages.map((e) => GlobalDecoderRegistry.fromJSON(e)) : []
         };
     },
     toJSON(message) {
@@ -978,7 +1090,7 @@ export const MsgCreateTask = {
         message.task_gas_limit !== undefined && (obj.task_gas_limit = (message.task_gas_limit || BigInt(0)).toString());
         message.task_gas_fee !== undefined && (obj.task_gas_fee = message.task_gas_fee ? Coin.toJSON(message.task_gas_fee) : undefined);
         if (message.messages) {
-            obj.messages = message.messages.map(e => e ? Any.toJSON(e) : undefined);
+            obj.messages = message.messages.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
         }
         else {
             obj.messages = [];
@@ -996,7 +1108,7 @@ export const MsgCreateTask = {
         message.enabled = object.enabled ?? false;
         message.task_gas_limit = object.task_gas_limit !== undefined && object.task_gas_limit !== null ? BigInt(object.task_gas_limit.toString()) : BigInt(0);
         message.task_gas_fee = object.task_gas_fee !== undefined && object.task_gas_fee !== null ? Coin.fromPartial(object.task_gas_fee) : undefined;
-        message.messages = object.messages?.map(e => Any.fromPartial(e)) || [];
+        message.messages = object.messages?.map(e => GlobalDecoderRegistry.fromPartial(e)) || [];
         return message;
     },
     fromAmino(object) {
@@ -1028,7 +1140,7 @@ export const MsgCreateTask = {
         if (object.task_gas_fee !== undefined && object.task_gas_fee !== null) {
             message.task_gas_fee = Coin.fromAmino(object.task_gas_fee);
         }
-        message.messages = object.messages?.map(e => Cosmos_basev1beta1Msg_FromAmino(e)) || [];
+        message.messages = object.messages?.map(e => GlobalDecoderRegistry.fromAminoMsg(e)) || [];
         return message;
     },
     toAmino(message) {
@@ -1043,7 +1155,7 @@ export const MsgCreateTask = {
         obj.task_gas_limit = message.task_gas_limit ? message.task_gas_limit.toString() : undefined;
         obj.task_gas_fee = message.task_gas_fee ? Coin.toAmino(message.task_gas_fee) : undefined;
         if (message.messages) {
-            obj.messages = message.messages.map(e => e ? Cosmos_basev1beta1Msg_ToAmino(e) : undefined);
+            obj.messages = message.messages.map(e => e ? GlobalDecoderRegistry.toAminoMsg(e) : undefined);
         }
         else {
             obj.messages = [];
@@ -1066,6 +1178,7 @@ export const MsgCreateTask = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgCreateTask.typeUrl, MsgCreateTask);
 function createBaseMsgCreateTaskResponse() {
     return {
         id: BigInt(0)
@@ -1073,6 +1186,15 @@ function createBaseMsgCreateTaskResponse() {
 }
 export const MsgCreateTaskResponse = {
     typeUrl: "/blit.blit.MsgCreateTaskResponse",
+    is(o) {
+        return o && (o.$typeUrl === MsgCreateTaskResponse.typeUrl || typeof o.id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgCreateTaskResponse.typeUrl || typeof o.id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgCreateTaskResponse.typeUrl || typeof o.id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.id !== BigInt(0)) {
             writer.uint32(8).uint64(message.id);
@@ -1139,6 +1261,7 @@ export const MsgCreateTaskResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgCreateTaskResponse.typeUrl, MsgCreateTaskResponse);
 function createBaseMsgDeleteTask() {
     return {
         creator: "",
@@ -1147,6 +1270,15 @@ function createBaseMsgDeleteTask() {
 }
 export const MsgDeleteTask = {
     typeUrl: "/blit.blit.MsgDeleteTask",
+    is(o) {
+        return o && (o.$typeUrl === MsgDeleteTask.typeUrl || typeof o.creator === "string" && typeof o.id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgDeleteTask.typeUrl || typeof o.creator === "string" && typeof o.id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgDeleteTask.typeUrl || typeof o.creator === "string" && typeof o.id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.creator !== "") {
             writer.uint32(10).string(message.creator);
@@ -1226,11 +1358,21 @@ export const MsgDeleteTask = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgDeleteTask.typeUrl, MsgDeleteTask);
 function createBaseMsgDeleteTaskResponse() {
     return {};
 }
 export const MsgDeleteTaskResponse = {
     typeUrl: "/blit.blit.MsgDeleteTaskResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgDeleteTaskResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgDeleteTaskResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgDeleteTaskResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -1283,18 +1425,5 @@ export const MsgDeleteTaskResponse = {
         };
     }
 };
-export const Cosmos_basev1beta1Msg_InterfaceDecoder = (input) => {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    const data = Any.decode(reader, reader.uint32());
-    switch (data.typeUrl) {
-        default:
-            return data;
-    }
-};
-export const Cosmos_basev1beta1Msg_FromAmino = (content) => {
-    return Any.fromAmino(content);
-};
-export const Cosmos_basev1beta1Msg_ToAmino = (content) => {
-    return Any.toAmino(content);
-};
+GlobalDecoderRegistry.register(MsgDeleteTaskResponse.typeUrl, MsgDeleteTaskResponse);
 //# sourceMappingURL=tx.js.map

@@ -6,6 +6,7 @@ const controller_1 = require("../../controller/v1/controller");
 const host_1 = require("../../host/v1/host");
 const binary_1 = require("../../../../../binary");
 const helpers_1 = require("../../../../../helpers");
+const registry_1 = require("../../../../../registry");
 exports.protobufPackage = "ibc.applications.interchain_accounts.genesis.v1";
 function createBaseGenesisState() {
     return {
@@ -15,6 +16,16 @@ function createBaseGenesisState() {
 }
 exports.GenesisState = {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || exports.ControllerGenesisState.is(o.controller_genesis_state) && exports.HostGenesisState.is(o.host_genesis_state));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || exports.ControllerGenesisState.isSDK(o.controller_genesis_state) && exports.HostGenesisState.isSDK(o.host_genesis_state));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || exports.ControllerGenesisState.isAmino(o.controller_genesis_state) && exports.HostGenesisState.isAmino(o.host_genesis_state));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.controller_genesis_state !== undefined) {
             exports.ControllerGenesisState.encode(message.controller_genesis_state, writer.uint32(10).fork()).ldelim();
@@ -100,6 +111,8 @@ exports.GenesisState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GenesisState.aminoType, exports.GenesisState.typeUrl);
 function createBaseControllerGenesisState() {
     return {
         active_channels: [],
@@ -110,6 +123,16 @@ function createBaseControllerGenesisState() {
 }
 exports.ControllerGenesisState = {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.ControllerGenesisState",
+    aminoType: "cosmos-sdk/ControllerGenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.ControllerGenesisState.typeUrl || Array.isArray(o.active_channels) && (!o.active_channels.length || exports.ActiveChannel.is(o.active_channels[0])) && Array.isArray(o.interchain_accounts) && (!o.interchain_accounts.length || exports.RegisteredInterchainAccount.is(o.interchain_accounts[0])) && Array.isArray(o.ports) && (!o.ports.length || typeof o.ports[0] === "string") && controller_1.Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ControllerGenesisState.typeUrl || Array.isArray(o.active_channels) && (!o.active_channels.length || exports.ActiveChannel.isSDK(o.active_channels[0])) && Array.isArray(o.interchain_accounts) && (!o.interchain_accounts.length || exports.RegisteredInterchainAccount.isSDK(o.interchain_accounts[0])) && Array.isArray(o.ports) && (!o.ports.length || typeof o.ports[0] === "string") && controller_1.Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ControllerGenesisState.typeUrl || Array.isArray(o.active_channels) && (!o.active_channels.length || exports.ActiveChannel.isAmino(o.active_channels[0])) && Array.isArray(o.interchain_accounts) && (!o.interchain_accounts.length || exports.RegisteredInterchainAccount.isAmino(o.interchain_accounts[0])) && Array.isArray(o.ports) && (!o.ports.length || typeof o.ports[0] === "string") && controller_1.Params.isAmino(o.params));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.active_channels) {
             exports.ActiveChannel.encode(v, writer.uint32(10).fork()).ldelim();
@@ -245,6 +268,8 @@ exports.ControllerGenesisState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ControllerGenesisState.typeUrl, exports.ControllerGenesisState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ControllerGenesisState.aminoType, exports.ControllerGenesisState.typeUrl);
 function createBaseHostGenesisState() {
     return {
         active_channels: [],
@@ -255,6 +280,16 @@ function createBaseHostGenesisState() {
 }
 exports.HostGenesisState = {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.HostGenesisState",
+    aminoType: "cosmos-sdk/HostGenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.HostGenesisState.typeUrl || Array.isArray(o.active_channels) && (!o.active_channels.length || exports.ActiveChannel.is(o.active_channels[0])) && Array.isArray(o.interchain_accounts) && (!o.interchain_accounts.length || exports.RegisteredInterchainAccount.is(o.interchain_accounts[0])) && typeof o.port === "string" && host_1.Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.HostGenesisState.typeUrl || Array.isArray(o.active_channels) && (!o.active_channels.length || exports.ActiveChannel.isSDK(o.active_channels[0])) && Array.isArray(o.interchain_accounts) && (!o.interchain_accounts.length || exports.RegisteredInterchainAccount.isSDK(o.interchain_accounts[0])) && typeof o.port === "string" && host_1.Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.HostGenesisState.typeUrl || Array.isArray(o.active_channels) && (!o.active_channels.length || exports.ActiveChannel.isAmino(o.active_channels[0])) && Array.isArray(o.interchain_accounts) && (!o.interchain_accounts.length || exports.RegisteredInterchainAccount.isAmino(o.interchain_accounts[0])) && typeof o.port === "string" && host_1.Params.isAmino(o.params));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.active_channels) {
             exports.ActiveChannel.encode(v, writer.uint32(10).fork()).ldelim();
@@ -382,6 +417,8 @@ exports.HostGenesisState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.HostGenesisState.typeUrl, exports.HostGenesisState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.HostGenesisState.aminoType, exports.HostGenesisState.typeUrl);
 function createBaseActiveChannel() {
     return {
         connection_id: "",
@@ -392,6 +429,16 @@ function createBaseActiveChannel() {
 }
 exports.ActiveChannel = {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.ActiveChannel",
+    aminoType: "cosmos-sdk/ActiveChannel",
+    is(o) {
+        return o && (o.$typeUrl === exports.ActiveChannel.typeUrl || typeof o.connection_id === "string" && typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.is_middleware_enabled === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ActiveChannel.typeUrl || typeof o.connection_id === "string" && typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.is_middleware_enabled === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ActiveChannel.typeUrl || typeof o.connection_id === "string" && typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.is_middleware_enabled === "boolean");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.connection_id !== "") {
             writer.uint32(10).string(message.connection_id);
@@ -503,6 +550,8 @@ exports.ActiveChannel = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ActiveChannel.typeUrl, exports.ActiveChannel);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ActiveChannel.aminoType, exports.ActiveChannel.typeUrl);
 function createBaseRegisteredInterchainAccount() {
     return {
         connection_id: "",
@@ -512,6 +561,16 @@ function createBaseRegisteredInterchainAccount() {
 }
 exports.RegisteredInterchainAccount = {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.RegisteredInterchainAccount",
+    aminoType: "cosmos-sdk/RegisteredInterchainAccount",
+    is(o) {
+        return o && (o.$typeUrl === exports.RegisteredInterchainAccount.typeUrl || typeof o.connection_id === "string" && typeof o.port_id === "string" && typeof o.account_address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RegisteredInterchainAccount.typeUrl || typeof o.connection_id === "string" && typeof o.port_id === "string" && typeof o.account_address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RegisteredInterchainAccount.typeUrl || typeof o.connection_id === "string" && typeof o.port_id === "string" && typeof o.account_address === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.connection_id !== "") {
             writer.uint32(10).string(message.connection_id);
@@ -610,4 +669,6 @@ exports.RegisteredInterchainAccount = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RegisteredInterchainAccount.typeUrl, exports.RegisteredInterchainAccount);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.RegisteredInterchainAccount.aminoType, exports.RegisteredInterchainAccount.typeUrl);
 //# sourceMappingURL=genesis.js.map

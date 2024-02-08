@@ -5,6 +5,7 @@ exports.SimpleValidator = exports.Validator = exports.ValidatorSet = exports.blo
 const keys_1 = require("../crypto/keys");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "tendermint.types";
 /** BlockIdFlag indicates which BlockID the signature is for */
 var BlockIDFlag;
@@ -66,6 +67,15 @@ function createBaseValidatorSet() {
 }
 exports.ValidatorSet = {
     typeUrl: "/tendermint.types.ValidatorSet",
+    is(o) {
+        return o && (o.$typeUrl === exports.ValidatorSet.typeUrl || Array.isArray(o.validators) && (!o.validators.length || exports.Validator.is(o.validators[0])) && typeof o.total_voting_power === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ValidatorSet.typeUrl || Array.isArray(o.validators) && (!o.validators.length || exports.Validator.isSDK(o.validators[0])) && typeof o.total_voting_power === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ValidatorSet.typeUrl || Array.isArray(o.validators) && (!o.validators.length || exports.Validator.isAmino(o.validators[0])) && typeof o.total_voting_power === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.validators) {
             exports.Validator.encode(v, writer.uint32(10).fork()).ldelim();
@@ -166,6 +176,7 @@ exports.ValidatorSet = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ValidatorSet.typeUrl, exports.ValidatorSet);
 function createBaseValidator() {
     return {
         address: new Uint8Array(),
@@ -176,6 +187,15 @@ function createBaseValidator() {
 }
 exports.Validator = {
     typeUrl: "/tendermint.types.Validator",
+    is(o) {
+        return o && (o.$typeUrl === exports.Validator.typeUrl || (o.address instanceof Uint8Array || typeof o.address === "string") && keys_1.PublicKey.is(o.pub_key) && typeof o.voting_power === "bigint" && typeof o.proposer_priority === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Validator.typeUrl || (o.address instanceof Uint8Array || typeof o.address === "string") && keys_1.PublicKey.isSDK(o.pub_key) && typeof o.voting_power === "bigint" && typeof o.proposer_priority === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Validator.typeUrl || (o.address instanceof Uint8Array || typeof o.address === "string") && keys_1.PublicKey.isAmino(o.pub_key) && typeof o.voting_power === "bigint" && typeof o.proposer_priority === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address.length !== 0) {
             writer.uint32(10).bytes(message.address);
@@ -281,6 +301,7 @@ exports.Validator = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Validator.typeUrl, exports.Validator);
 function createBaseSimpleValidator() {
     return {
         pub_key: undefined,
@@ -289,6 +310,15 @@ function createBaseSimpleValidator() {
 }
 exports.SimpleValidator = {
     typeUrl: "/tendermint.types.SimpleValidator",
+    is(o) {
+        return o && (o.$typeUrl === exports.SimpleValidator.typeUrl || typeof o.voting_power === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.SimpleValidator.typeUrl || typeof o.voting_power === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.SimpleValidator.typeUrl || typeof o.voting_power === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.pub_key !== undefined) {
             keys_1.PublicKey.encode(message.pub_key, writer.uint32(10).fork()).ldelim();
@@ -368,4 +398,5 @@ exports.SimpleValidator = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SimpleValidator.typeUrl, exports.SimpleValidator);
 //# sourceMappingURL=validator.js.map

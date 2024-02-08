@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { Plan, ModuleVersion } from "./upgrade";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 export const protobufPackage = "cosmos.upgrade.v1beta1";
 function createBaseQueryCurrentPlanRequest() {
@@ -8,6 +9,16 @@ function createBaseQueryCurrentPlanRequest() {
 }
 export const QueryCurrentPlanRequest = {
     typeUrl: "/cosmos.upgrade.v1beta1.QueryCurrentPlanRequest",
+    aminoType: "cosmos-sdk/QueryCurrentPlanRequest",
+    is(o) {
+        return o && o.$typeUrl === QueryCurrentPlanRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === QueryCurrentPlanRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === QueryCurrentPlanRequest.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -66,6 +77,8 @@ export const QueryCurrentPlanRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryCurrentPlanRequest.typeUrl, QueryCurrentPlanRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryCurrentPlanRequest.aminoType, QueryCurrentPlanRequest.typeUrl);
 function createBaseQueryCurrentPlanResponse() {
     return {
         plan: undefined
@@ -73,6 +86,16 @@ function createBaseQueryCurrentPlanResponse() {
 }
 export const QueryCurrentPlanResponse = {
     typeUrl: "/cosmos.upgrade.v1beta1.QueryCurrentPlanResponse",
+    aminoType: "cosmos-sdk/QueryCurrentPlanResponse",
+    is(o) {
+        return o && o.$typeUrl === QueryCurrentPlanResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === QueryCurrentPlanResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === QueryCurrentPlanResponse.typeUrl;
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.plan !== undefined) {
             Plan.encode(message.plan, writer.uint32(10).fork()).ldelim();
@@ -145,6 +168,8 @@ export const QueryCurrentPlanResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryCurrentPlanResponse.typeUrl, QueryCurrentPlanResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryCurrentPlanResponse.aminoType, QueryCurrentPlanResponse.typeUrl);
 function createBaseQueryAppliedPlanRequest() {
     return {
         name: ""
@@ -152,6 +177,16 @@ function createBaseQueryAppliedPlanRequest() {
 }
 export const QueryAppliedPlanRequest = {
     typeUrl: "/cosmos.upgrade.v1beta1.QueryAppliedPlanRequest",
+    aminoType: "cosmos-sdk/QueryAppliedPlanRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryAppliedPlanRequest.typeUrl || typeof o.name === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryAppliedPlanRequest.typeUrl || typeof o.name === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryAppliedPlanRequest.typeUrl || typeof o.name === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -224,6 +259,8 @@ export const QueryAppliedPlanRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAppliedPlanRequest.typeUrl, QueryAppliedPlanRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAppliedPlanRequest.aminoType, QueryAppliedPlanRequest.typeUrl);
 function createBaseQueryAppliedPlanResponse() {
     return {
         height: BigInt(0)
@@ -231,6 +268,16 @@ function createBaseQueryAppliedPlanResponse() {
 }
 export const QueryAppliedPlanResponse = {
     typeUrl: "/cosmos.upgrade.v1beta1.QueryAppliedPlanResponse",
+    aminoType: "cosmos-sdk/QueryAppliedPlanResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryAppliedPlanResponse.typeUrl || typeof o.height === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryAppliedPlanResponse.typeUrl || typeof o.height === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryAppliedPlanResponse.typeUrl || typeof o.height === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.height !== BigInt(0)) {
             writer.uint32(8).int64(message.height);
@@ -303,6 +350,8 @@ export const QueryAppliedPlanResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAppliedPlanResponse.typeUrl, QueryAppliedPlanResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAppliedPlanResponse.aminoType, QueryAppliedPlanResponse.typeUrl);
 function createBaseQueryUpgradedConsensusStateRequest() {
     return {
         last_height: BigInt(0)
@@ -310,6 +359,16 @@ function createBaseQueryUpgradedConsensusStateRequest() {
 }
 export const QueryUpgradedConsensusStateRequest = {
     typeUrl: "/cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateRequest",
+    aminoType: "cosmos-sdk/QueryUpgradedConsensusStateRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryUpgradedConsensusStateRequest.typeUrl || typeof o.last_height === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryUpgradedConsensusStateRequest.typeUrl || typeof o.last_height === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryUpgradedConsensusStateRequest.typeUrl || typeof o.last_height === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.last_height !== BigInt(0)) {
             writer.uint32(8).int64(message.last_height);
@@ -382,6 +441,8 @@ export const QueryUpgradedConsensusStateRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryUpgradedConsensusStateRequest.typeUrl, QueryUpgradedConsensusStateRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryUpgradedConsensusStateRequest.aminoType, QueryUpgradedConsensusStateRequest.typeUrl);
 function createBaseQueryUpgradedConsensusStateResponse() {
     return {
         upgraded_consensus_state: new Uint8Array()
@@ -389,6 +450,16 @@ function createBaseQueryUpgradedConsensusStateResponse() {
 }
 export const QueryUpgradedConsensusStateResponse = {
     typeUrl: "/cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateResponse",
+    aminoType: "cosmos-sdk/QueryUpgradedConsensusStateResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryUpgradedConsensusStateResponse.typeUrl || o.upgraded_consensus_state instanceof Uint8Array || typeof o.upgraded_consensus_state === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryUpgradedConsensusStateResponse.typeUrl || o.upgraded_consensus_state instanceof Uint8Array || typeof o.upgraded_consensus_state === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryUpgradedConsensusStateResponse.typeUrl || o.upgraded_consensus_state instanceof Uint8Array || typeof o.upgraded_consensus_state === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.upgraded_consensus_state.length !== 0) {
             writer.uint32(18).bytes(message.upgraded_consensus_state);
@@ -461,6 +532,8 @@ export const QueryUpgradedConsensusStateResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryUpgradedConsensusStateResponse.typeUrl, QueryUpgradedConsensusStateResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryUpgradedConsensusStateResponse.aminoType, QueryUpgradedConsensusStateResponse.typeUrl);
 function createBaseQueryModuleVersionsRequest() {
     return {
         module_name: ""
@@ -468,6 +541,16 @@ function createBaseQueryModuleVersionsRequest() {
 }
 export const QueryModuleVersionsRequest = {
     typeUrl: "/cosmos.upgrade.v1beta1.QueryModuleVersionsRequest",
+    aminoType: "cosmos-sdk/QueryModuleVersionsRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryModuleVersionsRequest.typeUrl || typeof o.module_name === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryModuleVersionsRequest.typeUrl || typeof o.module_name === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryModuleVersionsRequest.typeUrl || typeof o.module_name === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.module_name !== "") {
             writer.uint32(10).string(message.module_name);
@@ -540,6 +623,8 @@ export const QueryModuleVersionsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryModuleVersionsRequest.typeUrl, QueryModuleVersionsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryModuleVersionsRequest.aminoType, QueryModuleVersionsRequest.typeUrl);
 function createBaseQueryModuleVersionsResponse() {
     return {
         module_versions: []
@@ -547,6 +632,16 @@ function createBaseQueryModuleVersionsResponse() {
 }
 export const QueryModuleVersionsResponse = {
     typeUrl: "/cosmos.upgrade.v1beta1.QueryModuleVersionsResponse",
+    aminoType: "cosmos-sdk/QueryModuleVersionsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryModuleVersionsResponse.typeUrl || Array.isArray(o.module_versions) && (!o.module_versions.length || ModuleVersion.is(o.module_versions[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryModuleVersionsResponse.typeUrl || Array.isArray(o.module_versions) && (!o.module_versions.length || ModuleVersion.isSDK(o.module_versions[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryModuleVersionsResponse.typeUrl || Array.isArray(o.module_versions) && (!o.module_versions.length || ModuleVersion.isAmino(o.module_versions[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.module_versions) {
             ModuleVersion.encode(v, writer.uint32(10).fork()).ldelim();
@@ -627,11 +722,23 @@ export const QueryModuleVersionsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryModuleVersionsResponse.typeUrl, QueryModuleVersionsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryModuleVersionsResponse.aminoType, QueryModuleVersionsResponse.typeUrl);
 function createBaseQueryAuthorityRequest() {
     return {};
 }
 export const QueryAuthorityRequest = {
     typeUrl: "/cosmos.upgrade.v1beta1.QueryAuthorityRequest",
+    aminoType: "cosmos-sdk/QueryAuthorityRequest",
+    is(o) {
+        return o && o.$typeUrl === QueryAuthorityRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === QueryAuthorityRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === QueryAuthorityRequest.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -690,6 +797,8 @@ export const QueryAuthorityRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAuthorityRequest.typeUrl, QueryAuthorityRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAuthorityRequest.aminoType, QueryAuthorityRequest.typeUrl);
 function createBaseQueryAuthorityResponse() {
     return {
         address: ""
@@ -697,6 +806,16 @@ function createBaseQueryAuthorityResponse() {
 }
 export const QueryAuthorityResponse = {
     typeUrl: "/cosmos.upgrade.v1beta1.QueryAuthorityResponse",
+    aminoType: "cosmos-sdk/QueryAuthorityResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryAuthorityResponse.typeUrl || typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryAuthorityResponse.typeUrl || typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryAuthorityResponse.typeUrl || typeof o.address === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -769,4 +888,6 @@ export const QueryAuthorityResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryAuthorityResponse.typeUrl, QueryAuthorityResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAuthorityResponse.aminoType, QueryAuthorityResponse.typeUrl);
 //# sourceMappingURL=query.js.map

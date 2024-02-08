@@ -157,6 +157,10 @@ export interface SubspaceSDKType {
 }
 export declare const QueryParamsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryParamsRequest;
+    isSDK(o: any): o is QueryParamsRequestSDKType;
+    isAmino(o: any): o is QueryParamsRequestAmino;
     encode(message: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromJSON(object: any): QueryParamsRequest;
@@ -172,6 +176,10 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryParamsResponse;
+    isSDK(o: any): o is QueryParamsResponseSDKType;
+    isAmino(o: any): o is QueryParamsResponseAmino;
     encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromJSON(object: any): QueryParamsResponse;
@@ -187,6 +195,10 @@ export declare const QueryParamsResponse: {
 };
 export declare const QuerySubspacesRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QuerySubspacesRequest;
+    isSDK(o: any): o is QuerySubspacesRequestSDKType;
+    isAmino(o: any): o is QuerySubspacesRequestAmino;
     encode(_: QuerySubspacesRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QuerySubspacesRequest;
     fromJSON(_: any): QuerySubspacesRequest;
@@ -202,6 +214,10 @@ export declare const QuerySubspacesRequest: {
 };
 export declare const QuerySubspacesResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QuerySubspacesResponse;
+    isSDK(o: any): o is QuerySubspacesResponseSDKType;
+    isAmino(o: any): o is QuerySubspacesResponseAmino;
     encode(message: QuerySubspacesResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QuerySubspacesResponse;
     fromJSON(object: any): QuerySubspacesResponse;
@@ -217,6 +233,10 @@ export declare const QuerySubspacesResponse: {
 };
 export declare const Subspace: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Subspace;
+    isSDK(o: any): o is SubspaceSDKType;
+    isAmino(o: any): o is SubspaceAmino;
     encode(message: Subspace, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Subspace;
     fromJSON(object: any): Subspace;

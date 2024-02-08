@@ -289,6 +289,10 @@ export interface FractionSDKType {
 }
 export declare const ClientState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ClientState;
+    isSDK(o: any): o is ClientStateSDKType;
+    isAmino(o: any): o is ClientStateAmino;
     encode(message: ClientState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientState;
     fromJSON(object: any): ClientState;
@@ -304,6 +308,10 @@ export declare const ClientState: {
 };
 export declare const ConsensusState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ConsensusState;
+    isSDK(o: any): o is ConsensusStateSDKType;
+    isAmino(o: any): o is ConsensusStateAmino;
     encode(message: ConsensusState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConsensusState;
     fromJSON(object: any): ConsensusState;
@@ -319,6 +327,10 @@ export declare const ConsensusState: {
 };
 export declare const Misbehaviour: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Misbehaviour;
+    isSDK(o: any): o is MisbehaviourSDKType;
+    isAmino(o: any): o is MisbehaviourAmino;
     encode(message: Misbehaviour, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Misbehaviour;
     fromJSON(object: any): Misbehaviour;
@@ -334,6 +346,10 @@ export declare const Misbehaviour: {
 };
 export declare const Header: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Header;
+    isSDK(o: any): o is HeaderSDKType;
+    isAmino(o: any): o is HeaderAmino;
     encode(message: Header, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Header;
     fromJSON(object: any): Header;
@@ -349,6 +365,10 @@ export declare const Header: {
 };
 export declare const Fraction: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Fraction;
+    isSDK(o: any): o is FractionSDKType;
+    isAmino(o: any): o is FractionAmino;
     encode(message: Fraction, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Fraction;
     fromJSON(object: any): Fraction;

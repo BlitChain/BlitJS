@@ -3,6 +3,7 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Storage, StorageAmino, StorageSDKType } from "./storage";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { GlobalDecoderRegistry } from "../../registry";
 import { isSet } from "../../helpers";
 export const protobufPackage = "blit.storage";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
@@ -126,6 +127,15 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 export const QueryParamsRequest = {
   typeUrl: "/blit.storage.QueryParamsRequest",
+  is(o: any): o is QueryParamsRequest {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryParamsRequestSDKType {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryParamsRequestAmino {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
   encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -178,6 +188,7 @@ export const QueryParamsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     params: Params.fromPartial({})
@@ -185,6 +196,15 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 export const QueryParamsResponse = {
   typeUrl: "/blit.storage.QueryParamsResponse",
+  is(o: any): o is QueryParamsResponse {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.is(o.params));
+  },
+  isSDK(o: any): o is QueryParamsResponseSDKType {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is QueryParamsResponseAmino {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isAmino(o.params));
+  },
   encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -251,6 +271,7 @@ export const QueryParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
 function createBaseQueryStorageDetailRequest(): QueryStorageDetailRequest {
   return {
     address: "",
@@ -259,6 +280,15 @@ function createBaseQueryStorageDetailRequest(): QueryStorageDetailRequest {
 }
 export const QueryStorageDetailRequest = {
   typeUrl: "/blit.storage.QueryStorageDetailRequest",
+  is(o: any): o is QueryStorageDetailRequest {
+    return o && (o.$typeUrl === QueryStorageDetailRequest.typeUrl || typeof o.address === "string" && typeof o.index === "string");
+  },
+  isSDK(o: any): o is QueryStorageDetailRequestSDKType {
+    return o && (o.$typeUrl === QueryStorageDetailRequest.typeUrl || typeof o.address === "string" && typeof o.index === "string");
+  },
+  isAmino(o: any): o is QueryStorageDetailRequestAmino {
+    return o && (o.$typeUrl === QueryStorageDetailRequest.typeUrl || typeof o.address === "string" && typeof o.index === "string");
+  },
   encode(message: QueryStorageDetailRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -338,6 +368,7 @@ export const QueryStorageDetailRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryStorageDetailRequest.typeUrl, QueryStorageDetailRequest);
 function createBaseQueryStorageDetailResponse(): QueryStorageDetailResponse {
   return {
     storage: Storage.fromPartial({})
@@ -345,6 +376,15 @@ function createBaseQueryStorageDetailResponse(): QueryStorageDetailResponse {
 }
 export const QueryStorageDetailResponse = {
   typeUrl: "/blit.storage.QueryStorageDetailResponse",
+  is(o: any): o is QueryStorageDetailResponse {
+    return o && (o.$typeUrl === QueryStorageDetailResponse.typeUrl || Storage.is(o.storage));
+  },
+  isSDK(o: any): o is QueryStorageDetailResponseSDKType {
+    return o && (o.$typeUrl === QueryStorageDetailResponse.typeUrl || Storage.isSDK(o.storage));
+  },
+  isAmino(o: any): o is QueryStorageDetailResponseAmino {
+    return o && (o.$typeUrl === QueryStorageDetailResponse.typeUrl || Storage.isAmino(o.storage));
+  },
   encode(message: QueryStorageDetailResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.storage !== undefined) {
       Storage.encode(message.storage, writer.uint32(10).fork()).ldelim();
@@ -411,6 +451,7 @@ export const QueryStorageDetailResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryStorageDetailResponse.typeUrl, QueryStorageDetailResponse);
 function createBaseQueryFilterStorageRequest(): QueryFilterStorageRequest {
   return {
     filter_address: "",
@@ -420,6 +461,15 @@ function createBaseQueryFilterStorageRequest(): QueryFilterStorageRequest {
 }
 export const QueryFilterStorageRequest = {
   typeUrl: "/blit.storage.QueryFilterStorageRequest",
+  is(o: any): o is QueryFilterStorageRequest {
+    return o && (o.$typeUrl === QueryFilterStorageRequest.typeUrl || typeof o.filter_address === "string" && typeof o.filter_index_prefix === "string");
+  },
+  isSDK(o: any): o is QueryFilterStorageRequestSDKType {
+    return o && (o.$typeUrl === QueryFilterStorageRequest.typeUrl || typeof o.filter_address === "string" && typeof o.filter_index_prefix === "string");
+  },
+  isAmino(o: any): o is QueryFilterStorageRequestAmino {
+    return o && (o.$typeUrl === QueryFilterStorageRequest.typeUrl || typeof o.filter_address === "string" && typeof o.filter_index_prefix === "string");
+  },
   encode(message: QueryFilterStorageRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.filter_address !== "") {
       writer.uint32(10).string(message.filter_address);
@@ -512,6 +562,7 @@ export const QueryFilterStorageRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryFilterStorageRequest.typeUrl, QueryFilterStorageRequest);
 function createBaseQueryFilterStorageResponse(): QueryFilterStorageResponse {
   return {
     storage: [],
@@ -520,6 +571,15 @@ function createBaseQueryFilterStorageResponse(): QueryFilterStorageResponse {
 }
 export const QueryFilterStorageResponse = {
   typeUrl: "/blit.storage.QueryFilterStorageResponse",
+  is(o: any): o is QueryFilterStorageResponse {
+    return o && (o.$typeUrl === QueryFilterStorageResponse.typeUrl || Array.isArray(o.storage) && (!o.storage.length || Storage.is(o.storage[0])));
+  },
+  isSDK(o: any): o is QueryFilterStorageResponseSDKType {
+    return o && (o.$typeUrl === QueryFilterStorageResponse.typeUrl || Array.isArray(o.storage) && (!o.storage.length || Storage.isSDK(o.storage[0])));
+  },
+  isAmino(o: any): o is QueryFilterStorageResponseAmino {
+    return o && (o.$typeUrl === QueryFilterStorageResponse.typeUrl || Array.isArray(o.storage) && (!o.storage.length || Storage.isAmino(o.storage[0])));
+  },
   encode(message: QueryFilterStorageResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.storage) {
       Storage.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -605,3 +665,4 @@ export const QueryFilterStorageResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryFilterStorageResponse.typeUrl, QueryFilterStorageResponse);

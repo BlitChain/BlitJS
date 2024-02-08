@@ -57,6 +57,10 @@ export interface EntrySDKType {
 }
 export declare const GenesisState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GenesisState;
+    isSDK(o: any): o is GenesisStateSDKType;
+    isAmino(o: any): o is GenesisStateAmino;
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;
@@ -72,6 +76,10 @@ export declare const GenesisState: {
 };
 export declare const Entry: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Entry;
+    isSDK(o: any): o is EntrySDKType;
+    isAmino(o: any): o is EntryAmino;
     encode(message: Entry, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Entry;
     fromJSON(object: any): Entry;

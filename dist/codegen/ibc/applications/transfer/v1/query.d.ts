@@ -324,6 +324,10 @@ export interface QueryTotalEscrowForDenomResponseSDKType {
 }
 export declare const QueryDenomTraceRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDenomTraceRequest;
+    isSDK(o: any): o is QueryDenomTraceRequestSDKType;
+    isAmino(o: any): o is QueryDenomTraceRequestAmino;
     encode(message: QueryDenomTraceRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomTraceRequest;
     fromJSON(object: any): QueryDenomTraceRequest;
@@ -339,6 +343,10 @@ export declare const QueryDenomTraceRequest: {
 };
 export declare const QueryDenomTraceResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDenomTraceResponse;
+    isSDK(o: any): o is QueryDenomTraceResponseSDKType;
+    isAmino(o: any): o is QueryDenomTraceResponseAmino;
     encode(message: QueryDenomTraceResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomTraceResponse;
     fromJSON(object: any): QueryDenomTraceResponse;
@@ -354,6 +362,10 @@ export declare const QueryDenomTraceResponse: {
 };
 export declare const QueryDenomTracesRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDenomTracesRequest;
+    isSDK(o: any): o is QueryDenomTracesRequestSDKType;
+    isAmino(o: any): o is QueryDenomTracesRequestAmino;
     encode(message: QueryDenomTracesRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomTracesRequest;
     fromJSON(object: any): QueryDenomTracesRequest;
@@ -369,6 +381,10 @@ export declare const QueryDenomTracesRequest: {
 };
 export declare const QueryDenomTracesResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDenomTracesResponse;
+    isSDK(o: any): o is QueryDenomTracesResponseSDKType;
+    isAmino(o: any): o is QueryDenomTracesResponseAmino;
     encode(message: QueryDenomTracesResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomTracesResponse;
     fromJSON(object: any): QueryDenomTracesResponse;
@@ -384,6 +400,10 @@ export declare const QueryDenomTracesResponse: {
 };
 export declare const QueryParamsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryParamsRequest;
+    isSDK(o: any): o is QueryParamsRequestSDKType;
+    isAmino(o: any): o is QueryParamsRequestAmino;
     encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromJSON(_: any): QueryParamsRequest;
@@ -399,6 +419,10 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryParamsResponse;
+    isSDK(o: any): o is QueryParamsResponseSDKType;
+    isAmino(o: any): o is QueryParamsResponseAmino;
     encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromJSON(object: any): QueryParamsResponse;
@@ -414,6 +438,10 @@ export declare const QueryParamsResponse: {
 };
 export declare const QueryDenomHashRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDenomHashRequest;
+    isSDK(o: any): o is QueryDenomHashRequestSDKType;
+    isAmino(o: any): o is QueryDenomHashRequestAmino;
     encode(message: QueryDenomHashRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomHashRequest;
     fromJSON(object: any): QueryDenomHashRequest;
@@ -429,6 +457,10 @@ export declare const QueryDenomHashRequest: {
 };
 export declare const QueryDenomHashResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDenomHashResponse;
+    isSDK(o: any): o is QueryDenomHashResponseSDKType;
+    isAmino(o: any): o is QueryDenomHashResponseAmino;
     encode(message: QueryDenomHashResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomHashResponse;
     fromJSON(object: any): QueryDenomHashResponse;
@@ -444,6 +476,10 @@ export declare const QueryDenomHashResponse: {
 };
 export declare const QueryEscrowAddressRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryEscrowAddressRequest;
+    isSDK(o: any): o is QueryEscrowAddressRequestSDKType;
+    isAmino(o: any): o is QueryEscrowAddressRequestAmino;
     encode(message: QueryEscrowAddressRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryEscrowAddressRequest;
     fromJSON(object: any): QueryEscrowAddressRequest;
@@ -459,6 +495,10 @@ export declare const QueryEscrowAddressRequest: {
 };
 export declare const QueryEscrowAddressResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryEscrowAddressResponse;
+    isSDK(o: any): o is QueryEscrowAddressResponseSDKType;
+    isAmino(o: any): o is QueryEscrowAddressResponseAmino;
     encode(message: QueryEscrowAddressResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryEscrowAddressResponse;
     fromJSON(object: any): QueryEscrowAddressResponse;
@@ -474,6 +514,10 @@ export declare const QueryEscrowAddressResponse: {
 };
 export declare const QueryTotalEscrowForDenomRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryTotalEscrowForDenomRequest;
+    isSDK(o: any): o is QueryTotalEscrowForDenomRequestSDKType;
+    isAmino(o: any): o is QueryTotalEscrowForDenomRequestAmino;
     encode(message: QueryTotalEscrowForDenomRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalEscrowForDenomRequest;
     fromJSON(object: any): QueryTotalEscrowForDenomRequest;
@@ -489,6 +533,10 @@ export declare const QueryTotalEscrowForDenomRequest: {
 };
 export declare const QueryTotalEscrowForDenomResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryTotalEscrowForDenomResponse;
+    isSDK(o: any): o is QueryTotalEscrowForDenomResponseSDKType;
+    isAmino(o: any): o is QueryTotalEscrowForDenomResponseAmino;
     encode(message: QueryTotalEscrowForDenomResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalEscrowForDenomResponse;
     fromJSON(object: any): QueryTotalEscrowForDenomResponse;

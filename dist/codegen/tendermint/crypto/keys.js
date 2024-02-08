@@ -4,6 +4,7 @@ exports.PublicKey = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "tendermint.crypto";
 function createBasePublicKey() {
     return {
@@ -13,6 +14,15 @@ function createBasePublicKey() {
 }
 exports.PublicKey = {
     typeUrl: "/tendermint.crypto.PublicKey",
+    is(o) {
+        return o && o.$typeUrl === exports.PublicKey.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.PublicKey.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.PublicKey.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.ed25519 !== undefined) {
             writer.uint32(10).bytes(message.ed25519);
@@ -92,4 +102,5 @@ exports.PublicKey = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.PublicKey.typeUrl, exports.PublicKey);
 //# sourceMappingURL=keys.js.map

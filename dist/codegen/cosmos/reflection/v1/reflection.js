@@ -4,12 +4,23 @@ exports.FileDescriptorsResponse = exports.FileDescriptorsRequest = exports.proto
 //@ts-nocheck
 const descriptor_1 = require("../../../google/protobuf/descriptor");
 const binary_1 = require("../../../binary");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.reflection.v1";
 function createBaseFileDescriptorsRequest() {
     return {};
 }
 exports.FileDescriptorsRequest = {
     typeUrl: "/cosmos.reflection.v1.FileDescriptorsRequest",
+    aminoType: "cosmos-sdk/FileDescriptorsRequest",
+    is(o) {
+        return o && o.$typeUrl === exports.FileDescriptorsRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.FileDescriptorsRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.FileDescriptorsRequest.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -68,6 +79,8 @@ exports.FileDescriptorsRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.FileDescriptorsRequest.typeUrl, exports.FileDescriptorsRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.FileDescriptorsRequest.aminoType, exports.FileDescriptorsRequest.typeUrl);
 function createBaseFileDescriptorsResponse() {
     return {
         files: []
@@ -75,6 +88,16 @@ function createBaseFileDescriptorsResponse() {
 }
 exports.FileDescriptorsResponse = {
     typeUrl: "/cosmos.reflection.v1.FileDescriptorsResponse",
+    aminoType: "cosmos-sdk/FileDescriptorsResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.FileDescriptorsResponse.typeUrl || Array.isArray(o.files) && (!o.files.length || descriptor_1.FileDescriptorProto.is(o.files[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.FileDescriptorsResponse.typeUrl || Array.isArray(o.files) && (!o.files.length || descriptor_1.FileDescriptorProto.isSDK(o.files[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.FileDescriptorsResponse.typeUrl || Array.isArray(o.files) && (!o.files.length || descriptor_1.FileDescriptorProto.isAmino(o.files[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.files) {
             descriptor_1.FileDescriptorProto.encode(v, writer.uint32(10).fork()).ldelim();
@@ -155,4 +178,6 @@ exports.FileDescriptorsResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.FileDescriptorsResponse.typeUrl, exports.FileDescriptorsResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.FileDescriptorsResponse.aminoType, exports.FileDescriptorsResponse.typeUrl);
 //# sourceMappingURL=reflection.js.map

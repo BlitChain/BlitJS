@@ -4,6 +4,7 @@ exports.ProofOps = exports.ProofOp = exports.DominoOp = exports.ValueOp = export
 //@ts-nocheck
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "tendermint.crypto";
 function createBaseProof() {
     return {
@@ -15,6 +16,15 @@ function createBaseProof() {
 }
 exports.Proof = {
     typeUrl: "/tendermint.crypto.Proof",
+    is(o) {
+        return o && (o.$typeUrl === exports.Proof.typeUrl || typeof o.total === "bigint" && typeof o.index === "bigint" && (o.leaf_hash instanceof Uint8Array || typeof o.leaf_hash === "string") && Array.isArray(o.aunts) && (!o.aunts.length || o.aunts[0] instanceof Uint8Array || typeof o.aunts[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Proof.typeUrl || typeof o.total === "bigint" && typeof o.index === "bigint" && (o.leaf_hash instanceof Uint8Array || typeof o.leaf_hash === "string") && Array.isArray(o.aunts) && (!o.aunts.length || o.aunts[0] instanceof Uint8Array || typeof o.aunts[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Proof.typeUrl || typeof o.total === "bigint" && typeof o.index === "bigint" && (o.leaf_hash instanceof Uint8Array || typeof o.leaf_hash === "string") && Array.isArray(o.aunts) && (!o.aunts.length || o.aunts[0] instanceof Uint8Array || typeof o.aunts[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.total !== BigInt(0)) {
             writer.uint32(8).int64(message.total);
@@ -128,6 +138,7 @@ exports.Proof = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Proof.typeUrl, exports.Proof);
 function createBaseValueOp() {
     return {
         key: new Uint8Array(),
@@ -136,6 +147,15 @@ function createBaseValueOp() {
 }
 exports.ValueOp = {
     typeUrl: "/tendermint.crypto.ValueOp",
+    is(o) {
+        return o && (o.$typeUrl === exports.ValueOp.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ValueOp.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ValueOp.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.key.length !== 0) {
             writer.uint32(10).bytes(message.key);
@@ -215,6 +235,7 @@ exports.ValueOp = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ValueOp.typeUrl, exports.ValueOp);
 function createBaseDominoOp() {
     return {
         key: "",
@@ -224,6 +245,15 @@ function createBaseDominoOp() {
 }
 exports.DominoOp = {
     typeUrl: "/tendermint.crypto.DominoOp",
+    is(o) {
+        return o && (o.$typeUrl === exports.DominoOp.typeUrl || typeof o.key === "string" && typeof o.input === "string" && typeof o.output === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.DominoOp.typeUrl || typeof o.key === "string" && typeof o.input === "string" && typeof o.output === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.DominoOp.typeUrl || typeof o.key === "string" && typeof o.input === "string" && typeof o.output === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.key !== "") {
             writer.uint32(10).string(message.key);
@@ -316,6 +346,7 @@ exports.DominoOp = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.DominoOp.typeUrl, exports.DominoOp);
 function createBaseProofOp() {
     return {
         type: "",
@@ -325,6 +356,15 @@ function createBaseProofOp() {
 }
 exports.ProofOp = {
     typeUrl: "/tendermint.crypto.ProofOp",
+    is(o) {
+        return o && (o.$typeUrl === exports.ProofOp.typeUrl || typeof o.type === "string" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ProofOp.typeUrl || typeof o.type === "string" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ProofOp.typeUrl || typeof o.type === "string" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.type !== "") {
             writer.uint32(10).string(message.type);
@@ -417,6 +457,7 @@ exports.ProofOp = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ProofOp.typeUrl, exports.ProofOp);
 function createBaseProofOps() {
     return {
         ops: []
@@ -424,6 +465,15 @@ function createBaseProofOps() {
 }
 exports.ProofOps = {
     typeUrl: "/tendermint.crypto.ProofOps",
+    is(o) {
+        return o && (o.$typeUrl === exports.ProofOps.typeUrl || Array.isArray(o.ops) && (!o.ops.length || exports.ProofOp.is(o.ops[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ProofOps.typeUrl || Array.isArray(o.ops) && (!o.ops.length || exports.ProofOp.isSDK(o.ops[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ProofOps.typeUrl || Array.isArray(o.ops) && (!o.ops.length || exports.ProofOp.isAmino(o.ops[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.ops) {
             exports.ProofOp.encode(v, writer.uint32(10).fork()).ldelim();
@@ -498,4 +548,5 @@ exports.ProofOps = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ProofOps.typeUrl, exports.ProofOps);
 //# sourceMappingURL=proof.js.map

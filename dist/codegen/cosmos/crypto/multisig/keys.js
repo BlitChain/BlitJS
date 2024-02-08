@@ -5,6 +5,7 @@ exports.LegacyAminoPubKey = exports.protobufPackage = void 0;
 const any_1 = require("../../../google/protobuf/any");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.crypto.multisig";
 function createBaseLegacyAminoPubKey() {
     return {
@@ -14,6 +15,16 @@ function createBaseLegacyAminoPubKey() {
 }
 exports.LegacyAminoPubKey = {
     typeUrl: "/cosmos.crypto.multisig.LegacyAminoPubKey",
+    aminoType: "tendermint/PubKeyMultisigThreshold",
+    is(o) {
+        return o && (o.$typeUrl === exports.LegacyAminoPubKey.typeUrl || typeof o.threshold === "number" && Array.isArray(o.public_keys) && (!o.public_keys.length || any_1.Any.is(o.public_keys[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.LegacyAminoPubKey.typeUrl || typeof o.threshold === "number" && Array.isArray(o.public_keys) && (!o.public_keys.length || any_1.Any.isSDK(o.public_keys[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.LegacyAminoPubKey.typeUrl || typeof o.threshold === "number" && Array.isArray(o.public_keys) && (!o.public_keys.length || any_1.Any.isAmino(o.public_keys[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.threshold !== 0) {
             writer.uint32(8).uint32(message.threshold);
@@ -107,4 +118,6 @@ exports.LegacyAminoPubKey = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.LegacyAminoPubKey.typeUrl, exports.LegacyAminoPubKey);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.LegacyAminoPubKey.aminoType, exports.LegacyAminoPubKey.typeUrl);
 //# sourceMappingURL=keys.js.map

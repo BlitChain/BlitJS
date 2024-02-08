@@ -2,6 +2,7 @@
 import { Plan } from "./upgrade";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.upgrade.v1beta1";
 function createBaseMsgSoftwareUpgrade() {
     return {
@@ -11,6 +12,16 @@ function createBaseMsgSoftwareUpgrade() {
 }
 export const MsgSoftwareUpgrade = {
     typeUrl: "/cosmos.upgrade.v1beta1.MsgSoftwareUpgrade",
+    aminoType: "cosmos-sdk/MsgSoftwareUpgrade",
+    is(o) {
+        return o && (o.$typeUrl === MsgSoftwareUpgrade.typeUrl || typeof o.authority === "string" && Plan.is(o.plan));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgSoftwareUpgrade.typeUrl || typeof o.authority === "string" && Plan.isSDK(o.plan));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgSoftwareUpgrade.typeUrl || typeof o.authority === "string" && Plan.isAmino(o.plan));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.authority !== "") {
             writer.uint32(10).string(message.authority);
@@ -96,11 +107,23 @@ export const MsgSoftwareUpgrade = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgSoftwareUpgrade.typeUrl, MsgSoftwareUpgrade);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSoftwareUpgrade.aminoType, MsgSoftwareUpgrade.typeUrl);
 function createBaseMsgSoftwareUpgradeResponse() {
     return {};
 }
 export const MsgSoftwareUpgradeResponse = {
     typeUrl: "/cosmos.upgrade.v1beta1.MsgSoftwareUpgradeResponse",
+    aminoType: "cosmos-sdk/MsgSoftwareUpgradeResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgSoftwareUpgradeResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgSoftwareUpgradeResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgSoftwareUpgradeResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -159,6 +182,8 @@ export const MsgSoftwareUpgradeResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgSoftwareUpgradeResponse.typeUrl, MsgSoftwareUpgradeResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSoftwareUpgradeResponse.aminoType, MsgSoftwareUpgradeResponse.typeUrl);
 function createBaseMsgCancelUpgrade() {
     return {
         authority: ""
@@ -166,6 +191,16 @@ function createBaseMsgCancelUpgrade() {
 }
 export const MsgCancelUpgrade = {
     typeUrl: "/cosmos.upgrade.v1beta1.MsgCancelUpgrade",
+    aminoType: "cosmos-sdk/MsgCancelUpgrade",
+    is(o) {
+        return o && (o.$typeUrl === MsgCancelUpgrade.typeUrl || typeof o.authority === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgCancelUpgrade.typeUrl || typeof o.authority === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgCancelUpgrade.typeUrl || typeof o.authority === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.authority !== "") {
             writer.uint32(10).string(message.authority);
@@ -238,11 +273,23 @@ export const MsgCancelUpgrade = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgCancelUpgrade.typeUrl, MsgCancelUpgrade);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCancelUpgrade.aminoType, MsgCancelUpgrade.typeUrl);
 function createBaseMsgCancelUpgradeResponse() {
     return {};
 }
 export const MsgCancelUpgradeResponse = {
     typeUrl: "/cosmos.upgrade.v1beta1.MsgCancelUpgradeResponse",
+    aminoType: "cosmos-sdk/MsgCancelUpgradeResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgCancelUpgradeResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgCancelUpgradeResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgCancelUpgradeResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -301,4 +348,6 @@ export const MsgCancelUpgradeResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgCancelUpgradeResponse.typeUrl, MsgCancelUpgradeResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCancelUpgradeResponse.aminoType, MsgCancelUpgradeResponse.typeUrl);
 //# sourceMappingURL=tx.js.map

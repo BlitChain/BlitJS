@@ -4,6 +4,7 @@ exports.EventRevoke = exports.EventGrant = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.authz.v1beta1";
 function createBaseEventGrant() {
     return {
@@ -14,6 +15,16 @@ function createBaseEventGrant() {
 }
 exports.EventGrant = {
     typeUrl: "/cosmos.authz.v1beta1.EventGrant",
+    aminoType: "cosmos-sdk/EventGrant",
+    is(o) {
+        return o && (o.$typeUrl === exports.EventGrant.typeUrl || typeof o.msg_type_url === "string" && typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.EventGrant.typeUrl || typeof o.msg_type_url === "string" && typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.EventGrant.typeUrl || typeof o.msg_type_url === "string" && typeof o.granter === "string" && typeof o.grantee === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.msg_type_url !== "") {
             writer.uint32(18).string(message.msg_type_url);
@@ -112,6 +123,8 @@ exports.EventGrant = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.EventGrant.typeUrl, exports.EventGrant);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.EventGrant.aminoType, exports.EventGrant.typeUrl);
 function createBaseEventRevoke() {
     return {
         msg_type_url: "",
@@ -121,6 +134,16 @@ function createBaseEventRevoke() {
 }
 exports.EventRevoke = {
     typeUrl: "/cosmos.authz.v1beta1.EventRevoke",
+    aminoType: "cosmos-sdk/EventRevoke",
+    is(o) {
+        return o && (o.$typeUrl === exports.EventRevoke.typeUrl || typeof o.msg_type_url === "string" && typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.EventRevoke.typeUrl || typeof o.msg_type_url === "string" && typeof o.granter === "string" && typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.EventRevoke.typeUrl || typeof o.msg_type_url === "string" && typeof o.granter === "string" && typeof o.grantee === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.msg_type_url !== "") {
             writer.uint32(18).string(message.msg_type_url);
@@ -219,4 +242,6 @@ exports.EventRevoke = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.EventRevoke.typeUrl, exports.EventRevoke);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.EventRevoke.aminoType, exports.EventRevoke.typeUrl);
 //# sourceMappingURL=event.js.map

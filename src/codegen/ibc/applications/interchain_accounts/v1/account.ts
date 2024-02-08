@@ -2,6 +2,7 @@
 import { BaseAccount, BaseAccountAmino, BaseAccountSDKType } from "../../../../cosmos/auth/v1beta1/auth";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 export const protobufPackage = "ibc.applications.interchain_accounts.v1";
 /** An InterchainAccount is defined as a BaseAccount & the address of the account owner on the controller chain */
 export interface InterchainAccount {
@@ -37,6 +38,16 @@ function createBaseInterchainAccount(): InterchainAccount {
 }
 export const InterchainAccount = {
   typeUrl: "/ibc.applications.interchain_accounts.v1.InterchainAccount",
+  aminoType: "cosmos-sdk/InterchainAccount",
+  is(o: any): o is InterchainAccount {
+    return o && (o.$typeUrl === InterchainAccount.typeUrl || typeof o.account_owner === "string");
+  },
+  isSDK(o: any): o is InterchainAccountSDKType {
+    return o && (o.$typeUrl === InterchainAccount.typeUrl || typeof o.account_owner === "string");
+  },
+  isAmino(o: any): o is InterchainAccountAmino {
+    return o && (o.$typeUrl === InterchainAccount.typeUrl || typeof o.account_owner === "string");
+  },
   encode(message: InterchainAccount, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.base_account !== undefined) {
       BaseAccount.encode(message.base_account, writer.uint32(10).fork()).ldelim();
@@ -122,3 +133,5 @@ export const InterchainAccount = {
     };
   }
 };
+GlobalDecoderRegistry.register(InterchainAccount.typeUrl, InterchainAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(InterchainAccount.aminoType, InterchainAccount.typeUrl);

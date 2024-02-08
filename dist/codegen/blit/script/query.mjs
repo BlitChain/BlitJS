@@ -3,6 +3,7 @@ import { PageRequest, PageResponse } from "../../cosmos/base/query/v1beta1/pagin
 import { Params } from "./params";
 import { Script } from "./script";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { GlobalDecoderRegistry } from "../../registry";
 import { isSet } from "../../helpers";
 export const protobufPackage = "blit.script";
 function createBaseQueryParamsRequest() {
@@ -10,6 +11,15 @@ function createBaseQueryParamsRequest() {
 }
 export const QueryParamsRequest = {
     typeUrl: "/blit.script.QueryParamsRequest",
+    is(o) {
+        return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -62,6 +72,7 @@ export const QueryParamsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
 function createBaseQueryParamsResponse() {
     return {
         params: Params.fromPartial({})
@@ -69,6 +80,15 @@ function createBaseQueryParamsResponse() {
 }
 export const QueryParamsResponse = {
     typeUrl: "/blit.script.QueryParamsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isAmino(o.params));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.params !== undefined) {
             Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -135,6 +155,7 @@ export const QueryParamsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
 function createBaseQueryScriptRequest() {
     return {
         address: ""
@@ -142,6 +163,15 @@ function createBaseQueryScriptRequest() {
 }
 export const QueryScriptRequest = {
     typeUrl: "/blit.script.QueryScriptRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryScriptRequest.typeUrl || typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryScriptRequest.typeUrl || typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryScriptRequest.typeUrl || typeof o.address === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -208,6 +238,7 @@ export const QueryScriptRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryScriptRequest.typeUrl, QueryScriptRequest);
 function createBaseQueryScriptResponse() {
     return {
         script: Script.fromPartial({})
@@ -215,6 +246,15 @@ function createBaseQueryScriptResponse() {
 }
 export const QueryScriptResponse = {
     typeUrl: "/blit.script.QueryScriptResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryScriptResponse.typeUrl || Script.is(o.script));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryScriptResponse.typeUrl || Script.isSDK(o.script));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryScriptResponse.typeUrl || Script.isAmino(o.script));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.script !== undefined) {
             Script.encode(message.script, writer.uint32(10).fork()).ldelim();
@@ -281,6 +321,7 @@ export const QueryScriptResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryScriptResponse.typeUrl, QueryScriptResponse);
 function createBaseQueryScriptsRequest() {
     return {
         pagination: undefined
@@ -288,6 +329,15 @@ function createBaseQueryScriptsRequest() {
 }
 export const QueryScriptsRequest = {
     typeUrl: "/blit.script.QueryScriptsRequest",
+    is(o) {
+        return o && o.$typeUrl === QueryScriptsRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === QueryScriptsRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === QueryScriptsRequest.typeUrl;
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.pagination !== undefined) {
             PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -354,6 +404,7 @@ export const QueryScriptsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryScriptsRequest.typeUrl, QueryScriptsRequest);
 function createBaseQueryScriptsResponse() {
     return {
         script: [],
@@ -362,6 +413,15 @@ function createBaseQueryScriptsResponse() {
 }
 export const QueryScriptsResponse = {
     typeUrl: "/blit.script.QueryScriptsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryScriptsResponse.typeUrl || Array.isArray(o.script) && (!o.script.length || Script.is(o.script[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryScriptsResponse.typeUrl || Array.isArray(o.script) && (!o.script.length || Script.isSDK(o.script[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryScriptsResponse.typeUrl || Array.isArray(o.script) && (!o.script.length || Script.isAmino(o.script[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.script) {
             Script.encode(v, writer.uint32(10).fork()).ldelim();
@@ -449,6 +509,7 @@ export const QueryScriptsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryScriptsResponse.typeUrl, QueryScriptsResponse);
 function createBaseQueryWebRequest() {
     return {
         address: "",
@@ -457,6 +518,15 @@ function createBaseQueryWebRequest() {
 }
 export const QueryWebRequest = {
     typeUrl: "/blit.script.QueryWebRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryWebRequest.typeUrl || typeof o.address === "string" && typeof o.httprequest === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryWebRequest.typeUrl || typeof o.address === "string" && typeof o.httprequest === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryWebRequest.typeUrl || typeof o.address === "string" && typeof o.httprequest === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -536,6 +606,7 @@ export const QueryWebRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryWebRequest.typeUrl, QueryWebRequest);
 function createBaseQueryWebResponse() {
     return {
         httpresponse: ""
@@ -543,6 +614,15 @@ function createBaseQueryWebResponse() {
 }
 export const QueryWebResponse = {
     typeUrl: "/blit.script.QueryWebResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryWebResponse.typeUrl || typeof o.httpresponse === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryWebResponse.typeUrl || typeof o.httpresponse === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryWebResponse.typeUrl || typeof o.httpresponse === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.httpresponse !== "") {
             writer.uint32(10).string(message.httpresponse);
@@ -609,6 +689,7 @@ export const QueryWebResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryWebResponse.typeUrl, QueryWebResponse);
 function createBaseQueryEvalRequest() {
     return {
         caller_address: "",
@@ -622,6 +703,15 @@ function createBaseQueryEvalRequest() {
 }
 export const QueryEvalRequest = {
     typeUrl: "/blit.script.QueryEvalRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryEvalRequest.typeUrl || typeof o.caller_address === "string" && typeof o.script_address === "string" && typeof o.extra_code === "string" && typeof o.function_name === "string" && typeof o.kwargs === "string" && typeof o.grantee === "string" && typeof o.attached_messages === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryEvalRequest.typeUrl || typeof o.caller_address === "string" && typeof o.script_address === "string" && typeof o.extra_code === "string" && typeof o.function_name === "string" && typeof o.kwargs === "string" && typeof o.grantee === "string" && typeof o.attached_messages === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryEvalRequest.typeUrl || typeof o.caller_address === "string" && typeof o.script_address === "string" && typeof o.extra_code === "string" && typeof o.function_name === "string" && typeof o.kwargs === "string" && typeof o.grantee === "string" && typeof o.attached_messages === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.caller_address !== "") {
             writer.uint32(18).string(message.caller_address);
@@ -766,6 +856,7 @@ export const QueryEvalRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryEvalRequest.typeUrl, QueryEvalRequest);
 function createBaseQueryEvalResponse() {
     return {
         response: ""
@@ -773,6 +864,15 @@ function createBaseQueryEvalResponse() {
 }
 export const QueryEvalResponse = {
     typeUrl: "/blit.script.QueryEvalResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryEvalResponse.typeUrl || typeof o.response === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryEvalResponse.typeUrl || typeof o.response === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryEvalResponse.typeUrl || typeof o.response === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.response !== "") {
             writer.uint32(10).string(message.response);
@@ -839,4 +939,5 @@ export const QueryEvalResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryEvalResponse.typeUrl, QueryEvalResponse);
 //# sourceMappingURL=query.js.map

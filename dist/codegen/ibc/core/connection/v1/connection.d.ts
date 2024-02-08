@@ -317,6 +317,10 @@ export interface ParamsSDKType {
 }
 export declare const ConnectionEnd: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ConnectionEnd;
+    isSDK(o: any): o is ConnectionEndSDKType;
+    isAmino(o: any): o is ConnectionEndAmino;
     encode(message: ConnectionEnd, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConnectionEnd;
     fromJSON(object: any): ConnectionEnd;
@@ -332,6 +336,10 @@ export declare const ConnectionEnd: {
 };
 export declare const IdentifiedConnection: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is IdentifiedConnection;
+    isSDK(o: any): o is IdentifiedConnectionSDKType;
+    isAmino(o: any): o is IdentifiedConnectionAmino;
     encode(message: IdentifiedConnection, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedConnection;
     fromJSON(object: any): IdentifiedConnection;
@@ -347,6 +355,10 @@ export declare const IdentifiedConnection: {
 };
 export declare const Counterparty: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Counterparty;
+    isSDK(o: any): o is CounterpartySDKType;
+    isAmino(o: any): o is CounterpartyAmino;
     encode(message: Counterparty, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Counterparty;
     fromJSON(object: any): Counterparty;
@@ -362,6 +374,10 @@ export declare const Counterparty: {
 };
 export declare const ClientPaths: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ClientPaths;
+    isSDK(o: any): o is ClientPathsSDKType;
+    isAmino(o: any): o is ClientPathsAmino;
     encode(message: ClientPaths, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientPaths;
     fromJSON(object: any): ClientPaths;
@@ -377,6 +393,10 @@ export declare const ClientPaths: {
 };
 export declare const ConnectionPaths: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ConnectionPaths;
+    isSDK(o: any): o is ConnectionPathsSDKType;
+    isAmino(o: any): o is ConnectionPathsAmino;
     encode(message: ConnectionPaths, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConnectionPaths;
     fromJSON(object: any): ConnectionPaths;
@@ -392,6 +412,10 @@ export declare const ConnectionPaths: {
 };
 export declare const Version: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Version;
+    isSDK(o: any): o is VersionSDKType;
+    isAmino(o: any): o is VersionAmino;
     encode(message: Version, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Version;
     fromJSON(object: any): Version;
@@ -407,6 +431,10 @@ export declare const Version: {
 };
 export declare const Params: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Params;
+    isSDK(o: any): o is ParamsSDKType;
+    isAmino(o: any): o is ParamsAmino;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromJSON(object: any): Params;

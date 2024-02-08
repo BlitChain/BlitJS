@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.storage";
 export interface Storage {
   address: string;
@@ -34,6 +35,15 @@ function createBaseStorage(): Storage {
 }
 export const Storage = {
   typeUrl: "/blit.storage.Storage",
+  is(o: any): o is Storage {
+    return o && (o.$typeUrl === Storage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string");
+  },
+  isSDK(o: any): o is StorageSDKType {
+    return o && (o.$typeUrl === Storage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string");
+  },
+  isAmino(o: any): o is StorageAmino {
+    return o && (o.$typeUrl === Storage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string");
+  },
   encode(message: Storage, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -126,3 +136,4 @@ export const Storage = {
     };
   }
 };
+GlobalDecoderRegistry.register(Storage.typeUrl, Storage);

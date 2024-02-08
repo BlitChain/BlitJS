@@ -41,6 +41,10 @@ export interface ConfigSDKType {
 }
 export declare const Config: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Config;
+    isSDK(o: any): o is ConfigSDKType;
+    isAmino(o: any): o is ConfigAmino;
     encode(message: Config, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Config;
     fromJSON(object: any): Config;

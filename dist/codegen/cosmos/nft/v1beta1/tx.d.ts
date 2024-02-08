@@ -56,6 +56,10 @@ export interface MsgSendResponseSDKType {
 }
 export declare const MsgSend: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSend;
+    isSDK(o: any): o is MsgSendSDKType;
+    isAmino(o: any): o is MsgSendAmino;
     encode(message: MsgSend, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSend;
     fromJSON(object: any): MsgSend;
@@ -71,6 +75,10 @@ export declare const MsgSend: {
 };
 export declare const MsgSendResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSendResponse;
+    isSDK(o: any): o is MsgSendResponseSDKType;
+    isAmino(o: any): o is MsgSendResponseAmino;
     encode(_: MsgSendResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSendResponse;
     fromJSON(_: any): MsgSendResponse;

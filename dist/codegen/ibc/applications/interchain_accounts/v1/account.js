@@ -5,6 +5,7 @@ exports.InterchainAccount = exports.protobufPackage = void 0;
 const auth_1 = require("../../../../cosmos/auth/v1beta1/auth");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "ibc.applications.interchain_accounts.v1";
 function createBaseInterchainAccount() {
     return {
@@ -15,6 +16,16 @@ function createBaseInterchainAccount() {
 }
 exports.InterchainAccount = {
     typeUrl: "/ibc.applications.interchain_accounts.v1.InterchainAccount",
+    aminoType: "cosmos-sdk/InterchainAccount",
+    is(o) {
+        return o && (o.$typeUrl === exports.InterchainAccount.typeUrl || typeof o.account_owner === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.InterchainAccount.typeUrl || typeof o.account_owner === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.InterchainAccount.typeUrl || typeof o.account_owner === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.base_account !== undefined) {
             auth_1.BaseAccount.encode(message.base_account, writer.uint32(10).fork()).ldelim();
@@ -100,4 +111,6 @@ exports.InterchainAccount = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.InterchainAccount.typeUrl, exports.InterchainAccount);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.InterchainAccount.aminoType, exports.InterchainAccount.typeUrl);
 //# sourceMappingURL=account.js.map

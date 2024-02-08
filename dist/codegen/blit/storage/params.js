@@ -3,12 +3,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Params = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "blit.storage";
 function createBaseParams() {
     return {};
 }
 exports.Params = {
     typeUrl: "/blit.storage.Params",
+    aminoType: "blit/x/storage/Params",
+    is(o) {
+        return o && o.$typeUrl === exports.Params.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.Params.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.Params.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -67,4 +78,6 @@ exports.Params = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Params.typeUrl, exports.Params);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Params.aminoType, exports.Params.typeUrl);
 //# sourceMappingURL=params.js.map

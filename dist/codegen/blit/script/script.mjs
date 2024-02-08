@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.script";
 function createBaseScript() {
     return {
@@ -11,6 +12,15 @@ function createBaseScript() {
 }
 export const Script = {
     typeUrl: "/blit.script.Script",
+    is(o) {
+        return o && (o.$typeUrl === Script.typeUrl || typeof o.address === "string" && typeof o.code === "string" && typeof o.version === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Script.typeUrl || typeof o.address === "string" && typeof o.code === "string" && typeof o.version === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Script.typeUrl || typeof o.address === "string" && typeof o.code === "string" && typeof o.version === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -103,4 +113,5 @@ export const Script = {
         };
     }
 };
+GlobalDecoderRegistry.register(Script.typeUrl, Script);
 //# sourceMappingURL=script.js.map

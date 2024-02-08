@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { Timestamp } from "../../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { GlobalDecoderRegistry } from "../../../../registry";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp, bytesFromBase64, base64FromBytes } from "../../../../helpers";
 export const protobufPackage = "cosmos.base.node.v1beta1";
 /** ConfigRequest defines the request structure for the Config gRPC query. */
@@ -106,6 +107,16 @@ function createBaseConfigRequest(): ConfigRequest {
 }
 export const ConfigRequest = {
   typeUrl: "/cosmos.base.node.v1beta1.ConfigRequest",
+  aminoType: "cosmos-sdk/ConfigRequest",
+  is(o: any): o is ConfigRequest {
+    return o && o.$typeUrl === ConfigRequest.typeUrl;
+  },
+  isSDK(o: any): o is ConfigRequestSDKType {
+    return o && o.$typeUrl === ConfigRequest.typeUrl;
+  },
+  isAmino(o: any): o is ConfigRequestAmino {
+    return o && o.$typeUrl === ConfigRequest.typeUrl;
+  },
   encode(_: ConfigRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -164,6 +175,8 @@ export const ConfigRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(ConfigRequest.typeUrl, ConfigRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(ConfigRequest.aminoType, ConfigRequest.typeUrl);
 function createBaseConfigResponse(): ConfigResponse {
   return {
     minimum_gas_price: "",
@@ -173,6 +186,16 @@ function createBaseConfigResponse(): ConfigResponse {
 }
 export const ConfigResponse = {
   typeUrl: "/cosmos.base.node.v1beta1.ConfigResponse",
+  aminoType: "cosmos-sdk/ConfigResponse",
+  is(o: any): o is ConfigResponse {
+    return o && (o.$typeUrl === ConfigResponse.typeUrl || typeof o.minimum_gas_price === "string" && typeof o.pruning_keep_recent === "string" && typeof o.pruning_interval === "string");
+  },
+  isSDK(o: any): o is ConfigResponseSDKType {
+    return o && (o.$typeUrl === ConfigResponse.typeUrl || typeof o.minimum_gas_price === "string" && typeof o.pruning_keep_recent === "string" && typeof o.pruning_interval === "string");
+  },
+  isAmino(o: any): o is ConfigResponseAmino {
+    return o && (o.$typeUrl === ConfigResponse.typeUrl || typeof o.minimum_gas_price === "string" && typeof o.pruning_keep_recent === "string" && typeof o.pruning_interval === "string");
+  },
   encode(message: ConfigResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.minimum_gas_price !== "") {
       writer.uint32(10).string(message.minimum_gas_price);
@@ -271,11 +294,23 @@ export const ConfigResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(ConfigResponse.typeUrl, ConfigResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(ConfigResponse.aminoType, ConfigResponse.typeUrl);
 function createBaseStatusRequest(): StatusRequest {
   return {};
 }
 export const StatusRequest = {
   typeUrl: "/cosmos.base.node.v1beta1.StatusRequest",
+  aminoType: "cosmos-sdk/StatusRequest",
+  is(o: any): o is StatusRequest {
+    return o && o.$typeUrl === StatusRequest.typeUrl;
+  },
+  isSDK(o: any): o is StatusRequestSDKType {
+    return o && o.$typeUrl === StatusRequest.typeUrl;
+  },
+  isAmino(o: any): o is StatusRequestAmino {
+    return o && o.$typeUrl === StatusRequest.typeUrl;
+  },
   encode(_: StatusRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -334,6 +369,8 @@ export const StatusRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(StatusRequest.typeUrl, StatusRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(StatusRequest.aminoType, StatusRequest.typeUrl);
 function createBaseStatusResponse(): StatusResponse {
   return {
     earliest_store_height: BigInt(0),
@@ -345,6 +382,16 @@ function createBaseStatusResponse(): StatusResponse {
 }
 export const StatusResponse = {
   typeUrl: "/cosmos.base.node.v1beta1.StatusResponse",
+  aminoType: "cosmos-sdk/StatusResponse",
+  is(o: any): o is StatusResponse {
+    return o && (o.$typeUrl === StatusResponse.typeUrl || typeof o.earliest_store_height === "bigint" && typeof o.height === "bigint" && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string") && (o.validator_hash instanceof Uint8Array || typeof o.validator_hash === "string"));
+  },
+  isSDK(o: any): o is StatusResponseSDKType {
+    return o && (o.$typeUrl === StatusResponse.typeUrl || typeof o.earliest_store_height === "bigint" && typeof o.height === "bigint" && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string") && (o.validator_hash instanceof Uint8Array || typeof o.validator_hash === "string"));
+  },
+  isAmino(o: any): o is StatusResponseAmino {
+    return o && (o.$typeUrl === StatusResponse.typeUrl || typeof o.earliest_store_height === "bigint" && typeof o.height === "bigint" && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string") && (o.validator_hash instanceof Uint8Array || typeof o.validator_hash === "string"));
+  },
   encode(message: StatusResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.earliest_store_height !== BigInt(0)) {
       writer.uint32(8).uint64(message.earliest_store_height);
@@ -469,3 +516,5 @@ export const StatusResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(StatusResponse.typeUrl, StatusResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(StatusResponse.aminoType, StatusResponse.typeUrl);

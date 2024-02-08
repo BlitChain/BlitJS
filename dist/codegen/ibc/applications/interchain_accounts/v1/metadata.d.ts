@@ -64,6 +64,10 @@ export interface MetadataSDKType {
 }
 export declare const Metadata: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Metadata;
+    isSDK(o: any): o is MetadataSDKType;
+    isAmino(o: any): o is MetadataAmino;
     encode(message: Metadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Metadata;
     fromJSON(object: any): Metadata;

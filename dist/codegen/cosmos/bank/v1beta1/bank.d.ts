@@ -317,6 +317,10 @@ export interface MetadataSDKType {
 }
 export declare const Params: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Params;
+    isSDK(o: any): o is ParamsSDKType;
+    isAmino(o: any): o is ParamsAmino;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromJSON(object: any): Params;
@@ -332,6 +336,10 @@ export declare const Params: {
 };
 export declare const SendEnabled: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SendEnabled;
+    isSDK(o: any): o is SendEnabledSDKType;
+    isAmino(o: any): o is SendEnabledAmino;
     encode(message: SendEnabled, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SendEnabled;
     fromJSON(object: any): SendEnabled;
@@ -347,6 +355,10 @@ export declare const SendEnabled: {
 };
 export declare const Input: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Input;
+    isSDK(o: any): o is InputSDKType;
+    isAmino(o: any): o is InputAmino;
     encode(message: Input, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Input;
     fromJSON(object: any): Input;
@@ -362,6 +374,10 @@ export declare const Input: {
 };
 export declare const Output: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Output;
+    isSDK(o: any): o is OutputSDKType;
+    isAmino(o: any): o is OutputAmino;
     encode(message: Output, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Output;
     fromJSON(object: any): Output;
@@ -377,6 +393,10 @@ export declare const Output: {
 };
 export declare const Supply: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Supply;
+    isSDK(o: any): o is SupplySDKType;
+    isAmino(o: any): o is SupplyAmino;
     encode(message: Supply, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Supply;
     fromJSON(object: any): Supply;
@@ -392,6 +412,10 @@ export declare const Supply: {
 };
 export declare const DenomUnit: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DenomUnit;
+    isSDK(o: any): o is DenomUnitSDKType;
+    isAmino(o: any): o is DenomUnitAmino;
     encode(message: DenomUnit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DenomUnit;
     fromJSON(object: any): DenomUnit;
@@ -407,6 +431,10 @@ export declare const DenomUnit: {
 };
 export declare const Metadata: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Metadata;
+    isSDK(o: any): o is MetadataSDKType;
+    isAmino(o: any): o is MetadataAmino;
     encode(message: Metadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Metadata;
     fromJSON(object: any): Metadata;

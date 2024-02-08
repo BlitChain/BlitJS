@@ -106,6 +106,9 @@ export interface DefaultNodeInfoOtherSDKType {
 }
 export declare const NetAddress: {
     typeUrl: string;
+    is(o: any): o is NetAddress;
+    isSDK(o: any): o is NetAddressSDKType;
+    isAmino(o: any): o is NetAddressAmino;
     encode(message: NetAddress, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): NetAddress;
     fromJSON(object: any): NetAddress;
@@ -120,6 +123,9 @@ export declare const NetAddress: {
 };
 export declare const ProtocolVersion: {
     typeUrl: string;
+    is(o: any): o is ProtocolVersion;
+    isSDK(o: any): o is ProtocolVersionSDKType;
+    isAmino(o: any): o is ProtocolVersionAmino;
     encode(message: ProtocolVersion, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ProtocolVersion;
     fromJSON(object: any): ProtocolVersion;
@@ -134,6 +140,9 @@ export declare const ProtocolVersion: {
 };
 export declare const DefaultNodeInfo: {
     typeUrl: string;
+    is(o: any): o is DefaultNodeInfo;
+    isSDK(o: any): o is DefaultNodeInfoSDKType;
+    isAmino(o: any): o is DefaultNodeInfoAmino;
     encode(message: DefaultNodeInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DefaultNodeInfo;
     fromJSON(object: any): DefaultNodeInfo;
@@ -148,6 +157,9 @@ export declare const DefaultNodeInfo: {
 };
 export declare const DefaultNodeInfoOther: {
     typeUrl: string;
+    is(o: any): o is DefaultNodeInfoOther;
+    isSDK(o: any): o is DefaultNodeInfoOtherSDKType;
+    isAmino(o: any): o is DefaultNodeInfoOtherAmino;
     encode(message: DefaultNodeInfoOther, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DefaultNodeInfoOther;
     fromJSON(object: any): DefaultNodeInfoOther;

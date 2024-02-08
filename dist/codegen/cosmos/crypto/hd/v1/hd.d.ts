@@ -50,6 +50,10 @@ export interface BIP44ParamsSDKType {
 }
 export declare const BIP44Params: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is BIP44Params;
+    isSDK(o: any): o is BIP44ParamsSDKType;
+    isAmino(o: any): o is BIP44ParamsAmino;
     encode(message: BIP44Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BIP44Params;
     fromJSON(object: any): BIP44Params;

@@ -2,6 +2,7 @@
 import { Deposit, Vote, Proposal, DepositParams, VotingParams, TallyParams, Params } from "./gov";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.gov.v1";
 function createBaseGenesisState() {
     return {
@@ -18,6 +19,16 @@ function createBaseGenesisState() {
 }
 export const GenesisState = {
     typeUrl: "/cosmos.gov.v1.GenesisState",
+    aminoType: "cosmos-sdk/v1/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.starting_proposal_id === "bigint" && Array.isArray(o.deposits) && (!o.deposits.length || Deposit.is(o.deposits[0])) && Array.isArray(o.votes) && (!o.votes.length || Vote.is(o.votes[0])) && Array.isArray(o.proposals) && (!o.proposals.length || Proposal.is(o.proposals[0])) && typeof o.constitution === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.starting_proposal_id === "bigint" && Array.isArray(o.deposits) && (!o.deposits.length || Deposit.isSDK(o.deposits[0])) && Array.isArray(o.votes) && (!o.votes.length || Vote.isSDK(o.votes[0])) && Array.isArray(o.proposals) && (!o.proposals.length || Proposal.isSDK(o.proposals[0])) && typeof o.constitution === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.starting_proposal_id === "bigint" && Array.isArray(o.deposits) && (!o.deposits.length || Deposit.isAmino(o.deposits[0])) && Array.isArray(o.votes) && (!o.votes.length || Vote.isAmino(o.votes[0])) && Array.isArray(o.proposals) && (!o.proposals.length || Proposal.isAmino(o.proposals[0])) && typeof o.constitution === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.starting_proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.starting_proposal_id);
@@ -218,4 +229,6 @@ export const GenesisState = {
         };
     }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 //# sourceMappingURL=genesis.js.map

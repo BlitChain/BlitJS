@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Pair = exports.Pairs = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../../../binary");
+const registry_1 = require("../../../../../registry");
 const helpers_1 = require("../../../../../helpers");
 exports.protobufPackage = "cosmos.store.internal.kv.v1beta1";
 function createBasePairs() {
@@ -12,6 +13,16 @@ function createBasePairs() {
 }
 exports.Pairs = {
     typeUrl: "/cosmos.store.internal.kv.v1beta1.Pairs",
+    aminoType: "cosmos-sdk/Pairs",
+    is(o) {
+        return o && (o.$typeUrl === exports.Pairs.typeUrl || Array.isArray(o.pairs) && (!o.pairs.length || exports.Pair.is(o.pairs[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Pairs.typeUrl || Array.isArray(o.pairs) && (!o.pairs.length || exports.Pair.isSDK(o.pairs[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Pairs.typeUrl || Array.isArray(o.pairs) && (!o.pairs.length || exports.Pair.isAmino(o.pairs[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.pairs) {
             exports.Pair.encode(v, writer.uint32(10).fork()).ldelim();
@@ -92,6 +103,8 @@ exports.Pairs = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Pairs.typeUrl, exports.Pairs);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Pairs.aminoType, exports.Pairs.typeUrl);
 function createBasePair() {
     return {
         key: new Uint8Array(),
@@ -100,6 +113,16 @@ function createBasePair() {
 }
 exports.Pair = {
     typeUrl: "/cosmos.store.internal.kv.v1beta1.Pair",
+    aminoType: "cosmos-sdk/Pair",
+    is(o) {
+        return o && (o.$typeUrl === exports.Pair.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Pair.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Pair.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.key.length !== 0) {
             writer.uint32(10).bytes(message.key);
@@ -185,4 +208,6 @@ exports.Pair = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Pair.typeUrl, exports.Pair);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Pair.aminoType, exports.Pair.typeUrl);
 //# sourceMappingURL=kv.js.map

@@ -134,6 +134,10 @@ export interface Record_OfflineSDKType {
 }
 export declare const Record: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Record;
+    isSDK(o: any): o is RecordSDKType;
+    isAmino(o: any): o is RecordAmino;
     encode(message: Record, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record;
     fromJSON(object: any): Record;
@@ -149,6 +153,10 @@ export declare const Record: {
 };
 export declare const Record_Local: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Record_Local;
+    isSDK(o: any): o is Record_LocalSDKType;
+    isAmino(o: any): o is Record_LocalAmino;
     encode(message: Record_Local, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record_Local;
     fromJSON(object: any): Record_Local;
@@ -164,6 +172,10 @@ export declare const Record_Local: {
 };
 export declare const Record_Ledger: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Record_Ledger;
+    isSDK(o: any): o is Record_LedgerSDKType;
+    isAmino(o: any): o is Record_LedgerAmino;
     encode(message: Record_Ledger, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record_Ledger;
     fromJSON(object: any): Record_Ledger;
@@ -179,6 +191,10 @@ export declare const Record_Ledger: {
 };
 export declare const Record_Multi: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Record_Multi;
+    isSDK(o: any): o is Record_MultiSDKType;
+    isAmino(o: any): o is Record_MultiAmino;
     encode(_: Record_Multi, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record_Multi;
     fromJSON(_: any): Record_Multi;
@@ -194,6 +210,10 @@ export declare const Record_Multi: {
 };
 export declare const Record_Offline: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Record_Offline;
+    isSDK(o: any): o is Record_OfflineSDKType;
+    isAmino(o: any): o is Record_OfflineAmino;
     encode(_: Record_Offline, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Record_Offline;
     fromJSON(_: any): Record_Offline;

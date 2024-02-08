@@ -3,6 +3,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Any } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.upgrade.v1beta1";
 function createBasePlan() {
     return {
@@ -15,6 +16,16 @@ function createBasePlan() {
 }
 export const Plan = {
     typeUrl: "/cosmos.upgrade.v1beta1.Plan",
+    aminoType: "cosmos-sdk/Plan",
+    is(o) {
+        return o && (o.$typeUrl === Plan.typeUrl || typeof o.name === "string" && Timestamp.is(o.time) && typeof o.height === "bigint" && typeof o.info === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Plan.typeUrl || typeof o.name === "string" && Timestamp.isSDK(o.time) && typeof o.height === "bigint" && typeof o.info === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Plan.typeUrl || typeof o.name === "string" && Timestamp.isAmino(o.time) && typeof o.height === "bigint" && typeof o.info === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -139,6 +150,8 @@ export const Plan = {
         };
     }
 };
+GlobalDecoderRegistry.register(Plan.typeUrl, Plan);
+GlobalDecoderRegistry.registerAminoProtoMapping(Plan.aminoType, Plan.typeUrl);
 function createBaseSoftwareUpgradeProposal() {
     return {
         $typeUrl: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
@@ -149,6 +162,16 @@ function createBaseSoftwareUpgradeProposal() {
 }
 export const SoftwareUpgradeProposal = {
     typeUrl: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
+    aminoType: "cosmos-sdk/SoftwareUpgradeProposal",
+    is(o) {
+        return o && (o.$typeUrl === SoftwareUpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Plan.is(o.plan));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === SoftwareUpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Plan.isSDK(o.plan));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === SoftwareUpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Plan.isAmino(o.plan));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.title !== "") {
             writer.uint32(10).string(message.title);
@@ -247,6 +270,8 @@ export const SoftwareUpgradeProposal = {
         };
     }
 };
+GlobalDecoderRegistry.register(SoftwareUpgradeProposal.typeUrl, SoftwareUpgradeProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(SoftwareUpgradeProposal.aminoType, SoftwareUpgradeProposal.typeUrl);
 function createBaseCancelSoftwareUpgradeProposal() {
     return {
         $typeUrl: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal",
@@ -256,6 +281,16 @@ function createBaseCancelSoftwareUpgradeProposal() {
 }
 export const CancelSoftwareUpgradeProposal = {
     typeUrl: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal",
+    aminoType: "cosmos-sdk/CancelSoftwareUpgradeProposal",
+    is(o) {
+        return o && (o.$typeUrl === CancelSoftwareUpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === CancelSoftwareUpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === CancelSoftwareUpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.title !== "") {
             writer.uint32(10).string(message.title);
@@ -341,6 +376,8 @@ export const CancelSoftwareUpgradeProposal = {
         };
     }
 };
+GlobalDecoderRegistry.register(CancelSoftwareUpgradeProposal.typeUrl, CancelSoftwareUpgradeProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(CancelSoftwareUpgradeProposal.aminoType, CancelSoftwareUpgradeProposal.typeUrl);
 function createBaseModuleVersion() {
     return {
         name: "",
@@ -349,6 +386,16 @@ function createBaseModuleVersion() {
 }
 export const ModuleVersion = {
     typeUrl: "/cosmos.upgrade.v1beta1.ModuleVersion",
+    aminoType: "cosmos-sdk/ModuleVersion",
+    is(o) {
+        return o && (o.$typeUrl === ModuleVersion.typeUrl || typeof o.name === "string" && typeof o.version === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === ModuleVersion.typeUrl || typeof o.name === "string" && typeof o.version === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === ModuleVersion.typeUrl || typeof o.name === "string" && typeof o.version === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -434,4 +481,6 @@ export const ModuleVersion = {
         };
     }
 };
+GlobalDecoderRegistry.register(ModuleVersion.typeUrl, ModuleVersion);
+GlobalDecoderRegistry.registerAminoProtoMapping(ModuleVersion.aminoType, ModuleVersion.typeUrl);
 //# sourceMappingURL=upgrade.js.map

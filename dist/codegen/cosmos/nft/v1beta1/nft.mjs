@@ -2,6 +2,7 @@
 import { Any } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.nft.v1beta1";
 function createBaseClass() {
     return {
@@ -16,6 +17,16 @@ function createBaseClass() {
 }
 export const Class = {
     typeUrl: "/cosmos.nft.v1beta1.Class",
+    aminoType: "cosmos-sdk/Class",
+    is(o) {
+        return o && (o.$typeUrl === Class.typeUrl || typeof o.id === "string" && typeof o.name === "string" && typeof o.symbol === "string" && typeof o.description === "string" && typeof o.uri === "string" && typeof o.uri_hash === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Class.typeUrl || typeof o.id === "string" && typeof o.name === "string" && typeof o.symbol === "string" && typeof o.description === "string" && typeof o.uri === "string" && typeof o.uri_hash === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Class.typeUrl || typeof o.id === "string" && typeof o.name === "string" && typeof o.symbol === "string" && typeof o.description === "string" && typeof o.uri === "string" && typeof o.uri_hash === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.id !== "") {
             writer.uint32(10).string(message.id);
@@ -166,6 +177,8 @@ export const Class = {
         };
     }
 };
+GlobalDecoderRegistry.register(Class.typeUrl, Class);
+GlobalDecoderRegistry.registerAminoProtoMapping(Class.aminoType, Class.typeUrl);
 function createBaseNFT() {
     return {
         class_id: "",
@@ -177,6 +190,16 @@ function createBaseNFT() {
 }
 export const NFT = {
     typeUrl: "/cosmos.nft.v1beta1.NFT",
+    aminoType: "cosmos-sdk/NFT",
+    is(o) {
+        return o && (o.$typeUrl === NFT.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.uri === "string" && typeof o.uri_hash === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === NFT.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.uri === "string" && typeof o.uri_hash === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === NFT.typeUrl || typeof o.class_id === "string" && typeof o.id === "string" && typeof o.uri === "string" && typeof o.uri_hash === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.class_id !== "") {
             writer.uint32(10).string(message.class_id);
@@ -301,4 +324,6 @@ export const NFT = {
         };
     }
 };
+GlobalDecoderRegistry.register(NFT.typeUrl, NFT);
+GlobalDecoderRegistry.registerAminoProtoMapping(NFT.aminoType, NFT.typeUrl);
 //# sourceMappingURL=nft.js.map

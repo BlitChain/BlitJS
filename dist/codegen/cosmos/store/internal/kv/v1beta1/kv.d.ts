@@ -45,6 +45,10 @@ export interface PairSDKType {
 }
 export declare const Pairs: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Pairs;
+    isSDK(o: any): o is PairsSDKType;
+    isAmino(o: any): o is PairsAmino;
     encode(message: Pairs, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Pairs;
     fromJSON(object: any): Pairs;
@@ -60,6 +64,10 @@ export declare const Pairs: {
 };
 export declare const Pair: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Pair;
+    isSDK(o: any): o is PairSDKType;
+    isAmino(o: any): o is PairAmino;
     encode(message: Pair, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Pair;
     fromJSON(object: any): Pair;

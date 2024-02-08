@@ -6,6 +6,7 @@ const any_1 = require("../../../../google/protobuf/any");
 const hd_1 = require("../../hd/v1/hd");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "cosmos.crypto.keyring.v1";
 function createBaseRecord() {
     return {
@@ -19,6 +20,16 @@ function createBaseRecord() {
 }
 exports.Record = {
     typeUrl: "/cosmos.crypto.keyring.v1.Record",
+    aminoType: "cosmos-sdk/Record",
+    is(o) {
+        return o && (o.$typeUrl === exports.Record.typeUrl || typeof o.name === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Record.typeUrl || typeof o.name === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Record.typeUrl || typeof o.name === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -156,6 +167,8 @@ exports.Record = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Record.typeUrl, exports.Record);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Record.aminoType, exports.Record.typeUrl);
 function createBaseRecord_Local() {
     return {
         priv_key: undefined
@@ -163,6 +176,16 @@ function createBaseRecord_Local() {
 }
 exports.Record_Local = {
     typeUrl: "/cosmos.crypto.keyring.v1.Local",
+    aminoType: "cosmos-sdk/Local",
+    is(o) {
+        return o && o.$typeUrl === exports.Record_Local.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.Record_Local.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.Record_Local.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.priv_key !== undefined) {
             any_1.Any.encode(message.priv_key, writer.uint32(10).fork()).ldelim();
@@ -235,6 +258,8 @@ exports.Record_Local = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Record_Local.typeUrl, exports.Record_Local);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Record_Local.aminoType, exports.Record_Local.typeUrl);
 function createBaseRecord_Ledger() {
     return {
         path: undefined
@@ -242,6 +267,16 @@ function createBaseRecord_Ledger() {
 }
 exports.Record_Ledger = {
     typeUrl: "/cosmos.crypto.keyring.v1.Ledger",
+    aminoType: "cosmos-sdk/Ledger",
+    is(o) {
+        return o && o.$typeUrl === exports.Record_Ledger.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.Record_Ledger.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.Record_Ledger.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.path !== undefined) {
             hd_1.BIP44Params.encode(message.path, writer.uint32(10).fork()).ldelim();
@@ -314,11 +349,23 @@ exports.Record_Ledger = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Record_Ledger.typeUrl, exports.Record_Ledger);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Record_Ledger.aminoType, exports.Record_Ledger.typeUrl);
 function createBaseRecord_Multi() {
     return {};
 }
 exports.Record_Multi = {
     typeUrl: "/cosmos.crypto.keyring.v1.Multi",
+    aminoType: "cosmos-sdk/Multi",
+    is(o) {
+        return o && o.$typeUrl === exports.Record_Multi.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.Record_Multi.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.Record_Multi.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -377,11 +424,23 @@ exports.Record_Multi = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Record_Multi.typeUrl, exports.Record_Multi);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Record_Multi.aminoType, exports.Record_Multi.typeUrl);
 function createBaseRecord_Offline() {
     return {};
 }
 exports.Record_Offline = {
     typeUrl: "/cosmos.crypto.keyring.v1.Offline",
+    aminoType: "cosmos-sdk/Offline",
+    is(o) {
+        return o && o.$typeUrl === exports.Record_Offline.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.Record_Offline.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.Record_Offline.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -440,4 +499,6 @@ exports.Record_Offline = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Record_Offline.typeUrl, exports.Record_Offline);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Record_Offline.aminoType, exports.Record_Offline.typeUrl);
 //# sourceMappingURL=record.js.map

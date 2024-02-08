@@ -5,6 +5,7 @@ exports.LastValidatorPower = exports.GenesisState = exports.protobufPackage = vo
 const staking_1 = require("./staking");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.staking.v1beta1";
 function createBaseGenesisState() {
     return {
@@ -20,6 +21,16 @@ function createBaseGenesisState() {
 }
 exports.GenesisState = {
     typeUrl: "/cosmos.staking.v1beta1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || staking_1.Params.is(o.params) && (o.last_total_power instanceof Uint8Array || typeof o.last_total_power === "string") && Array.isArray(o.last_validator_powers) && (!o.last_validator_powers.length || exports.LastValidatorPower.is(o.last_validator_powers[0])) && Array.isArray(o.validators) && (!o.validators.length || staking_1.Validator.is(o.validators[0])) && Array.isArray(o.delegations) && (!o.delegations.length || staking_1.Delegation.is(o.delegations[0])) && Array.isArray(o.unbonding_delegations) && (!o.unbonding_delegations.length || staking_1.UnbondingDelegation.is(o.unbonding_delegations[0])) && Array.isArray(o.redelegations) && (!o.redelegations.length || staking_1.Redelegation.is(o.redelegations[0])) && typeof o.exported === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || staking_1.Params.isSDK(o.params) && (o.last_total_power instanceof Uint8Array || typeof o.last_total_power === "string") && Array.isArray(o.last_validator_powers) && (!o.last_validator_powers.length || exports.LastValidatorPower.isSDK(o.last_validator_powers[0])) && Array.isArray(o.validators) && (!o.validators.length || staking_1.Validator.isSDK(o.validators[0])) && Array.isArray(o.delegations) && (!o.delegations.length || staking_1.Delegation.isSDK(o.delegations[0])) && Array.isArray(o.unbonding_delegations) && (!o.unbonding_delegations.length || staking_1.UnbondingDelegation.isSDK(o.unbonding_delegations[0])) && Array.isArray(o.redelegations) && (!o.redelegations.length || staking_1.Redelegation.isSDK(o.redelegations[0])) && typeof o.exported === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || staking_1.Params.isAmino(o.params) && (o.last_total_power instanceof Uint8Array || typeof o.last_total_power === "string") && Array.isArray(o.last_validator_powers) && (!o.last_validator_powers.length || exports.LastValidatorPower.isAmino(o.last_validator_powers[0])) && Array.isArray(o.validators) && (!o.validators.length || staking_1.Validator.isAmino(o.validators[0])) && Array.isArray(o.delegations) && (!o.delegations.length || staking_1.Delegation.isAmino(o.delegations[0])) && Array.isArray(o.unbonding_delegations) && (!o.unbonding_delegations.length || staking_1.UnbondingDelegation.isAmino(o.unbonding_delegations[0])) && Array.isArray(o.redelegations) && (!o.redelegations.length || staking_1.Redelegation.isAmino(o.redelegations[0])) && typeof o.exported === "boolean");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.params !== undefined) {
             staking_1.Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -223,6 +234,8 @@ exports.GenesisState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GenesisState.aminoType, exports.GenesisState.typeUrl);
 function createBaseLastValidatorPower() {
     return {
         address: "",
@@ -231,6 +244,16 @@ function createBaseLastValidatorPower() {
 }
 exports.LastValidatorPower = {
     typeUrl: "/cosmos.staking.v1beta1.LastValidatorPower",
+    aminoType: "cosmos-sdk/LastValidatorPower",
+    is(o) {
+        return o && (o.$typeUrl === exports.LastValidatorPower.typeUrl || typeof o.address === "string" && typeof o.power === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.LastValidatorPower.typeUrl || typeof o.address === "string" && typeof o.power === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.LastValidatorPower.typeUrl || typeof o.address === "string" && typeof o.power === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -316,4 +339,6 @@ exports.LastValidatorPower = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.LastValidatorPower.typeUrl, exports.LastValidatorPower);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.LastValidatorPower.aminoType, exports.LastValidatorPower.typeUrl);
 //# sourceMappingURL=genesis.js.map

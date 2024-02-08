@@ -8,6 +8,7 @@ const timestamp_1 = require("../../../../google/protobuf/timestamp");
 const duration_1 = require("../../../../google/protobuf/duration");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "cosmos.orm.query.v1alpha1";
 function createBaseGetRequest() {
     return {
@@ -18,6 +19,16 @@ function createBaseGetRequest() {
 }
 exports.GetRequest = {
     typeUrl: "/cosmos.orm.query.v1alpha1.GetRequest",
+    aminoType: "cosmos-sdk/GetRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.GetRequest.typeUrl || typeof o.message_name === "string" && typeof o.index === "string" && Array.isArray(o.values) && (!o.values.length || exports.IndexValue.is(o.values[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GetRequest.typeUrl || typeof o.message_name === "string" && typeof o.index === "string" && Array.isArray(o.values) && (!o.values.length || exports.IndexValue.isSDK(o.values[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GetRequest.typeUrl || typeof o.message_name === "string" && typeof o.index === "string" && Array.isArray(o.values) && (!o.values.length || exports.IndexValue.isAmino(o.values[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.message_name !== "") {
             writer.uint32(10).string(message.message_name);
@@ -124,6 +135,8 @@ exports.GetRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetRequest.typeUrl, exports.GetRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetRequest.aminoType, exports.GetRequest.typeUrl);
 function createBaseGetResponse() {
     return {
         result: undefined
@@ -131,6 +144,16 @@ function createBaseGetResponse() {
 }
 exports.GetResponse = {
     typeUrl: "/cosmos.orm.query.v1alpha1.GetResponse",
+    aminoType: "cosmos-sdk/GetResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.GetResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.GetResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.GetResponse.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.result !== undefined) {
             any_1.Any.encode(message.result, writer.uint32(10).fork()).ldelim();
@@ -203,6 +226,8 @@ exports.GetResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetResponse.typeUrl, exports.GetResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetResponse.aminoType, exports.GetResponse.typeUrl);
 function createBaseListRequest() {
     return {
         message_name: "",
@@ -214,6 +239,16 @@ function createBaseListRequest() {
 }
 exports.ListRequest = {
     typeUrl: "/cosmos.orm.query.v1alpha1.ListRequest",
+    aminoType: "cosmos-sdk/ListRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.ListRequest.typeUrl || typeof o.message_name === "string" && typeof o.index === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ListRequest.typeUrl || typeof o.message_name === "string" && typeof o.index === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ListRequest.typeUrl || typeof o.message_name === "string" && typeof o.index === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.message_name !== "") {
             writer.uint32(10).string(message.message_name);
@@ -338,6 +373,8 @@ exports.ListRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ListRequest.typeUrl, exports.ListRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ListRequest.aminoType, exports.ListRequest.typeUrl);
 function createBaseListRequest_Prefix() {
     return {
         values: []
@@ -345,6 +382,16 @@ function createBaseListRequest_Prefix() {
 }
 exports.ListRequest_Prefix = {
     typeUrl: "/cosmos.orm.query.v1alpha1.Prefix",
+    aminoType: "cosmos-sdk/Prefix",
+    is(o) {
+        return o && (o.$typeUrl === exports.ListRequest_Prefix.typeUrl || Array.isArray(o.values) && (!o.values.length || exports.IndexValue.is(o.values[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ListRequest_Prefix.typeUrl || Array.isArray(o.values) && (!o.values.length || exports.IndexValue.isSDK(o.values[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ListRequest_Prefix.typeUrl || Array.isArray(o.values) && (!o.values.length || exports.IndexValue.isAmino(o.values[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.values) {
             exports.IndexValue.encode(v, writer.uint32(10).fork()).ldelim();
@@ -425,6 +472,8 @@ exports.ListRequest_Prefix = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ListRequest_Prefix.typeUrl, exports.ListRequest_Prefix);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ListRequest_Prefix.aminoType, exports.ListRequest_Prefix.typeUrl);
 function createBaseListRequest_Range() {
     return {
         start: [],
@@ -433,6 +482,16 @@ function createBaseListRequest_Range() {
 }
 exports.ListRequest_Range = {
     typeUrl: "/cosmos.orm.query.v1alpha1.Range",
+    aminoType: "cosmos-sdk/Range",
+    is(o) {
+        return o && (o.$typeUrl === exports.ListRequest_Range.typeUrl || Array.isArray(o.start) && (!o.start.length || exports.IndexValue.is(o.start[0])) && Array.isArray(o.end) && (!o.end.length || exports.IndexValue.is(o.end[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ListRequest_Range.typeUrl || Array.isArray(o.start) && (!o.start.length || exports.IndexValue.isSDK(o.start[0])) && Array.isArray(o.end) && (!o.end.length || exports.IndexValue.isSDK(o.end[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ListRequest_Range.typeUrl || Array.isArray(o.start) && (!o.start.length || exports.IndexValue.isAmino(o.start[0])) && Array.isArray(o.end) && (!o.end.length || exports.IndexValue.isAmino(o.end[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.start) {
             exports.IndexValue.encode(v, writer.uint32(10).fork()).ldelim();
@@ -534,6 +593,8 @@ exports.ListRequest_Range = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ListRequest_Range.typeUrl, exports.ListRequest_Range);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ListRequest_Range.aminoType, exports.ListRequest_Range.typeUrl);
 function createBaseListResponse() {
     return {
         results: [],
@@ -542,6 +603,16 @@ function createBaseListResponse() {
 }
 exports.ListResponse = {
     typeUrl: "/cosmos.orm.query.v1alpha1.ListResponse",
+    aminoType: "cosmos-sdk/ListResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.ListResponse.typeUrl || Array.isArray(o.results) && (!o.results.length || any_1.Any.is(o.results[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ListResponse.typeUrl || Array.isArray(o.results) && (!o.results.length || any_1.Any.isSDK(o.results[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ListResponse.typeUrl || Array.isArray(o.results) && (!o.results.length || any_1.Any.isAmino(o.results[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.results) {
             any_1.Any.encode(v, writer.uint32(10).fork()).ldelim();
@@ -635,6 +706,8 @@ exports.ListResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ListResponse.typeUrl, exports.ListResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ListResponse.aminoType, exports.ListResponse.typeUrl);
 function createBaseIndexValue() {
     return {
         uint: undefined,
@@ -649,6 +722,16 @@ function createBaseIndexValue() {
 }
 exports.IndexValue = {
     typeUrl: "/cosmos.orm.query.v1alpha1.IndexValue",
+    aminoType: "cosmos-sdk/IndexValue",
+    is(o) {
+        return o && o.$typeUrl === exports.IndexValue.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.IndexValue.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.IndexValue.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.uint !== undefined) {
             writer.uint32(8).uint64(message.uint);
@@ -816,4 +899,6 @@ exports.IndexValue = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.IndexValue.typeUrl, exports.IndexValue);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.IndexValue.aminoType, exports.IndexValue.typeUrl);
 //# sourceMappingURL=query.js.map

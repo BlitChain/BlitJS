@@ -4,6 +4,7 @@ exports.PageResponse = exports.PageRequest = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "cosmos.base.query.v1beta1";
 function createBasePageRequest() {
     return {
@@ -16,6 +17,16 @@ function createBasePageRequest() {
 }
 exports.PageRequest = {
     typeUrl: "/cosmos.base.query.v1beta1.PageRequest",
+    aminoType: "cosmos-sdk/PageRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.PageRequest.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && typeof o.offset === "bigint" && typeof o.limit === "bigint" && typeof o.count_total === "boolean" && typeof o.reverse === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.PageRequest.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && typeof o.offset === "bigint" && typeof o.limit === "bigint" && typeof o.count_total === "boolean" && typeof o.reverse === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.PageRequest.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && typeof o.offset === "bigint" && typeof o.limit === "bigint" && typeof o.count_total === "boolean" && typeof o.reverse === "boolean");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.key.length !== 0) {
             writer.uint32(10).bytes(message.key);
@@ -140,6 +151,8 @@ exports.PageRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.PageRequest.typeUrl, exports.PageRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.PageRequest.aminoType, exports.PageRequest.typeUrl);
 function createBasePageResponse() {
     return {
         next_key: new Uint8Array(),
@@ -148,6 +161,16 @@ function createBasePageResponse() {
 }
 exports.PageResponse = {
     typeUrl: "/cosmos.base.query.v1beta1.PageResponse",
+    aminoType: "cosmos-sdk/PageResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.PageResponse.typeUrl || (o.next_key instanceof Uint8Array || typeof o.next_key === "string") && typeof o.total === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.PageResponse.typeUrl || (o.next_key instanceof Uint8Array || typeof o.next_key === "string") && typeof o.total === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.PageResponse.typeUrl || (o.next_key instanceof Uint8Array || typeof o.next_key === "string") && typeof o.total === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.next_key.length !== 0) {
             writer.uint32(10).bytes(message.next_key);
@@ -233,4 +256,6 @@ exports.PageResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.PageResponse.typeUrl, exports.PageResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.PageResponse.aminoType, exports.PageResponse.typeUrl);
 //# sourceMappingURL=pagination.js.map

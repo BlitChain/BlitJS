@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QueryAllFutureTaskResponse = exports.QueryAllFutureTaskRequest = exports.QueryGetFutureTaskResponse = exports.QueryGetFutureTaskRequest = exports.QueryAllTaskResponse = exports.QueryAllTaskRequest = exports.QueryGetTaskResponse = exports.QueryGetTaskRequest = exports.EndpointsResponse = exports.EndpointsRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.protobufPackage = void 0;
+exports.QueryAllFutureTaskResponse = exports.QueryAllFutureTaskRequest = exports.QueryGetFutureTaskResponse = exports.QueryGetFutureTaskRequest = exports.QueryAllTaskResponse = exports.QueryAllTaskRequest = exports.QueryGetTaskResponse = exports.QueryGetTaskRequest = exports.QueryParamsResponse = exports.QueryParamsRequest = exports.protobufPackage = void 0;
 //@ts-nocheck
 const pagination_1 = require("../../cosmos/base/query/v1beta1/pagination");
 const params_1 = require("./params");
 const task_1 = require("./task");
 const future_task_1 = require("./future_task");
 const binary_1 = require("../../binary");
+const registry_1 = require("../../registry");
 const helpers_1 = require("../../helpers");
 exports.protobufPackage = "blit.blit";
 function createBaseQueryParamsRequest() {
@@ -14,6 +15,15 @@ function createBaseQueryParamsRequest() {
 }
 exports.QueryParamsRequest = {
     typeUrl: "/blit.blit.QueryParamsRequest",
+    is(o) {
+        return o && o.$typeUrl === exports.QueryParamsRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.QueryParamsRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.QueryParamsRequest.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -66,6 +76,7 @@ exports.QueryParamsRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryParamsRequest.typeUrl, exports.QueryParamsRequest);
 function createBaseQueryParamsResponse() {
     return {
         params: params_1.Params.fromPartial({})
@@ -73,6 +84,15 @@ function createBaseQueryParamsResponse() {
 }
 exports.QueryParamsResponse = {
     typeUrl: "/blit.blit.QueryParamsResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryParamsResponse.typeUrl || params_1.Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryParamsResponse.typeUrl || params_1.Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryParamsResponse.typeUrl || params_1.Params.isAmino(o.params));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.params !== undefined) {
             params_1.Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -139,150 +159,7 @@ exports.QueryParamsResponse = {
         };
     }
 };
-function createBaseEndpointsRequest() {
-    return {};
-}
-exports.EndpointsRequest = {
-    typeUrl: "/blit.blit.EndpointsRequest",
-    encode(_, writer = binary_1.BinaryWriter.create()) {
-        return writer;
-    },
-    decode(input, length) {
-        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseEndpointsRequest();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-            }
-        }
-        return message;
-    },
-    fromJSON(_) {
-        return {};
-    },
-    toJSON(_) {
-        const obj = {};
-        return obj;
-    },
-    fromPartial(_) {
-        const message = createBaseEndpointsRequest();
-        return message;
-    },
-    fromAmino(_) {
-        const message = createBaseEndpointsRequest();
-        return message;
-    },
-    toAmino(_) {
-        const obj = {};
-        return obj;
-    },
-    fromAminoMsg(object) {
-        return exports.EndpointsRequest.fromAmino(object.value);
-    },
-    fromProtoMsg(message) {
-        return exports.EndpointsRequest.decode(message.value);
-    },
-    toProto(message) {
-        return exports.EndpointsRequest.encode(message).finish();
-    },
-    toProtoMsg(message) {
-        return {
-            typeUrl: "/blit.blit.EndpointsRequest",
-            value: exports.EndpointsRequest.encode(message).finish()
-        };
-    }
-};
-function createBaseEndpointsResponse() {
-    return {
-        api_url: "",
-        rpc_url: ""
-    };
-}
-exports.EndpointsResponse = {
-    typeUrl: "/blit.blit.EndpointsResponse",
-    encode(message, writer = binary_1.BinaryWriter.create()) {
-        if (message.api_url !== "") {
-            writer.uint32(10).string(message.api_url);
-        }
-        if (message.rpc_url !== "") {
-            writer.uint32(18).string(message.rpc_url);
-        }
-        return writer;
-    },
-    decode(input, length) {
-        const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseEndpointsResponse();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    message.api_url = reader.string();
-                    break;
-                case 2:
-                    message.rpc_url = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-            }
-        }
-        return message;
-    },
-    fromJSON(object) {
-        return {
-            api_url: (0, helpers_1.isSet)(object.api_url) ? String(object.api_url) : "",
-            rpc_url: (0, helpers_1.isSet)(object.rpc_url) ? String(object.rpc_url) : ""
-        };
-    },
-    toJSON(message) {
-        const obj = {};
-        message.api_url !== undefined && (obj.api_url = message.api_url);
-        message.rpc_url !== undefined && (obj.rpc_url = message.rpc_url);
-        return obj;
-    },
-    fromPartial(object) {
-        const message = createBaseEndpointsResponse();
-        message.api_url = object.api_url ?? "";
-        message.rpc_url = object.rpc_url ?? "";
-        return message;
-    },
-    fromAmino(object) {
-        const message = createBaseEndpointsResponse();
-        if (object.api_url !== undefined && object.api_url !== null) {
-            message.api_url = object.api_url;
-        }
-        if (object.rpc_url !== undefined && object.rpc_url !== null) {
-            message.rpc_url = object.rpc_url;
-        }
-        return message;
-    },
-    toAmino(message) {
-        const obj = {};
-        obj.api_url = message.api_url;
-        obj.rpc_url = message.rpc_url;
-        return obj;
-    },
-    fromAminoMsg(object) {
-        return exports.EndpointsResponse.fromAmino(object.value);
-    },
-    fromProtoMsg(message) {
-        return exports.EndpointsResponse.decode(message.value);
-    },
-    toProto(message) {
-        return exports.EndpointsResponse.encode(message).finish();
-    },
-    toProtoMsg(message) {
-        return {
-            typeUrl: "/blit.blit.EndpointsResponse",
-            value: exports.EndpointsResponse.encode(message).finish()
-        };
-    }
-};
+registry_1.GlobalDecoderRegistry.register(exports.QueryParamsResponse.typeUrl, exports.QueryParamsResponse);
 function createBaseQueryGetTaskRequest() {
     return {
         id: BigInt(0)
@@ -290,6 +167,15 @@ function createBaseQueryGetTaskRequest() {
 }
 exports.QueryGetTaskRequest = {
     typeUrl: "/blit.blit.QueryGetTaskRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGetTaskRequest.typeUrl || typeof o.id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGetTaskRequest.typeUrl || typeof o.id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGetTaskRequest.typeUrl || typeof o.id === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.id !== BigInt(0)) {
             writer.uint32(8).uint64(message.id);
@@ -356,6 +242,7 @@ exports.QueryGetTaskRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGetTaskRequest.typeUrl, exports.QueryGetTaskRequest);
 function createBaseQueryGetTaskResponse() {
     return {
         task: task_1.Task.fromPartial({})
@@ -363,6 +250,15 @@ function createBaseQueryGetTaskResponse() {
 }
 exports.QueryGetTaskResponse = {
     typeUrl: "/blit.blit.QueryGetTaskResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGetTaskResponse.typeUrl || task_1.Task.is(o.task));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGetTaskResponse.typeUrl || task_1.Task.isSDK(o.task));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGetTaskResponse.typeUrl || task_1.Task.isAmino(o.task));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.task !== undefined) {
             task_1.Task.encode(message.task, writer.uint32(10).fork()).ldelim();
@@ -429,6 +325,7 @@ exports.QueryGetTaskResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGetTaskResponse.typeUrl, exports.QueryGetTaskResponse);
 function createBaseQueryAllTaskRequest() {
     return {
         address: "",
@@ -437,6 +334,15 @@ function createBaseQueryAllTaskRequest() {
 }
 exports.QueryAllTaskRequest = {
     typeUrl: "/blit.blit.QueryAllTaskRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryAllTaskRequest.typeUrl || typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryAllTaskRequest.typeUrl || typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryAllTaskRequest.typeUrl || typeof o.address === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -516,6 +422,7 @@ exports.QueryAllTaskRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryAllTaskRequest.typeUrl, exports.QueryAllTaskRequest);
 function createBaseQueryAllTaskResponse() {
     return {
         task: [],
@@ -524,6 +431,15 @@ function createBaseQueryAllTaskResponse() {
 }
 exports.QueryAllTaskResponse = {
     typeUrl: "/blit.blit.QueryAllTaskResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryAllTaskResponse.typeUrl || Array.isArray(o.task) && (!o.task.length || task_1.Task.is(o.task[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryAllTaskResponse.typeUrl || Array.isArray(o.task) && (!o.task.length || task_1.Task.isSDK(o.task[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryAllTaskResponse.typeUrl || Array.isArray(o.task) && (!o.task.length || task_1.Task.isAmino(o.task[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.task) {
             task_1.Task.encode(v, writer.uint32(10).fork()).ldelim();
@@ -611,6 +527,7 @@ exports.QueryAllTaskResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryAllTaskResponse.typeUrl, exports.QueryAllTaskResponse);
 function createBaseQueryGetFutureTaskRequest() {
     return {
         index: ""
@@ -618,6 +535,15 @@ function createBaseQueryGetFutureTaskRequest() {
 }
 exports.QueryGetFutureTaskRequest = {
     typeUrl: "/blit.blit.QueryGetFutureTaskRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGetFutureTaskRequest.typeUrl || typeof o.index === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGetFutureTaskRequest.typeUrl || typeof o.index === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGetFutureTaskRequest.typeUrl || typeof o.index === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.index !== "") {
             writer.uint32(10).string(message.index);
@@ -684,6 +610,7 @@ exports.QueryGetFutureTaskRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGetFutureTaskRequest.typeUrl, exports.QueryGetFutureTaskRequest);
 function createBaseQueryGetFutureTaskResponse() {
     return {
         futureTask: future_task_1.FutureTask.fromPartial({})
@@ -691,6 +618,15 @@ function createBaseQueryGetFutureTaskResponse() {
 }
 exports.QueryGetFutureTaskResponse = {
     typeUrl: "/blit.blit.QueryGetFutureTaskResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryGetFutureTaskResponse.typeUrl || future_task_1.FutureTask.is(o.futureTask));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryGetFutureTaskResponse.typeUrl || future_task_1.FutureTask.isSDK(o.futureTask));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryGetFutureTaskResponse.typeUrl || future_task_1.FutureTask.isAmino(o.futureTask));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.futureTask !== undefined) {
             future_task_1.FutureTask.encode(message.futureTask, writer.uint32(10).fork()).ldelim();
@@ -757,6 +693,7 @@ exports.QueryGetFutureTaskResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryGetFutureTaskResponse.typeUrl, exports.QueryGetFutureTaskResponse);
 function createBaseQueryAllFutureTaskRequest() {
     return {
         prefix: "",
@@ -765,6 +702,15 @@ function createBaseQueryAllFutureTaskRequest() {
 }
 exports.QueryAllFutureTaskRequest = {
     typeUrl: "/blit.blit.QueryAllFutureTaskRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryAllFutureTaskRequest.typeUrl || typeof o.prefix === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryAllFutureTaskRequest.typeUrl || typeof o.prefix === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryAllFutureTaskRequest.typeUrl || typeof o.prefix === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.prefix !== "") {
             writer.uint32(10).string(message.prefix);
@@ -844,6 +790,7 @@ exports.QueryAllFutureTaskRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryAllFutureTaskRequest.typeUrl, exports.QueryAllFutureTaskRequest);
 function createBaseQueryAllFutureTaskResponse() {
     return {
         futureTask: [],
@@ -852,6 +799,15 @@ function createBaseQueryAllFutureTaskResponse() {
 }
 exports.QueryAllFutureTaskResponse = {
     typeUrl: "/blit.blit.QueryAllFutureTaskResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.QueryAllFutureTaskResponse.typeUrl || Array.isArray(o.futureTask) && (!o.futureTask.length || future_task_1.FutureTask.is(o.futureTask[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.QueryAllFutureTaskResponse.typeUrl || Array.isArray(o.futureTask) && (!o.futureTask.length || future_task_1.FutureTask.isSDK(o.futureTask[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.QueryAllFutureTaskResponse.typeUrl || Array.isArray(o.futureTask) && (!o.futureTask.length || future_task_1.FutureTask.isAmino(o.futureTask[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.futureTask) {
             future_task_1.FutureTask.encode(v, writer.uint32(10).fork()).ldelim();
@@ -939,4 +895,5 @@ exports.QueryAllFutureTaskResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.QueryAllFutureTaskResponse.typeUrl, exports.QueryAllFutureTaskResponse);
 //# sourceMappingURL=query.js.map

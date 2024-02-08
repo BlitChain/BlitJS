@@ -4,7 +4,6 @@ import { Duration, DurationAmino, DurationSDKType } from "../../../google/protob
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { ValidatorUpdate, ValidatorUpdateAmino, ValidatorUpdateSDKType } from "../../../tendermint/abci/types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { Pubkey } from "@cosmjs/amino";
 export declare const protobufPackage = "cosmos.staking.v1beta1";
 /** BondStatus is the status of a validator. */
 export declare enum BondStatus {
@@ -877,6 +876,10 @@ export interface ValidatorUpdatesSDKType {
 }
 export declare const HistoricalInfo: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is HistoricalInfo;
+    isSDK(o: any): o is HistoricalInfoSDKType;
+    isAmino(o: any): o is HistoricalInfoAmino;
     encode(message: HistoricalInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): HistoricalInfo;
     fromJSON(object: any): HistoricalInfo;
@@ -892,6 +895,10 @@ export declare const HistoricalInfo: {
 };
 export declare const CommissionRates: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CommissionRates;
+    isSDK(o: any): o is CommissionRatesSDKType;
+    isAmino(o: any): o is CommissionRatesAmino;
     encode(message: CommissionRates, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommissionRates;
     fromJSON(object: any): CommissionRates;
@@ -907,6 +914,10 @@ export declare const CommissionRates: {
 };
 export declare const Commission: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Commission;
+    isSDK(o: any): o is CommissionSDKType;
+    isAmino(o: any): o is CommissionAmino;
     encode(message: Commission, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Commission;
     fromJSON(object: any): Commission;
@@ -922,6 +933,10 @@ export declare const Commission: {
 };
 export declare const Description: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Description;
+    isSDK(o: any): o is DescriptionSDKType;
+    isAmino(o: any): o is DescriptionAmino;
     encode(message: Description, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Description;
     fromJSON(object: any): Description;
@@ -937,6 +952,10 @@ export declare const Description: {
 };
 export declare const Validator: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Validator;
+    isSDK(o: any): o is ValidatorSDKType;
+    isAmino(o: any): o is ValidatorAmino;
     encode(message: Validator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Validator;
     fromJSON(object: any): Validator;
@@ -952,6 +971,10 @@ export declare const Validator: {
 };
 export declare const ValAddresses: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ValAddresses;
+    isSDK(o: any): o is ValAddressesSDKType;
+    isAmino(o: any): o is ValAddressesAmino;
     encode(message: ValAddresses, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValAddresses;
     fromJSON(object: any): ValAddresses;
@@ -967,6 +990,10 @@ export declare const ValAddresses: {
 };
 export declare const DVPair: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DVPair;
+    isSDK(o: any): o is DVPairSDKType;
+    isAmino(o: any): o is DVPairAmino;
     encode(message: DVPair, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DVPair;
     fromJSON(object: any): DVPair;
@@ -982,6 +1009,10 @@ export declare const DVPair: {
 };
 export declare const DVPairs: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DVPairs;
+    isSDK(o: any): o is DVPairsSDKType;
+    isAmino(o: any): o is DVPairsAmino;
     encode(message: DVPairs, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DVPairs;
     fromJSON(object: any): DVPairs;
@@ -997,6 +1028,10 @@ export declare const DVPairs: {
 };
 export declare const DVVTriplet: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DVVTriplet;
+    isSDK(o: any): o is DVVTripletSDKType;
+    isAmino(o: any): o is DVVTripletAmino;
     encode(message: DVVTriplet, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DVVTriplet;
     fromJSON(object: any): DVVTriplet;
@@ -1012,6 +1047,10 @@ export declare const DVVTriplet: {
 };
 export declare const DVVTriplets: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DVVTriplets;
+    isSDK(o: any): o is DVVTripletsSDKType;
+    isAmino(o: any): o is DVVTripletsAmino;
     encode(message: DVVTriplets, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DVVTriplets;
     fromJSON(object: any): DVVTriplets;
@@ -1027,6 +1066,10 @@ export declare const DVVTriplets: {
 };
 export declare const Delegation: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Delegation;
+    isSDK(o: any): o is DelegationSDKType;
+    isAmino(o: any): o is DelegationAmino;
     encode(message: Delegation, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Delegation;
     fromJSON(object: any): Delegation;
@@ -1042,6 +1085,10 @@ export declare const Delegation: {
 };
 export declare const UnbondingDelegation: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is UnbondingDelegation;
+    isSDK(o: any): o is UnbondingDelegationSDKType;
+    isAmino(o: any): o is UnbondingDelegationAmino;
     encode(message: UnbondingDelegation, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): UnbondingDelegation;
     fromJSON(object: any): UnbondingDelegation;
@@ -1057,6 +1104,10 @@ export declare const UnbondingDelegation: {
 };
 export declare const UnbondingDelegationEntry: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is UnbondingDelegationEntry;
+    isSDK(o: any): o is UnbondingDelegationEntrySDKType;
+    isAmino(o: any): o is UnbondingDelegationEntryAmino;
     encode(message: UnbondingDelegationEntry, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): UnbondingDelegationEntry;
     fromJSON(object: any): UnbondingDelegationEntry;
@@ -1072,6 +1123,10 @@ export declare const UnbondingDelegationEntry: {
 };
 export declare const RedelegationEntry: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is RedelegationEntry;
+    isSDK(o: any): o is RedelegationEntrySDKType;
+    isAmino(o: any): o is RedelegationEntryAmino;
     encode(message: RedelegationEntry, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RedelegationEntry;
     fromJSON(object: any): RedelegationEntry;
@@ -1087,6 +1142,10 @@ export declare const RedelegationEntry: {
 };
 export declare const Redelegation: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Redelegation;
+    isSDK(o: any): o is RedelegationSDKType;
+    isAmino(o: any): o is RedelegationAmino;
     encode(message: Redelegation, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Redelegation;
     fromJSON(object: any): Redelegation;
@@ -1102,6 +1161,10 @@ export declare const Redelegation: {
 };
 export declare const Params: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Params;
+    isSDK(o: any): o is ParamsSDKType;
+    isAmino(o: any): o is ParamsAmino;
     encode(message: Params, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Params;
     fromJSON(object: any): Params;
@@ -1117,6 +1180,10 @@ export declare const Params: {
 };
 export declare const DelegationResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DelegationResponse;
+    isSDK(o: any): o is DelegationResponseSDKType;
+    isAmino(o: any): o is DelegationResponseAmino;
     encode(message: DelegationResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DelegationResponse;
     fromJSON(object: any): DelegationResponse;
@@ -1132,6 +1199,10 @@ export declare const DelegationResponse: {
 };
 export declare const RedelegationEntryResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is RedelegationEntryResponse;
+    isSDK(o: any): o is RedelegationEntryResponseSDKType;
+    isAmino(o: any): o is RedelegationEntryResponseAmino;
     encode(message: RedelegationEntryResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RedelegationEntryResponse;
     fromJSON(object: any): RedelegationEntryResponse;
@@ -1147,6 +1218,10 @@ export declare const RedelegationEntryResponse: {
 };
 export declare const RedelegationResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is RedelegationResponse;
+    isSDK(o: any): o is RedelegationResponseSDKType;
+    isAmino(o: any): o is RedelegationResponseAmino;
     encode(message: RedelegationResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RedelegationResponse;
     fromJSON(object: any): RedelegationResponse;
@@ -1162,6 +1237,10 @@ export declare const RedelegationResponse: {
 };
 export declare const Pool: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Pool;
+    isSDK(o: any): o is PoolSDKType;
+    isAmino(o: any): o is PoolAmino;
     encode(message: Pool, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Pool;
     fromJSON(object: any): Pool;
@@ -1177,6 +1256,10 @@ export declare const Pool: {
 };
 export declare const ValidatorUpdates: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ValidatorUpdates;
+    isSDK(o: any): o is ValidatorUpdatesSDKType;
+    isAmino(o: any): o is ValidatorUpdatesAmino;
     encode(message: ValidatorUpdates, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorUpdates;
     fromJSON(object: any): ValidatorUpdates;
@@ -1190,6 +1273,3 @@ export declare const ValidatorUpdates: {
     toProto(message: ValidatorUpdates): Uint8Array;
     toProtoMsg(message: ValidatorUpdates): ValidatorUpdatesProtoMsg;
 };
-export declare const Cosmos_cryptoPubKey_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
-export declare const Cosmos_cryptoPubKey_FromAmino: (content: AnyAmino) => import("cosmjs-types/google/protobuf/any").Any;
-export declare const Cosmos_cryptoPubKey_ToAmino: (content: Any) => Pubkey | null;

@@ -87,6 +87,9 @@ export interface SimpleValidatorSDKType {
 }
 export declare const ValidatorSet: {
     typeUrl: string;
+    is(o: any): o is ValidatorSet;
+    isSDK(o: any): o is ValidatorSetSDKType;
+    isAmino(o: any): o is ValidatorSetAmino;
     encode(message: ValidatorSet, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorSet;
     fromJSON(object: any): ValidatorSet;
@@ -101,6 +104,9 @@ export declare const ValidatorSet: {
 };
 export declare const Validator: {
     typeUrl: string;
+    is(o: any): o is Validator;
+    isSDK(o: any): o is ValidatorSDKType;
+    isAmino(o: any): o is ValidatorAmino;
     encode(message: Validator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Validator;
     fromJSON(object: any): Validator;
@@ -115,6 +121,9 @@ export declare const Validator: {
 };
 export declare const SimpleValidator: {
     typeUrl: string;
+    is(o: any): o is SimpleValidator;
+    isSDK(o: any): o is SimpleValidatorSDKType;
+    isAmino(o: any): o is SimpleValidatorAmino;
     encode(message: SimpleValidator, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SimpleValidator;
     fromJSON(object: any): SimpleValidator;

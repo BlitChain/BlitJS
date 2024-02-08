@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cosmos_basev1beta1Msg_ToAmino = exports.Cosmos_basev1beta1Msg_FromAmino = exports.Cosmos_basev1beta1Msg_InterfaceDecoder = exports.MsgRunResponse = exports.MsgRun = exports.MsgDeleteScriptResponse = exports.MsgDeleteScript = exports.MsgUpdateScriptResponse = exports.MsgUpdateScript = exports.MsgCreateScriptResponse = exports.MsgCreateScript = exports.MsgUpdateParamsResponse = exports.MsgUpdateParams = exports.protobufPackage = void 0;
+exports.MsgRunResponse = exports.MsgRun = exports.MsgDeleteScriptResponse = exports.MsgDeleteScript = exports.MsgUpdateScriptResponse = exports.MsgUpdateScript = exports.MsgCreateScriptResponse = exports.MsgCreateScript = exports.MsgUpdateParamsResponse = exports.MsgUpdateParams = exports.protobufPackage = void 0;
 //@ts-nocheck
 const params_1 = require("./params");
 const any_1 = require("../../google/protobuf/any");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "blit.script";
 function createBaseMsgUpdateParams() {
     return {
@@ -15,6 +16,16 @@ function createBaseMsgUpdateParams() {
 }
 exports.MsgUpdateParams = {
     typeUrl: "/blit.script.MsgUpdateParams",
+    aminoType: "blit/x/script/MsgUpdateParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateParams.typeUrl || typeof o.authority === "string" && params_1.Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateParams.typeUrl || typeof o.authority === "string" && params_1.Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateParams.typeUrl || typeof o.authority === "string" && params_1.Params.isAmino(o.params));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.authority !== "") {
             writer.uint32(10).string(message.authority);
@@ -100,11 +111,22 @@ exports.MsgUpdateParams = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgUpdateParams.typeUrl, exports.MsgUpdateParams);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgUpdateParams.aminoType, exports.MsgUpdateParams.typeUrl);
 function createBaseMsgUpdateParamsResponse() {
     return {};
 }
 exports.MsgUpdateParamsResponse = {
     typeUrl: "/blit.script.MsgUpdateParamsResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgUpdateParamsResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgUpdateParamsResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgUpdateParamsResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -157,6 +179,7 @@ exports.MsgUpdateParamsResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgUpdateParamsResponse.typeUrl, exports.MsgUpdateParamsResponse);
 function createBaseMsgCreateScript() {
     return {
         creator: "",
@@ -167,6 +190,15 @@ function createBaseMsgCreateScript() {
 }
 exports.MsgCreateScript = {
     typeUrl: "/blit.script.MsgCreateScript",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgCreateScript.typeUrl || typeof o.creator === "string" && typeof o.code === "string" && Array.isArray(o.msg_type_permissions) && (!o.msg_type_permissions.length || typeof o.msg_type_permissions[0] === "string") && typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgCreateScript.typeUrl || typeof o.creator === "string" && typeof o.code === "string" && Array.isArray(o.msg_type_permissions) && (!o.msg_type_permissions.length || typeof o.msg_type_permissions[0] === "string") && typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgCreateScript.typeUrl || typeof o.creator === "string" && typeof o.code === "string" && Array.isArray(o.msg_type_permissions) && (!o.msg_type_permissions.length || typeof o.msg_type_permissions[0] === "string") && typeof o.grantee === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.creator !== "") {
             writer.uint32(10).string(message.creator);
@@ -280,6 +312,7 @@ exports.MsgCreateScript = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgCreateScript.typeUrl, exports.MsgCreateScript);
 function createBaseMsgCreateScriptResponse() {
     return {
         address: ""
@@ -287,6 +320,15 @@ function createBaseMsgCreateScriptResponse() {
 }
 exports.MsgCreateScriptResponse = {
     typeUrl: "/blit.script.MsgCreateScriptResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgCreateScriptResponse.typeUrl || typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgCreateScriptResponse.typeUrl || typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgCreateScriptResponse.typeUrl || typeof o.address === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -353,6 +395,7 @@ exports.MsgCreateScriptResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgCreateScriptResponse.typeUrl, exports.MsgCreateScriptResponse);
 function createBaseMsgUpdateScript() {
     return {
         address: "",
@@ -362,6 +405,15 @@ function createBaseMsgUpdateScript() {
 }
 exports.MsgUpdateScript = {
     typeUrl: "/blit.script.MsgUpdateScript",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateScript.typeUrl || typeof o.address === "string" && typeof o.code === "string" && typeof o.grantee === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateScript.typeUrl || typeof o.address === "string" && typeof o.code === "string" && typeof o.grantee === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateScript.typeUrl || typeof o.address === "string" && typeof o.code === "string" && typeof o.grantee === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -454,6 +506,7 @@ exports.MsgUpdateScript = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgUpdateScript.typeUrl, exports.MsgUpdateScript);
 function createBaseMsgUpdateScriptResponse() {
     return {
         version: BigInt(0)
@@ -461,6 +514,15 @@ function createBaseMsgUpdateScriptResponse() {
 }
 exports.MsgUpdateScriptResponse = {
     typeUrl: "/blit.script.MsgUpdateScriptResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateScriptResponse.typeUrl || typeof o.version === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateScriptResponse.typeUrl || typeof o.version === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateScriptResponse.typeUrl || typeof o.version === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.version !== BigInt(0)) {
             writer.uint32(8).int64(message.version);
@@ -527,6 +589,7 @@ exports.MsgUpdateScriptResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgUpdateScriptResponse.typeUrl, exports.MsgUpdateScriptResponse);
 function createBaseMsgDeleteScript() {
     return {
         address: "",
@@ -535,6 +598,15 @@ function createBaseMsgDeleteScript() {
 }
 exports.MsgDeleteScript = {
     typeUrl: "/blit.script.MsgDeleteScript",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgDeleteScript.typeUrl || typeof o.address === "string" && typeof o.index === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgDeleteScript.typeUrl || typeof o.address === "string" && typeof o.index === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgDeleteScript.typeUrl || typeof o.address === "string" && typeof o.index === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -614,11 +686,21 @@ exports.MsgDeleteScript = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgDeleteScript.typeUrl, exports.MsgDeleteScript);
 function createBaseMsgDeleteScriptResponse() {
     return {};
 }
 exports.MsgDeleteScriptResponse = {
     typeUrl: "/blit.script.MsgDeleteScriptResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgDeleteScriptResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgDeleteScriptResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgDeleteScriptResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -671,6 +753,7 @@ exports.MsgDeleteScriptResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgDeleteScriptResponse.typeUrl, exports.MsgDeleteScriptResponse);
 function createBaseMsgRun() {
     return {
         caller_address: "",
@@ -684,6 +767,15 @@ function createBaseMsgRun() {
 }
 exports.MsgRun = {
     typeUrl: "/blit.script.MsgRun",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgRun.typeUrl || typeof o.caller_address === "string" && typeof o.script_address === "string" && typeof o.extra_code === "string" && typeof o.function_name === "string" && typeof o.kwargs === "string" && typeof o.grantee === "string" && Array.isArray(o.attached_messages) && (!o.attached_messages.length || any_1.Any.is(o.attached_messages[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgRun.typeUrl || typeof o.caller_address === "string" && typeof o.script_address === "string" && typeof o.extra_code === "string" && typeof o.function_name === "string" && typeof o.kwargs === "string" && typeof o.grantee === "string" && Array.isArray(o.attached_messages) && (!o.attached_messages.length || any_1.Any.isSDK(o.attached_messages[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgRun.typeUrl || typeof o.caller_address === "string" && typeof o.script_address === "string" && typeof o.extra_code === "string" && typeof o.function_name === "string" && typeof o.kwargs === "string" && typeof o.grantee === "string" && Array.isArray(o.attached_messages) && (!o.attached_messages.length || any_1.Any.isAmino(o.attached_messages[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.caller_address !== "") {
             writer.uint32(18).string(message.caller_address);
@@ -704,7 +796,7 @@ exports.MsgRun = {
             writer.uint32(58).string(message.grantee);
         }
         for (const v of message.attached_messages) {
-            any_1.Any.encode(v, writer.uint32(10).fork()).ldelim();
+            any_1.Any.encode(registry_1.GlobalDecoderRegistry.wrapAny(v), writer.uint32(10).fork()).ldelim();
         }
         return writer;
     },
@@ -734,7 +826,7 @@ exports.MsgRun = {
                     message.grantee = reader.string();
                     break;
                 case 1:
-                    message.attached_messages.push(any_1.Any.decode(reader, reader.uint32()));
+                    message.attached_messages.push(registry_1.GlobalDecoderRegistry.unwrapAny(reader));
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -751,7 +843,7 @@ exports.MsgRun = {
             function_name: (0, helpers_1.isSet)(object.function_name) ? String(object.function_name) : "",
             kwargs: (0, helpers_1.isSet)(object.kwargs) ? String(object.kwargs) : "",
             grantee: (0, helpers_1.isSet)(object.grantee) ? String(object.grantee) : "",
-            attached_messages: Array.isArray(object?.attached_messages) ? object.attached_messages.map((e) => any_1.Any.fromJSON(e)) : []
+            attached_messages: Array.isArray(object?.attached_messages) ? object.attached_messages.map((e) => registry_1.GlobalDecoderRegistry.fromJSON(e)) : []
         };
     },
     toJSON(message) {
@@ -763,7 +855,7 @@ exports.MsgRun = {
         message.kwargs !== undefined && (obj.kwargs = message.kwargs);
         message.grantee !== undefined && (obj.grantee = message.grantee);
         if (message.attached_messages) {
-            obj.attached_messages = message.attached_messages.map(e => e ? any_1.Any.toJSON(e) : undefined);
+            obj.attached_messages = message.attached_messages.map(e => e ? registry_1.GlobalDecoderRegistry.toJSON(e) : undefined);
         }
         else {
             obj.attached_messages = [];
@@ -778,7 +870,7 @@ exports.MsgRun = {
         message.function_name = object.function_name ?? "";
         message.kwargs = object.kwargs ?? "";
         message.grantee = object.grantee ?? "";
-        message.attached_messages = object.attached_messages?.map(e => any_1.Any.fromPartial(e)) || [];
+        message.attached_messages = object.attached_messages?.map(e => registry_1.GlobalDecoderRegistry.fromPartial(e)) || [];
         return message;
     },
     fromAmino(object) {
@@ -801,7 +893,7 @@ exports.MsgRun = {
         if (object.grantee !== undefined && object.grantee !== null) {
             message.grantee = object.grantee;
         }
-        message.attached_messages = object.attached_messages?.map(e => (0, exports.Cosmos_basev1beta1Msg_FromAmino)(e)) || [];
+        message.attached_messages = object.attached_messages?.map(e => registry_1.GlobalDecoderRegistry.fromAminoMsg(e)) || [];
         return message;
     },
     toAmino(message) {
@@ -813,7 +905,7 @@ exports.MsgRun = {
         obj.kwargs = message.kwargs;
         obj.grantee = message.grantee;
         if (message.attached_messages) {
-            obj.attached_messages = message.attached_messages.map(e => e ? (0, exports.Cosmos_basev1beta1Msg_ToAmino)(e) : undefined);
+            obj.attached_messages = message.attached_messages.map(e => e ? registry_1.GlobalDecoderRegistry.toAminoMsg(e) : undefined);
         }
         else {
             obj.attached_messages = [];
@@ -836,6 +928,7 @@ exports.MsgRun = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgRun.typeUrl, exports.MsgRun);
 function createBaseMsgRunResponse() {
     return {
         response: ""
@@ -843,6 +936,15 @@ function createBaseMsgRunResponse() {
 }
 exports.MsgRunResponse = {
     typeUrl: "/blit.script.MsgRunResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgRunResponse.typeUrl || typeof o.response === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgRunResponse.typeUrl || typeof o.response === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgRunResponse.typeUrl || typeof o.response === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.response !== "") {
             writer.uint32(10).string(message.response);
@@ -909,21 +1011,5 @@ exports.MsgRunResponse = {
         };
     }
 };
-const Cosmos_basev1beta1Msg_InterfaceDecoder = (input) => {
-    const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
-    const data = any_1.Any.decode(reader, reader.uint32());
-    switch (data.typeUrl) {
-        default:
-            return data;
-    }
-};
-exports.Cosmos_basev1beta1Msg_InterfaceDecoder = Cosmos_basev1beta1Msg_InterfaceDecoder;
-const Cosmos_basev1beta1Msg_FromAmino = (content) => {
-    return any_1.Any.fromAmino(content);
-};
-exports.Cosmos_basev1beta1Msg_FromAmino = Cosmos_basev1beta1Msg_FromAmino;
-const Cosmos_basev1beta1Msg_ToAmino = (content) => {
-    return any_1.Any.toAmino(content);
-};
-exports.Cosmos_basev1beta1Msg_ToAmino = Cosmos_basev1beta1Msg_ToAmino;
+registry_1.GlobalDecoderRegistry.register(exports.MsgRunResponse.typeUrl, exports.MsgRunResponse);
 //# sourceMappingURL=tx.js.map

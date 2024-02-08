@@ -4,6 +4,7 @@ import { Task } from "./task";
 import { FutureTask } from "./future_task";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.blit";
 function createBaseGenesisState() {
     return {
@@ -15,6 +16,15 @@ function createBaseGenesisState() {
 }
 export const GenesisState = {
     typeUrl: "/blit.blit.GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.task_list) && (!o.task_list.length || Task.is(o.task_list[0])) && Array.isArray(o.future_task_list) && (!o.future_task_list.length || FutureTask.is(o.future_task_list[0])) && typeof o.starting_task_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.task_list) && (!o.task_list.length || Task.isSDK(o.task_list[0])) && Array.isArray(o.future_task_list) && (!o.future_task_list.length || FutureTask.isSDK(o.future_task_list[0])) && typeof o.starting_task_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.task_list) && (!o.task_list.length || Task.isAmino(o.task_list[0])) && Array.isArray(o.future_task_list) && (!o.future_task_list.length || FutureTask.isAmino(o.future_task_list[0])) && typeof o.starting_task_id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.params !== undefined) {
             Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -136,4 +146,5 @@ export const GenesisState = {
         };
     }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
 //# sourceMappingURL=genesis.js.map

@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.circuit.v1";
 /** Level is the permission level. */
 export var Permissions_Level;
@@ -74,6 +75,16 @@ function createBasePermissions() {
 }
 export const Permissions = {
     typeUrl: "/cosmos.circuit.v1.Permissions",
+    aminoType: "cosmos-sdk/Permissions",
+    is(o) {
+        return o && (o.$typeUrl === Permissions.typeUrl || isSet(o.level) && Array.isArray(o.limit_type_urls) && (!o.limit_type_urls.length || typeof o.limit_type_urls[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Permissions.typeUrl || isSet(o.level) && Array.isArray(o.limit_type_urls) && (!o.limit_type_urls.length || typeof o.limit_type_urls[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Permissions.typeUrl || isSet(o.level) && Array.isArray(o.limit_type_urls) && (!o.limit_type_urls.length || typeof o.limit_type_urls[0] === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.level !== 0) {
             writer.uint32(8).int32(message.level);
@@ -167,6 +178,8 @@ export const Permissions = {
         };
     }
 };
+GlobalDecoderRegistry.register(Permissions.typeUrl, Permissions);
+GlobalDecoderRegistry.registerAminoProtoMapping(Permissions.aminoType, Permissions.typeUrl);
 function createBaseGenesisAccountPermissions() {
     return {
         address: "",
@@ -175,6 +188,16 @@ function createBaseGenesisAccountPermissions() {
 }
 export const GenesisAccountPermissions = {
     typeUrl: "/cosmos.circuit.v1.GenesisAccountPermissions",
+    aminoType: "cosmos-sdk/GenesisAccountPermissions",
+    is(o) {
+        return o && (o.$typeUrl === GenesisAccountPermissions.typeUrl || typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === GenesisAccountPermissions.typeUrl || typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === GenesisAccountPermissions.typeUrl || typeof o.address === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -260,6 +283,8 @@ export const GenesisAccountPermissions = {
         };
     }
 };
+GlobalDecoderRegistry.register(GenesisAccountPermissions.typeUrl, GenesisAccountPermissions);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisAccountPermissions.aminoType, GenesisAccountPermissions.typeUrl);
 function createBaseGenesisState() {
     return {
         account_permissions: [],
@@ -268,6 +293,16 @@ function createBaseGenesisState() {
 }
 export const GenesisState = {
     typeUrl: "/cosmos.circuit.v1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.account_permissions) && (!o.account_permissions.length || GenesisAccountPermissions.is(o.account_permissions[0])) && Array.isArray(o.disabled_type_urls) && (!o.disabled_type_urls.length || typeof o.disabled_type_urls[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.account_permissions) && (!o.account_permissions.length || GenesisAccountPermissions.isSDK(o.account_permissions[0])) && Array.isArray(o.disabled_type_urls) && (!o.disabled_type_urls.length || typeof o.disabled_type_urls[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.account_permissions) && (!o.account_permissions.length || GenesisAccountPermissions.isAmino(o.account_permissions[0])) && Array.isArray(o.disabled_type_urls) && (!o.disabled_type_urls.length || typeof o.disabled_type_urls[0] === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.account_permissions) {
             GenesisAccountPermissions.encode(v, writer.uint32(10).fork()).ldelim();
@@ -369,4 +404,6 @@ export const GenesisState = {
         };
     }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 //# sourceMappingURL=types.js.map

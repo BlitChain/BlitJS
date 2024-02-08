@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, fromJsonTimestamp, fromTimestamp } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "google.protobuf";
 function createBaseTimestamp() {
     return {
@@ -10,6 +11,15 @@ function createBaseTimestamp() {
 }
 export const Timestamp = {
     typeUrl: "/google.protobuf.Timestamp",
+    is(o) {
+        return o && (o.$typeUrl === Timestamp.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Timestamp.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Timestamp.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.seconds !== BigInt(0)) {
             writer.uint32(8).int64(message.seconds);
@@ -79,4 +89,5 @@ export const Timestamp = {
         };
     }
 };
+GlobalDecoderRegistry.register(Timestamp.typeUrl, Timestamp);
 //# sourceMappingURL=timestamp.js.map

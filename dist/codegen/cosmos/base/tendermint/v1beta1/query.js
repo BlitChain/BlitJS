@@ -10,6 +10,7 @@ const types_2 = require("./types");
 const types_3 = require("../../../../tendermint/p2p/types");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "cosmos.base.tendermint.v1beta1";
 function createBaseGetValidatorSetByHeightRequest() {
     return {
@@ -19,6 +20,16 @@ function createBaseGetValidatorSetByHeightRequest() {
 }
 exports.GetValidatorSetByHeightRequest = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.GetValidatorSetByHeightRequest",
+    aminoType: "cosmos-sdk/GetValidatorSetByHeightRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.GetValidatorSetByHeightRequest.typeUrl || typeof o.height === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GetValidatorSetByHeightRequest.typeUrl || typeof o.height === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GetValidatorSetByHeightRequest.typeUrl || typeof o.height === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.height !== BigInt(0)) {
             writer.uint32(8).int64(message.height);
@@ -104,6 +115,8 @@ exports.GetValidatorSetByHeightRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetValidatorSetByHeightRequest.typeUrl, exports.GetValidatorSetByHeightRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetValidatorSetByHeightRequest.aminoType, exports.GetValidatorSetByHeightRequest.typeUrl);
 function createBaseGetValidatorSetByHeightResponse() {
     return {
         block_height: BigInt(0),
@@ -113,6 +126,16 @@ function createBaseGetValidatorSetByHeightResponse() {
 }
 exports.GetValidatorSetByHeightResponse = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.GetValidatorSetByHeightResponse",
+    aminoType: "cosmos-sdk/GetValidatorSetByHeightResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.GetValidatorSetByHeightResponse.typeUrl || typeof o.block_height === "bigint" && Array.isArray(o.validators) && (!o.validators.length || exports.Validator.is(o.validators[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GetValidatorSetByHeightResponse.typeUrl || typeof o.block_height === "bigint" && Array.isArray(o.validators) && (!o.validators.length || exports.Validator.isSDK(o.validators[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GetValidatorSetByHeightResponse.typeUrl || typeof o.block_height === "bigint" && Array.isArray(o.validators) && (!o.validators.length || exports.Validator.isAmino(o.validators[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.block_height !== BigInt(0)) {
             writer.uint32(8).int64(message.block_height);
@@ -219,6 +242,8 @@ exports.GetValidatorSetByHeightResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetValidatorSetByHeightResponse.typeUrl, exports.GetValidatorSetByHeightResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetValidatorSetByHeightResponse.aminoType, exports.GetValidatorSetByHeightResponse.typeUrl);
 function createBaseGetLatestValidatorSetRequest() {
     return {
         pagination: undefined
@@ -226,6 +251,16 @@ function createBaseGetLatestValidatorSetRequest() {
 }
 exports.GetLatestValidatorSetRequest = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.GetLatestValidatorSetRequest",
+    aminoType: "cosmos-sdk/GetLatestValidatorSetRequest",
+    is(o) {
+        return o && o.$typeUrl === exports.GetLatestValidatorSetRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.GetLatestValidatorSetRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.GetLatestValidatorSetRequest.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.pagination !== undefined) {
             pagination_1.PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -298,6 +333,8 @@ exports.GetLatestValidatorSetRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetLatestValidatorSetRequest.typeUrl, exports.GetLatestValidatorSetRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetLatestValidatorSetRequest.aminoType, exports.GetLatestValidatorSetRequest.typeUrl);
 function createBaseGetLatestValidatorSetResponse() {
     return {
         block_height: BigInt(0),
@@ -307,6 +344,16 @@ function createBaseGetLatestValidatorSetResponse() {
 }
 exports.GetLatestValidatorSetResponse = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.GetLatestValidatorSetResponse",
+    aminoType: "cosmos-sdk/GetLatestValidatorSetResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.GetLatestValidatorSetResponse.typeUrl || typeof o.block_height === "bigint" && Array.isArray(o.validators) && (!o.validators.length || exports.Validator.is(o.validators[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GetLatestValidatorSetResponse.typeUrl || typeof o.block_height === "bigint" && Array.isArray(o.validators) && (!o.validators.length || exports.Validator.isSDK(o.validators[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GetLatestValidatorSetResponse.typeUrl || typeof o.block_height === "bigint" && Array.isArray(o.validators) && (!o.validators.length || exports.Validator.isAmino(o.validators[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.block_height !== BigInt(0)) {
             writer.uint32(8).int64(message.block_height);
@@ -413,6 +460,8 @@ exports.GetLatestValidatorSetResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetLatestValidatorSetResponse.typeUrl, exports.GetLatestValidatorSetResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetLatestValidatorSetResponse.aminoType, exports.GetLatestValidatorSetResponse.typeUrl);
 function createBaseValidator() {
     return {
         address: "",
@@ -423,6 +472,16 @@ function createBaseValidator() {
 }
 exports.Validator = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.Validator",
+    aminoType: "cosmos-sdk/Validator",
+    is(o) {
+        return o && (o.$typeUrl === exports.Validator.typeUrl || typeof o.address === "string" && typeof o.voting_power === "bigint" && typeof o.proposer_priority === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Validator.typeUrl || typeof o.address === "string" && typeof o.voting_power === "bigint" && typeof o.proposer_priority === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Validator.typeUrl || typeof o.address === "string" && typeof o.voting_power === "bigint" && typeof o.proposer_priority === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -534,6 +593,8 @@ exports.Validator = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Validator.typeUrl, exports.Validator);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Validator.aminoType, exports.Validator.typeUrl);
 function createBaseGetBlockByHeightRequest() {
     return {
         height: BigInt(0)
@@ -541,6 +602,16 @@ function createBaseGetBlockByHeightRequest() {
 }
 exports.GetBlockByHeightRequest = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.GetBlockByHeightRequest",
+    aminoType: "cosmos-sdk/GetBlockByHeightRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.GetBlockByHeightRequest.typeUrl || typeof o.height === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GetBlockByHeightRequest.typeUrl || typeof o.height === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GetBlockByHeightRequest.typeUrl || typeof o.height === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.height !== BigInt(0)) {
             writer.uint32(8).int64(message.height);
@@ -613,6 +684,8 @@ exports.GetBlockByHeightRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetBlockByHeightRequest.typeUrl, exports.GetBlockByHeightRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetBlockByHeightRequest.aminoType, exports.GetBlockByHeightRequest.typeUrl);
 function createBaseGetBlockByHeightResponse() {
     return {
         block_id: undefined,
@@ -622,6 +695,16 @@ function createBaseGetBlockByHeightResponse() {
 }
 exports.GetBlockByHeightResponse = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse",
+    aminoType: "cosmos-sdk/GetBlockByHeightResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.GetBlockByHeightResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.GetBlockByHeightResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.GetBlockByHeightResponse.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.block_id !== undefined) {
             types_1.BlockID.encode(message.block_id, writer.uint32(10).fork()).ldelim();
@@ -720,11 +803,23 @@ exports.GetBlockByHeightResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetBlockByHeightResponse.typeUrl, exports.GetBlockByHeightResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetBlockByHeightResponse.aminoType, exports.GetBlockByHeightResponse.typeUrl);
 function createBaseGetLatestBlockRequest() {
     return {};
 }
 exports.GetLatestBlockRequest = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.GetLatestBlockRequest",
+    aminoType: "cosmos-sdk/GetLatestBlockRequest",
+    is(o) {
+        return o && o.$typeUrl === exports.GetLatestBlockRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.GetLatestBlockRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.GetLatestBlockRequest.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -783,6 +878,8 @@ exports.GetLatestBlockRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetLatestBlockRequest.typeUrl, exports.GetLatestBlockRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetLatestBlockRequest.aminoType, exports.GetLatestBlockRequest.typeUrl);
 function createBaseGetLatestBlockResponse() {
     return {
         block_id: undefined,
@@ -792,6 +889,16 @@ function createBaseGetLatestBlockResponse() {
 }
 exports.GetLatestBlockResponse = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.GetLatestBlockResponse",
+    aminoType: "cosmos-sdk/GetLatestBlockResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.GetLatestBlockResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.GetLatestBlockResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.GetLatestBlockResponse.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.block_id !== undefined) {
             types_1.BlockID.encode(message.block_id, writer.uint32(10).fork()).ldelim();
@@ -890,11 +997,23 @@ exports.GetLatestBlockResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetLatestBlockResponse.typeUrl, exports.GetLatestBlockResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetLatestBlockResponse.aminoType, exports.GetLatestBlockResponse.typeUrl);
 function createBaseGetSyncingRequest() {
     return {};
 }
 exports.GetSyncingRequest = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.GetSyncingRequest",
+    aminoType: "cosmos-sdk/GetSyncingRequest",
+    is(o) {
+        return o && o.$typeUrl === exports.GetSyncingRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.GetSyncingRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.GetSyncingRequest.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -953,6 +1072,8 @@ exports.GetSyncingRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetSyncingRequest.typeUrl, exports.GetSyncingRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetSyncingRequest.aminoType, exports.GetSyncingRequest.typeUrl);
 function createBaseGetSyncingResponse() {
     return {
         syncing: false
@@ -960,6 +1081,16 @@ function createBaseGetSyncingResponse() {
 }
 exports.GetSyncingResponse = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.GetSyncingResponse",
+    aminoType: "cosmos-sdk/GetSyncingResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.GetSyncingResponse.typeUrl || typeof o.syncing === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GetSyncingResponse.typeUrl || typeof o.syncing === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GetSyncingResponse.typeUrl || typeof o.syncing === "boolean");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.syncing === true) {
             writer.uint32(8).bool(message.syncing);
@@ -1032,11 +1163,23 @@ exports.GetSyncingResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetSyncingResponse.typeUrl, exports.GetSyncingResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetSyncingResponse.aminoType, exports.GetSyncingResponse.typeUrl);
 function createBaseGetNodeInfoRequest() {
     return {};
 }
 exports.GetNodeInfoRequest = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.GetNodeInfoRequest",
+    aminoType: "cosmos-sdk/GetNodeInfoRequest",
+    is(o) {
+        return o && o.$typeUrl === exports.GetNodeInfoRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.GetNodeInfoRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.GetNodeInfoRequest.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -1095,6 +1238,8 @@ exports.GetNodeInfoRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetNodeInfoRequest.typeUrl, exports.GetNodeInfoRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetNodeInfoRequest.aminoType, exports.GetNodeInfoRequest.typeUrl);
 function createBaseGetNodeInfoResponse() {
     return {
         default_node_info: undefined,
@@ -1103,6 +1248,16 @@ function createBaseGetNodeInfoResponse() {
 }
 exports.GetNodeInfoResponse = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.GetNodeInfoResponse",
+    aminoType: "cosmos-sdk/GetNodeInfoResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.GetNodeInfoResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.GetNodeInfoResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.GetNodeInfoResponse.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.default_node_info !== undefined) {
             types_3.DefaultNodeInfo.encode(message.default_node_info, writer.uint32(10).fork()).ldelim();
@@ -1188,6 +1343,8 @@ exports.GetNodeInfoResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GetNodeInfoResponse.typeUrl, exports.GetNodeInfoResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GetNodeInfoResponse.aminoType, exports.GetNodeInfoResponse.typeUrl);
 function createBaseVersionInfo() {
     return {
         name: "",
@@ -1202,6 +1359,16 @@ function createBaseVersionInfo() {
 }
 exports.VersionInfo = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.VersionInfo",
+    aminoType: "cosmos-sdk/VersionInfo",
+    is(o) {
+        return o && (o.$typeUrl === exports.VersionInfo.typeUrl || typeof o.name === "string" && typeof o.app_name === "string" && typeof o.version === "string" && typeof o.git_commit === "string" && typeof o.build_tags === "string" && typeof o.go_version === "string" && Array.isArray(o.build_deps) && (!o.build_deps.length || exports.Module.is(o.build_deps[0])) && typeof o.cosmos_sdk_version === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.VersionInfo.typeUrl || typeof o.name === "string" && typeof o.app_name === "string" && typeof o.version === "string" && typeof o.git_commit === "string" && typeof o.build_tags === "string" && typeof o.go_version === "string" && Array.isArray(o.build_deps) && (!o.build_deps.length || exports.Module.isSDK(o.build_deps[0])) && typeof o.cosmos_sdk_version === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.VersionInfo.typeUrl || typeof o.name === "string" && typeof o.app_name === "string" && typeof o.version === "string" && typeof o.git_commit === "string" && typeof o.build_tags === "string" && typeof o.go_version === "string" && Array.isArray(o.build_deps) && (!o.build_deps.length || exports.Module.isAmino(o.build_deps[0])) && typeof o.cosmos_sdk_version === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -1373,6 +1540,8 @@ exports.VersionInfo = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.VersionInfo.typeUrl, exports.VersionInfo);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.VersionInfo.aminoType, exports.VersionInfo.typeUrl);
 function createBaseModule() {
     return {
         path: "",
@@ -1382,6 +1551,16 @@ function createBaseModule() {
 }
 exports.Module = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.Module",
+    aminoType: "cosmos-sdk/Module",
+    is(o) {
+        return o && (o.$typeUrl === exports.Module.typeUrl || typeof o.path === "string" && typeof o.version === "string" && typeof o.sum === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Module.typeUrl || typeof o.path === "string" && typeof o.version === "string" && typeof o.sum === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Module.typeUrl || typeof o.path === "string" && typeof o.version === "string" && typeof o.sum === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.path !== "") {
             writer.uint32(10).string(message.path);
@@ -1480,6 +1659,8 @@ exports.Module = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Module.typeUrl, exports.Module);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Module.aminoType, exports.Module.typeUrl);
 function createBaseABCIQueryRequest() {
     return {
         data: new Uint8Array(),
@@ -1490,6 +1671,16 @@ function createBaseABCIQueryRequest() {
 }
 exports.ABCIQueryRequest = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.ABCIQueryRequest",
+    aminoType: "cosmos-sdk/ABCIQueryRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.ABCIQueryRequest.typeUrl || (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.path === "string" && typeof o.height === "bigint" && typeof o.prove === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ABCIQueryRequest.typeUrl || (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.path === "string" && typeof o.height === "bigint" && typeof o.prove === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ABCIQueryRequest.typeUrl || (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.path === "string" && typeof o.height === "bigint" && typeof o.prove === "boolean");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.data.length !== 0) {
             writer.uint32(10).bytes(message.data);
@@ -1601,6 +1792,8 @@ exports.ABCIQueryRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ABCIQueryRequest.typeUrl, exports.ABCIQueryRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ABCIQueryRequest.aminoType, exports.ABCIQueryRequest.typeUrl);
 function createBaseABCIQueryResponse() {
     return {
         code: 0,
@@ -1616,6 +1809,16 @@ function createBaseABCIQueryResponse() {
 }
 exports.ABCIQueryResponse = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.ABCIQueryResponse",
+    aminoType: "cosmos-sdk/ABCIQueryResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.ABCIQueryResponse.typeUrl || typeof o.code === "number" && typeof o.log === "string" && typeof o.info === "string" && typeof o.index === "bigint" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && typeof o.height === "bigint" && typeof o.codespace === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ABCIQueryResponse.typeUrl || typeof o.code === "number" && typeof o.log === "string" && typeof o.info === "string" && typeof o.index === "bigint" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && typeof o.height === "bigint" && typeof o.codespace === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ABCIQueryResponse.typeUrl || typeof o.code === "number" && typeof o.log === "string" && typeof o.info === "string" && typeof o.index === "bigint" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && typeof o.height === "bigint" && typeof o.codespace === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.code !== 0) {
             writer.uint32(8).uint32(message.code);
@@ -1792,6 +1995,8 @@ exports.ABCIQueryResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ABCIQueryResponse.typeUrl, exports.ABCIQueryResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ABCIQueryResponse.aminoType, exports.ABCIQueryResponse.typeUrl);
 function createBaseProofOp() {
     return {
         type: "",
@@ -1801,6 +2006,16 @@ function createBaseProofOp() {
 }
 exports.ProofOp = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.ProofOp",
+    aminoType: "cosmos-sdk/ProofOp",
+    is(o) {
+        return o && (o.$typeUrl === exports.ProofOp.typeUrl || typeof o.type === "string" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ProofOp.typeUrl || typeof o.type === "string" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ProofOp.typeUrl || typeof o.type === "string" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.data instanceof Uint8Array || typeof o.data === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.type !== "") {
             writer.uint32(10).string(message.type);
@@ -1899,6 +2114,8 @@ exports.ProofOp = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ProofOp.typeUrl, exports.ProofOp);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ProofOp.aminoType, exports.ProofOp.typeUrl);
 function createBaseProofOps() {
     return {
         ops: []
@@ -1906,6 +2123,16 @@ function createBaseProofOps() {
 }
 exports.ProofOps = {
     typeUrl: "/cosmos.base.tendermint.v1beta1.ProofOps",
+    aminoType: "cosmos-sdk/ProofOps",
+    is(o) {
+        return o && (o.$typeUrl === exports.ProofOps.typeUrl || Array.isArray(o.ops) && (!o.ops.length || exports.ProofOp.is(o.ops[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ProofOps.typeUrl || Array.isArray(o.ops) && (!o.ops.length || exports.ProofOp.isSDK(o.ops[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ProofOps.typeUrl || Array.isArray(o.ops) && (!o.ops.length || exports.ProofOp.isAmino(o.ops[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.ops) {
             exports.ProofOp.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1986,4 +2213,6 @@ exports.ProofOps = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ProofOps.typeUrl, exports.ProofOps);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ProofOps.aminoType, exports.ProofOps.typeUrl);
 //# sourceMappingURL=query.js.map

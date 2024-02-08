@@ -191,6 +191,10 @@ export interface GrantSDKType {
 }
 export declare const BasicAllowance: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is BasicAllowance;
+    isSDK(o: any): o is BasicAllowanceSDKType;
+    isAmino(o: any): o is BasicAllowanceAmino;
     encode(message: BasicAllowance, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BasicAllowance;
     fromJSON(object: any): BasicAllowance;
@@ -206,6 +210,10 @@ export declare const BasicAllowance: {
 };
 export declare const PeriodicAllowance: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PeriodicAllowance;
+    isSDK(o: any): o is PeriodicAllowanceSDKType;
+    isAmino(o: any): o is PeriodicAllowanceAmino;
     encode(message: PeriodicAllowance, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PeriodicAllowance;
     fromJSON(object: any): PeriodicAllowance;
@@ -221,6 +229,10 @@ export declare const PeriodicAllowance: {
 };
 export declare const AllowedMsgAllowance: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is AllowedMsgAllowance;
+    isSDK(o: any): o is AllowedMsgAllowanceSDKType;
+    isAmino(o: any): o is AllowedMsgAllowanceAmino;
     encode(message: AllowedMsgAllowance, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AllowedMsgAllowance;
     fromJSON(object: any): AllowedMsgAllowance;
@@ -236,6 +248,10 @@ export declare const AllowedMsgAllowance: {
 };
 export declare const Grant: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Grant;
+    isSDK(o: any): o is GrantSDKType;
+    isAmino(o: any): o is GrantAmino;
     encode(message: Grant, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Grant;
     fromJSON(object: any): Grant;
@@ -249,6 +265,3 @@ export declare const Grant: {
     toProto(message: Grant): Uint8Array;
     toProtoMsg(message: Grant): GrantProtoMsg;
 };
-export declare const Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => BasicAllowance | PeriodicAllowance | AllowedMsgAllowance | Any;
-export declare const Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino: (content: Any) => AnyAmino;

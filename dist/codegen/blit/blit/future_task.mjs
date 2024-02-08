@@ -1,8 +1,9 @@
 //@ts-nocheck
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { DecCoin } from "../../cosmos/base/v1beta1/coin";
+import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
 import { BinaryReader, BinaryWriter } from "../../binary";
-import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.blit";
 export var FutureTaskStatus;
 (function (FutureTaskStatus) {
@@ -54,6 +55,15 @@ function createBaseFutureTask() {
 }
 export const FutureTask = {
     typeUrl: "/blit.blit.FutureTask",
+    is(o) {
+        return o && (o.$typeUrl === FutureTask.typeUrl || typeof o.index === "string" && Timestamp.is(o.scheduled_on) && typeof o.task_id === "bigint" && isSet(o.status));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === FutureTask.typeUrl || typeof o.index === "string" && Timestamp.isSDK(o.scheduled_on) && typeof o.task_id === "bigint" && isSet(o.status));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === FutureTask.typeUrl || typeof o.index === "string" && Timestamp.isAmino(o.scheduled_on) && typeof o.task_id === "bigint" && isSet(o.status));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.index !== "") {
             writer.uint32(10).string(message.index);
@@ -172,4 +182,5 @@ export const FutureTask = {
         };
     }
 };
+GlobalDecoderRegistry.register(FutureTask.typeUrl, FutureTask);
 //# sourceMappingURL=future_task.js.map

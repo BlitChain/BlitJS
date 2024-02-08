@@ -2,6 +2,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.storage";
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParams {
@@ -178,6 +179,16 @@ function createBaseMsgUpdateParams(): MsgUpdateParams {
 }
 export const MsgUpdateParams = {
   typeUrl: "/blit.storage.MsgUpdateParams",
+  aminoType: "blit/x/storage/MsgUpdateParams",
+  is(o: any): o is MsgUpdateParams {
+    return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.is(o.params));
+  },
+  isSDK(o: any): o is MsgUpdateParamsSDKType {
+    return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is MsgUpdateParamsAmino {
+    return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.isAmino(o.params));
+  },
   encode(message: MsgUpdateParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
@@ -263,11 +274,22 @@ export const MsgUpdateParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUpdateParams.typeUrl, MsgUpdateParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUpdateParams.aminoType, MsgUpdateParams.typeUrl);
 function createBaseMsgUpdateParamsResponse(): MsgUpdateParamsResponse {
   return {};
 }
 export const MsgUpdateParamsResponse = {
   typeUrl: "/blit.storage.MsgUpdateParamsResponse",
+  is(o: any): o is MsgUpdateParamsResponse {
+    return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgUpdateParamsResponseSDKType {
+    return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgUpdateParamsResponseAmino {
+    return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+  },
   encode(_: MsgUpdateParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -320,6 +342,7 @@ export const MsgUpdateParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUpdateParamsResponse.typeUrl, MsgUpdateParamsResponse);
 function createBaseMsgCreateStorage(): MsgCreateStorage {
   return {
     address: "",
@@ -331,6 +354,15 @@ function createBaseMsgCreateStorage(): MsgCreateStorage {
 }
 export const MsgCreateStorage = {
   typeUrl: "/blit.storage.MsgCreateStorage",
+  is(o: any): o is MsgCreateStorage {
+    return o && (o.$typeUrl === MsgCreateStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+  },
+  isSDK(o: any): o is MsgCreateStorageSDKType {
+    return o && (o.$typeUrl === MsgCreateStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+  },
+  isAmino(o: any): o is MsgCreateStorageAmino {
+    return o && (o.$typeUrl === MsgCreateStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+  },
   encode(message: MsgCreateStorage, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -449,11 +481,21 @@ export const MsgCreateStorage = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateStorage.typeUrl, MsgCreateStorage);
 function createBaseMsgCreateStorageResponse(): MsgCreateStorageResponse {
   return {};
 }
 export const MsgCreateStorageResponse = {
   typeUrl: "/blit.storage.MsgCreateStorageResponse",
+  is(o: any): o is MsgCreateStorageResponse {
+    return o && o.$typeUrl === MsgCreateStorageResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgCreateStorageResponseSDKType {
+    return o && o.$typeUrl === MsgCreateStorageResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgCreateStorageResponseAmino {
+    return o && o.$typeUrl === MsgCreateStorageResponse.typeUrl;
+  },
   encode(_: MsgCreateStorageResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -506,6 +548,7 @@ export const MsgCreateStorageResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateStorageResponse.typeUrl, MsgCreateStorageResponse);
 function createBaseMsgUpdateStorage(): MsgUpdateStorage {
   return {
     address: "",
@@ -517,6 +560,15 @@ function createBaseMsgUpdateStorage(): MsgUpdateStorage {
 }
 export const MsgUpdateStorage = {
   typeUrl: "/blit.storage.MsgUpdateStorage",
+  is(o: any): o is MsgUpdateStorage {
+    return o && (o.$typeUrl === MsgUpdateStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+  },
+  isSDK(o: any): o is MsgUpdateStorageSDKType {
+    return o && (o.$typeUrl === MsgUpdateStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+  },
+  isAmino(o: any): o is MsgUpdateStorageAmino {
+    return o && (o.$typeUrl === MsgUpdateStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.data === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+  },
   encode(message: MsgUpdateStorage, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -635,11 +687,21 @@ export const MsgUpdateStorage = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUpdateStorage.typeUrl, MsgUpdateStorage);
 function createBaseMsgUpdateStorageResponse(): MsgUpdateStorageResponse {
   return {};
 }
 export const MsgUpdateStorageResponse = {
   typeUrl: "/blit.storage.MsgUpdateStorageResponse",
+  is(o: any): o is MsgUpdateStorageResponse {
+    return o && o.$typeUrl === MsgUpdateStorageResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgUpdateStorageResponseSDKType {
+    return o && o.$typeUrl === MsgUpdateStorageResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgUpdateStorageResponseAmino {
+    return o && o.$typeUrl === MsgUpdateStorageResponse.typeUrl;
+  },
   encode(_: MsgUpdateStorageResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -692,6 +754,7 @@ export const MsgUpdateStorageResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUpdateStorageResponse.typeUrl, MsgUpdateStorageResponse);
 function createBaseMsgDeleteStorage(): MsgDeleteStorage {
   return {
     address: "",
@@ -702,6 +765,15 @@ function createBaseMsgDeleteStorage(): MsgDeleteStorage {
 }
 export const MsgDeleteStorage = {
   typeUrl: "/blit.storage.MsgDeleteStorage",
+  is(o: any): o is MsgDeleteStorage {
+    return o && (o.$typeUrl === MsgDeleteStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+  },
+  isSDK(o: any): o is MsgDeleteStorageSDKType {
+    return o && (o.$typeUrl === MsgDeleteStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+  },
+  isAmino(o: any): o is MsgDeleteStorageAmino {
+    return o && (o.$typeUrl === MsgDeleteStorage.typeUrl || typeof o.address === "string" && typeof o.index === "string" && typeof o.grantee === "string" && typeof o.force === "boolean");
+  },
   encode(message: MsgDeleteStorage, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -807,11 +879,21 @@ export const MsgDeleteStorage = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgDeleteStorage.typeUrl, MsgDeleteStorage);
 function createBaseMsgDeleteStorageResponse(): MsgDeleteStorageResponse {
   return {};
 }
 export const MsgDeleteStorageResponse = {
   typeUrl: "/blit.storage.MsgDeleteStorageResponse",
+  is(o: any): o is MsgDeleteStorageResponse {
+    return o && o.$typeUrl === MsgDeleteStorageResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgDeleteStorageResponseSDKType {
+    return o && o.$typeUrl === MsgDeleteStorageResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgDeleteStorageResponseAmino {
+    return o && o.$typeUrl === MsgDeleteStorageResponse.typeUrl;
+  },
   encode(_: MsgDeleteStorageResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -864,3 +946,4 @@ export const MsgDeleteStorageResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgDeleteStorageResponse.typeUrl, MsgDeleteStorageResponse);

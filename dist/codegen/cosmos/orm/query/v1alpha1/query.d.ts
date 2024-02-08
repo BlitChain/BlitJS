@@ -298,6 +298,10 @@ export interface IndexValueSDKType {
 }
 export declare const GetRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetRequest;
+    isSDK(o: any): o is GetRequestSDKType;
+    isAmino(o: any): o is GetRequestAmino;
     encode(message: GetRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetRequest;
     fromJSON(object: any): GetRequest;
@@ -313,6 +317,10 @@ export declare const GetRequest: {
 };
 export declare const GetResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GetResponse;
+    isSDK(o: any): o is GetResponseSDKType;
+    isAmino(o: any): o is GetResponseAmino;
     encode(message: GetResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GetResponse;
     fromJSON(object: any): GetResponse;
@@ -328,6 +336,10 @@ export declare const GetResponse: {
 };
 export declare const ListRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ListRequest;
+    isSDK(o: any): o is ListRequestSDKType;
+    isAmino(o: any): o is ListRequestAmino;
     encode(message: ListRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ListRequest;
     fromJSON(object: any): ListRequest;
@@ -343,6 +355,10 @@ export declare const ListRequest: {
 };
 export declare const ListRequest_Prefix: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ListRequest_Prefix;
+    isSDK(o: any): o is ListRequest_PrefixSDKType;
+    isAmino(o: any): o is ListRequest_PrefixAmino;
     encode(message: ListRequest_Prefix, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ListRequest_Prefix;
     fromJSON(object: any): ListRequest_Prefix;
@@ -358,6 +374,10 @@ export declare const ListRequest_Prefix: {
 };
 export declare const ListRequest_Range: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ListRequest_Range;
+    isSDK(o: any): o is ListRequest_RangeSDKType;
+    isAmino(o: any): o is ListRequest_RangeAmino;
     encode(message: ListRequest_Range, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ListRequest_Range;
     fromJSON(object: any): ListRequest_Range;
@@ -373,6 +393,10 @@ export declare const ListRequest_Range: {
 };
 export declare const ListResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ListResponse;
+    isSDK(o: any): o is ListResponseSDKType;
+    isAmino(o: any): o is ListResponseAmino;
     encode(message: ListResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ListResponse;
     fromJSON(object: any): ListResponse;
@@ -388,6 +412,10 @@ export declare const ListResponse: {
 };
 export declare const IndexValue: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is IndexValue;
+    isSDK(o: any): o is IndexValueSDKType;
+    isAmino(o: any): o is IndexValueAmino;
     encode(message: IndexValue, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IndexValue;
     fromJSON(object: any): IndexValue;

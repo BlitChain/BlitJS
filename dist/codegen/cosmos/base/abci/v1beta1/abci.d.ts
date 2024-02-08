@@ -521,6 +521,10 @@ export interface SearchBlocksResultSDKType {
 }
 export declare const TxResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TxResponse;
+    isSDK(o: any): o is TxResponseSDKType;
+    isAmino(o: any): o is TxResponseAmino;
     encode(message: TxResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxResponse;
     fromJSON(object: any): TxResponse;
@@ -536,6 +540,10 @@ export declare const TxResponse: {
 };
 export declare const ABCIMessageLog: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ABCIMessageLog;
+    isSDK(o: any): o is ABCIMessageLogSDKType;
+    isAmino(o: any): o is ABCIMessageLogAmino;
     encode(message: ABCIMessageLog, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ABCIMessageLog;
     fromJSON(object: any): ABCIMessageLog;
@@ -551,6 +559,10 @@ export declare const ABCIMessageLog: {
 };
 export declare const StringEvent: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is StringEvent;
+    isSDK(o: any): o is StringEventSDKType;
+    isAmino(o: any): o is StringEventAmino;
     encode(message: StringEvent, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): StringEvent;
     fromJSON(object: any): StringEvent;
@@ -566,6 +578,10 @@ export declare const StringEvent: {
 };
 export declare const Attribute: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Attribute;
+    isSDK(o: any): o is AttributeSDKType;
+    isAmino(o: any): o is AttributeAmino;
     encode(message: Attribute, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Attribute;
     fromJSON(object: any): Attribute;
@@ -581,6 +597,10 @@ export declare const Attribute: {
 };
 export declare const GasInfo: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GasInfo;
+    isSDK(o: any): o is GasInfoSDKType;
+    isAmino(o: any): o is GasInfoAmino;
     encode(message: GasInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GasInfo;
     fromJSON(object: any): GasInfo;
@@ -596,6 +616,10 @@ export declare const GasInfo: {
 };
 export declare const Result: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Result;
+    isSDK(o: any): o is ResultSDKType;
+    isAmino(o: any): o is ResultAmino;
     encode(message: Result, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Result;
     fromJSON(object: any): Result;
@@ -611,6 +635,10 @@ export declare const Result: {
 };
 export declare const SimulationResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SimulationResponse;
+    isSDK(o: any): o is SimulationResponseSDKType;
+    isAmino(o: any): o is SimulationResponseAmino;
     encode(message: SimulationResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SimulationResponse;
     fromJSON(object: any): SimulationResponse;
@@ -626,6 +654,10 @@ export declare const SimulationResponse: {
 };
 export declare const MsgData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgData;
+    isSDK(o: any): o is MsgDataSDKType;
+    isAmino(o: any): o is MsgDataAmino;
     encode(message: MsgData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgData;
     fromJSON(object: any): MsgData;
@@ -641,6 +673,10 @@ export declare const MsgData: {
 };
 export declare const TxMsgData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TxMsgData;
+    isSDK(o: any): o is TxMsgDataSDKType;
+    isAmino(o: any): o is TxMsgDataAmino;
     encode(message: TxMsgData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxMsgData;
     fromJSON(object: any): TxMsgData;
@@ -656,6 +692,10 @@ export declare const TxMsgData: {
 };
 export declare const SearchTxsResult: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SearchTxsResult;
+    isSDK(o: any): o is SearchTxsResultSDKType;
+    isAmino(o: any): o is SearchTxsResultAmino;
     encode(message: SearchTxsResult, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SearchTxsResult;
     fromJSON(object: any): SearchTxsResult;
@@ -671,6 +711,10 @@ export declare const SearchTxsResult: {
 };
 export declare const SearchBlocksResult: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SearchBlocksResult;
+    isSDK(o: any): o is SearchBlocksResultSDKType;
+    isAmino(o: any): o is SearchBlocksResultAmino;
     encode(message: SearchBlocksResult, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SearchBlocksResult;
     fromJSON(object: any): SearchBlocksResult;

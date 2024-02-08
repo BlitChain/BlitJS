@@ -6,6 +6,7 @@ import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.blit";
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParams {
@@ -317,6 +318,16 @@ function createBaseMsgUpdateParams(): MsgUpdateParams {
 }
 export const MsgUpdateParams = {
   typeUrl: "/blit.blit.MsgUpdateParams",
+  aminoType: "blit/x/blit/MsgUpdateParams",
+  is(o: any): o is MsgUpdateParams {
+    return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.is(o.params));
+  },
+  isSDK(o: any): o is MsgUpdateParamsSDKType {
+    return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is MsgUpdateParamsAmino {
+    return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.isAmino(o.params));
+  },
   encode(message: MsgUpdateParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
@@ -402,11 +413,22 @@ export const MsgUpdateParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUpdateParams.typeUrl, MsgUpdateParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUpdateParams.aminoType, MsgUpdateParams.typeUrl);
 function createBaseMsgUpdateParamsResponse(): MsgUpdateParamsResponse {
   return {};
 }
 export const MsgUpdateParamsResponse = {
   typeUrl: "/blit.blit.MsgUpdateParamsResponse",
+  is(o: any): o is MsgUpdateParamsResponse {
+    return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgUpdateParamsResponseSDKType {
+    return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgUpdateParamsResponseAmino {
+    return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+  },
   encode(_: MsgUpdateParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -459,6 +481,7 @@ export const MsgUpdateParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUpdateParamsResponse.typeUrl, MsgUpdateParamsResponse);
 function createBaseMsgMintCoins(): MsgMintCoins {
   return {
     amount: Coin.fromPartial({}),
@@ -467,6 +490,15 @@ function createBaseMsgMintCoins(): MsgMintCoins {
 }
 export const MsgMintCoins = {
   typeUrl: "/blit.blit.MsgMintCoins",
+  is(o: any): o is MsgMintCoins {
+    return o && (o.$typeUrl === MsgMintCoins.typeUrl || Coin.is(o.amount) && typeof o.grantee === "string");
+  },
+  isSDK(o: any): o is MsgMintCoinsSDKType {
+    return o && (o.$typeUrl === MsgMintCoins.typeUrl || Coin.isSDK(o.amount) && typeof o.grantee === "string");
+  },
+  isAmino(o: any): o is MsgMintCoinsAmino {
+    return o && (o.$typeUrl === MsgMintCoins.typeUrl || Coin.isAmino(o.amount) && typeof o.grantee === "string");
+  },
   encode(message: MsgMintCoins, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
@@ -546,11 +578,21 @@ export const MsgMintCoins = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgMintCoins.typeUrl, MsgMintCoins);
 function createBaseMsgMintCoinsResponse(): MsgMintCoinsResponse {
   return {};
 }
 export const MsgMintCoinsResponse = {
   typeUrl: "/blit.blit.MsgMintCoinsResponse",
+  is(o: any): o is MsgMintCoinsResponse {
+    return o && o.$typeUrl === MsgMintCoinsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgMintCoinsResponseSDKType {
+    return o && o.$typeUrl === MsgMintCoinsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgMintCoinsResponseAmino {
+    return o && o.$typeUrl === MsgMintCoinsResponse.typeUrl;
+  },
   encode(_: MsgMintCoinsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -603,6 +645,7 @@ export const MsgMintCoinsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgMintCoinsResponse.typeUrl, MsgMintCoinsResponse);
 function createBaseMsgBurnCoins(): MsgBurnCoins {
   return {
     amount: Coin.fromPartial({}),
@@ -611,6 +654,15 @@ function createBaseMsgBurnCoins(): MsgBurnCoins {
 }
 export const MsgBurnCoins = {
   typeUrl: "/blit.blit.MsgBurnCoins",
+  is(o: any): o is MsgBurnCoins {
+    return o && (o.$typeUrl === MsgBurnCoins.typeUrl || Coin.is(o.amount) && typeof o.grantee === "string");
+  },
+  isSDK(o: any): o is MsgBurnCoinsSDKType {
+    return o && (o.$typeUrl === MsgBurnCoins.typeUrl || Coin.isSDK(o.amount) && typeof o.grantee === "string");
+  },
+  isAmino(o: any): o is MsgBurnCoinsAmino {
+    return o && (o.$typeUrl === MsgBurnCoins.typeUrl || Coin.isAmino(o.amount) && typeof o.grantee === "string");
+  },
   encode(message: MsgBurnCoins, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
@@ -690,11 +742,21 @@ export const MsgBurnCoins = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgBurnCoins.typeUrl, MsgBurnCoins);
 function createBaseMsgBurnCoinsResponse(): MsgBurnCoinsResponse {
   return {};
 }
 export const MsgBurnCoinsResponse = {
   typeUrl: "/blit.blit.MsgBurnCoinsResponse",
+  is(o: any): o is MsgBurnCoinsResponse {
+    return o && o.$typeUrl === MsgBurnCoinsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgBurnCoinsResponseSDKType {
+    return o && o.$typeUrl === MsgBurnCoinsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgBurnCoinsResponseAmino {
+    return o && o.$typeUrl === MsgBurnCoinsResponse.typeUrl;
+  },
   encode(_: MsgBurnCoinsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -747,6 +809,7 @@ export const MsgBurnCoinsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgBurnCoinsResponse.typeUrl, MsgBurnCoinsResponse);
 function createBaseMsgForceTransferCoins(): MsgForceTransferCoins {
   return {
     amount: Coin.fromPartial({}),
@@ -757,6 +820,15 @@ function createBaseMsgForceTransferCoins(): MsgForceTransferCoins {
 }
 export const MsgForceTransferCoins = {
   typeUrl: "/blit.blit.MsgForceTransferCoins",
+  is(o: any): o is MsgForceTransferCoins {
+    return o && (o.$typeUrl === MsgForceTransferCoins.typeUrl || Coin.is(o.amount) && typeof o.from_address === "string" && typeof o.to_address === "string" && typeof o.grantee === "string");
+  },
+  isSDK(o: any): o is MsgForceTransferCoinsSDKType {
+    return o && (o.$typeUrl === MsgForceTransferCoins.typeUrl || Coin.isSDK(o.amount) && typeof o.from_address === "string" && typeof o.to_address === "string" && typeof o.grantee === "string");
+  },
+  isAmino(o: any): o is MsgForceTransferCoinsAmino {
+    return o && (o.$typeUrl === MsgForceTransferCoins.typeUrl || Coin.isAmino(o.amount) && typeof o.from_address === "string" && typeof o.to_address === "string" && typeof o.grantee === "string");
+  },
   encode(message: MsgForceTransferCoins, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
@@ -862,11 +934,21 @@ export const MsgForceTransferCoins = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgForceTransferCoins.typeUrl, MsgForceTransferCoins);
 function createBaseMsgForceTransferCoinsResponse(): MsgForceTransferCoinsResponse {
   return {};
 }
 export const MsgForceTransferCoinsResponse = {
   typeUrl: "/blit.blit.MsgForceTransferCoinsResponse",
+  is(o: any): o is MsgForceTransferCoinsResponse {
+    return o && o.$typeUrl === MsgForceTransferCoinsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgForceTransferCoinsResponseSDKType {
+    return o && o.$typeUrl === MsgForceTransferCoinsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgForceTransferCoinsResponseAmino {
+    return o && o.$typeUrl === MsgForceTransferCoinsResponse.typeUrl;
+  },
   encode(_: MsgForceTransferCoinsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -919,6 +1001,7 @@ export const MsgForceTransferCoinsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgForceTransferCoinsResponse.typeUrl, MsgForceTransferCoinsResponse);
 function createBaseMsgSetDenomMetadata(): MsgSetDenomMetadata {
   return {
     authority: "",
@@ -934,6 +1017,15 @@ function createBaseMsgSetDenomMetadata(): MsgSetDenomMetadata {
 }
 export const MsgSetDenomMetadata = {
   typeUrl: "/blit.blit.MsgSetDenomMetadata",
+  is(o: any): o is MsgSetDenomMetadata {
+    return o && (o.$typeUrl === MsgSetDenomMetadata.typeUrl || typeof o.authority === "string" && typeof o.base === "string" && typeof o.display === "string" && typeof o.name === "string" && typeof o.symbol === "string" && typeof o.uri === "string" && typeof o.uri_hash === "string" && typeof o.exponent === "number" && typeof o.description === "string");
+  },
+  isSDK(o: any): o is MsgSetDenomMetadataSDKType {
+    return o && (o.$typeUrl === MsgSetDenomMetadata.typeUrl || typeof o.authority === "string" && typeof o.base === "string" && typeof o.display === "string" && typeof o.name === "string" && typeof o.symbol === "string" && typeof o.uri === "string" && typeof o.uri_hash === "string" && typeof o.exponent === "number" && typeof o.description === "string");
+  },
+  isAmino(o: any): o is MsgSetDenomMetadataAmino {
+    return o && (o.$typeUrl === MsgSetDenomMetadata.typeUrl || typeof o.authority === "string" && typeof o.base === "string" && typeof o.display === "string" && typeof o.name === "string" && typeof o.symbol === "string" && typeof o.uri === "string" && typeof o.uri_hash === "string" && typeof o.exponent === "number" && typeof o.description === "string");
+  },
   encode(message: MsgSetDenomMetadata, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
@@ -1104,11 +1196,21 @@ export const MsgSetDenomMetadata = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetDenomMetadata.typeUrl, MsgSetDenomMetadata);
 function createBaseMsgSetDenomMetadataResponse(): MsgSetDenomMetadataResponse {
   return {};
 }
 export const MsgSetDenomMetadataResponse = {
   typeUrl: "/blit.blit.MsgSetDenomMetadataResponse",
+  is(o: any): o is MsgSetDenomMetadataResponse {
+    return o && o.$typeUrl === MsgSetDenomMetadataResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSetDenomMetadataResponseSDKType {
+    return o && o.$typeUrl === MsgSetDenomMetadataResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSetDenomMetadataResponseAmino {
+    return o && o.$typeUrl === MsgSetDenomMetadataResponse.typeUrl;
+  },
   encode(_: MsgSetDenomMetadataResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -1161,6 +1263,7 @@ export const MsgSetDenomMetadataResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetDenomMetadataResponse.typeUrl, MsgSetDenomMetadataResponse);
 function createBaseMsgCreateTask(): MsgCreateTask {
   return {
     creator: "",
@@ -1177,6 +1280,15 @@ function createBaseMsgCreateTask(): MsgCreateTask {
 }
 export const MsgCreateTask = {
   typeUrl: "/blit.blit.MsgCreateTask",
+  is(o: any): o is MsgCreateTask {
+    return o && (o.$typeUrl === MsgCreateTask.typeUrl || typeof o.creator === "string" && Timestamp.is(o.activate_after) && Timestamp.is(o.expire_after) && typeof o.max_runs === "bigint" && typeof o.disable_on_error === "boolean" && typeof o.enabled === "boolean" && typeof o.task_gas_limit === "bigint" && Coin.is(o.task_gas_fee) && Array.isArray(o.messages) && (!o.messages.length || Any.is(o.messages[0])));
+  },
+  isSDK(o: any): o is MsgCreateTaskSDKType {
+    return o && (o.$typeUrl === MsgCreateTask.typeUrl || typeof o.creator === "string" && Timestamp.isSDK(o.activate_after) && Timestamp.isSDK(o.expire_after) && typeof o.max_runs === "bigint" && typeof o.disable_on_error === "boolean" && typeof o.enabled === "boolean" && typeof o.task_gas_limit === "bigint" && Coin.isSDK(o.task_gas_fee) && Array.isArray(o.messages) && (!o.messages.length || Any.isSDK(o.messages[0])));
+  },
+  isAmino(o: any): o is MsgCreateTaskAmino {
+    return o && (o.$typeUrl === MsgCreateTask.typeUrl || typeof o.creator === "string" && Timestamp.isAmino(o.activate_after) && Timestamp.isAmino(o.expire_after) && typeof o.max_runs === "bigint" && typeof o.disable_on_error === "boolean" && typeof o.enabled === "boolean" && typeof o.task_gas_limit === "bigint" && Coin.isAmino(o.task_gas_fee) && Array.isArray(o.messages) && (!o.messages.length || Any.isAmino(o.messages[0])));
+  },
   encode(message: MsgCreateTask, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -1206,7 +1318,7 @@ export const MsgCreateTask = {
       Coin.encode(message.task_gas_fee, writer.uint32(82).fork()).ldelim();
     }
     for (const v of message.messages) {
-      Any.encode((v! as Any), writer.uint32(90).fork()).ldelim();
+      Any.encode(GlobalDecoderRegistry.wrapAny(v!), writer.uint32(90).fork()).ldelim();
     }
     return writer;
   },
@@ -1245,7 +1357,7 @@ export const MsgCreateTask = {
           message.task_gas_fee = Coin.decode(reader, reader.uint32());
           break;
         case 11:
-          message.messages.push((Any.decode(reader, reader.uint32()) as Any));
+          message.messages.push(GlobalDecoderRegistry.unwrapAny(reader));
           break;
         default:
           reader.skipType(tag & 7);
@@ -1265,7 +1377,7 @@ export const MsgCreateTask = {
       enabled: isSet(object.enabled) ? Boolean(object.enabled) : false,
       task_gas_limit: isSet(object.task_gas_limit) ? BigInt(object.task_gas_limit.toString()) : BigInt(0),
       task_gas_fee: isSet(object.task_gas_fee) ? Coin.fromJSON(object.task_gas_fee) : undefined,
-      messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromJSON(e)) : []
+      messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => GlobalDecoderRegistry.fromJSON(e)) : []
     };
   },
   toJSON(message: MsgCreateTask): unknown {
@@ -1280,7 +1392,7 @@ export const MsgCreateTask = {
     message.task_gas_limit !== undefined && (obj.task_gas_limit = (message.task_gas_limit || BigInt(0)).toString());
     message.task_gas_fee !== undefined && (obj.task_gas_fee = message.task_gas_fee ? Coin.toJSON(message.task_gas_fee) : undefined);
     if (message.messages) {
-      obj.messages = message.messages.map(e => e ? Any.toJSON(e) : undefined);
+      obj.messages = message.messages.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
     } else {
       obj.messages = [];
     }
@@ -1297,7 +1409,7 @@ export const MsgCreateTask = {
     message.enabled = object.enabled ?? false;
     message.task_gas_limit = object.task_gas_limit !== undefined && object.task_gas_limit !== null ? BigInt(object.task_gas_limit.toString()) : BigInt(0);
     message.task_gas_fee = object.task_gas_fee !== undefined && object.task_gas_fee !== null ? Coin.fromPartial(object.task_gas_fee) : undefined;
-    message.messages = object.messages?.map(e => Any.fromPartial(e)) || [];
+    message.messages = object.messages?.map(e => (GlobalDecoderRegistry.fromPartial(e) as any)) || [];
     return message;
   },
   fromAmino(object: MsgCreateTaskAmino): MsgCreateTask {
@@ -1329,7 +1441,7 @@ export const MsgCreateTask = {
     if (object.task_gas_fee !== undefined && object.task_gas_fee !== null) {
       message.task_gas_fee = Coin.fromAmino(object.task_gas_fee);
     }
-    message.messages = object.messages?.map(e => Cosmos_basev1beta1Msg_FromAmino(e)) || [];
+    message.messages = object.messages?.map(e => GlobalDecoderRegistry.fromAminoMsg(e)) || [];
     return message;
   },
   toAmino(message: MsgCreateTask): MsgCreateTaskAmino {
@@ -1344,7 +1456,7 @@ export const MsgCreateTask = {
     obj.task_gas_limit = message.task_gas_limit ? message.task_gas_limit.toString() : undefined;
     obj.task_gas_fee = message.task_gas_fee ? Coin.toAmino(message.task_gas_fee) : undefined;
     if (message.messages) {
-      obj.messages = message.messages.map(e => e ? Cosmos_basev1beta1Msg_ToAmino((e as Any)) : undefined);
+      obj.messages = message.messages.map(e => e ? GlobalDecoderRegistry.toAminoMsg(e) : undefined);
     } else {
       obj.messages = [];
     }
@@ -1366,6 +1478,7 @@ export const MsgCreateTask = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateTask.typeUrl, MsgCreateTask);
 function createBaseMsgCreateTaskResponse(): MsgCreateTaskResponse {
   return {
     id: BigInt(0)
@@ -1373,6 +1486,15 @@ function createBaseMsgCreateTaskResponse(): MsgCreateTaskResponse {
 }
 export const MsgCreateTaskResponse = {
   typeUrl: "/blit.blit.MsgCreateTaskResponse",
+  is(o: any): o is MsgCreateTaskResponse {
+    return o && (o.$typeUrl === MsgCreateTaskResponse.typeUrl || typeof o.id === "bigint");
+  },
+  isSDK(o: any): o is MsgCreateTaskResponseSDKType {
+    return o && (o.$typeUrl === MsgCreateTaskResponse.typeUrl || typeof o.id === "bigint");
+  },
+  isAmino(o: any): o is MsgCreateTaskResponseAmino {
+    return o && (o.$typeUrl === MsgCreateTaskResponse.typeUrl || typeof o.id === "bigint");
+  },
   encode(message: MsgCreateTaskResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== BigInt(0)) {
       writer.uint32(8).uint64(message.id);
@@ -1439,6 +1561,7 @@ export const MsgCreateTaskResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateTaskResponse.typeUrl, MsgCreateTaskResponse);
 function createBaseMsgDeleteTask(): MsgDeleteTask {
   return {
     creator: "",
@@ -1447,6 +1570,15 @@ function createBaseMsgDeleteTask(): MsgDeleteTask {
 }
 export const MsgDeleteTask = {
   typeUrl: "/blit.blit.MsgDeleteTask",
+  is(o: any): o is MsgDeleteTask {
+    return o && (o.$typeUrl === MsgDeleteTask.typeUrl || typeof o.creator === "string" && typeof o.id === "bigint");
+  },
+  isSDK(o: any): o is MsgDeleteTaskSDKType {
+    return o && (o.$typeUrl === MsgDeleteTask.typeUrl || typeof o.creator === "string" && typeof o.id === "bigint");
+  },
+  isAmino(o: any): o is MsgDeleteTaskAmino {
+    return o && (o.$typeUrl === MsgDeleteTask.typeUrl || typeof o.creator === "string" && typeof o.id === "bigint");
+  },
   encode(message: MsgDeleteTask, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -1526,11 +1658,21 @@ export const MsgDeleteTask = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgDeleteTask.typeUrl, MsgDeleteTask);
 function createBaseMsgDeleteTaskResponse(): MsgDeleteTaskResponse {
   return {};
 }
 export const MsgDeleteTaskResponse = {
   typeUrl: "/blit.blit.MsgDeleteTaskResponse",
+  is(o: any): o is MsgDeleteTaskResponse {
+    return o && o.$typeUrl === MsgDeleteTaskResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgDeleteTaskResponseSDKType {
+    return o && o.$typeUrl === MsgDeleteTaskResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgDeleteTaskResponseAmino {
+    return o && o.$typeUrl === MsgDeleteTaskResponse.typeUrl;
+  },
   encode(_: MsgDeleteTaskResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -1583,17 +1725,4 @@ export const MsgDeleteTaskResponse = {
     };
   }
 };
-export const Cosmos_basev1beta1Msg_InterfaceDecoder = (input: BinaryReader | Uint8Array): Any => {
-  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32());
-  switch (data.typeUrl) {
-    default:
-      return data;
-  }
-};
-export const Cosmos_basev1beta1Msg_FromAmino = (content: AnyAmino) => {
-  return Any.fromAmino(content);
-};
-export const Cosmos_basev1beta1Msg_ToAmino = (content: Any) => {
-  return Any.toAmino(content);
-};
+GlobalDecoderRegistry.register(MsgDeleteTaskResponse.typeUrl, MsgDeleteTaskResponse);

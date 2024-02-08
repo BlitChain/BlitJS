@@ -4,6 +4,7 @@ exports.DecProto = exports.IntProto = exports.DecCoin = exports.Coin = exports.p
 //@ts-nocheck
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 const math_1 = require("@cosmjs/math");
 exports.protobufPackage = "cosmos.base.v1beta1";
 function createBaseCoin() {
@@ -14,6 +15,16 @@ function createBaseCoin() {
 }
 exports.Coin = {
     typeUrl: "/cosmos.base.v1beta1.Coin",
+    aminoType: "cosmos-sdk/Coin",
+    is(o) {
+        return o && (o.$typeUrl === exports.Coin.typeUrl || typeof o.denom === "string" && typeof o.amount === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Coin.typeUrl || typeof o.denom === "string" && typeof o.amount === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Coin.typeUrl || typeof o.denom === "string" && typeof o.amount === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.denom !== "") {
             writer.uint32(10).string(message.denom);
@@ -99,6 +110,8 @@ exports.Coin = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Coin.typeUrl, exports.Coin);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Coin.aminoType, exports.Coin.typeUrl);
 function createBaseDecCoin() {
     return {
         denom: "",
@@ -107,6 +120,16 @@ function createBaseDecCoin() {
 }
 exports.DecCoin = {
     typeUrl: "/cosmos.base.v1beta1.DecCoin",
+    aminoType: "cosmos-sdk/DecCoin",
+    is(o) {
+        return o && (o.$typeUrl === exports.DecCoin.typeUrl || typeof o.denom === "string" && typeof o.amount === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.DecCoin.typeUrl || typeof o.denom === "string" && typeof o.amount === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.DecCoin.typeUrl || typeof o.denom === "string" && typeof o.amount === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.denom !== "") {
             writer.uint32(10).string(message.denom);
@@ -192,6 +215,8 @@ exports.DecCoin = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.DecCoin.typeUrl, exports.DecCoin);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.DecCoin.aminoType, exports.DecCoin.typeUrl);
 function createBaseIntProto() {
     return {
         int: ""
@@ -199,6 +224,16 @@ function createBaseIntProto() {
 }
 exports.IntProto = {
     typeUrl: "/cosmos.base.v1beta1.IntProto",
+    aminoType: "cosmos-sdk/IntProto",
+    is(o) {
+        return o && (o.$typeUrl === exports.IntProto.typeUrl || typeof o.int === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.IntProto.typeUrl || typeof o.int === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.IntProto.typeUrl || typeof o.int === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.int !== "") {
             writer.uint32(10).string(message.int);
@@ -271,6 +306,8 @@ exports.IntProto = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.IntProto.typeUrl, exports.IntProto);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.IntProto.aminoType, exports.IntProto.typeUrl);
 function createBaseDecProto() {
     return {
         dec: ""
@@ -278,6 +315,16 @@ function createBaseDecProto() {
 }
 exports.DecProto = {
     typeUrl: "/cosmos.base.v1beta1.DecProto",
+    aminoType: "cosmos-sdk/DecProto",
+    is(o) {
+        return o && (o.$typeUrl === exports.DecProto.typeUrl || typeof o.dec === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.DecProto.typeUrl || typeof o.dec === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.DecProto.typeUrl || typeof o.dec === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.dec !== "") {
             writer.uint32(10).string(math_1.Decimal.fromUserInput(message.dec, 18).atomics);
@@ -350,4 +397,6 @@ exports.DecProto = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.DecProto.typeUrl, exports.DecProto);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.DecProto.aminoType, exports.DecProto.typeUrl);
 //# sourceMappingURL=coin.js.map

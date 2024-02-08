@@ -6,6 +6,7 @@ const bank_1 = require("./bank");
 const coin_1 = require("../../base/v1beta1/coin");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.bank.v1beta1";
 function createBaseGenesisState() {
     return {
@@ -18,6 +19,16 @@ function createBaseGenesisState() {
 }
 exports.GenesisState = {
     typeUrl: "/cosmos.bank.v1beta1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || bank_1.Params.is(o.params) && Array.isArray(o.balances) && (!o.balances.length || exports.Balance.is(o.balances[0])) && Array.isArray(o.supply) && (!o.supply.length || coin_1.Coin.is(o.supply[0])) && Array.isArray(o.denom_metadata) && (!o.denom_metadata.length || bank_1.Metadata.is(o.denom_metadata[0])) && Array.isArray(o.send_enabled) && (!o.send_enabled.length || bank_1.SendEnabled.is(o.send_enabled[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || bank_1.Params.isSDK(o.params) && Array.isArray(o.balances) && (!o.balances.length || exports.Balance.isSDK(o.balances[0])) && Array.isArray(o.supply) && (!o.supply.length || coin_1.Coin.isSDK(o.supply[0])) && Array.isArray(o.denom_metadata) && (!o.denom_metadata.length || bank_1.Metadata.isSDK(o.denom_metadata[0])) && Array.isArray(o.send_enabled) && (!o.send_enabled.length || bank_1.SendEnabled.isSDK(o.send_enabled[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || bank_1.Params.isAmino(o.params) && Array.isArray(o.balances) && (!o.balances.length || exports.Balance.isAmino(o.balances[0])) && Array.isArray(o.supply) && (!o.supply.length || coin_1.Coin.isAmino(o.supply[0])) && Array.isArray(o.denom_metadata) && (!o.denom_metadata.length || bank_1.Metadata.isAmino(o.denom_metadata[0])) && Array.isArray(o.send_enabled) && (!o.send_enabled.length || bank_1.SendEnabled.isAmino(o.send_enabled[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.params !== undefined) {
             bank_1.Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -174,6 +185,8 @@ exports.GenesisState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GenesisState.aminoType, exports.GenesisState.typeUrl);
 function createBaseBalance() {
     return {
         address: "",
@@ -182,6 +195,16 @@ function createBaseBalance() {
 }
 exports.Balance = {
     typeUrl: "/cosmos.bank.v1beta1.Balance",
+    aminoType: "cosmos-sdk/Balance",
+    is(o) {
+        return o && (o.$typeUrl === exports.Balance.typeUrl || typeof o.address === "string" && Array.isArray(o.coins) && (!o.coins.length || coin_1.Coin.is(o.coins[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Balance.typeUrl || typeof o.address === "string" && Array.isArray(o.coins) && (!o.coins.length || coin_1.Coin.isSDK(o.coins[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Balance.typeUrl || typeof o.address === "string" && Array.isArray(o.coins) && (!o.coins.length || coin_1.Coin.isAmino(o.coins[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -275,4 +298,6 @@ exports.Balance = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Balance.typeUrl, exports.Balance);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Balance.aminoType, exports.Balance.typeUrl);
 //# sourceMappingURL=genesis.js.map

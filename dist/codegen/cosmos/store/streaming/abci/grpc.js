@@ -6,6 +6,7 @@ const types_1 = require("../../../../tendermint/abci/types");
 const listening_1 = require("../../v1beta1/listening");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "cosmos.store.streaming.abci";
 function createBaseListenFinalizeBlockRequest() {
     return {
@@ -15,6 +16,16 @@ function createBaseListenFinalizeBlockRequest() {
 }
 exports.ListenFinalizeBlockRequest = {
     typeUrl: "/cosmos.store.streaming.abci.ListenFinalizeBlockRequest",
+    aminoType: "cosmos-sdk/ListenFinalizeBlockRequest",
+    is(o) {
+        return o && o.$typeUrl === exports.ListenFinalizeBlockRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.ListenFinalizeBlockRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.ListenFinalizeBlockRequest.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.req !== undefined) {
             types_1.RequestFinalizeBlock.encode(message.req, writer.uint32(10).fork()).ldelim();
@@ -100,11 +111,23 @@ exports.ListenFinalizeBlockRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ListenFinalizeBlockRequest.typeUrl, exports.ListenFinalizeBlockRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ListenFinalizeBlockRequest.aminoType, exports.ListenFinalizeBlockRequest.typeUrl);
 function createBaseListenFinalizeBlockResponse() {
     return {};
 }
 exports.ListenFinalizeBlockResponse = {
     typeUrl: "/cosmos.store.streaming.abci.ListenFinalizeBlockResponse",
+    aminoType: "cosmos-sdk/ListenFinalizeBlockResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.ListenFinalizeBlockResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.ListenFinalizeBlockResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.ListenFinalizeBlockResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -163,6 +186,8 @@ exports.ListenFinalizeBlockResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ListenFinalizeBlockResponse.typeUrl, exports.ListenFinalizeBlockResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ListenFinalizeBlockResponse.aminoType, exports.ListenFinalizeBlockResponse.typeUrl);
 function createBaseListenCommitRequest() {
     return {
         block_height: BigInt(0),
@@ -172,6 +197,16 @@ function createBaseListenCommitRequest() {
 }
 exports.ListenCommitRequest = {
     typeUrl: "/cosmos.store.streaming.abci.ListenCommitRequest",
+    aminoType: "cosmos-sdk/ListenCommitRequest",
+    is(o) {
+        return o && (o.$typeUrl === exports.ListenCommitRequest.typeUrl || typeof o.block_height === "bigint" && Array.isArray(o.change_set) && (!o.change_set.length || listening_1.StoreKVPair.is(o.change_set[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ListenCommitRequest.typeUrl || typeof o.block_height === "bigint" && Array.isArray(o.change_set) && (!o.change_set.length || listening_1.StoreKVPair.isSDK(o.change_set[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ListenCommitRequest.typeUrl || typeof o.block_height === "bigint" && Array.isArray(o.change_set) && (!o.change_set.length || listening_1.StoreKVPair.isAmino(o.change_set[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.block_height !== BigInt(0)) {
             writer.uint32(8).int64(message.block_height);
@@ -278,11 +313,23 @@ exports.ListenCommitRequest = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ListenCommitRequest.typeUrl, exports.ListenCommitRequest);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ListenCommitRequest.aminoType, exports.ListenCommitRequest.typeUrl);
 function createBaseListenCommitResponse() {
     return {};
 }
 exports.ListenCommitResponse = {
     typeUrl: "/cosmos.store.streaming.abci.ListenCommitResponse",
+    aminoType: "cosmos-sdk/ListenCommitResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.ListenCommitResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.ListenCommitResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.ListenCommitResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -341,4 +388,6 @@ exports.ListenCommitResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ListenCommitResponse.typeUrl, exports.ListenCommitResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ListenCommitResponse.aminoType, exports.ListenCommitResponse.typeUrl);
 //# sourceMappingURL=grpc.js.map

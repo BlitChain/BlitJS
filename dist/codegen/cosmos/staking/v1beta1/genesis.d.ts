@@ -99,6 +99,10 @@ export interface LastValidatorPowerSDKType {
 }
 export declare const GenesisState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GenesisState;
+    isSDK(o: any): o is GenesisStateSDKType;
+    isAmino(o: any): o is GenesisStateAmino;
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;
@@ -114,6 +118,10 @@ export declare const GenesisState: {
 };
 export declare const LastValidatorPower: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is LastValidatorPower;
+    isSDK(o: any): o is LastValidatorPowerSDKType;
+    isAmino(o: any): o is LastValidatorPowerAmino;
     encode(message: LastValidatorPower, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LastValidatorPower;
     fromJSON(object: any): LastValidatorPower;

@@ -1027,6 +1027,9 @@ export interface CustomHttpPatternSDKType {
 }
 export declare const Http: {
     typeUrl: string;
+    is(o: any): o is Http;
+    isSDK(o: any): o is HttpSDKType;
+    isAmino(o: any): o is HttpAmino;
     encode(message: Http, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Http;
     fromJSON(object: any): Http;
@@ -1041,6 +1044,9 @@ export declare const Http: {
 };
 export declare const HttpRule: {
     typeUrl: string;
+    is(o: any): o is HttpRule;
+    isSDK(o: any): o is HttpRuleSDKType;
+    isAmino(o: any): o is HttpRuleAmino;
     encode(message: HttpRule, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): HttpRule;
     fromJSON(object: any): HttpRule;
@@ -1055,6 +1061,9 @@ export declare const HttpRule: {
 };
 export declare const CustomHttpPattern: {
     typeUrl: string;
+    is(o: any): o is CustomHttpPattern;
+    isSDK(o: any): o is CustomHttpPatternSDKType;
+    isAmino(o: any): o is CustomHttpPatternAmino;
     encode(message: CustomHttpPattern, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CustomHttpPattern;
     fromJSON(object: any): CustomHttpPattern;

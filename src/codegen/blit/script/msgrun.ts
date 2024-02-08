@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.script";
 /** MsgRun runs a script at a specific address */
 export interface MsgRun {
@@ -70,6 +71,15 @@ function createBaseMsgRun(): MsgRun {
 }
 export const MsgRun = {
   typeUrl: "/blit.script.MsgRun",
+  is(o: any): o is MsgRun {
+    return o && (o.$typeUrl === MsgRun.typeUrl || typeof o.caller_address === "string" && typeof o.script_address === "string" && typeof o.extra_code === "string" && typeof o.function_name === "string" && typeof o.kwargs === "string" && typeof o.grantee === "string" && typeof o.attached_messages === "string");
+  },
+  isSDK(o: any): o is MsgRunSDKType {
+    return o && (o.$typeUrl === MsgRun.typeUrl || typeof o.caller_address === "string" && typeof o.script_address === "string" && typeof o.extra_code === "string" && typeof o.function_name === "string" && typeof o.kwargs === "string" && typeof o.grantee === "string" && typeof o.attached_messages === "string");
+  },
+  isAmino(o: any): o is MsgRunAmino {
+    return o && (o.$typeUrl === MsgRun.typeUrl || typeof o.caller_address === "string" && typeof o.script_address === "string" && typeof o.extra_code === "string" && typeof o.function_name === "string" && typeof o.kwargs === "string" && typeof o.grantee === "string" && typeof o.attached_messages === "string");
+  },
   encode(message: MsgRun, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.caller_address !== "") {
       writer.uint32(18).string(message.caller_address);
@@ -214,6 +224,7 @@ export const MsgRun = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgRun.typeUrl, MsgRun);
 function createBaseMsgRunResponse(): MsgRunResponse {
   return {
     response: ""
@@ -221,6 +232,15 @@ function createBaseMsgRunResponse(): MsgRunResponse {
 }
 export const MsgRunResponse = {
   typeUrl: "/blit.script.MsgRunResponse",
+  is(o: any): o is MsgRunResponse {
+    return o && (o.$typeUrl === MsgRunResponse.typeUrl || typeof o.response === "string");
+  },
+  isSDK(o: any): o is MsgRunResponseSDKType {
+    return o && (o.$typeUrl === MsgRunResponse.typeUrl || typeof o.response === "string");
+  },
+  isAmino(o: any): o is MsgRunResponseAmino {
+    return o && (o.$typeUrl === MsgRunResponse.typeUrl || typeof o.response === "string");
+  },
   encode(message: MsgRunResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.response !== "") {
       writer.uint32(10).string(message.response);
@@ -287,3 +307,4 @@ export const MsgRunResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgRunResponse.typeUrl, MsgRunResponse);

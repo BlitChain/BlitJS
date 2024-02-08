@@ -241,6 +241,10 @@ export interface SnapshotExtensionPayloadSDKType {
 }
 export declare const Snapshot: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Snapshot;
+    isSDK(o: any): o is SnapshotSDKType;
+    isAmino(o: any): o is SnapshotAmino;
     encode(message: Snapshot, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Snapshot;
     fromJSON(object: any): Snapshot;
@@ -256,6 +260,10 @@ export declare const Snapshot: {
 };
 export declare const Metadata: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Metadata;
+    isSDK(o: any): o is MetadataSDKType;
+    isAmino(o: any): o is MetadataAmino;
     encode(message: Metadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Metadata;
     fromJSON(object: any): Metadata;
@@ -271,6 +279,10 @@ export declare const Metadata: {
 };
 export declare const SnapshotItem: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SnapshotItem;
+    isSDK(o: any): o is SnapshotItemSDKType;
+    isAmino(o: any): o is SnapshotItemAmino;
     encode(message: SnapshotItem, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SnapshotItem;
     fromJSON(object: any): SnapshotItem;
@@ -286,6 +298,10 @@ export declare const SnapshotItem: {
 };
 export declare const SnapshotStoreItem: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SnapshotStoreItem;
+    isSDK(o: any): o is SnapshotStoreItemSDKType;
+    isAmino(o: any): o is SnapshotStoreItemAmino;
     encode(message: SnapshotStoreItem, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SnapshotStoreItem;
     fromJSON(object: any): SnapshotStoreItem;
@@ -301,6 +317,10 @@ export declare const SnapshotStoreItem: {
 };
 export declare const SnapshotIAVLItem: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SnapshotIAVLItem;
+    isSDK(o: any): o is SnapshotIAVLItemSDKType;
+    isAmino(o: any): o is SnapshotIAVLItemAmino;
     encode(message: SnapshotIAVLItem, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SnapshotIAVLItem;
     fromJSON(object: any): SnapshotIAVLItem;
@@ -316,6 +336,10 @@ export declare const SnapshotIAVLItem: {
 };
 export declare const SnapshotExtensionMeta: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SnapshotExtensionMeta;
+    isSDK(o: any): o is SnapshotExtensionMetaSDKType;
+    isAmino(o: any): o is SnapshotExtensionMetaAmino;
     encode(message: SnapshotExtensionMeta, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SnapshotExtensionMeta;
     fromJSON(object: any): SnapshotExtensionMeta;
@@ -331,6 +355,10 @@ export declare const SnapshotExtensionMeta: {
 };
 export declare const SnapshotExtensionPayload: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SnapshotExtensionPayload;
+    isSDK(o: any): o is SnapshotExtensionPayloadSDKType;
+    isAmino(o: any): o is SnapshotExtensionPayloadAmino;
     encode(message: SnapshotExtensionPayload, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SnapshotExtensionPayload;
     fromJSON(object: any): SnapshotExtensionPayload;

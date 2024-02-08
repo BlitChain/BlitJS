@@ -3,6 +3,7 @@ import { Header, Data, Commit } from "./types";
 import { EvidenceList } from "./evidence";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "tendermint.types";
 function createBaseBlock() {
     return {
@@ -14,6 +15,15 @@ function createBaseBlock() {
 }
 export const Block = {
     typeUrl: "/tendermint.types.Block",
+    is(o) {
+        return o && (o.$typeUrl === Block.typeUrl || Header.is(o.header) && Data.is(o.data) && EvidenceList.is(o.evidence));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Block.typeUrl || Header.isSDK(o.header) && Data.isSDK(o.data) && EvidenceList.isSDK(o.evidence));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Block.typeUrl || Header.isAmino(o.header) && Data.isAmino(o.data) && EvidenceList.isAmino(o.evidence));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.header !== undefined) {
             Header.encode(message.header, writer.uint32(10).fork()).ldelim();
@@ -119,4 +129,5 @@ export const Block = {
         };
     }
 };
+GlobalDecoderRegistry.register(Block.typeUrl, Block);
 //# sourceMappingURL=block.js.map

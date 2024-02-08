@@ -6,6 +6,7 @@ const coin_1 = require("../../base/v1beta1/coin");
 const distribution_1 = require("./distribution");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.distribution.v1beta1";
 function createBaseMsgSetWithdrawAddress() {
     return {
@@ -15,6 +16,16 @@ function createBaseMsgSetWithdrawAddress() {
 }
 exports.MsgSetWithdrawAddress = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress",
+    aminoType: "cosmos-sdk/MsgModifyWithdrawAddress",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgSetWithdrawAddress.typeUrl || typeof o.delegator_address === "string" && typeof o.withdraw_address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgSetWithdrawAddress.typeUrl || typeof o.delegator_address === "string" && typeof o.withdraw_address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgSetWithdrawAddress.typeUrl || typeof o.delegator_address === "string" && typeof o.withdraw_address === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.delegator_address !== "") {
             writer.uint32(10).string(message.delegator_address);
@@ -100,11 +111,23 @@ exports.MsgSetWithdrawAddress = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgSetWithdrawAddress.typeUrl, exports.MsgSetWithdrawAddress);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgSetWithdrawAddress.aminoType, exports.MsgSetWithdrawAddress.typeUrl);
 function createBaseMsgSetWithdrawAddressResponse() {
     return {};
 }
 exports.MsgSetWithdrawAddressResponse = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgSetWithdrawAddressResponse",
+    aminoType: "cosmos-sdk/MsgSetWithdrawAddressResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgSetWithdrawAddressResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgSetWithdrawAddressResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgSetWithdrawAddressResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -163,6 +186,8 @@ exports.MsgSetWithdrawAddressResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgSetWithdrawAddressResponse.typeUrl, exports.MsgSetWithdrawAddressResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgSetWithdrawAddressResponse.aminoType, exports.MsgSetWithdrawAddressResponse.typeUrl);
 function createBaseMsgWithdrawDelegatorReward() {
     return {
         delegator_address: "",
@@ -171,6 +196,16 @@ function createBaseMsgWithdrawDelegatorReward() {
 }
 exports.MsgWithdrawDelegatorReward = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward",
+    aminoType: "cosmos-sdk/MsgWithdrawDelegationReward",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgWithdrawDelegatorReward.typeUrl || typeof o.delegator_address === "string" && typeof o.validator_address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgWithdrawDelegatorReward.typeUrl || typeof o.delegator_address === "string" && typeof o.validator_address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgWithdrawDelegatorReward.typeUrl || typeof o.delegator_address === "string" && typeof o.validator_address === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.delegator_address !== "") {
             writer.uint32(10).string(message.delegator_address);
@@ -256,6 +291,8 @@ exports.MsgWithdrawDelegatorReward = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgWithdrawDelegatorReward.typeUrl, exports.MsgWithdrawDelegatorReward);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgWithdrawDelegatorReward.aminoType, exports.MsgWithdrawDelegatorReward.typeUrl);
 function createBaseMsgWithdrawDelegatorRewardResponse() {
     return {
         amount: []
@@ -263,6 +300,16 @@ function createBaseMsgWithdrawDelegatorRewardResponse() {
 }
 exports.MsgWithdrawDelegatorRewardResponse = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorRewardResponse",
+    aminoType: "cosmos-sdk/MsgWithdrawDelegatorRewardResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgWithdrawDelegatorRewardResponse.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.is(o.amount[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgWithdrawDelegatorRewardResponse.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isSDK(o.amount[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgWithdrawDelegatorRewardResponse.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isAmino(o.amount[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.amount) {
             coin_1.Coin.encode(v, writer.uint32(10).fork()).ldelim();
@@ -343,6 +390,8 @@ exports.MsgWithdrawDelegatorRewardResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgWithdrawDelegatorRewardResponse.typeUrl, exports.MsgWithdrawDelegatorRewardResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgWithdrawDelegatorRewardResponse.aminoType, exports.MsgWithdrawDelegatorRewardResponse.typeUrl);
 function createBaseMsgWithdrawValidatorCommission() {
     return {
         validator_address: ""
@@ -350,6 +399,16 @@ function createBaseMsgWithdrawValidatorCommission() {
 }
 exports.MsgWithdrawValidatorCommission = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission",
+    aminoType: "cosmos-sdk/MsgWithdrawValidatorCommission",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgWithdrawValidatorCommission.typeUrl || typeof o.validator_address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgWithdrawValidatorCommission.typeUrl || typeof o.validator_address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgWithdrawValidatorCommission.typeUrl || typeof o.validator_address === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.validator_address !== "") {
             writer.uint32(10).string(message.validator_address);
@@ -422,6 +481,8 @@ exports.MsgWithdrawValidatorCommission = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgWithdrawValidatorCommission.typeUrl, exports.MsgWithdrawValidatorCommission);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgWithdrawValidatorCommission.aminoType, exports.MsgWithdrawValidatorCommission.typeUrl);
 function createBaseMsgWithdrawValidatorCommissionResponse() {
     return {
         amount: []
@@ -429,6 +490,16 @@ function createBaseMsgWithdrawValidatorCommissionResponse() {
 }
 exports.MsgWithdrawValidatorCommissionResponse = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommissionResponse",
+    aminoType: "cosmos-sdk/MsgWithdrawValidatorCommissionResponse",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgWithdrawValidatorCommissionResponse.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.is(o.amount[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgWithdrawValidatorCommissionResponse.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isSDK(o.amount[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgWithdrawValidatorCommissionResponse.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isAmino(o.amount[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.amount) {
             coin_1.Coin.encode(v, writer.uint32(10).fork()).ldelim();
@@ -509,6 +580,8 @@ exports.MsgWithdrawValidatorCommissionResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgWithdrawValidatorCommissionResponse.typeUrl, exports.MsgWithdrawValidatorCommissionResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgWithdrawValidatorCommissionResponse.aminoType, exports.MsgWithdrawValidatorCommissionResponse.typeUrl);
 function createBaseMsgFundCommunityPool() {
     return {
         amount: [],
@@ -517,6 +590,16 @@ function createBaseMsgFundCommunityPool() {
 }
 exports.MsgFundCommunityPool = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgFundCommunityPool",
+    aminoType: "cosmos-sdk/MsgFundCommunityPool",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgFundCommunityPool.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.is(o.amount[0])) && typeof o.depositor === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgFundCommunityPool.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isSDK(o.amount[0])) && typeof o.depositor === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgFundCommunityPool.typeUrl || Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isAmino(o.amount[0])) && typeof o.depositor === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.amount) {
             coin_1.Coin.encode(v, writer.uint32(10).fork()).ldelim();
@@ -610,11 +693,23 @@ exports.MsgFundCommunityPool = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgFundCommunityPool.typeUrl, exports.MsgFundCommunityPool);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgFundCommunityPool.aminoType, exports.MsgFundCommunityPool.typeUrl);
 function createBaseMsgFundCommunityPoolResponse() {
     return {};
 }
 exports.MsgFundCommunityPoolResponse = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgFundCommunityPoolResponse",
+    aminoType: "cosmos-sdk/MsgFundCommunityPoolResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgFundCommunityPoolResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgFundCommunityPoolResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgFundCommunityPoolResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -673,6 +768,8 @@ exports.MsgFundCommunityPoolResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgFundCommunityPoolResponse.typeUrl, exports.MsgFundCommunityPoolResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgFundCommunityPoolResponse.aminoType, exports.MsgFundCommunityPoolResponse.typeUrl);
 function createBaseMsgUpdateParams() {
     return {
         authority: "",
@@ -681,6 +778,16 @@ function createBaseMsgUpdateParams() {
 }
 exports.MsgUpdateParams = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgUpdateParams",
+    aminoType: "cosmos-sdk/distribution/MsgUpdateParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateParams.typeUrl || typeof o.authority === "string" && distribution_1.Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateParams.typeUrl || typeof o.authority === "string" && distribution_1.Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgUpdateParams.typeUrl || typeof o.authority === "string" && distribution_1.Params.isAmino(o.params));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.authority !== "") {
             writer.uint32(10).string(message.authority);
@@ -766,11 +873,23 @@ exports.MsgUpdateParams = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgUpdateParams.typeUrl, exports.MsgUpdateParams);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgUpdateParams.aminoType, exports.MsgUpdateParams.typeUrl);
 function createBaseMsgUpdateParamsResponse() {
     return {};
 }
 exports.MsgUpdateParamsResponse = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgUpdateParamsResponse",
+    aminoType: "cosmos-sdk/MsgUpdateParamsResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgUpdateParamsResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgUpdateParamsResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgUpdateParamsResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -829,6 +948,8 @@ exports.MsgUpdateParamsResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgUpdateParamsResponse.typeUrl, exports.MsgUpdateParamsResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgUpdateParamsResponse.aminoType, exports.MsgUpdateParamsResponse.typeUrl);
 function createBaseMsgCommunityPoolSpend() {
     return {
         authority: "",
@@ -838,6 +959,16 @@ function createBaseMsgCommunityPoolSpend() {
 }
 exports.MsgCommunityPoolSpend = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgCommunityPoolSpend",
+    aminoType: "cosmos-sdk/distr/MsgCommunityPoolSpend",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgCommunityPoolSpend.typeUrl || typeof o.authority === "string" && typeof o.recipient === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.is(o.amount[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgCommunityPoolSpend.typeUrl || typeof o.authority === "string" && typeof o.recipient === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isSDK(o.amount[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgCommunityPoolSpend.typeUrl || typeof o.authority === "string" && typeof o.recipient === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isAmino(o.amount[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.authority !== "") {
             writer.uint32(10).string(message.authority);
@@ -944,11 +1075,23 @@ exports.MsgCommunityPoolSpend = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgCommunityPoolSpend.typeUrl, exports.MsgCommunityPoolSpend);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgCommunityPoolSpend.aminoType, exports.MsgCommunityPoolSpend.typeUrl);
 function createBaseMsgCommunityPoolSpendResponse() {
     return {};
 }
 exports.MsgCommunityPoolSpendResponse = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgCommunityPoolSpendResponse",
+    aminoType: "cosmos-sdk/MsgCommunityPoolSpendResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgCommunityPoolSpendResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgCommunityPoolSpendResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgCommunityPoolSpendResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -1007,6 +1150,8 @@ exports.MsgCommunityPoolSpendResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgCommunityPoolSpendResponse.typeUrl, exports.MsgCommunityPoolSpendResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgCommunityPoolSpendResponse.aminoType, exports.MsgCommunityPoolSpendResponse.typeUrl);
 function createBaseMsgDepositValidatorRewardsPool() {
     return {
         depositor: "",
@@ -1016,6 +1161,16 @@ function createBaseMsgDepositValidatorRewardsPool() {
 }
 exports.MsgDepositValidatorRewardsPool = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPool",
+    aminoType: "cosmos-sdk/distr/MsgDepositValRewards",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgDepositValidatorRewardsPool.typeUrl || typeof o.depositor === "string" && typeof o.validator_address === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.is(o.amount[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgDepositValidatorRewardsPool.typeUrl || typeof o.depositor === "string" && typeof o.validator_address === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isSDK(o.amount[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgDepositValidatorRewardsPool.typeUrl || typeof o.depositor === "string" && typeof o.validator_address === "string" && Array.isArray(o.amount) && (!o.amount.length || coin_1.Coin.isAmino(o.amount[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.depositor !== "") {
             writer.uint32(10).string(message.depositor);
@@ -1122,11 +1277,23 @@ exports.MsgDepositValidatorRewardsPool = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgDepositValidatorRewardsPool.typeUrl, exports.MsgDepositValidatorRewardsPool);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgDepositValidatorRewardsPool.aminoType, exports.MsgDepositValidatorRewardsPool.typeUrl);
 function createBaseMsgDepositValidatorRewardsPoolResponse() {
     return {};
 }
 exports.MsgDepositValidatorRewardsPoolResponse = {
     typeUrl: "/cosmos.distribution.v1beta1.MsgDepositValidatorRewardsPoolResponse",
+    aminoType: "cosmos-sdk/MsgDepositValidatorRewardsPoolResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgDepositValidatorRewardsPoolResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgDepositValidatorRewardsPoolResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgDepositValidatorRewardsPoolResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -1185,4 +1352,6 @@ exports.MsgDepositValidatorRewardsPoolResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgDepositValidatorRewardsPoolResponse.typeUrl, exports.MsgDepositValidatorRewardsPoolResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgDepositValidatorRewardsPoolResponse.aminoType, exports.MsgDepositValidatorRewardsPoolResponse.typeUrl);
 //# sourceMappingURL=tx.js.map

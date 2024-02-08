@@ -4,6 +4,7 @@ exports.Timestamp = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "google.protobuf";
 function createBaseTimestamp() {
     return {
@@ -13,6 +14,15 @@ function createBaseTimestamp() {
 }
 exports.Timestamp = {
     typeUrl: "/google.protobuf.Timestamp",
+    is(o) {
+        return o && (o.$typeUrl === exports.Timestamp.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Timestamp.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Timestamp.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.seconds !== BigInt(0)) {
             writer.uint32(8).int64(message.seconds);
@@ -82,4 +92,5 @@ exports.Timestamp = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Timestamp.typeUrl, exports.Timestamp);
 //# sourceMappingURL=timestamp.js.map

@@ -5,6 +5,7 @@ exports.Params = exports.ModuleCredential = exports.ModuleAccount = exports.Base
 const any_1 = require("../../../google/protobuf/any");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.auth.v1beta1";
 function createBaseBaseAccount() {
     return {
@@ -17,6 +18,16 @@ function createBaseBaseAccount() {
 }
 exports.BaseAccount = {
     typeUrl: "/cosmos.auth.v1beta1.BaseAccount",
+    aminoType: "cosmos-sdk/BaseAccount",
+    is(o) {
+        return o && (o.$typeUrl === exports.BaseAccount.typeUrl || typeof o.address === "string" && typeof o.account_number === "bigint" && typeof o.sequence === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.BaseAccount.typeUrl || typeof o.address === "string" && typeof o.account_number === "bigint" && typeof o.sequence === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.BaseAccount.typeUrl || typeof o.address === "string" && typeof o.account_number === "bigint" && typeof o.sequence === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -128,6 +139,8 @@ exports.BaseAccount = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.BaseAccount.typeUrl, exports.BaseAccount);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.BaseAccount.aminoType, exports.BaseAccount.typeUrl);
 function createBaseModuleAccount() {
     return {
         $typeUrl: "/cosmos.auth.v1beta1.ModuleAccount",
@@ -138,6 +151,16 @@ function createBaseModuleAccount() {
 }
 exports.ModuleAccount = {
     typeUrl: "/cosmos.auth.v1beta1.ModuleAccount",
+    aminoType: "cosmos-sdk/ModuleAccount",
+    is(o) {
+        return o && (o.$typeUrl === exports.ModuleAccount.typeUrl || typeof o.name === "string" && Array.isArray(o.permissions) && (!o.permissions.length || typeof o.permissions[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ModuleAccount.typeUrl || typeof o.name === "string" && Array.isArray(o.permissions) && (!o.permissions.length || typeof o.permissions[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ModuleAccount.typeUrl || typeof o.name === "string" && Array.isArray(o.permissions) && (!o.permissions.length || typeof o.permissions[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.base_account !== undefined) {
             exports.BaseAccount.encode(message.base_account, writer.uint32(10).fork()).ldelim();
@@ -244,6 +267,8 @@ exports.ModuleAccount = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ModuleAccount.typeUrl, exports.ModuleAccount);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ModuleAccount.aminoType, exports.ModuleAccount.typeUrl);
 function createBaseModuleCredential() {
     return {
         module_name: "",
@@ -252,6 +277,16 @@ function createBaseModuleCredential() {
 }
 exports.ModuleCredential = {
     typeUrl: "/cosmos.auth.v1beta1.ModuleCredential",
+    aminoType: "cosmos-sdk/GroupAccountCredential",
+    is(o) {
+        return o && (o.$typeUrl === exports.ModuleCredential.typeUrl || typeof o.module_name === "string" && Array.isArray(o.derivation_keys) && (!o.derivation_keys.length || o.derivation_keys[0] instanceof Uint8Array || typeof o.derivation_keys[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ModuleCredential.typeUrl || typeof o.module_name === "string" && Array.isArray(o.derivation_keys) && (!o.derivation_keys.length || o.derivation_keys[0] instanceof Uint8Array || typeof o.derivation_keys[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ModuleCredential.typeUrl || typeof o.module_name === "string" && Array.isArray(o.derivation_keys) && (!o.derivation_keys.length || o.derivation_keys[0] instanceof Uint8Array || typeof o.derivation_keys[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.module_name !== "") {
             writer.uint32(10).string(message.module_name);
@@ -345,6 +380,8 @@ exports.ModuleCredential = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ModuleCredential.typeUrl, exports.ModuleCredential);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ModuleCredential.aminoType, exports.ModuleCredential.typeUrl);
 function createBaseParams() {
     return {
         max_memo_characters: BigInt(0),
@@ -356,6 +393,16 @@ function createBaseParams() {
 }
 exports.Params = {
     typeUrl: "/cosmos.auth.v1beta1.Params",
+    aminoType: "cosmos-sdk/x/auth/Params",
+    is(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.max_memo_characters === "bigint" && typeof o.tx_sig_limit === "bigint" && typeof o.tx_size_cost_per_byte === "bigint" && typeof o.sig_verify_cost_ed25519 === "bigint" && typeof o.sig_verify_cost_secp256k1 === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.max_memo_characters === "bigint" && typeof o.tx_sig_limit === "bigint" && typeof o.tx_size_cost_per_byte === "bigint" && typeof o.sig_verify_cost_ed25519 === "bigint" && typeof o.sig_verify_cost_secp256k1 === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.max_memo_characters === "bigint" && typeof o.tx_sig_limit === "bigint" && typeof o.tx_size_cost_per_byte === "bigint" && typeof o.sig_verify_cost_ed25519 === "bigint" && typeof o.sig_verify_cost_secp256k1 === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.max_memo_characters !== BigInt(0)) {
             writer.uint32(8).uint64(message.max_memo_characters);
@@ -480,4 +527,6 @@ exports.Params = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Params.typeUrl, exports.Params);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Params.aminoType, exports.Params.typeUrl);
 //# sourceMappingURL=auth.js.map

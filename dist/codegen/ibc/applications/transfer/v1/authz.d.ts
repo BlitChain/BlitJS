@@ -73,6 +73,10 @@ export interface TransferAuthorizationSDKType {
 }
 export declare const Allocation: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Allocation;
+    isSDK(o: any): o is AllocationSDKType;
+    isAmino(o: any): o is AllocationAmino;
     encode(message: Allocation, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Allocation;
     fromJSON(object: any): Allocation;
@@ -88,6 +92,10 @@ export declare const Allocation: {
 };
 export declare const TransferAuthorization: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TransferAuthorization;
+    isSDK(o: any): o is TransferAuthorizationSDKType;
+    isAmino(o: any): o is TransferAuthorizationAmino;
     encode(message: TransferAuthorization, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TransferAuthorization;
     fromJSON(object: any): TransferAuthorization;

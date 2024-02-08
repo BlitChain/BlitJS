@@ -81,6 +81,10 @@ export interface PacketSequenceSDKType {
 }
 export declare const GenesisState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GenesisState;
+    isSDK(o: any): o is GenesisStateSDKType;
+    isAmino(o: any): o is GenesisStateAmino;
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;
@@ -96,6 +100,10 @@ export declare const GenesisState: {
 };
 export declare const PacketSequence: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PacketSequence;
+    isSDK(o: any): o is PacketSequenceSDKType;
+    isAmino(o: any): o is PacketSequenceAmino;
     encode(message: PacketSequence, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PacketSequence;
     fromJSON(object: any): PacketSequence;

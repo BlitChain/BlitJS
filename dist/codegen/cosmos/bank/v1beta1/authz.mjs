@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { Coin } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.bank.v1beta1";
 function createBaseSendAuthorization() {
     return {
@@ -11,6 +12,16 @@ function createBaseSendAuthorization() {
 }
 export const SendAuthorization = {
     typeUrl: "/cosmos.bank.v1beta1.SendAuthorization",
+    aminoType: "cosmos-sdk/SendAuthorization",
+    is(o) {
+        return o && (o.$typeUrl === SendAuthorization.typeUrl || Array.isArray(o.spend_limit) && (!o.spend_limit.length || Coin.is(o.spend_limit[0])) && Array.isArray(o.allow_list) && (!o.allow_list.length || typeof o.allow_list[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === SendAuthorization.typeUrl || Array.isArray(o.spend_limit) && (!o.spend_limit.length || Coin.isSDK(o.spend_limit[0])) && Array.isArray(o.allow_list) && (!o.allow_list.length || typeof o.allow_list[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === SendAuthorization.typeUrl || Array.isArray(o.spend_limit) && (!o.spend_limit.length || Coin.isAmino(o.spend_limit[0])) && Array.isArray(o.allow_list) && (!o.allow_list.length || typeof o.allow_list[0] === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.spend_limit) {
             Coin.encode(v, writer.uint32(10).fork()).ldelim();
@@ -112,4 +123,6 @@ export const SendAuthorization = {
         };
     }
 };
+GlobalDecoderRegistry.register(SendAuthorization.typeUrl, SendAuthorization);
+GlobalDecoderRegistry.registerAminoProtoMapping(SendAuthorization.aminoType, SendAuthorization.typeUrl);
 //# sourceMappingURL=authz.js.map

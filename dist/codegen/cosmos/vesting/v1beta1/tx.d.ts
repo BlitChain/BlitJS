@@ -212,6 +212,10 @@ export interface MsgCreatePeriodicVestingAccountResponseSDKType {
 }
 export declare const MsgCreateVestingAccount: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreateVestingAccount;
+    isSDK(o: any): o is MsgCreateVestingAccountSDKType;
+    isAmino(o: any): o is MsgCreateVestingAccountAmino;
     encode(message: MsgCreateVestingAccount, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateVestingAccount;
     fromJSON(object: any): MsgCreateVestingAccount;
@@ -227,6 +231,10 @@ export declare const MsgCreateVestingAccount: {
 };
 export declare const MsgCreateVestingAccountResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreateVestingAccountResponse;
+    isSDK(o: any): o is MsgCreateVestingAccountResponseSDKType;
+    isAmino(o: any): o is MsgCreateVestingAccountResponseAmino;
     encode(_: MsgCreateVestingAccountResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateVestingAccountResponse;
     fromJSON(_: any): MsgCreateVestingAccountResponse;
@@ -242,6 +250,10 @@ export declare const MsgCreateVestingAccountResponse: {
 };
 export declare const MsgCreatePermanentLockedAccount: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreatePermanentLockedAccount;
+    isSDK(o: any): o is MsgCreatePermanentLockedAccountSDKType;
+    isAmino(o: any): o is MsgCreatePermanentLockedAccountAmino;
     encode(message: MsgCreatePermanentLockedAccount, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreatePermanentLockedAccount;
     fromJSON(object: any): MsgCreatePermanentLockedAccount;
@@ -257,6 +269,10 @@ export declare const MsgCreatePermanentLockedAccount: {
 };
 export declare const MsgCreatePermanentLockedAccountResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreatePermanentLockedAccountResponse;
+    isSDK(o: any): o is MsgCreatePermanentLockedAccountResponseSDKType;
+    isAmino(o: any): o is MsgCreatePermanentLockedAccountResponseAmino;
     encode(_: MsgCreatePermanentLockedAccountResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreatePermanentLockedAccountResponse;
     fromJSON(_: any): MsgCreatePermanentLockedAccountResponse;
@@ -272,6 +288,10 @@ export declare const MsgCreatePermanentLockedAccountResponse: {
 };
 export declare const MsgCreatePeriodicVestingAccount: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreatePeriodicVestingAccount;
+    isSDK(o: any): o is MsgCreatePeriodicVestingAccountSDKType;
+    isAmino(o: any): o is MsgCreatePeriodicVestingAccountAmino;
     encode(message: MsgCreatePeriodicVestingAccount, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreatePeriodicVestingAccount;
     fromJSON(object: any): MsgCreatePeriodicVestingAccount;
@@ -287,6 +307,10 @@ export declare const MsgCreatePeriodicVestingAccount: {
 };
 export declare const MsgCreatePeriodicVestingAccountResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgCreatePeriodicVestingAccountResponse;
+    isSDK(o: any): o is MsgCreatePeriodicVestingAccountResponseSDKType;
+    isAmino(o: any): o is MsgCreatePeriodicVestingAccountResponseAmino;
     encode(_: MsgCreatePeriodicVestingAccountResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreatePeriodicVestingAccountResponse;
     fromJSON(_: any): MsgCreatePeriodicVestingAccountResponse;

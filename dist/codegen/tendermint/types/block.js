@@ -6,6 +6,7 @@ const types_1 = require("./types");
 const evidence_1 = require("./evidence");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "tendermint.types";
 function createBaseBlock() {
     return {
@@ -17,6 +18,15 @@ function createBaseBlock() {
 }
 exports.Block = {
     typeUrl: "/tendermint.types.Block",
+    is(o) {
+        return o && (o.$typeUrl === exports.Block.typeUrl || types_1.Header.is(o.header) && types_1.Data.is(o.data) && evidence_1.EvidenceList.is(o.evidence));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Block.typeUrl || types_1.Header.isSDK(o.header) && types_1.Data.isSDK(o.data) && evidence_1.EvidenceList.isSDK(o.evidence));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Block.typeUrl || types_1.Header.isAmino(o.header) && types_1.Data.isAmino(o.data) && evidence_1.EvidenceList.isAmino(o.evidence));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.header !== undefined) {
             types_1.Header.encode(message.header, writer.uint32(10).fork()).ldelim();
@@ -122,4 +132,5 @@ exports.Block = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Block.typeUrl, exports.Block);
 //# sourceMappingURL=block.js.map

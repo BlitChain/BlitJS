@@ -585,6 +585,10 @@ export interface NextSequenceRecvDataSDKType {
 }
 export declare const ClientState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ClientState;
+    isSDK(o: any): o is ClientStateSDKType;
+    isAmino(o: any): o is ClientStateAmino;
     encode(message: ClientState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientState;
     fromJSON(object: any): ClientState;
@@ -600,6 +604,10 @@ export declare const ClientState: {
 };
 export declare const ConsensusState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ConsensusState;
+    isSDK(o: any): o is ConsensusStateSDKType;
+    isAmino(o: any): o is ConsensusStateAmino;
     encode(message: ConsensusState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConsensusState;
     fromJSON(object: any): ConsensusState;
@@ -615,6 +623,10 @@ export declare const ConsensusState: {
 };
 export declare const Header: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Header;
+    isSDK(o: any): o is HeaderSDKType;
+    isAmino(o: any): o is HeaderAmino;
     encode(message: Header, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Header;
     fromJSON(object: any): Header;
@@ -630,6 +642,10 @@ export declare const Header: {
 };
 export declare const Misbehaviour: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Misbehaviour;
+    isSDK(o: any): o is MisbehaviourSDKType;
+    isAmino(o: any): o is MisbehaviourAmino;
     encode(message: Misbehaviour, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Misbehaviour;
     fromJSON(object: any): Misbehaviour;
@@ -645,6 +661,10 @@ export declare const Misbehaviour: {
 };
 export declare const SignatureAndData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SignatureAndData;
+    isSDK(o: any): o is SignatureAndDataSDKType;
+    isAmino(o: any): o is SignatureAndDataAmino;
     encode(message: SignatureAndData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignatureAndData;
     fromJSON(object: any): SignatureAndData;
@@ -660,6 +680,10 @@ export declare const SignatureAndData: {
 };
 export declare const TimestampedSignatureData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TimestampedSignatureData;
+    isSDK(o: any): o is TimestampedSignatureDataSDKType;
+    isAmino(o: any): o is TimestampedSignatureDataAmino;
     encode(message: TimestampedSignatureData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TimestampedSignatureData;
     fromJSON(object: any): TimestampedSignatureData;
@@ -675,6 +699,10 @@ export declare const TimestampedSignatureData: {
 };
 export declare const SignBytes: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SignBytes;
+    isSDK(o: any): o is SignBytesSDKType;
+    isAmino(o: any): o is SignBytesAmino;
     encode(message: SignBytes, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignBytes;
     fromJSON(object: any): SignBytes;
@@ -690,6 +718,10 @@ export declare const SignBytes: {
 };
 export declare const HeaderData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is HeaderData;
+    isSDK(o: any): o is HeaderDataSDKType;
+    isAmino(o: any): o is HeaderDataAmino;
     encode(message: HeaderData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): HeaderData;
     fromJSON(object: any): HeaderData;
@@ -705,6 +737,10 @@ export declare const HeaderData: {
 };
 export declare const ClientStateData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ClientStateData;
+    isSDK(o: any): o is ClientStateDataSDKType;
+    isAmino(o: any): o is ClientStateDataAmino;
     encode(message: ClientStateData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ClientStateData;
     fromJSON(object: any): ClientStateData;
@@ -720,6 +756,10 @@ export declare const ClientStateData: {
 };
 export declare const ConsensusStateData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ConsensusStateData;
+    isSDK(o: any): o is ConsensusStateDataSDKType;
+    isAmino(o: any): o is ConsensusStateDataAmino;
     encode(message: ConsensusStateData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConsensusStateData;
     fromJSON(object: any): ConsensusStateData;
@@ -735,6 +775,10 @@ export declare const ConsensusStateData: {
 };
 export declare const ConnectionStateData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ConnectionStateData;
+    isSDK(o: any): o is ConnectionStateDataSDKType;
+    isAmino(o: any): o is ConnectionStateDataAmino;
     encode(message: ConnectionStateData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConnectionStateData;
     fromJSON(object: any): ConnectionStateData;
@@ -750,6 +794,10 @@ export declare const ConnectionStateData: {
 };
 export declare const ChannelStateData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ChannelStateData;
+    isSDK(o: any): o is ChannelStateDataSDKType;
+    isAmino(o: any): o is ChannelStateDataAmino;
     encode(message: ChannelStateData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ChannelStateData;
     fromJSON(object: any): ChannelStateData;
@@ -765,6 +813,10 @@ export declare const ChannelStateData: {
 };
 export declare const PacketCommitmentData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PacketCommitmentData;
+    isSDK(o: any): o is PacketCommitmentDataSDKType;
+    isAmino(o: any): o is PacketCommitmentDataAmino;
     encode(message: PacketCommitmentData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PacketCommitmentData;
     fromJSON(object: any): PacketCommitmentData;
@@ -780,6 +832,10 @@ export declare const PacketCommitmentData: {
 };
 export declare const PacketAcknowledgementData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PacketAcknowledgementData;
+    isSDK(o: any): o is PacketAcknowledgementDataSDKType;
+    isAmino(o: any): o is PacketAcknowledgementDataAmino;
     encode(message: PacketAcknowledgementData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PacketAcknowledgementData;
     fromJSON(object: any): PacketAcknowledgementData;
@@ -795,6 +851,10 @@ export declare const PacketAcknowledgementData: {
 };
 export declare const PacketReceiptAbsenceData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PacketReceiptAbsenceData;
+    isSDK(o: any): o is PacketReceiptAbsenceDataSDKType;
+    isAmino(o: any): o is PacketReceiptAbsenceDataAmino;
     encode(message: PacketReceiptAbsenceData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PacketReceiptAbsenceData;
     fromJSON(object: any): PacketReceiptAbsenceData;
@@ -810,6 +870,10 @@ export declare const PacketReceiptAbsenceData: {
 };
 export declare const NextSequenceRecvData: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is NextSequenceRecvData;
+    isSDK(o: any): o is NextSequenceRecvDataSDKType;
+    isAmino(o: any): o is NextSequenceRecvDataAmino;
     encode(message: NextSequenceRecvData, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): NextSequenceRecvData;
     fromJSON(object: any): NextSequenceRecvData;

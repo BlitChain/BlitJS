@@ -4,6 +4,7 @@ exports.BIP44Params = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "cosmos.crypto.hd.v1";
 function createBaseBIP44Params() {
     return {
@@ -16,6 +17,16 @@ function createBaseBIP44Params() {
 }
 exports.BIP44Params = {
     typeUrl: "/cosmos.crypto.hd.v1.BIP44Params",
+    aminoType: "crypto/keys/hd/BIP44Params",
+    is(o) {
+        return o && (o.$typeUrl === exports.BIP44Params.typeUrl || typeof o.purpose === "number" && typeof o.coin_type === "number" && typeof o.account === "number" && typeof o.change === "boolean" && typeof o.address_index === "number");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.BIP44Params.typeUrl || typeof o.purpose === "number" && typeof o.coin_type === "number" && typeof o.account === "number" && typeof o.change === "boolean" && typeof o.address_index === "number");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.BIP44Params.typeUrl || typeof o.purpose === "number" && typeof o.coin_type === "number" && typeof o.account === "number" && typeof o.change === "boolean" && typeof o.address_index === "number");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.purpose !== 0) {
             writer.uint32(8).uint32(message.purpose);
@@ -140,4 +151,6 @@ exports.BIP44Params = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.BIP44Params.typeUrl, exports.BIP44Params);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.BIP44Params.aminoType, exports.BIP44Params.typeUrl);
 //# sourceMappingURL=hd.js.map

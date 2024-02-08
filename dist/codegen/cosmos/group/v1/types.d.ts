@@ -740,6 +740,10 @@ export interface VoteSDKType {
 }
 export declare const Member: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Member;
+    isSDK(o: any): o is MemberSDKType;
+    isAmino(o: any): o is MemberAmino;
     encode(message: Member, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Member;
     fromJSON(object: any): Member;
@@ -755,6 +759,10 @@ export declare const Member: {
 };
 export declare const MemberRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MemberRequest;
+    isSDK(o: any): o is MemberRequestSDKType;
+    isAmino(o: any): o is MemberRequestAmino;
     encode(message: MemberRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MemberRequest;
     fromJSON(object: any): MemberRequest;
@@ -770,6 +778,10 @@ export declare const MemberRequest: {
 };
 export declare const ThresholdDecisionPolicy: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ThresholdDecisionPolicy;
+    isSDK(o: any): o is ThresholdDecisionPolicySDKType;
+    isAmino(o: any): o is ThresholdDecisionPolicyAmino;
     encode(message: ThresholdDecisionPolicy, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ThresholdDecisionPolicy;
     fromJSON(object: any): ThresholdDecisionPolicy;
@@ -785,6 +797,10 @@ export declare const ThresholdDecisionPolicy: {
 };
 export declare const PercentageDecisionPolicy: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PercentageDecisionPolicy;
+    isSDK(o: any): o is PercentageDecisionPolicySDKType;
+    isAmino(o: any): o is PercentageDecisionPolicyAmino;
     encode(message: PercentageDecisionPolicy, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PercentageDecisionPolicy;
     fromJSON(object: any): PercentageDecisionPolicy;
@@ -800,6 +816,10 @@ export declare const PercentageDecisionPolicy: {
 };
 export declare const DecisionPolicyWindows: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is DecisionPolicyWindows;
+    isSDK(o: any): o is DecisionPolicyWindowsSDKType;
+    isAmino(o: any): o is DecisionPolicyWindowsAmino;
     encode(message: DecisionPolicyWindows, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DecisionPolicyWindows;
     fromJSON(object: any): DecisionPolicyWindows;
@@ -815,6 +835,10 @@ export declare const DecisionPolicyWindows: {
 };
 export declare const GroupInfo: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GroupInfo;
+    isSDK(o: any): o is GroupInfoSDKType;
+    isAmino(o: any): o is GroupInfoAmino;
     encode(message: GroupInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GroupInfo;
     fromJSON(object: any): GroupInfo;
@@ -830,6 +854,10 @@ export declare const GroupInfo: {
 };
 export declare const GroupMember: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GroupMember;
+    isSDK(o: any): o is GroupMemberSDKType;
+    isAmino(o: any): o is GroupMemberAmino;
     encode(message: GroupMember, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GroupMember;
     fromJSON(object: any): GroupMember;
@@ -845,6 +873,10 @@ export declare const GroupMember: {
 };
 export declare const GroupPolicyInfo: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GroupPolicyInfo;
+    isSDK(o: any): o is GroupPolicyInfoSDKType;
+    isAmino(o: any): o is GroupPolicyInfoAmino;
     encode(message: GroupPolicyInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GroupPolicyInfo;
     fromJSON(object: any): GroupPolicyInfo;
@@ -860,6 +892,10 @@ export declare const GroupPolicyInfo: {
 };
 export declare const Proposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Proposal;
+    isSDK(o: any): o is ProposalSDKType;
+    isAmino(o: any): o is ProposalAmino;
     encode(message: Proposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Proposal;
     fromJSON(object: any): Proposal;
@@ -875,6 +911,10 @@ export declare const Proposal: {
 };
 export declare const TallyResult: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is TallyResult;
+    isSDK(o: any): o is TallyResultSDKType;
+    isAmino(o: any): o is TallyResultAmino;
     encode(message: TallyResult, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TallyResult;
     fromJSON(object: any): TallyResult;
@@ -890,6 +930,10 @@ export declare const TallyResult: {
 };
 export declare const Vote: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Vote;
+    isSDK(o: any): o is VoteSDKType;
+    isAmino(o: any): o is VoteAmino;
     encode(message: Vote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Vote;
     fromJSON(object: any): Vote;
@@ -903,6 +947,3 @@ export declare const Vote: {
     toProto(message: Vote): Uint8Array;
     toProtoMsg(message: Vote): VoteProtoMsg;
 };
-export declare const Cosmos_groupv1DecisionPolicy_InterfaceDecoder: (input: BinaryReader | Uint8Array) => ThresholdDecisionPolicy | PercentageDecisionPolicy | Any;
-export declare const Cosmos_groupv1DecisionPolicy_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_groupv1DecisionPolicy_ToAmino: (content: Any) => AnyAmino;

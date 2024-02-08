@@ -5,6 +5,7 @@ exports.MsgCancelUpgradeResponse = exports.MsgCancelUpgrade = exports.MsgSoftwar
 const upgrade_1 = require("./upgrade");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.upgrade.v1beta1";
 function createBaseMsgSoftwareUpgrade() {
     return {
@@ -14,6 +15,16 @@ function createBaseMsgSoftwareUpgrade() {
 }
 exports.MsgSoftwareUpgrade = {
     typeUrl: "/cosmos.upgrade.v1beta1.MsgSoftwareUpgrade",
+    aminoType: "cosmos-sdk/MsgSoftwareUpgrade",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgSoftwareUpgrade.typeUrl || typeof o.authority === "string" && upgrade_1.Plan.is(o.plan));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgSoftwareUpgrade.typeUrl || typeof o.authority === "string" && upgrade_1.Plan.isSDK(o.plan));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgSoftwareUpgrade.typeUrl || typeof o.authority === "string" && upgrade_1.Plan.isAmino(o.plan));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.authority !== "") {
             writer.uint32(10).string(message.authority);
@@ -99,11 +110,23 @@ exports.MsgSoftwareUpgrade = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgSoftwareUpgrade.typeUrl, exports.MsgSoftwareUpgrade);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgSoftwareUpgrade.aminoType, exports.MsgSoftwareUpgrade.typeUrl);
 function createBaseMsgSoftwareUpgradeResponse() {
     return {};
 }
 exports.MsgSoftwareUpgradeResponse = {
     typeUrl: "/cosmos.upgrade.v1beta1.MsgSoftwareUpgradeResponse",
+    aminoType: "cosmos-sdk/MsgSoftwareUpgradeResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgSoftwareUpgradeResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgSoftwareUpgradeResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgSoftwareUpgradeResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -162,6 +185,8 @@ exports.MsgSoftwareUpgradeResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgSoftwareUpgradeResponse.typeUrl, exports.MsgSoftwareUpgradeResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgSoftwareUpgradeResponse.aminoType, exports.MsgSoftwareUpgradeResponse.typeUrl);
 function createBaseMsgCancelUpgrade() {
     return {
         authority: ""
@@ -169,6 +194,16 @@ function createBaseMsgCancelUpgrade() {
 }
 exports.MsgCancelUpgrade = {
     typeUrl: "/cosmos.upgrade.v1beta1.MsgCancelUpgrade",
+    aminoType: "cosmos-sdk/MsgCancelUpgrade",
+    is(o) {
+        return o && (o.$typeUrl === exports.MsgCancelUpgrade.typeUrl || typeof o.authority === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MsgCancelUpgrade.typeUrl || typeof o.authority === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MsgCancelUpgrade.typeUrl || typeof o.authority === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.authority !== "") {
             writer.uint32(10).string(message.authority);
@@ -241,11 +276,23 @@ exports.MsgCancelUpgrade = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgCancelUpgrade.typeUrl, exports.MsgCancelUpgrade);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgCancelUpgrade.aminoType, exports.MsgCancelUpgrade.typeUrl);
 function createBaseMsgCancelUpgradeResponse() {
     return {};
 }
 exports.MsgCancelUpgradeResponse = {
     typeUrl: "/cosmos.upgrade.v1beta1.MsgCancelUpgradeResponse",
+    aminoType: "cosmos-sdk/MsgCancelUpgradeResponse",
+    is(o) {
+        return o && o.$typeUrl === exports.MsgCancelUpgradeResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.MsgCancelUpgradeResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.MsgCancelUpgradeResponse.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -304,4 +351,6 @@ exports.MsgCancelUpgradeResponse = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MsgCancelUpgradeResponse.typeUrl, exports.MsgCancelUpgradeResponse);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MsgCancelUpgradeResponse.aminoType, exports.MsgCancelUpgradeResponse.typeUrl);
 //# sourceMappingURL=tx.js.map

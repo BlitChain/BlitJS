@@ -5,6 +5,7 @@ exports.GenesisState = exports.GenesisOwners = exports.protobufPackage = void 0;
 const capability_1 = require("./capability");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "capability.v1";
 function createBaseGenesisOwners() {
     return {
@@ -14,6 +15,15 @@ function createBaseGenesisOwners() {
 }
 exports.GenesisOwners = {
     typeUrl: "/capability.v1.GenesisOwners",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisOwners.typeUrl || typeof o.index === "bigint" && capability_1.CapabilityOwners.is(o.index_owners));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisOwners.typeUrl || typeof o.index === "bigint" && capability_1.CapabilityOwners.isSDK(o.index_owners));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisOwners.typeUrl || typeof o.index === "bigint" && capability_1.CapabilityOwners.isAmino(o.index_owners));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.index !== BigInt(0)) {
             writer.uint32(8).uint64(message.index);
@@ -93,6 +103,7 @@ exports.GenesisOwners = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisOwners.typeUrl, exports.GenesisOwners);
 function createBaseGenesisState() {
     return {
         index: BigInt(0),
@@ -101,6 +112,15 @@ function createBaseGenesisState() {
 }
 exports.GenesisState = {
     typeUrl: "/capability.v1.GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.index === "bigint" && Array.isArray(o.owners) && (!o.owners.length || exports.GenesisOwners.is(o.owners[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.index === "bigint" && Array.isArray(o.owners) && (!o.owners.length || exports.GenesisOwners.isSDK(o.owners[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.index === "bigint" && Array.isArray(o.owners) && (!o.owners.length || exports.GenesisOwners.isAmino(o.owners[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.index !== BigInt(0)) {
             writer.uint32(8).uint64(message.index);
@@ -188,4 +208,5 @@ exports.GenesisState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
 //# sourceMappingURL=genesis.js.map

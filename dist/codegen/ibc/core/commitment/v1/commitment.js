@@ -5,6 +5,7 @@ exports.MerkleProof = exports.MerklePath = exports.MerklePrefix = exports.Merkle
 const proofs_1 = require("../../../../cosmos/ics23/v1/proofs");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "ibc.core.commitment.v1";
 function createBaseMerkleRoot() {
     return {
@@ -13,6 +14,16 @@ function createBaseMerkleRoot() {
 }
 exports.MerkleRoot = {
     typeUrl: "/ibc.core.commitment.v1.MerkleRoot",
+    aminoType: "cosmos-sdk/MerkleRoot",
+    is(o) {
+        return o && (o.$typeUrl === exports.MerkleRoot.typeUrl || o.hash instanceof Uint8Array || typeof o.hash === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MerkleRoot.typeUrl || o.hash instanceof Uint8Array || typeof o.hash === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MerkleRoot.typeUrl || o.hash instanceof Uint8Array || typeof o.hash === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.hash.length !== 0) {
             writer.uint32(10).bytes(message.hash);
@@ -85,6 +96,8 @@ exports.MerkleRoot = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MerkleRoot.typeUrl, exports.MerkleRoot);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MerkleRoot.aminoType, exports.MerkleRoot.typeUrl);
 function createBaseMerklePrefix() {
     return {
         key_prefix: new Uint8Array()
@@ -92,6 +105,16 @@ function createBaseMerklePrefix() {
 }
 exports.MerklePrefix = {
     typeUrl: "/ibc.core.commitment.v1.MerklePrefix",
+    aminoType: "cosmos-sdk/MerklePrefix",
+    is(o) {
+        return o && (o.$typeUrl === exports.MerklePrefix.typeUrl || o.key_prefix instanceof Uint8Array || typeof o.key_prefix === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MerklePrefix.typeUrl || o.key_prefix instanceof Uint8Array || typeof o.key_prefix === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MerklePrefix.typeUrl || o.key_prefix instanceof Uint8Array || typeof o.key_prefix === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.key_prefix.length !== 0) {
             writer.uint32(10).bytes(message.key_prefix);
@@ -164,6 +187,8 @@ exports.MerklePrefix = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MerklePrefix.typeUrl, exports.MerklePrefix);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MerklePrefix.aminoType, exports.MerklePrefix.typeUrl);
 function createBaseMerklePath() {
     return {
         key_path: []
@@ -171,6 +196,16 @@ function createBaseMerklePath() {
 }
 exports.MerklePath = {
     typeUrl: "/ibc.core.commitment.v1.MerklePath",
+    aminoType: "cosmos-sdk/MerklePath",
+    is(o) {
+        return o && (o.$typeUrl === exports.MerklePath.typeUrl || Array.isArray(o.key_path) && (!o.key_path.length || typeof o.key_path[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MerklePath.typeUrl || Array.isArray(o.key_path) && (!o.key_path.length || typeof o.key_path[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MerklePath.typeUrl || Array.isArray(o.key_path) && (!o.key_path.length || typeof o.key_path[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.key_path) {
             writer.uint32(10).string(v);
@@ -251,6 +286,8 @@ exports.MerklePath = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MerklePath.typeUrl, exports.MerklePath);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MerklePath.aminoType, exports.MerklePath.typeUrl);
 function createBaseMerkleProof() {
     return {
         proofs: []
@@ -258,6 +295,16 @@ function createBaseMerkleProof() {
 }
 exports.MerkleProof = {
     typeUrl: "/ibc.core.commitment.v1.MerkleProof",
+    aminoType: "cosmos-sdk/MerkleProof",
+    is(o) {
+        return o && (o.$typeUrl === exports.MerkleProof.typeUrl || Array.isArray(o.proofs) && (!o.proofs.length || proofs_1.CommitmentProof.is(o.proofs[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.MerkleProof.typeUrl || Array.isArray(o.proofs) && (!o.proofs.length || proofs_1.CommitmentProof.isSDK(o.proofs[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.MerkleProof.typeUrl || Array.isArray(o.proofs) && (!o.proofs.length || proofs_1.CommitmentProof.isAmino(o.proofs[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.proofs) {
             proofs_1.CommitmentProof.encode(v, writer.uint32(10).fork()).ldelim();
@@ -338,4 +385,6 @@ exports.MerkleProof = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.MerkleProof.typeUrl, exports.MerkleProof);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.MerkleProof.aminoType, exports.MerkleProof.typeUrl);
 //# sourceMappingURL=commitment.js.map

@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { Timestamp } from "../../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { GlobalDecoderRegistry } from "../../../../registry";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp, bytesFromBase64, base64FromBytes } from "../../../../helpers";
 export const protobufPackage = "cosmos.base.node.v1beta1";
 function createBaseConfigRequest() {
@@ -8,6 +9,16 @@ function createBaseConfigRequest() {
 }
 export const ConfigRequest = {
     typeUrl: "/cosmos.base.node.v1beta1.ConfigRequest",
+    aminoType: "cosmos-sdk/ConfigRequest",
+    is(o) {
+        return o && o.$typeUrl === ConfigRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === ConfigRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === ConfigRequest.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -66,6 +77,8 @@ export const ConfigRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(ConfigRequest.typeUrl, ConfigRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(ConfigRequest.aminoType, ConfigRequest.typeUrl);
 function createBaseConfigResponse() {
     return {
         minimum_gas_price: "",
@@ -75,6 +88,16 @@ function createBaseConfigResponse() {
 }
 export const ConfigResponse = {
     typeUrl: "/cosmos.base.node.v1beta1.ConfigResponse",
+    aminoType: "cosmos-sdk/ConfigResponse",
+    is(o) {
+        return o && (o.$typeUrl === ConfigResponse.typeUrl || typeof o.minimum_gas_price === "string" && typeof o.pruning_keep_recent === "string" && typeof o.pruning_interval === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === ConfigResponse.typeUrl || typeof o.minimum_gas_price === "string" && typeof o.pruning_keep_recent === "string" && typeof o.pruning_interval === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === ConfigResponse.typeUrl || typeof o.minimum_gas_price === "string" && typeof o.pruning_keep_recent === "string" && typeof o.pruning_interval === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.minimum_gas_price !== "") {
             writer.uint32(10).string(message.minimum_gas_price);
@@ -173,11 +196,23 @@ export const ConfigResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(ConfigResponse.typeUrl, ConfigResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(ConfigResponse.aminoType, ConfigResponse.typeUrl);
 function createBaseStatusRequest() {
     return {};
 }
 export const StatusRequest = {
     typeUrl: "/cosmos.base.node.v1beta1.StatusRequest",
+    aminoType: "cosmos-sdk/StatusRequest",
+    is(o) {
+        return o && o.$typeUrl === StatusRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === StatusRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === StatusRequest.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -236,6 +271,8 @@ export const StatusRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(StatusRequest.typeUrl, StatusRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(StatusRequest.aminoType, StatusRequest.typeUrl);
 function createBaseStatusResponse() {
     return {
         earliest_store_height: BigInt(0),
@@ -247,6 +284,16 @@ function createBaseStatusResponse() {
 }
 export const StatusResponse = {
     typeUrl: "/cosmos.base.node.v1beta1.StatusResponse",
+    aminoType: "cosmos-sdk/StatusResponse",
+    is(o) {
+        return o && (o.$typeUrl === StatusResponse.typeUrl || typeof o.earliest_store_height === "bigint" && typeof o.height === "bigint" && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string") && (o.validator_hash instanceof Uint8Array || typeof o.validator_hash === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === StatusResponse.typeUrl || typeof o.earliest_store_height === "bigint" && typeof o.height === "bigint" && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string") && (o.validator_hash instanceof Uint8Array || typeof o.validator_hash === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === StatusResponse.typeUrl || typeof o.earliest_store_height === "bigint" && typeof o.height === "bigint" && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string") && (o.validator_hash instanceof Uint8Array || typeof o.validator_hash === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.earliest_store_height !== BigInt(0)) {
             writer.uint32(8).uint64(message.earliest_store_height);
@@ -371,4 +418,6 @@ export const StatusResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(StatusResponse.typeUrl, StatusResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(StatusResponse.aminoType, StatusResponse.typeUrl);
 //# sourceMappingURL=query.js.map

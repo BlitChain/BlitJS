@@ -3,6 +3,7 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Script, ScriptAmino, ScriptSDKType } from "./script";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { GlobalDecoderRegistry } from "../../registry";
 import { isSet } from "../../helpers";
 export const protobufPackage = "blit.script";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
@@ -206,6 +207,15 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 export const QueryParamsRequest = {
   typeUrl: "/blit.script.QueryParamsRequest",
+  is(o: any): o is QueryParamsRequest {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryParamsRequestSDKType {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryParamsRequestAmino {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
   encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -258,6 +268,7 @@ export const QueryParamsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     params: Params.fromPartial({})
@@ -265,6 +276,15 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 export const QueryParamsResponse = {
   typeUrl: "/blit.script.QueryParamsResponse",
+  is(o: any): o is QueryParamsResponse {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.is(o.params));
+  },
+  isSDK(o: any): o is QueryParamsResponseSDKType {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is QueryParamsResponseAmino {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isAmino(o.params));
+  },
   encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -331,6 +351,7 @@ export const QueryParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
 function createBaseQueryScriptRequest(): QueryScriptRequest {
   return {
     address: ""
@@ -338,6 +359,15 @@ function createBaseQueryScriptRequest(): QueryScriptRequest {
 }
 export const QueryScriptRequest = {
   typeUrl: "/blit.script.QueryScriptRequest",
+  is(o: any): o is QueryScriptRequest {
+    return o && (o.$typeUrl === QueryScriptRequest.typeUrl || typeof o.address === "string");
+  },
+  isSDK(o: any): o is QueryScriptRequestSDKType {
+    return o && (o.$typeUrl === QueryScriptRequest.typeUrl || typeof o.address === "string");
+  },
+  isAmino(o: any): o is QueryScriptRequestAmino {
+    return o && (o.$typeUrl === QueryScriptRequest.typeUrl || typeof o.address === "string");
+  },
   encode(message: QueryScriptRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -404,6 +434,7 @@ export const QueryScriptRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryScriptRequest.typeUrl, QueryScriptRequest);
 function createBaseQueryScriptResponse(): QueryScriptResponse {
   return {
     script: Script.fromPartial({})
@@ -411,6 +442,15 @@ function createBaseQueryScriptResponse(): QueryScriptResponse {
 }
 export const QueryScriptResponse = {
   typeUrl: "/blit.script.QueryScriptResponse",
+  is(o: any): o is QueryScriptResponse {
+    return o && (o.$typeUrl === QueryScriptResponse.typeUrl || Script.is(o.script));
+  },
+  isSDK(o: any): o is QueryScriptResponseSDKType {
+    return o && (o.$typeUrl === QueryScriptResponse.typeUrl || Script.isSDK(o.script));
+  },
+  isAmino(o: any): o is QueryScriptResponseAmino {
+    return o && (o.$typeUrl === QueryScriptResponse.typeUrl || Script.isAmino(o.script));
+  },
   encode(message: QueryScriptResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.script !== undefined) {
       Script.encode(message.script, writer.uint32(10).fork()).ldelim();
@@ -477,6 +517,7 @@ export const QueryScriptResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryScriptResponse.typeUrl, QueryScriptResponse);
 function createBaseQueryScriptsRequest(): QueryScriptsRequest {
   return {
     pagination: undefined
@@ -484,6 +525,15 @@ function createBaseQueryScriptsRequest(): QueryScriptsRequest {
 }
 export const QueryScriptsRequest = {
   typeUrl: "/blit.script.QueryScriptsRequest",
+  is(o: any): o is QueryScriptsRequest {
+    return o && o.$typeUrl === QueryScriptsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryScriptsRequestSDKType {
+    return o && o.$typeUrl === QueryScriptsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryScriptsRequestAmino {
+    return o && o.$typeUrl === QueryScriptsRequest.typeUrl;
+  },
   encode(message: QueryScriptsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -550,6 +600,7 @@ export const QueryScriptsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryScriptsRequest.typeUrl, QueryScriptsRequest);
 function createBaseQueryScriptsResponse(): QueryScriptsResponse {
   return {
     script: [],
@@ -558,6 +609,15 @@ function createBaseQueryScriptsResponse(): QueryScriptsResponse {
 }
 export const QueryScriptsResponse = {
   typeUrl: "/blit.script.QueryScriptsResponse",
+  is(o: any): o is QueryScriptsResponse {
+    return o && (o.$typeUrl === QueryScriptsResponse.typeUrl || Array.isArray(o.script) && (!o.script.length || Script.is(o.script[0])));
+  },
+  isSDK(o: any): o is QueryScriptsResponseSDKType {
+    return o && (o.$typeUrl === QueryScriptsResponse.typeUrl || Array.isArray(o.script) && (!o.script.length || Script.isSDK(o.script[0])));
+  },
+  isAmino(o: any): o is QueryScriptsResponseAmino {
+    return o && (o.$typeUrl === QueryScriptsResponse.typeUrl || Array.isArray(o.script) && (!o.script.length || Script.isAmino(o.script[0])));
+  },
   encode(message: QueryScriptsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.script) {
       Script.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -643,6 +703,7 @@ export const QueryScriptsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryScriptsResponse.typeUrl, QueryScriptsResponse);
 function createBaseQueryWebRequest(): QueryWebRequest {
   return {
     address: "",
@@ -651,6 +712,15 @@ function createBaseQueryWebRequest(): QueryWebRequest {
 }
 export const QueryWebRequest = {
   typeUrl: "/blit.script.QueryWebRequest",
+  is(o: any): o is QueryWebRequest {
+    return o && (o.$typeUrl === QueryWebRequest.typeUrl || typeof o.address === "string" && typeof o.httprequest === "string");
+  },
+  isSDK(o: any): o is QueryWebRequestSDKType {
+    return o && (o.$typeUrl === QueryWebRequest.typeUrl || typeof o.address === "string" && typeof o.httprequest === "string");
+  },
+  isAmino(o: any): o is QueryWebRequestAmino {
+    return o && (o.$typeUrl === QueryWebRequest.typeUrl || typeof o.address === "string" && typeof o.httprequest === "string");
+  },
   encode(message: QueryWebRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -730,6 +800,7 @@ export const QueryWebRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryWebRequest.typeUrl, QueryWebRequest);
 function createBaseQueryWebResponse(): QueryWebResponse {
   return {
     httpresponse: ""
@@ -737,6 +808,15 @@ function createBaseQueryWebResponse(): QueryWebResponse {
 }
 export const QueryWebResponse = {
   typeUrl: "/blit.script.QueryWebResponse",
+  is(o: any): o is QueryWebResponse {
+    return o && (o.$typeUrl === QueryWebResponse.typeUrl || typeof o.httpresponse === "string");
+  },
+  isSDK(o: any): o is QueryWebResponseSDKType {
+    return o && (o.$typeUrl === QueryWebResponse.typeUrl || typeof o.httpresponse === "string");
+  },
+  isAmino(o: any): o is QueryWebResponseAmino {
+    return o && (o.$typeUrl === QueryWebResponse.typeUrl || typeof o.httpresponse === "string");
+  },
   encode(message: QueryWebResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.httpresponse !== "") {
       writer.uint32(10).string(message.httpresponse);
@@ -803,6 +883,7 @@ export const QueryWebResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryWebResponse.typeUrl, QueryWebResponse);
 function createBaseQueryEvalRequest(): QueryEvalRequest {
   return {
     caller_address: "",
@@ -816,6 +897,15 @@ function createBaseQueryEvalRequest(): QueryEvalRequest {
 }
 export const QueryEvalRequest = {
   typeUrl: "/blit.script.QueryEvalRequest",
+  is(o: any): o is QueryEvalRequest {
+    return o && (o.$typeUrl === QueryEvalRequest.typeUrl || typeof o.caller_address === "string" && typeof o.script_address === "string" && typeof o.extra_code === "string" && typeof o.function_name === "string" && typeof o.kwargs === "string" && typeof o.grantee === "string" && typeof o.attached_messages === "string");
+  },
+  isSDK(o: any): o is QueryEvalRequestSDKType {
+    return o && (o.$typeUrl === QueryEvalRequest.typeUrl || typeof o.caller_address === "string" && typeof o.script_address === "string" && typeof o.extra_code === "string" && typeof o.function_name === "string" && typeof o.kwargs === "string" && typeof o.grantee === "string" && typeof o.attached_messages === "string");
+  },
+  isAmino(o: any): o is QueryEvalRequestAmino {
+    return o && (o.$typeUrl === QueryEvalRequest.typeUrl || typeof o.caller_address === "string" && typeof o.script_address === "string" && typeof o.extra_code === "string" && typeof o.function_name === "string" && typeof o.kwargs === "string" && typeof o.grantee === "string" && typeof o.attached_messages === "string");
+  },
   encode(message: QueryEvalRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.caller_address !== "") {
       writer.uint32(18).string(message.caller_address);
@@ -960,6 +1050,7 @@ export const QueryEvalRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryEvalRequest.typeUrl, QueryEvalRequest);
 function createBaseQueryEvalResponse(): QueryEvalResponse {
   return {
     response: ""
@@ -967,6 +1058,15 @@ function createBaseQueryEvalResponse(): QueryEvalResponse {
 }
 export const QueryEvalResponse = {
   typeUrl: "/blit.script.QueryEvalResponse",
+  is(o: any): o is QueryEvalResponse {
+    return o && (o.$typeUrl === QueryEvalResponse.typeUrl || typeof o.response === "string");
+  },
+  isSDK(o: any): o is QueryEvalResponseSDKType {
+    return o && (o.$typeUrl === QueryEvalResponse.typeUrl || typeof o.response === "string");
+  },
+  isAmino(o: any): o is QueryEvalResponseAmino {
+    return o && (o.$typeUrl === QueryEvalResponse.typeUrl || typeof o.response === "string");
+  },
   encode(message: QueryEvalResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.response !== "") {
       writer.uint32(10).string(message.response);
@@ -1033,3 +1133,4 @@ export const QueryEvalResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryEvalResponse.typeUrl, QueryEvalResponse);

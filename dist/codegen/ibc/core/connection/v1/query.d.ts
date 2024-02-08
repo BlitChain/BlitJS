@@ -417,6 +417,10 @@ export interface QueryConnectionParamsResponseSDKType {
 }
 export declare const QueryConnectionRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConnectionRequest;
+    isSDK(o: any): o is QueryConnectionRequestSDKType;
+    isAmino(o: any): o is QueryConnectionRequestAmino;
     encode(message: QueryConnectionRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionRequest;
     fromJSON(object: any): QueryConnectionRequest;
@@ -432,6 +436,10 @@ export declare const QueryConnectionRequest: {
 };
 export declare const QueryConnectionResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConnectionResponse;
+    isSDK(o: any): o is QueryConnectionResponseSDKType;
+    isAmino(o: any): o is QueryConnectionResponseAmino;
     encode(message: QueryConnectionResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionResponse;
     fromJSON(object: any): QueryConnectionResponse;
@@ -447,6 +455,10 @@ export declare const QueryConnectionResponse: {
 };
 export declare const QueryConnectionsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConnectionsRequest;
+    isSDK(o: any): o is QueryConnectionsRequestSDKType;
+    isAmino(o: any): o is QueryConnectionsRequestAmino;
     encode(message: QueryConnectionsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionsRequest;
     fromJSON(object: any): QueryConnectionsRequest;
@@ -462,6 +474,10 @@ export declare const QueryConnectionsRequest: {
 };
 export declare const QueryConnectionsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConnectionsResponse;
+    isSDK(o: any): o is QueryConnectionsResponseSDKType;
+    isAmino(o: any): o is QueryConnectionsResponseAmino;
     encode(message: QueryConnectionsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionsResponse;
     fromJSON(object: any): QueryConnectionsResponse;
@@ -477,6 +493,10 @@ export declare const QueryConnectionsResponse: {
 };
 export declare const QueryClientConnectionsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClientConnectionsRequest;
+    isSDK(o: any): o is QueryClientConnectionsRequestSDKType;
+    isAmino(o: any): o is QueryClientConnectionsRequestAmino;
     encode(message: QueryClientConnectionsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientConnectionsRequest;
     fromJSON(object: any): QueryClientConnectionsRequest;
@@ -492,6 +512,10 @@ export declare const QueryClientConnectionsRequest: {
 };
 export declare const QueryClientConnectionsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClientConnectionsResponse;
+    isSDK(o: any): o is QueryClientConnectionsResponseSDKType;
+    isAmino(o: any): o is QueryClientConnectionsResponseAmino;
     encode(message: QueryClientConnectionsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientConnectionsResponse;
     fromJSON(object: any): QueryClientConnectionsResponse;
@@ -507,6 +531,10 @@ export declare const QueryClientConnectionsResponse: {
 };
 export declare const QueryConnectionClientStateRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConnectionClientStateRequest;
+    isSDK(o: any): o is QueryConnectionClientStateRequestSDKType;
+    isAmino(o: any): o is QueryConnectionClientStateRequestAmino;
     encode(message: QueryConnectionClientStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionClientStateRequest;
     fromJSON(object: any): QueryConnectionClientStateRequest;
@@ -522,6 +550,10 @@ export declare const QueryConnectionClientStateRequest: {
 };
 export declare const QueryConnectionClientStateResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConnectionClientStateResponse;
+    isSDK(o: any): o is QueryConnectionClientStateResponseSDKType;
+    isAmino(o: any): o is QueryConnectionClientStateResponseAmino;
     encode(message: QueryConnectionClientStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionClientStateResponse;
     fromJSON(object: any): QueryConnectionClientStateResponse;
@@ -537,6 +569,10 @@ export declare const QueryConnectionClientStateResponse: {
 };
 export declare const QueryConnectionConsensusStateRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConnectionConsensusStateRequest;
+    isSDK(o: any): o is QueryConnectionConsensusStateRequestSDKType;
+    isAmino(o: any): o is QueryConnectionConsensusStateRequestAmino;
     encode(message: QueryConnectionConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionConsensusStateRequest;
     fromJSON(object: any): QueryConnectionConsensusStateRequest;
@@ -552,6 +588,10 @@ export declare const QueryConnectionConsensusStateRequest: {
 };
 export declare const QueryConnectionConsensusStateResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConnectionConsensusStateResponse;
+    isSDK(o: any): o is QueryConnectionConsensusStateResponseSDKType;
+    isAmino(o: any): o is QueryConnectionConsensusStateResponseAmino;
     encode(message: QueryConnectionConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionConsensusStateResponse;
     fromJSON(object: any): QueryConnectionConsensusStateResponse;
@@ -567,6 +607,10 @@ export declare const QueryConnectionConsensusStateResponse: {
 };
 export declare const QueryConnectionParamsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConnectionParamsRequest;
+    isSDK(o: any): o is QueryConnectionParamsRequestSDKType;
+    isAmino(o: any): o is QueryConnectionParamsRequestAmino;
     encode(_: QueryConnectionParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionParamsRequest;
     fromJSON(_: any): QueryConnectionParamsRequest;
@@ -582,6 +626,10 @@ export declare const QueryConnectionParamsRequest: {
 };
 export declare const QueryConnectionParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConnectionParamsResponse;
+    isSDK(o: any): o is QueryConnectionParamsResponseSDKType;
+    isAmino(o: any): o is QueryConnectionParamsResponseAmino;
     encode(message: QueryConnectionParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionParamsResponse;
     fromJSON(object: any): QueryConnectionParamsResponse;

@@ -172,6 +172,10 @@ export interface MsgPruneAllowancesResponseSDKType {
 }
 export declare const MsgGrantAllowance: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgGrantAllowance;
+    isSDK(o: any): o is MsgGrantAllowanceSDKType;
+    isAmino(o: any): o is MsgGrantAllowanceAmino;
     encode(message: MsgGrantAllowance, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgGrantAllowance;
     fromJSON(object: any): MsgGrantAllowance;
@@ -187,6 +191,10 @@ export declare const MsgGrantAllowance: {
 };
 export declare const MsgGrantAllowanceResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgGrantAllowanceResponse;
+    isSDK(o: any): o is MsgGrantAllowanceResponseSDKType;
+    isAmino(o: any): o is MsgGrantAllowanceResponseAmino;
     encode(_: MsgGrantAllowanceResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgGrantAllowanceResponse;
     fromJSON(_: any): MsgGrantAllowanceResponse;
@@ -202,6 +210,10 @@ export declare const MsgGrantAllowanceResponse: {
 };
 export declare const MsgRevokeAllowance: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgRevokeAllowance;
+    isSDK(o: any): o is MsgRevokeAllowanceSDKType;
+    isAmino(o: any): o is MsgRevokeAllowanceAmino;
     encode(message: MsgRevokeAllowance, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRevokeAllowance;
     fromJSON(object: any): MsgRevokeAllowance;
@@ -217,6 +229,10 @@ export declare const MsgRevokeAllowance: {
 };
 export declare const MsgRevokeAllowanceResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgRevokeAllowanceResponse;
+    isSDK(o: any): o is MsgRevokeAllowanceResponseSDKType;
+    isAmino(o: any): o is MsgRevokeAllowanceResponseAmino;
     encode(_: MsgRevokeAllowanceResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRevokeAllowanceResponse;
     fromJSON(_: any): MsgRevokeAllowanceResponse;
@@ -232,6 +248,10 @@ export declare const MsgRevokeAllowanceResponse: {
 };
 export declare const MsgPruneAllowances: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgPruneAllowances;
+    isSDK(o: any): o is MsgPruneAllowancesSDKType;
+    isAmino(o: any): o is MsgPruneAllowancesAmino;
     encode(message: MsgPruneAllowances, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgPruneAllowances;
     fromJSON(object: any): MsgPruneAllowances;
@@ -247,6 +267,10 @@ export declare const MsgPruneAllowances: {
 };
 export declare const MsgPruneAllowancesResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgPruneAllowancesResponse;
+    isSDK(o: any): o is MsgPruneAllowancesResponseSDKType;
+    isAmino(o: any): o is MsgPruneAllowancesResponseAmino;
     encode(_: MsgPruneAllowancesResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgPruneAllowancesResponse;
     fromJSON(_: any): MsgPruneAllowancesResponse;
@@ -260,6 +284,3 @@ export declare const MsgPruneAllowancesResponse: {
     toProto(message: MsgPruneAllowancesResponse): Uint8Array;
     toProtoMsg(message: MsgPruneAllowancesResponse): MsgPruneAllowancesResponseProtoMsg;
 };
-export declare const Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => BasicAllowance | PeriodicAllowance | AllowedMsgAllowance | Any;
-export declare const Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_feegrantv1beta1FeeAllowanceI_ToAmino: (content: Any) => AnyAmino;

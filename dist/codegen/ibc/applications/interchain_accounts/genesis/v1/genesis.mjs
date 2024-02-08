@@ -3,6 +3,7 @@ import { Params as Params1 } from "../../controller/v1/controller";
 import { Params as Params2 } from "../../host/v1/host";
 import { BinaryReader, BinaryWriter } from "../../../../../binary";
 import { isSet } from "../../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../../registry";
 export const protobufPackage = "ibc.applications.interchain_accounts.genesis.v1";
 function createBaseGenesisState() {
     return {
@@ -12,6 +13,16 @@ function createBaseGenesisState() {
 }
 export const GenesisState = {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || ControllerGenesisState.is(o.controller_genesis_state) && HostGenesisState.is(o.host_genesis_state));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || ControllerGenesisState.isSDK(o.controller_genesis_state) && HostGenesisState.isSDK(o.host_genesis_state));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || ControllerGenesisState.isAmino(o.controller_genesis_state) && HostGenesisState.isAmino(o.host_genesis_state));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.controller_genesis_state !== undefined) {
             ControllerGenesisState.encode(message.controller_genesis_state, writer.uint32(10).fork()).ldelim();
@@ -97,6 +108,8 @@ export const GenesisState = {
         };
     }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 function createBaseControllerGenesisState() {
     return {
         active_channels: [],
@@ -107,6 +120,16 @@ function createBaseControllerGenesisState() {
 }
 export const ControllerGenesisState = {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.ControllerGenesisState",
+    aminoType: "cosmos-sdk/ControllerGenesisState",
+    is(o) {
+        return o && (o.$typeUrl === ControllerGenesisState.typeUrl || Array.isArray(o.active_channels) && (!o.active_channels.length || ActiveChannel.is(o.active_channels[0])) && Array.isArray(o.interchain_accounts) && (!o.interchain_accounts.length || RegisteredInterchainAccount.is(o.interchain_accounts[0])) && Array.isArray(o.ports) && (!o.ports.length || typeof o.ports[0] === "string") && Params1.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === ControllerGenesisState.typeUrl || Array.isArray(o.active_channels) && (!o.active_channels.length || ActiveChannel.isSDK(o.active_channels[0])) && Array.isArray(o.interchain_accounts) && (!o.interchain_accounts.length || RegisteredInterchainAccount.isSDK(o.interchain_accounts[0])) && Array.isArray(o.ports) && (!o.ports.length || typeof o.ports[0] === "string") && Params1.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === ControllerGenesisState.typeUrl || Array.isArray(o.active_channels) && (!o.active_channels.length || ActiveChannel.isAmino(o.active_channels[0])) && Array.isArray(o.interchain_accounts) && (!o.interchain_accounts.length || RegisteredInterchainAccount.isAmino(o.interchain_accounts[0])) && Array.isArray(o.ports) && (!o.ports.length || typeof o.ports[0] === "string") && Params1.isAmino(o.params));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.active_channels) {
             ActiveChannel.encode(v, writer.uint32(10).fork()).ldelim();
@@ -242,6 +265,8 @@ export const ControllerGenesisState = {
         };
     }
 };
+GlobalDecoderRegistry.register(ControllerGenesisState.typeUrl, ControllerGenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(ControllerGenesisState.aminoType, ControllerGenesisState.typeUrl);
 function createBaseHostGenesisState() {
     return {
         active_channels: [],
@@ -252,6 +277,16 @@ function createBaseHostGenesisState() {
 }
 export const HostGenesisState = {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.HostGenesisState",
+    aminoType: "cosmos-sdk/HostGenesisState",
+    is(o) {
+        return o && (o.$typeUrl === HostGenesisState.typeUrl || Array.isArray(o.active_channels) && (!o.active_channels.length || ActiveChannel.is(o.active_channels[0])) && Array.isArray(o.interchain_accounts) && (!o.interchain_accounts.length || RegisteredInterchainAccount.is(o.interchain_accounts[0])) && typeof o.port === "string" && Params2.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === HostGenesisState.typeUrl || Array.isArray(o.active_channels) && (!o.active_channels.length || ActiveChannel.isSDK(o.active_channels[0])) && Array.isArray(o.interchain_accounts) && (!o.interchain_accounts.length || RegisteredInterchainAccount.isSDK(o.interchain_accounts[0])) && typeof o.port === "string" && Params2.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === HostGenesisState.typeUrl || Array.isArray(o.active_channels) && (!o.active_channels.length || ActiveChannel.isAmino(o.active_channels[0])) && Array.isArray(o.interchain_accounts) && (!o.interchain_accounts.length || RegisteredInterchainAccount.isAmino(o.interchain_accounts[0])) && typeof o.port === "string" && Params2.isAmino(o.params));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.active_channels) {
             ActiveChannel.encode(v, writer.uint32(10).fork()).ldelim();
@@ -379,6 +414,8 @@ export const HostGenesisState = {
         };
     }
 };
+GlobalDecoderRegistry.register(HostGenesisState.typeUrl, HostGenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(HostGenesisState.aminoType, HostGenesisState.typeUrl);
 function createBaseActiveChannel() {
     return {
         connection_id: "",
@@ -389,6 +426,16 @@ function createBaseActiveChannel() {
 }
 export const ActiveChannel = {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.ActiveChannel",
+    aminoType: "cosmos-sdk/ActiveChannel",
+    is(o) {
+        return o && (o.$typeUrl === ActiveChannel.typeUrl || typeof o.connection_id === "string" && typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.is_middleware_enabled === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === ActiveChannel.typeUrl || typeof o.connection_id === "string" && typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.is_middleware_enabled === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === ActiveChannel.typeUrl || typeof o.connection_id === "string" && typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.is_middleware_enabled === "boolean");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.connection_id !== "") {
             writer.uint32(10).string(message.connection_id);
@@ -500,6 +547,8 @@ export const ActiveChannel = {
         };
     }
 };
+GlobalDecoderRegistry.register(ActiveChannel.typeUrl, ActiveChannel);
+GlobalDecoderRegistry.registerAminoProtoMapping(ActiveChannel.aminoType, ActiveChannel.typeUrl);
 function createBaseRegisteredInterchainAccount() {
     return {
         connection_id: "",
@@ -509,6 +558,16 @@ function createBaseRegisteredInterchainAccount() {
 }
 export const RegisteredInterchainAccount = {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.RegisteredInterchainAccount",
+    aminoType: "cosmos-sdk/RegisteredInterchainAccount",
+    is(o) {
+        return o && (o.$typeUrl === RegisteredInterchainAccount.typeUrl || typeof o.connection_id === "string" && typeof o.port_id === "string" && typeof o.account_address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === RegisteredInterchainAccount.typeUrl || typeof o.connection_id === "string" && typeof o.port_id === "string" && typeof o.account_address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === RegisteredInterchainAccount.typeUrl || typeof o.connection_id === "string" && typeof o.port_id === "string" && typeof o.account_address === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.connection_id !== "") {
             writer.uint32(10).string(message.connection_id);
@@ -607,4 +666,6 @@ export const RegisteredInterchainAccount = {
         };
     }
 };
+GlobalDecoderRegistry.register(RegisteredInterchainAccount.typeUrl, RegisteredInterchainAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(RegisteredInterchainAccount.aminoType, RegisteredInterchainAccount.typeUrl);
 //# sourceMappingURL=genesis.js.map

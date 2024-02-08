@@ -3,6 +3,7 @@ import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { Validator, DelegationResponse, UnbondingDelegation, RedelegationResponse, HistoricalInfo, Pool, Params } from "./staking";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.staking.v1beta1";
 function createBaseQueryValidatorsRequest() {
     return {
@@ -12,6 +13,16 @@ function createBaseQueryValidatorsRequest() {
 }
 export const QueryValidatorsRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorsRequest",
+    aminoType: "cosmos-sdk/QueryValidatorsRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryValidatorsRequest.typeUrl || typeof o.status === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryValidatorsRequest.typeUrl || typeof o.status === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryValidatorsRequest.typeUrl || typeof o.status === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.status !== "") {
             writer.uint32(10).string(message.status);
@@ -97,6 +108,8 @@ export const QueryValidatorsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryValidatorsRequest.typeUrl, QueryValidatorsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryValidatorsRequest.aminoType, QueryValidatorsRequest.typeUrl);
 function createBaseQueryValidatorsResponse() {
     return {
         validators: [],
@@ -105,6 +118,16 @@ function createBaseQueryValidatorsResponse() {
 }
 export const QueryValidatorsResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorsResponse",
+    aminoType: "cosmos-sdk/QueryValidatorsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryValidatorsResponse.typeUrl || Array.isArray(o.validators) && (!o.validators.length || Validator.is(o.validators[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryValidatorsResponse.typeUrl || Array.isArray(o.validators) && (!o.validators.length || Validator.isSDK(o.validators[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryValidatorsResponse.typeUrl || Array.isArray(o.validators) && (!o.validators.length || Validator.isAmino(o.validators[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.validators) {
             Validator.encode(v, writer.uint32(10).fork()).ldelim();
@@ -198,6 +221,8 @@ export const QueryValidatorsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryValidatorsResponse.typeUrl, QueryValidatorsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryValidatorsResponse.aminoType, QueryValidatorsResponse.typeUrl);
 function createBaseQueryValidatorRequest() {
     return {
         validator_addr: ""
@@ -205,6 +230,16 @@ function createBaseQueryValidatorRequest() {
 }
 export const QueryValidatorRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorRequest",
+    aminoType: "cosmos-sdk/QueryValidatorRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryValidatorRequest.typeUrl || typeof o.validator_addr === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryValidatorRequest.typeUrl || typeof o.validator_addr === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryValidatorRequest.typeUrl || typeof o.validator_addr === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.validator_addr !== "") {
             writer.uint32(10).string(message.validator_addr);
@@ -277,6 +312,8 @@ export const QueryValidatorRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryValidatorRequest.typeUrl, QueryValidatorRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryValidatorRequest.aminoType, QueryValidatorRequest.typeUrl);
 function createBaseQueryValidatorResponse() {
     return {
         validator: Validator.fromPartial({})
@@ -284,6 +321,16 @@ function createBaseQueryValidatorResponse() {
 }
 export const QueryValidatorResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorResponse",
+    aminoType: "cosmos-sdk/QueryValidatorResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryValidatorResponse.typeUrl || Validator.is(o.validator));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryValidatorResponse.typeUrl || Validator.isSDK(o.validator));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryValidatorResponse.typeUrl || Validator.isAmino(o.validator));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.validator !== undefined) {
             Validator.encode(message.validator, writer.uint32(10).fork()).ldelim();
@@ -356,6 +403,8 @@ export const QueryValidatorResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryValidatorResponse.typeUrl, QueryValidatorResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryValidatorResponse.aminoType, QueryValidatorResponse.typeUrl);
 function createBaseQueryValidatorDelegationsRequest() {
     return {
         validator_addr: "",
@@ -364,6 +413,16 @@ function createBaseQueryValidatorDelegationsRequest() {
 }
 export const QueryValidatorDelegationsRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorDelegationsRequest",
+    aminoType: "cosmos-sdk/QueryValidatorDelegationsRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryValidatorDelegationsRequest.typeUrl || typeof o.validator_addr === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryValidatorDelegationsRequest.typeUrl || typeof o.validator_addr === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryValidatorDelegationsRequest.typeUrl || typeof o.validator_addr === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.validator_addr !== "") {
             writer.uint32(10).string(message.validator_addr);
@@ -449,6 +508,8 @@ export const QueryValidatorDelegationsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryValidatorDelegationsRequest.typeUrl, QueryValidatorDelegationsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryValidatorDelegationsRequest.aminoType, QueryValidatorDelegationsRequest.typeUrl);
 function createBaseQueryValidatorDelegationsResponse() {
     return {
         delegation_responses: [],
@@ -457,6 +518,16 @@ function createBaseQueryValidatorDelegationsResponse() {
 }
 export const QueryValidatorDelegationsResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorDelegationsResponse",
+    aminoType: "cosmos-sdk/QueryValidatorDelegationsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryValidatorDelegationsResponse.typeUrl || Array.isArray(o.delegation_responses) && (!o.delegation_responses.length || DelegationResponse.is(o.delegation_responses[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryValidatorDelegationsResponse.typeUrl || Array.isArray(o.delegation_responses) && (!o.delegation_responses.length || DelegationResponse.isSDK(o.delegation_responses[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryValidatorDelegationsResponse.typeUrl || Array.isArray(o.delegation_responses) && (!o.delegation_responses.length || DelegationResponse.isAmino(o.delegation_responses[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.delegation_responses) {
             DelegationResponse.encode(v, writer.uint32(10).fork()).ldelim();
@@ -550,6 +621,8 @@ export const QueryValidatorDelegationsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryValidatorDelegationsResponse.typeUrl, QueryValidatorDelegationsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryValidatorDelegationsResponse.aminoType, QueryValidatorDelegationsResponse.typeUrl);
 function createBaseQueryValidatorUnbondingDelegationsRequest() {
     return {
         validator_addr: "",
@@ -558,6 +631,16 @@ function createBaseQueryValidatorUnbondingDelegationsRequest() {
 }
 export const QueryValidatorUnbondingDelegationsRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorUnbondingDelegationsRequest",
+    aminoType: "cosmos-sdk/QueryValidatorUnbondingDelegationsRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryValidatorUnbondingDelegationsRequest.typeUrl || typeof o.validator_addr === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryValidatorUnbondingDelegationsRequest.typeUrl || typeof o.validator_addr === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryValidatorUnbondingDelegationsRequest.typeUrl || typeof o.validator_addr === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.validator_addr !== "") {
             writer.uint32(10).string(message.validator_addr);
@@ -643,6 +726,8 @@ export const QueryValidatorUnbondingDelegationsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryValidatorUnbondingDelegationsRequest.typeUrl, QueryValidatorUnbondingDelegationsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryValidatorUnbondingDelegationsRequest.aminoType, QueryValidatorUnbondingDelegationsRequest.typeUrl);
 function createBaseQueryValidatorUnbondingDelegationsResponse() {
     return {
         unbonding_responses: [],
@@ -651,6 +736,16 @@ function createBaseQueryValidatorUnbondingDelegationsResponse() {
 }
 export const QueryValidatorUnbondingDelegationsResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryValidatorUnbondingDelegationsResponse",
+    aminoType: "cosmos-sdk/QueryValidatorUnbondingDelegationsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryValidatorUnbondingDelegationsResponse.typeUrl || Array.isArray(o.unbonding_responses) && (!o.unbonding_responses.length || UnbondingDelegation.is(o.unbonding_responses[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryValidatorUnbondingDelegationsResponse.typeUrl || Array.isArray(o.unbonding_responses) && (!o.unbonding_responses.length || UnbondingDelegation.isSDK(o.unbonding_responses[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryValidatorUnbondingDelegationsResponse.typeUrl || Array.isArray(o.unbonding_responses) && (!o.unbonding_responses.length || UnbondingDelegation.isAmino(o.unbonding_responses[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.unbonding_responses) {
             UnbondingDelegation.encode(v, writer.uint32(10).fork()).ldelim();
@@ -744,6 +839,8 @@ export const QueryValidatorUnbondingDelegationsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryValidatorUnbondingDelegationsResponse.typeUrl, QueryValidatorUnbondingDelegationsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryValidatorUnbondingDelegationsResponse.aminoType, QueryValidatorUnbondingDelegationsResponse.typeUrl);
 function createBaseQueryDelegationRequest() {
     return {
         delegator_addr: "",
@@ -752,6 +849,16 @@ function createBaseQueryDelegationRequest() {
 }
 export const QueryDelegationRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegationRequest",
+    aminoType: "cosmos-sdk/QueryDelegationRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryDelegationRequest.typeUrl || typeof o.delegator_addr === "string" && typeof o.validator_addr === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryDelegationRequest.typeUrl || typeof o.delegator_addr === "string" && typeof o.validator_addr === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryDelegationRequest.typeUrl || typeof o.delegator_addr === "string" && typeof o.validator_addr === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.delegator_addr !== "") {
             writer.uint32(10).string(message.delegator_addr);
@@ -837,6 +944,8 @@ export const QueryDelegationRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDelegationRequest.typeUrl, QueryDelegationRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDelegationRequest.aminoType, QueryDelegationRequest.typeUrl);
 function createBaseQueryDelegationResponse() {
     return {
         delegation_response: undefined
@@ -844,6 +953,16 @@ function createBaseQueryDelegationResponse() {
 }
 export const QueryDelegationResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegationResponse",
+    aminoType: "cosmos-sdk/QueryDelegationResponse",
+    is(o) {
+        return o && o.$typeUrl === QueryDelegationResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === QueryDelegationResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === QueryDelegationResponse.typeUrl;
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.delegation_response !== undefined) {
             DelegationResponse.encode(message.delegation_response, writer.uint32(10).fork()).ldelim();
@@ -916,6 +1035,8 @@ export const QueryDelegationResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDelegationResponse.typeUrl, QueryDelegationResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDelegationResponse.aminoType, QueryDelegationResponse.typeUrl);
 function createBaseQueryUnbondingDelegationRequest() {
     return {
         delegator_addr: "",
@@ -924,6 +1045,16 @@ function createBaseQueryUnbondingDelegationRequest() {
 }
 export const QueryUnbondingDelegationRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryUnbondingDelegationRequest",
+    aminoType: "cosmos-sdk/QueryUnbondingDelegationRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryUnbondingDelegationRequest.typeUrl || typeof o.delegator_addr === "string" && typeof o.validator_addr === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryUnbondingDelegationRequest.typeUrl || typeof o.delegator_addr === "string" && typeof o.validator_addr === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryUnbondingDelegationRequest.typeUrl || typeof o.delegator_addr === "string" && typeof o.validator_addr === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.delegator_addr !== "") {
             writer.uint32(10).string(message.delegator_addr);
@@ -1009,6 +1140,8 @@ export const QueryUnbondingDelegationRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryUnbondingDelegationRequest.typeUrl, QueryUnbondingDelegationRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryUnbondingDelegationRequest.aminoType, QueryUnbondingDelegationRequest.typeUrl);
 function createBaseQueryUnbondingDelegationResponse() {
     return {
         unbond: UnbondingDelegation.fromPartial({})
@@ -1016,6 +1149,16 @@ function createBaseQueryUnbondingDelegationResponse() {
 }
 export const QueryUnbondingDelegationResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryUnbondingDelegationResponse",
+    aminoType: "cosmos-sdk/QueryUnbondingDelegationResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryUnbondingDelegationResponse.typeUrl || UnbondingDelegation.is(o.unbond));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryUnbondingDelegationResponse.typeUrl || UnbondingDelegation.isSDK(o.unbond));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryUnbondingDelegationResponse.typeUrl || UnbondingDelegation.isAmino(o.unbond));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.unbond !== undefined) {
             UnbondingDelegation.encode(message.unbond, writer.uint32(10).fork()).ldelim();
@@ -1088,6 +1231,8 @@ export const QueryUnbondingDelegationResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryUnbondingDelegationResponse.typeUrl, QueryUnbondingDelegationResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryUnbondingDelegationResponse.aminoType, QueryUnbondingDelegationResponse.typeUrl);
 function createBaseQueryDelegatorDelegationsRequest() {
     return {
         delegator_addr: "",
@@ -1096,6 +1241,16 @@ function createBaseQueryDelegatorDelegationsRequest() {
 }
 export const QueryDelegatorDelegationsRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorDelegationsRequest",
+    aminoType: "cosmos-sdk/QueryDelegatorDelegationsRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryDelegatorDelegationsRequest.typeUrl || typeof o.delegator_addr === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryDelegatorDelegationsRequest.typeUrl || typeof o.delegator_addr === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryDelegatorDelegationsRequest.typeUrl || typeof o.delegator_addr === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.delegator_addr !== "") {
             writer.uint32(10).string(message.delegator_addr);
@@ -1181,6 +1336,8 @@ export const QueryDelegatorDelegationsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDelegatorDelegationsRequest.typeUrl, QueryDelegatorDelegationsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDelegatorDelegationsRequest.aminoType, QueryDelegatorDelegationsRequest.typeUrl);
 function createBaseQueryDelegatorDelegationsResponse() {
     return {
         delegation_responses: [],
@@ -1189,6 +1346,16 @@ function createBaseQueryDelegatorDelegationsResponse() {
 }
 export const QueryDelegatorDelegationsResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorDelegationsResponse",
+    aminoType: "cosmos-sdk/QueryDelegatorDelegationsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryDelegatorDelegationsResponse.typeUrl || Array.isArray(o.delegation_responses) && (!o.delegation_responses.length || DelegationResponse.is(o.delegation_responses[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryDelegatorDelegationsResponse.typeUrl || Array.isArray(o.delegation_responses) && (!o.delegation_responses.length || DelegationResponse.isSDK(o.delegation_responses[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryDelegatorDelegationsResponse.typeUrl || Array.isArray(o.delegation_responses) && (!o.delegation_responses.length || DelegationResponse.isAmino(o.delegation_responses[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.delegation_responses) {
             DelegationResponse.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1282,6 +1449,8 @@ export const QueryDelegatorDelegationsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDelegatorDelegationsResponse.typeUrl, QueryDelegatorDelegationsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDelegatorDelegationsResponse.aminoType, QueryDelegatorDelegationsResponse.typeUrl);
 function createBaseQueryDelegatorUnbondingDelegationsRequest() {
     return {
         delegator_addr: "",
@@ -1290,6 +1459,16 @@ function createBaseQueryDelegatorUnbondingDelegationsRequest() {
 }
 export const QueryDelegatorUnbondingDelegationsRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorUnbondingDelegationsRequest",
+    aminoType: "cosmos-sdk/QueryDelegatorUnbondingDelegationsRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryDelegatorUnbondingDelegationsRequest.typeUrl || typeof o.delegator_addr === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryDelegatorUnbondingDelegationsRequest.typeUrl || typeof o.delegator_addr === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryDelegatorUnbondingDelegationsRequest.typeUrl || typeof o.delegator_addr === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.delegator_addr !== "") {
             writer.uint32(10).string(message.delegator_addr);
@@ -1375,6 +1554,8 @@ export const QueryDelegatorUnbondingDelegationsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDelegatorUnbondingDelegationsRequest.typeUrl, QueryDelegatorUnbondingDelegationsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDelegatorUnbondingDelegationsRequest.aminoType, QueryDelegatorUnbondingDelegationsRequest.typeUrl);
 function createBaseQueryDelegatorUnbondingDelegationsResponse() {
     return {
         unbonding_responses: [],
@@ -1383,6 +1564,16 @@ function createBaseQueryDelegatorUnbondingDelegationsResponse() {
 }
 export const QueryDelegatorUnbondingDelegationsResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorUnbondingDelegationsResponse",
+    aminoType: "cosmos-sdk/QueryDelegatorUnbondingDelegationsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryDelegatorUnbondingDelegationsResponse.typeUrl || Array.isArray(o.unbonding_responses) && (!o.unbonding_responses.length || UnbondingDelegation.is(o.unbonding_responses[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryDelegatorUnbondingDelegationsResponse.typeUrl || Array.isArray(o.unbonding_responses) && (!o.unbonding_responses.length || UnbondingDelegation.isSDK(o.unbonding_responses[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryDelegatorUnbondingDelegationsResponse.typeUrl || Array.isArray(o.unbonding_responses) && (!o.unbonding_responses.length || UnbondingDelegation.isAmino(o.unbonding_responses[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.unbonding_responses) {
             UnbondingDelegation.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1476,6 +1667,8 @@ export const QueryDelegatorUnbondingDelegationsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDelegatorUnbondingDelegationsResponse.typeUrl, QueryDelegatorUnbondingDelegationsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDelegatorUnbondingDelegationsResponse.aminoType, QueryDelegatorUnbondingDelegationsResponse.typeUrl);
 function createBaseQueryRedelegationsRequest() {
     return {
         delegator_addr: "",
@@ -1486,6 +1679,16 @@ function createBaseQueryRedelegationsRequest() {
 }
 export const QueryRedelegationsRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryRedelegationsRequest",
+    aminoType: "cosmos-sdk/QueryRedelegationsRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryRedelegationsRequest.typeUrl || typeof o.delegator_addr === "string" && typeof o.src_validator_addr === "string" && typeof o.dst_validator_addr === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryRedelegationsRequest.typeUrl || typeof o.delegator_addr === "string" && typeof o.src_validator_addr === "string" && typeof o.dst_validator_addr === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryRedelegationsRequest.typeUrl || typeof o.delegator_addr === "string" && typeof o.src_validator_addr === "string" && typeof o.dst_validator_addr === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.delegator_addr !== "") {
             writer.uint32(10).string(message.delegator_addr);
@@ -1597,6 +1800,8 @@ export const QueryRedelegationsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryRedelegationsRequest.typeUrl, QueryRedelegationsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryRedelegationsRequest.aminoType, QueryRedelegationsRequest.typeUrl);
 function createBaseQueryRedelegationsResponse() {
     return {
         redelegation_responses: [],
@@ -1605,6 +1810,16 @@ function createBaseQueryRedelegationsResponse() {
 }
 export const QueryRedelegationsResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryRedelegationsResponse",
+    aminoType: "cosmos-sdk/QueryRedelegationsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryRedelegationsResponse.typeUrl || Array.isArray(o.redelegation_responses) && (!o.redelegation_responses.length || RedelegationResponse.is(o.redelegation_responses[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryRedelegationsResponse.typeUrl || Array.isArray(o.redelegation_responses) && (!o.redelegation_responses.length || RedelegationResponse.isSDK(o.redelegation_responses[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryRedelegationsResponse.typeUrl || Array.isArray(o.redelegation_responses) && (!o.redelegation_responses.length || RedelegationResponse.isAmino(o.redelegation_responses[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.redelegation_responses) {
             RedelegationResponse.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1698,6 +1913,8 @@ export const QueryRedelegationsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryRedelegationsResponse.typeUrl, QueryRedelegationsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryRedelegationsResponse.aminoType, QueryRedelegationsResponse.typeUrl);
 function createBaseQueryDelegatorValidatorsRequest() {
     return {
         delegator_addr: "",
@@ -1706,6 +1923,16 @@ function createBaseQueryDelegatorValidatorsRequest() {
 }
 export const QueryDelegatorValidatorsRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorValidatorsRequest",
+    aminoType: "cosmos-sdk/QueryDelegatorValidatorsRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryDelegatorValidatorsRequest.typeUrl || typeof o.delegator_addr === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryDelegatorValidatorsRequest.typeUrl || typeof o.delegator_addr === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryDelegatorValidatorsRequest.typeUrl || typeof o.delegator_addr === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.delegator_addr !== "") {
             writer.uint32(10).string(message.delegator_addr);
@@ -1791,6 +2018,8 @@ export const QueryDelegatorValidatorsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDelegatorValidatorsRequest.typeUrl, QueryDelegatorValidatorsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDelegatorValidatorsRequest.aminoType, QueryDelegatorValidatorsRequest.typeUrl);
 function createBaseQueryDelegatorValidatorsResponse() {
     return {
         validators: [],
@@ -1799,6 +2028,16 @@ function createBaseQueryDelegatorValidatorsResponse() {
 }
 export const QueryDelegatorValidatorsResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorValidatorsResponse",
+    aminoType: "cosmos-sdk/QueryDelegatorValidatorsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryDelegatorValidatorsResponse.typeUrl || Array.isArray(o.validators) && (!o.validators.length || Validator.is(o.validators[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryDelegatorValidatorsResponse.typeUrl || Array.isArray(o.validators) && (!o.validators.length || Validator.isSDK(o.validators[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryDelegatorValidatorsResponse.typeUrl || Array.isArray(o.validators) && (!o.validators.length || Validator.isAmino(o.validators[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.validators) {
             Validator.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1892,6 +2131,8 @@ export const QueryDelegatorValidatorsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDelegatorValidatorsResponse.typeUrl, QueryDelegatorValidatorsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDelegatorValidatorsResponse.aminoType, QueryDelegatorValidatorsResponse.typeUrl);
 function createBaseQueryDelegatorValidatorRequest() {
     return {
         delegator_addr: "",
@@ -1900,6 +2141,16 @@ function createBaseQueryDelegatorValidatorRequest() {
 }
 export const QueryDelegatorValidatorRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorValidatorRequest",
+    aminoType: "cosmos-sdk/QueryDelegatorValidatorRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryDelegatorValidatorRequest.typeUrl || typeof o.delegator_addr === "string" && typeof o.validator_addr === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryDelegatorValidatorRequest.typeUrl || typeof o.delegator_addr === "string" && typeof o.validator_addr === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryDelegatorValidatorRequest.typeUrl || typeof o.delegator_addr === "string" && typeof o.validator_addr === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.delegator_addr !== "") {
             writer.uint32(10).string(message.delegator_addr);
@@ -1985,6 +2236,8 @@ export const QueryDelegatorValidatorRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDelegatorValidatorRequest.typeUrl, QueryDelegatorValidatorRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDelegatorValidatorRequest.aminoType, QueryDelegatorValidatorRequest.typeUrl);
 function createBaseQueryDelegatorValidatorResponse() {
     return {
         validator: Validator.fromPartial({})
@@ -1992,6 +2245,16 @@ function createBaseQueryDelegatorValidatorResponse() {
 }
 export const QueryDelegatorValidatorResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryDelegatorValidatorResponse",
+    aminoType: "cosmos-sdk/QueryDelegatorValidatorResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryDelegatorValidatorResponse.typeUrl || Validator.is(o.validator));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryDelegatorValidatorResponse.typeUrl || Validator.isSDK(o.validator));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryDelegatorValidatorResponse.typeUrl || Validator.isAmino(o.validator));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.validator !== undefined) {
             Validator.encode(message.validator, writer.uint32(10).fork()).ldelim();
@@ -2064,6 +2327,8 @@ export const QueryDelegatorValidatorResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDelegatorValidatorResponse.typeUrl, QueryDelegatorValidatorResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDelegatorValidatorResponse.aminoType, QueryDelegatorValidatorResponse.typeUrl);
 function createBaseQueryHistoricalInfoRequest() {
     return {
         height: BigInt(0)
@@ -2071,6 +2336,16 @@ function createBaseQueryHistoricalInfoRequest() {
 }
 export const QueryHistoricalInfoRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryHistoricalInfoRequest",
+    aminoType: "cosmos-sdk/QueryHistoricalInfoRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryHistoricalInfoRequest.typeUrl || typeof o.height === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryHistoricalInfoRequest.typeUrl || typeof o.height === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryHistoricalInfoRequest.typeUrl || typeof o.height === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.height !== BigInt(0)) {
             writer.uint32(8).int64(message.height);
@@ -2143,6 +2418,8 @@ export const QueryHistoricalInfoRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryHistoricalInfoRequest.typeUrl, QueryHistoricalInfoRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryHistoricalInfoRequest.aminoType, QueryHistoricalInfoRequest.typeUrl);
 function createBaseQueryHistoricalInfoResponse() {
     return {
         hist: undefined
@@ -2150,6 +2427,16 @@ function createBaseQueryHistoricalInfoResponse() {
 }
 export const QueryHistoricalInfoResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryHistoricalInfoResponse",
+    aminoType: "cosmos-sdk/QueryHistoricalInfoResponse",
+    is(o) {
+        return o && o.$typeUrl === QueryHistoricalInfoResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === QueryHistoricalInfoResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === QueryHistoricalInfoResponse.typeUrl;
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.hist !== undefined) {
             HistoricalInfo.encode(message.hist, writer.uint32(10).fork()).ldelim();
@@ -2222,11 +2509,23 @@ export const QueryHistoricalInfoResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryHistoricalInfoResponse.typeUrl, QueryHistoricalInfoResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryHistoricalInfoResponse.aminoType, QueryHistoricalInfoResponse.typeUrl);
 function createBaseQueryPoolRequest() {
     return {};
 }
 export const QueryPoolRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryPoolRequest",
+    aminoType: "cosmos-sdk/QueryPoolRequest",
+    is(o) {
+        return o && o.$typeUrl === QueryPoolRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === QueryPoolRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === QueryPoolRequest.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -2285,6 +2584,8 @@ export const QueryPoolRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryPoolRequest.typeUrl, QueryPoolRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryPoolRequest.aminoType, QueryPoolRequest.typeUrl);
 function createBaseQueryPoolResponse() {
     return {
         pool: Pool.fromPartial({})
@@ -2292,6 +2593,16 @@ function createBaseQueryPoolResponse() {
 }
 export const QueryPoolResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryPoolResponse",
+    aminoType: "cosmos-sdk/QueryPoolResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryPoolResponse.typeUrl || Pool.is(o.pool));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryPoolResponse.typeUrl || Pool.isSDK(o.pool));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryPoolResponse.typeUrl || Pool.isAmino(o.pool));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.pool !== undefined) {
             Pool.encode(message.pool, writer.uint32(10).fork()).ldelim();
@@ -2364,11 +2675,23 @@ export const QueryPoolResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryPoolResponse.typeUrl, QueryPoolResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryPoolResponse.aminoType, QueryPoolResponse.typeUrl);
 function createBaseQueryParamsRequest() {
     return {};
 }
 export const QueryParamsRequest = {
     typeUrl: "/cosmos.staking.v1beta1.QueryParamsRequest",
+    aminoType: "cosmos-sdk/QueryParamsRequest",
+    is(o) {
+        return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -2427,6 +2750,8 @@ export const QueryParamsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsRequest.aminoType, QueryParamsRequest.typeUrl);
 function createBaseQueryParamsResponse() {
     return {
         params: Params.fromPartial({})
@@ -2434,6 +2759,16 @@ function createBaseQueryParamsResponse() {
 }
 export const QueryParamsResponse = {
     typeUrl: "/cosmos.staking.v1beta1.QueryParamsResponse",
+    aminoType: "cosmos-sdk/QueryParamsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.is(o.params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isSDK(o.params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isAmino(o.params));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.params !== undefined) {
             Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -2506,4 +2841,6 @@ export const QueryParamsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsResponse.aminoType, QueryParamsResponse.typeUrl);
 //# sourceMappingURL=query.js.map

@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.crypto.secp256r1";
 function createBasePubKey() {
     return {
@@ -9,6 +10,16 @@ function createBasePubKey() {
 }
 export const PubKey = {
     typeUrl: "/cosmos.crypto.secp256r1.PubKey",
+    aminoType: "cosmos-sdk/PubKey",
+    is(o) {
+        return o && (o.$typeUrl === PubKey.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === PubKey.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === PubKey.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.key.length !== 0) {
             writer.uint32(10).bytes(message.key);
@@ -81,6 +92,8 @@ export const PubKey = {
         };
     }
 };
+GlobalDecoderRegistry.register(PubKey.typeUrl, PubKey);
+GlobalDecoderRegistry.registerAminoProtoMapping(PubKey.aminoType, PubKey.typeUrl);
 function createBasePrivKey() {
     return {
         secret: new Uint8Array()
@@ -88,6 +101,16 @@ function createBasePrivKey() {
 }
 export const PrivKey = {
     typeUrl: "/cosmos.crypto.secp256r1.PrivKey",
+    aminoType: "cosmos-sdk/PrivKey",
+    is(o) {
+        return o && (o.$typeUrl === PrivKey.typeUrl || o.secret instanceof Uint8Array || typeof o.secret === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === PrivKey.typeUrl || o.secret instanceof Uint8Array || typeof o.secret === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === PrivKey.typeUrl || o.secret instanceof Uint8Array || typeof o.secret === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.secret.length !== 0) {
             writer.uint32(10).bytes(message.secret);
@@ -160,4 +183,6 @@ export const PrivKey = {
         };
     }
 };
+GlobalDecoderRegistry.register(PrivKey.typeUrl, PrivKey);
+GlobalDecoderRegistry.registerAminoProtoMapping(PrivKey.aminoType, PrivKey.typeUrl);
 //# sourceMappingURL=keys.js.map

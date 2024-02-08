@@ -221,6 +221,10 @@ export interface SignatureDescriptor_Data_MultiSDKType {
 }
 export declare const SignatureDescriptors: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SignatureDescriptors;
+    isSDK(o: any): o is SignatureDescriptorsSDKType;
+    isAmino(o: any): o is SignatureDescriptorsAmino;
     encode(message: SignatureDescriptors, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptors;
     fromJSON(object: any): SignatureDescriptors;
@@ -236,6 +240,10 @@ export declare const SignatureDescriptors: {
 };
 export declare const SignatureDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SignatureDescriptor;
+    isSDK(o: any): o is SignatureDescriptorSDKType;
+    isAmino(o: any): o is SignatureDescriptorAmino;
     encode(message: SignatureDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptor;
     fromJSON(object: any): SignatureDescriptor;
@@ -251,6 +259,10 @@ export declare const SignatureDescriptor: {
 };
 export declare const SignatureDescriptor_Data: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SignatureDescriptor_Data;
+    isSDK(o: any): o is SignatureDescriptor_DataSDKType;
+    isAmino(o: any): o is SignatureDescriptor_DataAmino;
     encode(message: SignatureDescriptor_Data, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptor_Data;
     fromJSON(object: any): SignatureDescriptor_Data;
@@ -266,6 +278,10 @@ export declare const SignatureDescriptor_Data: {
 };
 export declare const SignatureDescriptor_Data_Single: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SignatureDescriptor_Data_Single;
+    isSDK(o: any): o is SignatureDescriptor_Data_SingleSDKType;
+    isAmino(o: any): o is SignatureDescriptor_Data_SingleAmino;
     encode(message: SignatureDescriptor_Data_Single, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptor_Data_Single;
     fromJSON(object: any): SignatureDescriptor_Data_Single;
@@ -281,6 +297,10 @@ export declare const SignatureDescriptor_Data_Single: {
 };
 export declare const SignatureDescriptor_Data_Multi: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is SignatureDescriptor_Data_Multi;
+    isSDK(o: any): o is SignatureDescriptor_Data_MultiSDKType;
+    isAmino(o: any): o is SignatureDescriptor_Data_MultiAmino;
     encode(message: SignatureDescriptor_Data_Multi, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignatureDescriptor_Data_Multi;
     fromJSON(object: any): SignatureDescriptor_Data_Multi;

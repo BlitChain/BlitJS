@@ -5,6 +5,7 @@ exports.GenesisState = exports.protobufPackage = void 0;
 const gov_1 = require("./gov");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.gov.v1beta1";
 function createBaseGenesisState() {
     return {
@@ -19,6 +20,16 @@ function createBaseGenesisState() {
 }
 exports.GenesisState = {
     typeUrl: "/cosmos.gov.v1beta1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.starting_proposal_id === "bigint" && Array.isArray(o.deposits) && (!o.deposits.length || gov_1.Deposit.is(o.deposits[0])) && Array.isArray(o.votes) && (!o.votes.length || gov_1.Vote.is(o.votes[0])) && Array.isArray(o.proposals) && (!o.proposals.length || gov_1.Proposal.is(o.proposals[0])) && gov_1.DepositParams.is(o.deposit_params) && gov_1.VotingParams.is(o.voting_params) && gov_1.TallyParams.is(o.tally_params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.starting_proposal_id === "bigint" && Array.isArray(o.deposits) && (!o.deposits.length || gov_1.Deposit.isSDK(o.deposits[0])) && Array.isArray(o.votes) && (!o.votes.length || gov_1.Vote.isSDK(o.votes[0])) && Array.isArray(o.proposals) && (!o.proposals.length || gov_1.Proposal.isSDK(o.proposals[0])) && gov_1.DepositParams.isSDK(o.deposit_params) && gov_1.VotingParams.isSDK(o.voting_params) && gov_1.TallyParams.isSDK(o.tally_params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || typeof o.starting_proposal_id === "bigint" && Array.isArray(o.deposits) && (!o.deposits.length || gov_1.Deposit.isAmino(o.deposits[0])) && Array.isArray(o.votes) && (!o.votes.length || gov_1.Vote.isAmino(o.votes[0])) && Array.isArray(o.proposals) && (!o.proposals.length || gov_1.Proposal.isAmino(o.proposals[0])) && gov_1.DepositParams.isAmino(o.deposit_params) && gov_1.VotingParams.isAmino(o.voting_params) && gov_1.TallyParams.isAmino(o.tally_params));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.starting_proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.starting_proposal_id);
@@ -193,4 +204,6 @@ exports.GenesisState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GenesisState.aminoType, exports.GenesisState.typeUrl);
 //# sourceMappingURL=genesis.js.map

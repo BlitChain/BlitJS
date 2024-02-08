@@ -2,6 +2,7 @@
 import { TallyResult, proposalExecutorResultFromJSON, proposalExecutorResultToJSON, proposalStatusFromJSON, proposalStatusToJSON } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.group.v1";
 function createBaseEventCreateGroup() {
     return {
@@ -10,6 +11,16 @@ function createBaseEventCreateGroup() {
 }
 export const EventCreateGroup = {
     typeUrl: "/cosmos.group.v1.EventCreateGroup",
+    aminoType: "cosmos-sdk/EventCreateGroup",
+    is(o) {
+        return o && (o.$typeUrl === EventCreateGroup.typeUrl || typeof o.group_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === EventCreateGroup.typeUrl || typeof o.group_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === EventCreateGroup.typeUrl || typeof o.group_id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.group_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.group_id);
@@ -82,6 +93,8 @@ export const EventCreateGroup = {
         };
     }
 };
+GlobalDecoderRegistry.register(EventCreateGroup.typeUrl, EventCreateGroup);
+GlobalDecoderRegistry.registerAminoProtoMapping(EventCreateGroup.aminoType, EventCreateGroup.typeUrl);
 function createBaseEventUpdateGroup() {
     return {
         group_id: BigInt(0)
@@ -89,6 +102,16 @@ function createBaseEventUpdateGroup() {
 }
 export const EventUpdateGroup = {
     typeUrl: "/cosmos.group.v1.EventUpdateGroup",
+    aminoType: "cosmos-sdk/EventUpdateGroup",
+    is(o) {
+        return o && (o.$typeUrl === EventUpdateGroup.typeUrl || typeof o.group_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === EventUpdateGroup.typeUrl || typeof o.group_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === EventUpdateGroup.typeUrl || typeof o.group_id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.group_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.group_id);
@@ -161,6 +184,8 @@ export const EventUpdateGroup = {
         };
     }
 };
+GlobalDecoderRegistry.register(EventUpdateGroup.typeUrl, EventUpdateGroup);
+GlobalDecoderRegistry.registerAminoProtoMapping(EventUpdateGroup.aminoType, EventUpdateGroup.typeUrl);
 function createBaseEventCreateGroupPolicy() {
     return {
         address: ""
@@ -168,6 +193,16 @@ function createBaseEventCreateGroupPolicy() {
 }
 export const EventCreateGroupPolicy = {
     typeUrl: "/cosmos.group.v1.EventCreateGroupPolicy",
+    aminoType: "cosmos-sdk/EventCreateGroupPolicy",
+    is(o) {
+        return o && (o.$typeUrl === EventCreateGroupPolicy.typeUrl || typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === EventCreateGroupPolicy.typeUrl || typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === EventCreateGroupPolicy.typeUrl || typeof o.address === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -240,6 +275,8 @@ export const EventCreateGroupPolicy = {
         };
     }
 };
+GlobalDecoderRegistry.register(EventCreateGroupPolicy.typeUrl, EventCreateGroupPolicy);
+GlobalDecoderRegistry.registerAminoProtoMapping(EventCreateGroupPolicy.aminoType, EventCreateGroupPolicy.typeUrl);
 function createBaseEventUpdateGroupPolicy() {
     return {
         address: ""
@@ -247,6 +284,16 @@ function createBaseEventUpdateGroupPolicy() {
 }
 export const EventUpdateGroupPolicy = {
     typeUrl: "/cosmos.group.v1.EventUpdateGroupPolicy",
+    aminoType: "cosmos-sdk/EventUpdateGroupPolicy",
+    is(o) {
+        return o && (o.$typeUrl === EventUpdateGroupPolicy.typeUrl || typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === EventUpdateGroupPolicy.typeUrl || typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === EventUpdateGroupPolicy.typeUrl || typeof o.address === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.address !== "") {
             writer.uint32(10).string(message.address);
@@ -319,6 +366,8 @@ export const EventUpdateGroupPolicy = {
         };
     }
 };
+GlobalDecoderRegistry.register(EventUpdateGroupPolicy.typeUrl, EventUpdateGroupPolicy);
+GlobalDecoderRegistry.registerAminoProtoMapping(EventUpdateGroupPolicy.aminoType, EventUpdateGroupPolicy.typeUrl);
 function createBaseEventSubmitProposal() {
     return {
         proposal_id: BigInt(0)
@@ -326,6 +375,16 @@ function createBaseEventSubmitProposal() {
 }
 export const EventSubmitProposal = {
     typeUrl: "/cosmos.group.v1.EventSubmitProposal",
+    aminoType: "cosmos-sdk/EventSubmitProposal",
+    is(o) {
+        return o && (o.$typeUrl === EventSubmitProposal.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === EventSubmitProposal.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === EventSubmitProposal.typeUrl || typeof o.proposal_id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -398,6 +457,8 @@ export const EventSubmitProposal = {
         };
     }
 };
+GlobalDecoderRegistry.register(EventSubmitProposal.typeUrl, EventSubmitProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(EventSubmitProposal.aminoType, EventSubmitProposal.typeUrl);
 function createBaseEventWithdrawProposal() {
     return {
         proposal_id: BigInt(0)
@@ -405,6 +466,16 @@ function createBaseEventWithdrawProposal() {
 }
 export const EventWithdrawProposal = {
     typeUrl: "/cosmos.group.v1.EventWithdrawProposal",
+    aminoType: "cosmos-sdk/EventWithdrawProposal",
+    is(o) {
+        return o && (o.$typeUrl === EventWithdrawProposal.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === EventWithdrawProposal.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === EventWithdrawProposal.typeUrl || typeof o.proposal_id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -477,6 +548,8 @@ export const EventWithdrawProposal = {
         };
     }
 };
+GlobalDecoderRegistry.register(EventWithdrawProposal.typeUrl, EventWithdrawProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(EventWithdrawProposal.aminoType, EventWithdrawProposal.typeUrl);
 function createBaseEventVote() {
     return {
         proposal_id: BigInt(0)
@@ -484,6 +557,16 @@ function createBaseEventVote() {
 }
 export const EventVote = {
     typeUrl: "/cosmos.group.v1.EventVote",
+    aminoType: "cosmos-sdk/EventVote",
+    is(o) {
+        return o && (o.$typeUrl === EventVote.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === EventVote.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === EventVote.typeUrl || typeof o.proposal_id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -556,6 +639,8 @@ export const EventVote = {
         };
     }
 };
+GlobalDecoderRegistry.register(EventVote.typeUrl, EventVote);
+GlobalDecoderRegistry.registerAminoProtoMapping(EventVote.aminoType, EventVote.typeUrl);
 function createBaseEventExec() {
     return {
         proposal_id: BigInt(0),
@@ -565,6 +650,16 @@ function createBaseEventExec() {
 }
 export const EventExec = {
     typeUrl: "/cosmos.group.v1.EventExec",
+    aminoType: "cosmos-sdk/EventExec",
+    is(o) {
+        return o && (o.$typeUrl === EventExec.typeUrl || typeof o.proposal_id === "bigint" && isSet(o.result) && typeof o.logs === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === EventExec.typeUrl || typeof o.proposal_id === "bigint" && isSet(o.result) && typeof o.logs === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === EventExec.typeUrl || typeof o.proposal_id === "bigint" && isSet(o.result) && typeof o.logs === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -663,6 +758,8 @@ export const EventExec = {
         };
     }
 };
+GlobalDecoderRegistry.register(EventExec.typeUrl, EventExec);
+GlobalDecoderRegistry.registerAminoProtoMapping(EventExec.aminoType, EventExec.typeUrl);
 function createBaseEventLeaveGroup() {
     return {
         group_id: BigInt(0),
@@ -671,6 +768,16 @@ function createBaseEventLeaveGroup() {
 }
 export const EventLeaveGroup = {
     typeUrl: "/cosmos.group.v1.EventLeaveGroup",
+    aminoType: "cosmos-sdk/EventLeaveGroup",
+    is(o) {
+        return o && (o.$typeUrl === EventLeaveGroup.typeUrl || typeof o.group_id === "bigint" && typeof o.address === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === EventLeaveGroup.typeUrl || typeof o.group_id === "bigint" && typeof o.address === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === EventLeaveGroup.typeUrl || typeof o.group_id === "bigint" && typeof o.address === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.group_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.group_id);
@@ -756,6 +863,8 @@ export const EventLeaveGroup = {
         };
     }
 };
+GlobalDecoderRegistry.register(EventLeaveGroup.typeUrl, EventLeaveGroup);
+GlobalDecoderRegistry.registerAminoProtoMapping(EventLeaveGroup.aminoType, EventLeaveGroup.typeUrl);
 function createBaseEventProposalPruned() {
     return {
         proposal_id: BigInt(0),
@@ -765,6 +874,16 @@ function createBaseEventProposalPruned() {
 }
 export const EventProposalPruned = {
     typeUrl: "/cosmos.group.v1.EventProposalPruned",
+    aminoType: "cosmos-sdk/EventProposalPruned",
+    is(o) {
+        return o && (o.$typeUrl === EventProposalPruned.typeUrl || typeof o.proposal_id === "bigint" && isSet(o.status));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === EventProposalPruned.typeUrl || typeof o.proposal_id === "bigint" && isSet(o.status));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === EventProposalPruned.typeUrl || typeof o.proposal_id === "bigint" && isSet(o.status));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -863,4 +982,6 @@ export const EventProposalPruned = {
         };
     }
 };
+GlobalDecoderRegistry.register(EventProposalPruned.typeUrl, EventProposalPruned);
+GlobalDecoderRegistry.registerAminoProtoMapping(EventProposalPruned.aminoType, EventProposalPruned.typeUrl);
 //# sourceMappingURL=events.js.map

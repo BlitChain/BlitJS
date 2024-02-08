@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "google.protobuf";
 function createBaseDuration() {
     return {
@@ -10,6 +11,15 @@ function createBaseDuration() {
 }
 export const Duration = {
     typeUrl: "/google.protobuf.Duration",
+    is(o) {
+        return o && (o.$typeUrl === Duration.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Duration.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Duration.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.seconds !== BigInt(0)) {
             writer.uint32(8).int64(message.seconds);
@@ -83,4 +93,5 @@ export const Duration = {
         };
     }
 };
+GlobalDecoderRegistry.register(Duration.typeUrl, Duration);
 //# sourceMappingURL=duration.js.map

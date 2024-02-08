@@ -339,6 +339,10 @@ export interface QueryAuthorityResponseSDKType {
 }
 export declare const QueryCurrentPlanRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryCurrentPlanRequest;
+    isSDK(o: any): o is QueryCurrentPlanRequestSDKType;
+    isAmino(o: any): o is QueryCurrentPlanRequestAmino;
     encode(_: QueryCurrentPlanRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryCurrentPlanRequest;
     fromJSON(_: any): QueryCurrentPlanRequest;
@@ -354,6 +358,10 @@ export declare const QueryCurrentPlanRequest: {
 };
 export declare const QueryCurrentPlanResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryCurrentPlanResponse;
+    isSDK(o: any): o is QueryCurrentPlanResponseSDKType;
+    isAmino(o: any): o is QueryCurrentPlanResponseAmino;
     encode(message: QueryCurrentPlanResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryCurrentPlanResponse;
     fromJSON(object: any): QueryCurrentPlanResponse;
@@ -369,6 +377,10 @@ export declare const QueryCurrentPlanResponse: {
 };
 export declare const QueryAppliedPlanRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAppliedPlanRequest;
+    isSDK(o: any): o is QueryAppliedPlanRequestSDKType;
+    isAmino(o: any): o is QueryAppliedPlanRequestAmino;
     encode(message: QueryAppliedPlanRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAppliedPlanRequest;
     fromJSON(object: any): QueryAppliedPlanRequest;
@@ -384,6 +396,10 @@ export declare const QueryAppliedPlanRequest: {
 };
 export declare const QueryAppliedPlanResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAppliedPlanResponse;
+    isSDK(o: any): o is QueryAppliedPlanResponseSDKType;
+    isAmino(o: any): o is QueryAppliedPlanResponseAmino;
     encode(message: QueryAppliedPlanResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAppliedPlanResponse;
     fromJSON(object: any): QueryAppliedPlanResponse;
@@ -399,6 +415,10 @@ export declare const QueryAppliedPlanResponse: {
 };
 export declare const QueryUpgradedConsensusStateRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryUpgradedConsensusStateRequest;
+    isSDK(o: any): o is QueryUpgradedConsensusStateRequestSDKType;
+    isAmino(o: any): o is QueryUpgradedConsensusStateRequestAmino;
     encode(message: QueryUpgradedConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedConsensusStateRequest;
     fromJSON(object: any): QueryUpgradedConsensusStateRequest;
@@ -414,6 +434,10 @@ export declare const QueryUpgradedConsensusStateRequest: {
 };
 export declare const QueryUpgradedConsensusStateResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryUpgradedConsensusStateResponse;
+    isSDK(o: any): o is QueryUpgradedConsensusStateResponseSDKType;
+    isAmino(o: any): o is QueryUpgradedConsensusStateResponseAmino;
     encode(message: QueryUpgradedConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse;
     fromJSON(object: any): QueryUpgradedConsensusStateResponse;
@@ -429,6 +453,10 @@ export declare const QueryUpgradedConsensusStateResponse: {
 };
 export declare const QueryModuleVersionsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryModuleVersionsRequest;
+    isSDK(o: any): o is QueryModuleVersionsRequestSDKType;
+    isAmino(o: any): o is QueryModuleVersionsRequestAmino;
     encode(message: QueryModuleVersionsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleVersionsRequest;
     fromJSON(object: any): QueryModuleVersionsRequest;
@@ -444,6 +472,10 @@ export declare const QueryModuleVersionsRequest: {
 };
 export declare const QueryModuleVersionsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryModuleVersionsResponse;
+    isSDK(o: any): o is QueryModuleVersionsResponseSDKType;
+    isAmino(o: any): o is QueryModuleVersionsResponseAmino;
     encode(message: QueryModuleVersionsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleVersionsResponse;
     fromJSON(object: any): QueryModuleVersionsResponse;
@@ -459,6 +491,10 @@ export declare const QueryModuleVersionsResponse: {
 };
 export declare const QueryAuthorityRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAuthorityRequest;
+    isSDK(o: any): o is QueryAuthorityRequestSDKType;
+    isAmino(o: any): o is QueryAuthorityRequestAmino;
     encode(_: QueryAuthorityRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAuthorityRequest;
     fromJSON(_: any): QueryAuthorityRequest;
@@ -474,6 +510,10 @@ export declare const QueryAuthorityRequest: {
 };
 export declare const QueryAuthorityResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAuthorityResponse;
+    isSDK(o: any): o is QueryAuthorityResponseSDKType;
+    isAmino(o: any): o is QueryAuthorityResponseAmino;
     encode(message: QueryAuthorityResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAuthorityResponse;
     fromJSON(object: any): QueryAuthorityResponse;

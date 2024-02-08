@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "tendermint.version";
 function createBaseApp() {
     return {
@@ -10,6 +11,15 @@ function createBaseApp() {
 }
 export const App = {
     typeUrl: "/tendermint.version.App",
+    is(o) {
+        return o && (o.$typeUrl === App.typeUrl || typeof o.protocol === "bigint" && typeof o.software === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === App.typeUrl || typeof o.protocol === "bigint" && typeof o.software === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === App.typeUrl || typeof o.protocol === "bigint" && typeof o.software === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.protocol !== BigInt(0)) {
             writer.uint32(8).uint64(message.protocol);
@@ -89,6 +99,7 @@ export const App = {
         };
     }
 };
+GlobalDecoderRegistry.register(App.typeUrl, App);
 function createBaseConsensus() {
     return {
         block: BigInt(0),
@@ -97,6 +108,15 @@ function createBaseConsensus() {
 }
 export const Consensus = {
     typeUrl: "/tendermint.version.Consensus",
+    is(o) {
+        return o && (o.$typeUrl === Consensus.typeUrl || typeof o.block === "bigint" && typeof o.app === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Consensus.typeUrl || typeof o.block === "bigint" && typeof o.app === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Consensus.typeUrl || typeof o.block === "bigint" && typeof o.app === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.block !== BigInt(0)) {
             writer.uint32(8).uint64(message.block);
@@ -176,4 +196,5 @@ export const Consensus = {
         };
     }
 };
+GlobalDecoderRegistry.register(Consensus.typeUrl, Consensus);
 //# sourceMappingURL=types.js.map

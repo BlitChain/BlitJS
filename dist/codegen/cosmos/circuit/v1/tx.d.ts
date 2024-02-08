@@ -183,6 +183,10 @@ export interface MsgResetCircuitBreakerResponseSDKType {
 }
 export declare const MsgAuthorizeCircuitBreaker: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgAuthorizeCircuitBreaker;
+    isSDK(o: any): o is MsgAuthorizeCircuitBreakerSDKType;
+    isAmino(o: any): o is MsgAuthorizeCircuitBreakerAmino;
     encode(message: MsgAuthorizeCircuitBreaker, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgAuthorizeCircuitBreaker;
     fromJSON(object: any): MsgAuthorizeCircuitBreaker;
@@ -198,6 +202,10 @@ export declare const MsgAuthorizeCircuitBreaker: {
 };
 export declare const MsgAuthorizeCircuitBreakerResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgAuthorizeCircuitBreakerResponse;
+    isSDK(o: any): o is MsgAuthorizeCircuitBreakerResponseSDKType;
+    isAmino(o: any): o is MsgAuthorizeCircuitBreakerResponseAmino;
     encode(message: MsgAuthorizeCircuitBreakerResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgAuthorizeCircuitBreakerResponse;
     fromJSON(object: any): MsgAuthorizeCircuitBreakerResponse;
@@ -213,6 +221,10 @@ export declare const MsgAuthorizeCircuitBreakerResponse: {
 };
 export declare const MsgTripCircuitBreaker: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgTripCircuitBreaker;
+    isSDK(o: any): o is MsgTripCircuitBreakerSDKType;
+    isAmino(o: any): o is MsgTripCircuitBreakerAmino;
     encode(message: MsgTripCircuitBreaker, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTripCircuitBreaker;
     fromJSON(object: any): MsgTripCircuitBreaker;
@@ -228,6 +240,10 @@ export declare const MsgTripCircuitBreaker: {
 };
 export declare const MsgTripCircuitBreakerResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgTripCircuitBreakerResponse;
+    isSDK(o: any): o is MsgTripCircuitBreakerResponseSDKType;
+    isAmino(o: any): o is MsgTripCircuitBreakerResponseAmino;
     encode(message: MsgTripCircuitBreakerResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTripCircuitBreakerResponse;
     fromJSON(object: any): MsgTripCircuitBreakerResponse;
@@ -243,6 +259,10 @@ export declare const MsgTripCircuitBreakerResponse: {
 };
 export declare const MsgResetCircuitBreaker: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgResetCircuitBreaker;
+    isSDK(o: any): o is MsgResetCircuitBreakerSDKType;
+    isAmino(o: any): o is MsgResetCircuitBreakerAmino;
     encode(message: MsgResetCircuitBreaker, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgResetCircuitBreaker;
     fromJSON(object: any): MsgResetCircuitBreaker;
@@ -258,6 +278,10 @@ export declare const MsgResetCircuitBreaker: {
 };
 export declare const MsgResetCircuitBreakerResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgResetCircuitBreakerResponse;
+    isSDK(o: any): o is MsgResetCircuitBreakerResponseSDKType;
+    isAmino(o: any): o is MsgResetCircuitBreakerResponseAmino;
     encode(message: MsgResetCircuitBreakerResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgResetCircuitBreakerResponse;
     fromJSON(object: any): MsgResetCircuitBreakerResponse;

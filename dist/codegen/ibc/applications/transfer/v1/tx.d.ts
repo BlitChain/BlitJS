@@ -168,6 +168,10 @@ export interface MsgUpdateParamsResponseSDKType {
 }
 export declare const MsgTransfer: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgTransfer;
+    isSDK(o: any): o is MsgTransferSDKType;
+    isAmino(o: any): o is MsgTransferAmino;
     encode(message: MsgTransfer, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTransfer;
     fromJSON(object: any): MsgTransfer;
@@ -183,6 +187,10 @@ export declare const MsgTransfer: {
 };
 export declare const MsgTransferResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgTransferResponse;
+    isSDK(o: any): o is MsgTransferResponseSDKType;
+    isAmino(o: any): o is MsgTransferResponseAmino;
     encode(message: MsgTransferResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgTransferResponse;
     fromJSON(object: any): MsgTransferResponse;
@@ -198,6 +206,10 @@ export declare const MsgTransferResponse: {
 };
 export declare const MsgUpdateParams: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParams;
+    isSDK(o: any): o is MsgUpdateParamsSDKType;
+    isAmino(o: any): o is MsgUpdateParamsAmino;
     encode(message: MsgUpdateParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParams;
     fromJSON(object: any): MsgUpdateParams;
@@ -213,6 +225,10 @@ export declare const MsgUpdateParams: {
 };
 export declare const MsgUpdateParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParamsResponse;
+    isSDK(o: any): o is MsgUpdateParamsResponseSDKType;
+    isAmino(o: any): o is MsgUpdateParamsResponseAmino;
     encode(_: MsgUpdateParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParamsResponse;
     fromJSON(_: any): MsgUpdateParamsResponse;

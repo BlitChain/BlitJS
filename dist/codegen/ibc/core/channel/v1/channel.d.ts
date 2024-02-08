@@ -448,6 +448,10 @@ export interface TimeoutSDKType {
 }
 export declare const Channel: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Channel;
+    isSDK(o: any): o is ChannelSDKType;
+    isAmino(o: any): o is ChannelAmino;
     encode(message: Channel, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Channel;
     fromJSON(object: any): Channel;
@@ -463,6 +467,10 @@ export declare const Channel: {
 };
 export declare const IdentifiedChannel: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is IdentifiedChannel;
+    isSDK(o: any): o is IdentifiedChannelSDKType;
+    isAmino(o: any): o is IdentifiedChannelAmino;
     encode(message: IdentifiedChannel, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedChannel;
     fromJSON(object: any): IdentifiedChannel;
@@ -478,6 +486,10 @@ export declare const IdentifiedChannel: {
 };
 export declare const Counterparty: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Counterparty;
+    isSDK(o: any): o is CounterpartySDKType;
+    isAmino(o: any): o is CounterpartyAmino;
     encode(message: Counterparty, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Counterparty;
     fromJSON(object: any): Counterparty;
@@ -493,6 +505,10 @@ export declare const Counterparty: {
 };
 export declare const Packet: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Packet;
+    isSDK(o: any): o is PacketSDKType;
+    isAmino(o: any): o is PacketAmino;
     encode(message: Packet, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Packet;
     fromJSON(object: any): Packet;
@@ -508,6 +524,10 @@ export declare const Packet: {
 };
 export declare const PacketState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PacketState;
+    isSDK(o: any): o is PacketStateSDKType;
+    isAmino(o: any): o is PacketStateAmino;
     encode(message: PacketState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PacketState;
     fromJSON(object: any): PacketState;
@@ -523,6 +543,10 @@ export declare const PacketState: {
 };
 export declare const PacketId: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PacketId;
+    isSDK(o: any): o is PacketIdSDKType;
+    isAmino(o: any): o is PacketIdAmino;
     encode(message: PacketId, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PacketId;
     fromJSON(object: any): PacketId;
@@ -538,6 +562,10 @@ export declare const PacketId: {
 };
 export declare const Acknowledgement: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Acknowledgement;
+    isSDK(o: any): o is AcknowledgementSDKType;
+    isAmino(o: any): o is AcknowledgementAmino;
     encode(message: Acknowledgement, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Acknowledgement;
     fromJSON(object: any): Acknowledgement;
@@ -553,6 +581,10 @@ export declare const Acknowledgement: {
 };
 export declare const Timeout: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Timeout;
+    isSDK(o: any): o is TimeoutSDKType;
+    isAmino(o: any): o is TimeoutAmino;
     encode(message: Timeout, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Timeout;
     fromJSON(object: any): Timeout;

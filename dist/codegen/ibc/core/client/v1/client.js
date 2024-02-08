@@ -6,6 +6,7 @@ const any_1 = require("../../../../google/protobuf/any");
 const upgrade_1 = require("../../../../cosmos/upgrade/v1beta1/upgrade");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "ibc.core.client.v1";
 function createBaseIdentifiedClientState() {
     return {
@@ -15,6 +16,16 @@ function createBaseIdentifiedClientState() {
 }
 exports.IdentifiedClientState = {
     typeUrl: "/ibc.core.client.v1.IdentifiedClientState",
+    aminoType: "cosmos-sdk/IdentifiedClientState",
+    is(o) {
+        return o && (o.$typeUrl === exports.IdentifiedClientState.typeUrl || typeof o.client_id === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.IdentifiedClientState.typeUrl || typeof o.client_id === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.IdentifiedClientState.typeUrl || typeof o.client_id === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.client_id !== "") {
             writer.uint32(10).string(message.client_id);
@@ -100,6 +111,8 @@ exports.IdentifiedClientState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.IdentifiedClientState.typeUrl, exports.IdentifiedClientState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.IdentifiedClientState.aminoType, exports.IdentifiedClientState.typeUrl);
 function createBaseConsensusStateWithHeight() {
     return {
         height: exports.Height.fromPartial({}),
@@ -108,6 +121,16 @@ function createBaseConsensusStateWithHeight() {
 }
 exports.ConsensusStateWithHeight = {
     typeUrl: "/ibc.core.client.v1.ConsensusStateWithHeight",
+    aminoType: "cosmos-sdk/ConsensusStateWithHeight",
+    is(o) {
+        return o && (o.$typeUrl === exports.ConsensusStateWithHeight.typeUrl || exports.Height.is(o.height));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ConsensusStateWithHeight.typeUrl || exports.Height.isSDK(o.height));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ConsensusStateWithHeight.typeUrl || exports.Height.isAmino(o.height));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.height !== undefined) {
             exports.Height.encode(message.height, writer.uint32(10).fork()).ldelim();
@@ -193,6 +216,8 @@ exports.ConsensusStateWithHeight = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ConsensusStateWithHeight.typeUrl, exports.ConsensusStateWithHeight);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ConsensusStateWithHeight.aminoType, exports.ConsensusStateWithHeight.typeUrl);
 function createBaseClientConsensusStates() {
     return {
         client_id: "",
@@ -201,6 +226,16 @@ function createBaseClientConsensusStates() {
 }
 exports.ClientConsensusStates = {
     typeUrl: "/ibc.core.client.v1.ClientConsensusStates",
+    aminoType: "cosmos-sdk/ClientConsensusStates",
+    is(o) {
+        return o && (o.$typeUrl === exports.ClientConsensusStates.typeUrl || typeof o.client_id === "string" && Array.isArray(o.consensus_states) && (!o.consensus_states.length || exports.ConsensusStateWithHeight.is(o.consensus_states[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ClientConsensusStates.typeUrl || typeof o.client_id === "string" && Array.isArray(o.consensus_states) && (!o.consensus_states.length || exports.ConsensusStateWithHeight.isSDK(o.consensus_states[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ClientConsensusStates.typeUrl || typeof o.client_id === "string" && Array.isArray(o.consensus_states) && (!o.consensus_states.length || exports.ConsensusStateWithHeight.isAmino(o.consensus_states[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.client_id !== "") {
             writer.uint32(10).string(message.client_id);
@@ -294,6 +329,8 @@ exports.ClientConsensusStates = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ClientConsensusStates.typeUrl, exports.ClientConsensusStates);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ClientConsensusStates.aminoType, exports.ClientConsensusStates.typeUrl);
 function createBaseHeight() {
     return {
         revision_number: BigInt(0),
@@ -302,6 +339,16 @@ function createBaseHeight() {
 }
 exports.Height = {
     typeUrl: "/ibc.core.client.v1.Height",
+    aminoType: "cosmos-sdk/Height",
+    is(o) {
+        return o && (o.$typeUrl === exports.Height.typeUrl || typeof o.revision_number === "bigint" && typeof o.revision_height === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Height.typeUrl || typeof o.revision_number === "bigint" && typeof o.revision_height === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Height.typeUrl || typeof o.revision_number === "bigint" && typeof o.revision_height === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.revision_number !== BigInt(0)) {
             writer.uint32(8).uint64(message.revision_number);
@@ -383,6 +430,8 @@ exports.Height = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Height.typeUrl, exports.Height);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Height.aminoType, exports.Height.typeUrl);
 function createBaseParams() {
     return {
         allowed_clients: []
@@ -390,6 +439,16 @@ function createBaseParams() {
 }
 exports.Params = {
     typeUrl: "/ibc.core.client.v1.Params",
+    aminoType: "cosmos-sdk/Params",
+    is(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || Array.isArray(o.allowed_clients) && (!o.allowed_clients.length || typeof o.allowed_clients[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || Array.isArray(o.allowed_clients) && (!o.allowed_clients.length || typeof o.allowed_clients[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || Array.isArray(o.allowed_clients) && (!o.allowed_clients.length || typeof o.allowed_clients[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.allowed_clients) {
             writer.uint32(10).string(v);
@@ -470,6 +529,8 @@ exports.Params = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Params.typeUrl, exports.Params);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Params.aminoType, exports.Params.typeUrl);
 function createBaseClientUpdateProposal() {
     return {
         $typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
@@ -481,6 +542,16 @@ function createBaseClientUpdateProposal() {
 }
 exports.ClientUpdateProposal = {
     typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
+    aminoType: "cosmos-sdk/ClientUpdateProposal",
+    is(o) {
+        return o && (o.$typeUrl === exports.ClientUpdateProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.subject_client_id === "string" && typeof o.substitute_client_id === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ClientUpdateProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.subject_client_id === "string" && typeof o.substitute_client_id === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ClientUpdateProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.subject_client_id === "string" && typeof o.substitute_client_id === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.title !== "") {
             writer.uint32(10).string(message.title);
@@ -592,6 +663,8 @@ exports.ClientUpdateProposal = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ClientUpdateProposal.typeUrl, exports.ClientUpdateProposal);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ClientUpdateProposal.aminoType, exports.ClientUpdateProposal.typeUrl);
 function createBaseUpgradeProposal() {
     return {
         $typeUrl: "/ibc.core.client.v1.UpgradeProposal",
@@ -603,6 +676,16 @@ function createBaseUpgradeProposal() {
 }
 exports.UpgradeProposal = {
     typeUrl: "/ibc.core.client.v1.UpgradeProposal",
+    aminoType: "cosmos-sdk/UpgradeProposal",
+    is(o) {
+        return o && (o.$typeUrl === exports.UpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && upgrade_1.Plan.is(o.plan));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.UpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && upgrade_1.Plan.isSDK(o.plan));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.UpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && upgrade_1.Plan.isAmino(o.plan));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.title !== "") {
             writer.uint32(10).string(message.title);
@@ -714,4 +797,6 @@ exports.UpgradeProposal = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.UpgradeProposal.typeUrl, exports.UpgradeProposal);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.UpgradeProposal.aminoType, exports.UpgradeProposal.typeUrl);
 //# sourceMappingURL=client.js.map

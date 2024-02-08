@@ -2,6 +2,7 @@
 import { ResponseCommit, RequestFinalizeBlock, ResponseFinalizeBlock } from "../../../tendermint/abci/types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.store.v1beta1";
 function createBaseStoreKVPair() {
     return {
@@ -13,6 +14,16 @@ function createBaseStoreKVPair() {
 }
 export const StoreKVPair = {
     typeUrl: "/cosmos.store.v1beta1.StoreKVPair",
+    aminoType: "cosmos-sdk/StoreKVPair",
+    is(o) {
+        return o && (o.$typeUrl === StoreKVPair.typeUrl || typeof o.store_key === "string" && typeof o.delete === "boolean" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === StoreKVPair.typeUrl || typeof o.store_key === "string" && typeof o.delete === "boolean" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === StoreKVPair.typeUrl || typeof o.store_key === "string" && typeof o.delete === "boolean" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.store_key !== "") {
             writer.uint32(10).string(message.store_key);
@@ -124,6 +135,8 @@ export const StoreKVPair = {
         };
     }
 };
+GlobalDecoderRegistry.register(StoreKVPair.typeUrl, StoreKVPair);
+GlobalDecoderRegistry.registerAminoProtoMapping(StoreKVPair.aminoType, StoreKVPair.typeUrl);
 function createBaseBlockMetadata() {
     return {
         response_commit: undefined,
@@ -133,6 +146,16 @@ function createBaseBlockMetadata() {
 }
 export const BlockMetadata = {
     typeUrl: "/cosmos.store.v1beta1.BlockMetadata",
+    aminoType: "cosmos-sdk/BlockMetadata",
+    is(o) {
+        return o && o.$typeUrl === BlockMetadata.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === BlockMetadata.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === BlockMetadata.typeUrl;
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.response_commit !== undefined) {
             ResponseCommit.encode(message.response_commit, writer.uint32(50).fork()).ldelim();
@@ -231,4 +254,6 @@ export const BlockMetadata = {
         };
     }
 };
+GlobalDecoderRegistry.register(BlockMetadata.typeUrl, BlockMetadata);
+GlobalDecoderRegistry.registerAminoProtoMapping(BlockMetadata.aminoType, BlockMetadata.typeUrl);
 //# sourceMappingURL=listening.js.map

@@ -1,11 +1,21 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "google.protobuf";
 function createBaseEmpty() {
     return {};
 }
 export const Empty = {
     typeUrl: "/google.protobuf.Empty",
+    is(o) {
+        return o && o.$typeUrl === Empty.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === Empty.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === Empty.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -58,4 +68,5 @@ export const Empty = {
         };
     }
 };
+GlobalDecoderRegistry.register(Empty.typeUrl, Empty);
 //# sourceMappingURL=empty.js.map

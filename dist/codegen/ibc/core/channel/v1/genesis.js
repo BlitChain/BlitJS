@@ -5,6 +5,7 @@ exports.PacketSequence = exports.GenesisState = exports.protobufPackage = void 0
 const channel_1 = require("./channel");
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "ibc.core.channel.v1";
 function createBaseGenesisState() {
     return {
@@ -20,6 +21,16 @@ function createBaseGenesisState() {
 }
 exports.GenesisState = {
     typeUrl: "/ibc.core.channel.v1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || Array.isArray(o.channels) && (!o.channels.length || channel_1.IdentifiedChannel.is(o.channels[0])) && Array.isArray(o.acknowledgements) && (!o.acknowledgements.length || channel_1.PacketState.is(o.acknowledgements[0])) && Array.isArray(o.commitments) && (!o.commitments.length || channel_1.PacketState.is(o.commitments[0])) && Array.isArray(o.receipts) && (!o.receipts.length || channel_1.PacketState.is(o.receipts[0])) && Array.isArray(o.send_sequences) && (!o.send_sequences.length || exports.PacketSequence.is(o.send_sequences[0])) && Array.isArray(o.recv_sequences) && (!o.recv_sequences.length || exports.PacketSequence.is(o.recv_sequences[0])) && Array.isArray(o.ack_sequences) && (!o.ack_sequences.length || exports.PacketSequence.is(o.ack_sequences[0])) && typeof o.next_channel_sequence === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || Array.isArray(o.channels) && (!o.channels.length || channel_1.IdentifiedChannel.isSDK(o.channels[0])) && Array.isArray(o.acknowledgements) && (!o.acknowledgements.length || channel_1.PacketState.isSDK(o.acknowledgements[0])) && Array.isArray(o.commitments) && (!o.commitments.length || channel_1.PacketState.isSDK(o.commitments[0])) && Array.isArray(o.receipts) && (!o.receipts.length || channel_1.PacketState.isSDK(o.receipts[0])) && Array.isArray(o.send_sequences) && (!o.send_sequences.length || exports.PacketSequence.isSDK(o.send_sequences[0])) && Array.isArray(o.recv_sequences) && (!o.recv_sequences.length || exports.PacketSequence.isSDK(o.recv_sequences[0])) && Array.isArray(o.ack_sequences) && (!o.ack_sequences.length || exports.PacketSequence.isSDK(o.ack_sequences[0])) && typeof o.next_channel_sequence === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || Array.isArray(o.channels) && (!o.channels.length || channel_1.IdentifiedChannel.isAmino(o.channels[0])) && Array.isArray(o.acknowledgements) && (!o.acknowledgements.length || channel_1.PacketState.isAmino(o.acknowledgements[0])) && Array.isArray(o.commitments) && (!o.commitments.length || channel_1.PacketState.isAmino(o.commitments[0])) && Array.isArray(o.receipts) && (!o.receipts.length || channel_1.PacketState.isAmino(o.receipts[0])) && Array.isArray(o.send_sequences) && (!o.send_sequences.length || exports.PacketSequence.isAmino(o.send_sequences[0])) && Array.isArray(o.recv_sequences) && (!o.recv_sequences.length || exports.PacketSequence.isAmino(o.recv_sequences[0])) && Array.isArray(o.ack_sequences) && (!o.ack_sequences.length || exports.PacketSequence.isAmino(o.ack_sequences[0])) && typeof o.next_channel_sequence === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.channels) {
             channel_1.IdentifiedChannel.encode(v, writer.uint32(10).fork()).ldelim();
@@ -239,6 +250,8 @@ exports.GenesisState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GenesisState.aminoType, exports.GenesisState.typeUrl);
 function createBasePacketSequence() {
     return {
         port_id: "",
@@ -248,6 +261,16 @@ function createBasePacketSequence() {
 }
 exports.PacketSequence = {
     typeUrl: "/ibc.core.channel.v1.PacketSequence",
+    aminoType: "cosmos-sdk/PacketSequence",
+    is(o) {
+        return o && (o.$typeUrl === exports.PacketSequence.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.sequence === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.PacketSequence.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.sequence === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.PacketSequence.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.sequence === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.port_id !== "") {
             writer.uint32(10).string(message.port_id);
@@ -346,4 +369,6 @@ exports.PacketSequence = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.PacketSequence.typeUrl, exports.PacketSequence);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.PacketSequence.aminoType, exports.PacketSequence.typeUrl);
 //# sourceMappingURL=genesis.js.map

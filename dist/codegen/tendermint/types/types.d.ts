@@ -541,6 +541,9 @@ export interface TxProofSDKType {
 }
 export declare const PartSetHeader: {
     typeUrl: string;
+    is(o: any): o is PartSetHeader;
+    isSDK(o: any): o is PartSetHeaderSDKType;
+    isAmino(o: any): o is PartSetHeaderAmino;
     encode(message: PartSetHeader, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PartSetHeader;
     fromJSON(object: any): PartSetHeader;
@@ -555,6 +558,9 @@ export declare const PartSetHeader: {
 };
 export declare const Part: {
     typeUrl: string;
+    is(o: any): o is Part;
+    isSDK(o: any): o is PartSDKType;
+    isAmino(o: any): o is PartAmino;
     encode(message: Part, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Part;
     fromJSON(object: any): Part;
@@ -569,6 +575,9 @@ export declare const Part: {
 };
 export declare const BlockID: {
     typeUrl: string;
+    is(o: any): o is BlockID;
+    isSDK(o: any): o is BlockIDSDKType;
+    isAmino(o: any): o is BlockIDAmino;
     encode(message: BlockID, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BlockID;
     fromJSON(object: any): BlockID;
@@ -583,6 +592,9 @@ export declare const BlockID: {
 };
 export declare const Header: {
     typeUrl: string;
+    is(o: any): o is Header;
+    isSDK(o: any): o is HeaderSDKType;
+    isAmino(o: any): o is HeaderAmino;
     encode(message: Header, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Header;
     fromJSON(object: any): Header;
@@ -597,6 +609,9 @@ export declare const Header: {
 };
 export declare const Data: {
     typeUrl: string;
+    is(o: any): o is Data;
+    isSDK(o: any): o is DataSDKType;
+    isAmino(o: any): o is DataAmino;
     encode(message: Data, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Data;
     fromJSON(object: any): Data;
@@ -611,6 +626,9 @@ export declare const Data: {
 };
 export declare const Vote: {
     typeUrl: string;
+    is(o: any): o is Vote;
+    isSDK(o: any): o is VoteSDKType;
+    isAmino(o: any): o is VoteAmino;
     encode(message: Vote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Vote;
     fromJSON(object: any): Vote;
@@ -625,6 +643,9 @@ export declare const Vote: {
 };
 export declare const Commit: {
     typeUrl: string;
+    is(o: any): o is Commit;
+    isSDK(o: any): o is CommitSDKType;
+    isAmino(o: any): o is CommitAmino;
     encode(message: Commit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Commit;
     fromJSON(object: any): Commit;
@@ -639,6 +660,9 @@ export declare const Commit: {
 };
 export declare const CommitSig: {
     typeUrl: string;
+    is(o: any): o is CommitSig;
+    isSDK(o: any): o is CommitSigSDKType;
+    isAmino(o: any): o is CommitSigAmino;
     encode(message: CommitSig, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommitSig;
     fromJSON(object: any): CommitSig;
@@ -653,6 +677,9 @@ export declare const CommitSig: {
 };
 export declare const ExtendedCommit: {
     typeUrl: string;
+    is(o: any): o is ExtendedCommit;
+    isSDK(o: any): o is ExtendedCommitSDKType;
+    isAmino(o: any): o is ExtendedCommitAmino;
     encode(message: ExtendedCommit, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ExtendedCommit;
     fromJSON(object: any): ExtendedCommit;
@@ -667,6 +694,9 @@ export declare const ExtendedCommit: {
 };
 export declare const ExtendedCommitSig: {
     typeUrl: string;
+    is(o: any): o is ExtendedCommitSig;
+    isSDK(o: any): o is ExtendedCommitSigSDKType;
+    isAmino(o: any): o is ExtendedCommitSigAmino;
     encode(message: ExtendedCommitSig, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ExtendedCommitSig;
     fromJSON(object: any): ExtendedCommitSig;
@@ -681,6 +711,9 @@ export declare const ExtendedCommitSig: {
 };
 export declare const Proposal: {
     typeUrl: string;
+    is(o: any): o is Proposal;
+    isSDK(o: any): o is ProposalSDKType;
+    isAmino(o: any): o is ProposalAmino;
     encode(message: Proposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Proposal;
     fromJSON(object: any): Proposal;
@@ -695,6 +728,9 @@ export declare const Proposal: {
 };
 export declare const SignedHeader: {
     typeUrl: string;
+    is(o: any): o is SignedHeader;
+    isSDK(o: any): o is SignedHeaderSDKType;
+    isAmino(o: any): o is SignedHeaderAmino;
     encode(message: SignedHeader, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SignedHeader;
     fromJSON(object: any): SignedHeader;
@@ -709,6 +745,9 @@ export declare const SignedHeader: {
 };
 export declare const LightBlock: {
     typeUrl: string;
+    is(o: any): o is LightBlock;
+    isSDK(o: any): o is LightBlockSDKType;
+    isAmino(o: any): o is LightBlockAmino;
     encode(message: LightBlock, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LightBlock;
     fromJSON(object: any): LightBlock;
@@ -723,6 +762,9 @@ export declare const LightBlock: {
 };
 export declare const BlockMeta: {
     typeUrl: string;
+    is(o: any): o is BlockMeta;
+    isSDK(o: any): o is BlockMetaSDKType;
+    isAmino(o: any): o is BlockMetaAmino;
     encode(message: BlockMeta, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BlockMeta;
     fromJSON(object: any): BlockMeta;
@@ -737,6 +779,9 @@ export declare const BlockMeta: {
 };
 export declare const TxProof: {
     typeUrl: string;
+    is(o: any): o is TxProof;
+    isSDK(o: any): o is TxProofSDKType;
+    isAmino(o: any): o is TxProofAmino;
     encode(message: TxProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): TxProof;
     fromJSON(object: any): TxProof;

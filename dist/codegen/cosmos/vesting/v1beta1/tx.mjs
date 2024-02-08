@@ -3,6 +3,7 @@ import { Coin } from "../../base/v1beta1/coin";
 import { Period } from "./vesting";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.vesting.v1beta1";
 function createBaseMsgCreateVestingAccount() {
     return {
@@ -15,6 +16,16 @@ function createBaseMsgCreateVestingAccount() {
 }
 export const MsgCreateVestingAccount = {
     typeUrl: "/cosmos.vesting.v1beta1.MsgCreateVestingAccount",
+    aminoType: "cosmos-sdk/MsgCreateVestingAccount",
+    is(o) {
+        return o && (o.$typeUrl === MsgCreateVestingAccount.typeUrl || typeof o.from_address === "string" && typeof o.to_address === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.is(o.amount[0])) && typeof o.end_time === "bigint" && typeof o.delayed === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgCreateVestingAccount.typeUrl || typeof o.from_address === "string" && typeof o.to_address === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.isSDK(o.amount[0])) && typeof o.end_time === "bigint" && typeof o.delayed === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgCreateVestingAccount.typeUrl || typeof o.from_address === "string" && typeof o.to_address === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.isAmino(o.amount[0])) && typeof o.end_time === "bigint" && typeof o.delayed === "boolean");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.from_address !== "") {
             writer.uint32(10).string(message.from_address);
@@ -147,11 +158,23 @@ export const MsgCreateVestingAccount = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgCreateVestingAccount.typeUrl, MsgCreateVestingAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreateVestingAccount.aminoType, MsgCreateVestingAccount.typeUrl);
 function createBaseMsgCreateVestingAccountResponse() {
     return {};
 }
 export const MsgCreateVestingAccountResponse = {
     typeUrl: "/cosmos.vesting.v1beta1.MsgCreateVestingAccountResponse",
+    aminoType: "cosmos-sdk/MsgCreateVestingAccountResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgCreateVestingAccountResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgCreateVestingAccountResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgCreateVestingAccountResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -210,6 +233,8 @@ export const MsgCreateVestingAccountResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgCreateVestingAccountResponse.typeUrl, MsgCreateVestingAccountResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreateVestingAccountResponse.aminoType, MsgCreateVestingAccountResponse.typeUrl);
 function createBaseMsgCreatePermanentLockedAccount() {
     return {
         from_address: "",
@@ -219,6 +244,16 @@ function createBaseMsgCreatePermanentLockedAccount() {
 }
 export const MsgCreatePermanentLockedAccount = {
     typeUrl: "/cosmos.vesting.v1beta1.MsgCreatePermanentLockedAccount",
+    aminoType: "cosmos-sdk/MsgCreatePermLockedAccount",
+    is(o) {
+        return o && (o.$typeUrl === MsgCreatePermanentLockedAccount.typeUrl || typeof o.from_address === "string" && typeof o.to_address === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.is(o.amount[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgCreatePermanentLockedAccount.typeUrl || typeof o.from_address === "string" && typeof o.to_address === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.isSDK(o.amount[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgCreatePermanentLockedAccount.typeUrl || typeof o.from_address === "string" && typeof o.to_address === "string" && Array.isArray(o.amount) && (!o.amount.length || Coin.isAmino(o.amount[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.from_address !== "") {
             writer.uint32(10).string(message.from_address);
@@ -325,11 +360,23 @@ export const MsgCreatePermanentLockedAccount = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgCreatePermanentLockedAccount.typeUrl, MsgCreatePermanentLockedAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreatePermanentLockedAccount.aminoType, MsgCreatePermanentLockedAccount.typeUrl);
 function createBaseMsgCreatePermanentLockedAccountResponse() {
     return {};
 }
 export const MsgCreatePermanentLockedAccountResponse = {
     typeUrl: "/cosmos.vesting.v1beta1.MsgCreatePermanentLockedAccountResponse",
+    aminoType: "cosmos-sdk/MsgCreatePermanentLockedAccountResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgCreatePermanentLockedAccountResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgCreatePermanentLockedAccountResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgCreatePermanentLockedAccountResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -388,6 +435,8 @@ export const MsgCreatePermanentLockedAccountResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgCreatePermanentLockedAccountResponse.typeUrl, MsgCreatePermanentLockedAccountResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreatePermanentLockedAccountResponse.aminoType, MsgCreatePermanentLockedAccountResponse.typeUrl);
 function createBaseMsgCreatePeriodicVestingAccount() {
     return {
         from_address: "",
@@ -398,6 +447,16 @@ function createBaseMsgCreatePeriodicVestingAccount() {
 }
 export const MsgCreatePeriodicVestingAccount = {
     typeUrl: "/cosmos.vesting.v1beta1.MsgCreatePeriodicVestingAccount",
+    aminoType: "cosmos-sdk/MsgCreatePeriodVestAccount",
+    is(o) {
+        return o && (o.$typeUrl === MsgCreatePeriodicVestingAccount.typeUrl || typeof o.from_address === "string" && typeof o.to_address === "string" && typeof o.start_time === "bigint" && Array.isArray(o.vesting_periods) && (!o.vesting_periods.length || Period.is(o.vesting_periods[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === MsgCreatePeriodicVestingAccount.typeUrl || typeof o.from_address === "string" && typeof o.to_address === "string" && typeof o.start_time === "bigint" && Array.isArray(o.vesting_periods) && (!o.vesting_periods.length || Period.isSDK(o.vesting_periods[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === MsgCreatePeriodicVestingAccount.typeUrl || typeof o.from_address === "string" && typeof o.to_address === "string" && typeof o.start_time === "bigint" && Array.isArray(o.vesting_periods) && (!o.vesting_periods.length || Period.isAmino(o.vesting_periods[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.from_address !== "") {
             writer.uint32(10).string(message.from_address);
@@ -517,11 +576,23 @@ export const MsgCreatePeriodicVestingAccount = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgCreatePeriodicVestingAccount.typeUrl, MsgCreatePeriodicVestingAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreatePeriodicVestingAccount.aminoType, MsgCreatePeriodicVestingAccount.typeUrl);
 function createBaseMsgCreatePeriodicVestingAccountResponse() {
     return {};
 }
 export const MsgCreatePeriodicVestingAccountResponse = {
     typeUrl: "/cosmos.vesting.v1beta1.MsgCreatePeriodicVestingAccountResponse",
+    aminoType: "cosmos-sdk/MsgCreatePeriodicVestingAccountResponse",
+    is(o) {
+        return o && o.$typeUrl === MsgCreatePeriodicVestingAccountResponse.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === MsgCreatePeriodicVestingAccountResponse.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === MsgCreatePeriodicVestingAccountResponse.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -580,4 +651,6 @@ export const MsgCreatePeriodicVestingAccountResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(MsgCreatePeriodicVestingAccountResponse.typeUrl, MsgCreatePeriodicVestingAccountResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreatePeriodicVestingAccountResponse.aminoType, MsgCreatePeriodicVestingAccountResponse.typeUrl);
 //# sourceMappingURL=tx.js.map

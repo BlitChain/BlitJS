@@ -248,6 +248,10 @@ export interface EventProposalPrunedSDKType {
 }
 export declare const EventCreateGroup: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventCreateGroup;
+    isSDK(o: any): o is EventCreateGroupSDKType;
+    isAmino(o: any): o is EventCreateGroupAmino;
     encode(message: EventCreateGroup, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventCreateGroup;
     fromJSON(object: any): EventCreateGroup;
@@ -263,6 +267,10 @@ export declare const EventCreateGroup: {
 };
 export declare const EventUpdateGroup: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventUpdateGroup;
+    isSDK(o: any): o is EventUpdateGroupSDKType;
+    isAmino(o: any): o is EventUpdateGroupAmino;
     encode(message: EventUpdateGroup, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventUpdateGroup;
     fromJSON(object: any): EventUpdateGroup;
@@ -278,6 +286,10 @@ export declare const EventUpdateGroup: {
 };
 export declare const EventCreateGroupPolicy: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventCreateGroupPolicy;
+    isSDK(o: any): o is EventCreateGroupPolicySDKType;
+    isAmino(o: any): o is EventCreateGroupPolicyAmino;
     encode(message: EventCreateGroupPolicy, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventCreateGroupPolicy;
     fromJSON(object: any): EventCreateGroupPolicy;
@@ -293,6 +305,10 @@ export declare const EventCreateGroupPolicy: {
 };
 export declare const EventUpdateGroupPolicy: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventUpdateGroupPolicy;
+    isSDK(o: any): o is EventUpdateGroupPolicySDKType;
+    isAmino(o: any): o is EventUpdateGroupPolicyAmino;
     encode(message: EventUpdateGroupPolicy, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventUpdateGroupPolicy;
     fromJSON(object: any): EventUpdateGroupPolicy;
@@ -308,6 +324,10 @@ export declare const EventUpdateGroupPolicy: {
 };
 export declare const EventSubmitProposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventSubmitProposal;
+    isSDK(o: any): o is EventSubmitProposalSDKType;
+    isAmino(o: any): o is EventSubmitProposalAmino;
     encode(message: EventSubmitProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventSubmitProposal;
     fromJSON(object: any): EventSubmitProposal;
@@ -323,6 +343,10 @@ export declare const EventSubmitProposal: {
 };
 export declare const EventWithdrawProposal: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventWithdrawProposal;
+    isSDK(o: any): o is EventWithdrawProposalSDKType;
+    isAmino(o: any): o is EventWithdrawProposalAmino;
     encode(message: EventWithdrawProposal, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventWithdrawProposal;
     fromJSON(object: any): EventWithdrawProposal;
@@ -338,6 +362,10 @@ export declare const EventWithdrawProposal: {
 };
 export declare const EventVote: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventVote;
+    isSDK(o: any): o is EventVoteSDKType;
+    isAmino(o: any): o is EventVoteAmino;
     encode(message: EventVote, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventVote;
     fromJSON(object: any): EventVote;
@@ -353,6 +381,10 @@ export declare const EventVote: {
 };
 export declare const EventExec: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventExec;
+    isSDK(o: any): o is EventExecSDKType;
+    isAmino(o: any): o is EventExecAmino;
     encode(message: EventExec, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventExec;
     fromJSON(object: any): EventExec;
@@ -368,6 +400,10 @@ export declare const EventExec: {
 };
 export declare const EventLeaveGroup: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventLeaveGroup;
+    isSDK(o: any): o is EventLeaveGroupSDKType;
+    isAmino(o: any): o is EventLeaveGroupAmino;
     encode(message: EventLeaveGroup, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventLeaveGroup;
     fromJSON(object: any): EventLeaveGroup;
@@ -383,6 +419,10 @@ export declare const EventLeaveGroup: {
 };
 export declare const EventProposalPruned: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is EventProposalPruned;
+    isSDK(o: any): o is EventProposalPrunedSDKType;
+    isAmino(o: any): o is EventProposalPrunedAmino;
     encode(message: EventProposalPruned, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EventProposalPruned;
     fromJSON(object: any): EventProposalPruned;

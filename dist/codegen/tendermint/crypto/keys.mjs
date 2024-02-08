@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "tendermint.crypto";
 function createBasePublicKey() {
     return {
@@ -10,6 +11,15 @@ function createBasePublicKey() {
 }
 export const PublicKey = {
     typeUrl: "/tendermint.crypto.PublicKey",
+    is(o) {
+        return o && o.$typeUrl === PublicKey.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === PublicKey.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === PublicKey.typeUrl;
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.ed25519 !== undefined) {
             writer.uint32(10).bytes(message.ed25519);
@@ -89,4 +99,5 @@ export const PublicKey = {
         };
     }
 };
+GlobalDecoderRegistry.register(PublicKey.typeUrl, PublicKey);
 //# sourceMappingURL=keys.js.map

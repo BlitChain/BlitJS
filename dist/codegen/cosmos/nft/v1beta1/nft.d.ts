@@ -97,6 +97,10 @@ export interface NFTSDKType {
 }
 export declare const Class: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Class;
+    isSDK(o: any): o is ClassSDKType;
+    isAmino(o: any): o is ClassAmino;
     encode(message: Class, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Class;
     fromJSON(object: any): Class;
@@ -112,6 +116,10 @@ export declare const Class: {
 };
 export declare const NFT: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is NFT;
+    isSDK(o: any): o is NFTSDKType;
+    isAmino(o: any): o is NFTAmino;
     encode(message: NFT, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): NFT;
     fromJSON(object: any): NFT;

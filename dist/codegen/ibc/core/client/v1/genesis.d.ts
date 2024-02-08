@@ -125,6 +125,10 @@ export interface IdentifiedGenesisMetadataSDKType {
 }
 export declare const GenesisState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GenesisState;
+    isSDK(o: any): o is GenesisStateSDKType;
+    isAmino(o: any): o is GenesisStateAmino;
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;
@@ -140,6 +144,10 @@ export declare const GenesisState: {
 };
 export declare const GenesisMetadata: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GenesisMetadata;
+    isSDK(o: any): o is GenesisMetadataSDKType;
+    isAmino(o: any): o is GenesisMetadataAmino;
     encode(message: GenesisMetadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisMetadata;
     fromJSON(object: any): GenesisMetadata;
@@ -155,6 +163,10 @@ export declare const GenesisMetadata: {
 };
 export declare const IdentifiedGenesisMetadata: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is IdentifiedGenesisMetadata;
+    isSDK(o: any): o is IdentifiedGenesisMetadataSDKType;
+    isAmino(o: any): o is IdentifiedGenesisMetadataAmino;
     encode(message: IdentifiedGenesisMetadata, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): IdentifiedGenesisMetadata;
     fromJSON(object: any): IdentifiedGenesisMetadata;

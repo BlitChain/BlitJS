@@ -14,6 +14,15 @@ function createBaseAny() {
 }
 exports.Any = {
     typeUrl: "/google.protobuf.Any",
+    is(o) {
+        return o && (o.$typeUrl === exports.Any.typeUrl || typeof o.type_url === "string" && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Any.typeUrl || typeof o.type_url === "string" && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Any.typeUrl || typeof o.type === "string" && (o.value instanceof Uint8Array || typeof o.value === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.type_url !== "") {
             writer.uint32(10).string(message.type_url);

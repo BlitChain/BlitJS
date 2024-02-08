@@ -2,6 +2,7 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.mint.v1beta1";
 function createBaseMinter() {
     return {
@@ -11,6 +12,16 @@ function createBaseMinter() {
 }
 export const Minter = {
     typeUrl: "/cosmos.mint.v1beta1.Minter",
+    aminoType: "cosmos-sdk/Minter",
+    is(o) {
+        return o && (o.$typeUrl === Minter.typeUrl || typeof o.inflation === "string" && typeof o.annual_provisions === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Minter.typeUrl || typeof o.inflation === "string" && typeof o.annual_provisions === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Minter.typeUrl || typeof o.inflation === "string" && typeof o.annual_provisions === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.inflation !== "") {
             writer.uint32(10).string(Decimal.fromUserInput(message.inflation, 18).atomics);
@@ -96,6 +107,8 @@ export const Minter = {
         };
     }
 };
+GlobalDecoderRegistry.register(Minter.typeUrl, Minter);
+GlobalDecoderRegistry.registerAminoProtoMapping(Minter.aminoType, Minter.typeUrl);
 function createBaseParams() {
     return {
         mint_denom: "",
@@ -108,6 +121,16 @@ function createBaseParams() {
 }
 export const Params = {
     typeUrl: "/cosmos.mint.v1beta1.Params",
+    aminoType: "cosmos-sdk/x/mint/Params",
+    is(o) {
+        return o && (o.$typeUrl === Params.typeUrl || typeof o.mint_denom === "string" && typeof o.inflation_rate_change === "string" && typeof o.inflation_max === "string" && typeof o.inflation_min === "string" && typeof o.goal_bonded === "string" && typeof o.blocks_per_year === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Params.typeUrl || typeof o.mint_denom === "string" && typeof o.inflation_rate_change === "string" && typeof o.inflation_max === "string" && typeof o.inflation_min === "string" && typeof o.goal_bonded === "string" && typeof o.blocks_per_year === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Params.typeUrl || typeof o.mint_denom === "string" && typeof o.inflation_rate_change === "string" && typeof o.inflation_max === "string" && typeof o.inflation_min === "string" && typeof o.goal_bonded === "string" && typeof o.blocks_per_year === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.mint_denom !== "") {
             writer.uint32(10).string(message.mint_denom);
@@ -245,4 +268,6 @@ export const Params = {
         };
     }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);
 //# sourceMappingURL=mint.js.map

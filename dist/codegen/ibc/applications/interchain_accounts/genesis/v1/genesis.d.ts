@@ -153,6 +153,10 @@ export interface RegisteredInterchainAccountSDKType {
 }
 export declare const GenesisState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GenesisState;
+    isSDK(o: any): o is GenesisStateSDKType;
+    isAmino(o: any): o is GenesisStateAmino;
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;
@@ -168,6 +172,10 @@ export declare const GenesisState: {
 };
 export declare const ControllerGenesisState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ControllerGenesisState;
+    isSDK(o: any): o is ControllerGenesisStateSDKType;
+    isAmino(o: any): o is ControllerGenesisStateAmino;
     encode(message: ControllerGenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ControllerGenesisState;
     fromJSON(object: any): ControllerGenesisState;
@@ -183,6 +191,10 @@ export declare const ControllerGenesisState: {
 };
 export declare const HostGenesisState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is HostGenesisState;
+    isSDK(o: any): o is HostGenesisStateSDKType;
+    isAmino(o: any): o is HostGenesisStateAmino;
     encode(message: HostGenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): HostGenesisState;
     fromJSON(object: any): HostGenesisState;
@@ -198,6 +210,10 @@ export declare const HostGenesisState: {
 };
 export declare const ActiveChannel: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ActiveChannel;
+    isSDK(o: any): o is ActiveChannelSDKType;
+    isAmino(o: any): o is ActiveChannelAmino;
     encode(message: ActiveChannel, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ActiveChannel;
     fromJSON(object: any): ActiveChannel;
@@ -213,6 +229,10 @@ export declare const ActiveChannel: {
 };
 export declare const RegisteredInterchainAccount: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is RegisteredInterchainAccount;
+    isSDK(o: any): o is RegisteredInterchainAccountSDKType;
+    isAmino(o: any): o is RegisteredInterchainAccountAmino;
     encode(message: RegisteredInterchainAccount, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): RegisteredInterchainAccount;
     fromJSON(object: any): RegisteredInterchainAccount;

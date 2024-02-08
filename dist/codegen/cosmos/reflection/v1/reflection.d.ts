@@ -42,6 +42,10 @@ export interface FileDescriptorsResponseSDKType {
 }
 export declare const FileDescriptorsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is FileDescriptorsRequest;
+    isSDK(o: any): o is FileDescriptorsRequestSDKType;
+    isAmino(o: any): o is FileDescriptorsRequestAmino;
     encode(_: FileDescriptorsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FileDescriptorsRequest;
     fromJSON(_: any): FileDescriptorsRequest;
@@ -57,6 +61,10 @@ export declare const FileDescriptorsRequest: {
 };
 export declare const FileDescriptorsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is FileDescriptorsResponse;
+    isSDK(o: any): o is FileDescriptorsResponseSDKType;
+    isAmino(o: any): o is FileDescriptorsResponseAmino;
     encode(message: FileDescriptorsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FileDescriptorsResponse;
     fromJSON(object: any): FileDescriptorsResponse;

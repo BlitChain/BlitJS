@@ -6,6 +6,7 @@ const auth_1 = require("./auth");
 const any_1 = require("../../../google/protobuf/any");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.auth.v1beta1";
 function createBaseGenesisState() {
     return {
@@ -15,6 +16,16 @@ function createBaseGenesisState() {
 }
 exports.GenesisState = {
     typeUrl: "/cosmos.auth.v1beta1.GenesisState",
+    aminoType: "cosmos-sdk/GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || auth_1.Params.is(o.params) && Array.isArray(o.accounts) && (!o.accounts.length || any_1.Any.is(o.accounts[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || auth_1.Params.isSDK(o.params) && Array.isArray(o.accounts) && (!o.accounts.length || any_1.Any.isSDK(o.accounts[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.GenesisState.typeUrl || auth_1.Params.isAmino(o.params) && Array.isArray(o.accounts) && (!o.accounts.length || any_1.Any.isAmino(o.accounts[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.params !== undefined) {
             auth_1.Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -108,4 +119,6 @@ exports.GenesisState = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.GenesisState.typeUrl, exports.GenesisState);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.GenesisState.aminoType, exports.GenesisState.typeUrl);
 //# sourceMappingURL=genesis.js.map

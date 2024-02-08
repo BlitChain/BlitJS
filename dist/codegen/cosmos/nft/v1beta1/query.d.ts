@@ -347,6 +347,10 @@ export interface QueryClassesResponseSDKType {
 }
 export declare const QueryBalanceRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryBalanceRequest;
+    isSDK(o: any): o is QueryBalanceRequestSDKType;
+    isAmino(o: any): o is QueryBalanceRequestAmino;
     encode(message: QueryBalanceRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryBalanceRequest;
     fromJSON(object: any): QueryBalanceRequest;
@@ -362,6 +366,10 @@ export declare const QueryBalanceRequest: {
 };
 export declare const QueryBalanceResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryBalanceResponse;
+    isSDK(o: any): o is QueryBalanceResponseSDKType;
+    isAmino(o: any): o is QueryBalanceResponseAmino;
     encode(message: QueryBalanceResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryBalanceResponse;
     fromJSON(object: any): QueryBalanceResponse;
@@ -377,6 +385,10 @@ export declare const QueryBalanceResponse: {
 };
 export declare const QueryOwnerRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryOwnerRequest;
+    isSDK(o: any): o is QueryOwnerRequestSDKType;
+    isAmino(o: any): o is QueryOwnerRequestAmino;
     encode(message: QueryOwnerRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryOwnerRequest;
     fromJSON(object: any): QueryOwnerRequest;
@@ -392,6 +404,10 @@ export declare const QueryOwnerRequest: {
 };
 export declare const QueryOwnerResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryOwnerResponse;
+    isSDK(o: any): o is QueryOwnerResponseSDKType;
+    isAmino(o: any): o is QueryOwnerResponseAmino;
     encode(message: QueryOwnerResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryOwnerResponse;
     fromJSON(object: any): QueryOwnerResponse;
@@ -407,6 +423,10 @@ export declare const QueryOwnerResponse: {
 };
 export declare const QuerySupplyRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QuerySupplyRequest;
+    isSDK(o: any): o is QuerySupplyRequestSDKType;
+    isAmino(o: any): o is QuerySupplyRequestAmino;
     encode(message: QuerySupplyRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QuerySupplyRequest;
     fromJSON(object: any): QuerySupplyRequest;
@@ -422,6 +442,10 @@ export declare const QuerySupplyRequest: {
 };
 export declare const QuerySupplyResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QuerySupplyResponse;
+    isSDK(o: any): o is QuerySupplyResponseSDKType;
+    isAmino(o: any): o is QuerySupplyResponseAmino;
     encode(message: QuerySupplyResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QuerySupplyResponse;
     fromJSON(object: any): QuerySupplyResponse;
@@ -437,6 +461,10 @@ export declare const QuerySupplyResponse: {
 };
 export declare const QueryNFTsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryNFTsRequest;
+    isSDK(o: any): o is QueryNFTsRequestSDKType;
+    isAmino(o: any): o is QueryNFTsRequestAmino;
     encode(message: QueryNFTsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryNFTsRequest;
     fromJSON(object: any): QueryNFTsRequest;
@@ -452,6 +480,10 @@ export declare const QueryNFTsRequest: {
 };
 export declare const QueryNFTsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryNFTsResponse;
+    isSDK(o: any): o is QueryNFTsResponseSDKType;
+    isAmino(o: any): o is QueryNFTsResponseAmino;
     encode(message: QueryNFTsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryNFTsResponse;
     fromJSON(object: any): QueryNFTsResponse;
@@ -467,6 +499,10 @@ export declare const QueryNFTsResponse: {
 };
 export declare const QueryNFTRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryNFTRequest;
+    isSDK(o: any): o is QueryNFTRequestSDKType;
+    isAmino(o: any): o is QueryNFTRequestAmino;
     encode(message: QueryNFTRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryNFTRequest;
     fromJSON(object: any): QueryNFTRequest;
@@ -482,6 +518,10 @@ export declare const QueryNFTRequest: {
 };
 export declare const QueryNFTResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryNFTResponse;
+    isSDK(o: any): o is QueryNFTResponseSDKType;
+    isAmino(o: any): o is QueryNFTResponseAmino;
     encode(message: QueryNFTResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryNFTResponse;
     fromJSON(object: any): QueryNFTResponse;
@@ -497,6 +537,10 @@ export declare const QueryNFTResponse: {
 };
 export declare const QueryClassRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClassRequest;
+    isSDK(o: any): o is QueryClassRequestSDKType;
+    isAmino(o: any): o is QueryClassRequestAmino;
     encode(message: QueryClassRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClassRequest;
     fromJSON(object: any): QueryClassRequest;
@@ -512,6 +556,10 @@ export declare const QueryClassRequest: {
 };
 export declare const QueryClassResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClassResponse;
+    isSDK(o: any): o is QueryClassResponseSDKType;
+    isAmino(o: any): o is QueryClassResponseAmino;
     encode(message: QueryClassResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClassResponse;
     fromJSON(object: any): QueryClassResponse;
@@ -527,6 +575,10 @@ export declare const QueryClassResponse: {
 };
 export declare const QueryClassesRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClassesRequest;
+    isSDK(o: any): o is QueryClassesRequestSDKType;
+    isAmino(o: any): o is QueryClassesRequestAmino;
     encode(message: QueryClassesRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClassesRequest;
     fromJSON(object: any): QueryClassesRequest;
@@ -542,6 +594,10 @@ export declare const QueryClassesRequest: {
 };
 export declare const QueryClassesResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClassesResponse;
+    isSDK(o: any): o is QueryClassesResponseSDKType;
+    isAmino(o: any): o is QueryClassesResponseAmino;
     encode(message: QueryClassesResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClassesResponse;
     fromJSON(object: any): QueryClassesResponse;

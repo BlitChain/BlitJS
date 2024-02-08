@@ -2,6 +2,7 @@
 import { Height } from "../../../core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 export const protobufPackage = "ibc.lightclients.localhost.v2";
 function createBaseClientState() {
     return {
@@ -10,6 +11,16 @@ function createBaseClientState() {
 }
 export const ClientState = {
     typeUrl: "/ibc.lightclients.localhost.v2.ClientState",
+    aminoType: "cosmos-sdk/ClientState",
+    is(o) {
+        return o && (o.$typeUrl === ClientState.typeUrl || Height.is(o.latest_height));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === ClientState.typeUrl || Height.isSDK(o.latest_height));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === ClientState.typeUrl || Height.isAmino(o.latest_height));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.latest_height !== undefined) {
             Height.encode(message.latest_height, writer.uint32(10).fork()).ldelim();
@@ -82,4 +93,6 @@ export const ClientState = {
         };
     }
 };
+GlobalDecoderRegistry.register(ClientState.typeUrl, ClientState);
+GlobalDecoderRegistry.registerAminoProtoMapping(ClientState.aminoType, ClientState.typeUrl);
 //# sourceMappingURL=localhost.js.map

@@ -38,4 +38,6 @@ __exportStar(require("./grpc-gateway"), exports);
 __exportStar(require("./varint"), exports);
 __exportStar(require("./utf8"), exports);
 __exportStar(require("./binary"), exports);
+__exportStar(require("./types"), exports);
+__exportStar(require("./registry"), exports);
 //# sourceMappingURL=index.js.map

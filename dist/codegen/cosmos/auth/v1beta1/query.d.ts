@@ -625,6 +625,10 @@ export interface QueryAccountInfoResponseSDKType {
 }
 export declare const QueryAccountsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAccountsRequest;
+    isSDK(o: any): o is QueryAccountsRequestSDKType;
+    isAmino(o: any): o is QueryAccountsRequestAmino;
     encode(message: QueryAccountsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountsRequest;
     fromJSON(object: any): QueryAccountsRequest;
@@ -640,6 +644,10 @@ export declare const QueryAccountsRequest: {
 };
 export declare const QueryAccountsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAccountsResponse;
+    isSDK(o: any): o is QueryAccountsResponseSDKType;
+    isAmino(o: any): o is QueryAccountsResponseAmino;
     encode(message: QueryAccountsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountsResponse;
     fromJSON(object: any): QueryAccountsResponse;
@@ -655,6 +663,10 @@ export declare const QueryAccountsResponse: {
 };
 export declare const QueryAccountRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAccountRequest;
+    isSDK(o: any): o is QueryAccountRequestSDKType;
+    isAmino(o: any): o is QueryAccountRequestAmino;
     encode(message: QueryAccountRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountRequest;
     fromJSON(object: any): QueryAccountRequest;
@@ -670,6 +682,10 @@ export declare const QueryAccountRequest: {
 };
 export declare const QueryAccountResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAccountResponse;
+    isSDK(o: any): o is QueryAccountResponseSDKType;
+    isAmino(o: any): o is QueryAccountResponseAmino;
     encode(message: QueryAccountResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountResponse;
     fromJSON(object: any): QueryAccountResponse;
@@ -685,6 +701,10 @@ export declare const QueryAccountResponse: {
 };
 export declare const QueryParamsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryParamsRequest;
+    isSDK(o: any): o is QueryParamsRequestSDKType;
+    isAmino(o: any): o is QueryParamsRequestAmino;
     encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromJSON(_: any): QueryParamsRequest;
@@ -700,6 +720,10 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryParamsResponse;
+    isSDK(o: any): o is QueryParamsResponseSDKType;
+    isAmino(o: any): o is QueryParamsResponseAmino;
     encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromJSON(object: any): QueryParamsResponse;
@@ -715,6 +739,10 @@ export declare const QueryParamsResponse: {
 };
 export declare const QueryModuleAccountsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryModuleAccountsRequest;
+    isSDK(o: any): o is QueryModuleAccountsRequestSDKType;
+    isAmino(o: any): o is QueryModuleAccountsRequestAmino;
     encode(_: QueryModuleAccountsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleAccountsRequest;
     fromJSON(_: any): QueryModuleAccountsRequest;
@@ -730,6 +758,10 @@ export declare const QueryModuleAccountsRequest: {
 };
 export declare const QueryModuleAccountsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryModuleAccountsResponse;
+    isSDK(o: any): o is QueryModuleAccountsResponseSDKType;
+    isAmino(o: any): o is QueryModuleAccountsResponseAmino;
     encode(message: QueryModuleAccountsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleAccountsResponse;
     fromJSON(object: any): QueryModuleAccountsResponse;
@@ -745,6 +777,10 @@ export declare const QueryModuleAccountsResponse: {
 };
 export declare const QueryModuleAccountByNameRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryModuleAccountByNameRequest;
+    isSDK(o: any): o is QueryModuleAccountByNameRequestSDKType;
+    isAmino(o: any): o is QueryModuleAccountByNameRequestAmino;
     encode(message: QueryModuleAccountByNameRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleAccountByNameRequest;
     fromJSON(object: any): QueryModuleAccountByNameRequest;
@@ -760,6 +796,10 @@ export declare const QueryModuleAccountByNameRequest: {
 };
 export declare const QueryModuleAccountByNameResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryModuleAccountByNameResponse;
+    isSDK(o: any): o is QueryModuleAccountByNameResponseSDKType;
+    isAmino(o: any): o is QueryModuleAccountByNameResponseAmino;
     encode(message: QueryModuleAccountByNameResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryModuleAccountByNameResponse;
     fromJSON(object: any): QueryModuleAccountByNameResponse;
@@ -775,6 +815,10 @@ export declare const QueryModuleAccountByNameResponse: {
 };
 export declare const Bech32PrefixRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Bech32PrefixRequest;
+    isSDK(o: any): o is Bech32PrefixRequestSDKType;
+    isAmino(o: any): o is Bech32PrefixRequestAmino;
     encode(_: Bech32PrefixRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Bech32PrefixRequest;
     fromJSON(_: any): Bech32PrefixRequest;
@@ -790,6 +834,10 @@ export declare const Bech32PrefixRequest: {
 };
 export declare const Bech32PrefixResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Bech32PrefixResponse;
+    isSDK(o: any): o is Bech32PrefixResponseSDKType;
+    isAmino(o: any): o is Bech32PrefixResponseAmino;
     encode(message: Bech32PrefixResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Bech32PrefixResponse;
     fromJSON(object: any): Bech32PrefixResponse;
@@ -805,6 +853,10 @@ export declare const Bech32PrefixResponse: {
 };
 export declare const AddressBytesToStringRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is AddressBytesToStringRequest;
+    isSDK(o: any): o is AddressBytesToStringRequestSDKType;
+    isAmino(o: any): o is AddressBytesToStringRequestAmino;
     encode(message: AddressBytesToStringRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AddressBytesToStringRequest;
     fromJSON(object: any): AddressBytesToStringRequest;
@@ -820,6 +872,10 @@ export declare const AddressBytesToStringRequest: {
 };
 export declare const AddressBytesToStringResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is AddressBytesToStringResponse;
+    isSDK(o: any): o is AddressBytesToStringResponseSDKType;
+    isAmino(o: any): o is AddressBytesToStringResponseAmino;
     encode(message: AddressBytesToStringResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AddressBytesToStringResponse;
     fromJSON(object: any): AddressBytesToStringResponse;
@@ -835,6 +891,10 @@ export declare const AddressBytesToStringResponse: {
 };
 export declare const AddressStringToBytesRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is AddressStringToBytesRequest;
+    isSDK(o: any): o is AddressStringToBytesRequestSDKType;
+    isAmino(o: any): o is AddressStringToBytesRequestAmino;
     encode(message: AddressStringToBytesRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AddressStringToBytesRequest;
     fromJSON(object: any): AddressStringToBytesRequest;
@@ -850,6 +910,10 @@ export declare const AddressStringToBytesRequest: {
 };
 export declare const AddressStringToBytesResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is AddressStringToBytesResponse;
+    isSDK(o: any): o is AddressStringToBytesResponseSDKType;
+    isAmino(o: any): o is AddressStringToBytesResponseAmino;
     encode(message: AddressStringToBytesResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): AddressStringToBytesResponse;
     fromJSON(object: any): AddressStringToBytesResponse;
@@ -865,6 +929,10 @@ export declare const AddressStringToBytesResponse: {
 };
 export declare const QueryAccountAddressByIDRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAccountAddressByIDRequest;
+    isSDK(o: any): o is QueryAccountAddressByIDRequestSDKType;
+    isAmino(o: any): o is QueryAccountAddressByIDRequestAmino;
     encode(message: QueryAccountAddressByIDRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountAddressByIDRequest;
     fromJSON(object: any): QueryAccountAddressByIDRequest;
@@ -880,6 +948,10 @@ export declare const QueryAccountAddressByIDRequest: {
 };
 export declare const QueryAccountAddressByIDResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAccountAddressByIDResponse;
+    isSDK(o: any): o is QueryAccountAddressByIDResponseSDKType;
+    isAmino(o: any): o is QueryAccountAddressByIDResponseAmino;
     encode(message: QueryAccountAddressByIDResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountAddressByIDResponse;
     fromJSON(object: any): QueryAccountAddressByIDResponse;
@@ -895,6 +967,10 @@ export declare const QueryAccountAddressByIDResponse: {
 };
 export declare const QueryAccountInfoRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAccountInfoRequest;
+    isSDK(o: any): o is QueryAccountInfoRequestSDKType;
+    isAmino(o: any): o is QueryAccountInfoRequestAmino;
     encode(message: QueryAccountInfoRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountInfoRequest;
     fromJSON(object: any): QueryAccountInfoRequest;
@@ -910,6 +986,10 @@ export declare const QueryAccountInfoRequest: {
 };
 export declare const QueryAccountInfoResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryAccountInfoResponse;
+    isSDK(o: any): o is QueryAccountInfoResponseSDKType;
+    isAmino(o: any): o is QueryAccountInfoResponseAmino;
     encode(message: QueryAccountInfoResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryAccountInfoResponse;
     fromJSON(object: any): QueryAccountInfoResponse;
@@ -923,9 +1003,3 @@ export declare const QueryAccountInfoResponse: {
     toProto(message: QueryAccountInfoResponse): Uint8Array;
     toProtoMsg(message: QueryAccountInfoResponse): QueryAccountInfoResponseProtoMsg;
 };
-export declare const Cosmos_authv1beta1AccountI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => BaseAccount | Any;
-export declare const Cosmos_authv1beta1AccountI_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_authv1beta1AccountI_ToAmino: (content: Any) => AnyAmino;
-export declare const Cosmos_authv1beta1ModuleAccountI_InterfaceDecoder: (input: BinaryReader | Uint8Array) => ModuleAccount | Any;
-export declare const Cosmos_authv1beta1ModuleAccountI_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_authv1beta1ModuleAccountI_ToAmino: (content: Any) => AnyAmino;

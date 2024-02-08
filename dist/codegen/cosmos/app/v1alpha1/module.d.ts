@@ -204,6 +204,10 @@ export interface MigrateFromInfoSDKType {
 }
 export declare const ModuleDescriptor: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ModuleDescriptor;
+    isSDK(o: any): o is ModuleDescriptorSDKType;
+    isAmino(o: any): o is ModuleDescriptorAmino;
     encode(message: ModuleDescriptor, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ModuleDescriptor;
     fromJSON(object: any): ModuleDescriptor;
@@ -219,6 +223,10 @@ export declare const ModuleDescriptor: {
 };
 export declare const PackageReference: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is PackageReference;
+    isSDK(o: any): o is PackageReferenceSDKType;
+    isAmino(o: any): o is PackageReferenceAmino;
     encode(message: PackageReference, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): PackageReference;
     fromJSON(object: any): PackageReference;
@@ -234,6 +242,10 @@ export declare const PackageReference: {
 };
 export declare const MigrateFromInfo: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MigrateFromInfo;
+    isSDK(o: any): o is MigrateFromInfoSDKType;
+    isAmino(o: any): o is MigrateFromInfoAmino;
     encode(message: MigrateFromInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MigrateFromInfo;
     fromJSON(object: any): MigrateFromInfo;

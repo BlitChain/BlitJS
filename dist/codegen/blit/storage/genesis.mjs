@@ -3,6 +3,7 @@ import { Params } from "./params";
 import { Storage } from "./storage";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.storage";
 function createBaseGenesisState() {
     return {
@@ -12,6 +13,15 @@ function createBaseGenesisState() {
 }
 export const GenesisState = {
     typeUrl: "/blit.storage.GenesisState",
+    is(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.storageList) && (!o.storageList.length || Storage.is(o.storageList[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.storageList) && (!o.storageList.length || Storage.isSDK(o.storageList[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.storageList) && (!o.storageList.length || Storage.isAmino(o.storageList[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.params !== undefined) {
             Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -99,4 +109,5 @@ export const GenesisState = {
         };
     }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
 //# sourceMappingURL=genesis.js.map

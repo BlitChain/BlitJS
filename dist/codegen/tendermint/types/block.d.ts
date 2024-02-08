@@ -30,6 +30,9 @@ export interface BlockSDKType {
 }
 export declare const Block: {
     typeUrl: string;
+    is(o: any): o is Block;
+    isSDK(o: any): o is BlockSDKType;
+    isAmino(o: any): o is BlockAmino;
     encode(message: Block, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Block;
     fromJSON(object: any): Block;

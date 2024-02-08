@@ -162,6 +162,10 @@ export interface MsgUpdateParamsResponseSDKType {
 }
 export declare const MsgRegisterInterchainAccount: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgRegisterInterchainAccount;
+    isSDK(o: any): o is MsgRegisterInterchainAccountSDKType;
+    isAmino(o: any): o is MsgRegisterInterchainAccountAmino;
     encode(message: MsgRegisterInterchainAccount, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterInterchainAccount;
     fromJSON(object: any): MsgRegisterInterchainAccount;
@@ -177,6 +181,10 @@ export declare const MsgRegisterInterchainAccount: {
 };
 export declare const MsgRegisterInterchainAccountResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgRegisterInterchainAccountResponse;
+    isSDK(o: any): o is MsgRegisterInterchainAccountResponseSDKType;
+    isAmino(o: any): o is MsgRegisterInterchainAccountResponseAmino;
     encode(message: MsgRegisterInterchainAccountResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterInterchainAccountResponse;
     fromJSON(object: any): MsgRegisterInterchainAccountResponse;
@@ -192,6 +200,10 @@ export declare const MsgRegisterInterchainAccountResponse: {
 };
 export declare const MsgSendTx: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSendTx;
+    isSDK(o: any): o is MsgSendTxSDKType;
+    isAmino(o: any): o is MsgSendTxAmino;
     encode(message: MsgSendTx, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSendTx;
     fromJSON(object: any): MsgSendTx;
@@ -207,6 +219,10 @@ export declare const MsgSendTx: {
 };
 export declare const MsgSendTxResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSendTxResponse;
+    isSDK(o: any): o is MsgSendTxResponseSDKType;
+    isAmino(o: any): o is MsgSendTxResponseAmino;
     encode(message: MsgSendTxResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSendTxResponse;
     fromJSON(object: any): MsgSendTxResponse;
@@ -222,6 +238,10 @@ export declare const MsgSendTxResponse: {
 };
 export declare const MsgUpdateParams: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParams;
+    isSDK(o: any): o is MsgUpdateParamsSDKType;
+    isAmino(o: any): o is MsgUpdateParamsAmino;
     encode(message: MsgUpdateParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParams;
     fromJSON(object: any): MsgUpdateParams;
@@ -237,6 +257,10 @@ export declare const MsgUpdateParams: {
 };
 export declare const MsgUpdateParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParamsResponse;
+    isSDK(o: any): o is MsgUpdateParamsResponseSDKType;
+    isAmino(o: any): o is MsgUpdateParamsResponseAmino;
     encode(_: MsgUpdateParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParamsResponse;
     fromJSON(_: any): MsgUpdateParamsResponse;

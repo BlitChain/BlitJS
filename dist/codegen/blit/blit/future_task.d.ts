@@ -42,6 +42,9 @@ export interface FutureTaskSDKType {
 }
 export declare const FutureTask: {
     typeUrl: string;
+    is(o: any): o is FutureTask;
+    isSDK(o: any): o is FutureTaskSDKType;
+    isAmino(o: any): o is FutureTaskAmino;
     encode(message: FutureTask, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FutureTask;
     fromJSON(object: any): FutureTask;

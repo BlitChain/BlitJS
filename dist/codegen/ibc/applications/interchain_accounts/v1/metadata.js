@@ -4,6 +4,7 @@ exports.Metadata = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../../binary");
 const helpers_1 = require("../../../../helpers");
+const registry_1 = require("../../../../registry");
 exports.protobufPackage = "ibc.applications.interchain_accounts.v1";
 function createBaseMetadata() {
     return {
@@ -17,6 +18,16 @@ function createBaseMetadata() {
 }
 exports.Metadata = {
     typeUrl: "/ibc.applications.interchain_accounts.v1.Metadata",
+    aminoType: "cosmos-sdk/Metadata",
+    is(o) {
+        return o && (o.$typeUrl === exports.Metadata.typeUrl || typeof o.version === "string" && typeof o.controller_connection_id === "string" && typeof o.host_connection_id === "string" && typeof o.address === "string" && typeof o.encoding === "string" && typeof o.tx_type === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Metadata.typeUrl || typeof o.version === "string" && typeof o.controller_connection_id === "string" && typeof o.host_connection_id === "string" && typeof o.address === "string" && typeof o.encoding === "string" && typeof o.tx_type === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Metadata.typeUrl || typeof o.version === "string" && typeof o.controller_connection_id === "string" && typeof o.host_connection_id === "string" && typeof o.address === "string" && typeof o.encoding === "string" && typeof o.tx_type === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.version !== "") {
             writer.uint32(10).string(message.version);
@@ -154,4 +165,6 @@ exports.Metadata = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Metadata.typeUrl, exports.Metadata);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Metadata.aminoType, exports.Metadata.typeUrl);
 //# sourceMappingURL=metadata.js.map

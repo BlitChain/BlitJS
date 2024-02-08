@@ -4,6 +4,7 @@ exports.Params = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../../../binary");
 const helpers_1 = require("../../../../../helpers");
+const registry_1 = require("../../../../../registry");
 exports.protobufPackage = "ibc.applications.interchain_accounts.host.v1";
 function createBaseParams() {
     return {
@@ -13,6 +14,16 @@ function createBaseParams() {
 }
 exports.Params = {
     typeUrl: "/ibc.applications.interchain_accounts.host.v1.Params",
+    aminoType: "cosmos-sdk/Params",
+    is(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.host_enabled === "boolean" && Array.isArray(o.allow_messages) && (!o.allow_messages.length || typeof o.allow_messages[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.host_enabled === "boolean" && Array.isArray(o.allow_messages) && (!o.allow_messages.length || typeof o.allow_messages[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.host_enabled === "boolean" && Array.isArray(o.allow_messages) && (!o.allow_messages.length || typeof o.allow_messages[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.host_enabled === true) {
             writer.uint32(8).bool(message.host_enabled);
@@ -106,4 +117,6 @@ exports.Params = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Params.typeUrl, exports.Params);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Params.aminoType, exports.Params.typeUrl);
 //# sourceMappingURL=host.js.map

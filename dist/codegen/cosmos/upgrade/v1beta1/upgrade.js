@@ -6,6 +6,7 @@ const timestamp_1 = require("../../../google/protobuf/timestamp");
 const any_1 = require("../../../google/protobuf/any");
 const binary_1 = require("../../../binary");
 const helpers_1 = require("../../../helpers");
+const registry_1 = require("../../../registry");
 exports.protobufPackage = "cosmos.upgrade.v1beta1";
 function createBasePlan() {
     return {
@@ -18,6 +19,16 @@ function createBasePlan() {
 }
 exports.Plan = {
     typeUrl: "/cosmos.upgrade.v1beta1.Plan",
+    aminoType: "cosmos-sdk/Plan",
+    is(o) {
+        return o && (o.$typeUrl === exports.Plan.typeUrl || typeof o.name === "string" && timestamp_1.Timestamp.is(o.time) && typeof o.height === "bigint" && typeof o.info === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Plan.typeUrl || typeof o.name === "string" && timestamp_1.Timestamp.isSDK(o.time) && typeof o.height === "bigint" && typeof o.info === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Plan.typeUrl || typeof o.name === "string" && timestamp_1.Timestamp.isAmino(o.time) && typeof o.height === "bigint" && typeof o.info === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -142,6 +153,8 @@ exports.Plan = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Plan.typeUrl, exports.Plan);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Plan.aminoType, exports.Plan.typeUrl);
 function createBaseSoftwareUpgradeProposal() {
     return {
         $typeUrl: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
@@ -152,6 +165,16 @@ function createBaseSoftwareUpgradeProposal() {
 }
 exports.SoftwareUpgradeProposal = {
     typeUrl: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
+    aminoType: "cosmos-sdk/SoftwareUpgradeProposal",
+    is(o) {
+        return o && (o.$typeUrl === exports.SoftwareUpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && exports.Plan.is(o.plan));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.SoftwareUpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && exports.Plan.isSDK(o.plan));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.SoftwareUpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && exports.Plan.isAmino(o.plan));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.title !== "") {
             writer.uint32(10).string(message.title);
@@ -250,6 +273,8 @@ exports.SoftwareUpgradeProposal = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.SoftwareUpgradeProposal.typeUrl, exports.SoftwareUpgradeProposal);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.SoftwareUpgradeProposal.aminoType, exports.SoftwareUpgradeProposal.typeUrl);
 function createBaseCancelSoftwareUpgradeProposal() {
     return {
         $typeUrl: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal",
@@ -259,6 +284,16 @@ function createBaseCancelSoftwareUpgradeProposal() {
 }
 exports.CancelSoftwareUpgradeProposal = {
     typeUrl: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal",
+    aminoType: "cosmos-sdk/CancelSoftwareUpgradeProposal",
+    is(o) {
+        return o && (o.$typeUrl === exports.CancelSoftwareUpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.CancelSoftwareUpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.CancelSoftwareUpgradeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.title !== "") {
             writer.uint32(10).string(message.title);
@@ -344,6 +379,8 @@ exports.CancelSoftwareUpgradeProposal = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.CancelSoftwareUpgradeProposal.typeUrl, exports.CancelSoftwareUpgradeProposal);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.CancelSoftwareUpgradeProposal.aminoType, exports.CancelSoftwareUpgradeProposal.typeUrl);
 function createBaseModuleVersion() {
     return {
         name: "",
@@ -352,6 +389,16 @@ function createBaseModuleVersion() {
 }
 exports.ModuleVersion = {
     typeUrl: "/cosmos.upgrade.v1beta1.ModuleVersion",
+    aminoType: "cosmos-sdk/ModuleVersion",
+    is(o) {
+        return o && (o.$typeUrl === exports.ModuleVersion.typeUrl || typeof o.name === "string" && typeof o.version === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ModuleVersion.typeUrl || typeof o.name === "string" && typeof o.version === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ModuleVersion.typeUrl || typeof o.name === "string" && typeof o.version === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.name !== "") {
             writer.uint32(10).string(message.name);
@@ -437,4 +484,6 @@ exports.ModuleVersion = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ModuleVersion.typeUrl, exports.ModuleVersion);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.ModuleVersion.aminoType, exports.ModuleVersion.typeUrl);
 //# sourceMappingURL=upgrade.js.map

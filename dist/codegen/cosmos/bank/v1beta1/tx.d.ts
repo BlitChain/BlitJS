@@ -269,6 +269,10 @@ export interface MsgSetSendEnabledResponseSDKType {
 }
 export declare const MsgSend: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSend;
+    isSDK(o: any): o is MsgSendSDKType;
+    isAmino(o: any): o is MsgSendAmino;
     encode(message: MsgSend, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSend;
     fromJSON(object: any): MsgSend;
@@ -284,6 +288,10 @@ export declare const MsgSend: {
 };
 export declare const MsgSendResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSendResponse;
+    isSDK(o: any): o is MsgSendResponseSDKType;
+    isAmino(o: any): o is MsgSendResponseAmino;
     encode(_: MsgSendResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSendResponse;
     fromJSON(_: any): MsgSendResponse;
@@ -299,6 +307,10 @@ export declare const MsgSendResponse: {
 };
 export declare const MsgMultiSend: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgMultiSend;
+    isSDK(o: any): o is MsgMultiSendSDKType;
+    isAmino(o: any): o is MsgMultiSendAmino;
     encode(message: MsgMultiSend, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgMultiSend;
     fromJSON(object: any): MsgMultiSend;
@@ -314,6 +326,10 @@ export declare const MsgMultiSend: {
 };
 export declare const MsgMultiSendResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgMultiSendResponse;
+    isSDK(o: any): o is MsgMultiSendResponseSDKType;
+    isAmino(o: any): o is MsgMultiSendResponseAmino;
     encode(_: MsgMultiSendResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgMultiSendResponse;
     fromJSON(_: any): MsgMultiSendResponse;
@@ -329,6 +345,10 @@ export declare const MsgMultiSendResponse: {
 };
 export declare const MsgUpdateParams: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParams;
+    isSDK(o: any): o is MsgUpdateParamsSDKType;
+    isAmino(o: any): o is MsgUpdateParamsAmino;
     encode(message: MsgUpdateParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParams;
     fromJSON(object: any): MsgUpdateParams;
@@ -344,6 +364,10 @@ export declare const MsgUpdateParams: {
 };
 export declare const MsgUpdateParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParamsResponse;
+    isSDK(o: any): o is MsgUpdateParamsResponseSDKType;
+    isAmino(o: any): o is MsgUpdateParamsResponseAmino;
     encode(_: MsgUpdateParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParamsResponse;
     fromJSON(_: any): MsgUpdateParamsResponse;
@@ -359,6 +383,10 @@ export declare const MsgUpdateParamsResponse: {
 };
 export declare const MsgSetSendEnabled: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSetSendEnabled;
+    isSDK(o: any): o is MsgSetSendEnabledSDKType;
+    isAmino(o: any): o is MsgSetSendEnabledAmino;
     encode(message: MsgSetSendEnabled, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSetSendEnabled;
     fromJSON(object: any): MsgSetSendEnabled;
@@ -374,6 +402,10 @@ export declare const MsgSetSendEnabled: {
 };
 export declare const MsgSetSendEnabledResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgSetSendEnabledResponse;
+    isSDK(o: any): o is MsgSetSendEnabledResponseSDKType;
+    isAmino(o: any): o is MsgSetSendEnabledResponseAmino;
     encode(_: MsgSetSendEnabledResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgSetSendEnabledResponse;
     fromJSON(_: any): MsgSetSendEnabledResponse;

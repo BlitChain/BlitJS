@@ -234,6 +234,10 @@ export interface MsgRunResponseSDKType {
 }
 export declare const MsgUpdateParams: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is MsgUpdateParams;
+    isSDK(o: any): o is MsgUpdateParamsSDKType;
+    isAmino(o: any): o is MsgUpdateParamsAmino;
     encode(message: MsgUpdateParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParams;
     fromJSON(object: any): MsgUpdateParams;
@@ -249,6 +253,9 @@ export declare const MsgUpdateParams: {
 };
 export declare const MsgUpdateParamsResponse: {
     typeUrl: string;
+    is(o: any): o is MsgUpdateParamsResponse;
+    isSDK(o: any): o is MsgUpdateParamsResponseSDKType;
+    isAmino(o: any): o is MsgUpdateParamsResponseAmino;
     encode(_: MsgUpdateParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParamsResponse;
     fromJSON(_: any): MsgUpdateParamsResponse;
@@ -263,6 +270,9 @@ export declare const MsgUpdateParamsResponse: {
 };
 export declare const MsgCreateScript: {
     typeUrl: string;
+    is(o: any): o is MsgCreateScript;
+    isSDK(o: any): o is MsgCreateScriptSDKType;
+    isAmino(o: any): o is MsgCreateScriptAmino;
     encode(message: MsgCreateScript, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateScript;
     fromJSON(object: any): MsgCreateScript;
@@ -277,6 +287,9 @@ export declare const MsgCreateScript: {
 };
 export declare const MsgCreateScriptResponse: {
     typeUrl: string;
+    is(o: any): o is MsgCreateScriptResponse;
+    isSDK(o: any): o is MsgCreateScriptResponseSDKType;
+    isAmino(o: any): o is MsgCreateScriptResponseAmino;
     encode(message: MsgCreateScriptResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateScriptResponse;
     fromJSON(object: any): MsgCreateScriptResponse;
@@ -291,6 +304,9 @@ export declare const MsgCreateScriptResponse: {
 };
 export declare const MsgUpdateScript: {
     typeUrl: string;
+    is(o: any): o is MsgUpdateScript;
+    isSDK(o: any): o is MsgUpdateScriptSDKType;
+    isAmino(o: any): o is MsgUpdateScriptAmino;
     encode(message: MsgUpdateScript, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateScript;
     fromJSON(object: any): MsgUpdateScript;
@@ -305,6 +321,9 @@ export declare const MsgUpdateScript: {
 };
 export declare const MsgUpdateScriptResponse: {
     typeUrl: string;
+    is(o: any): o is MsgUpdateScriptResponse;
+    isSDK(o: any): o is MsgUpdateScriptResponseSDKType;
+    isAmino(o: any): o is MsgUpdateScriptResponseAmino;
     encode(message: MsgUpdateScriptResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateScriptResponse;
     fromJSON(object: any): MsgUpdateScriptResponse;
@@ -319,6 +338,9 @@ export declare const MsgUpdateScriptResponse: {
 };
 export declare const MsgDeleteScript: {
     typeUrl: string;
+    is(o: any): o is MsgDeleteScript;
+    isSDK(o: any): o is MsgDeleteScriptSDKType;
+    isAmino(o: any): o is MsgDeleteScriptAmino;
     encode(message: MsgDeleteScript, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteScript;
     fromJSON(object: any): MsgDeleteScript;
@@ -333,6 +355,9 @@ export declare const MsgDeleteScript: {
 };
 export declare const MsgDeleteScriptResponse: {
     typeUrl: string;
+    is(o: any): o is MsgDeleteScriptResponse;
+    isSDK(o: any): o is MsgDeleteScriptResponseSDKType;
+    isAmino(o: any): o is MsgDeleteScriptResponseAmino;
     encode(_: MsgDeleteScriptResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteScriptResponse;
     fromJSON(_: any): MsgDeleteScriptResponse;
@@ -347,6 +372,9 @@ export declare const MsgDeleteScriptResponse: {
 };
 export declare const MsgRun: {
     typeUrl: string;
+    is(o: any): o is MsgRun;
+    isSDK(o: any): o is MsgRunSDKType;
+    isAmino(o: any): o is MsgRunAmino;
     encode(message: MsgRun, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRun;
     fromJSON(object: any): MsgRun;
@@ -361,6 +389,9 @@ export declare const MsgRun: {
 };
 export declare const MsgRunResponse: {
     typeUrl: string;
+    is(o: any): o is MsgRunResponse;
+    isSDK(o: any): o is MsgRunResponseSDKType;
+    isAmino(o: any): o is MsgRunResponseAmino;
     encode(message: MsgRunResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MsgRunResponse;
     fromJSON(object: any): MsgRunResponse;
@@ -373,6 +404,3 @@ export declare const MsgRunResponse: {
     toProto(message: MsgRunResponse): Uint8Array;
     toProtoMsg(message: MsgRunResponse): MsgRunResponseProtoMsg;
 };
-export declare const Cosmos_basev1beta1Msg_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
-export declare const Cosmos_basev1beta1Msg_FromAmino: (content: AnyAmino) => Any;
-export declare const Cosmos_basev1beta1Msg_ToAmino: (content: Any) => AnyAmino;

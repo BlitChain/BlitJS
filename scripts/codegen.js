@@ -88,13 +88,16 @@ telescope({
     },
     rpcClients: {
       type: 'grpc-gateway',
-      enabled: true,
+      enabled: false,
       camelCase: false
+    },
+    interfaces: {
+      useGlobalDecoderRegistry: true
     }
   }
 })
   .then(() => {
-    console.log('âœ¨ all done!');
+    console.log('¿? all done!');
   })
   .catch((e) => {
     console.error(e);

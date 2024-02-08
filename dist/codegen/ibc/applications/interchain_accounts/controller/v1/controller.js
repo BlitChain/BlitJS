@@ -4,6 +4,7 @@ exports.Params = exports.protobufPackage = void 0;
 //@ts-nocheck
 const binary_1 = require("../../../../../binary");
 const helpers_1 = require("../../../../../helpers");
+const registry_1 = require("../../../../../registry");
 exports.protobufPackage = "ibc.applications.interchain_accounts.controller.v1";
 function createBaseParams() {
     return {
@@ -12,6 +13,16 @@ function createBaseParams() {
 }
 exports.Params = {
     typeUrl: "/ibc.applications.interchain_accounts.controller.v1.Params",
+    aminoType: "cosmos-sdk/Params",
+    is(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.controller_enabled === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.controller_enabled === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Params.typeUrl || typeof o.controller_enabled === "boolean");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.controller_enabled === true) {
             writer.uint32(8).bool(message.controller_enabled);
@@ -84,4 +95,6 @@ exports.Params = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Params.typeUrl, exports.Params);
+registry_1.GlobalDecoderRegistry.registerAminoProtoMapping(exports.Params.aminoType, exports.Params.typeUrl);
 //# sourceMappingURL=controller.js.map

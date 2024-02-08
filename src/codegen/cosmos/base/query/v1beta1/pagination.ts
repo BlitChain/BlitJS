@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 export const protobufPackage = "cosmos.base.query.v1beta1";
 /**
  * PageRequest is to be embedded in gRPC request messages for efficient
@@ -184,6 +185,16 @@ function createBasePageRequest(): PageRequest {
 }
 export const PageRequest = {
   typeUrl: "/cosmos.base.query.v1beta1.PageRequest",
+  aminoType: "cosmos-sdk/PageRequest",
+  is(o: any): o is PageRequest {
+    return o && (o.$typeUrl === PageRequest.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && typeof o.offset === "bigint" && typeof o.limit === "bigint" && typeof o.count_total === "boolean" && typeof o.reverse === "boolean");
+  },
+  isSDK(o: any): o is PageRequestSDKType {
+    return o && (o.$typeUrl === PageRequest.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && typeof o.offset === "bigint" && typeof o.limit === "bigint" && typeof o.count_total === "boolean" && typeof o.reverse === "boolean");
+  },
+  isAmino(o: any): o is PageRequestAmino {
+    return o && (o.$typeUrl === PageRequest.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && typeof o.offset === "bigint" && typeof o.limit === "bigint" && typeof o.count_total === "boolean" && typeof o.reverse === "boolean");
+  },
   encode(message: PageRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
@@ -308,6 +319,8 @@ export const PageRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(PageRequest.typeUrl, PageRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(PageRequest.aminoType, PageRequest.typeUrl);
 function createBasePageResponse(): PageResponse {
   return {
     next_key: new Uint8Array(),
@@ -316,6 +329,16 @@ function createBasePageResponse(): PageResponse {
 }
 export const PageResponse = {
   typeUrl: "/cosmos.base.query.v1beta1.PageResponse",
+  aminoType: "cosmos-sdk/PageResponse",
+  is(o: any): o is PageResponse {
+    return o && (o.$typeUrl === PageResponse.typeUrl || (o.next_key instanceof Uint8Array || typeof o.next_key === "string") && typeof o.total === "bigint");
+  },
+  isSDK(o: any): o is PageResponseSDKType {
+    return o && (o.$typeUrl === PageResponse.typeUrl || (o.next_key instanceof Uint8Array || typeof o.next_key === "string") && typeof o.total === "bigint");
+  },
+  isAmino(o: any): o is PageResponseAmino {
+    return o && (o.$typeUrl === PageResponse.typeUrl || (o.next_key instanceof Uint8Array || typeof o.next_key === "string") && typeof o.total === "bigint");
+  },
   encode(message: PageResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.next_key.length !== 0) {
       writer.uint32(10).bytes(message.next_key);
@@ -401,3 +424,5 @@ export const PageResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(PageResponse.typeUrl, PageResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(PageResponse.aminoType, PageResponse.typeUrl);

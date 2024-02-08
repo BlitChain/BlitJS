@@ -1,11 +1,22 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "blit.blit";
 function createBaseParams() {
     return {};
 }
 export const Params = {
     typeUrl: "/blit.blit.Params",
+    aminoType: "blit/x/blit/Params",
+    is(o) {
+        return o && o.$typeUrl === Params.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === Params.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === Params.typeUrl;
+    },
     encode(_, writer = BinaryWriter.create()) {
         return writer;
     },
@@ -64,4 +75,6 @@ export const Params = {
         };
     }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);
 //# sourceMappingURL=params.js.map

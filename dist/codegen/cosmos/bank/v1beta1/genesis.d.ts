@@ -96,6 +96,10 @@ export interface BalanceSDKType {
 }
 export declare const GenesisState: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is GenesisState;
+    isSDK(o: any): o is GenesisStateSDKType;
+    isAmino(o: any): o is GenesisStateAmino;
     encode(message: GenesisState, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GenesisState;
     fromJSON(object: any): GenesisState;
@@ -111,6 +115,10 @@ export declare const GenesisState: {
 };
 export declare const Balance: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is Balance;
+    isSDK(o: any): o is BalanceSDKType;
+    isAmino(o: any): o is BalanceAmino;
     encode(message: Balance, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): Balance;
     fromJSON(object: any): Balance;

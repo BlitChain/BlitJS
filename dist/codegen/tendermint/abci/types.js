@@ -10,6 +10,7 @@ const keys_1 = require("../crypto/keys");
 const validator_1 = require("../types/validator");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "tendermint.abci";
 var CheckTxType;
 (function (CheckTxType) {
@@ -327,6 +328,15 @@ function createBaseRequest() {
 }
 exports.Request = {
     typeUrl: "/tendermint.abci.Request",
+    is(o) {
+        return o && o.$typeUrl === exports.Request.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.Request.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.Request.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.echo !== undefined) {
             exports.RequestEcho.encode(message.echo, writer.uint32(10).fork()).ldelim();
@@ -588,6 +598,7 @@ exports.Request = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Request.typeUrl, exports.Request);
 function createBaseRequestEcho() {
     return {
         message: ""
@@ -595,6 +606,15 @@ function createBaseRequestEcho() {
 }
 exports.RequestEcho = {
     typeUrl: "/tendermint.abci.RequestEcho",
+    is(o) {
+        return o && (o.$typeUrl === exports.RequestEcho.typeUrl || typeof o.message === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RequestEcho.typeUrl || typeof o.message === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RequestEcho.typeUrl || typeof o.message === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.message !== "") {
             writer.uint32(10).string(message.message);
@@ -661,11 +681,21 @@ exports.RequestEcho = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestEcho.typeUrl, exports.RequestEcho);
 function createBaseRequestFlush() {
     return {};
 }
 exports.RequestFlush = {
     typeUrl: "/tendermint.abci.RequestFlush",
+    is(o) {
+        return o && o.$typeUrl === exports.RequestFlush.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.RequestFlush.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.RequestFlush.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -718,6 +748,7 @@ exports.RequestFlush = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestFlush.typeUrl, exports.RequestFlush);
 function createBaseRequestInfo() {
     return {
         version: "",
@@ -728,6 +759,15 @@ function createBaseRequestInfo() {
 }
 exports.RequestInfo = {
     typeUrl: "/tendermint.abci.RequestInfo",
+    is(o) {
+        return o && (o.$typeUrl === exports.RequestInfo.typeUrl || typeof o.version === "string" && typeof o.block_version === "bigint" && typeof o.p2p_version === "bigint" && typeof o.abci_version === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RequestInfo.typeUrl || typeof o.version === "string" && typeof o.block_version === "bigint" && typeof o.p2p_version === "bigint" && typeof o.abci_version === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RequestInfo.typeUrl || typeof o.version === "string" && typeof o.block_version === "bigint" && typeof o.p2p_version === "bigint" && typeof o.abci_version === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.version !== "") {
             writer.uint32(10).string(message.version);
@@ -833,6 +873,7 @@ exports.RequestInfo = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestInfo.typeUrl, exports.RequestInfo);
 function createBaseRequestInitChain() {
     return {
         time: new Date(),
@@ -845,6 +886,15 @@ function createBaseRequestInitChain() {
 }
 exports.RequestInitChain = {
     typeUrl: "/tendermint.abci.RequestInitChain",
+    is(o) {
+        return o && (o.$typeUrl === exports.RequestInitChain.typeUrl || timestamp_1.Timestamp.is(o.time) && typeof o.chain_id === "string" && Array.isArray(o.validators) && (!o.validators.length || exports.ValidatorUpdate.is(o.validators[0])) && (o.app_state_bytes instanceof Uint8Array || typeof o.app_state_bytes === "string") && typeof o.initial_height === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RequestInitChain.typeUrl || timestamp_1.Timestamp.isSDK(o.time) && typeof o.chain_id === "string" && Array.isArray(o.validators) && (!o.validators.length || exports.ValidatorUpdate.isSDK(o.validators[0])) && (o.app_state_bytes instanceof Uint8Array || typeof o.app_state_bytes === "string") && typeof o.initial_height === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RequestInitChain.typeUrl || timestamp_1.Timestamp.isAmino(o.time) && typeof o.chain_id === "string" && Array.isArray(o.validators) && (!o.validators.length || exports.ValidatorUpdate.isAmino(o.validators[0])) && (o.app_state_bytes instanceof Uint8Array || typeof o.app_state_bytes === "string") && typeof o.initial_height === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.time !== undefined) {
             timestamp_1.Timestamp.encode((0, helpers_1.toTimestamp)(message.time), writer.uint32(10).fork()).ldelim();
@@ -984,6 +1034,7 @@ exports.RequestInitChain = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestInitChain.typeUrl, exports.RequestInitChain);
 function createBaseRequestQuery() {
     return {
         data: new Uint8Array(),
@@ -994,6 +1045,15 @@ function createBaseRequestQuery() {
 }
 exports.RequestQuery = {
     typeUrl: "/tendermint.abci.RequestQuery",
+    is(o) {
+        return o && (o.$typeUrl === exports.RequestQuery.typeUrl || (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.path === "string" && typeof o.height === "bigint" && typeof o.prove === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RequestQuery.typeUrl || (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.path === "string" && typeof o.height === "bigint" && typeof o.prove === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RequestQuery.typeUrl || (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.path === "string" && typeof o.height === "bigint" && typeof o.prove === "boolean");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.data.length !== 0) {
             writer.uint32(10).bytes(message.data);
@@ -1099,6 +1159,7 @@ exports.RequestQuery = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestQuery.typeUrl, exports.RequestQuery);
 function createBaseRequestCheckTx() {
     return {
         tx: new Uint8Array(),
@@ -1107,6 +1168,15 @@ function createBaseRequestCheckTx() {
 }
 exports.RequestCheckTx = {
     typeUrl: "/tendermint.abci.RequestCheckTx",
+    is(o) {
+        return o && (o.$typeUrl === exports.RequestCheckTx.typeUrl || (o.tx instanceof Uint8Array || typeof o.tx === "string") && (0, helpers_1.isSet)(o.type));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RequestCheckTx.typeUrl || (o.tx instanceof Uint8Array || typeof o.tx === "string") && (0, helpers_1.isSet)(o.type));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RequestCheckTx.typeUrl || (o.tx instanceof Uint8Array || typeof o.tx === "string") && (0, helpers_1.isSet)(o.type));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.tx.length !== 0) {
             writer.uint32(10).bytes(message.tx);
@@ -1186,11 +1256,21 @@ exports.RequestCheckTx = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestCheckTx.typeUrl, exports.RequestCheckTx);
 function createBaseRequestCommit() {
     return {};
 }
 exports.RequestCommit = {
     typeUrl: "/tendermint.abci.RequestCommit",
+    is(o) {
+        return o && o.$typeUrl === exports.RequestCommit.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.RequestCommit.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.RequestCommit.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -1243,11 +1323,21 @@ exports.RequestCommit = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestCommit.typeUrl, exports.RequestCommit);
 function createBaseRequestListSnapshots() {
     return {};
 }
 exports.RequestListSnapshots = {
     typeUrl: "/tendermint.abci.RequestListSnapshots",
+    is(o) {
+        return o && o.$typeUrl === exports.RequestListSnapshots.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.RequestListSnapshots.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.RequestListSnapshots.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -1300,6 +1390,7 @@ exports.RequestListSnapshots = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestListSnapshots.typeUrl, exports.RequestListSnapshots);
 function createBaseRequestOfferSnapshot() {
     return {
         snapshot: undefined,
@@ -1308,6 +1399,15 @@ function createBaseRequestOfferSnapshot() {
 }
 exports.RequestOfferSnapshot = {
     typeUrl: "/tendermint.abci.RequestOfferSnapshot",
+    is(o) {
+        return o && (o.$typeUrl === exports.RequestOfferSnapshot.typeUrl || o.app_hash instanceof Uint8Array || typeof o.app_hash === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RequestOfferSnapshot.typeUrl || o.app_hash instanceof Uint8Array || typeof o.app_hash === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RequestOfferSnapshot.typeUrl || o.app_hash instanceof Uint8Array || typeof o.app_hash === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.snapshot !== undefined) {
             exports.Snapshot.encode(message.snapshot, writer.uint32(10).fork()).ldelim();
@@ -1387,6 +1487,7 @@ exports.RequestOfferSnapshot = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestOfferSnapshot.typeUrl, exports.RequestOfferSnapshot);
 function createBaseRequestLoadSnapshotChunk() {
     return {
         height: BigInt(0),
@@ -1396,6 +1497,15 @@ function createBaseRequestLoadSnapshotChunk() {
 }
 exports.RequestLoadSnapshotChunk = {
     typeUrl: "/tendermint.abci.RequestLoadSnapshotChunk",
+    is(o) {
+        return o && (o.$typeUrl === exports.RequestLoadSnapshotChunk.typeUrl || typeof o.height === "bigint" && typeof o.format === "number" && typeof o.chunk === "number");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RequestLoadSnapshotChunk.typeUrl || typeof o.height === "bigint" && typeof o.format === "number" && typeof o.chunk === "number");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RequestLoadSnapshotChunk.typeUrl || typeof o.height === "bigint" && typeof o.format === "number" && typeof o.chunk === "number");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.height !== BigInt(0)) {
             writer.uint32(8).uint64(message.height);
@@ -1488,6 +1598,7 @@ exports.RequestLoadSnapshotChunk = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestLoadSnapshotChunk.typeUrl, exports.RequestLoadSnapshotChunk);
 function createBaseRequestApplySnapshotChunk() {
     return {
         index: 0,
@@ -1497,6 +1608,15 @@ function createBaseRequestApplySnapshotChunk() {
 }
 exports.RequestApplySnapshotChunk = {
     typeUrl: "/tendermint.abci.RequestApplySnapshotChunk",
+    is(o) {
+        return o && (o.$typeUrl === exports.RequestApplySnapshotChunk.typeUrl || typeof o.index === "number" && (o.chunk instanceof Uint8Array || typeof o.chunk === "string") && typeof o.sender === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RequestApplySnapshotChunk.typeUrl || typeof o.index === "number" && (o.chunk instanceof Uint8Array || typeof o.chunk === "string") && typeof o.sender === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RequestApplySnapshotChunk.typeUrl || typeof o.index === "number" && (o.chunk instanceof Uint8Array || typeof o.chunk === "string") && typeof o.sender === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.index !== 0) {
             writer.uint32(8).uint32(message.index);
@@ -1589,6 +1709,7 @@ exports.RequestApplySnapshotChunk = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestApplySnapshotChunk.typeUrl, exports.RequestApplySnapshotChunk);
 function createBaseRequestPrepareProposal() {
     return {
         max_tx_bytes: BigInt(0),
@@ -1603,6 +1724,15 @@ function createBaseRequestPrepareProposal() {
 }
 exports.RequestPrepareProposal = {
     typeUrl: "/tendermint.abci.RequestPrepareProposal",
+    is(o) {
+        return o && (o.$typeUrl === exports.RequestPrepareProposal.typeUrl || typeof o.max_tx_bytes === "bigint" && Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string") && exports.ExtendedCommitInfo.is(o.local_last_commit) && Array.isArray(o.misbehavior) && (!o.misbehavior.length || exports.Misbehavior.is(o.misbehavior[0])) && typeof o.height === "bigint" && timestamp_1.Timestamp.is(o.time) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RequestPrepareProposal.typeUrl || typeof o.max_tx_bytes === "bigint" && Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string") && exports.ExtendedCommitInfo.isSDK(o.local_last_commit) && Array.isArray(o.misbehavior) && (!o.misbehavior.length || exports.Misbehavior.isSDK(o.misbehavior[0])) && typeof o.height === "bigint" && timestamp_1.Timestamp.isSDK(o.time) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RequestPrepareProposal.typeUrl || typeof o.max_tx_bytes === "bigint" && Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string") && exports.ExtendedCommitInfo.isAmino(o.local_last_commit) && Array.isArray(o.misbehavior) && (!o.misbehavior.length || exports.Misbehavior.isAmino(o.misbehavior[0])) && typeof o.height === "bigint" && timestamp_1.Timestamp.isAmino(o.time) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.max_tx_bytes !== BigInt(0)) {
             writer.uint32(8).int64(message.max_tx_bytes);
@@ -1776,6 +1906,7 @@ exports.RequestPrepareProposal = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestPrepareProposal.typeUrl, exports.RequestPrepareProposal);
 function createBaseRequestProcessProposal() {
     return {
         txs: [],
@@ -1790,6 +1921,15 @@ function createBaseRequestProcessProposal() {
 }
 exports.RequestProcessProposal = {
     typeUrl: "/tendermint.abci.RequestProcessProposal",
+    is(o) {
+        return o && (o.$typeUrl === exports.RequestProcessProposal.typeUrl || Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string") && exports.CommitInfo.is(o.proposed_last_commit) && Array.isArray(o.misbehavior) && (!o.misbehavior.length || exports.Misbehavior.is(o.misbehavior[0])) && (o.hash instanceof Uint8Array || typeof o.hash === "string") && typeof o.height === "bigint" && timestamp_1.Timestamp.is(o.time) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RequestProcessProposal.typeUrl || Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string") && exports.CommitInfo.isSDK(o.proposed_last_commit) && Array.isArray(o.misbehavior) && (!o.misbehavior.length || exports.Misbehavior.isSDK(o.misbehavior[0])) && (o.hash instanceof Uint8Array || typeof o.hash === "string") && typeof o.height === "bigint" && timestamp_1.Timestamp.isSDK(o.time) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RequestProcessProposal.typeUrl || Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string") && exports.CommitInfo.isAmino(o.proposed_last_commit) && Array.isArray(o.misbehavior) && (!o.misbehavior.length || exports.Misbehavior.isAmino(o.misbehavior[0])) && (o.hash instanceof Uint8Array || typeof o.hash === "string") && typeof o.height === "bigint" && timestamp_1.Timestamp.isAmino(o.time) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.txs) {
             writer.uint32(10).bytes(v);
@@ -1963,6 +2103,7 @@ exports.RequestProcessProposal = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestProcessProposal.typeUrl, exports.RequestProcessProposal);
 function createBaseRequestExtendVote() {
     return {
         hash: new Uint8Array(),
@@ -1977,6 +2118,15 @@ function createBaseRequestExtendVote() {
 }
 exports.RequestExtendVote = {
     typeUrl: "/tendermint.abci.RequestExtendVote",
+    is(o) {
+        return o && (o.$typeUrl === exports.RequestExtendVote.typeUrl || (o.hash instanceof Uint8Array || typeof o.hash === "string") && typeof o.height === "bigint" && timestamp_1.Timestamp.is(o.time) && Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string") && exports.CommitInfo.is(o.proposed_last_commit) && Array.isArray(o.misbehavior) && (!o.misbehavior.length || exports.Misbehavior.is(o.misbehavior[0])) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RequestExtendVote.typeUrl || (o.hash instanceof Uint8Array || typeof o.hash === "string") && typeof o.height === "bigint" && timestamp_1.Timestamp.isSDK(o.time) && Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string") && exports.CommitInfo.isSDK(o.proposed_last_commit) && Array.isArray(o.misbehavior) && (!o.misbehavior.length || exports.Misbehavior.isSDK(o.misbehavior[0])) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RequestExtendVote.typeUrl || (o.hash instanceof Uint8Array || typeof o.hash === "string") && typeof o.height === "bigint" && timestamp_1.Timestamp.isAmino(o.time) && Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string") && exports.CommitInfo.isAmino(o.proposed_last_commit) && Array.isArray(o.misbehavior) && (!o.misbehavior.length || exports.Misbehavior.isAmino(o.misbehavior[0])) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.hash.length !== 0) {
             writer.uint32(10).bytes(message.hash);
@@ -2150,6 +2300,7 @@ exports.RequestExtendVote = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestExtendVote.typeUrl, exports.RequestExtendVote);
 function createBaseRequestVerifyVoteExtension() {
     return {
         hash: new Uint8Array(),
@@ -2160,6 +2311,15 @@ function createBaseRequestVerifyVoteExtension() {
 }
 exports.RequestVerifyVoteExtension = {
     typeUrl: "/tendermint.abci.RequestVerifyVoteExtension",
+    is(o) {
+        return o && (o.$typeUrl === exports.RequestVerifyVoteExtension.typeUrl || (o.hash instanceof Uint8Array || typeof o.hash === "string") && (o.validator_address instanceof Uint8Array || typeof o.validator_address === "string") && typeof o.height === "bigint" && (o.vote_extension instanceof Uint8Array || typeof o.vote_extension === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RequestVerifyVoteExtension.typeUrl || (o.hash instanceof Uint8Array || typeof o.hash === "string") && (o.validator_address instanceof Uint8Array || typeof o.validator_address === "string") && typeof o.height === "bigint" && (o.vote_extension instanceof Uint8Array || typeof o.vote_extension === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RequestVerifyVoteExtension.typeUrl || (o.hash instanceof Uint8Array || typeof o.hash === "string") && (o.validator_address instanceof Uint8Array || typeof o.validator_address === "string") && typeof o.height === "bigint" && (o.vote_extension instanceof Uint8Array || typeof o.vote_extension === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.hash.length !== 0) {
             writer.uint32(10).bytes(message.hash);
@@ -2265,6 +2425,7 @@ exports.RequestVerifyVoteExtension = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestVerifyVoteExtension.typeUrl, exports.RequestVerifyVoteExtension);
 function createBaseRequestFinalizeBlock() {
     return {
         txs: [],
@@ -2279,6 +2440,15 @@ function createBaseRequestFinalizeBlock() {
 }
 exports.RequestFinalizeBlock = {
     typeUrl: "/tendermint.abci.RequestFinalizeBlock",
+    is(o) {
+        return o && (o.$typeUrl === exports.RequestFinalizeBlock.typeUrl || Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string") && exports.CommitInfo.is(o.decided_last_commit) && Array.isArray(o.misbehavior) && (!o.misbehavior.length || exports.Misbehavior.is(o.misbehavior[0])) && (o.hash instanceof Uint8Array || typeof o.hash === "string") && typeof o.height === "bigint" && timestamp_1.Timestamp.is(o.time) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.RequestFinalizeBlock.typeUrl || Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string") && exports.CommitInfo.isSDK(o.decided_last_commit) && Array.isArray(o.misbehavior) && (!o.misbehavior.length || exports.Misbehavior.isSDK(o.misbehavior[0])) && (o.hash instanceof Uint8Array || typeof o.hash === "string") && typeof o.height === "bigint" && timestamp_1.Timestamp.isSDK(o.time) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.RequestFinalizeBlock.typeUrl || Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string") && exports.CommitInfo.isAmino(o.decided_last_commit) && Array.isArray(o.misbehavior) && (!o.misbehavior.length || exports.Misbehavior.isAmino(o.misbehavior[0])) && (o.hash instanceof Uint8Array || typeof o.hash === "string") && typeof o.height === "bigint" && timestamp_1.Timestamp.isAmino(o.time) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string") && (o.proposer_address instanceof Uint8Array || typeof o.proposer_address === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.txs) {
             writer.uint32(10).bytes(v);
@@ -2452,6 +2622,7 @@ exports.RequestFinalizeBlock = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.RequestFinalizeBlock.typeUrl, exports.RequestFinalizeBlock);
 function createBaseResponse() {
     return {
         exception: undefined,
@@ -2475,6 +2646,15 @@ function createBaseResponse() {
 }
 exports.Response = {
     typeUrl: "/tendermint.abci.Response",
+    is(o) {
+        return o && o.$typeUrl === exports.Response.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.Response.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.Response.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.exception !== undefined) {
             exports.ResponseException.encode(message.exception, writer.uint32(10).fork()).ldelim();
@@ -2749,6 +2929,7 @@ exports.Response = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Response.typeUrl, exports.Response);
 function createBaseResponseException() {
     return {
         error: ""
@@ -2756,6 +2937,15 @@ function createBaseResponseException() {
 }
 exports.ResponseException = {
     typeUrl: "/tendermint.abci.ResponseException",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseException.typeUrl || typeof o.error === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseException.typeUrl || typeof o.error === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseException.typeUrl || typeof o.error === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.error !== "") {
             writer.uint32(10).string(message.error);
@@ -2822,6 +3012,7 @@ exports.ResponseException = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseException.typeUrl, exports.ResponseException);
 function createBaseResponseEcho() {
     return {
         message: ""
@@ -2829,6 +3020,15 @@ function createBaseResponseEcho() {
 }
 exports.ResponseEcho = {
     typeUrl: "/tendermint.abci.ResponseEcho",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseEcho.typeUrl || typeof o.message === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseEcho.typeUrl || typeof o.message === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseEcho.typeUrl || typeof o.message === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.message !== "") {
             writer.uint32(10).string(message.message);
@@ -2895,11 +3095,21 @@ exports.ResponseEcho = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseEcho.typeUrl, exports.ResponseEcho);
 function createBaseResponseFlush() {
     return {};
 }
 exports.ResponseFlush = {
     typeUrl: "/tendermint.abci.ResponseFlush",
+    is(o) {
+        return o && o.$typeUrl === exports.ResponseFlush.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.ResponseFlush.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.ResponseFlush.typeUrl;
+    },
     encode(_, writer = binary_1.BinaryWriter.create()) {
         return writer;
     },
@@ -2952,6 +3162,7 @@ exports.ResponseFlush = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseFlush.typeUrl, exports.ResponseFlush);
 function createBaseResponseInfo() {
     return {
         data: "",
@@ -2963,6 +3174,15 @@ function createBaseResponseInfo() {
 }
 exports.ResponseInfo = {
     typeUrl: "/tendermint.abci.ResponseInfo",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseInfo.typeUrl || typeof o.data === "string" && typeof o.version === "string" && typeof o.app_version === "bigint" && typeof o.last_block_height === "bigint" && (o.last_block_app_hash instanceof Uint8Array || typeof o.last_block_app_hash === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseInfo.typeUrl || typeof o.data === "string" && typeof o.version === "string" && typeof o.app_version === "bigint" && typeof o.last_block_height === "bigint" && (o.last_block_app_hash instanceof Uint8Array || typeof o.last_block_app_hash === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseInfo.typeUrl || typeof o.data === "string" && typeof o.version === "string" && typeof o.app_version === "bigint" && typeof o.last_block_height === "bigint" && (o.last_block_app_hash instanceof Uint8Array || typeof o.last_block_app_hash === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.data !== "") {
             writer.uint32(10).string(message.data);
@@ -3081,6 +3301,7 @@ exports.ResponseInfo = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseInfo.typeUrl, exports.ResponseInfo);
 function createBaseResponseInitChain() {
     return {
         consensus_params: undefined,
@@ -3090,6 +3311,15 @@ function createBaseResponseInitChain() {
 }
 exports.ResponseInitChain = {
     typeUrl: "/tendermint.abci.ResponseInitChain",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseInitChain.typeUrl || Array.isArray(o.validators) && (!o.validators.length || exports.ValidatorUpdate.is(o.validators[0])) && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseInitChain.typeUrl || Array.isArray(o.validators) && (!o.validators.length || exports.ValidatorUpdate.isSDK(o.validators[0])) && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseInitChain.typeUrl || Array.isArray(o.validators) && (!o.validators.length || exports.ValidatorUpdate.isAmino(o.validators[0])) && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.consensus_params !== undefined) {
             params_1.ConsensusParams.encode(message.consensus_params, writer.uint32(10).fork()).ldelim();
@@ -3190,6 +3420,7 @@ exports.ResponseInitChain = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseInitChain.typeUrl, exports.ResponseInitChain);
 function createBaseResponseQuery() {
     return {
         code: 0,
@@ -3205,6 +3436,15 @@ function createBaseResponseQuery() {
 }
 exports.ResponseQuery = {
     typeUrl: "/tendermint.abci.ResponseQuery",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseQuery.typeUrl || typeof o.code === "number" && typeof o.log === "string" && typeof o.info === "string" && typeof o.index === "bigint" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && typeof o.height === "bigint" && typeof o.codespace === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseQuery.typeUrl || typeof o.code === "number" && typeof o.log === "string" && typeof o.info === "string" && typeof o.index === "bigint" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && typeof o.height === "bigint" && typeof o.codespace === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseQuery.typeUrl || typeof o.code === "number" && typeof o.log === "string" && typeof o.info === "string" && typeof o.index === "bigint" && (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && typeof o.height === "bigint" && typeof o.codespace === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.code !== 0) {
             writer.uint32(8).uint32(message.code);
@@ -3375,6 +3615,7 @@ exports.ResponseQuery = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseQuery.typeUrl, exports.ResponseQuery);
 function createBaseResponseCheckTx() {
     return {
         code: 0,
@@ -3389,6 +3630,15 @@ function createBaseResponseCheckTx() {
 }
 exports.ResponseCheckTx = {
     typeUrl: "/tendermint.abci.ResponseCheckTx",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseCheckTx.typeUrl || typeof o.code === "number" && (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.log === "string" && typeof o.info === "string" && typeof o.gas_wanted === "bigint" && typeof o.gas_used === "bigint" && Array.isArray(o.events) && (!o.events.length || exports.Event.is(o.events[0])) && typeof o.codespace === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseCheckTx.typeUrl || typeof o.code === "number" && (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.log === "string" && typeof o.info === "string" && typeof o.gas_wanted === "bigint" && typeof o.gas_used === "bigint" && Array.isArray(o.events) && (!o.events.length || exports.Event.isSDK(o.events[0])) && typeof o.codespace === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseCheckTx.typeUrl || typeof o.code === "number" && (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.log === "string" && typeof o.info === "string" && typeof o.gas_wanted === "bigint" && typeof o.gas_used === "bigint" && Array.isArray(o.events) && (!o.events.length || exports.Event.isAmino(o.events[0])) && typeof o.codespace === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.code !== 0) {
             writer.uint32(8).uint32(message.code);
@@ -3554,6 +3804,7 @@ exports.ResponseCheckTx = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseCheckTx.typeUrl, exports.ResponseCheckTx);
 function createBaseResponseCommit() {
     return {
         retain_height: BigInt(0)
@@ -3561,6 +3812,15 @@ function createBaseResponseCommit() {
 }
 exports.ResponseCommit = {
     typeUrl: "/tendermint.abci.ResponseCommit",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseCommit.typeUrl || typeof o.retain_height === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseCommit.typeUrl || typeof o.retain_height === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseCommit.typeUrl || typeof o.retain_height === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.retain_height !== BigInt(0)) {
             writer.uint32(24).int64(message.retain_height);
@@ -3627,6 +3887,7 @@ exports.ResponseCommit = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseCommit.typeUrl, exports.ResponseCommit);
 function createBaseResponseListSnapshots() {
     return {
         snapshots: []
@@ -3634,6 +3895,15 @@ function createBaseResponseListSnapshots() {
 }
 exports.ResponseListSnapshots = {
     typeUrl: "/tendermint.abci.ResponseListSnapshots",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseListSnapshots.typeUrl || Array.isArray(o.snapshots) && (!o.snapshots.length || exports.Snapshot.is(o.snapshots[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseListSnapshots.typeUrl || Array.isArray(o.snapshots) && (!o.snapshots.length || exports.Snapshot.isSDK(o.snapshots[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseListSnapshots.typeUrl || Array.isArray(o.snapshots) && (!o.snapshots.length || exports.Snapshot.isAmino(o.snapshots[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.snapshots) {
             exports.Snapshot.encode(v, writer.uint32(10).fork()).ldelim();
@@ -3708,6 +3978,7 @@ exports.ResponseListSnapshots = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseListSnapshots.typeUrl, exports.ResponseListSnapshots);
 function createBaseResponseOfferSnapshot() {
     return {
         result: 0
@@ -3715,6 +3986,15 @@ function createBaseResponseOfferSnapshot() {
 }
 exports.ResponseOfferSnapshot = {
     typeUrl: "/tendermint.abci.ResponseOfferSnapshot",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseOfferSnapshot.typeUrl || (0, helpers_1.isSet)(o.result));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseOfferSnapshot.typeUrl || (0, helpers_1.isSet)(o.result));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseOfferSnapshot.typeUrl || (0, helpers_1.isSet)(o.result));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.result !== 0) {
             writer.uint32(8).int32(message.result);
@@ -3781,6 +4061,7 @@ exports.ResponseOfferSnapshot = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseOfferSnapshot.typeUrl, exports.ResponseOfferSnapshot);
 function createBaseResponseLoadSnapshotChunk() {
     return {
         chunk: new Uint8Array()
@@ -3788,6 +4069,15 @@ function createBaseResponseLoadSnapshotChunk() {
 }
 exports.ResponseLoadSnapshotChunk = {
     typeUrl: "/tendermint.abci.ResponseLoadSnapshotChunk",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseLoadSnapshotChunk.typeUrl || o.chunk instanceof Uint8Array || typeof o.chunk === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseLoadSnapshotChunk.typeUrl || o.chunk instanceof Uint8Array || typeof o.chunk === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseLoadSnapshotChunk.typeUrl || o.chunk instanceof Uint8Array || typeof o.chunk === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.chunk.length !== 0) {
             writer.uint32(10).bytes(message.chunk);
@@ -3854,6 +4144,7 @@ exports.ResponseLoadSnapshotChunk = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseLoadSnapshotChunk.typeUrl, exports.ResponseLoadSnapshotChunk);
 function createBaseResponseApplySnapshotChunk() {
     return {
         result: 0,
@@ -3863,6 +4154,15 @@ function createBaseResponseApplySnapshotChunk() {
 }
 exports.ResponseApplySnapshotChunk = {
     typeUrl: "/tendermint.abci.ResponseApplySnapshotChunk",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseApplySnapshotChunk.typeUrl || (0, helpers_1.isSet)(o.result) && Array.isArray(o.refetch_chunks) && (!o.refetch_chunks.length || typeof o.refetch_chunks[0] === "number") && Array.isArray(o.reject_senders) && (!o.reject_senders.length || typeof o.reject_senders[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseApplySnapshotChunk.typeUrl || (0, helpers_1.isSet)(o.result) && Array.isArray(o.refetch_chunks) && (!o.refetch_chunks.length || typeof o.refetch_chunks[0] === "number") && Array.isArray(o.reject_senders) && (!o.reject_senders.length || typeof o.reject_senders[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseApplySnapshotChunk.typeUrl || (0, helpers_1.isSet)(o.result) && Array.isArray(o.refetch_chunks) && (!o.refetch_chunks.length || typeof o.refetch_chunks[0] === "number") && Array.isArray(o.reject_senders) && (!o.reject_senders.length || typeof o.reject_senders[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.result !== 0) {
             writer.uint32(8).int32(message.result);
@@ -3981,6 +4281,7 @@ exports.ResponseApplySnapshotChunk = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseApplySnapshotChunk.typeUrl, exports.ResponseApplySnapshotChunk);
 function createBaseResponsePrepareProposal() {
     return {
         txs: []
@@ -3988,6 +4289,15 @@ function createBaseResponsePrepareProposal() {
 }
 exports.ResponsePrepareProposal = {
     typeUrl: "/tendermint.abci.ResponsePrepareProposal",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponsePrepareProposal.typeUrl || Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponsePrepareProposal.typeUrl || Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponsePrepareProposal.typeUrl || Array.isArray(o.txs) && (!o.txs.length || o.txs[0] instanceof Uint8Array || typeof o.txs[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.txs) {
             writer.uint32(10).bytes(v);
@@ -4062,6 +4372,7 @@ exports.ResponsePrepareProposal = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponsePrepareProposal.typeUrl, exports.ResponsePrepareProposal);
 function createBaseResponseProcessProposal() {
     return {
         status: 0
@@ -4069,6 +4380,15 @@ function createBaseResponseProcessProposal() {
 }
 exports.ResponseProcessProposal = {
     typeUrl: "/tendermint.abci.ResponseProcessProposal",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseProcessProposal.typeUrl || (0, helpers_1.isSet)(o.status));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseProcessProposal.typeUrl || (0, helpers_1.isSet)(o.status));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseProcessProposal.typeUrl || (0, helpers_1.isSet)(o.status));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.status !== 0) {
             writer.uint32(8).int32(message.status);
@@ -4135,6 +4455,7 @@ exports.ResponseProcessProposal = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseProcessProposal.typeUrl, exports.ResponseProcessProposal);
 function createBaseResponseExtendVote() {
     return {
         vote_extension: new Uint8Array()
@@ -4142,6 +4463,15 @@ function createBaseResponseExtendVote() {
 }
 exports.ResponseExtendVote = {
     typeUrl: "/tendermint.abci.ResponseExtendVote",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseExtendVote.typeUrl || o.vote_extension instanceof Uint8Array || typeof o.vote_extension === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseExtendVote.typeUrl || o.vote_extension instanceof Uint8Array || typeof o.vote_extension === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseExtendVote.typeUrl || o.vote_extension instanceof Uint8Array || typeof o.vote_extension === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.vote_extension.length !== 0) {
             writer.uint32(10).bytes(message.vote_extension);
@@ -4208,6 +4538,7 @@ exports.ResponseExtendVote = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseExtendVote.typeUrl, exports.ResponseExtendVote);
 function createBaseResponseVerifyVoteExtension() {
     return {
         status: 0
@@ -4215,6 +4546,15 @@ function createBaseResponseVerifyVoteExtension() {
 }
 exports.ResponseVerifyVoteExtension = {
     typeUrl: "/tendermint.abci.ResponseVerifyVoteExtension",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseVerifyVoteExtension.typeUrl || (0, helpers_1.isSet)(o.status));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseVerifyVoteExtension.typeUrl || (0, helpers_1.isSet)(o.status));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseVerifyVoteExtension.typeUrl || (0, helpers_1.isSet)(o.status));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.status !== 0) {
             writer.uint32(8).int32(message.status);
@@ -4281,6 +4621,7 @@ exports.ResponseVerifyVoteExtension = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseVerifyVoteExtension.typeUrl, exports.ResponseVerifyVoteExtension);
 function createBaseResponseFinalizeBlock() {
     return {
         events: [],
@@ -4292,6 +4633,15 @@ function createBaseResponseFinalizeBlock() {
 }
 exports.ResponseFinalizeBlock = {
     typeUrl: "/tendermint.abci.ResponseFinalizeBlock",
+    is(o) {
+        return o && (o.$typeUrl === exports.ResponseFinalizeBlock.typeUrl || Array.isArray(o.events) && (!o.events.length || exports.Event.is(o.events[0])) && Array.isArray(o.tx_results) && (!o.tx_results.length || exports.ExecTxResult.is(o.tx_results[0])) && Array.isArray(o.validator_updates) && (!o.validator_updates.length || exports.ValidatorUpdate.is(o.validator_updates[0])) && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ResponseFinalizeBlock.typeUrl || Array.isArray(o.events) && (!o.events.length || exports.Event.isSDK(o.events[0])) && Array.isArray(o.tx_results) && (!o.tx_results.length || exports.ExecTxResult.isSDK(o.tx_results[0])) && Array.isArray(o.validator_updates) && (!o.validator_updates.length || exports.ValidatorUpdate.isSDK(o.validator_updates[0])) && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ResponseFinalizeBlock.typeUrl || Array.isArray(o.events) && (!o.events.length || exports.Event.isAmino(o.events[0])) && Array.isArray(o.tx_results) && (!o.tx_results.length || exports.ExecTxResult.isAmino(o.tx_results[0])) && Array.isArray(o.validator_updates) && (!o.validator_updates.length || exports.ValidatorUpdate.isAmino(o.validator_updates[0])) && (o.app_hash instanceof Uint8Array || typeof o.app_hash === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.events) {
             exports.Event.encode(v, writer.uint32(10).fork()).ldelim();
@@ -4434,6 +4784,7 @@ exports.ResponseFinalizeBlock = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ResponseFinalizeBlock.typeUrl, exports.ResponseFinalizeBlock);
 function createBaseCommitInfo() {
     return {
         round: 0,
@@ -4442,6 +4793,15 @@ function createBaseCommitInfo() {
 }
 exports.CommitInfo = {
     typeUrl: "/tendermint.abci.CommitInfo",
+    is(o) {
+        return o && (o.$typeUrl === exports.CommitInfo.typeUrl || typeof o.round === "number" && Array.isArray(o.votes) && (!o.votes.length || exports.VoteInfo.is(o.votes[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.CommitInfo.typeUrl || typeof o.round === "number" && Array.isArray(o.votes) && (!o.votes.length || exports.VoteInfo.isSDK(o.votes[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.CommitInfo.typeUrl || typeof o.round === "number" && Array.isArray(o.votes) && (!o.votes.length || exports.VoteInfo.isAmino(o.votes[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.round !== 0) {
             writer.uint32(8).int32(message.round);
@@ -4529,6 +4889,7 @@ exports.CommitInfo = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.CommitInfo.typeUrl, exports.CommitInfo);
 function createBaseExtendedCommitInfo() {
     return {
         round: 0,
@@ -4537,6 +4898,15 @@ function createBaseExtendedCommitInfo() {
 }
 exports.ExtendedCommitInfo = {
     typeUrl: "/tendermint.abci.ExtendedCommitInfo",
+    is(o) {
+        return o && (o.$typeUrl === exports.ExtendedCommitInfo.typeUrl || typeof o.round === "number" && Array.isArray(o.votes) && (!o.votes.length || exports.ExtendedVoteInfo.is(o.votes[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ExtendedCommitInfo.typeUrl || typeof o.round === "number" && Array.isArray(o.votes) && (!o.votes.length || exports.ExtendedVoteInfo.isSDK(o.votes[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ExtendedCommitInfo.typeUrl || typeof o.round === "number" && Array.isArray(o.votes) && (!o.votes.length || exports.ExtendedVoteInfo.isAmino(o.votes[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.round !== 0) {
             writer.uint32(8).int32(message.round);
@@ -4624,6 +4994,7 @@ exports.ExtendedCommitInfo = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ExtendedCommitInfo.typeUrl, exports.ExtendedCommitInfo);
 function createBaseEvent() {
     return {
         type: "",
@@ -4632,6 +5003,15 @@ function createBaseEvent() {
 }
 exports.Event = {
     typeUrl: "/tendermint.abci.Event",
+    is(o) {
+        return o && (o.$typeUrl === exports.Event.typeUrl || typeof o.type === "string" && Array.isArray(o.attributes) && (!o.attributes.length || exports.EventAttribute.is(o.attributes[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Event.typeUrl || typeof o.type === "string" && Array.isArray(o.attributes) && (!o.attributes.length || exports.EventAttribute.isSDK(o.attributes[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Event.typeUrl || typeof o.type === "string" && Array.isArray(o.attributes) && (!o.attributes.length || exports.EventAttribute.isAmino(o.attributes[0])));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.type !== "") {
             writer.uint32(10).string(message.type);
@@ -4719,6 +5099,7 @@ exports.Event = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Event.typeUrl, exports.Event);
 function createBaseEventAttribute() {
     return {
         key: "",
@@ -4728,6 +5109,15 @@ function createBaseEventAttribute() {
 }
 exports.EventAttribute = {
     typeUrl: "/tendermint.abci.EventAttribute",
+    is(o) {
+        return o && (o.$typeUrl === exports.EventAttribute.typeUrl || typeof o.key === "string" && typeof o.value === "string" && typeof o.index === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.EventAttribute.typeUrl || typeof o.key === "string" && typeof o.value === "string" && typeof o.index === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.EventAttribute.typeUrl || typeof o.key === "string" && typeof o.value === "string" && typeof o.index === "boolean");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.key !== "") {
             writer.uint32(10).string(message.key);
@@ -4820,6 +5210,7 @@ exports.EventAttribute = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.EventAttribute.typeUrl, exports.EventAttribute);
 function createBaseExecTxResult() {
     return {
         code: 0,
@@ -4834,6 +5225,15 @@ function createBaseExecTxResult() {
 }
 exports.ExecTxResult = {
     typeUrl: "/tendermint.abci.ExecTxResult",
+    is(o) {
+        return o && (o.$typeUrl === exports.ExecTxResult.typeUrl || typeof o.code === "number" && (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.log === "string" && typeof o.info === "string" && typeof o.gas_wanted === "bigint" && typeof o.gas_used === "bigint" && Array.isArray(o.events) && (!o.events.length || exports.Event.is(o.events[0])) && typeof o.codespace === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ExecTxResult.typeUrl || typeof o.code === "number" && (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.log === "string" && typeof o.info === "string" && typeof o.gas_wanted === "bigint" && typeof o.gas_used === "bigint" && Array.isArray(o.events) && (!o.events.length || exports.Event.isSDK(o.events[0])) && typeof o.codespace === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ExecTxResult.typeUrl || typeof o.code === "number" && (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.log === "string" && typeof o.info === "string" && typeof o.gas_wanted === "bigint" && typeof o.gas_used === "bigint" && Array.isArray(o.events) && (!o.events.length || exports.Event.isAmino(o.events[0])) && typeof o.codespace === "string");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.code !== 0) {
             writer.uint32(8).uint32(message.code);
@@ -4999,6 +5399,7 @@ exports.ExecTxResult = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ExecTxResult.typeUrl, exports.ExecTxResult);
 function createBaseTxResult() {
     return {
         height: BigInt(0),
@@ -5009,6 +5410,15 @@ function createBaseTxResult() {
 }
 exports.TxResult = {
     typeUrl: "/tendermint.abci.TxResult",
+    is(o) {
+        return o && (o.$typeUrl === exports.TxResult.typeUrl || typeof o.height === "bigint" && typeof o.index === "number" && (o.tx instanceof Uint8Array || typeof o.tx === "string") && exports.ExecTxResult.is(o.result));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.TxResult.typeUrl || typeof o.height === "bigint" && typeof o.index === "number" && (o.tx instanceof Uint8Array || typeof o.tx === "string") && exports.ExecTxResult.isSDK(o.result));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.TxResult.typeUrl || typeof o.height === "bigint" && typeof o.index === "number" && (o.tx instanceof Uint8Array || typeof o.tx === "string") && exports.ExecTxResult.isAmino(o.result));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.height !== BigInt(0)) {
             writer.uint32(8).int64(message.height);
@@ -5114,6 +5524,7 @@ exports.TxResult = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.TxResult.typeUrl, exports.TxResult);
 function createBaseValidator() {
     return {
         address: new Uint8Array(),
@@ -5122,6 +5533,15 @@ function createBaseValidator() {
 }
 exports.Validator = {
     typeUrl: "/tendermint.abci.Validator",
+    is(o) {
+        return o && (o.$typeUrl === exports.Validator.typeUrl || (o.address instanceof Uint8Array || typeof o.address === "string") && typeof o.power === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Validator.typeUrl || (o.address instanceof Uint8Array || typeof o.address === "string") && typeof o.power === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Validator.typeUrl || (o.address instanceof Uint8Array || typeof o.address === "string") && typeof o.power === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.address.length !== 0) {
             writer.uint32(10).bytes(message.address);
@@ -5201,6 +5621,7 @@ exports.Validator = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Validator.typeUrl, exports.Validator);
 function createBaseValidatorUpdate() {
     return {
         pub_key: keys_1.PublicKey.fromPartial({}),
@@ -5209,6 +5630,15 @@ function createBaseValidatorUpdate() {
 }
 exports.ValidatorUpdate = {
     typeUrl: "/tendermint.abci.ValidatorUpdate",
+    is(o) {
+        return o && (o.$typeUrl === exports.ValidatorUpdate.typeUrl || keys_1.PublicKey.is(o.pub_key) && typeof o.power === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ValidatorUpdate.typeUrl || keys_1.PublicKey.isSDK(o.pub_key) && typeof o.power === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ValidatorUpdate.typeUrl || keys_1.PublicKey.isAmino(o.pub_key) && typeof o.power === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.pub_key !== undefined) {
             keys_1.PublicKey.encode(message.pub_key, writer.uint32(10).fork()).ldelim();
@@ -5288,6 +5718,7 @@ exports.ValidatorUpdate = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ValidatorUpdate.typeUrl, exports.ValidatorUpdate);
 function createBaseVoteInfo() {
     return {
         validator: exports.Validator.fromPartial({}),
@@ -5296,6 +5727,15 @@ function createBaseVoteInfo() {
 }
 exports.VoteInfo = {
     typeUrl: "/tendermint.abci.VoteInfo",
+    is(o) {
+        return o && (o.$typeUrl === exports.VoteInfo.typeUrl || exports.Validator.is(o.validator) && (0, helpers_1.isSet)(o.block_id_flag));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.VoteInfo.typeUrl || exports.Validator.isSDK(o.validator) && (0, helpers_1.isSet)(o.block_id_flag));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.VoteInfo.typeUrl || exports.Validator.isAmino(o.validator) && (0, helpers_1.isSet)(o.block_id_flag));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.validator !== undefined) {
             exports.Validator.encode(message.validator, writer.uint32(10).fork()).ldelim();
@@ -5375,6 +5815,7 @@ exports.VoteInfo = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.VoteInfo.typeUrl, exports.VoteInfo);
 function createBaseExtendedVoteInfo() {
     return {
         validator: exports.Validator.fromPartial({}),
@@ -5385,6 +5826,15 @@ function createBaseExtendedVoteInfo() {
 }
 exports.ExtendedVoteInfo = {
     typeUrl: "/tendermint.abci.ExtendedVoteInfo",
+    is(o) {
+        return o && (o.$typeUrl === exports.ExtendedVoteInfo.typeUrl || exports.Validator.is(o.validator) && (o.vote_extension instanceof Uint8Array || typeof o.vote_extension === "string") && (o.extension_signature instanceof Uint8Array || typeof o.extension_signature === "string") && (0, helpers_1.isSet)(o.block_id_flag));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ExtendedVoteInfo.typeUrl || exports.Validator.isSDK(o.validator) && (o.vote_extension instanceof Uint8Array || typeof o.vote_extension === "string") && (o.extension_signature instanceof Uint8Array || typeof o.extension_signature === "string") && (0, helpers_1.isSet)(o.block_id_flag));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ExtendedVoteInfo.typeUrl || exports.Validator.isAmino(o.validator) && (o.vote_extension instanceof Uint8Array || typeof o.vote_extension === "string") && (o.extension_signature instanceof Uint8Array || typeof o.extension_signature === "string") && (0, helpers_1.isSet)(o.block_id_flag));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.validator !== undefined) {
             exports.Validator.encode(message.validator, writer.uint32(10).fork()).ldelim();
@@ -5490,6 +5940,7 @@ exports.ExtendedVoteInfo = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ExtendedVoteInfo.typeUrl, exports.ExtendedVoteInfo);
 function createBaseMisbehavior() {
     return {
         type: 0,
@@ -5501,6 +5952,15 @@ function createBaseMisbehavior() {
 }
 exports.Misbehavior = {
     typeUrl: "/tendermint.abci.Misbehavior",
+    is(o) {
+        return o && (o.$typeUrl === exports.Misbehavior.typeUrl || (0, helpers_1.isSet)(o.type) && exports.Validator.is(o.validator) && typeof o.height === "bigint" && timestamp_1.Timestamp.is(o.time) && typeof o.total_voting_power === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Misbehavior.typeUrl || (0, helpers_1.isSet)(o.type) && exports.Validator.isSDK(o.validator) && typeof o.height === "bigint" && timestamp_1.Timestamp.isSDK(o.time) && typeof o.total_voting_power === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Misbehavior.typeUrl || (0, helpers_1.isSet)(o.type) && exports.Validator.isAmino(o.validator) && typeof o.height === "bigint" && timestamp_1.Timestamp.isAmino(o.time) && typeof o.total_voting_power === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.type !== 0) {
             writer.uint32(8).int32(message.type);
@@ -5619,6 +6079,7 @@ exports.Misbehavior = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Misbehavior.typeUrl, exports.Misbehavior);
 function createBaseSnapshot() {
     return {
         height: BigInt(0),
@@ -5630,6 +6091,15 @@ function createBaseSnapshot() {
 }
 exports.Snapshot = {
     typeUrl: "/tendermint.abci.Snapshot",
+    is(o) {
+        return o && (o.$typeUrl === exports.Snapshot.typeUrl || typeof o.height === "bigint" && typeof o.format === "number" && typeof o.chunks === "number" && (o.hash instanceof Uint8Array || typeof o.hash === "string") && (o.metadata instanceof Uint8Array || typeof o.metadata === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.Snapshot.typeUrl || typeof o.height === "bigint" && typeof o.format === "number" && typeof o.chunks === "number" && (o.hash instanceof Uint8Array || typeof o.hash === "string") && (o.metadata instanceof Uint8Array || typeof o.metadata === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.Snapshot.typeUrl || typeof o.height === "bigint" && typeof o.format === "number" && typeof o.chunks === "number" && (o.hash instanceof Uint8Array || typeof o.hash === "string") && (o.metadata instanceof Uint8Array || typeof o.metadata === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.height !== BigInt(0)) {
             writer.uint32(8).uint64(message.height);
@@ -5748,4 +6218,5 @@ exports.Snapshot = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.Snapshot.typeUrl, exports.Snapshot);
 //# sourceMappingURL=types.js.map

@@ -618,6 +618,10 @@ export interface QueryUpgradedConsensusStateResponseSDKType {
 }
 export declare const QueryClientStateRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClientStateRequest;
+    isSDK(o: any): o is QueryClientStateRequestSDKType;
+    isAmino(o: any): o is QueryClientStateRequestAmino;
     encode(message: QueryClientStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStateRequest;
     fromJSON(object: any): QueryClientStateRequest;
@@ -633,6 +637,10 @@ export declare const QueryClientStateRequest: {
 };
 export declare const QueryClientStateResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClientStateResponse;
+    isSDK(o: any): o is QueryClientStateResponseSDKType;
+    isAmino(o: any): o is QueryClientStateResponseAmino;
     encode(message: QueryClientStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStateResponse;
     fromJSON(object: any): QueryClientStateResponse;
@@ -648,6 +656,10 @@ export declare const QueryClientStateResponse: {
 };
 export declare const QueryClientStatesRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClientStatesRequest;
+    isSDK(o: any): o is QueryClientStatesRequestSDKType;
+    isAmino(o: any): o is QueryClientStatesRequestAmino;
     encode(message: QueryClientStatesRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStatesRequest;
     fromJSON(object: any): QueryClientStatesRequest;
@@ -663,6 +675,10 @@ export declare const QueryClientStatesRequest: {
 };
 export declare const QueryClientStatesResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClientStatesResponse;
+    isSDK(o: any): o is QueryClientStatesResponseSDKType;
+    isAmino(o: any): o is QueryClientStatesResponseAmino;
     encode(message: QueryClientStatesResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStatesResponse;
     fromJSON(object: any): QueryClientStatesResponse;
@@ -678,6 +694,10 @@ export declare const QueryClientStatesResponse: {
 };
 export declare const QueryConsensusStateRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConsensusStateRequest;
+    isSDK(o: any): o is QueryConsensusStateRequestSDKType;
+    isAmino(o: any): o is QueryConsensusStateRequestAmino;
     encode(message: QueryConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStateRequest;
     fromJSON(object: any): QueryConsensusStateRequest;
@@ -693,6 +713,10 @@ export declare const QueryConsensusStateRequest: {
 };
 export declare const QueryConsensusStateResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConsensusStateResponse;
+    isSDK(o: any): o is QueryConsensusStateResponseSDKType;
+    isAmino(o: any): o is QueryConsensusStateResponseAmino;
     encode(message: QueryConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStateResponse;
     fromJSON(object: any): QueryConsensusStateResponse;
@@ -708,6 +732,10 @@ export declare const QueryConsensusStateResponse: {
 };
 export declare const QueryConsensusStatesRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConsensusStatesRequest;
+    isSDK(o: any): o is QueryConsensusStatesRequestSDKType;
+    isAmino(o: any): o is QueryConsensusStatesRequestAmino;
     encode(message: QueryConsensusStatesRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStatesRequest;
     fromJSON(object: any): QueryConsensusStatesRequest;
@@ -723,6 +751,10 @@ export declare const QueryConsensusStatesRequest: {
 };
 export declare const QueryConsensusStatesResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConsensusStatesResponse;
+    isSDK(o: any): o is QueryConsensusStatesResponseSDKType;
+    isAmino(o: any): o is QueryConsensusStatesResponseAmino;
     encode(message: QueryConsensusStatesResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStatesResponse;
     fromJSON(object: any): QueryConsensusStatesResponse;
@@ -738,6 +770,10 @@ export declare const QueryConsensusStatesResponse: {
 };
 export declare const QueryConsensusStateHeightsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConsensusStateHeightsRequest;
+    isSDK(o: any): o is QueryConsensusStateHeightsRequestSDKType;
+    isAmino(o: any): o is QueryConsensusStateHeightsRequestAmino;
     encode(message: QueryConsensusStateHeightsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStateHeightsRequest;
     fromJSON(object: any): QueryConsensusStateHeightsRequest;
@@ -753,6 +789,10 @@ export declare const QueryConsensusStateHeightsRequest: {
 };
 export declare const QueryConsensusStateHeightsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryConsensusStateHeightsResponse;
+    isSDK(o: any): o is QueryConsensusStateHeightsResponseSDKType;
+    isAmino(o: any): o is QueryConsensusStateHeightsResponseAmino;
     encode(message: QueryConsensusStateHeightsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryConsensusStateHeightsResponse;
     fromJSON(object: any): QueryConsensusStateHeightsResponse;
@@ -768,6 +808,10 @@ export declare const QueryConsensusStateHeightsResponse: {
 };
 export declare const QueryClientStatusRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClientStatusRequest;
+    isSDK(o: any): o is QueryClientStatusRequestSDKType;
+    isAmino(o: any): o is QueryClientStatusRequestAmino;
     encode(message: QueryClientStatusRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStatusRequest;
     fromJSON(object: any): QueryClientStatusRequest;
@@ -783,6 +827,10 @@ export declare const QueryClientStatusRequest: {
 };
 export declare const QueryClientStatusResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClientStatusResponse;
+    isSDK(o: any): o is QueryClientStatusResponseSDKType;
+    isAmino(o: any): o is QueryClientStatusResponseAmino;
     encode(message: QueryClientStatusResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientStatusResponse;
     fromJSON(object: any): QueryClientStatusResponse;
@@ -798,6 +846,10 @@ export declare const QueryClientStatusResponse: {
 };
 export declare const QueryClientParamsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClientParamsRequest;
+    isSDK(o: any): o is QueryClientParamsRequestSDKType;
+    isAmino(o: any): o is QueryClientParamsRequestAmino;
     encode(_: QueryClientParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientParamsRequest;
     fromJSON(_: any): QueryClientParamsRequest;
@@ -813,6 +865,10 @@ export declare const QueryClientParamsRequest: {
 };
 export declare const QueryClientParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryClientParamsResponse;
+    isSDK(o: any): o is QueryClientParamsResponseSDKType;
+    isAmino(o: any): o is QueryClientParamsResponseAmino;
     encode(message: QueryClientParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryClientParamsResponse;
     fromJSON(object: any): QueryClientParamsResponse;
@@ -828,6 +884,10 @@ export declare const QueryClientParamsResponse: {
 };
 export declare const QueryUpgradedClientStateRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryUpgradedClientStateRequest;
+    isSDK(o: any): o is QueryUpgradedClientStateRequestSDKType;
+    isAmino(o: any): o is QueryUpgradedClientStateRequestAmino;
     encode(_: QueryUpgradedClientStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedClientStateRequest;
     fromJSON(_: any): QueryUpgradedClientStateRequest;
@@ -843,6 +903,10 @@ export declare const QueryUpgradedClientStateRequest: {
 };
 export declare const QueryUpgradedClientStateResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryUpgradedClientStateResponse;
+    isSDK(o: any): o is QueryUpgradedClientStateResponseSDKType;
+    isAmino(o: any): o is QueryUpgradedClientStateResponseAmino;
     encode(message: QueryUpgradedClientStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedClientStateResponse;
     fromJSON(object: any): QueryUpgradedClientStateResponse;
@@ -858,6 +922,10 @@ export declare const QueryUpgradedClientStateResponse: {
 };
 export declare const QueryUpgradedConsensusStateRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryUpgradedConsensusStateRequest;
+    isSDK(o: any): o is QueryUpgradedConsensusStateRequestSDKType;
+    isAmino(o: any): o is QueryUpgradedConsensusStateRequestAmino;
     encode(_: QueryUpgradedConsensusStateRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedConsensusStateRequest;
     fromJSON(_: any): QueryUpgradedConsensusStateRequest;
@@ -873,6 +941,10 @@ export declare const QueryUpgradedConsensusStateRequest: {
 };
 export declare const QueryUpgradedConsensusStateResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryUpgradedConsensusStateResponse;
+    isSDK(o: any): o is QueryUpgradedConsensusStateResponseSDKType;
+    isAmino(o: any): o is QueryUpgradedConsensusStateResponseAmino;
     encode(message: QueryUpgradedConsensusStateResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse;
     fromJSON(object: any): QueryUpgradedConsensusStateResponse;

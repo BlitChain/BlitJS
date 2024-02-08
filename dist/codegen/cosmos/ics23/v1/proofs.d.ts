@@ -671,6 +671,10 @@ export interface CompressedNonExistenceProofSDKType {
 }
 export declare const ExistenceProof: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ExistenceProof;
+    isSDK(o: any): o is ExistenceProofSDKType;
+    isAmino(o: any): o is ExistenceProofAmino;
     encode(message: ExistenceProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ExistenceProof;
     fromJSON(object: any): ExistenceProof;
@@ -686,6 +690,10 @@ export declare const ExistenceProof: {
 };
 export declare const NonExistenceProof: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is NonExistenceProof;
+    isSDK(o: any): o is NonExistenceProofSDKType;
+    isAmino(o: any): o is NonExistenceProofAmino;
     encode(message: NonExistenceProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): NonExistenceProof;
     fromJSON(object: any): NonExistenceProof;
@@ -701,6 +709,10 @@ export declare const NonExistenceProof: {
 };
 export declare const CommitmentProof: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CommitmentProof;
+    isSDK(o: any): o is CommitmentProofSDKType;
+    isAmino(o: any): o is CommitmentProofAmino;
     encode(message: CommitmentProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CommitmentProof;
     fromJSON(object: any): CommitmentProof;
@@ -716,6 +728,10 @@ export declare const CommitmentProof: {
 };
 export declare const LeafOp: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is LeafOp;
+    isSDK(o: any): o is LeafOpSDKType;
+    isAmino(o: any): o is LeafOpAmino;
     encode(message: LeafOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LeafOp;
     fromJSON(object: any): LeafOp;
@@ -731,6 +747,10 @@ export declare const LeafOp: {
 };
 export declare const InnerOp: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is InnerOp;
+    isSDK(o: any): o is InnerOpSDKType;
+    isAmino(o: any): o is InnerOpAmino;
     encode(message: InnerOp, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InnerOp;
     fromJSON(object: any): InnerOp;
@@ -746,6 +766,10 @@ export declare const InnerOp: {
 };
 export declare const ProofSpec: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is ProofSpec;
+    isSDK(o: any): o is ProofSpecSDKType;
+    isAmino(o: any): o is ProofSpecAmino;
     encode(message: ProofSpec, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ProofSpec;
     fromJSON(object: any): ProofSpec;
@@ -761,6 +785,10 @@ export declare const ProofSpec: {
 };
 export declare const InnerSpec: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is InnerSpec;
+    isSDK(o: any): o is InnerSpecSDKType;
+    isAmino(o: any): o is InnerSpecAmino;
     encode(message: InnerSpec, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InnerSpec;
     fromJSON(object: any): InnerSpec;
@@ -776,6 +804,10 @@ export declare const InnerSpec: {
 };
 export declare const BatchProof: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is BatchProof;
+    isSDK(o: any): o is BatchProofSDKType;
+    isAmino(o: any): o is BatchProofAmino;
     encode(message: BatchProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BatchProof;
     fromJSON(object: any): BatchProof;
@@ -791,6 +823,10 @@ export declare const BatchProof: {
 };
 export declare const BatchEntry: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is BatchEntry;
+    isSDK(o: any): o is BatchEntrySDKType;
+    isAmino(o: any): o is BatchEntryAmino;
     encode(message: BatchEntry, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BatchEntry;
     fromJSON(object: any): BatchEntry;
@@ -806,6 +842,10 @@ export declare const BatchEntry: {
 };
 export declare const CompressedBatchProof: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CompressedBatchProof;
+    isSDK(o: any): o is CompressedBatchProofSDKType;
+    isAmino(o: any): o is CompressedBatchProofAmino;
     encode(message: CompressedBatchProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CompressedBatchProof;
     fromJSON(object: any): CompressedBatchProof;
@@ -821,6 +861,10 @@ export declare const CompressedBatchProof: {
 };
 export declare const CompressedBatchEntry: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CompressedBatchEntry;
+    isSDK(o: any): o is CompressedBatchEntrySDKType;
+    isAmino(o: any): o is CompressedBatchEntryAmino;
     encode(message: CompressedBatchEntry, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CompressedBatchEntry;
     fromJSON(object: any): CompressedBatchEntry;
@@ -836,6 +880,10 @@ export declare const CompressedBatchEntry: {
 };
 export declare const CompressedExistenceProof: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CompressedExistenceProof;
+    isSDK(o: any): o is CompressedExistenceProofSDKType;
+    isAmino(o: any): o is CompressedExistenceProofAmino;
     encode(message: CompressedExistenceProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CompressedExistenceProof;
     fromJSON(object: any): CompressedExistenceProof;
@@ -851,6 +899,10 @@ export declare const CompressedExistenceProof: {
 };
 export declare const CompressedNonExistenceProof: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is CompressedNonExistenceProof;
+    isSDK(o: any): o is CompressedNonExistenceProofSDKType;
+    isAmino(o: any): o is CompressedNonExistenceProofAmino;
     encode(message: CompressedNonExistenceProof, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): CompressedNonExistenceProof;
     fromJSON(object: any): CompressedNonExistenceProof;

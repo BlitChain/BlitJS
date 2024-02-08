@@ -3,6 +3,7 @@ import { Proposal, Vote, VotingParams, DepositParams, TallyParams, Deposit, Tall
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export const protobufPackage = "cosmos.gov.v1beta1";
 function createBaseQueryProposalRequest() {
     return {
@@ -11,6 +12,16 @@ function createBaseQueryProposalRequest() {
 }
 export const QueryProposalRequest = {
     typeUrl: "/cosmos.gov.v1beta1.QueryProposalRequest",
+    aminoType: "cosmos-sdk/QueryProposalRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryProposalRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryProposalRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryProposalRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -83,6 +94,8 @@ export const QueryProposalRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryProposalRequest.typeUrl, QueryProposalRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryProposalRequest.aminoType, QueryProposalRequest.typeUrl);
 function createBaseQueryProposalResponse() {
     return {
         proposal: Proposal.fromPartial({})
@@ -90,6 +103,16 @@ function createBaseQueryProposalResponse() {
 }
 export const QueryProposalResponse = {
     typeUrl: "/cosmos.gov.v1beta1.QueryProposalResponse",
+    aminoType: "cosmos-sdk/QueryProposalResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryProposalResponse.typeUrl || Proposal.is(o.proposal));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryProposalResponse.typeUrl || Proposal.isSDK(o.proposal));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryProposalResponse.typeUrl || Proposal.isAmino(o.proposal));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal !== undefined) {
             Proposal.encode(message.proposal, writer.uint32(10).fork()).ldelim();
@@ -162,6 +185,8 @@ export const QueryProposalResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryProposalResponse.typeUrl, QueryProposalResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryProposalResponse.aminoType, QueryProposalResponse.typeUrl);
 function createBaseQueryProposalsRequest() {
     return {
         proposal_status: 0,
@@ -172,6 +197,16 @@ function createBaseQueryProposalsRequest() {
 }
 export const QueryProposalsRequest = {
     typeUrl: "/cosmos.gov.v1beta1.QueryProposalsRequest",
+    aminoType: "cosmos-sdk/QueryProposalsRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryProposalsRequest.typeUrl || isSet(o.proposal_status) && typeof o.voter === "string" && typeof o.depositor === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryProposalsRequest.typeUrl || isSet(o.proposal_status) && typeof o.voter === "string" && typeof o.depositor === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryProposalsRequest.typeUrl || isSet(o.proposal_status) && typeof o.voter === "string" && typeof o.depositor === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_status !== 0) {
             writer.uint32(8).int32(message.proposal_status);
@@ -283,6 +318,8 @@ export const QueryProposalsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryProposalsRequest.typeUrl, QueryProposalsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryProposalsRequest.aminoType, QueryProposalsRequest.typeUrl);
 function createBaseQueryProposalsResponse() {
     return {
         proposals: [],
@@ -291,6 +328,16 @@ function createBaseQueryProposalsResponse() {
 }
 export const QueryProposalsResponse = {
     typeUrl: "/cosmos.gov.v1beta1.QueryProposalsResponse",
+    aminoType: "cosmos-sdk/QueryProposalsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryProposalsResponse.typeUrl || Array.isArray(o.proposals) && (!o.proposals.length || Proposal.is(o.proposals[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryProposalsResponse.typeUrl || Array.isArray(o.proposals) && (!o.proposals.length || Proposal.isSDK(o.proposals[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryProposalsResponse.typeUrl || Array.isArray(o.proposals) && (!o.proposals.length || Proposal.isAmino(o.proposals[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.proposals) {
             Proposal.encode(v, writer.uint32(10).fork()).ldelim();
@@ -384,6 +431,8 @@ export const QueryProposalsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryProposalsResponse.typeUrl, QueryProposalsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryProposalsResponse.aminoType, QueryProposalsResponse.typeUrl);
 function createBaseQueryVoteRequest() {
     return {
         proposal_id: BigInt(0),
@@ -392,6 +441,16 @@ function createBaseQueryVoteRequest() {
 }
 export const QueryVoteRequest = {
     typeUrl: "/cosmos.gov.v1beta1.QueryVoteRequest",
+    aminoType: "cosmos-sdk/QueryVoteRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryVoteRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryVoteRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryVoteRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.voter === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -477,6 +536,8 @@ export const QueryVoteRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryVoteRequest.typeUrl, QueryVoteRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryVoteRequest.aminoType, QueryVoteRequest.typeUrl);
 function createBaseQueryVoteResponse() {
     return {
         vote: Vote.fromPartial({})
@@ -484,6 +545,16 @@ function createBaseQueryVoteResponse() {
 }
 export const QueryVoteResponse = {
     typeUrl: "/cosmos.gov.v1beta1.QueryVoteResponse",
+    aminoType: "cosmos-sdk/QueryVoteResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryVoteResponse.typeUrl || Vote.is(o.vote));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryVoteResponse.typeUrl || Vote.isSDK(o.vote));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryVoteResponse.typeUrl || Vote.isAmino(o.vote));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.vote !== undefined) {
             Vote.encode(message.vote, writer.uint32(10).fork()).ldelim();
@@ -556,6 +627,8 @@ export const QueryVoteResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryVoteResponse.typeUrl, QueryVoteResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryVoteResponse.aminoType, QueryVoteResponse.typeUrl);
 function createBaseQueryVotesRequest() {
     return {
         proposal_id: BigInt(0),
@@ -564,6 +637,16 @@ function createBaseQueryVotesRequest() {
 }
 export const QueryVotesRequest = {
     typeUrl: "/cosmos.gov.v1beta1.QueryVotesRequest",
+    aminoType: "cosmos-sdk/QueryVotesRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryVotesRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryVotesRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryVotesRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -649,6 +732,8 @@ export const QueryVotesRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryVotesRequest.typeUrl, QueryVotesRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryVotesRequest.aminoType, QueryVotesRequest.typeUrl);
 function createBaseQueryVotesResponse() {
     return {
         votes: [],
@@ -657,6 +742,16 @@ function createBaseQueryVotesResponse() {
 }
 export const QueryVotesResponse = {
     typeUrl: "/cosmos.gov.v1beta1.QueryVotesResponse",
+    aminoType: "cosmos-sdk/QueryVotesResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryVotesResponse.typeUrl || Array.isArray(o.votes) && (!o.votes.length || Vote.is(o.votes[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryVotesResponse.typeUrl || Array.isArray(o.votes) && (!o.votes.length || Vote.isSDK(o.votes[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryVotesResponse.typeUrl || Array.isArray(o.votes) && (!o.votes.length || Vote.isAmino(o.votes[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.votes) {
             Vote.encode(v, writer.uint32(10).fork()).ldelim();
@@ -750,6 +845,8 @@ export const QueryVotesResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryVotesResponse.typeUrl, QueryVotesResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryVotesResponse.aminoType, QueryVotesResponse.typeUrl);
 function createBaseQueryParamsRequest() {
     return {
         params_type: ""
@@ -757,6 +854,16 @@ function createBaseQueryParamsRequest() {
 }
 export const QueryParamsRequest = {
     typeUrl: "/cosmos.gov.v1beta1.QueryParamsRequest",
+    aminoType: "cosmos-sdk/QueryParamsRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryParamsRequest.typeUrl || typeof o.params_type === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryParamsRequest.typeUrl || typeof o.params_type === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryParamsRequest.typeUrl || typeof o.params_type === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.params_type !== "") {
             writer.uint32(10).string(message.params_type);
@@ -829,6 +936,8 @@ export const QueryParamsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsRequest.aminoType, QueryParamsRequest.typeUrl);
 function createBaseQueryParamsResponse() {
     return {
         voting_params: VotingParams.fromPartial({}),
@@ -838,6 +947,16 @@ function createBaseQueryParamsResponse() {
 }
 export const QueryParamsResponse = {
     typeUrl: "/cosmos.gov.v1beta1.QueryParamsResponse",
+    aminoType: "cosmos-sdk/QueryParamsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryParamsResponse.typeUrl || VotingParams.is(o.voting_params) && DepositParams.is(o.deposit_params) && TallyParams.is(o.tally_params));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryParamsResponse.typeUrl || VotingParams.isSDK(o.voting_params) && DepositParams.isSDK(o.deposit_params) && TallyParams.isSDK(o.tally_params));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryParamsResponse.typeUrl || VotingParams.isAmino(o.voting_params) && DepositParams.isAmino(o.deposit_params) && TallyParams.isAmino(o.tally_params));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.voting_params !== undefined) {
             VotingParams.encode(message.voting_params, writer.uint32(10).fork()).ldelim();
@@ -936,6 +1055,8 @@ export const QueryParamsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsResponse.aminoType, QueryParamsResponse.typeUrl);
 function createBaseQueryDepositRequest() {
     return {
         proposal_id: BigInt(0),
@@ -944,6 +1065,16 @@ function createBaseQueryDepositRequest() {
 }
 export const QueryDepositRequest = {
     typeUrl: "/cosmos.gov.v1beta1.QueryDepositRequest",
+    aminoType: "cosmos-sdk/QueryDepositRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryDepositRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryDepositRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryDepositRequest.typeUrl || typeof o.proposal_id === "bigint" && typeof o.depositor === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -1029,6 +1160,8 @@ export const QueryDepositRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDepositRequest.typeUrl, QueryDepositRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDepositRequest.aminoType, QueryDepositRequest.typeUrl);
 function createBaseQueryDepositResponse() {
     return {
         deposit: Deposit.fromPartial({})
@@ -1036,6 +1169,16 @@ function createBaseQueryDepositResponse() {
 }
 export const QueryDepositResponse = {
     typeUrl: "/cosmos.gov.v1beta1.QueryDepositResponse",
+    aminoType: "cosmos-sdk/QueryDepositResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryDepositResponse.typeUrl || Deposit.is(o.deposit));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryDepositResponse.typeUrl || Deposit.isSDK(o.deposit));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryDepositResponse.typeUrl || Deposit.isAmino(o.deposit));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.deposit !== undefined) {
             Deposit.encode(message.deposit, writer.uint32(10).fork()).ldelim();
@@ -1108,6 +1251,8 @@ export const QueryDepositResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDepositResponse.typeUrl, QueryDepositResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDepositResponse.aminoType, QueryDepositResponse.typeUrl);
 function createBaseQueryDepositsRequest() {
     return {
         proposal_id: BigInt(0),
@@ -1116,6 +1261,16 @@ function createBaseQueryDepositsRequest() {
 }
 export const QueryDepositsRequest = {
     typeUrl: "/cosmos.gov.v1beta1.QueryDepositsRequest",
+    aminoType: "cosmos-sdk/QueryDepositsRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryDepositsRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryDepositsRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryDepositsRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -1201,6 +1356,8 @@ export const QueryDepositsRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDepositsRequest.typeUrl, QueryDepositsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDepositsRequest.aminoType, QueryDepositsRequest.typeUrl);
 function createBaseQueryDepositsResponse() {
     return {
         deposits: [],
@@ -1209,6 +1366,16 @@ function createBaseQueryDepositsResponse() {
 }
 export const QueryDepositsResponse = {
     typeUrl: "/cosmos.gov.v1beta1.QueryDepositsResponse",
+    aminoType: "cosmos-sdk/QueryDepositsResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryDepositsResponse.typeUrl || Array.isArray(o.deposits) && (!o.deposits.length || Deposit.is(o.deposits[0])));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryDepositsResponse.typeUrl || Array.isArray(o.deposits) && (!o.deposits.length || Deposit.isSDK(o.deposits[0])));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryDepositsResponse.typeUrl || Array.isArray(o.deposits) && (!o.deposits.length || Deposit.isAmino(o.deposits[0])));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.deposits) {
             Deposit.encode(v, writer.uint32(10).fork()).ldelim();
@@ -1302,6 +1469,8 @@ export const QueryDepositsResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryDepositsResponse.typeUrl, QueryDepositsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDepositsResponse.aminoType, QueryDepositsResponse.typeUrl);
 function createBaseQueryTallyResultRequest() {
     return {
         proposal_id: BigInt(0)
@@ -1309,6 +1478,16 @@ function createBaseQueryTallyResultRequest() {
 }
 export const QueryTallyResultRequest = {
     typeUrl: "/cosmos.gov.v1beta1.QueryTallyResultRequest",
+    aminoType: "cosmos-sdk/QueryTallyResultRequest",
+    is(o) {
+        return o && (o.$typeUrl === QueryTallyResultRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryTallyResultRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryTallyResultRequest.typeUrl || typeof o.proposal_id === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.proposal_id !== BigInt(0)) {
             writer.uint32(8).uint64(message.proposal_id);
@@ -1381,6 +1560,8 @@ export const QueryTallyResultRequest = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryTallyResultRequest.typeUrl, QueryTallyResultRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryTallyResultRequest.aminoType, QueryTallyResultRequest.typeUrl);
 function createBaseQueryTallyResultResponse() {
     return {
         tally: TallyResult.fromPartial({})
@@ -1388,6 +1569,16 @@ function createBaseQueryTallyResultResponse() {
 }
 export const QueryTallyResultResponse = {
     typeUrl: "/cosmos.gov.v1beta1.QueryTallyResultResponse",
+    aminoType: "cosmos-sdk/QueryTallyResultResponse",
+    is(o) {
+        return o && (o.$typeUrl === QueryTallyResultResponse.typeUrl || TallyResult.is(o.tally));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === QueryTallyResultResponse.typeUrl || TallyResult.isSDK(o.tally));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === QueryTallyResultResponse.typeUrl || TallyResult.isAmino(o.tally));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.tally !== undefined) {
             TallyResult.encode(message.tally, writer.uint32(10).fork()).ldelim();
@@ -1460,4 +1651,6 @@ export const QueryTallyResultResponse = {
         };
     }
 };
+GlobalDecoderRegistry.register(QueryTallyResultResponse.typeUrl, QueryTallyResultResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryTallyResultResponse.aminoType, QueryTallyResultResponse.typeUrl);
 //# sourceMappingURL=query.js.map

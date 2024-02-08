@@ -1955,6 +1955,9 @@ export interface GeneratedCodeInfo_AnnotationSDKType {
 }
 export declare const FileDescriptorSet: {
     typeUrl: string;
+    is(o: any): o is FileDescriptorSet;
+    isSDK(o: any): o is FileDescriptorSetSDKType;
+    isAmino(o: any): o is FileDescriptorSetAmino;
     encode(message: FileDescriptorSet, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FileDescriptorSet;
     fromJSON(object: any): FileDescriptorSet;
@@ -1969,6 +1972,9 @@ export declare const FileDescriptorSet: {
 };
 export declare const FileDescriptorProto: {
     typeUrl: string;
+    is(o: any): o is FileDescriptorProto;
+    isSDK(o: any): o is FileDescriptorProtoSDKType;
+    isAmino(o: any): o is FileDescriptorProtoAmino;
     encode(message: FileDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FileDescriptorProto;
     fromJSON(object: any): FileDescriptorProto;
@@ -1983,6 +1989,9 @@ export declare const FileDescriptorProto: {
 };
 export declare const DescriptorProto: {
     typeUrl: string;
+    is(o: any): o is DescriptorProto;
+    isSDK(o: any): o is DescriptorProtoSDKType;
+    isAmino(o: any): o is DescriptorProtoAmino;
     encode(message: DescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DescriptorProto;
     fromJSON(object: any): DescriptorProto;
@@ -1997,6 +2006,9 @@ export declare const DescriptorProto: {
 };
 export declare const DescriptorProto_ExtensionRange: {
     typeUrl: string;
+    is(o: any): o is DescriptorProto_ExtensionRange;
+    isSDK(o: any): o is DescriptorProto_ExtensionRangeSDKType;
+    isAmino(o: any): o is DescriptorProto_ExtensionRangeAmino;
     encode(message: DescriptorProto_ExtensionRange, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DescriptorProto_ExtensionRange;
     fromJSON(object: any): DescriptorProto_ExtensionRange;
@@ -2011,6 +2023,9 @@ export declare const DescriptorProto_ExtensionRange: {
 };
 export declare const DescriptorProto_ReservedRange: {
     typeUrl: string;
+    is(o: any): o is DescriptorProto_ReservedRange;
+    isSDK(o: any): o is DescriptorProto_ReservedRangeSDKType;
+    isAmino(o: any): o is DescriptorProto_ReservedRangeAmino;
     encode(message: DescriptorProto_ReservedRange, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): DescriptorProto_ReservedRange;
     fromJSON(object: any): DescriptorProto_ReservedRange;
@@ -2025,6 +2040,9 @@ export declare const DescriptorProto_ReservedRange: {
 };
 export declare const ExtensionRangeOptions: {
     typeUrl: string;
+    is(o: any): o is ExtensionRangeOptions;
+    isSDK(o: any): o is ExtensionRangeOptionsSDKType;
+    isAmino(o: any): o is ExtensionRangeOptionsAmino;
     encode(message: ExtensionRangeOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ExtensionRangeOptions;
     fromJSON(object: any): ExtensionRangeOptions;
@@ -2039,6 +2057,9 @@ export declare const ExtensionRangeOptions: {
 };
 export declare const FieldDescriptorProto: {
     typeUrl: string;
+    is(o: any): o is FieldDescriptorProto;
+    isSDK(o: any): o is FieldDescriptorProtoSDKType;
+    isAmino(o: any): o is FieldDescriptorProtoAmino;
     encode(message: FieldDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FieldDescriptorProto;
     fromJSON(object: any): FieldDescriptorProto;
@@ -2053,6 +2074,9 @@ export declare const FieldDescriptorProto: {
 };
 export declare const OneofDescriptorProto: {
     typeUrl: string;
+    is(o: any): o is OneofDescriptorProto;
+    isSDK(o: any): o is OneofDescriptorProtoSDKType;
+    isAmino(o: any): o is OneofDescriptorProtoAmino;
     encode(message: OneofDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): OneofDescriptorProto;
     fromJSON(object: any): OneofDescriptorProto;
@@ -2067,6 +2091,9 @@ export declare const OneofDescriptorProto: {
 };
 export declare const EnumDescriptorProto: {
     typeUrl: string;
+    is(o: any): o is EnumDescriptorProto;
+    isSDK(o: any): o is EnumDescriptorProtoSDKType;
+    isAmino(o: any): o is EnumDescriptorProtoAmino;
     encode(message: EnumDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EnumDescriptorProto;
     fromJSON(object: any): EnumDescriptorProto;
@@ -2081,6 +2108,9 @@ export declare const EnumDescriptorProto: {
 };
 export declare const EnumDescriptorProto_EnumReservedRange: {
     typeUrl: string;
+    is(o: any): o is EnumDescriptorProto_EnumReservedRange;
+    isSDK(o: any): o is EnumDescriptorProto_EnumReservedRangeSDKType;
+    isAmino(o: any): o is EnumDescriptorProto_EnumReservedRangeAmino;
     encode(message: EnumDescriptorProto_EnumReservedRange, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EnumDescriptorProto_EnumReservedRange;
     fromJSON(object: any): EnumDescriptorProto_EnumReservedRange;
@@ -2095,6 +2125,9 @@ export declare const EnumDescriptorProto_EnumReservedRange: {
 };
 export declare const EnumValueDescriptorProto: {
     typeUrl: string;
+    is(o: any): o is EnumValueDescriptorProto;
+    isSDK(o: any): o is EnumValueDescriptorProtoSDKType;
+    isAmino(o: any): o is EnumValueDescriptorProtoAmino;
     encode(message: EnumValueDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EnumValueDescriptorProto;
     fromJSON(object: any): EnumValueDescriptorProto;
@@ -2109,6 +2142,9 @@ export declare const EnumValueDescriptorProto: {
 };
 export declare const ServiceDescriptorProto: {
     typeUrl: string;
+    is(o: any): o is ServiceDescriptorProto;
+    isSDK(o: any): o is ServiceDescriptorProtoSDKType;
+    isAmino(o: any): o is ServiceDescriptorProtoAmino;
     encode(message: ServiceDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ServiceDescriptorProto;
     fromJSON(object: any): ServiceDescriptorProto;
@@ -2123,6 +2159,9 @@ export declare const ServiceDescriptorProto: {
 };
 export declare const MethodDescriptorProto: {
     typeUrl: string;
+    is(o: any): o is MethodDescriptorProto;
+    isSDK(o: any): o is MethodDescriptorProtoSDKType;
+    isAmino(o: any): o is MethodDescriptorProtoAmino;
     encode(message: MethodDescriptorProto, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MethodDescriptorProto;
     fromJSON(object: any): MethodDescriptorProto;
@@ -2137,6 +2176,9 @@ export declare const MethodDescriptorProto: {
 };
 export declare const FileOptions: {
     typeUrl: string;
+    is(o: any): o is FileOptions;
+    isSDK(o: any): o is FileOptionsSDKType;
+    isAmino(o: any): o is FileOptionsAmino;
     encode(message: FileOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FileOptions;
     fromJSON(object: any): FileOptions;
@@ -2151,6 +2193,9 @@ export declare const FileOptions: {
 };
 export declare const MessageOptions: {
     typeUrl: string;
+    is(o: any): o is MessageOptions;
+    isSDK(o: any): o is MessageOptionsSDKType;
+    isAmino(o: any): o is MessageOptionsAmino;
     encode(message: MessageOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MessageOptions;
     fromJSON(object: any): MessageOptions;
@@ -2165,6 +2210,9 @@ export declare const MessageOptions: {
 };
 export declare const FieldOptions: {
     typeUrl: string;
+    is(o: any): o is FieldOptions;
+    isSDK(o: any): o is FieldOptionsSDKType;
+    isAmino(o: any): o is FieldOptionsAmino;
     encode(message: FieldOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): FieldOptions;
     fromJSON(object: any): FieldOptions;
@@ -2179,6 +2227,9 @@ export declare const FieldOptions: {
 };
 export declare const OneofOptions: {
     typeUrl: string;
+    is(o: any): o is OneofOptions;
+    isSDK(o: any): o is OneofOptionsSDKType;
+    isAmino(o: any): o is OneofOptionsAmino;
     encode(message: OneofOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): OneofOptions;
     fromJSON(object: any): OneofOptions;
@@ -2193,6 +2244,9 @@ export declare const OneofOptions: {
 };
 export declare const EnumOptions: {
     typeUrl: string;
+    is(o: any): o is EnumOptions;
+    isSDK(o: any): o is EnumOptionsSDKType;
+    isAmino(o: any): o is EnumOptionsAmino;
     encode(message: EnumOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EnumOptions;
     fromJSON(object: any): EnumOptions;
@@ -2207,6 +2261,9 @@ export declare const EnumOptions: {
 };
 export declare const EnumValueOptions: {
     typeUrl: string;
+    is(o: any): o is EnumValueOptions;
+    isSDK(o: any): o is EnumValueOptionsSDKType;
+    isAmino(o: any): o is EnumValueOptionsAmino;
     encode(message: EnumValueOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EnumValueOptions;
     fromJSON(object: any): EnumValueOptions;
@@ -2221,6 +2278,9 @@ export declare const EnumValueOptions: {
 };
 export declare const ServiceOptions: {
     typeUrl: string;
+    is(o: any): o is ServiceOptions;
+    isSDK(o: any): o is ServiceOptionsSDKType;
+    isAmino(o: any): o is ServiceOptionsAmino;
     encode(message: ServiceOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ServiceOptions;
     fromJSON(object: any): ServiceOptions;
@@ -2235,6 +2295,9 @@ export declare const ServiceOptions: {
 };
 export declare const MethodOptions: {
     typeUrl: string;
+    is(o: any): o is MethodOptions;
+    isSDK(o: any): o is MethodOptionsSDKType;
+    isAmino(o: any): o is MethodOptionsAmino;
     encode(message: MethodOptions, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): MethodOptions;
     fromJSON(object: any): MethodOptions;
@@ -2249,6 +2312,9 @@ export declare const MethodOptions: {
 };
 export declare const UninterpretedOption: {
     typeUrl: string;
+    is(o: any): o is UninterpretedOption;
+    isSDK(o: any): o is UninterpretedOptionSDKType;
+    isAmino(o: any): o is UninterpretedOptionAmino;
     encode(message: UninterpretedOption, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): UninterpretedOption;
     fromJSON(object: any): UninterpretedOption;
@@ -2263,6 +2329,9 @@ export declare const UninterpretedOption: {
 };
 export declare const UninterpretedOption_NamePart: {
     typeUrl: string;
+    is(o: any): o is UninterpretedOption_NamePart;
+    isSDK(o: any): o is UninterpretedOption_NamePartSDKType;
+    isAmino(o: any): o is UninterpretedOption_NamePartAmino;
     encode(message: UninterpretedOption_NamePart, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): UninterpretedOption_NamePart;
     fromJSON(object: any): UninterpretedOption_NamePart;
@@ -2277,6 +2346,9 @@ export declare const UninterpretedOption_NamePart: {
 };
 export declare const SourceCodeInfo: {
     typeUrl: string;
+    is(o: any): o is SourceCodeInfo;
+    isSDK(o: any): o is SourceCodeInfoSDKType;
+    isAmino(o: any): o is SourceCodeInfoAmino;
     encode(message: SourceCodeInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SourceCodeInfo;
     fromJSON(object: any): SourceCodeInfo;
@@ -2291,6 +2363,9 @@ export declare const SourceCodeInfo: {
 };
 export declare const SourceCodeInfo_Location: {
     typeUrl: string;
+    is(o: any): o is SourceCodeInfo_Location;
+    isSDK(o: any): o is SourceCodeInfo_LocationSDKType;
+    isAmino(o: any): o is SourceCodeInfo_LocationAmino;
     encode(message: SourceCodeInfo_Location, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): SourceCodeInfo_Location;
     fromJSON(object: any): SourceCodeInfo_Location;
@@ -2305,6 +2380,9 @@ export declare const SourceCodeInfo_Location: {
 };
 export declare const GeneratedCodeInfo: {
     typeUrl: string;
+    is(o: any): o is GeneratedCodeInfo;
+    isSDK(o: any): o is GeneratedCodeInfoSDKType;
+    isAmino(o: any): o is GeneratedCodeInfoAmino;
     encode(message: GeneratedCodeInfo, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GeneratedCodeInfo;
     fromJSON(object: any): GeneratedCodeInfo;
@@ -2319,6 +2397,9 @@ export declare const GeneratedCodeInfo: {
 };
 export declare const GeneratedCodeInfo_Annotation: {
     typeUrl: string;
+    is(o: any): o is GeneratedCodeInfo_Annotation;
+    isSDK(o: any): o is GeneratedCodeInfo_AnnotationSDKType;
+    isAmino(o: any): o is GeneratedCodeInfo_AnnotationAmino;
     encode(message: GeneratedCodeInfo_Annotation, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): GeneratedCodeInfo_Annotation;
     fromJSON(object: any): GeneratedCodeInfo_Annotation;

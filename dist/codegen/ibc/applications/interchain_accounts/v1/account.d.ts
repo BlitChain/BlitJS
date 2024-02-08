@@ -28,6 +28,10 @@ export interface InterchainAccountSDKType {
 }
 export declare const InterchainAccount: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is InterchainAccount;
+    isSDK(o: any): o is InterchainAccountSDKType;
+    isAmino(o: any): o is InterchainAccountAmino;
     encode(message: InterchainAccount, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): InterchainAccount;
     fromJSON(object: any): InterchainAccount;

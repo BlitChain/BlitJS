@@ -5,6 +5,7 @@ exports.ABCIParams = exports.HashedParams = exports.VersionParams = exports.Vali
 const duration_1 = require("../../google/protobuf/duration");
 const binary_1 = require("../../binary");
 const helpers_1 = require("../../helpers");
+const registry_1 = require("../../registry");
 exports.protobufPackage = "tendermint.types";
 function createBaseConsensusParams() {
     return {
@@ -17,6 +18,15 @@ function createBaseConsensusParams() {
 }
 exports.ConsensusParams = {
     typeUrl: "/tendermint.types.ConsensusParams",
+    is(o) {
+        return o && o.$typeUrl === exports.ConsensusParams.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === exports.ConsensusParams.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === exports.ConsensusParams.typeUrl;
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.block !== undefined) {
             exports.BlockParams.encode(message.block, writer.uint32(10).fork()).ldelim();
@@ -135,6 +145,7 @@ exports.ConsensusParams = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ConsensusParams.typeUrl, exports.ConsensusParams);
 function createBaseBlockParams() {
     return {
         max_bytes: BigInt(0),
@@ -143,6 +154,15 @@ function createBaseBlockParams() {
 }
 exports.BlockParams = {
     typeUrl: "/tendermint.types.BlockParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.BlockParams.typeUrl || typeof o.max_bytes === "bigint" && typeof o.max_gas === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.BlockParams.typeUrl || typeof o.max_bytes === "bigint" && typeof o.max_gas === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.BlockParams.typeUrl || typeof o.max_bytes === "bigint" && typeof o.max_gas === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.max_bytes !== BigInt(0)) {
             writer.uint32(8).int64(message.max_bytes);
@@ -222,6 +242,7 @@ exports.BlockParams = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.BlockParams.typeUrl, exports.BlockParams);
 function createBaseEvidenceParams() {
     return {
         max_age_num_blocks: BigInt(0),
@@ -231,6 +252,15 @@ function createBaseEvidenceParams() {
 }
 exports.EvidenceParams = {
     typeUrl: "/tendermint.types.EvidenceParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.EvidenceParams.typeUrl || typeof o.max_age_num_blocks === "bigint" && duration_1.Duration.is(o.max_age_duration) && typeof o.max_bytes === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.EvidenceParams.typeUrl || typeof o.max_age_num_blocks === "bigint" && duration_1.Duration.isSDK(o.max_age_duration) && typeof o.max_bytes === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.EvidenceParams.typeUrl || typeof o.max_age_num_blocks === "bigint" && duration_1.Duration.isAmino(o.max_age_duration) && typeof o.max_bytes === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.max_age_num_blocks !== BigInt(0)) {
             writer.uint32(8).int64(message.max_age_num_blocks);
@@ -323,6 +353,7 @@ exports.EvidenceParams = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.EvidenceParams.typeUrl, exports.EvidenceParams);
 function createBaseValidatorParams() {
     return {
         pub_key_types: []
@@ -330,6 +361,15 @@ function createBaseValidatorParams() {
 }
 exports.ValidatorParams = {
     typeUrl: "/tendermint.types.ValidatorParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.ValidatorParams.typeUrl || Array.isArray(o.pub_key_types) && (!o.pub_key_types.length || typeof o.pub_key_types[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ValidatorParams.typeUrl || Array.isArray(o.pub_key_types) && (!o.pub_key_types.length || typeof o.pub_key_types[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ValidatorParams.typeUrl || Array.isArray(o.pub_key_types) && (!o.pub_key_types.length || typeof o.pub_key_types[0] === "string"));
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         for (const v of message.pub_key_types) {
             writer.uint32(10).string(v);
@@ -404,6 +444,7 @@ exports.ValidatorParams = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ValidatorParams.typeUrl, exports.ValidatorParams);
 function createBaseVersionParams() {
     return {
         app: BigInt(0)
@@ -411,6 +452,15 @@ function createBaseVersionParams() {
 }
 exports.VersionParams = {
     typeUrl: "/tendermint.types.VersionParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.VersionParams.typeUrl || typeof o.app === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.VersionParams.typeUrl || typeof o.app === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.VersionParams.typeUrl || typeof o.app === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.app !== BigInt(0)) {
             writer.uint32(8).uint64(message.app);
@@ -477,6 +527,7 @@ exports.VersionParams = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.VersionParams.typeUrl, exports.VersionParams);
 function createBaseHashedParams() {
     return {
         block_max_bytes: BigInt(0),
@@ -485,6 +536,15 @@ function createBaseHashedParams() {
 }
 exports.HashedParams = {
     typeUrl: "/tendermint.types.HashedParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.HashedParams.typeUrl || typeof o.block_max_bytes === "bigint" && typeof o.block_max_gas === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.HashedParams.typeUrl || typeof o.block_max_bytes === "bigint" && typeof o.block_max_gas === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.HashedParams.typeUrl || typeof o.block_max_bytes === "bigint" && typeof o.block_max_gas === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.block_max_bytes !== BigInt(0)) {
             writer.uint32(8).int64(message.block_max_bytes);
@@ -564,6 +624,7 @@ exports.HashedParams = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.HashedParams.typeUrl, exports.HashedParams);
 function createBaseABCIParams() {
     return {
         vote_extensions_enable_height: BigInt(0)
@@ -571,6 +632,15 @@ function createBaseABCIParams() {
 }
 exports.ABCIParams = {
     typeUrl: "/tendermint.types.ABCIParams",
+    is(o) {
+        return o && (o.$typeUrl === exports.ABCIParams.typeUrl || typeof o.vote_extensions_enable_height === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === exports.ABCIParams.typeUrl || typeof o.vote_extensions_enable_height === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === exports.ABCIParams.typeUrl || typeof o.vote_extensions_enable_height === "bigint");
+    },
     encode(message, writer = binary_1.BinaryWriter.create()) {
         if (message.vote_extensions_enable_height !== BigInt(0)) {
             writer.uint32(8).int64(message.vote_extensions_enable_height);
@@ -637,4 +707,5 @@ exports.ABCIParams = {
         };
     }
 };
+registry_1.GlobalDecoderRegistry.register(exports.ABCIParams.typeUrl, exports.ABCIParams);
 //# sourceMappingURL=params.js.map

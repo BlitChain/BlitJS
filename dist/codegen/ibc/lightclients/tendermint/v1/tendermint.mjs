@@ -8,6 +8,7 @@ import { SignedHeader } from "../../../../tendermint/types/types";
 import { ValidatorSet } from "../../../../tendermint/types/validator";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 export const protobufPackage = "ibc.lightclients.tendermint.v1";
 function createBaseClientState() {
     return {
@@ -26,6 +27,16 @@ function createBaseClientState() {
 }
 export const ClientState = {
     typeUrl: "/ibc.lightclients.tendermint.v1.ClientState",
+    aminoType: "cosmos-sdk/ClientState",
+    is(o) {
+        return o && (o.$typeUrl === ClientState.typeUrl || typeof o.chain_id === "string" && Fraction.is(o.trust_level) && Duration.is(o.trusting_period) && Duration.is(o.unbonding_period) && Duration.is(o.max_clock_drift) && Height.is(o.frozen_height) && Height.is(o.latest_height) && Array.isArray(o.proof_specs) && (!o.proof_specs.length || ProofSpec.is(o.proof_specs[0])) && Array.isArray(o.upgrade_path) && (!o.upgrade_path.length || typeof o.upgrade_path[0] === "string") && typeof o.allow_update_after_expiry === "boolean" && typeof o.allow_update_after_misbehaviour === "boolean");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === ClientState.typeUrl || typeof o.chain_id === "string" && Fraction.isSDK(o.trust_level) && Duration.isSDK(o.trusting_period) && Duration.isSDK(o.unbonding_period) && Duration.isSDK(o.max_clock_drift) && Height.isSDK(o.frozen_height) && Height.isSDK(o.latest_height) && Array.isArray(o.proof_specs) && (!o.proof_specs.length || ProofSpec.isSDK(o.proof_specs[0])) && Array.isArray(o.upgrade_path) && (!o.upgrade_path.length || typeof o.upgrade_path[0] === "string") && typeof o.allow_update_after_expiry === "boolean" && typeof o.allow_update_after_misbehaviour === "boolean");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === ClientState.typeUrl || typeof o.chain_id === "string" && Fraction.isAmino(o.trust_level) && Duration.isAmino(o.trusting_period) && Duration.isAmino(o.unbonding_period) && Duration.isAmino(o.max_clock_drift) && Height.isAmino(o.frozen_height) && Height.isAmino(o.latest_height) && Array.isArray(o.proof_specs) && (!o.proof_specs.length || ProofSpec.isAmino(o.proof_specs[0])) && Array.isArray(o.upgrade_path) && (!o.upgrade_path.length || typeof o.upgrade_path[0] === "string") && typeof o.allow_update_after_expiry === "boolean" && typeof o.allow_update_after_misbehaviour === "boolean");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.chain_id !== "") {
             writer.uint32(10).string(message.chain_id);
@@ -244,6 +255,8 @@ export const ClientState = {
         };
     }
 };
+GlobalDecoderRegistry.register(ClientState.typeUrl, ClientState);
+GlobalDecoderRegistry.registerAminoProtoMapping(ClientState.aminoType, ClientState.typeUrl);
 function createBaseConsensusState() {
     return {
         timestamp: new Date(),
@@ -253,6 +266,16 @@ function createBaseConsensusState() {
 }
 export const ConsensusState = {
     typeUrl: "/ibc.lightclients.tendermint.v1.ConsensusState",
+    aminoType: "cosmos-sdk/ConsensusState",
+    is(o) {
+        return o && (o.$typeUrl === ConsensusState.typeUrl || Timestamp.is(o.timestamp) && MerkleRoot.is(o.root) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === ConsensusState.typeUrl || Timestamp.isSDK(o.timestamp) && MerkleRoot.isSDK(o.root) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === ConsensusState.typeUrl || Timestamp.isAmino(o.timestamp) && MerkleRoot.isAmino(o.root) && (o.next_validators_hash instanceof Uint8Array || typeof o.next_validators_hash === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.timestamp !== undefined) {
             Timestamp.encode(toTimestamp(message.timestamp), writer.uint32(10).fork()).ldelim();
@@ -351,6 +374,8 @@ export const ConsensusState = {
         };
     }
 };
+GlobalDecoderRegistry.register(ConsensusState.typeUrl, ConsensusState);
+GlobalDecoderRegistry.registerAminoProtoMapping(ConsensusState.aminoType, ConsensusState.typeUrl);
 function createBaseMisbehaviour() {
     return {
         client_id: "",
@@ -360,6 +385,16 @@ function createBaseMisbehaviour() {
 }
 export const Misbehaviour = {
     typeUrl: "/ibc.lightclients.tendermint.v1.Misbehaviour",
+    aminoType: "cosmos-sdk/Misbehaviour",
+    is(o) {
+        return o && (o.$typeUrl === Misbehaviour.typeUrl || typeof o.client_id === "string");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Misbehaviour.typeUrl || typeof o.client_id === "string");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Misbehaviour.typeUrl || typeof o.client_id === "string");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.client_id !== "") {
             writer.uint32(10).string(message.client_id);
@@ -458,6 +493,8 @@ export const Misbehaviour = {
         };
     }
 };
+GlobalDecoderRegistry.register(Misbehaviour.typeUrl, Misbehaviour);
+GlobalDecoderRegistry.registerAminoProtoMapping(Misbehaviour.aminoType, Misbehaviour.typeUrl);
 function createBaseHeader() {
     return {
         signed_header: undefined,
@@ -468,6 +505,16 @@ function createBaseHeader() {
 }
 export const Header = {
     typeUrl: "/ibc.lightclients.tendermint.v1.Header",
+    aminoType: "cosmos-sdk/Header",
+    is(o) {
+        return o && (o.$typeUrl === Header.typeUrl || Height.is(o.trusted_height));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Header.typeUrl || Height.isSDK(o.trusted_height));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Header.typeUrl || Height.isAmino(o.trusted_height));
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.signed_header !== undefined) {
             SignedHeader.encode(message.signed_header, writer.uint32(10).fork()).ldelim();
@@ -579,6 +626,8 @@ export const Header = {
         };
     }
 };
+GlobalDecoderRegistry.register(Header.typeUrl, Header);
+GlobalDecoderRegistry.registerAminoProtoMapping(Header.aminoType, Header.typeUrl);
 function createBaseFraction() {
     return {
         numerator: BigInt(0),
@@ -587,6 +636,16 @@ function createBaseFraction() {
 }
 export const Fraction = {
     typeUrl: "/ibc.lightclients.tendermint.v1.Fraction",
+    aminoType: "cosmos-sdk/Fraction",
+    is(o) {
+        return o && (o.$typeUrl === Fraction.typeUrl || typeof o.numerator === "bigint" && typeof o.denominator === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === Fraction.typeUrl || typeof o.numerator === "bigint" && typeof o.denominator === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === Fraction.typeUrl || typeof o.numerator === "bigint" && typeof o.denominator === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.numerator !== BigInt(0)) {
             writer.uint32(8).uint64(message.numerator);
@@ -672,4 +731,6 @@ export const Fraction = {
         };
     }
 };
+GlobalDecoderRegistry.register(Fraction.typeUrl, Fraction);
+GlobalDecoderRegistry.registerAminoProtoMapping(Fraction.aminoType, Fraction.typeUrl);
 //# sourceMappingURL=tendermint.js.map

@@ -859,6 +859,10 @@ export interface QueryParamsResponseSDKType {
 }
 export declare const QueryValidatorsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryValidatorsRequest;
+    isSDK(o: any): o is QueryValidatorsRequestSDKType;
+    isAmino(o: any): o is QueryValidatorsRequestAmino;
     encode(message: QueryValidatorsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorsRequest;
     fromJSON(object: any): QueryValidatorsRequest;
@@ -874,6 +878,10 @@ export declare const QueryValidatorsRequest: {
 };
 export declare const QueryValidatorsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryValidatorsResponse;
+    isSDK(o: any): o is QueryValidatorsResponseSDKType;
+    isAmino(o: any): o is QueryValidatorsResponseAmino;
     encode(message: QueryValidatorsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorsResponse;
     fromJSON(object: any): QueryValidatorsResponse;
@@ -889,6 +897,10 @@ export declare const QueryValidatorsResponse: {
 };
 export declare const QueryValidatorRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryValidatorRequest;
+    isSDK(o: any): o is QueryValidatorRequestSDKType;
+    isAmino(o: any): o is QueryValidatorRequestAmino;
     encode(message: QueryValidatorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorRequest;
     fromJSON(object: any): QueryValidatorRequest;
@@ -904,6 +916,10 @@ export declare const QueryValidatorRequest: {
 };
 export declare const QueryValidatorResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryValidatorResponse;
+    isSDK(o: any): o is QueryValidatorResponseSDKType;
+    isAmino(o: any): o is QueryValidatorResponseAmino;
     encode(message: QueryValidatorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorResponse;
     fromJSON(object: any): QueryValidatorResponse;
@@ -919,6 +935,10 @@ export declare const QueryValidatorResponse: {
 };
 export declare const QueryValidatorDelegationsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryValidatorDelegationsRequest;
+    isSDK(o: any): o is QueryValidatorDelegationsRequestSDKType;
+    isAmino(o: any): o is QueryValidatorDelegationsRequestAmino;
     encode(message: QueryValidatorDelegationsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorDelegationsRequest;
     fromJSON(object: any): QueryValidatorDelegationsRequest;
@@ -934,6 +954,10 @@ export declare const QueryValidatorDelegationsRequest: {
 };
 export declare const QueryValidatorDelegationsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryValidatorDelegationsResponse;
+    isSDK(o: any): o is QueryValidatorDelegationsResponseSDKType;
+    isAmino(o: any): o is QueryValidatorDelegationsResponseAmino;
     encode(message: QueryValidatorDelegationsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorDelegationsResponse;
     fromJSON(object: any): QueryValidatorDelegationsResponse;
@@ -949,6 +973,10 @@ export declare const QueryValidatorDelegationsResponse: {
 };
 export declare const QueryValidatorUnbondingDelegationsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryValidatorUnbondingDelegationsRequest;
+    isSDK(o: any): o is QueryValidatorUnbondingDelegationsRequestSDKType;
+    isAmino(o: any): o is QueryValidatorUnbondingDelegationsRequestAmino;
     encode(message: QueryValidatorUnbondingDelegationsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorUnbondingDelegationsRequest;
     fromJSON(object: any): QueryValidatorUnbondingDelegationsRequest;
@@ -964,6 +992,10 @@ export declare const QueryValidatorUnbondingDelegationsRequest: {
 };
 export declare const QueryValidatorUnbondingDelegationsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryValidatorUnbondingDelegationsResponse;
+    isSDK(o: any): o is QueryValidatorUnbondingDelegationsResponseSDKType;
+    isAmino(o: any): o is QueryValidatorUnbondingDelegationsResponseAmino;
     encode(message: QueryValidatorUnbondingDelegationsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryValidatorUnbondingDelegationsResponse;
     fromJSON(object: any): QueryValidatorUnbondingDelegationsResponse;
@@ -979,6 +1011,10 @@ export declare const QueryValidatorUnbondingDelegationsResponse: {
 };
 export declare const QueryDelegationRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDelegationRequest;
+    isSDK(o: any): o is QueryDelegationRequestSDKType;
+    isAmino(o: any): o is QueryDelegationRequestAmino;
     encode(message: QueryDelegationRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegationRequest;
     fromJSON(object: any): QueryDelegationRequest;
@@ -994,6 +1030,10 @@ export declare const QueryDelegationRequest: {
 };
 export declare const QueryDelegationResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDelegationResponse;
+    isSDK(o: any): o is QueryDelegationResponseSDKType;
+    isAmino(o: any): o is QueryDelegationResponseAmino;
     encode(message: QueryDelegationResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegationResponse;
     fromJSON(object: any): QueryDelegationResponse;
@@ -1009,6 +1049,10 @@ export declare const QueryDelegationResponse: {
 };
 export declare const QueryUnbondingDelegationRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryUnbondingDelegationRequest;
+    isSDK(o: any): o is QueryUnbondingDelegationRequestSDKType;
+    isAmino(o: any): o is QueryUnbondingDelegationRequestAmino;
     encode(message: QueryUnbondingDelegationRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUnbondingDelegationRequest;
     fromJSON(object: any): QueryUnbondingDelegationRequest;
@@ -1024,6 +1068,10 @@ export declare const QueryUnbondingDelegationRequest: {
 };
 export declare const QueryUnbondingDelegationResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryUnbondingDelegationResponse;
+    isSDK(o: any): o is QueryUnbondingDelegationResponseSDKType;
+    isAmino(o: any): o is QueryUnbondingDelegationResponseAmino;
     encode(message: QueryUnbondingDelegationResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryUnbondingDelegationResponse;
     fromJSON(object: any): QueryUnbondingDelegationResponse;
@@ -1039,6 +1087,10 @@ export declare const QueryUnbondingDelegationResponse: {
 };
 export declare const QueryDelegatorDelegationsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDelegatorDelegationsRequest;
+    isSDK(o: any): o is QueryDelegatorDelegationsRequestSDKType;
+    isAmino(o: any): o is QueryDelegatorDelegationsRequestAmino;
     encode(message: QueryDelegatorDelegationsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorDelegationsRequest;
     fromJSON(object: any): QueryDelegatorDelegationsRequest;
@@ -1054,6 +1106,10 @@ export declare const QueryDelegatorDelegationsRequest: {
 };
 export declare const QueryDelegatorDelegationsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDelegatorDelegationsResponse;
+    isSDK(o: any): o is QueryDelegatorDelegationsResponseSDKType;
+    isAmino(o: any): o is QueryDelegatorDelegationsResponseAmino;
     encode(message: QueryDelegatorDelegationsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorDelegationsResponse;
     fromJSON(object: any): QueryDelegatorDelegationsResponse;
@@ -1069,6 +1125,10 @@ export declare const QueryDelegatorDelegationsResponse: {
 };
 export declare const QueryDelegatorUnbondingDelegationsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDelegatorUnbondingDelegationsRequest;
+    isSDK(o: any): o is QueryDelegatorUnbondingDelegationsRequestSDKType;
+    isAmino(o: any): o is QueryDelegatorUnbondingDelegationsRequestAmino;
     encode(message: QueryDelegatorUnbondingDelegationsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorUnbondingDelegationsRequest;
     fromJSON(object: any): QueryDelegatorUnbondingDelegationsRequest;
@@ -1084,6 +1144,10 @@ export declare const QueryDelegatorUnbondingDelegationsRequest: {
 };
 export declare const QueryDelegatorUnbondingDelegationsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDelegatorUnbondingDelegationsResponse;
+    isSDK(o: any): o is QueryDelegatorUnbondingDelegationsResponseSDKType;
+    isAmino(o: any): o is QueryDelegatorUnbondingDelegationsResponseAmino;
     encode(message: QueryDelegatorUnbondingDelegationsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorUnbondingDelegationsResponse;
     fromJSON(object: any): QueryDelegatorUnbondingDelegationsResponse;
@@ -1099,6 +1163,10 @@ export declare const QueryDelegatorUnbondingDelegationsResponse: {
 };
 export declare const QueryRedelegationsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryRedelegationsRequest;
+    isSDK(o: any): o is QueryRedelegationsRequestSDKType;
+    isAmino(o: any): o is QueryRedelegationsRequestAmino;
     encode(message: QueryRedelegationsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryRedelegationsRequest;
     fromJSON(object: any): QueryRedelegationsRequest;
@@ -1114,6 +1182,10 @@ export declare const QueryRedelegationsRequest: {
 };
 export declare const QueryRedelegationsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryRedelegationsResponse;
+    isSDK(o: any): o is QueryRedelegationsResponseSDKType;
+    isAmino(o: any): o is QueryRedelegationsResponseAmino;
     encode(message: QueryRedelegationsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryRedelegationsResponse;
     fromJSON(object: any): QueryRedelegationsResponse;
@@ -1129,6 +1201,10 @@ export declare const QueryRedelegationsResponse: {
 };
 export declare const QueryDelegatorValidatorsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDelegatorValidatorsRequest;
+    isSDK(o: any): o is QueryDelegatorValidatorsRequestSDKType;
+    isAmino(o: any): o is QueryDelegatorValidatorsRequestAmino;
     encode(message: QueryDelegatorValidatorsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorValidatorsRequest;
     fromJSON(object: any): QueryDelegatorValidatorsRequest;
@@ -1144,6 +1220,10 @@ export declare const QueryDelegatorValidatorsRequest: {
 };
 export declare const QueryDelegatorValidatorsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDelegatorValidatorsResponse;
+    isSDK(o: any): o is QueryDelegatorValidatorsResponseSDKType;
+    isAmino(o: any): o is QueryDelegatorValidatorsResponseAmino;
     encode(message: QueryDelegatorValidatorsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorValidatorsResponse;
     fromJSON(object: any): QueryDelegatorValidatorsResponse;
@@ -1159,6 +1239,10 @@ export declare const QueryDelegatorValidatorsResponse: {
 };
 export declare const QueryDelegatorValidatorRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDelegatorValidatorRequest;
+    isSDK(o: any): o is QueryDelegatorValidatorRequestSDKType;
+    isAmino(o: any): o is QueryDelegatorValidatorRequestAmino;
     encode(message: QueryDelegatorValidatorRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorValidatorRequest;
     fromJSON(object: any): QueryDelegatorValidatorRequest;
@@ -1174,6 +1258,10 @@ export declare const QueryDelegatorValidatorRequest: {
 };
 export declare const QueryDelegatorValidatorResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryDelegatorValidatorResponse;
+    isSDK(o: any): o is QueryDelegatorValidatorResponseSDKType;
+    isAmino(o: any): o is QueryDelegatorValidatorResponseAmino;
     encode(message: QueryDelegatorValidatorResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryDelegatorValidatorResponse;
     fromJSON(object: any): QueryDelegatorValidatorResponse;
@@ -1189,6 +1277,10 @@ export declare const QueryDelegatorValidatorResponse: {
 };
 export declare const QueryHistoricalInfoRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryHistoricalInfoRequest;
+    isSDK(o: any): o is QueryHistoricalInfoRequestSDKType;
+    isAmino(o: any): o is QueryHistoricalInfoRequestAmino;
     encode(message: QueryHistoricalInfoRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryHistoricalInfoRequest;
     fromJSON(object: any): QueryHistoricalInfoRequest;
@@ -1204,6 +1296,10 @@ export declare const QueryHistoricalInfoRequest: {
 };
 export declare const QueryHistoricalInfoResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryHistoricalInfoResponse;
+    isSDK(o: any): o is QueryHistoricalInfoResponseSDKType;
+    isAmino(o: any): o is QueryHistoricalInfoResponseAmino;
     encode(message: QueryHistoricalInfoResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryHistoricalInfoResponse;
     fromJSON(object: any): QueryHistoricalInfoResponse;
@@ -1219,6 +1315,10 @@ export declare const QueryHistoricalInfoResponse: {
 };
 export declare const QueryPoolRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryPoolRequest;
+    isSDK(o: any): o is QueryPoolRequestSDKType;
+    isAmino(o: any): o is QueryPoolRequestAmino;
     encode(_: QueryPoolRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolRequest;
     fromJSON(_: any): QueryPoolRequest;
@@ -1234,6 +1334,10 @@ export declare const QueryPoolRequest: {
 };
 export declare const QueryPoolResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryPoolResponse;
+    isSDK(o: any): o is QueryPoolResponseSDKType;
+    isAmino(o: any): o is QueryPoolResponseAmino;
     encode(message: QueryPoolResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolResponse;
     fromJSON(object: any): QueryPoolResponse;
@@ -1249,6 +1353,10 @@ export declare const QueryPoolResponse: {
 };
 export declare const QueryParamsRequest: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryParamsRequest;
+    isSDK(o: any): o is QueryParamsRequestSDKType;
+    isAmino(o: any): o is QueryParamsRequestAmino;
     encode(_: QueryParamsRequest, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest;
     fromJSON(_: any): QueryParamsRequest;
@@ -1264,6 +1372,10 @@ export declare const QueryParamsRequest: {
 };
 export declare const QueryParamsResponse: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is QueryParamsResponse;
+    isSDK(o: any): o is QueryParamsResponseSDKType;
+    isAmino(o: any): o is QueryParamsResponseAmino;
     encode(message: QueryParamsResponse, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse;
     fromJSON(object: any): QueryParamsResponse;

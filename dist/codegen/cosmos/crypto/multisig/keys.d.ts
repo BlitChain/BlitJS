@@ -38,6 +38,10 @@ export interface LegacyAminoPubKeySDKType {
 }
 export declare const LegacyAminoPubKey: {
     typeUrl: string;
+    aminoType: string;
+    is(o: any): o is LegacyAminoPubKey;
+    isSDK(o: any): o is LegacyAminoPubKeySDKType;
+    isAmino(o: any): o is LegacyAminoPubKeyAmino;
     encode(message: LegacyAminoPubKey, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): LegacyAminoPubKey;
     fromJSON(object: any): LegacyAminoPubKey;

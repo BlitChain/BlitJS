@@ -271,6 +271,9 @@ export interface ABCIParamsSDKType {
 }
 export declare const ConsensusParams: {
     typeUrl: string;
+    is(o: any): o is ConsensusParams;
+    isSDK(o: any): o is ConsensusParamsSDKType;
+    isAmino(o: any): o is ConsensusParamsAmino;
     encode(message: ConsensusParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ConsensusParams;
     fromJSON(object: any): ConsensusParams;
@@ -285,6 +288,9 @@ export declare const ConsensusParams: {
 };
 export declare const BlockParams: {
     typeUrl: string;
+    is(o: any): o is BlockParams;
+    isSDK(o: any): o is BlockParamsSDKType;
+    isAmino(o: any): o is BlockParamsAmino;
     encode(message: BlockParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): BlockParams;
     fromJSON(object: any): BlockParams;
@@ -299,6 +305,9 @@ export declare const BlockParams: {
 };
 export declare const EvidenceParams: {
     typeUrl: string;
+    is(o: any): o is EvidenceParams;
+    isSDK(o: any): o is EvidenceParamsSDKType;
+    isAmino(o: any): o is EvidenceParamsAmino;
     encode(message: EvidenceParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): EvidenceParams;
     fromJSON(object: any): EvidenceParams;
@@ -313,6 +322,9 @@ export declare const EvidenceParams: {
 };
 export declare const ValidatorParams: {
     typeUrl: string;
+    is(o: any): o is ValidatorParams;
+    isSDK(o: any): o is ValidatorParamsSDKType;
+    isAmino(o: any): o is ValidatorParamsAmino;
     encode(message: ValidatorParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ValidatorParams;
     fromJSON(object: any): ValidatorParams;
@@ -327,6 +339,9 @@ export declare const ValidatorParams: {
 };
 export declare const VersionParams: {
     typeUrl: string;
+    is(o: any): o is VersionParams;
+    isSDK(o: any): o is VersionParamsSDKType;
+    isAmino(o: any): o is VersionParamsAmino;
     encode(message: VersionParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): VersionParams;
     fromJSON(object: any): VersionParams;
@@ -341,6 +356,9 @@ export declare const VersionParams: {
 };
 export declare const HashedParams: {
     typeUrl: string;
+    is(o: any): o is HashedParams;
+    isSDK(o: any): o is HashedParamsSDKType;
+    isAmino(o: any): o is HashedParamsAmino;
     encode(message: HashedParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): HashedParams;
     fromJSON(object: any): HashedParams;
@@ -355,6 +373,9 @@ export declare const HashedParams: {
 };
 export declare const ABCIParams: {
     typeUrl: string;
+    is(o: any): o is ABCIParams;
+    isSDK(o: any): o is ABCIParamsSDKType;
+    isAmino(o: any): o is ABCIParamsAmino;
     encode(message: ABCIParams, writer?: BinaryWriter): BinaryWriter;
     decode(input: BinaryReader | Uint8Array, length?: number): ABCIParams;
     fromJSON(object: any): ABCIParams;

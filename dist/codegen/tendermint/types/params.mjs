@@ -2,6 +2,7 @@
 import { Duration } from "../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export const protobufPackage = "tendermint.types";
 function createBaseConsensusParams() {
     return {
@@ -14,6 +15,15 @@ function createBaseConsensusParams() {
 }
 export const ConsensusParams = {
     typeUrl: "/tendermint.types.ConsensusParams",
+    is(o) {
+        return o && o.$typeUrl === ConsensusParams.typeUrl;
+    },
+    isSDK(o) {
+        return o && o.$typeUrl === ConsensusParams.typeUrl;
+    },
+    isAmino(o) {
+        return o && o.$typeUrl === ConsensusParams.typeUrl;
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.block !== undefined) {
             BlockParams.encode(message.block, writer.uint32(10).fork()).ldelim();
@@ -132,6 +142,7 @@ export const ConsensusParams = {
         };
     }
 };
+GlobalDecoderRegistry.register(ConsensusParams.typeUrl, ConsensusParams);
 function createBaseBlockParams() {
     return {
         max_bytes: BigInt(0),
@@ -140,6 +151,15 @@ function createBaseBlockParams() {
 }
 export const BlockParams = {
     typeUrl: "/tendermint.types.BlockParams",
+    is(o) {
+        return o && (o.$typeUrl === BlockParams.typeUrl || typeof o.max_bytes === "bigint" && typeof o.max_gas === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === BlockParams.typeUrl || typeof o.max_bytes === "bigint" && typeof o.max_gas === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === BlockParams.typeUrl || typeof o.max_bytes === "bigint" && typeof o.max_gas === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.max_bytes !== BigInt(0)) {
             writer.uint32(8).int64(message.max_bytes);
@@ -219,6 +239,7 @@ export const BlockParams = {
         };
     }
 };
+GlobalDecoderRegistry.register(BlockParams.typeUrl, BlockParams);
 function createBaseEvidenceParams() {
     return {
         max_age_num_blocks: BigInt(0),
@@ -228,6 +249,15 @@ function createBaseEvidenceParams() {
 }
 export const EvidenceParams = {
     typeUrl: "/tendermint.types.EvidenceParams",
+    is(o) {
+        return o && (o.$typeUrl === EvidenceParams.typeUrl || typeof o.max_age_num_blocks === "bigint" && Duration.is(o.max_age_duration) && typeof o.max_bytes === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === EvidenceParams.typeUrl || typeof o.max_age_num_blocks === "bigint" && Duration.isSDK(o.max_age_duration) && typeof o.max_bytes === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === EvidenceParams.typeUrl || typeof o.max_age_num_blocks === "bigint" && Duration.isAmino(o.max_age_duration) && typeof o.max_bytes === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.max_age_num_blocks !== BigInt(0)) {
             writer.uint32(8).int64(message.max_age_num_blocks);
@@ -320,6 +350,7 @@ export const EvidenceParams = {
         };
     }
 };
+GlobalDecoderRegistry.register(EvidenceParams.typeUrl, EvidenceParams);
 function createBaseValidatorParams() {
     return {
         pub_key_types: []
@@ -327,6 +358,15 @@ function createBaseValidatorParams() {
 }
 export const ValidatorParams = {
     typeUrl: "/tendermint.types.ValidatorParams",
+    is(o) {
+        return o && (o.$typeUrl === ValidatorParams.typeUrl || Array.isArray(o.pub_key_types) && (!o.pub_key_types.length || typeof o.pub_key_types[0] === "string"));
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === ValidatorParams.typeUrl || Array.isArray(o.pub_key_types) && (!o.pub_key_types.length || typeof o.pub_key_types[0] === "string"));
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === ValidatorParams.typeUrl || Array.isArray(o.pub_key_types) && (!o.pub_key_types.length || typeof o.pub_key_types[0] === "string"));
+    },
     encode(message, writer = BinaryWriter.create()) {
         for (const v of message.pub_key_types) {
             writer.uint32(10).string(v);
@@ -401,6 +441,7 @@ export const ValidatorParams = {
         };
     }
 };
+GlobalDecoderRegistry.register(ValidatorParams.typeUrl, ValidatorParams);
 function createBaseVersionParams() {
     return {
         app: BigInt(0)
@@ -408,6 +449,15 @@ function createBaseVersionParams() {
 }
 export const VersionParams = {
     typeUrl: "/tendermint.types.VersionParams",
+    is(o) {
+        return o && (o.$typeUrl === VersionParams.typeUrl || typeof o.app === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === VersionParams.typeUrl || typeof o.app === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === VersionParams.typeUrl || typeof o.app === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.app !== BigInt(0)) {
             writer.uint32(8).uint64(message.app);
@@ -474,6 +524,7 @@ export const VersionParams = {
         };
     }
 };
+GlobalDecoderRegistry.register(VersionParams.typeUrl, VersionParams);
 function createBaseHashedParams() {
     return {
         block_max_bytes: BigInt(0),
@@ -482,6 +533,15 @@ function createBaseHashedParams() {
 }
 export const HashedParams = {
     typeUrl: "/tendermint.types.HashedParams",
+    is(o) {
+        return o && (o.$typeUrl === HashedParams.typeUrl || typeof o.block_max_bytes === "bigint" && typeof o.block_max_gas === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === HashedParams.typeUrl || typeof o.block_max_bytes === "bigint" && typeof o.block_max_gas === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === HashedParams.typeUrl || typeof o.block_max_bytes === "bigint" && typeof o.block_max_gas === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.block_max_bytes !== BigInt(0)) {
             writer.uint32(8).int64(message.block_max_bytes);
@@ -561,6 +621,7 @@ export const HashedParams = {
         };
     }
 };
+GlobalDecoderRegistry.register(HashedParams.typeUrl, HashedParams);
 function createBaseABCIParams() {
     return {
         vote_extensions_enable_height: BigInt(0)
@@ -568,6 +629,15 @@ function createBaseABCIParams() {
 }
 export const ABCIParams = {
     typeUrl: "/tendermint.types.ABCIParams",
+    is(o) {
+        return o && (o.$typeUrl === ABCIParams.typeUrl || typeof o.vote_extensions_enable_height === "bigint");
+    },
+    isSDK(o) {
+        return o && (o.$typeUrl === ABCIParams.typeUrl || typeof o.vote_extensions_enable_height === "bigint");
+    },
+    isAmino(o) {
+        return o && (o.$typeUrl === ABCIParams.typeUrl || typeof o.vote_extensions_enable_height === "bigint");
+    },
     encode(message, writer = BinaryWriter.create()) {
         if (message.vote_extensions_enable_height !== BigInt(0)) {
             writer.uint32(8).int64(message.vote_extensions_enable_height);
@@ -634,4 +704,5 @@ export const ABCIParams = {
         };
     }
 };
+GlobalDecoderRegistry.register(ABCIParams.typeUrl, ABCIParams);
 //# sourceMappingURL=params.js.map

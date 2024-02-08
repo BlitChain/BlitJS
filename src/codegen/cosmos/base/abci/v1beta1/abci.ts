@@ -4,6 +4,7 @@ import { Event, EventAmino, EventSDKType } from "../../../../tendermint/abci/typ
 import { Block, BlockAmino, BlockSDKType } from "../../../../tendermint/types/block";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 export const protobufPackage = "cosmos.base.abci.v1beta1";
 /**
  * TxResponse defines a structure containing relevant tx data and metadata. The
@@ -540,6 +541,16 @@ function createBaseTxResponse(): TxResponse {
 }
 export const TxResponse = {
   typeUrl: "/cosmos.base.abci.v1beta1.TxResponse",
+  aminoType: "cosmos-sdk/TxResponse",
+  is(o: any): o is TxResponse {
+    return o && (o.$typeUrl === TxResponse.typeUrl || typeof o.height === "bigint" && typeof o.txhash === "string" && typeof o.codespace === "string" && typeof o.code === "number" && typeof o.data === "string" && typeof o.raw_log === "string" && Array.isArray(o.logs) && (!o.logs.length || ABCIMessageLog.is(o.logs[0])) && typeof o.info === "string" && typeof o.gas_wanted === "bigint" && typeof o.gas_used === "bigint" && typeof o.timestamp === "string" && Array.isArray(o.events) && (!o.events.length || Event.is(o.events[0])));
+  },
+  isSDK(o: any): o is TxResponseSDKType {
+    return o && (o.$typeUrl === TxResponse.typeUrl || typeof o.height === "bigint" && typeof o.txhash === "string" && typeof o.codespace === "string" && typeof o.code === "number" && typeof o.data === "string" && typeof o.raw_log === "string" && Array.isArray(o.logs) && (!o.logs.length || ABCIMessageLog.isSDK(o.logs[0])) && typeof o.info === "string" && typeof o.gas_wanted === "bigint" && typeof o.gas_used === "bigint" && typeof o.timestamp === "string" && Array.isArray(o.events) && (!o.events.length || Event.isSDK(o.events[0])));
+  },
+  isAmino(o: any): o is TxResponseAmino {
+    return o && (o.$typeUrl === TxResponse.typeUrl || typeof o.height === "bigint" && typeof o.txhash === "string" && typeof o.codespace === "string" && typeof o.code === "number" && typeof o.data === "string" && typeof o.raw_log === "string" && Array.isArray(o.logs) && (!o.logs.length || ABCIMessageLog.isAmino(o.logs[0])) && typeof o.info === "string" && typeof o.gas_wanted === "bigint" && typeof o.gas_used === "bigint" && typeof o.timestamp === "string" && Array.isArray(o.events) && (!o.events.length || Event.isAmino(o.events[0])));
+  },
   encode(message: TxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.height !== BigInt(0)) {
       writer.uint32(8).int64(message.height);
@@ -780,6 +791,8 @@ export const TxResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(TxResponse.typeUrl, TxResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(TxResponse.aminoType, TxResponse.typeUrl);
 function createBaseABCIMessageLog(): ABCIMessageLog {
   return {
     msg_index: 0,
@@ -789,6 +802,16 @@ function createBaseABCIMessageLog(): ABCIMessageLog {
 }
 export const ABCIMessageLog = {
   typeUrl: "/cosmos.base.abci.v1beta1.ABCIMessageLog",
+  aminoType: "cosmos-sdk/ABCIMessageLog",
+  is(o: any): o is ABCIMessageLog {
+    return o && (o.$typeUrl === ABCIMessageLog.typeUrl || typeof o.msg_index === "number" && typeof o.log === "string" && Array.isArray(o.events) && (!o.events.length || StringEvent.is(o.events[0])));
+  },
+  isSDK(o: any): o is ABCIMessageLogSDKType {
+    return o && (o.$typeUrl === ABCIMessageLog.typeUrl || typeof o.msg_index === "number" && typeof o.log === "string" && Array.isArray(o.events) && (!o.events.length || StringEvent.isSDK(o.events[0])));
+  },
+  isAmino(o: any): o is ABCIMessageLogAmino {
+    return o && (o.$typeUrl === ABCIMessageLog.typeUrl || typeof o.msg_index === "number" && typeof o.log === "string" && Array.isArray(o.events) && (!o.events.length || StringEvent.isAmino(o.events[0])));
+  },
   encode(message: ABCIMessageLog, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.msg_index !== 0) {
       writer.uint32(8).uint32(message.msg_index);
@@ -893,6 +916,8 @@ export const ABCIMessageLog = {
     };
   }
 };
+GlobalDecoderRegistry.register(ABCIMessageLog.typeUrl, ABCIMessageLog);
+GlobalDecoderRegistry.registerAminoProtoMapping(ABCIMessageLog.aminoType, ABCIMessageLog.typeUrl);
 function createBaseStringEvent(): StringEvent {
   return {
     type: "",
@@ -901,6 +926,16 @@ function createBaseStringEvent(): StringEvent {
 }
 export const StringEvent = {
   typeUrl: "/cosmos.base.abci.v1beta1.StringEvent",
+  aminoType: "cosmos-sdk/StringEvent",
+  is(o: any): o is StringEvent {
+    return o && (o.$typeUrl === StringEvent.typeUrl || typeof o.type === "string" && Array.isArray(o.attributes) && (!o.attributes.length || Attribute.is(o.attributes[0])));
+  },
+  isSDK(o: any): o is StringEventSDKType {
+    return o && (o.$typeUrl === StringEvent.typeUrl || typeof o.type === "string" && Array.isArray(o.attributes) && (!o.attributes.length || Attribute.isSDK(o.attributes[0])));
+  },
+  isAmino(o: any): o is StringEventAmino {
+    return o && (o.$typeUrl === StringEvent.typeUrl || typeof o.type === "string" && Array.isArray(o.attributes) && (!o.attributes.length || Attribute.isAmino(o.attributes[0])));
+  },
   encode(message: StringEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.type !== "") {
       writer.uint32(10).string(message.type);
@@ -992,6 +1027,8 @@ export const StringEvent = {
     };
   }
 };
+GlobalDecoderRegistry.register(StringEvent.typeUrl, StringEvent);
+GlobalDecoderRegistry.registerAminoProtoMapping(StringEvent.aminoType, StringEvent.typeUrl);
 function createBaseAttribute(): Attribute {
   return {
     key: "",
@@ -1000,6 +1037,16 @@ function createBaseAttribute(): Attribute {
 }
 export const Attribute = {
   typeUrl: "/cosmos.base.abci.v1beta1.Attribute",
+  aminoType: "cosmos-sdk/Attribute",
+  is(o: any): o is Attribute {
+    return o && (o.$typeUrl === Attribute.typeUrl || typeof o.key === "string" && typeof o.value === "string");
+  },
+  isSDK(o: any): o is AttributeSDKType {
+    return o && (o.$typeUrl === Attribute.typeUrl || typeof o.key === "string" && typeof o.value === "string");
+  },
+  isAmino(o: any): o is AttributeAmino {
+    return o && (o.$typeUrl === Attribute.typeUrl || typeof o.key === "string" && typeof o.value === "string");
+  },
   encode(message: Attribute, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.key !== "") {
       writer.uint32(10).string(message.key);
@@ -1085,6 +1132,8 @@ export const Attribute = {
     };
   }
 };
+GlobalDecoderRegistry.register(Attribute.typeUrl, Attribute);
+GlobalDecoderRegistry.registerAminoProtoMapping(Attribute.aminoType, Attribute.typeUrl);
 function createBaseGasInfo(): GasInfo {
   return {
     gas_wanted: BigInt(0),
@@ -1093,6 +1142,16 @@ function createBaseGasInfo(): GasInfo {
 }
 export const GasInfo = {
   typeUrl: "/cosmos.base.abci.v1beta1.GasInfo",
+  aminoType: "cosmos-sdk/GasInfo",
+  is(o: any): o is GasInfo {
+    return o && (o.$typeUrl === GasInfo.typeUrl || typeof o.gas_wanted === "bigint" && typeof o.gas_used === "bigint");
+  },
+  isSDK(o: any): o is GasInfoSDKType {
+    return o && (o.$typeUrl === GasInfo.typeUrl || typeof o.gas_wanted === "bigint" && typeof o.gas_used === "bigint");
+  },
+  isAmino(o: any): o is GasInfoAmino {
+    return o && (o.$typeUrl === GasInfo.typeUrl || typeof o.gas_wanted === "bigint" && typeof o.gas_used === "bigint");
+  },
   encode(message: GasInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.gas_wanted !== BigInt(0)) {
       writer.uint32(8).uint64(message.gas_wanted);
@@ -1178,6 +1237,8 @@ export const GasInfo = {
     };
   }
 };
+GlobalDecoderRegistry.register(GasInfo.typeUrl, GasInfo);
+GlobalDecoderRegistry.registerAminoProtoMapping(GasInfo.aminoType, GasInfo.typeUrl);
 function createBaseResult(): Result {
   return {
     data: new Uint8Array(),
@@ -1188,6 +1249,16 @@ function createBaseResult(): Result {
 }
 export const Result = {
   typeUrl: "/cosmos.base.abci.v1beta1.Result",
+  aminoType: "cosmos-sdk/Result",
+  is(o: any): o is Result {
+    return o && (o.$typeUrl === Result.typeUrl || (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.log === "string" && Array.isArray(o.events) && (!o.events.length || Event.is(o.events[0])) && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.is(o.msg_responses[0])));
+  },
+  isSDK(o: any): o is ResultSDKType {
+    return o && (o.$typeUrl === Result.typeUrl || (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.log === "string" && Array.isArray(o.events) && (!o.events.length || Event.isSDK(o.events[0])) && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isSDK(o.msg_responses[0])));
+  },
+  isAmino(o: any): o is ResultAmino {
+    return o && (o.$typeUrl === Result.typeUrl || (o.data instanceof Uint8Array || typeof o.data === "string") && typeof o.log === "string" && Array.isArray(o.events) && (!o.events.length || Event.isAmino(o.events[0])) && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isAmino(o.msg_responses[0])));
+  },
   encode(message: Result, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
@@ -1311,6 +1382,8 @@ export const Result = {
     };
   }
 };
+GlobalDecoderRegistry.register(Result.typeUrl, Result);
+GlobalDecoderRegistry.registerAminoProtoMapping(Result.aminoType, Result.typeUrl);
 function createBaseSimulationResponse(): SimulationResponse {
   return {
     gas_info: GasInfo.fromPartial({}),
@@ -1319,6 +1392,16 @@ function createBaseSimulationResponse(): SimulationResponse {
 }
 export const SimulationResponse = {
   typeUrl: "/cosmos.base.abci.v1beta1.SimulationResponse",
+  aminoType: "cosmos-sdk/SimulationResponse",
+  is(o: any): o is SimulationResponse {
+    return o && (o.$typeUrl === SimulationResponse.typeUrl || GasInfo.is(o.gas_info));
+  },
+  isSDK(o: any): o is SimulationResponseSDKType {
+    return o && (o.$typeUrl === SimulationResponse.typeUrl || GasInfo.isSDK(o.gas_info));
+  },
+  isAmino(o: any): o is SimulationResponseAmino {
+    return o && (o.$typeUrl === SimulationResponse.typeUrl || GasInfo.isAmino(o.gas_info));
+  },
   encode(message: SimulationResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.gas_info !== undefined) {
       GasInfo.encode(message.gas_info, writer.uint32(10).fork()).ldelim();
@@ -1404,6 +1487,8 @@ export const SimulationResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(SimulationResponse.typeUrl, SimulationResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(SimulationResponse.aminoType, SimulationResponse.typeUrl);
 function createBaseMsgData(): MsgData {
   return {
     msg_type: "",
@@ -1412,6 +1497,16 @@ function createBaseMsgData(): MsgData {
 }
 export const MsgData = {
   typeUrl: "/cosmos.base.abci.v1beta1.MsgData",
+  aminoType: "cosmos-sdk/MsgData",
+  is(o: any): o is MsgData {
+    return o && (o.$typeUrl === MsgData.typeUrl || typeof o.msg_type === "string" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
+  isSDK(o: any): o is MsgDataSDKType {
+    return o && (o.$typeUrl === MsgData.typeUrl || typeof o.msg_type === "string" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
+  isAmino(o: any): o is MsgDataAmino {
+    return o && (o.$typeUrl === MsgData.typeUrl || typeof o.msg_type === "string" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
   encode(message: MsgData, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.msg_type !== "") {
       writer.uint32(10).string(message.msg_type);
@@ -1497,6 +1592,8 @@ export const MsgData = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgData.typeUrl, MsgData);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgData.aminoType, MsgData.typeUrl);
 function createBaseTxMsgData(): TxMsgData {
   return {
     data: [],
@@ -1505,6 +1602,16 @@ function createBaseTxMsgData(): TxMsgData {
 }
 export const TxMsgData = {
   typeUrl: "/cosmos.base.abci.v1beta1.TxMsgData",
+  aminoType: "cosmos-sdk/TxMsgData",
+  is(o: any): o is TxMsgData {
+    return o && (o.$typeUrl === TxMsgData.typeUrl || Array.isArray(o.data) && (!o.data.length || MsgData.is(o.data[0])) && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.is(o.msg_responses[0])));
+  },
+  isSDK(o: any): o is TxMsgDataSDKType {
+    return o && (o.$typeUrl === TxMsgData.typeUrl || Array.isArray(o.data) && (!o.data.length || MsgData.isSDK(o.data[0])) && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isSDK(o.msg_responses[0])));
+  },
+  isAmino(o: any): o is TxMsgDataAmino {
+    return o && (o.$typeUrl === TxMsgData.typeUrl || Array.isArray(o.data) && (!o.data.length || MsgData.isAmino(o.data[0])) && Array.isArray(o.msg_responses) && (!o.msg_responses.length || Any.isAmino(o.msg_responses[0])));
+  },
   encode(message: TxMsgData, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.data) {
       MsgData.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1602,6 +1709,8 @@ export const TxMsgData = {
     };
   }
 };
+GlobalDecoderRegistry.register(TxMsgData.typeUrl, TxMsgData);
+GlobalDecoderRegistry.registerAminoProtoMapping(TxMsgData.aminoType, TxMsgData.typeUrl);
 function createBaseSearchTxsResult(): SearchTxsResult {
   return {
     total_count: BigInt(0),
@@ -1614,6 +1723,16 @@ function createBaseSearchTxsResult(): SearchTxsResult {
 }
 export const SearchTxsResult = {
   typeUrl: "/cosmos.base.abci.v1beta1.SearchTxsResult",
+  aminoType: "cosmos-sdk/SearchTxsResult",
+  is(o: any): o is SearchTxsResult {
+    return o && (o.$typeUrl === SearchTxsResult.typeUrl || typeof o.total_count === "bigint" && typeof o.count === "bigint" && typeof o.page_number === "bigint" && typeof o.page_total === "bigint" && typeof o.limit === "bigint" && Array.isArray(o.txs) && (!o.txs.length || TxResponse.is(o.txs[0])));
+  },
+  isSDK(o: any): o is SearchTxsResultSDKType {
+    return o && (o.$typeUrl === SearchTxsResult.typeUrl || typeof o.total_count === "bigint" && typeof o.count === "bigint" && typeof o.page_number === "bigint" && typeof o.page_total === "bigint" && typeof o.limit === "bigint" && Array.isArray(o.txs) && (!o.txs.length || TxResponse.isSDK(o.txs[0])));
+  },
+  isAmino(o: any): o is SearchTxsResultAmino {
+    return o && (o.$typeUrl === SearchTxsResult.typeUrl || typeof o.total_count === "bigint" && typeof o.count === "bigint" && typeof o.page_number === "bigint" && typeof o.page_total === "bigint" && typeof o.limit === "bigint" && Array.isArray(o.txs) && (!o.txs.length || TxResponse.isAmino(o.txs[0])));
+  },
   encode(message: SearchTxsResult, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.total_count !== BigInt(0)) {
       writer.uint32(8).uint64(message.total_count);
@@ -1757,6 +1876,8 @@ export const SearchTxsResult = {
     };
   }
 };
+GlobalDecoderRegistry.register(SearchTxsResult.typeUrl, SearchTxsResult);
+GlobalDecoderRegistry.registerAminoProtoMapping(SearchTxsResult.aminoType, SearchTxsResult.typeUrl);
 function createBaseSearchBlocksResult(): SearchBlocksResult {
   return {
     total_count: BigInt(0),
@@ -1769,6 +1890,16 @@ function createBaseSearchBlocksResult(): SearchBlocksResult {
 }
 export const SearchBlocksResult = {
   typeUrl: "/cosmos.base.abci.v1beta1.SearchBlocksResult",
+  aminoType: "cosmos-sdk/SearchBlocksResult",
+  is(o: any): o is SearchBlocksResult {
+    return o && (o.$typeUrl === SearchBlocksResult.typeUrl || typeof o.total_count === "bigint" && typeof o.count === "bigint" && typeof o.page_number === "bigint" && typeof o.page_total === "bigint" && typeof o.limit === "bigint" && Array.isArray(o.blocks) && (!o.blocks.length || Block.is(o.blocks[0])));
+  },
+  isSDK(o: any): o is SearchBlocksResultSDKType {
+    return o && (o.$typeUrl === SearchBlocksResult.typeUrl || typeof o.total_count === "bigint" && typeof o.count === "bigint" && typeof o.page_number === "bigint" && typeof o.page_total === "bigint" && typeof o.limit === "bigint" && Array.isArray(o.blocks) && (!o.blocks.length || Block.isSDK(o.blocks[0])));
+  },
+  isAmino(o: any): o is SearchBlocksResultAmino {
+    return o && (o.$typeUrl === SearchBlocksResult.typeUrl || typeof o.total_count === "bigint" && typeof o.count === "bigint" && typeof o.page_number === "bigint" && typeof o.page_total === "bigint" && typeof o.limit === "bigint" && Array.isArray(o.blocks) && (!o.blocks.length || Block.isAmino(o.blocks[0])));
+  },
   encode(message: SearchBlocksResult, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.total_count !== BigInt(0)) {
       writer.uint32(8).int64(message.total_count);
@@ -1912,3 +2043,5 @@ export const SearchBlocksResult = {
     };
   }
 };
+GlobalDecoderRegistry.register(SearchBlocksResult.typeUrl, SearchBlocksResult);
+GlobalDecoderRegistry.registerAminoProtoMapping(SearchBlocksResult.aminoType, SearchBlocksResult.typeUrl);
