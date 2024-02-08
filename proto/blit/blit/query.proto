@@ -9,7 +9,6 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "blit/blit/params.proto";
 import "blit/blit/task.proto";
-import "blit/blit/task_result.proto";
 import "blit/blit/future_task.proto";
 
 option go_package = "blit/x/blit/types";
