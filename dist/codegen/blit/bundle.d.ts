@@ -15,7 +15,7 @@ import * as _15 from "./storage/tx";
 import * as _185 from "./blit/query.lcd";
 import * as _186 from "./script/query.lcd";
 import * as _187 from "./storage/query.lcd";
-import * as _188 from "./blit/query.rpc.Query";
+import * as _188 from "./blit/query.rpc.Service";
 import * as _189 from "./script/query.rpc.Query";
 import * as _190 from "./storage/query.rpc.Query";
 import * as _191 from "./blit/tx.rpc.msg";
@@ -26,6 +26,8 @@ export declare namespace blit {
         Msg: typeof _191.Msg;
         Query: typeof _188.Query;
         QueryClientImpl: typeof _188.QueryClientImpl;
+        Service: typeof _188.Service;
+        ServiceClientImpl: typeof _188.ServiceClientImpl;
         LCDQueryClient: typeof _185.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
@@ -337,6 +339,34 @@ export declare namespace blit {
             fromProtoMsg(message: _3.QueryParamsResponseProtoMsg): _3.QueryParamsResponse;
             toProto(message: _3.QueryParamsResponse): Uint8Array;
             toProtoMsg(message: _3.QueryParamsResponse): _3.QueryParamsResponseProtoMsg;
+        };
+        EndpointsRequest: {
+            typeUrl: string;
+            encode(_: _3.EndpointsRequest, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _3.EndpointsRequest;
+            fromJSON(_: any): _3.EndpointsRequest;
+            toJSON(_: _3.EndpointsRequest): unknown;
+            fromPartial(_: Partial<_3.EndpointsRequest>): _3.EndpointsRequest;
+            fromAmino(_: _3.EndpointsRequestAmino): _3.EndpointsRequest;
+            toAmino(_: _3.EndpointsRequest): _3.EndpointsRequestAmino;
+            fromAminoMsg(object: _3.EndpointsRequestAminoMsg): _3.EndpointsRequest;
+            fromProtoMsg(message: _3.EndpointsRequestProtoMsg): _3.EndpointsRequest;
+            toProto(message: _3.EndpointsRequest): Uint8Array;
+            toProtoMsg(message: _3.EndpointsRequest): _3.EndpointsRequestProtoMsg;
+        };
+        EndpointsResponse: {
+            typeUrl: string;
+            encode(message: _3.EndpointsResponse, writer?: import("..").BinaryWriter): import("..").BinaryWriter;
+            decode(input: import("..").BinaryReader | Uint8Array, length?: number): _3.EndpointsResponse;
+            fromJSON(object: any): _3.EndpointsResponse;
+            toJSON(message: _3.EndpointsResponse): unknown;
+            fromPartial(object: Partial<_3.EndpointsResponse>): _3.EndpointsResponse;
+            fromAmino(object: _3.EndpointsResponseAmino): _3.EndpointsResponse;
+            toAmino(message: _3.EndpointsResponse): _3.EndpointsResponseAmino;
+            fromAminoMsg(object: _3.EndpointsResponseAminoMsg): _3.EndpointsResponse;
+            fromProtoMsg(message: _3.EndpointsResponseProtoMsg): _3.EndpointsResponse;
+            toProto(message: _3.EndpointsResponse): Uint8Array;
+            toProtoMsg(message: _3.EndpointsResponse): _3.EndpointsResponseProtoMsg;
         };
         Params: {
             typeUrl: string;
@@ -1237,7 +1267,7 @@ export declare namespace blit {
             endpoint: string;
         }) => Promise<{
             blit: {
-                blit: _188.QueryClientImpl;
+                blit: _188.ServiceClientImpl;
                 script: _189.QueryClientImpl;
                 storage: _190.QueryClientImpl;
             };

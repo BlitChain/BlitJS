@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QueryClientImpl = exports.Query = void 0;
+exports.ServiceClientImpl = exports.Service = exports.QueryClientImpl = exports.Query = void 0;
 //@ts-nocheck
 const fm = __importStar(require("../../grpc-gateway"));
 class Query {
@@ -52,4 +52,29 @@ class QueryClientImpl {
     }
 }
 exports.QueryClientImpl = QueryClientImpl;
-//# sourceMappingURL=query.rpc.Query.js.map
+class Service {
+    /** Config queries for the operator configuration. */
+    static Endpoints(request, initRequest) {
+        return fm.fetchReq(`/blit/blit/Endpoints`, {
+            ...initRequest,
+            method: "POST",
+            body: JSON.stringify(request, fm.replacer)
+        });
+    }
+}
+exports.Service = Service;
+class ServiceClientImpl {
+    url;
+    constructor(url) {
+        this.url = url;
+    }
+    /** Config queries for the operator configuration. */
+    async Endpoints(req, headers) {
+        return Service.Endpoints(req, {
+            headers,
+            pathPrefix: this.url
+        });
+    }
+}
+exports.ServiceClientImpl = ServiceClientImpl;
+//# sourceMappingURL=query.rpc.Service.js.map

@@ -24,4 +24,27 @@ export class QueryClientImpl {
         });
     }
 }
-//# sourceMappingURL=query.rpc.Query.js.map
+export class Service {
+    /** Config queries for the operator configuration. */
+    static Endpoints(request, initRequest) {
+        return fm.fetchReq(`/blit/blit/Endpoints`, {
+            ...initRequest,
+            method: "POST",
+            body: JSON.stringify(request, fm.replacer)
+        });
+    }
+}
+export class ServiceClientImpl {
+    url;
+    constructor(url) {
+        this.url = url;
+    }
+    /** Config queries for the operator configuration. */
+    async Endpoints(req, headers) {
+        return Service.Endpoints(req, {
+            headers,
+            pathPrefix: this.url
+        });
+    }
+}
+//# sourceMappingURL=query.rpc.Service.js.map

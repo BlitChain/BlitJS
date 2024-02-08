@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType } from "./query";
+import { EndpointsRequest, EndpointsResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -9,11 +9,11 @@ export class LCDQueryClient {
     requestClient: LCDClient;
   }) {
     this.req = requestClient;
-    this.params = this.params.bind(this);
+    this.endpoints = this.endpoints.bind(this);
   }
-  /* Parameters queries the parameters of the module. */
-  async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
-    const endpoint = `blit/blit/params`;
-    return await this.req.get<QueryParamsResponseSDKType>(endpoint);
+  /* Config queries for the operator configuration. */
+  async endpoints(_params: EndpointsRequest = {}): Promise<EndpointsResponseSDKType> {
+    const endpoint = `blit/services/endpoints`;
+    return await this.req.get<EndpointsResponseSDKType>(endpoint);
   }
 }

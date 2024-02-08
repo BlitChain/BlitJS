@@ -23,7 +23,7 @@ import * as _184 from "./storage/tx.registry";
 import * as _185 from "./blit/query.lcd";
 import * as _186 from "./script/query.lcd";
 import * as _187 from "./storage/query.lcd";
-import * as _188 from "./blit/query.rpc.Query";
+import * as _188 from "./blit/query.rpc.Service";
 import * as _189 from "./script/query.rpc.Query";
 import * as _190 from "./storage/query.rpc.Query";
 import * as _191 from "./blit/tx.rpc.msg";
