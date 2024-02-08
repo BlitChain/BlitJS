@@ -17,9 +17,9 @@ export interface QueryBalanceRequestProtoMsg {
 /** QueryBalanceRequest is the request type for the Query/Balance RPC method. */
 export interface QueryBalanceRequestAmino {
     /** address is the address to query balances for. */
-    address: string;
+    address?: string;
     /** denom is the coin denom to query balances for. */
-    denom: string;
+    denom?: string;
 }
 export interface QueryBalanceRequestAminoMsg {
     type: "cosmos-sdk/QueryBalanceRequest";
@@ -72,7 +72,7 @@ export interface QueryAllBalancesRequestProtoMsg {
 /** QueryBalanceRequest is the request type for the Query/AllBalances RPC method. */
 export interface QueryAllBalancesRequestAmino {
     /** address is the address to query balances for. */
-    address: string;
+    address?: string;
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestAmino;
     /**
@@ -80,7 +80,7 @@ export interface QueryAllBalancesRequestAmino {
      *
      * Since: cosmos-sdk 0.50
      */
-    resolve_denom: boolean;
+    resolve_denom?: boolean;
 }
 export interface QueryAllBalancesRequestAminoMsg {
     type: "cosmos-sdk/QueryAllBalancesRequest";
@@ -152,7 +152,7 @@ export interface QuerySpendableBalancesRequestProtoMsg {
  */
 export interface QuerySpendableBalancesRequestAmino {
     /** address is the address to query spendable balances for. */
-    address: string;
+    address?: string;
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestAmino;
 }
@@ -236,9 +236,9 @@ export interface QuerySpendableBalanceByDenomRequestProtoMsg {
  */
 export interface QuerySpendableBalanceByDenomRequestAmino {
     /** address is the address to query balances for. */
-    address: string;
+    address?: string;
     /** denom is the coin denom to query balances for. */
-    denom: string;
+    denom?: string;
 }
 export interface QuerySpendableBalanceByDenomRequestAminoMsg {
     type: "cosmos-sdk/QuerySpendableBalanceByDenomRequest";
@@ -386,7 +386,7 @@ export interface QuerySupplyOfRequestProtoMsg {
 /** QuerySupplyOfRequest is the request type for the Query/SupplyOf RPC method. */
 export interface QuerySupplyOfRequestAmino {
     /** denom is the coin denom to query balances for. */
-    denom: string;
+    denom?: string;
 }
 export interface QuerySupplyOfRequestAminoMsg {
     type: "cosmos-sdk/QuerySupplyOfRequest";
@@ -408,7 +408,7 @@ export interface QuerySupplyOfResponseProtoMsg {
 /** QuerySupplyOfResponse is the response type for the Query/SupplyOf RPC method. */
 export interface QuerySupplyOfResponseAmino {
     /** amount is the supply of the coin. */
-    amount?: CoinAmino;
+    amount: CoinAmino;
 }
 export interface QuerySupplyOfResponseAminoMsg {
     type: "cosmos-sdk/QuerySupplyOfResponse";
@@ -447,7 +447,7 @@ export interface QueryParamsResponseProtoMsg {
 /** QueryParamsResponse defines the response type for querying x/bank parameters. */
 export interface QueryParamsResponseAmino {
     /** params provides the parameters of the bank module. */
-    params?: ParamsAmino;
+    params: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
     type: "cosmos-sdk/QueryParamsResponse";
@@ -527,7 +527,7 @@ export interface QueryDenomMetadataRequestProtoMsg {
 /** QueryDenomMetadataRequest is the request type for the Query/DenomMetadata RPC method. */
 export interface QueryDenomMetadataRequestAmino {
     /** denom is the coin denom to query the metadata for. */
-    denom: string;
+    denom?: string;
 }
 export interface QueryDenomMetadataRequestAminoMsg {
     type: "cosmos-sdk/QueryDenomMetadataRequest";
@@ -555,7 +555,7 @@ export interface QueryDenomMetadataResponseProtoMsg {
  */
 export interface QueryDenomMetadataResponseAmino {
     /** metadata describes and provides all the client information for the requested token. */
-    metadata?: MetadataAmino;
+    metadata: MetadataAmino;
 }
 export interface QueryDenomMetadataResponseAminoMsg {
     type: "cosmos-sdk/QueryDenomMetadataResponse";
@@ -586,7 +586,7 @@ export interface QueryDenomMetadataByQueryStringRequestProtoMsg {
  */
 export interface QueryDenomMetadataByQueryStringRequestAmino {
     /** denom is the coin denom to query the metadata for. */
-    denom: string;
+    denom?: string;
 }
 export interface QueryDenomMetadataByQueryStringRequestAminoMsg {
     type: "cosmos-sdk/QueryDenomMetadataByQueryStringRequest";
@@ -617,7 +617,7 @@ export interface QueryDenomMetadataByQueryStringResponseProtoMsg {
  */
 export interface QueryDenomMetadataByQueryStringResponseAmino {
     /** metadata describes and provides all the client information for the requested token. */
-    metadata?: MetadataAmino;
+    metadata: MetadataAmino;
 }
 export interface QueryDenomMetadataByQueryStringResponseAminoMsg {
     type: "cosmos-sdk/QueryDenomMetadataByQueryStringResponse";
@@ -652,7 +652,7 @@ export interface QueryDenomOwnersRequestProtoMsg {
  */
 export interface QueryDenomOwnersRequestAmino {
     /** denom defines the coin denomination to query all account holders for. */
-    denom: string;
+    denom?: string;
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestAmino;
 }
@@ -695,9 +695,9 @@ export interface DenomOwnerProtoMsg {
  */
 export interface DenomOwnerAmino {
     /** address defines the address that owns a particular denomination. */
-    address: string;
+    address?: string;
     /** balance is the balance of the denominated coin for an account. */
-    balance?: CoinAmino;
+    balance: CoinAmino;
 }
 export interface DenomOwnerAminoMsg {
     type: "cosmos-sdk/DenomOwner";
@@ -734,7 +734,7 @@ export interface QueryDenomOwnersResponseProtoMsg {
  * Since: cosmos-sdk 0.46
  */
 export interface QueryDenomOwnersResponseAmino {
-    denom_owners: DenomOwnerAmino[];
+    denom_owners?: DenomOwnerAmino[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;
 }
@@ -776,7 +776,7 @@ export interface QuerySendEnabledRequestProtoMsg {
  */
 export interface QuerySendEnabledRequestAmino {
     /** denoms is the specific denoms you want look up. Leave empty to get all entries. */
-    denoms: string[];
+    denoms?: string[];
     /**
      * pagination defines an optional pagination for the request. This field is
      * only read if the denoms field is empty.
@@ -819,7 +819,7 @@ export interface QuerySendEnabledResponseProtoMsg {
  * Since: cosmos-sdk 0.47
  */
 export interface QuerySendEnabledResponseAmino {
-    send_enabled: SendEnabledAmino[];
+    send_enabled?: SendEnabledAmino[];
     /**
      * pagination defines the pagination in the response. This field is only
      * populated if the denoms field in the request is empty.

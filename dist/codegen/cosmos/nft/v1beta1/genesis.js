@@ -72,10 +72,10 @@ exports.GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            classes: Array.isArray(object?.classes) ? object.classes.map((e) => nft_1.Class.fromAmino(e)) : [],
-            entries: Array.isArray(object?.entries) ? object.entries.map((e) => exports.Entry.fromAmino(e)) : []
-        };
+        const message = createBaseGenesisState();
+        message.classes = object.classes?.map(e => nft_1.Class.fromAmino(e)) || [];
+        message.entries = object.entries?.map(e => exports.Entry.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -176,10 +176,12 @@ exports.Entry = {
         return message;
     },
     fromAmino(object) {
-        return {
-            owner: object.owner,
-            nfts: Array.isArray(object?.nfts) ? object.nfts.map((e) => nft_1.NFT.fromAmino(e)) : []
-        };
+        const message = createBaseEntry();
+        if (object.owner !== undefined && object.owner !== null) {
+            message.owner = object.owner;
+        }
+        message.nfts = object.nfts?.map(e => nft_1.NFT.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

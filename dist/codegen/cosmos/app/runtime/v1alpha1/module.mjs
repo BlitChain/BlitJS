@@ -168,17 +168,19 @@ export const Module = {
         return message;
     },
     fromAmino(object) {
-        return {
-            app_name: object.app_name,
-            begin_blockers: Array.isArray(object?.begin_blockers) ? object.begin_blockers.map((e) => e) : [],
-            end_blockers: Array.isArray(object?.end_blockers) ? object.end_blockers.map((e) => e) : [],
-            init_genesis: Array.isArray(object?.init_genesis) ? object.init_genesis.map((e) => e) : [],
-            export_genesis: Array.isArray(object?.export_genesis) ? object.export_genesis.map((e) => e) : [],
-            override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e) => StoreKeyConfig.fromAmino(e)) : [],
-            order_migrations: Array.isArray(object?.order_migrations) ? object.order_migrations.map((e) => e) : [],
-            precommiters: Array.isArray(object?.precommiters) ? object.precommiters.map((e) => e) : [],
-            prepare_check_staters: Array.isArray(object?.prepare_check_staters) ? object.prepare_check_staters.map((e) => e) : []
-        };
+        const message = createBaseModule();
+        if (object.app_name !== undefined && object.app_name !== null) {
+            message.app_name = object.app_name;
+        }
+        message.begin_blockers = object.begin_blockers?.map(e => e) || [];
+        message.end_blockers = object.end_blockers?.map(e => e) || [];
+        message.init_genesis = object.init_genesis?.map(e => e) || [];
+        message.export_genesis = object.export_genesis?.map(e => e) || [];
+        message.override_store_keys = object.override_store_keys?.map(e => StoreKeyConfig.fromAmino(e)) || [];
+        message.order_migrations = object.order_migrations?.map(e => e) || [];
+        message.precommiters = object.precommiters?.map(e => e) || [];
+        message.prepare_check_staters = object.prepare_check_staters?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -311,10 +313,14 @@ export const StoreKeyConfig = {
         return message;
     },
     fromAmino(object) {
-        return {
-            module_name: object.module_name,
-            kv_store_key: object.kv_store_key
-        };
+        const message = createBaseStoreKeyConfig();
+        if (object.module_name !== undefined && object.module_name !== null) {
+            message.module_name = object.module_name;
+        }
+        if (object.kv_store_key !== undefined && object.kv_store_key !== null) {
+            message.kv_store_key = object.kv_store_key;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

@@ -63,10 +63,14 @@ exports.GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            controller_genesis_state: object?.controller_genesis_state ? exports.ControllerGenesisState.fromAmino(object.controller_genesis_state) : undefined,
-            host_genesis_state: object?.host_genesis_state ? exports.HostGenesisState.fromAmino(object.host_genesis_state) : undefined
-        };
+        const message = createBaseGenesisState();
+        if (object.controller_genesis_state !== undefined && object.controller_genesis_state !== null) {
+            message.controller_genesis_state = exports.ControllerGenesisState.fromAmino(object.controller_genesis_state);
+        }
+        if (object.host_genesis_state !== undefined && object.host_genesis_state !== null) {
+            message.host_genesis_state = exports.HostGenesisState.fromAmino(object.host_genesis_state);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -187,12 +191,14 @@ exports.ControllerGenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            active_channels: Array.isArray(object?.active_channels) ? object.active_channels.map((e) => exports.ActiveChannel.fromAmino(e)) : [],
-            interchain_accounts: Array.isArray(object?.interchain_accounts) ? object.interchain_accounts.map((e) => exports.RegisteredInterchainAccount.fromAmino(e)) : [],
-            ports: Array.isArray(object?.ports) ? object.ports.map((e) => e) : [],
-            params: object?.params ? controller_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseControllerGenesisState();
+        message.active_channels = object.active_channels?.map(e => exports.ActiveChannel.fromAmino(e)) || [];
+        message.interchain_accounts = object.interchain_accounts?.map(e => exports.RegisteredInterchainAccount.fromAmino(e)) || [];
+        message.ports = object.ports?.map(e => e) || [];
+        if (object.params !== undefined && object.params !== null) {
+            message.params = controller_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -325,12 +331,16 @@ exports.HostGenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            active_channels: Array.isArray(object?.active_channels) ? object.active_channels.map((e) => exports.ActiveChannel.fromAmino(e)) : [],
-            interchain_accounts: Array.isArray(object?.interchain_accounts) ? object.interchain_accounts.map((e) => exports.RegisteredInterchainAccount.fromAmino(e)) : [],
-            port: object.port,
-            params: object?.params ? host_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseHostGenesisState();
+        message.active_channels = object.active_channels?.map(e => exports.ActiveChannel.fromAmino(e)) || [];
+        message.interchain_accounts = object.interchain_accounts?.map(e => exports.RegisteredInterchainAccount.fromAmino(e)) || [];
+        if (object.port !== undefined && object.port !== null) {
+            message.port = object.port;
+        }
+        if (object.params !== undefined && object.params !== null) {
+            message.params = host_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -448,12 +458,20 @@ exports.ActiveChannel = {
         return message;
     },
     fromAmino(object) {
-        return {
-            connection_id: object.connection_id,
-            port_id: object.port_id,
-            channel_id: object.channel_id,
-            is_middleware_enabled: object.is_middleware_enabled
-        };
+        const message = createBaseActiveChannel();
+        if (object.connection_id !== undefined && object.connection_id !== null) {
+            message.connection_id = object.connection_id;
+        }
+        if (object.port_id !== undefined && object.port_id !== null) {
+            message.port_id = object.port_id;
+        }
+        if (object.channel_id !== undefined && object.channel_id !== null) {
+            message.channel_id = object.channel_id;
+        }
+        if (object.is_middleware_enabled !== undefined && object.is_middleware_enabled !== null) {
+            message.is_middleware_enabled = object.is_middleware_enabled;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -551,11 +569,17 @@ exports.RegisteredInterchainAccount = {
         return message;
     },
     fromAmino(object) {
-        return {
-            connection_id: object.connection_id,
-            port_id: object.port_id,
-            account_address: object.account_address
-        };
+        const message = createBaseRegisteredInterchainAccount();
+        if (object.connection_id !== undefined && object.connection_id !== null) {
+            message.connection_id = object.connection_id;
+        }
+        if (object.port_id !== undefined && object.port_id !== null) {
+            message.port_id = object.port_id;
+        }
+        if (object.account_address !== undefined && object.account_address !== null) {
+            message.account_address = object.account_address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

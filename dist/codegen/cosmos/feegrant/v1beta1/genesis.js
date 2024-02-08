@@ -56,9 +56,9 @@ exports.GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            allowances: Array.isArray(object?.allowances) ? object.allowances.map((e) => feegrant_1.Grant.fromAmino(e)) : []
-        };
+        const message = createBaseGenesisState();
+        message.allowances = object.allowances?.map(e => feegrant_1.Grant.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

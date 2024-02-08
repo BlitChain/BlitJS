@@ -54,9 +54,11 @@ exports.QueryDenomTraceRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            hash: object.hash
-        };
+        const message = createBaseQueryDenomTraceRequest();
+        if (object.hash !== undefined && object.hash !== null) {
+            message.hash = object.hash;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -131,9 +133,11 @@ exports.QueryDenomTraceResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denom_trace: object?.denom_trace ? transfer_1.DenomTrace.fromAmino(object.denom_trace) : undefined
-        };
+        const message = createBaseQueryDenomTraceResponse();
+        if (object.denom_trace !== undefined && object.denom_trace !== null) {
+            message.denom_trace = transfer_1.DenomTrace.fromAmino(object.denom_trace);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -208,9 +212,11 @@ exports.QueryDenomTracesRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDenomTracesRequest();
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -300,10 +306,12 @@ exports.QueryDenomTracesResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denom_traces: Array.isArray(object?.denom_traces) ? object.denom_traces.map((e) => transfer_1.DenomTrace.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDenomTracesResponse();
+        message.denom_traces = object.denom_traces?.map(e => transfer_1.DenomTrace.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -372,7 +380,8 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryParamsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -446,9 +455,11 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? transfer_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseQueryParamsResponse();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = transfer_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -523,9 +534,11 @@ exports.QueryDenomHashRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            trace: object.trace
-        };
+        const message = createBaseQueryDenomHashRequest();
+        if (object.trace !== undefined && object.trace !== null) {
+            message.trace = object.trace;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -600,9 +613,11 @@ exports.QueryDenomHashResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            hash: object.hash
-        };
+        const message = createBaseQueryDenomHashResponse();
+        if (object.hash !== undefined && object.hash !== null) {
+            message.hash = object.hash;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -687,10 +702,14 @@ exports.QueryEscrowAddressRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            port_id: object.port_id,
-            channel_id: object.channel_id
-        };
+        const message = createBaseQueryEscrowAddressRequest();
+        if (object.port_id !== undefined && object.port_id !== null) {
+            message.port_id = object.port_id;
+        }
+        if (object.channel_id !== undefined && object.channel_id !== null) {
+            message.channel_id = object.channel_id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -766,9 +785,11 @@ exports.QueryEscrowAddressResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            escrow_address: object.escrow_address
-        };
+        const message = createBaseQueryEscrowAddressResponse();
+        if (object.escrow_address !== undefined && object.escrow_address !== null) {
+            message.escrow_address = object.escrow_address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -843,9 +864,11 @@ exports.QueryTotalEscrowForDenomRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denom: object.denom
-        };
+        const message = createBaseQueryTotalEscrowForDenomRequest();
+        if (object.denom !== undefined && object.denom !== null) {
+            message.denom = object.denom;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -920,9 +943,11 @@ exports.QueryTotalEscrowForDenomResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            amount: object?.amount ? coin_1.Coin.fromAmino(object.amount) : undefined
-        };
+        const message = createBaseQueryTotalEscrowForDenomResponse();
+        if (object.amount !== undefined && object.amount !== null) {
+            message.amount = coin_1.Coin.fromAmino(object.amount);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

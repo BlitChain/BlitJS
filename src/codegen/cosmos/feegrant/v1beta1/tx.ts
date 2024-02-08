@@ -29,9 +29,9 @@ export type MsgGrantAllowanceEncoded = Omit<MsgGrantAllowance, "allowance"> & {
  */
 export interface MsgGrantAllowanceAmino {
   /** granter is the address of the user granting an allowance of their funds. */
-  granter: string;
+  granter?: string;
   /** grantee is the address of the user being granted an allowance of another user's funds. */
-  grantee: string;
+  grantee?: string;
   /** allowance can be any of basic, periodic, allowed fee allowance. */
   allowance?: AnyAmino;
 }
@@ -76,9 +76,9 @@ export interface MsgRevokeAllowanceProtoMsg {
 /** MsgRevokeAllowance removes any existing Allowance from Granter to Grantee. */
 export interface MsgRevokeAllowanceAmino {
   /** granter is the address of the user granting an allowance of their funds. */
-  granter: string;
+  granter?: string;
   /** grantee is the address of the user being granted an allowance of another user's funds. */
-  grantee: string;
+  grantee?: string;
 }
 export interface MsgRevokeAllowanceAminoMsg {
   type: "cosmos-sdk/MsgRevokeAllowance";
@@ -123,7 +123,7 @@ export interface MsgPruneAllowancesProtoMsg {
  */
 export interface MsgPruneAllowancesAmino {
   /** pruner is the address of the user pruning expired allowances. */
-  pruner: string;
+  pruner?: string;
 }
 export interface MsgPruneAllowancesAminoMsg {
   type: "cosmos-sdk/MsgPruneAllowances";
@@ -229,11 +229,17 @@ export const MsgGrantAllowance = {
     return message;
   },
   fromAmino(object: MsgGrantAllowanceAmino): MsgGrantAllowance {
-    return {
-      granter: object.granter,
-      grantee: object.grantee,
-      allowance: object?.allowance ? Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino(object.allowance) : undefined
-    };
+    const message = createBaseMsgGrantAllowance();
+    if (object.granter !== undefined && object.granter !== null) {
+      message.granter = object.granter;
+    }
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    if (object.allowance !== undefined && object.allowance !== null) {
+      message.allowance = Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino(object.allowance);
+    }
+    return message;
   },
   toAmino(message: MsgGrantAllowance): MsgGrantAllowanceAmino {
     const obj: any = {};
@@ -298,7 +304,8 @@ export const MsgGrantAllowanceResponse = {
     return message;
   },
   fromAmino(_: MsgGrantAllowanceResponseAmino): MsgGrantAllowanceResponse {
-    return {};
+    const message = createBaseMsgGrantAllowanceResponse();
+    return message;
   },
   toAmino(_: MsgGrantAllowanceResponse): MsgGrantAllowanceResponseAmino {
     const obj: any = {};
@@ -382,10 +389,14 @@ export const MsgRevokeAllowance = {
     return message;
   },
   fromAmino(object: MsgRevokeAllowanceAmino): MsgRevokeAllowance {
-    return {
-      granter: object.granter,
-      grantee: object.grantee
-    };
+    const message = createBaseMsgRevokeAllowance();
+    if (object.granter !== undefined && object.granter !== null) {
+      message.granter = object.granter;
+    }
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    return message;
   },
   toAmino(message: MsgRevokeAllowance): MsgRevokeAllowanceAmino {
     const obj: any = {};
@@ -449,7 +460,8 @@ export const MsgRevokeAllowanceResponse = {
     return message;
   },
   fromAmino(_: MsgRevokeAllowanceResponseAmino): MsgRevokeAllowanceResponse {
-    return {};
+    const message = createBaseMsgRevokeAllowanceResponse();
+    return message;
   },
   toAmino(_: MsgRevokeAllowanceResponse): MsgRevokeAllowanceResponseAmino {
     const obj: any = {};
@@ -523,9 +535,11 @@ export const MsgPruneAllowances = {
     return message;
   },
   fromAmino(object: MsgPruneAllowancesAmino): MsgPruneAllowances {
-    return {
-      pruner: object.pruner
-    };
+    const message = createBaseMsgPruneAllowances();
+    if (object.pruner !== undefined && object.pruner !== null) {
+      message.pruner = object.pruner;
+    }
+    return message;
   },
   toAmino(message: MsgPruneAllowances): MsgPruneAllowancesAmino {
     const obj: any = {};
@@ -588,7 +602,8 @@ export const MsgPruneAllowancesResponse = {
     return message;
   },
   fromAmino(_: MsgPruneAllowancesResponseAmino): MsgPruneAllowancesResponse {
-    return {};
+    const message = createBaseMsgPruneAllowancesResponse();
+    return message;
   },
   toAmino(_: MsgPruneAllowancesResponse): MsgPruneAllowancesResponseAmino {
     const obj: any = {};
@@ -618,14 +633,14 @@ export const MsgPruneAllowancesResponse = {
 };
 export const Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder = (input: BinaryReader | Uint8Array): BasicAllowance | PeriodicAllowance | AllowedMsgAllowance | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32(), true);
+  const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
     case "/cosmos.feegrant.v1beta1.BasicAllowance":
-      return BasicAllowance.decode(data.value, undefined, true);
+      return BasicAllowance.decode(data.value);
     case "/cosmos.feegrant.v1beta1.PeriodicAllowance":
-      return PeriodicAllowance.decode(data.value, undefined, true);
+      return PeriodicAllowance.decode(data.value);
     case "/cosmos.feegrant.v1beta1.AllowedMsgAllowance":
-      return AllowedMsgAllowance.decode(data.value, undefined, true);
+      return AllowedMsgAllowance.decode(data.value);
     default:
       return data;
   }

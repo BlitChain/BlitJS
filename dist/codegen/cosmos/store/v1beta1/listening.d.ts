@@ -29,11 +29,11 @@ export interface StoreKVPairProtoMsg {
  */
 export interface StoreKVPairAmino {
     /** the store key for the KVStore this pair originates from */
-    store_key: string;
+    store_key?: string;
     /** true indicates a delete operation, false indicates a set operation */
-    delete: boolean;
-    key: Uint8Array;
-    value: Uint8Array;
+    delete?: boolean;
+    key?: string;
+    value?: string;
 }
 export interface StoreKVPairAminoMsg {
     type: "cosmos-sdk/StoreKVPair";

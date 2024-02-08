@@ -62,15 +62,19 @@ exports.Coin = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denom: object.denom,
-            amount: object.amount
-        };
+        const message = createBaseCoin();
+        if (object.denom !== undefined && object.denom !== null) {
+            message.denom = object.denom;
+        }
+        if (object.amount !== undefined && object.amount !== null) {
+            message.amount = object.amount;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.denom = message.denom;
-        obj.amount = message.amount;
+        obj.amount = message.amount ?? "";
         return obj;
     },
     fromAminoMsg(object) {
@@ -151,10 +155,14 @@ exports.DecCoin = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denom: object.denom,
-            amount: object.amount
-        };
+        const message = createBaseDecCoin();
+        if (object.denom !== undefined && object.denom !== null) {
+            message.denom = object.denom;
+        }
+        if (object.amount !== undefined && object.amount !== null) {
+            message.amount = object.amount;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -230,9 +238,11 @@ exports.IntProto = {
         return message;
     },
     fromAmino(object) {
-        return {
-            int: object.int
-        };
+        const message = createBaseIntProto();
+        if (object.int !== undefined && object.int !== null) {
+            message.int = object.int;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -307,9 +317,11 @@ exports.DecProto = {
         return message;
     },
     fromAmino(object) {
-        return {
-            dec: object.dec
-        };
+        const message = createBaseDecProto();
+        if (object.dec !== undefined && object.dec !== null) {
+            message.dec = object.dec;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

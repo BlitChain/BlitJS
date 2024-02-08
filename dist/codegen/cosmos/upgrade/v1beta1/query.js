@@ -40,7 +40,8 @@ exports.QueryCurrentPlanRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryCurrentPlanRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -114,9 +115,11 @@ exports.QueryCurrentPlanResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            plan: object?.plan ? upgrade_1.Plan.fromAmino(object.plan) : undefined
-        };
+        const message = createBaseQueryCurrentPlanResponse();
+        if (object.plan !== undefined && object.plan !== null) {
+            message.plan = upgrade_1.Plan.fromAmino(object.plan);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -191,9 +194,11 @@ exports.QueryAppliedPlanRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            name: object.name
-        };
+        const message = createBaseQueryAppliedPlanRequest();
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -268,9 +273,11 @@ exports.QueryAppliedPlanResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            height: BigInt(object.height)
-        };
+        const message = createBaseQueryAppliedPlanResponse();
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -345,9 +352,11 @@ exports.QueryUpgradedConsensusStateRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            last_height: BigInt(object.last_height)
-        };
+        const message = createBaseQueryUpgradedConsensusStateRequest();
+        if (object.last_height !== undefined && object.last_height !== null) {
+            message.last_height = BigInt(object.last_height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -422,13 +431,15 @@ exports.QueryUpgradedConsensusStateResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            upgraded_consensus_state: object.upgraded_consensus_state
-        };
+        const message = createBaseQueryUpgradedConsensusStateResponse();
+        if (object.upgraded_consensus_state !== undefined && object.upgraded_consensus_state !== null) {
+            message.upgraded_consensus_state = (0, helpers_1.bytesFromBase64)(object.upgraded_consensus_state);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.upgraded_consensus_state = message.upgraded_consensus_state;
+        obj.upgraded_consensus_state = message.upgraded_consensus_state ? (0, helpers_1.base64FromBytes)(message.upgraded_consensus_state) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -499,9 +510,11 @@ exports.QueryModuleVersionsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            module_name: object.module_name
-        };
+        const message = createBaseQueryModuleVersionsRequest();
+        if (object.module_name !== undefined && object.module_name !== null) {
+            message.module_name = object.module_name;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -581,9 +594,9 @@ exports.QueryModuleVersionsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            module_versions: Array.isArray(object?.module_versions) ? object.module_versions.map((e) => upgrade_1.ModuleVersion.fromAmino(e)) : []
-        };
+        const message = createBaseQueryModuleVersionsResponse();
+        message.module_versions = object.module_versions?.map(e => upgrade_1.ModuleVersion.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -651,7 +664,8 @@ exports.QueryAuthorityRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryAuthorityRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -725,9 +739,11 @@ exports.QueryAuthorityResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address
-        };
+        const message = createBaseQueryAuthorityResponse();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

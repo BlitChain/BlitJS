@@ -32,7 +32,7 @@ export interface QueryParamsResponseProtoMsg {
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 export interface QueryParamsResponseAmino {
     /** params holds all the parameters of this module. */
-    params?: ParamsAmino;
+    params: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
     type: "/blit.storage.QueryParamsResponse";
@@ -51,8 +51,8 @@ export interface QueryStorageDetailRequestProtoMsg {
     value: Uint8Array;
 }
 export interface QueryStorageDetailRequestAmino {
-    address: string;
-    index: string;
+    address?: string;
+    index?: string;
 }
 export interface QueryStorageDetailRequestAminoMsg {
     type: "/blit.storage.QueryStorageDetailRequest";
@@ -89,8 +89,8 @@ export interface QueryFilterStorageRequestProtoMsg {
     value: Uint8Array;
 }
 export interface QueryFilterStorageRequestAmino {
-    filter_address: string;
-    filter_index_prefix: string;
+    filter_address?: string;
+    filter_index_prefix?: string;
     pagination?: PageRequestAmino;
 }
 export interface QueryFilterStorageRequestAminoMsg {
@@ -111,7 +111,7 @@ export interface QueryFilterStorageResponseProtoMsg {
     value: Uint8Array;
 }
 export interface QueryFilterStorageResponseAmino {
-    storage: StorageAmino[];
+    storage?: StorageAmino[];
     pagination?: PageResponseAmino;
 }
 export interface QueryFilterStorageResponseAminoMsg {

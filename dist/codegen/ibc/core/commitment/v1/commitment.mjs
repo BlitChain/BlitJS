@@ -49,13 +49,15 @@ export const MerkleRoot = {
         return message;
     },
     fromAmino(object) {
-        return {
-            hash: object.hash
-        };
+        const message = createBaseMerkleRoot();
+        if (object.hash !== undefined && object.hash !== null) {
+            message.hash = bytesFromBase64(object.hash);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.hash = message.hash;
+        obj.hash = message.hash ? base64FromBytes(message.hash) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -126,13 +128,15 @@ export const MerklePrefix = {
         return message;
     },
     fromAmino(object) {
-        return {
-            key_prefix: object.key_prefix
-        };
+        const message = createBaseMerklePrefix();
+        if (object.key_prefix !== undefined && object.key_prefix !== null) {
+            message.key_prefix = bytesFromBase64(object.key_prefix);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.key_prefix = message.key_prefix;
+        obj.key_prefix = message.key_prefix ? base64FromBytes(message.key_prefix) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -208,9 +212,9 @@ export const MerklePath = {
         return message;
     },
     fromAmino(object) {
-        return {
-            key_path: Array.isArray(object?.key_path) ? object.key_path.map((e) => e) : []
-        };
+        const message = createBaseMerklePath();
+        message.key_path = object.key_path?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -295,9 +299,9 @@ export const MerkleProof = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proofs: Array.isArray(object?.proofs) ? object.proofs.map((e) => CommitmentProof.fromAmino(e)) : []
-        };
+        const message = createBaseMerkleProof();
+        message.proofs = object.proofs?.map(e => CommitmentProof.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

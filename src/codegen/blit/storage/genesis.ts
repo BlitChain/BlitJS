@@ -17,8 +17,8 @@ export interface GenesisStateProtoMsg {
 /** GenesisState defines the storage module's genesis state. */
 export interface GenesisStateAmino {
   /** params defines all the parameters of the module. */
-  params?: ParamsAmino;
-  storageList: StorageAmino[];
+  params: ParamsAmino;
+  storageList?: StorageAmino[];
 }
 export interface GenesisStateAminoMsg {
   type: "/blit.storage.GenesisState";
@@ -89,14 +89,16 @@ export const GenesisState = {
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
-    return {
-      params: object?.params ? Params.fromAmino(object.params) : undefined,
-      storageList: Array.isArray(object?.storageList) ? object.storageList.map((e: any) => Storage.fromAmino(e)) : []
-    };
+    const message = createBaseGenesisState();
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    message.storageList = object.storageList?.map(e => Storage.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
-    obj.params = message.params ? Params.toAmino(message.params) : undefined;
+    obj.params = message.params ? Params.toAmino(message.params) : Params.fromPartial({});
     if (message.storageList) {
       obj.storageList = message.storageList.map(e => e ? Storage.toAmino(e) : undefined);
     } else {

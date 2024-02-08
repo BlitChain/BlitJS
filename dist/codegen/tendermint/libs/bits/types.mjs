@@ -73,10 +73,12 @@ export const BitArray = {
         return message;
     },
     fromAmino(object) {
-        return {
-            bits: BigInt(object.bits),
-            elems: Array.isArray(object?.elems) ? object.elems.map((e) => BigInt(e)) : []
-        };
+        const message = createBaseBitArray();
+        if (object.bits !== undefined && object.bits !== null) {
+            message.bits = BigInt(object.bits);
+        }
+        message.elems = object.elems?.map(e => BigInt(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

@@ -55,9 +55,9 @@ export interface ListenCommitRequestProtoMsg {
 /** ListenCommitRequest is the request type for the ListenCommit RPC method */
 export interface ListenCommitRequestAmino {
   /** explicitly pass in block height as ResponseCommit does not contain this info */
-  block_height: string;
+  block_height?: string;
   res?: ResponseCommitAmino;
-  change_set: StoreKVPairAmino[];
+  change_set?: StoreKVPairAmino[];
 }
 export interface ListenCommitRequestAminoMsg {
   type: "cosmos-sdk/ListenCommitRequest";
@@ -139,10 +139,14 @@ export const ListenFinalizeBlockRequest = {
     return message;
   },
   fromAmino(object: ListenFinalizeBlockRequestAmino): ListenFinalizeBlockRequest {
-    return {
-      req: object?.req ? RequestFinalizeBlock.fromAmino(object.req) : undefined,
-      res: object?.res ? ResponseFinalizeBlock.fromAmino(object.res) : undefined
-    };
+    const message = createBaseListenFinalizeBlockRequest();
+    if (object.req !== undefined && object.req !== null) {
+      message.req = RequestFinalizeBlock.fromAmino(object.req);
+    }
+    if (object.res !== undefined && object.res !== null) {
+      message.res = ResponseFinalizeBlock.fromAmino(object.res);
+    }
+    return message;
   },
   toAmino(message: ListenFinalizeBlockRequest): ListenFinalizeBlockRequestAmino {
     const obj: any = {};
@@ -206,7 +210,8 @@ export const ListenFinalizeBlockResponse = {
     return message;
   },
   fromAmino(_: ListenFinalizeBlockResponseAmino): ListenFinalizeBlockResponse {
-    return {};
+    const message = createBaseListenFinalizeBlockResponse();
+    return message;
   },
   toAmino(_: ListenFinalizeBlockResponse): ListenFinalizeBlockResponseAmino {
     const obj: any = {};
@@ -304,11 +309,15 @@ export const ListenCommitRequest = {
     return message;
   },
   fromAmino(object: ListenCommitRequestAmino): ListenCommitRequest {
-    return {
-      block_height: BigInt(object.block_height),
-      res: object?.res ? ResponseCommit.fromAmino(object.res) : undefined,
-      change_set: Array.isArray(object?.change_set) ? object.change_set.map((e: any) => StoreKVPair.fromAmino(e)) : []
-    };
+    const message = createBaseListenCommitRequest();
+    if (object.block_height !== undefined && object.block_height !== null) {
+      message.block_height = BigInt(object.block_height);
+    }
+    if (object.res !== undefined && object.res !== null) {
+      message.res = ResponseCommit.fromAmino(object.res);
+    }
+    message.change_set = object.change_set?.map(e => StoreKVPair.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: ListenCommitRequest): ListenCommitRequestAmino {
     const obj: any = {};
@@ -377,7 +386,8 @@ export const ListenCommitResponse = {
     return message;
   },
   fromAmino(_: ListenCommitResponseAmino): ListenCommitResponse {
-    return {};
+    const message = createBaseListenCommitResponse();
+    return message;
   },
   toAmino(_: ListenCommitResponse): ListenCommitResponseAmino {
     const obj: any = {};

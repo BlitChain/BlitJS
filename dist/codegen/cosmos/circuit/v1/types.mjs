@@ -127,10 +127,12 @@ export const Permissions = {
         return message;
     },
     fromAmino(object) {
-        return {
-            level: isSet(object.level) ? permissions_LevelFromJSON(object.level) : -1,
-            limit_type_urls: Array.isArray(object?.limit_type_urls) ? object.limit_type_urls.map((e) => e) : []
-        };
+        const message = createBasePermissions();
+        if (object.level !== undefined && object.level !== null) {
+            message.level = permissions_LevelFromJSON(object.level);
+        }
+        message.limit_type_urls = object.limit_type_urls?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -221,10 +223,14 @@ export const GenesisAccountPermissions = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            permissions: object?.permissions ? Permissions.fromAmino(object.permissions) : undefined
-        };
+        const message = createBaseGenesisAccountPermissions();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.permissions !== undefined && object.permissions !== null) {
+            message.permissions = Permissions.fromAmino(object.permissions);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -320,10 +326,10 @@ export const GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            account_permissions: Array.isArray(object?.account_permissions) ? object.account_permissions.map((e) => GenesisAccountPermissions.fromAmino(e)) : [],
-            disabled_type_urls: Array.isArray(object?.disabled_type_urls) ? object.disabled_type_urls.map((e) => e) : []
-        };
+        const message = createBaseGenesisState();
+        message.account_permissions = object.account_permissions?.map(e => GenesisAccountPermissions.fromAmino(e)) || [];
+        message.disabled_type_urls = object.disabled_type_urls?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

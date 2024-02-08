@@ -1,12 +1,18 @@
 //@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { Timestamp } from "../../google/protobuf/timestamp";
+import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
+import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
-import { isSet } from "../../helpers";
+import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
 export const protobufPackage = "blit.blit";
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParams {
-  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
+  /**
+   * authority is the address that controls the module (defaults to x/gov unless
+   * overwritten).
+   */
   authority: string;
   /** NOTE: All parameters must be supplied. */
   params: Params;
@@ -17,10 +23,13 @@ export interface MsgUpdateParamsProtoMsg {
 }
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParamsAmino {
-  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
-  authority: string;
+  /**
+   * authority is the address that controls the module (defaults to x/gov unless
+   * overwritten).
+   */
+  authority?: string;
   /** NOTE: All parameters must be supplied. */
-  params?: ParamsAmino;
+  params: ParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
   type: "blit/x/blit/MsgUpdateParams";
@@ -63,8 +72,8 @@ export interface MsgMintCoinsProtoMsg {
   value: Uint8Array;
 }
 export interface MsgMintCoinsAmino {
-  amount?: CoinAmino;
-  grantee: string;
+  amount: CoinAmino;
+  grantee?: string;
 }
 export interface MsgMintCoinsAminoMsg {
   type: "/blit.blit.MsgMintCoins";
@@ -94,8 +103,8 @@ export interface MsgBurnCoinsProtoMsg {
   value: Uint8Array;
 }
 export interface MsgBurnCoinsAmino {
-  amount?: CoinAmino;
-  grantee: string;
+  amount: CoinAmino;
+  grantee?: string;
 }
 export interface MsgBurnCoinsAminoMsg {
   type: "/blit.blit.MsgBurnCoins";
@@ -127,10 +136,10 @@ export interface MsgForceTransferCoinsProtoMsg {
   value: Uint8Array;
 }
 export interface MsgForceTransferCoinsAmino {
-  amount?: CoinAmino;
-  from_address: string;
-  to_address: string;
-  grantee: string;
+  amount: CoinAmino;
+  from_address?: string;
+  to_address?: string;
+  grantee?: string;
 }
 export interface MsgForceTransferCoinsAminoMsg {
   type: "/blit.blit.MsgForceTransferCoins";
@@ -169,15 +178,15 @@ export interface MsgSetDenomMetadataProtoMsg {
   value: Uint8Array;
 }
 export interface MsgSetDenomMetadataAmino {
-  authority: string;
-  base: string;
-  display: string;
-  name: string;
-  symbol: string;
-  uri: string;
-  uri_hash: string;
-  exponent: number;
-  description: string;
+  authority?: string;
+  base?: string;
+  display?: string;
+  name?: string;
+  symbol?: string;
+  uri?: string;
+  uri_hash?: string;
+  exponent?: number;
+  description?: string;
 }
 export interface MsgSetDenomMetadataAminoMsg {
   type: "/blit.blit.MsgSetDenomMetadata";
@@ -205,6 +214,101 @@ export interface MsgSetDenomMetadataResponseAminoMsg {
   value: MsgSetDenomMetadataResponseAmino;
 }
 export interface MsgSetDenomMetadataResponseSDKType {}
+export interface MsgCreateTask {
+  creator: string;
+  activate_after: Date;
+  expire_after: Date;
+  minimum_interval?: Duration;
+  max_runs: bigint;
+  disable_on_error: boolean;
+  enabled: boolean;
+  task_gas_limit: bigint;
+  task_gas_fee: Coin;
+  messages: (Any)[] | Any[];
+}
+export interface MsgCreateTaskProtoMsg {
+  type_url: "/blit.blit.MsgCreateTask";
+  value: Uint8Array;
+}
+export type MsgCreateTaskEncoded = Omit<MsgCreateTask, "messages"> & {
+  messages: (AnyProtoMsg)[];
+};
+export interface MsgCreateTaskAmino {
+  creator?: string;
+  activate_after: string;
+  expire_after: string;
+  minimum_interval?: DurationAmino;
+  max_runs?: string;
+  disable_on_error?: boolean;
+  enabled?: boolean;
+  task_gas_limit?: string;
+  task_gas_fee?: CoinAmino;
+  messages?: AnyAmino[];
+}
+export interface MsgCreateTaskAminoMsg {
+  type: "/blit.blit.MsgCreateTask";
+  value: MsgCreateTaskAmino;
+}
+export interface MsgCreateTaskSDKType {
+  creator: string;
+  activate_after: Date;
+  expire_after: Date;
+  minimum_interval?: DurationSDKType;
+  max_runs: bigint;
+  disable_on_error: boolean;
+  enabled: boolean;
+  task_gas_limit: bigint;
+  task_gas_fee: CoinSDKType;
+  messages: (AnySDKType)[];
+}
+export interface MsgCreateTaskResponse {
+  id: bigint;
+}
+export interface MsgCreateTaskResponseProtoMsg {
+  type_url: "/blit.blit.MsgCreateTaskResponse";
+  value: Uint8Array;
+}
+export interface MsgCreateTaskResponseAmino {
+  id?: string;
+}
+export interface MsgCreateTaskResponseAminoMsg {
+  type: "/blit.blit.MsgCreateTaskResponse";
+  value: MsgCreateTaskResponseAmino;
+}
+export interface MsgCreateTaskResponseSDKType {
+  id: bigint;
+}
+export interface MsgDeleteTask {
+  creator: string;
+  id: bigint;
+}
+export interface MsgDeleteTaskProtoMsg {
+  type_url: "/blit.blit.MsgDeleteTask";
+  value: Uint8Array;
+}
+export interface MsgDeleteTaskAmino {
+  creator?: string;
+  id?: string;
+}
+export interface MsgDeleteTaskAminoMsg {
+  type: "/blit.blit.MsgDeleteTask";
+  value: MsgDeleteTaskAmino;
+}
+export interface MsgDeleteTaskSDKType {
+  creator: string;
+  id: bigint;
+}
+export interface MsgDeleteTaskResponse {}
+export interface MsgDeleteTaskResponseProtoMsg {
+  type_url: "/blit.blit.MsgDeleteTaskResponse";
+  value: Uint8Array;
+}
+export interface MsgDeleteTaskResponseAmino {}
+export interface MsgDeleteTaskResponseAminoMsg {
+  type: "/blit.blit.MsgDeleteTaskResponse";
+  value: MsgDeleteTaskResponseAmino;
+}
+export interface MsgDeleteTaskResponseSDKType {}
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
     authority: "",
@@ -261,15 +365,19 @@ export const MsgUpdateParams = {
     return message;
   },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
-    return {
-      authority: object.authority,
-      params: object?.params ? Params.fromAmino(object.params) : undefined
-    };
+    const message = createBaseMsgUpdateParams();
+    if (object.authority !== undefined && object.authority !== null) {
+      message.authority = object.authority;
+    }
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    return message;
   },
   toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino {
     const obj: any = {};
     obj.authority = message.authority;
-    obj.params = message.params ? Params.toAmino(message.params) : undefined;
+    obj.params = message.params ? Params.toAmino(message.params) : Params.fromPartial({});
     return obj;
   },
   fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams {
@@ -328,7 +436,8 @@ export const MsgUpdateParamsResponse = {
     return message;
   },
   fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse {
-    return {};
+    const message = createBaseMsgUpdateParamsResponse();
+    return message;
   },
   toAmino(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseAmino {
     const obj: any = {};
@@ -406,14 +515,18 @@ export const MsgMintCoins = {
     return message;
   },
   fromAmino(object: MsgMintCoinsAmino): MsgMintCoins {
-    return {
-      amount: object?.amount ? Coin.fromAmino(object.amount) : undefined,
-      grantee: object.grantee
-    };
+    const message = createBaseMsgMintCoins();
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = Coin.fromAmino(object.amount);
+    }
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    return message;
   },
   toAmino(message: MsgMintCoins): MsgMintCoinsAmino {
     const obj: any = {};
-    obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
+    obj.amount = message.amount ? Coin.toAmino(message.amount) : Coin.fromPartial({});
     obj.grantee = message.grantee;
     return obj;
   },
@@ -467,7 +580,8 @@ export const MsgMintCoinsResponse = {
     return message;
   },
   fromAmino(_: MsgMintCoinsResponseAmino): MsgMintCoinsResponse {
-    return {};
+    const message = createBaseMsgMintCoinsResponse();
+    return message;
   },
   toAmino(_: MsgMintCoinsResponse): MsgMintCoinsResponseAmino {
     const obj: any = {};
@@ -545,14 +659,18 @@ export const MsgBurnCoins = {
     return message;
   },
   fromAmino(object: MsgBurnCoinsAmino): MsgBurnCoins {
-    return {
-      amount: object?.amount ? Coin.fromAmino(object.amount) : undefined,
-      grantee: object.grantee
-    };
+    const message = createBaseMsgBurnCoins();
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = Coin.fromAmino(object.amount);
+    }
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    return message;
   },
   toAmino(message: MsgBurnCoins): MsgBurnCoinsAmino {
     const obj: any = {};
-    obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
+    obj.amount = message.amount ? Coin.toAmino(message.amount) : Coin.fromPartial({});
     obj.grantee = message.grantee;
     return obj;
   },
@@ -606,7 +724,8 @@ export const MsgBurnCoinsResponse = {
     return message;
   },
   fromAmino(_: MsgBurnCoinsResponseAmino): MsgBurnCoinsResponse {
-    return {};
+    const message = createBaseMsgBurnCoinsResponse();
+    return message;
   },
   toAmino(_: MsgBurnCoinsResponse): MsgBurnCoinsResponseAmino {
     const obj: any = {};
@@ -704,16 +823,24 @@ export const MsgForceTransferCoins = {
     return message;
   },
   fromAmino(object: MsgForceTransferCoinsAmino): MsgForceTransferCoins {
-    return {
-      amount: object?.amount ? Coin.fromAmino(object.amount) : undefined,
-      from_address: object.from_address,
-      to_address: object.to_address,
-      grantee: object.grantee
-    };
+    const message = createBaseMsgForceTransferCoins();
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = Coin.fromAmino(object.amount);
+    }
+    if (object.from_address !== undefined && object.from_address !== null) {
+      message.from_address = object.from_address;
+    }
+    if (object.to_address !== undefined && object.to_address !== null) {
+      message.to_address = object.to_address;
+    }
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    return message;
   },
   toAmino(message: MsgForceTransferCoins): MsgForceTransferCoinsAmino {
     const obj: any = {};
-    obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
+    obj.amount = message.amount ? Coin.toAmino(message.amount) : Coin.fromPartial({});
     obj.from_address = message.from_address;
     obj.to_address = message.to_address;
     obj.grantee = message.grantee;
@@ -769,7 +896,8 @@ export const MsgForceTransferCoinsResponse = {
     return message;
   },
   fromAmino(_: MsgForceTransferCoinsResponseAmino): MsgForceTransferCoinsResponse {
-    return {};
+    const message = createBaseMsgForceTransferCoinsResponse();
+    return message;
   },
   toAmino(_: MsgForceTransferCoinsResponse): MsgForceTransferCoinsResponseAmino {
     const obj: any = {};
@@ -917,17 +1045,35 @@ export const MsgSetDenomMetadata = {
     return message;
   },
   fromAmino(object: MsgSetDenomMetadataAmino): MsgSetDenomMetadata {
-    return {
-      authority: object.authority,
-      base: object.base,
-      display: object.display,
-      name: object.name,
-      symbol: object.symbol,
-      uri: object.uri,
-      uri_hash: object.uri_hash,
-      exponent: object.exponent,
-      description: object.description
-    };
+    const message = createBaseMsgSetDenomMetadata();
+    if (object.authority !== undefined && object.authority !== null) {
+      message.authority = object.authority;
+    }
+    if (object.base !== undefined && object.base !== null) {
+      message.base = object.base;
+    }
+    if (object.display !== undefined && object.display !== null) {
+      message.display = object.display;
+    }
+    if (object.name !== undefined && object.name !== null) {
+      message.name = object.name;
+    }
+    if (object.symbol !== undefined && object.symbol !== null) {
+      message.symbol = object.symbol;
+    }
+    if (object.uri !== undefined && object.uri !== null) {
+      message.uri = object.uri;
+    }
+    if (object.uri_hash !== undefined && object.uri_hash !== null) {
+      message.uri_hash = object.uri_hash;
+    }
+    if (object.exponent !== undefined && object.exponent !== null) {
+      message.exponent = object.exponent;
+    }
+    if (object.description !== undefined && object.description !== null) {
+      message.description = object.description;
+    }
+    return message;
   },
   toAmino(message: MsgSetDenomMetadata): MsgSetDenomMetadataAmino {
     const obj: any = {};
@@ -992,7 +1138,8 @@ export const MsgSetDenomMetadataResponse = {
     return message;
   },
   fromAmino(_: MsgSetDenomMetadataResponseAmino): MsgSetDenomMetadataResponse {
-    return {};
+    const message = createBaseMsgSetDenomMetadataResponse();
+    return message;
   },
   toAmino(_: MsgSetDenomMetadataResponse): MsgSetDenomMetadataResponseAmino {
     const obj: any = {};
@@ -1013,4 +1160,440 @@ export const MsgSetDenomMetadataResponse = {
       value: MsgSetDenomMetadataResponse.encode(message).finish()
     };
   }
+};
+function createBaseMsgCreateTask(): MsgCreateTask {
+  return {
+    creator: "",
+    activate_after: new Date(),
+    expire_after: new Date(),
+    minimum_interval: undefined,
+    max_runs: BigInt(0),
+    disable_on_error: false,
+    enabled: false,
+    task_gas_limit: BigInt(0),
+    task_gas_fee: Coin.fromPartial({}),
+    messages: []
+  };
+}
+export const MsgCreateTask = {
+  typeUrl: "/blit.blit.MsgCreateTask",
+  encode(message: MsgCreateTask, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.activate_after !== undefined) {
+      Timestamp.encode(toTimestamp(message.activate_after), writer.uint32(18).fork()).ldelim();
+    }
+    if (message.expire_after !== undefined) {
+      Timestamp.encode(toTimestamp(message.expire_after), writer.uint32(26).fork()).ldelim();
+    }
+    if (message.minimum_interval !== undefined) {
+      Duration.encode(message.minimum_interval, writer.uint32(34).fork()).ldelim();
+    }
+    if (message.max_runs !== BigInt(0)) {
+      writer.uint32(48).uint64(message.max_runs);
+    }
+    if (message.disable_on_error === true) {
+      writer.uint32(56).bool(message.disable_on_error);
+    }
+    if (message.enabled === true) {
+      writer.uint32(64).bool(message.enabled);
+    }
+    if (message.task_gas_limit !== BigInt(0)) {
+      writer.uint32(72).uint64(message.task_gas_limit);
+    }
+    if (message.task_gas_fee !== undefined) {
+      Coin.encode(message.task_gas_fee, writer.uint32(82).fork()).ldelim();
+    }
+    for (const v of message.messages) {
+      Any.encode((v! as Any), writer.uint32(90).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateTask {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateTask();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.activate_after = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 3:
+          message.expire_after = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 4:
+          message.minimum_interval = Duration.decode(reader, reader.uint32());
+          break;
+        case 6:
+          message.max_runs = reader.uint64();
+          break;
+        case 7:
+          message.disable_on_error = reader.bool();
+          break;
+        case 8:
+          message.enabled = reader.bool();
+          break;
+        case 9:
+          message.task_gas_limit = reader.uint64();
+          break;
+        case 10:
+          message.task_gas_fee = Coin.decode(reader, reader.uint32());
+          break;
+        case 11:
+          message.messages.push((Any.decode(reader, reader.uint32()) as Any));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): MsgCreateTask {
+    return {
+      creator: isSet(object.creator) ? String(object.creator) : "",
+      activate_after: isSet(object.activate_after) ? fromJsonTimestamp(object.activate_after) : undefined,
+      expire_after: isSet(object.expire_after) ? fromJsonTimestamp(object.expire_after) : undefined,
+      minimum_interval: isSet(object.minimum_interval) ? Duration.fromJSON(object.minimum_interval) : undefined,
+      max_runs: isSet(object.max_runs) ? BigInt(object.max_runs.toString()) : BigInt(0),
+      disable_on_error: isSet(object.disable_on_error) ? Boolean(object.disable_on_error) : false,
+      enabled: isSet(object.enabled) ? Boolean(object.enabled) : false,
+      task_gas_limit: isSet(object.task_gas_limit) ? BigInt(object.task_gas_limit.toString()) : BigInt(0),
+      task_gas_fee: isSet(object.task_gas_fee) ? Coin.fromJSON(object.task_gas_fee) : undefined,
+      messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgCreateTask): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.activate_after !== undefined && (obj.activate_after = message.activate_after.toISOString());
+    message.expire_after !== undefined && (obj.expire_after = message.expire_after.toISOString());
+    message.minimum_interval !== undefined && (obj.minimum_interval = message.minimum_interval ? Duration.toJSON(message.minimum_interval) : undefined);
+    message.max_runs !== undefined && (obj.max_runs = (message.max_runs || BigInt(0)).toString());
+    message.disable_on_error !== undefined && (obj.disable_on_error = message.disable_on_error);
+    message.enabled !== undefined && (obj.enabled = message.enabled);
+    message.task_gas_limit !== undefined && (obj.task_gas_limit = (message.task_gas_limit || BigInt(0)).toString());
+    message.task_gas_fee !== undefined && (obj.task_gas_fee = message.task_gas_fee ? Coin.toJSON(message.task_gas_fee) : undefined);
+    if (message.messages) {
+      obj.messages = message.messages.map(e => e ? Any.toJSON(e) : undefined);
+    } else {
+      obj.messages = [];
+    }
+    return obj;
+  },
+  fromPartial(object: Partial<MsgCreateTask>): MsgCreateTask {
+    const message = createBaseMsgCreateTask();
+    message.creator = object.creator ?? "";
+    message.activate_after = object.activate_after ?? undefined;
+    message.expire_after = object.expire_after ?? undefined;
+    message.minimum_interval = object.minimum_interval !== undefined && object.minimum_interval !== null ? Duration.fromPartial(object.minimum_interval) : undefined;
+    message.max_runs = object.max_runs !== undefined && object.max_runs !== null ? BigInt(object.max_runs.toString()) : BigInt(0);
+    message.disable_on_error = object.disable_on_error ?? false;
+    message.enabled = object.enabled ?? false;
+    message.task_gas_limit = object.task_gas_limit !== undefined && object.task_gas_limit !== null ? BigInt(object.task_gas_limit.toString()) : BigInt(0);
+    message.task_gas_fee = object.task_gas_fee !== undefined && object.task_gas_fee !== null ? Coin.fromPartial(object.task_gas_fee) : undefined;
+    message.messages = object.messages?.map(e => Any.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: MsgCreateTaskAmino): MsgCreateTask {
+    const message = createBaseMsgCreateTask();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.activate_after !== undefined && object.activate_after !== null) {
+      message.activate_after = fromTimestamp(Timestamp.fromAmino(object.activate_after));
+    }
+    if (object.expire_after !== undefined && object.expire_after !== null) {
+      message.expire_after = fromTimestamp(Timestamp.fromAmino(object.expire_after));
+    }
+    if (object.minimum_interval !== undefined && object.minimum_interval !== null) {
+      message.minimum_interval = Duration.fromAmino(object.minimum_interval);
+    }
+    if (object.max_runs !== undefined && object.max_runs !== null) {
+      message.max_runs = BigInt(object.max_runs);
+    }
+    if (object.disable_on_error !== undefined && object.disable_on_error !== null) {
+      message.disable_on_error = object.disable_on_error;
+    }
+    if (object.enabled !== undefined && object.enabled !== null) {
+      message.enabled = object.enabled;
+    }
+    if (object.task_gas_limit !== undefined && object.task_gas_limit !== null) {
+      message.task_gas_limit = BigInt(object.task_gas_limit);
+    }
+    if (object.task_gas_fee !== undefined && object.task_gas_fee !== null) {
+      message.task_gas_fee = Coin.fromAmino(object.task_gas_fee);
+    }
+    message.messages = object.messages?.map(e => Cosmos_basev1beta1Msg_FromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: MsgCreateTask): MsgCreateTaskAmino {
+    const obj: any = {};
+    obj.creator = message.creator;
+    obj.activate_after = message.activate_after ? Timestamp.toAmino(toTimestamp(message.activate_after)) : new Date();
+    obj.expire_after = message.expire_after ? Timestamp.toAmino(toTimestamp(message.expire_after)) : new Date();
+    obj.minimum_interval = message.minimum_interval ? Duration.toAmino(message.minimum_interval) : undefined;
+    obj.max_runs = message.max_runs ? message.max_runs.toString() : undefined;
+    obj.disable_on_error = message.disable_on_error;
+    obj.enabled = message.enabled;
+    obj.task_gas_limit = message.task_gas_limit ? message.task_gas_limit.toString() : undefined;
+    obj.task_gas_fee = message.task_gas_fee ? Coin.toAmino(message.task_gas_fee) : undefined;
+    if (message.messages) {
+      obj.messages = message.messages.map(e => e ? Cosmos_basev1beta1Msg_ToAmino((e as Any)) : undefined);
+    } else {
+      obj.messages = [];
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateTaskAminoMsg): MsgCreateTask {
+    return MsgCreateTask.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateTaskProtoMsg): MsgCreateTask {
+    return MsgCreateTask.decode(message.value);
+  },
+  toProto(message: MsgCreateTask): Uint8Array {
+    return MsgCreateTask.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateTask): MsgCreateTaskProtoMsg {
+    return {
+      typeUrl: "/blit.blit.MsgCreateTask",
+      value: MsgCreateTask.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgCreateTaskResponse(): MsgCreateTaskResponse {
+  return {
+    id: BigInt(0)
+  };
+}
+export const MsgCreateTaskResponse = {
+  typeUrl: "/blit.blit.MsgCreateTaskResponse",
+  encode(message: MsgCreateTaskResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.id !== BigInt(0)) {
+      writer.uint32(8).uint64(message.id);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateTaskResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateTaskResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.id = reader.uint64();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): MsgCreateTaskResponse {
+    return {
+      id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgCreateTaskResponse): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
+    return obj;
+  },
+  fromPartial(object: Partial<MsgCreateTaskResponse>): MsgCreateTaskResponse {
+    const message = createBaseMsgCreateTaskResponse();
+    message.id = object.id !== undefined && object.id !== null ? BigInt(object.id.toString()) : BigInt(0);
+    return message;
+  },
+  fromAmino(object: MsgCreateTaskResponseAmino): MsgCreateTaskResponse {
+    const message = createBaseMsgCreateTaskResponse();
+    if (object.id !== undefined && object.id !== null) {
+      message.id = BigInt(object.id);
+    }
+    return message;
+  },
+  toAmino(message: MsgCreateTaskResponse): MsgCreateTaskResponseAmino {
+    const obj: any = {};
+    obj.id = message.id ? message.id.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateTaskResponseAminoMsg): MsgCreateTaskResponse {
+    return MsgCreateTaskResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateTaskResponseProtoMsg): MsgCreateTaskResponse {
+    return MsgCreateTaskResponse.decode(message.value);
+  },
+  toProto(message: MsgCreateTaskResponse): Uint8Array {
+    return MsgCreateTaskResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateTaskResponse): MsgCreateTaskResponseProtoMsg {
+    return {
+      typeUrl: "/blit.blit.MsgCreateTaskResponse",
+      value: MsgCreateTaskResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgDeleteTask(): MsgDeleteTask {
+  return {
+    creator: "",
+    id: BigInt(0)
+  };
+}
+export const MsgDeleteTask = {
+  typeUrl: "/blit.blit.MsgDeleteTask",
+  encode(message: MsgDeleteTask, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.id !== BigInt(0)) {
+      writer.uint32(16).uint64(message.id);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteTask {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDeleteTask();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.id = reader.uint64();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(object: any): MsgDeleteTask {
+    return {
+      creator: isSet(object.creator) ? String(object.creator) : "",
+      id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgDeleteTask): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
+    return obj;
+  },
+  fromPartial(object: Partial<MsgDeleteTask>): MsgDeleteTask {
+    const message = createBaseMsgDeleteTask();
+    message.creator = object.creator ?? "";
+    message.id = object.id !== undefined && object.id !== null ? BigInt(object.id.toString()) : BigInt(0);
+    return message;
+  },
+  fromAmino(object: MsgDeleteTaskAmino): MsgDeleteTask {
+    const message = createBaseMsgDeleteTask();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.id !== undefined && object.id !== null) {
+      message.id = BigInt(object.id);
+    }
+    return message;
+  },
+  toAmino(message: MsgDeleteTask): MsgDeleteTaskAmino {
+    const obj: any = {};
+    obj.creator = message.creator;
+    obj.id = message.id ? message.id.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MsgDeleteTaskAminoMsg): MsgDeleteTask {
+    return MsgDeleteTask.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgDeleteTaskProtoMsg): MsgDeleteTask {
+    return MsgDeleteTask.decode(message.value);
+  },
+  toProto(message: MsgDeleteTask): Uint8Array {
+    return MsgDeleteTask.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDeleteTask): MsgDeleteTaskProtoMsg {
+    return {
+      typeUrl: "/blit.blit.MsgDeleteTask",
+      value: MsgDeleteTask.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgDeleteTaskResponse(): MsgDeleteTaskResponse {
+  return {};
+}
+export const MsgDeleteTaskResponse = {
+  typeUrl: "/blit.blit.MsgDeleteTaskResponse",
+  encode(_: MsgDeleteTaskResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteTaskResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDeleteTaskResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromJSON(_: any): MsgDeleteTaskResponse {
+    return {};
+  },
+  toJSON(_: MsgDeleteTaskResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+  fromPartial(_: Partial<MsgDeleteTaskResponse>): MsgDeleteTaskResponse {
+    const message = createBaseMsgDeleteTaskResponse();
+    return message;
+  },
+  fromAmino(_: MsgDeleteTaskResponseAmino): MsgDeleteTaskResponse {
+    const message = createBaseMsgDeleteTaskResponse();
+    return message;
+  },
+  toAmino(_: MsgDeleteTaskResponse): MsgDeleteTaskResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgDeleteTaskResponseAminoMsg): MsgDeleteTaskResponse {
+    return MsgDeleteTaskResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgDeleteTaskResponseProtoMsg): MsgDeleteTaskResponse {
+    return MsgDeleteTaskResponse.decode(message.value);
+  },
+  toProto(message: MsgDeleteTaskResponse): Uint8Array {
+    return MsgDeleteTaskResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDeleteTaskResponse): MsgDeleteTaskResponseProtoMsg {
+    return {
+      typeUrl: "/blit.blit.MsgDeleteTaskResponse",
+      value: MsgDeleteTaskResponse.encode(message).finish()
+    };
+  }
+};
+export const Cosmos_basev1beta1Msg_InterfaceDecoder = (input: BinaryReader | Uint8Array): Any => {
+  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  const data = Any.decode(reader, reader.uint32());
+  switch (data.typeUrl) {
+    default:
+      return data;
+  }
+};
+export const Cosmos_basev1beta1Msg_FromAmino = (content: AnyAmino) => {
+  return Any.fromAmino(content);
+};
+export const Cosmos_basev1beta1Msg_ToAmino = (content: Any) => {
+  return Any.toAmino(content);
 };

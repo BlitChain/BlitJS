@@ -18,7 +18,7 @@ export interface MultiSignatureProtoMsg {
  * signed and with which modes.
  */
 export interface MultiSignatureAmino {
-    signatures: Uint8Array[];
+    signatures?: string[];
 }
 export interface MultiSignatureAminoMsg {
     type: "cosmos-sdk/MultiSignature";
@@ -53,8 +53,8 @@ export interface CompactBitArrayProtoMsg {
  * This is not thread safe, and is not intended for concurrent usage.
  */
 export interface CompactBitArrayAmino {
-    extra_bits_stored: number;
-    elems: Uint8Array;
+    extra_bits_stored?: number;
+    elems?: string;
 }
 export interface CompactBitArrayAminoMsg {
     type: "cosmos-sdk/CompactBitArray";

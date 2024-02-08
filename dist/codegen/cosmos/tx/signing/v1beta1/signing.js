@@ -165,9 +165,9 @@ exports.SignatureDescriptors = {
         return message;
     },
     fromAmino(object) {
-        return {
-            signatures: Array.isArray(object?.signatures) ? object.signatures.map((e) => exports.SignatureDescriptor.fromAmino(e)) : []
-        };
+        const message = createBaseSignatureDescriptors();
+        message.signatures = object.signatures?.map(e => exports.SignatureDescriptor.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -267,11 +267,17 @@ exports.SignatureDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            public_key: object?.public_key ? any_1.Any.fromAmino(object.public_key) : undefined,
-            data: object?.data ? exports.SignatureDescriptor_Data.fromAmino(object.data) : undefined,
-            sequence: BigInt(object.sequence)
-        };
+        const message = createBaseSignatureDescriptor();
+        if (object.public_key !== undefined && object.public_key !== null) {
+            message.public_key = any_1.Any.fromAmino(object.public_key);
+        }
+        if (object.data !== undefined && object.data !== null) {
+            message.data = exports.SignatureDescriptor_Data.fromAmino(object.data);
+        }
+        if (object.sequence !== undefined && object.sequence !== null) {
+            message.sequence = BigInt(object.sequence);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -358,10 +364,14 @@ exports.SignatureDescriptor_Data = {
         return message;
     },
     fromAmino(object) {
-        return {
-            single: object?.single ? exports.SignatureDescriptor_Data_Single.fromAmino(object.single) : undefined,
-            multi: object?.multi ? exports.SignatureDescriptor_Data_Multi.fromAmino(object.multi) : undefined
-        };
+        const message = createBaseSignatureDescriptor_Data();
+        if (object.single !== undefined && object.single !== null) {
+            message.single = exports.SignatureDescriptor_Data_Single.fromAmino(object.single);
+        }
+        if (object.multi !== undefined && object.multi !== null) {
+            message.multi = exports.SignatureDescriptor_Data_Multi.fromAmino(object.multi);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -447,15 +457,19 @@ exports.SignatureDescriptor_Data_Single = {
         return message;
     },
     fromAmino(object) {
-        return {
-            mode: (0, helpers_1.isSet)(object.mode) ? signModeFromJSON(object.mode) : -1,
-            signature: object.signature
-        };
+        const message = createBaseSignatureDescriptor_Data_Single();
+        if (object.mode !== undefined && object.mode !== null) {
+            message.mode = signModeFromJSON(object.mode);
+        }
+        if (object.signature !== undefined && object.signature !== null) {
+            message.signature = (0, helpers_1.bytesFromBase64)(object.signature);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.mode = message.mode;
-        obj.signature = message.signature;
+        obj.signature = message.signature ? (0, helpers_1.base64FromBytes)(message.signature) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -541,10 +555,12 @@ exports.SignatureDescriptor_Data_Multi = {
         return message;
     },
     fromAmino(object) {
-        return {
-            bitarray: object?.bitarray ? multisig_1.CompactBitArray.fromAmino(object.bitarray) : undefined,
-            signatures: Array.isArray(object?.signatures) ? object.signatures.map((e) => exports.SignatureDescriptor_Data.fromAmino(e)) : []
-        };
+        const message = createBaseSignatureDescriptor_Data_Multi();
+        if (object.bitarray !== undefined && object.bitarray !== null) {
+            message.bitarray = multisig_1.CompactBitArray.fromAmino(object.bitarray);
+        }
+        message.signatures = object.signatures?.map(e => exports.SignatureDescriptor_Data.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

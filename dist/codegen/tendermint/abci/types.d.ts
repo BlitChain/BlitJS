@@ -157,7 +157,7 @@ export interface RequestEchoProtoMsg {
     value: Uint8Array;
 }
 export interface RequestEchoAmino {
-    message: string;
+    message?: string;
 }
 export interface RequestEchoAminoMsg {
     type: "/tendermint.abci.RequestEcho";
@@ -191,10 +191,10 @@ export interface RequestInfoProtoMsg {
     value: Uint8Array;
 }
 export interface RequestInfoAmino {
-    version: string;
-    block_version: string;
-    p2p_version: string;
-    abci_version: string;
+    version?: string;
+    block_version?: string;
+    p2p_version?: string;
+    abci_version?: string;
 }
 export interface RequestInfoAminoMsg {
     type: "/tendermint.abci.RequestInfo";
@@ -220,11 +220,11 @@ export interface RequestInitChainProtoMsg {
 }
 export interface RequestInitChainAmino {
     time?: string;
-    chain_id: string;
+    chain_id?: string;
     consensus_params?: ConsensusParamsAmino;
-    validators: ValidatorUpdateAmino[];
-    app_state_bytes: Uint8Array;
-    initial_height: string;
+    validators?: ValidatorUpdateAmino[];
+    app_state_bytes?: string;
+    initial_height?: string;
 }
 export interface RequestInitChainAminoMsg {
     type: "/tendermint.abci.RequestInitChain";
@@ -249,10 +249,10 @@ export interface RequestQueryProtoMsg {
     value: Uint8Array;
 }
 export interface RequestQueryAmino {
-    data: Uint8Array;
-    path: string;
-    height: string;
-    prove: boolean;
+    data?: string;
+    path?: string;
+    height?: string;
+    prove?: boolean;
 }
 export interface RequestQueryAminoMsg {
     type: "/tendermint.abci.RequestQuery";
@@ -273,8 +273,8 @@ export interface RequestCheckTxProtoMsg {
     value: Uint8Array;
 }
 export interface RequestCheckTxAmino {
-    tx: Uint8Array;
-    type: CheckTxType;
+    tx?: string;
+    type?: CheckTxType;
 }
 export interface RequestCheckTxAminoMsg {
     type: "/tendermint.abci.RequestCheckTx";
@@ -331,7 +331,7 @@ export interface RequestOfferSnapshotAmino {
     /** snapshot offered by peers */
     snapshot?: SnapshotAmino;
     /** light client-verified app hash for snapshot height */
-    app_hash: Uint8Array;
+    app_hash?: string;
 }
 export interface RequestOfferSnapshotAminoMsg {
     type: "/tendermint.abci.RequestOfferSnapshot";
@@ -354,9 +354,9 @@ export interface RequestLoadSnapshotChunkProtoMsg {
 }
 /** loads a snapshot chunk */
 export interface RequestLoadSnapshotChunkAmino {
-    height: string;
-    format: number;
-    chunk: number;
+    height?: string;
+    format?: number;
+    chunk?: number;
 }
 export interface RequestLoadSnapshotChunkAminoMsg {
     type: "/tendermint.abci.RequestLoadSnapshotChunk";
@@ -380,9 +380,9 @@ export interface RequestApplySnapshotChunkProtoMsg {
 }
 /** Applies a snapshot chunk */
 export interface RequestApplySnapshotChunkAmino {
-    index: number;
-    chunk: Uint8Array;
-    sender: string;
+    index?: number;
+    chunk?: string;
+    sender?: string;
 }
 export interface RequestApplySnapshotChunkAminoMsg {
     type: "/tendermint.abci.RequestApplySnapshotChunk";
@@ -416,19 +416,19 @@ export interface RequestPrepareProposalProtoMsg {
 }
 export interface RequestPrepareProposalAmino {
     /** the modified transactions cannot exceed this size. */
-    max_tx_bytes: string;
+    max_tx_bytes?: string;
     /**
      * txs is an array of transactions that will be included in a block,
      * sent to the app for possible modifications.
      */
-    txs: Uint8Array[];
+    txs?: string[];
     local_last_commit?: ExtendedCommitInfoAmino;
-    misbehavior: MisbehaviorAmino[];
-    height: string;
+    misbehavior?: MisbehaviorAmino[];
+    height?: string;
     time?: string;
-    next_validators_hash: Uint8Array;
+    next_validators_hash?: string;
     /** address of the public key of the validator proposing the block. */
-    proposer_address: Uint8Array;
+    proposer_address?: string;
 }
 export interface RequestPrepareProposalAminoMsg {
     type: "/tendermint.abci.RequestPrepareProposal";
@@ -461,16 +461,16 @@ export interface RequestProcessProposalProtoMsg {
     value: Uint8Array;
 }
 export interface RequestProcessProposalAmino {
-    txs: Uint8Array[];
+    txs?: string[];
     proposed_last_commit?: CommitInfoAmino;
-    misbehavior: MisbehaviorAmino[];
+    misbehavior?: MisbehaviorAmino[];
     /** hash is the merkle root hash of the fields of the proposed block. */
-    hash: Uint8Array;
-    height: string;
+    hash?: string;
+    height?: string;
     time?: string;
-    next_validators_hash: Uint8Array;
+    next_validators_hash?: string;
     /** address of the public key of the original proposer of the block. */
-    proposer_address: Uint8Array;
+    proposer_address?: string;
 }
 export interface RequestProcessProposalAminoMsg {
     type: "/tendermint.abci.RequestProcessProposal";
@@ -508,17 +508,17 @@ export interface RequestExtendVoteProtoMsg {
 /** Extends a vote with application-injected data */
 export interface RequestExtendVoteAmino {
     /** the hash of the block that this vote may be referring to */
-    hash: Uint8Array;
+    hash?: string;
     /** the height of the extended vote */
-    height: string;
+    height?: string;
     /** info of the block that this vote may be referring to */
     time?: string;
-    txs: Uint8Array[];
+    txs?: string[];
     proposed_last_commit?: CommitInfoAmino;
-    misbehavior: MisbehaviorAmino[];
-    next_validators_hash: Uint8Array;
+    misbehavior?: MisbehaviorAmino[];
+    next_validators_hash?: string;
     /** address of the public key of the original proposer of the block. */
-    proposer_address: Uint8Array;
+    proposer_address?: string;
 }
 export interface RequestExtendVoteAminoMsg {
     type: "/tendermint.abci.RequestExtendVote";
@@ -551,11 +551,11 @@ export interface RequestVerifyVoteExtensionProtoMsg {
 /** Verify the vote extension */
 export interface RequestVerifyVoteExtensionAmino {
     /** the hash of the block that this received vote corresponds to */
-    hash: Uint8Array;
+    hash?: string;
     /** the validator that signed the vote extension */
-    validator_address: Uint8Array;
-    height: string;
-    vote_extension: Uint8Array;
+    validator_address?: string;
+    height?: string;
+    vote_extension?: string;
 }
 export interface RequestVerifyVoteExtensionAminoMsg {
     type: "/tendermint.abci.RequestVerifyVoteExtension";
@@ -585,16 +585,16 @@ export interface RequestFinalizeBlockProtoMsg {
     value: Uint8Array;
 }
 export interface RequestFinalizeBlockAmino {
-    txs: Uint8Array[];
+    txs?: string[];
     decided_last_commit?: CommitInfoAmino;
-    misbehavior: MisbehaviorAmino[];
+    misbehavior?: MisbehaviorAmino[];
     /** hash is the merkle root hash of the fields of the decided block. */
-    hash: Uint8Array;
-    height: string;
+    hash?: string;
+    height?: string;
     time?: string;
-    next_validators_hash: Uint8Array;
+    next_validators_hash?: string;
     /** proposer_address is the address of the public key of the original proposer of the block. */
-    proposer_address: Uint8Array;
+    proposer_address?: string;
 }
 export interface RequestFinalizeBlockAminoMsg {
     type: "/tendermint.abci.RequestFinalizeBlock";
@@ -685,7 +685,7 @@ export interface ResponseExceptionProtoMsg {
 }
 /** nondeterministic */
 export interface ResponseExceptionAmino {
-    error: string;
+    error?: string;
 }
 export interface ResponseExceptionAminoMsg {
     type: "/tendermint.abci.ResponseException";
@@ -703,7 +703,7 @@ export interface ResponseEchoProtoMsg {
     value: Uint8Array;
 }
 export interface ResponseEchoAmino {
-    message: string;
+    message?: string;
 }
 export interface ResponseEchoAminoMsg {
     type: "/tendermint.abci.ResponseEcho";
@@ -738,11 +738,11 @@ export interface ResponseInfoProtoMsg {
     value: Uint8Array;
 }
 export interface ResponseInfoAmino {
-    data: string;
-    version: string;
-    app_version: string;
-    last_block_height: string;
-    last_block_app_hash: Uint8Array;
+    data?: string;
+    version?: string;
+    app_version?: string;
+    last_block_height?: string;
+    last_block_app_hash?: string;
 }
 export interface ResponseInfoAminoMsg {
     type: "/tendermint.abci.ResponseInfo";
@@ -766,8 +766,8 @@ export interface ResponseInitChainProtoMsg {
 }
 export interface ResponseInitChainAmino {
     consensus_params?: ConsensusParamsAmino;
-    validators: ValidatorUpdateAmino[];
-    app_hash: Uint8Array;
+    validators?: ValidatorUpdateAmino[];
+    app_hash?: string;
 }
 export interface ResponseInitChainAminoMsg {
     type: "/tendermint.abci.ResponseInitChain";
@@ -796,17 +796,17 @@ export interface ResponseQueryProtoMsg {
     value: Uint8Array;
 }
 export interface ResponseQueryAmino {
-    code: number;
+    code?: number;
     /** bytes data = 2; // use "value" instead. */
-    log: string;
+    log?: string;
     /** nondeterministic */
-    info: string;
-    index: string;
-    key: Uint8Array;
-    value: Uint8Array;
+    info?: string;
+    index?: string;
+    key?: string;
+    value?: string;
     proof_ops?: ProofOpsAmino;
-    height: string;
-    codespace: string;
+    height?: string;
+    codespace?: string;
 }
 export interface ResponseQueryAminoMsg {
     type: "/tendermint.abci.ResponseQuery";
@@ -840,16 +840,16 @@ export interface ResponseCheckTxProtoMsg {
     value: Uint8Array;
 }
 export interface ResponseCheckTxAmino {
-    code: number;
-    data: Uint8Array;
+    code?: number;
+    data?: string;
     /** nondeterministic */
-    log: string;
+    log?: string;
     /** nondeterministic */
-    info: string;
-    gas_wanted: string;
-    gas_used: string;
-    events: EventAmino[];
-    codespace: string;
+    info?: string;
+    gas_wanted?: string;
+    gas_used?: string;
+    events?: EventAmino[];
+    codespace?: string;
 }
 export interface ResponseCheckTxAminoMsg {
     type: "/tendermint.abci.ResponseCheckTx";
@@ -873,7 +873,7 @@ export interface ResponseCommitProtoMsg {
     value: Uint8Array;
 }
 export interface ResponseCommitAmino {
-    retain_height: string;
+    retain_height?: string;
 }
 export interface ResponseCommitAminoMsg {
     type: "/tendermint.abci.ResponseCommit";
@@ -890,7 +890,7 @@ export interface ResponseListSnapshotsProtoMsg {
     value: Uint8Array;
 }
 export interface ResponseListSnapshotsAmino {
-    snapshots: SnapshotAmino[];
+    snapshots?: SnapshotAmino[];
 }
 export interface ResponseListSnapshotsAminoMsg {
     type: "/tendermint.abci.ResponseListSnapshots";
@@ -907,7 +907,7 @@ export interface ResponseOfferSnapshotProtoMsg {
     value: Uint8Array;
 }
 export interface ResponseOfferSnapshotAmino {
-    result: ResponseOfferSnapshot_Result;
+    result?: ResponseOfferSnapshot_Result;
 }
 export interface ResponseOfferSnapshotAminoMsg {
     type: "/tendermint.abci.ResponseOfferSnapshot";
@@ -924,7 +924,7 @@ export interface ResponseLoadSnapshotChunkProtoMsg {
     value: Uint8Array;
 }
 export interface ResponseLoadSnapshotChunkAmino {
-    chunk: Uint8Array;
+    chunk?: string;
 }
 export interface ResponseLoadSnapshotChunkAminoMsg {
     type: "/tendermint.abci.ResponseLoadSnapshotChunk";
@@ -945,11 +945,11 @@ export interface ResponseApplySnapshotChunkProtoMsg {
     value: Uint8Array;
 }
 export interface ResponseApplySnapshotChunkAmino {
-    result: ResponseApplySnapshotChunk_Result;
+    result?: ResponseApplySnapshotChunk_Result;
     /** Chunks to refetch and reapply */
-    refetch_chunks: number[];
+    refetch_chunks?: number[];
     /** Chunk senders to reject and ban */
-    reject_senders: string[];
+    reject_senders?: string[];
 }
 export interface ResponseApplySnapshotChunkAminoMsg {
     type: "/tendermint.abci.ResponseApplySnapshotChunk";
@@ -968,7 +968,7 @@ export interface ResponsePrepareProposalProtoMsg {
     value: Uint8Array;
 }
 export interface ResponsePrepareProposalAmino {
-    txs: Uint8Array[];
+    txs?: string[];
 }
 export interface ResponsePrepareProposalAminoMsg {
     type: "/tendermint.abci.ResponsePrepareProposal";
@@ -985,7 +985,7 @@ export interface ResponseProcessProposalProtoMsg {
     value: Uint8Array;
 }
 export interface ResponseProcessProposalAmino {
-    status: ResponseProcessProposal_ProposalStatus;
+    status?: ResponseProcessProposal_ProposalStatus;
 }
 export interface ResponseProcessProposalAminoMsg {
     type: "/tendermint.abci.ResponseProcessProposal";
@@ -1002,7 +1002,7 @@ export interface ResponseExtendVoteProtoMsg {
     value: Uint8Array;
 }
 export interface ResponseExtendVoteAmino {
-    vote_extension: Uint8Array;
+    vote_extension?: string;
 }
 export interface ResponseExtendVoteAminoMsg {
     type: "/tendermint.abci.ResponseExtendVote";
@@ -1019,7 +1019,7 @@ export interface ResponseVerifyVoteExtensionProtoMsg {
     value: Uint8Array;
 }
 export interface ResponseVerifyVoteExtensionAmino {
-    status: ResponseVerifyVoteExtension_VerifyStatus;
+    status?: ResponseVerifyVoteExtension_VerifyStatus;
 }
 export interface ResponseVerifyVoteExtensionAminoMsg {
     type: "/tendermint.abci.ResponseVerifyVoteExtension";
@@ -1053,22 +1053,22 @@ export interface ResponseFinalizeBlockProtoMsg {
 }
 export interface ResponseFinalizeBlockAmino {
     /** set of block events emmitted as part of executing the block */
-    events: EventAmino[];
+    events?: EventAmino[];
     /**
      * the result of executing each transaction including the events
      * the particular transction emitted. This should match the order
      * of the transactions delivered in the block itself
      */
-    tx_results: ExecTxResultAmino[];
+    tx_results?: ExecTxResultAmino[];
     /** a list of updates to the validator set. These will reflect the validator set at current height + 2. */
-    validator_updates: ValidatorUpdateAmino[];
+    validator_updates?: ValidatorUpdateAmino[];
     /** updates to the consensus params, if any. */
     consensus_param_updates?: ConsensusParamsAmino;
     /**
      * app_hash is the hash of the applications' state which is used to confirm that execution of the transactions was
      * deterministic. It is up to the application to decide which algorithm to use.
      */
-    app_hash: Uint8Array;
+    app_hash?: string;
 }
 export interface ResponseFinalizeBlockAminoMsg {
     type: "/tendermint.abci.ResponseFinalizeBlock";
@@ -1090,8 +1090,8 @@ export interface CommitInfoProtoMsg {
     value: Uint8Array;
 }
 export interface CommitInfoAmino {
-    round: number;
-    votes: VoteInfoAmino[];
+    round?: number;
+    votes?: VoteInfoAmino[];
 }
 export interface CommitInfoAminoMsg {
     type: "/tendermint.abci.CommitInfo";
@@ -1126,12 +1126,12 @@ export interface ExtendedCommitInfoProtoMsg {
  */
 export interface ExtendedCommitInfoAmino {
     /** The round at which the block proposer decided in the previous height. */
-    round: number;
+    round?: number;
     /**
      * List of validators' addresses in the last validator set with their voting
      * information, including vote extensions.
      */
-    votes: ExtendedVoteInfoAmino[];
+    votes?: ExtendedVoteInfoAmino[];
 }
 export interface ExtendedCommitInfoAminoMsg {
     type: "/tendermint.abci.ExtendedCommitInfo";
@@ -1165,8 +1165,8 @@ export interface EventProtoMsg {
  * Later, transactions may be queried using these events.
  */
 export interface EventAmino {
-    type: string;
-    attributes: EventAttributeAmino[];
+    type?: string;
+    attributes?: EventAttributeAmino[];
 }
 export interface EventAminoMsg {
     type: "/tendermint.abci.Event";
@@ -1194,10 +1194,10 @@ export interface EventAttributeProtoMsg {
 }
 /** EventAttribute is a single key-value pair, associated with an event. */
 export interface EventAttributeAmino {
-    key: string;
-    value: string;
+    key?: string;
+    value?: string;
     /** nondeterministic */
-    index: boolean;
+    index?: boolean;
 }
 export interface EventAttributeAminoMsg {
     type: "/tendermint.abci.EventAttribute";
@@ -1236,16 +1236,16 @@ export interface ExecTxResultProtoMsg {
  * * Its structure is equivalent to #ResponseDeliverTx which will be deprecated/deleted
  */
 export interface ExecTxResultAmino {
-    code: number;
-    data: Uint8Array;
+    code?: number;
+    data?: string;
     /** nondeterministic */
-    log: string;
+    log?: string;
     /** nondeterministic */
-    info: string;
-    gas_wanted: string;
-    gas_used: string;
-    events: EventAmino[];
-    codespace: string;
+    info?: string;
+    gas_wanted?: string;
+    gas_used?: string;
+    events?: EventAmino[];
+    codespace?: string;
 }
 export interface ExecTxResultAminoMsg {
     type: "/tendermint.abci.ExecTxResult";
@@ -1287,9 +1287,9 @@ export interface TxResultProtoMsg {
  * One usage is indexing transaction results.
  */
 export interface TxResultAmino {
-    height: string;
-    index: number;
-    tx: Uint8Array;
+    height?: string;
+    index?: number;
+    tx?: string;
     result?: ExecTxResultAmino;
 }
 export interface TxResultAminoMsg {
@@ -1325,9 +1325,9 @@ export interface ValidatorAmino {
      * The first 20 bytes of SHA256(public key)
      * PubKey pub_key = 2 [(gogoproto.nullable)=false];
      */
-    address: Uint8Array;
+    address?: string;
     /** The voting power */
-    power: string;
+    power?: string;
 }
 export interface ValidatorAminoMsg {
     type: "/tendermint.abci.Validator";
@@ -1347,7 +1347,7 @@ export interface ValidatorUpdateProtoMsg {
 }
 export interface ValidatorUpdateAmino {
     pub_key?: PublicKeyAmino;
-    power: string;
+    power?: string;
 }
 export interface ValidatorUpdateAminoMsg {
     type: "/tendermint.abci.ValidatorUpdate";
@@ -1367,7 +1367,7 @@ export interface VoteInfoProtoMsg {
 }
 export interface VoteInfoAmino {
     validator?: ValidatorAmino;
-    block_id_flag: BlockIDFlag;
+    block_id_flag?: BlockIDFlag;
 }
 export interface VoteInfoAminoMsg {
     type: "/tendermint.abci.VoteInfo";
@@ -1395,11 +1395,11 @@ export interface ExtendedVoteInfoAmino {
     /** The validator that sent the vote. */
     validator?: ValidatorAmino;
     /** Non-deterministic extension provided by the sending validator's application. */
-    vote_extension: Uint8Array;
+    vote_extension?: string;
     /** Vote extension signature created by CometBFT */
-    extension_signature: Uint8Array;
+    extension_signature?: string;
     /** block_id_flag indicates whether the validator voted for a block, nil, or did not vote at all */
-    block_id_flag: BlockIDFlag;
+    block_id_flag?: BlockIDFlag;
 }
 export interface ExtendedVoteInfoAminoMsg {
     type: "/tendermint.abci.ExtendedVoteInfo";
@@ -1431,11 +1431,11 @@ export interface MisbehaviorProtoMsg {
     value: Uint8Array;
 }
 export interface MisbehaviorAmino {
-    type: MisbehaviorType;
+    type?: MisbehaviorType;
     /** The offending validator */
     validator?: ValidatorAmino;
     /** The height when the offense occurred */
-    height: string;
+    height?: string;
     /** The corresponding time where the offense occurred */
     time?: string;
     /**
@@ -1443,7 +1443,7 @@ export interface MisbehaviorAmino {
      * not store historical validators.
      * https://github.com/tendermint/tendermint/issues/4581
      */
-    total_voting_power: string;
+    total_voting_power?: string;
 }
 export interface MisbehaviorAminoMsg {
     type: "/tendermint.abci.Misbehavior";
@@ -1474,15 +1474,15 @@ export interface SnapshotProtoMsg {
 }
 export interface SnapshotAmino {
     /** The height at which the snapshot was taken */
-    height: string;
+    height?: string;
     /** The application-specific snapshot format */
-    format: number;
+    format?: number;
     /** Number of chunks in the snapshot */
-    chunks: number;
+    chunks?: number;
     /** Arbitrary snapshot hash, equal only if identical */
-    hash: Uint8Array;
+    hash?: string;
     /** Arbitrary application metadata */
-    metadata: Uint8Array;
+    metadata?: string;
 }
 export interface SnapshotAminoMsg {
     type: "/tendermint.abci.Snapshot";

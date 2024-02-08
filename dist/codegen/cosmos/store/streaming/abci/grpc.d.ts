@@ -56,9 +56,9 @@ export interface ListenCommitRequestProtoMsg {
 /** ListenCommitRequest is the request type for the ListenCommit RPC method */
 export interface ListenCommitRequestAmino {
     /** explicitly pass in block height as ResponseCommit does not contain this info */
-    block_height: string;
+    block_height?: string;
     res?: ResponseCommitAmino;
-    change_set: StoreKVPairAmino[];
+    change_set?: StoreKVPairAmino[];
 }
 export interface ListenCommitRequestAminoMsg {
     type: "cosmos-sdk/ListenCommitRequest";

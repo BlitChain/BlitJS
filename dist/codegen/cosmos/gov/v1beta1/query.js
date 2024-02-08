@@ -53,9 +53,11 @@ exports.QueryProposalRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id)
-        };
+        const message = createBaseQueryProposalRequest();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -130,13 +132,15 @@ exports.QueryProposalResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal: object?.proposal ? gov_1.Proposal.fromAmino(object.proposal) : undefined
-        };
+        const message = createBaseQueryProposalResponse();
+        if (object.proposal !== undefined && object.proposal !== null) {
+            message.proposal = gov_1.Proposal.fromAmino(object.proposal);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.proposal = message.proposal ? gov_1.Proposal.toAmino(message.proposal) : undefined;
+        obj.proposal = message.proposal ? gov_1.Proposal.toAmino(message.proposal) : gov_1.Proposal.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -237,12 +241,20 @@ exports.QueryProposalsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_status: (0, helpers_1.isSet)(object.proposal_status) ? (0, gov_1.proposalStatusFromJSON)(object.proposal_status) : -1,
-            voter: object.voter,
-            depositor: object.depositor,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryProposalsRequest();
+        if (object.proposal_status !== undefined && object.proposal_status !== null) {
+            message.proposal_status = (0, gov_1.proposalStatusFromJSON)(object.proposal_status);
+        }
+        if (object.voter !== undefined && object.voter !== null) {
+            message.voter = object.voter;
+        }
+        if (object.depositor !== undefined && object.depositor !== null) {
+            message.depositor = object.depositor;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -335,10 +347,12 @@ exports.QueryProposalsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => gov_1.Proposal.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryProposalsResponse();
+        message.proposals = object.proposals?.map(e => gov_1.Proposal.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -429,10 +443,14 @@ exports.QueryVoteRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id),
-            voter: object.voter
-        };
+        const message = createBaseQueryVoteRequest();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        if (object.voter !== undefined && object.voter !== null) {
+            message.voter = object.voter;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -508,13 +526,15 @@ exports.QueryVoteResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            vote: object?.vote ? gov_1.Vote.fromAmino(object.vote) : undefined
-        };
+        const message = createBaseQueryVoteResponse();
+        if (object.vote !== undefined && object.vote !== null) {
+            message.vote = gov_1.Vote.fromAmino(object.vote);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.vote = message.vote ? gov_1.Vote.toAmino(message.vote) : undefined;
+        obj.vote = message.vote ? gov_1.Vote.toAmino(message.vote) : gov_1.Vote.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -595,10 +615,14 @@ exports.QueryVotesRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id),
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryVotesRequest();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -689,10 +713,12 @@ exports.QueryVotesResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => gov_1.Vote.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryVotesResponse();
+        message.votes = object.votes?.map(e => gov_1.Vote.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -773,9 +799,11 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params_type: object.params_type
-        };
+        const message = createBaseQueryParamsRequest();
+        if (object.params_type !== undefined && object.params_type !== null) {
+            message.params_type = object.params_type;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -870,17 +898,23 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            voting_params: object?.voting_params ? gov_1.VotingParams.fromAmino(object.voting_params) : undefined,
-            deposit_params: object?.deposit_params ? gov_1.DepositParams.fromAmino(object.deposit_params) : undefined,
-            tally_params: object?.tally_params ? gov_1.TallyParams.fromAmino(object.tally_params) : undefined
-        };
+        const message = createBaseQueryParamsResponse();
+        if (object.voting_params !== undefined && object.voting_params !== null) {
+            message.voting_params = gov_1.VotingParams.fromAmino(object.voting_params);
+        }
+        if (object.deposit_params !== undefined && object.deposit_params !== null) {
+            message.deposit_params = gov_1.DepositParams.fromAmino(object.deposit_params);
+        }
+        if (object.tally_params !== undefined && object.tally_params !== null) {
+            message.tally_params = gov_1.TallyParams.fromAmino(object.tally_params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.voting_params = message.voting_params ? gov_1.VotingParams.toAmino(message.voting_params) : undefined;
-        obj.deposit_params = message.deposit_params ? gov_1.DepositParams.toAmino(message.deposit_params) : undefined;
-        obj.tally_params = message.tally_params ? gov_1.TallyParams.toAmino(message.tally_params) : undefined;
+        obj.voting_params = message.voting_params ? gov_1.VotingParams.toAmino(message.voting_params) : gov_1.VotingParams.fromPartial({});
+        obj.deposit_params = message.deposit_params ? gov_1.DepositParams.toAmino(message.deposit_params) : gov_1.DepositParams.fromPartial({});
+        obj.tally_params = message.tally_params ? gov_1.TallyParams.toAmino(message.tally_params) : gov_1.TallyParams.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -961,10 +995,14 @@ exports.QueryDepositRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id),
-            depositor: object.depositor
-        };
+        const message = createBaseQueryDepositRequest();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        if (object.depositor !== undefined && object.depositor !== null) {
+            message.depositor = object.depositor;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1040,13 +1078,15 @@ exports.QueryDepositResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            deposit: object?.deposit ? gov_1.Deposit.fromAmino(object.deposit) : undefined
-        };
+        const message = createBaseQueryDepositResponse();
+        if (object.deposit !== undefined && object.deposit !== null) {
+            message.deposit = gov_1.Deposit.fromAmino(object.deposit);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.deposit = message.deposit ? gov_1.Deposit.toAmino(message.deposit) : undefined;
+        obj.deposit = message.deposit ? gov_1.Deposit.toAmino(message.deposit) : gov_1.Deposit.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -1127,10 +1167,14 @@ exports.QueryDepositsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id),
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDepositsRequest();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1221,10 +1265,12 @@ exports.QueryDepositsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            deposits: Array.isArray(object?.deposits) ? object.deposits.map((e) => gov_1.Deposit.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDepositsResponse();
+        message.deposits = object.deposits?.map(e => gov_1.Deposit.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1305,9 +1351,11 @@ exports.QueryTallyResultRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id)
-        };
+        const message = createBaseQueryTallyResultRequest();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1382,13 +1430,15 @@ exports.QueryTallyResultResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            tally: object?.tally ? gov_1.TallyResult.fromAmino(object.tally) : undefined
-        };
+        const message = createBaseQueryTallyResultResponse();
+        if (object.tally !== undefined && object.tally !== null) {
+            message.tally = gov_1.TallyResult.fromAmino(object.tally);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.tally = message.tally ? gov_1.TallyResult.toAmino(message.tally) : undefined;
+        obj.tally = message.tally ? gov_1.TallyResult.toAmino(message.tally) : gov_1.TallyResult.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {

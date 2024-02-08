@@ -42,7 +42,8 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryParamsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -110,13 +111,15 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? params_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseQueryParamsResponse();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = params_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.params = message.params ? params_1.Params.toAmino(message.params) : undefined;
+        obj.params = message.params ? params_1.Params.toAmino(message.params) : params_1.Params.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -181,9 +184,11 @@ exports.QueryScriptRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address
-        };
+        const message = createBaseQueryScriptRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -252,9 +257,11 @@ exports.QueryScriptResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            script: object?.script ? script_1.Script.fromAmino(object.script) : undefined
-        };
+        const message = createBaseQueryScriptResponse();
+        if (object.script !== undefined && object.script !== null) {
+            message.script = script_1.Script.fromAmino(object.script);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -323,9 +330,11 @@ exports.QueryScriptsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryScriptsRequest();
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -409,10 +418,12 @@ exports.QueryScriptsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            script: Array.isArray(object?.script) ? object.script.map((e) => script_1.Script.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryScriptsResponse();
+        message.script = object.script?.map(e => script_1.Script.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -497,10 +508,14 @@ exports.QueryWebRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            httprequest: object.httprequest
-        };
+        const message = createBaseQueryWebRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.httprequest !== undefined && object.httprequest !== null) {
+            message.httprequest = object.httprequest;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -570,9 +585,11 @@ exports.QueryWebResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            httpresponse: object.httpresponse
-        };
+        const message = createBaseQueryWebResponse();
+        if (object.httpresponse !== undefined && object.httpresponse !== null) {
+            message.httpresponse = object.httpresponse;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -701,15 +718,29 @@ exports.QueryEvalRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            caller_address: object.caller_address,
-            script_address: object.script_address,
-            extra_code: object.extra_code,
-            function_name: object.function_name,
-            kwargs: object.kwargs,
-            grantee: object.grantee,
-            attached_messages: object.attached_messages
-        };
+        const message = createBaseQueryEvalRequest();
+        if (object.caller_address !== undefined && object.caller_address !== null) {
+            message.caller_address = object.caller_address;
+        }
+        if (object.script_address !== undefined && object.script_address !== null) {
+            message.script_address = object.script_address;
+        }
+        if (object.extra_code !== undefined && object.extra_code !== null) {
+            message.extra_code = object.extra_code;
+        }
+        if (object.function_name !== undefined && object.function_name !== null) {
+            message.function_name = object.function_name;
+        }
+        if (object.kwargs !== undefined && object.kwargs !== null) {
+            message.kwargs = object.kwargs;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        if (object.attached_messages !== undefined && object.attached_messages !== null) {
+            message.attached_messages = object.attached_messages;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -784,9 +815,11 @@ exports.QueryEvalResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            response: object.response
-        };
+        const message = createBaseQueryEvalResponse();
+        if (object.response !== undefined && object.response !== null) {
+            message.response = object.response;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

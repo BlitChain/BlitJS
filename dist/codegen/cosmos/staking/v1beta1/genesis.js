@@ -147,21 +147,27 @@ exports.GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? staking_1.Params.fromAmino(object.params) : undefined,
-            last_total_power: object.last_total_power,
-            last_validator_powers: Array.isArray(object?.last_validator_powers) ? object.last_validator_powers.map((e) => exports.LastValidatorPower.fromAmino(e)) : [],
-            validators: Array.isArray(object?.validators) ? object.validators.map((e) => staking_1.Validator.fromAmino(e)) : [],
-            delegations: Array.isArray(object?.delegations) ? object.delegations.map((e) => staking_1.Delegation.fromAmino(e)) : [],
-            unbonding_delegations: Array.isArray(object?.unbonding_delegations) ? object.unbonding_delegations.map((e) => staking_1.UnbondingDelegation.fromAmino(e)) : [],
-            redelegations: Array.isArray(object?.redelegations) ? object.redelegations.map((e) => staking_1.Redelegation.fromAmino(e)) : [],
-            exported: object.exported
-        };
+        const message = createBaseGenesisState();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = staking_1.Params.fromAmino(object.params);
+        }
+        if (object.last_total_power !== undefined && object.last_total_power !== null) {
+            message.last_total_power = (0, helpers_1.bytesFromBase64)(object.last_total_power);
+        }
+        message.last_validator_powers = object.last_validator_powers?.map(e => exports.LastValidatorPower.fromAmino(e)) || [];
+        message.validators = object.validators?.map(e => staking_1.Validator.fromAmino(e)) || [];
+        message.delegations = object.delegations?.map(e => staking_1.Delegation.fromAmino(e)) || [];
+        message.unbonding_delegations = object.unbonding_delegations?.map(e => staking_1.UnbondingDelegation.fromAmino(e)) || [];
+        message.redelegations = object.redelegations?.map(e => staking_1.Redelegation.fromAmino(e)) || [];
+        if (object.exported !== undefined && object.exported !== null) {
+            message.exported = object.exported;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.params = message.params ? staking_1.Params.toAmino(message.params) : undefined;
-        obj.last_total_power = message.last_total_power;
+        obj.params = message.params ? staking_1.Params.toAmino(message.params) : staking_1.Params.fromPartial({});
+        obj.last_total_power = message.last_total_power ? (0, helpers_1.base64FromBytes)(message.last_total_power) : "";
         if (message.last_validator_powers) {
             obj.last_validator_powers = message.last_validator_powers.map(e => e ? exports.LastValidatorPower.toAmino(e) : undefined);
         }
@@ -273,10 +279,14 @@ exports.LastValidatorPower = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            power: BigInt(object.power)
-        };
+        const message = createBaseLastValidatorPower();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.power !== undefined && object.power !== null) {
+            message.power = BigInt(object.power);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

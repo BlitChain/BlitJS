@@ -57,9 +57,11 @@ exports.GenericAuthorization = {
         return message;
     },
     fromAmino(object) {
-        return {
-            msg: object.msg
-        };
+        const message = createBaseGenericAuthorization();
+        if (object.msg !== undefined && object.msg !== null) {
+            message.msg = object.msg;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -144,10 +146,14 @@ exports.Grant = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authorization: object?.authorization ? (0, exports.Cosmos_authzv1beta1Authorization_FromAmino)(object.authorization) : undefined,
-            expiration: object?.expiration ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.expiration)) : undefined
-        };
+        const message = createBaseGrant();
+        if (object.authorization !== undefined && object.authorization !== null) {
+            message.authorization = (0, exports.Cosmos_authzv1beta1Authorization_FromAmino)(object.authorization);
+        }
+        if (object.expiration !== undefined && object.expiration !== null) {
+            message.expiration = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.expiration));
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -253,12 +259,20 @@ exports.GrantAuthorization = {
         return message;
     },
     fromAmino(object) {
-        return {
-            granter: object.granter,
-            grantee: object.grantee,
-            authorization: object?.authorization ? (0, exports.Cosmos_authzv1beta1Authorization_FromAmino)(object.authorization) : undefined,
-            expiration: object?.expiration ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.expiration)) : undefined
-        };
+        const message = createBaseGrantAuthorization();
+        if (object.granter !== undefined && object.granter !== null) {
+            message.granter = object.granter;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        if (object.authorization !== undefined && object.authorization !== null) {
+            message.authorization = (0, exports.Cosmos_authzv1beta1Authorization_FromAmino)(object.authorization);
+        }
+        if (object.expiration !== undefined && object.expiration !== null) {
+            message.expiration = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.expiration));
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -341,9 +355,9 @@ exports.GrantQueueItem = {
         return message;
     },
     fromAmino(object) {
-        return {
-            msg_type_urls: Array.isArray(object?.msg_type_urls) ? object.msg_type_urls.map((e) => e) : []
-        };
+        const message = createBaseGrantQueueItem();
+        message.msg_type_urls = object.msg_type_urls?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -379,16 +393,16 @@ exports.GrantQueueItem = {
 };
 const Cosmos_authzv1beta1Authorization_InterfaceDecoder = (input) => {
     const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
-    const data = any_1.Any.decode(reader, reader.uint32(), true);
+    const data = any_1.Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
         case "/cosmos.authz.v1beta1.GenericAuthorization":
-            return exports.GenericAuthorization.decode(data.value, undefined, true);
+            return exports.GenericAuthorization.decode(data.value);
         case "/cosmos.bank.v1beta1.SendAuthorization":
-            return authz_1.SendAuthorization.decode(data.value, undefined, true);
+            return authz_1.SendAuthorization.decode(data.value);
         case "/cosmos.staking.v1beta1.StakeAuthorization":
-            return authz_2.StakeAuthorization.decode(data.value, undefined, true);
+            return authz_2.StakeAuthorization.decode(data.value);
         case "/ibc.applications.transfer.v1.TransferAuthorization":
-            return authz_3.TransferAuthorization.decode(data.value, undefined, true);
+            return authz_3.TransferAuthorization.decode(data.value);
         default:
             return data;
     }

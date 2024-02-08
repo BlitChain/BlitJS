@@ -61,54 +61,54 @@ export interface ModuleProtoMsg {
 /** Module is the config object for the runtime module. */
 export interface ModuleAmino {
   /** app_name is the name of the app. */
-  app_name: string;
+  app_name?: string;
   /**
    * begin_blockers specifies the module names of begin blockers
    * to call in the order in which they should be called. If this is left empty
    * no begin blocker will be registered.
    */
-  begin_blockers: string[];
+  begin_blockers?: string[];
   /**
    * end_blockers specifies the module names of the end blockers
    * to call in the order in which they should be called. If this is left empty
    * no end blocker will be registered.
    */
-  end_blockers: string[];
+  end_blockers?: string[];
   /**
    * init_genesis specifies the module names of init genesis functions
    * to call in the order in which they should be called. If this is left empty
    * no init genesis function will be registered.
    */
-  init_genesis: string[];
+  init_genesis?: string[];
   /**
    * export_genesis specifies the order in which to export module genesis data.
    * If this is left empty, the init_genesis order will be used for export genesis
    * if it is specified.
    */
-  export_genesis: string[];
+  export_genesis?: string[];
   /**
    * override_store_keys is an optional list of overrides for the module store keys
    * to be used in keeper construction.
    */
-  override_store_keys: StoreKeyConfigAmino[];
+  override_store_keys?: StoreKeyConfigAmino[];
   /**
    * order_migrations defines the order in which module migrations are performed.
    * If this is left empty, it uses the default migration order.
    * https://pkg.go.dev/github.com/cosmos/cosmos-sdk@v0.47.0-alpha2/types/module#DefaultMigrationsOrder
    */
-  order_migrations: string[];
+  order_migrations?: string[];
   /**
    * precommiters specifies the module names of the precommiters
    * to call in the order in which they should be called. If this is left empty
    * no precommit function will be registered.
    */
-  precommiters: string[];
+  precommiters?: string[];
   /**
    * prepare_check_staters specifies the module names of the prepare_check_staters
    * to call in the order in which they should be called. If this is left empty
    * no preparecheckstate function will be registered.
    */
-  prepare_check_staters: string[];
+  prepare_check_staters?: string[];
 }
 export interface ModuleAminoMsg {
   type: "cosmos-sdk/Module";
@@ -146,9 +146,9 @@ export interface StoreKeyConfigProtoMsg {
  */
 export interface StoreKeyConfigAmino {
   /** name of the module to override the store key of */
-  module_name: string;
+  module_name?: string;
   /** the kv store key to use instead of the module name. */
-  kv_store_key: string;
+  kv_store_key?: string;
 }
 export interface StoreKeyConfigAminoMsg {
   type: "cosmos-sdk/StoreKeyConfig";
@@ -320,17 +320,19 @@ export const Module = {
     return message;
   },
   fromAmino(object: ModuleAmino): Module {
-    return {
-      app_name: object.app_name,
-      begin_blockers: Array.isArray(object?.begin_blockers) ? object.begin_blockers.map((e: any) => e) : [],
-      end_blockers: Array.isArray(object?.end_blockers) ? object.end_blockers.map((e: any) => e) : [],
-      init_genesis: Array.isArray(object?.init_genesis) ? object.init_genesis.map((e: any) => e) : [],
-      export_genesis: Array.isArray(object?.export_genesis) ? object.export_genesis.map((e: any) => e) : [],
-      override_store_keys: Array.isArray(object?.override_store_keys) ? object.override_store_keys.map((e: any) => StoreKeyConfig.fromAmino(e)) : [],
-      order_migrations: Array.isArray(object?.order_migrations) ? object.order_migrations.map((e: any) => e) : [],
-      precommiters: Array.isArray(object?.precommiters) ? object.precommiters.map((e: any) => e) : [],
-      prepare_check_staters: Array.isArray(object?.prepare_check_staters) ? object.prepare_check_staters.map((e: any) => e) : []
-    };
+    const message = createBaseModule();
+    if (object.app_name !== undefined && object.app_name !== null) {
+      message.app_name = object.app_name;
+    }
+    message.begin_blockers = object.begin_blockers?.map(e => e) || [];
+    message.end_blockers = object.end_blockers?.map(e => e) || [];
+    message.init_genesis = object.init_genesis?.map(e => e) || [];
+    message.export_genesis = object.export_genesis?.map(e => e) || [];
+    message.override_store_keys = object.override_store_keys?.map(e => StoreKeyConfig.fromAmino(e)) || [];
+    message.order_migrations = object.order_migrations?.map(e => e) || [];
+    message.precommiters = object.precommiters?.map(e => e) || [];
+    message.prepare_check_staters = object.prepare_check_staters?.map(e => e) || [];
+    return message;
   },
   toAmino(message: Module): ModuleAmino {
     const obj: any = {};
@@ -455,10 +457,14 @@ export const StoreKeyConfig = {
     return message;
   },
   fromAmino(object: StoreKeyConfigAmino): StoreKeyConfig {
-    return {
-      module_name: object.module_name,
-      kv_store_key: object.kv_store_key
-    };
+    const message = createBaseStoreKeyConfig();
+    if (object.module_name !== undefined && object.module_name !== null) {
+      message.module_name = object.module_name;
+    }
+    if (object.kv_store_key !== undefined && object.kv_store_key !== null) {
+      message.kv_store_key = object.kv_store_key;
+    }
+    return message;
   },
   toAmino(message: StoreKeyConfig): StoreKeyConfigAmino {
     const obj: any = {};

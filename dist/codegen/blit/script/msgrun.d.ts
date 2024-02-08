@@ -16,13 +16,13 @@ export interface MsgRunProtoMsg {
 }
 /** MsgRun runs a script at a specific address */
 export interface MsgRunAmino {
-    caller_address: string;
-    script_address: string;
-    extra_code: string;
-    function_name: string;
-    kwargs: string;
-    grantee: string;
-    attached_messages: string;
+    caller_address?: string;
+    script_address?: string;
+    extra_code?: string;
+    function_name?: string;
+    kwargs?: string;
+    grantee?: string;
+    attached_messages?: string;
 }
 export interface MsgRunAminoMsg {
     type: "/blit.script.MsgRun";
@@ -46,7 +46,7 @@ export interface MsgRunResponseProtoMsg {
     value: Uint8Array;
 }
 export interface MsgRunResponseAmino {
-    response: string;
+    response?: string;
 }
 export interface MsgRunResponseAminoMsg {
     type: "/blit.script.MsgRunResponse";

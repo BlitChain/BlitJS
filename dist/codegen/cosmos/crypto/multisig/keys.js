@@ -67,10 +67,12 @@ exports.LegacyAminoPubKey = {
         return message;
     },
     fromAmino(object) {
-        return {
-            threshold: object.threshold,
-            public_keys: Array.isArray(object?.public_keys) ? object.public_keys.map((e) => any_1.Any.fromAmino(e)) : []
-        };
+        const message = createBaseLegacyAminoPubKey();
+        if (object.threshold !== undefined && object.threshold !== null) {
+            message.threshold = object.threshold;
+        }
+        message.public_keys = object.public_keys?.map(e => any_1.Any.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

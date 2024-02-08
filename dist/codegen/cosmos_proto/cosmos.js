@@ -102,10 +102,14 @@ exports.InterfaceDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            name: object.name,
-            description: object.description
-        };
+        const message = createBaseInterfaceDescriptor();
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -210,18 +214,22 @@ exports.ScalarDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            name: object.name,
-            description: object.description,
-            field_type: Array.isArray(object?.field_type) ? object.field_type.map((e) => scalarTypeFromJSON(e)) : []
-        };
+        const message = createBaseScalarDescriptor();
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        }
+        message.field_type = object.field_type?.map(e => scalarTypeFromJSON(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.name = message.name;
         obj.description = message.description;
         if (message.field_type) {
-            obj.field_type = message.field_type.map(e => scalarTypeToJSON(e));
+            obj.field_type = message.field_type.map(e => e);
         }
         else {
             obj.field_type = [];

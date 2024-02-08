@@ -66,10 +66,12 @@ exports.Params = {
         return message;
     },
     fromAmino(object) {
-        return {
-            host_enabled: object.host_enabled,
-            allow_messages: Array.isArray(object?.allow_messages) ? object.allow_messages.map((e) => e) : []
-        };
+        const message = createBaseParams();
+        if (object.host_enabled !== undefined && object.host_enabled !== null) {
+            message.host_enabled = object.host_enabled;
+        }
+        message.allow_messages = object.allow_messages?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

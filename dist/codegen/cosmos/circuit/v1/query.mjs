@@ -50,9 +50,11 @@ export const QueryAccountRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address
-        };
+        const message = createBaseQueryAccountRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -127,9 +129,11 @@ export const AccountResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            permission: object?.permission ? Permissions.fromAmino(object.permission) : undefined
-        };
+        const message = createBaseAccountResponse();
+        if (object.permission !== undefined && object.permission !== null) {
+            message.permission = Permissions.fromAmino(object.permission);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -204,9 +208,11 @@ export const QueryAccountsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryAccountsRequest();
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -296,10 +302,12 @@ export const AccountsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            accounts: Array.isArray(object?.accounts) ? object.accounts.map((e) => GenesisAccountPermissions.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseAccountsResponse();
+        message.accounts = object.accounts?.map(e => GenesisAccountPermissions.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -368,7 +376,8 @@ export const QueryDisabledListRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryDisabledListRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -447,9 +456,9 @@ export const DisabledListResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            disabled_list: Array.isArray(object?.disabled_list) ? object.disabled_list.map((e) => e) : []
-        };
+        const message = createBaseDisabledListResponse();
+        message.disabled_list = object.disabled_list?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

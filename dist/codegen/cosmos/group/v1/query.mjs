@@ -50,9 +50,11 @@ export const QueryGroupInfoRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            group_id: BigInt(object.group_id)
-        };
+        const message = createBaseQueryGroupInfoRequest();
+        if (object.group_id !== undefined && object.group_id !== null) {
+            message.group_id = BigInt(object.group_id);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -127,9 +129,11 @@ export const QueryGroupInfoResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            info: object?.info ? GroupInfo.fromAmino(object.info) : undefined
-        };
+        const message = createBaseQueryGroupInfoResponse();
+        if (object.info !== undefined && object.info !== null) {
+            message.info = GroupInfo.fromAmino(object.info);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -204,9 +208,11 @@ export const QueryGroupPolicyInfoRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address
-        };
+        const message = createBaseQueryGroupPolicyInfoRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -281,9 +287,11 @@ export const QueryGroupPolicyInfoResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            info: object?.info ? GroupPolicyInfo.fromAmino(object.info) : undefined
-        };
+        const message = createBaseQueryGroupPolicyInfoResponse();
+        if (object.info !== undefined && object.info !== null) {
+            message.info = GroupPolicyInfo.fromAmino(object.info);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -368,10 +376,14 @@ export const QueryGroupMembersRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            group_id: BigInt(object.group_id),
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGroupMembersRequest();
+        if (object.group_id !== undefined && object.group_id !== null) {
+            message.group_id = BigInt(object.group_id);
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -462,10 +474,12 @@ export const QueryGroupMembersResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            members: Array.isArray(object?.members) ? object.members.map((e) => GroupMember.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGroupMembersResponse();
+        message.members = object.members?.map(e => GroupMember.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -556,10 +570,14 @@ export const QueryGroupsByAdminRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            admin: object.admin,
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGroupsByAdminRequest();
+        if (object.admin !== undefined && object.admin !== null) {
+            message.admin = object.admin;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -650,10 +668,12 @@ export const QueryGroupsByAdminResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            groups: Array.isArray(object?.groups) ? object.groups.map((e) => GroupInfo.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGroupsByAdminResponse();
+        message.groups = object.groups?.map(e => GroupInfo.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -744,10 +764,14 @@ export const QueryGroupPoliciesByGroupRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            group_id: BigInt(object.group_id),
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGroupPoliciesByGroupRequest();
+        if (object.group_id !== undefined && object.group_id !== null) {
+            message.group_id = BigInt(object.group_id);
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -838,10 +862,12 @@ export const QueryGroupPoliciesByGroupResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            group_policies: Array.isArray(object?.group_policies) ? object.group_policies.map((e) => GroupPolicyInfo.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGroupPoliciesByGroupResponse();
+        message.group_policies = object.group_policies?.map(e => GroupPolicyInfo.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -932,10 +958,14 @@ export const QueryGroupPoliciesByAdminRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            admin: object.admin,
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGroupPoliciesByAdminRequest();
+        if (object.admin !== undefined && object.admin !== null) {
+            message.admin = object.admin;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1026,10 +1056,12 @@ export const QueryGroupPoliciesByAdminResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            group_policies: Array.isArray(object?.group_policies) ? object.group_policies.map((e) => GroupPolicyInfo.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGroupPoliciesByAdminResponse();
+        message.group_policies = object.group_policies?.map(e => GroupPolicyInfo.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1110,9 +1142,11 @@ export const QueryProposalRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id)
-        };
+        const message = createBaseQueryProposalRequest();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1187,9 +1221,11 @@ export const QueryProposalResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal: object?.proposal ? Proposal.fromAmino(object.proposal) : undefined
-        };
+        const message = createBaseQueryProposalResponse();
+        if (object.proposal !== undefined && object.proposal !== null) {
+            message.proposal = Proposal.fromAmino(object.proposal);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1274,10 +1310,14 @@ export const QueryProposalsByGroupPolicyRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryProposalsByGroupPolicyRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1368,10 +1408,12 @@ export const QueryProposalsByGroupPolicyResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => Proposal.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryProposalsByGroupPolicyResponse();
+        message.proposals = object.proposals?.map(e => Proposal.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1462,10 +1504,14 @@ export const QueryVoteByProposalVoterRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id),
-            voter: object.voter
-        };
+        const message = createBaseQueryVoteByProposalVoterRequest();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        if (object.voter !== undefined && object.voter !== null) {
+            message.voter = object.voter;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1541,9 +1587,11 @@ export const QueryVoteByProposalVoterResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            vote: object?.vote ? Vote.fromAmino(object.vote) : undefined
-        };
+        const message = createBaseQueryVoteByProposalVoterResponse();
+        if (object.vote !== undefined && object.vote !== null) {
+            message.vote = Vote.fromAmino(object.vote);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1628,10 +1676,14 @@ export const QueryVotesByProposalRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id),
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryVotesByProposalRequest();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1722,10 +1774,12 @@ export const QueryVotesByProposalResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => Vote.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryVotesByProposalResponse();
+        message.votes = object.votes?.map(e => Vote.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1816,10 +1870,14 @@ export const QueryVotesByVoterRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            voter: object.voter,
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryVotesByVoterRequest();
+        if (object.voter !== undefined && object.voter !== null) {
+            message.voter = object.voter;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1910,10 +1968,12 @@ export const QueryVotesByVoterResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => Vote.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryVotesByVoterResponse();
+        message.votes = object.votes?.map(e => Vote.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2004,10 +2064,14 @@ export const QueryGroupsByMemberRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGroupsByMemberRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2098,10 +2162,12 @@ export const QueryGroupsByMemberResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            groups: Array.isArray(object?.groups) ? object.groups.map((e) => GroupInfo.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGroupsByMemberResponse();
+        message.groups = object.groups?.map(e => GroupInfo.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2182,9 +2248,11 @@ export const QueryTallyResultRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id)
-        };
+        const message = createBaseQueryTallyResultRequest();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2259,13 +2327,15 @@ export const QueryTallyResultResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            tally: object?.tally ? TallyResult.fromAmino(object.tally) : undefined
-        };
+        const message = createBaseQueryTallyResultResponse();
+        if (object.tally !== undefined && object.tally !== null) {
+            message.tally = TallyResult.fromAmino(object.tally);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.tally = message.tally ? TallyResult.toAmino(message.tally) : undefined;
+        obj.tally = message.tally ? TallyResult.toAmino(message.tally) : TallyResult.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -2336,9 +2406,11 @@ export const QueryGroupsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGroupsRequest();
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2428,10 +2500,12 @@ export const QueryGroupsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            groups: Array.isArray(object?.groups) ? object.groups.map((e) => GroupInfo.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGroupsResponse();
+        message.groups = object.groups?.map(e => GroupInfo.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

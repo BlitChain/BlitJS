@@ -12,7 +12,7 @@ export interface PairsProtoMsg {
 }
 /** Pairs defines a repeated slice of Pair objects. */
 export interface PairsAmino {
-  pairs: PairAmino[];
+  pairs?: PairAmino[];
 }
 export interface PairsAminoMsg {
   type: "cosmos-sdk/Pairs";
@@ -33,8 +33,8 @@ export interface PairProtoMsg {
 }
 /** Pair defines a key/value bytes tuple. */
 export interface PairAmino {
-  key: Uint8Array;
-  value: Uint8Array;
+  key?: string;
+  value?: string;
 }
 export interface PairAminoMsg {
   type: "cosmos-sdk/Pair";
@@ -95,9 +95,9 @@ export const Pairs = {
     return message;
   },
   fromAmino(object: PairsAmino): Pairs {
-    return {
-      pairs: Array.isArray(object?.pairs) ? object.pairs.map((e: any) => Pair.fromAmino(e)) : []
-    };
+    const message = createBasePairs();
+    message.pairs = object.pairs?.map(e => Pair.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: Pairs): PairsAmino {
     const obj: any = {};
@@ -186,15 +186,19 @@ export const Pair = {
     return message;
   },
   fromAmino(object: PairAmino): Pair {
-    return {
-      key: object.key,
-      value: object.value
-    };
+    const message = createBasePair();
+    if (object.key !== undefined && object.key !== null) {
+      message.key = bytesFromBase64(object.key);
+    }
+    if (object.value !== undefined && object.value !== null) {
+      message.value = bytesFromBase64(object.value);
+    }
+    return message;
   },
   toAmino(message: Pair): PairAmino {
     const obj: any = {};
-    obj.key = message.key;
-    obj.value = message.value;
+    obj.key = message.key ? base64FromBytes(message.key) : undefined;
+    obj.value = message.value ? base64FromBytes(message.value) : undefined;
     return obj;
   },
   fromAminoMsg(object: PairAminoMsg): Pair {

@@ -1,6 +1,6 @@
 //@ts-nocheck
 import * as fm from "../../grpc-gateway";
-import { MsgUpdateParams, MsgUpdateParamsResponse, MsgMintCoins, MsgMintCoinsResponse, MsgBurnCoins, MsgBurnCoinsResponse, MsgForceTransferCoins, MsgForceTransferCoinsResponse, MsgSetDenomMetadata, MsgSetDenomMetadataResponse } from "./tx";
+import { MsgUpdateParams, MsgUpdateParamsResponse, MsgMintCoins, MsgMintCoinsResponse, MsgBurnCoins, MsgBurnCoinsResponse, MsgForceTransferCoins, MsgForceTransferCoinsResponse, MsgSetDenomMetadata, MsgSetDenomMetadataResponse, MsgCreateTask, MsgCreateTaskResponse, MsgDeleteTask, MsgDeleteTaskResponse } from "./tx";
 export class Msg {
   /**
    * UpdateParams defines a (governance) operation for updating the module
@@ -36,6 +36,20 @@ export class Msg {
   }
   static SetDenomMetadata(request: MsgSetDenomMetadata, initRequest?: fm.InitReq): Promise<MsgSetDenomMetadataResponse> {
     return fm.fetchReq(`/blit.blit/SetDenomMetadata`, {
+      ...initRequest,
+      method: "POST",
+      body: JSON.stringify(request, fm.replacer)
+    });
+  }
+  static CreateTask(request: MsgCreateTask, initRequest?: fm.InitReq): Promise<MsgCreateTaskResponse> {
+    return fm.fetchReq(`/blit.blit/CreateTask`, {
+      ...initRequest,
+      method: "POST",
+      body: JSON.stringify(request, fm.replacer)
+    });
+  }
+  static DeleteTask(request: MsgDeleteTask, initRequest?: fm.InitReq): Promise<MsgDeleteTaskResponse> {
+    return fm.fetchReq(`/blit.blit/DeleteTask`, {
       ...initRequest,
       method: "POST",
       body: JSON.stringify(request, fm.replacer)

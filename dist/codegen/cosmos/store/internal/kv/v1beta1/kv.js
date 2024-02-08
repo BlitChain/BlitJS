@@ -56,9 +56,9 @@ exports.Pairs = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pairs: Array.isArray(object?.pairs) ? object.pairs.map((e) => exports.Pair.fromAmino(e)) : []
-        };
+        const message = createBasePairs();
+        message.pairs = object.pairs?.map(e => exports.Pair.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -148,15 +148,19 @@ exports.Pair = {
         return message;
     },
     fromAmino(object) {
-        return {
-            key: object.key,
-            value: object.value
-        };
+        const message = createBasePair();
+        if (object.key !== undefined && object.key !== null) {
+            message.key = (0, helpers_1.bytesFromBase64)(object.key);
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = (0, helpers_1.bytesFromBase64)(object.value);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.key = message.key;
-        obj.value = message.value;
+        obj.key = message.key ? (0, helpers_1.base64FromBytes)(message.key) : undefined;
+        obj.value = message.value ? (0, helpers_1.base64FromBytes)(message.value) : undefined;
         return obj;
     },
     fromAminoMsg(object) {

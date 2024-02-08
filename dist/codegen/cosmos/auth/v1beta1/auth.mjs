@@ -80,12 +80,20 @@ export const BaseAccount = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            pub_key: object?.pub_key ? Any.fromAmino(object.pub_key) : undefined,
-            account_number: BigInt(object.account_number),
-            sequence: BigInt(object.sequence)
-        };
+        const message = createBaseBaseAccount();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.pub_key !== undefined && object.pub_key !== null) {
+            message.pub_key = Any.fromAmino(object.pub_key);
+        }
+        if (object.account_number !== undefined && object.account_number !== null) {
+            message.account_number = BigInt(object.account_number);
+        }
+        if (object.sequence !== undefined && object.sequence !== null) {
+            message.sequence = BigInt(object.sequence);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -189,11 +197,15 @@ export const ModuleAccount = {
         return message;
     },
     fromAmino(object) {
-        return {
-            base_account: object?.base_account ? BaseAccount.fromAmino(object.base_account) : undefined,
-            name: object.name,
-            permissions: Array.isArray(object?.permissions) ? object.permissions.map((e) => e) : []
-        };
+        const message = createBaseModuleAccount();
+        if (object.base_account !== undefined && object.base_account !== null) {
+            message.base_account = BaseAccount.fromAmino(object.base_account);
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        message.permissions = object.permissions?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -290,16 +302,18 @@ export const ModuleCredential = {
         return message;
     },
     fromAmino(object) {
-        return {
-            module_name: object.module_name,
-            derivation_keys: Array.isArray(object?.derivation_keys) ? object.derivation_keys.map((e) => e) : []
-        };
+        const message = createBaseModuleCredential();
+        if (object.module_name !== undefined && object.module_name !== null) {
+            message.module_name = object.module_name;
+        }
+        message.derivation_keys = object.derivation_keys?.map(e => bytesFromBase64(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.module_name = message.module_name;
         if (message.derivation_keys) {
-            obj.derivation_keys = message.derivation_keys.map(e => e);
+            obj.derivation_keys = message.derivation_keys.map(e => base64FromBytes(e));
         }
         else {
             obj.derivation_keys = [];
@@ -414,13 +428,23 @@ export const Params = {
         return message;
     },
     fromAmino(object) {
-        return {
-            max_memo_characters: BigInt(object.max_memo_characters),
-            tx_sig_limit: BigInt(object.tx_sig_limit),
-            tx_size_cost_per_byte: BigInt(object.tx_size_cost_per_byte),
-            sig_verify_cost_ed25519: BigInt(object.sig_verify_cost_ed25519),
-            sig_verify_cost_secp256k1: BigInt(object.sig_verify_cost_secp256k1)
-        };
+        const message = createBaseParams();
+        if (object.max_memo_characters !== undefined && object.max_memo_characters !== null) {
+            message.max_memo_characters = BigInt(object.max_memo_characters);
+        }
+        if (object.tx_sig_limit !== undefined && object.tx_sig_limit !== null) {
+            message.tx_sig_limit = BigInt(object.tx_sig_limit);
+        }
+        if (object.tx_size_cost_per_byte !== undefined && object.tx_size_cost_per_byte !== null) {
+            message.tx_size_cost_per_byte = BigInt(object.tx_size_cost_per_byte);
+        }
+        if (object.sig_verify_cost_ed25519 !== undefined && object.sig_verify_cost_ed25519 !== null) {
+            message.sig_verify_cost_ed25519 = BigInt(object.sig_verify_cost_ed25519);
+        }
+        if (object.sig_verify_cost_secp256k1 !== undefined && object.sig_verify_cost_secp256k1 !== null) {
+            message.sig_verify_cost_secp256k1 = BigInt(object.sig_verify_cost_secp256k1);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

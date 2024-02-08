@@ -31,7 +31,7 @@ export interface QueryParamsResponseProtoMsg {
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 export interface QueryParamsResponseAmino {
   /** params holds all the parameters of this module. */
-  params?: ParamsAmino;
+  params: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
   type: "/blit.storage.QueryParamsResponse";
@@ -50,8 +50,8 @@ export interface QueryStorageDetailRequestProtoMsg {
   value: Uint8Array;
 }
 export interface QueryStorageDetailRequestAmino {
-  address: string;
-  index: string;
+  address?: string;
+  index?: string;
 }
 export interface QueryStorageDetailRequestAminoMsg {
   type: "/blit.storage.QueryStorageDetailRequest";
@@ -88,8 +88,8 @@ export interface QueryFilterStorageRequestProtoMsg {
   value: Uint8Array;
 }
 export interface QueryFilterStorageRequestAmino {
-  filter_address: string;
-  filter_index_prefix: string;
+  filter_address?: string;
+  filter_index_prefix?: string;
   pagination?: PageRequestAmino;
 }
 export interface QueryFilterStorageRequestAminoMsg {
@@ -110,7 +110,7 @@ export interface QueryFilterStorageResponseProtoMsg {
   value: Uint8Array;
 }
 export interface QueryFilterStorageResponseAmino {
-  storage: StorageAmino[];
+  storage?: StorageAmino[];
   pagination?: PageResponseAmino;
 }
 export interface QueryFilterStorageResponseAminoMsg {
@@ -155,7 +155,8 @@ export const QueryParamsRequest = {
     return message;
   },
   fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest {
-    return {};
+    const message = createBaseQueryParamsRequest();
+    return message;
   },
   toAmino(_: QueryParamsRequest): QueryParamsRequestAmino {
     const obj: any = {};
@@ -223,13 +224,15 @@ export const QueryParamsResponse = {
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
-    return {
-      params: object?.params ? Params.fromAmino(object.params) : undefined
-    };
+    const message = createBaseQueryParamsResponse();
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    return message;
   },
   toAmino(message: QueryParamsResponse): QueryParamsResponseAmino {
     const obj: any = {};
-    obj.params = message.params ? Params.toAmino(message.params) : undefined;
+    obj.params = message.params ? Params.toAmino(message.params) : Params.fromPartial({});
     return obj;
   },
   fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse {
@@ -304,10 +307,14 @@ export const QueryStorageDetailRequest = {
     return message;
   },
   fromAmino(object: QueryStorageDetailRequestAmino): QueryStorageDetailRequest {
-    return {
-      address: object.address,
-      index: object.index
-    };
+    const message = createBaseQueryStorageDetailRequest();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.index !== undefined && object.index !== null) {
+      message.index = object.index;
+    }
+    return message;
   },
   toAmino(message: QueryStorageDetailRequest): QueryStorageDetailRequestAmino {
     const obj: any = {};
@@ -377,9 +384,11 @@ export const QueryStorageDetailResponse = {
     return message;
   },
   fromAmino(object: QueryStorageDetailResponseAmino): QueryStorageDetailResponse {
-    return {
-      storage: object?.storage ? Storage.fromAmino(object.storage) : undefined
-    };
+    const message = createBaseQueryStorageDetailResponse();
+    if (object.storage !== undefined && object.storage !== null) {
+      message.storage = Storage.fromAmino(object.storage);
+    }
+    return message;
   },
   toAmino(message: QueryStorageDetailResponse): QueryStorageDetailResponseAmino {
     const obj: any = {};
@@ -468,11 +477,17 @@ export const QueryFilterStorageRequest = {
     return message;
   },
   fromAmino(object: QueryFilterStorageRequestAmino): QueryFilterStorageRequest {
-    return {
-      filter_address: object.filter_address,
-      filter_index_prefix: object.filter_index_prefix,
-      pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-    };
+    const message = createBaseQueryFilterStorageRequest();
+    if (object.filter_address !== undefined && object.filter_address !== null) {
+      message.filter_address = object.filter_address;
+    }
+    if (object.filter_index_prefix !== undefined && object.filter_index_prefix !== null) {
+      message.filter_index_prefix = object.filter_index_prefix;
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromAmino(object.pagination);
+    }
+    return message;
   },
   toAmino(message: QueryFilterStorageRequest): QueryFilterStorageRequestAmino {
     const obj: any = {};
@@ -557,10 +572,12 @@ export const QueryFilterStorageResponse = {
     return message;
   },
   fromAmino(object: QueryFilterStorageResponseAmino): QueryFilterStorageResponse {
-    return {
-      storage: Array.isArray(object?.storage) ? object.storage.map((e: any) => Storage.fromAmino(e)) : [],
-      pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-    };
+    const message = createBaseQueryFilterStorageResponse();
+    message.storage = object.storage?.map(e => Storage.fromAmino(e)) || [];
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromAmino(object.pagination);
+    }
+    return message;
   },
   toAmino(message: QueryFilterStorageResponse): QueryFilterStorageResponseAmino {
     const obj: any = {};

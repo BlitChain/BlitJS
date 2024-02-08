@@ -89,12 +89,16 @@ export const GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            connections: Array.isArray(object?.connections) ? object.connections.map((e) => IdentifiedConnection.fromAmino(e)) : [],
-            client_connection_paths: Array.isArray(object?.client_connection_paths) ? object.client_connection_paths.map((e) => ConnectionPaths.fromAmino(e)) : [],
-            next_connection_sequence: BigInt(object.next_connection_sequence),
-            params: object?.params ? Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseGenesisState();
+        message.connections = object.connections?.map(e => IdentifiedConnection.fromAmino(e)) || [];
+        message.client_connection_paths = object.client_connection_paths?.map(e => ConnectionPaths.fromAmino(e)) || [];
+        if (object.next_connection_sequence !== undefined && object.next_connection_sequence !== null) {
+            message.next_connection_sequence = BigInt(object.next_connection_sequence);
+        }
+        if (object.params !== undefined && object.params !== null) {
+            message.params = Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

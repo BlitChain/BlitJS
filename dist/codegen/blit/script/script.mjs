@@ -68,11 +68,17 @@ export const Script = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            code: object.code,
-            version: BigInt(object.version)
-        };
+        const message = createBaseScript();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.code !== undefined && object.code !== null) {
+            message.code = object.code;
+        }
+        if (object.version !== undefined && object.version !== null) {
+            message.version = BigInt(object.version);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

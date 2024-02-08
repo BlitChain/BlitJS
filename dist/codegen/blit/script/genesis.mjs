@@ -65,14 +65,16 @@ export const GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? Params.fromAmino(object.params) : undefined,
-            scriptList: Array.isArray(object?.scriptList) ? object.scriptList.map((e) => Script.fromAmino(e)) : []
-        };
+        const message = createBaseGenesisState();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = Params.fromAmino(object.params);
+        }
+        message.scriptList = object.scriptList?.map(e => Script.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.params = message.params ? Params.toAmino(message.params) : undefined;
+        obj.params = message.params ? Params.toAmino(message.params) : Params.fromPartial({});
         if (message.scriptList) {
             obj.scriptList = message.scriptList.map(e => e ? Script.toAmino(e) : undefined);
         }

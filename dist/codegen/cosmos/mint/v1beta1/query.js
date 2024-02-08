@@ -40,7 +40,8 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryParamsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -114,13 +115,15 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? mint_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseQueryParamsResponse();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = mint_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.params = message.params ? mint_1.Params.toAmino(message.params) : undefined;
+        obj.params = message.params ? mint_1.Params.toAmino(message.params) : mint_1.Params.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -179,7 +182,8 @@ exports.QueryInflationRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryInflationRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -253,13 +257,15 @@ exports.QueryInflationResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            inflation: object.inflation
-        };
+        const message = createBaseQueryInflationResponse();
+        if (object.inflation !== undefined && object.inflation !== null) {
+            message.inflation = (0, helpers_1.bytesFromBase64)(object.inflation);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.inflation = message.inflation;
+        obj.inflation = message.inflation ? (0, helpers_1.base64FromBytes)(message.inflation) : "";
         return obj;
     },
     fromAminoMsg(object) {
@@ -318,7 +324,8 @@ exports.QueryAnnualProvisionsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryAnnualProvisionsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -392,13 +399,15 @@ exports.QueryAnnualProvisionsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            annual_provisions: object.annual_provisions
-        };
+        const message = createBaseQueryAnnualProvisionsResponse();
+        if (object.annual_provisions !== undefined && object.annual_provisions !== null) {
+            message.annual_provisions = (0, helpers_1.bytesFromBase64)(object.annual_provisions);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.annual_provisions = message.annual_provisions;
+        obj.annual_provisions = message.annual_provisions ? (0, helpers_1.base64FromBytes)(message.annual_provisions) : "";
         return obj;
     },
     fromAminoMsg(object) {

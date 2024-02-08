@@ -32,7 +32,7 @@ export interface QueryParamsResponseProtoMsg {
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 export interface QueryParamsResponseAmino {
     /** params holds all the parameters of this module. */
-    params?: ParamsAmino;
+    params: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
     type: "/blit.script.QueryParamsResponse";
@@ -50,7 +50,7 @@ export interface QueryScriptRequestProtoMsg {
     value: Uint8Array;
 }
 export interface QueryScriptRequestAmino {
-    address: string;
+    address?: string;
 }
 export interface QueryScriptRequestAminoMsg {
     type: "/blit.script.QueryScriptRequest";
@@ -102,7 +102,7 @@ export interface QueryScriptsResponseProtoMsg {
     value: Uint8Array;
 }
 export interface QueryScriptsResponseAmino {
-    script: ScriptAmino[];
+    script?: ScriptAmino[];
     pagination?: PageResponseAmino;
 }
 export interface QueryScriptsResponseAminoMsg {
@@ -122,8 +122,8 @@ export interface QueryWebRequestProtoMsg {
     value: Uint8Array;
 }
 export interface QueryWebRequestAmino {
-    address: string;
-    httprequest: string;
+    address?: string;
+    httprequest?: string;
 }
 export interface QueryWebRequestAminoMsg {
     type: "/blit.script.QueryWebRequest";
@@ -141,7 +141,7 @@ export interface QueryWebResponseProtoMsg {
     value: Uint8Array;
 }
 export interface QueryWebResponseAmino {
-    httpresponse: string;
+    httpresponse?: string;
 }
 export interface QueryWebResponseAminoMsg {
     type: "/blit.script.QueryWebResponse";
@@ -164,13 +164,13 @@ export interface QueryEvalRequestProtoMsg {
     value: Uint8Array;
 }
 export interface QueryEvalRequestAmino {
-    caller_address: string;
-    script_address: string;
-    extra_code: string;
-    function_name: string;
-    kwargs: string;
-    grantee: string;
-    attached_messages: string;
+    caller_address?: string;
+    script_address?: string;
+    extra_code?: string;
+    function_name?: string;
+    kwargs?: string;
+    grantee?: string;
+    attached_messages?: string;
 }
 export interface QueryEvalRequestAminoMsg {
     type: "/blit.script.QueryEvalRequest";
@@ -193,7 +193,7 @@ export interface QueryEvalResponseProtoMsg {
     value: Uint8Array;
 }
 export interface QueryEvalResponseAmino {
-    response: string;
+    response?: string;
 }
 export interface QueryEvalResponseAminoMsg {
     type: "/blit.script.QueryEvalResponse";

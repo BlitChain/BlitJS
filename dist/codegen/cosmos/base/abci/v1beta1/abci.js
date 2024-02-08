@@ -184,21 +184,43 @@ exports.TxResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            height: BigInt(object.height),
-            txhash: object.txhash,
-            codespace: object.codespace,
-            code: object.code,
-            data: object.data,
-            raw_log: object.raw_log,
-            logs: Array.isArray(object?.logs) ? object.logs.map((e) => exports.ABCIMessageLog.fromAmino(e)) : [],
-            info: object.info,
-            gas_wanted: BigInt(object.gas_wanted),
-            gas_used: BigInt(object.gas_used),
-            tx: object?.tx ? any_1.Any.fromAmino(object.tx) : undefined,
-            timestamp: object.timestamp,
-            events: Array.isArray(object?.events) ? object.events.map((e) => types_1.Event.fromAmino(e)) : []
-        };
+        const message = createBaseTxResponse();
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.txhash !== undefined && object.txhash !== null) {
+            message.txhash = object.txhash;
+        }
+        if (object.codespace !== undefined && object.codespace !== null) {
+            message.codespace = object.codespace;
+        }
+        if (object.code !== undefined && object.code !== null) {
+            message.code = object.code;
+        }
+        if (object.data !== undefined && object.data !== null) {
+            message.data = object.data;
+        }
+        if (object.raw_log !== undefined && object.raw_log !== null) {
+            message.raw_log = object.raw_log;
+        }
+        message.logs = object.logs?.map(e => exports.ABCIMessageLog.fromAmino(e)) || [];
+        if (object.info !== undefined && object.info !== null) {
+            message.info = object.info;
+        }
+        if (object.gas_wanted !== undefined && object.gas_wanted !== null) {
+            message.gas_wanted = BigInt(object.gas_wanted);
+        }
+        if (object.gas_used !== undefined && object.gas_used !== null) {
+            message.gas_used = BigInt(object.gas_used);
+        }
+        if (object.tx !== undefined && object.tx !== null) {
+            message.tx = any_1.Any.fromAmino(object.tx);
+        }
+        if (object.timestamp !== undefined && object.timestamp !== null) {
+            message.timestamp = object.timestamp;
+        }
+        message.events = object.events?.map(e => types_1.Event.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -320,11 +342,15 @@ exports.ABCIMessageLog = {
         return message;
     },
     fromAmino(object) {
-        return {
-            msg_index: object.msg_index,
-            log: object.log,
-            events: Array.isArray(object?.events) ? object.events.map((e) => exports.StringEvent.fromAmino(e)) : []
-        };
+        const message = createBaseABCIMessageLog();
+        if (object.msg_index !== undefined && object.msg_index !== null) {
+            message.msg_index = object.msg_index;
+        }
+        if (object.log !== undefined && object.log !== null) {
+            message.log = object.log;
+        }
+        message.events = object.events?.map(e => exports.StringEvent.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -421,10 +447,12 @@ exports.StringEvent = {
         return message;
     },
     fromAmino(object) {
-        return {
-            type: object.type,
-            attributes: Array.isArray(object?.attributes) ? object.attributes.map((e) => exports.Attribute.fromAmino(e)) : []
-        };
+        const message = createBaseStringEvent();
+        if (object.type !== undefined && object.type !== null) {
+            message.type = object.type;
+        }
+        message.attributes = object.attributes?.map(e => exports.Attribute.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -515,10 +543,14 @@ exports.Attribute = {
         return message;
     },
     fromAmino(object) {
-        return {
-            key: object.key,
-            value: object.value
-        };
+        const message = createBaseAttribute();
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -604,10 +636,14 @@ exports.GasInfo = {
         return message;
     },
     fromAmino(object) {
-        return {
-            gas_wanted: BigInt(object.gas_wanted),
-            gas_used: BigInt(object.gas_used)
-        };
+        const message = createBaseGasInfo();
+        if (object.gas_wanted !== undefined && object.gas_wanted !== null) {
+            message.gas_wanted = BigInt(object.gas_wanted);
+        }
+        if (object.gas_used !== undefined && object.gas_used !== null) {
+            message.gas_used = BigInt(object.gas_used);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -723,16 +759,20 @@ exports.Result = {
         return message;
     },
     fromAmino(object) {
-        return {
-            data: object.data,
-            log: object.log,
-            events: Array.isArray(object?.events) ? object.events.map((e) => types_1.Event.fromAmino(e)) : [],
-            msg_responses: Array.isArray(object?.msg_responses) ? object.msg_responses.map((e) => any_1.Any.fromAmino(e)) : []
-        };
+        const message = createBaseResult();
+        if (object.data !== undefined && object.data !== null) {
+            message.data = (0, helpers_1.bytesFromBase64)(object.data);
+        }
+        if (object.log !== undefined && object.log !== null) {
+            message.log = object.log;
+        }
+        message.events = object.events?.map(e => types_1.Event.fromAmino(e)) || [];
+        message.msg_responses = object.msg_responses?.map(e => any_1.Any.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.data = message.data;
+        obj.data = message.data ? (0, helpers_1.base64FromBytes)(message.data) : undefined;
         obj.log = message.log;
         if (message.events) {
             obj.events = message.events.map(e => e ? types_1.Event.toAmino(e) : undefined);
@@ -826,10 +866,14 @@ exports.SimulationResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            gas_info: object?.gas_info ? exports.GasInfo.fromAmino(object.gas_info) : undefined,
-            result: object?.result ? exports.Result.fromAmino(object.result) : undefined
-        };
+        const message = createBaseSimulationResponse();
+        if (object.gas_info !== undefined && object.gas_info !== null) {
+            message.gas_info = exports.GasInfo.fromAmino(object.gas_info);
+        }
+        if (object.result !== undefined && object.result !== null) {
+            message.result = exports.Result.fromAmino(object.result);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -915,15 +959,19 @@ exports.MsgData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            msg_type: object.msg_type,
-            data: object.data
-        };
+        const message = createBaseMsgData();
+        if (object.msg_type !== undefined && object.msg_type !== null) {
+            message.msg_type = object.msg_type;
+        }
+        if (object.data !== undefined && object.data !== null) {
+            message.data = (0, helpers_1.bytesFromBase64)(object.data);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.msg_type = message.msg_type;
-        obj.data = message.data;
+        obj.data = message.data ? (0, helpers_1.base64FromBytes)(message.data) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1014,10 +1062,10 @@ exports.TxMsgData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            data: Array.isArray(object?.data) ? object.data.map((e) => exports.MsgData.fromAmino(e)) : [],
-            msg_responses: Array.isArray(object?.msg_responses) ? object.msg_responses.map((e) => any_1.Any.fromAmino(e)) : []
-        };
+        const message = createBaseTxMsgData();
+        message.data = object.data?.map(e => exports.MsgData.fromAmino(e)) || [];
+        message.msg_responses = object.msg_responses?.map(e => any_1.Any.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1158,14 +1206,24 @@ exports.SearchTxsResult = {
         return message;
     },
     fromAmino(object) {
-        return {
-            total_count: BigInt(object.total_count),
-            count: BigInt(object.count),
-            page_number: BigInt(object.page_number),
-            page_total: BigInt(object.page_total),
-            limit: BigInt(object.limit),
-            txs: Array.isArray(object?.txs) ? object.txs.map((e) => exports.TxResponse.fromAmino(e)) : []
-        };
+        const message = createBaseSearchTxsResult();
+        if (object.total_count !== undefined && object.total_count !== null) {
+            message.total_count = BigInt(object.total_count);
+        }
+        if (object.count !== undefined && object.count !== null) {
+            message.count = BigInt(object.count);
+        }
+        if (object.page_number !== undefined && object.page_number !== null) {
+            message.page_number = BigInt(object.page_number);
+        }
+        if (object.page_total !== undefined && object.page_total !== null) {
+            message.page_total = BigInt(object.page_total);
+        }
+        if (object.limit !== undefined && object.limit !== null) {
+            message.limit = BigInt(object.limit);
+        }
+        message.txs = object.txs?.map(e => exports.TxResponse.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1305,14 +1363,24 @@ exports.SearchBlocksResult = {
         return message;
     },
     fromAmino(object) {
-        return {
-            total_count: BigInt(object.total_count),
-            count: BigInt(object.count),
-            page_number: BigInt(object.page_number),
-            page_total: BigInt(object.page_total),
-            limit: BigInt(object.limit),
-            blocks: Array.isArray(object?.blocks) ? object.blocks.map((e) => block_1.Block.fromAmino(e)) : []
-        };
+        const message = createBaseSearchBlocksResult();
+        if (object.total_count !== undefined && object.total_count !== null) {
+            message.total_count = BigInt(object.total_count);
+        }
+        if (object.count !== undefined && object.count !== null) {
+            message.count = BigInt(object.count);
+        }
+        if (object.page_number !== undefined && object.page_number !== null) {
+            message.page_number = BigInt(object.page_number);
+        }
+        if (object.page_total !== undefined && object.page_total !== null) {
+            message.page_total = BigInt(object.page_total);
+        }
+        if (object.limit !== undefined && object.limit !== null) {
+            message.limit = BigInt(object.limit);
+        }
+        message.blocks = object.blocks?.map(e => block_1.Block.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

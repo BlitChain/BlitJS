@@ -69,11 +69,17 @@ export const MsgAuthorizeCircuitBreaker = {
         return message;
     },
     fromAmino(object) {
-        return {
-            granter: object.granter,
-            grantee: object.grantee,
-            permissions: object?.permissions ? Permissions.fromAmino(object.permissions) : undefined
-        };
+        const message = createBaseMsgAuthorizeCircuitBreaker();
+        if (object.granter !== undefined && object.granter !== null) {
+            message.granter = object.granter;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        if (object.permissions !== undefined && object.permissions !== null) {
+            message.permissions = Permissions.fromAmino(object.permissions);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -150,9 +156,11 @@ export const MsgAuthorizeCircuitBreakerResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            success: object.success
-        };
+        const message = createBaseMsgAuthorizeCircuitBreakerResponse();
+        if (object.success !== undefined && object.success !== null) {
+            message.success = object.success;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -242,10 +250,12 @@ export const MsgTripCircuitBreaker = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authority: object.authority,
-            msg_type_urls: Array.isArray(object?.msg_type_urls) ? object.msg_type_urls.map((e) => e) : []
-        };
+        const message = createBaseMsgTripCircuitBreaker();
+        if (object.authority !== undefined && object.authority !== null) {
+            message.authority = object.authority;
+        }
+        message.msg_type_urls = object.msg_type_urls?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -326,9 +336,11 @@ export const MsgTripCircuitBreakerResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            success: object.success
-        };
+        const message = createBaseMsgTripCircuitBreakerResponse();
+        if (object.success !== undefined && object.success !== null) {
+            message.success = object.success;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -418,10 +430,12 @@ export const MsgResetCircuitBreaker = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authority: object.authority,
-            msg_type_urls: Array.isArray(object?.msg_type_urls) ? object.msg_type_urls.map((e) => e) : []
-        };
+        const message = createBaseMsgResetCircuitBreaker();
+        if (object.authority !== undefined && object.authority !== null) {
+            message.authority = object.authority;
+        }
+        message.msg_type_urls = object.msg_type_urls?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -502,9 +516,11 @@ export const MsgResetCircuitBreakerResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            success: object.success
-        };
+        const message = createBaseMsgResetCircuitBreakerResponse();
+        if (object.success !== undefined && object.success !== null) {
+            message.success = object.success;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

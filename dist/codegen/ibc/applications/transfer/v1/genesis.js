@@ -93,12 +93,16 @@ exports.GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            port_id: object.port_id,
-            denom_traces: Array.isArray(object?.denom_traces) ? object.denom_traces.map((e) => transfer_1.DenomTrace.fromAmino(e)) : [],
-            params: object?.params ? transfer_1.Params.fromAmino(object.params) : undefined,
-            total_escrowed: Array.isArray(object?.total_escrowed) ? object.total_escrowed.map((e) => coin_1.Coin.fromAmino(e)) : []
-        };
+        const message = createBaseGenesisState();
+        if (object.port_id !== undefined && object.port_id !== null) {
+            message.port_id = object.port_id;
+        }
+        message.denom_traces = object.denom_traces?.map(e => transfer_1.DenomTrace.fromAmino(e)) || [];
+        if (object.params !== undefined && object.params !== null) {
+            message.params = transfer_1.Params.fromAmino(object.params);
+        }
+        message.total_escrowed = object.total_escrowed?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

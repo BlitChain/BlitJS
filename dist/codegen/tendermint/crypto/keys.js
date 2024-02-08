@@ -61,15 +61,19 @@ exports.PublicKey = {
         return message;
     },
     fromAmino(object) {
-        return {
-            ed25519: object?.ed25519,
-            secp256k1: object?.secp256k1
-        };
+        const message = createBasePublicKey();
+        if (object.ed25519 !== undefined && object.ed25519 !== null) {
+            message.ed25519 = (0, helpers_1.bytesFromBase64)(object.ed25519);
+        }
+        if (object.secp256k1 !== undefined && object.secp256k1 !== null) {
+            message.secp256k1 = (0, helpers_1.bytesFromBase64)(object.secp256k1);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.ed25519 = message.ed25519;
-        obj.secp256k1 = message.secp256k1;
+        obj.ed25519 = message.ed25519 ? (0, helpers_1.base64FromBytes)(message.ed25519) : undefined;
+        obj.secp256k1 = message.secp256k1 ? (0, helpers_1.base64FromBytes)(message.secp256k1) : undefined;
         return obj;
     },
     fromAminoMsg(object) {

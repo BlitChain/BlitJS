@@ -17,9 +17,9 @@ export interface MinterProtoMsg {
 /** Minter represents the minting state. */
 export interface MinterAmino {
   /** current annual inflation rate */
-  inflation: string;
+  inflation?: string;
   /** current annual expected provisions */
-  annual_provisions: string;
+  annual_provisions?: string;
 }
 export interface MinterAminoMsg {
   type: "cosmos-sdk/Minter";
@@ -52,7 +52,7 @@ export interface ParamsProtoMsg {
 /** Params defines the parameters for the x/mint module. */
 export interface ParamsAmino {
   /** type of coin to mint */
-  mint_denom: string;
+  mint_denom?: string;
   /** maximum annual change in inflation rate */
   inflation_rate_change: string;
   /** maximum inflation rate */
@@ -62,7 +62,7 @@ export interface ParamsAmino {
   /** goal of percent bonded atoms */
   goal_bonded: string;
   /** expected blocks per year */
-  blocks_per_year: string;
+  blocks_per_year?: string;
 }
 export interface ParamsAminoMsg {
   type: "cosmos-sdk/x/mint/Params";
@@ -133,10 +133,14 @@ export const Minter = {
     return message;
   },
   fromAmino(object: MinterAmino): Minter {
-    return {
-      inflation: object.inflation,
-      annual_provisions: object.annual_provisions
-    };
+    const message = createBaseMinter();
+    if (object.inflation !== undefined && object.inflation !== null) {
+      message.inflation = object.inflation;
+    }
+    if (object.annual_provisions !== undefined && object.annual_provisions !== null) {
+      message.annual_provisions = object.annual_provisions;
+    }
+    return message;
   },
   toAmino(message: Minter): MinterAmino {
     const obj: any = {};
@@ -262,22 +266,34 @@ export const Params = {
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
-    return {
-      mint_denom: object.mint_denom,
-      inflation_rate_change: object.inflation_rate_change,
-      inflation_max: object.inflation_max,
-      inflation_min: object.inflation_min,
-      goal_bonded: object.goal_bonded,
-      blocks_per_year: BigInt(object.blocks_per_year)
-    };
+    const message = createBaseParams();
+    if (object.mint_denom !== undefined && object.mint_denom !== null) {
+      message.mint_denom = object.mint_denom;
+    }
+    if (object.inflation_rate_change !== undefined && object.inflation_rate_change !== null) {
+      message.inflation_rate_change = object.inflation_rate_change;
+    }
+    if (object.inflation_max !== undefined && object.inflation_max !== null) {
+      message.inflation_max = object.inflation_max;
+    }
+    if (object.inflation_min !== undefined && object.inflation_min !== null) {
+      message.inflation_min = object.inflation_min;
+    }
+    if (object.goal_bonded !== undefined && object.goal_bonded !== null) {
+      message.goal_bonded = object.goal_bonded;
+    }
+    if (object.blocks_per_year !== undefined && object.blocks_per_year !== null) {
+      message.blocks_per_year = BigInt(object.blocks_per_year);
+    }
+    return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
     obj.mint_denom = message.mint_denom;
-    obj.inflation_rate_change = message.inflation_rate_change;
-    obj.inflation_max = message.inflation_max;
-    obj.inflation_min = message.inflation_min;
-    obj.goal_bonded = message.goal_bonded;
+    obj.inflation_rate_change = message.inflation_rate_change ?? "";
+    obj.inflation_max = message.inflation_max ?? "";
+    obj.inflation_min = message.inflation_min ?? "";
+    obj.goal_bonded = message.goal_bonded ?? "";
     obj.blocks_per_year = message.blocks_per_year ? message.blocks_per_year.toString() : undefined;
     return obj;
   },

@@ -89,13 +89,23 @@ export const MsgUpdateParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authority: object.authority,
-            block: object?.block ? BlockParams.fromAmino(object.block) : undefined,
-            evidence: object?.evidence ? EvidenceParams.fromAmino(object.evidence) : undefined,
-            validator: object?.validator ? ValidatorParams.fromAmino(object.validator) : undefined,
-            abci: object?.abci ? ABCIParams.fromAmino(object.abci) : undefined
-        };
+        const message = createBaseMsgUpdateParams();
+        if (object.authority !== undefined && object.authority !== null) {
+            message.authority = object.authority;
+        }
+        if (object.block !== undefined && object.block !== null) {
+            message.block = BlockParams.fromAmino(object.block);
+        }
+        if (object.evidence !== undefined && object.evidence !== null) {
+            message.evidence = EvidenceParams.fromAmino(object.evidence);
+        }
+        if (object.validator !== undefined && object.validator !== null) {
+            message.validator = ValidatorParams.fromAmino(object.validator);
+        }
+        if (object.abci !== undefined && object.abci !== null) {
+            message.abci = ABCIParams.fromAmino(object.abci);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -162,7 +172,8 @@ export const MsgUpdateParamsResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgUpdateParamsResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};

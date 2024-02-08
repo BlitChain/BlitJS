@@ -92,13 +92,23 @@ exports.ConsensusParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            block: object?.block ? exports.BlockParams.fromAmino(object.block) : undefined,
-            evidence: object?.evidence ? exports.EvidenceParams.fromAmino(object.evidence) : undefined,
-            validator: object?.validator ? exports.ValidatorParams.fromAmino(object.validator) : undefined,
-            version: object?.version ? exports.VersionParams.fromAmino(object.version) : undefined,
-            abci: object?.abci ? exports.ABCIParams.fromAmino(object.abci) : undefined
-        };
+        const message = createBaseConsensusParams();
+        if (object.block !== undefined && object.block !== null) {
+            message.block = exports.BlockParams.fromAmino(object.block);
+        }
+        if (object.evidence !== undefined && object.evidence !== null) {
+            message.evidence = exports.EvidenceParams.fromAmino(object.evidence);
+        }
+        if (object.validator !== undefined && object.validator !== null) {
+            message.validator = exports.ValidatorParams.fromAmino(object.validator);
+        }
+        if (object.version !== undefined && object.version !== null) {
+            message.version = exports.VersionParams.fromAmino(object.version);
+        }
+        if (object.abci !== undefined && object.abci !== null) {
+            message.abci = exports.ABCIParams.fromAmino(object.abci);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -181,10 +191,14 @@ exports.BlockParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            max_bytes: BigInt(object.max_bytes),
-            max_gas: BigInt(object.max_gas)
-        };
+        const message = createBaseBlockParams();
+        if (object.max_bytes !== undefined && object.max_bytes !== null) {
+            message.max_bytes = BigInt(object.max_bytes);
+        }
+        if (object.max_gas !== undefined && object.max_gas !== null) {
+            message.max_gas = BigInt(object.max_gas);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -274,11 +288,17 @@ exports.EvidenceParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            max_age_num_blocks: BigInt(object.max_age_num_blocks),
-            max_age_duration: object?.max_age_duration ? duration_1.Duration.fromAmino(object.max_age_duration) : undefined,
-            max_bytes: BigInt(object.max_bytes)
-        };
+        const message = createBaseEvidenceParams();
+        if (object.max_age_num_blocks !== undefined && object.max_age_num_blocks !== null) {
+            message.max_age_num_blocks = BigInt(object.max_age_num_blocks);
+        }
+        if (object.max_age_duration !== undefined && object.max_age_duration !== null) {
+            message.max_age_duration = duration_1.Duration.fromAmino(object.max_age_duration);
+        }
+        if (object.max_bytes !== undefined && object.max_bytes !== null) {
+            message.max_bytes = BigInt(object.max_bytes);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -354,9 +374,9 @@ exports.ValidatorParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pub_key_types: Array.isArray(object?.pub_key_types) ? object.pub_key_types.map((e) => e) : []
-        };
+        const message = createBaseValidatorParams();
+        message.pub_key_types = object.pub_key_types?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -430,9 +450,11 @@ exports.VersionParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            app: BigInt(object.app)
-        };
+        const message = createBaseVersionParams();
+        if (object.app !== undefined && object.app !== null) {
+            message.app = BigInt(object.app);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -511,10 +533,14 @@ exports.HashedParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            block_max_bytes: BigInt(object.block_max_bytes),
-            block_max_gas: BigInt(object.block_max_gas)
-        };
+        const message = createBaseHashedParams();
+        if (object.block_max_bytes !== undefined && object.block_max_bytes !== null) {
+            message.block_max_bytes = BigInt(object.block_max_bytes);
+        }
+        if (object.block_max_gas !== undefined && object.block_max_gas !== null) {
+            message.block_max_gas = BigInt(object.block_max_gas);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -584,9 +610,11 @@ exports.ABCIParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            vote_extensions_enable_height: BigInt(object.vote_extensions_enable_height)
-        };
+        const message = createBaseABCIParams();
+        if (object.vote_extensions_enable_height !== undefined && object.vote_extensions_enable_height !== null) {
+            message.vote_extensions_enable_height = BigInt(object.vote_extensions_enable_height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

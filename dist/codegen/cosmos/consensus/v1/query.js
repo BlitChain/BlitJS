@@ -40,7 +40,8 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryParamsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -114,9 +115,11 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? params_1.ConsensusParams.fromAmino(object.params) : undefined
-        };
+        const message = createBaseQueryParamsResponse();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = params_1.ConsensusParams.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

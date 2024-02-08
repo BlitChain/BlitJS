@@ -89,13 +89,13 @@ export interface PermissionsProtoMsg {
  */
 export interface PermissionsAmino {
   /** level is the level of permissions granted to this account. */
-  level: Permissions_Level;
+  level?: Permissions_Level;
   /**
    * limit_type_urls is used with LEVEL_SOME_MSGS to limit the lists of Msg type
    * URLs that the account can trip. It is an error to use limit_type_urls with
    * a level other than LEVEL_SOME_MSGS.
    */
-  limit_type_urls: string[];
+  limit_type_urls?: string[];
 }
 export interface PermissionsAminoMsg {
   type: "cosmos-sdk/Permissions";
@@ -120,7 +120,7 @@ export interface GenesisAccountPermissionsProtoMsg {
 }
 /** GenesisAccountPermissions is the account permissions for the circuit breaker in genesis */
 export interface GenesisAccountPermissionsAmino {
-  address: string;
+  address?: string;
   permissions?: PermissionsAmino;
 }
 export interface GenesisAccountPermissionsAminoMsg {
@@ -143,8 +143,8 @@ export interface GenesisStateProtoMsg {
 }
 /** GenesisState is the state that must be provided at genesis. */
 export interface GenesisStateAmino {
-  account_permissions: GenesisAccountPermissionsAmino[];
-  disabled_type_urls: string[];
+  account_permissions?: GenesisAccountPermissionsAmino[];
+  disabled_type_urls?: string[];
 }
 export interface GenesisStateAminoMsg {
   type: "cosmos-sdk/GenesisState";
@@ -215,10 +215,12 @@ export const Permissions = {
     return message;
   },
   fromAmino(object: PermissionsAmino): Permissions {
-    return {
-      level: isSet(object.level) ? permissions_LevelFromJSON(object.level) : -1,
-      limit_type_urls: Array.isArray(object?.limit_type_urls) ? object.limit_type_urls.map((e: any) => e) : []
-    };
+    const message = createBasePermissions();
+    if (object.level !== undefined && object.level !== null) {
+      message.level = permissions_LevelFromJSON(object.level);
+    }
+    message.limit_type_urls = object.limit_type_urls?.map(e => e) || [];
+    return message;
   },
   toAmino(message: Permissions): PermissionsAmino {
     const obj: any = {};
@@ -308,10 +310,14 @@ export const GenesisAccountPermissions = {
     return message;
   },
   fromAmino(object: GenesisAccountPermissionsAmino): GenesisAccountPermissions {
-    return {
-      address: object.address,
-      permissions: object?.permissions ? Permissions.fromAmino(object.permissions) : undefined
-    };
+    const message = createBaseGenesisAccountPermissions();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.permissions !== undefined && object.permissions !== null) {
+      message.permissions = Permissions.fromAmino(object.permissions);
+    }
+    return message;
   },
   toAmino(message: GenesisAccountPermissions): GenesisAccountPermissionsAmino {
     const obj: any = {};
@@ -405,10 +411,10 @@ export const GenesisState = {
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
-    return {
-      account_permissions: Array.isArray(object?.account_permissions) ? object.account_permissions.map((e: any) => GenesisAccountPermissions.fromAmino(e)) : [],
-      disabled_type_urls: Array.isArray(object?.disabled_type_urls) ? object.disabled_type_urls.map((e: any) => e) : []
-    };
+    const message = createBaseGenesisState();
+    message.account_permissions = object.account_permissions?.map(e => GenesisAccountPermissions.fromAmino(e)) || [];
+    message.disabled_type_urls = object.disabled_type_urls?.map(e => e) || [];
+    return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};

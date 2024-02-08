@@ -48,9 +48,11 @@ export const Capability = {
         return message;
     },
     fromAmino(object) {
-        return {
-            index: BigInt(object.index)
-        };
+        const message = createBaseCapability();
+        if (object.index !== undefined && object.index !== null) {
+            message.index = BigInt(object.index);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -129,10 +131,14 @@ export const Owner = {
         return message;
     },
     fromAmino(object) {
-        return {
-            module: object.module,
-            name: object.name
-        };
+        const message = createBaseOwner();
+        if (object.module !== undefined && object.module !== null) {
+            message.module = object.module;
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -207,9 +213,9 @@ export const CapabilityOwners = {
         return message;
     },
     fromAmino(object) {
-        return {
-            owners: Array.isArray(object?.owners) ? object.owners.map((e) => Owner.fromAmino(e)) : []
-        };
+        const message = createBaseCapabilityOwners();
+        message.owners = object.owners?.map(e => Owner.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

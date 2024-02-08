@@ -63,10 +63,14 @@ exports.ListenFinalizeBlockRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            req: object?.req ? types_1.RequestFinalizeBlock.fromAmino(object.req) : undefined,
-            res: object?.res ? types_1.ResponseFinalizeBlock.fromAmino(object.res) : undefined
-        };
+        const message = createBaseListenFinalizeBlockRequest();
+        if (object.req !== undefined && object.req !== null) {
+            message.req = types_1.RequestFinalizeBlock.fromAmino(object.req);
+        }
+        if (object.res !== undefined && object.res !== null) {
+            message.res = types_1.ResponseFinalizeBlock.fromAmino(object.res);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -130,7 +134,8 @@ exports.ListenFinalizeBlockResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseListenFinalizeBlockResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -229,11 +234,15 @@ exports.ListenCommitRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            block_height: BigInt(object.block_height),
-            res: object?.res ? types_1.ResponseCommit.fromAmino(object.res) : undefined,
-            change_set: Array.isArray(object?.change_set) ? object.change_set.map((e) => listening_1.StoreKVPair.fromAmino(e)) : []
-        };
+        const message = createBaseListenCommitRequest();
+        if (object.block_height !== undefined && object.block_height !== null) {
+            message.block_height = BigInt(object.block_height);
+        }
+        if (object.res !== undefined && object.res !== null) {
+            message.res = types_1.ResponseCommit.fromAmino(object.res);
+        }
+        message.change_set = object.change_set?.map(e => listening_1.StoreKVPair.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -303,7 +312,8 @@ exports.ListenCommitResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseListenCommitResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};

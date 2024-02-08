@@ -12,9 +12,9 @@ export interface StorageProtoMsg {
   value: Uint8Array;
 }
 export interface StorageAmino {
-  address: string;
-  index: string;
-  data: string;
+  address?: string;
+  index?: string;
+  data?: string;
 }
 export interface StorageAminoMsg {
   type: "/blit.storage.Storage";
@@ -91,11 +91,17 @@ export const Storage = {
     return message;
   },
   fromAmino(object: StorageAmino): Storage {
-    return {
-      address: object.address,
-      index: object.index,
-      data: object.data
-    };
+    const message = createBaseStorage();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.index !== undefined && object.index !== null) {
+      message.index = object.index;
+    }
+    if (object.data !== undefined && object.data !== null) {
+      message.data = object.data;
+    }
+    return message;
   },
   toAmino(message: Storage): StorageAmino {
     const obj: any = {};

@@ -60,10 +60,14 @@ export const MsgSetWithdrawAddress = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_address: object.delegator_address,
-            withdraw_address: object.withdraw_address
-        };
+        const message = createBaseMsgSetWithdrawAddress();
+        if (object.delegator_address !== undefined && object.delegator_address !== null) {
+            message.delegator_address = object.delegator_address;
+        }
+        if (object.withdraw_address !== undefined && object.withdraw_address !== null) {
+            message.withdraw_address = object.withdraw_address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -127,7 +131,8 @@ export const MsgSetWithdrawAddressResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgSetWithdrawAddressResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -211,10 +216,14 @@ export const MsgWithdrawDelegatorReward = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_address: object.delegator_address,
-            validator_address: object.validator_address
-        };
+        const message = createBaseMsgWithdrawDelegatorReward();
+        if (object.delegator_address !== undefined && object.delegator_address !== null) {
+            message.delegator_address = object.delegator_address;
+        }
+        if (object.validator_address !== undefined && object.validator_address !== null) {
+            message.validator_address = object.validator_address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -295,9 +304,9 @@ export const MsgWithdrawDelegatorRewardResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => Coin.fromAmino(e)) : []
-        };
+        const message = createBaseMsgWithdrawDelegatorRewardResponse();
+        message.amount = object.amount?.map(e => Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -377,9 +386,11 @@ export const MsgWithdrawValidatorCommission = {
         return message;
     },
     fromAmino(object) {
-        return {
-            validator_address: object.validator_address
-        };
+        const message = createBaseMsgWithdrawValidatorCommission();
+        if (object.validator_address !== undefined && object.validator_address !== null) {
+            message.validator_address = object.validator_address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -459,9 +470,9 @@ export const MsgWithdrawValidatorCommissionResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => Coin.fromAmino(e)) : []
-        };
+        const message = createBaseMsgWithdrawValidatorCommissionResponse();
+        message.amount = object.amount?.map(e => Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -556,10 +567,12 @@ export const MsgFundCommunityPool = {
         return message;
     },
     fromAmino(object) {
-        return {
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => Coin.fromAmino(e)) : [],
-            depositor: object.depositor
-        };
+        const message = createBaseMsgFundCommunityPool();
+        message.amount = object.amount?.map(e => Coin.fromAmino(e)) || [];
+        if (object.depositor !== undefined && object.depositor !== null) {
+            message.depositor = object.depositor;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -628,7 +641,8 @@ export const MsgFundCommunityPoolResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgFundCommunityPoolResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -712,15 +726,19 @@ export const MsgUpdateParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authority: object.authority,
-            params: object?.params ? Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseMsgUpdateParams();
+        if (object.authority !== undefined && object.authority !== null) {
+            message.authority = object.authority;
+        }
+        if (object.params !== undefined && object.params !== null) {
+            message.params = Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.authority = message.authority;
-        obj.params = message.params ? Params.toAmino(message.params) : undefined;
+        obj.params = message.params ? Params.toAmino(message.params) : Params.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -779,7 +797,8 @@ export const MsgUpdateParamsResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgUpdateParamsResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -878,11 +897,15 @@ export const MsgCommunityPoolSpend = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authority: object.authority,
-            recipient: object.recipient,
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => Coin.fromAmino(e)) : []
-        };
+        const message = createBaseMsgCommunityPoolSpend();
+        if (object.authority !== undefined && object.authority !== null) {
+            message.authority = object.authority;
+        }
+        if (object.recipient !== undefined && object.recipient !== null) {
+            message.recipient = object.recipient;
+        }
+        message.amount = object.amount?.map(e => Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -952,7 +975,8 @@ export const MsgCommunityPoolSpendResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgCommunityPoolSpendResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1051,11 +1075,15 @@ export const MsgDepositValidatorRewardsPool = {
         return message;
     },
     fromAmino(object) {
-        return {
-            depositor: object.depositor,
-            validator_address: object.validator_address,
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => Coin.fromAmino(e)) : []
-        };
+        const message = createBaseMsgDepositValidatorRewardsPool();
+        if (object.depositor !== undefined && object.depositor !== null) {
+            message.depositor = object.depositor;
+        }
+        if (object.validator_address !== undefined && object.validator_address !== null) {
+            message.validator_address = object.validator_address;
+        }
+        message.amount = object.amount?.map(e => Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1125,7 +1153,8 @@ export const MsgDepositValidatorRewardsPoolResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgDepositValidatorRewardsPoolResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};

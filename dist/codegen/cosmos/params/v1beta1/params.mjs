@@ -74,11 +74,15 @@ export const ParameterChangeProposal = {
         return message;
     },
     fromAmino(object) {
-        return {
-            title: object.title,
-            description: object.description,
-            changes: Array.isArray(object?.changes) ? object.changes.map((e) => ParamChange.fromAmino(e)) : []
-        };
+        const message = createBaseParameterChangeProposal();
+        if (object.title !== undefined && object.title !== null) {
+            message.title = object.title;
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        }
+        message.changes = object.changes?.map(e => ParamChange.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -180,11 +184,17 @@ export const ParamChange = {
         return message;
     },
     fromAmino(object) {
-        return {
-            subspace: object.subspace,
-            key: object.key,
-            value: object.value
-        };
+        const message = createBaseParamChange();
+        if (object.subspace !== undefined && object.subspace !== null) {
+            message.subspace = object.subspace;
+        }
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

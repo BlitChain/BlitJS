@@ -63,10 +63,14 @@ exports.QueryAllowanceRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            granter: object.granter,
-            grantee: object.grantee
-        };
+        const message = createBaseQueryAllowanceRequest();
+        if (object.granter !== undefined && object.granter !== null) {
+            message.granter = object.granter;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -142,9 +146,11 @@ exports.QueryAllowanceResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            allowance: object?.allowance ? feegrant_1.Grant.fromAmino(object.allowance) : undefined
-        };
+        const message = createBaseQueryAllowanceResponse();
+        if (object.allowance !== undefined && object.allowance !== null) {
+            message.allowance = feegrant_1.Grant.fromAmino(object.allowance);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -229,10 +235,14 @@ exports.QueryAllowancesRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            grantee: object.grantee,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryAllowancesRequest();
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -323,10 +333,12 @@ exports.QueryAllowancesResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            allowances: Array.isArray(object?.allowances) ? object.allowances.map((e) => feegrant_1.Grant.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryAllowancesResponse();
+        message.allowances = object.allowances?.map(e => feegrant_1.Grant.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -417,10 +429,14 @@ exports.QueryAllowancesByGranterRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            granter: object.granter,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryAllowancesByGranterRequest();
+        if (object.granter !== undefined && object.granter !== null) {
+            message.granter = object.granter;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -511,10 +527,12 @@ exports.QueryAllowancesByGranterResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            allowances: Array.isArray(object?.allowances) ? object.allowances.map((e) => feegrant_1.Grant.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryAllowancesByGranterResponse();
+        message.allowances = object.allowances?.map(e => feegrant_1.Grant.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

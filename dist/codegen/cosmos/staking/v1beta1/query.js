@@ -63,10 +63,14 @@ exports.QueryValidatorsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            status: object.status,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryValidatorsRequest();
+        if (object.status !== undefined && object.status !== null) {
+            message.status = object.status;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -157,10 +161,12 @@ exports.QueryValidatorsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            validators: Array.isArray(object?.validators) ? object.validators.map((e) => staking_1.Validator.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryValidatorsResponse();
+        message.validators = object.validators?.map(e => staking_1.Validator.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -241,9 +247,11 @@ exports.QueryValidatorRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            validator_addr: object.validator_addr
-        };
+        const message = createBaseQueryValidatorRequest();
+        if (object.validator_addr !== undefined && object.validator_addr !== null) {
+            message.validator_addr = object.validator_addr;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -318,13 +326,15 @@ exports.QueryValidatorResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            validator: object?.validator ? staking_1.Validator.fromAmino(object.validator) : undefined
-        };
+        const message = createBaseQueryValidatorResponse();
+        if (object.validator !== undefined && object.validator !== null) {
+            message.validator = staking_1.Validator.fromAmino(object.validator);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.validator = message.validator ? staking_1.Validator.toAmino(message.validator) : undefined;
+        obj.validator = message.validator ? staking_1.Validator.toAmino(message.validator) : staking_1.Validator.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -405,10 +415,14 @@ exports.QueryValidatorDelegationsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            validator_addr: object.validator_addr,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryValidatorDelegationsRequest();
+        if (object.validator_addr !== undefined && object.validator_addr !== null) {
+            message.validator_addr = object.validator_addr;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -499,10 +513,12 @@ exports.QueryValidatorDelegationsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegation_responses: Array.isArray(object?.delegation_responses) ? object.delegation_responses.map((e) => staking_1.DelegationResponse.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryValidatorDelegationsResponse();
+        message.delegation_responses = object.delegation_responses?.map(e => staking_1.DelegationResponse.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -593,10 +609,14 @@ exports.QueryValidatorUnbondingDelegationsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            validator_addr: object.validator_addr,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryValidatorUnbondingDelegationsRequest();
+        if (object.validator_addr !== undefined && object.validator_addr !== null) {
+            message.validator_addr = object.validator_addr;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -687,10 +707,12 @@ exports.QueryValidatorUnbondingDelegationsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            unbonding_responses: Array.isArray(object?.unbonding_responses) ? object.unbonding_responses.map((e) => staking_1.UnbondingDelegation.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryValidatorUnbondingDelegationsResponse();
+        message.unbonding_responses = object.unbonding_responses?.map(e => staking_1.UnbondingDelegation.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -781,10 +803,14 @@ exports.QueryDelegationRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_addr: object.delegator_addr,
-            validator_addr: object.validator_addr
-        };
+        const message = createBaseQueryDelegationRequest();
+        if (object.delegator_addr !== undefined && object.delegator_addr !== null) {
+            message.delegator_addr = object.delegator_addr;
+        }
+        if (object.validator_addr !== undefined && object.validator_addr !== null) {
+            message.validator_addr = object.validator_addr;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -860,9 +886,11 @@ exports.QueryDelegationResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegation_response: object?.delegation_response ? staking_1.DelegationResponse.fromAmino(object.delegation_response) : undefined
-        };
+        const message = createBaseQueryDelegationResponse();
+        if (object.delegation_response !== undefined && object.delegation_response !== null) {
+            message.delegation_response = staking_1.DelegationResponse.fromAmino(object.delegation_response);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -947,10 +975,14 @@ exports.QueryUnbondingDelegationRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_addr: object.delegator_addr,
-            validator_addr: object.validator_addr
-        };
+        const message = createBaseQueryUnbondingDelegationRequest();
+        if (object.delegator_addr !== undefined && object.delegator_addr !== null) {
+            message.delegator_addr = object.delegator_addr;
+        }
+        if (object.validator_addr !== undefined && object.validator_addr !== null) {
+            message.validator_addr = object.validator_addr;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1026,13 +1058,15 @@ exports.QueryUnbondingDelegationResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            unbond: object?.unbond ? staking_1.UnbondingDelegation.fromAmino(object.unbond) : undefined
-        };
+        const message = createBaseQueryUnbondingDelegationResponse();
+        if (object.unbond !== undefined && object.unbond !== null) {
+            message.unbond = staking_1.UnbondingDelegation.fromAmino(object.unbond);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.unbond = message.unbond ? staking_1.UnbondingDelegation.toAmino(message.unbond) : undefined;
+        obj.unbond = message.unbond ? staking_1.UnbondingDelegation.toAmino(message.unbond) : staking_1.UnbondingDelegation.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -1113,10 +1147,14 @@ exports.QueryDelegatorDelegationsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_addr: object.delegator_addr,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDelegatorDelegationsRequest();
+        if (object.delegator_addr !== undefined && object.delegator_addr !== null) {
+            message.delegator_addr = object.delegator_addr;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1207,10 +1245,12 @@ exports.QueryDelegatorDelegationsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegation_responses: Array.isArray(object?.delegation_responses) ? object.delegation_responses.map((e) => staking_1.DelegationResponse.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDelegatorDelegationsResponse();
+        message.delegation_responses = object.delegation_responses?.map(e => staking_1.DelegationResponse.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1301,10 +1341,14 @@ exports.QueryDelegatorUnbondingDelegationsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_addr: object.delegator_addr,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDelegatorUnbondingDelegationsRequest();
+        if (object.delegator_addr !== undefined && object.delegator_addr !== null) {
+            message.delegator_addr = object.delegator_addr;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1395,10 +1439,12 @@ exports.QueryDelegatorUnbondingDelegationsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            unbonding_responses: Array.isArray(object?.unbonding_responses) ? object.unbonding_responses.map((e) => staking_1.UnbondingDelegation.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDelegatorUnbondingDelegationsResponse();
+        message.unbonding_responses = object.unbonding_responses?.map(e => staking_1.UnbondingDelegation.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1509,12 +1555,20 @@ exports.QueryRedelegationsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_addr: object.delegator_addr,
-            src_validator_addr: object.src_validator_addr,
-            dst_validator_addr: object.dst_validator_addr,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryRedelegationsRequest();
+        if (object.delegator_addr !== undefined && object.delegator_addr !== null) {
+            message.delegator_addr = object.delegator_addr;
+        }
+        if (object.src_validator_addr !== undefined && object.src_validator_addr !== null) {
+            message.src_validator_addr = object.src_validator_addr;
+        }
+        if (object.dst_validator_addr !== undefined && object.dst_validator_addr !== null) {
+            message.dst_validator_addr = object.dst_validator_addr;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1607,10 +1661,12 @@ exports.QueryRedelegationsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            redelegation_responses: Array.isArray(object?.redelegation_responses) ? object.redelegation_responses.map((e) => staking_1.RedelegationResponse.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryRedelegationsResponse();
+        message.redelegation_responses = object.redelegation_responses?.map(e => staking_1.RedelegationResponse.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1701,10 +1757,14 @@ exports.QueryDelegatorValidatorsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_addr: object.delegator_addr,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDelegatorValidatorsRequest();
+        if (object.delegator_addr !== undefined && object.delegator_addr !== null) {
+            message.delegator_addr = object.delegator_addr;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1795,10 +1855,12 @@ exports.QueryDelegatorValidatorsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            validators: Array.isArray(object?.validators) ? object.validators.map((e) => staking_1.Validator.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDelegatorValidatorsResponse();
+        message.validators = object.validators?.map(e => staking_1.Validator.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1889,10 +1951,14 @@ exports.QueryDelegatorValidatorRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_addr: object.delegator_addr,
-            validator_addr: object.validator_addr
-        };
+        const message = createBaseQueryDelegatorValidatorRequest();
+        if (object.delegator_addr !== undefined && object.delegator_addr !== null) {
+            message.delegator_addr = object.delegator_addr;
+        }
+        if (object.validator_addr !== undefined && object.validator_addr !== null) {
+            message.validator_addr = object.validator_addr;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1968,13 +2034,15 @@ exports.QueryDelegatorValidatorResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            validator: object?.validator ? staking_1.Validator.fromAmino(object.validator) : undefined
-        };
+        const message = createBaseQueryDelegatorValidatorResponse();
+        if (object.validator !== undefined && object.validator !== null) {
+            message.validator = staking_1.Validator.fromAmino(object.validator);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.validator = message.validator ? staking_1.Validator.toAmino(message.validator) : undefined;
+        obj.validator = message.validator ? staking_1.Validator.toAmino(message.validator) : staking_1.Validator.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -2045,9 +2113,11 @@ exports.QueryHistoricalInfoRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            height: BigInt(object.height)
-        };
+        const message = createBaseQueryHistoricalInfoRequest();
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2122,9 +2192,11 @@ exports.QueryHistoricalInfoResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            hist: object?.hist ? staking_1.HistoricalInfo.fromAmino(object.hist) : undefined
-        };
+        const message = createBaseQueryHistoricalInfoResponse();
+        if (object.hist !== undefined && object.hist !== null) {
+            message.hist = staking_1.HistoricalInfo.fromAmino(object.hist);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2187,7 +2259,8 @@ exports.QueryPoolRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryPoolRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -2261,13 +2334,15 @@ exports.QueryPoolResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pool: object?.pool ? staking_1.Pool.fromAmino(object.pool) : undefined
-        };
+        const message = createBaseQueryPoolResponse();
+        if (object.pool !== undefined && object.pool !== null) {
+            message.pool = staking_1.Pool.fromAmino(object.pool);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.pool = message.pool ? staking_1.Pool.toAmino(message.pool) : undefined;
+        obj.pool = message.pool ? staking_1.Pool.toAmino(message.pool) : staking_1.Pool.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -2326,7 +2401,8 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryParamsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -2400,13 +2476,15 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? staking_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseQueryParamsResponse();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = staking_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.params = message.params ? staking_1.Params.toAmino(message.params) : undefined;
+        obj.params = message.params ? staking_1.Params.toAmino(message.params) : staking_1.Params.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {

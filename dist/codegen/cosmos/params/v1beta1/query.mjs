@@ -59,10 +59,14 @@ export const QueryParamsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            subspace: object.subspace,
-            key: object.key
-        };
+        const message = createBaseQueryParamsRequest();
+        if (object.subspace !== undefined && object.subspace !== null) {
+            message.subspace = object.subspace;
+        }
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -138,13 +142,15 @@ export const QueryParamsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            param: object?.param ? ParamChange.fromAmino(object.param) : undefined
-        };
+        const message = createBaseQueryParamsResponse();
+        if (object.param !== undefined && object.param !== null) {
+            message.param = ParamChange.fromAmino(object.param);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.param = message.param ? ParamChange.toAmino(message.param) : undefined;
+        obj.param = message.param ? ParamChange.toAmino(message.param) : ParamChange.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -203,7 +209,8 @@ export const QuerySubspacesRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQuerySubspacesRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -282,9 +289,9 @@ export const QuerySubspacesResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            subspaces: Array.isArray(object?.subspaces) ? object.subspaces.map((e) => Subspace.fromAmino(e)) : []
-        };
+        const message = createBaseQuerySubspacesResponse();
+        message.subspaces = object.subspaces?.map(e => Subspace.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -379,10 +386,12 @@ export const Subspace = {
         return message;
     },
     fromAmino(object) {
-        return {
-            subspace: object.subspace,
-            keys: Array.isArray(object?.keys) ? object.keys.map((e) => e) : []
-        };
+        const message = createBaseSubspace();
+        if (object.subspace !== undefined && object.subspace !== null) {
+            message.subspace = object.subspace;
+        }
+        message.keys = object.keys?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

@@ -31,7 +31,7 @@ export interface GenesisStateProtoMsg {
 /** GenesisState defines the bank module's genesis state. */
 export interface GenesisStateAmino {
   /** params defines all the parameters of the module. */
-  params?: ParamsAmino;
+  params: ParamsAmino;
   /** balances is an array containing the balances of all the accounts. */
   balances: BalanceAmino[];
   /**
@@ -80,7 +80,7 @@ export interface BalanceProtoMsg {
  */
 export interface BalanceAmino {
   /** address is the address of the balance holder. */
-  address: string;
+  address?: string;
   /** coins defines the different coins this balance holds. */
   coins: CoinAmino[];
 }
@@ -198,17 +198,19 @@ export const GenesisState = {
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
-    return {
-      params: object?.params ? Params.fromAmino(object.params) : undefined,
-      balances: Array.isArray(object?.balances) ? object.balances.map((e: any) => Balance.fromAmino(e)) : [],
-      supply: Array.isArray(object?.supply) ? object.supply.map((e: any) => Coin.fromAmino(e)) : [],
-      denom_metadata: Array.isArray(object?.denom_metadata) ? object.denom_metadata.map((e: any) => Metadata.fromAmino(e)) : [],
-      send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e: any) => SendEnabled.fromAmino(e)) : []
-    };
+    const message = createBaseGenesisState();
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    message.balances = object.balances?.map(e => Balance.fromAmino(e)) || [];
+    message.supply = object.supply?.map(e => Coin.fromAmino(e)) || [];
+    message.denom_metadata = object.denom_metadata?.map(e => Metadata.fromAmino(e)) || [];
+    message.send_enabled = object.send_enabled?.map(e => SendEnabled.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
-    obj.params = message.params ? Params.toAmino(message.params) : undefined;
+    obj.params = message.params ? Params.toAmino(message.params) : Params.fromPartial({});
     if (message.balances) {
       obj.balances = message.balances.map(e => e ? Balance.toAmino(e) : undefined);
     } else {
@@ -313,10 +315,12 @@ export const Balance = {
     return message;
   },
   fromAmino(object: BalanceAmino): Balance {
-    return {
-      address: object.address,
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromAmino(e)) : []
-    };
+    const message = createBaseBalance();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    message.coins = object.coins?.map(e => Coin.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: Balance): BalanceAmino {
     const obj: any = {};

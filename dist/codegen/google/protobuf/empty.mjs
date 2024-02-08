@@ -35,7 +35,8 @@ export const Empty = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseEmpty();
+        return message;
     },
     toAmino(_) {
         const obj = {};

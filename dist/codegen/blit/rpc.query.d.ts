@@ -2,7 +2,7 @@ export declare const createGrpcGateWayClient: ({ endpoint }: {
     endpoint: string;
 }) => Promise<{
     blit: {
-        blit: import("./blit/query.rpc.Query").QueryClientImpl;
+        blit: import("./blit/query.rpc.Service").ServiceClientImpl;
         script: import("./script/query.rpc.Query").QueryClientImpl;
         storage: import("./storage/query.rpc.Query").QueryClientImpl;
     };

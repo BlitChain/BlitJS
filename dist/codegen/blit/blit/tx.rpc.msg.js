@@ -66,6 +66,20 @@ class Msg {
             body: JSON.stringify(request, fm.replacer)
         });
     }
+    static CreateTask(request, initRequest) {
+        return fm.fetchReq(`/blit.blit/CreateTask`, {
+            ...initRequest,
+            method: "POST",
+            body: JSON.stringify(request, fm.replacer)
+        });
+    }
+    static DeleteTask(request, initRequest) {
+        return fm.fetchReq(`/blit.blit/DeleteTask`, {
+            ...initRequest,
+            method: "POST",
+            body: JSON.stringify(request, fm.replacer)
+        });
+    }
 }
 exports.Msg = Msg;
 //# sourceMappingURL=tx.rpc.msg.js.map

@@ -150,13 +150,21 @@ export const ConnectionEnd = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            versions: Array.isArray(object?.versions) ? object.versions.map((e) => Version.fromAmino(e)) : [],
-            state: isSet(object.state) ? stateFromJSON(object.state) : -1,
-            counterparty: object?.counterparty ? Counterparty.fromAmino(object.counterparty) : undefined,
-            delay_period: BigInt(object.delay_period)
-        };
+        const message = createBaseConnectionEnd();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        message.versions = object.versions?.map(e => Version.fromAmino(e)) || [];
+        if (object.state !== undefined && object.state !== null) {
+            message.state = stateFromJSON(object.state);
+        }
+        if (object.counterparty !== undefined && object.counterparty !== null) {
+            message.counterparty = Counterparty.fromAmino(object.counterparty);
+        }
+        if (object.delay_period !== undefined && object.delay_period !== null) {
+            message.delay_period = BigInt(object.delay_period);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -295,14 +303,24 @@ export const IdentifiedConnection = {
         return message;
     },
     fromAmino(object) {
-        return {
-            id: object.id,
-            client_id: object.client_id,
-            versions: Array.isArray(object?.versions) ? object.versions.map((e) => Version.fromAmino(e)) : [],
-            state: isSet(object.state) ? stateFromJSON(object.state) : -1,
-            counterparty: object?.counterparty ? Counterparty.fromAmino(object.counterparty) : undefined,
-            delay_period: BigInt(object.delay_period)
-        };
+        const message = createBaseIdentifiedConnection();
+        if (object.id !== undefined && object.id !== null) {
+            message.id = object.id;
+        }
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        message.versions = object.versions?.map(e => Version.fromAmino(e)) || [];
+        if (object.state !== undefined && object.state !== null) {
+            message.state = stateFromJSON(object.state);
+        }
+        if (object.counterparty !== undefined && object.counterparty !== null) {
+            message.counterparty = Counterparty.fromAmino(object.counterparty);
+        }
+        if (object.delay_period !== undefined && object.delay_period !== null) {
+            message.delay_period = BigInt(object.delay_period);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -407,11 +425,17 @@ export const Counterparty = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            connection_id: object.connection_id,
-            prefix: object?.prefix ? MerklePrefix.fromAmino(object.prefix) : undefined
-        };
+        const message = createBaseCounterparty();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        if (object.connection_id !== undefined && object.connection_id !== null) {
+            message.connection_id = object.connection_id;
+        }
+        if (object.prefix !== undefined && object.prefix !== null) {
+            message.prefix = MerklePrefix.fromAmino(object.prefix);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -493,9 +517,9 @@ export const ClientPaths = {
         return message;
     },
     fromAmino(object) {
-        return {
-            paths: Array.isArray(object?.paths) ? object.paths.map((e) => e) : []
-        };
+        const message = createBaseClientPaths();
+        message.paths = object.paths?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -590,10 +614,12 @@ export const ConnectionPaths = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            paths: Array.isArray(object?.paths) ? object.paths.map((e) => e) : []
-        };
+        const message = createBaseConnectionPaths();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        message.paths = object.paths?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -689,10 +715,12 @@ export const Version = {
         return message;
     },
     fromAmino(object) {
-        return {
-            identifier: object.identifier,
-            features: Array.isArray(object?.features) ? object.features.map((e) => e) : []
-        };
+        const message = createBaseVersion();
+        if (object.identifier !== undefined && object.identifier !== null) {
+            message.identifier = object.identifier;
+        }
+        message.features = object.features?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -773,9 +801,11 @@ export const Params = {
         return message;
     },
     fromAmino(object) {
-        return {
-            max_expected_time_per_block: BigInt(object.max_expected_time_per_block)
-        };
+        const message = createBaseParams();
+        if (object.max_expected_time_per_block !== undefined && object.max_expected_time_per_block !== null) {
+            message.max_expected_time_per_block = BigInt(object.max_expected_time_per_block);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

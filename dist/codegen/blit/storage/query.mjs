@@ -39,7 +39,8 @@ export const QueryParamsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryParamsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -107,13 +108,15 @@ export const QueryParamsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseQueryParamsResponse();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.params = message.params ? Params.toAmino(message.params) : undefined;
+        obj.params = message.params ? Params.toAmino(message.params) : Params.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -188,10 +191,14 @@ export const QueryStorageDetailRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            index: object.index
-        };
+        const message = createBaseQueryStorageDetailRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.index !== undefined && object.index !== null) {
+            message.index = object.index;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -261,9 +268,11 @@ export const QueryStorageDetailResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            storage: object?.storage ? Storage.fromAmino(object.storage) : undefined
-        };
+        const message = createBaseQueryStorageDetailResponse();
+        if (object.storage !== undefined && object.storage !== null) {
+            message.storage = Storage.fromAmino(object.storage);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -352,11 +361,17 @@ export const QueryFilterStorageRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            filter_address: object.filter_address,
-            filter_index_prefix: object.filter_index_prefix,
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryFilterStorageRequest();
+        if (object.filter_address !== undefined && object.filter_address !== null) {
+            message.filter_address = object.filter_address;
+        }
+        if (object.filter_index_prefix !== undefined && object.filter_index_prefix !== null) {
+            message.filter_index_prefix = object.filter_index_prefix;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -442,10 +457,12 @@ export const QueryFilterStorageResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            storage: Array.isArray(object?.storage) ? object.storage.map((e) => Storage.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryFilterStorageResponse();
+        message.storage = object.storage?.map(e => Storage.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

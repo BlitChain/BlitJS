@@ -55,9 +55,11 @@ exports.QueryConnectionRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            connection_id: object.connection_id
-        };
+        const message = createBaseQueryConnectionRequest();
+        if (object.connection_id !== undefined && object.connection_id !== null) {
+            message.connection_id = object.connection_id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -152,16 +154,22 @@ exports.QueryConnectionResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            connection: object?.connection ? connection_1.ConnectionEnd.fromAmino(object.connection) : undefined,
-            proof: object.proof,
-            proof_height: object?.proof_height ? client_1.Height.fromAmino(object.proof_height) : undefined
-        };
+        const message = createBaseQueryConnectionResponse();
+        if (object.connection !== undefined && object.connection !== null) {
+            message.connection = connection_1.ConnectionEnd.fromAmino(object.connection);
+        }
+        if (object.proof !== undefined && object.proof !== null) {
+            message.proof = (0, helpers_1.bytesFromBase64)(object.proof);
+        }
+        if (object.proof_height !== undefined && object.proof_height !== null) {
+            message.proof_height = client_1.Height.fromAmino(object.proof_height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.connection = message.connection ? connection_1.ConnectionEnd.toAmino(message.connection) : undefined;
-        obj.proof = message.proof;
+        obj.proof = message.proof ? (0, helpers_1.base64FromBytes)(message.proof) : undefined;
         obj.proof_height = message.proof_height ? client_1.Height.toAmino(message.proof_height) : {};
         return obj;
     },
@@ -233,9 +241,11 @@ exports.QueryConnectionsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryConnectionsRequest();
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -335,11 +345,15 @@ exports.QueryConnectionsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            connections: Array.isArray(object?.connections) ? object.connections.map((e) => connection_1.IdentifiedConnection.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined,
-            height: object?.height ? client_1.Height.fromAmino(object.height) : undefined
-        };
+        const message = createBaseQueryConnectionsResponse();
+        message.connections = object.connections?.map(e => connection_1.IdentifiedConnection.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        if (object.height !== undefined && object.height !== null) {
+            message.height = client_1.Height.fromAmino(object.height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -421,9 +435,11 @@ exports.QueryClientConnectionsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id
-        };
+        const message = createBaseQueryClientConnectionsRequest();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -523,11 +539,15 @@ exports.QueryClientConnectionsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            connection_paths: Array.isArray(object?.connection_paths) ? object.connection_paths.map((e) => e) : [],
-            proof: object.proof,
-            proof_height: object?.proof_height ? client_1.Height.fromAmino(object.proof_height) : undefined
-        };
+        const message = createBaseQueryClientConnectionsResponse();
+        message.connection_paths = object.connection_paths?.map(e => e) || [];
+        if (object.proof !== undefined && object.proof !== null) {
+            message.proof = (0, helpers_1.bytesFromBase64)(object.proof);
+        }
+        if (object.proof_height !== undefined && object.proof_height !== null) {
+            message.proof_height = client_1.Height.fromAmino(object.proof_height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -537,7 +557,7 @@ exports.QueryClientConnectionsResponse = {
         else {
             obj.connection_paths = [];
         }
-        obj.proof = message.proof;
+        obj.proof = message.proof ? (0, helpers_1.base64FromBytes)(message.proof) : undefined;
         obj.proof_height = message.proof_height ? client_1.Height.toAmino(message.proof_height) : {};
         return obj;
     },
@@ -609,9 +629,11 @@ exports.QueryConnectionClientStateRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            connection_id: object.connection_id
-        };
+        const message = createBaseQueryConnectionClientStateRequest();
+        if (object.connection_id !== undefined && object.connection_id !== null) {
+            message.connection_id = object.connection_id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -706,16 +728,22 @@ exports.QueryConnectionClientStateResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            identified_client_state: object?.identified_client_state ? client_1.IdentifiedClientState.fromAmino(object.identified_client_state) : undefined,
-            proof: object.proof,
-            proof_height: object?.proof_height ? client_1.Height.fromAmino(object.proof_height) : undefined
-        };
+        const message = createBaseQueryConnectionClientStateResponse();
+        if (object.identified_client_state !== undefined && object.identified_client_state !== null) {
+            message.identified_client_state = client_1.IdentifiedClientState.fromAmino(object.identified_client_state);
+        }
+        if (object.proof !== undefined && object.proof !== null) {
+            message.proof = (0, helpers_1.bytesFromBase64)(object.proof);
+        }
+        if (object.proof_height !== undefined && object.proof_height !== null) {
+            message.proof_height = client_1.Height.fromAmino(object.proof_height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.identified_client_state = message.identified_client_state ? client_1.IdentifiedClientState.toAmino(message.identified_client_state) : undefined;
-        obj.proof = message.proof;
+        obj.proof = message.proof ? (0, helpers_1.base64FromBytes)(message.proof) : undefined;
         obj.proof_height = message.proof_height ? client_1.Height.toAmino(message.proof_height) : {};
         return obj;
     },
@@ -807,11 +835,17 @@ exports.QueryConnectionConsensusStateRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            connection_id: object.connection_id,
-            revision_number: BigInt(object.revision_number),
-            revision_height: BigInt(object.revision_height)
-        };
+        const message = createBaseQueryConnectionConsensusStateRequest();
+        if (object.connection_id !== undefined && object.connection_id !== null) {
+            message.connection_id = object.connection_id;
+        }
+        if (object.revision_number !== undefined && object.revision_number !== null) {
+            message.revision_number = BigInt(object.revision_number);
+        }
+        if (object.revision_height !== undefined && object.revision_height !== null) {
+            message.revision_height = BigInt(object.revision_height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -918,18 +952,26 @@ exports.QueryConnectionConsensusStateResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            consensus_state: object?.consensus_state ? any_1.Any.fromAmino(object.consensus_state) : undefined,
-            client_id: object.client_id,
-            proof: object.proof,
-            proof_height: object?.proof_height ? client_1.Height.fromAmino(object.proof_height) : undefined
-        };
+        const message = createBaseQueryConnectionConsensusStateResponse();
+        if (object.consensus_state !== undefined && object.consensus_state !== null) {
+            message.consensus_state = any_1.Any.fromAmino(object.consensus_state);
+        }
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        if (object.proof !== undefined && object.proof !== null) {
+            message.proof = (0, helpers_1.bytesFromBase64)(object.proof);
+        }
+        if (object.proof_height !== undefined && object.proof_height !== null) {
+            message.proof_height = client_1.Height.fromAmino(object.proof_height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.consensus_state = message.consensus_state ? any_1.Any.toAmino(message.consensus_state) : undefined;
         obj.client_id = message.client_id;
-        obj.proof = message.proof;
+        obj.proof = message.proof ? (0, helpers_1.base64FromBytes)(message.proof) : undefined;
         obj.proof_height = message.proof_height ? client_1.Height.toAmino(message.proof_height) : {};
         return obj;
     },
@@ -989,7 +1031,8 @@ exports.QueryConnectionParamsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryConnectionParamsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1063,9 +1106,11 @@ exports.QueryConnectionParamsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? client_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseQueryConnectionParamsResponse();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = client_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

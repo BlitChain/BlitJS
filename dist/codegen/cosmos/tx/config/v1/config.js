@@ -61,10 +61,14 @@ exports.Config = {
         return message;
     },
     fromAmino(object) {
-        return {
-            skip_ante_handler: object.skip_ante_handler,
-            skip_post_handler: object.skip_post_handler
-        };
+        const message = createBaseConfig();
+        if (object.skip_ante_handler !== undefined && object.skip_ante_handler !== null) {
+            message.skip_ante_handler = object.skip_ante_handler;
+        }
+        if (object.skip_post_handler !== undefined && object.skip_post_handler !== null) {
+            message.skip_post_handler = object.skip_post_handler;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

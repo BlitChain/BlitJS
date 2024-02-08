@@ -1,5 +1,5 @@
-import { MsgUpdateParams, MsgMintCoins, MsgBurnCoins, MsgForceTransferCoins, MsgSetDenomMetadata } from "./tx";
-export const registry = [["/blit.blit.MsgUpdateParams", MsgUpdateParams], ["/blit.blit.MsgMintCoins", MsgMintCoins], ["/blit.blit.MsgBurnCoins", MsgBurnCoins], ["/blit.blit.MsgForceTransferCoins", MsgForceTransferCoins], ["/blit.blit.MsgSetDenomMetadata", MsgSetDenomMetadata]];
+import { MsgUpdateParams, MsgMintCoins, MsgBurnCoins, MsgForceTransferCoins, MsgSetDenomMetadata, MsgCreateTask, MsgDeleteTask } from "./tx";
+export const registry = [["/blit.blit.MsgUpdateParams", MsgUpdateParams], ["/blit.blit.MsgMintCoins", MsgMintCoins], ["/blit.blit.MsgBurnCoins", MsgBurnCoins], ["/blit.blit.MsgForceTransferCoins", MsgForceTransferCoins], ["/blit.blit.MsgSetDenomMetadata", MsgSetDenomMetadata], ["/blit.blit.MsgCreateTask", MsgCreateTask], ["/blit.blit.MsgDeleteTask", MsgDeleteTask]];
 export const load = (protoRegistry) => {
     registry.forEach(([typeUrl, mod]) => {
         protoRegistry.register(typeUrl, mod);
@@ -36,6 +36,18 @@ export const MessageComposer = {
                 typeUrl: "/blit.blit.MsgSetDenomMetadata",
                 value: MsgSetDenomMetadata.encode(value).finish()
             };
+        },
+        createTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgCreateTask",
+                value: MsgCreateTask.encode(value).finish()
+            };
+        },
+        deleteTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgDeleteTask",
+                value: MsgDeleteTask.encode(value).finish()
+            };
         }
     },
     withTypeUrl: {
@@ -66,6 +78,18 @@ export const MessageComposer = {
         setDenomMetadata(value) {
             return {
                 typeUrl: "/blit.blit.MsgSetDenomMetadata",
+                value
+            };
+        },
+        createTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgCreateTask",
+                value
+            };
+        },
+        deleteTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgDeleteTask",
                 value
             };
         }
@@ -100,6 +124,18 @@ export const MessageComposer = {
                 typeUrl: "/blit.blit.MsgSetDenomMetadata",
                 value: MsgSetDenomMetadata.toJSON(value)
             };
+        },
+        createTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgCreateTask",
+                value: MsgCreateTask.toJSON(value)
+            };
+        },
+        deleteTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgDeleteTask",
+                value: MsgDeleteTask.toJSON(value)
+            };
         }
     },
     fromJSON: {
@@ -132,6 +168,18 @@ export const MessageComposer = {
                 typeUrl: "/blit.blit.MsgSetDenomMetadata",
                 value: MsgSetDenomMetadata.fromJSON(value)
             };
+        },
+        createTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgCreateTask",
+                value: MsgCreateTask.fromJSON(value)
+            };
+        },
+        deleteTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgDeleteTask",
+                value: MsgDeleteTask.fromJSON(value)
+            };
         }
     },
     fromPartial: {
@@ -163,6 +211,18 @@ export const MessageComposer = {
             return {
                 typeUrl: "/blit.blit.MsgSetDenomMetadata",
                 value: MsgSetDenomMetadata.fromPartial(value)
+            };
+        },
+        createTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgCreateTask",
+                value: MsgCreateTask.fromPartial(value)
+            };
+        },
+        deleteTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgDeleteTask",
+                value: MsgDeleteTask.fromPartial(value)
             };
         }
     }

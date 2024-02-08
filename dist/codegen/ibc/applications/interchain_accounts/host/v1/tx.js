@@ -62,10 +62,14 @@ exports.MsgUpdateParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            signer: object.signer,
-            params: object?.params ? host_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseMsgUpdateParams();
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        if (object.params !== undefined && object.params !== null) {
+            message.params = host_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -129,7 +133,8 @@ exports.MsgUpdateParamsResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgUpdateParamsResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};

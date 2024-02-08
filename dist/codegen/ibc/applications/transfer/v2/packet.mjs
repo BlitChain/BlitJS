@@ -88,13 +88,23 @@ export const FungibleTokenPacketData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denom: object.denom,
-            amount: object.amount,
-            sender: object.sender,
-            receiver: object.receiver,
-            memo: object.memo
-        };
+        const message = createBaseFungibleTokenPacketData();
+        if (object.denom !== undefined && object.denom !== null) {
+            message.denom = object.denom;
+        }
+        if (object.amount !== undefined && object.amount !== null) {
+            message.amount = object.amount;
+        }
+        if (object.sender !== undefined && object.sender !== null) {
+            message.sender = object.sender;
+        }
+        if (object.receiver !== undefined && object.receiver !== null) {
+            message.receiver = object.receiver;
+        }
+        if (object.memo !== undefined && object.memo !== null) {
+            message.memo = object.memo;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

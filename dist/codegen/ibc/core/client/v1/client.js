@@ -63,10 +63,14 @@ exports.IdentifiedClientState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            client_state: object?.client_state ? any_1.Any.fromAmino(object.client_state) : undefined
-        };
+        const message = createBaseIdentifiedClientState();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        if (object.client_state !== undefined && object.client_state !== null) {
+            message.client_state = any_1.Any.fromAmino(object.client_state);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -152,10 +156,14 @@ exports.ConsensusStateWithHeight = {
         return message;
     },
     fromAmino(object) {
-        return {
-            height: object?.height ? exports.Height.fromAmino(object.height) : undefined,
-            consensus_state: object?.consensus_state ? any_1.Any.fromAmino(object.consensus_state) : undefined
-        };
+        const message = createBaseConsensusStateWithHeight();
+        if (object.height !== undefined && object.height !== null) {
+            message.height = exports.Height.fromAmino(object.height);
+        }
+        if (object.consensus_state !== undefined && object.consensus_state !== null) {
+            message.consensus_state = any_1.Any.fromAmino(object.consensus_state);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -246,10 +254,12 @@ exports.ClientConsensusStates = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            consensus_states: Array.isArray(object?.consensus_states) ? object.consensus_states.map((e) => exports.ConsensusStateWithHeight.fromAmino(e)) : []
-        };
+        const message = createBaseClientConsensusStates();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        message.consensus_states = object.consensus_states?.map(e => exports.ConsensusStateWithHeight.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -424,9 +434,9 @@ exports.Params = {
         return message;
     },
     fromAmino(object) {
-        return {
-            allowed_clients: Array.isArray(object?.allowed_clients) ? object.allowed_clients.map((e) => e) : []
-        };
+        const message = createBaseParams();
+        message.allowed_clients = object.allowed_clients?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -537,12 +547,20 @@ exports.ClientUpdateProposal = {
         return message;
     },
     fromAmino(object) {
-        return {
-            title: object.title,
-            description: object.description,
-            subject_client_id: object.subject_client_id,
-            substitute_client_id: object.substitute_client_id
-        };
+        const message = createBaseClientUpdateProposal();
+        if (object.title !== undefined && object.title !== null) {
+            message.title = object.title;
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        }
+        if (object.subject_client_id !== undefined && object.subject_client_id !== null) {
+            message.subject_client_id = object.subject_client_id;
+        }
+        if (object.substitute_client_id !== undefined && object.substitute_client_id !== null) {
+            message.substitute_client_id = object.substitute_client_id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -651,12 +669,20 @@ exports.UpgradeProposal = {
         return message;
     },
     fromAmino(object) {
-        return {
-            title: object.title,
-            description: object.description,
-            plan: object?.plan ? upgrade_1.Plan.fromAmino(object.plan) : undefined,
-            upgraded_client_state: object?.upgraded_client_state ? any_1.Any.fromAmino(object.upgraded_client_state) : undefined
-        };
+        const message = createBaseUpgradeProposal();
+        if (object.title !== undefined && object.title !== null) {
+            message.title = object.title;
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        }
+        if (object.plan !== undefined && object.plan !== null) {
+            message.plan = upgrade_1.Plan.fromAmino(object.plan);
+        }
+        if (object.upgraded_client_state !== undefined && object.upgraded_client_state !== null) {
+            message.upgraded_client_state = any_1.Any.fromAmino(object.upgraded_client_state);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

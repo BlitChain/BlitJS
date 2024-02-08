@@ -30,19 +30,19 @@ export interface GetRequestProtoMsg {
 /** GetRequest is the Query/Get request type. */
 export interface GetRequestAmino {
   /** message_name is the fully-qualified message name of the ORM table being queried. */
-  message_name: string;
+  message_name?: string;
   /**
    * index is the index fields expression used in orm definitions. If it
    * is empty, the table's primary key is assumed. If it is non-empty, it must
    * refer to an unique index.
    */
-  index: string;
+  index?: string;
   /**
    * values are the values of the fields corresponding to the requested index.
    * There must be as many values provided as there are fields in the index and
    * these values must correspond to the index field types.
    */
-  values: IndexValueAmino[];
+  values?: IndexValueAmino[];
 }
 export interface GetRequestAminoMsg {
   type: "cosmos-sdk/GetRequest";
@@ -105,12 +105,12 @@ export interface ListRequestProtoMsg {
 /** ListRequest is the Query/List request type. */
 export interface ListRequestAmino {
   /** message_name is the fully-qualified message name of the ORM table being queried. */
-  message_name: string;
+  message_name?: string;
   /**
    * index is the index fields expression used in orm definitions. If it
    * is empty, the table's primary key is assumed.
    */
-  index: string;
+  index?: string;
   /** prefix defines a prefix query. */
   prefix?: ListRequest_PrefixAmino;
   /** range defines a range query. */
@@ -150,7 +150,7 @@ export interface ListRequest_PrefixAmino {
    * It is valid to special a partial prefix with fewer values than
    * the number of fields in the index.
    */
-  values: IndexValueAmino[];
+  values?: IndexValueAmino[];
 }
 export interface ListRequest_PrefixAminoMsg {
   type: "cosmos-sdk/Prefix";
@@ -186,13 +186,13 @@ export interface ListRequest_RangeAmino {
    * It is valid to provide fewer values than the number of fields in the
    * index.
    */
-  start: IndexValueAmino[];
+  start?: IndexValueAmino[];
   /**
    * end specifies the inclusive ending index values for the range query.
    * It is valid to provide fewer values than the number of fields in the
    * index.
    */
-  end: IndexValueAmino[];
+  end?: IndexValueAmino[];
 }
 export interface ListRequest_RangeAminoMsg {
   type: "cosmos-sdk/Range";
@@ -217,7 +217,7 @@ export interface ListResponseProtoMsg {
 /** ListResponse is the Query/List response type. */
 export interface ListResponseAmino {
   /** results are the results of the query. */
-  results: AnyAmino[];
+  results?: AnyAmino[];
   /** pagination is the pagination response. */
   pagination?: PageResponseAmino;
 }
@@ -274,7 +274,7 @@ export interface IndexValueAmino {
   /** str specifies a value for a string index field. */
   str?: string;
   /** bytes specifies a value for a bytes index field. */
-  bytes?: Uint8Array;
+  bytes?: string;
   /** enum specifies a value for an enum index field. */
   enum?: string;
   /** bool specifies a value for a bool index field. */
@@ -369,11 +369,15 @@ export const GetRequest = {
     return message;
   },
   fromAmino(object: GetRequestAmino): GetRequest {
-    return {
-      message_name: object.message_name,
-      index: object.index,
-      values: Array.isArray(object?.values) ? object.values.map((e: any) => IndexValue.fromAmino(e)) : []
-    };
+    const message = createBaseGetRequest();
+    if (object.message_name !== undefined && object.message_name !== null) {
+      message.message_name = object.message_name;
+    }
+    if (object.index !== undefined && object.index !== null) {
+      message.index = object.index;
+    }
+    message.values = object.values?.map(e => IndexValue.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: GetRequest): GetRequestAmino {
     const obj: any = {};
@@ -454,9 +458,11 @@ export const GetResponse = {
     return message;
   },
   fromAmino(object: GetResponseAmino): GetResponse {
-    return {
-      result: object?.result ? Any.fromAmino(object.result) : undefined
-    };
+    const message = createBaseGetResponse();
+    if (object.result !== undefined && object.result !== null) {
+      message.result = Any.fromAmino(object.result);
+    }
+    return message;
   },
   toAmino(message: GetResponse): GetResponseAmino {
     const obj: any = {};
@@ -571,13 +577,23 @@ export const ListRequest = {
     return message;
   },
   fromAmino(object: ListRequestAmino): ListRequest {
-    return {
-      message_name: object.message_name,
-      index: object.index,
-      prefix: object?.prefix ? ListRequest_Prefix.fromAmino(object.prefix) : undefined,
-      range: object?.range ? ListRequest_Range.fromAmino(object.range) : undefined,
-      pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-    };
+    const message = createBaseListRequest();
+    if (object.message_name !== undefined && object.message_name !== null) {
+      message.message_name = object.message_name;
+    }
+    if (object.index !== undefined && object.index !== null) {
+      message.index = object.index;
+    }
+    if (object.prefix !== undefined && object.prefix !== null) {
+      message.prefix = ListRequest_Prefix.fromAmino(object.prefix);
+    }
+    if (object.range !== undefined && object.range !== null) {
+      message.range = ListRequest_Range.fromAmino(object.range);
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromAmino(object.pagination);
+    }
+    return message;
   },
   toAmino(message: ListRequest): ListRequestAmino {
     const obj: any = {};
@@ -660,9 +676,9 @@ export const ListRequest_Prefix = {
     return message;
   },
   fromAmino(object: ListRequest_PrefixAmino): ListRequest_Prefix {
-    return {
-      values: Array.isArray(object?.values) ? object.values.map((e: any) => IndexValue.fromAmino(e)) : []
-    };
+    const message = createBaseListRequest_Prefix();
+    message.values = object.values?.map(e => IndexValue.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: ListRequest_Prefix): ListRequest_PrefixAmino {
     const obj: any = {};
@@ -759,10 +775,10 @@ export const ListRequest_Range = {
     return message;
   },
   fromAmino(object: ListRequest_RangeAmino): ListRequest_Range {
-    return {
-      start: Array.isArray(object?.start) ? object.start.map((e: any) => IndexValue.fromAmino(e)) : [],
-      end: Array.isArray(object?.end) ? object.end.map((e: any) => IndexValue.fromAmino(e)) : []
-    };
+    const message = createBaseListRequest_Range();
+    message.start = object.start?.map(e => IndexValue.fromAmino(e)) || [];
+    message.end = object.end?.map(e => IndexValue.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: ListRequest_Range): ListRequest_RangeAmino {
     const obj: any = {};
@@ -860,10 +876,12 @@ export const ListResponse = {
     return message;
   },
   fromAmino(object: ListResponseAmino): ListResponse {
-    return {
-      results: Array.isArray(object?.results) ? object.results.map((e: any) => Any.fromAmino(e)) : [],
-      pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-    };
+    const message = createBaseListResponse();
+    message.results = object.results?.map(e => Any.fromAmino(e)) || [];
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromAmino(object.pagination);
+    }
+    return message;
   },
   toAmino(message: ListResponse): ListResponseAmino {
     const obj: any = {};
@@ -1017,23 +1035,39 @@ export const IndexValue = {
     return message;
   },
   fromAmino(object: IndexValueAmino): IndexValue {
-    return {
-      uint: object?.uint ? BigInt(object.uint) : undefined,
-      int: object?.int ? BigInt(object.int) : undefined,
-      str: object?.str,
-      bytes: object?.bytes,
-      enum: object?.enum,
-      bool: object?.bool,
-      timestamp: object?.timestamp ? fromTimestamp(Timestamp.fromAmino(object.timestamp)) : undefined,
-      duration: object?.duration ? Duration.fromAmino(object.duration) : undefined
-    };
+    const message = createBaseIndexValue();
+    if (object.uint !== undefined && object.uint !== null) {
+      message.uint = BigInt(object.uint);
+    }
+    if (object.int !== undefined && object.int !== null) {
+      message.int = BigInt(object.int);
+    }
+    if (object.str !== undefined && object.str !== null) {
+      message.str = object.str;
+    }
+    if (object.bytes !== undefined && object.bytes !== null) {
+      message.bytes = bytesFromBase64(object.bytes);
+    }
+    if (object.enum !== undefined && object.enum !== null) {
+      message.enum = object.enum;
+    }
+    if (object.bool !== undefined && object.bool !== null) {
+      message.bool = object.bool;
+    }
+    if (object.timestamp !== undefined && object.timestamp !== null) {
+      message.timestamp = fromTimestamp(Timestamp.fromAmino(object.timestamp));
+    }
+    if (object.duration !== undefined && object.duration !== null) {
+      message.duration = Duration.fromAmino(object.duration);
+    }
+    return message;
   },
   toAmino(message: IndexValue): IndexValueAmino {
     const obj: any = {};
     obj.uint = message.uint ? message.uint.toString() : undefined;
     obj.int = message.int ? message.int.toString() : undefined;
     obj.str = message.str;
-    obj.bytes = message.bytes;
+    obj.bytes = message.bytes ? base64FromBytes(message.bytes) : undefined;
     obj.enum = message.enum;
     obj.bool = message.bool;
     obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;

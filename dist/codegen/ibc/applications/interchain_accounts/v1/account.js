@@ -63,10 +63,14 @@ exports.InterchainAccount = {
         return message;
     },
     fromAmino(object) {
-        return {
-            base_account: object?.base_account ? auth_1.BaseAccount.fromAmino(object.base_account) : undefined,
-            account_owner: object.account_owner
-        };
+        const message = createBaseInterchainAccount();
+        if (object.base_account !== undefined && object.base_account !== null) {
+            message.base_account = auth_1.BaseAccount.fromAmino(object.base_account);
+        }
+        if (object.account_owner !== undefined && object.account_owner !== null) {
+            message.account_owner = object.account_owner;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

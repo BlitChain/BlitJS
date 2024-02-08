@@ -15,8 +15,8 @@ export interface GenesisStateProtoMsg {
 /** GenesisState defines the script module's genesis state. */
 export interface GenesisStateAmino {
     /** params defines all the parameters of the module. */
-    params?: ParamsAmino;
-    scriptList: ScriptAmino[];
+    params: ParamsAmino;
+    scriptList?: ScriptAmino[];
 }
 export interface GenesisStateAminoMsg {
     type: "/blit.script.GenesisState";

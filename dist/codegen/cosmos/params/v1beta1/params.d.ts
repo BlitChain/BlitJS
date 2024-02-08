@@ -13,8 +13,8 @@ export interface ParameterChangeProposalProtoMsg {
 }
 /** ParameterChangeProposal defines a proposal to change one or more parameters. */
 export interface ParameterChangeProposalAmino {
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
     changes: ParamChangeAmino[];
 }
 export interface ParameterChangeProposalAminoMsg {
@@ -46,9 +46,9 @@ export interface ParamChangeProtoMsg {
  * ParameterChangeProposal.
  */
 export interface ParamChangeAmino {
-    subspace: string;
-    key: string;
-    value: string;
+    subspace?: string;
+    key?: string;
+    value?: string;
 }
 export interface ParamChangeAminoMsg {
     type: "cosmos-sdk/ParamChange";

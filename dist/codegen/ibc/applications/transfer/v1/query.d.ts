@@ -21,7 +21,7 @@ export interface QueryDenomTraceRequestProtoMsg {
  */
 export interface QueryDenomTraceRequestAmino {
     /** hash (in hex format) or denom (full denom with ibc prefix) of the denomination trace information. */
-    hash: string;
+    hash?: string;
 }
 export interface QueryDenomTraceRequestAminoMsg {
     type: "cosmos-sdk/QueryDenomTraceRequest";
@@ -116,7 +116,7 @@ export interface QueryDenomTracesResponseProtoMsg {
  */
 export interface QueryDenomTracesResponseAmino {
     /** denom_traces returns all denominations trace information. */
-    denom_traces: DenomTraceAmino[];
+    denom_traces?: DenomTraceAmino[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;
 }
@@ -189,7 +189,7 @@ export interface QueryDenomHashRequestProtoMsg {
  */
 export interface QueryDenomHashRequestAmino {
     /** The denomination trace ([port_id]/[channel_id])+/[denom] */
-    trace: string;
+    trace?: string;
 }
 export interface QueryDenomHashRequestAminoMsg {
     type: "cosmos-sdk/QueryDenomHashRequest";
@@ -220,7 +220,7 @@ export interface QueryDenomHashResponseProtoMsg {
  */
 export interface QueryDenomHashResponseAmino {
     /** hash (in hex format) of the denomination trace information. */
-    hash: string;
+    hash?: string;
 }
 export interface QueryDenomHashResponseAminoMsg {
     type: "cosmos-sdk/QueryDenomHashResponse";
@@ -247,9 +247,9 @@ export interface QueryEscrowAddressRequestProtoMsg {
 /** QueryEscrowAddressRequest is the request type for the EscrowAddress RPC method. */
 export interface QueryEscrowAddressRequestAmino {
     /** unique port identifier */
-    port_id: string;
+    port_id?: string;
     /** unique channel identifier */
-    channel_id: string;
+    channel_id?: string;
 }
 export interface QueryEscrowAddressRequestAminoMsg {
     type: "cosmos-sdk/QueryEscrowAddressRequest";
@@ -272,7 +272,7 @@ export interface QueryEscrowAddressResponseProtoMsg {
 /** QueryEscrowAddressResponse is the response type of the EscrowAddress RPC method. */
 export interface QueryEscrowAddressResponseAmino {
     /** the escrow account address */
-    escrow_address: string;
+    escrow_address?: string;
 }
 export interface QueryEscrowAddressResponseAminoMsg {
     type: "cosmos-sdk/QueryEscrowAddressResponse";
@@ -292,7 +292,7 @@ export interface QueryTotalEscrowForDenomRequestProtoMsg {
 }
 /** QueryTotalEscrowForDenomRequest is the request type for TotalEscrowForDenom RPC method. */
 export interface QueryTotalEscrowForDenomRequestAmino {
-    denom: string;
+    denom?: string;
 }
 export interface QueryTotalEscrowForDenomRequestAminoMsg {
     type: "cosmos-sdk/QueryTotalEscrowForDenomRequest";

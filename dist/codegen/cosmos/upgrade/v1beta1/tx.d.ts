@@ -23,9 +23,9 @@ export interface MsgSoftwareUpgradeProtoMsg {
  */
 export interface MsgSoftwareUpgradeAmino {
     /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
-    authority: string;
+    authority?: string;
     /** plan is the upgrade plan. */
-    plan?: PlanAmino;
+    plan: PlanAmino;
 }
 export interface MsgSoftwareUpgradeAminoMsg {
     type: "cosmos-sdk/MsgSoftwareUpgrade";
@@ -89,7 +89,7 @@ export interface MsgCancelUpgradeProtoMsg {
  */
 export interface MsgCancelUpgradeAmino {
     /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
-    authority: string;
+    authority?: string;
 }
 export interface MsgCancelUpgradeAminoMsg {
     type: "cosmos-sdk/MsgCancelUpgrade";

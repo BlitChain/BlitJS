@@ -30,10 +30,10 @@ export interface ConfigResponseProtoMsg {
 }
 /** ConfigResponse defines the response structure for the Config gRPC query. */
 export interface ConfigResponseAmino {
-    minimum_gas_price: string;
+    minimum_gas_price?: string;
     /** pruning settings */
-    pruning_keep_recent: string;
-    pruning_interval: string;
+    pruning_keep_recent?: string;
+    pruning_interval?: string;
 }
 export interface ConfigResponseAminoMsg {
     type: "cosmos-sdk/ConfigResponse";
@@ -82,15 +82,15 @@ export interface StatusResponseProtoMsg {
 /** StateResponse defines the response structure for the status of a node. */
 export interface StatusResponseAmino {
     /** earliest block height available in the store */
-    earliest_store_height: string;
+    earliest_store_height?: string;
     /** current block height */
-    height: string;
+    height?: string;
     /** block height timestamp */
     timestamp?: string;
     /** app hash of the current block */
-    app_hash: Uint8Array;
+    app_hash?: string;
     /** validator hash provided by the consensus header */
-    validator_hash: Uint8Array;
+    validator_hash?: string;
 }
 export interface StatusResponseAminoMsg {
     type: "cosmos-sdk/StatusResponse";

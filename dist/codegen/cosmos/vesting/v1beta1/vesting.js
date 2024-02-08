@@ -108,13 +108,17 @@ exports.BaseVestingAccount = {
         return message;
     },
     fromAmino(object) {
-        return {
-            base_account: object?.base_account ? auth_1.BaseAccount.fromAmino(object.base_account) : undefined,
-            original_vesting: Array.isArray(object?.original_vesting) ? object.original_vesting.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            delegated_free: Array.isArray(object?.delegated_free) ? object.delegated_free.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            delegated_vesting: Array.isArray(object?.delegated_vesting) ? object.delegated_vesting.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            end_time: BigInt(object.end_time)
-        };
+        const message = createBaseBaseVestingAccount();
+        if (object.base_account !== undefined && object.base_account !== null) {
+            message.base_account = auth_1.BaseAccount.fromAmino(object.base_account);
+        }
+        message.original_vesting = object.original_vesting?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        message.delegated_free = object.delegated_free?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        message.delegated_vesting = object.delegated_vesting?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.end_time !== undefined && object.end_time !== null) {
+            message.end_time = BigInt(object.end_time);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -218,10 +222,14 @@ exports.ContinuousVestingAccount = {
         return message;
     },
     fromAmino(object) {
-        return {
-            base_vesting_account: object?.base_vesting_account ? exports.BaseVestingAccount.fromAmino(object.base_vesting_account) : undefined,
-            start_time: BigInt(object.start_time)
-        };
+        const message = createBaseContinuousVestingAccount();
+        if (object.base_vesting_account !== undefined && object.base_vesting_account !== null) {
+            message.base_vesting_account = exports.BaseVestingAccount.fromAmino(object.base_vesting_account);
+        }
+        if (object.start_time !== undefined && object.start_time !== null) {
+            message.start_time = BigInt(object.start_time);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -297,9 +305,11 @@ exports.DelayedVestingAccount = {
         return message;
     },
     fromAmino(object) {
-        return {
-            base_vesting_account: object?.base_vesting_account ? exports.BaseVestingAccount.fromAmino(object.base_vesting_account) : undefined
-        };
+        const message = createBaseDelayedVestingAccount();
+        if (object.base_vesting_account !== undefined && object.base_vesting_account !== null) {
+            message.base_vesting_account = exports.BaseVestingAccount.fromAmino(object.base_vesting_account);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -389,10 +399,12 @@ exports.Period = {
         return message;
     },
     fromAmino(object) {
-        return {
-            length: BigInt(object.length),
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromAmino(e)) : []
-        };
+        const message = createBasePeriod();
+        if (object.length !== undefined && object.length !== null) {
+            message.length = BigInt(object.length);
+        }
+        message.amount = object.amount?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -498,11 +510,15 @@ exports.PeriodicVestingAccount = {
         return message;
     },
     fromAmino(object) {
-        return {
-            base_vesting_account: object?.base_vesting_account ? exports.BaseVestingAccount.fromAmino(object.base_vesting_account) : undefined,
-            start_time: BigInt(object.start_time),
-            vesting_periods: Array.isArray(object?.vesting_periods) ? object.vesting_periods.map((e) => exports.Period.fromAmino(e)) : []
-        };
+        const message = createBasePeriodicVestingAccount();
+        if (object.base_vesting_account !== undefined && object.base_vesting_account !== null) {
+            message.base_vesting_account = exports.BaseVestingAccount.fromAmino(object.base_vesting_account);
+        }
+        if (object.start_time !== undefined && object.start_time !== null) {
+            message.start_time = BigInt(object.start_time);
+        }
+        message.vesting_periods = object.vesting_periods?.map(e => exports.Period.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -584,9 +600,11 @@ exports.PermanentLockedAccount = {
         return message;
     },
     fromAmino(object) {
-        return {
-            base_vesting_account: object?.base_vesting_account ? exports.BaseVestingAccount.fromAmino(object.base_vesting_account) : undefined
-        };
+        const message = createBasePermanentLockedAccount();
+        if (object.base_vesting_account !== undefined && object.base_vesting_account !== null) {
+            message.base_vesting_account = exports.BaseVestingAccount.fromAmino(object.base_vesting_account);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

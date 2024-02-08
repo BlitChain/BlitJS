@@ -37,7 +37,8 @@ export const ConfigRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseConfigRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -131,11 +132,17 @@ export const ConfigResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            minimum_gas_price: object.minimum_gas_price,
-            pruning_keep_recent: object.pruning_keep_recent,
-            pruning_interval: object.pruning_interval
-        };
+        const message = createBaseConfigResponse();
+        if (object.minimum_gas_price !== undefined && object.minimum_gas_price !== null) {
+            message.minimum_gas_price = object.minimum_gas_price;
+        }
+        if (object.pruning_keep_recent !== undefined && object.pruning_keep_recent !== null) {
+            message.pruning_keep_recent = object.pruning_keep_recent;
+        }
+        if (object.pruning_interval !== undefined && object.pruning_interval !== null) {
+            message.pruning_interval = object.pruning_interval;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -200,7 +207,8 @@ export const StatusRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseStatusRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -314,21 +322,31 @@ export const StatusResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            earliest_store_height: BigInt(object.earliest_store_height),
-            height: BigInt(object.height),
-            timestamp: object?.timestamp ? fromTimestamp(Timestamp.fromAmino(object.timestamp)) : undefined,
-            app_hash: object.app_hash,
-            validator_hash: object.validator_hash
-        };
+        const message = createBaseStatusResponse();
+        if (object.earliest_store_height !== undefined && object.earliest_store_height !== null) {
+            message.earliest_store_height = BigInt(object.earliest_store_height);
+        }
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.timestamp !== undefined && object.timestamp !== null) {
+            message.timestamp = fromTimestamp(Timestamp.fromAmino(object.timestamp));
+        }
+        if (object.app_hash !== undefined && object.app_hash !== null) {
+            message.app_hash = bytesFromBase64(object.app_hash);
+        }
+        if (object.validator_hash !== undefined && object.validator_hash !== null) {
+            message.validator_hash = bytesFromBase64(object.validator_hash);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.earliest_store_height = message.earliest_store_height ? message.earliest_store_height.toString() : undefined;
         obj.height = message.height ? message.height.toString() : undefined;
         obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
-        obj.app_hash = message.app_hash;
-        obj.validator_hash = message.validator_hash;
+        obj.app_hash = message.app_hash ? base64FromBytes(message.app_hash) : undefined;
+        obj.validator_hash = message.validator_hash ? base64FromBytes(message.validator_hash) : undefined;
         return obj;
     },
     fromAminoMsg(object) {

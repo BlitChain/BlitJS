@@ -31,11 +31,11 @@ export interface StoreKVPairProtoMsg {
  */
 export interface StoreKVPairAmino {
   /** the store key for the KVStore this pair originates from */
-  store_key: string;
+  store_key?: string;
   /** true indicates a delete operation, false indicates a set operation */
-  delete: boolean;
-  key: Uint8Array;
-  value: Uint8Array;
+  delete?: boolean;
+  key?: string;
+  value?: string;
 }
 export interface StoreKVPairAminoMsg {
   type: "cosmos-sdk/StoreKVPair";
@@ -167,19 +167,27 @@ export const StoreKVPair = {
     return message;
   },
   fromAmino(object: StoreKVPairAmino): StoreKVPair {
-    return {
-      store_key: object.store_key,
-      delete: object.delete,
-      key: object.key,
-      value: object.value
-    };
+    const message = createBaseStoreKVPair();
+    if (object.store_key !== undefined && object.store_key !== null) {
+      message.store_key = object.store_key;
+    }
+    if (object.delete !== undefined && object.delete !== null) {
+      message.delete = object.delete;
+    }
+    if (object.key !== undefined && object.key !== null) {
+      message.key = bytesFromBase64(object.key);
+    }
+    if (object.value !== undefined && object.value !== null) {
+      message.value = bytesFromBase64(object.value);
+    }
+    return message;
   },
   toAmino(message: StoreKVPair): StoreKVPairAmino {
     const obj: any = {};
     obj.store_key = message.store_key;
     obj.delete = message.delete;
-    obj.key = message.key;
-    obj.value = message.value;
+    obj.key = message.key ? base64FromBytes(message.key) : undefined;
+    obj.value = message.value ? base64FromBytes(message.value) : undefined;
     return obj;
   },
   fromAminoMsg(object: StoreKVPairAminoMsg): StoreKVPair {
@@ -270,11 +278,17 @@ export const BlockMetadata = {
     return message;
   },
   fromAmino(object: BlockMetadataAmino): BlockMetadata {
-    return {
-      response_commit: object?.response_commit ? ResponseCommit.fromAmino(object.response_commit) : undefined,
-      request_finalize_block: object?.request_finalize_block ? RequestFinalizeBlock.fromAmino(object.request_finalize_block) : undefined,
-      response_finalize_block: object?.response_finalize_block ? ResponseFinalizeBlock.fromAmino(object.response_finalize_block) : undefined
-    };
+    const message = createBaseBlockMetadata();
+    if (object.response_commit !== undefined && object.response_commit !== null) {
+      message.response_commit = ResponseCommit.fromAmino(object.response_commit);
+    }
+    if (object.request_finalize_block !== undefined && object.request_finalize_block !== null) {
+      message.request_finalize_block = RequestFinalizeBlock.fromAmino(object.request_finalize_block);
+    }
+    if (object.response_finalize_block !== undefined && object.response_finalize_block !== null) {
+      message.response_finalize_block = ResponseFinalizeBlock.fromAmino(object.response_finalize_block);
+    }
+    return message;
   },
   toAmino(message: BlockMetadata): BlockMetadataAmino {
     const obj: any = {};

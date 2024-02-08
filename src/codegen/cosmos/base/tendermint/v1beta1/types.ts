@@ -25,9 +25,9 @@ export interface BlockProtoMsg {
  * field converted to bech32 string.
  */
 export interface BlockAmino {
-  header?: HeaderAmino;
-  data?: DataAmino;
-  evidence?: EvidenceListAmino;
+  header: HeaderAmino;
+  data: DataAmino;
+  evidence: EvidenceListAmino;
   last_commit?: CommitAmino;
 }
 export interface BlockAminoMsg {
@@ -81,32 +81,32 @@ export interface HeaderProtoMsg {
 /** Header defines the structure of a Tendermint block header. */
 export interface HeaderAmino {
   /** basic block info */
-  version?: ConsensusAmino;
-  chain_id: string;
-  height: string;
-  time?: string;
+  version: ConsensusAmino;
+  chain_id?: string;
+  height?: string;
+  time: string;
   /** prev block info */
-  last_block_id?: BlockIDAmino;
+  last_block_id: BlockIDAmino;
   /** hashes of block data */
-  last_commit_hash: Uint8Array;
-  data_hash: Uint8Array;
+  last_commit_hash?: string;
+  data_hash?: string;
   /** hashes from the app output from the prev block */
-  validators_hash: Uint8Array;
+  validators_hash?: string;
   /** validators for the next block */
-  next_validators_hash: Uint8Array;
+  next_validators_hash?: string;
   /** consensus params for current block */
-  consensus_hash: Uint8Array;
+  consensus_hash?: string;
   /** state after txs from the previous block */
-  app_hash: Uint8Array;
-  last_results_hash: Uint8Array;
+  app_hash?: string;
+  last_results_hash?: string;
   /** consensus info */
-  evidence_hash: Uint8Array;
+  evidence_hash?: string;
   /**
    * proposer_address is the original block proposer address, formatted as a Bech32 string.
    * In Tendermint, this type is `bytes`, but in the SDK, we convert it to a Bech32 string
    * for better UX.
    */
-  proposer_address: string;
+  proposer_address?: string;
 }
 export interface HeaderAminoMsg {
   type: "cosmos-sdk/Header";
@@ -205,18 +205,26 @@ export const Block = {
     return message;
   },
   fromAmino(object: BlockAmino): Block {
-    return {
-      header: object?.header ? Header.fromAmino(object.header) : undefined,
-      data: object?.data ? Data.fromAmino(object.data) : undefined,
-      evidence: object?.evidence ? EvidenceList.fromAmino(object.evidence) : undefined,
-      last_commit: object?.last_commit ? Commit.fromAmino(object.last_commit) : undefined
-    };
+    const message = createBaseBlock();
+    if (object.header !== undefined && object.header !== null) {
+      message.header = Header.fromAmino(object.header);
+    }
+    if (object.data !== undefined && object.data !== null) {
+      message.data = Data.fromAmino(object.data);
+    }
+    if (object.evidence !== undefined && object.evidence !== null) {
+      message.evidence = EvidenceList.fromAmino(object.evidence);
+    }
+    if (object.last_commit !== undefined && object.last_commit !== null) {
+      message.last_commit = Commit.fromAmino(object.last_commit);
+    }
+    return message;
   },
   toAmino(message: Block): BlockAmino {
     const obj: any = {};
-    obj.header = message.header ? Header.toAmino(message.header) : undefined;
-    obj.data = message.data ? Data.toAmino(message.data) : undefined;
-    obj.evidence = message.evidence ? EvidenceList.toAmino(message.evidence) : undefined;
+    obj.header = message.header ? Header.toAmino(message.header) : Header.fromPartial({});
+    obj.data = message.data ? Data.toAmino(message.data) : Data.fromPartial({});
+    obj.evidence = message.evidence ? EvidenceList.toAmino(message.evidence) : EvidenceList.fromPartial({});
     obj.last_commit = message.last_commit ? Commit.toAmino(message.last_commit) : undefined;
     return obj;
   },
@@ -418,38 +426,66 @@ export const Header = {
     return message;
   },
   fromAmino(object: HeaderAmino): Header {
-    return {
-      version: object?.version ? Consensus.fromAmino(object.version) : undefined,
-      chain_id: object.chain_id,
-      height: BigInt(object.height),
-      time: object?.time ? fromTimestamp(Timestamp.fromAmino(object.time)) : undefined,
-      last_block_id: object?.last_block_id ? BlockID.fromAmino(object.last_block_id) : undefined,
-      last_commit_hash: object.last_commit_hash,
-      data_hash: object.data_hash,
-      validators_hash: object.validators_hash,
-      next_validators_hash: object.next_validators_hash,
-      consensus_hash: object.consensus_hash,
-      app_hash: object.app_hash,
-      last_results_hash: object.last_results_hash,
-      evidence_hash: object.evidence_hash,
-      proposer_address: object.proposer_address
-    };
+    const message = createBaseHeader();
+    if (object.version !== undefined && object.version !== null) {
+      message.version = Consensus.fromAmino(object.version);
+    }
+    if (object.chain_id !== undefined && object.chain_id !== null) {
+      message.chain_id = object.chain_id;
+    }
+    if (object.height !== undefined && object.height !== null) {
+      message.height = BigInt(object.height);
+    }
+    if (object.time !== undefined && object.time !== null) {
+      message.time = fromTimestamp(Timestamp.fromAmino(object.time));
+    }
+    if (object.last_block_id !== undefined && object.last_block_id !== null) {
+      message.last_block_id = BlockID.fromAmino(object.last_block_id);
+    }
+    if (object.last_commit_hash !== undefined && object.last_commit_hash !== null) {
+      message.last_commit_hash = bytesFromBase64(object.last_commit_hash);
+    }
+    if (object.data_hash !== undefined && object.data_hash !== null) {
+      message.data_hash = bytesFromBase64(object.data_hash);
+    }
+    if (object.validators_hash !== undefined && object.validators_hash !== null) {
+      message.validators_hash = bytesFromBase64(object.validators_hash);
+    }
+    if (object.next_validators_hash !== undefined && object.next_validators_hash !== null) {
+      message.next_validators_hash = bytesFromBase64(object.next_validators_hash);
+    }
+    if (object.consensus_hash !== undefined && object.consensus_hash !== null) {
+      message.consensus_hash = bytesFromBase64(object.consensus_hash);
+    }
+    if (object.app_hash !== undefined && object.app_hash !== null) {
+      message.app_hash = bytesFromBase64(object.app_hash);
+    }
+    if (object.last_results_hash !== undefined && object.last_results_hash !== null) {
+      message.last_results_hash = bytesFromBase64(object.last_results_hash);
+    }
+    if (object.evidence_hash !== undefined && object.evidence_hash !== null) {
+      message.evidence_hash = bytesFromBase64(object.evidence_hash);
+    }
+    if (object.proposer_address !== undefined && object.proposer_address !== null) {
+      message.proposer_address = object.proposer_address;
+    }
+    return message;
   },
   toAmino(message: Header): HeaderAmino {
     const obj: any = {};
-    obj.version = message.version ? Consensus.toAmino(message.version) : undefined;
+    obj.version = message.version ? Consensus.toAmino(message.version) : Consensus.fromPartial({});
     obj.chain_id = message.chain_id;
     obj.height = message.height ? message.height.toString() : undefined;
-    obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : undefined;
-    obj.last_block_id = message.last_block_id ? BlockID.toAmino(message.last_block_id) : undefined;
-    obj.last_commit_hash = message.last_commit_hash;
-    obj.data_hash = message.data_hash;
-    obj.validators_hash = message.validators_hash;
-    obj.next_validators_hash = message.next_validators_hash;
-    obj.consensus_hash = message.consensus_hash;
-    obj.app_hash = message.app_hash;
-    obj.last_results_hash = message.last_results_hash;
-    obj.evidence_hash = message.evidence_hash;
+    obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : new Date();
+    obj.last_block_id = message.last_block_id ? BlockID.toAmino(message.last_block_id) : BlockID.fromPartial({});
+    obj.last_commit_hash = message.last_commit_hash ? base64FromBytes(message.last_commit_hash) : undefined;
+    obj.data_hash = message.data_hash ? base64FromBytes(message.data_hash) : undefined;
+    obj.validators_hash = message.validators_hash ? base64FromBytes(message.validators_hash) : undefined;
+    obj.next_validators_hash = message.next_validators_hash ? base64FromBytes(message.next_validators_hash) : undefined;
+    obj.consensus_hash = message.consensus_hash ? base64FromBytes(message.consensus_hash) : undefined;
+    obj.app_hash = message.app_hash ? base64FromBytes(message.app_hash) : undefined;
+    obj.last_results_hash = message.last_results_hash ? base64FromBytes(message.last_results_hash) : undefined;
+    obj.evidence_hash = message.evidence_hash ? base64FromBytes(message.evidence_hash) : undefined;
     obj.proposer_address = message.proposer_address;
     return obj;
   },

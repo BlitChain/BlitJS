@@ -42,7 +42,8 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryParamsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -110,13 +111,15 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? params_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseQueryParamsResponse();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = params_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.params = message.params ? params_1.Params.toAmino(message.params) : undefined;
+        obj.params = message.params ? params_1.Params.toAmino(message.params) : params_1.Params.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -191,10 +194,14 @@ exports.QueryStorageDetailRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            index: object.index
-        };
+        const message = createBaseQueryStorageDetailRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.index !== undefined && object.index !== null) {
+            message.index = object.index;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -264,9 +271,11 @@ exports.QueryStorageDetailResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            storage: object?.storage ? storage_1.Storage.fromAmino(object.storage) : undefined
-        };
+        const message = createBaseQueryStorageDetailResponse();
+        if (object.storage !== undefined && object.storage !== null) {
+            message.storage = storage_1.Storage.fromAmino(object.storage);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -355,11 +364,17 @@ exports.QueryFilterStorageRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            filter_address: object.filter_address,
-            filter_index_prefix: object.filter_index_prefix,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryFilterStorageRequest();
+        if (object.filter_address !== undefined && object.filter_address !== null) {
+            message.filter_address = object.filter_address;
+        }
+        if (object.filter_index_prefix !== undefined && object.filter_index_prefix !== null) {
+            message.filter_index_prefix = object.filter_index_prefix;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -445,10 +460,12 @@ exports.QueryFilterStorageResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            storage: Array.isArray(object?.storage) ? object.storage.map((e) => storage_1.Storage.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryFilterStorageResponse();
+        message.storage = object.storage?.map(e => storage_1.Storage.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

@@ -17,8 +17,8 @@ export interface GenesisStateProtoMsg {
 /** GenesisState defines the script module's genesis state. */
 export interface GenesisStateAmino {
   /** params defines all the parameters of the module. */
-  params?: ParamsAmino;
-  scriptList: ScriptAmino[];
+  params: ParamsAmino;
+  scriptList?: ScriptAmino[];
 }
 export interface GenesisStateAminoMsg {
   type: "/blit.script.GenesisState";
@@ -89,14 +89,16 @@ export const GenesisState = {
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
-    return {
-      params: object?.params ? Params.fromAmino(object.params) : undefined,
-      scriptList: Array.isArray(object?.scriptList) ? object.scriptList.map((e: any) => Script.fromAmino(e)) : []
-    };
+    const message = createBaseGenesisState();
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    message.scriptList = object.scriptList?.map(e => Script.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
-    obj.params = message.params ? Params.toAmino(message.params) : undefined;
+    obj.params = message.params ? Params.toAmino(message.params) : Params.fromPartial({});
     if (message.scriptList) {
       obj.scriptList = message.scriptList.map(e => e ? Script.toAmino(e) : undefined);
     } else {

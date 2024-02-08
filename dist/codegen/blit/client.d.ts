@@ -67,6 +67,16 @@ export declare const blitAminoConverters: {
         toAmino: (message: import("./blit/tx").MsgSetDenomMetadata) => import("./blit/tx").MsgSetDenomMetadataAmino;
         fromAmino: (object: import("./blit/tx").MsgSetDenomMetadataAmino) => import("./blit/tx").MsgSetDenomMetadata;
     };
+    "/blit.blit.MsgCreateTask": {
+        aminoType: string;
+        toAmino: (message: import("./blit/tx").MsgCreateTask) => import("./blit/tx").MsgCreateTaskAmino;
+        fromAmino: (object: import("./blit/tx").MsgCreateTaskAmino) => import("./blit/tx").MsgCreateTask;
+    };
+    "/blit.blit.MsgDeleteTask": {
+        aminoType: string;
+        toAmino: (message: import("./blit/tx").MsgDeleteTask) => import("./blit/tx").MsgDeleteTaskAmino;
+        fromAmino: (object: import("./blit/tx").MsgDeleteTaskAmino) => import("./blit/tx").MsgDeleteTask;
+    };
 };
 export declare const blitProtoRegistry: ReadonlyArray<[string, GeneratedType]>;
 export declare const getSigningBlitClientOptions: ({ defaultTypes }?: {

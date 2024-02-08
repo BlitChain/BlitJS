@@ -90,18 +90,28 @@ export const Plan = {
         return message;
     },
     fromAmino(object) {
-        return {
-            name: object.name,
-            time: object?.time ? fromTimestamp(Timestamp.fromAmino(object.time)) : undefined,
-            height: BigInt(object.height),
-            info: object.info,
-            upgraded_client_state: object?.upgraded_client_state ? Any.fromAmino(object.upgraded_client_state) : undefined
-        };
+        const message = createBasePlan();
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        if (object.time !== undefined && object.time !== null) {
+            message.time = fromTimestamp(Timestamp.fromAmino(object.time));
+        }
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.info !== undefined && object.info !== null) {
+            message.info = object.info;
+        }
+        if (object.upgraded_client_state !== undefined && object.upgraded_client_state !== null) {
+            message.upgraded_client_state = Any.fromAmino(object.upgraded_client_state);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.name = message.name;
-        obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : undefined;
+        obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : new Date();
         obj.height = message.height ? message.height.toString() : undefined;
         obj.info = message.info;
         obj.upgraded_client_state = message.upgraded_client_state ? Any.toAmino(message.upgraded_client_state) : undefined;
@@ -196,17 +206,23 @@ export const SoftwareUpgradeProposal = {
         return message;
     },
     fromAmino(object) {
-        return {
-            title: object.title,
-            description: object.description,
-            plan: object?.plan ? Plan.fromAmino(object.plan) : undefined
-        };
+        const message = createBaseSoftwareUpgradeProposal();
+        if (object.title !== undefined && object.title !== null) {
+            message.title = object.title;
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        }
+        if (object.plan !== undefined && object.plan !== null) {
+            message.plan = Plan.fromAmino(object.plan);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.title = message.title;
         obj.description = message.description;
-        obj.plan = message.plan ? Plan.toAmino(message.plan) : undefined;
+        obj.plan = message.plan ? Plan.toAmino(message.plan) : Plan.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -288,10 +304,14 @@ export const CancelSoftwareUpgradeProposal = {
         return message;
     },
     fromAmino(object) {
-        return {
-            title: object.title,
-            description: object.description
-        };
+        const message = createBaseCancelSoftwareUpgradeProposal();
+        if (object.title !== undefined && object.title !== null) {
+            message.title = object.title;
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -377,10 +397,14 @@ export const ModuleVersion = {
         return message;
     },
     fromAmino(object) {
-        return {
-            name: object.name,
-            version: BigInt(object.version)
-        };
+        const message = createBaseModuleVersion();
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        if (object.version !== undefined && object.version !== null) {
+            message.version = BigInt(object.version);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

@@ -101,14 +101,26 @@ exports.AppDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authn: object?.authn ? exports.AuthnDescriptor.fromAmino(object.authn) : undefined,
-            chain: object?.chain ? exports.ChainDescriptor.fromAmino(object.chain) : undefined,
-            codec: object?.codec ? exports.CodecDescriptor.fromAmino(object.codec) : undefined,
-            configuration: object?.configuration ? exports.ConfigurationDescriptor.fromAmino(object.configuration) : undefined,
-            query_services: object?.query_services ? exports.QueryServicesDescriptor.fromAmino(object.query_services) : undefined,
-            tx: object?.tx ? exports.TxDescriptor.fromAmino(object.tx) : undefined
-        };
+        const message = createBaseAppDescriptor();
+        if (object.authn !== undefined && object.authn !== null) {
+            message.authn = exports.AuthnDescriptor.fromAmino(object.authn);
+        }
+        if (object.chain !== undefined && object.chain !== null) {
+            message.chain = exports.ChainDescriptor.fromAmino(object.chain);
+        }
+        if (object.codec !== undefined && object.codec !== null) {
+            message.codec = exports.CodecDescriptor.fromAmino(object.codec);
+        }
+        if (object.configuration !== undefined && object.configuration !== null) {
+            message.configuration = exports.ConfigurationDescriptor.fromAmino(object.configuration);
+        }
+        if (object.query_services !== undefined && object.query_services !== null) {
+            message.query_services = exports.QueryServicesDescriptor.fromAmino(object.query_services);
+        }
+        if (object.tx !== undefined && object.tx !== null) {
+            message.tx = exports.TxDescriptor.fromAmino(object.tx);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -203,10 +215,12 @@ exports.TxDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            fullname: object.fullname,
-            msgs: Array.isArray(object?.msgs) ? object.msgs.map((e) => exports.MsgDescriptor.fromAmino(e)) : []
-        };
+        const message = createBaseTxDescriptor();
+        if (object.fullname !== undefined && object.fullname !== null) {
+            message.fullname = object.fullname;
+        }
+        message.msgs = object.msgs?.map(e => exports.MsgDescriptor.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -292,9 +306,9 @@ exports.AuthnDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            sign_modes: Array.isArray(object?.sign_modes) ? object.sign_modes.map((e) => exports.SigningModeDescriptor.fromAmino(e)) : []
-        };
+        const message = createBaseAuthnDescriptor();
+        message.sign_modes = object.sign_modes?.map(e => exports.SigningModeDescriptor.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -394,11 +408,17 @@ exports.SigningModeDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            name: object.name,
-            number: object.number,
-            authn_info_provider_method_fullname: object.authn_info_provider_method_fullname
-        };
+        const message = createBaseSigningModeDescriptor();
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        if (object.number !== undefined && object.number !== null) {
+            message.number = object.number;
+        }
+        if (object.authn_info_provider_method_fullname !== undefined && object.authn_info_provider_method_fullname !== null) {
+            message.authn_info_provider_method_fullname = object.authn_info_provider_method_fullname;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -475,9 +495,11 @@ exports.ChainDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            id: object.id
-        };
+        const message = createBaseChainDescriptor();
+        if (object.id !== undefined && object.id !== null) {
+            message.id = object.id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -557,9 +579,9 @@ exports.CodecDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            interfaces: Array.isArray(object?.interfaces) ? object.interfaces.map((e) => exports.InterfaceDescriptor.fromAmino(e)) : []
-        };
+        const message = createBaseCodecDescriptor();
+        message.interfaces = object.interfaces?.map(e => exports.InterfaceDescriptor.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -669,11 +691,13 @@ exports.InterfaceDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            fullname: object.fullname,
-            interface_accepting_messages: Array.isArray(object?.interface_accepting_messages) ? object.interface_accepting_messages.map((e) => exports.InterfaceAcceptingMessageDescriptor.fromAmino(e)) : [],
-            interface_implementers: Array.isArray(object?.interface_implementers) ? object.interface_implementers.map((e) => exports.InterfaceImplementerDescriptor.fromAmino(e)) : []
-        };
+        const message = createBaseInterfaceDescriptor();
+        if (object.fullname !== undefined && object.fullname !== null) {
+            message.fullname = object.fullname;
+        }
+        message.interface_accepting_messages = object.interface_accepting_messages?.map(e => exports.InterfaceAcceptingMessageDescriptor.fromAmino(e)) || [];
+        message.interface_implementers = object.interface_implementers?.map(e => exports.InterfaceImplementerDescriptor.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -770,10 +794,14 @@ exports.InterfaceImplementerDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            fullname: object.fullname,
-            type_url: object.type_url
-        };
+        const message = createBaseInterfaceImplementerDescriptor();
+        if (object.fullname !== undefined && object.fullname !== null) {
+            message.fullname = object.fullname;
+        }
+        if (object.type_url !== undefined && object.type_url !== null) {
+            message.type_url = object.type_url;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -864,10 +892,12 @@ exports.InterfaceAcceptingMessageDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            fullname: object.fullname,
-            field_descriptor_names: Array.isArray(object?.field_descriptor_names) ? object.field_descriptor_names.map((e) => e) : []
-        };
+        const message = createBaseInterfaceAcceptingMessageDescriptor();
+        if (object.fullname !== undefined && object.fullname !== null) {
+            message.fullname = object.fullname;
+        }
+        message.field_descriptor_names = object.field_descriptor_names?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -948,9 +978,11 @@ exports.ConfigurationDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            bech32_account_address_prefix: object.bech32_account_address_prefix
-        };
+        const message = createBaseConfigurationDescriptor();
+        if (object.bech32_account_address_prefix !== undefined && object.bech32_account_address_prefix !== null) {
+            message.bech32_account_address_prefix = object.bech32_account_address_prefix;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1025,9 +1057,11 @@ exports.MsgDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            msg_type_url: object.msg_type_url
-        };
+        const message = createBaseMsgDescriptor();
+        if (object.msg_type_url !== undefined && object.msg_type_url !== null) {
+            message.msg_type_url = object.msg_type_url;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1090,7 +1124,8 @@ exports.GetAuthnDescriptorRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseGetAuthnDescriptorRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1164,9 +1199,11 @@ exports.GetAuthnDescriptorResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authn: object?.authn ? exports.AuthnDescriptor.fromAmino(object.authn) : undefined
-        };
+        const message = createBaseGetAuthnDescriptorResponse();
+        if (object.authn !== undefined && object.authn !== null) {
+            message.authn = exports.AuthnDescriptor.fromAmino(object.authn);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1229,7 +1266,8 @@ exports.GetChainDescriptorRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseGetChainDescriptorRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1303,9 +1341,11 @@ exports.GetChainDescriptorResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            chain: object?.chain ? exports.ChainDescriptor.fromAmino(object.chain) : undefined
-        };
+        const message = createBaseGetChainDescriptorResponse();
+        if (object.chain !== undefined && object.chain !== null) {
+            message.chain = exports.ChainDescriptor.fromAmino(object.chain);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1368,7 +1408,8 @@ exports.GetCodecDescriptorRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseGetCodecDescriptorRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1442,9 +1483,11 @@ exports.GetCodecDescriptorResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            codec: object?.codec ? exports.CodecDescriptor.fromAmino(object.codec) : undefined
-        };
+        const message = createBaseGetCodecDescriptorResponse();
+        if (object.codec !== undefined && object.codec !== null) {
+            message.codec = exports.CodecDescriptor.fromAmino(object.codec);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1507,7 +1550,8 @@ exports.GetConfigurationDescriptorRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseGetConfigurationDescriptorRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1581,9 +1625,11 @@ exports.GetConfigurationDescriptorResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            config: object?.config ? exports.ConfigurationDescriptor.fromAmino(object.config) : undefined
-        };
+        const message = createBaseGetConfigurationDescriptorResponse();
+        if (object.config !== undefined && object.config !== null) {
+            message.config = exports.ConfigurationDescriptor.fromAmino(object.config);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1646,7 +1692,8 @@ exports.GetQueryServicesDescriptorRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseGetQueryServicesDescriptorRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1720,9 +1767,11 @@ exports.GetQueryServicesDescriptorResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            queries: object?.queries ? exports.QueryServicesDescriptor.fromAmino(object.queries) : undefined
-        };
+        const message = createBaseGetQueryServicesDescriptorResponse();
+        if (object.queries !== undefined && object.queries !== null) {
+            message.queries = exports.QueryServicesDescriptor.fromAmino(object.queries);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1785,7 +1834,8 @@ exports.GetTxDescriptorRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseGetTxDescriptorRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1859,9 +1909,11 @@ exports.GetTxDescriptorResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            tx: object?.tx ? exports.TxDescriptor.fromAmino(object.tx) : undefined
-        };
+        const message = createBaseGetTxDescriptorResponse();
+        if (object.tx !== undefined && object.tx !== null) {
+            message.tx = exports.TxDescriptor.fromAmino(object.tx);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1941,9 +1993,9 @@ exports.QueryServicesDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            query_services: Array.isArray(object?.query_services) ? object.query_services.map((e) => exports.QueryServiceDescriptor.fromAmino(e)) : []
-        };
+        const message = createBaseQueryServicesDescriptor();
+        message.query_services = object.query_services?.map(e => exports.QueryServiceDescriptor.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2048,11 +2100,15 @@ exports.QueryServiceDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            fullname: object.fullname,
-            is_module: object.is_module,
-            methods: Array.isArray(object?.methods) ? object.methods.map((e) => exports.QueryMethodDescriptor.fromAmino(e)) : []
-        };
+        const message = createBaseQueryServiceDescriptor();
+        if (object.fullname !== undefined && object.fullname !== null) {
+            message.fullname = object.fullname;
+        }
+        if (object.is_module !== undefined && object.is_module !== null) {
+            message.is_module = object.is_module;
+        }
+        message.methods = object.methods?.map(e => exports.QueryMethodDescriptor.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2144,10 +2200,14 @@ exports.QueryMethodDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            name: object.name,
-            full_query_path: object.full_query_path
-        };
+        const message = createBaseQueryMethodDescriptor();
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        if (object.full_query_path !== undefined && object.full_query_path !== null) {
+            message.full_query_path = object.full_query_path;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

@@ -68,11 +68,17 @@ export const EventGrant = {
         return message;
     },
     fromAmino(object) {
-        return {
-            msg_type_url: object.msg_type_url,
-            granter: object.granter,
-            grantee: object.grantee
-        };
+        const message = createBaseEventGrant();
+        if (object.msg_type_url !== undefined && object.msg_type_url !== null) {
+            message.msg_type_url = object.msg_type_url;
+        }
+        if (object.granter !== undefined && object.granter !== null) {
+            message.granter = object.granter;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -169,11 +175,17 @@ export const EventRevoke = {
         return message;
     },
     fromAmino(object) {
-        return {
-            msg_type_url: object.msg_type_url,
-            granter: object.granter,
-            grantee: object.grantee
-        };
+        const message = createBaseEventRevoke();
+        if (object.msg_type_url !== undefined && object.msg_type_url !== null) {
+            message.msg_type_url = object.msg_type_url;
+        }
+        if (object.granter !== undefined && object.granter !== null) {
+            message.granter = object.granter;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

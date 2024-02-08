@@ -62,15 +62,19 @@ exports.GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            minter: object?.minter ? mint_1.Minter.fromAmino(object.minter) : undefined,
-            params: object?.params ? mint_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseGenesisState();
+        if (object.minter !== undefined && object.minter !== null) {
+            message.minter = mint_1.Minter.fromAmino(object.minter);
+        }
+        if (object.params !== undefined && object.params !== null) {
+            message.params = mint_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.minter = message.minter ? mint_1.Minter.toAmino(message.minter) : undefined;
-        obj.params = message.params ? mint_1.Params.toAmino(message.params) : undefined;
+        obj.minter = message.minter ? mint_1.Minter.toAmino(message.minter) : mint_1.Minter.fromPartial({});
+        obj.params = message.params ? mint_1.Params.toAmino(message.params) : mint_1.Params.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {

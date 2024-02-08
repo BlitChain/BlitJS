@@ -12,7 +12,7 @@ export interface QueryAccountRequestProtoMsg {
 }
 /** QueryAccountRequest is the request type for the Query/Account RPC method. */
 export interface QueryAccountRequestAmino {
-    address: string;
+    address?: string;
 }
 export interface QueryAccountRequestAminoMsg {
     type: "cosmos-sdk/QueryAccountRequest";
@@ -76,7 +76,7 @@ export interface AccountsResponseProtoMsg {
 }
 /** AccountsResponse is the response type for the Query/Accounts RPC method. */
 export interface AccountsResponseAmino {
-    accounts: GenesisAccountPermissionsAmino[];
+    accounts?: GenesisAccountPermissionsAmino[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponseAmino;
 }
@@ -116,7 +116,7 @@ export interface DisabledListResponseProtoMsg {
 }
 /** DisabledListResponse is the response type for the Query/DisabledList RPC method. */
 export interface DisabledListResponseAmino {
-    disabled_list: string[];
+    disabled_list?: string[];
 }
 export interface DisabledListResponseAminoMsg {
     type: "cosmos-sdk/DisabledListResponse";

@@ -71,11 +71,17 @@ export const MsgCreateClient = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_state: object?.client_state ? Any.fromAmino(object.client_state) : undefined,
-            consensus_state: object?.consensus_state ? Any.fromAmino(object.consensus_state) : undefined,
-            signer: object.signer
-        };
+        const message = createBaseMsgCreateClient();
+        if (object.client_state !== undefined && object.client_state !== null) {
+            message.client_state = Any.fromAmino(object.client_state);
+        }
+        if (object.consensus_state !== undefined && object.consensus_state !== null) {
+            message.consensus_state = Any.fromAmino(object.consensus_state);
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -140,7 +146,8 @@ export const MsgCreateClientResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgCreateClientResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -234,11 +241,17 @@ export const MsgUpdateClient = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            client_message: object?.client_message ? Any.fromAmino(object.client_message) : undefined,
-            signer: object.signer
-        };
+        const message = createBaseMsgUpdateClient();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        if (object.client_message !== undefined && object.client_message !== null) {
+            message.client_message = Any.fromAmino(object.client_message);
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -303,7 +316,8 @@ export const MsgUpdateClientResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgUpdateClientResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -427,22 +441,34 @@ export const MsgUpgradeClient = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            client_state: object?.client_state ? Any.fromAmino(object.client_state) : undefined,
-            consensus_state: object?.consensus_state ? Any.fromAmino(object.consensus_state) : undefined,
-            proof_upgrade_client: object.proof_upgrade_client,
-            proof_upgrade_consensus_state: object.proof_upgrade_consensus_state,
-            signer: object.signer
-        };
+        const message = createBaseMsgUpgradeClient();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        if (object.client_state !== undefined && object.client_state !== null) {
+            message.client_state = Any.fromAmino(object.client_state);
+        }
+        if (object.consensus_state !== undefined && object.consensus_state !== null) {
+            message.consensus_state = Any.fromAmino(object.consensus_state);
+        }
+        if (object.proof_upgrade_client !== undefined && object.proof_upgrade_client !== null) {
+            message.proof_upgrade_client = bytesFromBase64(object.proof_upgrade_client);
+        }
+        if (object.proof_upgrade_consensus_state !== undefined && object.proof_upgrade_consensus_state !== null) {
+            message.proof_upgrade_consensus_state = bytesFromBase64(object.proof_upgrade_consensus_state);
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.client_id = message.client_id;
         obj.client_state = message.client_state ? Any.toAmino(message.client_state) : undefined;
         obj.consensus_state = message.consensus_state ? Any.toAmino(message.consensus_state) : undefined;
-        obj.proof_upgrade_client = message.proof_upgrade_client;
-        obj.proof_upgrade_consensus_state = message.proof_upgrade_consensus_state;
+        obj.proof_upgrade_client = message.proof_upgrade_client ? base64FromBytes(message.proof_upgrade_client) : undefined;
+        obj.proof_upgrade_consensus_state = message.proof_upgrade_consensus_state ? base64FromBytes(message.proof_upgrade_consensus_state) : undefined;
         obj.signer = message.signer;
         return obj;
     },
@@ -502,7 +528,8 @@ export const MsgUpgradeClientResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgUpgradeClientResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -596,11 +623,17 @@ export const MsgSubmitMisbehaviour = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            misbehaviour: object?.misbehaviour ? Any.fromAmino(object.misbehaviour) : undefined,
-            signer: object.signer
-        };
+        const message = createBaseMsgSubmitMisbehaviour();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        if (object.misbehaviour !== undefined && object.misbehaviour !== null) {
+            message.misbehaviour = Any.fromAmino(object.misbehaviour);
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -665,7 +698,8 @@ export const MsgSubmitMisbehaviourResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgSubmitMisbehaviourResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -759,11 +793,17 @@ export const MsgRecoverClient = {
         return message;
     },
     fromAmino(object) {
-        return {
-            subject_client_id: object.subject_client_id,
-            substitute_client_id: object.substitute_client_id,
-            signer: object.signer
-        };
+        const message = createBaseMsgRecoverClient();
+        if (object.subject_client_id !== undefined && object.subject_client_id !== null) {
+            message.subject_client_id = object.subject_client_id;
+        }
+        if (object.substitute_client_id !== undefined && object.substitute_client_id !== null) {
+            message.substitute_client_id = object.substitute_client_id;
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -828,7 +868,8 @@ export const MsgRecoverClientResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgRecoverClientResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -922,11 +963,17 @@ export const MsgIBCSoftwareUpgrade = {
         return message;
     },
     fromAmino(object) {
-        return {
-            plan: object?.plan ? Plan.fromAmino(object.plan) : undefined,
-            upgraded_client_state: object?.upgraded_client_state ? Any.fromAmino(object.upgraded_client_state) : undefined,
-            signer: object.signer
-        };
+        const message = createBaseMsgIBCSoftwareUpgrade();
+        if (object.plan !== undefined && object.plan !== null) {
+            message.plan = Plan.fromAmino(object.plan);
+        }
+        if (object.upgraded_client_state !== undefined && object.upgraded_client_state !== null) {
+            message.upgraded_client_state = Any.fromAmino(object.upgraded_client_state);
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -991,7 +1038,8 @@ export const MsgIBCSoftwareUpgradeResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgIBCSoftwareUpgradeResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1075,10 +1123,14 @@ export const MsgUpdateParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            signer: object.signer,
-            params: object?.params ? Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseMsgUpdateParams();
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        if (object.params !== undefined && object.params !== null) {
+            message.params = Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1142,7 +1194,8 @@ export const MsgUpdateParamsResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgUpdateParamsResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};

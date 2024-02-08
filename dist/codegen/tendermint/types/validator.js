@@ -128,11 +128,15 @@ exports.ValidatorSet = {
         return message;
     },
     fromAmino(object) {
-        return {
-            validators: Array.isArray(object?.validators) ? object.validators.map((e) => exports.Validator.fromAmino(e)) : [],
-            proposer: object?.proposer ? exports.Validator.fromAmino(object.proposer) : undefined,
-            total_voting_power: BigInt(object.total_voting_power)
-        };
+        const message = createBaseValidatorSet();
+        message.validators = object.validators?.map(e => exports.Validator.fromAmino(e)) || [];
+        if (object.proposer !== undefined && object.proposer !== null) {
+            message.proposer = exports.Validator.fromAmino(object.proposer);
+        }
+        if (object.total_voting_power !== undefined && object.total_voting_power !== null) {
+            message.total_voting_power = BigInt(object.total_voting_power);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -238,16 +242,24 @@ exports.Validator = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            pub_key: object?.pub_key ? keys_1.PublicKey.fromAmino(object.pub_key) : undefined,
-            voting_power: BigInt(object.voting_power),
-            proposer_priority: BigInt(object.proposer_priority)
-        };
+        const message = createBaseValidator();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = (0, helpers_1.bytesFromBase64)(object.address);
+        }
+        if (object.pub_key !== undefined && object.pub_key !== null) {
+            message.pub_key = keys_1.PublicKey.fromAmino(object.pub_key);
+        }
+        if (object.voting_power !== undefined && object.voting_power !== null) {
+            message.voting_power = BigInt(object.voting_power);
+        }
+        if (object.proposer_priority !== undefined && object.proposer_priority !== null) {
+            message.proposer_priority = BigInt(object.proposer_priority);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.address = message.address;
+        obj.address = message.address ? (0, helpers_1.base64FromBytes)(message.address) : undefined;
         obj.pub_key = message.pub_key ? keys_1.PublicKey.toAmino(message.pub_key) : undefined;
         obj.voting_power = message.voting_power ? message.voting_power.toString() : undefined;
         obj.proposer_priority = message.proposer_priority ? message.proposer_priority.toString() : undefined;
@@ -325,10 +337,14 @@ exports.SimpleValidator = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pub_key: object?.pub_key ? keys_1.PublicKey.fromAmino(object.pub_key) : undefined,
-            voting_power: BigInt(object.voting_power)
-        };
+        const message = createBaseSimpleValidator();
+        if (object.pub_key !== undefined && object.pub_key !== null) {
+            message.pub_key = keys_1.PublicKey.fromAmino(object.pub_key);
+        }
+        if (object.voting_power !== undefined && object.voting_power !== null) {
+            message.voting_power = BigInt(object.voting_power);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

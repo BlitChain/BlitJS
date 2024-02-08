@@ -72,10 +72,10 @@ exports.SendAuthorization = {
         return message;
     },
     fromAmino(object) {
-        return {
-            spend_limit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            allow_list: Array.isArray(object?.allow_list) ? object.allow_list.map((e) => e) : []
-        };
+        const message = createBaseSendAuthorization();
+        message.spend_limit = object.spend_limit?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        message.allow_list = object.allow_list?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

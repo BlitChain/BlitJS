@@ -15,8 +15,8 @@ export interface GenesisStateProtoMsg {
 /** GenesisState defines the storage module's genesis state. */
 export interface GenesisStateAmino {
     /** params defines all the parameters of the module. */
-    params?: ParamsAmino;
-    storageList: StorageAmino[];
+    params: ParamsAmino;
+    storageList?: StorageAmino[];
 }
 export interface GenesisStateAminoMsg {
     type: "/blit.storage.GenesisState";

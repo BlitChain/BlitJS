@@ -113,17 +113,19 @@ exports.GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? bank_1.Params.fromAmino(object.params) : undefined,
-            balances: Array.isArray(object?.balances) ? object.balances.map((e) => exports.Balance.fromAmino(e)) : [],
-            supply: Array.isArray(object?.supply) ? object.supply.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            denom_metadata: Array.isArray(object?.denom_metadata) ? object.denom_metadata.map((e) => bank_1.Metadata.fromAmino(e)) : [],
-            send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e) => bank_1.SendEnabled.fromAmino(e)) : []
-        };
+        const message = createBaseGenesisState();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = bank_1.Params.fromAmino(object.params);
+        }
+        message.balances = object.balances?.map(e => exports.Balance.fromAmino(e)) || [];
+        message.supply = object.supply?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        message.denom_metadata = object.denom_metadata?.map(e => bank_1.Metadata.fromAmino(e)) || [];
+        message.send_enabled = object.send_enabled?.map(e => bank_1.SendEnabled.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.params = message.params ? bank_1.Params.toAmino(message.params) : undefined;
+        obj.params = message.params ? bank_1.Params.toAmino(message.params) : bank_1.Params.fromPartial({});
         if (message.balances) {
             obj.balances = message.balances.map(e => e ? exports.Balance.toAmino(e) : undefined);
         }
@@ -233,10 +235,12 @@ exports.Balance = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            coins: Array.isArray(object?.coins) ? object.coins.map((e) => coin_1.Coin.fromAmino(e)) : []
-        };
+        const message = createBaseBalance();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        message.coins = object.coins?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

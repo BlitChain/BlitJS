@@ -64,10 +64,14 @@ exports.QueryBalanceRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            denom: object.denom
-        };
+        const message = createBaseQueryBalanceRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.denom !== undefined && object.denom !== null) {
+            message.denom = object.denom;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -143,9 +147,11 @@ exports.QueryBalanceResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            balance: object?.balance ? coin_1.Coin.fromAmino(object.balance) : undefined
-        };
+        const message = createBaseQueryBalanceResponse();
+        if (object.balance !== undefined && object.balance !== null) {
+            message.balance = coin_1.Coin.fromAmino(object.balance);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -240,11 +246,17 @@ exports.QueryAllBalancesRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined,
-            resolve_denom: object.resolve_denom
-        };
+        const message = createBaseQueryAllBalancesRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        if (object.resolve_denom !== undefined && object.resolve_denom !== null) {
+            message.resolve_denom = object.resolve_denom;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -336,10 +348,12 @@ exports.QueryAllBalancesResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            balances: Array.isArray(object?.balances) ? object.balances.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryAllBalancesResponse();
+        message.balances = object.balances?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -430,10 +444,14 @@ exports.QuerySpendableBalancesRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQuerySpendableBalancesRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -524,10 +542,12 @@ exports.QuerySpendableBalancesResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            balances: Array.isArray(object?.balances) ? object.balances.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQuerySpendableBalancesResponse();
+        message.balances = object.balances?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -618,10 +638,14 @@ exports.QuerySpendableBalanceByDenomRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            denom: object.denom
-        };
+        const message = createBaseQuerySpendableBalanceByDenomRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.denom !== undefined && object.denom !== null) {
+            message.denom = object.denom;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -697,9 +721,11 @@ exports.QuerySpendableBalanceByDenomResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            balance: object?.balance ? coin_1.Coin.fromAmino(object.balance) : undefined
-        };
+        const message = createBaseQuerySpendableBalanceByDenomResponse();
+        if (object.balance !== undefined && object.balance !== null) {
+            message.balance = coin_1.Coin.fromAmino(object.balance);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -774,9 +800,11 @@ exports.QueryTotalSupplyRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryTotalSupplyRequest();
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -866,10 +894,12 @@ exports.QueryTotalSupplyResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            supply: Array.isArray(object?.supply) ? object.supply.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryTotalSupplyResponse();
+        message.supply = object.supply?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -950,9 +980,11 @@ exports.QuerySupplyOfRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denom: object.denom
-        };
+        const message = createBaseQuerySupplyOfRequest();
+        if (object.denom !== undefined && object.denom !== null) {
+            message.denom = object.denom;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1027,13 +1059,15 @@ exports.QuerySupplyOfResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            amount: object?.amount ? coin_1.Coin.fromAmino(object.amount) : undefined
-        };
+        const message = createBaseQuerySupplyOfResponse();
+        if (object.amount !== undefined && object.amount !== null) {
+            message.amount = coin_1.Coin.fromAmino(object.amount);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.amount = message.amount ? coin_1.Coin.toAmino(message.amount) : undefined;
+        obj.amount = message.amount ? coin_1.Coin.toAmino(message.amount) : coin_1.Coin.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -1092,7 +1126,8 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryParamsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1166,13 +1201,15 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? bank_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseQueryParamsResponse();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = bank_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.params = message.params ? bank_1.Params.toAmino(message.params) : undefined;
+        obj.params = message.params ? bank_1.Params.toAmino(message.params) : bank_1.Params.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -1243,9 +1280,11 @@ exports.QueryDenomsMetadataRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDenomsMetadataRequest();
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1335,10 +1374,12 @@ exports.QueryDenomsMetadataResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            metadatas: Array.isArray(object?.metadatas) ? object.metadatas.map((e) => bank_1.Metadata.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDenomsMetadataResponse();
+        message.metadatas = object.metadatas?.map(e => bank_1.Metadata.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1419,9 +1460,11 @@ exports.QueryDenomMetadataRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denom: object.denom
-        };
+        const message = createBaseQueryDenomMetadataRequest();
+        if (object.denom !== undefined && object.denom !== null) {
+            message.denom = object.denom;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1496,13 +1539,15 @@ exports.QueryDenomMetadataResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            metadata: object?.metadata ? bank_1.Metadata.fromAmino(object.metadata) : undefined
-        };
+        const message = createBaseQueryDenomMetadataResponse();
+        if (object.metadata !== undefined && object.metadata !== null) {
+            message.metadata = bank_1.Metadata.fromAmino(object.metadata);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.metadata = message.metadata ? bank_1.Metadata.toAmino(message.metadata) : undefined;
+        obj.metadata = message.metadata ? bank_1.Metadata.toAmino(message.metadata) : bank_1.Metadata.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -1573,9 +1618,11 @@ exports.QueryDenomMetadataByQueryStringRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denom: object.denom
-        };
+        const message = createBaseQueryDenomMetadataByQueryStringRequest();
+        if (object.denom !== undefined && object.denom !== null) {
+            message.denom = object.denom;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1650,13 +1697,15 @@ exports.QueryDenomMetadataByQueryStringResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            metadata: object?.metadata ? bank_1.Metadata.fromAmino(object.metadata) : undefined
-        };
+        const message = createBaseQueryDenomMetadataByQueryStringResponse();
+        if (object.metadata !== undefined && object.metadata !== null) {
+            message.metadata = bank_1.Metadata.fromAmino(object.metadata);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.metadata = message.metadata ? bank_1.Metadata.toAmino(message.metadata) : undefined;
+        obj.metadata = message.metadata ? bank_1.Metadata.toAmino(message.metadata) : bank_1.Metadata.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -1737,10 +1786,14 @@ exports.QueryDenomOwnersRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denom: object.denom,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDenomOwnersRequest();
+        if (object.denom !== undefined && object.denom !== null) {
+            message.denom = object.denom;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1826,15 +1879,19 @@ exports.DenomOwner = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            balance: object?.balance ? coin_1.Coin.fromAmino(object.balance) : undefined
-        };
+        const message = createBaseDenomOwner();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.balance !== undefined && object.balance !== null) {
+            message.balance = coin_1.Coin.fromAmino(object.balance);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.address = message.address;
-        obj.balance = message.balance ? coin_1.Coin.toAmino(message.balance) : undefined;
+        obj.balance = message.balance ? coin_1.Coin.toAmino(message.balance) : coin_1.Coin.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -1920,10 +1977,12 @@ exports.QueryDenomOwnersResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denom_owners: Array.isArray(object?.denom_owners) ? object.denom_owners.map((e) => exports.DenomOwner.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryDenomOwnersResponse();
+        message.denom_owners = object.denom_owners?.map(e => exports.DenomOwner.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2019,10 +2078,12 @@ exports.QuerySendEnabledRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denoms: Array.isArray(object?.denoms) ? object.denoms.map((e) => e) : [],
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQuerySendEnabledRequest();
+        message.denoms = object.denoms?.map(e => e) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2118,10 +2179,12 @@ exports.QuerySendEnabledResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e) => bank_1.SendEnabled.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQuerySendEnabledResponse();
+        message.send_enabled = object.send_enabled?.map(e => bank_1.SendEnabled.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

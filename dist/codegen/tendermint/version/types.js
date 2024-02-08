@@ -61,10 +61,14 @@ exports.App = {
         return message;
     },
     fromAmino(object) {
-        return {
-            protocol: BigInt(object.protocol),
-            software: object.software
-        };
+        const message = createBaseApp();
+        if (object.protocol !== undefined && object.protocol !== null) {
+            message.protocol = BigInt(object.protocol);
+        }
+        if (object.software !== undefined && object.software !== null) {
+            message.software = object.software;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -144,10 +148,14 @@ exports.Consensus = {
         return message;
     },
     fromAmino(object) {
-        return {
-            block: BigInt(object.block),
-            app: BigInt(object.app)
-        };
+        const message = createBaseConsensus();
+        if (object.block !== undefined && object.block !== null) {
+            message.block = BigInt(object.block);
+        }
+        if (object.app !== undefined && object.app !== null) {
+            message.app = BigInt(object.app);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

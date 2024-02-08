@@ -27,9 +27,9 @@ export type MsgGrantAllowanceEncoded = Omit<MsgGrantAllowance, "allowance"> & {
  */
 export interface MsgGrantAllowanceAmino {
     /** granter is the address of the user granting an allowance of their funds. */
-    granter: string;
+    granter?: string;
     /** grantee is the address of the user being granted an allowance of another user's funds. */
-    grantee: string;
+    grantee?: string;
     /** allowance can be any of basic, periodic, allowed fee allowance. */
     allowance?: AnyAmino;
 }
@@ -77,9 +77,9 @@ export interface MsgRevokeAllowanceProtoMsg {
 /** MsgRevokeAllowance removes any existing Allowance from Granter to Grantee. */
 export interface MsgRevokeAllowanceAmino {
     /** granter is the address of the user granting an allowance of their funds. */
-    granter: string;
+    granter?: string;
     /** grantee is the address of the user being granted an allowance of another user's funds. */
-    grantee: string;
+    grantee?: string;
 }
 export interface MsgRevokeAllowanceAminoMsg {
     type: "cosmos-sdk/MsgRevokeAllowance";
@@ -127,7 +127,7 @@ export interface MsgPruneAllowancesProtoMsg {
  */
 export interface MsgPruneAllowancesAmino {
     /** pruner is the address of the user pruning expired allowances. */
-    pruner: string;
+    pruner?: string;
 }
 export interface MsgPruneAllowancesAminoMsg {
     type: "cosmos-sdk/MsgPruneAllowances";

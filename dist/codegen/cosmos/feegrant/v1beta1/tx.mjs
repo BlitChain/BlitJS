@@ -70,11 +70,17 @@ export const MsgGrantAllowance = {
         return message;
     },
     fromAmino(object) {
-        return {
-            granter: object.granter,
-            grantee: object.grantee,
-            allowance: object?.allowance ? Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino(object.allowance) : undefined
-        };
+        const message = createBaseMsgGrantAllowance();
+        if (object.granter !== undefined && object.granter !== null) {
+            message.granter = object.granter;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        if (object.allowance !== undefined && object.allowance !== null) {
+            message.allowance = Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino(object.allowance);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -139,7 +145,8 @@ export const MsgGrantAllowanceResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgGrantAllowanceResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -223,10 +230,14 @@ export const MsgRevokeAllowance = {
         return message;
     },
     fromAmino(object) {
-        return {
-            granter: object.granter,
-            grantee: object.grantee
-        };
+        const message = createBaseMsgRevokeAllowance();
+        if (object.granter !== undefined && object.granter !== null) {
+            message.granter = object.granter;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -290,7 +301,8 @@ export const MsgRevokeAllowanceResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgRevokeAllowanceResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -364,9 +376,11 @@ export const MsgPruneAllowances = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pruner: object.pruner
-        };
+        const message = createBaseMsgPruneAllowances();
+        if (object.pruner !== undefined && object.pruner !== null) {
+            message.pruner = object.pruner;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -429,7 +443,8 @@ export const MsgPruneAllowancesResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgPruneAllowancesResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -459,14 +474,14 @@ export const MsgPruneAllowancesResponse = {
 };
 export const Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder = (input) => {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    const data = Any.decode(reader, reader.uint32(), true);
+    const data = Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
         case "/cosmos.feegrant.v1beta1.BasicAllowance":
-            return BasicAllowance.decode(data.value, undefined, true);
+            return BasicAllowance.decode(data.value);
         case "/cosmos.feegrant.v1beta1.PeriodicAllowance":
-            return PeriodicAllowance.decode(data.value, undefined, true);
+            return PeriodicAllowance.decode(data.value);
         case "/cosmos.feegrant.v1beta1.AllowedMsgAllowance":
-            return AllowedMsgAllowance.decode(data.value, undefined, true);
+            return AllowedMsgAllowance.decode(data.value);
         default:
             return data;
     }

@@ -80,11 +80,15 @@ exports.GetRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            message_name: object.message_name,
-            index: object.index,
-            values: Array.isArray(object?.values) ? object.values.map((e) => exports.IndexValue.fromAmino(e)) : []
-        };
+        const message = createBaseGetRequest();
+        if (object.message_name !== undefined && object.message_name !== null) {
+            message.message_name = object.message_name;
+        }
+        if (object.index !== undefined && object.index !== null) {
+            message.index = object.index;
+        }
+        message.values = object.values?.map(e => exports.IndexValue.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -166,9 +170,11 @@ exports.GetResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            result: object?.result ? any_1.Any.fromAmino(object.result) : undefined
-        };
+        const message = createBaseGetResponse();
+        if (object.result !== undefined && object.result !== null) {
+            message.result = any_1.Any.fromAmino(object.result);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -283,13 +289,23 @@ exports.ListRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            message_name: object.message_name,
-            index: object.index,
-            prefix: object?.prefix ? exports.ListRequest_Prefix.fromAmino(object.prefix) : undefined,
-            range: object?.range ? exports.ListRequest_Range.fromAmino(object.range) : undefined,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseListRequest();
+        if (object.message_name !== undefined && object.message_name !== null) {
+            message.message_name = object.message_name;
+        }
+        if (object.index !== undefined && object.index !== null) {
+            message.index = object.index;
+        }
+        if (object.prefix !== undefined && object.prefix !== null) {
+            message.prefix = exports.ListRequest_Prefix.fromAmino(object.prefix);
+        }
+        if (object.range !== undefined && object.range !== null) {
+            message.range = exports.ListRequest_Range.fromAmino(object.range);
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -373,9 +389,9 @@ exports.ListRequest_Prefix = {
         return message;
     },
     fromAmino(object) {
-        return {
-            values: Array.isArray(object?.values) ? object.values.map((e) => exports.IndexValue.fromAmino(e)) : []
-        };
+        const message = createBaseListRequest_Prefix();
+        message.values = object.values?.map(e => exports.IndexValue.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -475,10 +491,10 @@ exports.ListRequest_Range = {
         return message;
     },
     fromAmino(object) {
-        return {
-            start: Array.isArray(object?.start) ? object.start.map((e) => exports.IndexValue.fromAmino(e)) : [],
-            end: Array.isArray(object?.end) ? object.end.map((e) => exports.IndexValue.fromAmino(e)) : []
-        };
+        const message = createBaseListRequest_Range();
+        message.start = object.start?.map(e => exports.IndexValue.fromAmino(e)) || [];
+        message.end = object.end?.map(e => exports.IndexValue.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -579,10 +595,12 @@ exports.ListResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            results: Array.isArray(object?.results) ? object.results.map((e) => any_1.Any.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseListResponse();
+        message.results = object.results?.map(e => any_1.Any.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -737,23 +755,39 @@ exports.IndexValue = {
         return message;
     },
     fromAmino(object) {
-        return {
-            uint: object?.uint ? BigInt(object.uint) : undefined,
-            int: object?.int ? BigInt(object.int) : undefined,
-            str: object?.str,
-            bytes: object?.bytes,
-            enum: object?.enum,
-            bool: object?.bool,
-            timestamp: object?.timestamp ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.timestamp)) : undefined,
-            duration: object?.duration ? duration_1.Duration.fromAmino(object.duration) : undefined
-        };
+        const message = createBaseIndexValue();
+        if (object.uint !== undefined && object.uint !== null) {
+            message.uint = BigInt(object.uint);
+        }
+        if (object.int !== undefined && object.int !== null) {
+            message.int = BigInt(object.int);
+        }
+        if (object.str !== undefined && object.str !== null) {
+            message.str = object.str;
+        }
+        if (object.bytes !== undefined && object.bytes !== null) {
+            message.bytes = (0, helpers_1.bytesFromBase64)(object.bytes);
+        }
+        if (object.enum !== undefined && object.enum !== null) {
+            message.enum = object.enum;
+        }
+        if (object.bool !== undefined && object.bool !== null) {
+            message.bool = object.bool;
+        }
+        if (object.timestamp !== undefined && object.timestamp !== null) {
+            message.timestamp = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.timestamp));
+        }
+        if (object.duration !== undefined && object.duration !== null) {
+            message.duration = duration_1.Duration.fromAmino(object.duration);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.uint = message.uint ? message.uint.toString() : undefined;
         obj.int = message.int ? message.int.toString() : undefined;
         obj.str = message.str;
-        obj.bytes = message.bytes;
+        obj.bytes = message.bytes ? (0, helpers_1.base64FromBytes)(message.bytes) : undefined;
         obj.enum = message.enum;
         obj.bool = message.bool;
         obj.timestamp = message.timestamp ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.timestamp)) : undefined;

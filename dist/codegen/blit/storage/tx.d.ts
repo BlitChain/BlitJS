@@ -15,9 +15,9 @@ export interface MsgUpdateParamsProtoMsg {
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParamsAmino {
     /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
-    authority: string;
+    authority?: string;
     /** NOTE: All parameters must be supplied. */
-    params?: ParamsAmino;
+    params: ParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
     type: "blit/x/storage/MsgUpdateParams";
@@ -59,16 +59,18 @@ export interface MsgCreateStorage {
     index: string;
     data: string;
     grantee: string;
+    force: boolean;
 }
 export interface MsgCreateStorageProtoMsg {
     type_url: "/blit.storage.MsgCreateStorage";
     value: Uint8Array;
 }
 export interface MsgCreateStorageAmino {
-    address: string;
-    index: string;
-    data: string;
-    grantee: string;
+    address?: string;
+    index?: string;
+    data?: string;
+    grantee?: string;
+    force?: boolean;
 }
 export interface MsgCreateStorageAminoMsg {
     type: "/blit.storage.MsgCreateStorage";
@@ -79,6 +81,7 @@ export interface MsgCreateStorageSDKType {
     index: string;
     data: string;
     grantee: string;
+    force: boolean;
 }
 export interface MsgCreateStorageResponse {
 }
@@ -99,16 +102,18 @@ export interface MsgUpdateStorage {
     index: string;
     data: string;
     grantee: string;
+    force: boolean;
 }
 export interface MsgUpdateStorageProtoMsg {
     type_url: "/blit.storage.MsgUpdateStorage";
     value: Uint8Array;
 }
 export interface MsgUpdateStorageAmino {
-    address: string;
-    index: string;
-    data: string;
-    grantee: string;
+    address?: string;
+    index?: string;
+    data?: string;
+    grantee?: string;
+    force?: boolean;
 }
 export interface MsgUpdateStorageAminoMsg {
     type: "/blit.storage.MsgUpdateStorage";
@@ -119,6 +124,7 @@ export interface MsgUpdateStorageSDKType {
     index: string;
     data: string;
     grantee: string;
+    force: boolean;
 }
 export interface MsgUpdateStorageResponse {
 }
@@ -138,15 +144,17 @@ export interface MsgDeleteStorage {
     address: string;
     index: string;
     grantee: string;
+    force: boolean;
 }
 export interface MsgDeleteStorageProtoMsg {
     type_url: "/blit.storage.MsgDeleteStorage";
     value: Uint8Array;
 }
 export interface MsgDeleteStorageAmino {
-    address: string;
-    index: string;
-    grantee: string;
+    address?: string;
+    index?: string;
+    grantee?: string;
+    force?: boolean;
 }
 export interface MsgDeleteStorageAminoMsg {
     type: "/blit.storage.MsgDeleteStorage";
@@ -156,6 +164,7 @@ export interface MsgDeleteStorageSDKType {
     address: string;
     index: string;
     grantee: string;
+    force: boolean;
 }
 export interface MsgDeleteStorageResponse {
 }

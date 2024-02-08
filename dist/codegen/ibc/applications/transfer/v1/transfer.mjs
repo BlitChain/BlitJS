@@ -58,10 +58,14 @@ export const DenomTrace = {
         return message;
     },
     fromAmino(object) {
-        return {
-            path: object.path,
-            base_denom: object.base_denom
-        };
+        const message = createBaseDenomTrace();
+        if (object.path !== undefined && object.path !== null) {
+            message.path = object.path;
+        }
+        if (object.base_denom !== undefined && object.base_denom !== null) {
+            message.base_denom = object.base_denom;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -147,10 +151,14 @@ export const Params = {
         return message;
     },
     fromAmino(object) {
-        return {
-            send_enabled: object.send_enabled,
-            receive_enabled: object.receive_enabled
-        };
+        const message = createBaseParams();
+        if (object.send_enabled !== undefined && object.send_enabled !== null) {
+            message.send_enabled = object.send_enabled;
+        }
+        if (object.receive_enabled !== undefined && object.receive_enabled !== null) {
+            message.receive_enabled = object.receive_enabled;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

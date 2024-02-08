@@ -92,12 +92,16 @@ exports.Allocation = {
         return message;
     },
     fromAmino(object) {
-        return {
-            source_port: object.source_port,
-            source_channel: object.source_channel,
-            spend_limit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            allow_list: Array.isArray(object?.allow_list) ? object.allow_list.map((e) => e) : []
-        };
+        const message = createBaseAllocation();
+        if (object.source_port !== undefined && object.source_port !== null) {
+            message.source_port = object.source_port;
+        }
+        if (object.source_channel !== undefined && object.source_channel !== null) {
+            message.source_channel = object.source_channel;
+        }
+        message.spend_limit = object.spend_limit?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        message.allow_list = object.allow_list?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -191,9 +195,9 @@ exports.TransferAuthorization = {
         return message;
     },
     fromAmino(object) {
-        return {
-            allocations: Array.isArray(object?.allocations) ? object.allocations.map((e) => exports.Allocation.fromAmino(e)) : []
-        };
+        const message = createBaseTransferAuthorization();
+        message.allocations = object.allocations?.map(e => exports.Allocation.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

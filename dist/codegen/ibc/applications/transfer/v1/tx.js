@@ -123,22 +123,38 @@ exports.MsgTransfer = {
         return message;
     },
     fromAmino(object) {
-        return {
-            source_port: object.source_port,
-            source_channel: object.source_channel,
-            token: object?.token ? coin_1.Coin.fromAmino(object.token) : undefined,
-            sender: object.sender,
-            receiver: object.receiver,
-            timeout_height: object?.timeout_height ? client_1.Height.fromAmino(object.timeout_height) : undefined,
-            timeout_timestamp: BigInt(object.timeout_timestamp),
-            memo: object.memo
-        };
+        const message = createBaseMsgTransfer();
+        if (object.source_port !== undefined && object.source_port !== null) {
+            message.source_port = object.source_port;
+        }
+        if (object.source_channel !== undefined && object.source_channel !== null) {
+            message.source_channel = object.source_channel;
+        }
+        if (object.token !== undefined && object.token !== null) {
+            message.token = coin_1.Coin.fromAmino(object.token);
+        }
+        if (object.sender !== undefined && object.sender !== null) {
+            message.sender = object.sender;
+        }
+        if (object.receiver !== undefined && object.receiver !== null) {
+            message.receiver = object.receiver;
+        }
+        if (object.timeout_height !== undefined && object.timeout_height !== null) {
+            message.timeout_height = client_1.Height.fromAmino(object.timeout_height);
+        }
+        if (object.timeout_timestamp !== undefined && object.timeout_timestamp !== null) {
+            message.timeout_timestamp = BigInt(object.timeout_timestamp);
+        }
+        if (object.memo !== undefined && object.memo !== null) {
+            message.memo = object.memo;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.source_port = message.source_port;
         obj.source_channel = message.source_channel;
-        obj.token = message.token ? coin_1.Coin.toAmino(message.token) : undefined;
+        obj.token = message.token ? coin_1.Coin.toAmino(message.token) : coin_1.Coin.fromPartial({});
         obj.sender = message.sender;
         obj.receiver = message.receiver;
         obj.timeout_height = message.timeout_height ? client_1.Height.toAmino(message.timeout_height) : {};
@@ -214,9 +230,11 @@ exports.MsgTransferResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            sequence: BigInt(object.sequence)
-        };
+        const message = createBaseMsgTransferResponse();
+        if (object.sequence !== undefined && object.sequence !== null) {
+            message.sequence = BigInt(object.sequence);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -301,10 +319,14 @@ exports.MsgUpdateParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            signer: object.signer,
-            params: object?.params ? client_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseMsgUpdateParams();
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        if (object.params !== undefined && object.params !== null) {
+            message.params = client_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -368,7 +390,8 @@ exports.MsgUpdateParamsResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgUpdateParamsResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};

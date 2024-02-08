@@ -63,10 +63,14 @@ exports.QueryBalanceRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            class_id: object.class_id,
-            owner: object.owner
-        };
+        const message = createBaseQueryBalanceRequest();
+        if (object.class_id !== undefined && object.class_id !== null) {
+            message.class_id = object.class_id;
+        }
+        if (object.owner !== undefined && object.owner !== null) {
+            message.owner = object.owner;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -142,9 +146,11 @@ exports.QueryBalanceResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            amount: BigInt(object.amount)
-        };
+        const message = createBaseQueryBalanceResponse();
+        if (object.amount !== undefined && object.amount !== null) {
+            message.amount = BigInt(object.amount);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -229,10 +235,14 @@ exports.QueryOwnerRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            class_id: object.class_id,
-            id: object.id
-        };
+        const message = createBaseQueryOwnerRequest();
+        if (object.class_id !== undefined && object.class_id !== null) {
+            message.class_id = object.class_id;
+        }
+        if (object.id !== undefined && object.id !== null) {
+            message.id = object.id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -308,9 +318,11 @@ exports.QueryOwnerResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            owner: object.owner
-        };
+        const message = createBaseQueryOwnerResponse();
+        if (object.owner !== undefined && object.owner !== null) {
+            message.owner = object.owner;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -385,9 +397,11 @@ exports.QuerySupplyRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            class_id: object.class_id
-        };
+        const message = createBaseQuerySupplyRequest();
+        if (object.class_id !== undefined && object.class_id !== null) {
+            message.class_id = object.class_id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -462,9 +476,11 @@ exports.QuerySupplyResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            amount: BigInt(object.amount)
-        };
+        const message = createBaseQuerySupplyResponse();
+        if (object.amount !== undefined && object.amount !== null) {
+            message.amount = BigInt(object.amount);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -559,11 +575,17 @@ exports.QueryNFTsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            class_id: object.class_id,
-            owner: object.owner,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryNFTsRequest();
+        if (object.class_id !== undefined && object.class_id !== null) {
+            message.class_id = object.class_id;
+        }
+        if (object.owner !== undefined && object.owner !== null) {
+            message.owner = object.owner;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -655,10 +677,12 @@ exports.QueryNFTsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            nfts: Array.isArray(object?.nfts) ? object.nfts.map((e) => nft_1.NFT.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryNFTsResponse();
+        message.nfts = object.nfts?.map(e => nft_1.NFT.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -749,10 +773,14 @@ exports.QueryNFTRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            class_id: object.class_id,
-            id: object.id
-        };
+        const message = createBaseQueryNFTRequest();
+        if (object.class_id !== undefined && object.class_id !== null) {
+            message.class_id = object.class_id;
+        }
+        if (object.id !== undefined && object.id !== null) {
+            message.id = object.id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -828,9 +856,11 @@ exports.QueryNFTResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            nft: object?.nft ? nft_1.NFT.fromAmino(object.nft) : undefined
-        };
+        const message = createBaseQueryNFTResponse();
+        if (object.nft !== undefined && object.nft !== null) {
+            message.nft = nft_1.NFT.fromAmino(object.nft);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -905,9 +935,11 @@ exports.QueryClassRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            class_id: object.class_id
-        };
+        const message = createBaseQueryClassRequest();
+        if (object.class_id !== undefined && object.class_id !== null) {
+            message.class_id = object.class_id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -982,9 +1014,11 @@ exports.QueryClassResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            class: object?.class ? nft_1.Class.fromAmino(object.class) : undefined
-        };
+        const message = createBaseQueryClassResponse();
+        if (object.class !== undefined && object.class !== null) {
+            message.class = nft_1.Class.fromAmino(object.class);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1059,9 +1093,11 @@ exports.QueryClassesRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryClassesRequest();
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1151,10 +1187,12 @@ exports.QueryClassesResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            classes: Array.isArray(object?.classes) ? object.classes.map((e) => nft_1.Class.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryClassesResponse();
+        message.classes = object.classes?.map(e => nft_1.Class.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

@@ -147,16 +147,22 @@ exports.GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            group_seq: BigInt(object.group_seq),
-            groups: Array.isArray(object?.groups) ? object.groups.map((e) => types_1.GroupInfo.fromAmino(e)) : [],
-            group_members: Array.isArray(object?.group_members) ? object.group_members.map((e) => types_1.GroupMember.fromAmino(e)) : [],
-            group_policy_seq: BigInt(object.group_policy_seq),
-            group_policies: Array.isArray(object?.group_policies) ? object.group_policies.map((e) => types_1.GroupPolicyInfo.fromAmino(e)) : [],
-            proposal_seq: BigInt(object.proposal_seq),
-            proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => types_1.Proposal.fromAmino(e)) : [],
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => types_1.Vote.fromAmino(e)) : []
-        };
+        const message = createBaseGenesisState();
+        if (object.group_seq !== undefined && object.group_seq !== null) {
+            message.group_seq = BigInt(object.group_seq);
+        }
+        message.groups = object.groups?.map(e => types_1.GroupInfo.fromAmino(e)) || [];
+        message.group_members = object.group_members?.map(e => types_1.GroupMember.fromAmino(e)) || [];
+        if (object.group_policy_seq !== undefined && object.group_policy_seq !== null) {
+            message.group_policy_seq = BigInt(object.group_policy_seq);
+        }
+        message.group_policies = object.group_policies?.map(e => types_1.GroupPolicyInfo.fromAmino(e)) || [];
+        if (object.proposal_seq !== undefined && object.proposal_seq !== null) {
+            message.proposal_seq = BigInt(object.proposal_seq);
+        }
+        message.proposals = object.proposals?.map(e => types_1.Proposal.fromAmino(e)) || [];
+        message.votes = object.votes?.map(e => types_1.Vote.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

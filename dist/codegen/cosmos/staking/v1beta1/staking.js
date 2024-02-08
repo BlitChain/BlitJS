@@ -171,14 +171,16 @@ exports.HistoricalInfo = {
         return message;
     },
     fromAmino(object) {
-        return {
-            header: object?.header ? types_1.Header.fromAmino(object.header) : undefined,
-            valset: Array.isArray(object?.valset) ? object.valset.map((e) => exports.Validator.fromAmino(e)) : []
-        };
+        const message = createBaseHistoricalInfo();
+        if (object.header !== undefined && object.header !== null) {
+            message.header = types_1.Header.fromAmino(object.header);
+        }
+        message.valset = object.valset?.map(e => exports.Validator.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.header = message.header ? types_1.Header.toAmino(message.header) : undefined;
+        obj.header = message.header ? types_1.Header.toAmino(message.header) : types_1.Header.fromPartial({});
         if (message.valset) {
             obj.valset = message.valset.map(e => e ? exports.Validator.toAmino(e) : undefined);
         }
@@ -275,17 +277,23 @@ exports.CommissionRates = {
         return message;
     },
     fromAmino(object) {
-        return {
-            rate: object.rate,
-            max_rate: object.max_rate,
-            max_change_rate: object.max_change_rate
-        };
+        const message = createBaseCommissionRates();
+        if (object.rate !== undefined && object.rate !== null) {
+            message.rate = object.rate;
+        }
+        if (object.max_rate !== undefined && object.max_rate !== null) {
+            message.max_rate = object.max_rate;
+        }
+        if (object.max_change_rate !== undefined && object.max_change_rate !== null) {
+            message.max_change_rate = object.max_change_rate;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.rate = message.rate;
-        obj.max_rate = message.max_rate;
-        obj.max_change_rate = message.max_change_rate;
+        obj.rate = message.rate ?? "";
+        obj.max_rate = message.max_rate ?? "";
+        obj.max_change_rate = message.max_change_rate ?? "";
         return obj;
     },
     fromAminoMsg(object) {
@@ -366,15 +374,19 @@ exports.Commission = {
         return message;
     },
     fromAmino(object) {
-        return {
-            commission_rates: object?.commission_rates ? exports.CommissionRates.fromAmino(object.commission_rates) : undefined,
-            update_time: object?.update_time ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.update_time)) : undefined
-        };
+        const message = createBaseCommission();
+        if (object.commission_rates !== undefined && object.commission_rates !== null) {
+            message.commission_rates = exports.CommissionRates.fromAmino(object.commission_rates);
+        }
+        if (object.update_time !== undefined && object.update_time !== null) {
+            message.update_time = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.update_time));
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.commission_rates = message.commission_rates ? exports.CommissionRates.toAmino(message.commission_rates) : undefined;
-        obj.update_time = message.update_time ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.update_time)) : undefined;
+        obj.commission_rates = message.commission_rates ? exports.CommissionRates.toAmino(message.commission_rates) : exports.CommissionRates.fromPartial({});
+        obj.update_time = message.update_time ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.update_time)) : new Date();
         return obj;
     },
     fromAminoMsg(object) {
@@ -485,13 +497,23 @@ exports.Description = {
         return message;
     },
     fromAmino(object) {
-        return {
-            moniker: object.moniker,
-            identity: object.identity,
-            website: object.website,
-            security_contact: object.security_contact,
-            details: object.details
-        };
+        const message = createBaseDescription();
+        if (object.moniker !== undefined && object.moniker !== null) {
+            message.moniker = object.moniker;
+        }
+        if (object.identity !== undefined && object.identity !== null) {
+            message.identity = object.identity;
+        }
+        if (object.website !== undefined && object.website !== null) {
+            message.website = object.website;
+        }
+        if (object.security_contact !== undefined && object.security_contact !== null) {
+            message.security_contact = object.security_contact;
+        }
+        if (object.details !== undefined && object.details !== null) {
+            message.details = object.details;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -705,21 +727,45 @@ exports.Validator = {
         return message;
     },
     fromAmino(object) {
-        return {
-            operator_address: object.operator_address,
-            consensus_pubkey: object?.consensus_pubkey ? (0, proto_signing_1.encodePubkey)(object.consensus_pubkey) : undefined,
-            jailed: object.jailed,
-            status: (0, helpers_1.isSet)(object.status) ? bondStatusFromJSON(object.status) : -1,
-            tokens: object.tokens,
-            delegator_shares: object.delegator_shares,
-            description: object?.description ? exports.Description.fromAmino(object.description) : undefined,
-            unbonding_height: BigInt(object.unbonding_height),
-            unbonding_time: object?.unbonding_time ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.unbonding_time)) : undefined,
-            commission: object?.commission ? exports.Commission.fromAmino(object.commission) : undefined,
-            min_self_delegation: object.min_self_delegation,
-            unbonding_on_hold_ref_count: BigInt(object.unbonding_on_hold_ref_count),
-            unbonding_ids: Array.isArray(object?.unbonding_ids) ? object.unbonding_ids.map((e) => BigInt(e)) : []
-        };
+        const message = createBaseValidator();
+        if (object.operator_address !== undefined && object.operator_address !== null) {
+            message.operator_address = object.operator_address;
+        }
+        if (object.consensus_pubkey !== undefined && object.consensus_pubkey !== null) {
+            message.consensus_pubkey = (0, proto_signing_1.encodePubkey)(object.consensus_pubkey);
+        }
+        if (object.jailed !== undefined && object.jailed !== null) {
+            message.jailed = object.jailed;
+        }
+        if (object.status !== undefined && object.status !== null) {
+            message.status = bondStatusFromJSON(object.status);
+        }
+        if (object.tokens !== undefined && object.tokens !== null) {
+            message.tokens = object.tokens;
+        }
+        if (object.delegator_shares !== undefined && object.delegator_shares !== null) {
+            message.delegator_shares = object.delegator_shares;
+        }
+        if (object.description !== undefined && object.description !== null) {
+            message.description = exports.Description.fromAmino(object.description);
+        }
+        if (object.unbonding_height !== undefined && object.unbonding_height !== null) {
+            message.unbonding_height = BigInt(object.unbonding_height);
+        }
+        if (object.unbonding_time !== undefined && object.unbonding_time !== null) {
+            message.unbonding_time = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.unbonding_time));
+        }
+        if (object.commission !== undefined && object.commission !== null) {
+            message.commission = exports.Commission.fromAmino(object.commission);
+        }
+        if (object.min_self_delegation !== undefined && object.min_self_delegation !== null) {
+            message.min_self_delegation = object.min_self_delegation;
+        }
+        if (object.unbonding_on_hold_ref_count !== undefined && object.unbonding_on_hold_ref_count !== null) {
+            message.unbonding_on_hold_ref_count = BigInt(object.unbonding_on_hold_ref_count);
+        }
+        message.unbonding_ids = object.unbonding_ids?.map(e => BigInt(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -729,10 +775,10 @@ exports.Validator = {
         obj.status = message.status;
         obj.tokens = message.tokens;
         obj.delegator_shares = message.delegator_shares;
-        obj.description = message.description ? exports.Description.toAmino(message.description) : undefined;
+        obj.description = message.description ? exports.Description.toAmino(message.description) : exports.Description.fromPartial({});
         obj.unbonding_height = message.unbonding_height ? message.unbonding_height.toString() : undefined;
-        obj.unbonding_time = message.unbonding_time ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.unbonding_time)) : undefined;
-        obj.commission = message.commission ? exports.Commission.toAmino(message.commission) : undefined;
+        obj.unbonding_time = message.unbonding_time ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.unbonding_time)) : new Date();
+        obj.commission = message.commission ? exports.Commission.toAmino(message.commission) : exports.Commission.fromPartial({});
         obj.min_self_delegation = message.min_self_delegation;
         obj.unbonding_on_hold_ref_count = message.unbonding_on_hold_ref_count ? message.unbonding_on_hold_ref_count.toString() : undefined;
         if (message.unbonding_ids) {
@@ -816,9 +862,9 @@ exports.ValAddresses = {
         return message;
     },
     fromAmino(object) {
-        return {
-            addresses: Array.isArray(object?.addresses) ? object.addresses.map((e) => e) : []
-        };
+        const message = createBaseValAddresses();
+        message.addresses = object.addresses?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -908,10 +954,14 @@ exports.DVPair = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_address: object.delegator_address,
-            validator_address: object.validator_address
-        };
+        const message = createBaseDVPair();
+        if (object.delegator_address !== undefined && object.delegator_address !== null) {
+            message.delegator_address = object.delegator_address;
+        }
+        if (object.validator_address !== undefined && object.validator_address !== null) {
+            message.validator_address = object.validator_address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -992,9 +1042,9 @@ exports.DVPairs = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pairs: Array.isArray(object?.pairs) ? object.pairs.map((e) => exports.DVPair.fromAmino(e)) : []
-        };
+        const message = createBaseDVPairs();
+        message.pairs = object.pairs?.map(e => exports.DVPair.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1094,11 +1144,17 @@ exports.DVVTriplet = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_address: object.delegator_address,
-            validator_src_address: object.validator_src_address,
-            validator_dst_address: object.validator_dst_address
-        };
+        const message = createBaseDVVTriplet();
+        if (object.delegator_address !== undefined && object.delegator_address !== null) {
+            message.delegator_address = object.delegator_address;
+        }
+        if (object.validator_src_address !== undefined && object.validator_src_address !== null) {
+            message.validator_src_address = object.validator_src_address;
+        }
+        if (object.validator_dst_address !== undefined && object.validator_dst_address !== null) {
+            message.validator_dst_address = object.validator_dst_address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1180,9 +1236,9 @@ exports.DVVTriplets = {
         return message;
     },
     fromAmino(object) {
-        return {
-            triplets: Array.isArray(object?.triplets) ? object.triplets.map((e) => exports.DVVTriplet.fromAmino(e)) : []
-        };
+        const message = createBaseDVVTriplets();
+        message.triplets = object.triplets?.map(e => exports.DVVTriplet.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1282,11 +1338,17 @@ exports.Delegation = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_address: object.delegator_address,
-            validator_address: object.validator_address,
-            shares: object.shares
-        };
+        const message = createBaseDelegation();
+        if (object.delegator_address !== undefined && object.delegator_address !== null) {
+            message.delegator_address = object.delegator_address;
+        }
+        if (object.validator_address !== undefined && object.validator_address !== null) {
+            message.validator_address = object.validator_address;
+        }
+        if (object.shares !== undefined && object.shares !== null) {
+            message.shares = object.shares;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1388,11 +1450,15 @@ exports.UnbondingDelegation = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_address: object.delegator_address,
-            validator_address: object.validator_address,
-            entries: Array.isArray(object?.entries) ? object.entries.map((e) => exports.UnbondingDelegationEntry.fromAmino(e)) : []
-        };
+        const message = createBaseUnbondingDelegation();
+        if (object.delegator_address !== undefined && object.delegator_address !== null) {
+            message.delegator_address = object.delegator_address;
+        }
+        if (object.validator_address !== undefined && object.validator_address !== null) {
+            message.validator_address = object.validator_address;
+        }
+        message.entries = object.entries?.map(e => exports.UnbondingDelegationEntry.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1524,19 +1590,31 @@ exports.UnbondingDelegationEntry = {
         return message;
     },
     fromAmino(object) {
-        return {
-            creation_height: BigInt(object.creation_height),
-            completion_time: object?.completion_time ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.completion_time)) : undefined,
-            initial_balance: object.initial_balance,
-            balance: object.balance,
-            unbonding_id: BigInt(object.unbonding_id),
-            unbonding_on_hold_ref_count: BigInt(object.unbonding_on_hold_ref_count)
-        };
+        const message = createBaseUnbondingDelegationEntry();
+        if (object.creation_height !== undefined && object.creation_height !== null) {
+            message.creation_height = BigInt(object.creation_height);
+        }
+        if (object.completion_time !== undefined && object.completion_time !== null) {
+            message.completion_time = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.completion_time));
+        }
+        if (object.initial_balance !== undefined && object.initial_balance !== null) {
+            message.initial_balance = object.initial_balance;
+        }
+        if (object.balance !== undefined && object.balance !== null) {
+            message.balance = object.balance;
+        }
+        if (object.unbonding_id !== undefined && object.unbonding_id !== null) {
+            message.unbonding_id = BigInt(object.unbonding_id);
+        }
+        if (object.unbonding_on_hold_ref_count !== undefined && object.unbonding_on_hold_ref_count !== null) {
+            message.unbonding_on_hold_ref_count = BigInt(object.unbonding_on_hold_ref_count);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.creation_height = message.creation_height ? message.creation_height.toString() : undefined;
-        obj.completion_time = message.completion_time ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.completion_time)) : undefined;
+        obj.completion_time = message.completion_time ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.completion_time)) : new Date();
         obj.initial_balance = message.initial_balance;
         obj.balance = message.balance;
         obj.unbonding_id = message.unbonding_id ? message.unbonding_id.toString() : undefined;
@@ -1661,19 +1739,31 @@ exports.RedelegationEntry = {
         return message;
     },
     fromAmino(object) {
-        return {
-            creation_height: BigInt(object.creation_height),
-            completion_time: object?.completion_time ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.completion_time)) : undefined,
-            initial_balance: object.initial_balance,
-            shares_dst: object.shares_dst,
-            unbonding_id: BigInt(object.unbonding_id),
-            unbonding_on_hold_ref_count: BigInt(object.unbonding_on_hold_ref_count)
-        };
+        const message = createBaseRedelegationEntry();
+        if (object.creation_height !== undefined && object.creation_height !== null) {
+            message.creation_height = BigInt(object.creation_height);
+        }
+        if (object.completion_time !== undefined && object.completion_time !== null) {
+            message.completion_time = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.completion_time));
+        }
+        if (object.initial_balance !== undefined && object.initial_balance !== null) {
+            message.initial_balance = object.initial_balance;
+        }
+        if (object.shares_dst !== undefined && object.shares_dst !== null) {
+            message.shares_dst = object.shares_dst;
+        }
+        if (object.unbonding_id !== undefined && object.unbonding_id !== null) {
+            message.unbonding_id = BigInt(object.unbonding_id);
+        }
+        if (object.unbonding_on_hold_ref_count !== undefined && object.unbonding_on_hold_ref_count !== null) {
+            message.unbonding_on_hold_ref_count = BigInt(object.unbonding_on_hold_ref_count);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.creation_height = message.creation_height ? message.creation_height.toString() : undefined;
-        obj.completion_time = message.completion_time ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.completion_time)) : undefined;
+        obj.completion_time = message.completion_time ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.completion_time)) : new Date();
         obj.initial_balance = message.initial_balance;
         obj.shares_dst = message.shares_dst;
         obj.unbonding_id = message.unbonding_id ? message.unbonding_id.toString() : undefined;
@@ -1783,12 +1873,18 @@ exports.Redelegation = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegator_address: object.delegator_address,
-            validator_src_address: object.validator_src_address,
-            validator_dst_address: object.validator_dst_address,
-            entries: Array.isArray(object?.entries) ? object.entries.map((e) => exports.RedelegationEntry.fromAmino(e)) : []
-        };
+        const message = createBaseRedelegation();
+        if (object.delegator_address !== undefined && object.delegator_address !== null) {
+            message.delegator_address = object.delegator_address;
+        }
+        if (object.validator_src_address !== undefined && object.validator_src_address !== null) {
+            message.validator_src_address = object.validator_src_address;
+        }
+        if (object.validator_dst_address !== undefined && object.validator_dst_address !== null) {
+            message.validator_dst_address = object.validator_dst_address;
+        }
+        message.entries = object.entries?.map(e => exports.RedelegationEntry.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1921,23 +2017,35 @@ exports.Params = {
         return message;
     },
     fromAmino(object) {
-        return {
-            unbonding_time: object?.unbonding_time ? duration_1.Duration.fromAmino(object.unbonding_time) : undefined,
-            max_validators: object.max_validators,
-            max_entries: object.max_entries,
-            historical_entries: object.historical_entries,
-            bond_denom: object.bond_denom,
-            min_commission_rate: object.min_commission_rate
-        };
+        const message = createBaseParams();
+        if (object.unbonding_time !== undefined && object.unbonding_time !== null) {
+            message.unbonding_time = duration_1.Duration.fromAmino(object.unbonding_time);
+        }
+        if (object.max_validators !== undefined && object.max_validators !== null) {
+            message.max_validators = object.max_validators;
+        }
+        if (object.max_entries !== undefined && object.max_entries !== null) {
+            message.max_entries = object.max_entries;
+        }
+        if (object.historical_entries !== undefined && object.historical_entries !== null) {
+            message.historical_entries = object.historical_entries;
+        }
+        if (object.bond_denom !== undefined && object.bond_denom !== null) {
+            message.bond_denom = object.bond_denom;
+        }
+        if (object.min_commission_rate !== undefined && object.min_commission_rate !== null) {
+            message.min_commission_rate = object.min_commission_rate;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.unbonding_time = message.unbonding_time ? duration_1.Duration.toAmino(message.unbonding_time) : undefined;
+        obj.unbonding_time = message.unbonding_time ? duration_1.Duration.toAmino(message.unbonding_time) : duration_1.Duration.fromPartial({});
         obj.max_validators = message.max_validators;
         obj.max_entries = message.max_entries;
         obj.historical_entries = message.historical_entries;
         obj.bond_denom = message.bond_denom;
-        obj.min_commission_rate = message.min_commission_rate;
+        obj.min_commission_rate = message.min_commission_rate ?? "";
         return obj;
     },
     fromAminoMsg(object) {
@@ -2018,15 +2126,19 @@ exports.DelegationResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            delegation: object?.delegation ? exports.Delegation.fromAmino(object.delegation) : undefined,
-            balance: object?.balance ? coin_1.Coin.fromAmino(object.balance) : undefined
-        };
+        const message = createBaseDelegationResponse();
+        if (object.delegation !== undefined && object.delegation !== null) {
+            message.delegation = exports.Delegation.fromAmino(object.delegation);
+        }
+        if (object.balance !== undefined && object.balance !== null) {
+            message.balance = coin_1.Coin.fromAmino(object.balance);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.delegation = message.delegation ? exports.Delegation.toAmino(message.delegation) : undefined;
-        obj.balance = message.balance ? coin_1.Coin.toAmino(message.balance) : undefined;
+        obj.delegation = message.delegation ? exports.Delegation.toAmino(message.delegation) : exports.Delegation.fromPartial({});
+        obj.balance = message.balance ? coin_1.Coin.toAmino(message.balance) : coin_1.Coin.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -2107,14 +2219,18 @@ exports.RedelegationEntryResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            redelegation_entry: object?.redelegation_entry ? exports.RedelegationEntry.fromAmino(object.redelegation_entry) : undefined,
-            balance: object.balance
-        };
+        const message = createBaseRedelegationEntryResponse();
+        if (object.redelegation_entry !== undefined && object.redelegation_entry !== null) {
+            message.redelegation_entry = exports.RedelegationEntry.fromAmino(object.redelegation_entry);
+        }
+        if (object.balance !== undefined && object.balance !== null) {
+            message.balance = object.balance;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.redelegation_entry = message.redelegation_entry ? exports.RedelegationEntry.toAmino(message.redelegation_entry) : undefined;
+        obj.redelegation_entry = message.redelegation_entry ? exports.RedelegationEntry.toAmino(message.redelegation_entry) : exports.RedelegationEntry.fromPartial({});
         obj.balance = message.balance;
         return obj;
     },
@@ -2201,14 +2317,16 @@ exports.RedelegationResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            redelegation: object?.redelegation ? exports.Redelegation.fromAmino(object.redelegation) : undefined,
-            entries: Array.isArray(object?.entries) ? object.entries.map((e) => exports.RedelegationEntryResponse.fromAmino(e)) : []
-        };
+        const message = createBaseRedelegationResponse();
+        if (object.redelegation !== undefined && object.redelegation !== null) {
+            message.redelegation = exports.Redelegation.fromAmino(object.redelegation);
+        }
+        message.entries = object.entries?.map(e => exports.RedelegationEntryResponse.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.redelegation = message.redelegation ? exports.Redelegation.toAmino(message.redelegation) : undefined;
+        obj.redelegation = message.redelegation ? exports.Redelegation.toAmino(message.redelegation) : exports.Redelegation.fromPartial({});
         if (message.entries) {
             obj.entries = message.entries.map(e => e ? exports.RedelegationEntryResponse.toAmino(e) : undefined);
         }
@@ -2295,15 +2413,19 @@ exports.Pool = {
         return message;
     },
     fromAmino(object) {
-        return {
-            not_bonded_tokens: object.not_bonded_tokens,
-            bonded_tokens: object.bonded_tokens
-        };
+        const message = createBasePool();
+        if (object.not_bonded_tokens !== undefined && object.not_bonded_tokens !== null) {
+            message.not_bonded_tokens = object.not_bonded_tokens;
+        }
+        if (object.bonded_tokens !== undefined && object.bonded_tokens !== null) {
+            message.bonded_tokens = object.bonded_tokens;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.not_bonded_tokens = message.not_bonded_tokens;
-        obj.bonded_tokens = message.bonded_tokens;
+        obj.not_bonded_tokens = message.not_bonded_tokens ?? "";
+        obj.bonded_tokens = message.bonded_tokens ?? "";
         return obj;
     },
     fromAminoMsg(object) {
@@ -2379,9 +2501,9 @@ exports.ValidatorUpdates = {
         return message;
     },
     fromAmino(object) {
-        return {
-            updates: Array.isArray(object?.updates) ? object.updates.map((e) => types_2.ValidatorUpdate.fromAmino(e)) : []
-        };
+        const message = createBaseValidatorUpdates();
+        message.updates = object.updates?.map(e => types_2.ValidatorUpdate.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2417,7 +2539,7 @@ exports.ValidatorUpdates = {
 };
 const Cosmos_cryptoPubKey_InterfaceDecoder = (input) => {
     const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
-    const data = any_1.Any.decode(reader, reader.uint32(), true);
+    const data = any_1.Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
         default:
             return data;

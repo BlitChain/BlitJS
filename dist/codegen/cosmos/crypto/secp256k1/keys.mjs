@@ -48,13 +48,15 @@ export const PubKey = {
         return message;
     },
     fromAmino(object) {
-        return {
-            key: object.key
-        };
+        const message = createBasePubKey();
+        if (object.key !== undefined && object.key !== null) {
+            message.key = bytesFromBase64(object.key);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.key = message.key;
+        obj.key = message.key ? base64FromBytes(message.key) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -125,13 +127,15 @@ export const PrivKey = {
         return message;
     },
     fromAmino(object) {
-        return {
-            key: object.key
-        };
+        const message = createBasePrivKey();
+        if (object.key !== undefined && object.key !== null) {
+            message.key = bytesFromBase64(object.key);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.key = message.key;
+        obj.key = message.key ? base64FromBytes(message.key) : undefined;
         return obj;
     },
     fromAminoMsg(object) {

@@ -73,17 +73,23 @@ exports.MsgGrant = {
         return message;
     },
     fromAmino(object) {
-        return {
-            granter: object.granter,
-            grantee: object.grantee,
-            grant: object?.grant ? authz_1.Grant.fromAmino(object.grant) : undefined
-        };
+        const message = createBaseMsgGrant();
+        if (object.granter !== undefined && object.granter !== null) {
+            message.granter = object.granter;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        if (object.grant !== undefined && object.grant !== null) {
+            message.grant = authz_1.Grant.fromAmino(object.grant);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.granter = message.granter;
         obj.grantee = message.grantee;
-        obj.grant = message.grant ? authz_1.Grant.toAmino(message.grant) : undefined;
+        obj.grant = message.grant ? authz_1.Grant.toAmino(message.grant) : authz_1.Grant.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -142,7 +148,8 @@ exports.MsgGrantResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgGrantResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -198,7 +205,7 @@ exports.MsgExec = {
                     message.grantee = reader.string();
                     break;
                 case 2:
-                    message.msgs.push((0, any_1.Any)(reader));
+                    message.msgs.push(any_1.Any.decode(reader, reader.uint32()));
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -231,10 +238,12 @@ exports.MsgExec = {
         return message;
     },
     fromAmino(object) {
-        return {
-            grantee: object.grantee,
-            msgs: Array.isArray(object?.msgs) ? object.msgs.map((e) => (0, exports.Cosmos_basev1beta1Msg_FromAmino)(e)) : []
-        };
+        const message = createBaseMsgExec();
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        message.msgs = object.msgs?.map(e => (0, exports.Cosmos_basev1beta1Msg_FromAmino)(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -320,14 +329,14 @@ exports.MsgExecResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            results: Array.isArray(object?.results) ? object.results.map((e) => e) : []
-        };
+        const message = createBaseMsgExecResponse();
+        message.results = object.results?.map(e => (0, helpers_1.bytesFromBase64)(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
         if (message.results) {
-            obj.results = message.results.map(e => e);
+            obj.results = message.results.map(e => (0, helpers_1.base64FromBytes)(e));
         }
         else {
             obj.results = [];
@@ -422,11 +431,17 @@ exports.MsgRevoke = {
         return message;
     },
     fromAmino(object) {
-        return {
-            granter: object.granter,
-            grantee: object.grantee,
-            msg_type_url: object.msg_type_url
-        };
+        const message = createBaseMsgRevoke();
+        if (object.granter !== undefined && object.granter !== null) {
+            message.granter = object.granter;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        if (object.msg_type_url !== undefined && object.msg_type_url !== null) {
+            message.msg_type_url = object.msg_type_url;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -491,7 +506,8 @@ exports.MsgRevokeResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgRevokeResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -521,7 +537,7 @@ exports.MsgRevokeResponse = {
 };
 const Cosmos_basev1beta1Msg_InterfaceDecoder = (input) => {
     const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
-    const data = any_1.Any.decode(reader, reader.uint32(), true);
+    const data = any_1.Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
         default:
             return data;

@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { Params } from "./params";
+import { Any } from "../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
 export const protobufPackage = "blit.script";
@@ -59,15 +60,19 @@ export const MsgUpdateParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authority: object.authority,
-            params: object?.params ? Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseMsgUpdateParams();
+        if (object.authority !== undefined && object.authority !== null) {
+            message.authority = object.authority;
+        }
+        if (object.params !== undefined && object.params !== null) {
+            message.params = Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.authority = message.authority;
-        obj.params = message.params ? Params.toAmino(message.params) : undefined;
+        obj.params = message.params ? Params.toAmino(message.params) : Params.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -126,7 +131,8 @@ export const MsgUpdateParamsResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgUpdateParamsResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -229,12 +235,18 @@ export const MsgCreateScript = {
         return message;
     },
     fromAmino(object) {
-        return {
-            creator: object.creator,
-            code: object.code,
-            msg_type_permissions: Array.isArray(object?.msg_type_permissions) ? object.msg_type_permissions.map((e) => e) : [],
-            grantee: object.grantee
-        };
+        const message = createBaseMsgCreateScript();
+        if (object.creator !== undefined && object.creator !== null) {
+            message.creator = object.creator;
+        }
+        if (object.code !== undefined && object.code !== null) {
+            message.code = object.code;
+        }
+        message.msg_type_permissions = object.msg_type_permissions?.map(e => e) || [];
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -311,9 +323,11 @@ export const MsgCreateScriptResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address
-        };
+        const message = createBaseMsgCreateScriptResponse();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -402,11 +416,17 @@ export const MsgUpdateScript = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            code: object.code,
-            grantee: object.grantee
-        };
+        const message = createBaseMsgUpdateScript();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.code !== undefined && object.code !== null) {
+            message.code = object.code;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -477,9 +497,11 @@ export const MsgUpdateScriptResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            version: BigInt(object.version)
-        };
+        const message = createBaseMsgUpdateScriptResponse();
+        if (object.version !== undefined && object.version !== null) {
+            message.version = BigInt(object.version);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -558,10 +580,14 @@ export const MsgDeleteScript = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            index: object.index
-        };
+        const message = createBaseMsgDeleteScript();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.index !== undefined && object.index !== null) {
+            message.index = object.index;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -619,7 +645,8 @@ export const MsgDeleteScriptResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgDeleteScriptResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -649,7 +676,7 @@ function createBaseMsgRun() {
         function_name: "",
         kwargs: "",
         grantee: "",
-        attached_messages: ""
+        attached_messages: []
     };
 }
 export const MsgRun = {
@@ -673,8 +700,8 @@ export const MsgRun = {
         if (message.grantee !== "") {
             writer.uint32(58).string(message.grantee);
         }
-        if (message.attached_messages !== "") {
-            writer.uint32(10).string(message.attached_messages);
+        for (const v of message.attached_messages) {
+            Any.encode(v, writer.uint32(10).fork()).ldelim();
         }
         return writer;
     },
@@ -704,7 +731,7 @@ export const MsgRun = {
                     message.grantee = reader.string();
                     break;
                 case 1:
-                    message.attached_messages = reader.string();
+                    message.attached_messages.push(Any.decode(reader, reader.uint32()));
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -721,7 +748,7 @@ export const MsgRun = {
             function_name: isSet(object.function_name) ? String(object.function_name) : "",
             kwargs: isSet(object.kwargs) ? String(object.kwargs) : "",
             grantee: isSet(object.grantee) ? String(object.grantee) : "",
-            attached_messages: isSet(object.attached_messages) ? String(object.attached_messages) : ""
+            attached_messages: Array.isArray(object?.attached_messages) ? object.attached_messages.map((e) => Any.fromJSON(e)) : []
         };
     },
     toJSON(message) {
@@ -732,7 +759,12 @@ export const MsgRun = {
         message.function_name !== undefined && (obj.function_name = message.function_name);
         message.kwargs !== undefined && (obj.kwargs = message.kwargs);
         message.grantee !== undefined && (obj.grantee = message.grantee);
-        message.attached_messages !== undefined && (obj.attached_messages = message.attached_messages);
+        if (message.attached_messages) {
+            obj.attached_messages = message.attached_messages.map(e => e ? Any.toJSON(e) : undefined);
+        }
+        else {
+            obj.attached_messages = [];
+        }
         return obj;
     },
     fromPartial(object) {
@@ -743,19 +775,31 @@ export const MsgRun = {
         message.function_name = object.function_name ?? "";
         message.kwargs = object.kwargs ?? "";
         message.grantee = object.grantee ?? "";
-        message.attached_messages = object.attached_messages ?? "";
+        message.attached_messages = object.attached_messages?.map(e => Any.fromPartial(e)) || [];
         return message;
     },
     fromAmino(object) {
-        return {
-            caller_address: object.caller_address,
-            script_address: object.script_address,
-            extra_code: object.extra_code,
-            function_name: object.function_name,
-            kwargs: object.kwargs,
-            grantee: object.grantee,
-            attached_messages: object.attached_messages
-        };
+        const message = createBaseMsgRun();
+        if (object.caller_address !== undefined && object.caller_address !== null) {
+            message.caller_address = object.caller_address;
+        }
+        if (object.script_address !== undefined && object.script_address !== null) {
+            message.script_address = object.script_address;
+        }
+        if (object.extra_code !== undefined && object.extra_code !== null) {
+            message.extra_code = object.extra_code;
+        }
+        if (object.function_name !== undefined && object.function_name !== null) {
+            message.function_name = object.function_name;
+        }
+        if (object.kwargs !== undefined && object.kwargs !== null) {
+            message.kwargs = object.kwargs;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        message.attached_messages = object.attached_messages?.map(e => Cosmos_basev1beta1Msg_FromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -765,7 +809,12 @@ export const MsgRun = {
         obj.function_name = message.function_name;
         obj.kwargs = message.kwargs;
         obj.grantee = message.grantee;
-        obj.attached_messages = message.attached_messages;
+        if (message.attached_messages) {
+            obj.attached_messages = message.attached_messages.map(e => e ? Cosmos_basev1beta1Msg_ToAmino(e) : undefined);
+        }
+        else {
+            obj.attached_messages = [];
+        }
         return obj;
     },
     fromAminoMsg(object) {
@@ -830,9 +879,11 @@ export const MsgRunResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            response: object.response
-        };
+        const message = createBaseMsgRunResponse();
+        if (object.response !== undefined && object.response !== null) {
+            message.response = object.response;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -854,5 +905,19 @@ export const MsgRunResponse = {
             value: MsgRunResponse.encode(message).finish()
         };
     }
+};
+export const Cosmos_basev1beta1Msg_InterfaceDecoder = (input) => {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const data = Any.decode(reader, reader.uint32());
+    switch (data.typeUrl) {
+        default:
+            return data;
+    }
+};
+export const Cosmos_basev1beta1Msg_FromAmino = (content) => {
+    return Any.fromAmino(content);
+};
+export const Cosmos_basev1beta1Msg_ToAmino = (content) => {
+    return Any.toAmino(content);
 };
 //# sourceMappingURL=tx.js.map

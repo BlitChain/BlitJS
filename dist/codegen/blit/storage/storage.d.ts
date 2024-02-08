@@ -10,9 +10,9 @@ export interface StorageProtoMsg {
     value: Uint8Array;
 }
 export interface StorageAmino {
-    address: string;
-    index: string;
-    data: string;
+    address?: string;
+    index?: string;
+    data?: string;
 }
 export interface StorageAminoMsg {
     type: "/blit.storage.Storage";

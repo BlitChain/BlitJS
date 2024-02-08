@@ -63,10 +63,12 @@ export const Http = {
         return message;
     },
     fromAmino(object) {
-        return {
-            rules: Array.isArray(object?.rules) ? object.rules.map((e) => HttpRule.fromAmino(e)) : [],
-            fully_decode_reserved_expansion: object.fully_decode_reserved_expansion
-        };
+        const message = createBaseHttp();
+        message.rules = object.rules?.map(e => HttpRule.fromAmino(e)) || [];
+        if (object.fully_decode_reserved_expansion !== undefined && object.fully_decode_reserved_expansion !== null) {
+            message.fully_decode_reserved_expansion = object.fully_decode_reserved_expansion;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -236,18 +238,36 @@ export const HttpRule = {
         return message;
     },
     fromAmino(object) {
-        return {
-            selector: object.selector,
-            get: object?.get,
-            put: object?.put,
-            post: object?.post,
-            delete: object?.delete,
-            patch: object?.patch,
-            custom: object?.custom ? CustomHttpPattern.fromAmino(object.custom) : undefined,
-            body: object.body,
-            response_body: object.response_body,
-            additional_bindings: Array.isArray(object?.additional_bindings) ? object.additional_bindings.map((e) => HttpRule.fromAmino(e)) : []
-        };
+        const message = createBaseHttpRule();
+        if (object.selector !== undefined && object.selector !== null) {
+            message.selector = object.selector;
+        }
+        if (object.get !== undefined && object.get !== null) {
+            message.get = object.get;
+        }
+        if (object.put !== undefined && object.put !== null) {
+            message.put = object.put;
+        }
+        if (object.post !== undefined && object.post !== null) {
+            message.post = object.post;
+        }
+        if (object.delete !== undefined && object.delete !== null) {
+            message.delete = object.delete;
+        }
+        if (object.patch !== undefined && object.patch !== null) {
+            message.patch = object.patch;
+        }
+        if (object.custom !== undefined && object.custom !== null) {
+            message.custom = CustomHttpPattern.fromAmino(object.custom);
+        }
+        if (object.body !== undefined && object.body !== null) {
+            message.body = object.body;
+        }
+        if (object.response_body !== undefined && object.response_body !== null) {
+            message.response_body = object.response_body;
+        }
+        message.additional_bindings = object.additional_bindings?.map(e => HttpRule.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -340,10 +360,14 @@ export const CustomHttpPattern = {
         return message;
     },
     fromAmino(object) {
-        return {
-            kind: object.kind,
-            path: object.path
-        };
+        const message = createBaseCustomHttpPattern();
+        if (object.kind !== undefined && object.kind !== null) {
+            message.kind = object.kind;
+        }
+        if (object.path !== undefined && object.path !== null) {
+            message.path = object.path;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

@@ -127,15 +127,23 @@ exports.GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            starting_proposal_id: BigInt(object.starting_proposal_id),
-            deposits: Array.isArray(object?.deposits) ? object.deposits.map((e) => gov_1.Deposit.fromAmino(e)) : [],
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => gov_1.Vote.fromAmino(e)) : [],
-            proposals: Array.isArray(object?.proposals) ? object.proposals.map((e) => gov_1.Proposal.fromAmino(e)) : [],
-            deposit_params: object?.deposit_params ? gov_1.DepositParams.fromAmino(object.deposit_params) : undefined,
-            voting_params: object?.voting_params ? gov_1.VotingParams.fromAmino(object.voting_params) : undefined,
-            tally_params: object?.tally_params ? gov_1.TallyParams.fromAmino(object.tally_params) : undefined
-        };
+        const message = createBaseGenesisState();
+        if (object.starting_proposal_id !== undefined && object.starting_proposal_id !== null) {
+            message.starting_proposal_id = BigInt(object.starting_proposal_id);
+        }
+        message.deposits = object.deposits?.map(e => gov_1.Deposit.fromAmino(e)) || [];
+        message.votes = object.votes?.map(e => gov_1.Vote.fromAmino(e)) || [];
+        message.proposals = object.proposals?.map(e => gov_1.Proposal.fromAmino(e)) || [];
+        if (object.deposit_params !== undefined && object.deposit_params !== null) {
+            message.deposit_params = gov_1.DepositParams.fromAmino(object.deposit_params);
+        }
+        if (object.voting_params !== undefined && object.voting_params !== null) {
+            message.voting_params = gov_1.VotingParams.fromAmino(object.voting_params);
+        }
+        if (object.tally_params !== undefined && object.tally_params !== null) {
+            message.tally_params = gov_1.TallyParams.fromAmino(object.tally_params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -158,9 +166,9 @@ exports.GenesisState = {
         else {
             obj.proposals = [];
         }
-        obj.deposit_params = message.deposit_params ? gov_1.DepositParams.toAmino(message.deposit_params) : undefined;
-        obj.voting_params = message.voting_params ? gov_1.VotingParams.toAmino(message.voting_params) : undefined;
-        obj.tally_params = message.tally_params ? gov_1.TallyParams.toAmino(message.tally_params) : undefined;
+        obj.deposit_params = message.deposit_params ? gov_1.DepositParams.toAmino(message.deposit_params) : gov_1.DepositParams.fromPartial({});
+        obj.voting_params = message.voting_params ? gov_1.VotingParams.toAmino(message.voting_params) : gov_1.VotingParams.fromPartial({});
+        obj.tally_params = message.tally_params ? gov_1.TallyParams.toAmino(message.tally_params) : gov_1.TallyParams.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {

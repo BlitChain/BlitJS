@@ -48,9 +48,11 @@ export const Params = {
         return message;
     },
     fromAmino(object) {
-        return {
-            controller_enabled: object.controller_enabled
-        };
+        const message = createBaseParams();
+        if (object.controller_enabled !== undefined && object.controller_enabled !== null) {
+            message.controller_enabled = object.controller_enabled;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

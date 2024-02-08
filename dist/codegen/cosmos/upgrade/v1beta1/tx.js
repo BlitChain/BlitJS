@@ -62,15 +62,19 @@ exports.MsgSoftwareUpgrade = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authority: object.authority,
-            plan: object?.plan ? upgrade_1.Plan.fromAmino(object.plan) : undefined
-        };
+        const message = createBaseMsgSoftwareUpgrade();
+        if (object.authority !== undefined && object.authority !== null) {
+            message.authority = object.authority;
+        }
+        if (object.plan !== undefined && object.plan !== null) {
+            message.plan = upgrade_1.Plan.fromAmino(object.plan);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.authority = message.authority;
-        obj.plan = message.plan ? upgrade_1.Plan.toAmino(message.plan) : undefined;
+        obj.plan = message.plan ? upgrade_1.Plan.toAmino(message.plan) : upgrade_1.Plan.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -129,7 +133,8 @@ exports.MsgSoftwareUpgradeResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgSoftwareUpgradeResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -203,9 +208,11 @@ exports.MsgCancelUpgrade = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authority: object.authority
-        };
+        const message = createBaseMsgCancelUpgrade();
+        if (object.authority !== undefined && object.authority !== null) {
+            message.authority = object.authority;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -268,7 +275,8 @@ exports.MsgCancelUpgradeResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgCancelUpgradeResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};

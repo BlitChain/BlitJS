@@ -52,9 +52,11 @@ exports.EventCreateGroup = {
         return message;
     },
     fromAmino(object) {
-        return {
-            group_id: BigInt(object.group_id)
-        };
+        const message = createBaseEventCreateGroup();
+        if (object.group_id !== undefined && object.group_id !== null) {
+            message.group_id = BigInt(object.group_id);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -129,9 +131,11 @@ exports.EventUpdateGroup = {
         return message;
     },
     fromAmino(object) {
-        return {
-            group_id: BigInt(object.group_id)
-        };
+        const message = createBaseEventUpdateGroup();
+        if (object.group_id !== undefined && object.group_id !== null) {
+            message.group_id = BigInt(object.group_id);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -206,9 +210,11 @@ exports.EventCreateGroupPolicy = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address
-        };
+        const message = createBaseEventCreateGroupPolicy();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -283,9 +289,11 @@ exports.EventUpdateGroupPolicy = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address
-        };
+        const message = createBaseEventUpdateGroupPolicy();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -360,9 +368,11 @@ exports.EventSubmitProposal = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id)
-        };
+        const message = createBaseEventSubmitProposal();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -437,9 +447,11 @@ exports.EventWithdrawProposal = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id)
-        };
+        const message = createBaseEventWithdrawProposal();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -514,9 +526,11 @@ exports.EventVote = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id)
-        };
+        const message = createBaseEventVote();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -611,11 +625,17 @@ exports.EventExec = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id),
-            result: (0, helpers_1.isSet)(object.result) ? (0, types_1.proposalExecutorResultFromJSON)(object.result) : -1,
-            logs: object.logs
-        };
+        const message = createBaseEventExec();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        if (object.result !== undefined && object.result !== null) {
+            message.result = (0, types_1.proposalExecutorResultFromJSON)(object.result);
+        }
+        if (object.logs !== undefined && object.logs !== null) {
+            message.logs = object.logs;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -702,10 +722,14 @@ exports.EventLeaveGroup = {
         return message;
     },
     fromAmino(object) {
-        return {
-            group_id: BigInt(object.group_id),
-            address: object.address
-        };
+        const message = createBaseEventLeaveGroup();
+        if (object.group_id !== undefined && object.group_id !== null) {
+            message.group_id = BigInt(object.group_id);
+        }
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -801,11 +825,17 @@ exports.EventProposalPruned = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id),
-            status: (0, helpers_1.isSet)(object.status) ? (0, types_1.proposalStatusFromJSON)(object.status) : -1,
-            tally_result: object?.tally_result ? types_1.TallyResult.fromAmino(object.tally_result) : undefined
-        };
+        const message = createBaseEventProposalPruned();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        if (object.status !== undefined && object.status !== null) {
+            message.status = (0, types_1.proposalStatusFromJSON)(object.status);
+        }
+        if (object.tally_result !== undefined && object.tally_result !== null) {
+            message.tally_result = types_1.TallyResult.fromAmino(object.tally_result);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

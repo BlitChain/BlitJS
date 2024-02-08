@@ -86,12 +86,12 @@ export interface PeriodicAllowanceProtoMsg {
  */
 export interface PeriodicAllowanceAmino {
     /** basic specifies a struct of `BasicAllowance` */
-    basic?: BasicAllowanceAmino;
+    basic: BasicAllowanceAmino;
     /**
      * period specifies the time duration in which period_spend_limit coins can
      * be spent before that allowance is reset
      */
-    period?: DurationAmino;
+    period: DurationAmino;
     /**
      * period_spend_limit specifies the maximum number of coins that can be spent
      * in the period
@@ -104,7 +104,7 @@ export interface PeriodicAllowanceAmino {
      * it is calculated from the start time of the first transaction after the
      * last period ended
      */
-    period_reset?: string;
+    period_reset: string;
 }
 export interface PeriodicAllowanceAminoMsg {
     type: "cosmos-sdk/PeriodicAllowance";
@@ -142,7 +142,7 @@ export interface AllowedMsgAllowanceAmino {
     /** allowance can be any of basic and periodic fee allowance. */
     allowance?: AnyAmino;
     /** allowed_messages are the messages for which the grantee has the access. */
-    allowed_messages: string[];
+    allowed_messages?: string[];
 }
 export interface AllowedMsgAllowanceAminoMsg {
     type: "cosmos-sdk/AllowedMsgAllowance";
@@ -173,9 +173,9 @@ export type GrantEncoded = Omit<Grant, "allowance"> & {
 /** Grant is stored in the KVStore to record a grant with full context */
 export interface GrantAmino {
     /** granter is the address of the user granting an allowance of their funds. */
-    granter: string;
+    granter?: string;
     /** grantee is the address of the user being granted an allowance of another user's funds. */
-    grantee: string;
+    grantee?: string;
     /** allowance can be any of basic, periodic, allowed fee allowance. */
     allowance?: AnyAmino;
 }

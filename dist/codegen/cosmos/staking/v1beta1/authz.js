@@ -146,12 +146,20 @@ exports.StakeAuthorization = {
         return message;
     },
     fromAmino(object) {
-        return {
-            max_tokens: object?.max_tokens ? coin_1.Coin.fromAmino(object.max_tokens) : undefined,
-            allow_list: object?.allow_list ? exports.StakeAuthorization_Validators.fromAmino(object.allow_list) : undefined,
-            deny_list: object?.deny_list ? exports.StakeAuthorization_Validators.fromAmino(object.deny_list) : undefined,
-            authorization_type: (0, helpers_1.isSet)(object.authorization_type) ? authorizationTypeFromJSON(object.authorization_type) : -1
-        };
+        const message = createBaseStakeAuthorization();
+        if (object.max_tokens !== undefined && object.max_tokens !== null) {
+            message.max_tokens = coin_1.Coin.fromAmino(object.max_tokens);
+        }
+        if (object.allow_list !== undefined && object.allow_list !== null) {
+            message.allow_list = exports.StakeAuthorization_Validators.fromAmino(object.allow_list);
+        }
+        if (object.deny_list !== undefined && object.deny_list !== null) {
+            message.deny_list = exports.StakeAuthorization_Validators.fromAmino(object.deny_list);
+        }
+        if (object.authorization_type !== undefined && object.authorization_type !== null) {
+            message.authorization_type = authorizationTypeFromJSON(object.authorization_type);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -234,9 +242,9 @@ exports.StakeAuthorization_Validators = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: Array.isArray(object?.address) ? object.address.map((e) => e) : []
-        };
+        const message = createBaseStakeAuthorization_Validators();
+        message.address = object.address?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

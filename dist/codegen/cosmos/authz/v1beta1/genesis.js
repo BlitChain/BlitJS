@@ -56,9 +56,9 @@ exports.GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authorization: Array.isArray(object?.authorization) ? object.authorization.map((e) => authz_1.GrantAuthorization.fromAmino(e)) : []
-        };
+        const message = createBaseGenesisState();
+        message.authorization = object.authorization?.map(e => authz_1.GrantAuthorization.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

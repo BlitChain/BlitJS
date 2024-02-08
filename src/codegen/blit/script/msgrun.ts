@@ -18,13 +18,13 @@ export interface MsgRunProtoMsg {
 }
 /** MsgRun runs a script at a specific address */
 export interface MsgRunAmino {
-  caller_address: string;
-  script_address: string;
-  extra_code: string;
-  function_name: string;
-  kwargs: string;
-  grantee: string;
-  attached_messages: string;
+  caller_address?: string;
+  script_address?: string;
+  extra_code?: string;
+  function_name?: string;
+  kwargs?: string;
+  grantee?: string;
+  attached_messages?: string;
 }
 export interface MsgRunAminoMsg {
   type: "/blit.script.MsgRun";
@@ -48,7 +48,7 @@ export interface MsgRunResponseProtoMsg {
   value: Uint8Array;
 }
 export interface MsgRunResponseAmino {
-  response: string;
+  response?: string;
 }
 export interface MsgRunResponseAminoMsg {
   type: "/blit.script.MsgRunResponse";
@@ -163,15 +163,29 @@ export const MsgRun = {
     return message;
   },
   fromAmino(object: MsgRunAmino): MsgRun {
-    return {
-      caller_address: object.caller_address,
-      script_address: object.script_address,
-      extra_code: object.extra_code,
-      function_name: object.function_name,
-      kwargs: object.kwargs,
-      grantee: object.grantee,
-      attached_messages: object.attached_messages
-    };
+    const message = createBaseMsgRun();
+    if (object.caller_address !== undefined && object.caller_address !== null) {
+      message.caller_address = object.caller_address;
+    }
+    if (object.script_address !== undefined && object.script_address !== null) {
+      message.script_address = object.script_address;
+    }
+    if (object.extra_code !== undefined && object.extra_code !== null) {
+      message.extra_code = object.extra_code;
+    }
+    if (object.function_name !== undefined && object.function_name !== null) {
+      message.function_name = object.function_name;
+    }
+    if (object.kwargs !== undefined && object.kwargs !== null) {
+      message.kwargs = object.kwargs;
+    }
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    if (object.attached_messages !== undefined && object.attached_messages !== null) {
+      message.attached_messages = object.attached_messages;
+    }
+    return message;
   },
   toAmino(message: MsgRun): MsgRunAmino {
     const obj: any = {};
@@ -246,9 +260,11 @@ export const MsgRunResponse = {
     return message;
   },
   fromAmino(object: MsgRunResponseAmino): MsgRunResponse {
-    return {
-      response: object.response
-    };
+    const message = createBaseMsgRunResponse();
+    if (object.response !== undefined && object.response !== null) {
+      message.response = object.response;
+    }
+    return message;
   },
   toAmino(message: MsgRunResponse): MsgRunResponseAmino {
     const obj: any = {};

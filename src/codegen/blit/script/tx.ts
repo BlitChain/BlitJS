@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
 export const protobufPackage = "blit.script";
@@ -17,9 +18,9 @@ export interface MsgUpdateParamsProtoMsg {
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParamsAmino {
   /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
-  authority: string;
+  authority?: string;
   /** NOTE: All parameters must be supplied. */
-  params?: ParamsAmino;
+  params: ParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
   type: "blit/x/script/MsgUpdateParams";
@@ -65,11 +66,11 @@ export interface MsgCreateScriptProtoMsg {
   value: Uint8Array;
 }
 export interface MsgCreateScriptAmino {
-  creator: string;
-  code: string;
+  creator?: string;
+  code?: string;
   /** The list of MsgUrls the create will be granted access to via authz initially */
-  msg_type_permissions: string[];
-  grantee: string;
+  msg_type_permissions?: string[];
+  grantee?: string;
 }
 export interface MsgCreateScriptAminoMsg {
   type: "/blit.script.MsgCreateScript";
@@ -89,7 +90,7 @@ export interface MsgCreateScriptResponseProtoMsg {
   value: Uint8Array;
 }
 export interface MsgCreateScriptResponseAmino {
-  address: string;
+  address?: string;
 }
 export interface MsgCreateScriptResponseAminoMsg {
   type: "/blit.script.MsgCreateScriptResponse";
@@ -108,9 +109,9 @@ export interface MsgUpdateScriptProtoMsg {
   value: Uint8Array;
 }
 export interface MsgUpdateScriptAmino {
-  address: string;
-  code: string;
-  grantee: string;
+  address?: string;
+  code?: string;
+  grantee?: string;
 }
 export interface MsgUpdateScriptAminoMsg {
   type: "/blit.script.MsgUpdateScript";
@@ -129,7 +130,7 @@ export interface MsgUpdateScriptResponseProtoMsg {
   value: Uint8Array;
 }
 export interface MsgUpdateScriptResponseAmino {
-  version: string;
+  version?: string;
 }
 export interface MsgUpdateScriptResponseAminoMsg {
   type: "/blit.script.MsgUpdateScriptResponse";
@@ -147,8 +148,8 @@ export interface MsgDeleteScriptProtoMsg {
   value: Uint8Array;
 }
 export interface MsgDeleteScriptAmino {
-  address: string;
-  index: string;
+  address?: string;
+  index?: string;
 }
 export interface MsgDeleteScriptAminoMsg {
   type: "/blit.script.MsgDeleteScript";
@@ -177,21 +178,24 @@ export interface MsgRun {
   function_name: string;
   kwargs: string;
   grantee: string;
-  attached_messages: string;
+  attached_messages: (Any)[] | Any[];
 }
 export interface MsgRunProtoMsg {
   type_url: "/blit.script.MsgRun";
   value: Uint8Array;
 }
+export type MsgRunEncoded = Omit<MsgRun, "attached_messages"> & {
+  attached_messages: (AnyProtoMsg)[];
+};
 /** MsgRun runs a script at a specific address */
 export interface MsgRunAmino {
-  caller_address: string;
-  script_address: string;
-  extra_code: string;
-  function_name: string;
-  kwargs: string;
-  grantee: string;
-  attached_messages: string;
+  caller_address?: string;
+  script_address?: string;
+  extra_code?: string;
+  function_name?: string;
+  kwargs?: string;
+  grantee?: string;
+  attached_messages?: AnyAmino[];
 }
 export interface MsgRunAminoMsg {
   type: "/blit.script.MsgRun";
@@ -205,7 +209,7 @@ export interface MsgRunSDKType {
   function_name: string;
   kwargs: string;
   grantee: string;
-  attached_messages: string;
+  attached_messages: (AnySDKType)[];
 }
 export interface MsgRunResponse {
   response: string;
@@ -215,7 +219,7 @@ export interface MsgRunResponseProtoMsg {
   value: Uint8Array;
 }
 export interface MsgRunResponseAmino {
-  response: string;
+  response?: string;
 }
 export interface MsgRunResponseAminoMsg {
   type: "/blit.script.MsgRunResponse";
@@ -280,15 +284,19 @@ export const MsgUpdateParams = {
     return message;
   },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
-    return {
-      authority: object.authority,
-      params: object?.params ? Params.fromAmino(object.params) : undefined
-    };
+    const message = createBaseMsgUpdateParams();
+    if (object.authority !== undefined && object.authority !== null) {
+      message.authority = object.authority;
+    }
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    return message;
   },
   toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino {
     const obj: any = {};
     obj.authority = message.authority;
-    obj.params = message.params ? Params.toAmino(message.params) : undefined;
+    obj.params = message.params ? Params.toAmino(message.params) : Params.fromPartial({});
     return obj;
   },
   fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams {
@@ -347,7 +355,8 @@ export const MsgUpdateParamsResponse = {
     return message;
   },
   fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse {
-    return {};
+    const message = createBaseMsgUpdateParamsResponse();
+    return message;
   },
   toAmino(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseAmino {
     const obj: any = {};
@@ -449,12 +458,18 @@ export const MsgCreateScript = {
     return message;
   },
   fromAmino(object: MsgCreateScriptAmino): MsgCreateScript {
-    return {
-      creator: object.creator,
-      code: object.code,
-      msg_type_permissions: Array.isArray(object?.msg_type_permissions) ? object.msg_type_permissions.map((e: any) => e) : [],
-      grantee: object.grantee
-    };
+    const message = createBaseMsgCreateScript();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.code !== undefined && object.code !== null) {
+      message.code = object.code;
+    }
+    message.msg_type_permissions = object.msg_type_permissions?.map(e => e) || [];
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    return message;
   },
   toAmino(message: MsgCreateScript): MsgCreateScriptAmino {
     const obj: any = {};
@@ -530,9 +545,11 @@ export const MsgCreateScriptResponse = {
     return message;
   },
   fromAmino(object: MsgCreateScriptResponseAmino): MsgCreateScriptResponse {
-    return {
-      address: object.address
-    };
+    const message = createBaseMsgCreateScriptResponse();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    return message;
   },
   toAmino(message: MsgCreateScriptResponse): MsgCreateScriptResponseAmino {
     const obj: any = {};
@@ -621,11 +638,17 @@ export const MsgUpdateScript = {
     return message;
   },
   fromAmino(object: MsgUpdateScriptAmino): MsgUpdateScript {
-    return {
-      address: object.address,
-      code: object.code,
-      grantee: object.grantee
-    };
+    const message = createBaseMsgUpdateScript();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.code !== undefined && object.code !== null) {
+      message.code = object.code;
+    }
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    return message;
   },
   toAmino(message: MsgUpdateScript): MsgUpdateScriptAmino {
     const obj: any = {};
@@ -696,9 +719,11 @@ export const MsgUpdateScriptResponse = {
     return message;
   },
   fromAmino(object: MsgUpdateScriptResponseAmino): MsgUpdateScriptResponse {
-    return {
-      version: BigInt(object.version)
-    };
+    const message = createBaseMsgUpdateScriptResponse();
+    if (object.version !== undefined && object.version !== null) {
+      message.version = BigInt(object.version);
+    }
+    return message;
   },
   toAmino(message: MsgUpdateScriptResponse): MsgUpdateScriptResponseAmino {
     const obj: any = {};
@@ -777,10 +802,14 @@ export const MsgDeleteScript = {
     return message;
   },
   fromAmino(object: MsgDeleteScriptAmino): MsgDeleteScript {
-    return {
-      address: object.address,
-      index: object.index
-    };
+    const message = createBaseMsgDeleteScript();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.index !== undefined && object.index !== null) {
+      message.index = object.index;
+    }
+    return message;
   },
   toAmino(message: MsgDeleteScript): MsgDeleteScriptAmino {
     const obj: any = {};
@@ -838,7 +867,8 @@ export const MsgDeleteScriptResponse = {
     return message;
   },
   fromAmino(_: MsgDeleteScriptResponseAmino): MsgDeleteScriptResponse {
-    return {};
+    const message = createBaseMsgDeleteScriptResponse();
+    return message;
   },
   toAmino(_: MsgDeleteScriptResponse): MsgDeleteScriptResponseAmino {
     const obj: any = {};
@@ -868,7 +898,7 @@ function createBaseMsgRun(): MsgRun {
     function_name: "",
     kwargs: "",
     grantee: "",
-    attached_messages: ""
+    attached_messages: []
   };
 }
 export const MsgRun = {
@@ -892,8 +922,8 @@ export const MsgRun = {
     if (message.grantee !== "") {
       writer.uint32(58).string(message.grantee);
     }
-    if (message.attached_messages !== "") {
-      writer.uint32(10).string(message.attached_messages);
+    for (const v of message.attached_messages) {
+      Any.encode((v! as Any), writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
@@ -923,7 +953,7 @@ export const MsgRun = {
           message.grantee = reader.string();
           break;
         case 1:
-          message.attached_messages = reader.string();
+          message.attached_messages.push((Any.decode(reader, reader.uint32()) as Any));
           break;
         default:
           reader.skipType(tag & 7);
@@ -940,7 +970,7 @@ export const MsgRun = {
       function_name: isSet(object.function_name) ? String(object.function_name) : "",
       kwargs: isSet(object.kwargs) ? String(object.kwargs) : "",
       grantee: isSet(object.grantee) ? String(object.grantee) : "",
-      attached_messages: isSet(object.attached_messages) ? String(object.attached_messages) : ""
+      attached_messages: Array.isArray(object?.attached_messages) ? object.attached_messages.map((e: any) => Any.fromJSON(e)) : []
     };
   },
   toJSON(message: MsgRun): unknown {
@@ -951,7 +981,11 @@ export const MsgRun = {
     message.function_name !== undefined && (obj.function_name = message.function_name);
     message.kwargs !== undefined && (obj.kwargs = message.kwargs);
     message.grantee !== undefined && (obj.grantee = message.grantee);
-    message.attached_messages !== undefined && (obj.attached_messages = message.attached_messages);
+    if (message.attached_messages) {
+      obj.attached_messages = message.attached_messages.map(e => e ? Any.toJSON(e) : undefined);
+    } else {
+      obj.attached_messages = [];
+    }
     return obj;
   },
   fromPartial(object: Partial<MsgRun>): MsgRun {
@@ -962,19 +996,31 @@ export const MsgRun = {
     message.function_name = object.function_name ?? "";
     message.kwargs = object.kwargs ?? "";
     message.grantee = object.grantee ?? "";
-    message.attached_messages = object.attached_messages ?? "";
+    message.attached_messages = object.attached_messages?.map(e => Any.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: MsgRunAmino): MsgRun {
-    return {
-      caller_address: object.caller_address,
-      script_address: object.script_address,
-      extra_code: object.extra_code,
-      function_name: object.function_name,
-      kwargs: object.kwargs,
-      grantee: object.grantee,
-      attached_messages: object.attached_messages
-    };
+    const message = createBaseMsgRun();
+    if (object.caller_address !== undefined && object.caller_address !== null) {
+      message.caller_address = object.caller_address;
+    }
+    if (object.script_address !== undefined && object.script_address !== null) {
+      message.script_address = object.script_address;
+    }
+    if (object.extra_code !== undefined && object.extra_code !== null) {
+      message.extra_code = object.extra_code;
+    }
+    if (object.function_name !== undefined && object.function_name !== null) {
+      message.function_name = object.function_name;
+    }
+    if (object.kwargs !== undefined && object.kwargs !== null) {
+      message.kwargs = object.kwargs;
+    }
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    message.attached_messages = object.attached_messages?.map(e => Cosmos_basev1beta1Msg_FromAmino(e)) || [];
+    return message;
   },
   toAmino(message: MsgRun): MsgRunAmino {
     const obj: any = {};
@@ -984,7 +1030,11 @@ export const MsgRun = {
     obj.function_name = message.function_name;
     obj.kwargs = message.kwargs;
     obj.grantee = message.grantee;
-    obj.attached_messages = message.attached_messages;
+    if (message.attached_messages) {
+      obj.attached_messages = message.attached_messages.map(e => e ? Cosmos_basev1beta1Msg_ToAmino((e as Any)) : undefined);
+    } else {
+      obj.attached_messages = [];
+    }
     return obj;
   },
   fromAminoMsg(object: MsgRunAminoMsg): MsgRun {
@@ -1049,9 +1099,11 @@ export const MsgRunResponse = {
     return message;
   },
   fromAmino(object: MsgRunResponseAmino): MsgRunResponse {
-    return {
-      response: object.response
-    };
+    const message = createBaseMsgRunResponse();
+    if (object.response !== undefined && object.response !== null) {
+      message.response = object.response;
+    }
+    return message;
   },
   toAmino(message: MsgRunResponse): MsgRunResponseAmino {
     const obj: any = {};
@@ -1073,4 +1125,18 @@ export const MsgRunResponse = {
       value: MsgRunResponse.encode(message).finish()
     };
   }
+};
+export const Cosmos_basev1beta1Msg_InterfaceDecoder = (input: BinaryReader | Uint8Array): Any => {
+  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  const data = Any.decode(reader, reader.uint32());
+  switch (data.typeUrl) {
+    default:
+      return data;
+  }
+};
+export const Cosmos_basev1beta1Msg_FromAmino = (content: AnyAmino) => {
+  return Any.fromAmino(content);
+};
+export const Cosmos_basev1beta1Msg_ToAmino = (content: Any) => {
+  return Any.toAmino(content);
 };

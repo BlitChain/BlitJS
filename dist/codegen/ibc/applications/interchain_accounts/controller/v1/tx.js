@@ -73,11 +73,17 @@ exports.MsgRegisterInterchainAccount = {
         return message;
     },
     fromAmino(object) {
-        return {
-            owner: object.owner,
-            connection_id: object.connection_id,
-            version: object.version
-        };
+        const message = createBaseMsgRegisterInterchainAccount();
+        if (object.owner !== undefined && object.owner !== null) {
+            message.owner = object.owner;
+        }
+        if (object.connection_id !== undefined && object.connection_id !== null) {
+            message.connection_id = object.connection_id;
+        }
+        if (object.version !== undefined && object.version !== null) {
+            message.version = object.version;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -164,10 +170,14 @@ exports.MsgRegisterInterchainAccountResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            channel_id: object.channel_id,
-            port_id: object.port_id
-        };
+        const message = createBaseMsgRegisterInterchainAccountResponse();
+        if (object.channel_id !== undefined && object.channel_id !== null) {
+            message.channel_id = object.channel_id;
+        }
+        if (object.port_id !== undefined && object.port_id !== null) {
+            message.port_id = object.port_id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -273,12 +283,20 @@ exports.MsgSendTx = {
         return message;
     },
     fromAmino(object) {
-        return {
-            owner: object.owner,
-            connection_id: object.connection_id,
-            packet_data: object?.packet_data ? packet_1.InterchainAccountPacketData.fromAmino(object.packet_data) : undefined,
-            relative_timeout: BigInt(object.relative_timeout)
-        };
+        const message = createBaseMsgSendTx();
+        if (object.owner !== undefined && object.owner !== null) {
+            message.owner = object.owner;
+        }
+        if (object.connection_id !== undefined && object.connection_id !== null) {
+            message.connection_id = object.connection_id;
+        }
+        if (object.packet_data !== undefined && object.packet_data !== null) {
+            message.packet_data = packet_1.InterchainAccountPacketData.fromAmino(object.packet_data);
+        }
+        if (object.relative_timeout !== undefined && object.relative_timeout !== null) {
+            message.relative_timeout = BigInt(object.relative_timeout);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -356,9 +374,11 @@ exports.MsgSendTxResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            sequence: BigInt(object.sequence)
-        };
+        const message = createBaseMsgSendTxResponse();
+        if (object.sequence !== undefined && object.sequence !== null) {
+            message.sequence = BigInt(object.sequence);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -443,10 +463,14 @@ exports.MsgUpdateParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            signer: object.signer,
-            params: object?.params ? controller_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseMsgUpdateParams();
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        if (object.params !== undefined && object.params !== null) {
+            message.params = controller_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -510,7 +534,8 @@ exports.MsgUpdateParamsResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgUpdateParamsResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};

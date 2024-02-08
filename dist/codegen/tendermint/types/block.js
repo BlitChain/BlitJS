@@ -83,12 +83,20 @@ exports.Block = {
         return message;
     },
     fromAmino(object) {
-        return {
-            header: object?.header ? types_1.Header.fromAmino(object.header) : undefined,
-            data: object?.data ? types_1.Data.fromAmino(object.data) : undefined,
-            evidence: object?.evidence ? evidence_1.EvidenceList.fromAmino(object.evidence) : undefined,
-            last_commit: object?.last_commit ? types_1.Commit.fromAmino(object.last_commit) : undefined
-        };
+        const message = createBaseBlock();
+        if (object.header !== undefined && object.header !== null) {
+            message.header = types_1.Header.fromAmino(object.header);
+        }
+        if (object.data !== undefined && object.data !== null) {
+            message.data = types_1.Data.fromAmino(object.data);
+        }
+        if (object.evidence !== undefined && object.evidence !== null) {
+            message.evidence = evidence_1.EvidenceList.fromAmino(object.evidence);
+        }
+        if (object.last_commit !== undefined && object.last_commit !== null) {
+            message.last_commit = types_1.Commit.fromAmino(object.last_commit);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

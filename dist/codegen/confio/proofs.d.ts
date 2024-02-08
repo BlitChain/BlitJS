@@ -99,10 +99,10 @@ export interface ExistenceProofProtoMsg {
  * length-prefix the data before hashing it.
  */
 export interface ExistenceProofAmino {
-    key: Uint8Array;
-    value: Uint8Array;
+    key?: string;
+    value?: string;
     leaf?: LeafOpAmino;
-    path: InnerOpAmino[];
+    path?: InnerOpAmino[];
 }
 export interface ExistenceProofAminoMsg {
     type: "/ics23.ExistenceProof";
@@ -157,7 +157,7 @@ export interface NonExistenceProofProtoMsg {
  */
 export interface NonExistenceProofAmino {
     /** TODO: remove this as unnecessary??? we prove a range */
-    key: Uint8Array;
+    key?: string;
     left?: ExistenceProofAmino;
     right?: ExistenceProofAmino;
 }
@@ -252,15 +252,15 @@ export interface LeafOpProtoMsg {
  * output = hash(prefix || length(hkey) || hkey || length(hvalue) || hvalue)
  */
 export interface LeafOpAmino {
-    hash: HashOp;
-    prehash_key: HashOp;
-    prehash_value: HashOp;
-    length: LengthOp;
+    hash?: HashOp;
+    prehash_key?: HashOp;
+    prehash_value?: HashOp;
+    length?: LengthOp;
     /**
      * prefix is a fixed bytes that may optionally be included at the beginning to differentiate
      * a leaf node from an inner node.
      */
-    prefix: Uint8Array;
+    prefix?: string;
 }
 export interface LeafOpAminoMsg {
     type: "/ics23.LeafOp";
@@ -333,9 +333,9 @@ export interface InnerOpProtoMsg {
  * If either of prefix or suffix is empty, we just treat it as an empty string
  */
 export interface InnerOpAmino {
-    hash: HashOp;
-    prefix: Uint8Array;
-    suffix: Uint8Array;
+    hash?: HashOp;
+    prefix?: string;
+    suffix?: string;
 }
 export interface InnerOpAminoMsg {
     type: "/ics23.InnerOp";
@@ -411,9 +411,9 @@ export interface ProofSpecAmino {
     leaf_spec?: LeafOpAmino;
     inner_spec?: InnerSpecAmino;
     /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
-    max_depth: number;
+    max_depth?: number;
     /** min_depth (if > 0) is the minimum number of InnerOps allowed (mainly for fixed-depth tries) */
-    min_depth: number;
+    min_depth?: number;
 }
 export interface ProofSpecAminoMsg {
     type: "/ics23.ProofSpec";
@@ -482,14 +482,14 @@ export interface InnerSpecAmino {
      * iavl tree is [0, 1] (left then right)
      * merk is [0, 2, 1] (left, right, here)
      */
-    child_order: number[];
-    child_size: number;
-    min_prefix_length: number;
-    max_prefix_length: number;
+    child_order?: number[];
+    child_size?: number;
+    min_prefix_length?: number;
+    max_prefix_length?: number;
     /** empty child is the prehash image that is used when one child is nil (eg. 20 bytes of 0) */
-    empty_child: Uint8Array;
+    empty_child?: string;
     /** hash is the algorithm that must be used for each InnerOp */
-    hash: HashOp;
+    hash?: HashOp;
 }
 export interface InnerSpecAminoMsg {
     type: "/ics23.InnerSpec";
@@ -523,7 +523,7 @@ export interface BatchProofProtoMsg {
 }
 /** BatchProof is a group of multiple proof types than can be compressed */
 export interface BatchProofAmino {
-    entries: BatchEntryAmino[];
+    entries?: BatchEntryAmino[];
 }
 export interface BatchProofAminoMsg {
     type: "/ics23.BatchProof";
@@ -565,8 +565,8 @@ export interface CompressedBatchProofProtoMsg {
     value: Uint8Array;
 }
 export interface CompressedBatchProofAmino {
-    entries: CompressedBatchEntryAmino[];
-    lookup_inners: InnerOpAmino[];
+    entries?: CompressedBatchEntryAmino[];
+    lookup_inners?: InnerOpAmino[];
 }
 export interface CompressedBatchProofAminoMsg {
     type: "/ics23.CompressedBatchProof";
@@ -611,11 +611,11 @@ export interface CompressedExistenceProofProtoMsg {
     value: Uint8Array;
 }
 export interface CompressedExistenceProofAmino {
-    key: Uint8Array;
-    value: Uint8Array;
+    key?: string;
+    value?: string;
     leaf?: LeafOpAmino;
     /** these are indexes into the lookup_inners table in CompressedBatchProof */
-    path: number[];
+    path?: number[];
 }
 export interface CompressedExistenceProofAminoMsg {
     type: "/ics23.CompressedExistenceProof";
@@ -639,7 +639,7 @@ export interface CompressedNonExistenceProofProtoMsg {
 }
 export interface CompressedNonExistenceProofAmino {
     /** TODO: remove this as unnecessary??? we prove a range */
-    key: Uint8Array;
+    key?: string;
     left?: CompressedExistenceProofAmino;
     right?: CompressedExistenceProofAmino;
 }

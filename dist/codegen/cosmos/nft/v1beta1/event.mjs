@@ -78,12 +78,20 @@ export const EventSend = {
         return message;
     },
     fromAmino(object) {
-        return {
-            class_id: object.class_id,
-            id: object.id,
-            sender: object.sender,
-            receiver: object.receiver
-        };
+        const message = createBaseEventSend();
+        if (object.class_id !== undefined && object.class_id !== null) {
+            message.class_id = object.class_id;
+        }
+        if (object.id !== undefined && object.id !== null) {
+            message.id = object.id;
+        }
+        if (object.sender !== undefined && object.sender !== null) {
+            message.sender = object.sender;
+        }
+        if (object.receiver !== undefined && object.receiver !== null) {
+            message.receiver = object.receiver;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -181,11 +189,17 @@ export const EventMint = {
         return message;
     },
     fromAmino(object) {
-        return {
-            class_id: object.class_id,
-            id: object.id,
-            owner: object.owner
-        };
+        const message = createBaseEventMint();
+        if (object.class_id !== undefined && object.class_id !== null) {
+            message.class_id = object.class_id;
+        }
+        if (object.id !== undefined && object.id !== null) {
+            message.id = object.id;
+        }
+        if (object.owner !== undefined && object.owner !== null) {
+            message.owner = object.owner;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -282,11 +296,17 @@ export const EventBurn = {
         return message;
     },
     fromAmino(object) {
-        return {
-            class_id: object.class_id,
-            id: object.id,
-            owner: object.owner
-        };
+        const message = createBaseEventBurn();
+        if (object.class_id !== undefined && object.class_id !== null) {
+            message.class_id = object.class_id;
+        }
+        if (object.id !== undefined && object.id !== null) {
+            message.id = object.id;
+        }
+        if (object.owner !== undefined && object.owner !== null) {
+            message.owner = object.owner;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

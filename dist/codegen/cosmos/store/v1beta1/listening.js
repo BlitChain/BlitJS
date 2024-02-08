@@ -82,19 +82,27 @@ exports.StoreKVPair = {
         return message;
     },
     fromAmino(object) {
-        return {
-            store_key: object.store_key,
-            delete: object.delete,
-            key: object.key,
-            value: object.value
-        };
+        const message = createBaseStoreKVPair();
+        if (object.store_key !== undefined && object.store_key !== null) {
+            message.store_key = object.store_key;
+        }
+        if (object.delete !== undefined && object.delete !== null) {
+            message.delete = object.delete;
+        }
+        if (object.key !== undefined && object.key !== null) {
+            message.key = (0, helpers_1.bytesFromBase64)(object.key);
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = (0, helpers_1.bytesFromBase64)(object.value);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.store_key = message.store_key;
         obj.delete = message.delete;
-        obj.key = message.key;
-        obj.value = message.value;
+        obj.key = message.key ? (0, helpers_1.base64FromBytes)(message.key) : undefined;
+        obj.value = message.value ? (0, helpers_1.base64FromBytes)(message.value) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -185,11 +193,17 @@ exports.BlockMetadata = {
         return message;
     },
     fromAmino(object) {
-        return {
-            response_commit: object?.response_commit ? types_1.ResponseCommit.fromAmino(object.response_commit) : undefined,
-            request_finalize_block: object?.request_finalize_block ? types_1.RequestFinalizeBlock.fromAmino(object.request_finalize_block) : undefined,
-            response_finalize_block: object?.response_finalize_block ? types_1.ResponseFinalizeBlock.fromAmino(object.response_finalize_block) : undefined
-        };
+        const message = createBaseBlockMetadata();
+        if (object.response_commit !== undefined && object.response_commit !== null) {
+            message.response_commit = types_1.ResponseCommit.fromAmino(object.response_commit);
+        }
+        if (object.request_finalize_block !== undefined && object.request_finalize_block !== null) {
+            message.request_finalize_block = types_1.RequestFinalizeBlock.fromAmino(object.request_finalize_block);
+        }
+        if (object.response_finalize_block !== undefined && object.response_finalize_block !== null) {
+            message.response_finalize_block = types_1.ResponseFinalizeBlock.fromAmino(object.response_finalize_block);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

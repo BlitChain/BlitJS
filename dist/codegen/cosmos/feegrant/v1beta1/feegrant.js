@@ -71,10 +71,12 @@ exports.BasicAllowance = {
         return message;
     },
     fromAmino(object) {
-        return {
-            spend_limit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            expiration: object?.expiration ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.expiration)) : undefined
-        };
+        const message = createBaseBasicAllowance();
+        message.spend_limit = object.spend_limit?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.expiration !== undefined && object.expiration !== null) {
+            message.expiration = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.expiration));
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -206,18 +208,24 @@ exports.PeriodicAllowance = {
         return message;
     },
     fromAmino(object) {
-        return {
-            basic: object?.basic ? exports.BasicAllowance.fromAmino(object.basic) : undefined,
-            period: object?.period ? duration_1.Duration.fromAmino(object.period) : undefined,
-            period_spend_limit: Array.isArray(object?.period_spend_limit) ? object.period_spend_limit.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            period_can_spend: Array.isArray(object?.period_can_spend) ? object.period_can_spend.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            period_reset: object?.period_reset ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.period_reset)) : undefined
-        };
+        const message = createBasePeriodicAllowance();
+        if (object.basic !== undefined && object.basic !== null) {
+            message.basic = exports.BasicAllowance.fromAmino(object.basic);
+        }
+        if (object.period !== undefined && object.period !== null) {
+            message.period = duration_1.Duration.fromAmino(object.period);
+        }
+        message.period_spend_limit = object.period_spend_limit?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        message.period_can_spend = object.period_can_spend?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.period_reset !== undefined && object.period_reset !== null) {
+            message.period_reset = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.period_reset));
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.basic = message.basic ? exports.BasicAllowance.toAmino(message.basic) : undefined;
-        obj.period = message.period ? duration_1.Duration.toAmino(message.period) : undefined;
+        obj.basic = message.basic ? exports.BasicAllowance.toAmino(message.basic) : exports.BasicAllowance.fromPartial({});
+        obj.period = message.period ? duration_1.Duration.toAmino(message.period) : duration_1.Duration.fromPartial({});
         if (message.period_spend_limit) {
             obj.period_spend_limit = message.period_spend_limit.map(e => e ? coin_1.Coin.toAmino(e) : undefined);
         }
@@ -230,7 +238,7 @@ exports.PeriodicAllowance = {
         else {
             obj.period_can_spend = [];
         }
-        obj.period_reset = message.period_reset ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.period_reset)) : undefined;
+        obj.period_reset = message.period_reset ? timestamp_1.Timestamp.toAmino((0, helpers_1.toTimestamp)(message.period_reset)) : new Date();
         return obj;
     },
     fromAminoMsg(object) {
@@ -317,10 +325,12 @@ exports.AllowedMsgAllowance = {
         return message;
     },
     fromAmino(object) {
-        return {
-            allowance: object?.allowance ? (0, exports.Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino)(object.allowance) : undefined,
-            allowed_messages: Array.isArray(object?.allowed_messages) ? object.allowed_messages.map((e) => e) : []
-        };
+        const message = createBaseAllowedMsgAllowance();
+        if (object.allowance !== undefined && object.allowance !== null) {
+            message.allowance = (0, exports.Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino)(object.allowance);
+        }
+        message.allowed_messages = object.allowed_messages?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -421,11 +431,17 @@ exports.Grant = {
         return message;
     },
     fromAmino(object) {
-        return {
-            granter: object.granter,
-            grantee: object.grantee,
-            allowance: object?.allowance ? (0, exports.Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino)(object.allowance) : undefined
-        };
+        const message = createBaseGrant();
+        if (object.granter !== undefined && object.granter !== null) {
+            message.granter = object.granter;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        if (object.allowance !== undefined && object.allowance !== null) {
+            message.allowance = (0, exports.Cosmos_feegrantv1beta1FeeAllowanceI_FromAmino)(object.allowance);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -458,14 +474,14 @@ exports.Grant = {
 };
 const Cosmos_feegrantv1beta1FeeAllowanceI_InterfaceDecoder = (input) => {
     const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
-    const data = any_1.Any.decode(reader, reader.uint32(), true);
+    const data = any_1.Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
         case "/cosmos.feegrant.v1beta1.BasicAllowance":
-            return exports.BasicAllowance.decode(data.value, undefined, true);
+            return exports.BasicAllowance.decode(data.value);
         case "/cosmos.feegrant.v1beta1.PeriodicAllowance":
-            return exports.PeriodicAllowance.decode(data.value, undefined, true);
+            return exports.PeriodicAllowance.decode(data.value);
         case "/cosmos.feegrant.v1beta1.AllowedMsgAllowance":
-            return exports.AllowedMsgAllowance.decode(data.value, undefined, true);
+            return exports.AllowedMsgAllowance.decode(data.value);
         default:
             return data;
     }

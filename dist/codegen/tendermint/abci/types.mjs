@@ -485,24 +485,56 @@ export const Request = {
         return message;
     },
     fromAmino(object) {
-        return {
-            echo: object?.echo ? RequestEcho.fromAmino(object.echo) : undefined,
-            flush: object?.flush ? RequestFlush.fromAmino(object.flush) : undefined,
-            info: object?.info ? RequestInfo.fromAmino(object.info) : undefined,
-            init_chain: object?.init_chain ? RequestInitChain.fromAmino(object.init_chain) : undefined,
-            query: object?.query ? RequestQuery.fromAmino(object.query) : undefined,
-            check_tx: object?.check_tx ? RequestCheckTx.fromAmino(object.check_tx) : undefined,
-            commit: object?.commit ? RequestCommit.fromAmino(object.commit) : undefined,
-            list_snapshots: object?.list_snapshots ? RequestListSnapshots.fromAmino(object.list_snapshots) : undefined,
-            offer_snapshot: object?.offer_snapshot ? RequestOfferSnapshot.fromAmino(object.offer_snapshot) : undefined,
-            load_snapshot_chunk: object?.load_snapshot_chunk ? RequestLoadSnapshotChunk.fromAmino(object.load_snapshot_chunk) : undefined,
-            apply_snapshot_chunk: object?.apply_snapshot_chunk ? RequestApplySnapshotChunk.fromAmino(object.apply_snapshot_chunk) : undefined,
-            prepare_proposal: object?.prepare_proposal ? RequestPrepareProposal.fromAmino(object.prepare_proposal) : undefined,
-            process_proposal: object?.process_proposal ? RequestProcessProposal.fromAmino(object.process_proposal) : undefined,
-            extend_vote: object?.extend_vote ? RequestExtendVote.fromAmino(object.extend_vote) : undefined,
-            verify_vote_extension: object?.verify_vote_extension ? RequestVerifyVoteExtension.fromAmino(object.verify_vote_extension) : undefined,
-            finalize_block: object?.finalize_block ? RequestFinalizeBlock.fromAmino(object.finalize_block) : undefined
-        };
+        const message = createBaseRequest();
+        if (object.echo !== undefined && object.echo !== null) {
+            message.echo = RequestEcho.fromAmino(object.echo);
+        }
+        if (object.flush !== undefined && object.flush !== null) {
+            message.flush = RequestFlush.fromAmino(object.flush);
+        }
+        if (object.info !== undefined && object.info !== null) {
+            message.info = RequestInfo.fromAmino(object.info);
+        }
+        if (object.init_chain !== undefined && object.init_chain !== null) {
+            message.init_chain = RequestInitChain.fromAmino(object.init_chain);
+        }
+        if (object.query !== undefined && object.query !== null) {
+            message.query = RequestQuery.fromAmino(object.query);
+        }
+        if (object.check_tx !== undefined && object.check_tx !== null) {
+            message.check_tx = RequestCheckTx.fromAmino(object.check_tx);
+        }
+        if (object.commit !== undefined && object.commit !== null) {
+            message.commit = RequestCommit.fromAmino(object.commit);
+        }
+        if (object.list_snapshots !== undefined && object.list_snapshots !== null) {
+            message.list_snapshots = RequestListSnapshots.fromAmino(object.list_snapshots);
+        }
+        if (object.offer_snapshot !== undefined && object.offer_snapshot !== null) {
+            message.offer_snapshot = RequestOfferSnapshot.fromAmino(object.offer_snapshot);
+        }
+        if (object.load_snapshot_chunk !== undefined && object.load_snapshot_chunk !== null) {
+            message.load_snapshot_chunk = RequestLoadSnapshotChunk.fromAmino(object.load_snapshot_chunk);
+        }
+        if (object.apply_snapshot_chunk !== undefined && object.apply_snapshot_chunk !== null) {
+            message.apply_snapshot_chunk = RequestApplySnapshotChunk.fromAmino(object.apply_snapshot_chunk);
+        }
+        if (object.prepare_proposal !== undefined && object.prepare_proposal !== null) {
+            message.prepare_proposal = RequestPrepareProposal.fromAmino(object.prepare_proposal);
+        }
+        if (object.process_proposal !== undefined && object.process_proposal !== null) {
+            message.process_proposal = RequestProcessProposal.fromAmino(object.process_proposal);
+        }
+        if (object.extend_vote !== undefined && object.extend_vote !== null) {
+            message.extend_vote = RequestExtendVote.fromAmino(object.extend_vote);
+        }
+        if (object.verify_vote_extension !== undefined && object.verify_vote_extension !== null) {
+            message.verify_vote_extension = RequestVerifyVoteExtension.fromAmino(object.verify_vote_extension);
+        }
+        if (object.finalize_block !== undefined && object.finalize_block !== null) {
+            message.finalize_block = RequestFinalizeBlock.fromAmino(object.finalize_block);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -586,9 +618,11 @@ export const RequestEcho = {
         return message;
     },
     fromAmino(object) {
-        return {
-            message: object.message
-        };
+        const message = createBaseRequestEcho();
+        if (object.message !== undefined && object.message !== null) {
+            message.message = object.message;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -645,7 +679,8 @@ export const RequestFlush = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseRequestFlush();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -743,12 +778,20 @@ export const RequestInfo = {
         return message;
     },
     fromAmino(object) {
-        return {
-            version: object.version,
-            block_version: BigInt(object.block_version),
-            p2p_version: BigInt(object.p2p_version),
-            abci_version: object.abci_version
-        };
+        const message = createBaseRequestInfo();
+        if (object.version !== undefined && object.version !== null) {
+            message.version = object.version;
+        }
+        if (object.block_version !== undefined && object.block_version !== null) {
+            message.block_version = BigInt(object.block_version);
+        }
+        if (object.p2p_version !== undefined && object.p2p_version !== null) {
+            message.p2p_version = BigInt(object.p2p_version);
+        }
+        if (object.abci_version !== undefined && object.abci_version !== null) {
+            message.abci_version = object.abci_version;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -875,14 +918,24 @@ export const RequestInitChain = {
         return message;
     },
     fromAmino(object) {
-        return {
-            time: object?.time ? fromTimestamp(Timestamp.fromAmino(object.time)) : undefined,
-            chain_id: object.chain_id,
-            consensus_params: object?.consensus_params ? ConsensusParams.fromAmino(object.consensus_params) : undefined,
-            validators: Array.isArray(object?.validators) ? object.validators.map((e) => ValidatorUpdate.fromAmino(e)) : [],
-            app_state_bytes: object.app_state_bytes,
-            initial_height: BigInt(object.initial_height)
-        };
+        const message = createBaseRequestInitChain();
+        if (object.time !== undefined && object.time !== null) {
+            message.time = fromTimestamp(Timestamp.fromAmino(object.time));
+        }
+        if (object.chain_id !== undefined && object.chain_id !== null) {
+            message.chain_id = object.chain_id;
+        }
+        if (object.consensus_params !== undefined && object.consensus_params !== null) {
+            message.consensus_params = ConsensusParams.fromAmino(object.consensus_params);
+        }
+        message.validators = object.validators?.map(e => ValidatorUpdate.fromAmino(e)) || [];
+        if (object.app_state_bytes !== undefined && object.app_state_bytes !== null) {
+            message.app_state_bytes = bytesFromBase64(object.app_state_bytes);
+        }
+        if (object.initial_height !== undefined && object.initial_height !== null) {
+            message.initial_height = BigInt(object.initial_height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -895,7 +948,7 @@ export const RequestInitChain = {
         else {
             obj.validators = [];
         }
-        obj.app_state_bytes = message.app_state_bytes;
+        obj.app_state_bytes = message.app_state_bytes ? base64FromBytes(message.app_state_bytes) : undefined;
         obj.initial_height = message.initial_height ? message.initial_height.toString() : undefined;
         return obj;
     },
@@ -991,16 +1044,24 @@ export const RequestQuery = {
         return message;
     },
     fromAmino(object) {
-        return {
-            data: object.data,
-            path: object.path,
-            height: BigInt(object.height),
-            prove: object.prove
-        };
+        const message = createBaseRequestQuery();
+        if (object.data !== undefined && object.data !== null) {
+            message.data = bytesFromBase64(object.data);
+        }
+        if (object.path !== undefined && object.path !== null) {
+            message.path = object.path;
+        }
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.prove !== undefined && object.prove !== null) {
+            message.prove = object.prove;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.data = message.data;
+        obj.data = message.data ? base64FromBytes(message.data) : undefined;
         obj.path = message.path;
         obj.height = message.height ? message.height.toString() : undefined;
         obj.prove = message.prove;
@@ -1078,14 +1139,18 @@ export const RequestCheckTx = {
         return message;
     },
     fromAmino(object) {
-        return {
-            tx: object.tx,
-            type: isSet(object.type) ? checkTxTypeFromJSON(object.type) : -1
-        };
+        const message = createBaseRequestCheckTx();
+        if (object.tx !== undefined && object.tx !== null) {
+            message.tx = bytesFromBase64(object.tx);
+        }
+        if (object.type !== undefined && object.type !== null) {
+            message.type = checkTxTypeFromJSON(object.type);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.tx = message.tx;
+        obj.tx = message.tx ? base64FromBytes(message.tx) : undefined;
         obj.type = message.type;
         return obj;
     },
@@ -1139,7 +1204,8 @@ export const RequestCommit = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseRequestCommit();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1195,7 +1261,8 @@ export const RequestListSnapshots = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseRequestListSnapshots();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1273,15 +1340,19 @@ export const RequestOfferSnapshot = {
         return message;
     },
     fromAmino(object) {
-        return {
-            snapshot: object?.snapshot ? Snapshot.fromAmino(object.snapshot) : undefined,
-            app_hash: object.app_hash
-        };
+        const message = createBaseRequestOfferSnapshot();
+        if (object.snapshot !== undefined && object.snapshot !== null) {
+            message.snapshot = Snapshot.fromAmino(object.snapshot);
+        }
+        if (object.app_hash !== undefined && object.app_hash !== null) {
+            message.app_hash = bytesFromBase64(object.app_hash);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.snapshot = message.snapshot ? Snapshot.toAmino(message.snapshot) : undefined;
-        obj.app_hash = message.app_hash;
+        obj.app_hash = message.app_hash ? base64FromBytes(message.app_hash) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1366,11 +1437,17 @@ export const RequestLoadSnapshotChunk = {
         return message;
     },
     fromAmino(object) {
-        return {
-            height: BigInt(object.height),
-            format: object.format,
-            chunk: object.chunk
-        };
+        const message = createBaseRequestLoadSnapshotChunk();
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.format !== undefined && object.format !== null) {
+            message.format = object.format;
+        }
+        if (object.chunk !== undefined && object.chunk !== null) {
+            message.chunk = object.chunk;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1461,16 +1538,22 @@ export const RequestApplySnapshotChunk = {
         return message;
     },
     fromAmino(object) {
-        return {
-            index: object.index,
-            chunk: object.chunk,
-            sender: object.sender
-        };
+        const message = createBaseRequestApplySnapshotChunk();
+        if (object.index !== undefined && object.index !== null) {
+            message.index = object.index;
+        }
+        if (object.chunk !== undefined && object.chunk !== null) {
+            message.chunk = bytesFromBase64(object.chunk);
+        }
+        if (object.sender !== undefined && object.sender !== null) {
+            message.sender = object.sender;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.index = message.index;
-        obj.chunk = message.chunk;
+        obj.chunk = message.chunk ? base64FromBytes(message.chunk) : undefined;
         obj.sender = message.sender;
         return obj;
     },
@@ -1616,22 +1699,34 @@ export const RequestPrepareProposal = {
         return message;
     },
     fromAmino(object) {
-        return {
-            max_tx_bytes: BigInt(object.max_tx_bytes),
-            txs: Array.isArray(object?.txs) ? object.txs.map((e) => e) : [],
-            local_last_commit: object?.local_last_commit ? ExtendedCommitInfo.fromAmino(object.local_last_commit) : undefined,
-            misbehavior: Array.isArray(object?.misbehavior) ? object.misbehavior.map((e) => Misbehavior.fromAmino(e)) : [],
-            height: BigInt(object.height),
-            time: object?.time ? fromTimestamp(Timestamp.fromAmino(object.time)) : undefined,
-            next_validators_hash: object.next_validators_hash,
-            proposer_address: object.proposer_address
-        };
+        const message = createBaseRequestPrepareProposal();
+        if (object.max_tx_bytes !== undefined && object.max_tx_bytes !== null) {
+            message.max_tx_bytes = BigInt(object.max_tx_bytes);
+        }
+        message.txs = object.txs?.map(e => bytesFromBase64(e)) || [];
+        if (object.local_last_commit !== undefined && object.local_last_commit !== null) {
+            message.local_last_commit = ExtendedCommitInfo.fromAmino(object.local_last_commit);
+        }
+        message.misbehavior = object.misbehavior?.map(e => Misbehavior.fromAmino(e)) || [];
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.time !== undefined && object.time !== null) {
+            message.time = fromTimestamp(Timestamp.fromAmino(object.time));
+        }
+        if (object.next_validators_hash !== undefined && object.next_validators_hash !== null) {
+            message.next_validators_hash = bytesFromBase64(object.next_validators_hash);
+        }
+        if (object.proposer_address !== undefined && object.proposer_address !== null) {
+            message.proposer_address = bytesFromBase64(object.proposer_address);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.max_tx_bytes = message.max_tx_bytes ? message.max_tx_bytes.toString() : undefined;
         if (message.txs) {
-            obj.txs = message.txs.map(e => e);
+            obj.txs = message.txs.map(e => base64FromBytes(e));
         }
         else {
             obj.txs = [];
@@ -1645,8 +1740,8 @@ export const RequestPrepareProposal = {
         }
         obj.height = message.height ? message.height.toString() : undefined;
         obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : undefined;
-        obj.next_validators_hash = message.next_validators_hash;
-        obj.proposer_address = message.proposer_address;
+        obj.next_validators_hash = message.next_validators_hash ? base64FromBytes(message.next_validators_hash) : undefined;
+        obj.proposer_address = message.proposer_address ? base64FromBytes(message.proposer_address) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1791,21 +1886,33 @@ export const RequestProcessProposal = {
         return message;
     },
     fromAmino(object) {
-        return {
-            txs: Array.isArray(object?.txs) ? object.txs.map((e) => e) : [],
-            proposed_last_commit: object?.proposed_last_commit ? CommitInfo.fromAmino(object.proposed_last_commit) : undefined,
-            misbehavior: Array.isArray(object?.misbehavior) ? object.misbehavior.map((e) => Misbehavior.fromAmino(e)) : [],
-            hash: object.hash,
-            height: BigInt(object.height),
-            time: object?.time ? fromTimestamp(Timestamp.fromAmino(object.time)) : undefined,
-            next_validators_hash: object.next_validators_hash,
-            proposer_address: object.proposer_address
-        };
+        const message = createBaseRequestProcessProposal();
+        message.txs = object.txs?.map(e => bytesFromBase64(e)) || [];
+        if (object.proposed_last_commit !== undefined && object.proposed_last_commit !== null) {
+            message.proposed_last_commit = CommitInfo.fromAmino(object.proposed_last_commit);
+        }
+        message.misbehavior = object.misbehavior?.map(e => Misbehavior.fromAmino(e)) || [];
+        if (object.hash !== undefined && object.hash !== null) {
+            message.hash = bytesFromBase64(object.hash);
+        }
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.time !== undefined && object.time !== null) {
+            message.time = fromTimestamp(Timestamp.fromAmino(object.time));
+        }
+        if (object.next_validators_hash !== undefined && object.next_validators_hash !== null) {
+            message.next_validators_hash = bytesFromBase64(object.next_validators_hash);
+        }
+        if (object.proposer_address !== undefined && object.proposer_address !== null) {
+            message.proposer_address = bytesFromBase64(object.proposer_address);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         if (message.txs) {
-            obj.txs = message.txs.map(e => e);
+            obj.txs = message.txs.map(e => base64FromBytes(e));
         }
         else {
             obj.txs = [];
@@ -1817,11 +1924,11 @@ export const RequestProcessProposal = {
         else {
             obj.misbehavior = [];
         }
-        obj.hash = message.hash;
+        obj.hash = message.hash ? base64FromBytes(message.hash) : undefined;
         obj.height = message.height ? message.height.toString() : undefined;
         obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : undefined;
-        obj.next_validators_hash = message.next_validators_hash;
-        obj.proposer_address = message.proposer_address;
+        obj.next_validators_hash = message.next_validators_hash ? base64FromBytes(message.next_validators_hash) : undefined;
+        obj.proposer_address = message.proposer_address ? base64FromBytes(message.proposer_address) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1966,24 +2073,36 @@ export const RequestExtendVote = {
         return message;
     },
     fromAmino(object) {
-        return {
-            hash: object.hash,
-            height: BigInt(object.height),
-            time: object?.time ? fromTimestamp(Timestamp.fromAmino(object.time)) : undefined,
-            txs: Array.isArray(object?.txs) ? object.txs.map((e) => e) : [],
-            proposed_last_commit: object?.proposed_last_commit ? CommitInfo.fromAmino(object.proposed_last_commit) : undefined,
-            misbehavior: Array.isArray(object?.misbehavior) ? object.misbehavior.map((e) => Misbehavior.fromAmino(e)) : [],
-            next_validators_hash: object.next_validators_hash,
-            proposer_address: object.proposer_address
-        };
+        const message = createBaseRequestExtendVote();
+        if (object.hash !== undefined && object.hash !== null) {
+            message.hash = bytesFromBase64(object.hash);
+        }
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.time !== undefined && object.time !== null) {
+            message.time = fromTimestamp(Timestamp.fromAmino(object.time));
+        }
+        message.txs = object.txs?.map(e => bytesFromBase64(e)) || [];
+        if (object.proposed_last_commit !== undefined && object.proposed_last_commit !== null) {
+            message.proposed_last_commit = CommitInfo.fromAmino(object.proposed_last_commit);
+        }
+        message.misbehavior = object.misbehavior?.map(e => Misbehavior.fromAmino(e)) || [];
+        if (object.next_validators_hash !== undefined && object.next_validators_hash !== null) {
+            message.next_validators_hash = bytesFromBase64(object.next_validators_hash);
+        }
+        if (object.proposer_address !== undefined && object.proposer_address !== null) {
+            message.proposer_address = bytesFromBase64(object.proposer_address);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.hash = message.hash;
+        obj.hash = message.hash ? base64FromBytes(message.hash) : undefined;
         obj.height = message.height ? message.height.toString() : undefined;
         obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : undefined;
         if (message.txs) {
-            obj.txs = message.txs.map(e => e);
+            obj.txs = message.txs.map(e => base64FromBytes(e));
         }
         else {
             obj.txs = [];
@@ -1995,8 +2114,8 @@ export const RequestExtendVote = {
         else {
             obj.misbehavior = [];
         }
-        obj.next_validators_hash = message.next_validators_hash;
-        obj.proposer_address = message.proposer_address;
+        obj.next_validators_hash = message.next_validators_hash ? base64FromBytes(message.next_validators_hash) : undefined;
+        obj.proposer_address = message.proposer_address ? base64FromBytes(message.proposer_address) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -2091,19 +2210,27 @@ export const RequestVerifyVoteExtension = {
         return message;
     },
     fromAmino(object) {
-        return {
-            hash: object.hash,
-            validator_address: object.validator_address,
-            height: BigInt(object.height),
-            vote_extension: object.vote_extension
-        };
+        const message = createBaseRequestVerifyVoteExtension();
+        if (object.hash !== undefined && object.hash !== null) {
+            message.hash = bytesFromBase64(object.hash);
+        }
+        if (object.validator_address !== undefined && object.validator_address !== null) {
+            message.validator_address = bytesFromBase64(object.validator_address);
+        }
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.vote_extension !== undefined && object.vote_extension !== null) {
+            message.vote_extension = bytesFromBase64(object.vote_extension);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.hash = message.hash;
-        obj.validator_address = message.validator_address;
+        obj.hash = message.hash ? base64FromBytes(message.hash) : undefined;
+        obj.validator_address = message.validator_address ? base64FromBytes(message.validator_address) : undefined;
         obj.height = message.height ? message.height.toString() : undefined;
-        obj.vote_extension = message.vote_extension;
+        obj.vote_extension = message.vote_extension ? base64FromBytes(message.vote_extension) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -2248,21 +2375,33 @@ export const RequestFinalizeBlock = {
         return message;
     },
     fromAmino(object) {
-        return {
-            txs: Array.isArray(object?.txs) ? object.txs.map((e) => e) : [],
-            decided_last_commit: object?.decided_last_commit ? CommitInfo.fromAmino(object.decided_last_commit) : undefined,
-            misbehavior: Array.isArray(object?.misbehavior) ? object.misbehavior.map((e) => Misbehavior.fromAmino(e)) : [],
-            hash: object.hash,
-            height: BigInt(object.height),
-            time: object?.time ? fromTimestamp(Timestamp.fromAmino(object.time)) : undefined,
-            next_validators_hash: object.next_validators_hash,
-            proposer_address: object.proposer_address
-        };
+        const message = createBaseRequestFinalizeBlock();
+        message.txs = object.txs?.map(e => bytesFromBase64(e)) || [];
+        if (object.decided_last_commit !== undefined && object.decided_last_commit !== null) {
+            message.decided_last_commit = CommitInfo.fromAmino(object.decided_last_commit);
+        }
+        message.misbehavior = object.misbehavior?.map(e => Misbehavior.fromAmino(e)) || [];
+        if (object.hash !== undefined && object.hash !== null) {
+            message.hash = bytesFromBase64(object.hash);
+        }
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.time !== undefined && object.time !== null) {
+            message.time = fromTimestamp(Timestamp.fromAmino(object.time));
+        }
+        if (object.next_validators_hash !== undefined && object.next_validators_hash !== null) {
+            message.next_validators_hash = bytesFromBase64(object.next_validators_hash);
+        }
+        if (object.proposer_address !== undefined && object.proposer_address !== null) {
+            message.proposer_address = bytesFromBase64(object.proposer_address);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         if (message.txs) {
-            obj.txs = message.txs.map(e => e);
+            obj.txs = message.txs.map(e => base64FromBytes(e));
         }
         else {
             obj.txs = [];
@@ -2274,11 +2413,11 @@ export const RequestFinalizeBlock = {
         else {
             obj.misbehavior = [];
         }
-        obj.hash = message.hash;
+        obj.hash = message.hash ? base64FromBytes(message.hash) : undefined;
         obj.height = message.height ? message.height.toString() : undefined;
         obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : undefined;
-        obj.next_validators_hash = message.next_validators_hash;
-        obj.proposer_address = message.proposer_address;
+        obj.next_validators_hash = message.next_validators_hash ? base64FromBytes(message.next_validators_hash) : undefined;
+        obj.proposer_address = message.proposer_address ? base64FromBytes(message.proposer_address) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -2503,25 +2642,59 @@ export const Response = {
         return message;
     },
     fromAmino(object) {
-        return {
-            exception: object?.exception ? ResponseException.fromAmino(object.exception) : undefined,
-            echo: object?.echo ? ResponseEcho.fromAmino(object.echo) : undefined,
-            flush: object?.flush ? ResponseFlush.fromAmino(object.flush) : undefined,
-            info: object?.info ? ResponseInfo.fromAmino(object.info) : undefined,
-            init_chain: object?.init_chain ? ResponseInitChain.fromAmino(object.init_chain) : undefined,
-            query: object?.query ? ResponseQuery.fromAmino(object.query) : undefined,
-            check_tx: object?.check_tx ? ResponseCheckTx.fromAmino(object.check_tx) : undefined,
-            commit: object?.commit ? ResponseCommit.fromAmino(object.commit) : undefined,
-            list_snapshots: object?.list_snapshots ? ResponseListSnapshots.fromAmino(object.list_snapshots) : undefined,
-            offer_snapshot: object?.offer_snapshot ? ResponseOfferSnapshot.fromAmino(object.offer_snapshot) : undefined,
-            load_snapshot_chunk: object?.load_snapshot_chunk ? ResponseLoadSnapshotChunk.fromAmino(object.load_snapshot_chunk) : undefined,
-            apply_snapshot_chunk: object?.apply_snapshot_chunk ? ResponseApplySnapshotChunk.fromAmino(object.apply_snapshot_chunk) : undefined,
-            prepare_proposal: object?.prepare_proposal ? ResponsePrepareProposal.fromAmino(object.prepare_proposal) : undefined,
-            process_proposal: object?.process_proposal ? ResponseProcessProposal.fromAmino(object.process_proposal) : undefined,
-            extend_vote: object?.extend_vote ? ResponseExtendVote.fromAmino(object.extend_vote) : undefined,
-            verify_vote_extension: object?.verify_vote_extension ? ResponseVerifyVoteExtension.fromAmino(object.verify_vote_extension) : undefined,
-            finalize_block: object?.finalize_block ? ResponseFinalizeBlock.fromAmino(object.finalize_block) : undefined
-        };
+        const message = createBaseResponse();
+        if (object.exception !== undefined && object.exception !== null) {
+            message.exception = ResponseException.fromAmino(object.exception);
+        }
+        if (object.echo !== undefined && object.echo !== null) {
+            message.echo = ResponseEcho.fromAmino(object.echo);
+        }
+        if (object.flush !== undefined && object.flush !== null) {
+            message.flush = ResponseFlush.fromAmino(object.flush);
+        }
+        if (object.info !== undefined && object.info !== null) {
+            message.info = ResponseInfo.fromAmino(object.info);
+        }
+        if (object.init_chain !== undefined && object.init_chain !== null) {
+            message.init_chain = ResponseInitChain.fromAmino(object.init_chain);
+        }
+        if (object.query !== undefined && object.query !== null) {
+            message.query = ResponseQuery.fromAmino(object.query);
+        }
+        if (object.check_tx !== undefined && object.check_tx !== null) {
+            message.check_tx = ResponseCheckTx.fromAmino(object.check_tx);
+        }
+        if (object.commit !== undefined && object.commit !== null) {
+            message.commit = ResponseCommit.fromAmino(object.commit);
+        }
+        if (object.list_snapshots !== undefined && object.list_snapshots !== null) {
+            message.list_snapshots = ResponseListSnapshots.fromAmino(object.list_snapshots);
+        }
+        if (object.offer_snapshot !== undefined && object.offer_snapshot !== null) {
+            message.offer_snapshot = ResponseOfferSnapshot.fromAmino(object.offer_snapshot);
+        }
+        if (object.load_snapshot_chunk !== undefined && object.load_snapshot_chunk !== null) {
+            message.load_snapshot_chunk = ResponseLoadSnapshotChunk.fromAmino(object.load_snapshot_chunk);
+        }
+        if (object.apply_snapshot_chunk !== undefined && object.apply_snapshot_chunk !== null) {
+            message.apply_snapshot_chunk = ResponseApplySnapshotChunk.fromAmino(object.apply_snapshot_chunk);
+        }
+        if (object.prepare_proposal !== undefined && object.prepare_proposal !== null) {
+            message.prepare_proposal = ResponsePrepareProposal.fromAmino(object.prepare_proposal);
+        }
+        if (object.process_proposal !== undefined && object.process_proposal !== null) {
+            message.process_proposal = ResponseProcessProposal.fromAmino(object.process_proposal);
+        }
+        if (object.extend_vote !== undefined && object.extend_vote !== null) {
+            message.extend_vote = ResponseExtendVote.fromAmino(object.extend_vote);
+        }
+        if (object.verify_vote_extension !== undefined && object.verify_vote_extension !== null) {
+            message.verify_vote_extension = ResponseVerifyVoteExtension.fromAmino(object.verify_vote_extension);
+        }
+        if (object.finalize_block !== undefined && object.finalize_block !== null) {
+            message.finalize_block = ResponseFinalizeBlock.fromAmino(object.finalize_block);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2606,9 +2779,11 @@ export const ResponseException = {
         return message;
     },
     fromAmino(object) {
-        return {
-            error: object.error
-        };
+        const message = createBaseResponseException();
+        if (object.error !== undefined && object.error !== null) {
+            message.error = object.error;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2677,9 +2852,11 @@ export const ResponseEcho = {
         return message;
     },
     fromAmino(object) {
-        return {
-            message: object.message
-        };
+        const message = createBaseResponseEcho();
+        if (object.message !== undefined && object.message !== null) {
+            message.message = object.message;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2736,7 +2913,8 @@ export const ResponseFlush = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseResponseFlush();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -2844,13 +3022,23 @@ export const ResponseInfo = {
         return message;
     },
     fromAmino(object) {
-        return {
-            data: object.data,
-            version: object.version,
-            app_version: BigInt(object.app_version),
-            last_block_height: BigInt(object.last_block_height),
-            last_block_app_hash: object.last_block_app_hash
-        };
+        const message = createBaseResponseInfo();
+        if (object.data !== undefined && object.data !== null) {
+            message.data = object.data;
+        }
+        if (object.version !== undefined && object.version !== null) {
+            message.version = object.version;
+        }
+        if (object.app_version !== undefined && object.app_version !== null) {
+            message.app_version = BigInt(object.app_version);
+        }
+        if (object.last_block_height !== undefined && object.last_block_height !== null) {
+            message.last_block_height = BigInt(object.last_block_height);
+        }
+        if (object.last_block_app_hash !== undefined && object.last_block_app_hash !== null) {
+            message.last_block_app_hash = bytesFromBase64(object.last_block_app_hash);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2858,7 +3046,7 @@ export const ResponseInfo = {
         obj.version = message.version;
         obj.app_version = message.app_version ? message.app_version.toString() : undefined;
         obj.last_block_height = message.last_block_height ? message.last_block_height.toString() : undefined;
-        obj.last_block_app_hash = message.last_block_app_hash;
+        obj.last_block_app_hash = message.last_block_app_hash ? base64FromBytes(message.last_block_app_hash) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -2948,11 +3136,15 @@ export const ResponseInitChain = {
         return message;
     },
     fromAmino(object) {
-        return {
-            consensus_params: object?.consensus_params ? ConsensusParams.fromAmino(object.consensus_params) : undefined,
-            validators: Array.isArray(object?.validators) ? object.validators.map((e) => ValidatorUpdate.fromAmino(e)) : [],
-            app_hash: object.app_hash
-        };
+        const message = createBaseResponseInitChain();
+        if (object.consensus_params !== undefined && object.consensus_params !== null) {
+            message.consensus_params = ConsensusParams.fromAmino(object.consensus_params);
+        }
+        message.validators = object.validators?.map(e => ValidatorUpdate.fromAmino(e)) || [];
+        if (object.app_hash !== undefined && object.app_hash !== null) {
+            message.app_hash = bytesFromBase64(object.app_hash);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -2963,7 +3155,7 @@ export const ResponseInitChain = {
         else {
             obj.validators = [];
         }
-        obj.app_hash = message.app_hash;
+        obj.app_hash = message.app_hash ? base64FromBytes(message.app_hash) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -3108,17 +3300,35 @@ export const ResponseQuery = {
         return message;
     },
     fromAmino(object) {
-        return {
-            code: object.code,
-            log: object.log,
-            info: object.info,
-            index: BigInt(object.index),
-            key: object.key,
-            value: object.value,
-            proof_ops: object?.proof_ops ? ProofOps.fromAmino(object.proof_ops) : undefined,
-            height: BigInt(object.height),
-            codespace: object.codespace
-        };
+        const message = createBaseResponseQuery();
+        if (object.code !== undefined && object.code !== null) {
+            message.code = object.code;
+        }
+        if (object.log !== undefined && object.log !== null) {
+            message.log = object.log;
+        }
+        if (object.info !== undefined && object.info !== null) {
+            message.info = object.info;
+        }
+        if (object.index !== undefined && object.index !== null) {
+            message.index = BigInt(object.index);
+        }
+        if (object.key !== undefined && object.key !== null) {
+            message.key = bytesFromBase64(object.key);
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = bytesFromBase64(object.value);
+        }
+        if (object.proof_ops !== undefined && object.proof_ops !== null) {
+            message.proof_ops = ProofOps.fromAmino(object.proof_ops);
+        }
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.codespace !== undefined && object.codespace !== null) {
+            message.codespace = object.codespace;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -3126,8 +3336,8 @@ export const ResponseQuery = {
         obj.log = message.log;
         obj.info = message.info;
         obj.index = message.index ? message.index.toString() : undefined;
-        obj.key = message.key;
-        obj.value = message.value;
+        obj.key = message.key ? base64FromBytes(message.key) : undefined;
+        obj.value = message.value ? base64FromBytes(message.value) : undefined;
         obj.proof_ops = message.proof_ops ? ProofOps.toAmino(message.proof_ops) : undefined;
         obj.height = message.height ? message.height.toString() : undefined;
         obj.codespace = message.codespace;
@@ -3270,21 +3480,35 @@ export const ResponseCheckTx = {
         return message;
     },
     fromAmino(object) {
-        return {
-            code: object.code,
-            data: object.data,
-            log: object.log,
-            info: object.info,
-            gas_wanted: BigInt(object.gas_wanted),
-            gas_used: BigInt(object.gas_used),
-            events: Array.isArray(object?.events) ? object.events.map((e) => Event.fromAmino(e)) : [],
-            codespace: object.codespace
-        };
+        const message = createBaseResponseCheckTx();
+        if (object.code !== undefined && object.code !== null) {
+            message.code = object.code;
+        }
+        if (object.data !== undefined && object.data !== null) {
+            message.data = bytesFromBase64(object.data);
+        }
+        if (object.log !== undefined && object.log !== null) {
+            message.log = object.log;
+        }
+        if (object.info !== undefined && object.info !== null) {
+            message.info = object.info;
+        }
+        if (object.gas_wanted !== undefined && object.gas_wanted !== null) {
+            message.gas_wanted = BigInt(object.gas_wanted);
+        }
+        if (object.gas_used !== undefined && object.gas_used !== null) {
+            message.gas_used = BigInt(object.gas_used);
+        }
+        message.events = object.events?.map(e => Event.fromAmino(e)) || [];
+        if (object.codespace !== undefined && object.codespace !== null) {
+            message.codespace = object.codespace;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.code = message.code;
-        obj.data = message.data;
+        obj.data = message.data ? base64FromBytes(message.data) : undefined;
         obj.log = message.log;
         obj.info = message.info;
         obj.gas_wanted = message.gas_wanted ? message.gas_wanted.toString() : undefined;
@@ -3360,9 +3584,11 @@ export const ResponseCommit = {
         return message;
     },
     fromAmino(object) {
-        return {
-            retain_height: BigInt(object.retain_height)
-        };
+        const message = createBaseResponseCommit();
+        if (object.retain_height !== undefined && object.retain_height !== null) {
+            message.retain_height = BigInt(object.retain_height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -3436,9 +3662,9 @@ export const ResponseListSnapshots = {
         return message;
     },
     fromAmino(object) {
-        return {
-            snapshots: Array.isArray(object?.snapshots) ? object.snapshots.map((e) => Snapshot.fromAmino(e)) : []
-        };
+        const message = createBaseResponseListSnapshots();
+        message.snapshots = object.snapshots?.map(e => Snapshot.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -3512,9 +3738,11 @@ export const ResponseOfferSnapshot = {
         return message;
     },
     fromAmino(object) {
-        return {
-            result: isSet(object.result) ? responseOfferSnapshot_ResultFromJSON(object.result) : -1
-        };
+        const message = createBaseResponseOfferSnapshot();
+        if (object.result !== undefined && object.result !== null) {
+            message.result = responseOfferSnapshot_ResultFromJSON(object.result);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -3583,13 +3811,15 @@ export const ResponseLoadSnapshotChunk = {
         return message;
     },
     fromAmino(object) {
-        return {
-            chunk: object.chunk
-        };
+        const message = createBaseResponseLoadSnapshotChunk();
+        if (object.chunk !== undefined && object.chunk !== null) {
+            message.chunk = bytesFromBase64(object.chunk);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.chunk = message.chunk;
+        obj.chunk = message.chunk ? base64FromBytes(message.chunk) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -3694,11 +3924,13 @@ export const ResponseApplySnapshotChunk = {
         return message;
     },
     fromAmino(object) {
-        return {
-            result: isSet(object.result) ? responseApplySnapshotChunk_ResultFromJSON(object.result) : -1,
-            refetch_chunks: Array.isArray(object?.refetch_chunks) ? object.refetch_chunks.map((e) => e) : [],
-            reject_senders: Array.isArray(object?.reject_senders) ? object.reject_senders.map((e) => e) : []
-        };
+        const message = createBaseResponseApplySnapshotChunk();
+        if (object.result !== undefined && object.result !== null) {
+            message.result = responseApplySnapshotChunk_ResultFromJSON(object.result);
+        }
+        message.refetch_chunks = object.refetch_chunks?.map(e => e) || [];
+        message.reject_senders = object.reject_senders?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -3784,14 +4016,14 @@ export const ResponsePrepareProposal = {
         return message;
     },
     fromAmino(object) {
-        return {
-            txs: Array.isArray(object?.txs) ? object.txs.map((e) => e) : []
-        };
+        const message = createBaseResponsePrepareProposal();
+        message.txs = object.txs?.map(e => bytesFromBase64(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
         if (message.txs) {
-            obj.txs = message.txs.map(e => e);
+            obj.txs = message.txs.map(e => base64FromBytes(e));
         }
         else {
             obj.txs = [];
@@ -3860,9 +4092,11 @@ export const ResponseProcessProposal = {
         return message;
     },
     fromAmino(object) {
-        return {
-            status: isSet(object.status) ? responseProcessProposal_ProposalStatusFromJSON(object.status) : -1
-        };
+        const message = createBaseResponseProcessProposal();
+        if (object.status !== undefined && object.status !== null) {
+            message.status = responseProcessProposal_ProposalStatusFromJSON(object.status);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -3931,13 +4165,15 @@ export const ResponseExtendVote = {
         return message;
     },
     fromAmino(object) {
-        return {
-            vote_extension: object.vote_extension
-        };
+        const message = createBaseResponseExtendVote();
+        if (object.vote_extension !== undefined && object.vote_extension !== null) {
+            message.vote_extension = bytesFromBase64(object.vote_extension);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.vote_extension = message.vote_extension;
+        obj.vote_extension = message.vote_extension ? base64FromBytes(message.vote_extension) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -4002,9 +4238,11 @@ export const ResponseVerifyVoteExtension = {
         return message;
     },
     fromAmino(object) {
-        return {
-            status: isSet(object.status) ? responseVerifyVoteExtension_VerifyStatusFromJSON(object.status) : -1
-        };
+        const message = createBaseResponseVerifyVoteExtension();
+        if (object.status !== undefined && object.status !== null) {
+            message.status = responseVerifyVoteExtension_VerifyStatusFromJSON(object.status);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -4128,13 +4366,17 @@ export const ResponseFinalizeBlock = {
         return message;
     },
     fromAmino(object) {
-        return {
-            events: Array.isArray(object?.events) ? object.events.map((e) => Event.fromAmino(e)) : [],
-            tx_results: Array.isArray(object?.tx_results) ? object.tx_results.map((e) => ExecTxResult.fromAmino(e)) : [],
-            validator_updates: Array.isArray(object?.validator_updates) ? object.validator_updates.map((e) => ValidatorUpdate.fromAmino(e)) : [],
-            consensus_param_updates: object?.consensus_param_updates ? ConsensusParams.fromAmino(object.consensus_param_updates) : undefined,
-            app_hash: object.app_hash
-        };
+        const message = createBaseResponseFinalizeBlock();
+        message.events = object.events?.map(e => Event.fromAmino(e)) || [];
+        message.tx_results = object.tx_results?.map(e => ExecTxResult.fromAmino(e)) || [];
+        message.validator_updates = object.validator_updates?.map(e => ValidatorUpdate.fromAmino(e)) || [];
+        if (object.consensus_param_updates !== undefined && object.consensus_param_updates !== null) {
+            message.consensus_param_updates = ConsensusParams.fromAmino(object.consensus_param_updates);
+        }
+        if (object.app_hash !== undefined && object.app_hash !== null) {
+            message.app_hash = bytesFromBase64(object.app_hash);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -4157,7 +4399,7 @@ export const ResponseFinalizeBlock = {
             obj.validator_updates = [];
         }
         obj.consensus_param_updates = message.consensus_param_updates ? ConsensusParams.toAmino(message.consensus_param_updates) : undefined;
-        obj.app_hash = message.app_hash;
+        obj.app_hash = message.app_hash ? base64FromBytes(message.app_hash) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -4237,10 +4479,12 @@ export const CommitInfo = {
         return message;
     },
     fromAmino(object) {
-        return {
-            round: object.round,
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => VoteInfo.fromAmino(e)) : []
-        };
+        const message = createBaseCommitInfo();
+        if (object.round !== undefined && object.round !== null) {
+            message.round = object.round;
+        }
+        message.votes = object.votes?.map(e => VoteInfo.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -4330,10 +4574,12 @@ export const ExtendedCommitInfo = {
         return message;
     },
     fromAmino(object) {
-        return {
-            round: object.round,
-            votes: Array.isArray(object?.votes) ? object.votes.map((e) => ExtendedVoteInfo.fromAmino(e)) : []
-        };
+        const message = createBaseExtendedCommitInfo();
+        if (object.round !== undefined && object.round !== null) {
+            message.round = object.round;
+        }
+        message.votes = object.votes?.map(e => ExtendedVoteInfo.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -4423,10 +4669,12 @@ export const Event = {
         return message;
     },
     fromAmino(object) {
-        return {
-            type: object.type,
-            attributes: Array.isArray(object?.attributes) ? object.attributes.map((e) => EventAttribute.fromAmino(e)) : []
-        };
+        const message = createBaseEvent();
+        if (object.type !== undefined && object.type !== null) {
+            message.type = object.type;
+        }
+        message.attributes = object.attributes?.map(e => EventAttribute.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -4521,11 +4769,17 @@ export const EventAttribute = {
         return message;
     },
     fromAmino(object) {
-        return {
-            key: object.key,
-            value: object.value,
-            index: object.index
-        };
+        const message = createBaseEventAttribute();
+        if (object.key !== undefined && object.key !== null) {
+            message.key = object.key;
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = object.value;
+        }
+        if (object.index !== undefined && object.index !== null) {
+            message.index = object.index;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -4671,21 +4925,35 @@ export const ExecTxResult = {
         return message;
     },
     fromAmino(object) {
-        return {
-            code: object.code,
-            data: object.data,
-            log: object.log,
-            info: object.info,
-            gas_wanted: BigInt(object.gas_wanted),
-            gas_used: BigInt(object.gas_used),
-            events: Array.isArray(object?.events) ? object.events.map((e) => Event.fromAmino(e)) : [],
-            codespace: object.codespace
-        };
+        const message = createBaseExecTxResult();
+        if (object.code !== undefined && object.code !== null) {
+            message.code = object.code;
+        }
+        if (object.data !== undefined && object.data !== null) {
+            message.data = bytesFromBase64(object.data);
+        }
+        if (object.log !== undefined && object.log !== null) {
+            message.log = object.log;
+        }
+        if (object.info !== undefined && object.info !== null) {
+            message.info = object.info;
+        }
+        if (object.gas_wanted !== undefined && object.gas_wanted !== null) {
+            message.gas_wanted = BigInt(object.gas_wanted);
+        }
+        if (object.gas_used !== undefined && object.gas_used !== null) {
+            message.gas_used = BigInt(object.gas_used);
+        }
+        message.events = object.events?.map(e => Event.fromAmino(e)) || [];
+        if (object.codespace !== undefined && object.codespace !== null) {
+            message.codespace = object.codespace;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.code = message.code;
-        obj.data = message.data;
+        obj.data = message.data ? base64FromBytes(message.data) : undefined;
         obj.log = message.log;
         obj.info = message.info;
         obj.gas_wanted = message.gas_wanted ? message.gas_wanted.toString() : undefined;
@@ -4791,18 +5059,26 @@ export const TxResult = {
         return message;
     },
     fromAmino(object) {
-        return {
-            height: BigInt(object.height),
-            index: object.index,
-            tx: object.tx,
-            result: object?.result ? ExecTxResult.fromAmino(object.result) : undefined
-        };
+        const message = createBaseTxResult();
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.index !== undefined && object.index !== null) {
+            message.index = object.index;
+        }
+        if (object.tx !== undefined && object.tx !== null) {
+            message.tx = bytesFromBase64(object.tx);
+        }
+        if (object.result !== undefined && object.result !== null) {
+            message.result = ExecTxResult.fromAmino(object.result);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.height = message.height ? message.height.toString() : undefined;
         obj.index = message.index;
-        obj.tx = message.tx;
+        obj.tx = message.tx ? base64FromBytes(message.tx) : undefined;
         obj.result = message.result ? ExecTxResult.toAmino(message.result) : undefined;
         return obj;
     },
@@ -4878,14 +5154,18 @@ export const Validator = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            power: BigInt(object.power)
-        };
+        const message = createBaseValidator();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = bytesFromBase64(object.address);
+        }
+        if (object.power !== undefined && object.power !== null) {
+            message.power = BigInt(object.power);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.address = message.address;
+        obj.address = message.address ? base64FromBytes(message.address) : undefined;
         obj.power = message.power ? message.power.toString() : undefined;
         return obj;
     },
@@ -4961,10 +5241,14 @@ export const ValidatorUpdate = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pub_key: object?.pub_key ? PublicKey.fromAmino(object.pub_key) : undefined,
-            power: BigInt(object.power)
-        };
+        const message = createBaseValidatorUpdate();
+        if (object.pub_key !== undefined && object.pub_key !== null) {
+            message.pub_key = PublicKey.fromAmino(object.pub_key);
+        }
+        if (object.power !== undefined && object.power !== null) {
+            message.power = BigInt(object.power);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -5044,10 +5328,14 @@ export const VoteInfo = {
         return message;
     },
     fromAmino(object) {
-        return {
-            validator: object?.validator ? Validator.fromAmino(object.validator) : undefined,
-            block_id_flag: isSet(object.block_id_flag) ? blockIDFlagFromJSON(object.block_id_flag) : -1
-        };
+        const message = createBaseVoteInfo();
+        if (object.validator !== undefined && object.validator !== null) {
+            message.validator = Validator.fromAmino(object.validator);
+        }
+        if (object.block_id_flag !== undefined && object.block_id_flag !== null) {
+            message.block_id_flag = blockIDFlagFromJSON(object.block_id_flag);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -5147,18 +5435,26 @@ export const ExtendedVoteInfo = {
         return message;
     },
     fromAmino(object) {
-        return {
-            validator: object?.validator ? Validator.fromAmino(object.validator) : undefined,
-            vote_extension: object.vote_extension,
-            extension_signature: object.extension_signature,
-            block_id_flag: isSet(object.block_id_flag) ? blockIDFlagFromJSON(object.block_id_flag) : -1
-        };
+        const message = createBaseExtendedVoteInfo();
+        if (object.validator !== undefined && object.validator !== null) {
+            message.validator = Validator.fromAmino(object.validator);
+        }
+        if (object.vote_extension !== undefined && object.vote_extension !== null) {
+            message.vote_extension = bytesFromBase64(object.vote_extension);
+        }
+        if (object.extension_signature !== undefined && object.extension_signature !== null) {
+            message.extension_signature = bytesFromBase64(object.extension_signature);
+        }
+        if (object.block_id_flag !== undefined && object.block_id_flag !== null) {
+            message.block_id_flag = blockIDFlagFromJSON(object.block_id_flag);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.validator = message.validator ? Validator.toAmino(message.validator) : undefined;
-        obj.vote_extension = message.vote_extension;
-        obj.extension_signature = message.extension_signature;
+        obj.vote_extension = message.vote_extension ? base64FromBytes(message.vote_extension) : undefined;
+        obj.extension_signature = message.extension_signature ? base64FromBytes(message.extension_signature) : undefined;
         obj.block_id_flag = message.block_id_flag;
         return obj;
     },
@@ -5264,13 +5560,23 @@ export const Misbehavior = {
         return message;
     },
     fromAmino(object) {
-        return {
-            type: isSet(object.type) ? misbehaviorTypeFromJSON(object.type) : -1,
-            validator: object?.validator ? Validator.fromAmino(object.validator) : undefined,
-            height: BigInt(object.height),
-            time: object?.time ? fromTimestamp(Timestamp.fromAmino(object.time)) : undefined,
-            total_voting_power: BigInt(object.total_voting_power)
-        };
+        const message = createBaseMisbehavior();
+        if (object.type !== undefined && object.type !== null) {
+            message.type = misbehaviorTypeFromJSON(object.type);
+        }
+        if (object.validator !== undefined && object.validator !== null) {
+            message.validator = Validator.fromAmino(object.validator);
+        }
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.time !== undefined && object.time !== null) {
+            message.time = fromTimestamp(Timestamp.fromAmino(object.time));
+        }
+        if (object.total_voting_power !== undefined && object.total_voting_power !== null) {
+            message.total_voting_power = BigInt(object.total_voting_power);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -5383,21 +5689,31 @@ export const Snapshot = {
         return message;
     },
     fromAmino(object) {
-        return {
-            height: BigInt(object.height),
-            format: object.format,
-            chunks: object.chunks,
-            hash: object.hash,
-            metadata: object.metadata
-        };
+        const message = createBaseSnapshot();
+        if (object.height !== undefined && object.height !== null) {
+            message.height = BigInt(object.height);
+        }
+        if (object.format !== undefined && object.format !== null) {
+            message.format = object.format;
+        }
+        if (object.chunks !== undefined && object.chunks !== null) {
+            message.chunks = object.chunks;
+        }
+        if (object.hash !== undefined && object.hash !== null) {
+            message.hash = bytesFromBase64(object.hash);
+        }
+        if (object.metadata !== undefined && object.metadata !== null) {
+            message.metadata = bytesFromBase64(object.metadata);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.height = message.height ? message.height.toString() : undefined;
         obj.format = message.format;
         obj.chunks = message.chunks;
-        obj.hash = message.hash;
-        obj.metadata = message.metadata;
+        obj.hash = message.hash ? base64FromBytes(message.hash) : undefined;
+        obj.metadata = message.metadata ? base64FromBytes(message.metadata) : undefined;
         return obj;
     },
     fromAminoMsg(object) {

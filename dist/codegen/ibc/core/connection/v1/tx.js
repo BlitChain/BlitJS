@@ -94,13 +94,23 @@ exports.MsgConnectionOpenInit = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            counterparty: object?.counterparty ? connection_1.Counterparty.fromAmino(object.counterparty) : undefined,
-            version: object?.version ? connection_1.Version.fromAmino(object.version) : undefined,
-            delay_period: BigInt(object.delay_period),
-            signer: object.signer
-        };
+        const message = createBaseMsgConnectionOpenInit();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        if (object.counterparty !== undefined && object.counterparty !== null) {
+            message.counterparty = connection_1.Counterparty.fromAmino(object.counterparty);
+        }
+        if (object.version !== undefined && object.version !== null) {
+            message.version = connection_1.Version.fromAmino(object.version);
+        }
+        if (object.delay_period !== undefined && object.delay_period !== null) {
+            message.delay_period = BigInt(object.delay_period);
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -167,7 +177,8 @@ exports.MsgConnectionOpenInitResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgConnectionOpenInitResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -366,21 +377,45 @@ exports.MsgConnectionOpenTry = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            previous_connection_id: object.previous_connection_id,
-            client_state: object?.client_state ? any_1.Any.fromAmino(object.client_state) : undefined,
-            counterparty: object?.counterparty ? connection_1.Counterparty.fromAmino(object.counterparty) : undefined,
-            delay_period: BigInt(object.delay_period),
-            counterparty_versions: Array.isArray(object?.counterparty_versions) ? object.counterparty_versions.map((e) => connection_1.Version.fromAmino(e)) : [],
-            proof_height: object?.proof_height ? client_1.Height.fromAmino(object.proof_height) : undefined,
-            proof_init: object.proof_init,
-            proof_client: object.proof_client,
-            proof_consensus: object.proof_consensus,
-            consensus_height: object?.consensus_height ? client_1.Height.fromAmino(object.consensus_height) : undefined,
-            signer: object.signer,
-            host_consensus_state_proof: object.host_consensus_state_proof
-        };
+        const message = createBaseMsgConnectionOpenTry();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        if (object.previous_connection_id !== undefined && object.previous_connection_id !== null) {
+            message.previous_connection_id = object.previous_connection_id;
+        }
+        if (object.client_state !== undefined && object.client_state !== null) {
+            message.client_state = any_1.Any.fromAmino(object.client_state);
+        }
+        if (object.counterparty !== undefined && object.counterparty !== null) {
+            message.counterparty = connection_1.Counterparty.fromAmino(object.counterparty);
+        }
+        if (object.delay_period !== undefined && object.delay_period !== null) {
+            message.delay_period = BigInt(object.delay_period);
+        }
+        message.counterparty_versions = object.counterparty_versions?.map(e => connection_1.Version.fromAmino(e)) || [];
+        if (object.proof_height !== undefined && object.proof_height !== null) {
+            message.proof_height = client_1.Height.fromAmino(object.proof_height);
+        }
+        if (object.proof_init !== undefined && object.proof_init !== null) {
+            message.proof_init = (0, helpers_1.bytesFromBase64)(object.proof_init);
+        }
+        if (object.proof_client !== undefined && object.proof_client !== null) {
+            message.proof_client = (0, helpers_1.bytesFromBase64)(object.proof_client);
+        }
+        if (object.proof_consensus !== undefined && object.proof_consensus !== null) {
+            message.proof_consensus = (0, helpers_1.bytesFromBase64)(object.proof_consensus);
+        }
+        if (object.consensus_height !== undefined && object.consensus_height !== null) {
+            message.consensus_height = client_1.Height.fromAmino(object.consensus_height);
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        if (object.host_consensus_state_proof !== undefined && object.host_consensus_state_proof !== null) {
+            message.host_consensus_state_proof = (0, helpers_1.bytesFromBase64)(object.host_consensus_state_proof);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -396,12 +431,12 @@ exports.MsgConnectionOpenTry = {
             obj.counterparty_versions = [];
         }
         obj.proof_height = message.proof_height ? client_1.Height.toAmino(message.proof_height) : {};
-        obj.proof_init = message.proof_init;
-        obj.proof_client = message.proof_client;
-        obj.proof_consensus = message.proof_consensus;
+        obj.proof_init = message.proof_init ? (0, helpers_1.base64FromBytes)(message.proof_init) : undefined;
+        obj.proof_client = message.proof_client ? (0, helpers_1.base64FromBytes)(message.proof_client) : undefined;
+        obj.proof_consensus = message.proof_consensus ? (0, helpers_1.base64FromBytes)(message.proof_consensus) : undefined;
         obj.consensus_height = message.consensus_height ? client_1.Height.toAmino(message.consensus_height) : {};
         obj.signer = message.signer;
-        obj.host_consensus_state_proof = message.host_consensus_state_proof;
+        obj.host_consensus_state_proof = message.host_consensus_state_proof ? (0, helpers_1.base64FromBytes)(message.host_consensus_state_proof) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -460,7 +495,8 @@ exports.MsgConnectionOpenTryResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgConnectionOpenTryResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -634,19 +670,41 @@ exports.MsgConnectionOpenAck = {
         return message;
     },
     fromAmino(object) {
-        return {
-            connection_id: object.connection_id,
-            counterparty_connection_id: object.counterparty_connection_id,
-            version: object?.version ? connection_1.Version.fromAmino(object.version) : undefined,
-            client_state: object?.client_state ? any_1.Any.fromAmino(object.client_state) : undefined,
-            proof_height: object?.proof_height ? client_1.Height.fromAmino(object.proof_height) : undefined,
-            proof_try: object.proof_try,
-            proof_client: object.proof_client,
-            proof_consensus: object.proof_consensus,
-            consensus_height: object?.consensus_height ? client_1.Height.fromAmino(object.consensus_height) : undefined,
-            signer: object.signer,
-            host_consensus_state_proof: object.host_consensus_state_proof
-        };
+        const message = createBaseMsgConnectionOpenAck();
+        if (object.connection_id !== undefined && object.connection_id !== null) {
+            message.connection_id = object.connection_id;
+        }
+        if (object.counterparty_connection_id !== undefined && object.counterparty_connection_id !== null) {
+            message.counterparty_connection_id = object.counterparty_connection_id;
+        }
+        if (object.version !== undefined && object.version !== null) {
+            message.version = connection_1.Version.fromAmino(object.version);
+        }
+        if (object.client_state !== undefined && object.client_state !== null) {
+            message.client_state = any_1.Any.fromAmino(object.client_state);
+        }
+        if (object.proof_height !== undefined && object.proof_height !== null) {
+            message.proof_height = client_1.Height.fromAmino(object.proof_height);
+        }
+        if (object.proof_try !== undefined && object.proof_try !== null) {
+            message.proof_try = (0, helpers_1.bytesFromBase64)(object.proof_try);
+        }
+        if (object.proof_client !== undefined && object.proof_client !== null) {
+            message.proof_client = (0, helpers_1.bytesFromBase64)(object.proof_client);
+        }
+        if (object.proof_consensus !== undefined && object.proof_consensus !== null) {
+            message.proof_consensus = (0, helpers_1.bytesFromBase64)(object.proof_consensus);
+        }
+        if (object.consensus_height !== undefined && object.consensus_height !== null) {
+            message.consensus_height = client_1.Height.fromAmino(object.consensus_height);
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        if (object.host_consensus_state_proof !== undefined && object.host_consensus_state_proof !== null) {
+            message.host_consensus_state_proof = (0, helpers_1.bytesFromBase64)(object.host_consensus_state_proof);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -655,12 +713,12 @@ exports.MsgConnectionOpenAck = {
         obj.version = message.version ? connection_1.Version.toAmino(message.version) : undefined;
         obj.client_state = message.client_state ? any_1.Any.toAmino(message.client_state) : undefined;
         obj.proof_height = message.proof_height ? client_1.Height.toAmino(message.proof_height) : {};
-        obj.proof_try = message.proof_try;
-        obj.proof_client = message.proof_client;
-        obj.proof_consensus = message.proof_consensus;
+        obj.proof_try = message.proof_try ? (0, helpers_1.base64FromBytes)(message.proof_try) : undefined;
+        obj.proof_client = message.proof_client ? (0, helpers_1.base64FromBytes)(message.proof_client) : undefined;
+        obj.proof_consensus = message.proof_consensus ? (0, helpers_1.base64FromBytes)(message.proof_consensus) : undefined;
         obj.consensus_height = message.consensus_height ? client_1.Height.toAmino(message.consensus_height) : {};
         obj.signer = message.signer;
-        obj.host_consensus_state_proof = message.host_consensus_state_proof;
+        obj.host_consensus_state_proof = message.host_consensus_state_proof ? (0, helpers_1.base64FromBytes)(message.host_consensus_state_proof) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -719,7 +777,8 @@ exports.MsgConnectionOpenAckResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgConnectionOpenAckResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -823,17 +882,25 @@ exports.MsgConnectionOpenConfirm = {
         return message;
     },
     fromAmino(object) {
-        return {
-            connection_id: object.connection_id,
-            proof_ack: object.proof_ack,
-            proof_height: object?.proof_height ? client_1.Height.fromAmino(object.proof_height) : undefined,
-            signer: object.signer
-        };
+        const message = createBaseMsgConnectionOpenConfirm();
+        if (object.connection_id !== undefined && object.connection_id !== null) {
+            message.connection_id = object.connection_id;
+        }
+        if (object.proof_ack !== undefined && object.proof_ack !== null) {
+            message.proof_ack = (0, helpers_1.bytesFromBase64)(object.proof_ack);
+        }
+        if (object.proof_height !== undefined && object.proof_height !== null) {
+            message.proof_height = client_1.Height.fromAmino(object.proof_height);
+        }
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.connection_id = message.connection_id;
-        obj.proof_ack = message.proof_ack;
+        obj.proof_ack = message.proof_ack ? (0, helpers_1.base64FromBytes)(message.proof_ack) : undefined;
         obj.proof_height = message.proof_height ? client_1.Height.toAmino(message.proof_height) : {};
         obj.signer = message.signer;
         return obj;
@@ -894,7 +961,8 @@ exports.MsgConnectionOpenConfirmResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgConnectionOpenConfirmResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -978,10 +1046,14 @@ exports.MsgUpdateParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            signer: object.signer,
-            params: object?.params ? client_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseMsgUpdateParams();
+        if (object.signer !== undefined && object.signer !== null) {
+            message.signer = object.signer;
+        }
+        if (object.params !== undefined && object.params !== null) {
+            message.params = client_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1045,7 +1117,8 @@ exports.MsgUpdateParamsResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgUpdateParamsResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};

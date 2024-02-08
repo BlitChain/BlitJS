@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgUpdateParams, MsgMintCoins, MsgBurnCoins, MsgForceTransferCoins, MsgSetDenomMetadata } from "./tx";
+import { MsgUpdateParams, MsgMintCoins, MsgBurnCoins, MsgForceTransferCoins, MsgSetDenomMetadata, MsgCreateTask, MsgDeleteTask } from "./tx";
 export const AminoConverter = {
   "/blit.blit.MsgUpdateParams": {
     aminoType: "blit/x/blit/MsgUpdateParams",
@@ -25,5 +25,15 @@ export const AminoConverter = {
     aminoType: "/blit.blit.MsgSetDenomMetadata",
     toAmino: MsgSetDenomMetadata.toAmino,
     fromAmino: MsgSetDenomMetadata.fromAmino
+  },
+  "/blit.blit.MsgCreateTask": {
+    aminoType: "/blit.blit.MsgCreateTask",
+    toAmino: MsgCreateTask.toAmino,
+    fromAmino: MsgCreateTask.fromAmino
+  },
+  "/blit.blit.MsgDeleteTask": {
+    aminoType: "/blit.blit.MsgDeleteTask",
+    toAmino: MsgDeleteTask.toAmino,
+    fromAmino: MsgDeleteTask.fromAmino
   }
 };

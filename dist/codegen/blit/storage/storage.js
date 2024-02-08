@@ -71,11 +71,17 @@ exports.Storage = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            index: object.index,
-            data: object.data
-        };
+        const message = createBaseStorage();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        if (object.index !== undefined && object.index !== null) {
+            message.index = object.index;
+        }
+        if (object.data !== undefined && object.data !== null) {
+            message.data = object.data;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

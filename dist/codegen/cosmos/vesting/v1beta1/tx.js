@@ -98,13 +98,21 @@ exports.MsgCreateVestingAccount = {
         return message;
     },
     fromAmino(object) {
-        return {
-            from_address: object.from_address,
-            to_address: object.to_address,
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            end_time: BigInt(object.end_time),
-            delayed: object.delayed
-        };
+        const message = createBaseMsgCreateVestingAccount();
+        if (object.from_address !== undefined && object.from_address !== null) {
+            message.from_address = object.from_address;
+        }
+        if (object.to_address !== undefined && object.to_address !== null) {
+            message.to_address = object.to_address;
+        }
+        message.amount = object.amount?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.end_time !== undefined && object.end_time !== null) {
+            message.end_time = BigInt(object.end_time);
+        }
+        if (object.delayed !== undefined && object.delayed !== null) {
+            message.delayed = object.delayed;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -176,7 +184,8 @@ exports.MsgCreateVestingAccountResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgCreateVestingAccountResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -275,11 +284,15 @@ exports.MsgCreatePermanentLockedAccount = {
         return message;
     },
     fromAmino(object) {
-        return {
-            from_address: object.from_address,
-            to_address: object.to_address,
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromAmino(e)) : []
-        };
+        const message = createBaseMsgCreatePermanentLockedAccount();
+        if (object.from_address !== undefined && object.from_address !== null) {
+            message.from_address = object.from_address;
+        }
+        if (object.to_address !== undefined && object.to_address !== null) {
+            message.to_address = object.to_address;
+        }
+        message.amount = object.amount?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -349,7 +362,8 @@ exports.MsgCreatePermanentLockedAccountResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgCreatePermanentLockedAccountResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -458,12 +472,18 @@ exports.MsgCreatePeriodicVestingAccount = {
         return message;
     },
     fromAmino(object) {
-        return {
-            from_address: object.from_address,
-            to_address: object.to_address,
-            start_time: BigInt(object.start_time),
-            vesting_periods: Array.isArray(object?.vesting_periods) ? object.vesting_periods.map((e) => vesting_1.Period.fromAmino(e)) : []
-        };
+        const message = createBaseMsgCreatePeriodicVestingAccount();
+        if (object.from_address !== undefined && object.from_address !== null) {
+            message.from_address = object.from_address;
+        }
+        if (object.to_address !== undefined && object.to_address !== null) {
+            message.to_address = object.to_address;
+        }
+        if (object.start_time !== undefined && object.start_time !== null) {
+            message.start_time = BigInt(object.start_time);
+        }
+        message.vesting_periods = object.vesting_periods?.map(e => vesting_1.Period.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -534,7 +554,8 @@ exports.MsgCreatePeriodicVestingAccountResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgCreatePeriodicVestingAccountResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};

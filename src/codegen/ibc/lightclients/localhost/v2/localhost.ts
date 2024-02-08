@@ -71,9 +71,11 @@ export const ClientState = {
     return message;
   },
   fromAmino(object: ClientStateAmino): ClientState {
-    return {
-      latest_height: object?.latest_height ? Height.fromAmino(object.latest_height) : undefined
-    };
+    const message = createBaseClientState();
+    if (object.latest_height !== undefined && object.latest_height !== null) {
+      message.latest_height = Height.fromAmino(object.latest_height);
+    }
+    return message;
   },
   toAmino(message: ClientState): ClientStateAmino {
     const obj: any = {};

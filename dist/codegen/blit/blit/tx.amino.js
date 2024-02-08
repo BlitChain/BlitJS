@@ -28,6 +28,16 @@ exports.AminoConverter = {
         aminoType: "/blit.blit.MsgSetDenomMetadata",
         toAmino: tx_1.MsgSetDenomMetadata.toAmino,
         fromAmino: tx_1.MsgSetDenomMetadata.fromAmino
+    },
+    "/blit.blit.MsgCreateTask": {
+        aminoType: "/blit.blit.MsgCreateTask",
+        toAmino: tx_1.MsgCreateTask.toAmino,
+        fromAmino: tx_1.MsgCreateTask.fromAmino
+    },
+    "/blit.blit.MsgDeleteTask": {
+        aminoType: "/blit.blit.MsgDeleteTask",
+        toAmino: tx_1.MsgDeleteTask.toAmino,
+        fromAmino: tx_1.MsgDeleteTask.fromAmino
     }
 };
 //# sourceMappingURL=tx.amino.js.map

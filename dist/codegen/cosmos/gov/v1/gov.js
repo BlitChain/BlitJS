@@ -205,10 +205,14 @@ exports.WeightedVoteOption = {
         return message;
     },
     fromAmino(object) {
-        return {
-            option: (0, helpers_1.isSet)(object.option) ? voteOptionFromJSON(object.option) : -1,
-            weight: object.weight
-        };
+        const message = createBaseWeightedVoteOption();
+        if (object.option !== undefined && object.option !== null) {
+            message.option = voteOptionFromJSON(object.option);
+        }
+        if (object.weight !== undefined && object.weight !== null) {
+            message.weight = object.weight;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -309,11 +313,15 @@ exports.Deposit = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id),
-            depositor: object.depositor,
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromAmino(e)) : []
-        };
+        const message = createBaseDeposit();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        if (object.depositor !== undefined && object.depositor !== null) {
+            message.depositor = object.depositor;
+        }
+        message.amount = object.amount?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -545,23 +553,49 @@ exports.Proposal = {
         return message;
     },
     fromAmino(object) {
-        return {
-            id: BigInt(object.id),
-            messages: Array.isArray(object?.messages) ? object.messages.map((e) => any_1.Any.fromAmino(e)) : [],
-            status: (0, helpers_1.isSet)(object.status) ? proposalStatusFromJSON(object.status) : -1,
-            final_tally_result: object?.final_tally_result ? exports.TallyResult.fromAmino(object.final_tally_result) : undefined,
-            submit_time: object?.submit_time ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.submit_time)) : undefined,
-            deposit_end_time: object?.deposit_end_time ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.deposit_end_time)) : undefined,
-            total_deposit: Array.isArray(object?.total_deposit) ? object.total_deposit.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            voting_start_time: object?.voting_start_time ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.voting_start_time)) : undefined,
-            voting_end_time: object?.voting_end_time ? (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.voting_end_time)) : undefined,
-            metadata: object.metadata,
-            title: object.title,
-            summary: object.summary,
-            proposer: object.proposer,
-            expedited: object.expedited,
-            failed_reason: object.failed_reason
-        };
+        const message = createBaseProposal();
+        if (object.id !== undefined && object.id !== null) {
+            message.id = BigInt(object.id);
+        }
+        message.messages = object.messages?.map(e => any_1.Any.fromAmino(e)) || [];
+        if (object.status !== undefined && object.status !== null) {
+            message.status = proposalStatusFromJSON(object.status);
+        }
+        if (object.final_tally_result !== undefined && object.final_tally_result !== null) {
+            message.final_tally_result = exports.TallyResult.fromAmino(object.final_tally_result);
+        }
+        if (object.submit_time !== undefined && object.submit_time !== null) {
+            message.submit_time = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.submit_time));
+        }
+        if (object.deposit_end_time !== undefined && object.deposit_end_time !== null) {
+            message.deposit_end_time = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.deposit_end_time));
+        }
+        message.total_deposit = object.total_deposit?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.voting_start_time !== undefined && object.voting_start_time !== null) {
+            message.voting_start_time = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.voting_start_time));
+        }
+        if (object.voting_end_time !== undefined && object.voting_end_time !== null) {
+            message.voting_end_time = (0, helpers_1.fromTimestamp)(timestamp_1.Timestamp.fromAmino(object.voting_end_time));
+        }
+        if (object.metadata !== undefined && object.metadata !== null) {
+            message.metadata = object.metadata;
+        }
+        if (object.title !== undefined && object.title !== null) {
+            message.title = object.title;
+        }
+        if (object.summary !== undefined && object.summary !== null) {
+            message.summary = object.summary;
+        }
+        if (object.proposer !== undefined && object.proposer !== null) {
+            message.proposer = object.proposer;
+        }
+        if (object.expedited !== undefined && object.expedited !== null) {
+            message.expedited = object.expedited;
+        }
+        if (object.failed_reason !== undefined && object.failed_reason !== null) {
+            message.failed_reason = object.failed_reason;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -690,12 +724,20 @@ exports.TallyResult = {
         return message;
     },
     fromAmino(object) {
-        return {
-            yes_count: object.yes_count,
-            abstain_count: object.abstain_count,
-            no_count: object.no_count,
-            no_with_veto_count: object.no_with_veto_count
-        };
+        const message = createBaseTallyResult();
+        if (object.yes_count !== undefined && object.yes_count !== null) {
+            message.yes_count = object.yes_count;
+        }
+        if (object.abstain_count !== undefined && object.abstain_count !== null) {
+            message.abstain_count = object.abstain_count;
+        }
+        if (object.no_count !== undefined && object.no_count !== null) {
+            message.no_count = object.no_count;
+        }
+        if (object.no_with_veto_count !== undefined && object.no_with_veto_count !== null) {
+            message.no_with_veto_count = object.no_with_veto_count;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -808,12 +850,18 @@ exports.Vote = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id),
-            voter: object.voter,
-            options: Array.isArray(object?.options) ? object.options.map((e) => exports.WeightedVoteOption.fromAmino(e)) : [],
-            metadata: object.metadata
-        };
+        const message = createBaseVote();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        if (object.voter !== undefined && object.voter !== null) {
+            message.voter = object.voter;
+        }
+        message.options = object.options?.map(e => exports.WeightedVoteOption.fromAmino(e)) || [];
+        if (object.metadata !== undefined && object.metadata !== null) {
+            message.metadata = object.metadata;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -911,10 +959,12 @@ exports.DepositParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            min_deposit: Array.isArray(object?.min_deposit) ? object.min_deposit.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            max_deposit_period: object?.max_deposit_period ? duration_1.Duration.fromAmino(object.max_deposit_period) : undefined
-        };
+        const message = createBaseDepositParams();
+        message.min_deposit = object.min_deposit?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.max_deposit_period !== undefined && object.max_deposit_period !== null) {
+            message.max_deposit_period = duration_1.Duration.fromAmino(object.max_deposit_period);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -995,9 +1045,11 @@ exports.VotingParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            voting_period: object?.voting_period ? duration_1.Duration.fromAmino(object.voting_period) : undefined
-        };
+        const message = createBaseVotingParams();
+        if (object.voting_period !== undefined && object.voting_period !== null) {
+            message.voting_period = duration_1.Duration.fromAmino(object.voting_period);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1092,11 +1144,17 @@ exports.TallyParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            quorum: object.quorum,
-            threshold: object.threshold,
-            veto_threshold: object.veto_threshold
-        };
+        const message = createBaseTallyParams();
+        if (object.quorum !== undefined && object.quorum !== null) {
+            message.quorum = object.quorum;
+        }
+        if (object.threshold !== undefined && object.threshold !== null) {
+            message.threshold = object.threshold;
+        }
+        if (object.veto_threshold !== undefined && object.veto_threshold !== null) {
+            message.veto_threshold = object.veto_threshold;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1333,24 +1391,52 @@ exports.Params = {
         return message;
     },
     fromAmino(object) {
-        return {
-            min_deposit: Array.isArray(object?.min_deposit) ? object.min_deposit.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            max_deposit_period: object?.max_deposit_period ? duration_1.Duration.fromAmino(object.max_deposit_period) : undefined,
-            voting_period: object?.voting_period ? duration_1.Duration.fromAmino(object.voting_period) : undefined,
-            quorum: object.quorum,
-            threshold: object.threshold,
-            veto_threshold: object.veto_threshold,
-            min_initial_deposit_ratio: object.min_initial_deposit_ratio,
-            proposal_cancel_ratio: object.proposal_cancel_ratio,
-            proposal_cancel_dest: object.proposal_cancel_dest,
-            expedited_voting_period: object?.expedited_voting_period ? duration_1.Duration.fromAmino(object.expedited_voting_period) : undefined,
-            expedited_threshold: object.expedited_threshold,
-            expedited_min_deposit: Array.isArray(object?.expedited_min_deposit) ? object.expedited_min_deposit.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            burn_vote_quorum: object.burn_vote_quorum,
-            burn_proposal_deposit_prevote: object.burn_proposal_deposit_prevote,
-            burn_vote_veto: object.burn_vote_veto,
-            min_deposit_ratio: object.min_deposit_ratio
-        };
+        const message = createBaseParams();
+        message.min_deposit = object.min_deposit?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.max_deposit_period !== undefined && object.max_deposit_period !== null) {
+            message.max_deposit_period = duration_1.Duration.fromAmino(object.max_deposit_period);
+        }
+        if (object.voting_period !== undefined && object.voting_period !== null) {
+            message.voting_period = duration_1.Duration.fromAmino(object.voting_period);
+        }
+        if (object.quorum !== undefined && object.quorum !== null) {
+            message.quorum = object.quorum;
+        }
+        if (object.threshold !== undefined && object.threshold !== null) {
+            message.threshold = object.threshold;
+        }
+        if (object.veto_threshold !== undefined && object.veto_threshold !== null) {
+            message.veto_threshold = object.veto_threshold;
+        }
+        if (object.min_initial_deposit_ratio !== undefined && object.min_initial_deposit_ratio !== null) {
+            message.min_initial_deposit_ratio = object.min_initial_deposit_ratio;
+        }
+        if (object.proposal_cancel_ratio !== undefined && object.proposal_cancel_ratio !== null) {
+            message.proposal_cancel_ratio = object.proposal_cancel_ratio;
+        }
+        if (object.proposal_cancel_dest !== undefined && object.proposal_cancel_dest !== null) {
+            message.proposal_cancel_dest = object.proposal_cancel_dest;
+        }
+        if (object.expedited_voting_period !== undefined && object.expedited_voting_period !== null) {
+            message.expedited_voting_period = duration_1.Duration.fromAmino(object.expedited_voting_period);
+        }
+        if (object.expedited_threshold !== undefined && object.expedited_threshold !== null) {
+            message.expedited_threshold = object.expedited_threshold;
+        }
+        message.expedited_min_deposit = object.expedited_min_deposit?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.burn_vote_quorum !== undefined && object.burn_vote_quorum !== null) {
+            message.burn_vote_quorum = object.burn_vote_quorum;
+        }
+        if (object.burn_proposal_deposit_prevote !== undefined && object.burn_proposal_deposit_prevote !== null) {
+            message.burn_proposal_deposit_prevote = object.burn_proposal_deposit_prevote;
+        }
+        if (object.burn_vote_veto !== undefined && object.burn_vote_veto !== null) {
+            message.burn_vote_veto = object.burn_vote_veto;
+        }
+        if (object.min_deposit_ratio !== undefined && object.min_deposit_ratio !== null) {
+            message.min_deposit_ratio = object.min_deposit_ratio;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

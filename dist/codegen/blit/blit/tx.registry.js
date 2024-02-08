@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageComposer = exports.load = exports.registry = void 0;
 const tx_1 = require("./tx");
-exports.registry = [["/blit.blit.MsgUpdateParams", tx_1.MsgUpdateParams], ["/blit.blit.MsgMintCoins", tx_1.MsgMintCoins], ["/blit.blit.MsgBurnCoins", tx_1.MsgBurnCoins], ["/blit.blit.MsgForceTransferCoins", tx_1.MsgForceTransferCoins], ["/blit.blit.MsgSetDenomMetadata", tx_1.MsgSetDenomMetadata]];
+exports.registry = [["/blit.blit.MsgUpdateParams", tx_1.MsgUpdateParams], ["/blit.blit.MsgMintCoins", tx_1.MsgMintCoins], ["/blit.blit.MsgBurnCoins", tx_1.MsgBurnCoins], ["/blit.blit.MsgForceTransferCoins", tx_1.MsgForceTransferCoins], ["/blit.blit.MsgSetDenomMetadata", tx_1.MsgSetDenomMetadata], ["/blit.blit.MsgCreateTask", tx_1.MsgCreateTask], ["/blit.blit.MsgDeleteTask", tx_1.MsgDeleteTask]];
 const load = (protoRegistry) => {
     exports.registry.forEach(([typeUrl, mod]) => {
         protoRegistry.register(typeUrl, mod);
@@ -40,6 +40,18 @@ exports.MessageComposer = {
                 typeUrl: "/blit.blit.MsgSetDenomMetadata",
                 value: tx_1.MsgSetDenomMetadata.encode(value).finish()
             };
+        },
+        createTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgCreateTask",
+                value: tx_1.MsgCreateTask.encode(value).finish()
+            };
+        },
+        deleteTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgDeleteTask",
+                value: tx_1.MsgDeleteTask.encode(value).finish()
+            };
         }
     },
     withTypeUrl: {
@@ -70,6 +82,18 @@ exports.MessageComposer = {
         setDenomMetadata(value) {
             return {
                 typeUrl: "/blit.blit.MsgSetDenomMetadata",
+                value
+            };
+        },
+        createTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgCreateTask",
+                value
+            };
+        },
+        deleteTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgDeleteTask",
                 value
             };
         }
@@ -104,6 +128,18 @@ exports.MessageComposer = {
                 typeUrl: "/blit.blit.MsgSetDenomMetadata",
                 value: tx_1.MsgSetDenomMetadata.toJSON(value)
             };
+        },
+        createTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgCreateTask",
+                value: tx_1.MsgCreateTask.toJSON(value)
+            };
+        },
+        deleteTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgDeleteTask",
+                value: tx_1.MsgDeleteTask.toJSON(value)
+            };
         }
     },
     fromJSON: {
@@ -136,6 +172,18 @@ exports.MessageComposer = {
                 typeUrl: "/blit.blit.MsgSetDenomMetadata",
                 value: tx_1.MsgSetDenomMetadata.fromJSON(value)
             };
+        },
+        createTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgCreateTask",
+                value: tx_1.MsgCreateTask.fromJSON(value)
+            };
+        },
+        deleteTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgDeleteTask",
+                value: tx_1.MsgDeleteTask.fromJSON(value)
+            };
         }
     },
     fromPartial: {
@@ -167,6 +215,18 @@ exports.MessageComposer = {
             return {
                 typeUrl: "/blit.blit.MsgSetDenomMetadata",
                 value: tx_1.MsgSetDenomMetadata.fromPartial(value)
+            };
+        },
+        createTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgCreateTask",
+                value: tx_1.MsgCreateTask.fromPartial(value)
+            };
+        },
+        deleteTask(value) {
+            return {
+                typeUrl: "/blit.blit.MsgDeleteTask",
+                value: tx_1.MsgDeleteTask.fromPartial(value)
             };
         }
     }

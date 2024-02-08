@@ -12,9 +12,9 @@ export interface ScriptProtoMsg {
   value: Uint8Array;
 }
 export interface ScriptAmino {
-  address: string;
-  code: string;
-  version: string;
+  address?: string;
+  code?: string;
+  version?: string;
 }
 export interface ScriptAminoMsg {
   type: "/blit.script.Script";
@@ -91,11 +91,17 @@ export const Script = {
     return message;
   },
   fromAmino(object: ScriptAmino): Script {
-    return {
-      address: object.address,
-      code: object.code,
-      version: BigInt(object.version)
-    };
+    const message = createBaseScript();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.code !== undefined && object.code !== null) {
+      message.code = object.code;
+    }
+    if (object.version !== undefined && object.version !== null) {
+      message.version = BigInt(object.version);
+    }
+    return message;
   },
   toAmino(message: Script): ScriptAmino {
     const obj: any = {};

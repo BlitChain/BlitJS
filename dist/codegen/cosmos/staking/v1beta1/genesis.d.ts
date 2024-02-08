@@ -33,12 +33,12 @@ export interface GenesisStateProtoMsg {
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisStateAmino {
     /** params defines all the parameters of related to deposit. */
-    params?: ParamsAmino;
+    params: ParamsAmino;
     /**
      * last_total_power tracks the total amounts of bonded tokens recorded during
      * the previous end block.
      */
-    last_total_power: Uint8Array;
+    last_total_power: string;
     /**
      * last_validator_powers is a special index that provides a historical list
      * of the last-block's bonded validators.
@@ -53,7 +53,7 @@ export interface GenesisStateAmino {
     /** redelegations defines the redelegations active at genesis. */
     redelegations: RedelegationAmino[];
     /** exported defines a bool to identify whether the chain dealing with exported or initialized genesis. */
-    exported: boolean;
+    exported?: boolean;
 }
 export interface GenesisStateAminoMsg {
     type: "cosmos-sdk/GenesisState";
@@ -84,9 +84,9 @@ export interface LastValidatorPowerProtoMsg {
 /** LastValidatorPower required for validator set update logic. */
 export interface LastValidatorPowerAmino {
     /** address is the address of the validator. */
-    address: string;
+    address?: string;
     /** power defines the power of the validator. */
-    power: string;
+    power?: string;
 }
 export interface LastValidatorPowerAminoMsg {
     type: "cosmos-sdk/LastValidatorPower";

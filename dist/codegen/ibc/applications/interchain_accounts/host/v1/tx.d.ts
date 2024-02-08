@@ -19,7 +19,7 @@ export interface MsgUpdateParamsProtoMsg {
 /** MsgUpdateParams defines the payload for Msg/UpdateParams */
 export interface MsgUpdateParamsAmino {
     /** signer address */
-    signer: string;
+    signer?: string;
     /**
      * params defines the 27-interchain-accounts/host parameters to update.
      *

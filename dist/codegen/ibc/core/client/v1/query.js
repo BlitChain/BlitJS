@@ -54,9 +54,11 @@ exports.QueryClientStateRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id
-        };
+        const message = createBaseQueryClientStateRequest();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -151,16 +153,22 @@ exports.QueryClientStateResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_state: object?.client_state ? any_1.Any.fromAmino(object.client_state) : undefined,
-            proof: object.proof,
-            proof_height: object?.proof_height ? client_1.Height.fromAmino(object.proof_height) : undefined
-        };
+        const message = createBaseQueryClientStateResponse();
+        if (object.client_state !== undefined && object.client_state !== null) {
+            message.client_state = any_1.Any.fromAmino(object.client_state);
+        }
+        if (object.proof !== undefined && object.proof !== null) {
+            message.proof = (0, helpers_1.bytesFromBase64)(object.proof);
+        }
+        if (object.proof_height !== undefined && object.proof_height !== null) {
+            message.proof_height = client_1.Height.fromAmino(object.proof_height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.client_state = message.client_state ? any_1.Any.toAmino(message.client_state) : undefined;
-        obj.proof = message.proof;
+        obj.proof = message.proof ? (0, helpers_1.base64FromBytes)(message.proof) : undefined;
         obj.proof_height = message.proof_height ? client_1.Height.toAmino(message.proof_height) : {};
         return obj;
     },
@@ -232,9 +240,11 @@ exports.QueryClientStatesRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryClientStatesRequest();
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -324,10 +334,12 @@ exports.QueryClientStatesResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_states: Array.isArray(object?.client_states) ? object.client_states.map((e) => client_1.IdentifiedClientState.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryClientStatesResponse();
+        message.client_states = object.client_states?.map(e => client_1.IdentifiedClientState.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -438,12 +450,20 @@ exports.QueryConsensusStateRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            revision_number: BigInt(object.revision_number),
-            revision_height: BigInt(object.revision_height),
-            latest_height: object.latest_height
-        };
+        const message = createBaseQueryConsensusStateRequest();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        if (object.revision_number !== undefined && object.revision_number !== null) {
+            message.revision_number = BigInt(object.revision_number);
+        }
+        if (object.revision_height !== undefined && object.revision_height !== null) {
+            message.revision_height = BigInt(object.revision_height);
+        }
+        if (object.latest_height !== undefined && object.latest_height !== null) {
+            message.latest_height = object.latest_height;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -541,16 +561,22 @@ exports.QueryConsensusStateResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            consensus_state: object?.consensus_state ? any_1.Any.fromAmino(object.consensus_state) : undefined,
-            proof: object.proof,
-            proof_height: object?.proof_height ? client_1.Height.fromAmino(object.proof_height) : undefined
-        };
+        const message = createBaseQueryConsensusStateResponse();
+        if (object.consensus_state !== undefined && object.consensus_state !== null) {
+            message.consensus_state = any_1.Any.fromAmino(object.consensus_state);
+        }
+        if (object.proof !== undefined && object.proof !== null) {
+            message.proof = (0, helpers_1.bytesFromBase64)(object.proof);
+        }
+        if (object.proof_height !== undefined && object.proof_height !== null) {
+            message.proof_height = client_1.Height.fromAmino(object.proof_height);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.consensus_state = message.consensus_state ? any_1.Any.toAmino(message.consensus_state) : undefined;
-        obj.proof = message.proof;
+        obj.proof = message.proof ? (0, helpers_1.base64FromBytes)(message.proof) : undefined;
         obj.proof_height = message.proof_height ? client_1.Height.toAmino(message.proof_height) : {};
         return obj;
     },
@@ -632,10 +658,14 @@ exports.QueryConsensusStatesRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryConsensusStatesRequest();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -726,10 +756,12 @@ exports.QueryConsensusStatesResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            consensus_states: Array.isArray(object?.consensus_states) ? object.consensus_states.map((e) => client_1.ConsensusStateWithHeight.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryConsensusStatesResponse();
+        message.consensus_states = object.consensus_states?.map(e => client_1.ConsensusStateWithHeight.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -820,10 +852,14 @@ exports.QueryConsensusStateHeightsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryConsensusStateHeightsRequest();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -914,10 +950,12 @@ exports.QueryConsensusStateHeightsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            consensus_state_heights: Array.isArray(object?.consensus_state_heights) ? object.consensus_state_heights.map((e) => client_1.Height.fromAmino(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryConsensusStateHeightsResponse();
+        message.consensus_state_heights = object.consensus_state_heights?.map(e => client_1.Height.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -998,9 +1036,11 @@ exports.QueryClientStatusRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id
-        };
+        const message = createBaseQueryClientStatusRequest();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1075,9 +1115,11 @@ exports.QueryClientStatusResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            status: object.status
-        };
+        const message = createBaseQueryClientStatusResponse();
+        if (object.status !== undefined && object.status !== null) {
+            message.status = object.status;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1140,7 +1182,8 @@ exports.QueryClientParamsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryClientParamsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1214,9 +1257,11 @@ exports.QueryClientParamsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? client_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseQueryClientParamsResponse();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = client_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1279,7 +1324,8 @@ exports.QueryUpgradedClientStateRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryUpgradedClientStateRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1353,9 +1399,11 @@ exports.QueryUpgradedClientStateResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            upgraded_client_state: object?.upgraded_client_state ? any_1.Any.fromAmino(object.upgraded_client_state) : undefined
-        };
+        const message = createBaseQueryUpgradedClientStateResponse();
+        if (object.upgraded_client_state !== undefined && object.upgraded_client_state !== null) {
+            message.upgraded_client_state = any_1.Any.fromAmino(object.upgraded_client_state);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1418,7 +1466,8 @@ exports.QueryUpgradedConsensusStateRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryUpgradedConsensusStateRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -1492,9 +1541,11 @@ exports.QueryUpgradedConsensusStateResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            upgraded_consensus_state: object?.upgraded_consensus_state ? any_1.Any.fromAmino(object.upgraded_consensus_state) : undefined
-        };
+        const message = createBaseQueryUpgradedConsensusStateResponse();
+        if (object.upgraded_consensus_state !== undefined && object.upgraded_consensus_state !== null) {
+            message.upgraded_consensus_state = any_1.Any.fromAmino(object.upgraded_consensus_state);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

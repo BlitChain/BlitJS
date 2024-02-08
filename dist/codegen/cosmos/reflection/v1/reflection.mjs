@@ -36,7 +36,8 @@ export const FileDescriptorsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseFileDescriptorsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -115,9 +116,9 @@ export const FileDescriptorsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            files: Array.isArray(object?.files) ? object.files.map((e) => FileDescriptorProto.fromAmino(e)) : []
-        };
+        const message = createBaseFileDescriptorsResponse();
+        message.files = object.files?.map(e => FileDescriptorProto.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};

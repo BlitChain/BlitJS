@@ -232,17 +232,23 @@ export const ExistenceProof = {
         return message;
     },
     fromAmino(object) {
-        return {
-            key: object.key,
-            value: object.value,
-            leaf: object?.leaf ? LeafOp.fromAmino(object.leaf) : undefined,
-            path: Array.isArray(object?.path) ? object.path.map((e) => InnerOp.fromAmino(e)) : []
-        };
+        const message = createBaseExistenceProof();
+        if (object.key !== undefined && object.key !== null) {
+            message.key = bytesFromBase64(object.key);
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = bytesFromBase64(object.value);
+        }
+        if (object.leaf !== undefined && object.leaf !== null) {
+            message.leaf = LeafOp.fromAmino(object.leaf);
+        }
+        message.path = object.path?.map(e => InnerOp.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.key = message.key;
-        obj.value = message.value;
+        obj.key = message.key ? base64FromBytes(message.key) : undefined;
+        obj.value = message.value ? base64FromBytes(message.value) : undefined;
         obj.leaf = message.leaf ? LeafOp.toAmino(message.leaf) : undefined;
         if (message.path) {
             obj.path = message.path.map(e => e ? InnerOp.toAmino(e) : undefined);
@@ -334,15 +340,21 @@ export const NonExistenceProof = {
         return message;
     },
     fromAmino(object) {
-        return {
-            key: object.key,
-            left: object?.left ? ExistenceProof.fromAmino(object.left) : undefined,
-            right: object?.right ? ExistenceProof.fromAmino(object.right) : undefined
-        };
+        const message = createBaseNonExistenceProof();
+        if (object.key !== undefined && object.key !== null) {
+            message.key = bytesFromBase64(object.key);
+        }
+        if (object.left !== undefined && object.left !== null) {
+            message.left = ExistenceProof.fromAmino(object.left);
+        }
+        if (object.right !== undefined && object.right !== null) {
+            message.right = ExistenceProof.fromAmino(object.right);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.key = message.key;
+        obj.key = message.key ? base64FromBytes(message.key) : undefined;
         obj.left = message.left ? ExistenceProof.toAmino(message.left) : undefined;
         obj.right = message.right ? ExistenceProof.toAmino(message.right) : undefined;
         return obj;
@@ -439,12 +451,20 @@ export const CommitmentProof = {
         return message;
     },
     fromAmino(object) {
-        return {
-            exist: object?.exist ? ExistenceProof.fromAmino(object.exist) : undefined,
-            nonexist: object?.nonexist ? NonExistenceProof.fromAmino(object.nonexist) : undefined,
-            batch: object?.batch ? BatchProof.fromAmino(object.batch) : undefined,
-            compressed: object?.compressed ? CompressedBatchProof.fromAmino(object.compressed) : undefined
-        };
+        const message = createBaseCommitmentProof();
+        if (object.exist !== undefined && object.exist !== null) {
+            message.exist = ExistenceProof.fromAmino(object.exist);
+        }
+        if (object.nonexist !== undefined && object.nonexist !== null) {
+            message.nonexist = NonExistenceProof.fromAmino(object.nonexist);
+        }
+        if (object.batch !== undefined && object.batch !== null) {
+            message.batch = BatchProof.fromAmino(object.batch);
+        }
+        if (object.compressed !== undefined && object.compressed !== null) {
+            message.compressed = CompressedBatchProof.fromAmino(object.compressed);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -556,13 +576,23 @@ export const LeafOp = {
         return message;
     },
     fromAmino(object) {
-        return {
-            hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : -1,
-            prehash_key: isSet(object.prehash_key) ? hashOpFromJSON(object.prehash_key) : -1,
-            prehash_value: isSet(object.prehash_value) ? hashOpFromJSON(object.prehash_value) : -1,
-            length: isSet(object.length) ? lengthOpFromJSON(object.length) : -1,
-            prefix: object.prefix
-        };
+        const message = createBaseLeafOp();
+        if (object.hash !== undefined && object.hash !== null) {
+            message.hash = hashOpFromJSON(object.hash);
+        }
+        if (object.prehash_key !== undefined && object.prehash_key !== null) {
+            message.prehash_key = hashOpFromJSON(object.prehash_key);
+        }
+        if (object.prehash_value !== undefined && object.prehash_value !== null) {
+            message.prehash_value = hashOpFromJSON(object.prehash_value);
+        }
+        if (object.length !== undefined && object.length !== null) {
+            message.length = lengthOpFromJSON(object.length);
+        }
+        if (object.prefix !== undefined && object.prefix !== null) {
+            message.prefix = bytesFromBase64(object.prefix);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -570,7 +600,7 @@ export const LeafOp = {
         obj.prehash_key = message.prehash_key;
         obj.prehash_value = message.prehash_value;
         obj.length = message.length;
-        obj.prefix = message.prefix;
+        obj.prefix = message.prefix ? base64FromBytes(message.prefix) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -655,17 +685,23 @@ export const InnerOp = {
         return message;
     },
     fromAmino(object) {
-        return {
-            hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : -1,
-            prefix: object.prefix,
-            suffix: object.suffix
-        };
+        const message = createBaseInnerOp();
+        if (object.hash !== undefined && object.hash !== null) {
+            message.hash = hashOpFromJSON(object.hash);
+        }
+        if (object.prefix !== undefined && object.prefix !== null) {
+            message.prefix = bytesFromBase64(object.prefix);
+        }
+        if (object.suffix !== undefined && object.suffix !== null) {
+            message.suffix = bytesFromBase64(object.suffix);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.hash = message.hash;
-        obj.prefix = message.prefix;
-        obj.suffix = message.suffix;
+        obj.prefix = message.prefix ? base64FromBytes(message.prefix) : undefined;
+        obj.suffix = message.suffix ? base64FromBytes(message.suffix) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -760,12 +796,20 @@ export const ProofSpec = {
         return message;
     },
     fromAmino(object) {
-        return {
-            leaf_spec: object?.leaf_spec ? LeafOp.fromAmino(object.leaf_spec) : undefined,
-            inner_spec: object?.inner_spec ? InnerSpec.fromAmino(object.inner_spec) : undefined,
-            max_depth: object.max_depth,
-            min_depth: object.min_depth
-        };
+        const message = createBaseProofSpec();
+        if (object.leaf_spec !== undefined && object.leaf_spec !== null) {
+            message.leaf_spec = LeafOp.fromAmino(object.leaf_spec);
+        }
+        if (object.inner_spec !== undefined && object.inner_spec !== null) {
+            message.inner_spec = InnerSpec.fromAmino(object.inner_spec);
+        }
+        if (object.max_depth !== undefined && object.max_depth !== null) {
+            message.max_depth = object.max_depth;
+        }
+        if (object.min_depth !== undefined && object.min_depth !== null) {
+            message.min_depth = object.min_depth;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -902,14 +946,24 @@ export const InnerSpec = {
         return message;
     },
     fromAmino(object) {
-        return {
-            child_order: Array.isArray(object?.child_order) ? object.child_order.map((e) => e) : [],
-            child_size: object.child_size,
-            min_prefix_length: object.min_prefix_length,
-            max_prefix_length: object.max_prefix_length,
-            empty_child: object.empty_child,
-            hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : -1
-        };
+        const message = createBaseInnerSpec();
+        message.child_order = object.child_order?.map(e => e) || [];
+        if (object.child_size !== undefined && object.child_size !== null) {
+            message.child_size = object.child_size;
+        }
+        if (object.min_prefix_length !== undefined && object.min_prefix_length !== null) {
+            message.min_prefix_length = object.min_prefix_length;
+        }
+        if (object.max_prefix_length !== undefined && object.max_prefix_length !== null) {
+            message.max_prefix_length = object.max_prefix_length;
+        }
+        if (object.empty_child !== undefined && object.empty_child !== null) {
+            message.empty_child = bytesFromBase64(object.empty_child);
+        }
+        if (object.hash !== undefined && object.hash !== null) {
+            message.hash = hashOpFromJSON(object.hash);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -922,7 +976,7 @@ export const InnerSpec = {
         obj.child_size = message.child_size;
         obj.min_prefix_length = message.min_prefix_length;
         obj.max_prefix_length = message.max_prefix_length;
-        obj.empty_child = message.empty_child;
+        obj.empty_child = message.empty_child ? base64FromBytes(message.empty_child) : undefined;
         obj.hash = message.hash;
         return obj;
     },
@@ -993,9 +1047,9 @@ export const BatchProof = {
         return message;
     },
     fromAmino(object) {
-        return {
-            entries: Array.isArray(object?.entries) ? object.entries.map((e) => BatchEntry.fromAmino(e)) : []
-        };
+        const message = createBaseBatchProof();
+        message.entries = object.entries?.map(e => BatchEntry.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1079,10 +1133,14 @@ export const BatchEntry = {
         return message;
     },
     fromAmino(object) {
-        return {
-            exist: object?.exist ? ExistenceProof.fromAmino(object.exist) : undefined,
-            nonexist: object?.nonexist ? NonExistenceProof.fromAmino(object.nonexist) : undefined
-        };
+        const message = createBaseBatchEntry();
+        if (object.exist !== undefined && object.exist !== null) {
+            message.exist = ExistenceProof.fromAmino(object.exist);
+        }
+        if (object.nonexist !== undefined && object.nonexist !== null) {
+            message.nonexist = NonExistenceProof.fromAmino(object.nonexist);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1172,10 +1230,10 @@ export const CompressedBatchProof = {
         return message;
     },
     fromAmino(object) {
-        return {
-            entries: Array.isArray(object?.entries) ? object.entries.map((e) => CompressedBatchEntry.fromAmino(e)) : [],
-            lookup_inners: Array.isArray(object?.lookup_inners) ? object.lookup_inners.map((e) => InnerOp.fromAmino(e)) : []
-        };
+        const message = createBaseCompressedBatchProof();
+        message.entries = object.entries?.map(e => CompressedBatchEntry.fromAmino(e)) || [];
+        message.lookup_inners = object.lookup_inners?.map(e => InnerOp.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1265,10 +1323,14 @@ export const CompressedBatchEntry = {
         return message;
     },
     fromAmino(object) {
-        return {
-            exist: object?.exist ? CompressedExistenceProof.fromAmino(object.exist) : undefined,
-            nonexist: object?.nonexist ? CompressedNonExistenceProof.fromAmino(object.nonexist) : undefined
-        };
+        const message = createBaseCompressedBatchEntry();
+        if (object.exist !== undefined && object.exist !== null) {
+            message.exist = CompressedExistenceProof.fromAmino(object.exist);
+        }
+        if (object.nonexist !== undefined && object.nonexist !== null) {
+            message.nonexist = CompressedNonExistenceProof.fromAmino(object.nonexist);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1383,17 +1445,23 @@ export const CompressedExistenceProof = {
         return message;
     },
     fromAmino(object) {
-        return {
-            key: object.key,
-            value: object.value,
-            leaf: object?.leaf ? LeafOp.fromAmino(object.leaf) : undefined,
-            path: Array.isArray(object?.path) ? object.path.map((e) => e) : []
-        };
+        const message = createBaseCompressedExistenceProof();
+        if (object.key !== undefined && object.key !== null) {
+            message.key = bytesFromBase64(object.key);
+        }
+        if (object.value !== undefined && object.value !== null) {
+            message.value = bytesFromBase64(object.value);
+        }
+        if (object.leaf !== undefined && object.leaf !== null) {
+            message.leaf = LeafOp.fromAmino(object.leaf);
+        }
+        message.path = object.path?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.key = message.key;
-        obj.value = message.value;
+        obj.key = message.key ? base64FromBytes(message.key) : undefined;
+        obj.value = message.value ? base64FromBytes(message.value) : undefined;
         obj.leaf = message.leaf ? LeafOp.toAmino(message.leaf) : undefined;
         if (message.path) {
             obj.path = message.path.map(e => e);
@@ -1485,15 +1553,21 @@ export const CompressedNonExistenceProof = {
         return message;
     },
     fromAmino(object) {
-        return {
-            key: object.key,
-            left: object?.left ? CompressedExistenceProof.fromAmino(object.left) : undefined,
-            right: object?.right ? CompressedExistenceProof.fromAmino(object.right) : undefined
-        };
+        const message = createBaseCompressedNonExistenceProof();
+        if (object.key !== undefined && object.key !== null) {
+            message.key = bytesFromBase64(object.key);
+        }
+        if (object.left !== undefined && object.left !== null) {
+            message.left = CompressedExistenceProof.fromAmino(object.left);
+        }
+        if (object.right !== undefined && object.right !== null) {
+            message.right = CompressedExistenceProof.fromAmino(object.right);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.key = message.key;
+        obj.key = message.key ? base64FromBytes(message.key) : undefined;
         obj.left = message.left ? CompressedExistenceProof.toAmino(message.left) : undefined;
         obj.right = message.right ? CompressedExistenceProof.toAmino(message.right) : undefined;
         return obj;

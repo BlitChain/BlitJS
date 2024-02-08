@@ -1,4 +1,5 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
 export declare const protobufPackage = "blit.script";
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
@@ -15,9 +16,9 @@ export interface MsgUpdateParamsProtoMsg {
 /** MsgUpdateParams is the Msg/UpdateParams request type. */
 export interface MsgUpdateParamsAmino {
     /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
-    authority: string;
+    authority?: string;
     /** NOTE: All parameters must be supplied. */
-    params?: ParamsAmino;
+    params: ParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
     type: "blit/x/script/MsgUpdateParams";
@@ -66,11 +67,11 @@ export interface MsgCreateScriptProtoMsg {
     value: Uint8Array;
 }
 export interface MsgCreateScriptAmino {
-    creator: string;
-    code: string;
+    creator?: string;
+    code?: string;
     /** The list of MsgUrls the create will be granted access to via authz initially */
-    msg_type_permissions: string[];
-    grantee: string;
+    msg_type_permissions?: string[];
+    grantee?: string;
 }
 export interface MsgCreateScriptAminoMsg {
     type: "/blit.script.MsgCreateScript";
@@ -90,7 +91,7 @@ export interface MsgCreateScriptResponseProtoMsg {
     value: Uint8Array;
 }
 export interface MsgCreateScriptResponseAmino {
-    address: string;
+    address?: string;
 }
 export interface MsgCreateScriptResponseAminoMsg {
     type: "/blit.script.MsgCreateScriptResponse";
@@ -109,9 +110,9 @@ export interface MsgUpdateScriptProtoMsg {
     value: Uint8Array;
 }
 export interface MsgUpdateScriptAmino {
-    address: string;
-    code: string;
-    grantee: string;
+    address?: string;
+    code?: string;
+    grantee?: string;
 }
 export interface MsgUpdateScriptAminoMsg {
     type: "/blit.script.MsgUpdateScript";
@@ -130,7 +131,7 @@ export interface MsgUpdateScriptResponseProtoMsg {
     value: Uint8Array;
 }
 export interface MsgUpdateScriptResponseAmino {
-    version: string;
+    version?: string;
 }
 export interface MsgUpdateScriptResponseAminoMsg {
     type: "/blit.script.MsgUpdateScriptResponse";
@@ -148,8 +149,8 @@ export interface MsgDeleteScriptProtoMsg {
     value: Uint8Array;
 }
 export interface MsgDeleteScriptAmino {
-    address: string;
-    index: string;
+    address?: string;
+    index?: string;
 }
 export interface MsgDeleteScriptAminoMsg {
     type: "/blit.script.MsgDeleteScript";
@@ -181,21 +182,24 @@ export interface MsgRun {
     function_name: string;
     kwargs: string;
     grantee: string;
-    attached_messages: string;
+    attached_messages: (Any)[] | Any[];
 }
 export interface MsgRunProtoMsg {
     type_url: "/blit.script.MsgRun";
     value: Uint8Array;
 }
+export type MsgRunEncoded = Omit<MsgRun, "attached_messages"> & {
+    attached_messages: (AnyProtoMsg)[];
+};
 /** MsgRun runs a script at a specific address */
 export interface MsgRunAmino {
-    caller_address: string;
-    script_address: string;
-    extra_code: string;
-    function_name: string;
-    kwargs: string;
-    grantee: string;
-    attached_messages: string;
+    caller_address?: string;
+    script_address?: string;
+    extra_code?: string;
+    function_name?: string;
+    kwargs?: string;
+    grantee?: string;
+    attached_messages?: AnyAmino[];
 }
 export interface MsgRunAminoMsg {
     type: "/blit.script.MsgRun";
@@ -209,7 +213,7 @@ export interface MsgRunSDKType {
     function_name: string;
     kwargs: string;
     grantee: string;
-    attached_messages: string;
+    attached_messages: (AnySDKType)[];
 }
 export interface MsgRunResponse {
     response: string;
@@ -219,7 +223,7 @@ export interface MsgRunResponseProtoMsg {
     value: Uint8Array;
 }
 export interface MsgRunResponseAmino {
-    response: string;
+    response?: string;
 }
 export interface MsgRunResponseAminoMsg {
     type: "/blit.script.MsgRunResponse";
@@ -369,3 +373,6 @@ export declare const MsgRunResponse: {
     toProto(message: MsgRunResponse): Uint8Array;
     toProtoMsg(message: MsgRunResponse): MsgRunResponseProtoMsg;
 };
+export declare const Cosmos_basev1beta1Msg_InterfaceDecoder: (input: BinaryReader | Uint8Array) => Any;
+export declare const Cosmos_basev1beta1Msg_FromAmino: (content: AnyAmino) => Any;
+export declare const Cosmos_basev1beta1Msg_ToAmino: (content: Any) => AnyAmino;

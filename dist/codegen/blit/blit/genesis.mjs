@@ -1,11 +1,16 @@
 //@ts-nocheck
 import { Params } from "./params";
+import { Task } from "./task";
+import { FutureTask } from "./future_task";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { isSet } from "../../helpers";
 export const protobufPackage = "blit.blit";
 function createBaseGenesisState() {
     return {
-        params: Params.fromPartial({})
+        params: Params.fromPartial({}),
+        task_list: [],
+        future_task_list: [],
+        starting_task_id: BigInt(0)
     };
 }
 export const GenesisState = {
@@ -13,6 +18,15 @@ export const GenesisState = {
     encode(message, writer = BinaryWriter.create()) {
         if (message.params !== undefined) {
             Params.encode(message.params, writer.uint32(10).fork()).ldelim();
+        }
+        for (const v of message.task_list) {
+            Task.encode(v, writer.uint32(18).fork()).ldelim();
+        }
+        for (const v of message.future_task_list) {
+            FutureTask.encode(v, writer.uint32(34).fork()).ldelim();
+        }
+        if (message.starting_task_id !== BigInt(0)) {
+            writer.uint32(40).uint64(message.starting_task_id);
         }
         return writer;
     },
@@ -26,6 +40,15 @@ export const GenesisState = {
                 case 1:
                     message.params = Params.decode(reader, reader.uint32());
                     break;
+                case 2:
+                    message.task_list.push(Task.decode(reader, reader.uint32()));
+                    break;
+                case 4:
+                    message.future_task_list.push(FutureTask.decode(reader, reader.uint32()));
+                    break;
+                case 5:
+                    message.starting_task_id = reader.uint64();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -35,27 +58,66 @@ export const GenesisState = {
     },
     fromJSON(object) {
         return {
-            params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+            params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+            task_list: Array.isArray(object?.task_list) ? object.task_list.map((e) => Task.fromJSON(e)) : [],
+            future_task_list: Array.isArray(object?.future_task_list) ? object.future_task_list.map((e) => FutureTask.fromJSON(e)) : [],
+            starting_task_id: isSet(object.starting_task_id) ? BigInt(object.starting_task_id.toString()) : BigInt(0)
         };
     },
     toJSON(message) {
         const obj = {};
         message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+        if (message.task_list) {
+            obj.task_list = message.task_list.map(e => e ? Task.toJSON(e) : undefined);
+        }
+        else {
+            obj.task_list = [];
+        }
+        if (message.future_task_list) {
+            obj.future_task_list = message.future_task_list.map(e => e ? FutureTask.toJSON(e) : undefined);
+        }
+        else {
+            obj.future_task_list = [];
+        }
+        message.starting_task_id !== undefined && (obj.starting_task_id = (message.starting_task_id || BigInt(0)).toString());
         return obj;
     },
     fromPartial(object) {
         const message = createBaseGenesisState();
         message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+        message.task_list = object.task_list?.map(e => Task.fromPartial(e)) || [];
+        message.future_task_list = object.future_task_list?.map(e => FutureTask.fromPartial(e)) || [];
+        message.starting_task_id = object.starting_task_id !== undefined && object.starting_task_id !== null ? BigInt(object.starting_task_id.toString()) : BigInt(0);
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseGenesisState();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = Params.fromAmino(object.params);
+        }
+        message.task_list = object.task_list?.map(e => Task.fromAmino(e)) || [];
+        message.future_task_list = object.future_task_list?.map(e => FutureTask.fromAmino(e)) || [];
+        if (object.starting_task_id !== undefined && object.starting_task_id !== null) {
+            message.starting_task_id = BigInt(object.starting_task_id);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.params = message.params ? Params.toAmino(message.params) : undefined;
+        obj.params = message.params ? Params.toAmino(message.params) : Params.fromPartial({});
+        if (message.task_list) {
+            obj.task_list = message.task_list.map(e => e ? Task.toAmino(e) : undefined);
+        }
+        else {
+            obj.task_list = [];
+        }
+        if (message.future_task_list) {
+            obj.future_task_list = message.future_task_list.map(e => e ? FutureTask.toAmino(e) : undefined);
+        }
+        else {
+            obj.future_task_list = [];
+        }
+        obj.starting_task_id = message.starting_task_id ? message.starting_task_id.toString() : undefined;
         return obj;
     },
     fromAminoMsg(object) {

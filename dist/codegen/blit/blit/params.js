@@ -38,7 +38,8 @@ exports.Params = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseParams();
+        return message;
     },
     toAmino(_) {
         const obj = {};

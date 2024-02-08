@@ -10,9 +10,9 @@ export interface ScriptProtoMsg {
     value: Uint8Array;
 }
 export interface ScriptAmino {
-    address: string;
-    code: string;
-    version: string;
+    address?: string;
+    code?: string;
+    version?: string;
 }
 export interface ScriptAminoMsg {
     type: "/blit.script.Script";

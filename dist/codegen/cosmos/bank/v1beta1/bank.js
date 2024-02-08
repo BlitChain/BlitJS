@@ -67,10 +67,12 @@ exports.Params = {
         return message;
     },
     fromAmino(object) {
-        return {
-            send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e) => exports.SendEnabled.fromAmino(e)) : [],
-            default_send_enabled: object.default_send_enabled
-        };
+        const message = createBaseParams();
+        message.send_enabled = object.send_enabled?.map(e => exports.SendEnabled.fromAmino(e)) || [];
+        if (object.default_send_enabled !== undefined && object.default_send_enabled !== null) {
+            message.default_send_enabled = object.default_send_enabled;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -161,10 +163,14 @@ exports.SendEnabled = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denom: object.denom,
-            enabled: object.enabled
-        };
+        const message = createBaseSendEnabled();
+        if (object.denom !== undefined && object.denom !== null) {
+            message.denom = object.denom;
+        }
+        if (object.enabled !== undefined && object.enabled !== null) {
+            message.enabled = object.enabled;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -255,10 +261,12 @@ exports.Input = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            coins: Array.isArray(object?.coins) ? object.coins.map((e) => coin_1.Coin.fromAmino(e)) : []
-        };
+        const message = createBaseInput();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        message.coins = object.coins?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -354,10 +362,12 @@ exports.Output = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address,
-            coins: Array.isArray(object?.coins) ? object.coins.map((e) => coin_1.Coin.fromAmino(e)) : []
-        };
+        const message = createBaseOutput();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        message.coins = object.coins?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -444,9 +454,9 @@ exports.Supply = {
         return message;
     },
     fromAmino(object) {
-        return {
-            total: Array.isArray(object?.total) ? object.total.map((e) => coin_1.Coin.fromAmino(e)) : []
-        };
+        const message = createBaseSupply();
+        message.total = object.total?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -551,11 +561,15 @@ exports.DenomUnit = {
         return message;
     },
     fromAmino(object) {
-        return {
-            denom: object.denom,
-            exponent: object.exponent,
-            aliases: Array.isArray(object?.aliases) ? object.aliases.map((e) => e) : []
-        };
+        const message = createBaseDenomUnit();
+        if (object.denom !== undefined && object.denom !== null) {
+            message.denom = object.denom;
+        }
+        if (object.exponent !== undefined && object.exponent !== null) {
+            message.exponent = object.exponent;
+        }
+        message.aliases = object.aliases?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -712,16 +726,30 @@ exports.Metadata = {
         return message;
     },
     fromAmino(object) {
-        return {
-            description: object.description,
-            denom_units: Array.isArray(object?.denom_units) ? object.denom_units.map((e) => exports.DenomUnit.fromAmino(e)) : [],
-            base: object.base,
-            display: object.display,
-            name: object.name,
-            symbol: object.symbol,
-            uri: object.uri,
-            uri_hash: object.uri_hash
-        };
+        const message = createBaseMetadata();
+        if (object.description !== undefined && object.description !== null) {
+            message.description = object.description;
+        }
+        message.denom_units = object.denom_units?.map(e => exports.DenomUnit.fromAmino(e)) || [];
+        if (object.base !== undefined && object.base !== null) {
+            message.base = object.base;
+        }
+        if (object.display !== undefined && object.display !== null) {
+            message.display = object.display;
+        }
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        if (object.symbol !== undefined && object.symbol !== null) {
+            message.symbol = object.symbol;
+        }
+        if (object.uri !== undefined && object.uri !== null) {
+            message.uri = object.uri;
+        }
+        if (object.uri_hash !== undefined && object.uri_hash !== null) {
+            message.uri_hash = object.uri_hash;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

@@ -65,14 +65,16 @@ export const GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? Params.fromAmino(object.params) : undefined,
-            storageList: Array.isArray(object?.storageList) ? object.storageList.map((e) => Storage.fromAmino(e)) : []
-        };
+        const message = createBaseGenesisState();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = Params.fromAmino(object.params);
+        }
+        message.storageList = object.storageList?.map(e => Storage.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.params = message.params ? Params.toAmino(message.params) : undefined;
+        obj.params = message.params ? Params.toAmino(message.params) : Params.fromPartial({});
         if (message.storageList) {
             obj.storageList = message.storageList.map(e => e ? Storage.toAmino(e) : undefined);
         }

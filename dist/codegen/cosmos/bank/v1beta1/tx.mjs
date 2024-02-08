@@ -75,11 +75,15 @@ export const MsgSend = {
         return message;
     },
     fromAmino(object) {
-        return {
-            from_address: object.from_address,
-            to_address: object.to_address,
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => Coin.fromAmino(e)) : []
-        };
+        const message = createBaseMsgSend();
+        if (object.from_address !== undefined && object.from_address !== null) {
+            message.from_address = object.from_address;
+        }
+        if (object.to_address !== undefined && object.to_address !== null) {
+            message.to_address = object.to_address;
+        }
+        message.amount = object.amount?.map(e => Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -149,7 +153,8 @@ export const MsgSendResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgSendResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -243,10 +248,10 @@ export const MsgMultiSend = {
         return message;
     },
     fromAmino(object) {
-        return {
-            inputs: Array.isArray(object?.inputs) ? object.inputs.map((e) => Input.fromAmino(e)) : [],
-            outputs: Array.isArray(object?.outputs) ? object.outputs.map((e) => Output.fromAmino(e)) : []
-        };
+        const message = createBaseMsgMultiSend();
+        message.inputs = object.inputs?.map(e => Input.fromAmino(e)) || [];
+        message.outputs = object.outputs?.map(e => Output.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -320,7 +325,8 @@ export const MsgMultiSendResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgMultiSendResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -404,15 +410,19 @@ export const MsgUpdateParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authority: object.authority,
-            params: object?.params ? Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseMsgUpdateParams();
+        if (object.authority !== undefined && object.authority !== null) {
+            message.authority = object.authority;
+        }
+        if (object.params !== undefined && object.params !== null) {
+            message.params = Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.authority = message.authority;
-        obj.params = message.params ? Params.toAmino(message.params) : undefined;
+        obj.params = message.params ? Params.toAmino(message.params) : Params.fromPartial({});
         return obj;
     },
     fromAminoMsg(object) {
@@ -471,7 +481,8 @@ export const MsgUpdateParamsResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgUpdateParamsResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -575,11 +586,13 @@ export const MsgSetSendEnabled = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authority: object.authority,
-            send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e) => SendEnabled.fromAmino(e)) : [],
-            use_default_for: Array.isArray(object?.use_default_for) ? object.use_default_for.map((e) => e) : []
-        };
+        const message = createBaseMsgSetSendEnabled();
+        if (object.authority !== undefined && object.authority !== null) {
+            message.authority = object.authority;
+        }
+        message.send_enabled = object.send_enabled?.map(e => SendEnabled.fromAmino(e)) || [];
+        message.use_default_for = object.use_default_for?.map(e => e) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -654,7 +667,8 @@ export const MsgSetSendEnabledResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgSetSendEnabledResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};

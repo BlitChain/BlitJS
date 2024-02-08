@@ -165,19 +165,37 @@ export const ClientState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            chain_id: object.chain_id,
-            trust_level: object?.trust_level ? Fraction.fromAmino(object.trust_level) : undefined,
-            trusting_period: object?.trusting_period ? Duration.fromAmino(object.trusting_period) : undefined,
-            unbonding_period: object?.unbonding_period ? Duration.fromAmino(object.unbonding_period) : undefined,
-            max_clock_drift: object?.max_clock_drift ? Duration.fromAmino(object.max_clock_drift) : undefined,
-            frozen_height: object?.frozen_height ? Height.fromAmino(object.frozen_height) : undefined,
-            latest_height: object?.latest_height ? Height.fromAmino(object.latest_height) : undefined,
-            proof_specs: Array.isArray(object?.proof_specs) ? object.proof_specs.map((e) => ProofSpec.fromAmino(e)) : [],
-            upgrade_path: Array.isArray(object?.upgrade_path) ? object.upgrade_path.map((e) => e) : [],
-            allow_update_after_expiry: object.allow_update_after_expiry,
-            allow_update_after_misbehaviour: object.allow_update_after_misbehaviour
-        };
+        const message = createBaseClientState();
+        if (object.chain_id !== undefined && object.chain_id !== null) {
+            message.chain_id = object.chain_id;
+        }
+        if (object.trust_level !== undefined && object.trust_level !== null) {
+            message.trust_level = Fraction.fromAmino(object.trust_level);
+        }
+        if (object.trusting_period !== undefined && object.trusting_period !== null) {
+            message.trusting_period = Duration.fromAmino(object.trusting_period);
+        }
+        if (object.unbonding_period !== undefined && object.unbonding_period !== null) {
+            message.unbonding_period = Duration.fromAmino(object.unbonding_period);
+        }
+        if (object.max_clock_drift !== undefined && object.max_clock_drift !== null) {
+            message.max_clock_drift = Duration.fromAmino(object.max_clock_drift);
+        }
+        if (object.frozen_height !== undefined && object.frozen_height !== null) {
+            message.frozen_height = Height.fromAmino(object.frozen_height);
+        }
+        if (object.latest_height !== undefined && object.latest_height !== null) {
+            message.latest_height = Height.fromAmino(object.latest_height);
+        }
+        message.proof_specs = object.proof_specs?.map(e => ProofSpec.fromAmino(e)) || [];
+        message.upgrade_path = object.upgrade_path?.map(e => e) || [];
+        if (object.allow_update_after_expiry !== undefined && object.allow_update_after_expiry !== null) {
+            message.allow_update_after_expiry = object.allow_update_after_expiry;
+        }
+        if (object.allow_update_after_misbehaviour !== undefined && object.allow_update_after_misbehaviour !== null) {
+            message.allow_update_after_misbehaviour = object.allow_update_after_misbehaviour;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -292,17 +310,23 @@ export const ConsensusState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            timestamp: object?.timestamp ? fromTimestamp(Timestamp.fromAmino(object.timestamp)) : undefined,
-            root: object?.root ? MerkleRoot.fromAmino(object.root) : undefined,
-            next_validators_hash: object.next_validators_hash
-        };
+        const message = createBaseConsensusState();
+        if (object.timestamp !== undefined && object.timestamp !== null) {
+            message.timestamp = fromTimestamp(Timestamp.fromAmino(object.timestamp));
+        }
+        if (object.root !== undefined && object.root !== null) {
+            message.root = MerkleRoot.fromAmino(object.root);
+        }
+        if (object.next_validators_hash !== undefined && object.next_validators_hash !== null) {
+            message.next_validators_hash = bytesFromBase64(object.next_validators_hash);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
         obj.root = message.root ? MerkleRoot.toAmino(message.root) : undefined;
-        obj.next_validators_hash = message.next_validators_hash;
+        obj.next_validators_hash = message.next_validators_hash ? base64FromBytes(message.next_validators_hash) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -393,11 +417,17 @@ export const Misbehaviour = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            header_1: object?.header_1 ? Header.fromAmino(object.header_1) : undefined,
-            header_2: object?.header_2 ? Header.fromAmino(object.header_2) : undefined
-        };
+        const message = createBaseMisbehaviour();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        if (object.header_1 !== undefined && object.header_1 !== null) {
+            message.header_1 = Header.fromAmino(object.header_1);
+        }
+        if (object.header_2 !== undefined && object.header_2 !== null) {
+            message.header_2 = Header.fromAmino(object.header_2);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -504,12 +534,20 @@ export const Header = {
         return message;
     },
     fromAmino(object) {
-        return {
-            signed_header: object?.signed_header ? SignedHeader.fromAmino(object.signed_header) : undefined,
-            validator_set: object?.validator_set ? ValidatorSet.fromAmino(object.validator_set) : undefined,
-            trusted_height: object?.trusted_height ? Height.fromAmino(object.trusted_height) : undefined,
-            trusted_validators: object?.trusted_validators ? ValidatorSet.fromAmino(object.trusted_validators) : undefined
-        };
+        const message = createBaseHeader();
+        if (object.signed_header !== undefined && object.signed_header !== null) {
+            message.signed_header = SignedHeader.fromAmino(object.signed_header);
+        }
+        if (object.validator_set !== undefined && object.validator_set !== null) {
+            message.validator_set = ValidatorSet.fromAmino(object.validator_set);
+        }
+        if (object.trusted_height !== undefined && object.trusted_height !== null) {
+            message.trusted_height = Height.fromAmino(object.trusted_height);
+        }
+        if (object.trusted_validators !== undefined && object.trusted_validators !== null) {
+            message.trusted_validators = ValidatorSet.fromAmino(object.trusted_validators);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -597,10 +635,14 @@ export const Fraction = {
         return message;
     },
     fromAmino(object) {
-        return {
-            numerator: BigInt(object.numerator),
-            denominator: BigInt(object.denominator)
-        };
+        const message = createBaseFraction();
+        if (object.numerator !== undefined && object.numerator !== null) {
+            message.numerator = BigInt(object.numerator);
+        }
+        if (object.denominator !== undefined && object.denominator !== null) {
+            message.denominator = BigInt(object.denominator);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

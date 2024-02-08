@@ -54,9 +54,11 @@ exports.QueryAccountsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            pagination: object?.pagination ? pagination_1.PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryAccountsRequest();
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -110,7 +112,7 @@ exports.QueryAccountsResponse = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.accounts.push((0, any_1.Any)(reader));
+                    message.accounts.push(any_1.Any.decode(reader, reader.uint32()));
                     break;
                 case 2:
                     message.pagination = pagination_1.PageResponse.decode(reader, reader.uint32());
@@ -146,10 +148,12 @@ exports.QueryAccountsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            accounts: Array.isArray(object?.accounts) ? object.accounts.map((e) => (0, exports.Cosmos_authv1beta1AccountI_FromAmino)(e)) : [],
-            pagination: object?.pagination ? pagination_1.PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryAccountsResponse();
+        message.accounts = object.accounts?.map(e => (0, exports.Cosmos_authv1beta1AccountI_FromAmino)(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = pagination_1.PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -230,9 +234,11 @@ exports.QueryAccountRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address
-        };
+        const message = createBaseQueryAccountRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -307,9 +313,11 @@ exports.QueryAccountResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            account: object?.account ? (0, exports.Cosmos_authv1beta1AccountI_FromAmino)(object.account) : undefined
-        };
+        const message = createBaseQueryAccountResponse();
+        if (object.account !== undefined && object.account !== null) {
+            message.account = (0, exports.Cosmos_authv1beta1AccountI_FromAmino)(object.account);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -372,7 +380,8 @@ exports.QueryParamsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryParamsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -446,9 +455,11 @@ exports.QueryParamsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            params: object?.params ? auth_1.Params.fromAmino(object.params) : undefined
-        };
+        const message = createBaseQueryParamsResponse();
+        if (object.params !== undefined && object.params !== null) {
+            message.params = auth_1.Params.fromAmino(object.params);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -511,7 +522,8 @@ exports.QueryModuleAccountsRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseQueryModuleAccountsRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -560,7 +572,7 @@ exports.QueryModuleAccountsResponse = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.accounts.push((0, any_1.Any)(reader));
+                    message.accounts.push(any_1.Any.decode(reader, reader.uint32()));
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -590,9 +602,9 @@ exports.QueryModuleAccountsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            accounts: Array.isArray(object?.accounts) ? object.accounts.map((e) => (0, exports.Cosmos_authv1beta1ModuleAccountI_FromAmino)(e)) : []
-        };
+        const message = createBaseQueryModuleAccountsResponse();
+        message.accounts = object.accounts?.map(e => (0, exports.Cosmos_authv1beta1ModuleAccountI_FromAmino)(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -672,9 +684,11 @@ exports.QueryModuleAccountByNameRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            name: object.name
-        };
+        const message = createBaseQueryModuleAccountByNameRequest();
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -749,9 +763,11 @@ exports.QueryModuleAccountByNameResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            account: object?.account ? (0, exports.Cosmos_authv1beta1ModuleAccountI_FromAmino)(object.account) : undefined
-        };
+        const message = createBaseQueryModuleAccountByNameResponse();
+        if (object.account !== undefined && object.account !== null) {
+            message.account = (0, exports.Cosmos_authv1beta1ModuleAccountI_FromAmino)(object.account);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -814,7 +830,8 @@ exports.Bech32PrefixRequest = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseBech32PrefixRequest();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -888,9 +905,11 @@ exports.Bech32PrefixResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            bech32_prefix: object.bech32_prefix
-        };
+        const message = createBaseBech32PrefixResponse();
+        if (object.bech32_prefix !== undefined && object.bech32_prefix !== null) {
+            message.bech32_prefix = object.bech32_prefix;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -965,13 +984,15 @@ exports.AddressBytesToStringRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address_bytes: object.address_bytes
-        };
+        const message = createBaseAddressBytesToStringRequest();
+        if (object.address_bytes !== undefined && object.address_bytes !== null) {
+            message.address_bytes = (0, helpers_1.bytesFromBase64)(object.address_bytes);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.address_bytes = message.address_bytes;
+        obj.address_bytes = message.address_bytes ? (0, helpers_1.base64FromBytes)(message.address_bytes) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1042,9 +1063,11 @@ exports.AddressBytesToStringResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address_string: object.address_string
-        };
+        const message = createBaseAddressBytesToStringResponse();
+        if (object.address_string !== undefined && object.address_string !== null) {
+            message.address_string = object.address_string;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1119,9 +1142,11 @@ exports.AddressStringToBytesRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address_string: object.address_string
-        };
+        const message = createBaseAddressStringToBytesRequest();
+        if (object.address_string !== undefined && object.address_string !== null) {
+            message.address_string = object.address_string;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1196,13 +1221,15 @@ exports.AddressStringToBytesResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address_bytes: object.address_bytes
-        };
+        const message = createBaseAddressStringToBytesResponse();
+        if (object.address_bytes !== undefined && object.address_bytes !== null) {
+            message.address_bytes = (0, helpers_1.bytesFromBase64)(object.address_bytes);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.address_bytes = message.address_bytes;
+        obj.address_bytes = message.address_bytes ? (0, helpers_1.base64FromBytes)(message.address_bytes) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1283,10 +1310,14 @@ exports.QueryAccountAddressByIDRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            id: BigInt(object.id),
-            account_id: BigInt(object.account_id)
-        };
+        const message = createBaseQueryAccountAddressByIDRequest();
+        if (object.id !== undefined && object.id !== null) {
+            message.id = BigInt(object.id);
+        }
+        if (object.account_id !== undefined && object.account_id !== null) {
+            message.account_id = BigInt(object.account_id);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1362,9 +1393,11 @@ exports.QueryAccountAddressByIDResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            account_address: object.account_address
-        };
+        const message = createBaseQueryAccountAddressByIDResponse();
+        if (object.account_address !== undefined && object.account_address !== null) {
+            message.account_address = object.account_address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1439,9 +1472,11 @@ exports.QueryAccountInfoRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            address: object.address
-        };
+        const message = createBaseQueryAccountInfoRequest();
+        if (object.address !== undefined && object.address !== null) {
+            message.address = object.address;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1516,9 +1551,11 @@ exports.QueryAccountInfoResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            info: object?.info ? auth_1.BaseAccount.fromAmino(object.info) : undefined
-        };
+        const message = createBaseQueryAccountInfoResponse();
+        if (object.info !== undefined && object.info !== null) {
+            message.info = auth_1.BaseAccount.fromAmino(object.info);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1549,10 +1586,10 @@ exports.QueryAccountInfoResponse = {
 };
 const Cosmos_authv1beta1AccountI_InterfaceDecoder = (input) => {
     const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
-    const data = any_1.Any.decode(reader, reader.uint32(), true);
+    const data = any_1.Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
         case "/cosmos.auth.v1beta1.BaseAccount":
-            return auth_1.BaseAccount.decode(data.value, undefined, true);
+            return auth_1.BaseAccount.decode(data.value);
         default:
             return data;
     }
@@ -1584,10 +1621,10 @@ const Cosmos_authv1beta1AccountI_ToAmino = (content) => {
 exports.Cosmos_authv1beta1AccountI_ToAmino = Cosmos_authv1beta1AccountI_ToAmino;
 const Cosmos_authv1beta1ModuleAccountI_InterfaceDecoder = (input) => {
     const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
-    const data = any_1.Any.decode(reader, reader.uint32(), true);
+    const data = any_1.Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
         case "/cosmos.auth.v1beta1.ModuleAccount":
-            return auth_1.ModuleAccount.decode(data.value, undefined, true);
+            return auth_1.ModuleAccount.decode(data.value);
         default:
             return data;
     }

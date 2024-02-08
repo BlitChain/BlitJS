@@ -88,17 +88,27 @@ export const PageRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            key: object.key,
-            offset: BigInt(object.offset),
-            limit: BigInt(object.limit),
-            count_total: object.count_total,
-            reverse: object.reverse
-        };
+        const message = createBasePageRequest();
+        if (object.key !== undefined && object.key !== null) {
+            message.key = bytesFromBase64(object.key);
+        }
+        if (object.offset !== undefined && object.offset !== null) {
+            message.offset = BigInt(object.offset);
+        }
+        if (object.limit !== undefined && object.limit !== null) {
+            message.limit = BigInt(object.limit);
+        }
+        if (object.count_total !== undefined && object.count_total !== null) {
+            message.count_total = object.count_total;
+        }
+        if (object.reverse !== undefined && object.reverse !== null) {
+            message.reverse = object.reverse;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.key = message.key;
+        obj.key = message.key ? base64FromBytes(message.key) : undefined;
         obj.offset = message.offset ? message.offset.toString() : undefined;
         obj.limit = message.limit ? message.limit.toString() : undefined;
         obj.count_total = message.count_total;
@@ -183,14 +193,18 @@ export const PageResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            next_key: object.next_key,
-            total: BigInt(object.total)
-        };
+        const message = createBasePageResponse();
+        if (object.next_key !== undefined && object.next_key !== null) {
+            message.next_key = bytesFromBase64(object.next_key);
+        }
+        if (object.total !== undefined && object.total !== null) {
+            message.total = BigInt(object.total);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.next_key = message.next_key;
+        obj.next_key = message.next_key ? base64FromBytes(message.next_key) : undefined;
         obj.total = message.total ? message.total.toString() : undefined;
         return obj;
     },

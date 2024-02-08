@@ -22,7 +22,7 @@ export interface IdentifiedClientStateProtoMsg {
  */
 export interface IdentifiedClientStateAmino {
     /** client identifier */
-    client_id: string;
+    client_id?: string;
     /** client state */
     client_state?: AnyAmino;
 }
@@ -94,9 +94,9 @@ export interface ClientConsensusStatesProtoMsg {
  */
 export interface ClientConsensusStatesAmino {
     /** client identifier */
-    client_id: string;
+    client_id?: string;
     /** consensus states and their heights associated with the client */
-    consensus_states: ConsensusStateWithHeightAmino[];
+    consensus_states?: ConsensusStateWithHeightAmino[];
 }
 export interface ClientConsensusStatesAminoMsg {
     type: "cosmos-sdk/ClientConsensusStates";
@@ -146,9 +146,9 @@ export interface HeightProtoMsg {
  */
 export interface HeightAmino {
     /** the revision that the client is currently on */
-    revision_number: string;
+    revision_number?: string;
     /** the height within the given revision */
-    revision_height: string;
+    revision_height?: string;
 }
 export interface HeightAminoMsg {
     type: "cosmos-sdk/Height";
@@ -190,7 +190,7 @@ export interface ParamsAmino {
      * and interacted with. If a client type is removed from the allowed clients list, usage
      * of this client will be disabled until it is added again to the list.
      */
-    allowed_clients: string[];
+    allowed_clients?: string[];
 }
 export interface ParamsAminoMsg {
     type: "cosmos-sdk/Params";
@@ -238,16 +238,16 @@ export interface ClientUpdateProposalProtoMsg {
 /** @deprecated */
 export interface ClientUpdateProposalAmino {
     /** the title of the update proposal */
-    title: string;
+    title?: string;
     /** the description of the proposal */
-    description: string;
+    description?: string;
     /** the client identifier for the client to be updated if the proposal passes */
-    subject_client_id: string;
+    subject_client_id?: string;
     /**
      * the substitute client identifier for the client standing in for the subject
      * client
      */
-    substitute_client_id: string;
+    substitute_client_id?: string;
 }
 export interface ClientUpdateProposalAminoMsg {
     type: "cosmos-sdk/ClientUpdateProposal";
@@ -303,8 +303,8 @@ export interface UpgradeProposalProtoMsg {
  */
 /** @deprecated */
 export interface UpgradeProposalAmino {
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
     plan?: PlanAmino;
     /**
      * An UpgradedClientState must be provided to perform an IBC breaking upgrade.

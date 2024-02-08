@@ -54,7 +54,7 @@ export interface ClientStateProtoMsg {
  * and a possible frozen height.
  */
 export interface ClientStateAmino {
-    chain_id: string;
+    chain_id?: string;
     trust_level?: FractionAmino;
     /**
      * duration of the period since the LastestTimestamp during which the
@@ -70,7 +70,7 @@ export interface ClientStateAmino {
     /** Latest height the client was updated to */
     latest_height?: HeightAmino;
     /** Proof specifications used in verifying counterparty state */
-    proof_specs: ProofSpecAmino[];
+    proof_specs?: ProofSpecAmino[];
     /**
      * Path at which next upgraded client will be committed.
      * Each element corresponds to the key for a single CommitmentProof in the
@@ -80,13 +80,13 @@ export interface ClientStateAmino {
      * the default upgrade module, upgrade_path should be []string{"upgrade",
      * "upgradedIBCState"}`
      */
-    upgrade_path: string[];
+    upgrade_path?: string[];
     /** allow_update_after_expiry is deprecated */
     /** @deprecated */
-    allow_update_after_expiry: boolean;
+    allow_update_after_expiry?: boolean;
     /** allow_update_after_misbehaviour is deprecated */
     /** @deprecated */
-    allow_update_after_misbehaviour: boolean;
+    allow_update_after_misbehaviour?: boolean;
 }
 export interface ClientStateAminoMsg {
     type: "cosmos-sdk/ClientState";
@@ -135,7 +135,7 @@ export interface ConsensusStateAmino {
     timestamp?: string;
     /** commitment root (i.e app hash) */
     root?: MerkleRootAmino;
-    next_validators_hash: Uint8Array;
+    next_validators_hash?: string;
 }
 export interface ConsensusStateAminoMsg {
     type: "cosmos-sdk/ConsensusState";
@@ -169,7 +169,7 @@ export interface MisbehaviourProtoMsg {
 export interface MisbehaviourAmino {
     /** ClientID is deprecated */
     /** @deprecated */
-    client_id: string;
+    client_id?: string;
     header_1?: HeaderAmino;
     header_2?: HeaderAmino;
 }
@@ -272,8 +272,8 @@ export interface FractionProtoMsg {
  * supports positive values.
  */
 export interface FractionAmino {
-    numerator: string;
-    denominator: string;
+    numerator?: string;
+    denominator?: string;
 }
 export interface FractionAminoMsg {
     type: "cosmos-sdk/Fraction";

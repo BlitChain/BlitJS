@@ -1,6 +1,6 @@
 //@ts-nocheck
-import * as _19 from "./cosmos";
+import * as _21 from "./cosmos";
 export const cosmos_proto = {
-    ..._19
+    ..._21
 };
 //# sourceMappingURL=bundle.js.map

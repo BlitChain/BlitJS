@@ -2,11 +2,11 @@ export class LCDQueryClient {
     req;
     constructor({ requestClient }) {
         this.req = requestClient;
-        this.params = this.params.bind(this);
+        this.endpoints = this.endpoints.bind(this);
     }
-    /* Parameters queries the parameters of the module. */
-    async params(_params = {}) {
-        const endpoint = `blit/blit/params`;
+    /* Config queries for the operator configuration. */
+    async endpoints(_params = {}) {
+        const endpoint = `blit/services/endpoints`;
         return await this.req.get(endpoint);
     }
 }

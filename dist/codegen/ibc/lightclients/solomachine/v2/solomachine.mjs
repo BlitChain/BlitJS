@@ -176,12 +176,20 @@ export const ClientState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            sequence: BigInt(object.sequence),
-            is_frozen: object.is_frozen,
-            consensus_state: object?.consensus_state ? ConsensusState.fromAmino(object.consensus_state) : undefined,
-            allow_update_after_proposal: object.allow_update_after_proposal
-        };
+        const message = createBaseClientState();
+        if (object.sequence !== undefined && object.sequence !== null) {
+            message.sequence = BigInt(object.sequence);
+        }
+        if (object.is_frozen !== undefined && object.is_frozen !== null) {
+            message.is_frozen = object.is_frozen;
+        }
+        if (object.consensus_state !== undefined && object.consensus_state !== null) {
+            message.consensus_state = ConsensusState.fromAmino(object.consensus_state);
+        }
+        if (object.allow_update_after_proposal !== undefined && object.allow_update_after_proposal !== null) {
+            message.allow_update_after_proposal = object.allow_update_after_proposal;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -279,11 +287,17 @@ export const ConsensusState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            public_key: object?.public_key ? Any.fromAmino(object.public_key) : undefined,
-            diversifier: object.diversifier,
-            timestamp: BigInt(object.timestamp)
-        };
+        const message = createBaseConsensusState();
+        if (object.public_key !== undefined && object.public_key !== null) {
+            message.public_key = Any.fromAmino(object.public_key);
+        }
+        if (object.diversifier !== undefined && object.diversifier !== null) {
+            message.diversifier = object.diversifier;
+        }
+        if (object.timestamp !== undefined && object.timestamp !== null) {
+            message.timestamp = BigInt(object.timestamp);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -400,19 +414,29 @@ export const Header = {
         return message;
     },
     fromAmino(object) {
-        return {
-            sequence: BigInt(object.sequence),
-            timestamp: BigInt(object.timestamp),
-            signature: object.signature,
-            new_public_key: object?.new_public_key ? Any.fromAmino(object.new_public_key) : undefined,
-            new_diversifier: object.new_diversifier
-        };
+        const message = createBaseHeader();
+        if (object.sequence !== undefined && object.sequence !== null) {
+            message.sequence = BigInt(object.sequence);
+        }
+        if (object.timestamp !== undefined && object.timestamp !== null) {
+            message.timestamp = BigInt(object.timestamp);
+        }
+        if (object.signature !== undefined && object.signature !== null) {
+            message.signature = bytesFromBase64(object.signature);
+        }
+        if (object.new_public_key !== undefined && object.new_public_key !== null) {
+            message.new_public_key = Any.fromAmino(object.new_public_key);
+        }
+        if (object.new_diversifier !== undefined && object.new_diversifier !== null) {
+            message.new_diversifier = object.new_diversifier;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.sequence = message.sequence ? message.sequence.toString() : undefined;
         obj.timestamp = message.timestamp ? message.timestamp.toString() : undefined;
-        obj.signature = message.signature;
+        obj.signature = message.signature ? base64FromBytes(message.signature) : undefined;
         obj.new_public_key = message.new_public_key ? Any.toAmino(message.new_public_key) : undefined;
         obj.new_diversifier = message.new_diversifier;
         return obj;
@@ -515,12 +539,20 @@ export const Misbehaviour = {
         return message;
     },
     fromAmino(object) {
-        return {
-            client_id: object.client_id,
-            sequence: BigInt(object.sequence),
-            signature_one: object?.signature_one ? SignatureAndData.fromAmino(object.signature_one) : undefined,
-            signature_two: object?.signature_two ? SignatureAndData.fromAmino(object.signature_two) : undefined
-        };
+        const message = createBaseMisbehaviour();
+        if (object.client_id !== undefined && object.client_id !== null) {
+            message.client_id = object.client_id;
+        }
+        if (object.sequence !== undefined && object.sequence !== null) {
+            message.sequence = BigInt(object.sequence);
+        }
+        if (object.signature_one !== undefined && object.signature_one !== null) {
+            message.signature_one = SignatureAndData.fromAmino(object.signature_one);
+        }
+        if (object.signature_two !== undefined && object.signature_two !== null) {
+            message.signature_two = SignatureAndData.fromAmino(object.signature_two);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -628,18 +660,26 @@ export const SignatureAndData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            signature: object.signature,
-            data_type: isSet(object.data_type) ? dataTypeFromJSON(object.data_type) : -1,
-            data: object.data,
-            timestamp: BigInt(object.timestamp)
-        };
+        const message = createBaseSignatureAndData();
+        if (object.signature !== undefined && object.signature !== null) {
+            message.signature = bytesFromBase64(object.signature);
+        }
+        if (object.data_type !== undefined && object.data_type !== null) {
+            message.data_type = dataTypeFromJSON(object.data_type);
+        }
+        if (object.data !== undefined && object.data !== null) {
+            message.data = bytesFromBase64(object.data);
+        }
+        if (object.timestamp !== undefined && object.timestamp !== null) {
+            message.timestamp = BigInt(object.timestamp);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.signature = message.signature;
+        obj.signature = message.signature ? base64FromBytes(message.signature) : undefined;
         obj.data_type = message.data_type;
-        obj.data = message.data;
+        obj.data = message.data ? base64FromBytes(message.data) : undefined;
         obj.timestamp = message.timestamp ? message.timestamp.toString() : undefined;
         return obj;
     },
@@ -721,14 +761,18 @@ export const TimestampedSignatureData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            signature_data: object.signature_data,
-            timestamp: BigInt(object.timestamp)
-        };
+        const message = createBaseTimestampedSignatureData();
+        if (object.signature_data !== undefined && object.signature_data !== null) {
+            message.signature_data = bytesFromBase64(object.signature_data);
+        }
+        if (object.timestamp !== undefined && object.timestamp !== null) {
+            message.timestamp = BigInt(object.timestamp);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.signature_data = message.signature_data;
+        obj.signature_data = message.signature_data ? base64FromBytes(message.signature_data) : undefined;
         obj.timestamp = message.timestamp ? message.timestamp.toString() : undefined;
         return obj;
     },
@@ -840,13 +884,23 @@ export const SignBytes = {
         return message;
     },
     fromAmino(object) {
-        return {
-            sequence: BigInt(object.sequence),
-            timestamp: BigInt(object.timestamp),
-            diversifier: object.diversifier,
-            data_type: isSet(object.data_type) ? dataTypeFromJSON(object.data_type) : -1,
-            data: object.data
-        };
+        const message = createBaseSignBytes();
+        if (object.sequence !== undefined && object.sequence !== null) {
+            message.sequence = BigInt(object.sequence);
+        }
+        if (object.timestamp !== undefined && object.timestamp !== null) {
+            message.timestamp = BigInt(object.timestamp);
+        }
+        if (object.diversifier !== undefined && object.diversifier !== null) {
+            message.diversifier = object.diversifier;
+        }
+        if (object.data_type !== undefined && object.data_type !== null) {
+            message.data_type = dataTypeFromJSON(object.data_type);
+        }
+        if (object.data !== undefined && object.data !== null) {
+            message.data = bytesFromBase64(object.data);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -854,7 +908,7 @@ export const SignBytes = {
         obj.timestamp = message.timestamp ? message.timestamp.toString() : undefined;
         obj.diversifier = message.diversifier;
         obj.data_type = message.data_type;
-        obj.data = message.data;
+        obj.data = message.data ? base64FromBytes(message.data) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -935,10 +989,14 @@ export const HeaderData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            new_pub_key: object?.new_pub_key ? Any.fromAmino(object.new_pub_key) : undefined,
-            new_diversifier: object.new_diversifier
-        };
+        const message = createBaseHeaderData();
+        if (object.new_pub_key !== undefined && object.new_pub_key !== null) {
+            message.new_pub_key = Any.fromAmino(object.new_pub_key);
+        }
+        if (object.new_diversifier !== undefined && object.new_diversifier !== null) {
+            message.new_diversifier = object.new_diversifier;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -1024,14 +1082,18 @@ export const ClientStateData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            path: object.path,
-            client_state: object?.client_state ? Any.fromAmino(object.client_state) : undefined
-        };
+        const message = createBaseClientStateData();
+        if (object.path !== undefined && object.path !== null) {
+            message.path = bytesFromBase64(object.path);
+        }
+        if (object.client_state !== undefined && object.client_state !== null) {
+            message.client_state = Any.fromAmino(object.client_state);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.path = message.path;
+        obj.path = message.path ? base64FromBytes(message.path) : undefined;
         obj.client_state = message.client_state ? Any.toAmino(message.client_state) : undefined;
         return obj;
     },
@@ -1113,14 +1175,18 @@ export const ConsensusStateData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            path: object.path,
-            consensus_state: object?.consensus_state ? Any.fromAmino(object.consensus_state) : undefined
-        };
+        const message = createBaseConsensusStateData();
+        if (object.path !== undefined && object.path !== null) {
+            message.path = bytesFromBase64(object.path);
+        }
+        if (object.consensus_state !== undefined && object.consensus_state !== null) {
+            message.consensus_state = Any.fromAmino(object.consensus_state);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.path = message.path;
+        obj.path = message.path ? base64FromBytes(message.path) : undefined;
         obj.consensus_state = message.consensus_state ? Any.toAmino(message.consensus_state) : undefined;
         return obj;
     },
@@ -1202,14 +1268,18 @@ export const ConnectionStateData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            path: object.path,
-            connection: object?.connection ? ConnectionEnd.fromAmino(object.connection) : undefined
-        };
+        const message = createBaseConnectionStateData();
+        if (object.path !== undefined && object.path !== null) {
+            message.path = bytesFromBase64(object.path);
+        }
+        if (object.connection !== undefined && object.connection !== null) {
+            message.connection = ConnectionEnd.fromAmino(object.connection);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.path = message.path;
+        obj.path = message.path ? base64FromBytes(message.path) : undefined;
         obj.connection = message.connection ? ConnectionEnd.toAmino(message.connection) : undefined;
         return obj;
     },
@@ -1291,14 +1361,18 @@ export const ChannelStateData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            path: object.path,
-            channel: object?.channel ? Channel.fromAmino(object.channel) : undefined
-        };
+        const message = createBaseChannelStateData();
+        if (object.path !== undefined && object.path !== null) {
+            message.path = bytesFromBase64(object.path);
+        }
+        if (object.channel !== undefined && object.channel !== null) {
+            message.channel = Channel.fromAmino(object.channel);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.path = message.path;
+        obj.path = message.path ? base64FromBytes(message.path) : undefined;
         obj.channel = message.channel ? Channel.toAmino(message.channel) : undefined;
         return obj;
     },
@@ -1380,15 +1454,19 @@ export const PacketCommitmentData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            path: object.path,
-            commitment: object.commitment
-        };
+        const message = createBasePacketCommitmentData();
+        if (object.path !== undefined && object.path !== null) {
+            message.path = bytesFromBase64(object.path);
+        }
+        if (object.commitment !== undefined && object.commitment !== null) {
+            message.commitment = bytesFromBase64(object.commitment);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.path = message.path;
-        obj.commitment = message.commitment;
+        obj.path = message.path ? base64FromBytes(message.path) : undefined;
+        obj.commitment = message.commitment ? base64FromBytes(message.commitment) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1469,15 +1547,19 @@ export const PacketAcknowledgementData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            path: object.path,
-            acknowledgement: object.acknowledgement
-        };
+        const message = createBasePacketAcknowledgementData();
+        if (object.path !== undefined && object.path !== null) {
+            message.path = bytesFromBase64(object.path);
+        }
+        if (object.acknowledgement !== undefined && object.acknowledgement !== null) {
+            message.acknowledgement = bytesFromBase64(object.acknowledgement);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.path = message.path;
-        obj.acknowledgement = message.acknowledgement;
+        obj.path = message.path ? base64FromBytes(message.path) : undefined;
+        obj.acknowledgement = message.acknowledgement ? base64FromBytes(message.acknowledgement) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1548,13 +1630,15 @@ export const PacketReceiptAbsenceData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            path: object.path
-        };
+        const message = createBasePacketReceiptAbsenceData();
+        if (object.path !== undefined && object.path !== null) {
+            message.path = bytesFromBase64(object.path);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.path = message.path;
+        obj.path = message.path ? base64FromBytes(message.path) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -1635,14 +1719,18 @@ export const NextSequenceRecvData = {
         return message;
     },
     fromAmino(object) {
-        return {
-            path: object.path,
-            next_seq_recv: BigInt(object.next_seq_recv)
-        };
+        const message = createBaseNextSequenceRecvData();
+        if (object.path !== undefined && object.path !== null) {
+            message.path = bytesFromBase64(object.path);
+        }
+        if (object.next_seq_recv !== undefined && object.next_seq_recv !== null) {
+            message.next_seq_recv = BigInt(object.next_seq_recv);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.path = message.path;
+        obj.path = message.path ? base64FromBytes(message.path) : undefined;
         obj.next_seq_recv = message.next_seq_recv ? message.next_seq_recv.toString() : undefined;
         return obj;
     },

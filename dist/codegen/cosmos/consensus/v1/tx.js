@@ -92,13 +92,23 @@ exports.MsgUpdateParams = {
         return message;
     },
     fromAmino(object) {
-        return {
-            authority: object.authority,
-            block: object?.block ? params_1.BlockParams.fromAmino(object.block) : undefined,
-            evidence: object?.evidence ? params_1.EvidenceParams.fromAmino(object.evidence) : undefined,
-            validator: object?.validator ? params_1.ValidatorParams.fromAmino(object.validator) : undefined,
-            abci: object?.abci ? params_1.ABCIParams.fromAmino(object.abci) : undefined
-        };
+        const message = createBaseMsgUpdateParams();
+        if (object.authority !== undefined && object.authority !== null) {
+            message.authority = object.authority;
+        }
+        if (object.block !== undefined && object.block !== null) {
+            message.block = params_1.BlockParams.fromAmino(object.block);
+        }
+        if (object.evidence !== undefined && object.evidence !== null) {
+            message.evidence = params_1.EvidenceParams.fromAmino(object.evidence);
+        }
+        if (object.validator !== undefined && object.validator !== null) {
+            message.validator = params_1.ValidatorParams.fromAmino(object.validator);
+        }
+        if (object.abci !== undefined && object.abci !== null) {
+            message.abci = params_1.ABCIParams.fromAmino(object.abci);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -165,7 +175,8 @@ exports.MsgUpdateParamsResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgUpdateParamsResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};

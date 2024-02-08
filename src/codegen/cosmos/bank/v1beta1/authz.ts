@@ -37,7 +37,7 @@ export interface SendAuthorizationAmino {
    * 
    * Since: cosmos-sdk 0.47
    */
-  allow_list: string[];
+  allow_list?: string[];
 }
 export interface SendAuthorizationAminoMsg {
   type: "cosmos-sdk/SendAuthorization";
@@ -119,10 +119,10 @@ export const SendAuthorization = {
     return message;
   },
   fromAmino(object: SendAuthorizationAmino): SendAuthorization {
-    return {
-      spend_limit: Array.isArray(object?.spend_limit) ? object.spend_limit.map((e: any) => Coin.fromAmino(e)) : [],
-      allow_list: Array.isArray(object?.allow_list) ? object.allow_list.map((e: any) => e) : []
-    };
+    const message = createBaseSendAuthorization();
+    message.spend_limit = object.spend_limit?.map(e => Coin.fromAmino(e)) || [];
+    message.allow_list = object.allow_list?.map(e => e) || [];
+    return message;
   },
   toAmino(message: SendAuthorization): SendAuthorizationAmino {
     const obj: any = {};

@@ -157,16 +157,18 @@ exports.GenesisState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            channels: Array.isArray(object?.channels) ? object.channels.map((e) => channel_1.IdentifiedChannel.fromAmino(e)) : [],
-            acknowledgements: Array.isArray(object?.acknowledgements) ? object.acknowledgements.map((e) => channel_1.PacketState.fromAmino(e)) : [],
-            commitments: Array.isArray(object?.commitments) ? object.commitments.map((e) => channel_1.PacketState.fromAmino(e)) : [],
-            receipts: Array.isArray(object?.receipts) ? object.receipts.map((e) => channel_1.PacketState.fromAmino(e)) : [],
-            send_sequences: Array.isArray(object?.send_sequences) ? object.send_sequences.map((e) => exports.PacketSequence.fromAmino(e)) : [],
-            recv_sequences: Array.isArray(object?.recv_sequences) ? object.recv_sequences.map((e) => exports.PacketSequence.fromAmino(e)) : [],
-            ack_sequences: Array.isArray(object?.ack_sequences) ? object.ack_sequences.map((e) => exports.PacketSequence.fromAmino(e)) : [],
-            next_channel_sequence: BigInt(object.next_channel_sequence)
-        };
+        const message = createBaseGenesisState();
+        message.channels = object.channels?.map(e => channel_1.IdentifiedChannel.fromAmino(e)) || [];
+        message.acknowledgements = object.acknowledgements?.map(e => channel_1.PacketState.fromAmino(e)) || [];
+        message.commitments = object.commitments?.map(e => channel_1.PacketState.fromAmino(e)) || [];
+        message.receipts = object.receipts?.map(e => channel_1.PacketState.fromAmino(e)) || [];
+        message.send_sequences = object.send_sequences?.map(e => exports.PacketSequence.fromAmino(e)) || [];
+        message.recv_sequences = object.recv_sequences?.map(e => exports.PacketSequence.fromAmino(e)) || [];
+        message.ack_sequences = object.ack_sequences?.map(e => exports.PacketSequence.fromAmino(e)) || [];
+        if (object.next_channel_sequence !== undefined && object.next_channel_sequence !== null) {
+            message.next_channel_sequence = BigInt(object.next_channel_sequence);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -303,11 +305,17 @@ exports.PacketSequence = {
         return message;
     },
     fromAmino(object) {
-        return {
-            port_id: object.port_id,
-            channel_id: object.channel_id,
-            sequence: BigInt(object.sequence)
-        };
+        const message = createBasePacketSequence();
+        if (object.port_id !== undefined && object.port_id !== null) {
+            message.port_id = object.port_id;
+        }
+        if (object.channel_id !== undefined && object.channel_id !== null) {
+            message.channel_id = object.channel_id;
+        }
+        if (object.sequence !== undefined && object.sequence !== null) {
+            message.sequence = BigInt(object.sequence);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

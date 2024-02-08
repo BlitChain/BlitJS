@@ -14,10 +14,10 @@ export interface SnapshotProtoMsg {
 }
 /** Snapshot contains Tendermint state sync snapshot info. */
 export interface SnapshotAmino {
-    height: string;
-    format: number;
-    chunks: number;
-    hash: Uint8Array;
+    height?: string;
+    format?: number;
+    chunks?: number;
+    hash?: string;
     metadata?: MetadataAmino;
 }
 export interface SnapshotAminoMsg {
@@ -44,7 +44,7 @@ export interface MetadataProtoMsg {
 /** Metadata contains SDK-specific snapshot metadata. */
 export interface MetadataAmino {
     /** SHA-256 chunk hashes */
-    chunk_hashes: Uint8Array[];
+    chunk_hashes?: string[];
 }
 export interface MetadataAminoMsg {
     type: "cosmos-sdk/Metadata";
@@ -113,7 +113,7 @@ export interface SnapshotStoreItemProtoMsg {
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotStoreItemAmino {
-    name: string;
+    name?: string;
 }
 export interface SnapshotStoreItemAminoMsg {
     type: "cosmos-sdk/SnapshotStoreItem";
@@ -150,12 +150,12 @@ export interface SnapshotIAVLItemProtoMsg {
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotIAVLItemAmino {
-    key: Uint8Array;
-    value: Uint8Array;
+    key?: string;
+    value?: string;
     /** version is block height */
-    version: string;
+    version?: string;
     /** height is depth of the tree. */
-    height: number;
+    height?: number;
 }
 export interface SnapshotIAVLItemAminoMsg {
     type: "cosmos-sdk/SnapshotIAVLItem";
@@ -191,8 +191,8 @@ export interface SnapshotExtensionMetaProtoMsg {
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotExtensionMetaAmino {
-    name: string;
-    format: number;
+    name?: string;
+    format?: number;
 }
 export interface SnapshotExtensionMetaAminoMsg {
     type: "cosmos-sdk/SnapshotExtensionMeta";
@@ -225,7 +225,7 @@ export interface SnapshotExtensionPayloadProtoMsg {
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotExtensionPayloadAmino {
-    payload: Uint8Array;
+    payload?: string;
 }
 export interface SnapshotExtensionPayloadAminoMsg {
     type: "cosmos-sdk/SnapshotExtensionPayload";

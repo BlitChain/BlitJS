@@ -83,11 +83,15 @@ exports.MsgSubmitProposal = {
         return message;
     },
     fromAmino(object) {
-        return {
-            content: object?.content ? (0, exports.Cosmos_govv1beta1Content_FromAmino)(object.content) : undefined,
-            initial_deposit: Array.isArray(object?.initial_deposit) ? object.initial_deposit.map((e) => coin_1.Coin.fromAmino(e)) : [],
-            proposer: object.proposer
-        };
+        const message = createBaseMsgSubmitProposal();
+        if (object.content !== undefined && object.content !== null) {
+            message.content = (0, exports.Cosmos_govv1beta1Content_FromAmino)(object.content);
+        }
+        message.initial_deposit = object.initial_deposit?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        if (object.proposer !== undefined && object.proposer !== null) {
+            message.proposer = object.proposer;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -169,13 +173,15 @@ exports.MsgSubmitProposalResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id)
-        };
+        const message = createBaseMsgSubmitProposalResponse();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.proposal_id = message.proposal_id ? message.proposal_id.toString() : undefined;
+        obj.proposal_id = message.proposal_id ? message.proposal_id.toString() : "0";
         return obj;
     },
     fromAminoMsg(object) {
@@ -266,11 +272,17 @@ exports.MsgVote = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id),
-            voter: object.voter,
-            option: (0, helpers_1.isSet)(object.option) ? (0, gov_1.voteOptionFromJSON)(object.option) : -1
-        };
+        const message = createBaseMsgVote();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        if (object.voter !== undefined && object.voter !== null) {
+            message.voter = object.voter;
+        }
+        if (object.option !== undefined && object.option !== null) {
+            message.option = (0, gov_1.voteOptionFromJSON)(object.option);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -335,7 +347,8 @@ exports.MsgVoteResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgVoteResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -434,15 +447,19 @@ exports.MsgVoteWeighted = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id),
-            voter: object.voter,
-            options: Array.isArray(object?.options) ? object.options.map((e) => gov_1.WeightedVoteOption.fromAmino(e)) : []
-        };
+        const message = createBaseMsgVoteWeighted();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        if (object.voter !== undefined && object.voter !== null) {
+            message.voter = object.voter;
+        }
+        message.options = object.options?.map(e => gov_1.WeightedVoteOption.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.proposal_id = message.proposal_id ? message.proposal_id.toString() : undefined;
+        obj.proposal_id = message.proposal_id ? message.proposal_id.toString() : "0";
         obj.voter = message.voter;
         if (message.options) {
             obj.options = message.options.map(e => e ? gov_1.WeightedVoteOption.toAmino(e) : undefined);
@@ -508,7 +525,8 @@ exports.MsgVoteWeightedResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgVoteWeightedResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -607,15 +625,19 @@ exports.MsgDeposit = {
         return message;
     },
     fromAmino(object) {
-        return {
-            proposal_id: BigInt(object.proposal_id),
-            depositor: object.depositor,
-            amount: Array.isArray(object?.amount) ? object.amount.map((e) => coin_1.Coin.fromAmino(e)) : []
-        };
+        const message = createBaseMsgDeposit();
+        if (object.proposal_id !== undefined && object.proposal_id !== null) {
+            message.proposal_id = BigInt(object.proposal_id);
+        }
+        if (object.depositor !== undefined && object.depositor !== null) {
+            message.depositor = object.depositor;
+        }
+        message.amount = object.amount?.map(e => coin_1.Coin.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.proposal_id = message.proposal_id ? message.proposal_id.toString() : undefined;
+        obj.proposal_id = message.proposal_id ? message.proposal_id.toString() : "0";
         obj.depositor = message.depositor;
         if (message.amount) {
             obj.amount = message.amount.map(e => e ? coin_1.Coin.toAmino(e) : undefined);
@@ -681,7 +703,8 @@ exports.MsgDepositResponse = {
         return message;
     },
     fromAmino(_) {
-        return {};
+        const message = createBaseMsgDepositResponse();
+        return message;
     },
     toAmino(_) {
         const obj = {};
@@ -711,24 +734,24 @@ exports.MsgDepositResponse = {
 };
 const Cosmos_govv1beta1Content_InterfaceDecoder = (input) => {
     const reader = input instanceof binary_1.BinaryReader ? input : new binary_1.BinaryReader(input);
-    const data = any_1.Any.decode(reader, reader.uint32(), true);
+    const data = any_1.Any.decode(reader, reader.uint32());
     switch (data.typeUrl) {
         case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal":
-            return distribution_1.CommunityPoolSpendProposal.decode(data.value, undefined, true);
+            return distribution_1.CommunityPoolSpendProposal.decode(data.value);
         case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit":
-            return distribution_1.CommunityPoolSpendProposalWithDeposit.decode(data.value, undefined, true);
+            return distribution_1.CommunityPoolSpendProposalWithDeposit.decode(data.value);
         case "/cosmos.gov.v1beta1.TextProposal":
-            return gov_1.TextProposal.decode(data.value, undefined, true);
+            return gov_1.TextProposal.decode(data.value);
         case "/cosmos.params.v1beta1.ParameterChangeProposal":
-            return params_1.ParameterChangeProposal.decode(data.value, undefined, true);
+            return params_1.ParameterChangeProposal.decode(data.value);
         case "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal":
-            return upgrade_1.SoftwareUpgradeProposal.decode(data.value, undefined, true);
+            return upgrade_1.SoftwareUpgradeProposal.decode(data.value);
         case "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal":
-            return upgrade_1.CancelSoftwareUpgradeProposal.decode(data.value, undefined, true);
+            return upgrade_1.CancelSoftwareUpgradeProposal.decode(data.value);
         case "/ibc.core.client.v1.ClientUpdateProposal":
-            return client_1.ClientUpdateProposal.decode(data.value, undefined, true);
+            return client_1.ClientUpdateProposal.decode(data.value);
         case "/ibc.core.client.v1.UpgradeProposal":
-            return client_1.UpgradeProposal.decode(data.value, undefined, true);
+            return client_1.UpgradeProposal.decode(data.value);
         default:
             return data;
     }

@@ -21,14 +21,14 @@ export interface GenesisStateProtoMsg {
 }
 /** GenesisState defines the ibc-transfer genesis state */
 export interface GenesisStateAmino {
-  port_id: string;
-  denom_traces: DenomTraceAmino[];
+  port_id?: string;
+  denom_traces?: DenomTraceAmino[];
   params?: ParamsAmino;
   /**
    * total_escrowed contains the total amount of tokens escrowed
    * by the transfer module
    */
-  total_escrowed: CoinAmino[];
+  total_escrowed?: CoinAmino[];
 }
 export interface GenesisStateAminoMsg {
   type: "cosmos-sdk/GenesisState";
@@ -125,12 +125,16 @@ export const GenesisState = {
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
-    return {
-      port_id: object.port_id,
-      denom_traces: Array.isArray(object?.denom_traces) ? object.denom_traces.map((e: any) => DenomTrace.fromAmino(e)) : [],
-      params: object?.params ? Params.fromAmino(object.params) : undefined,
-      total_escrowed: Array.isArray(object?.total_escrowed) ? object.total_escrowed.map((e: any) => Coin.fromAmino(e)) : []
-    };
+    const message = createBaseGenesisState();
+    if (object.port_id !== undefined && object.port_id !== null) {
+      message.port_id = object.port_id;
+    }
+    message.denom_traces = object.denom_traces?.map(e => DenomTrace.fromAmino(e)) || [];
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    message.total_escrowed = object.total_escrowed?.map(e => Coin.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};

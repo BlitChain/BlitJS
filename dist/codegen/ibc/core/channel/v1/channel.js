@@ -213,13 +213,21 @@ exports.Channel = {
         return message;
     },
     fromAmino(object) {
-        return {
-            state: (0, helpers_1.isSet)(object.state) ? stateFromJSON(object.state) : -1,
-            ordering: (0, helpers_1.isSet)(object.ordering) ? orderFromJSON(object.ordering) : -1,
-            counterparty: object?.counterparty ? exports.Counterparty.fromAmino(object.counterparty) : undefined,
-            connection_hops: Array.isArray(object?.connection_hops) ? object.connection_hops.map((e) => e) : [],
-            version: object.version
-        };
+        const message = createBaseChannel();
+        if (object.state !== undefined && object.state !== null) {
+            message.state = stateFromJSON(object.state);
+        }
+        if (object.ordering !== undefined && object.ordering !== null) {
+            message.ordering = orderFromJSON(object.ordering);
+        }
+        if (object.counterparty !== undefined && object.counterparty !== null) {
+            message.counterparty = exports.Counterparty.fromAmino(object.counterparty);
+        }
+        message.connection_hops = object.connection_hops?.map(e => e) || [];
+        if (object.version !== undefined && object.version !== null) {
+            message.version = object.version;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -368,15 +376,27 @@ exports.IdentifiedChannel = {
         return message;
     },
     fromAmino(object) {
-        return {
-            state: (0, helpers_1.isSet)(object.state) ? stateFromJSON(object.state) : -1,
-            ordering: (0, helpers_1.isSet)(object.ordering) ? orderFromJSON(object.ordering) : -1,
-            counterparty: object?.counterparty ? exports.Counterparty.fromAmino(object.counterparty) : undefined,
-            connection_hops: Array.isArray(object?.connection_hops) ? object.connection_hops.map((e) => e) : [],
-            version: object.version,
-            port_id: object.port_id,
-            channel_id: object.channel_id
-        };
+        const message = createBaseIdentifiedChannel();
+        if (object.state !== undefined && object.state !== null) {
+            message.state = stateFromJSON(object.state);
+        }
+        if (object.ordering !== undefined && object.ordering !== null) {
+            message.ordering = orderFromJSON(object.ordering);
+        }
+        if (object.counterparty !== undefined && object.counterparty !== null) {
+            message.counterparty = exports.Counterparty.fromAmino(object.counterparty);
+        }
+        message.connection_hops = object.connection_hops?.map(e => e) || [];
+        if (object.version !== undefined && object.version !== null) {
+            message.version = object.version;
+        }
+        if (object.port_id !== undefined && object.port_id !== null) {
+            message.port_id = object.port_id;
+        }
+        if (object.channel_id !== undefined && object.channel_id !== null) {
+            message.channel_id = object.channel_id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -472,10 +492,14 @@ exports.Counterparty = {
         return message;
     },
     fromAmino(object) {
-        return {
-            port_id: object.port_id,
-            channel_id: object.channel_id
-        };
+        const message = createBaseCounterparty();
+        if (object.port_id !== undefined && object.port_id !== null) {
+            message.port_id = object.port_id;
+        }
+        if (object.channel_id !== undefined && object.channel_id !== null) {
+            message.channel_id = object.channel_id;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -621,16 +645,32 @@ exports.Packet = {
         return message;
     },
     fromAmino(object) {
-        return {
-            sequence: BigInt(object.sequence),
-            source_port: object.source_port,
-            source_channel: object.source_channel,
-            destination_port: object.destination_port,
-            destination_channel: object.destination_channel,
-            data: object.data,
-            timeout_height: object?.timeout_height ? client_1.Height.fromAmino(object.timeout_height) : undefined,
-            timeout_timestamp: BigInt(object.timeout_timestamp)
-        };
+        const message = createBasePacket();
+        if (object.sequence !== undefined && object.sequence !== null) {
+            message.sequence = BigInt(object.sequence);
+        }
+        if (object.source_port !== undefined && object.source_port !== null) {
+            message.source_port = object.source_port;
+        }
+        if (object.source_channel !== undefined && object.source_channel !== null) {
+            message.source_channel = object.source_channel;
+        }
+        if (object.destination_port !== undefined && object.destination_port !== null) {
+            message.destination_port = object.destination_port;
+        }
+        if (object.destination_channel !== undefined && object.destination_channel !== null) {
+            message.destination_channel = object.destination_channel;
+        }
+        if (object.data !== undefined && object.data !== null) {
+            message.data = (0, helpers_1.bytesFromBase64)(object.data);
+        }
+        if (object.timeout_height !== undefined && object.timeout_height !== null) {
+            message.timeout_height = client_1.Height.fromAmino(object.timeout_height);
+        }
+        if (object.timeout_timestamp !== undefined && object.timeout_timestamp !== null) {
+            message.timeout_timestamp = BigInt(object.timeout_timestamp);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -639,7 +679,7 @@ exports.Packet = {
         obj.source_channel = message.source_channel;
         obj.destination_port = message.destination_port;
         obj.destination_channel = message.destination_channel;
-        obj.data = message.data;
+        obj.data = message.data ? (0, helpers_1.base64FromBytes)(message.data) : undefined;
         obj.timeout_height = message.timeout_height ? client_1.Height.toAmino(message.timeout_height) : {};
         obj.timeout_timestamp = message.timeout_timestamp ? message.timeout_timestamp.toString() : undefined;
         return obj;
@@ -742,19 +782,27 @@ exports.PacketState = {
         return message;
     },
     fromAmino(object) {
-        return {
-            port_id: object.port_id,
-            channel_id: object.channel_id,
-            sequence: BigInt(object.sequence),
-            data: object.data
-        };
+        const message = createBasePacketState();
+        if (object.port_id !== undefined && object.port_id !== null) {
+            message.port_id = object.port_id;
+        }
+        if (object.channel_id !== undefined && object.channel_id !== null) {
+            message.channel_id = object.channel_id;
+        }
+        if (object.sequence !== undefined && object.sequence !== null) {
+            message.sequence = BigInt(object.sequence);
+        }
+        if (object.data !== undefined && object.data !== null) {
+            message.data = (0, helpers_1.bytesFromBase64)(object.data);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
         obj.port_id = message.port_id;
         obj.channel_id = message.channel_id;
         obj.sequence = message.sequence ? message.sequence.toString() : undefined;
-        obj.data = message.data;
+        obj.data = message.data ? (0, helpers_1.base64FromBytes)(message.data) : undefined;
         return obj;
     },
     fromAminoMsg(object) {
@@ -845,11 +893,17 @@ exports.PacketId = {
         return message;
     },
     fromAmino(object) {
-        return {
-            port_id: object.port_id,
-            channel_id: object.channel_id,
-            sequence: BigInt(object.sequence)
-        };
+        const message = createBasePacketId();
+        if (object.port_id !== undefined && object.port_id !== null) {
+            message.port_id = object.port_id;
+        }
+        if (object.channel_id !== undefined && object.channel_id !== null) {
+            message.channel_id = object.channel_id;
+        }
+        if (object.sequence !== undefined && object.sequence !== null) {
+            message.sequence = BigInt(object.sequence);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -936,14 +990,18 @@ exports.Acknowledgement = {
         return message;
     },
     fromAmino(object) {
-        return {
-            result: object?.result,
-            error: object?.error
-        };
+        const message = createBaseAcknowledgement();
+        if (object.result !== undefined && object.result !== null) {
+            message.result = (0, helpers_1.bytesFromBase64)(object.result);
+        }
+        if (object.error !== undefined && object.error !== null) {
+            message.error = object.error;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
-        obj.result = message.result;
+        obj.result = message.result ? (0, helpers_1.base64FromBytes)(message.result) : undefined;
         obj.error = message.error;
         return obj;
     },
@@ -1025,10 +1083,14 @@ exports.Timeout = {
         return message;
     },
     fromAmino(object) {
-        return {
-            height: object?.height ? client_1.Height.fromAmino(object.height) : undefined,
-            timestamp: BigInt(object.timestamp)
-        };
+        const message = createBaseTimeout();
+        if (object.height !== undefined && object.height !== null) {
+            message.height = client_1.Height.fromAmino(object.height);
+        }
+        if (object.timestamp !== undefined && object.timestamp !== null) {
+            message.timestamp = BigInt(object.timestamp);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

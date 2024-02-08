@@ -78,11 +78,13 @@ export const ModuleDescriptor = {
         return message;
     },
     fromAmino(object) {
-        return {
-            go_import: object.go_import,
-            use_package: Array.isArray(object?.use_package) ? object.use_package.map((e) => PackageReference.fromAmino(e)) : [],
-            can_migrate_from: Array.isArray(object?.can_migrate_from) ? object.can_migrate_from.map((e) => MigrateFromInfo.fromAmino(e)) : []
-        };
+        const message = createBaseModuleDescriptor();
+        if (object.go_import !== undefined && object.go_import !== null) {
+            message.go_import = object.go_import;
+        }
+        message.use_package = object.use_package?.map(e => PackageReference.fromAmino(e)) || [];
+        message.can_migrate_from = object.can_migrate_from?.map(e => MigrateFromInfo.fromAmino(e)) || [];
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -179,10 +181,14 @@ export const PackageReference = {
         return message;
     },
     fromAmino(object) {
-        return {
-            name: object.name,
-            revision: object.revision
-        };
+        const message = createBasePackageReference();
+        if (object.name !== undefined && object.name !== null) {
+            message.name = object.name;
+        }
+        if (object.revision !== undefined && object.revision !== null) {
+            message.revision = object.revision;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -258,9 +264,11 @@ export const MigrateFromInfo = {
         return message;
     },
     fromAmino(object) {
-        return {
-            module: object.module
-        };
+        const message = createBaseMigrateFromInfo();
+        if (object.module !== undefined && object.module !== null) {
+            message.module = object.module;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

@@ -80,12 +80,20 @@ export const QueryGrantsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            granter: object.granter,
-            grantee: object.grantee,
-            msg_type_url: object.msg_type_url,
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGrantsRequest();
+        if (object.granter !== undefined && object.granter !== null) {
+            message.granter = object.granter;
+        }
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        if (object.msg_type_url !== undefined && object.msg_type_url !== null) {
+            message.msg_type_url = object.msg_type_url;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -178,10 +186,12 @@ export const QueryGrantsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            grants: Array.isArray(object?.grants) ? object.grants.map((e) => Grant.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGrantsResponse();
+        message.grants = object.grants?.map(e => Grant.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -272,10 +282,14 @@ export const QueryGranterGrantsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            granter: object.granter,
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGranterGrantsRequest();
+        if (object.granter !== undefined && object.granter !== null) {
+            message.granter = object.granter;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -366,10 +380,12 @@ export const QueryGranterGrantsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            grants: Array.isArray(object?.grants) ? object.grants.map((e) => GrantAuthorization.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGranterGrantsResponse();
+        message.grants = object.grants?.map(e => GrantAuthorization.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -460,10 +476,14 @@ export const QueryGranteeGrantsRequest = {
         return message;
     },
     fromAmino(object) {
-        return {
-            grantee: object.grantee,
-            pagination: object?.pagination ? PageRequest.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGranteeGrantsRequest();
+        if (object.grantee !== undefined && object.grantee !== null) {
+            message.grantee = object.grantee;
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
@@ -554,10 +574,12 @@ export const QueryGranteeGrantsResponse = {
         return message;
     },
     fromAmino(object) {
-        return {
-            grants: Array.isArray(object?.grants) ? object.grants.map((e) => GrantAuthorization.fromAmino(e)) : [],
-            pagination: object?.pagination ? PageResponse.fromAmino(object.pagination) : undefined
-        };
+        const message = createBaseQueryGranteeGrantsResponse();
+        message.grants = object.grants?.map(e => GrantAuthorization.fromAmino(e)) || [];
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromAmino(object.pagination);
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};

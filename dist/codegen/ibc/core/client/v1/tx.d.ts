@@ -29,7 +29,7 @@ export interface MsgCreateClientAmino {
      */
     consensus_state?: AnyAmino;
     /** signer address */
-    signer: string;
+    signer?: string;
 }
 export interface MsgCreateClientAminoMsg {
     type: "cosmos-sdk/MsgCreateClient";
@@ -80,11 +80,11 @@ export interface MsgUpdateClientProtoMsg {
  */
 export interface MsgUpdateClientAmino {
     /** client unique identifier */
-    client_id: string;
+    client_id?: string;
     /** client message to update the light client */
     client_message?: AnyAmino;
     /** signer address */
-    signer: string;
+    signer?: string;
 }
 export interface MsgUpdateClientAminoMsg {
     type: "cosmos-sdk/MsgUpdateClient";
@@ -147,7 +147,7 @@ export interface MsgUpgradeClientProtoMsg {
  */
 export interface MsgUpgradeClientAmino {
     /** client unique identifier */
-    client_id: string;
+    client_id?: string;
     /** upgraded client state */
     client_state?: AnyAmino;
     /**
@@ -156,11 +156,11 @@ export interface MsgUpgradeClientAmino {
      */
     consensus_state?: AnyAmino;
     /** proof that old chain committed to new client */
-    proof_upgrade_client: Uint8Array;
+    proof_upgrade_client?: string;
     /** proof that old chain committed to new consensus state */
-    proof_upgrade_consensus_state: Uint8Array;
+    proof_upgrade_consensus_state?: string;
     /** signer address */
-    signer: string;
+    signer?: string;
 }
 export interface MsgUpgradeClientAminoMsg {
     type: "cosmos-sdk/MsgUpgradeClient";
@@ -221,11 +221,11 @@ export interface MsgSubmitMisbehaviourProtoMsg {
 /** @deprecated */
 export interface MsgSubmitMisbehaviourAmino {
     /** client unique identifier */
-    client_id: string;
+    client_id?: string;
     /** misbehaviour used for freezing the light client */
     misbehaviour?: AnyAmino;
     /** signer address */
-    signer: string;
+    signer?: string;
 }
 export interface MsgSubmitMisbehaviourAminoMsg {
     type: "cosmos-sdk/MsgSubmitMisbehaviour";
@@ -287,14 +287,14 @@ export interface MsgRecoverClientProtoMsg {
 /** MsgRecoverClient defines the message used to recover a frozen or expired client. */
 export interface MsgRecoverClientAmino {
     /** the client identifier for the client to be updated if the proposal passes */
-    subject_client_id: string;
+    subject_client_id?: string;
     /**
      * the substitute client identifier for the client which will replace the subject
      * client
      */
-    substitute_client_id: string;
+    substitute_client_id?: string;
     /** signer address */
-    signer: string;
+    signer?: string;
 }
 export interface MsgRecoverClientAminoMsg {
     type: "cosmos-sdk/MsgRecoverClient";
@@ -359,7 +359,7 @@ export interface MsgIBCSoftwareUpgradeAmino {
      */
     upgraded_client_state?: AnyAmino;
     /** signer address */
-    signer: string;
+    signer?: string;
 }
 export interface MsgIBCSoftwareUpgradeAminoMsg {
     type: "cosmos-sdk/MsgIBCSoftwareUpgrade";
@@ -406,7 +406,7 @@ export interface MsgUpdateParamsProtoMsg {
 /** MsgUpdateParams defines the sdk.Msg type to update the client parameters. */
 export interface MsgUpdateParamsAmino {
     /** signer address */
-    signer: string;
+    signer?: string;
     /**
      * params defines the client parameters to update.
      *

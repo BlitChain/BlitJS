@@ -88,13 +88,23 @@ export const BIP44Params = {
         return message;
     },
     fromAmino(object) {
-        return {
-            purpose: object.purpose,
-            coin_type: object.coin_type,
-            account: object.account,
-            change: object.change,
-            address_index: object.address_index
-        };
+        const message = createBaseBIP44Params();
+        if (object.purpose !== undefined && object.purpose !== null) {
+            message.purpose = object.purpose;
+        }
+        if (object.coin_type !== undefined && object.coin_type !== null) {
+            message.coin_type = object.coin_type;
+        }
+        if (object.account !== undefined && object.account !== null) {
+            message.account = object.account;
+        }
+        if (object.change !== undefined && object.change !== null) {
+            message.change = object.change;
+        }
+        if (object.address_index !== undefined && object.address_index !== null) {
+            message.address_index = object.address_index;
+        }
+        return message;
     },
     toAmino(message) {
         const obj = {};
